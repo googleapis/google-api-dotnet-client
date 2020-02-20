@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200212 (1868)
+ *      <tr><th>API Rev<td>20200215 (1871)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -10359,7 +10359,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoTypeLimit> MaxFindingsPerInfoType { get; set; } 
 
         /// <summary>Max number of findings that will be returned for each item scanned. When set within
-        /// `InspectDataSourceRequest`, the maximum returned is 2000 regardless if this is set higher. When set within
+        /// `InspectJobConfig`, the maximum returned is 2000 regardless if this is set higher. When set within
         /// `InspectContentRequest`, this field is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxFindingsPerItem")]
         public virtual System.Nullable<int> MaxFindingsPerItem { get; set; } 
@@ -11352,7 +11352,8 @@ namespace Google.Apis.DLP.v2.Data
         /// table will be deleted.
         ///
         /// If unspecified, then all available columns will be used for a new table or an (existing) table with no
-        /// schema, and no changes will be made to an existing table that has a schema.</summary>
+        /// schema, and no changes will be made to an existing table that has a schema. Only for use with external
+        /// storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputSchema")]
         public virtual string OutputSchema { get; set; } 
 

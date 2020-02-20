@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/filestore/'>Cloud Filestore API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200205 (1861)
+ *      <tr><th>API Rev<td>20200219 (1875)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/filestore/'>
  *              https://cloud.google.com/filestore/</a>
@@ -722,7 +722,7 @@ namespace Google.Apis.CloudFilestore.v1
                 /// <summary>Updates the settings of a specific instance.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Output only. The resource name of the instance, in the format
-                /// projects/{project_id}/locations/{location_id}/instances/{instance_id}.</param>
+                /// projects/{project}/locations/{location}/instances/{instance}.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudFilestore.v1.Data.Instance body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -742,7 +742,7 @@ namespace Google.Apis.CloudFilestore.v1
 
 
                     /// <summary>Output only. The resource name of the instance, in the format
-                    /// projects/{project_id}/locations/{location_id}/instances/{instance_id}.</summary>
+                    /// projects/{project}/locations/{location}/instances/{instance}.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1368,13 +1368,8 @@ namespace Google.Apis.CloudFilestore.v1.Data
     /// ```json Instance: { "name": "projects/snapchat/locations/us-east1/instances/prod-instance", "create_time": {
     /// "seconds": 1526406431, }, "labels": { "env": "prod", "foo": "bar" }, "state": READY, "software_versions": {
     /// "software_update": "cloud-sql-09-28-2018", }, "maintenance_policy_names": { "UpdatePolicy":
-    /// "projects/snapchat/locations/us-east1/maintenancePolicies/prod-update-policy", } "rollout_metadata": { "projects
-    /// /cloud-sql/locations/global/rolloutTypes/software_update": { "release": "projects/cloud-
-    /// sql/locations/global/releases/cloud-sql-09-28-2018", "rollout": "projects/cloud-sql/locations/us-east1/rollouts
-    /// /cloud-sql-09-28-2018-canary", }, "projects/cloud-sql/locations/global/rolloutTypes/instance_restart": {
-    /// "release": "projects/cloud-sql/locations/global/releases/cloud-sql-09-20-repair", "rollout": "projects/cloud-
-    /// sql/locations/us-east1/rollouts/cloud-sql-09-20-repair-100-percent", } } "tenant_project_id": "cloud-sql-test-
-    /// tenant", "producer_metadata": { "cloud-sql-tier": "basic", "cloud-sql-instance-size": "1G", },
+    /// "projects/snapchat/locations/us-east1/maintenancePolicies/prod-update-policy", } "tenant_project_id": "cloud-
+    /// sql-test-tenant", "producer_metadata": { "cloud-sql-tier": "basic", "cloud-sql-instance-size": "1G", },
     /// "provisioned_resources": [ { "resource-type": "compute-instance", "resource-url":
     /// "https://www.googleapis.com/compute/v1/projects/cloud-sql/zones/us-east1-b/instances/vm-1", } ],
     /// "maintenance_schedules": { "csa_rollout": { "start_time": { "seconds": 1526406431, }, "end_time": { "seconds":
@@ -1513,7 +1508,8 @@ namespace Google.Apis.CloudFilestore.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>NotificationMetadata is the notification state for an instance.</summary>
+    /// <summary>This message has been deprecated. NotificationMetadata is the notification state for an
+    /// instance.</summary>
     public class GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the instance update has been rescheduled.</summary>
@@ -1556,7 +1552,8 @@ namespace Google.Apis.CloudFilestore.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>RolloutMetadata for an actuation instance. It maps to a single RolloutType.</summary>
+    /// <summary>This message has been deprecated. RolloutMetadata for an actuation instance. It maps to a single
+    /// RolloutType.</summary>
     public class GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Instance level notification metadata.</summary>
@@ -1627,7 +1624,7 @@ namespace Google.Apis.CloudFilestore.v1.Data
     /// <summary>SloMetadata contains resources required for proper SLO classification of the instance.</summary>
     public class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional: user-defined instance eligibility.</summary>
+        /// <summary>Optional. User-defined instance eligibility.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eligibility")]
         public virtual GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility Eligibility { get; set; } 
 
@@ -1645,7 +1642,7 @@ namespace Google.Apis.CloudFilestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
         public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion> Exclusions { get; set; } 
 
-        /// <summary>Optional: list of nodes. Some producers need to use per-node metadata to calculate SLO. This field
+        /// <summary>Optional. List of nodes. Some producers need to use per-node metadata to calculate SLO. This field
         /// allows such producers to publish per-node SLO meta data, which will be consumed by SSA Eligibility Exporter
         /// and published in the form of per node metric to Monarch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
@@ -1669,7 +1666,7 @@ namespace Google.Apis.CloudFilestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>Optional. A description of the instance (2048 characters or less).</summary>
+        /// <summary>Optional. The description of the instance (2048 characters or less).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -1688,7 +1685,7 @@ namespace Google.Apis.CloudFilestore.v1.Data
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Output only. The resource name of the instance, in the format
-        /// projects/{project_id}/locations/{location_id}/instances/{instance_id}.</summary>
+        /// projects/{project}/locations/{location}/instances/{instance}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

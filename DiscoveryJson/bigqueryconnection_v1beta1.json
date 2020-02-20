@@ -394,7 +394,7 @@
    }
   }
  }, 
- "revision": "20200204", 
+ "revision": "20200206", 
  "rootUrl": "https://bigqueryconnection.googleapis.com/", 
  "schemas": {
   "AuditConfig": {

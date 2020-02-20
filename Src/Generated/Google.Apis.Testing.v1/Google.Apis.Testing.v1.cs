@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200205 (1861)
+ *      <tr><th>API Rev<td>20200211 (1867)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1983,6 +1983,16 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class SystraceSetup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("durationSeconds")]
+        public virtual System.Nullable<int> DurationSeconds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Additional details about the progress of the running test.</summary>
     public class TestDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2166,6 +2176,12 @@ namespace Google.Apis.Testing.v1.Data
         /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkProfile")]
         public virtual string NetworkProfile { get; set; } 
+
+        /// <summary>Systrace configuration for the run. If set a systrace will be taken, starting on test start and
+        /// lasting for the configured duration. The systrace file thus obtained is put in the results bucket together
+        /// with the other artifacts from the run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systrace")]
+        public virtual SystraceSetup Systrace { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

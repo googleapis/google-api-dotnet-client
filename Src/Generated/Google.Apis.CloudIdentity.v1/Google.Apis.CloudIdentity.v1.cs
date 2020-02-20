@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/identity/'>Cloud Identity API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200211 (1867)
+ *      <tr><th>API Rev<td>20200215 (1871)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/identity/'>
  *              https://cloud.google.com/identity/</a>
@@ -1376,29 +1376,8 @@ namespace Google.Apis.CloudIdentity.v1
 namespace Google.Apis.CloudIdentity.v1.Data
 {    
 
-    /// <summary>An EntityKey uniquely identifies an Entity. Namespaces are used to provide isolation for IDs. A single
-    /// ID can be reused across namespaces but the combination of a namespace and an ID must be unique.</summary>
-    public class EntityKey : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ID of the entity within the given namespace. The ID must be unique within its
-        /// namespace.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
-
-        /// <summary>Namespaces provide isolation for IDs, so an ID only needs to be unique within its namespace.
-        ///
-        /// Namespaces are currently only created as part of IdentitySource creation from Admin Console. A namespace
-        /// `"identitysources/{identity_source_id}"` is created corresponding to every Identity Source
-        /// `identity_source_id`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
-        public virtual string Namespace__ { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Resource representing the Android specific attributes of a Device.</summary>
-    public class GoogleAppsCloudidentityDevicesV1alpha1AndroidAttributes : Google.Apis.Requests.IDirectResponseSchema
+    public class AndroidAttributes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Baseband version of Android device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("basebandVersion")]
@@ -1466,45 +1445,45 @@ namespace Google.Apis.CloudIdentity.v1.Data
     }    
 
     /// <summary>Response message for approving the device to access user data.</summary>
-    public class GoogleAppsCloudidentityDevicesV1alpha1ApproveDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class ApproveDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Resultant DeviceUser object for the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
-        public virtual GoogleAppsCloudidentityDevicesV1alpha1DeviceUser DeviceUser { get; set; } 
+        public virtual DeviceUser DeviceUser { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>Response message for blocking the device from accessing user data.</summary>
-    public class GoogleAppsCloudidentityDevicesV1alpha1BlockDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class BlockDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Resultant DeviceUser object for the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
-        public virtual GoogleAppsCloudidentityDevicesV1alpha1DeviceUser DeviceUser { get; set; } 
+        public virtual DeviceUser DeviceUser { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>Response message for cancelling an unfinished device wipe.</summary>
-    public class GoogleAppsCloudidentityDevicesV1alpha1CancelWipeDeviceResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class CancelWipeDeviceResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Resultant Device object for the action. Note that asset tags will not be returned in the device
         /// object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
-        public virtual GoogleAppsCloudidentityDevicesV1alpha1Device Device { get; set; } 
+        public virtual Device Device { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>Response message for cancelling an unfinished user account wipe.</summary>
-    public class GoogleAppsCloudidentityDevicesV1alpha1CancelWipeDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class CancelWipeDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Resultant DeviceUser object for the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
-        public virtual GoogleAppsCloudidentityDevicesV1alpha1DeviceUser DeviceUser { get; set; } 
+        public virtual DeviceUser DeviceUser { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1512,11 +1491,11 @@ namespace Google.Apis.CloudIdentity.v1.Data
 
     /// <summary>Represents a Device known to Google Cloud, independent of the device ownership, type, and whether it is
     /// assigned or in use by a user.</summary>
-    public class GoogleAppsCloudidentityDevicesV1alpha1Device : Google.Apis.Requests.IDirectResponseSchema
+    public class Device : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Attributes specific to Android devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidSpecificAttributes")]
-        public virtual GoogleAppsCloudidentityDevicesV1alpha1AndroidAttributes AndroidSpecificAttributes { get; set; } 
+        public virtual AndroidAttributes AndroidSpecificAttributes { get; set; } 
 
         /// <summary>Asset tag of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetTag")]
@@ -1596,8 +1575,8 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Resource representing a user's use of a Device</summary>
-    public class GoogleAppsCloudidentityDevicesV1alpha1DeviceUser : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>A DeviceUser is a resource representing a user's use of a Device</summary>
+    public class DeviceUser : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Compromised State of the DeviceUser object</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compromisedState")]
@@ -1641,8 +1620,8 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Next ID to use: 7</summary>
-    public class GoogleAppsCloudidentityDevicesV1alpha1EndpointApp : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>An EndpointApp represents an app that is installed on a device Next ID to use: 7</summary>
+    public class EndpointApp : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Name of the app displayed to the user</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -1674,69 +1653,22 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message that is returned in LRO result of ListDeviceUsers Operation.</summary>
-    public class GoogleAppsCloudidentityDevicesV1alpha1ListDeviceUsersResponse : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>An EntityKey uniquely identifies an Entity. Namespaces are used to provide isolation for IDs. A single
+    /// ID can be reused across namespaces but the combination of a namespace and an ID must be unique.</summary>
+    public class EntityKey : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Devices meeting the list restrictions.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deviceUsers")]
-        public virtual System.Collections.Generic.IList<GoogleAppsCloudidentityDevicesV1alpha1DeviceUser> DeviceUsers { get; set; } 
+        /// <summary>The ID of the entity within the given namespace. The ID must be unique within its
+        /// namespace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
 
-        /// <summary>Token to retrieve the next page of results. Empty if there are no more results.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Response message that is returned in LRO result of ListDevices Operation.</summary>
-    public class GoogleAppsCloudidentityDevicesV1alpha1ListDevicesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Devices meeting the list restrictions.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("devices")]
-        public virtual System.Collections.Generic.IList<GoogleAppsCloudidentityDevicesV1alpha1Device> Devices { get; set; } 
-
-        /// <summary>Token to retrieve the next page of results. Empty if there are no more results.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Response message for listing all apps on the device.</summary>
-    public class GoogleAppsCloudidentityDevicesV1alpha1ListEndpointAppsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of matching EndpointApps found as a result of the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endpointApps")]
-        public virtual System.Collections.Generic.IList<GoogleAppsCloudidentityDevicesV1alpha1EndpointApp> EndpointApps { get; set; } 
-
-        /// <summary>Token to retrieve the next page of results. Empty if there are no more results.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Response message for wiping all data on the device.</summary>
-    public class GoogleAppsCloudidentityDevicesV1alpha1WipeDeviceResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Resultant Device object for the action. Note that asset tags will not be returned in the device
-        /// object.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("device")]
-        public virtual GoogleAppsCloudidentityDevicesV1alpha1Device Device { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Response message for wiping the user's account from the device.</summary>
-    public class GoogleAppsCloudidentityDevicesV1alpha1WipeDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Resultant DeviceUser object for the action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
-        public virtual GoogleAppsCloudidentityDevicesV1alpha1DeviceUser DeviceUser { get; set; } 
+        /// <summary>Namespaces provide isolation for IDs, so an ID only needs to be unique within its namespace.
+        ///
+        /// Namespaces are currently only created as part of IdentitySource creation from Admin Console. A namespace
+        /// `"identitysources/{identity_source_id}"` is created corresponding to every Identity Source
+        /// `identity_source_id`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
+        public virtual string Namespace__ { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1787,6 +1719,51 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// <summary>Output only. The time when the Group was last updated. Output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message that is returned in LRO result of ListDeviceUsers Operation.</summary>
+    public class ListDeviceUsersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Devices meeting the list restrictions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceUsers")]
+        public virtual System.Collections.Generic.IList<DeviceUser> DeviceUsers { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results. Empty if there are no more results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message that is returned in LRO result of ListDevices Operation.</summary>
+    public class ListDevicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Devices meeting the list restrictions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("devices")]
+        public virtual System.Collections.Generic.IList<Device> Devices { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results. Empty if there are no more results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for listing all apps on the device.</summary>
+    public class ListEndpointAppsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of matching EndpointApps found as a result of the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointApps")]
+        public virtual System.Collections.Generic.IList<EndpointApp> EndpointApps { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results. Empty if there are no more results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1969,6 +1946,29 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for wiping all data on the device.</summary>
+    public class WipeDeviceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resultant Device object for the action. Note that asset tags will not be returned in the device
+        /// object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual Device Device { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for wiping the user's account from the device.</summary>
+    public class WipeDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resultant DeviceUser object for the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
+        public virtual DeviceUser DeviceUser { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

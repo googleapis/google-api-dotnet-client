@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>G Suite Alert Center API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200208 (1864)
+ *      <tr><th>API Rev<td>20200215 (1871)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>
  *              https://developers.google.com/admin-sdk/alertcenter/</a>
@@ -1706,6 +1706,46 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>The takeout request ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("takeoutRequestId")]
         public virtual string TakeoutRequestId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Drive file</summary>
+    public class DriveFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Abuse type of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("abuseType")]
+        public virtual string AbuseType { get; set; } 
+
+        /// <summary>The ID of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>The name of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The number of recent downloads of the file. This is available for the following alert types:
+        ///
+        /// *Drive malware sharing detected</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numRecentDownload")]
+        public virtual System.Nullable<long> NumRecentDownload { get; set; } 
+
+        /// <summary>The email address of the file owner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("owner")]
+        public virtual string Owner { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Alerts for suspicious Drive files or activities.</summary>
+    public class DriveFileWarning : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of files in the alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("files")]
+        public virtual System.Collections.Generic.IList<DriveFile> Files { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

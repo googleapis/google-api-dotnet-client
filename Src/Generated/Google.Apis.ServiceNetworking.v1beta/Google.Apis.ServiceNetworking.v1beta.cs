@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20200205 (1861)
+ *      <tr><th>API Rev<td>20200215 (1871)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
  *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
@@ -1148,7 +1148,19 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
     /// <summary>A backend rule provides configuration for an individual API element.</summary>
     public class BackendRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The address of the API backend.</summary>
+        /// <summary>The address of the API backend.
+        ///
+        /// The scheme is used to determine the backend protocol and security. The following schemes are accepted:
+        ///
+        /// SCHEME        PROTOCOL    SECURITY http://       HTTP        None https://      HTTP        TLS grpc://
+        /// gRPC        None grpcs://      gRPC        TLS
+        ///
+        /// It is recommended to explicitly include a scheme. Leaving out the scheme may cause constrasting behaviors
+        /// across platforms.
+        ///
+        /// If the port is unspecified, the default is: - 80 for schemes without TLS - 443 for schemes with TLS
+        ///
+        /// For HTTP backends, use protocol to specify the protocol version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address { get; set; } 
 
@@ -1157,13 +1169,9 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deadline")]
         public virtual System.Nullable<double> Deadline { get; set; } 
 
-        /// <summary>When disable_auth is false,  a JWT ID token will be generated with the value from
-        /// BackendRule.address as jwt_audience, overrode to the HTTP "Authorization" request header and sent to the
-        /// backend.
-        ///
-        /// When disable_auth is true, a JWT ID token won't be generated and the original "Authorization" HTTP header
-        /// will be preserved. If the header is used to carry the original token and is expected by the backend, this
-        /// field must be set to true to preserve the header.</summary>
+        /// <summary>When disable_auth is true, a JWT ID token won't be generated and the original "Authorization" HTTP
+        /// header will be preserved. If the header is used to carry the original token and is expected by the backend,
+        /// this field must be set to true to preserve the header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableAuth")]
         public virtual System.Nullable<bool> DisableAuth { get; set; } 
 
@@ -1184,6 +1192,23 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("pathTranslation")]
         public virtual string PathTranslation { get; set; } 
+
+        /// <summary>The protocol used for sending a request to the backend. The supported values are "http/1.1" and
+        /// "h2".
+        ///
+        /// The default value is inferred from the scheme in the address field:
+        ///
+        /// SCHEME        PROTOCOL http://       http/1.1 https://      http/1.1 grpc://       h2 grpcs://      h2
+        ///
+        /// For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance.
+        ///
+        /// Configuring this field to non-default values is only supported for secure HTTP backends. This field will be
+        /// ignored for all other backends.
+        ///
+        /// See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-
+        /// ids for more details on the supported values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
+        public virtual string Protocol { get; set; } 
 
         /// <summary>Selects the methods to which this rule applies.
         ///

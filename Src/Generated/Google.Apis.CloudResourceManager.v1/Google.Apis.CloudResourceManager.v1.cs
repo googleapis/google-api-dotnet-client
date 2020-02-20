@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200205 (1861)
+ *      <tr><th>API Rev<td>20200212 (1868)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -895,7 +895,7 @@ namespace Google.Apis.CloudResourceManager.v1
         ///
         /// Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent`
         /// of `projects/1234` requires permission `resourcemanager.projects.updateLiens`.</summary>
-        /// <param name="name">The name/identifier of the Lien to delete.</param>
+        /// <param name="name">Required. The name/identifier of the Lien to delete.</param>
         public virtual DeleteRequest Delete(string name)
         {
             return new DeleteRequest(service, name);
@@ -916,7 +916,7 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>The name/identifier of the Lien to delete.</summary>
+            /// <summary>Required. The name/identifier of the Lien to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -951,7 +951,7 @@ namespace Google.Apis.CloudResourceManager.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^liens/.+$",
+                        Pattern = @"^liens/.*$",
                     });
             }
 
@@ -962,7 +962,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent`
         /// of `projects/1234` requires permission requires permission `resourcemanager.projects.get` or
         /// `resourcemanager.projects.updateLiens`.</summary>
-        /// <param name="name">The name/identifier of the Lien.</param>
+        /// <param name="name">Required. The name/identifier of the Lien.</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
@@ -984,7 +984,7 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>The name/identifier of the Lien.</summary>
+            /// <summary>Required. The name/identifier of the Lien.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1019,7 +1019,7 @@ namespace Google.Apis.CloudResourceManager.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^liens/.+$",
+                        Pattern = @"^liens/.*$",
                     });
             }
 
@@ -1056,7 +1056,8 @@ namespace Google.Apis.CloudResourceManager.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>The name of the resource to list all attached Liens. For example, `projects/1234`.</summary>
+            /// <summary>Required. The name of the resource to list all attached Liens. For example,
+            /// `projects/1234`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
 
@@ -1188,7 +1189,7 @@ namespace Google.Apis.CloudResourceManager.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^operations/.+$",
+                        Pattern = @"^operations/.*$",
                     });
             }
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200211 (1867)
+ *      <tr><th>API Rev<td>20200218 (1874)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -480,7 +480,7 @@ namespace Google.Apis.RemoteBuildExecution.v2
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^.+$",
+                        Pattern = @"^.*$",
                     });
                 RequestParameters.Add(
                     "hash", new Google.Apis.Discovery.Parameter
@@ -643,7 +643,7 @@ namespace Google.Apis.RemoteBuildExecution.v2
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^.+$",
+                        Pattern = @"^.*$",
                     });
                 RequestParameters.Add(
                     "hash", new Google.Apis.Discovery.Parameter
@@ -836,7 +836,7 @@ namespace Google.Apis.RemoteBuildExecution.v2
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^.+$",
+                        Pattern = @"^.*$",
                     });
             }
 
@@ -952,7 +952,7 @@ namespace Google.Apis.RemoteBuildExecution.v2
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^.+$",
+                        Pattern = @"^.*$",
                     });
             }
 
@@ -1057,7 +1057,7 @@ namespace Google.Apis.RemoteBuildExecution.v2
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^.+$",
+                        Pattern = @"^.*$",
                     });
             }
 
@@ -1140,7 +1140,7 @@ namespace Google.Apis.RemoteBuildExecution.v2
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^.+$",
+                        Pattern = @"^.*$",
                     });
             }
 
@@ -1260,7 +1260,7 @@ namespace Google.Apis.RemoteBuildExecution.v2
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^.+$",
+                        Pattern = @"^.*$",
                     });
                 RequestParameters.Add(
                     "hash", new Google.Apis.Discovery.Parameter
@@ -1389,7 +1389,7 @@ namespace Google.Apis.RemoteBuildExecution.v2
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^operations/.+$",
+                        Pattern = @"^operations/.*$",
                     });
             }
 
@@ -1477,7 +1477,7 @@ namespace Google.Apis.RemoteBuildExecution.v2
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^.+$",
+                        Pattern = @"^.*$",
                     });
             }
 

@@ -624,7 +624,7 @@
    }
   }
  }, 
- "revision": "20200126", 
+ "revision": "20200209", 
  "rootUrl": "https://datastore.googleapis.com/", 
  "schemas": {
   "AllocateIdsRequest": {
