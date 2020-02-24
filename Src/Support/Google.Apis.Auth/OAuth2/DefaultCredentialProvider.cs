@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Google.Apis.Auth.OAuth2.Flows;
@@ -75,10 +76,7 @@ namespace Google.Apis.Auth.OAuth2
         /// first invocation.
         /// See <see cref="M:Google.Apis.Auth.OAuth2.GoogleCredential.GetApplicationDefaultAsync"/> for details.
         /// </summary>
-        public Task<GoogleCredential> GetDefaultCredentialAsync()
-        {
-            return cachedCredentialTask.Value;
-        }
+        public Task<GoogleCredential> GetDefaultCredentialAsync() => cachedCredentialTask.Value;
 
         /// <summary>Creates a new default credential.</summary>
         private async Task<GoogleCredential> CreateDefaultCredentialAsync()
@@ -167,6 +165,23 @@ namespace Google.Apis.Auth.OAuth2
             try
             {
                 credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(stream);
+            }
+            catch (Exception e)
+            {
+                throw new InvalidOperationException("Error deserializing JSON credential data.", e);
+            }
+            return CreateDefaultCredentialFromParameters(credentialParameters);
+        }
+
+        /// <summary>Creates a default credential from a stream that contains JSON credential data.</summary>
+        internal async Task<GoogleCredential> CreateDefaultCredentialFromStreamAsync(Stream stream, CancellationToken cancellationToken)
+        {
+            JsonCredentialParameters credentialParameters;
+            try
+            {
+                credentialParameters = await NewtonsoftJsonSerializer.Instance
+                    .DeserializeAsync<JsonCredentialParameters>(stream, cancellationToken)
+                    .ConfigureAwait(false);
             }
             catch (Exception e)
             {

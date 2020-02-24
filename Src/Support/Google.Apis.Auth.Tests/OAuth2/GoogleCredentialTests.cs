@@ -96,6 +96,18 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         }
 
         [Fact]
+        public async Task FromStreamAsync_ServiceAccountCredential()
+        {
+            var stream = new MemoryStream(Encoding.UTF8.GetBytes(DummyServiceAccountCredentialFileContents));
+            var credential = await GoogleCredential.FromStreamAsync(stream, CancellationToken.None);
+            Assert.IsType<ServiceAccountCredential>(credential.UnderlyingCredential);
+            Assert.True(credential.IsCreateScopedRequired);
+            var serviceCred = (ServiceAccountCredential) credential.UnderlyingCredential;
+            Assert.Equal("CLIENT_EMAIL", serviceCred.Id);
+            Assert.Equal("PROJECT_ID", serviceCred.ProjectId);
+        }
+
+        [Fact]
         public void FromJson_UserCredential()
         {
             var credential = GoogleCredential.FromJson(DummyUserCredentialFileContents);

@@ -21,6 +21,8 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Google.Apis.Json
 {
@@ -203,6 +205,26 @@ namespace Google.Apis.Json
             using (StreamReader streamReader = new StreamReader(input))
             {
                 return (T)serializer.Deserialize(streamReader, typeof(T));
+            }
+        }
+
+        /// <summary>
+        /// Deserializes the given stream but reads from it asynchronously, observing the given cancellation token.
+        /// Note that this means the complete JSON is read before it is deserialized into objects.
+        /// </summary>
+        /// <typeparam name="T">The type to convert to.</typeparam>
+        /// <param name="input">The stream to read from.</param>
+        /// <param name="cancellationToken">Cancellation token for the operation.</param>
+        /// <returns>The deserialized object.</returns>
+        public async Task<T> DeserializeAsync<T>(Stream input, CancellationToken cancellationToken)
+        {            
+            using (StreamReader streamReader = new StreamReader(input))
+            {
+                string json = await streamReader.ReadToEndAsync().WithCancellationToken(cancellationToken).ConfigureAwait(false);
+                using (var reader = new JsonTextReader(new StringReader(json)))
+                {
+                    return (T) serializer.Deserialize(reader, typeof(T));
+                }
             }
         }
     }
