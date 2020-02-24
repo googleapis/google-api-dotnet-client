@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/hangouts/chat'>Hangouts Chat API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200209 (1865)
+ *      <tr><th>API Rev<td>20200219 (1875)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/hangouts/chat'>
  *              https://developers.google.com/hangouts/chat</a>
@@ -1197,7 +1197,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>An image that is specified by a URL and can have an onclick action.</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The aspect ratio of this image (width/height).</summary>
+        /// <summary>The aspect ratio of this image (width/height). This field allows clients to reserve the right
+        /// height for the image while waiting for it to load. It's not meant to override the native aspect ratio of the
+        /// image. If unset, server will fill it by prefetching the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aspectRatio")]
         public virtual System.Nullable<double> AspectRatio { get; set; } 
 
@@ -1502,6 +1504,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The user's display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
+
+        /// <summary>Obfuscated domain information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainId")]
+        public virtual string DomainId { get; set; } 
 
         /// <summary>Resource name, in the format "users".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

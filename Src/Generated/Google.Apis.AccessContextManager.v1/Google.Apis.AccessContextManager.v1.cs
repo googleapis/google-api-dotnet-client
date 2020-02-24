@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>Access Context Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200210 (1866)
+ *      <tr><th>API Rev<td>20200215 (1871)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>
  *              https://cloud.google.com/access-context-manager/docs/reference/rest/</a>
@@ -819,6 +819,88 @@ namespace Google.Apis.AccessContextManager.v1
                 }
 
             }
+
+            /// <summary>Replace all existing Access Levels in an Access Policy with the Access Levels provided. This is
+            /// done within one transaction. The longrunning operation from this RPC will have a successful status once
+            /// all replacements have propagated to long-lasting storage. Replacements containing errors will result in
+            /// an error response for the first error encountered and the transaction will be cancelled.
+            /// Operation.response field will contain ReplaceAccessLevelsResponse. Removing Access Levels contained in
+            /// existing Service Perimeters will result in error.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. Resource name for the access policy which owns these Access Levels.
+            ///
+            /// Format: `accessPolicies/{policy_id}`</param>
+            public virtual ReplaceAllRequest ReplaceAll(Google.Apis.AccessContextManager.v1.Data.ReplaceAccessLevelsRequest body, string parent)
+            {
+                return new ReplaceAllRequest(service, body, parent);
+            }
+
+            /// <summary>Replace all existing Access Levels in an Access Policy with the Access Levels provided. This is
+            /// done within one transaction. The longrunning operation from this RPC will have a successful status once
+            /// all replacements have propagated to long-lasting storage. Replacements containing errors will result in
+            /// an error response for the first error encountered and the transaction will be cancelled.
+            /// Operation.response field will contain ReplaceAccessLevelsResponse. Removing Access Levels contained in
+            /// existing Service Perimeters will result in error.</summary>
+            public class ReplaceAllRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new ReplaceAll request.</summary>
+                public ReplaceAllRequest(Google.Apis.Services.IClientService service, Google.Apis.AccessContextManager.v1.Data.ReplaceAccessLevelsRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Resource name for the access policy which owns these Access Levels.
+                ///
+                /// Format: `accessPolicies/{policy_id}`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AccessContextManager.v1.Data.ReplaceAccessLevelsRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "replaceAll"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/accessLevels:replaceAll"; }
+                }
+
+                /// <summary>Initializes ReplaceAll parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accessPolicies/[^/]+$",
+                        });
+                }
+
+            }
         }
         private readonly ServicePerimetersResource servicePerimeters;
 
@@ -843,6 +925,94 @@ namespace Google.Apis.AccessContextManager.v1
 
             }
 
+
+            /// <summary>Commit the dry-run spec for all the Service Perimeters in an Access Policy. A commit operation
+            /// on a Service Perimeter involves copying its `spec` field to that Service Perimeter's `status` field.
+            /// Only Service Perimeters with `use_explicit_dry_run_spec` field set to true are affected by a commit
+            /// operation. The longrunning operation from this RPC will have a successful status once the dry-run specs
+            /// for all the Service Perimeters have been committed. If a commit fails, it will cause the longrunning
+            /// operation to return an error response and the entire commit operation will be cancelled. When
+            /// successful, Operation.response field will contain CommitServicePerimetersResponse. The `dry_run` and the
+            /// `spec` fields will be cleared after a successful commit operation.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. Resource name for the parent Access Policy which owns all Service Perimeters in scope
+            /// for the commit operation.
+            ///
+            /// Format: `accessPolicies/{policy_id}`</param>
+            public virtual CommitRequest Commit(Google.Apis.AccessContextManager.v1.Data.CommitServicePerimetersRequest body, string parent)
+            {
+                return new CommitRequest(service, body, parent);
+            }
+
+            /// <summary>Commit the dry-run spec for all the Service Perimeters in an Access Policy. A commit operation
+            /// on a Service Perimeter involves copying its `spec` field to that Service Perimeter's `status` field.
+            /// Only Service Perimeters with `use_explicit_dry_run_spec` field set to true are affected by a commit
+            /// operation. The longrunning operation from this RPC will have a successful status once the dry-run specs
+            /// for all the Service Perimeters have been committed. If a commit fails, it will cause the longrunning
+            /// operation to return an error response and the entire commit operation will be cancelled. When
+            /// successful, Operation.response field will contain CommitServicePerimetersResponse. The `dry_run` and the
+            /// `spec` fields will be cleared after a successful commit operation.</summary>
+            public class CommitRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Commit request.</summary>
+                public CommitRequest(Google.Apis.Services.IClientService service, Google.Apis.AccessContextManager.v1.Data.CommitServicePerimetersRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Resource name for the parent Access Policy which owns all Service Perimeters in
+                /// scope for the commit operation.
+                ///
+                /// Format: `accessPolicies/{policy_id}`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AccessContextManager.v1.Data.CommitServicePerimetersRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "commit"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/servicePerimeters:commit"; }
+                }
+
+                /// <summary>Initializes Commit parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accessPolicies/[^/]+$",
+                        });
+                }
+
+            }
 
             /// <summary>Create an Service Perimeter. The longrunning operation from this RPC will have a successful
             /// status once the Service Perimeter has propagated to long-lasting storage. Service Perimeters containing
@@ -1225,6 +1395,86 @@ namespace Google.Apis.AccessContextManager.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Replace all existing Service Perimeters in an Access Policy with the Service Perimeters
+            /// provided. This is done within one transaction. The longrunning operation from this RPC will have a
+            /// successful status once all replacements have propagated to long-lasting storage. Replacements containing
+            /// errors will result in an error response for the first error encountered and the transaction will be
+            /// cancelled. Operation.response field will contain ReplaceServicePerimetersResponse.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. Resource name for the access policy which owns these Service Perimeters.
+            ///
+            /// Format: `accessPolicies/{policy_id}`</param>
+            public virtual ReplaceAllRequest ReplaceAll(Google.Apis.AccessContextManager.v1.Data.ReplaceServicePerimetersRequest body, string parent)
+            {
+                return new ReplaceAllRequest(service, body, parent);
+            }
+
+            /// <summary>Replace all existing Service Perimeters in an Access Policy with the Service Perimeters
+            /// provided. This is done within one transaction. The longrunning operation from this RPC will have a
+            /// successful status once all replacements have propagated to long-lasting storage. Replacements containing
+            /// errors will result in an error response for the first error encountered and the transaction will be
+            /// cancelled. Operation.response field will contain ReplaceServicePerimetersResponse.</summary>
+            public class ReplaceAllRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new ReplaceAll request.</summary>
+                public ReplaceAllRequest(Google.Apis.Services.IClientService service, Google.Apis.AccessContextManager.v1.Data.ReplaceServicePerimetersRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Resource name for the access policy which owns these Service Perimeters.
+                ///
+                /// Format: `accessPolicies/{policy_id}`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AccessContextManager.v1.Data.ReplaceServicePerimetersRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "replaceAll"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/servicePerimeters:replaceAll"; }
+                }
+
+                /// <summary>Initializes ReplaceAll parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accessPolicies/[^/]+$",
                         });
                 }
 
@@ -1681,7 +1931,7 @@ namespace Google.Apis.AccessContextManager.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^operations/.+$",
+                        Pattern = @"^operations/.*$",
                     });
             }
 
@@ -1745,7 +1995,7 @@ namespace Google.Apis.AccessContextManager.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^operations/.+$",
+                        Pattern = @"^operations/.*$",
                     });
             }
 
@@ -1807,7 +2057,7 @@ namespace Google.Apis.AccessContextManager.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^operations/.+$",
+                        Pattern = @"^operations/.*$",
                     });
             }
 
@@ -1931,8 +2181,8 @@ namespace Google.Apis.AccessContextManager.v1
 namespace Google.Apis.AccessContextManager.v1.Data
 {    
 
-    /// <summary>An `AccessLevel` is a label that can be applied to requests to GCP services, along with a list of
-    /// requirements necessary for the label to be applied.</summary>
+    /// <summary>An `AccessLevel` is a label that can be applied to requests to Google Cloud services, along with a list
+    /// of requirements necessary for the label to be applied.</summary>
     public class AccessLevel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A `BasicLevel` composed of `Conditions`.</summary>
@@ -1969,8 +2219,8 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`AccessPolicy` is a container for `AccessLevels` (which define the necessary attributes to use GCP
-    /// services) and `ServicePerimeters` (which define regions of services able to freely pass data within a
+    /// <summary>`AccessPolicy` is a container for `AccessLevels` (which define the necessary attributes to use Google
+    /// Cloud services) and `ServicePerimeters` (which define regions of services able to freely pass data within a
     /// perimeter). An access policy is globally visible within an organization, and the restrictions it specifies apply
     /// to all projects within an organization.</summary>
     public class AccessPolicy : Google.Apis.Requests.IDirectResponseSchema
@@ -2021,6 +2271,31 @@ namespace Google.Apis.AccessContextManager.v1.Data
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to commit dry-run specs in all Service Perimeters belonging to an Access Policy.</summary>
+    public class CommitServicePerimetersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The etag for the version of the Access Policy that this commit operation is to be
+        /// performed on. If, at the time of commit, the etag for the Access Policy stored in Access Context Manager is
+        /// different from the specified etag, then the commit operation will not be performed and the call will fail.
+        /// This field is not required. If etag is not provided, the operation will be performed as if a valid etag is
+        /// provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+    }    
+
+    /// <summary>A response to CommitServicePerimetersRequest. This will be put inside of Operation.response
+    /// field.</summary>
+    public class CommitServicePerimetersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of all the Service Perimeter instances in the Access Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servicePerimeters")]
+        public virtual System.Collections.Generic.IList<ServicePerimeter> ServicePerimeters { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2303,13 +2578,75 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`ServicePerimeter` describes a set of GCP resources which can freely import and export data amongst
-    /// themselves, but not export outside of the `ServicePerimeter`. If a request with a source within this
+    /// <summary>A request to replace all existing Access Levels in an Access Policy with the Access Levels provided.
+    /// This is done within one transaction.</summary>
+    public class ReplaceAccessLevelsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The desired Access Levels that should replace all existing Access Levels in the Access
+        /// Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
+        public virtual System.Collections.Generic.IList<AccessLevel> AccessLevels { get; set; } 
+
+        /// <summary>Optional. The etag for the version of the Access Policy that this replace operation is to be
+        /// performed on. If, at the time of replace, the etag for the Access Policy stored in Access Context Manager is
+        /// different from the specified etag, then the replace operation will not be performed and the call will fail.
+        /// This field is not required. If etag is not provided, the operation will be performed as if a valid etag is
+        /// provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+    }    
+
+    /// <summary>A response to ReplaceAccessLevelsRequest. This will be put inside of Operation.response
+    /// field.</summary>
+    public class ReplaceAccessLevelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of the Access Level instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
+        public virtual System.Collections.Generic.IList<AccessLevel> AccessLevels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to replace all existing Service Perimeters in an Access Policy with the Service Perimeters
+    /// provided. This is done within one transaction.</summary>
+    public class ReplaceServicePerimetersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The etag for the version of the Access Policy that this replace operation is to be
+        /// performed on. If, at the time of replace, the etag for the Access Policy stored in Access Context Manager is
+        /// different from the specified etag, then the replace operation will not be performed and the call will fail.
+        /// This field is not required. If etag is not provided, the operation will be performed as if a valid etag is
+        /// provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>Required. The desired Service Perimeters that should replace all existing Service Perimeters in the
+        /// Access Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servicePerimeters")]
+        public virtual System.Collections.Generic.IList<ServicePerimeter> ServicePerimeters { get; set; } 
+
+    }    
+
+    /// <summary>A response to ReplaceServicePerimetersRequest. This will be put inside of Operation.response
+    /// field.</summary>
+    public class ReplaceServicePerimetersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of the Service Perimeter instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servicePerimeters")]
+        public virtual System.Collections.Generic.IList<ServicePerimeter> ServicePerimeters { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>`ServicePerimeter` describes a set of Google Cloud resources which can freely import and export data
+    /// amongst themselves, but not export outside of the `ServicePerimeter`. If a request with a source within this
     /// `ServicePerimeter` has a target outside of the `ServicePerimeter`, the request will be blocked. Otherwise the
     /// request is allowed. There are two types of Service Perimeter - Regular and Bridge. Regular Service Perimeters
-    /// cannot overlap, a single GCP project can only belong to a single regular Service Perimeter. Service Perimeter
-    /// Bridges can contain only GCP projects as members, a single GCP project may belong to multiple Service Perimeter
-    /// Bridges.</summary>
+    /// cannot overlap, a single Google Cloud project can only belong to a single regular Service Perimeter. Service
+    /// Perimeter Bridges can contain only Google Cloud projects as members, a single Google Cloud project may belong to
+    /// multiple Service Perimeter Bridges.</summary>
     public class ServicePerimeter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Time the `ServicePerimeter` was created in UTC.</summary>
@@ -2333,6 +2670,12 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("perimeterType")]
         public virtual string PerimeterType { get; set; } 
 
+        /// <summary>Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test
+        /// ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the
+        /// "use_explicit_dry_run_spec" flag is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual ServicePerimeterConfig Spec { get; set; } 
+
         /// <summary>Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access
         /// levels that determine perimeter content and boundaries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -2346,32 +2689,47 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
+        /// <summary>Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists  for all Service
+        /// Perimeters, and that spec is identical to the status for those Service Perimeters. When this flag is set, it
+        /// inhibits the generation of the implicit spec, thereby allowing the user to explicitly provide a
+        /// configuration ("spec") to use in a dry-run version of the Service Perimeter. This allows the user to test
+        /// changes to the enforced config ("status") without actually enforcing them. This testing is done through
+        /// analyzing the differences between currently enforced and suggested restrictions. use_explicit_dry_run_spec
+        /// must bet set to True if any of the fields in the spec are set to non-default values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useExplicitDryRunSpec")]
+        public virtual System.Nullable<bool> UseExplicitDryRunSpec { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`ServicePerimeterConfig` specifies a set of GCP resources that describe specific Service Perimeter
-    /// configuration.</summary>
+    /// <summary>`ServicePerimeterConfig` specifies a set of Google Cloud resources that describe specific Service
+    /// Perimeter configuration.</summary>
     public class ServicePerimeterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of `AccessLevel` resource names that allow resources within the `ServicePerimeter` to be
         /// accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`.
         /// Referencing a nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are listed, resources
-        /// within the perimeter can only be accessed via GCP calls with request origins within the perimeter. Example:
-        /// `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be empty.</summary>
+        /// within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter.
+        /// Example: `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be
+        /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
         public virtual System.Collections.Generic.IList<string> AccessLevels { get; set; } 
 
-        /// <summary>A list of GCP resources that are inside of the service perimeter. Currently only projects are
-        /// allowed. Format: `projects/{project_number}`</summary>
+        /// <summary>A list of Google Cloud resources that are inside of the service perimeter. Currently only projects
+        /// are allowed. Format: `projects/{project_number}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; } 
 
-        /// <summary>GCP services that are subject to the Service Perimeter restrictions. For example, if
+        /// <summary>Google Cloud services that are subject to the Service Perimeter restrictions. For example, if
         /// `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the
         /// perimeter's access restrictions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedServices")]
         public virtual System.Collections.Generic.IList<string> RestrictedServices { get; set; } 
+
+        /// <summary>Configuration for within Perimeter allowed APIs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcAccessibleServices")]
+        public virtual VpcAccessibleServices VpcAccessibleServices { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2398,6 +2756,23 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies how APIs are allowed to communicate within the Service Perimeter.</summary>
+    public class VpcAccessibleServices : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is
+        /// True.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedServices")]
+        public virtual System.Collections.Generic.IList<string> AllowedServices { get; set; } 
+
+        /// <summary>Whether to restrict API calls within the Service Perimeter to the list of APIs specified in
+        /// 'allowed_services'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableRestriction")]
+        public virtual System.Nullable<bool> EnableRestriction { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

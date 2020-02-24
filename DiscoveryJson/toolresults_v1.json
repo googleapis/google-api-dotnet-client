@@ -95,7 +95,7 @@
  }, 
  "protocol": "rest", 
  "resources": {}, 
- "revision": "20200219", 
+ "revision": "20200220", 
  "rootUrl": "https://toolresults.googleapis.com/", 
  "schemas": {
   "ANR": {

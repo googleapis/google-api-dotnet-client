@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>Access Context Manager API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20200210 (1866)
+ *      <tr><th>API Rev<td>20200215 (1871)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>
  *              https://cloud.google.com/access-context-manager/docs/reference/rest/</a>
@@ -1665,7 +1665,7 @@ namespace Google.Apis.AccessContextManager.v1beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^operations/.+$",
+                        Pattern = @"^operations/.*$",
                     });
             }
 
@@ -1676,8 +1676,8 @@ namespace Google.Apis.AccessContextManager.v1beta
 namespace Google.Apis.AccessContextManager.v1beta.Data
 {    
 
-    /// <summary>An `AccessLevel` is a label that can be applied to requests to GCP services, along with a list of
-    /// requirements necessary for the label to be applied.</summary>
+    /// <summary>An `AccessLevel` is a label that can be applied to requests to Google Cloud services, along with a list
+    /// of requirements necessary for the label to be applied.</summary>
     public class AccessLevel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A `BasicLevel` composed of `Conditions`.</summary>
@@ -1714,8 +1714,8 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`AccessPolicy` is a container for `AccessLevels` (which define the necessary attributes to use GCP
-    /// services) and `ServicePerimeters` (which define regions of services able to freely pass data within a
+    /// <summary>`AccessPolicy` is a container for `AccessLevels` (which define the necessary attributes to use Google
+    /// Cloud services) and `ServicePerimeters` (which define regions of services able to freely pass data within a
     /// perimeter). An access policy is globally visible within an organization, and the restrictions it specifies apply
     /// to all projects within an organization.</summary>
     public class AccessPolicy : Google.Apis.Requests.IDirectResponseSchema
@@ -2014,13 +2014,13 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`ServicePerimeter` describes a set of GCP resources which can freely import and export data amongst
-    /// themselves, but not export outside of the `ServicePerimeter`. If a request with a source within this
+    /// <summary>`ServicePerimeter` describes a set of Google Cloud resources which can freely import and export data
+    /// amongst themselves, but not export outside of the `ServicePerimeter`. If a request with a source within this
     /// `ServicePerimeter` has a target outside of the `ServicePerimeter`, the request will be blocked. Otherwise the
     /// request is allowed. There are two types of Service Perimeter - Regular and Bridge. Regular Service Perimeters
-    /// cannot overlap, a single GCP project can only belong to a single regular Service Perimeter. Service Perimeter
-    /// Bridges can contain only GCP projects as members, a single GCP project may belong to multiple Service Perimeter
-    /// Bridges.</summary>
+    /// cannot overlap, a single Google Cloud project can only belong to a single regular Service Perimeter. Service
+    /// Perimeter Bridges can contain only Google Cloud projects as members, a single Google Cloud project may belong to
+    /// multiple Service Perimeter Bridges.</summary>
     public class ServicePerimeter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Time the `ServicePerimeter` was created in UTC.</summary>
@@ -2061,31 +2061,32 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`ServicePerimeterConfig` specifies a set of GCP resources that describe specific Service Perimeter
-    /// configuration.</summary>
+    /// <summary>`ServicePerimeterConfig` specifies a set of Google Cloud resources that describe specific Service
+    /// Perimeter configuration.</summary>
     public class ServicePerimeterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of `AccessLevel` resource names that allow resources within the `ServicePerimeter` to be
         /// accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`.
         /// Referencing a nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are listed, resources
-        /// within the perimeter can only be accessed via GCP calls with request origins within the perimeter. Example:
-        /// `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be empty.</summary>
+        /// within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter.
+        /// Example: `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be
+        /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
         public virtual System.Collections.Generic.IList<string> AccessLevels { get; set; } 
 
-        /// <summary>A list of GCP resources that are inside of the service perimeter. Currently only projects are
-        /// allowed. Format: `projects/{project_number}`</summary>
+        /// <summary>A list of Google Cloud resources that are inside of the service perimeter. Currently only projects
+        /// are allowed. Format: `projects/{project_number}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; } 
 
-        /// <summary>GCP services that are subject to the Service Perimeter restrictions. Must contain a list of
-        /// services. For example, if `storage.googleapis.com` is specified, access to the storage buckets inside the
+        /// <summary>Google Cloud services that are subject to the Service Perimeter restrictions. Must contain a list
+        /// of services. For example, if `storage.googleapis.com` is specified, access to the storage buckets inside the
         /// perimeter must meet the perimeter's access restrictions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedServices")]
         public virtual System.Collections.Generic.IList<string> RestrictedServices { get; set; } 
 
-        /// <summary>GCP services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to
-        /// a single wildcard "*".
+        /// <summary>Google Cloud services that are not subject to the Service Perimeter restrictions. Deprecated. Must
+        /// be set to a single wildcard "*".
         ///
         /// The wildcard means that unless explicitly specified by "restricted_services" list, any service is treated as
         /// unrestricted.</summary>

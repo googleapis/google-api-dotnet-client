@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200201 (1857)
+ *      <tr><th>API Rev<td>20200214 (1870)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -7497,7 +7497,7 @@ namespace Google.Apis.Container.v1.Data
     public class HorizontalPodAutoscaling : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the Horizontal Pod Autoscaling feature is enabled in the cluster. When enabled, it ensures
-        /// that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service.</summary>
+        /// that metrics are collected into Stackdriver Monitoring.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fit/rest/'>Fitness</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200204 (1860)
+ *      <tr><th>API Rev<td>20200213 (1869)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fit/rest/'>
  *              https://developers.google.com/fit/rest/</a>
@@ -985,9 +985,9 @@ namespace Google.Apis.Fitness.v1
             /// This format is a combination of some fields from the data source, and has a specific order. If it
             /// doesn't match, the request will fail with an error.
             ///
-            /// In addition to the data source fields reflected into the data source ID, the developer project number
-            /// that is authenticated when creating the data source is included. This developer project number is
-            /// obfuscated when read by any other developer reading public data types.</summary>
+            /// In addition to the data source fields included in the data source ID, the developer project number that
+            /// is authenticated when creating the data source is included. This developer project number is obfuscated
+            /// when read by any other developer reading public data types.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">Create the data source for the person identified. Use me to indicate the authenticated user.
             /// Only me is supported at this time.</param>
@@ -1015,9 +1015,9 @@ namespace Google.Apis.Fitness.v1
             /// This format is a combination of some fields from the data source, and has a specific order. If it
             /// doesn't match, the request will fail with an error.
             ///
-            /// In addition to the data source fields reflected into the data source ID, the developer project number
-            /// that is authenticated when creating the data source is included. This developer project number is
-            /// obfuscated when read by any other developer reading public data types.</summary>
+            /// In addition to the data source fields included in the data source ID, the developer project number that
+            /// is authenticated when creating the data source is included. This developer project number is obfuscated
+            /// when read by any other developer reading public data types.</summary>
             public class CreateRequest : FitnessBaseServiceRequest<Google.Apis.Fitness.v1.Data.DataSource>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -1892,15 +1892,18 @@ namespace Google.Apis.Fitness.v1.Data
     /// <summary>The specification of which data to aggregate.</summary>
     public class AggregateBy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A data source ID to aggregate. Mutually exclusive of dataTypeName. Only data from the specified
-        /// data source ID will be included in the aggregation. The dataset in the response will have the same data
-        /// source ID.</summary>
+        /// <summary>A data source ID to aggregate. Only data from the specified data source ID will be included in the
+        /// aggregation. If specified, this data source must exist; the OAuth scopes in the supplied credentials must
+        /// grant read access to this data type. The dataset in the response will have the same data source ID. Note:
+        /// Data can be aggregated by either the dataTypeName or the dataSourceId, not both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
         public virtual string DataSourceId { get; set; } 
 
         /// <summary>The data type to aggregate. All data sources providing this data type will contribute data to the
         /// aggregation. The response will contain a single dataset for this data type name. The dataset will have a
-        /// data source ID of derived:com.google.:com.google.android.gms:aggregated</summary>
+        /// data source ID of derived::com.google.android.gms:aggregated. If the user has no data for this data type, an
+        /// empty data set will be returned. Note: Data can be aggregated by either the dataTypeName or the
+        /// dataSourceId, not both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataTypeName")]
         public virtual string DataTypeName { get; set; } 
 

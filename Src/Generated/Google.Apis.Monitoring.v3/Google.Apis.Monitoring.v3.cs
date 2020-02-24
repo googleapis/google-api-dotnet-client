@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200210 (1866)
+ *      <tr><th>API Rev<td>20200219 (1875)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -643,13 +643,15 @@ namespace Google.Apis.Monitoring.v3
                 public virtual string Name { get; private set; }
 
                 /// <summary>If provided, this field specifies the criteria that must be met by alert policies to be
-                /// included in the response.For more details, see sorting and filtering.</summary>
+                /// included in the response.For more details, see sorting and filtering
+                /// (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
                 /// <summary>A comma-separated list of fields by which to sort the result. Supports the same set of
                 /// field references as the filter field. Entries can be prefixed with a minus sign to sort by the field
-                /// in descending order.For more details, see sorting and filtering.</summary>
+                /// in descending order.For more details, see sorting and filtering
+                /// (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
@@ -1007,10 +1009,11 @@ namespace Google.Apis.Monitoring.v3
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>An optional list filter describing the members to be returned. The filter may reference
-                    /// the type, labels, and metadata of monitored resources that comprise the group. For example, to
-                    /// return only resources representing Compute Engine VM instances, use this filter: `resource.type
-                    /// = "gce_instance"` </summary>
+                    /// <summary>An optional list filter (https://cloud.google.com/monitoring/api/learn_more#filtering)
+                    /// describing the members to be returned. The filter may reference the type, labels, and metadata
+                    /// of monitored resources that comprise the group. For example, to return only resources
+                    /// representing Compute Engine VM instances, use this filter: `resource.type = "gce_instance"`
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -1585,8 +1588,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
 
-            /// <summary>Creates a new metric descriptor. User-created metric descriptors define custom
-            /// metrics.</summary>
+            /// <summary>Creates a new metric descriptor. User-created metric descriptors define custom metrics
+            /// (https://cloud.google.com/monitoring/custom-metrics).</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Required. The project on which to execute the request. The format is:
             /// projects/[PROJECT_ID_OR_NUMBER] </param>
@@ -1595,8 +1598,8 @@ namespace Google.Apis.Monitoring.v3
                 return new CreateRequest(service, body, name);
             }
 
-            /// <summary>Creates a new metric descriptor. User-created metric descriptors define custom
-            /// metrics.</summary>
+            /// <summary>Creates a new metric descriptor. User-created metric descriptors define custom metrics
+            /// (https://cloud.google.com/monitoring/custom-metrics).</summary>
             public class CreateRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.MetricDescriptor>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -1657,7 +1660,8 @@ namespace Google.Apis.Monitoring.v3
 
             }
 
-            /// <summary>Deletes a metric descriptor. Only user-created custom metrics can be deleted.</summary>
+            /// <summary>Deletes a metric descriptor. Only user-created custom metrics
+            /// (https://cloud.google.com/monitoring/custom-metrics) can be deleted.</summary>
             /// <param name="name">Required. The metric descriptor on which to execute the request. The format is:
             /// projects/[PROJECT_ID_OR_NUMBER]/metricDescriptors/[METRIC_ID] An example of [METRIC_ID] is:
             /// "custom.googleapis.com/my_test_metric".</param>
@@ -1666,7 +1670,8 @@ namespace Google.Apis.Monitoring.v3
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes a metric descriptor. Only user-created custom metrics can be deleted.</summary>
+            /// <summary>Deletes a metric descriptor. Only user-created custom metrics
+            /// (https://cloud.google.com/monitoring/custom-metrics) can be deleted.</summary>
             public class DeleteRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -1715,7 +1720,7 @@ namespace Google.Apis.Monitoring.v3
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/metricDescriptors/.+$",
+                            Pattern = @"^projects/[^/]+/metricDescriptors/.*$",
                         });
                 }
 
@@ -1779,7 +1784,7 @@ namespace Google.Apis.Monitoring.v3
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/metricDescriptors/.+$",
+                            Pattern = @"^projects/[^/]+/metricDescriptors/.*$",
                         });
                 }
 
@@ -1813,9 +1818,10 @@ namespace Google.Apis.Monitoring.v3
                 public virtual string Name { get; private set; }
 
                 /// <summary>If this field is empty, all custom and system-defined metric descriptors are returned.
-                /// Otherwise, the filter specifies which metric descriptors are to be returned. For example, the
-                /// following filter matches all custom metrics: metric.type = starts_with("custom.googleapis.com/")
-                /// </summary>
+                /// Otherwise, the filter (https://cloud.google.com/monitoring/api/v3/filters) specifies which metric
+                /// descriptors are to be returned. For example, the following filter matches all custom metrics
+                /// (https://cloud.google.com/monitoring/custom-metrics): metric.type =
+                /// starts_with("custom.googleapis.com/") </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -1977,7 +1983,7 @@ namespace Google.Apis.Monitoring.v3
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/monitoredResourceDescriptors/.+$",
+                            Pattern = @"^projects/[^/]+/monitoredResourceDescriptors/.*$",
                         });
                 }
 
@@ -2010,10 +2016,10 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>An optional filter describing the descriptors to be returned. The filter can reference the
-                /// descriptor's type and labels. For example, the following filter returns only Google Compute Engine
-                /// descriptors that have an id label: resource.type = starts_with("gce_") AND resource.label:id
-                /// </summary>
+                /// <summary>An optional filter (https://cloud.google.com/monitoring/api/v3/filters) describing the
+                /// descriptors to be returned. The filter can reference the descriptor's type and labels. For example,
+                /// the following filter returns only Google Compute Engine descriptors that have an id label:
+                /// resource.type = starts_with("gce_") AND resource.label:id </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -2649,13 +2655,15 @@ namespace Google.Apis.Monitoring.v3
                 public virtual string Name { get; private set; }
 
                 /// <summary>If provided, this field specifies the criteria that must be met by notification channels to
-                /// be included in the response.For more details, see sorting and filtering.</summary>
+                /// be included in the response.For more details, see sorting and filtering
+                /// (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
                 /// <summary>A comma-separated list of fields by which to sort the result. Supports the same set of
                 /// fields as in filter. Entries can be prefixed with a minus sign to sort in descending rather than
-                /// ascending order.For more details, see sorting and filtering.</summary>
+                /// ascending order.For more details, see sorting and filtering
+                /// (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
@@ -3230,10 +3238,11 @@ namespace Google.Apis.Monitoring.v3
                     ALIGNPERCENTCHANGE,
                 }
 
-                /// <summary>Required. A monitoring filter that specifies which time series should be returned. The
-                /// filter must specify a single metric type, and can additionally specify metric labels and other
-                /// information. For example: metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
-                /// metric.labels.instance_name = "my-instance-name" </summary>
+                /// <summary>Required. A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that
+                /// specifies which time series should be returned. The filter must specify a single metric type, and
+                /// can additionally specify metric labels and other information. For example: metric.type =
+                /// "compute.googleapis.com/instance/cpu/usage_time" AND metric.labels.instance_name = "my-instance-
+                /// name" </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -6092,11 +6101,11 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual object Duration { get; set; } 
 
-        /// <summary>A filter that identifies which time series should be compared with the threshold.The filter is
-        /// similar to the one that is specified in the ListTimeSeries request (that call is useful to verify the time
-        /// series that will be retrieved / processed) and must specify the metric type and optionally may contain
-        /// restrictions on resource type, resource labels, and metric labels. This field may not exceed 2048 Unicode
-        /// characters in length.</summary>
+        /// <summary>A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series
+        /// should be compared with the threshold.The filter is similar to the one that is specified in the
+        /// ListTimeSeries request (that call is useful to verify the time series that will be retrieved / processed)
+        /// and must specify the metric type and optionally may contain restrictions on resource type, resource labels,
+        /// and metric labels. This field may not exceed 2048 Unicode characters in length.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
@@ -6273,11 +6282,11 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("denominatorAggregations")]
         public virtual System.Collections.Generic.IList<Aggregation> DenominatorAggregations { get; set; } 
 
-        /// <summary>A filter that identifies a time series that should be used as the denominator of a ratio that will
-        /// be compared with the threshold. If a denominator_filter is specified, the time series specified by the
-        /// filter field will be used as the numerator.The filter must specify the metric type and optionally may
-        /// contain restrictions on resource type, resource labels, and metric labels. This field may not exceed 2048
-        /// Unicode characters in length.</summary>
+        /// <summary>A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies a time series that
+        /// should be used as the denominator of a ratio that will be compared with the threshold. If a
+        /// denominator_filter is specified, the time series specified by the filter field will be used as the
+        /// numerator.The filter must specify the metric type and optionally may contain restrictions on resource type,
+        /// resource labels, and metric labels. This field may not exceed 2048 Unicode characters in length.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("denominatorFilter")]
         public virtual string DenominatorFilter { get; set; } 
 
@@ -6290,11 +6299,11 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual object Duration { get; set; } 
 
-        /// <summary>A filter that identifies which time series should be compared with the threshold.The filter is
-        /// similar to the one that is specified in the ListTimeSeries request (that call is useful to verify the time
-        /// series that will be retrieved / processed) and must specify the metric type and optionally may contain
-        /// restrictions on resource type, resource labels, and metric labels. This field may not exceed 2048 Unicode
-        /// characters in length.</summary>
+        /// <summary>A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series
+        /// should be compared with the threshold.The filter is similar to the one that is specified in the
+        /// ListTimeSeries request (that call is useful to verify the time series that will be retrieved / processed)
+        /// and must specify the metric type and optionally may contain restrictions on resource type, resource labels,
+        /// and metric labels. This field may not exceed 2048 Unicode characters in length.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200209 (1865)
+ *      <tr><th>API Rev<td>20200219 (1875)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>
  *              https://cloud.google.com/asset-inventory/docs/quickstart</a>
@@ -1597,8 +1597,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An `AccessLevel` is a label that can be applied to requests to GCP services, along with a list of
-    /// requirements necessary for the label to be applied.</summary>
+    /// <summary>An `AccessLevel` is a label that can be applied to requests to Google Cloud services, along with a list
+    /// of requirements necessary for the label to be applied.</summary>
     public class GoogleIdentityAccesscontextmanagerV1AccessLevel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A `BasicLevel` composed of `Conditions`.</summary>
@@ -1635,8 +1635,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`AccessPolicy` is a container for `AccessLevels` (which define the necessary attributes to use GCP
-    /// services) and `ServicePerimeters` (which define regions of services able to freely pass data within a
+    /// <summary>`AccessPolicy` is a container for `AccessLevels` (which define the necessary attributes to use Google
+    /// Cloud services) and `ServicePerimeters` (which define regions of services able to freely pass data within a
     /// perimeter). An access policy is globally visible within an organization, and the restrictions it specifies apply
     /// to all projects within an organization.</summary>
     public class GoogleIdentityAccesscontextmanagerV1AccessPolicy : Google.Apis.Requests.IDirectResponseSchema
@@ -1801,13 +1801,13 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`ServicePerimeter` describes a set of GCP resources which can freely import and export data amongst
-    /// themselves, but not export outside of the `ServicePerimeter`. If a request with a source within this
+    /// <summary>`ServicePerimeter` describes a set of Google Cloud resources which can freely import and export data
+    /// amongst themselves, but not export outside of the `ServicePerimeter`. If a request with a source within this
     /// `ServicePerimeter` has a target outside of the `ServicePerimeter`, the request will be blocked. Otherwise the
     /// request is allowed. There are two types of Service Perimeter - Regular and Bridge. Regular Service Perimeters
-    /// cannot overlap, a single GCP project can only belong to a single regular Service Perimeter. Service Perimeter
-    /// Bridges can contain only GCP projects as members, a single GCP project may belong to multiple Service Perimeter
-    /// Bridges.</summary>
+    /// cannot overlap, a single Google Cloud project can only belong to a single regular Service Perimeter. Service
+    /// Perimeter Bridges can contain only Google Cloud projects as members, a single Google Cloud project may belong to
+    /// multiple Service Perimeter Bridges.</summary>
     public class GoogleIdentityAccesscontextmanagerV1ServicePerimeter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Time the `ServicePerimeter` was created in UTC.</summary>
@@ -1831,6 +1831,12 @@ namespace Google.Apis.CloudAsset.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("perimeterType")]
         public virtual string PerimeterType { get; set; } 
 
+        /// <summary>Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test
+        /// ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the
+        /// "use_explicit_dry_run_spec" flag is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig Spec { get; set; } 
+
         /// <summary>Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access
         /// levels that determine perimeter content and boundaries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -1844,32 +1850,64 @@ namespace Google.Apis.CloudAsset.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
+        /// <summary>Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists  for all Service
+        /// Perimeters, and that spec is identical to the status for those Service Perimeters. When this flag is set, it
+        /// inhibits the generation of the implicit spec, thereby allowing the user to explicitly provide a
+        /// configuration ("spec") to use in a dry-run version of the Service Perimeter. This allows the user to test
+        /// changes to the enforced config ("status") without actually enforcing them. This testing is done through
+        /// analyzing the differences between currently enforced and suggested restrictions. use_explicit_dry_run_spec
+        /// must bet set to True if any of the fields in the spec are set to non-default values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useExplicitDryRunSpec")]
+        public virtual System.Nullable<bool> UseExplicitDryRunSpec { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`ServicePerimeterConfig` specifies a set of GCP resources that describe specific Service Perimeter
-    /// configuration.</summary>
+    /// <summary>`ServicePerimeterConfig` specifies a set of Google Cloud resources that describe specific Service
+    /// Perimeter configuration.</summary>
     public class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of `AccessLevel` resource names that allow resources within the `ServicePerimeter` to be
         /// accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`.
         /// Referencing a nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are listed, resources
-        /// within the perimeter can only be accessed via GCP calls with request origins within the perimeter. Example:
-        /// `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be empty.</summary>
+        /// within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter.
+        /// Example: `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be
+        /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
         public virtual System.Collections.Generic.IList<string> AccessLevels { get; set; } 
 
-        /// <summary>A list of GCP resources that are inside of the service perimeter. Currently only projects are
-        /// allowed. Format: `projects/{project_number}`</summary>
+        /// <summary>A list of Google Cloud resources that are inside of the service perimeter. Currently only projects
+        /// are allowed. Format: `projects/{project_number}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; } 
 
-        /// <summary>GCP services that are subject to the Service Perimeter restrictions. For example, if
+        /// <summary>Google Cloud services that are subject to the Service Perimeter restrictions. For example, if
         /// `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the
         /// perimeter's access restrictions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedServices")]
         public virtual System.Collections.Generic.IList<string> RestrictedServices { get; set; } 
+
+        /// <summary>Configuration for within Perimeter allowed APIs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcAccessibleServices")]
+        public virtual GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices VpcAccessibleServices { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies how APIs are allowed to communicate within the Service Perimeter.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is
+        /// True.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedServices")]
+        public virtual System.Collections.Generic.IList<string> AllowedServices { get; set; } 
+
+        /// <summary>Whether to restrict API calls within the Service Perimeter to the list of APIs specified in
+        /// 'allowed_services'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableRestriction")]
+        public virtual System.Nullable<bool> EnableRestriction { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

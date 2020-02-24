@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200114 (1839)
+ *      <tr><th>API Rev<td>20200120 (1845)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -60829,6 +60829,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("localityLbPolicy")]
         public virtual string LocalityLbPolicy { get; set; } 
 
+        /// <summary>This field denotes the logging options for the load balancer traffic served by this backend
+        /// service. If logging is enabled, logs will be exported to Stackdriver.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logConfig")]
+        public virtual BackendServiceLogConfig LogConfig { get; set; } 
+
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
         /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
@@ -60836,6 +60841,11 @@ namespace Google.Apis.Compute.v1.Data
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The URL of the network to which this backend service belongs. This field can only be spcified when
+        /// the load balancing scheme is set to INTERNAL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
 
         /// <summary>Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend
         /// service. If not set, this feature is considered disabled.
@@ -61109,6 +61119,25 @@ namespace Google.Apis.Compute.v1.Data
 
             }
         }
+    }    
+
+    /// <summary>The available logging options for the load balancer traffic served by this backend service.</summary>
+    public class BackendServiceLogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This field denotes whether to enable logging for the load balancer traffic served by this backend
+        /// service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enable")]
+        public virtual System.Nullable<bool> Enable { get; set; } 
+
+        /// <summary>This field can only be specified if logging is enabled for this backend service. The value of the
+        /// field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means
+        /// all logged requests are reported and 0.0 means no logged requests are reported. The default value is
+        /// 1.0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleRate")]
+        public virtual System.Nullable<float> SampleRate { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     public class BackendServiceReference : Google.Apis.Requests.IDirectResponseSchema
@@ -62689,30 +62718,48 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>Represents an expression text. Example:
+    /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
+    /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
     ///
-    /// title: "User account presence" description: "Determines whether the request has a user account" expression:
-    /// "size(request.user) > 0"</summary>
+    /// Example (Comparison):
+    ///
+    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
+    /// "document.summary.size() < 100"
+    ///
+    /// Example (Equality):
+    ///
+    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
+    /// "document.owner == request.auth.claims.email"
+    ///
+    /// Example (Logic):
+    ///
+    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
+    /// "document.type != 'private' && document.type != 'internal'"
+    ///
+    /// Example (Data Manipulation):
+    ///
+    /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
+    /// message received at ' + string(document.create_time)"
+    ///
+    /// The exact variables and functions that may be referenced within an expression are determined by the service that
+    /// evaluates it. See the service documentation for additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An optional description of the expression. This is a longer text which describes the expression,
-        /// e.g. when hovered over it in a UI.</summary>
+        /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
+        /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Textual representation of an expression in Common Expression Language syntax.
-        ///
-        /// The application context of the containing message determines which well-known feature set of CEL is
-        /// supported.</summary>
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
         public virtual string Expression { get; set; } 
 
-        /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
+        /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
-        /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
+        /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
@@ -64161,11 +64208,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual string Instance { get; set; } 
 
-        /// <summary>The IP address represented by this resource.</summary>
+        /// <summary>A forwarding rule IP address assigned to this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; } 
 
-        /// <summary>The port on the instance.</summary>
+        /// <summary>The named port of the instance group, not necessarily the port that is health-checked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; } 
 
@@ -65766,8 +65813,9 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetPools")]
         public virtual System.Collections.Generic.IList<string> TargetPools { get; set; } 
 
-        /// <summary>The target number of running instances for this managed instance group. Deleting or abandoning
-        /// instances reduces this number. Resizing the group changes this number.</summary>
+        /// <summary>The target number of running instances for this managed instance group. You can reduce this number
+        /// by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also
+        /// changes this number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetSize")]
         public virtual System.Nullable<int> TargetSize { get; set; } 
 
@@ -74267,6 +74315,11 @@ namespace Google.Apis.Compute.v1.Data
         /// versioned_expr is specified and cannot be specified if versioned_expr is not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual SecurityPolicyRuleMatcherConfig Config { get; set; } 
+
+        /// <summary>User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as
+        /// origin.ip, source.region_code and contents in the request header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expr")]
+        public virtual Expr Expr { get; set; } 
 
         /// <summary>Preconfigured versioned expression. If this field is specified, config must also be specified.
         /// Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the

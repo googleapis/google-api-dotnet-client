@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataflow'>Dataflow API</a>
  *      <tr><th>API Version<td>v1b3
- *      <tr><th>API Rev<td>20200201 (1857)
+ *      <tr><th>API Rev<td>20200215 (1871)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataflow'>
  *              https://cloud.google.com/dataflow</a>
@@ -6485,6 +6485,23 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Defines a SDK harness container for executing Dataflow pipelines.</summary>
+    public class SdkHarnessContainerImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A docker container image that resides in Google Container Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerImage")]
+        public virtual string ContainerImage { get; set; } 
+
+        /// <summary>If true, recommends the Dataflow service to use only one core per SDK container instance with this
+        /// image. If false (or unset) recommends using more than one core per SDK container instance with this image
+        /// for efficiency. Note that Dataflow service may choose to override this property if needed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useSingleCorePerContainer")]
+        public virtual System.Nullable<bool> UseSingleCorePerContainer { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The version of the SDK used to run the job.</summary>
     public class SdkVersion : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7915,6 +7932,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("poolArgs")]
         public virtual System.Collections.Generic.IDictionary<string,object> PoolArgs { get; set; } 
 
+        /// <summary>Set of SDK harness containers needed to execute this pipeline. This will only be set in the Fn API
+        /// path. For non-cross-language pipelines this should have only one entry. Cross-language pipelines will have
+        /// two or more entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdkHarnessContainerImages")]
+        public virtual System.Collections.Generic.IList<SdkHarnessContainerImage> SdkHarnessContainerImages { get; set; } 
+
         /// <summary>Subnetwork to which VMs will be assigned, if desired.  Expected to be of the form
         /// "regions/REGION/subnetworks/SUBNETWORK".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
@@ -7939,7 +7962,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string TeardownPolicy { get; set; } 
 
         /// <summary>Required. Docker container image that executes the Cloud Dataflow worker harness, residing in
-        /// Google Container Registry.</summary>
+        /// Google Container Registry.
+        ///
+        /// Deprecated for the Fn API path. Use sdk_harness_container_images instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerHarnessContainerImage")]
         public virtual string WorkerHarnessContainerImage { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/healthcare'>Cloud Healthcare API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200131 (1856)
+ *      <tr><th>API Rev<td>20200212 (1868)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/healthcare'>
  *              https://cloud.google.com/healthcare</a>
@@ -8777,8 +8777,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         ///
         /// * The destination dataset must exist. * The source dataset and destination dataset must both reside in the
         /// same project. De-identifying data across multiple projects is not supported. * The destination FHIR store
-        /// must not exist. * The caller must have the necessary permissions to create the destination FHIR
-        /// store.</summary>
+        /// must exist. * The caller must have the healthcare.fhirResources.update permission to write to the
+        /// destination FHIR store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationStore")]
         public virtual string DestinationStore { get; set; } 
 
