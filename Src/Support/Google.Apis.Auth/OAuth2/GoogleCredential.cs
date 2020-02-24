@@ -30,7 +30,7 @@ namespace Google.Apis.Auth.OAuth2
     /// credentials (like <see cref="ServiceAccountCredential"/>, <see cref="ComputeCredential"/>
     /// or <see cref="UserCredential"/>) in a unified way.
     /// <para>
-    /// See <see cref="GetApplicationDefaultAsync"/> for the credential retrieval logic.
+    /// See <see cref="GetApplicationDefaultAsync(CancellationToken)"/> for the credential retrieval logic.
     /// </para>
     /// </summary>
     public class GoogleCredential : ICredential, ITokenAccessWithHeaders
@@ -43,6 +43,14 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>Creates a new <c>GoogleCredential</c>.</summary>
         internal GoogleCredential(ICredential credential) => this.credential = credential;
+
+        /// <summary>
+        /// Returns the Application Default Credentials which are ambient credentials that identify and authorize
+        /// the whole application. See <see cref="GetApplicationDefaultAsync(CancellationToken)"/> for more details.
+        /// </summary>
+        /// <returns>A task which completes with the application default credentials.</returns>
+        public static Task<GoogleCredential> GetApplicationDefaultAsync() =>
+            defaultCredentialProvider.GetDefaultCredentialAsync();
 
         /// <summary>
         /// <para>Returns the Application Default Credentials which are ambient credentials that identify and authorize
@@ -79,14 +87,21 @@ namespace Google.Apis.Auth.OAuth2
         /// </item>
         /// </list>
         /// </summary>
+        /// <remarks>
+        /// If the cancellation token is cancelled while the underlying operation is loading Application Default Credentials,
+        /// the underlying operation will still be used for any further requests. No actual work is cancelled via this cancellation
+        /// token; it just allows the returned task to transition to a cancelled state.
+        /// </remarks>
+        /// <param name="cancellationToken">Cancellation token for the operation.</param>
         /// <returns>A task which completes with the application default credentials.</returns>
-        public static Task<GoogleCredential> GetApplicationDefaultAsync() => defaultCredentialProvider.GetDefaultCredentialAsync();
+        public static Task<GoogleCredential> GetApplicationDefaultAsync(CancellationToken cancellationToken) =>
+            defaultCredentialProvider.GetDefaultCredentialAsync().WithCancellationToken(cancellationToken);
 
         /// <summary>
         /// <para>Synchronously returns the Application Default Credentials which are ambient credentials that identify and authorize
-        /// the whole application. See <see cref="GetApplicationDefaultAsync"/> for details on application default credentials.</para>
+        /// the whole application. See <see cref="GetApplicationDefaultAsync(CancellationToken)"/> for details on application default credentials.</para>
         /// <para>This method will block until the credentials are available (or an exception is thrown).
-        /// It is highly preferable to call <see cref="GetApplicationDefaultAsync"/> where possible.</para>
+        /// It is highly preferable to call <see cref="GetApplicationDefaultAsync(CancellationToken)"/> where possible.</para>
         /// </summary>
         /// <returns>The application default credentials.</returns>
         public static GoogleCredential GetApplicationDefault() => Task.Run(() => GetApplicationDefaultAsync()).Result;
@@ -99,6 +114,16 @@ namespace Google.Apis.Auth.OAuth2
         /// </para>
         /// </summary>
         public static GoogleCredential FromStream(Stream stream) => defaultCredentialProvider.CreateDefaultCredentialFromStream(stream);
+
+        /// <summary>
+        /// Loads credential from stream containing JSON credential data.
+        /// <para>
+        /// The stream can contain a Service Account key file in JSON format from the Google Developers
+        /// Console or a stored user credential using the format supported by the Cloud SDK.
+        /// </para>
+        /// </summary>
+        public static Task<GoogleCredential> FromStreamAsync(Stream stream, CancellationToken cancellationToken) =>
+            defaultCredentialProvider.CreateDefaultCredentialFromStreamAsync(stream, cancellationToken);
 
         /// <summary>
         /// Loads credential from the specified file containing JSON credential data.
@@ -114,6 +139,24 @@ namespace Google.Apis.Auth.OAuth2
             using (var f = File.OpenRead(path))
             {
                 return FromStream(f);
+            }
+        }
+
+        /// <summary>
+        /// Loads credential from the specified file containing JSON credential data.
+        /// <para>
+        /// The file can contain a Service Account key file in JSON format from the Google Developers
+        /// Console or a stored user credential using the format supported by the Cloud SDK.
+        /// </para>
+        /// </summary>
+        /// <param name="path">The path to the credential file.</param>
+        /// <param name="cancellationToken">Cancellation token for the operation.</param>
+        /// <returns>The loaded credentials.</returns>
+        public static Task<GoogleCredential> FromFileAsync(string path, CancellationToken cancellationToken)
+        {
+            using (var f = File.OpenRead(path))
+            {
+                return FromStreamAsync(f, cancellationToken);
             }
         }
 
@@ -168,7 +211,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>
         /// Create a <see cref="GoogleCredential"/> from a <see cref="ComputeCredential"/>.
         /// In general, do not use this method. Call <see cref="GetApplicationDefault"/> or
-        /// <see cref="GetApplicationDefaultAsync"/>, which will provide the most suitable
+        /// <see cref="GetApplicationDefaultAsync(CancellationToken)"/>, which will provide the most suitable
         /// credentials for the current platform.
         /// </summary>
         /// <param name="computeCredential">Optional. The compute credential to use in the returned <see cref="GoogleCredential"/>.
