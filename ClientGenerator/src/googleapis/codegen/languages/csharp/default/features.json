@@ -16,6 +16,8 @@
     "Google.Apis.Datastore.v1": "Google.Cloud.Datastore.V1",
     "Google.Apis.CloudDebugger.v2": "Google.Cloud.Debugger.V2",
     "Google.Apis.DLP.v2": "Google.Cloud.Dlp.V2",
+    "Google.Apis.Firestore.v1": "Google.Cloud.Firestore",
+    "Google.Apis.Iam.v1": "Google.Cloud.Iam.V1",
     "Google.Apis.CloudKMS.v1": "Google.Cloud.Kms.V1",
     "Google.Apis.CloudNaturalLanguage.v1": "Google.Cloud.Language.V1",
     "Google.Apis.Logging.v2": "Google.Cloud.Logging.V2",
@@ -32,6 +34,7 @@
     "Google.Apis.Texttospeech.v1": "Google.Cloud.TextToSpeech.V1",
     "Google.Apis.CloudTrace.v1": "Google.Cloud.Trace.V1",
     "Google.Apis.CloudTrace.v2": "Google.Cloud.Trace.V2",
+    "Google.Apis.Translate.v3": "Google.Cloud.Translate.V3",
     "Google.Apis.Translate.v2": "Google.Cloud.Translation.V2",
     "Google.Apis.CloudVideoIntelligence.v1": "Google.Cloud.VideoIntelligence.V1",
     "Google.Apis.Vision.v1": "Google.Cloud.Vision.V1"
