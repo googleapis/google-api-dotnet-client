@@ -39,7 +39,7 @@ namespace Google.Apis
 
         /// <summary>
         /// The ETag will be added as an "If-None-Match" header.
-        /// A request sent with an "If-Match" header will only succeed if both ETags are not identical.
+        /// A request sent with an "If-None-Match" header will only succeed if ETags are not identical.
         /// </summary>
         IfNoneMatch,
     }
