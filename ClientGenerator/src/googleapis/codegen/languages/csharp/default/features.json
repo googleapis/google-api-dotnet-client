@@ -26,7 +26,6 @@
     "Google.Apis.Pubsub.v1": "Google.Cloud.PubSub.V1",
     "Google.Apis.CloudRedis.v1": "Google.Cloud.Redis.V1",
     "Google.Apis.CloudScheduler.v1": "Google.Cloud.Scheduler.V1",
-    "Google.Apis.SecretManager.v1": "Google.Cloud.SecretManager.V1",
     "Google.Apis.SecurityCommandCenter.v1": "Google.Cloud.SecurityCenter.V1",
     "Google.Apis.Spanner.v1": "Google.Cloud.Spanner.Data",
     "Google.Apis.Speech.v1": "Google.Cloud.Speech.V1",
