@@ -640,7 +640,7 @@
    }
   }
  }, 
- "revision": "20200220", 
+ "revision": "20200224", 
  "rootUrl": "https://people.googleapis.com/", 
  "schemas": {
   "Address": {

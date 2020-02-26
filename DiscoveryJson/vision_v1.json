@@ -1281,7 +1281,7 @@
    }
   }
  }, 
- "revision": "20200214", 
+ "revision": "20200221", 
  "rootUrl": "https://vision.googleapis.com/", 
  "schemas": {
   "AddProductToProductSetRequest": {
