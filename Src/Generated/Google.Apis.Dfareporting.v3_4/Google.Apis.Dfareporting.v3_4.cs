@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>DCM/DFA Reporting And Trafficking API</a>
  *      <tr><th>API Version<td>v3.4
- *      <tr><th>API Rev<td>20191127 (1791)
+ *      <tr><th>API Rev<td>20200121 (1846)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>
  *              https://developers.google.com/doubleclick-advertisers/</a>
@@ -26267,10 +26267,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
     /// account via the Sites resource before they can be assigned to a placement.</summary>
     public class DirectorySite : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether this directory site is active.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("active")]
-        public virtual System.Nullable<bool> Active { get; set; } 
-
         /// <summary>ID of this directory site. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<long> Id { get; set; } 

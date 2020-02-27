@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-search/'>Search Ads 360 API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200211 (1867)
+ *      <tr><th>API Rev<td>20200218 (1874)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-search/'>
  *              https://developers.google.com/doubleclick-search/</a>

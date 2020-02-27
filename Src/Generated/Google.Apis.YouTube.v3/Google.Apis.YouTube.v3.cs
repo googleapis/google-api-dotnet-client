@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/v3'>YouTube Data API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200109 (1834)
+ *      <tr><th>API Rev<td>20200213 (1869)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/v3'>
  *              https://developers.google.com/youtube/v3</a>
@@ -6577,7 +6577,7 @@ namespace Google.Apis.YouTube.v3
             /// result set.</summary>
             /// [default: 5]
             /// [minimum: 0]
-            /// [maximum: 50]
+            /// [maximum: 50000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -13393,6 +13393,10 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("latencyPreference")]
         public virtual string LatencyPreference { get; set; } 
 
+        /// <summary>The mesh for projecting the video if projection is mesh. The mesh value must be a UTF-8 string
+        /// containing the base-64 encoding of 3D mesh data that follows the  Spherical Video V2 RFC specification for
+        /// an mshp box, excluding the box size and type but including the following four reserved zero bytes for the
+        /// version and flags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mesh")]
         public virtual string Mesh { get; set; } 
 
@@ -14476,43 +14480,60 @@ namespace Google.Apis.YouTube.v3.Data
 
     public class MembershipsDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>All levels that the user has access to. This includes the currently active level and all other
-        /// levels that are included because of a higher purchase.</summary>
+        /// <summary>Ids of all levels that the user has access to. This includes the currently active level and all
+        /// other levels that are included because of a higher purchase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessibleLevels")]
         public virtual System.Collections.Generic.IList<string> AccessibleLevels { get; set; } 
 
-        /// <summary>The highest level that the user has access to at the moment.</summary>
+        /// <summary>Id of the highest level that the user has access to at the moment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("highestAccessibleLevel")]
         public virtual string HighestAccessibleLevel { get; set; } 
 
-        /// <summary>Display name for the highest level that the user has access to at the moment.</summary>
+        /// <summary>Display name of the highest level that the user has access to at the moment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("highestAccessibleLevelDisplayName")]
         public virtual string HighestAccessibleLevelDisplayName { get; set; } 
 
+        /// <summary>Data about memberships duration without taking into consideration pricing levels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipsDuration")]
+        public virtual MembershipsDuration MembershipsDuration { get; set; } 
+
+        /// <summary>Data about memberships duration on particular pricing levels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipsDurationAtLevels")]
+        public virtual System.Collections.Generic.IList<MembershipsDurationAtLevel> MembershipsDurationAtLevels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class MembershipsDuration : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The date and time when the user became a continuous member across all levels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberSince")]
         public virtual string MemberSince { get; set; } 
 
-        /// <summary>The date and time when the user started to continuously have access to the currently highest
-        /// level.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("memberSinceCurrentLevel")]
-        public virtual string MemberSinceCurrentLevel { get; set; } 
-
         /// <summary>The cumulative time the user has been a member across all levels in complete months (the time is
         /// rounded down to the nearest integer).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("memberTotalDuration")]
-        public virtual System.Nullable<int> MemberTotalDuration { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("memberTotalDurationMonths")]
+        public virtual System.Nullable<int> MemberTotalDurationMonths { get; set; } 
 
-        /// <summary>The cumulative time the user has had access to the currently highest level in complete months (the
-        /// time is rounded down to the nearest integer).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("memberTotalDurationCurrentLevel")]
-        public virtual System.Nullable<int> MemberTotalDurationCurrentLevel { get; set; } 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
-        /// <summary>The highest level that the user has access to at the moment. DEPRECATED - highest_accessible_level
-        /// should be used instead. This will be removed after we make sure there are no 3rd parties relying on
-        /// it.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("purchasedLevel")]
-        public virtual string PurchasedLevel { get; set; } 
+    public class MembershipsDurationAtLevel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Pricing level id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("level")]
+        public virtual string Level { get; set; } 
+
+        /// <summary>The date and time when the user became a continuous member for the given level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberSince")]
+        public virtual string MemberSince { get; set; } 
+
+        /// <summary>The cumulative time the user has been a member for the given level in complete months (the time is
+        /// rounded down to the nearest integer).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberTotalDurationMonths")]
+        public virtual System.Nullable<int> MemberTotalDurationMonths { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16760,9 +16781,6 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rejectionReason")]
         public virtual string RejectionReason { get; set; } 
 
-        /// <summary>Allows clients to set the Crosswalk self_declared state for a Video. This maps to
-        /// VAPI.Video.creator_flags.is_crosswalk_self_declared() and
-        /// VAPI.Video.creator_flags.is_not_crosswalk_self_declared().</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfDeclaredMadeForKids")]
         public virtual System.Nullable<bool> SelfDeclaredMadeForKids { get; set; } 
 

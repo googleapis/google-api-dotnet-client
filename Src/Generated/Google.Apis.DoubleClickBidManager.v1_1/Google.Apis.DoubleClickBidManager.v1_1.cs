@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/bid-manager/'>DoubleClick Bid Manager API</a>
  *      <tr><th>API Version<td>v1.1
- *      <tr><th>API Rev<td>20200124 (1849)
+ *      <tr><th>API Rev<td>20200220 (1876)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/bid-manager/'>
  *              https://developers.google.com/bid-manager/</a>
@@ -974,7 +974,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         public virtual string FilterType { get; set; } 
 
         /// <summary>SDF Version (column names, types, order) in which the entities will be returned. Default to
-        /// 3.1.</summary>
+        /// 5.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; } 
 

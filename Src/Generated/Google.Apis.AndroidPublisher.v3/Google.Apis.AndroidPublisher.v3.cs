@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200216 (1872)
+ *      <tr><th>API Rev<td>20200223 (1879)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -2313,6 +2313,10 @@ namespace Google.Apis.AndroidPublisher.v3
 
                 public enum ImageTypeEnum
                 {
+                    [Google.Apis.Util.StringValueAttribute("automotiveScreenshots")]
+                    AutomotiveScreenshots,
+                    [Google.Apis.Util.StringValueAttribute("daydreamStereoImage")]
+                    DaydreamStereoImage,
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
                     FeatureGraphic,
                     [Google.Apis.Util.StringValueAttribute("icon")]
@@ -2460,6 +2464,10 @@ namespace Google.Apis.AndroidPublisher.v3
 
                 public enum ImageTypeEnum
                 {
+                    [Google.Apis.Util.StringValueAttribute("automotiveScreenshots")]
+                    AutomotiveScreenshots,
+                    [Google.Apis.Util.StringValueAttribute("daydreamStereoImage")]
+                    DaydreamStereoImage,
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
                     FeatureGraphic,
                     [Google.Apis.Util.StringValueAttribute("icon")]
@@ -2594,6 +2602,10 @@ namespace Google.Apis.AndroidPublisher.v3
 
                 public enum ImageTypeEnum
                 {
+                    [Google.Apis.Util.StringValueAttribute("automotiveScreenshots")]
+                    AutomotiveScreenshots,
+                    [Google.Apis.Util.StringValueAttribute("daydreamStereoImage")]
+                    DaydreamStereoImage,
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
                     FeatureGraphic,
                     [Google.Apis.Util.StringValueAttribute("icon")]
@@ -2730,6 +2742,10 @@ namespace Google.Apis.AndroidPublisher.v3
 
                 public enum ImageTypeEnum
                 {
+                    [Google.Apis.Util.StringValueAttribute("automotiveScreenshots")]
+                    AutomotiveScreenshots,
+                    [Google.Apis.Util.StringValueAttribute("daydreamStereoImage")]
+                    DaydreamStereoImage,
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
                     FeatureGraphic,
                     [Google.Apis.Util.StringValueAttribute("icon")]
@@ -2915,6 +2931,10 @@ namespace Google.Apis.AndroidPublisher.v3
 
                 public enum ImageTypeEnum
                 {
+                    [Google.Apis.Util.StringValueAttribute("automotiveScreenshots")]
+                    AutomotiveScreenshots,
+                    [Google.Apis.Util.StringValueAttribute("daydreamStereoImage")]
+                    DaydreamStereoImage,
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
                     FeatureGraphic,
                     [Google.Apis.Util.StringValueAttribute("icon")]
@@ -7453,6 +7473,9 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("binary")]
         public virtual ApkBinary Binary { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("testBinary")]
+        public virtual ApkBinary TestBinary { get; set; } 
+
         /// <summary>The version code of the APK, as specified in the APK's manifest file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
         public virtual System.Nullable<int> VersionCode { get; set; } 
@@ -7604,6 +7627,9 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("modRanges")]
         public virtual System.Collections.Generic.IList<ModRange> ModRanges { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stratifiedSamplings")]
+        public virtual System.Collections.Generic.IList<StratifiedSampling> StratifiedSamplings { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("versionCodes")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> VersionCodes { get; set; } 
@@ -8260,6 +8286,33 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("salt")]
         public virtual System.Nullable<int> Salt { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("stratifiedSamplings")]
+        public virtual System.Collections.Generic.IList<StratifiedSampling> StratifiedSamplings { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("useAndroidId")]
+        public virtual System.Nullable<bool> UseAndroidId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class StratifiedSampling : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("modRanges")]
+        public virtual System.Collections.Generic.IList<ModRange> ModRanges { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stratum")]
+        public virtual Stratum Stratum { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class Stratum : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("brand")]
+        public virtual string Brand { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -8523,6 +8576,15 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
     public class Testers : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("autoEnrolledAndroidGroups")]
+        public virtual System.Collections.Generic.IList<string> AutoEnrolledAndroidGroups { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("autoEnrolledGoogleGroups")]
+        public virtual System.Collections.Generic.IList<string> AutoEnrolledGoogleGroups { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedGoogleGroups")]
+        public virtual System.Collections.Generic.IList<string> ExcludedGoogleGroups { get; set; } 
+
         /// <summary>A list of all Google Groups, as email addresses, that define testers for this track.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleGroups")]
         public virtual System.Collections.Generic.IList<string> GoogleGroups { get; set; } 
@@ -8589,9 +8651,15 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("pinnedVersions")]
+        public virtual System.Collections.Generic.IList<TrackReleasePin> PinnedVersions { get; set; } 
+
         /// <summary>The description of what is new in the app in this release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseNotes")]
         public virtual System.Collections.Generic.IList<LocalizedText> ReleaseNotes { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("rollbackEnabled")]
+        public virtual System.Nullable<bool> RollbackEnabled { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("sampling")]
         public virtual Sampling Sampling { get; set; } 
@@ -8610,6 +8678,51 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// those you wish to retain from previous releases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionCodes")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> VersionCodes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TrackReleasePin : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("targetings")]
+        public virtual System.Collections.Generic.IList<TrackReleasePinPinTargeting> Targetings { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("versionCodes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> VersionCodes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TrackReleasePinPinTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCodes")]
+        public virtual System.Collections.Generic.IList<string> CountryCodes { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("devices")]
+        public virtual System.Collections.Generic.IList<TrackReleasePinPinTargetingDevicePin> Devices { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneskyVersions")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> PhoneskyVersions { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sdkVersions")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> SdkVersions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TrackReleasePinPinTargetingDevicePin : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("brand")]
+        public virtual string Brand { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual string Device { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual string Product { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

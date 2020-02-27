@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>AI Platform Training & Prediction API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200214 (1870)
+ *      <tr><th>API Rev<td>20200222 (1878)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -2740,7 +2740,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^projects/.+$",
+                        Pattern = @"^projects/.*$",
                     });
             }
 
@@ -2880,7 +2880,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^projects/.+$",
+                        Pattern = @"^projects/.*$",
                     });
             }
 
@@ -3739,8 +3739,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
 
     /// <summary>Represents input parameters for a training job. When using the gcloud command to submit your training
     /// job, you can specify the input parameters as command-line arguments and/or in a YAML configuration file
-    /// referenced from the --config command-line argument. For details, see the guide to submitting a training
-    /// job.</summary>
+    /// referenced from the --config command-line argument. For details, see the guide to [submitting a training job
+    /// ](/ai-platform/training/docs/training-jobs).</summary>
     public class GoogleCloudMlV1TrainingInput : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Command line arguments to pass to the program.</summary>
@@ -3838,31 +3838,30 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pythonModule")]
         public virtual string PythonModule { get; set; } 
 
-        /// <summary>Optional. The version of Python used in training. If not set, the default version is '2.7'.
-        /// Starting [January 13, 2020](/ml-engine/docs/release-notes#december_10_2019), this field is required.
+        /// <summary>Optional. The version of Python used in training. You must either specify this field or specify
+        /// `masterConfig.imageUri`.
         ///
         /// The following Python versions are available:
         ///
         /// * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available
         /// when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when
-        /// `runtime_version` is set to '1.15' or earlier. (Runtime versions released [after January 1, 2020](/ml-
-        /// engine/docs/release-notes#december_10_2019) do not support Python 2.7.)
+        /// `runtime_version` is set to '1.15' or earlier.
         ///
         /// Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-
         /// list).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonVersion")]
         public virtual string PythonVersion { get; set; } 
 
-        /// <summary>Required. The Google Compute Engine region to run the training job in. See the available regions
-        /// for AI Platform services.</summary>
+        /// <summary>Required. The region to run the training job in. See the [available regions](/ai-
+        /// platform/training/docs/regions) for AI Platform Training.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
-        /// <summary>Optional. The AI Platform runtime version to use for training. If not set, AI Platform uses the
-        /// default stable version, 1.0. Starting [January 13, 2020](/ml-engine/docs/release-notes#december_10_2019),
-        /// this field is required.
+        /// <summary>Optional. The AI Platform runtime version to use for training. You must either specify this field
+        /// or specify `masterConfig.imageUri`.
         ///
-        /// For more information, see the runtime version list and how to manage runtime versions.</summary>
+        /// For more information, see the [runtime version list](/ai-platform/training/docs/runtime-version-list) and
+        /// learn [how to manage runtime versions](/ai-platform/training/docs/versioning).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
         public virtual string RuntimeVersion { get; set; } 
 
@@ -4128,15 +4127,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("predictionClass")]
         public virtual string PredictionClass { get; set; } 
 
-        /// <summary>Optional. The version of Python used in prediction. If not set, the default version is '2.7'.
-        /// Starting [January 13, 2020](/ml-engine/docs/release-notes#december_10_2019), this field is required.
+        /// <summary>Required. The version of Python used in prediction.
         ///
         /// The following Python versions are available:
         ///
         /// * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available
         /// when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when
-        /// `runtime_version` is set to '1.15' or earlier. (Runtime versions released [after January 1, 2020](/ml-
-        /// engine/docs/release-notes#december_10_2019) do not support Python 2.7.)
+        /// `runtime_version` is set to '1.15' or earlier.
         ///
         /// Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-
         /// list).</summary>
@@ -4150,9 +4147,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestLoggingConfig")]
         public virtual GoogleCloudMlV1RequestLoggingConfig RequestLoggingConfig { get; set; } 
 
-        /// <summary>Optional. The AI Platform runtime version to use for this deployment. If not set, AI Platform uses
-        /// the default stable version, 1.0. Starting [January 13, 2020](/ml-engine/docs/release-
-        /// notes#december_10_2019), this field is required.
+        /// <summary>Required. The AI Platform runtime version to use for this deployment.
         ///
         /// For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to
         /// manage runtime versions](/ml-engine/docs/versioning).</summary>

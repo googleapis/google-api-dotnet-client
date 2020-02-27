@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>Books API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191104 (1768)
+ *      <tr><th>API Rev<td>20200204 (1860)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>
  *              https://developers.google.com/books/docs/v1/getting_started</a>
@@ -7098,6 +7098,28 @@ namespace Google.Apis.Books.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class BooksSubscriptionReleaseInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Amount in micros of the specified currency code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amountInMicros")]
+        public virtual System.Nullable<long> AmountInMicros { get; set; } 
+
+        /// <summary>Currency code of the amount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; } 
+
+        /// <summary>The release number of this issue/volume/book.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseNumber")]
+        public virtual string ReleaseNumber { get; set; } 
+
+        /// <summary>The release date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseTimestampUs")]
+        public virtual System.Nullable<long> ReleaseTimestampUs { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class BooksVolumesRecommendedRateResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("consistency_token")]
@@ -8214,8 +8236,14 @@ namespace Google.Apis.Books.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("isComplete")]
             public virtual System.Nullable<bool> IsComplete { get; set; } 
 
+            [Newtonsoft.Json.JsonPropertyAttribute("seriesFormatType")]
+            public virtual string SeriesFormatType { get; set; } 
+
             [Newtonsoft.Json.JsonPropertyAttribute("seriesId")]
             public virtual string SeriesId { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("seriesSubscriptionReleaseInfo")]
+            public virtual SeriesData.SeriesSubscriptionReleaseInfoData SeriesSubscriptionReleaseInfo { get; set; } 
 
             [Newtonsoft.Json.JsonPropertyAttribute("seriesType")]
             public virtual string SeriesType { get; set; } 
@@ -8226,6 +8254,27 @@ namespace Google.Apis.Books.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("title")]
             public virtual string Title { get; set; } 
 
+            
+
+            public class SeriesSubscriptionReleaseInfoData
+            {
+                /// <summary>Cancellation date of the series subscription (or when it ends).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("cancellationTimestampUs")]
+                public virtual System.Nullable<long> CancellationTimestampUs { get; set; } 
+
+                /// <summary>Release information for the last release.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("currentReleaseInfo")]
+                public virtual BooksSubscriptionReleaseInfo CurrentReleaseInfo { get; set; } 
+
+                /// <summary>Release information for the next release.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("nextReleaseInfo")]
+                public virtual BooksSubscriptionReleaseInfo NextReleaseInfo { get; set; } 
+
+                /// <summary>series subscription type.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("seriesSubscriptionType")]
+                public virtual string SeriesSubscriptionType { get; set; } 
+
+            }
         }
     }    
 

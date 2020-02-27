@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/run/'>Cloud Run API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200130 (1855)
+ *      <tr><th>API Rev<td>20200219 (1875)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/run/'>
  *              https://cloud.google.com/run/</a>
@@ -64,6 +64,7 @@ namespace Google.Apis.CloudRun.v1
         public CloudRunService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
+            api = new ApiResource(this);
             namespaces = new NamespacesResource(this);
             projects = new ProjectsResource(this);
         }
@@ -127,6 +128,14 @@ namespace Google.Apis.CloudRun.v1
         }
 
 
+
+        private readonly ApiResource api;
+
+        /// <summary>Gets the Api resource.</summary>
+        public virtual ApiResource Api
+        {
+            get { return api; }
+        }
 
         private readonly NamespacesResource namespaces;
 
@@ -331,6 +340,311 @@ namespace Google.Apis.CloudRun.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
+        }
+    }
+
+    /// <summary>The "api" collection of methods.</summary>
+    public class ApiResource
+    {
+        private const string Resource = "api";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ApiResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            v1 = new V1Resource(service);
+
+        }
+
+        private readonly V1Resource v1;
+
+        /// <summary>Gets the V1 resource.</summary>
+        public virtual V1Resource V1
+        {
+            get { return v1; }
+        }
+
+        /// <summary>The "v1" collection of methods.</summary>
+        public class V1Resource
+        {
+            private const string Resource = "v1";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public V1Resource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                namespaces = new NamespacesResource(service);
+
+            }
+
+            private readonly NamespacesResource namespaces;
+
+            /// <summary>Gets the Namespaces resource.</summary>
+            public virtual NamespacesResource Namespaces
+            {
+                get { return namespaces; }
+            }
+
+            /// <summary>The "namespaces" collection of methods.</summary>
+            public class NamespacesResource
+            {
+                private const string Resource = "namespaces";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public NamespacesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    secrets = new SecretsResource(service);
+
+                }
+
+                private readonly SecretsResource secrets;
+
+                /// <summary>Gets the Secrets resource.</summary>
+                public virtual SecretsResource Secrets
+                {
+                    get { return secrets; }
+                }
+
+                /// <summary>The "secrets" collection of methods.</summary>
+                public class SecretsResource
+                {
+                    private const string Resource = "secrets";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public SecretsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Creates a new secret.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The project ID or project number in which this secret should be created.</param>
+                    public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.Secret body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a new secret.</summary>
+                    public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Secret>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Secret body, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The project ID or project number in which this secret should be
+                        /// created.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRun.v1.Data.Secret Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "create"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "api/v1/{+parent}/secrets"; }
+                        }
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^namespaces/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Rpc to get information about a secret.</summary>
+                    /// <param name="name">Required. The name of the secret being retrieved. If needed, replace {namespace_id} with the
+                    /// project ID.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Rpc to get information about a secret.</summary>
+                    public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Secret>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The name of the secret being retrieved. If needed, replace {namespace_id}
+                        /// with the project ID.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "get"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "api/v1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^namespaces/[^/]+/secrets/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Rpc to replace a secret.
+                    ///
+                    /// Only the spec and metadata labels and annotations are modifiable. After the Update request,
+                    /// Cloud Run will work to make the 'status' match the requested 'spec'.
+                    ///
+                    /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
+                    /// control.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The name of the secret being retrieved. If needed, replace {namespace_id} with the
+                    /// project ID.</param>
+                    public virtual ReplaceSecretRequest ReplaceSecret(Google.Apis.CloudRun.v1.Data.Secret body, string name)
+                    {
+                        return new ReplaceSecretRequest(service, body, name);
+                    }
+
+                    /// <summary>Rpc to replace a secret.
+                    ///
+                    /// Only the spec and metadata labels and annotations are modifiable. After the Update request,
+                    /// Cloud Run will work to make the 'status' match the requested 'spec'.
+                    ///
+                    /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
+                    /// control.</summary>
+                    public class ReplaceSecretRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Secret>
+                    {
+                        /// <summary>Constructs a new ReplaceSecret request.</summary>
+                        public ReplaceSecretRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Secret body, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The name of the secret being retrieved. If needed, replace {namespace_id}
+                        /// with the project ID.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRun.v1.Data.Secret Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "replaceSecret"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "PUT"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "api/v1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes ReplaceSecret parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^namespaces/[^/]+/secrets/[^/]+$",
+                                });
+                        }
+
+                    }
+                }
+            }
         }
     }
 
@@ -2256,6 +2570,7 @@ namespace Google.Apis.CloudRun.v1
                 domainmappings = new DomainmappingsResource(service);
                 revisions = new RevisionsResource(service);
                 routes = new RoutesResource(service);
+                secrets = new SecretsResource(service);
                 services = new ServicesResource(service);
 
             }
@@ -3613,6 +3928,243 @@ namespace Google.Apis.CloudRun.v1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                    }
+
+                }
+            }
+            private readonly SecretsResource secrets;
+
+            /// <summary>Gets the Secrets resource.</summary>
+            public virtual SecretsResource Secrets
+            {
+                get { return secrets; }
+            }
+
+            /// <summary>The "secrets" collection of methods.</summary>
+            public class SecretsResource
+            {
+                private const string Resource = "secrets";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SecretsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Creates a new secret.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The project ID or project number in which this secret should be created.</param>
+                public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.Secret body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new secret.</summary>
+                public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Secret>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Secret body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The project ID or project number in which this secret should be
+                    /// created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRun.v1.Data.Secret Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/secrets"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Rpc to get information about a secret.</summary>
+                /// <param name="name">Required. The name of the secret being retrieved. If needed, replace {namespace_id} with the
+                /// project ID.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Rpc to get information about a secret.</summary>
+                public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Secret>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The name of the secret being retrieved. If needed, replace {namespace_id}
+                    /// with the project ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Rpc to replace a secret.
+                ///
+                /// Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud
+                /// Run will work to make the 'status' match the requested 'spec'.
+                ///
+                /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
+                /// control.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The name of the secret being retrieved. If needed, replace {namespace_id} with the
+                /// project ID.</param>
+                public virtual ReplaceSecretRequest ReplaceSecret(Google.Apis.CloudRun.v1.Data.Secret body, string name)
+                {
+                    return new ReplaceSecretRequest(service, body, name);
+                }
+
+                /// <summary>Rpc to replace a secret.
+                ///
+                /// Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud
+                /// Run will work to make the 'status' match the requested 'spec'.
+                ///
+                /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
+                /// control.</summary>
+                public class ReplaceSecretRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Secret>
+                {
+                    /// <summary>Constructs a new ReplaceSecret request.</summary>
+                    public ReplaceSecretRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Secret body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The name of the secret being retrieved. If needed, replace {namespace_id}
+                    /// with the project ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRun.v1.Data.Secret Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "replaceSecret"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "PUT"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes ReplaceSecret parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+$",
                             });
                     }
 
@@ -6360,6 +6912,39 @@ namespace Google.Apis.CloudRun.v1.Data
         /// the form: https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Cloud Run fully managed: not supported
+    ///
+    /// Cloud Run on GKE: supported
+    ///
+    /// Secret holds secret data of a certain type. The total bytes of the values in the Data field must be less than
+    /// MaxSecretSize bytes.</summary>
+    public class Secret : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Data contains the secret data. Each key must consist of alphanumeric characters, '-', '_' or '.'.
+        /// The serialized form of the secret data is a base64 encoded string, representing the arbitrary (possibly non-
+        /// string) data value here. Described in https://tools.ietf.org/html/rfc4648#section-4</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Data { get; set; } 
+
+        /// <summary>Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-
+        /// conventions.md#metadata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual ObjectMeta Metadata { get; set; } 
+
+        /// <summary>stringData allows specifying non-binary secret data in string form. It is provided as a write-only
+        /// convenience method. All keys and values are merged into the data field on write, overwriting any existing
+        /// values. It is never output when reading from the API. +k8s:conversion-gen=false</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringData")]
+        public virtual System.Collections.Generic.IDictionary<string,string> StringData { get; set; } 
+
+        /// <summary>Used to facilitate programmatic handling of secret data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
