@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200218 (1874)
+ *      <tr><th>API Rev<td>20200221 (1877)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -424,7 +424,7 @@ namespace Google.Apis.ServiceManagement.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^operations/.+$",
+                        Pattern = @"^operations/.*$",
                     });
             }
 

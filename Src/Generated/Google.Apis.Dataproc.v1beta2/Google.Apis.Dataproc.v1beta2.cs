@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20200213 (1869)
+ *      <tr><th>API Rev<td>20200220 (1876)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -6716,6 +6716,10 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numInstances")]
         public virtual System.Nullable<int> NumInstances { get; set; } 
 
+        /// <summary>Optional. Specifies the preemptibility of the instance group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preemptibility")]
+        public virtual string Preemptibility { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -6753,6 +6757,12 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>A Dataproc job resource.</summary>
     public class Job : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Indicates whether the job is completed. If the value is false, the job is still in
+        /// progress. If true, the job is completed, and status.state field will indicate if it was successful, failed,
+        /// or cancelled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; } 
+
         /// <summary>Output only. If present, the location of miscellaneous control files which may be used as part of
         /// job setup and handling. If not present, control files may be placed in the same location as
         /// driver_output_uri.</summary>

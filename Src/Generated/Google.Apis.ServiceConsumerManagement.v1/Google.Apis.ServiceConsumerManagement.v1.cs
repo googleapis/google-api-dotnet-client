@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>Service Consumer Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200225 (1881)
+ *      <tr><th>API Rev<td>20200227 (1883)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>
  *              https://cloud.google.com/service-consumer-management/docs/overview</a>
@@ -1716,6 +1716,19 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jwksUri")]
         public virtual string JwksUri { get; set; } 
 
+        /// <summary>Defines the locations to extract the JWT.
+        ///
+        /// JWT locations can be either from HTTP headers or URL query parameters. The rule is that the first match
+        /// wins. The checking order is: checking all headers first, then URL query parameters.
+        ///
+        /// If not specified,  default to use following 3 locations: 1) Authorization: Bearer 2) x-goog-iap-jwt-
+        /// assertion 3) access_token query parameter
+        ///
+        /// Default locations can be specified as followings: jwt_locations: - header: Authorization value_prefix:
+        /// "Bearer " - header: x-goog-iap-jwt-assertion - query: access_token</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jwtLocations")]
+        public virtual System.Collections.Generic.IList<JwtLocation> JwtLocations { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2588,6 +2601,29 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         /// Refer to selector for syntax details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual string Selector { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies a location to extract JWT from an API request.</summary>
+    public class JwtLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies HTTP header name to extract JWT token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual string Header { get; set; } 
+
+        /// <summary>Specifies URL query parameter name to extract JWT token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; } 
+
+        /// <summary>The value prefix. The value format is "value_prefix{token}" Only applies to "in" header type. Must
+        /// be empty for "in" query type. If not empty, the header value has to match (case sensitive) this prefix. If
+        /// not matched, JWT will not be extracted. If matched, JWT will be extracted after the prefix is removed.
+        ///
+        /// For example, for "Authorization: Bearer {JWT}", value_prefix="Bearer " with a space at the end.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valuePrefix")]
+        public virtual string ValuePrefix { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

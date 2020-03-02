@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200219 (1875)
+ *      <tr><th>API Rev<td>20200221 (1877)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>
  *              https://cloud.google.com/asset-inventory/docs/quickstart</a>
@@ -774,7 +774,7 @@ namespace Google.Apis.CloudAsset.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+/operations/[^/]+/.+$",
+                        Pattern = @"^[^/]+/[^/]+/operations/[^/]+/.*$",
                     });
             }
 

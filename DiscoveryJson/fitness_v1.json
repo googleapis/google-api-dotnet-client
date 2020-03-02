@@ -65,7 +65,7 @@
  "description": "Stores and accesses user data in the fitness store from apps on any platform.", 
  "discoveryVersion": "v1", 
  "documentationLink": "https://developers.google.com/fit/rest/", 
- "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/nhMvpYEQ_RBKT5m7vH5ZWvJRx2U\"", 
+ "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/cv5IDg7J1xZEhu7AcMKOUYokJNk\"", 
  "icons": {
   "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png", 
   "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -768,7 +768,7 @@
    }
   }
  }, 
- "revision": "20200220", 
+ "revision": "20200223", 
  "rootUrl": "https://www.googleapis.com/", 
  "schemas": {
   "AggregateBucket": {

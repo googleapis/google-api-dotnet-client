@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>Cloud Runtime Configuration API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200211 (1867)
+ *      <tr><th>API Rev<td>20200224 (1880)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>
  *              https://cloud.google.com/deployment-manager/runtime-configurator/</a>
@@ -419,7 +419,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^operations/.+$",
+                        Pattern = @"^operations/.*$",
                     });
             }
 
@@ -483,7 +483,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^operations/.+$",
+                        Pattern = @"^operations/.*$",
                     });
             }
 

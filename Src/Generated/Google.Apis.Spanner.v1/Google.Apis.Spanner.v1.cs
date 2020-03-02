@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/spanner/'>Cloud Spanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200208 (1864)
+ *      <tr><th>API Rev<td>20200224 (1880)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/spanner/'>
  *              https://cloud.google.com/spanner/</a>
@@ -4878,6 +4878,10 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryMode")]
         public virtual string QueryMode { get; set; } 
 
+        /// <summary>Query optimizer configuration to use for the given query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryOptions")]
+        public virtual QueryOptions QueryOptions { get; set; } 
+
         /// <summary>If this request is resuming a previously interrupted SQL statement execution, `resume_token` should
         /// be copied from the last PartialResultSet yielded before the interruption. Doing this enables the new SQL
         /// statement execution to resume where the last one left off. The rest of the request parameters must exactly
@@ -5037,18 +5041,7 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Output only. A set of endpoint URIs based on your instance config that you can use instead of the
-        /// global endpoint `spanner.googleapis.com`.
-        ///
-        /// For example, if your instance config is `us-central1` (a regional config in Iowa), then your instance
-        /// specific endpoints may include `us-central1-spanner.googleapis.com`. By calling these endpoints instead of
-        /// the global endpoint, you optimize network routing which could reduce network latency.
-        ///
-        /// The client libraries, JDBC drivers, and other SDK clients automatically call these instance specific
-        /// endpoints.
-        ///
-        /// If you are using DNS whitelists, firewalls, or filtering to control access to endpoints, make sure you grant
-        /// access to `*spanner.googleapis.com`.</summary>
+        /// <summary>Deprecated. This field is not populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpointUris")]
         public virtual System.Collections.Generic.IList<string> EndpointUris { get; set; } 
 
@@ -5714,6 +5707,28 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
+    }    
+
+    /// <summary>Query optimizer configuration.</summary>
+    public class QueryOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An option to control the selection of optimizer version.
+        ///
+        /// This parameter allows individual queries to pick different query optimizer versions.
+        ///
+        /// Specifying "latest" as a value instructs Cloud Spanner to use the latest supported query optimizer version.
+        /// If not specified, Cloud Spanner uses optimizer version set at the database level options. Any other positive
+        /// integer (from the list of supported optimizer versions) overrides the default optimizer version for query
+        /// execution. The list of supported optimizer versions can be queried from
+        /// SPANNER_SYS.SUPPORTED_OPTIMIZER_VERSIONS. Executing a SQL statement with an invalid optimizer version will
+        /// fail with a syntax error (`INVALID_ARGUMENT`) status.
+        ///
+        /// The `optimizer_version` statement hint has precedence over this setting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizerVersion")]
+        public virtual string OptimizerVersion { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Contains an ordered list of nodes appearing in the query plan.</summary>

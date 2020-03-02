@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200210 (1866)
+ *      <tr><th>API Rev<td>20200226 (1882)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -419,7 +419,7 @@ namespace Google.Apis.Genomics.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^operations/.+$",
+                        Pattern = @"^operations/.*$",
                     });
             }
 
@@ -487,7 +487,7 @@ namespace Google.Apis.Genomics.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^operations/.+$",
+                        Pattern = @"^operations/.*$",
                     });
             }
 

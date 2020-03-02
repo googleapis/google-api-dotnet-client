@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/functions'>Cloud Functions API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20200213 (1869)
+ *      <tr><th>API Rev<td>20200219 (1875)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/functions'>
  *              https://cloud.google.com/functions</a>

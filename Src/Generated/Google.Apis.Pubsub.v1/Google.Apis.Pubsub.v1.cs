@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200211 (1867)
+ *      <tr><th>API Rev<td>20200218 (1874)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -385,9 +385,10 @@ namespace Google.Apis.Pubsub.v1
             /// the returned Snapshot object. Note that for REST API requests, you must specify a name in the
             /// request.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">User-provided name for this snapshot. If the name is not provided in the request, the server will
-            /// assign a random name for this snapshot on the same project as the subscription. Note that for REST API requests, you
-            /// must specify a name.  See the  resource name rules. Format is `projects/{project}/snapshots/{snap}`.</param>
+            /// <param name="name">Required. User-provided name for this snapshot. If the name is not provided in the request, the
+            /// server will assign a random name for this snapshot on the same project as the subscription. Note that for REST API
+            /// requests, you must specify a name.  See the  resource name rules. Format is
+            /// `projects/{project}/snapshots/{snap}`.</param>
             public virtual CreateRequest Create(Google.Apis.Pubsub.v1.Data.CreateSnapshotRequest body, string name)
             {
                 return new CreateRequest(service, body, name);
@@ -416,8 +417,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>User-provided name for this snapshot. If the name is not provided in the request, the
-                /// server will assign a random name for this snapshot on the same project as the subscription. Note
+                /// <summary>Required. User-provided name for this snapshot. If the name is not provided in the request,
+                /// the server will assign a random name for this snapshot on the same project as the subscription. Note
                 /// that for REST API requests, you must specify a name.  See the  resource name rules. Format is
                 /// `projects/{project}/snapshots/{snap}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -472,7 +473,7 @@ namespace Google.Apis.Pubsub.v1
             /// retained in the snapshot are immediately dropped. After a snapshot is deleted, a new one may be created
             /// with the same name, but the new one has no association with the old snapshot or its subscription, unless
             /// the same subscription is specified.</summary>
-            /// <param name="snapshot">The name of the snapshot to delete. Format is
+            /// <param name="snapshot">Required. The name of the snapshot to delete. Format is
             /// `projects/{project}/snapshots/{snap}`.</param>
             public virtual DeleteRequest Delete(string snapshot)
             {
@@ -496,7 +497,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The name of the snapshot to delete. Format is
+                /// <summary>Required. The name of the snapshot to delete. Format is
                 /// `projects/{project}/snapshots/{snap}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("snapshot", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Snapshot { get; private set; }
@@ -541,7 +542,7 @@ namespace Google.Apis.Pubsub.v1
             /// <summary>Gets the configuration details of a snapshot. Snapshots are used in Seek operations, which
             /// allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of
             /// messages in an existing subscription to the state captured by a snapshot.</summary>
-            /// <param name="snapshot">The name of the snapshot to get. Format is
+            /// <param name="snapshot">Required. The name of the snapshot to get. Format is
             /// `projects/{project}/snapshots/{snap}`.</param>
             public virtual GetRequest Get(string snapshot)
             {
@@ -562,7 +563,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The name of the snapshot to get. Format is `projects/{project}/snapshots/{snap}`.</summary>
+                /// <summary>Required. The name of the snapshot to get. Format is
+                /// `projects/{project}/snapshots/{snap}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("snapshot", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Snapshot { get; private set; }
 
@@ -688,7 +690,7 @@ namespace Google.Apis.Pubsub.v1
             /// <summary>Lists the existing snapshots. Snapshots are used in Seek operations, which allow you to manage
             /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
             /// existing subscription to the state captured by a snapshot.</summary>
-            /// <param name="project">The name of the project in which to list snapshots. Format is `projects/{project-
+            /// <param name="project">Required. The name of the project in which to list snapshots. Format is `projects/{project-
             /// id}`.</param>
             public virtual ListRequest List(string project)
             {
@@ -709,7 +711,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The name of the project in which to list snapshots. Format is `projects/{project-
+                /// <summary>Required. The name of the project in which to list snapshots. Format is `projects/{project-
                 /// id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Project { get; private set; }
@@ -1033,7 +1035,7 @@ namespace Google.Apis.Pubsub.v1
             /// Acknowledging a message whose ack deadline has expired may succeed, but such a message may be
             /// redelivered later. Acknowledging a message more than once will not result in an error.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="subscription">The subscription whose message is being acknowledged. Format is
+            /// <param name="subscription">Required. The subscription whose message is being acknowledged. Format is
             /// `projects/{project}/subscriptions/{sub}`.</param>
             public virtual AcknowledgeRequest Acknowledge(Google.Apis.Pubsub.v1.Data.AcknowledgeRequest body, string subscription)
             {
@@ -1057,7 +1059,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The subscription whose message is being acknowledged. Format is
+                /// <summary>Required. The subscription whose message is being acknowledged. Format is
                 /// `projects/{project}/subscriptions/{sub}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("subscription", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Subscription { get; private set; }
@@ -1116,7 +1118,7 @@ namespace Google.Apis.Pubsub.v1
             /// the returned Subscription object. Note that for REST API requests, you must specify a name in the
             /// request.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The name of the subscription. It must have the format
+            /// <param name="name">Required. The name of the subscription. It must have the format
             /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only
             /// letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or
             /// percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with
@@ -1148,7 +1150,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The name of the subscription. It must have the format
+                /// <summary>Required. The name of the subscription. It must have the format
                 /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and
                 /// contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods
                 /// (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in
@@ -1203,7 +1205,7 @@ namespace Google.Apis.Pubsub.v1
             /// dropped. Calls to `Pull` after deletion will return `NOT_FOUND`. After a subscription is deleted, a new
             /// one may be created with the same name, but the new one has no association with the old subscription or
             /// its topic unless the same topic is specified.</summary>
-            /// <param name="subscription">The subscription to delete. Format is
+            /// <param name="subscription">Required. The subscription to delete. Format is
             /// `projects/{project}/subscriptions/{sub}`.</param>
             public virtual DeleteRequest Delete(string subscription)
             {
@@ -1225,7 +1227,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The subscription to delete. Format is `projects/{project}/subscriptions/{sub}`.</summary>
+                /// <summary>Required. The subscription to delete. Format is
+                /// `projects/{project}/subscriptions/{sub}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("subscription", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Subscription { get; private set; }
 
@@ -1267,7 +1270,7 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Gets the configuration details of a subscription.</summary>
-            /// <param name="subscription">The name of the subscription to get. Format is
+            /// <param name="subscription">Required. The name of the subscription to get. Format is
             /// `projects/{project}/subscriptions/{sub}`.</param>
             public virtual GetRequest Get(string subscription)
             {
@@ -1286,7 +1289,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The name of the subscription to get. Format is
+                /// <summary>Required. The name of the subscription to get. Format is
                 /// `projects/{project}/subscriptions/{sub}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("subscription", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Subscription { get; private set; }
@@ -1411,8 +1414,8 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Lists matching subscriptions.</summary>
-            /// <param name="project">The name of the project in which to list subscriptions. Format is `projects/{project-
-            /// id}`.</param>
+            /// <param name="project">Required. The name of the project in which to list subscriptions. Format is `projects
+            /// /{project-id}`.</param>
             public virtual ListRequest List(string project)
             {
                 return new ListRequest(service, project);
@@ -1430,8 +1433,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The name of the project in which to list subscriptions. Format is `projects/{project-
-                /// id}`.</summary>
+                /// <summary>Required. The name of the project in which to list subscriptions. Format is `projects
+                /// /{project-id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Project { get; private set; }
 
@@ -1505,7 +1508,7 @@ namespace Google.Apis.Pubsub.v1
             /// if the processing was interrupted. Note that this does not modify the subscription-level
             /// `ackDeadlineSeconds` used for subsequent messages.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="subscription">The name of the subscription. Format is
+            /// <param name="subscription">Required. The name of the subscription. Format is
             /// `projects/{project}/subscriptions/{sub}`.</param>
             public virtual ModifyAckDeadlineRequest ModifyAckDeadline(Google.Apis.Pubsub.v1.Data.ModifyAckDeadlineRequest body, string subscription)
             {
@@ -1528,7 +1531,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The name of the subscription. Format is `projects/{project}/subscriptions/{sub}`.</summary>
+                /// <summary>Required. The name of the subscription. Format is
+                /// `projects/{project}/subscriptions/{sub}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("subscription", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Subscription { get; private set; }
 
@@ -1582,7 +1586,7 @@ namespace Google.Apis.Pubsub.v1
             /// accumulate for delivery continuously through the call regardless of changes to the
             /// `PushConfig`.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="subscription">The name of the subscription. Format is
+            /// <param name="subscription">Required. The name of the subscription. Format is
             /// `projects/{project}/subscriptions/{sub}`.</param>
             public virtual ModifyPushConfigRequest ModifyPushConfig(Google.Apis.Pubsub.v1.Data.ModifyPushConfigRequest body, string subscription)
             {
@@ -1607,7 +1611,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The name of the subscription. Format is `projects/{project}/subscriptions/{sub}`.</summary>
+                /// <summary>Required. The name of the subscription. Format is
+                /// `projects/{project}/subscriptions/{sub}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("subscription", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Subscription { get; private set; }
 
@@ -1657,7 +1662,7 @@ namespace Google.Apis.Pubsub.v1
             /// <summary>Updates an existing subscription. Note that certain properties of a subscription, such as its
             /// topic, are not modifiable.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The name of the subscription. It must have the format
+            /// <param name="name">Required. The name of the subscription. It must have the format
             /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only
             /// letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or
             /// percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with
@@ -1681,7 +1686,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The name of the subscription. It must have the format
+                /// <summary>Required. The name of the subscription. It must have the format
                 /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and
                 /// contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods
                 /// (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in
@@ -1735,7 +1740,7 @@ namespace Google.Apis.Pubsub.v1
             /// <summary>Pulls messages from the server. The server may return `UNAVAILABLE` if there are too many
             /// concurrent pull requests pending for the given subscription.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="subscription">The subscription from which messages should be pulled. Format is
+            /// <param name="subscription">Required. The subscription from which messages should be pulled. Format is
             /// `projects/{project}/subscriptions/{sub}`.</param>
             public virtual PullRequest Pull(Google.Apis.Pubsub.v1.Data.PullRequest body, string subscription)
             {
@@ -1756,7 +1761,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The subscription from which messages should be pulled. Format is
+                /// <summary>Required. The subscription from which messages should be pulled. Format is
                 /// `projects/{project}/subscriptions/{sub}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("subscription", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Subscription { get; private set; }
@@ -1810,7 +1815,7 @@ namespace Google.Apis.Pubsub.v1
             /// state captured by a snapshot. Note that both the subscription and the snapshot must be on the same
             /// topic.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="subscription">The subscription to affect.</param>
+            /// <param name="subscription">Required. The subscription to affect.</param>
             public virtual SeekRequest Seek(Google.Apis.Pubsub.v1.Data.SeekRequest body, string subscription)
             {
                 return new SeekRequest(service, body, subscription);
@@ -1833,7 +1838,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The subscription to affect.</summary>
+                /// <summary>Required. The subscription to affect.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("subscription", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Subscription { get; private set; }
 
@@ -2200,7 +2205,7 @@ namespace Google.Apis.Pubsub.v1
 
 
                 /// <summary>Lists the names of the subscriptions on this topic.</summary>
-                /// <param name="topic">The name of the topic that subscriptions are attached to. Format is
+                /// <param name="topic">Required. The name of the topic that subscriptions are attached to. Format is
                 /// `projects/{project}/topics/{topic}`.</param>
                 public virtual ListRequest List(string topic)
                 {
@@ -2219,7 +2224,7 @@ namespace Google.Apis.Pubsub.v1
                     }
 
 
-                    /// <summary>The name of the topic that subscriptions are attached to. Format is
+                    /// <summary>Required. The name of the topic that subscriptions are attached to. Format is
                     /// `projects/{project}/topics/{topic}`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("topic", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Topic { get; private set; }
@@ -2294,10 +2299,10 @@ namespace Google.Apis.Pubsub.v1
             ///
             /// resource name rules.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}`
-            /// must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`),
-            /// periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length,
-            /// and it must not start with `"goog"`.</param>
+            /// <param name="name">Required. The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`.
+            /// `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
+            /// underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255
+            /// characters in length, and it must not start with `"goog"`.</param>
             public virtual CreateRequest Create(Google.Apis.Pubsub.v1.Data.Topic body, string name)
             {
                 return new CreateRequest(service, body, name);
@@ -2318,10 +2323,11 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`.
-                /// `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes
-                /// (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be
-                /// between 3 and 255 characters in length, and it must not start with `"goog"`.</summary>
+                /// <summary>Required. The name of the topic. It must have the format
+                /// `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters
+                /// (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus
+                /// (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not
+                /// start with `"goog"`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2372,7 +2378,8 @@ namespace Google.Apis.Pubsub.v1
             /// topic is deleted, a new topic may be created with the same name; this is an entirely new topic with none
             /// of the old configuration or subscriptions. Existing subscriptions to this topic are not deleted, but
             /// their `topic` field is set to `_deleted-topic_`.</summary>
-            /// <param name="topic">Name of the topic to delete. Format is `projects/{project}/topics/{topic}`.</param>
+            /// <param name="topic">Required. Name of the topic to delete. Format is
+            /// `projects/{project}/topics/{topic}`.</param>
             public virtual DeleteRequest Delete(string topic)
             {
                 return new DeleteRequest(service, topic);
@@ -2393,7 +2400,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>Name of the topic to delete. Format is `projects/{project}/topics/{topic}`.</summary>
+                /// <summary>Required. Name of the topic to delete. Format is
+                /// `projects/{project}/topics/{topic}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("topic", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Topic { get; private set; }
 
@@ -2435,7 +2443,8 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Gets the configuration of a topic.</summary>
-            /// <param name="topic">The name of the topic to get. Format is `projects/{project}/topics/{topic}`.</param>
+            /// <param name="topic">Required. The name of the topic to get. Format is
+            /// `projects/{project}/topics/{topic}`.</param>
             public virtual GetRequest Get(string topic)
             {
                 return new GetRequest(service, topic);
@@ -2453,7 +2462,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The name of the topic to get. Format is `projects/{project}/topics/{topic}`.</summary>
+                /// <summary>Required. The name of the topic to get. Format is
+                /// `projects/{project}/topics/{topic}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("topic", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Topic { get; private set; }
 
@@ -2577,7 +2587,7 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Lists matching topics.</summary>
-            /// <param name="project">The name of the project in which to list topics. Format is `projects/{project-
+            /// <param name="project">Required. The name of the project in which to list topics. Format is `projects/{project-
             /// id}`.</param>
             public virtual ListRequest List(string project)
             {
@@ -2596,7 +2606,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The name of the project in which to list topics. Format is `projects/{project-
+                /// <summary>Required. The name of the project in which to list topics. Format is `projects/{project-
                 /// id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Project { get; private set; }
@@ -2668,10 +2678,10 @@ namespace Google.Apis.Pubsub.v1
             /// <summary>Updates an existing topic. Note that certain properties of a topic are not
             /// modifiable.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}`
-            /// must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`),
-            /// periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length,
-            /// and it must not start with `"goog"`.</param>
+            /// <param name="name">Required. The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`.
+            /// `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
+            /// underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255
+            /// characters in length, and it must not start with `"goog"`.</param>
             public virtual PatchRequest Patch(Google.Apis.Pubsub.v1.Data.UpdateTopicRequest body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -2691,10 +2701,11 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`.
-                /// `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes
-                /// (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be
-                /// between 3 and 255 characters in length, and it must not start with `"goog"`.</summary>
+                /// <summary>Required. The name of the topic. It must have the format
+                /// `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters
+                /// (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus
+                /// (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not
+                /// start with `"goog"`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2744,7 +2755,7 @@ namespace Google.Apis.Pubsub.v1
             /// <summary>Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic does not
             /// exist.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="topic">The messages in the request will be published on this topic. Format is
+            /// <param name="topic">Required. The messages in the request will be published on this topic. Format is
             /// `projects/{project}/topics/{topic}`.</param>
             public virtual PublishRequest Publish(Google.Apis.Pubsub.v1.Data.PublishRequest body, string topic)
             {
@@ -2765,7 +2776,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The messages in the request will be published on this topic. Format is
+                /// <summary>Required. The messages in the request will be published on this topic. Format is
                 /// `projects/{project}/topics/{topic}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("topic", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Topic { get; private set; }
@@ -2974,8 +2985,8 @@ namespace Google.Apis.Pubsub.v1.Data
     /// <summary>Request for the Acknowledge method.</summary>
     public class AcknowledgeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The acknowledgment ID for the messages being acknowledged that was returned by the Pub/Sub system
-        /// in the `Pull` response. Must not be empty.</summary>
+        /// <summary>Required. The acknowledgment ID for the messages being acknowledged that was returned by the
+        /// Pub/Sub system in the `Pull` response. Must not be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackIds")]
         public virtual System.Collections.Generic.IList<string> AckIds { get; set; } 
 
@@ -3046,9 +3057,9 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>The subscription whose backlog the snapshot retains. Specifically, the created snapshot is
-        /// guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the
-        /// messages in the subscription's backlog that are unacknowledged upon the successful completion of the
+        /// <summary>Required. The subscription whose backlog the snapshot retains. Specifically, the created snapshot
+        /// is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as
+        /// the messages in the subscription's backlog that are unacknowledged upon the successful completion of the
         /// `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the
         /// successful completion of the CreateSnapshot request. Format is
         /// `projects/{project}/subscriptions/{sub}`.</summary>
@@ -3266,16 +3277,16 @@ namespace Google.Apis.Pubsub.v1.Data
     /// <summary>Request for the ModifyAckDeadline method.</summary>
     public class ModifyAckDeadlineRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The new ack deadline with respect to the time this request was sent to the Pub/Sub system. For
-        /// example, if the value is 10, the new ack deadline will expire 10 seconds after the `ModifyAckDeadline` call
-        /// was made. Specifying zero might immediately make the message available for delivery to another subscriber
-        /// client. This typically results in an increase in the rate of message redeliveries (that is, duplicates). The
-        /// minimum deadline you can specify is 0 seconds. The maximum deadline you can specify is 600 seconds (10
-        /// minutes).</summary>
+        /// <summary>Required. The new ack deadline with respect to the time this request was sent to the Pub/Sub
+        /// system. For example, if the value is 10, the new ack deadline will expire 10 seconds after the
+        /// `ModifyAckDeadline` call was made. Specifying zero might immediately make the message available for delivery
+        /// to another subscriber client. This typically results in an increase in the rate of message redeliveries
+        /// (that is, duplicates). The minimum deadline you can specify is 0 seconds. The maximum deadline you can
+        /// specify is 600 seconds (10 minutes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackDeadlineSeconds")]
         public virtual System.Nullable<int> AckDeadlineSeconds { get; set; } 
 
-        /// <summary>List of acknowledgment IDs.</summary>
+        /// <summary>Required. List of acknowledgment IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackIds")]
         public virtual System.Collections.Generic.IList<string> AckIds { get; set; } 
 
@@ -3286,7 +3297,7 @@ namespace Google.Apis.Pubsub.v1.Data
     /// <summary>Request for the ModifyPushConfig method.</summary>
     public class ModifyPushConfigRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The push configuration for future deliveries.
+        /// <summary>Required. The push configuration for future deliveries.
         ///
         /// An empty `pushConfig` indicates that the Pub/Sub system should stop pushing messages from the given
         /// subscription and allow messages to be pulled and acknowledged - effectively pausing the subscription if
@@ -3393,7 +3404,7 @@ namespace Google.Apis.Pubsub.v1.Data
     /// <summary>Request for the Publish method.</summary>
     public class PublishRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The messages to publish.</summary>
+        /// <summary>Required. The messages to publish.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<PubsubMessage> Messages { get; set; } 
 
@@ -3447,8 +3458,8 @@ namespace Google.Apis.Pubsub.v1.Data
     /// <summary>Request for the `Pull` method.</summary>
     public class PullRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The maximum number of messages to return for this request. Must be a positive integer. The Pub/Sub
-        /// system may return fewer than the number specified.</summary>
+        /// <summary>Required. The maximum number of messages to return for this request. Must be a positive integer.
+        /// The Pub/Sub system may return fewer than the number specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxMessages")]
         public virtual System.Nullable<int> MaxMessages { get; set; } 
 
@@ -3668,7 +3679,7 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("messageRetentionDuration")]
         public virtual object MessageRetentionDuration { get; set; } 
 
-        /// <summary>The name of the subscription. It must have the format
+        /// <summary>Required. The name of the subscription. It must have the format
         /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain
         /// only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
         /// plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start
@@ -3689,7 +3700,7 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("retainAckedMessages")]
         public virtual System.Nullable<bool> RetainAckedMessages { get; set; } 
 
-        /// <summary>The name of the topic from which this subscription is receiving messages. Format is
+        /// <summary>Required. The name of the topic from which this subscription is receiving messages. Format is
         /// `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been
         /// deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
@@ -3742,8 +3753,8 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("messageStoragePolicy")]
         public virtual MessageStoragePolicy MessageStoragePolicy { get; set; } 
 
-        /// <summary>The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}`
-        /// must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
+        /// <summary>Required. The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`.
+        /// `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
         /// underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and
         /// 255 characters in length, and it must not start with `"goog"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -3756,11 +3767,11 @@ namespace Google.Apis.Pubsub.v1.Data
     /// <summary>Request for the UpdateSnapshot method.</summary>
     public class UpdateSnapshotRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The updated snapshot object.</summary>
+        /// <summary>Required. The updated snapshot object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshot")]
         public virtual Snapshot Snapshot { get; set; } 
 
-        /// <summary>Indicates which fields in the provided snapshot to update. Must be specified and non-
+        /// <summary>Required. Indicates which fields in the provided snapshot to update. Must be specified and non-
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
@@ -3772,11 +3783,11 @@ namespace Google.Apis.Pubsub.v1.Data
     /// <summary>Request for the UpdateSubscription method.</summary>
     public class UpdateSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The updated subscription object.</summary>
+        /// <summary>Required. The updated subscription object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
         public virtual Subscription Subscription { get; set; } 
 
-        /// <summary>Indicates which fields in the provided subscription to update. Must be specified and non-
+        /// <summary>Required. Indicates which fields in the provided subscription to update. Must be specified and non-
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
@@ -3788,14 +3799,14 @@ namespace Google.Apis.Pubsub.v1.Data
     /// <summary>Request for the UpdateTopic method.</summary>
     public class UpdateTopicRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The updated topic object.</summary>
+        /// <summary>Required. The updated topic object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
         public virtual Topic Topic { get; set; } 
 
-        /// <summary>Indicates which fields in the provided topic to update. Must be specified and non-empty. Note that
-        /// if `update_mask` contains "message_storage_policy" then the new value will be determined based on the policy
-        /// configured at the project or organization level. The `message_storage_policy` must not be set in the `topic`
-        /// provided above.</summary>
+        /// <summary>Required. Indicates which fields in the provided topic to update. Must be specified and non-empty.
+        /// Note that if `update_mask` contains "message_storage_policy" then the new value will be determined based on
+        /// the policy configured at the project or organization level. The `message_storage_policy` must not be set in
+        /// the `topic` provided above.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 

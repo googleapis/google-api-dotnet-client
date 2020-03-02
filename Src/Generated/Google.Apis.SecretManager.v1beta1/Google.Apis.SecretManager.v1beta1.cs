@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/secret-manager/'>Secret Manager API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200214 (1870)
+ *      <tr><th>API Rev<td>20200222 (1878)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/secret-manager/'>
  *              https://cloud.google.com/secret-manager/</a>

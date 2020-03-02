@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>Access Context Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200215 (1871)
+ *      <tr><th>API Rev<td>20200224 (1880)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>
  *              https://cloud.google.com/access-context-manager/docs/reference/rest/</a>
@@ -821,11 +821,11 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>Replace all existing Access Levels in an Access Policy with the Access Levels provided. This is
-            /// done within one transaction. The longrunning operation from this RPC will have a successful status once
-            /// all replacements have propagated to long-lasting storage. Replacements containing errors will result in
-            /// an error response for the first error encountered and the transaction will be cancelled.
-            /// Operation.response field will contain ReplaceAccessLevelsResponse. Removing Access Levels contained in
-            /// existing Service Perimeters will result in error.</summary>
+            /// done atomically. The longrunning operation from this RPC will have a successful status once all
+            /// replacements have propagated to long-lasting storage. Replacements containing errors will result in an
+            /// error response for the first error encountered.  Replacement will be cancelled on error, existing Access
+            /// Levels will not be affected. Operation.response field will contain ReplaceAccessLevelsResponse. Removing
+            /// Access Levels contained in existing Service Perimeters will result in error.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. Resource name for the access policy which owns these Access Levels.
             ///
@@ -836,11 +836,11 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>Replace all existing Access Levels in an Access Policy with the Access Levels provided. This is
-            /// done within one transaction. The longrunning operation from this RPC will have a successful status once
-            /// all replacements have propagated to long-lasting storage. Replacements containing errors will result in
-            /// an error response for the first error encountered and the transaction will be cancelled.
-            /// Operation.response field will contain ReplaceAccessLevelsResponse. Removing Access Levels contained in
-            /// existing Service Perimeters will result in error.</summary>
+            /// done atomically. The longrunning operation from this RPC will have a successful status once all
+            /// replacements have propagated to long-lasting storage. Replacements containing errors will result in an
+            /// error response for the first error encountered.  Replacement will be cancelled on error, existing Access
+            /// Levels will not be affected. Operation.response field will contain ReplaceAccessLevelsResponse. Removing
+            /// Access Levels contained in existing Service Perimeters will result in error.</summary>
             public class ReplaceAllRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.Operation>
             {
                 /// <summary>Constructs a new ReplaceAll request.</summary>
@@ -1401,10 +1401,11 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>Replace all existing Service Perimeters in an Access Policy with the Service Perimeters
-            /// provided. This is done within one transaction. The longrunning operation from this RPC will have a
-            /// successful status once all replacements have propagated to long-lasting storage. Replacements containing
-            /// errors will result in an error response for the first error encountered and the transaction will be
-            /// cancelled. Operation.response field will contain ReplaceServicePerimetersResponse.</summary>
+            /// provided. This is done atomically. The longrunning operation from this RPC will have a successful status
+            /// once all replacements have propagated to long-lasting storage. Replacements containing errors will
+            /// result in an error response for the first error encountered. Replacement will be cancelled on error,
+            /// existing Service Perimeters will not be affected. Operation.response field will contain
+            /// ReplaceServicePerimetersResponse.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. Resource name for the access policy which owns these Service Perimeters.
             ///
@@ -1415,10 +1416,11 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>Replace all existing Service Perimeters in an Access Policy with the Service Perimeters
-            /// provided. This is done within one transaction. The longrunning operation from this RPC will have a
-            /// successful status once all replacements have propagated to long-lasting storage. Replacements containing
-            /// errors will result in an error response for the first error encountered and the transaction will be
-            /// cancelled. Operation.response field will contain ReplaceServicePerimetersResponse.</summary>
+            /// provided. This is done atomically. The longrunning operation from this RPC will have a successful status
+            /// once all replacements have propagated to long-lasting storage. Replacements containing errors will
+            /// result in an error response for the first error encountered. Replacement will be cancelled on error,
+            /// existing Service Perimeters will not be affected. Operation.response field will contain
+            /// ReplaceServicePerimetersResponse.</summary>
             public class ReplaceAllRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.Operation>
             {
                 /// <summary>Constructs a new ReplaceAll request.</summary>
@@ -2579,7 +2581,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
     }    
 
     /// <summary>A request to replace all existing Access Levels in an Access Policy with the Access Levels provided.
-    /// This is done within one transaction.</summary>
+    /// This is done atomically.</summary>
     public class ReplaceAccessLevelsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The desired Access Levels that should replace all existing Access Levels in the Access
@@ -2610,7 +2612,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
     }    
 
     /// <summary>A request to replace all existing Service Perimeters in an Access Policy with the Service Perimeters
-    /// provided. This is done within one transaction.</summary>
+    /// provided. This is done atomically.</summary>
     public class ReplaceServicePerimetersRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The etag for the version of the Access Policy that this replace operation is to be
@@ -2727,7 +2729,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedServices")]
         public virtual System.Collections.Generic.IList<string> RestrictedServices { get; set; } 
 
-        /// <summary>Configuration for within Perimeter allowed APIs.</summary>
+        /// <summary>Configuration for APIs allowed within Perimeter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcAccessibleServices")]
         public virtual VpcAccessibleServices VpcAccessibleServices { get; set; } 
 

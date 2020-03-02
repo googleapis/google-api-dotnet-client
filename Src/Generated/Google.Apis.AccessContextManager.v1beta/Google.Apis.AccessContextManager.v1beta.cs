@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>Access Context Manager API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20200215 (1871)
+ *      <tr><th>API Rev<td>20200224 (1880)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>
  *              https://cloud.google.com/access-context-manager/docs/reference/rest/</a>
@@ -2093,14 +2093,9 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unrestrictedServices")]
         public virtual System.Collections.Generic.IList<string> UnrestrictedServices { get; set; } 
 
-        /// <summary>Beta. Configuration for within Perimeter allowed APIs.</summary>
+        /// <summary>Beta. Configuration for APIs allowed within Perimeter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcAccessibleServices")]
         public virtual VpcAccessibleServices VpcAccessibleServices { get; set; } 
-
-        /// <summary>Alpha. Configuration for within Perimeter allowed APIs. Deprecated. The field had been renamed to
-        /// vpc_accessible_services</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("vpcServiceRestriction")]
-        public virtual VpcServiceRestriction VpcServiceRestriction { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2134,24 +2129,6 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
 
     /// <summary>Specifies how APIs are allowed to communicate within the Service Perimeter.</summary>
     public class VpcAccessibleServices : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is
-        /// True.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowedServices")]
-        public virtual System.Collections.Generic.IList<string> AllowedServices { get; set; } 
-
-        /// <summary>Whether to restrict API calls within the Service Perimeter to the list of APIs specified in
-        /// 'allowed_services'.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableRestriction")]
-        public virtual System.Nullable<bool> EnableRestriction { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Alpha. Specifies how APIs are allowed to communicate within the Service Perimeter. This message is
-    /// DEPRECATED and had been renamed to VpcAccessibleServices</summary>
-    public class VpcServiceRestriction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is
         /// True.</summary>

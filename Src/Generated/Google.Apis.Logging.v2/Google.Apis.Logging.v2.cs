@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200221 (1877)
+ *      <tr><th>API Rev<td>20200222 (1878)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -1025,8 +1025,8 @@ namespace Google.Apis.Logging.v2
                 /// <param name="parent">Required. The parent resource whose buckets are to be listed:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note:
-                /// The locations portion of the resource is required, but supplying the character - in place of LOCATION_ID will return
-                /// all buckets.</param>
+                /// The locations portion of the resource must be specified, but supplying the character - in place of LOCATION_ID will
+                /// return all buckets.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -1048,8 +1048,8 @@ namespace Google.Apis.Logging.v2
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
                     /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
                     /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion of the resource is
-                    /// required, but supplying the character - in place of LOCATION_ID will return all
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion of the resource must
+                    /// be specified, but supplying the character - in place of LOCATION_ID will return all
                     /// buckets.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3104,8 +3104,8 @@ namespace Google.Apis.Logging.v2
                 /// <param name="parent">Required. The parent resource whose buckets are to be listed:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note:
-                /// The locations portion of the resource is required, but supplying the character - in place of LOCATION_ID will return
-                /// all buckets.</param>
+                /// The locations portion of the resource must be specified, but supplying the character - in place of LOCATION_ID will
+                /// return all buckets.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -3127,8 +3127,8 @@ namespace Google.Apis.Logging.v2
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
                     /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
                     /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion of the resource is
-                    /// required, but supplying the character - in place of LOCATION_ID will return all
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion of the resource must
+                    /// be specified, but supplying the character - in place of LOCATION_ID will return all
                     /// buckets.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -4193,8 +4193,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="parent">Required. The parent resource whose buckets are to be listed:
             /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note:
-            /// The locations portion of the resource is required, but supplying the character - in place of LOCATION_ID will return
-            /// all buckets.</param>
+            /// The locations portion of the resource must be specified, but supplying the character - in place of LOCATION_ID will
+            /// return all buckets.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -4216,8 +4216,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion of the resource is
-                /// required, but supplying the character - in place of LOCATION_ID will return all buckets.</summary>
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion of the resource must be
+                /// specified, but supplying the character - in place of LOCATION_ID will return all buckets.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -5232,8 +5232,8 @@ namespace Google.Apis.Logging.v2
                 /// <param name="parent">Required. The parent resource whose buckets are to be listed:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note:
-                /// The locations portion of the resource is required, but supplying the character - in place of LOCATION_ID will return
-                /// all buckets.</param>
+                /// The locations portion of the resource must be specified, but supplying the character - in place of LOCATION_ID will
+                /// return all buckets.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -5255,8 +5255,8 @@ namespace Google.Apis.Logging.v2
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
                     /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
                     /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion of the resource is
-                    /// required, but supplying the character - in place of LOCATION_ID will return all
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion of the resource must
+                    /// be specified, but supplying the character - in place of LOCATION_ID will return all
                     /// buckets.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -6942,8 +6942,8 @@ namespace Google.Apis.Logging.v2
                 /// <param name="parent">Required. The parent resource whose buckets are to be listed:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note:
-                /// The locations portion of the resource is required, but supplying the character - in place of LOCATION_ID will return
-                /// all buckets.</param>
+                /// The locations portion of the resource must be specified, but supplying the character - in place of LOCATION_ID will
+                /// return all buckets.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -6965,8 +6965,8 @@ namespace Google.Apis.Logging.v2
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
                     /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
                     /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion of the resource is
-                    /// required, but supplying the character - in place of LOCATION_ID will return all
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion of the resource must
+                    /// be specified, but supplying the character - in place of LOCATION_ID will return all
                     /// buckets.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -7361,8 +7361,8 @@ namespace Google.Apis.Logging.v2
 
             /// <summary>Creates a logs-based metric.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The resource name of the project in which to create the metric: "projects/[PROJECT_ID]" The new
-            /// metric must be provided in the request.</param>
+            /// <param name="parent">Required. The resource name of the project in which to create the metric:
+            /// "projects/[PROJECT_ID]" The new metric must be provided in the request.</param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogMetric body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -7381,8 +7381,8 @@ namespace Google.Apis.Logging.v2
                 }
 
 
-                /// <summary>The resource name of the project in which to create the metric: "projects/[PROJECT_ID]" The
-                /// new metric must be provided in the request.</summary>
+                /// <summary>Required. The resource name of the project in which to create the metric:
+                /// "projects/[PROJECT_ID]" The new metric must be provided in the request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -7430,8 +7430,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Deletes a logs-based metric.</summary>
-            /// <param name="metricName">The resource name of the metric to delete: "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
-            /// </param>
+            /// <param name="metricName">Required. The resource name of the metric to delete:
+            /// "projects/[PROJECT_ID]/metrics/[METRIC_ID]" </param>
             public virtual DeleteRequest Delete(string metricName)
             {
                 return new DeleteRequest(service, metricName);
@@ -7449,8 +7449,8 @@ namespace Google.Apis.Logging.v2
                 }
 
 
-                /// <summary>The resource name of the metric to delete: "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
-                /// </summary>
+                /// <summary>Required. The resource name of the metric to delete:
+                /// "projects/[PROJECT_ID]/metrics/[METRIC_ID]" </summary>
                 [Google.Apis.Util.RequestParameterAttribute("metricName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MetricName { get; private set; }
 
@@ -7492,8 +7492,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Gets a logs-based metric.</summary>
-            /// <param name="metricName">The resource name of the desired metric: "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
-            /// </param>
+            /// <param name="metricName">Required. The resource name of the desired metric:
+            /// "projects/[PROJECT_ID]/metrics/[METRIC_ID]" </param>
             public virtual GetRequest Get(string metricName)
             {
                 return new GetRequest(service, metricName);
@@ -7511,8 +7511,8 @@ namespace Google.Apis.Logging.v2
                 }
 
 
-                /// <summary>The resource name of the desired metric: "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
-                /// </summary>
+                /// <summary>Required. The resource name of the desired metric:
+                /// "projects/[PROJECT_ID]/metrics/[METRIC_ID]" </summary>
                 [Google.Apis.Util.RequestParameterAttribute("metricName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MetricName { get; private set; }
 
@@ -7646,9 +7646,10 @@ namespace Google.Apis.Logging.v2
 
             /// <summary>Creates or updates a logs-based metric.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="metricName">The resource name of the metric to update: "projects/[PROJECT_ID]/metrics/[METRIC_ID]" The
-            /// updated metric must be provided in the request and it's name field must be the same as [METRIC_ID] If the metric
-            /// does not exist in [PROJECT_ID], then a new metric is created.</param>
+            /// <param name="metricName">Required. The resource name of the metric to update:
+            /// "projects/[PROJECT_ID]/metrics/[METRIC_ID]" The updated metric must be provided in the request and it's name field
+            /// must be the same as [METRIC_ID] If the metric does not exist in [PROJECT_ID], then a new metric is
+            /// created.</param>
             public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogMetric body, string metricName)
             {
                 return new UpdateRequest(service, body, metricName);
@@ -7667,9 +7668,10 @@ namespace Google.Apis.Logging.v2
                 }
 
 
-                /// <summary>The resource name of the metric to update: "projects/[PROJECT_ID]/metrics/[METRIC_ID]" The
-                /// updated metric must be provided in the request and it's name field must be the same as [METRIC_ID]
-                /// If the metric does not exist in [PROJECT_ID], then a new metric is created.</summary>
+                /// <summary>Required. The resource name of the metric to update:
+                /// "projects/[PROJECT_ID]/metrics/[METRIC_ID]" The updated metric must be provided in the request and
+                /// it's name field must be the same as [METRIC_ID] If the metric does not exist in [PROJECT_ID], then a
+                /// new metric is created.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("metricName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MetricName { get; private set; }
 
@@ -9012,11 +9014,11 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; } 
 
-        /// <summary>Output Only. The resource name of the CMEK settings.</summary>
+        /// <summary>Output only. The resource name of the CMEK settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Output Only. The service account that will be used by the Logs Router to access your Cloud KMS
+        /// <summary>Output only. The service account that will be used by the Logs Router to access your Cloud KMS
         /// key.Before enabling CMEK for Logs Router, you must first assign the role
         /// roles/cloudkms.cryptoKeyEncrypterDecrypter to the service account that the Logs Router will use to access
         /// your Cloud KMS key. Use GetCmekSettings to obtain the service account ID.See Enabling CMEK for Logs Router
@@ -9253,8 +9255,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; } 
 
-        /// <summary>Deprecated. Use resource_names instead. One or more project identifiers or project numbers from
-        /// which to retrieve log entries. Example: "my-project-1A".</summary>
+        /// <summary>Optional. Deprecated. Use resource_names instead. One or more project identifiers or project
+        /// numbers from which to retrieve log entries. Example: "my-project-1A".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectIds")]
         public virtual System.Collections.Generic.IList<string> ProjectIds { get; set; } 
 
@@ -9369,7 +9371,7 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>The bucket lifecycle state.Output only.</summary>
+        /// <summary>Output only. The bucket lifecycle state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
         public virtual string LifecycleState { get; set; } 
 
@@ -9423,9 +9425,9 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>Required. The resource name of the log to which this log entry belongs:
         /// "projects/[PROJECT_ID]/logs/[LOG_ID]" "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
         /// "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]" "folders/[FOLDER_ID]/logs/[LOG_ID]" A project number
-        /// may optionally be used in place of PROJECT_ID. The project number is translated to its corresponding
-        /// PROJECT_ID internally and the log_name field will contain PROJECT_ID in queries and exports.[LOG_ID] must be
-        /// URL-encoded within log_name. Example:
+        /// may be used in place of PROJECT_ID. The project number is translated to its corresponding PROJECT_ID
+        /// internally and the log_name field will contain PROJECT_ID in queries and exports.[LOG_ID] must be URL-
+        /// encoded within log_name. Example:
         /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". [LOG_ID] must be less than
         /// 512 characters long and can only include the following characters: upper and lower case alphanumeric
         /// characters, forward-slash, underscore, hyphen, and period.For backward compatibility, if log_name begins
@@ -9435,7 +9437,7 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
         public virtual string LogName { get; set; } 
 
-        /// <summary>Deprecated. Output only. Additional metadata about the monitored resource.Only k8s_container,
+        /// <summary>Output only. Deprecated. Additional metadata about the monitored resource.Only k8s_container,
         /// k8s_pod, and k8s_node MonitoredResources have this field populated for GKE versions older than 1.12.6. For
         /// GKE versions 1.12.6 and above, the metadata field has been deprecated. The Kubernetes pod labels that used
         /// to be in metadata.userLabels will now be present in the labels field with a key prefix of k8s-pod/. The
@@ -9475,7 +9477,7 @@ namespace Google.Apis.Logging.v2.Data
 
         /// <summary>Optional. The span ID within the trace associated with the log entry.For Trace spans, this is the
         /// same format that the Trace API v2 uses: a 16-character hexadecimal encoding of an 8-byte array, such as
-        /// "000000000000004a".</summary>
+        /// 000000000000004a.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanId")]
         public virtual string SpanId { get; set; } 
 
@@ -9745,10 +9747,6 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; } 
 
-        /// <summary>Do not use. This field is ignored.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
-
         /// <summary>Optional. An advanced logs filter. The only exported log entries are those that are in the resource
         /// owning the sink and that match the filter. For example: logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND
         /// severity>=ERROR </summary>
@@ -9778,10 +9776,6 @@ namespace Google.Apis.Logging.v2.Data
         /// by default and cannot be changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputVersionFormat")]
         public virtual string OutputVersionFormat { get; set; } 
-
-        /// <summary>Do not use. This field is ignored.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
 
         /// <summary>Output only. The last update timestamp of the sink.This field may not be present for older
         /// sinks.</summary>
@@ -10256,7 +10250,7 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Result returned from WriteLogEntries. empty</summary>
+    /// <summary>Result returned from WriteLogEntries.</summary>
     public class WriteLogEntriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>

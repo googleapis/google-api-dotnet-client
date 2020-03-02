@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/accounts/docs/OAuth2'>Google OAuth2 API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190522 (1602)
+ *      <tr><th>API Rev<td>20200213 (1869)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/accounts/docs/OAuth2'>
  *              https://developers.google.com/accounts/docs/OAuth2</a>
@@ -137,49 +137,6 @@ namespace Google.Apis.Oauth2.v2
 
         }
 
-        public virtual GetCertForOpenIdConnectRequest GetCertForOpenIdConnect()
-        {
-            return new GetCertForOpenIdConnectRequest(this);
-        }
-
-
-        public class GetCertForOpenIdConnectRequest : Oauth2BaseServiceRequest<Google.Apis.Oauth2.v2.Data.Jwk>
-        {
-            /// <summary>Constructs a new GetCertForOpenIdConnect request.</summary>
-            public GetCertForOpenIdConnectRequest(Google.Apis.Services.IClientService service)
-                : base(service)
-            {
-                InitParameters();
-            }
-
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "getCertForOpenIdConnect"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "GET"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "oauth2/v2/certs"; }
-            }
-
-            /// <summary>Initializes GetCertForOpenIdConnect parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-            }
-
-        }
         public virtual TokeninfoRequest Tokeninfo()
         {
             return new TokeninfoRequest(this);
@@ -553,38 +510,6 @@ namespace Google.Apis.Oauth2.v2
 
 namespace Google.Apis.Oauth2.v2.Data
 {    
-
-    public class Jwk : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("keys")]
-        public virtual System.Collections.Generic.IList<Jwk.KeysData> Keys { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-        
-
-        public class KeysData
-        {
-            [Newtonsoft.Json.JsonPropertyAttribute("alg")]
-            public virtual string Alg { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("e")]
-            public virtual string E { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("kid")]
-            public virtual string Kid { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("kty")]
-            public virtual string Kty { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("n")]
-            public virtual string N { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("use")]
-            public virtual string Use { get; set; } 
-
-        }
-    }    
 
     public class Tokeninfo : Google.Apis.Requests.IDirectResponseSchema
     {
