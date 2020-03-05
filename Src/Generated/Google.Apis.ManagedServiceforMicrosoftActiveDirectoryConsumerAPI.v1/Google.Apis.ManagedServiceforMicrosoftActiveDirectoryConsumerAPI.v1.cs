@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/managed-microsoft-ad/'>Managed Service for Microsoft Active Directory API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200213 (1869)
+ *      <tr><th>API Rev<td>20200219 (1875)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/managed-microsoft-ad/'>
  *              https://cloud.google.com/managed-microsoft-ad/</a>

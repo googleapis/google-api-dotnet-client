@@ -7146,6 +7146,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("verticalPodAutoscaling")]
         public virtual VerticalPodAutoscaling VerticalPodAutoscaling { get; set; } 
 
+        /// <summary>Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadIdentityConfig")]
+        public virtual WorkloadIdentityConfig WorkloadIdentityConfig { get; set; } 
+
         /// <summary>[Output only] The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
         /// the cluster resides. This field is deprecated, use location instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
@@ -7283,6 +7287,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Cluster-level Vertical Pod Autoscaling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredVerticalPodAutoscaling")]
         public virtual VerticalPodAutoscaling DesiredVerticalPodAutoscaling { get; set; } 
+
+        /// <summary>Configuration for Workload Identity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredWorkloadIdentityConfig")]
+        public virtual WorkloadIdentityConfig DesiredWorkloadIdentityConfig { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7891,6 +7899,29 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Progress metric is (string, int|float|string) pair.</summary>
+    public class Metric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>For metrics with floating point value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
+        public virtual System.Nullable<double> DoubleValue { get; set; } 
+
+        /// <summary>For metrics with integer value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
+        public virtual System.Nullable<long> IntValue { get; set; } 
+
+        /// <summary>Required. Metric name, e.g., "nodes total", "percent done".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>For metrics with custom values (ratios, visual progress, etc.).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>NetworkConfig reports the relative names of network & subnetwork.</summary>
     public class NetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8065,6 +8096,10 @@ namespace Google.Apis.Container.v1.Data
         /// https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taints")]
         public virtual System.Collections.Generic.IList<NodeTaint> Taints { get; set; } 
+
+        /// <summary>The workload metadata configuration for this node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadMetadataConfig")]
+        public virtual WorkloadMetadataConfig WorkloadMetadataConfig { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8252,6 +8287,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
         public virtual string OperationType { get; set; } 
 
+        /// <summary>Output only. [Output only] Progress information for an operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
+        public virtual OperationProgress Progress { get; set; } 
+
         /// <summary>Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
@@ -8265,7 +8304,7 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>If an error has occurred, a textual description of the error.</summary>
+        /// <summary>Output only. If an error has occurred, a textual description of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; } 
 
@@ -8277,6 +8316,32 @@ namespace Google.Apis.Container.v1.Data
         /// is taking place. This field is deprecated, use location instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about operation (or operation stage) progress.</summary>
+    public class OperationProgress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Progress metric bundle, for example: metrics: [{name: "nodes done",     int_value: 15}, {name:
+        /// "nodes total",    int_value: 32}] or metrics: [{name: "progress",       double_value: 0.56}, {name:
+        /// "progress scale", double_value: 1.0}]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; } 
+
+        /// <summary>A non-parameterized string describing an operation stage. Unset for single-stage
+        /// operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Substages of an operation or a stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stages")]
+        public virtual System.Collections.Generic.IList<OperationProgress> Stages { get; set; } 
+
+        /// <summary>Status of an operation stage. Unset for single-stage operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8356,7 +8421,9 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consumeReservationType")]
         public virtual string ConsumeReservationType { get; set; } 
 
-        /// <summary>Corresponds to the label key of reservation resource.</summary>
+        /// <summary>Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name,
+        /// specify "googleapis.com/reservation-name" as the key and specify the name of your reservation as its
+        /// value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; } 
 
@@ -9120,6 +9187,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeSettings")]
         public virtual UpgradeSettings UpgradeSettings { get; set; } 
 
+        /// <summary>The desired workload metadata config for the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadMetadataConfig")]
+        public virtual WorkloadMetadataConfig WorkloadMetadataConfig { get; set; } 
+
         /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
         /// in which the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
@@ -9221,6 +9292,30 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Enables vertical pod autoscaling.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.</summary>
+    public class WorkloadIdentityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The workload pool to attach all Kubernetes service accounts to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadPool")]
+        public virtual string WorkloadPool { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>WorkloadMetadataConfig defines the metadata configuration to expose to workloads on the node
+    /// pool.</summary>
+    public class WorkloadMetadataConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Mode is the configuration for how to expose metadata to workloads running on the node
+        /// pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

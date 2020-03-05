@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>Service Consumer Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200227 (1883)
+ *      <tr><th>API Rev<td>20200303 (1888)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>
  *              https://cloud.google.com/service-consumer-management/docs/overview</a>
@@ -4009,13 +4009,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         /// For example, an override on a limit with the unit 1/{project}/{region} could contain an entry with the key
         /// "region" and the value "us-east-1"; the override is only applied to quota consumed in that region.
         ///
-        /// This map has the following restrictions: - Keys that are not defined in the limit's unit are not valid keys.
-        /// Any string appearing in {brackets} in the unit (besides {project} or {user}) is a defined key. - "project"
-        /// is not a valid key; the project is already specified in the parent resource name. - "user" is not a valid
-        /// key; the API does not support quota overrides that apply only to a specific user. - If "region" appears as a
-        /// key, its value must be a valid Cloud region. - If "zone" appears as a key, its value must be a valid Cloud
-        /// zone. - If any valid key other than "region" or "zone" appears in the map, then all valid keys other than
-        /// "region" or "zone" must also appear in the map.</summary>
+        /// This map has the following restrictions:
+        ///
+        /// *   Keys that are not defined in the limit's unit are not valid keys. Any string appearing in {brackets} in
+        /// the unit (besides {project} or {user}) is a defined key. *   "project" is not a valid key; the project is
+        /// already specified in the parent resource name. *   "user" is not a valid key; the API does not support quota
+        /// overrides that apply only to a specific user. *   If "region" appears as a key, its value must be a valid
+        /// Cloud region. *   If "zone" appears as a key, its value must be a valid Cloud zone. *   If any valid key
+        /// other than "region" or "zone" appears in the map, then all valid keys other than "region" or "zone" must
+        /// also appear in the map.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual System.Collections.Generic.IDictionary<string,string> Dimensions { get; set; } 
 

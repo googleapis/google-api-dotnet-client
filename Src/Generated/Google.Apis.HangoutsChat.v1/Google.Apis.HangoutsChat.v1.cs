@@ -1131,9 +1131,23 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configCompleteRedirectUrl")]
         public virtual string ConfigCompleteRedirectUrl { get; set; } 
 
+        /// <summary>The type of dialog event we have received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogEventType")]
+        public virtual string DialogEventType { get; set; } 
+
         /// <summary>The timestamp indicating when the event was dispatched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual object EventTime { get; set; } 
+
+        /// <summary>The list of form inputs we will supply to the bot. These are just the inputs from the dialog that
+        /// are populated by the user. This will only be populated for CARD_CLICKED events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formInputs")]
+        public virtual System.Collections.Generic.IList<FormInput> FormInputs { get; set; } 
+
+        /// <summary>Whether or not this event is related to dialogs request, submit or cancel. This will be set to true
+        /// when we want a request/submit/cancel event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDialogEvent")]
+        public virtual System.Nullable<bool> IsDialogEvent { get; set; } 
 
         /// <summary>The message that triggered the event, if applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -1189,6 +1203,21 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>List of action parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<ActionParameter> Parameters { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A single user input from an editable widget from Card API.</summary>
+    public class FormInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the editable widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Value entered by user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

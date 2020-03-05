@@ -6781,8 +6781,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dnsCacheConfig")]
         public virtual DnsCacheConfig DnsCacheConfig { get; set; } 
 
-        /// <summary>Configuration for the GCE PD CSI driver. This option can only be enabled at cluster creation
-        /// time.</summary>
+        /// <summary>Configuration for the GCP Compute Persistent Disk CSI driver.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcePersistentDiskCsiDriverConfig")]
         public virtual GcePersistentDiskCsiDriverConfig GcePersistentDiskCsiDriverConfig { get; set; } 
 
@@ -8184,7 +8183,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
         public virtual System.Nullable<long> IntValue { get; set; } 
 
-        /// <summary>Metric name, required. e.g., "nodes total", "percent done"</summary>
+        /// <summary>Required. Metric name, e.g., "nodes total", "percent done".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -8564,7 +8563,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
         public virtual string OperationType { get; set; } 
 
-        /// <summary>[Output only] Progress information for an operation.</summary>
+        /// <summary>Output only. [Output only] Progress information for an operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual OperationProgress Progress { get; set; } 
 
@@ -8581,7 +8580,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>If an error has occurred, a textual description of the error.</summary>
+        /// <summary>Output only. If an error has occurred, a textual description of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; } 
 
@@ -8764,7 +8763,9 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consumeReservationType")]
         public virtual string ConsumeReservationType { get; set; } 
 
-        /// <summary>Corresponds to the label key of reservation resource.</summary>
+        /// <summary>Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name,
+        /// specify "googleapis.com/reservation-name" as the key and specify the name of your reservation as its
+        /// value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; } 
 
@@ -9567,7 +9568,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeSettings")]
         public virtual UpgradeSettings UpgradeSettings { get; set; } 
 
-        /// <summary>The desired image type for the node pool.</summary>
+        /// <summary>The desired workload metadata config for the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadMetadataConfig")]
         public virtual WorkloadMetadataConfig WorkloadMetadataConfig { get; set; } 
 
@@ -9684,6 +9685,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("identityNamespace")]
         public virtual string IdentityNamespace { get; set; } 
 
+        /// <summary>The workload pool to attach all Kubernetes service accounts to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadPool")]
+        public virtual string WorkloadPool { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -9692,6 +9697,11 @@ namespace Google.Apis.Container.v1beta1.Data
     /// pool.</summary>
     public class WorkloadMetadataConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Mode is the configuration for how to expose metadata to workloads running on the node
+        /// pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; } 
+
         /// <summary>NodeMetadata is the configuration for how to expose metadata to the workloads running on the
         /// node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeMetadata")]

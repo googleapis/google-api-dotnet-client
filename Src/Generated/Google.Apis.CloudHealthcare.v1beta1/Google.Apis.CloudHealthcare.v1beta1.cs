@@ -9779,7 +9779,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// time at which the message was published. Notifications are only sent if the topic is non-empty. [Topic
         /// names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. cloud-
         /// healthcare@system.gserviceaccount.com must have publisher permissions on the given Cloud Pub/Sub topic. Not
-        /// having adequate permissions causes the calls that send notifications to fail.</summary>
+        /// having adequate permissions causes the calls that send notifications to fail.
+        ///
+        /// If a notification can't be published to Cloud Pub/Sub, errors are logged to Stackdriver (see [Viewing
+        /// logs](/healthcare/docs/how-tos/stackdriver-logging)). If the number of errors exceeds a certain rate, some
+        /// aren't submitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; } 
 

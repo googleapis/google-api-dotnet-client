@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>AI Platform Training & Prediction API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200222 (1878)
+ *      <tr><th>API Rev<td>20200229 (1885)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -1033,9 +1033,168 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                operations = new OperationsResource(service);
 
             }
 
+            private readonly OperationsResource operations;
+
+            /// <summary>Gets the Operations resource.</summary>
+            public virtual OperationsResource Operations
+            {
+                get { return operations; }
+            }
+
+            /// <summary>The "operations" collection of methods.</summary>
+            public class OperationsResource
+            {
+                private const string Resource = "operations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public OperationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
+                /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support this
+                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or
+                /// other methods to check whether the cancellation succeeded or whether the operation completed despite
+                /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
+                /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                /// `Code.CANCELLED`.</summary>
+                /// <param name="name">The name of the operation resource to be cancelled.</param>
+                public virtual CancelRequest Cancel(string name)
+                {
+                    return new CancelRequest(service, name);
+                }
+
+                /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
+                /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support this
+                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or
+                /// other methods to check whether the cancellation succeeded or whether the operation completed despite
+                /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
+                /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                /// `Code.CANCELLED`.</summary>
+                public class CancelRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Cancel request.</summary>
+                    public CancelRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the operation resource to be cancelled.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "cancel"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}:cancel"; }
+                    }
+
+                    /// <summary>Initializes Cancel parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// operation result at intervals as recommended by the API service.</summary>
+                /// <param name="name">The name of the operation resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// operation result at intervals as recommended by the API service.</summary>
+                public class GetRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the operation resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                            });
+                    }
+
+                }
+            }
 
             /// <summary>Get the complete list of CMLE capabilities in a location, along with their location-specific
             /// properties.</summary>
@@ -3046,6 +3205,19 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a custom encryption key configuration that can be applied to a resource.</summary>
+    public class GoogleCloudMlV1EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Cloud KMS resource identifier of the customer managed encryption key used to protect a
+        /// resource, such as a training job. Has the form: `projects/my-project/locations/my-region/keyRings/my-
+        /// kr/cryptoKeys/my-key`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request for explanations to be issued against a trained model.</summary>
     public class GoogleCloudMlV1ExplainRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3746,6 +3918,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Optional. Command line arguments to pass to the program.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; } 
+
+        /// <summary>Custom encryption key options for a training job. If this is set, then all resources created by the
+        /// training job will be encrypted with the provided encryption key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual GoogleCloudMlV1EncryptionConfig EncryptionConfig { get; set; } 
 
         /// <summary>Optional. The set of Hyperparameters to tune.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hyperparameters")]

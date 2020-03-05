@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200224 (1880)
+ *      <tr><th>API Rev<td>20200229 (1885)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -6592,6 +6592,80 @@ namespace Google.Apis.DLP.v2
 
                 }
 
+                /// <summary>Finish a running hybrid DlpJob. Triggers the finalization steps and running of any enabled
+                /// actions that have not yet run. Early access feature is in a pre-release state and might change or
+                /// have limited support. For more information, see https://cloud.google.com/products#product-launch-
+                /// stages.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The name of the DlpJob resource to be cancelled.</param>
+                public virtual FinishRequest Finish(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2FinishDlpJobRequest body, string name)
+                {
+                    return new FinishRequest(service, body, name);
+                }
+
+                /// <summary>Finish a running hybrid DlpJob. Triggers the finalization steps and running of any enabled
+                /// actions that have not yet run. Early access feature is in a pre-release state and might change or
+                /// have limited support. For more information, see https://cloud.google.com/products#product-launch-
+                /// stages.</summary>
+                public class FinishRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Finish request.</summary>
+                    public FinishRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2FinishDlpJobRequest body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The name of the DlpJob resource to be cancelled.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2FinishDlpJobRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "finish"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+name}:finish"; }
+                    }
+
+                    /// <summary>Initializes Finish parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dlpJobs/[^/]+$",
+                            });
+                    }
+
+                }
+
                 /// <summary>Gets the latest state of a long-running DlpJob. See https://cloud.google.com/dlp/docs
                 /// /inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn
                 /// more.</summary>
@@ -6639,6 +6713,82 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dlpJobs/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Inspect hybrid content and store findings to a job. To review the findings inspect the job.
+                /// Inspection will occur asynchronously. Early access feature is in a pre-release state and might
+                /// change or have limited support. For more information, see https://cloud.google.com/products#product-
+                /// launch-stages.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. Resource name of the job to execute a hybrid inspect on, for example `projects/dlp-
+                /// test-project/dlpJob/53234423`.</param>
+                public virtual HybridInspectRequest HybridInspect(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2HybridInspectDlpJobRequest body, string name)
+                {
+                    return new HybridInspectRequest(service, body, name);
+                }
+
+                /// <summary>Inspect hybrid content and store findings to a job. To review the findings inspect the job.
+                /// Inspection will occur asynchronously. Early access feature is in a pre-release state and might
+                /// change or have limited support. For more information, see https://cloud.google.com/products#product-
+                /// launch-stages.</summary>
+                public class HybridInspectRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2HybridInspectResponse>
+                {
+                    /// <summary>Constructs a new HybridInspect request.</summary>
+                    public HybridInspectRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2HybridInspectDlpJobRequest body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Resource name of the job to execute a hybrid inspect on, for example
+                    /// `projects/dlp-test-project/dlpJob/53234423`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2HybridInspectDlpJobRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "hybridInspect"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+name}:hybridInspect"; }
+                    }
+
+                    /// <summary>Initializes HybridInspect parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -7710,6 +7860,82 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/jobTriggers/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Inspect hybrid content and store findings to a trigger. The inspection will be processed
+                /// asynchronously. To review the findings monitor the jobs within the trigger. Early access feature is
+                /// in a pre-release state and might change or have limited support. For more information, see
+                /// https://cloud.google.com/products#product-launch-stages.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. Resource name of the trigger to execute a hybrid inspect on, for example `projects/dlp-
+                /// test-project/jobTriggers/53234423`.</param>
+                public virtual HybridInspectRequest HybridInspect(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2HybridInspectJobTriggerRequest body, string name)
+                {
+                    return new HybridInspectRequest(service, body, name);
+                }
+
+                /// <summary>Inspect hybrid content and store findings to a trigger. The inspection will be processed
+                /// asynchronously. To review the findings monitor the jobs within the trigger. Early access feature is
+                /// in a pre-release state and might change or have limited support. For more information, see
+                /// https://cloud.google.com/products#product-launch-stages.</summary>
+                public class HybridInspectRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2HybridInspectResponse>
+                {
+                    /// <summary>Constructs a new HybridInspect request.</summary>
+                    public HybridInspectRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2HybridInspectJobTriggerRequest body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Resource name of the trigger to execute a hybrid inspect on, for example
+                    /// `projects/dlp-test-project/jobTriggers/53234423`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2HybridInspectJobTriggerRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "hybridInspect"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+name}:hybridInspect"; }
+                    }
+
+                    /// <summary>Initializes HybridInspect parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -9398,6 +9624,50 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a container that may contain DLP findings. Examples of a container include a file, table, or
+    /// database record.</summary>
+    public class GooglePrivacyDlpV2Container : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A string representation of the full container name. Examples: - BigQuery:
+        /// 'Project:DataSetId.TableId' - Google Cloud Storage: 'gs://Bucket/folders/filename.txt'</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullPath")]
+        public virtual string FullPath { get; set; } 
+
+        /// <summary>Project where the finding was found. Can be different from the project that owns the
+        /// finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; } 
+
+        /// <summary>The rest of the path after the root. Examples: - For BigQuery table
+        /// `project_id:dataset_id.table_id`, the relative path is `table_id` - Google Cloud Storage file
+        /// `gs://bucket/folder/filename.txt`, the relative path is `folder/filename.txt`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relativePath")]
+        public virtual string RelativePath { get; set; } 
+
+        /// <summary>The root of the container. Examples: - For BigQuery table `project_id:dataset_id.table_id`, the
+        /// root is `dataset_id` - For Google Cloud Storage file `gs://bucket/folder/filename.txt`, the root is
+        /// `gs://bucket`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rootPath")]
+        public virtual string RootPath { get; set; } 
+
+        /// <summary>Container type, for example BigQuery or Google Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>Findings container modification timestamp, if applicable. For Google Cloud Storage contains last
+        /// file modification timestamp. For BigQuery table contains last_modified_time property. For Datastore - not
+        /// populated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>Findings container version, if available ("generation" for Google Cloud Storage).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Container structure for the content to inspect.</summary>
     public class GooglePrivacyDlpV2ContentItem : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10336,6 +10606,20 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobName")]
         public virtual string JobName { get; set; } 
 
+        /// <summary>The labels associated with this `InspectFinding`.
+        ///
+        /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression:
+        /// \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        ///
+        /// Label values must be between 0 and 63 characters long and must conform to the regular expression
+        /// (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
+        ///
+        /// No more than 10 labels can be associated with a given finding.
+        ///
+        /// Example: "environment" : "production" Example: "pipeline" : "etl"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
         /// <summary>Confidence of how likely it is that the `info_type` is correct.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("likelihood")]
         public virtual string Likelihood { get; set; } 
@@ -10390,6 +10674,15 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxFindingsPerRequest")]
         public virtual System.Nullable<int> MaxFindingsPerRequest { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for finishing a DLP hybrid job. Early access feature is in a pre-release state and
+    /// might change or have limited support. For more information, see https://cloud.google.com/products#product-
+    /// launch-stages.</summary>
+    public class GooglePrivacyDlpV2FinishDlpJobRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -10449,6 +10742,171 @@ namespace Google.Apis.DLP.v2.Data
         /// of a company office using the hotword regex "\(xxx\)", where "xxx" is the area code in question.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proximity")]
         public virtual GooglePrivacyDlpV2Proximity Proximity { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An individual hybrid item to inspect. Will be stored temporarily during processing. Early access
+    /// feature is in a pre-release state and might change or have limited support. For more information, see
+    /// https://cloud.google.com/products#product-launch-stages.</summary>
+    public class GooglePrivacyDlpV2HybridContentItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Supplementary information that will be added to each finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findingDetails")]
+        public virtual GooglePrivacyDlpV2HybridFindingDetails FindingDetails { get; set; } 
+
+        /// <summary>The item to inspect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("item")]
+        public virtual GooglePrivacyDlpV2ContentItem Item { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Populate to associate additional data with each finding. Early access feature is in a pre-release state
+    /// and might change or have limited support. For more information, see https://cloud.google.com/products#product-
+    /// launch-stages.</summary>
+    public class GooglePrivacyDlpV2HybridFindingDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details about the container where the content being inspected is from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerDetails")]
+        public virtual GooglePrivacyDlpV2Container ContainerDetails { get; set; } 
+
+        /// <summary>Offset in bytes of the line, from the beginning of the file, where the finding  is located.
+        /// Populate if the item being scanned is only part of a bigger item, such as a shard of a file and you want to
+        /// track the absolute position of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileOffset")]
+        public virtual System.Nullable<long> FileOffset { get; set; } 
+
+        /// <summary>Labels to represent user provided metadata about the data being inspected. If configured by the
+        /// job, some key values may be required. The labels associated with `Finding`'s produced by hybrid inspection.
+        ///
+        /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression:
+        /// \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        ///
+        /// Label values must be between 0 and 63 characters long and must conform to the regular expression
+        /// (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
+        ///
+        /// No more than 10 labels can be associated with a given finding.
+        ///
+        /// Example: "environment" : "production" Example: "pipeline" : "etl"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>Offset of the row for tables. Populate if the row(s) being scanned are part of a bigger dataset and
+        /// you want to keep track of their absolute position.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowOffset")]
+        public virtual System.Nullable<long> RowOffset { get; set; } 
+
+        /// <summary>If the container is a table, additional information to make findings meaningful such as the columns
+        /// that are primary keys. If not known ahead of time, can also be set within each inspect hybrid call and the
+        /// two will be merged. Note that identifying_fields will only be stored to BigQuery, and only if the BigQuery
+        /// action has been included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableOptions")]
+        public virtual GooglePrivacyDlpV2TableOptions TableOptions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to search for potentially sensitive info in a custom location. Early access feature is in a
+    /// pre-release state and might change or have limited support. For more information, see
+    /// https://cloud.google.com/products#product-launch-stages.</summary>
+    public class GooglePrivacyDlpV2HybridInspectDlpJobRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The item to inspect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hybridItem")]
+        public virtual GooglePrivacyDlpV2HybridContentItem HybridItem { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to search for potentially sensitive info in a custom location. Early access feature is in a
+    /// pre-release state and might change or have limited support. For more information, see
+    /// https://cloud.google.com/products#product-launch-stages.</summary>
+    public class GooglePrivacyDlpV2HybridInspectJobTriggerRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The item to inspect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hybridItem")]
+        public virtual GooglePrivacyDlpV2HybridContentItem HybridItem { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Quota exceeded errors will be thrown once quota has been met. Early access feature is in a pre-release
+    /// state and might change or have limited support. For more information, see https://cloud.google.com/products
+    /// #product-launch-stages.</summary>
+    public class GooglePrivacyDlpV2HybridInspectResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Statistics related to processing hybrid inspect requests Early access feature is in a pre-release state
+    /// and might change or have limited support. For more information, see https://cloud.google.com/products#product-
+    /// launch-stages.</summary>
+    public class GooglePrivacyDlpV2HybridInspectStatistics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of hybrid inspection requests aborted because the job ran out of quota or was ended
+        /// before they could be processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hybridRequestsAborted")]
+        public virtual System.Nullable<long> HybridRequestsAborted { get; set; } 
+
+        /// <summary>The number of hybrid requests currently being processed. Only populated when called via method
+        /// `getDlpJob`. A burst of traffic may cause hybrid inspect requests to be enqueued. Processing will take place
+        /// as quickly as possible, but resource limitations may impact how long a request is enqueued for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hybridRequestsPending")]
+        public virtual System.Nullable<long> HybridRequestsPending { get; set; } 
+
+        /// <summary>The number of hybrid inspection requests processed within this job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hybridRequestsProcessed")]
+        public virtual System.Nullable<long> HybridRequestsProcessed { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
+    /// Early access feature is in a pre-release state and might change or have limited support. For more information,
+    /// see https://cloud.google.com/products#product-launch-stages.</summary>
+    public class GooglePrivacyDlpV2HybridOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A short description of where the data is coming from. Will be stored once in the job. 256 max
+        /// length.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>To organize findings, these labels will be added to each finding.
+        ///
+        /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression:
+        /// \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        ///
+        /// Label values must be between 0 and 63 characters long and must conform to the regular expression
+        /// (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
+        ///
+        /// No more than 10 labels can be associated with a given finding.
+        ///
+        /// Example: "environment" : "production" Example: "pipeline" : "etl"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>These are labels that each inspection request must include within their 'finding_labels' map.
+        /// Request may contain others, but any missing one of these will be rejected.
+        ///
+        /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression:
+        /// \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        ///
+        /// No more than 10 keys can be required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredFindingLabelKeys")]
+        public virtual System.Collections.Generic.IList<string> RequiredFindingLabelKeys { get; set; } 
+
+        /// <summary>If the container is a table, additional information to make findings meaningful such as the columns
+        /// that are primary keys.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableOptions")]
+        public virtual GooglePrivacyDlpV2TableOptions TableOptions { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11333,6 +11791,15 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Job trigger option for hybrid jobs. Jobs must be manually created and finished. Early access feature is
+    /// in a pre-release state and might change or have limited support. For more information, see
+    /// https://cloud.google.com/products#product-launch-stages.</summary>
+    public class GooglePrivacyDlpV2Manual : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Compute numerical stats over an individual column, including min, max, and quantiles.</summary>
     public class GooglePrivacyDlpV2NumericalStatsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11912,6 +12379,12 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>All result fields mentioned below are updated while the job is processing.</summary>
     public class GooglePrivacyDlpV2Result : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Statistics related to the processing of hybrid inspect. Early access feature is in a pre-release
+        /// state and might change or have limited support. For more information, see https://cloud.google.com/products
+        /// #product-launch-stages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hybridStats")]
+        public virtual GooglePrivacyDlpV2HybridInspectStatistics HybridStats { get; set; } 
+
         /// <summary>Statistics of how many instances of each info type were found during inspect job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypeStats")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoTypeStats> InfoTypeStats { get; set; } 
@@ -12026,6 +12499,12 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datastoreOptions")]
         public virtual GooglePrivacyDlpV2DatastoreOptions DatastoreOptions { get; set; } 
 
+        /// <summary>Hybrid inspection options. Early access feature is in a pre-release state and might change or have
+        /// limited support. For more information, see https://cloud.google.com/products#product-launch-
+        /// stages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hybridOptions")]
+        public virtual GooglePrivacyDlpV2HybridOptions HybridOptions { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("timespanConfig")]
         public virtual GooglePrivacyDlpV2TimespanConfig TimespanConfig { get; set; } 
 
@@ -12061,6 +12540,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
+        /// <summary>Store dictionary-based CustomInfoType.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dictionary")]
+        public virtual GooglePrivacyDlpV2Dictionary Dictionary { get; set; } 
+
         /// <summary>Display name of the StoredInfoType (max 256 characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
@@ -12068,6 +12551,10 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>StoredInfoType where findings are defined by a dictionary of phrases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("largeCustomDictionary")]
         public virtual GooglePrivacyDlpV2LargeCustomDictionaryConfig LargeCustomDictionary { get; set; } 
+
+        /// <summary>Store regular expression-based StoredInfoType.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regex")]
+        public virtual GooglePrivacyDlpV2Regex Regex { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12195,6 +12682,21 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>The zero-based index of the row where the finding is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowIndex")]
         public virtual System.Nullable<long> RowIndex { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Instructions regarding the table content being inspected. Early access feature is in a pre-release
+    /// state and might change or have limited support. For more information, see https://cloud.google.com/products
+    /// #product-launch-stages.</summary>
+    public class GooglePrivacyDlpV2TableOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The columns that are the primary keys for table objects included in ContentItem. A copy of this
+        /// cell's value will stored alongside alongside each finding so that the finding can be traced to the specific
+        /// row it came from. No more than 3 may be provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identifyingFields")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> IdentifyingFields { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12383,6 +12885,12 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>What event needs to occur for a new job to be started.</summary>
     public class GooglePrivacyDlpV2Trigger : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>For use with hybrid jobs. Jobs must be manually created and finished. Early access feature is in a
+        /// pre-release state and might change or have limited support. For more information, see
+        /// https://cloud.google.com/products#product-launch-stages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manual")]
+        public virtual GooglePrivacyDlpV2Manual Manual { get; set; } 
+
         /// <summary>Create a job on a repeating basis based on the elapse of time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
         public virtual GooglePrivacyDlpV2Schedule Schedule { get; set; } 

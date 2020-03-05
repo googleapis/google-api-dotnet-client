@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Reservation API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200220 (1876)
+ *      <tr><th>API Rev<td>20200229 (1885)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -689,6 +689,319 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Merges capacity commitments of the same plan into one. Resulting capacity commitment has
+                /// the longer commitment_end_time out of the two. Attempting to merge capacity commitments of different
+                /// plan will fail with the error code `google.rpc.Code.FAILED_PRECONDITION`.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Parent resource that identifies admin project and location e.g.,
+                /// projects/myproject/locations/us</param>
+                public virtual MergeRequest Merge(Google.Apis.BigQueryReservation.v1beta1.Data.MergeCapacityCommitmentsRequest body, string parent)
+                {
+                    return new MergeRequest(service, body, parent);
+                }
+
+                /// <summary>Merges capacity commitments of the same plan into one. Resulting capacity commitment has
+                /// the longer commitment_end_time out of the two. Attempting to merge capacity commitments of different
+                /// plan will fail with the error code `google.rpc.Code.FAILED_PRECONDITION`.</summary>
+                public class MergeRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.CapacityCommitment>
+                {
+                    /// <summary>Constructs a new Merge request.</summary>
+                    public MergeRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryReservation.v1beta1.Data.MergeCapacityCommitmentsRequest body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Parent resource that identifies admin project and location e.g.,
+                    /// projects/myproject/locations/us</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BigQueryReservation.v1beta1.Data.MergeCapacityCommitmentsRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "merge"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+parent}/capacityCommitments:merge"; }
+                    }
+
+                    /// <summary>Initializes Merge parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Updates an existing capacity commitment.
+                ///
+                /// Only renewal_plan field can be updated.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Output only. The resource name of the capacity commitment, e.g.,
+                /// projects/myproject/locations/US/capacityCommitments/123</param>
+                public virtual PatchRequest Patch(Google.Apis.BigQueryReservation.v1beta1.Data.CapacityCommitment body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates an existing capacity commitment.
+                ///
+                /// Only renewal_plan field can be updated.</summary>
+                public class PatchRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.CapacityCommitment>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryReservation.v1beta1.Data.CapacityCommitment body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Output only. The resource name of the capacity commitment, e.g.,
+                    /// projects/myproject/locations/US/capacityCommitments/123</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Standard field mask for the set of fields to be updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BigQueryReservation.v1beta1.Data.CapacityCommitment Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "patch"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "PATCH"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/capacityCommitments/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Splits capacity commitment to two commitments of the same plan and commitment_end_time. A
+                /// common use case to do that is to perform a downgrade e.g., in order to downgrade from 10000 slots to
+                /// 8000, one might split 10000 capacity commitment to 2000 and 8000, change the plan of the first one
+                /// to flex and then delete it.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The resource name e.g.,:
+                /// projects/myproject/locations/US/capacityCommitments/123</param>
+                public virtual SplitRequest Split(Google.Apis.BigQueryReservation.v1beta1.Data.SplitCapacityCommitmentRequest body, string name)
+                {
+                    return new SplitRequest(service, body, name);
+                }
+
+                /// <summary>Splits capacity commitment to two commitments of the same plan and commitment_end_time. A
+                /// common use case to do that is to perform a downgrade e.g., in order to downgrade from 10000 slots to
+                /// 8000, one might split 10000 capacity commitment to 2000 and 8000, change the plan of the first one
+                /// to flex and then delete it.</summary>
+                public class SplitRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.SplitCapacityCommitmentResponse>
+                {
+                    /// <summary>Constructs a new Split request.</summary>
+                    public SplitRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryReservation.v1beta1.Data.SplitCapacityCommitmentRequest body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The resource name e.g.,:
+                    /// projects/myproject/locations/US/capacityCommitments/123</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BigQueryReservation.v1beta1.Data.SplitCapacityCommitmentRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "split"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+name}:split"; }
+                    }
+
+                    /// <summary>Initializes Split parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/capacityCommitments/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Replaces an existing commitment with a new commitment of a different plan. Plan can only be
+                /// changed to a plan of a longer commitment period. New commitment start is set to a current time.
+                /// Attempting to change to a plan with shorter commitment period will fail with the error code
+                /// `google.rpc.Code.FAILED_PRECONDITION`.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="capacityCommitment">Required. The resource name e.g.,:
+                /// projects/myproject/locations/US/capacityCommitments/123</param>
+                public virtual UpgradeCapacityCommitmentPlanRequest UpgradeCapacityCommitmentPlan(Google.Apis.BigQueryReservation.v1beta1.Data.UpgradeCapacityCommitmentPlanRequest body, string capacityCommitment)
+                {
+                    return new UpgradeCapacityCommitmentPlanRequest(service, body, capacityCommitment);
+                }
+
+                /// <summary>Replaces an existing commitment with a new commitment of a different plan. Plan can only be
+                /// changed to a plan of a longer commitment period. New commitment start is set to a current time.
+                /// Attempting to change to a plan with shorter commitment period will fail with the error code
+                /// `google.rpc.Code.FAILED_PRECONDITION`.</summary>
+                public class UpgradeCapacityCommitmentPlanRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.CapacityCommitment>
+                {
+                    /// <summary>Constructs a new UpgradeCapacityCommitmentPlan request.</summary>
+                    public UpgradeCapacityCommitmentPlanRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryReservation.v1beta1.Data.UpgradeCapacityCommitmentPlanRequest body, string capacityCommitment)
+                        : base(service)
+                    {
+                        CapacityCommitment = capacityCommitment;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The resource name e.g.,:
+                    /// projects/myproject/locations/US/capacityCommitments/123</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("capacityCommitment", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CapacityCommitment { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BigQueryReservation.v1beta1.Data.UpgradeCapacityCommitmentPlanRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "upgradeCapacityCommitmentPlan"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+capacityCommitment}:upgradeCapacityCommitmentPlan"; }
+                    }
+
+                    /// <summary>Initializes UpgradeCapacityCommitmentPlan parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "capacityCommitment", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "capacityCommitment",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/capacityCommitments/[^/]+$",
                             });
                     }
 
@@ -1788,16 +2101,14 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
     }    
 
     /// <summary>Capacity commitment is a way to purchase compute capacity for BigQuery jobs (in the form of slots) with
-    /// some minimum committed period of usage. Capacity commitment is immutable and cannot be deleted until the end of
-    /// the commitment period. After the end of the commitment period, slots are still available but can be freely
-    /// removed any time. Annual commitments will automatically be downgraded to monthly after the commitment ends.
+    /// some committed period of usage. Monthly and annual commitments renew by default. Only flex commitments can be
+    /// removed. In order to remove monthly or annual commitments, their plan needs to be changed to flex first.
     ///
     /// A capacity commitment resource exists as a child resource of the admin project.</summary>
     public class CapacityCommitment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The end of the commitment period. Capacity commitment cannot be removed before
-        /// commitment_end_time. It is applicable only for ACTIVE capacity commitments and is computed as a combination
-        /// of the plan and the time when the capacity commitment became ACTIVE.</summary>
+        /// <summary>Output only. The end of the current commitment period. It is applicable only for ACTIVE capacity
+        /// commitments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitmentEndTime")]
         public virtual object CommitmentEndTime { get; set; } 
 
@@ -1813,6 +2124,12 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
         /// <summary>Capacity commitment commitment plan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plan")]
         public virtual string Plan { get; set; } 
+
+        /// <summary>The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan
+        /// is changed, committed period is extended according to commitment plan. Only applicable for MONTHLY and
+        /// ANNUAL commitments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renewalPlan")]
+        public virtual string RenewalPlan { get; set; } 
 
         /// <summary>Number of slots in this commitment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slotCount")]
@@ -1886,6 +2203,18 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The request for ReservationService.MergeCapacityCommitments.</summary>
+    public class MergeCapacityCommitmentsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Ids of capacity commitments to merge. These capacity commitments must exist under admin project and
+        /// location specified in the parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capacityCommitmentIds")]
+        public virtual System.Collections.Generic.IList<string> CapacityCommitmentIds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The request for ReservationService.MoveAssignment. Note: "bigquery.reservationAssignments.create"
     /// permission is required on the destination_id. Note: "bigquery.reservationAssignments.create" and
     /// "bigquery.reservationAssignments.delete" permission is required on the related assignee.</summary>
@@ -1941,6 +2270,32 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The request for ReservationService.SplitCapacityCommitment.</summary>
+    public class SplitCapacityCommitmentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of slots in the capacity commitment after the split.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slotCount")]
+        public virtual System.Nullable<long> SlotCount { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for ReservationService.SplitCapacityCommitment.</summary>
+    public class SplitCapacityCommitmentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>First capacity commitment, result of a split.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("first")]
+        public virtual CapacityCommitment First { get; set; } 
+
+        /// <summary>Second capacity commitment, result of a split.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("second")]
+        public virtual CapacityCommitment Second { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
     /// message contains three pieces of data: error code, error message, and error details.
@@ -1962,6 +2317,17 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request for ReservationService.UpgradeCapacityCommitmentPlan.</summary>
+    public class UpgradeCapacityCommitmentPlanRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>New capacity commitment plan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plan")]
+        public virtual string Plan { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

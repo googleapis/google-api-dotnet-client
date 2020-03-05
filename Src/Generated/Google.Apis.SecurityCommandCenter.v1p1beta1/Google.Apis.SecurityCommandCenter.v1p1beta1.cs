@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>Cloud Security Command Center API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20200224 (1880)
+ *      <tr><th>API Rev<td>20200228 (1884)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview</a>
@@ -1855,10 +1855,13 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                     ///
                     /// Possible "state_change" values when compare_duration is specified:
                     ///
-                    /// * "CHANGED":   indicates that the finding was present at the start of compare_duration, but
-                    /// changed its state at read_time. * "UNCHANGED": indicates that the finding was present at the
-                    /// start of compare_duration and did not change state at read_time. * "ADDED":     indicates that
-                    /// the finding was not present at the start of compare_duration, but was present at read_time.
+                    /// * "CHANGED":   indicates that the finding was present and matched the given filter at the start
+                    /// of compare_duration, but changed its state at read_time. * "UNCHANGED": indicates that the
+                    /// finding was present and matched the given filter at the start of compare_duration and did not
+                    /// change state at read_time. * "ADDED":     indicates that the finding did not match the given
+                    /// filter or was not present at the start of compare_duration, but was present at read_time. *
+                    /// "REMOVED":   indicates that the finding was present and matched the filter at the start of
+                    /// compare_duration, but did not match the filter at read_time.
                     ///
                     /// If compare_duration is not specified, then the only possible state_change is "UNUSED", which
                     /// will be the state_change set for all findings present at read_time.</summary>
@@ -3612,10 +3615,12 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
         ///
         /// Possible "state_change" values when compare_duration is specified:
         ///
-        /// * "CHANGED":   indicates that the finding was present at the start of compare_duration, but changed its
-        /// state at read_time. * "UNCHANGED": indicates that the finding was present at the start of compare_duration
-        /// and did not change state at read_time. * "ADDED":     indicates that the finding was not present at the
-        /// start of compare_duration, but was present at read_time.
+        /// * "CHANGED":   indicates that the finding was present and matched the given filter at the start of
+        /// compare_duration, but changed its state at read_time. * "UNCHANGED": indicates that the finding was present
+        /// and matched the given filter at the start of compare_duration and did not change state at read_time. *
+        /// "ADDED":     indicates that the finding did not match the given filter or was not present at the start of
+        /// compare_duration, but was present at read_time. * "REMOVED":   indicates that the finding was present and
+        /// matched the filter at the start of compare_duration, but did not match the filter at read_time.
         ///
         /// If compare_duration is not specified, then the only possible state_change is "UNUSED",  which will be the
         /// state_change set for all findings present at read_time.

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20200221 (1877)
+ *      <tr><th>API Rev<td>20200225 (1881)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -4509,27 +4509,24 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual System.Collections.Generic.IList<string> HiddenValues { get; set; } 
 
         /// <summary>The background fill color to filter by; only cells with this fill color are shown. Mutually
-        /// exclusive with all other filter criteria. Requests to set this field fail with a 400 error if any other
-        /// filter criteria field is set.</summary>
+        /// exclusive with visible_foreground_color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibleBackgroundColor")]
         public virtual Color VisibleBackgroundColor { get; set; } 
 
-        /// <summary>The background fill color to filter by; only cells with this fill color are shown. Mutually
-        /// exclusive with all other filter criteria. Requests to set this field fail with a 400 error if any other
-        /// filter criteria field is set. If visible_background_color is also set, this field takes
-        /// precedence.</summary>
+        /// <summary>The background fill color to filter by; only cells with this fill color are shown. This field is
+        /// mutually exclusive with visible_foreground_color, and must be set to an RGB-type color. If
+        /// visible_background_color is also set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibleBackgroundColorStyle")]
         public virtual ColorStyle VisibleBackgroundColorStyle { get; set; } 
 
-        /// <summary>The text color to filter by; only cells with this text color are shown. Mutually exclusive with all
-        /// other filter criteria. Requests to set this field fail with a 400 error if any other filter criteria field
-        /// is set.</summary>
+        /// <summary>The foreground color to filter by; only cells with this foreground color are shown. Mutually
+        /// exclusive with visible_background_color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibleForegroundColor")]
         public virtual Color VisibleForegroundColor { get; set; } 
 
-        /// <summary>The text color to filter by; only cells with this text color are shown. Mutually exclusive with all
-        /// other filter criteria. Requests to set this field fail with a 400 error if any other filter criteria field
-        /// is set. If visible_foreground_color is also set, this field takes precedence.</summary>
+        /// <summary>The foreground color to filter by; only cells with this foreground color are shown. This field is
+        /// mutually exclusive with visible_background_color, and must be set to an RGB-type color. If
+        /// visible_foreground_color is also set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibleForegroundColorStyle")]
         public virtual ColorStyle VisibleForegroundColorStyle { get; set; } 
 
@@ -6255,14 +6252,14 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>A sort order associated with a specific column or row.</summary>
     public class SortSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The background fill color to sort by. Mutually exclusive with sorting by text color. Requests to
-        /// set this field fail with a 400 error if foreground color is also set.</summary>
+        /// <summary>The background fill color to sort by; cells with this fill color are sorted to the top. Mutually
+        /// exclusive with foreground_color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
         public virtual Color BackgroundColor { get; set; } 
 
-        /// <summary>The background fill color to sort by. Mutually exclusive with sorting by text color. Requests to
-        /// set this field fail with a 400 error if foreground color is also set. If background_color is also set, this
-        /// field takes precedence.</summary>
+        /// <summary>The background fill color to sort by; cells with this fill color are sorted to the top. Mutually
+        /// exclusive with foreground_color, and must be an RGB-type color. If background_color is also set, this field
+        /// takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColorStyle")]
         public virtual ColorStyle BackgroundColorStyle { get; set; } 
 
@@ -6270,14 +6267,14 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionIndex")]
         public virtual System.Nullable<int> DimensionIndex { get; set; } 
 
-        /// <summary>The text color to sort by. Mutually exclusive with sorting by background fill color. Requests to
-        /// set this field fail with a 400 error if background color is also set.</summary>
+        /// <summary>The foreground color to sort by; cells with this foreground color are sorted to the top. Mutually
+        /// exclusive with background_color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("foregroundColor")]
         public virtual Color ForegroundColor { get; set; } 
 
-        /// <summary>The text color to sort by. Mutually exclusive with sorting by background fill color. Requests to
-        /// set this field fail with a 400 error if background color is also set. If foreground_color is also set, this
-        /// field takes precedence.</summary>
+        /// <summary>The foreground color to sort by; cells with this foreground color are sorted to the top. Mutually
+        /// exclusive with background_color, and must be an RGB-type color. If foreground_color is also set, this field
+        /// takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("foregroundColorStyle")]
         public virtual ColorStyle ForegroundColorStyle { get; set; } 
 

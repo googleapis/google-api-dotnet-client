@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/billing/docs/how-to/budget-api-overview'>Cloud Billing Budget API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200215 (1871)
+ *      <tr><th>API Rev<td>20200229 (1885)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/billing/docs/how-to/budget-api-overview'>
  *              https://cloud.google.com/billing/docs/how-to/budget-api-overview</a>
@@ -499,7 +499,11 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
 
             }
 
-            /// <summary>Returns a budget.</summary>
+            /// <summary>Returns a budget.
+            ///
+            /// WARNING: There are some fields exposed on the Google Cloud Console that aren’t available on this API.
+            /// When reading from the API, you will not see these fields in the return value, though they may have been
+            /// set in the cloud console.</summary>
             /// <param name="name">Required. Name of budget to get. Values are of the form
             /// `billingAccounts/{billingAccountId}/budgets/{budgetId}`.</param>
             public virtual GetRequest Get(string name)
@@ -507,7 +511,11 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Returns a budget.</summary>
+            /// <summary>Returns a budget.
+            ///
+            /// WARNING: There are some fields exposed on the Google Cloud Console that aren’t available on this API.
+            /// When reading from the API, you will not see these fields in the return value, though they may have been
+            /// set in the cloud console.</summary>
             public class GetRequest : CloudBillingBudgetBaseServiceRequest<Google.Apis.CloudBillingBudget.v1beta1.Data.GoogleCloudBillingBudgetsV1beta1Budget>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -561,7 +569,11 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
 
             }
 
-            /// <summary>Returns a list of budgets for a billing account.</summary>
+            /// <summary>Returns a list of budgets for a billing account.
+            ///
+            /// WARNING: There are some fields exposed on the Google Cloud Console that aren’t available on this API.
+            /// When reading from the API, you will not see these fields in the return value, though they may have been
+            /// set in the cloud console.</summary>
             /// <param name="parent">Required. Name of billing account to list budgets under. Values are of the form
             /// `billingAccounts/{billingAccountId}`.</param>
             public virtual ListRequest List(string parent)
@@ -569,7 +581,11 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Returns a list of budgets for a billing account.</summary>
+            /// <summary>Returns a list of budgets for a billing account.
+            ///
+            /// WARNING: There are some fields exposed on the Google Cloud Console that aren’t available on this API.
+            /// When reading from the API, you will not see these fields in the return value, though they may have been
+            /// set in the cloud console.</summary>
             public class ListRequest : CloudBillingBudgetBaseServiceRequest<Google.Apis.CloudBillingBudget.v1beta1.Data.GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -652,7 +668,10 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
 
             }
 
-            /// <summary>Updates a budget and returns the updated budget.</summary>
+            /// <summary>Updates a budget and returns the updated budget.
+            ///
+            /// WARNING: There are some fields exposed on the Google Cloud Console that aren’t available on this API.
+            /// Budget fields that are not exposed in this API will not be changed by this method.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Output only. Resource name of the budget. The resource name implies the scope of a budget. Values
             /// are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.</param>
@@ -661,7 +680,10 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Updates a budget and returns the updated budget.</summary>
+            /// <summary>Updates a budget and returns the updated budget.
+            ///
+            /// WARNING: There are some fields exposed on the Google Cloud Console that aren’t available on this API.
+            /// Budget fields that are not exposed in this API will not be changed by this method.</summary>
             public class PatchRequest : CloudBillingBudgetBaseServiceRequest<Google.Apis.CloudBillingBudget.v1beta1.Data.GoogleCloudBillingBudgetsV1beta1Budget>
             {
                 /// <summary>Constructs a new Patch request.</summary>

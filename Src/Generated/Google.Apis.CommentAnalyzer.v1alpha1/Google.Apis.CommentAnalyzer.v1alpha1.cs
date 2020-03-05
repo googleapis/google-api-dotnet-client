@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://github.com/conversationai/perspectiveapi/blob/master/README.md'>Perspective Comment Analyzer API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20200223 (1879)
+ *      <tr><th>API Rev<td>20200301 (1886)
  *      <tr><th>API Docs
  *          <td><a href='https://github.com/conversationai/perspectiveapi/blob/master/README.md'>
  *              https://github.com/conversationai/perspectiveapi/blob/master/README.md</a>
@@ -492,8 +492,8 @@ namespace Google.Apis.CommentAnalyzer.v1alpha1.Data
         /// associated attribute. The map keys are attribute names. The available attributes may be different on each
         /// RFE installation, and can be seen by calling ListAttributes (see above). For the prod installation, known as
         /// Perspective API, at blade:commentanalyzer-esf and commentanalyzer.googleapis.com, see go/checker-models
-        /// (internal) and
-        /// https://github.com/conversationai/perspectiveapi/blob/master/api_reference.md#models.</summary>
+        /// (internal) and https://github.com/conversationai/perspectiveapi/blob/master/2-api/models.md#all-attribute-
+        /// types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedAttributes")]
         public virtual System.Collections.Generic.IDictionary<string,AttributeParameters> RequestedAttributes { get; set; } 
 

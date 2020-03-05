@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/classroom/'>Google Classroom API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200225 (1881)
+ *      <tr><th>API Rev<td>20200229 (1885)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/classroom/'>
  *              https://developers.google.com/classroom/</a>
@@ -141,6 +141,12 @@ namespace Google.Apis.Classroom.v1
             /// administer</summary>
             public static string ClassroomCourseworkStudentsReadonly = "https://www.googleapis.com/auth/classroom.coursework.students.readonly";
 
+            /// <summary>See, edit, and create classwork materials in Google Classroom</summary>
+            public static string ClassroomCourseworkmaterials = "https://www.googleapis.com/auth/classroom.courseworkmaterials";
+
+            /// <summary>See all classwork materials for your Google Classroom classes</summary>
+            public static string ClassroomCourseworkmaterialsReadonly = "https://www.googleapis.com/auth/classroom.courseworkmaterials.readonly";
+
             /// <summary>View your Google Classroom guardians</summary>
             public static string ClassroomGuardianlinksMeReadonly = "https://www.googleapis.com/auth/classroom.guardianlinks.me.readonly";
 
@@ -208,6 +214,12 @@ namespace Google.Apis.Classroom.v1
             /// <summary>View course work and grades for students in the Google Classroom classes you teach or
             /// administer</summary>
             public const string ClassroomCourseworkStudentsReadonly = "https://www.googleapis.com/auth/classroom.coursework.students.readonly";
+
+            /// <summary>See, edit, and create classwork materials in Google Classroom</summary>
+            public const string ClassroomCourseworkmaterials = "https://www.googleapis.com/auth/classroom.courseworkmaterials";
+
+            /// <summary>See all classwork materials for your Google Classroom classes</summary>
+            public const string ClassroomCourseworkmaterialsReadonly = "https://www.googleapis.com/auth/classroom.courseworkmaterials.readonly";
 
             /// <summary>View your Google Classroom guardians</summary>
             public const string ClassroomGuardianlinksMeReadonly = "https://www.googleapis.com/auth/classroom.guardianlinks.me.readonly";
@@ -487,6 +499,7 @@ namespace Google.Apis.Classroom.v1
             aliases = new AliasesResource(service);
             announcements = new AnnouncementsResource(service);
             courseWork = new CourseWorkResource(service);
+            courseWorkMaterials = new CourseWorkMaterialsResource(service);
             students = new StudentsResource(service);
             teachers = new TeachersResource(service);
             topics = new TopicsResource(service);
@@ -3145,6 +3158,609 @@ namespace Google.Apis.Classroom.v1
                 public override string RestPath
                 {
                     get { return "v1/courses/{courseId}/courseWork/{id}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "id",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+        private readonly CourseWorkMaterialsResource courseWorkMaterials;
+
+        /// <summary>Gets the CourseWorkMaterials resource.</summary>
+        public virtual CourseWorkMaterialsResource CourseWorkMaterials
+        {
+            get { return courseWorkMaterials; }
+        }
+
+        /// <summary>The "courseWorkMaterials" collection of methods.</summary>
+        public class CourseWorkMaterialsResource
+        {
+            private const string Resource = "courseWorkMaterials";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public CourseWorkMaterialsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a course work material.
+            ///
+            /// This method returns the following error codes:
+            ///
+            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create
+            /// course work material in the requested course, share a Drive attachment, or for access errors. *
+            /// `INVALID_ARGUMENT` if the request is malformed or if more than 20 * materials are provided. *
+            /// `NOT_FOUND` if the requested course does not exist. * `FAILED_PRECONDITION` for the following request
+            /// error: * AttachmentNotVisible</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
+            /// an alias.</param>
+            public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.CourseWorkMaterial body, string courseId)
+            {
+                return new CreateRequest(service, body, courseId);
+            }
+
+            /// <summary>Creates a course work material.
+            ///
+            /// This method returns the following error codes:
+            ///
+            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create
+            /// course work material in the requested course, share a Drive attachment, or for access errors. *
+            /// `INVALID_ARGUMENT` if the request is malformed or if more than 20 * materials are provided. *
+            /// `NOT_FOUND` if the requested course does not exist. * `FAILED_PRECONDITION` for the following request
+            /// error: * AttachmentNotVisible</summary>
+            public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.CourseWorkMaterial>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.CourseWorkMaterial body, string courseId)
+                    : base(service)
+                {
+                    CourseId = courseId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Identifier of the course. This identifier can be either the Classroom-assigned identifier
+                /// or an alias.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string CourseId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Classroom.v1.Data.CourseWorkMaterial Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/courses/{courseId}/courseWorkMaterials"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes a course work material.
+            ///
+            /// This request must be made by the Developer Console project of the [OAuth client
+            /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work
+            /// material item.
+            ///
+            /// This method returns the following error codes:
+            ///
+            /// * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work
+            /// material, if the requesting user is not permitted to delete the requested course or for access errors. *
+            /// `FAILED_PRECONDITION` if the requested course work material has already been deleted. * `NOT_FOUND` if
+            /// no course exists with the requested ID.</summary>
+            /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
+            /// an alias.</param>
+            /// <param name="id">Identifier of the course work material to delete. This identifier is a
+            /// Classroom-assigned identifier.</param>
+            public virtual DeleteRequest Delete(string courseId, string id)
+            {
+                return new DeleteRequest(service, courseId, id);
+            }
+
+            /// <summary>Deletes a course work material.
+            ///
+            /// This request must be made by the Developer Console project of the [OAuth client
+            /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work
+            /// material item.
+            ///
+            /// This method returns the following error codes:
+            ///
+            /// * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work
+            /// material, if the requesting user is not permitted to delete the requested course or for access errors. *
+            /// `FAILED_PRECONDITION` if the requested course work material has already been deleted. * `NOT_FOUND` if
+            /// no course exists with the requested ID.</summary>
+            public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string courseId, string id)
+                    : base(service)
+                {
+                    CourseId = courseId;
+                    Id = id;
+                    InitParameters();
+                }
+
+
+                /// <summary>Identifier of the course. This identifier can be either the Classroom-assigned identifier
+                /// or an alias.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string CourseId { get; private set; }
+
+                /// <summary>Identifier of the course work material to delete. This identifier is a Classroom-assigned
+                /// identifier.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Id { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/courses/{courseId}/courseWorkMaterials/{id}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "id",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Returns a course work material.
+            ///
+            /// This method returns the following error codes:
+            ///
+            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course
+            /// work material, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if
+            /// the requested course or course work material does not exist.</summary>
+            /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
+            /// an alias.</param>
+            /// <param name="id">Identifier of the course work material.</param>
+            public virtual GetRequest Get(string courseId, string id)
+            {
+                return new GetRequest(service, courseId, id);
+            }
+
+            /// <summary>Returns a course work material.
+            ///
+            /// This method returns the following error codes:
+            ///
+            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course
+            /// work material, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if
+            /// the requested course or course work material does not exist.</summary>
+            public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.CourseWorkMaterial>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string courseId, string id)
+                    : base(service)
+                {
+                    CourseId = courseId;
+                    Id = id;
+                    InitParameters();
+                }
+
+
+                /// <summary>Identifier of the course. This identifier can be either the Classroom-assigned identifier
+                /// or an alias.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string CourseId { get; private set; }
+
+                /// <summary>Identifier of the course work material.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Id { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/courses/{courseId}/courseWorkMaterials/{id}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "id",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Returns a list of course work material that the requester is permitted to view.
+            ///
+            /// Course students may only view `PUBLISHED` course work material. Course teachers and domain
+            /// administrators may view all course work material.
+            ///
+            /// This method returns the following error codes:
+            ///
+            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for
+            /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course
+            /// does not exist.</summary>
+            /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
+            /// an alias.</param>
+            public virtual ListRequest List(string courseId)
+            {
+                return new ListRequest(service, courseId);
+            }
+
+            /// <summary>Returns a list of course work material that the requester is permitted to view.
+            ///
+            /// Course students may only view `PUBLISHED` course work material. Course teachers and domain
+            /// administrators may view all course work material.
+            ///
+            /// This method returns the following error codes:
+            ///
+            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for
+            /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course
+            /// does not exist.</summary>
+            public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListCourseWorkMaterialResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string courseId)
+                    : base(service)
+                {
+                    CourseId = courseId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Identifier of the course. This identifier can be either the Classroom-assigned identifier
+                /// or an alias.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string CourseId { get; private set; }
+
+                /// <summary>Restriction on the work status to return. Only course work material that matches is
+                /// returned. If unspecified, items with a work status of `PUBLISHED` is returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("courseWorkMaterialStates", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<CourseWorkMaterialStatesEnum> CourseWorkMaterialStates { get; set; }
+
+                /// <summary>Restriction on the work status to return. Only course work material that matches is
+                /// returned. If unspecified, items with a work status of `PUBLISHED` is returned.</summary>
+                public enum CourseWorkMaterialStatesEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("COURSEWORK_MATERIAL_STATE_UNSPECIFIED")]
+                    COURSEWORKMATERIALSTATEUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
+                    PUBLISHED,
+                    [Google.Apis.Util.StringValueAttribute("DRAFT")]
+                    DRAFT,
+                    [Google.Apis.Util.StringValueAttribute("DELETED")]
+                    DELETED,
+                }
+
+                /// <summary>Optional filtering for course work material with at least one Drive material whose ID
+                /// matches the provided string. If `material_link` is also specified, course work material must have
+                /// materials matching both filters.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("materialDriveId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string MaterialDriveId { get; set; }
+
+                /// <summary>Optional filtering for course work material with at least one link material whose URL
+                /// partially matches the provided string.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("materialLink", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string MaterialLink { get; set; }
+
+                /// <summary>Optional sort ordering for results. A comma-separated list of fields with an optional sort
+                /// direction keyword. Supported field is `updateTime`. Supported direction keywords are `asc` and
+                /// `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `updateTime asc`,
+                /// `updateTime`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign
+                /// a maximum.
+                ///
+                /// The server may return fewer than the specified number of results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
+                /// of results should be returned.
+                ///
+                /// The list request must be otherwise identical to the one that resulted in this token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/courses/{courseId}/courseWorkMaterials"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "courseWorkMaterialStates", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseWorkMaterialStates",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "materialDriveId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "materialDriveId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "materialLink", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "materialLink",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates one or more fields of a course work material.
+            ///
+            /// This method returns the following error codes:
+            ///
+            /// * `PERMISSION_DENIED` if the requesting developer project for access errors. * `INVALID_ARGUMENT` if the
+            /// request is malformed. * `FAILED_PRECONDITION` if the requested course work material has already been
+            /// deleted. * `NOT_FOUND` if the requested course or course work material does not exist</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
+            /// an alias.</param>
+            /// <param name="id">Identifier of the course work material.</param>
+            public virtual PatchRequest Patch(Google.Apis.Classroom.v1.Data.CourseWorkMaterial body, string courseId, string id)
+            {
+                return new PatchRequest(service, body, courseId, id);
+            }
+
+            /// <summary>Updates one or more fields of a course work material.
+            ///
+            /// This method returns the following error codes:
+            ///
+            /// * `PERMISSION_DENIED` if the requesting developer project for access errors. * `INVALID_ARGUMENT` if the
+            /// request is malformed. * `FAILED_PRECONDITION` if the requested course work material has already been
+            /// deleted. * `NOT_FOUND` if the requested course or course work material does not exist</summary>
+            public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.CourseWorkMaterial>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.CourseWorkMaterial body, string courseId, string id)
+                    : base(service)
+                {
+                    CourseId = courseId;
+                    Id = id;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Identifier of the course. This identifier can be either the Classroom-assigned identifier
+                /// or an alias.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string CourseId { get; private set; }
+
+                /// <summary>Identifier of the course work material.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Id { get; private set; }
+
+                /// <summary>Mask that identifies which fields on the course work material to update. This field is
+                /// required to do an update. The update fails if invalid fields are specified. If a field supports
+                /// empty values, it can be cleared by specifying it in the update mask and not in the course work
+                /// material object. If a field that does not support empty values is included in the update mask and
+                /// not set in the course work material object, an `INVALID_ARGUMENT` error will be returned.
+                ///
+                /// The following fields may be specified by teachers:
+                ///
+                /// * `title` * `description` * `state` * `scheduled_time` * `topic_id`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Classroom.v1.Data.CourseWorkMaterial Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/courses/{courseId}/courseWorkMaterials/{id}"; }
                 }
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -7157,6 +7773,90 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Course work material created by a teacher for students of the course</summary>
+    public class CourseWorkMaterial : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Absolute link to this course work material in the Classroom web UI. This is only populated if
+        /// `state` is `PUBLISHED`.
+        ///
+        /// Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternateLink")]
+        public virtual string AlternateLink { get; set; } 
+
+        /// <summary>Assignee mode of the course work material. If unspecified, the default value is
+        /// `ALL_STUDENTS`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assigneeMode")]
+        public virtual string AssigneeMode { get; set; } 
+
+        /// <summary>Identifier of the course.
+        ///
+        /// Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("courseId")]
+        public virtual string CourseId { get; set; } 
+
+        /// <summary>Timestamp when this course work material was created.
+        ///
+        /// Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual object CreationTime { get; set; } 
+
+        /// <summary>Identifier for the user that created the course work material.
+        ///
+        /// Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creatorUserId")]
+        public virtual string CreatorUserId { get; set; } 
+
+        /// <summary>Optional description of this course work material. The text must be a valid UTF-8 string containing
+        /// no more than 30,000 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Classroom-assigned identifier of this course work material, unique per course.
+        ///
+        /// Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>Identifiers of students with access to the course work material. This field is set only if
+        /// `assigneeMode` is `INDIVIDUAL_STUDENTS`. If the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students
+        /// specified in this field will be able to see the course work material.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("individualStudentsOptions")]
+        public virtual IndividualStudentsOptions IndividualStudentsOptions { get; set; } 
+
+        /// <summary>Additional materials.
+        ///
+        /// A course work material must have no more than 20 material items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("materials")]
+        public virtual System.Collections.Generic.IList<Material> Materials { get; set; } 
+
+        /// <summary>Optional timestamp when this course work material is scheduled to be published.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledTime")]
+        public virtual object ScheduledTime { get; set; } 
+
+        /// <summary>Status of this course work material. If unspecified, the default state is `DRAFT`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>Title of this course work material. The title must be a valid UTF-8 string containing between 1 and
+        /// 3000 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>Identifier for the topic that this course work material is associated with. Must match an existing
+        /// topic in the course.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topicId")]
+        public virtual string TopicId { get; set; } 
+
+        /// <summary>Timestamp of the most recent change to this course work material.
+        ///
+        /// Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a whole or partial calendar date, e.g. a birthday. The time of day and time zone are either
     /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. This can
     /// represent:
@@ -7484,6 +8184,22 @@ namespace Google.Apis.Classroom.v1.Data
         /// <summary>The course aliases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
         public virtual System.Collections.Generic.IList<CourseAlias> Aliases { get; set; } 
+
+        /// <summary>Token identifying the next page of results to return. If empty, no further results are
+        /// available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response when listing course work material.</summary>
+    public class ListCourseWorkMaterialResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Course work material items that match the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("courseWorkMaterial")]
+        public virtual System.Collections.Generic.IList<CourseWorkMaterial> CourseWorkMaterial { get; set; } 
 
         /// <summary>Token identifying the next page of results to return. If empty, no further results are
         /// available.</summary>
