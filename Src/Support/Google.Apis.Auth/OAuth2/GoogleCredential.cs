@@ -152,11 +152,11 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="path">The path to the credential file.</param>
         /// <param name="cancellationToken">Cancellation token for the operation.</param>
         /// <returns>The loaded credentials.</returns>
-        public static Task<GoogleCredential> FromFileAsync(string path, CancellationToken cancellationToken)
+        public static async Task<GoogleCredential> FromFileAsync(string path, CancellationToken cancellationToken)
         {
             using (var f = File.OpenRead(path))
             {
-                return FromStreamAsync(f, cancellationToken);
+                return await FromStreamAsync(f, cancellationToken).ConfigureAwait(false);
             }
         }
 

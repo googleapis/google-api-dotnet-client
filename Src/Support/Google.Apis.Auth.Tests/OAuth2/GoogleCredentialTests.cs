@@ -108,6 +108,54 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         }
 
         [Fact]
+        public void FromFile_ServiceAccountCredential()
+        {
+            var tempFile = Path.GetTempFileName();
+            try
+            {
+                File.WriteAllText(tempFile, DummyServiceAccountCredentialFileContents);
+                var credential = GoogleCredential.FromFile(tempFile);
+                Assert.IsType<ServiceAccountCredential>(credential.UnderlyingCredential);
+                Assert.True(credential.IsCreateScopedRequired);
+                var serviceCred = (ServiceAccountCredential)credential.UnderlyingCredential;
+                Assert.Equal("CLIENT_EMAIL", serviceCred.Id);
+                Assert.Equal("PROJECT_ID", serviceCred.ProjectId);
+            }
+            finally
+            {
+                try
+                {
+                    File.Delete(tempFile);
+                }
+                catch { }
+            }
+        }
+
+        [Fact]
+        public async Task FromFileAsync_ServiceAccountCredential()
+        {
+            var tempFile = Path.GetTempFileName();
+            try
+            {
+                File.WriteAllText(tempFile, DummyServiceAccountCredentialFileContents);
+                var credential = await GoogleCredential.FromFileAsync(tempFile, CancellationToken.None);
+                Assert.IsType<ServiceAccountCredential>(credential.UnderlyingCredential);
+                Assert.True(credential.IsCreateScopedRequired);
+                var serviceCred = (ServiceAccountCredential)credential.UnderlyingCredential;
+                Assert.Equal("CLIENT_EMAIL", serviceCred.Id);
+                Assert.Equal("PROJECT_ID", serviceCred.ProjectId);
+            }
+            finally
+            {
+                try
+                {
+                    File.Delete(tempFile);
+                }
+                catch { }
+            }
+        }
+
+        [Fact]
         public void FromJson_UserCredential()
         {
             var credential = GoogleCredential.FromJson(DummyUserCredentialFileContents);
