@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200228 (1884)
+ *      <tr><th>API Rev<td>20200210 (1866)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tasks/'>
  *              https://cloud.google.com/tasks/</a>
@@ -2812,12 +2812,6 @@ namespace Google.Apis.CloudTasks.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("retryConfig")]
         public virtual RetryConfig RetryConfig { get; set; } 
 
-        /// <summary>Configuration options for writing logs to [Stackdriver
-        /// Logging](https://cloud.google.com/logging/docs/). If this field is unset, then no logs are
-        /// written.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stackdriverLoggingConfig")]
-        public virtual StackdriverLoggingConfig StackdriverLoggingConfig { get; set; } 
-
         /// <summary>Output only. The state of the queue.
         ///
         /// `state` can only be changed by called PauseQueue, ResumeQueue, or uploading
@@ -3000,20 +2994,6 @@ namespace Google.Apis.CloudTasks.v2.Data
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Configuration options for writing logs to [Stackdriver
-    /// Logging](https://cloud.google.com/logging/docs/).</summary>
-    public class StackdriverLoggingConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Specifies the fraction of operations to write to [Stackdriver
-        /// Logging](https://cloud.google.com/logging/docs/). This field may contain any value between 0.0 and 1.0,
-        /// inclusive. 0.0 is the default and means that no operations are logged.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("samplingRatio")]
-        public virtual System.Nullable<double> SamplingRatio { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

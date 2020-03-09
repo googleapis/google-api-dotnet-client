@@ -5,7 +5,7 @@
  "description": "Accesses the metadata for all families served by Google Fonts, providing a list of families currently available (including available styles and a list of supported script subsets).", 
  "discoveryVersion": "v1", 
  "documentationLink": "https://developers.google.com/fonts/docs/developer_api", 
- "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/g2F1MSJ53fQAEqcEpsY4j4LJKrQ\"", 
+ "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/5_fiJZHCPuxNkgUtCVK8tszhsbo\"", 
  "icons": {
   "x16": "https://www.google.com/images/icons/feature/font_api-16.png", 
   "x32": "https://www.google.com/images/icons/feature/font_api-32.gif"
@@ -97,7 +97,7 @@
    }
   }
  }, 
- "revision": "20160302", 
+ "revision": "20200302", 
  "rootUrl": "https://www.googleapis.com/", 
  "schemas": {
   "Webfont": {

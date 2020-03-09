@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2.1
- *      <tr><th>API Rev<td>20200219 (1875)
+ *      <tr><th>API Rev<td>20200226 (1882)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -77,6 +77,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             pos = new PosResource(this);
             products = new ProductsResource(this);
             productstatuses = new ProductstatusesResource(this);
+            pubsubnotificationsettings = new PubsubnotificationsettingsResource(this);
             regionalinventory = new RegionalinventoryResource(this);
             returnaddress = new ReturnaddressResource(this);
             returnpolicy = new ReturnpolicyResource(this);
@@ -245,6 +246,14 @@ namespace Google.Apis.ShoppingContent.v2_1
         public virtual ProductstatusesResource Productstatuses
         {
             get { return productstatuses; }
+        }
+
+        private readonly PubsubnotificationsettingsResource pubsubnotificationsettings;
+
+        /// <summary>Gets the Pubsubnotificationsettings resource.</summary>
+        public virtual PubsubnotificationsettingsResource Pubsubnotificationsettings
+        {
+            get { return pubsubnotificationsettings; }
         }
 
         private readonly RegionalinventoryResource regionalinventory;
@@ -6833,7 +6842,9 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         }
 
-        /// <summary>Lists the products in your Merchant Center account.</summary>
+        /// <summary>Lists the products in your Merchant Center account. The response might contain fewer items than
+        /// specified by maxResults. Rely on nextPageToken to determine if there are more items to be
+        /// requested.</summary>
         /// <param name="merchantId">The ID of the account that contains the products. This account cannot be a multi-client
         /// account.</param>
         public virtual ListRequest List(ulong merchantId)
@@ -6841,7 +6852,9 @@ namespace Google.Apis.ShoppingContent.v2_1
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the products in your Merchant Center account.</summary>
+        /// <summary>Lists the products in your Merchant Center account. The response might contain fewer items than
+        /// specified by maxResults. Rely on nextPageToken to determine if there are more items to be
+        /// requested.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ProductsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -7177,6 +7190,153 @@ namespace Google.Apis.ShoppingContent.v2_1
                         Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "pubsubnotificationsettings" collection of methods.</summary>
+    public class PubsubnotificationsettingsResource
+    {
+        private const string Resource = "pubsubnotificationsettings";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public PubsubnotificationsettingsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Retrieves a Merchant Center account's pubsub notification settings.</summary>
+        /// <param name="merchantId">The ID of the account for which to get pubsub notification settings.</param>
+        public virtual GetRequest Get(ulong merchantId)
+        {
+            return new GetRequest(service, merchantId);
+        }
+
+        /// <summary>Retrieves a Merchant Center account's pubsub notification settings.</summary>
+        public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.PubsubNotificationSettings>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account for which to get pubsub notification settings.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/pubsubnotificationsettings"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Register a Merchant Center account for pubsub notifications. Note that cloud topic name should not
+        /// be provided as part of the request.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the account.</param>
+        public virtual UpdateRequest Update(Google.Apis.ShoppingContent.v2_1.Data.PubsubNotificationSettings body, ulong merchantId)
+        {
+            return new UpdateRequest(service, body, merchantId);
+        }
+
+        /// <summary>Register a Merchant Center account for pubsub notifications. Note that cloud topic name should not
+        /// be provided as part of the request.</summary>
+        public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.PubsubNotificationSettings>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.PubsubNotificationSettings body, ulong merchantId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.PubsubNotificationSettings Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "update"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/pubsubnotificationsettings"; }
+            }
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -10738,7 +10898,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("placedDate")]
         public virtual string PlacedDate { get; set; } 
 
-        /// <summary>Promotions associated with the order.</summary>
+        /// <summary>Promotions associated with the order.
+        ///
+        /// To determine which promotions apply to which products, check the Promotions[].appliedItems[].lineItemId
+        /// field against the LineItems[].id field for each promotion. If a promotion is applied to more than 1 offerId,
+        /// divide the discount value by the number of affected offers to determine how much discount to apply to each
+        /// offerId.
+        ///
+        /// Examples: - To calculate price paid by the customer for a single line item including the discount: For each
+        /// promotion, subtract the LineItems[].adjustments[].priceAdjustment.value amount from the
+        /// LineItems[].Price.value. - To calculate price paid by the customer for a single line item including the
+        /// discount in case of multiple quantity: For each promotion, divide the
+        /// LineItems[].adjustments[].priceAdjustment.value by the quantity of products then subtract the resulting
+        /// value from the LineItems[].Product.Price.value for each quantity item.
+        ///
+        /// Only 1 promotion can be applied to an offerId in a given order. To refund an item which had a promotion
+        /// applied to it, make sure to refund the amount after first subtracting the promotion discount from the item
+        /// price.
+        ///
+        /// More details about the program are here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
         public virtual System.Collections.Generic.IList<OrderPromotion> Promotions { get; set; } 
 
@@ -13568,6 +13746,27 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<ProductStatus> Resources { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Settings for Pub/Sub notifications, all methods require that the caller is a direct user of the
+    /// merchant center account.</summary>
+    public class PubsubNotificationSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud pub/sub topic to which notifications are sent (read-only).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudTopicName")]
+        public virtual string CloudTopicName { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#pubsubNotificationSettings".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>List of event types. Supported event types: orderPendingShipment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("registeredEvents")]
+        public virtual System.Collections.Generic.IList<string> RegisteredEvents { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

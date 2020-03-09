@@ -3215,7 +3215,7 @@
    }
   }
  }, 
- "revision": "20200305", 
+ "revision": "20200229", 
  "rootUrl": "https://dlp.googleapis.com/", 
  "schemas": {
   "GooglePrivacyDlpV2Action": {

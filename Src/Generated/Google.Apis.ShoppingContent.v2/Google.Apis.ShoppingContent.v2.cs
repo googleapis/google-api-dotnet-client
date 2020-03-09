@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200219 (1875)
+ *      <tr><th>API Rev<td>20200226 (1882)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -7402,7 +7402,9 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the products in your Merchant Center account.</summary>
+        /// <summary>Lists the products in your Merchant Center account. The response might contain fewer items than
+        /// specified by maxResults. Rely on nextPageToken to determine if there are more items to be
+        /// requested.</summary>
         /// <param name="merchantId">The ID of the account that contains the products. This account cannot be a multi-client
         /// account.</param>
         public virtual ListRequest List(ulong merchantId)
@@ -7410,7 +7412,9 @@ namespace Google.Apis.ShoppingContent.v2
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the products in your Merchant Center account.</summary>
+        /// <summary>Lists the products in your Merchant Center account. The response might contain fewer items than
+        /// specified by maxResults. Rely on nextPageToken to determine if there are more items to be
+        /// requested.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ProductsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -10829,8 +10833,24 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("placedDate")]
         public virtual string PlacedDate { get; set; } 
 
-        /// <summary>The details of the merchant provided promotions applied to the order. More details about the
-        /// program are here.</summary>
+        /// <summary>The details of the merchant provided promotions applied to the order.
+        ///
+        /// To determine which promotions apply to which products, check the Promotions[].Benefits[].OfferIds field
+        /// against the LineItems[].Product.OfferId field for each promotion. If a promotion is applied to more than 1
+        /// offerId, divide the discount value by the number of affected offers to determine how much discount to apply
+        /// to each offerId.
+        ///
+        /// Examples: - To calculate the line item level discount for a single specific item: For each promotion,
+        /// subtract the Promotions[].Benefits[].Discount.value amount from the LineItems[].Price.value. - To calculate
+        /// the line item level discount for multiple quantity of a specific item: For each promotion, divide the
+        /// Promotions[].Benefits[].Discount.value by the quantity of products and substract it from
+        /// LineItems[].Product.Price.value for each quantity item.
+        ///
+        /// Only 1 promotion can be applied to an offerId in a given order. To refund an item which had a promotion
+        /// applied to it, make sure to refund the amount after first subtracting the promotion discount from the item
+        /// price.
+        ///
+        /// More details about the program are here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
         public virtual System.Collections.Generic.IList<OrderLegacyPromotion> Promotions { get; set; } 
 

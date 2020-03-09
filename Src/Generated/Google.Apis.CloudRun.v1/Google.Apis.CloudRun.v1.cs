@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/run/'>Cloud Run API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200224 (1880)
+ *      <tr><th>API Rev<td>20200302 (1887)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/run/'>
  *              https://cloud.google.com/run/</a>
@@ -643,6 +643,152 @@ namespace Google.Apis.CloudRun.v1
                         }
 
                     }
+                }
+
+                /// <summary>Rpc to get information about a namespace.</summary>
+                /// <param name="name">Required. The name of the namespace being retrieved. If needed, replace {namespace_id} with the
+                /// project ID.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Rpc to get information about a namespace.</summary>
+                public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Namespace>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The name of the namespace being retrieved. If needed, replace {namespace_id}
+                    /// with the project ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "api/v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^namespaces/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Rpc to update a namespace.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The name of the namespace being retrieved. If needed, replace {namespace_id} with the
+                /// project ID.</param>
+                public virtual PatchRequest Patch(Google.Apis.CloudRun.v1.Data.Namespace body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Rpc to update a namespace.</summary>
+                public class PatchRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Namespace>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Namespace body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The name of the namespace being retrieved. If needed, replace {namespace_id}
+                    /// with the project ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Required. Indicates which fields in the provided namespace to update. This field is
+                    /// currently unused.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRun.v1.Data.Namespace Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "patch"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "PATCH"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "api/v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^namespaces/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
                 }
             }
         }
@@ -2568,6 +2714,7 @@ namespace Google.Apis.CloudRun.v1
                 authorizeddomains = new AuthorizeddomainsResource(service);
                 configurations = new ConfigurationsResource(service);
                 domainmappings = new DomainmappingsResource(service);
+                namespaces = new NamespacesResource(service);
                 revisions = new RevisionsResource(service);
                 routes = new RoutesResource(service);
                 secrets = new SecretsResource(service);
@@ -3335,6 +3482,176 @@ namespace Google.Apis.CloudRun.v1
                             "watch", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "watch",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+            private readonly NamespacesResource namespaces;
+
+            /// <summary>Gets the Namespaces resource.</summary>
+            public virtual NamespacesResource Namespaces
+            {
+                get { return namespaces; }
+            }
+
+            /// <summary>The "namespaces" collection of methods.</summary>
+            public class NamespacesResource
+            {
+                private const string Resource = "namespaces";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public NamespacesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Rpc to get information about a namespace.</summary>
+                /// <param name="name">Required. The name of the namespace being retrieved. If needed, replace {namespace_id} with the
+                /// project ID.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Rpc to get information about a namespace.</summary>
+                public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Namespace>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The name of the namespace being retrieved. If needed, replace {namespace_id}
+                    /// with the project ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Rpc to update a namespace.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The name of the namespace being retrieved. If needed, replace {namespace_id} with the
+                /// project ID.</param>
+                public virtual PatchRequest Patch(Google.Apis.CloudRun.v1.Data.Namespace body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Rpc to update a namespace.</summary>
+                public class PatchRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Namespace>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Namespace body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The name of the namespace being retrieved. If needed, replace {namespace_id}
+                    /// with the project ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Required. Indicates which fields in the provided namespace to update. This field is
+                    /// currently unused.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRun.v1.Data.Namespace Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "patch"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "PATCH"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -6286,6 +6603,66 @@ namespace Google.Apis.CloudRun.v1.Data
         /// /example-project/locations/us-east1"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Cloud Run fully managed: not supported
+    ///
+    /// Cloud Run on GKE: supported
+    ///
+    /// Namespace provides a scope for Names. Use of multiple namespaces is optional.</summary>
+    public class Namespace : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-
+        /// conventions.md#metadata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual ObjectMeta Metadata { get; set; } 
+
+        /// <summary>Spec defines the behavior of the Namespace. More info:
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-
+        /// status</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual NamespaceSpec Spec { get; set; } 
+
+        /// <summary>Status describes the current status of a Namespace. More info:
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-
+        /// status</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual NamespaceStatus Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Cloud Run fully managed: not supported
+    ///
+    /// Cloud Run on GKE: supported
+    ///
+    /// NamespaceSpec describes the attributes on a Namespace.</summary>
+    public class NamespaceSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Finalizers is an opaque list of values that must be empty to permanently remove object from
+        /// storage. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalizers")]
+        public virtual System.Collections.Generic.IList<string> Finalizers { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Cloud Run fully managed: not supported
+    ///
+    /// Cloud Run on GKE: supported
+    ///
+    /// NamespaceStatus is information about the current status of a Namespace.</summary>
+    public class NamespaceStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Phase is the current lifecycle phase of the namespace. More info: https://kubernetes.io/docs/tasks
+        /// /administer-cluster/namespaces/</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phase")]
+        public virtual string Phase { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

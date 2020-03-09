@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fit/rest/'>Fitness</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200223 (1879)
+ *      <tr><th>API Rev<td>20200225 (1881)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fit/rest/'>
  *              https://developers.google.com/fit/rest/</a>
