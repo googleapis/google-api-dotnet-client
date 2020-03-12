@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>Storage Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200302 (1887)
+ *      <tr><th>API Rev<td>20200310 (1895)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>
  *              https://cloud.google.com/storage-transfer/docs</a>
@@ -1380,6 +1380,24 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includePrefixes")]
         public virtual System.Collections.Generic.IList<string> IncludePrefixes { get; set; } 
 
+        /// <summary>If specified, only objects with a "last modification time" before this timestamp and objects that
+        /// don't have a "last modification time" will be transferred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedBefore")]
+        public virtual object LastModifiedBefore { get; set; } 
+
+        /// <summary>If specified, only objects with a "last modification time" on or after this timestamp and objects
+        /// that don't have a "last modification time" are transferred.
+        ///
+        /// The `last_modified_since` and `last_modified_before` fields can be used together for chunked data
+        /// processing. For example, consider a script that processes each day's worth of data at a time. For that you'd
+        /// set each of the fields as follows:
+        ///
+        /// *  `last_modified_since` to the start of the day
+        ///
+        /// *  `last_modified_before` to the end of the day</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedSince")]
+        public virtual object LastModifiedSince { get; set; } 
+
         /// <summary>If specified, only objects with a "last modification time" on or after `NOW` -
         /// `max_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are
         /// transferred.
@@ -1643,16 +1661,16 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastModificationTime")]
         public virtual object LastModificationTime { get; set; } 
 
-        /// <summary>A unique name (within the transfer project) assigned when the job is created. If this field is left
+        /// <summary>A unique name (within the transfer project) assigned when the job is created.  If this field is
         /// empty in a CreateTransferJobRequest, Storage Transfer Service will assign a unique name. Otherwise, the
-        /// supplied name is used as the unique name for this job.
+        /// specified name is used as the unique name for this job.
+        ///
+        /// If the specified name is in use by a job, the creation request fails with an ALREADY_EXISTS error.
         ///
         /// This name must start with `"transferJobs/"` prefix and end with a letter or a number, and should be no more
-        /// than 128 characters. Example of a valid format : `"transferJobs/[A-Za-z0-9-._~]*[A-Za-z0-9]$"`
+        /// than 128 characters. Example: `"transferJobs/[A-Za-z0-9-._~]*[A-Za-z0-9]$"`
         ///
-        /// **Note:** If the supplied name is already in use, the creation request results in an ALREADY_EXISTS error
-        /// and the transfer job will not be created.  Invalid job names will return an INVALID_ARGUMENT error and the
-        /// job will not be created.</summary>
+        /// Invalid job names will fail with an INVALID_ARGUMENT error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

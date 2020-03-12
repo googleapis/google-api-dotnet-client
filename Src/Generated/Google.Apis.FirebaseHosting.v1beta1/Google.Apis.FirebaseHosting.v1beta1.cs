@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/hosting/'>Firebase Hosting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200225 (1881)
+ *      <tr><th>API Rev<td>20200309 (1894)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/hosting/'>
  *              https://firebase.google.com/docs/hosting/</a>
@@ -365,6 +365,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
         {
             this.service = service;
             operations = new OperationsResource(service);
+            sites = new SitesResource(service);
 
         }
 
@@ -454,6 +455,453 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
             }
         }
+        private readonly SitesResource sites;
+
+        /// <summary>Gets the Sites resource.</summary>
+        public virtual SitesResource Sites
+        {
+            get { return sites; }
+        }
+
+        /// <summary>The "sites" collection of methods.</summary>
+        public class SitesResource
+        {
+            private const string Resource = "sites";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SitesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                channels = new ChannelsResource(service);
+                releases = new ReleasesResource(service);
+
+            }
+
+            private readonly ChannelsResource channels;
+
+            /// <summary>Gets the Channels resource.</summary>
+            public virtual ChannelsResource Channels
+            {
+                get { return channels; }
+            }
+
+            /// <summary>The "channels" collection of methods.</summary>
+            public class ChannelsResource
+            {
+                private const string Resource = "channels";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ChannelsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    releases = new ReleasesResource(service);
+
+                }
+
+                private readonly ReleasesResource releases;
+
+                /// <summary>Gets the Releases resource.</summary>
+                public virtual ReleasesResource Releases
+                {
+                    get { return releases; }
+                }
+
+                /// <summary>The "releases" collection of methods.</summary>
+                public class ReleasesResource
+                {
+                    private const string Resource = "releases";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ReleasesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Creates a new release which makes the content of the specified version actively display
+                    /// on the appropriate URL(s).</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">The site that the release belongs to, in the format: sites/site-name</param>
+                    public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a new release which makes the content of the specified version actively display
+                    /// on the appropriate URL(s).</summary>
+                    public class CreateRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Release>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The site that the release belongs to, in the format: sites/site-name</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>The unique identifier for a version, in the format: /sites/site-
+                        /// name/versions/versionID The site-name in this version identifier must match the site-name in
+                        /// the `parent` parameter.
+                        ///
+                        /// This query parameter must be empty if the `type` field in the request body is
+                        /// `SITE_DISABLE`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("versionName", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string VersionName { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.FirebaseHosting.v1beta1.Data.Release Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "create"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta1/{+parent}/releases"; }
+                        }
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/sites/[^/]+/channels/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "versionName", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "versionName",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Lists the releases that have been created on the specified site.</summary>
+                    /// <param name="parent">Required. The parent for which to list files, in the format: sites/site-name</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists the releases that have been created on the specified site.</summary>
+                    public class ListRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.ListReleasesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The parent for which to list files, in the format: sites/site-
+                        /// name</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>The page size to return. Defaults to 100.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The next_page_token from a previous request, if provided.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta1/{+parent}/releases"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/sites/[^/]+/channels/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+                }
+            }
+            private readonly ReleasesResource releases;
+
+            /// <summary>Gets the Releases resource.</summary>
+            public virtual ReleasesResource Releases
+            {
+                get { return releases; }
+            }
+
+            /// <summary>The "releases" collection of methods.</summary>
+            public class ReleasesResource
+            {
+                private const string Resource = "releases";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ReleasesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Creates a new release which makes the content of the specified version actively display on
+                /// the appropriate URL(s).</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">The site that the release belongs to, in the format: sites/site-name</param>
+                public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new release which makes the content of the specified version actively display on
+                /// the appropriate URL(s).</summary>
+                public class CreateRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Release>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The site that the release belongs to, in the format: sites/site-name</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The unique identifier for a version, in the format: /sites/site-name/versions/versionID
+                    /// The site-name in this version identifier must match the site-name in the `parent` parameter.
+                    ///
+                    /// This query parameter must be empty if the `type` field in the request body is
+                    /// `SITE_DISABLE`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("versionName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string VersionName { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.FirebaseHosting.v1beta1.Data.Release Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+parent}/releases"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/sites/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "versionName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "versionName",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists the releases that have been created on the specified site.</summary>
+                /// <param name="parent">Required. The parent for which to list files, in the format: sites/site-name</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists the releases that have been created on the specified site.</summary>
+                public class ListRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.ListReleasesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The parent for which to list files, in the format: sites/site-name</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The page size to return. Defaults to 100.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The next_page_token from a previous request, if provided.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+parent}/releases"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/sites/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+        }
     }
 
     /// <summary>The "sites" collection of methods.</summary>
@@ -468,12 +916,235 @@ namespace Google.Apis.FirebaseHosting.v1beta1
         public SitesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            channels = new ChannelsResource(service);
             domains = new DomainsResource(service);
             releases = new ReleasesResource(service);
             versions = new VersionsResource(service);
 
         }
 
+        private readonly ChannelsResource channels;
+
+        /// <summary>Gets the Channels resource.</summary>
+        public virtual ChannelsResource Channels
+        {
+            get { return channels; }
+        }
+
+        /// <summary>The "channels" collection of methods.</summary>
+        public class ChannelsResource
+        {
+            private const string Resource = "channels";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ChannelsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                releases = new ReleasesResource(service);
+
+            }
+
+            private readonly ReleasesResource releases;
+
+            /// <summary>Gets the Releases resource.</summary>
+            public virtual ReleasesResource Releases
+            {
+                get { return releases; }
+            }
+
+            /// <summary>The "releases" collection of methods.</summary>
+            public class ReleasesResource
+            {
+                private const string Resource = "releases";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ReleasesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Creates a new release which makes the content of the specified version actively display on
+                /// the appropriate URL(s).</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">The site that the release belongs to, in the format: sites/site-name</param>
+                public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new release which makes the content of the specified version actively display on
+                /// the appropriate URL(s).</summary>
+                public class CreateRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Release>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The site that the release belongs to, in the format: sites/site-name</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The unique identifier for a version, in the format: /sites/site-name/versions/versionID
+                    /// The site-name in this version identifier must match the site-name in the `parent` parameter.
+                    ///
+                    /// This query parameter must be empty if the `type` field in the request body is
+                    /// `SITE_DISABLE`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("versionName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string VersionName { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.FirebaseHosting.v1beta1.Data.Release Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+parent}/releases"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^sites/[^/]+/channels/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "versionName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "versionName",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists the releases that have been created on the specified site.</summary>
+                /// <param name="parent">Required. The parent for which to list files, in the format: sites/site-name</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists the releases that have been created on the specified site.</summary>
+                public class ListRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.ListReleasesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The parent for which to list files, in the format: sites/site-name</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The page size to return. Defaults to 100.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The next_page_token from a previous request, if provided.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+parent}/releases"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^sites/[^/]+/channels/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+        }
         private readonly DomainsResource domains;
 
         /// <summary>Gets the Domains resource.</summary>
@@ -869,7 +1540,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
 
             /// <summary>Creates a new release which makes the content of the specified version actively display on the
-            /// site.</summary>
+            /// appropriate URL(s).</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">The site that the release belongs to, in the format: sites/site-name</param>
             public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
@@ -878,7 +1549,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             }
 
             /// <summary>Creates a new release which makes the content of the specified version actively display on the
-            /// site.</summary>
+            /// appropriate URL(s).</summary>
             public class CreateRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Release>
             {
                 /// <summary>Constructs a new Create request.</summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/healthcare'>Cloud Healthcare API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200229 (1885)
+ *      <tr><th>API Rev<td>20200301 (1886)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/healthcare'>
  *              https://cloud.google.com/healthcare</a>
@@ -6549,7 +6549,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             ///
                             /// Fields/functions available for filtering are:
                             ///
-                            /// *  `message_type`, from the MSH-9 segment. For example, `NOT message_type = "ADT"`. *
+                            /// *  `message_type`, from the MSH-9.1 field. For example, `NOT message_type = "ADT"`. *
                             /// `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in the dataset's
                             /// time_zone, from the MSH-7 segment. For example, `send_date < "2017-01-02"`. *
                             /// `send_time`, the timestamp when the message was sent, using the RFC3339 time format for
@@ -9657,11 +9657,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hl7V2Messages")]
         public virtual System.Collections.Generic.IList<Message> Hl7V2Messages { get; set; } 
 
-        /// <summary>Deprecated. Use `hl7_v2_messages` instead. The returned message names. Won't be more values than
-        /// the value of page_size in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
-        public virtual System.Collections.Generic.IList<string> Messages { get; set; } 
-
         /// <summary>Token to retrieve the next page of results or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -9740,7 +9735,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>The message type and trigger event for this message. MSH-9.</summary>
+        /// <summary>The message type for this message. MSH-9.1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageType")]
         public virtual string MessageType { get; set; } 
 
@@ -9984,7 +9979,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Define how to redact sensitive values. Default behaviour is erase. For example, "My name is Jake."
+    /// <summary>Define how to redact sensitive values. Default behaviour is erase. For example, "My name is Jane."
     /// becomes "My name is ."</summary>
     public class RedactConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9993,7 +9988,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     }    
 
     /// <summary>When using the INSPECT_AND_TRANSFORM action, each match is replaced with the name of the info_type. For
-    /// example, "My name is Jake" becomes "My name is [PERSON_NAME]." The TRANSFORM action is equivalent to
+    /// example, "My name is Jane" becomes "My name is [PERSON_NAME]." The TRANSFORM action is equivalent to
     /// redacting.</summary>
     public class ReplaceWithInfoTypeConfig : Google.Apis.Requests.IDirectResponseSchema
     {

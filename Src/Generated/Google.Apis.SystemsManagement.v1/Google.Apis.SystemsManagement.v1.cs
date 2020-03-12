@@ -19,34 +19,34 @@
 
 /**
  * \brief
- *   Accelerated Mobile Pages (AMP) URL API Version v1
+ *   Cloud OS Config API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/amp/cache/'>Accelerated Mobile Pages (AMP) URL API</a>
+ *          <td><a href='https://cloud.google.com/'>Cloud OS Config API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200310 (1895)
+ *      <tr><th>API Rev<td>20200226 (1882)
  *      <tr><th>API Docs
- *          <td><a href='https://developers.google.com/amp/cache/'>
- *              https://developers.google.com/amp/cache/</a>
- *      <tr><th>Discovery Name<td>acceleratedmobilepageurl
+ *          <td><a href='https://cloud.google.com/'>
+ *              https://cloud.google.com/</a>
+ *      <tr><th>Discovery Name<td>osconfig
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Accelerated Mobile Pages (AMP) URL API can be found at
- * <a href='https://developers.google.com/amp/cache/'>https://developers.google.com/amp/cache/</a>.
+ * The complete API documentation for using Cloud OS Config API can be found at
+ * <a href='https://cloud.google.com/'>https://cloud.google.com/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.Acceleratedmobilepageurl.v1
+namespace Google.Apis.SystemsManagement.v1
 {
-    /// <summary>The Acceleratedmobilepageurl Service.</summary>
-    public class AcceleratedmobilepageurlService : Google.Apis.Services.BaseClientService
+    /// <summary>The SystemsManagement Service.</summary>
+    public class SystemsManagementService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
         public const string Version = "v1";
@@ -56,15 +56,15 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1
             Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public AcceleratedmobilepageurlService() :
+        public SystemsManagementService() :
             this(new Google.Apis.Services.BaseClientService.Initializer()) {}
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public AcceleratedmobilepageurlService(Google.Apis.Services.BaseClientService.Initializer initializer)
+        public SystemsManagementService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
-            ampUrls = new AmpUrlsResource(this);
+
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -76,16 +76,16 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1
         /// <summary>Gets the service name.</summary>
         public override string Name
         {
-            get { return "acceleratedmobilepageurl"; }
+            get { return "osconfig"; }
         }
 
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://acceleratedmobilepageurl.googleapis.com/"; }
+            get { return BaseUriOverride ?? "https://osconfig.googleapis.com/"; }
         #else
-            get { return "https://acceleratedmobilepageurl.googleapis.com/"; }
+            get { return "https://osconfig.googleapis.com/"; }
         #endif
         }
 
@@ -99,7 +99,7 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://acceleratedmobilepageurl.googleapis.com/batch"; }
+            get { return "https://osconfig.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
@@ -112,21 +112,13 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1
 
 
 
-
-        private readonly AmpUrlsResource ampUrls;
-
-        /// <summary>Gets the AmpUrls resource.</summary>
-        public virtual AmpUrlsResource AmpUrls
-        {
-            get { return ampUrls; }
-        }
     }
 
-    ///<summary>A base abstract class for Acceleratedmobilepageurl requests.</summary>
-    public abstract class AcceleratedmobilepageurlBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    ///<summary>A base abstract class for SystemsManagement requests.</summary>
+    public abstract class SystemsManagementBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new AcceleratedmobilepageurlBaseServiceRequest instance.</summary>
-        protected AcceleratedmobilepageurlBaseServiceRequest(Google.Apis.Services.IClientService service)
+        ///<summary>Constructs a new SystemsManagementBaseServiceRequest instance.</summary>
+        protected SystemsManagementBaseServiceRequest(Google.Apis.Services.IClientService service)
             : base(service)
         {
         }
@@ -204,7 +196,7 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1
         [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string UploadProtocol { get; set; }
 
-        /// <summary>Initializes Acceleratedmobilepageurl parameter list.</summary>
+        /// <summary>Initializes SystemsManagement parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
@@ -310,152 +302,8 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1
                 });
         }
     }
-
-    /// <summary>The "ampUrls" collection of methods.</summary>
-    public class AmpUrlsResource
-    {
-        private const string Resource = "ampUrls";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public AmpUrlsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-
-        }
-
-
-        /// <summary>Returns AMP URL(s) and equivalent [AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-
-        /// format).</summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual BatchGetRequest BatchGet(Google.Apis.Acceleratedmobilepageurl.v1.Data.BatchGetAmpUrlsRequest body)
-        {
-            return new BatchGetRequest(service, body);
-        }
-
-        /// <summary>Returns AMP URL(s) and equivalent [AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-
-        /// format).</summary>
-        public class BatchGetRequest : AcceleratedmobilepageurlBaseServiceRequest<Google.Apis.Acceleratedmobilepageurl.v1.Data.BatchGetAmpUrlsResponse>
-        {
-            /// <summary>Constructs a new BatchGet request.</summary>
-            public BatchGetRequest(Google.Apis.Services.IClientService service, Google.Apis.Acceleratedmobilepageurl.v1.Data.BatchGetAmpUrlsRequest body)
-                : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Acceleratedmobilepageurl.v1.Data.BatchGetAmpUrlsRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "batchGet"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/ampUrls:batchGet"; }
-            }
-
-            /// <summary>Initializes BatchGet parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-            }
-
-        }
-    }
 }
 
-namespace Google.Apis.Acceleratedmobilepageurl.v1.Data
-{    
-
-    /// <summary>AMP URL response for a requested URL.</summary>
-    public class AmpUrl : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The AMP URL pointing to the publisher's web server.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ampUrl")]
-        public virtual string AmpUrlValue { get; set; } 
-
-        /// <summary>The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to the cached document in
-        /// the Google AMP Cache.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cdnAmpUrl")]
-        public virtual string CdnAmpUrl { get; set; } 
-
-        /// <summary>The original non-AMP URL.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("originalUrl")]
-        public virtual string OriginalUrl { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>AMP URL Error resource for a requested URL that couldn't be found.</summary>
-    public class AmpUrlError : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The error code of an API call.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
-        public virtual string ErrorCode { get; set; } 
-
-        /// <summary>An optional descriptive error message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; } 
-
-        /// <summary>The original non-AMP URL.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("originalUrl")]
-        public virtual string OriginalUrl { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>AMP URL request for a batch of URLs.</summary>
-    public class BatchGetAmpUrlsRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The lookup_strategy being requested.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lookupStrategy")]
-        public virtual string LookupStrategy { get; set; } 
-
-        /// <summary>List of URLs to look up for the paired AMP URLs. The URLs are case-sensitive. Up to 50 URLs per
-        /// lookup (see [Usage Limits](/amp/cache/reference/limits)).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("urls")]
-        public virtual System.Collections.Generic.IList<string> Urls { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Batch AMP URL response.</summary>
-    public class BatchGetAmpUrlsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>For each URL in BatchAmpUrlsRequest, the URL response. The response might not be in the same order
-        /// as URLs in the batch request. If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated only
-        /// once.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ampUrls")]
-        public virtual System.Collections.Generic.IList<AmpUrl> AmpUrls { get; set; } 
-
-        /// <summary>The errors for requested URLs that have no AMP URL.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("urlErrors")]
-        public virtual System.Collections.Generic.IList<AmpUrlError> UrlErrors { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
+namespace Google.Apis.SystemsManagement.v1.Data
+{
 }

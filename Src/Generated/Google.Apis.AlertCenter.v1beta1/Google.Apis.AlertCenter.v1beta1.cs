@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>G Suite Alert Center API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200229 (1885)
+ *      <tr><th>API Rev<td>20200309 (1894)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>
  *              https://developers.google.com/admin-sdk/alertcenter/</a>
@@ -1284,7 +1284,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("supersededAlerts")]
         public virtual System.Collections.Generic.IList<string> SupersededAlerts { get; set; } 
 
-        /// <summary>Alert id superseding this alert. It is used to indicate that superseding alert is essentially
+        /// <summary>Alert ID superseding this alert. It is used to indicate that superseding alert is essentially
         /// extension of this alert and we found the relationship after creating both alerts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supersedingAlert")]
         public virtual string SupersedingAlert { get; set; } 
@@ -1512,7 +1512,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// <summary>A request to perform batch delete on alerts.</summary>
     public class BatchDeleteAlertsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. list of alert ids.</summary>
+        /// <summary>Required. list of alert IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
         public virtual System.Collections.Generic.IList<string> AlertId { get; set; } 
 
@@ -1532,7 +1532,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("failedAlertStatus")]
         public virtual System.Collections.Generic.IDictionary<string,Status> FailedAlertStatus { get; set; } 
 
-        /// <summary>The successful list of alert ids.</summary>
+        /// <summary>The successful list of alert IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successAlertIds")]
         public virtual System.Collections.Generic.IList<string> SuccessAlertIds { get; set; } 
 
@@ -1543,7 +1543,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// <summary>A request to perform batch undelete on alerts.</summary>
     public class BatchUndeleteAlertsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. list of alert ids.</summary>
+        /// <summary>Required. list of alert IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
         public virtual System.Collections.Generic.IList<string> AlertId { get; set; } 
 
@@ -1563,7 +1563,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("failedAlertStatus")]
         public virtual System.Collections.Generic.IDictionary<string,Status> FailedAlertStatus { get; set; } 
 
-        /// <summary>The successful list of alert ids.</summary>
+        /// <summary>The successful list of alert IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successAlertIds")]
         public virtual System.Collections.Generic.IList<string> SuccessAlertIds { get; set; } 
 
@@ -1711,46 +1711,6 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Drive file</summary>
-    public class DriveFile : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Abuse type of the file.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("abuseType")]
-        public virtual string AbuseType { get; set; } 
-
-        /// <summary>The ID of the file.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
-
-        /// <summary>The name of the file.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>The number of recent downloads of the file. This is available for the following alert types:
-        ///
-        /// *Drive malware sharing detected</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numRecentDownload")]
-        public virtual System.Nullable<long> NumRecentDownload { get; set; } 
-
-        /// <summary>The email address of the file owner.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("owner")]
-        public virtual string Owner { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Alerts for suspicious Drive files or activities.</summary>
-    public class DriveFileWarning : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>List of files in the alert.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("files")]
-        public virtual System.Collections.Generic.IList<DriveFile> Files { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance:
     ///
@@ -1863,8 +1823,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; } 
 
-        /// <summary>Optional. The successful login time that is associated with the warning event. This will not be
-        /// present for blocked login attempts.</summary>
+        /// <summary>Optional. The successful login time that is associated with the warning event. This isn't present
+        /// for blocked login attempts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loginTime")]
         public virtual object LoginTime { get; set; } 
 
@@ -2009,7 +1969,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
         public virtual string DocumentId { get; set; } 
 
-        /// <summary>Title of the resource, e.g. email subject, or document title.</summary>
+        /// <summary>Title of the resource, for example email subject, or document title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceTitle")]
         public virtual string ResourceTitle { get; set; } 
 

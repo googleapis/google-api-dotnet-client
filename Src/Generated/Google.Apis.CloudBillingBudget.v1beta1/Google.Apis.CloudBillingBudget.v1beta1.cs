@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/billing/docs/how-to/budget-api-overview'>Cloud Billing Budget API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200229 (1885)
+ *      <tr><th>API Rev<td>20200308 (1893)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/billing/docs/how-to/budget-api-overview'>
  *              https://cloud.google.com/billing/docs/how-to/budget-api-overview</a>
@@ -503,7 +503,7 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
             ///
             /// WARNING: There are some fields exposed on the Google Cloud Console that aren’t available on this API.
             /// When reading from the API, you will not see these fields in the return value, though they may have been
-            /// set in the cloud console.</summary>
+            /// set in the Cloud Console.</summary>
             /// <param name="name">Required. Name of budget to get. Values are of the form
             /// `billingAccounts/{billingAccountId}/budgets/{budgetId}`.</param>
             public virtual GetRequest Get(string name)
@@ -515,7 +515,7 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
             ///
             /// WARNING: There are some fields exposed on the Google Cloud Console that aren’t available on this API.
             /// When reading from the API, you will not see these fields in the return value, though they may have been
-            /// set in the cloud console.</summary>
+            /// set in the Cloud Console.</summary>
             public class GetRequest : CloudBillingBudgetBaseServiceRequest<Google.Apis.CloudBillingBudget.v1beta1.Data.GoogleCloudBillingBudgetsV1beta1Budget>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -573,7 +573,7 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
             ///
             /// WARNING: There are some fields exposed on the Google Cloud Console that aren’t available on this API.
             /// When reading from the API, you will not see these fields in the return value, though they may have been
-            /// set in the cloud console.</summary>
+            /// set in the Cloud Console.</summary>
             /// <param name="parent">Required. Name of billing account to list budgets under. Values are of the form
             /// `billingAccounts/{billingAccountId}`.</param>
             public virtual ListRequest List(string parent)
@@ -585,7 +585,7 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
             ///
             /// WARNING: There are some fields exposed on the Google Cloud Console that aren’t available on this API.
             /// When reading from the API, you will not see these fields in the return value, though they may have been
-            /// set in the cloud console.</summary>
+            /// set in the Cloud Console.</summary>
             public class ListRequest : CloudBillingBudgetBaseServiceRequest<Google.Apis.CloudBillingBudget.v1beta1.Data.GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -807,7 +807,7 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Required. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds
+        /// <summary>Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds
         /// the specified percentages of the budget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thresholdRules")]
         public virtual System.Collections.Generic.IList<GoogleCloudBillingBudgetsV1beta1ThresholdRule> ThresholdRules { get; set; } 
@@ -848,8 +848,8 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creditTypesTreatment")]
         public virtual string CreditTypesTreatment { get; set; } 
 
-        /// <summary>Optional. A set of projects of the form `projects/{project_id}`, specifying that usage from only
-        /// this set of projects should be included in the budget. If omitted, the report will include all usage for the
+        /// <summary>Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this
+        /// set of projects should be included in the budget. If omitted, the report will include all usage for the
         /// billing account, regardless of which project the usage occurred on. Only zero or one project can be
         /// specified currently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projects")]

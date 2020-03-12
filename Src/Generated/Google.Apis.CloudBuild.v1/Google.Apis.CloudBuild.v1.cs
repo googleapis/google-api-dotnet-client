@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200229 (1885)
+ *      <tr><th>API Rev<td>20200308 (1893)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -2300,6 +2300,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commentControl")]
         public virtual string CommentControl { get; set; } 
 
+        /// <summary>If true, branches that do NOT match the git_ref will trigger a build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invertRegex")]
+        public virtual System.Nullable<bool> InvertRegex { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2313,6 +2317,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// https://github.com/google/re2/wiki/Syntax</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("branch")]
         public virtual string Branch { get; set; } 
+
+        /// <summary>When true, only trigger a build if the revision regex does NOT match the git_ref regex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invertRegex")]
+        public virtual System.Nullable<bool> InvertRegex { get; set; } 
 
         /// <summary>Regexes matching tags to build.
         ///
@@ -2345,6 +2353,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// for that step's execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dir")]
         public virtual string Dir { get; set; } 
+
+        /// <summary>Only trigger a build if the revision regex does NOT match the revision regex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invertRegex")]
+        public virtual System.Nullable<bool> InvertRegex { get; set; } 
 
         /// <summary>ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the
         /// build is assumed.</summary>

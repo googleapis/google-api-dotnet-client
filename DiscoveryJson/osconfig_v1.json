@@ -1,20 +1,20 @@
 {
  "basePath": "", 
- "baseUrl": "https://youtubeanalytics.googleapis.com/", 
+ "baseUrl": "https://osconfig.googleapis.com/", 
  "batchPath": "batch", 
- "canonicalName": "YouTube Analytics", 
- "description": "Retrieves your YouTube Analytics data.", 
+ "canonicalName": "Systems Management", 
+ "description": "OS management tools that can be used for patch management, patch compliance, and configuration management on VM instances.", 
  "discoveryVersion": "v1", 
- "documentationLink": "https://developers.google.com/youtube/analytics", 
+ "documentationLink": "https://cloud.google.com/", 
  "fullyEncodeReservedExpansion": true, 
  "icons": {
   "x16": "http://www.google.com/images/icons/product/search-16.gif", 
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  }, 
- "id": "youtubeAnalytics:v1", 
+ "id": "osconfig:v1", 
  "kind": "discovery#restDescription", 
- "mtlsRootUrl": "https://youtubeanalytics.mtls.googleapis.com/", 
- "name": "youtubeAnalytics", 
+ "mtlsRootUrl": "https://osconfig.mtls.googleapis.com/", 
+ "name": "osconfig", 
  "ownerDomain": "google.com", 
  "ownerName": "Google", 
  "parameters": {
@@ -96,11 +96,11 @@
  }, 
  "protocol": "rest", 
  "resources": {}, 
- "revision": "20200310", 
- "rootUrl": "https://youtubeanalytics.googleapis.com/", 
+ "revision": "20200226", 
+ "rootUrl": "https://osconfig.googleapis.com/", 
  "schemas": {}, 
  "servicePath": "", 
- "title": "YouTube Analytics API", 
+ "title": "Cloud OS Config API", 
  "version": "v1", 
  "version_module": true
 }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20200229 (1885)
+ *      <tr><th>API Rev<td>20200308 (1893)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -1207,6 +1207,10 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// for that step's execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dir")]
         public virtual string Dir { get; set; } 
+
+        /// <summary>Only trigger a build if the revision regex does NOT match the revision regex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invertRegex")]
+        public virtual System.Nullable<bool> InvertRegex { get; set; } 
 
         /// <summary>ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the
         /// build is assumed.</summary>

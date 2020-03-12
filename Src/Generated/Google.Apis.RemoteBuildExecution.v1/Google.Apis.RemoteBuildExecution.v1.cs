@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200303 (1888)
+ *      <tr><th>API Rev<td>20200310 (1895)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -1086,6 +1086,15 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputRootDigest")]
         public virtual BuildBazelRemoteExecutionV2Digest InputRootDigest { get; set; } 
 
+        /// <summary>List of required supported NodeProperty keys. In order to ensure that equivalent `Action`s always
+        /// hash to the same value, the supported node properties MUST be lexicographically sorted by name. Sorting of
+        /// strings is done by code point, equivalently, by the UTF-8 bytes.
+        ///
+        /// The interpretation of these properties is server-dependent. If a property is not recognized by the server,
+        /// the server will return an `INVALID_ARGUMENT` error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputNodeProperties")]
+        public virtual System.Collections.Generic.IList<string> OutputNodeProperties { get; set; } 
+
         /// <summary>A timeout after which the execution should be killed. If the timeout is absent, then the client is
         /// specifying that the execution should continue as long as the server will let it. The server SHOULD impose a
         /// timeout if the client does not specify one, however, if the client does specify a timeout that is longer
@@ -1116,10 +1125,10 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         public virtual System.Nullable<int> ExitCode { get; set; } 
 
         /// <summary>The output directories of the action. For each output directory requested in the
-        /// `output_directories` field of the Action, if the corresponding directory existed after the action completed,
-        /// a single entry will be present in the output list, which will contain the digest of a Tree message
-        /// containing the directory tree, and the path equal exactly to the corresponding Action output_directories
-        /// member.
+        /// `output_directories` or `output_paths` field of the Action, if the corresponding directory existed after the
+        /// action completed, a single entry will be present in the output list, which will contain the digest of a Tree
+        /// message containing the directory tree, and the path equal exactly to the corresponding Action
+        /// output_directories member.
         ///
         /// As an example, suppose the Action had an output directory `a/b/dir` and the execution produced the following
         /// contents in `a/b/dir`: a file named `bar` and a directory named `foo` with an executable file named `baz`.
@@ -1130,7 +1139,8 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         /// "4a73bc9d03...", size: 65534 } } ], directories: [ { name: "foo", digest: { hash: "4cf2eda940...", size: 43
         /// } } ] } children : { // (Directory proto with hash "4cf2eda940..." and size 43) files: [ { name: "baz",
         /// digest: { hash: "b2c941073e...", size: 1294, }, is_executable: true } ] } } ``` If an output of the same
-        /// name was found, but was not a directory, the server will return a FAILED_PRECONDITION.</summary>
+        /// name as listed in `output_files` of the Command was found in `output_directories`, but was not a directory,
+        /// the server will return a FAILED_PRECONDITION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputDirectories")]
         public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2OutputDirectory> OutputDirectories { get; set; } 
 
@@ -1144,33 +1154,54 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         /// If an output of the same name was found, but was a symbolic link to a file instead of a directory, the
         /// server will return a FAILED_PRECONDITION. If the action does not produce the requested output, then that
         /// output will be omitted from the list. The server is free to arrange the output list as desired; clients MUST
-        /// NOT assume that the output list is sorted.</summary>
+        /// NOT assume that the output list is sorted.
+        ///
+        /// DEPRECATED as of v2.1. Servers that wish to be compatible with v2.0 API should still populate this field in
+        /// addition to `output_symlinks`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputDirectorySymlinks")]
         public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2OutputSymlink> OutputDirectorySymlinks { get; set; } 
 
         /// <summary>The output files of the action that are symbolic links to other files. Those may be links to other
         /// output files, or input files, or even absolute paths outside of the working directory, if the server
-        /// supports SymlinkAbsolutePathStrategy.ALLOWED. For each output file requested in the `output_files` field of
-        /// the Action, if the corresponding file existed after the action completed, a single entry will be present
-        /// either in this field, or in the `output_files` field, if the file was not a symbolic link.
+        /// supports SymlinkAbsolutePathStrategy.ALLOWED. For each output file requested in the `output_files` or
+        /// `output_paths` field of the Action, if the corresponding file existed after the action completed, a single
+        /// entry will be present either in this field, or in the `output_files` field, if the file was not a symbolic
+        /// link.
         ///
-        /// If an output symbolic link of the same name was found, but its target type was not a regular file, the
-        /// server will return a FAILED_PRECONDITION. If the action does not produce the requested output, then that
-        /// output will be omitted from the list. The server is free to arrange the output list as desired; clients MUST
-        /// NOT assume that the output list is sorted.</summary>
+        /// If an output symbolic link of the same name as listed in `output_files` of the Command was found, but its
+        /// target type was not a regular file, the server will return a FAILED_PRECONDITION. If the action does not
+        /// produce the requested output, then that output will be omitted from the list. The server is free to arrange
+        /// the output list as desired; clients MUST NOT assume that the output list is sorted.
+        ///
+        /// DEPRECATED as of v2.1. Servers that wish to be compatible with v2.0 API should still populate this field in
+        /// addition to `output_symlinks`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputFileSymlinks")]
         public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2OutputSymlink> OutputFileSymlinks { get; set; } 
 
-        /// <summary>The output files of the action. For each output file requested in the `output_files` field of the
-        /// Action, if the corresponding file existed after the action completed, a single entry will be present either
-        /// in this field, or the `output_file_symlinks` field if the file was a symbolic link to another file.
+        /// <summary>The output files of the action. For each output file requested in the `output_files` or
+        /// `output_paths` field of the Action, if the corresponding file existed after the action completed, a single
+        /// entry will be present either in this field, or the `output_file_symlinks` field if the file was a symbolic
+        /// link to another file (`output_symlinks` field after v2.1).
         ///
-        /// If an output of the same name was found, but was a directory rather than a regular file, the server will
-        /// return a FAILED_PRECONDITION. If the action does not produce the requested output, then that output will be
-        /// omitted from the list. The server is free to arrange the output list as desired; clients MUST NOT assume
-        /// that the output list is sorted.</summary>
+        /// If an output listed in `output_files` was found, but was a directory rather than a regular file, the server
+        /// will return a FAILED_PRECONDITION. If the action does not produce the requested output, then that output
+        /// will be omitted from the list. The server is free to arrange the output list as desired; clients MUST NOT
+        /// assume that the output list is sorted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputFiles")]
         public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2OutputFile> OutputFiles { get; set; } 
+
+        /// <summary>New in v2.1: this field will only be populated if the command `output_paths` field was used, and
+        /// not the pre v2.1 `output_files` or `output_directories` fields. The output paths of the action that are
+        /// symbolic links to other paths. Those may be links to other outputs, or inputs, or even absolute paths
+        /// outside of the working directory, if the server supports SymlinkAbsolutePathStrategy.ALLOWED. A single entry
+        /// for each output requested in `output_paths` field of the Action, if the corresponding path existed after the
+        /// action completed and was a symbolic link.
+        ///
+        /// If the action does not produce a requested output, then that output will be omitted from the list. The
+        /// server is free to arrange the output list as desired; clients MUST NOT assume that the output list is
+        /// sorted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputSymlinks")]
+        public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2OutputSymlink> OutputSymlinks { get; set; } 
 
         /// <summary>The digest for a blob containing the standard error of the action, which can be retrieved from the
         /// ContentAddressableStorage.</summary>
@@ -1240,7 +1271,9 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         /// directory is allowed to be a parent of another output directory.
         ///
         /// Directories leading up to the output directories (but not the output directories themselves) are created by
-        /// the worker prior to execution, even if they are not explicitly part of the input root.</summary>
+        /// the worker prior to execution, even if they are not explicitly part of the input root.
+        ///
+        /// DEPRECATED since 2.1: Use `output_paths` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputDirectories")]
         public virtual System.Collections.Generic.IList<string> OutputDirectories { get; set; } 
 
@@ -1259,9 +1292,33 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         /// listed output directories.
         ///
         /// Directories leading up to the output files are created by the worker prior to execution, even if they are
-        /// not explicitly part of the input root.</summary>
+        /// not explicitly part of the input root.
+        ///
+        /// DEPRECATED since v2.1: Use `output_paths` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputFiles")]
         public virtual System.Collections.Generic.IList<string> OutputFiles { get; set; } 
+
+        /// <summary>A list of the output paths that the client expects to retrieve from the action. Only the listed
+        /// paths will be returned to the client as output. The type of the output (file or directory) is not specified,
+        /// and will be determined by the server after action execution. If the resulting path is a file, it will be
+        /// returned in an OutputFile) typed field. If the path is a directory, the entire directory structure will be
+        /// returned as a Tree message digest, see OutputDirectory) Other files or directories that may be created
+        /// during command execution are discarded.
+        ///
+        /// The paths are relative to the working directory of the action execution. The paths are specified using a
+        /// single forward slash (`/`) as a path separator, even if the execution platform natively uses a different
+        /// separator. The path MUST NOT include a trailing slash, nor a leading slash, being a relative path.
+        ///
+        /// In order to ensure consistent hashing of the same Action, the output paths MUST be deduplicated and sorted
+        /// lexicographically by code point (or, equivalently, by UTF-8 bytes).
+        ///
+        /// Directories leading up to the output paths are created by the worker prior to execution, even if they are
+        /// not explicitly part of the input root.
+        ///
+        /// New in v2.1: this field supersedes the DEPRECATED `output_files` and `output_directories` fields. If
+        /// `output_paths` is used, `output_files` and `output_directories` will be ignored!</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputPaths")]
+        public virtual System.Collections.Generic.IList<string> OutputPaths { get; set; } 
 
         /// <summary>The platform requirements for the execution environment. The server MAY choose to execute the
         /// action on any worker satisfying the requirements, so the client SHOULD ensure that running the action on any
@@ -1296,7 +1353,7 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
     }    
 
     /// <summary>A content digest. A digest for a given blob consists of the size of the blob and its hash. The hash
-    /// algorithm to use is defined by the server, but servers SHOULD use SHA-256.
+    /// algorithm to use is defined by the server.
     ///
     /// The size is considered to be an integral part of the digest and cannot be separated. That is, even if the `hash`
     /// field is correctly specified but `size_bytes` is not, the server MUST reject the request.
@@ -1348,15 +1405,17 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
     /// That is, it is legal to call the API with a Directory that has both "Foo" and "foo" as children, but the Action
     /// may be rejected by the remote system upon execution. * The files, directories and symlinks in the directory must
     /// each be sorted in lexicographical order by path. The path strings must be sorted by code point, equivalently, by
-    /// UTF-8 bytes.
+    /// UTF-8 bytes. * The NodeProperties of files, directories, and symlinks must be sorted in lexicographical order by
+    /// property name.
     ///
     /// A `Directory` that obeys the restrictions is said to be in canonical form.
     ///
     /// As an example, the following could be used for a file named `bar` and a directory named `foo` with an executable
     /// file named `baz` (hashes shortened for readability):
     ///
-    /// ```json // (Directory proto) { files: [ { name: "bar", digest: { hash: "4a73bc9d03...", size: 65534 } } ],
-    /// directories: [ { name: "foo", digest: { hash: "4cf2eda940...", size: 43 } } ] }
+    /// ```json // (Directory proto) { files: [ { name: "bar", digest: { hash: "4a73bc9d03...", size: 65534 },
+    /// node_properties: [ { "name": "MTime", "value": "2017-01-15T01:30:15.01Z" } ] } ], directories: [ { name: "foo",
+    /// digest: { hash: "4cf2eda940...", size: 43 } } ] }
     ///
     /// // (Directory proto with hash "4cf2eda940..." and size 43) { files: [ { name: "baz", digest: { hash:
     /// "b2c941073e...", size: 1294, }, is_executable: true } ] } ```</summary>
@@ -1369,6 +1428,10 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         /// <summary>The files in the directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
         public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2FileNode> Files { get; set; } 
+
+        /// <summary>The node properties of the Directory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeProperties")]
+        public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2NodeProperty> NodeProperties { get; set; } 
 
         /// <summary>The symlinks in the directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("symlinks")]
@@ -1520,6 +1583,10 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>The node properties of the FileNode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeProperties")]
+        public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2NodeProperty> NodeProperties { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1537,6 +1604,23 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         /// file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("humanReadable")]
         public virtual System.Nullable<bool> HumanReadable { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A single property for FileNodes, DirectoryNodes, and SymlinkNodes. The server is responsible for
+    /// specifying the property `name`s that it accepts. If permitted by the server, the same `name` may occur multiple
+    /// times.</summary>
+    public class BuildBazelRemoteExecutionV2NodeProperty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The property name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The property value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1578,6 +1662,10 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isExecutable")]
         public virtual System.Nullable<bool> IsExecutable { get; set; } 
 
+        /// <summary>The supported node properties of the OutputFile, if requested by the Action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeProperties")]
+        public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2NodeProperty> NodeProperties { get; set; } 
+
         /// <summary>The full path of the file relative to the working directory, including the filename. The path
         /// separator is a forward slash `/`. Since this is a relative path, it MUST NOT begin with a leading forward
         /// slash.</summary>
@@ -1593,6 +1681,10 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
     /// `OutputSymlink` is binary-compatible with `SymlinkNode`.</summary>
     public class BuildBazelRemoteExecutionV2OutputSymlink : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The supported node properties of the OutputSymlink, if requested by the Action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeProperties")]
+        public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2NodeProperty> NodeProperties { get; set; } 
+
         /// <summary>The full path of the symlink relative to the working directory, including the filename. The path
         /// separator is a forward slash `/`. Since this is a relative path, it MUST NOT begin with a leading forward
         /// slash.</summary>
@@ -1690,6 +1782,10 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         /// <summary>The name of the symlink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The node properties of the SymlinkNode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeProperties")]
+        public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2NodeProperty> NodeProperties { get; set; } 
 
         /// <summary>The target path of the symlink. The path separator is a forward slash `/`. The target path can be
         /// relative to the parent directory of the symlink or it can be an absolute path starting with `/`. Support for

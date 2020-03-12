@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20200229 (1885)
+ *      <tr><th>API Rev<td>20200308 (1893)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -365,9 +365,7 @@ namespace Google.Apis.CloudBuild.v1alpha1
             }
 
 
-            /// <summary>Creates a `WorkerPool` to run the builds, and returns the new worker pool.
-            ///
-            /// This API is experimental.</summary>
+            /// <summary>Creates a `WorkerPool` to run the builds, and returns the new worker pool.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">ID of the parent project.</param>
             public virtual CreateRequest Create(Google.Apis.CloudBuild.v1alpha1.Data.WorkerPool body, string parent)
@@ -375,9 +373,7 @@ namespace Google.Apis.CloudBuild.v1alpha1
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates a `WorkerPool` to run the builds, and returns the new worker pool.
-            ///
-            /// This API is experimental.</summary>
+            /// <summary>Creates a `WorkerPool` to run the builds, and returns the new worker pool.</summary>
             public class CreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1alpha1.Data.WorkerPool>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -437,9 +433,7 @@ namespace Google.Apis.CloudBuild.v1alpha1
 
             }
 
-            /// <summary>Deletes a `WorkerPool` by its project ID and WorkerPool name.
-            ///
-            /// This API is experimental.</summary>
+            /// <summary>Deletes a `WorkerPool` by its project ID and WorkerPool name.</summary>
             /// <param name="name">The field will contain name of the resource requested, for example:
             /// "projects/project-1/workerPools/workerpool-name"</param>
             public virtual DeleteRequest Delete(string name)
@@ -447,9 +441,7 @@ namespace Google.Apis.CloudBuild.v1alpha1
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes a `WorkerPool` by its project ID and WorkerPool name.
-            ///
-            /// This API is experimental.</summary>
+            /// <summary>Deletes a `WorkerPool` by its project ID and WorkerPool name.</summary>
             public class DeleteRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1alpha1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -503,9 +495,7 @@ namespace Google.Apis.CloudBuild.v1alpha1
 
             }
 
-            /// <summary>Returns information about a `WorkerPool`.
-            ///
-            /// This API is experimental.</summary>
+            /// <summary>Returns information about a `WorkerPool`.</summary>
             /// <param name="name">The field will contain name of the resource requested, for example:
             /// "projects/project-1/workerPools/workerpool-name"</param>
             public virtual GetRequest Get(string name)
@@ -513,9 +503,7 @@ namespace Google.Apis.CloudBuild.v1alpha1
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Returns information about a `WorkerPool`.
-            ///
-            /// This API is experimental.</summary>
+            /// <summary>Returns information about a `WorkerPool`.</summary>
             public class GetRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1alpha1.Data.WorkerPool>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -569,18 +557,14 @@ namespace Google.Apis.CloudBuild.v1alpha1
 
             }
 
-            /// <summary>List project's `WorkerPool`s.
-            ///
-            /// This API is experimental.</summary>
+            /// <summary>List project's `WorkerPool`s.</summary>
             /// <param name="parent">ID of the parent project.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>List project's `WorkerPool`s.
-            ///
-            /// This API is experimental.</summary>
+            /// <summary>List project's `WorkerPool`s.</summary>
             public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1alpha1.Data.ListWorkerPoolsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -633,9 +617,7 @@ namespace Google.Apis.CloudBuild.v1alpha1
 
             }
 
-            /// <summary>Update a `WorkerPool`.
-            ///
-            /// This API is experimental.</summary>
+            /// <summary>Update a `WorkerPool`.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The field will contain name of the resource requested, for example:
             /// "projects/project-1/workerPools/workerpool-name"</param>
@@ -644,9 +626,7 @@ namespace Google.Apis.CloudBuild.v1alpha1
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Update a `WorkerPool`.
-            ///
-            /// This API is experimental.</summary>
+            /// <summary>Update a `WorkerPool`.</summary>
             public class PatchRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1alpha1.Data.WorkerPool>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -1200,6 +1180,10 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         /// for that step's execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dir")]
         public virtual string Dir { get; set; } 
+
+        /// <summary>Only trigger a build if the revision regex does NOT match the revision regex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invertRegex")]
+        public virtual System.Nullable<bool> InvertRegex { get; set; } 
 
         /// <summary>ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the
         /// build is assumed.</summary>

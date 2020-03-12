@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200220 (1876)
+ *      <tr><th>API Rev<td>20200303 (1888)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -2123,6 +2123,13 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
+            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
+            /// parameter will only take effect if the item is not in a shared drive. Requests that specify more than
+            /// one parent will fail.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
+
             /// <summary>Whether to ignore the domain's default visibility settings for the created file. Domain
             /// administrators can choose to make all uploaded files visible to the domain by default; this parameter
             /// bypasses that behavior for the request. Permissions are still inherited from parent folders.</summary>
@@ -2193,6 +2200,15 @@ namespace Google.Apis.Drive.v3
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enforceSingleParent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "ignoreDefaultVisibility", new Google.Apis.Discovery.Parameter
                     {
                         Name = "ignoreDefaultVisibility",
@@ -2260,6 +2276,13 @@ namespace Google.Apis.Drive.v3
             }
 
 
+            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
+            /// parameter will only take effect if the item is not in a shared drive. Requests that specify more than
+            /// one parent will fail.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
+
             /// <summary>Whether to ignore the domain's default visibility settings for the created file. Domain
             /// administrators can choose to make all uploaded files visible to the domain by default; this parameter
             /// bypasses that behavior for the request. Permissions are still inherited from parent folders.</summary>
@@ -2325,6 +2348,15 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enforceSingleParent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "ignoreDefaultVisibility", new Google.Apis.Discovery.Parameter
                     {
@@ -2453,6 +2485,13 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserIp { get; set; }
 
+
+            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
+            /// parameter will only take effect if the item is not in a shared drive. Requests that specify more than
+            /// one parent will fail.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
             /// <summary>Whether to ignore the domain's default visibility settings for the created file. Domain
             /// administrators can choose to make all uploaded files visible to the domain by default; this parameter
@@ -3294,6 +3333,15 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("addParents", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string AddParents { get; set; }
 
+            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
+            /// parameter will only take effect if the item is not in a shared drive. If the item's owner makes a
+            /// request to add a single parent, the item will be removed from all current folders and placed in the
+            /// requested folder. Other requests that increase the number of parents will fail, except when the
+            /// canAddMyDriveParent file capability is true and a single parent is being added.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
+
             /// <summary>Whether to set the 'keepForever' field in the new head revision. This is only applicable to
             /// files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the
             /// limit is reached, try deleting pinned revisions.</summary>
@@ -3372,6 +3420,15 @@ namespace Google.Apis.Drive.v3
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enforceSingleParent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -3511,6 +3568,15 @@ namespace Google.Apis.Drive.v3
             /// <summary>A comma-separated list of parent IDs to add.</summary>
             [Google.Apis.Util.RequestParameterAttribute("addParents", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string AddParents { get; set; }
+
+            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
+            /// parameter will only take effect if the item is not in a shared drive. If the item's owner makes a
+            /// request to add a single parent, the item will be removed from all current folders and placed in the
+            /// requested folder. Other requests that increase the number of parents will fail, except when the
+            /// canAddMyDriveParent file capability is true and a single parent is being added.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
             /// <summary>Whether to set the 'keepForever' field in the new head revision. This is only applicable to
             /// files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the
@@ -3783,6 +3849,23 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("emailMessage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EmailMessage { get; set; }
 
+            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
+            /// parameter will only take effect if the item is not in a shared drive. See moveToNewOwnersRoot for
+            /// details.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
+
+            /// <summary>This parameter will only take effect if the item is not in a shared drive and the request is
+            /// attempting to transfer the ownership of the item. When set to true, the item will be moved to the new
+            /// owner's My Drive root folder and all prior parents removed. If set to false, when
+            /// enforceSingleParent=true, parents are not changed. If set to false, when enforceSingleParent=false,
+            /// existing parents are not changed; however, the file will be added to the new owner's My Drive root
+            /// folder, unless it is already in the new owner's My Drive.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("moveToNewOwnersRoot", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> MoveToNewOwnersRoot { get; set; }
+
             /// <summary>Whether to send a notification email when sharing to users or groups. This defaults to true for
             /// users and groups, and is not allowed for other requests. It must not be disabled for ownership
             /// transfers.</summary>
@@ -3860,6 +3943,24 @@ namespace Google.Apis.Drive.v3
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enforceSingleParent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "moveToNewOwnersRoot", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "moveToNewOwnersRoot",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -6776,6 +6877,11 @@ namespace Google.Apis.Drive.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canAddChildren")]
             public virtual System.Nullable<bool> CanAddChildren { get; set; } 
 
+            /// <summary>Whether the current user can add a parent for the item without removing an existing parent in
+            /// the same request. Not populated for shared drive files.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canAddMyDriveParent")]
+            public virtual System.Nullable<bool> CanAddMyDriveParent { get; set; } 
+
             /// <summary>Whether the current user can change the copyRequiresWriterPermission restriction of this
             /// file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeCopyRequiresWriterPermission")]
@@ -6888,6 +6994,11 @@ namespace Google.Apis.Drive.v3.Data
             /// instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRemoveChildren")]
             public virtual System.Nullable<bool> CanRemoveChildren { get; set; } 
+
+            /// <summary>Whether the current user can remove a parent from the item without adding another parent in the
+            /// same request. Not populated for shared drive files.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canRemoveMyDriveParent")]
+            public virtual System.Nullable<bool> CanRemoveMyDriveParent { get; set; } 
 
             /// <summary>Whether the current user can rename this file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRename")]

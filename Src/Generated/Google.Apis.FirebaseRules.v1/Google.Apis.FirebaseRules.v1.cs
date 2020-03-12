@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/storage/security'>Firebase Rules API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200226 (1882)
+ *      <tr><th>API Rev<td>20200303 (1888)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/storage/security'>
  *              https://firebase.google.com/docs/storage/security</a>
@@ -540,7 +540,7 @@ namespace Google.Apis.FirebaseRules.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/releases/.+$",
+                            Pattern = @"^projects/[^/]+/releases/.*$",
                         });
                 }
 
@@ -604,7 +604,7 @@ namespace Google.Apis.FirebaseRules.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/releases/.+$",
+                            Pattern = @"^projects/[^/]+/releases/.*$",
                         });
                 }
 
@@ -685,7 +685,7 @@ namespace Google.Apis.FirebaseRules.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/releases/.+$",
+                            Pattern = @"^projects/[^/]+/releases/.*$",
                         });
                     RequestParameters.Add(
                         "executableVersion", new Google.Apis.Discovery.Parameter
@@ -899,7 +899,7 @@ namespace Google.Apis.FirebaseRules.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/releases/.+$",
+                            Pattern = @"^projects/[^/]+/releases/.*$",
                         });
                 }
 
@@ -1356,7 +1356,7 @@ namespace Google.Apis.FirebaseRules.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^projects/.+$",
+                        Pattern = @"^projects/.*$",
                     });
             }
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>Cloud Security Command Center API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20200228 (1884)
+ *      <tr><th>API Rev<td>20200306 (1891)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview</a>
@@ -3171,6 +3171,71 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Cloud Security Command Center (Cloud SCC) finding.
+    ///
+    /// A finding is a record of assessment data like security, risk, health, or privacy, that is ingested into Cloud
+    /// SCC for presentation, notification, analysis, policy testing, and enforcement. For example, a cross-site
+    /// scripting (XSS) vulnerability in an App Engine application is a finding.</summary>
+    public class Finding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The additional taxonomy group within findings from a given source. This field is immutable after
+        /// creation time. Example: "XSS_FLASH_INJECTION"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; } 
+
+        /// <summary>The time at which the finding was created in Cloud SCC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>The time at which the event took place. For example, if the finding represents an open firewall it
+        /// would capture the time the detector believes the firewall became open. The accuracy is determined by the
+        /// detector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual object EventTime { get; set; } 
+
+        /// <summary>The URI that, if available, points to a web page outside of Cloud SCC where additional information
+        /// about the finding can be found. This field is guaranteed to be either empty or a well formed URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalUri")]
+        public virtual string ExternalUri { get; set; } 
+
+        /// <summary>The relative resource name of this finding. See:
+        /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
+        /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The relative resource name of the source the finding belongs to. See:
+        /// https://cloud.google.com/apis/design/resource_names#relative_resource_name This field is immutable after
+        /// creation time. For example: "organizations/{organization_id}/sources/{source_id}"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; } 
+
+        /// <summary>For findings on Google Cloud Platform (GCP) resources, the full resource name of the GCP resource
+        /// this finding is for. See: https://cloud.google.com/apis/design/resource_names#full_resource_name When the
+        /// finding is for a non-GCP resource, the resourceName can be a customer or partner defined string. This field
+        /// is immutable after creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; } 
+
+        /// <summary>Output only. User specified security marks. These marks are entirely managed by the user and come
+        /// from the SecurityMarks resource that belongs to the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityMarks")]
+        public virtual SecurityMarks SecurityMarks { get; set; } 
+
+        /// <summary>Source specific properties. These properties are managed by the source that writes the finding. The
+        /// key names in the source_properties map must be between 1 and 255 characters, and must start with a letter
+        /// and contain alphanumeric characters or underscores only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceProperties")]
+        public virtual System.Collections.Generic.IDictionary<string,object> SourceProperties { get; set; } 
+
+        /// <summary>The state of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request message for `GetIamPolicy` method.</summary>
     public class GetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3194,6 +3259,21 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
         /// bindings may specify any valid value or leave the field unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Cloud SCC's Notification</summary>
+    public class GoogleCloudSecuritycenterV1NotificationMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If it's a Finding based notification config, this field will be populated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finding")]
+        public virtual Finding Finding { get; set; } 
+
+        /// <summary>Name of the notification config that generated current notification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationConfigName")]
+        public virtual string NotificationConfigName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4064,6 +4144,30 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
     /// <summary>Request message for running asset discovery for an organization.</summary>
     public class RunAssetDiscoveryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>User specified security marks that are attached to the parent Cloud Security Command Center (Cloud SCC)
+    /// resource. Security marks are scoped within a Cloud SCC organization -- they can be modified and viewed by all
+    /// users who have proper permissions on the organization.</summary>
+    public class SecurityMarks : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Mutable user specified security marks belonging to the parent resource. Constraints are as follows:
+        ///
+        /// * Keys and values are treated as case insensitive * Keys must be between 1 - 256 characters (inclusive) *
+        /// Keys must be letters, numbers, underscores, or dashes * Values have leading and trailing whitespace trimmed,
+        /// remaining characters must be between 1 - 4096 characters (inclusive)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marks")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Marks { get; set; } 
+
+        /// <summary>The relative resource name of the SecurityMarks. See:
+        /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples:
+        /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
+        /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

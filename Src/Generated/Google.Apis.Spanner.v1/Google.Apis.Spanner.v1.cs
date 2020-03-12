@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/spanner/'>Cloud Spanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200224 (1880)
+ *      <tr><th>API Rev<td>20200309 (1894)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/spanner/'>
  *              https://cloud.google.com/spanner/</a>
@@ -550,12 +550,178 @@ namespace Google.Apis.Spanner.v1
             public InstancesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                backupOperations = new BackupOperationsResource(service);
                 backups = new BackupsResource(service);
+                databaseOperations = new DatabaseOperationsResource(service);
                 databases = new DatabasesResource(service);
                 operations = new OperationsResource(service);
 
             }
 
+            private readonly BackupOperationsResource backupOperations;
+
+            /// <summary>Gets the BackupOperations resource.</summary>
+            public virtual BackupOperationsResource BackupOperations
+            {
+                get { return backupOperations; }
+            }
+
+            /// <summary>The "backupOperations" collection of methods.</summary>
+            public class BackupOperationsResource
+            {
+                private const string Resource = "backupOperations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public BackupOperationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Lists the backup long-running operations in the given instance. A backup operation has a
+                /// name of the form `projects//instances//backups//operations/`. The long-running operation metadata
+                /// field type `metadata.type_url` describes the type of the metadata. Operations returned include those
+                /// that have completed/failed/canceled within the last 7 days, and pending operations. Operations
+                /// returned are ordered by `operation.metadata.value.progress.start_time` in descending order starting
+                /// from the most recently started operation.</summary>
+                /// <param name="parent">Required. The instance of the backup operations. Values are of the form
+                /// `projects//instances/`.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists the backup long-running operations in the given instance. A backup operation has a
+                /// name of the form `projects//instances//backups//operations/`. The long-running operation metadata
+                /// field type `metadata.type_url` describes the type of the metadata. Operations returned include those
+                /// that have completed/failed/canceled within the last 7 days, and pending operations. Operations
+                /// returned are ordered by `operation.metadata.value.progress.start_time` in descending order starting
+                /// from the most recently started operation.</summary>
+                public class ListRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ListBackupOperationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The instance of the backup operations. Values are of the form
+                    /// `projects//instances/`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>A filter expression that filters what operations are returned in the response.
+                    ///
+                    /// The filter expression must specify the field name of an operation, a comparison operator, and
+                    /// the value that you want to use for filtering. The value must be a string, a number, or a
+                    /// boolean. The comparison operator must be <, >, <=, >=, !=, =, or :. Colon ‘:’ represents a HAS
+                    /// operator which is roughly synonymous with equality. Filter rules are case insensitive.
+                    ///
+                    /// The long-running operation fields eligible for filtering are: * `name` --> The name of the long-
+                    /// running operation * `done` --> False if the operation is in progress, else true. *
+                    /// `metadata.type_url` (using filter string `metadata.@type`) and fields in `metadata.value` (using
+                    /// filter string `metadata.`, where  is a field in metadata.value) are eligible for filtering. *
+                    /// `error` --> Error associated with the long-running operation. * `response.type_url` (using
+                    /// filter string `response.@type`) and fields in `response.value` (using filter string `response.`,
+                    /// where  is a field in response.value) are eligible for filtering.
+                    ///
+                    /// To filter on multiple expressions, provide each separate expression within parentheses. By
+                    /// default, each expression is an AND expression. However, you can include AND, OR, and NOT
+                    /// expressions explicitly.
+                    ///
+                    /// Some examples of using filters are:
+                    ///
+                    /// * `done:true` --> The operation is complete. * `metadata.database:prod` --> The database the
+                    /// backup was taken from has a name containing the string "prod". *
+                    /// `(metadata.@type:type.googleapis.com/google.spanner.admin.database.v1.CreateBackupMetadata) AND
+                    /// (metadata.name:howl) AND (metadata.progress.start_time < \"2018-03-28T14:50:00Z\") AND
+                    /// (error:*)` --> Return CreateBackup operations where the created backup name contains the string
+                    /// "howl", the progress.start_time of the backup operation is before 2018-03-28T14:50:00Z, and the
+                    /// operation returned an error.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Number of operations to be returned in the response. If 0 or less, defaults to the
+                    /// server's maximum allowed page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
+                    /// ListBackupOperationsResponse to the same `parent` and with the same `filter`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/backupOperations"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
             private readonly BackupsResource backups;
 
             /// <summary>Gets the Backups resource.</summary>
@@ -918,10 +1084,233 @@ namespace Google.Apis.Spanner.v1
                     }
                 }
 
-                /// <summary>Gets the access control policy for a database resource. Returns an empty policy if a
-                /// database exists but does not have a policy set.
+                /// <summary>Starts creating a new Cloud Spanner Backup. The returned backup long-running operation will
+                /// have a name of the format `projects//instances//backups//operations/` and can be used to track
+                /// creation of the backup. The metadata field type is CreateBackupMetadata. The response field type is
+                /// Backup, if successful. Cancelling the returned operation will stop the creation and delete the
+                /// backup. There can be only one pending backup creation per database. Backup creation of different
+                /// databases can run concurrently.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The name of the instance in which the backup will be created. This must be the same
+                /// instance that contains the database the backup will be created from. The backup will be stored in the location(s)
+                /// specified in the instance configuration of this instance. Values are of the form
+                /// `projects//instances/`.</param>
+                public virtual CreateRequest Create(Google.Apis.Spanner.v1.Data.Backup body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Starts creating a new Cloud Spanner Backup. The returned backup long-running operation will
+                /// have a name of the format `projects//instances//backups//operations/` and can be used to track
+                /// creation of the backup. The metadata field type is CreateBackupMetadata. The response field type is
+                /// Backup, if successful. Cancelling the returned operation will stop the creation and delete the
+                /// backup. There can be only one pending backup creation per database. Backup creation of different
+                /// databases can run concurrently.</summary>
+                public class CreateRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.Backup body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The name of the instance in which the backup will be created. This must be
+                    /// the same instance that contains the database the backup will be created from. The backup will be
+                    /// stored in the location(s) specified in the instance configuration of this instance. Values are
+                    /// of the form `projects//instances/`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. The id of the backup to be created. The `backup_id` appended to `parent`
+                    /// forms the full backup name of the form `projects//instances//backups/`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("backupId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string BackupId { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Spanner.v1.Data.Backup Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/backups"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "backupId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "backupId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Deletes a pending or completed Backup.</summary>
+                /// <param name="name">Required. Name of the backup to delete. Values are of the form
+                /// `projects//instances//backups/`.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a pending or completed Backup.</summary>
+                public class DeleteRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Name of the backup to delete. Values are of the form
+                    /// `projects//instances//backups/`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/backups/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Gets metadata on a pending or completed Backup.</summary>
+                /// <param name="name">Required. Name of the backup. Values are of the form
+                /// `projects//instances//backups/`.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets metadata on a pending or completed Backup.</summary>
+                public class GetRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Backup>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Name of the backup. Values are of the form
+                    /// `projects//instances//backups/`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/backups/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Gets the access control policy for a database or backup resource. Returns an empty policy
+                /// if a database or backup exists but does not have a policy set.
                 ///
-                /// Authorization requires `spanner.databases.getIamPolicy` permission on resource.</summary>
+                /// Authorization requires `spanner.databases.getIamPolicy` permission on resource. For backups,
+                /// authorization requires `spanner.backups.getIamPolicy` permission on resource.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The Cloud Spanner resource for which the policy is being retrieved. The format is
                 /// `projects//instances/` for instance resources and `projects//instances//databases/` for database
@@ -931,10 +1320,11 @@ namespace Google.Apis.Spanner.v1
                     return new GetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Gets the access control policy for a database resource. Returns an empty policy if a
-                /// database exists but does not have a policy set.
+                /// <summary>Gets the access control policy for a database or backup resource. Returns an empty policy
+                /// if a database or backup exists but does not have a policy set.
                 ///
-                /// Authorization requires `spanner.databases.getIamPolicy` permission on resource.</summary>
+                /// Authorization requires `spanner.databases.getIamPolicy` permission on resource. For backups,
+                /// authorization requires `spanner.backups.getIamPolicy` permission on resource.</summary>
                 public class GetIamPolicyRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -996,9 +1386,239 @@ namespace Google.Apis.Spanner.v1
 
                 }
 
-                /// <summary>Sets the access control policy on a database resource. Replaces any existing policy.
+                /// <summary>Lists completed and pending backups. Backups returned are ordered by `create_time` in
+                /// descending order, starting from the most recent `create_time`.</summary>
+                /// <param name="parent">Required. The instance to list backups from.  Values are of the form
+                /// `projects//instances/`.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists completed and pending backups. Backups returned are ordered by `create_time` in
+                /// descending order, starting from the most recent `create_time`.</summary>
+                public class ListRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ListBackupsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The instance to list backups from.  Values are of the form
+                    /// `projects//instances/`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>A filter expression that filters backups listed in the response. The expression must
+                    /// specify the field name, a comparison operator, and the value that you want to use for filtering.
+                    /// The value must be a string, a number, or a boolean. The comparison operator must be <, >, <=,
+                    /// >=, !=, =, or :. Colon ‘:’ represents a HAS operator which is roughly synonymous with equality.
+                    /// Filter rules are case insensitive.
+                    ///
+                    /// The fields eligible for filtering are: * `name` * `database` * `state` * `create_time` (and
+                    /// values are of the format YYYY-MM-DDTHH:MM:SSZ) * `expire_time` (and values are of the format
+                    /// YYYY-MM-DDTHH:MM:SSZ) * `size_bytes`
+                    ///
+                    /// To filter on multiple expressions, provide each separate expression within parentheses. By
+                    /// default, each expression is an AND expression. However, you can include AND, OR, and NOT
+                    /// expressions explicitly.
+                    ///
+                    /// Some examples of using filters are:
+                    ///
+                    /// * `name:Howl` --> The backup's name contains the string "howl". * `database:prod` --> The
+                    /// database's name contains the string "prod". * `state:CREATING` --> The backup is pending
+                    /// creation. * `state:READY` --> The backup is fully created and ready for use. * `(name:howl) AND
+                    /// (create_time < \"2018-03-28T14:50:00Z\")` --> The backup name contains the string "howl" and
+                    /// `create_time` of the backup is before 2018-03-28T14:50:00Z. * `expire_time <
+                    /// \"2018-03-28T14:50:00Z\"` --> The backup `expire_time` is before 2018-03-28T14:50:00Z. *
+                    /// `size_bytes > 10000000000` --> The backup's size is greater than 10GB</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Number of backups to be returned in the response. If 0 or less, defaults to the
+                    /// server's maximum allowed page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
+                    /// ListBackupsResponse to the same `parent` and with the same `filter`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/backups"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Updates a pending or completed Backup.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Output only for the CreateBackup][DatabaseAdmin.CreateBackup] operation. Required for the
+                /// UpdateBackup operation.
                 ///
-                /// Authorization requires `spanner.databases.setIamPolicy` permission on resource.</summary>
+                /// A globally unique identifier for the backup which cannot be changed. Values are of the form
+                /// `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in
+                /// length.
+                ///
+                /// The backup is stored in the location(s) specified in the instance configuration of the instance containing the
+                /// backup, identified by the prefix of the backup name of the form `projects//instances/`.</param>
+                public virtual PatchRequest Patch(Google.Apis.Spanner.v1.Data.Backup body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates a pending or completed Backup.</summary>
+                public class PatchRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Backup>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.Backup body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Output only for the CreateBackup][DatabaseAdmin.CreateBackup] operation. Required for
+                    /// the UpdateBackup operation.
+                    ///
+                    /// A globally unique identifier for the backup which cannot be changed. Values are of the form
+                    /// `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and
+                    /// 60 characters in length.
+                    ///
+                    /// The backup is stored in the location(s) specified in the instance configuration of the instance
+                    /// containing the backup, identified by the prefix of the backup name of the form
+                    /// `projects//instances/`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Required. A mask specifying which fields (e.g. `expire_time`) in the Backup resource
+                    /// should be updated. This mask is relative to the Backup resource, not to the request message. The
+                    /// field mask must always be specified; this prevents any future fields from being erased
+                    /// accidentally by clients that do not know about them.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Spanner.v1.Data.Backup Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "patch"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "PATCH"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/backups/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Sets the access control policy on a database or backup resource. Replaces any existing
+                /// policy.
+                ///
+                /// Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups,
+                /// authorization requires `spanner.backups.setIamPolicy` permission on resource.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The Cloud Spanner resource for which the policy is being set. The format is
                 /// `projects//instances/` for instance resources and `projects//instances//databases/` for databases
@@ -1008,9 +1628,11 @@ namespace Google.Apis.Spanner.v1
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on a database resource. Replaces any existing policy.
+                /// <summary>Sets the access control policy on a database or backup resource. Replaces any existing
+                /// policy.
                 ///
-                /// Authorization requires `spanner.databases.setIamPolicy` permission on resource.</summary>
+                /// Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups,
+                /// authorization requires `spanner.backups.setIamPolicy` permission on resource.</summary>
                 public class SetIamPolicyRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1072,11 +1694,13 @@ namespace Google.Apis.Spanner.v1
 
                 }
 
-                /// <summary>Returns permissions that the caller has on the specified database resource.
+                /// <summary>Returns permissions that the caller has on the specified database or backup resource.
                 ///
                 /// Attempting this RPC on a non-existent Cloud Spanner database will result in a NOT_FOUND error if the
                 /// user has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise
-                /// returns an empty set of permissions.</summary>
+                /// returns an empty set of permissions. Calling this method on a backup that does not exist will result
+                /// in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing
+                /// instance.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The Cloud Spanner resource for which permissions are being tested. The format is
                 /// `projects//instances/` for instance resources and `projects//instances//databases/` for database
@@ -1086,11 +1710,13 @@ namespace Google.Apis.Spanner.v1
                     return new TestIamPermissionsRequest(service, body, resource);
                 }
 
-                /// <summary>Returns permissions that the caller has on the specified database resource.
+                /// <summary>Returns permissions that the caller has on the specified database or backup resource.
                 ///
                 /// Attempting this RPC on a non-existent Cloud Spanner database will result in a NOT_FOUND error if the
                 /// user has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise
-                /// returns an empty set of permissions.</summary>
+                /// returns an empty set of permissions. Calling this method on a backup that does not exist will result
+                /// in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing
+                /// instance.</summary>
                 public class TestIamPermissionsRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -1147,6 +1773,166 @@ namespace Google.Apis.Spanner.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/instances/[^/]+/backups/[^/]+$",
+                            });
+                    }
+
+                }
+            }
+            private readonly DatabaseOperationsResource databaseOperations;
+
+            /// <summary>Gets the DatabaseOperations resource.</summary>
+            public virtual DatabaseOperationsResource DatabaseOperations
+            {
+                get { return databaseOperations; }
+            }
+
+            /// <summary>The "databaseOperations" collection of methods.</summary>
+            public class DatabaseOperationsResource
+            {
+                private const string Resource = "databaseOperations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DatabaseOperationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Lists database longrunning-operations. A database operation has a name of the form
+                /// `projects//instances//databases//operations/`. The long-running operation metadata field type
+                /// `metadata.type_url` describes the type of the metadata. Operations returned include those that have
+                /// completed/failed/canceled within the last 7 days, and pending operations.</summary>
+                /// <param name="parent">Required. The instance of the database operations. Values are of the form
+                /// `projects//instances/`.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists database longrunning-operations. A database operation has a name of the form
+                /// `projects//instances//databases//operations/`. The long-running operation metadata field type
+                /// `metadata.type_url` describes the type of the metadata. Operations returned include those that have
+                /// completed/failed/canceled within the last 7 days, and pending operations.</summary>
+                public class ListRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ListDatabaseOperationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The instance of the database operations. Values are of the form
+                    /// `projects//instances/`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>A filter expression that filters what operations are returned in the response.
+                    ///
+                    /// The filter expression must specify the field name, a comparison operator, and the value that you
+                    /// want to use for filtering. The value must be a string, a number, or a boolean. The comparison
+                    /// operator must be <, >, <=, >=, !=, =, or :. Colon ‘:’ represents a HAS operator which is roughly
+                    /// synonymous with equality. Filter rules are case insensitive.
+                    ///
+                    /// The long-running operation fields eligible for filtering are: * `name` --> The name of the long-
+                    /// running operation * `done` --> False if the operation is in progress, else true. *
+                    /// `metadata.type_url` (using filter string `metadata.@type`) and fields in `metadata.value` (using
+                    /// filter string `metadata.`, where  is a field in metadata.value) are eligible for filtering. *
+                    /// `error` --> Error associated with the long-running operation. * `response.type_url` (using
+                    /// filter string `response.@type`) and fields in `response.value` (using filter string `response.`,
+                    /// where  is a field in response.value) are eligible for filtering.
+                    ///
+                    /// To filter on multiple expressions, provide each separate expression within parentheses. By
+                    /// default, each expression is an AND expression. However, you can include AND, OR, and NOT
+                    /// expressions explicitly.
+                    ///
+                    /// Some examples of using filters are:
+                    ///
+                    /// * `done:true` --> The operation is complete. *
+                    /// `(metadata.@type:type.googleapis.com/google.spanner.admin.database.v1.RestoreDatabaseMetadata)
+                    /// AND (metadata.source_type:BACKUP) AND (metadata.backup_info.backup:backup_howl) AND
+                    /// (metadata.name:restored_howl) AND (metadata.progress.start_time < \"2018-03-28T14:50:00Z\") AND
+                    /// (error:*)` --> Return RestoreDatabase operations from backups whose name contains "backup_howl",
+                    /// where the created database name contains the string "restored_howl", the start_time of the
+                    /// restore operation is before 2018-03-28T14:50:00Z, and the operation returned an error.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Number of operations to be returned in the response. If 0 or less, defaults to the
+                    /// server's maximum allowed page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
+                    /// ListDatabaseOperationsResponse to the same `parent` and with the same `filter`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/databaseOperations"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                     }
 
@@ -2819,14 +3605,16 @@ namespace Google.Apis.Spanner.v1
 
                 }
 
-                /// <summary>Drops (aka deletes) a Cloud Spanner database.</summary>
+                /// <summary>Drops (aka deletes) a Cloud Spanner database. Completed backups for the database will be
+                /// retained according to their `expire_time`.</summary>
                 /// <param name="database">Required. The database to be dropped.</param>
                 public virtual DropDatabaseRequest DropDatabase(string database)
                 {
                     return new DropDatabaseRequest(service, database);
                 }
 
-                /// <summary>Drops (aka deletes) a Cloud Spanner database.</summary>
+                /// <summary>Drops (aka deletes) a Cloud Spanner database. Completed backups for the database will be
+                /// retained according to their `expire_time`.</summary>
                 public class DropDatabaseRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new DropDatabase request.</summary>
@@ -3005,10 +3793,11 @@ namespace Google.Apis.Spanner.v1
 
                 }
 
-                /// <summary>Gets the access control policy for a database resource. Returns an empty policy if a
-                /// database exists but does not have a policy set.
+                /// <summary>Gets the access control policy for a database or backup resource. Returns an empty policy
+                /// if a database or backup exists but does not have a policy set.
                 ///
-                /// Authorization requires `spanner.databases.getIamPolicy` permission on resource.</summary>
+                /// Authorization requires `spanner.databases.getIamPolicy` permission on resource. For backups,
+                /// authorization requires `spanner.backups.getIamPolicy` permission on resource.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The Cloud Spanner resource for which the policy is being retrieved. The format is
                 /// `projects//instances/` for instance resources and `projects//instances//databases/` for database
@@ -3018,10 +3807,11 @@ namespace Google.Apis.Spanner.v1
                     return new GetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Gets the access control policy for a database resource. Returns an empty policy if a
-                /// database exists but does not have a policy set.
+                /// <summary>Gets the access control policy for a database or backup resource. Returns an empty policy
+                /// if a database or backup exists but does not have a policy set.
                 ///
-                /// Authorization requires `spanner.databases.getIamPolicy` permission on resource.</summary>
+                /// Authorization requires `spanner.databases.getIamPolicy` permission on resource. For backups,
+                /// authorization requires `spanner.backups.getIamPolicy` permission on resource.</summary>
                 public class GetIamPolicyRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -3173,9 +3963,99 @@ namespace Google.Apis.Spanner.v1
 
                 }
 
-                /// <summary>Sets the access control policy on a database resource. Replaces any existing policy.
+                /// <summary>Create a new database by restoring from a completed backup. The new database must be in the
+                /// same project and in an instance with the same instance configuration as the instance containing the
+                /// backup. The returned database long-running operation has a name of the format
+                /// `projects//instances//databases//operations/`, and can be used to track the progress of the
+                /// operation, and to cancel it. The metadata field type is RestoreDatabaseMetadata. The response type
+                /// is Database, if successful. Cancelling the returned operation will stop the restore and delete the
+                /// database. There can be only one database being restored into an instance at a time. Once the restore
+                /// operation completes, a new restore operation can be initiated, without waiting for the optimize
+                /// operation associated with the first restore to complete.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The name of the instance in which to create the restored database. This instance must
+                /// be in the same project and have the same instance configuration as the instance containing the source backup. Values
+                /// are of the form `projects//instances/.</param>
+                public virtual RestoreRequest Restore(Google.Apis.Spanner.v1.Data.RestoreDatabaseRequest body, string parent)
+                {
+                    return new RestoreRequest(service, body, parent);
+                }
+
+                /// <summary>Create a new database by restoring from a completed backup. The new database must be in the
+                /// same project and in an instance with the same instance configuration as the instance containing the
+                /// backup. The returned database long-running operation has a name of the format
+                /// `projects//instances//databases//operations/`, and can be used to track the progress of the
+                /// operation, and to cancel it. The metadata field type is RestoreDatabaseMetadata. The response type
+                /// is Database, if successful. Cancelling the returned operation will stop the restore and delete the
+                /// database. There can be only one database being restored into an instance at a time. Once the restore
+                /// operation completes, a new restore operation can be initiated, without waiting for the optimize
+                /// operation associated with the first restore to complete.</summary>
+                public class RestoreRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Restore request.</summary>
+                    public RestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.RestoreDatabaseRequest body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The name of the instance in which to create the restored database. This
+                    /// instance must be in the same project and have the same instance configuration as the instance
+                    /// containing the source backup. Values are of the form `projects//instances/.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Spanner.v1.Data.RestoreDatabaseRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "restore"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/databases:restore"; }
+                    }
+
+                    /// <summary>Initializes Restore parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Sets the access control policy on a database or backup resource. Replaces any existing
+                /// policy.
                 ///
-                /// Authorization requires `spanner.databases.setIamPolicy` permission on resource.</summary>
+                /// Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups,
+                /// authorization requires `spanner.backups.setIamPolicy` permission on resource.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The Cloud Spanner resource for which the policy is being set. The format is
                 /// `projects//instances/` for instance resources and `projects//instances//databases/` for databases
@@ -3185,9 +4065,11 @@ namespace Google.Apis.Spanner.v1
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on a database resource. Replaces any existing policy.
+                /// <summary>Sets the access control policy on a database or backup resource. Replaces any existing
+                /// policy.
                 ///
-                /// Authorization requires `spanner.databases.setIamPolicy` permission on resource.</summary>
+                /// Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups,
+                /// authorization requires `spanner.backups.setIamPolicy` permission on resource.</summary>
                 public class SetIamPolicyRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -3249,11 +4131,13 @@ namespace Google.Apis.Spanner.v1
 
                 }
 
-                /// <summary>Returns permissions that the caller has on the specified database resource.
+                /// <summary>Returns permissions that the caller has on the specified database or backup resource.
                 ///
                 /// Attempting this RPC on a non-existent Cloud Spanner database will result in a NOT_FOUND error if the
                 /// user has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise
-                /// returns an empty set of permissions.</summary>
+                /// returns an empty set of permissions. Calling this method on a backup that does not exist will result
+                /// in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing
+                /// instance.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The Cloud Spanner resource for which permissions are being tested. The format is
                 /// `projects//instances/` for instance resources and `projects//instances//databases/` for database
@@ -3263,11 +4147,13 @@ namespace Google.Apis.Spanner.v1
                     return new TestIamPermissionsRequest(service, body, resource);
                 }
 
-                /// <summary>Returns permissions that the caller has on the specified database resource.
+                /// <summary>Returns permissions that the caller has on the specified database or backup resource.
                 ///
                 /// Attempting this RPC on a non-existent Cloud Spanner database will result in a NOT_FOUND error if the
                 /// user has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise
-                /// returns an empty set of permissions.</summary>
+                /// returns an empty set of permissions. Calling this method on a backup that does not exist will result
+                /// in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing
+                /// instance.</summary>
                 public class TestIamPermissionsRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -4488,6 +5374,79 @@ namespace Google.Apis.Spanner.v1
 namespace Google.Apis.Spanner.v1.Data
 {    
 
+    /// <summary>A backup of a Cloud Spanner database.</summary>
+    public class Backup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The backup will contain an externally consistent copy of the database at the timestamp
+        /// specified by `create_time`. `create_time` is approximately the time the CreateBackup request is
+        /// received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Required for the CreateBackup operation. Name of the database from which this backup was created.
+        /// This needs to be in the same instance as the backup. Values are of the form
+        /// `projects//instances//databases/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; } 
+
+        /// <summary>Required for the CreateBackup operation. The expiration time of the backup, with microseconds
+        /// granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is
+        /// processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud
+        /// Spanner to free the resources used by the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; } 
+
+        /// <summary>Output only for the CreateBackup][DatabaseAdmin.CreateBackup] operation. Required for the
+        /// UpdateBackup operation.
+        ///
+        /// A globally unique identifier for the backup which cannot be changed. Values are of the form
+        /// `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60
+        /// characters in length.
+        ///
+        /// The backup is stored in the location(s) specified in the instance configuration of the instance containing
+        /// the backup, identified by the prefix of the backup name of the form `projects//instances/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Output only. The names of the restored databases that reference the backup. The database names are
+        /// of the form `projects//instances//databases/`. Referencing databases may exist in different instances. The
+        /// existence of any referencing database prevents the backup from being deleted. When a restored database from
+        /// the backup enters the `READY` state, the reference to the backup is removed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referencingDatabases")]
+        public virtual System.Collections.Generic.IList<string> ReferencingDatabases { get; set; } 
+
+        /// <summary>Output only. Size of the backup in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
+        public virtual System.Nullable<long> SizeBytes { get; set; } 
+
+        /// <summary>Output only. The current state of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about a backup.</summary>
+    public class BackupInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
+        public virtual string Backup { get; set; } 
+
+        /// <summary>The backup contains an externally consistent copy of `source_database` at the timestamp specified
+        /// by `create_time`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Name of the database the backup was created from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceDatabase")]
+        public virtual string SourceDatabase { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The request for BatchCreateSessions.</summary>
     public class BatchCreateSessionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4643,6 +5602,34 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Metadata type for the operation returned by CreateBackup.</summary>
+    public class CreateBackupMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time at which cancellation of this operation was received. Operations.CancelOperation starts
+        /// asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the
+        /// operation, but success is not guaranteed. Clients can use Operations.GetOperation or other methods to check
+        /// whether the cancellation succeeded or whether the operation completed despite cancellation. On successful
+        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
+        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelTime")]
+        public virtual object CancelTime { get; set; } 
+
+        /// <summary>The name of the database the backup is created from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; } 
+
+        /// <summary>The name of the backup being created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The progress of the CreateBackup operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
+        public virtual OperationProgress Progress { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Metadata type for the operation returned by CreateDatabase.</summary>
     public class CreateDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4664,7 +5651,7 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createStatement")]
         public virtual string CreateStatement { get; set; } 
 
-        /// <summary>An optional list of DDL statements to run inside the newly created database. Statements can create
+        /// <summary>Optional. A list of DDL statements to run inside the newly created database. Statements can create
         /// tables, indexes, etc. These statements execute atomically with the creation of the database: if there is an
         /// error in any statement, the database is not created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extraStatements")]
@@ -4729,11 +5716,20 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>A Cloud Spanner database.</summary>
     public class Database : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. If exists, the time at which the database creation started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
         /// <summary>Required. The name of the database. Values are of the form `projects//instances//databases/`, where
         /// `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to
         /// identify the database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Output only. Applicable only for restored databases. Contains information about the restore
+        /// source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restoreInfo")]
+        public virtual RestoreInfo RestoreInfo { get; set; } 
 
         /// <summary>Output only. The current database state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -5224,6 +6220,61 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response for ListBackupOperations.</summary>
+    public class ListBackupOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>`next_page_token` can be sent in a subsequent ListBackupOperations call to fetch more of the
+        /// matching metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The list of matching backup long-running operations. Each operation's name will be prefixed by the
+        /// backup's name and the operation's metadata will be of type CreateBackupMetadata. Operations returned include
+        /// those that are pending or have completed/failed/canceled within the last 7 days. Operations returned are
+        /// ordered by `operation.metadata.value.progress.start_time` in descending order starting from the most
+        /// recently started operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for ListBackups.</summary>
+    public class ListBackupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of matching backups. Backups returned are ordered by `create_time` in descending order,
+        /// starting from the most recent `create_time`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backups")]
+        public virtual System.Collections.Generic.IList<Backup> Backups { get; set; } 
+
+        /// <summary>`next_page_token` can be sent in a subsequent ListBackups call to fetch more of the matching
+        /// backups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for ListDatabaseOperations.</summary>
+    public class ListDatabaseOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>`next_page_token` can be sent in a subsequent ListDatabaseOperations call to fetch more of the
+        /// matching metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The list of matching database long-running operations. Each operation's name will be prefixed by
+        /// the database's name. The operation's metadata field type `metadata.type_url` describes the type of the
+        /// metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response for ListDatabases.</summary>
     public class ListDatabasesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5373,6 +6424,42 @@ namespace Google.Apis.Spanner.v1.Data
         /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Encapsulates progress related information for a Cloud Spanner long running operation.</summary>
+    public class OperationProgress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, the time at which this operation failed or was completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>Percent completion of the operation. Values are between 0 and 100 inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
+        public virtual System.Nullable<int> ProgressPercent { get; set; } 
+
+        /// <summary>Time the request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata type for the long-running operation used to track the progress of optimizations performed on a
+    /// newly restored database. This long-running operation is automatically created by the system after the successful
+    /// completion of a database restore, and cannot be cancelled.</summary>
+    public class OptimizeRestoredDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the restored database being optimized.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The progress of the post-restore optimizations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
+        public virtual OperationProgress Progress { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5886,6 +6973,82 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>The type of replica.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata type for the long-running operation returned by RestoreDatabase.</summary>
+    public class RestoreDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information about the backup used to restore the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupInfo")]
+        public virtual BackupInfo BackupInfo { get; set; } 
+
+        /// <summary>The time at which cancellation of this operation was received. Operations.CancelOperation starts
+        /// asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the
+        /// operation, but success is not guaranteed. Clients can use Operations.GetOperation or other methods to check
+        /// whether the cancellation succeeded or whether the operation completed despite cancellation. On successful
+        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
+        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelTime")]
+        public virtual object CancelTime { get; set; } 
+
+        /// <summary>Name of the database being created and restored to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>If exists, the name of the long-running operation that will be used to track the post-restore
+        /// optimization process to optimize the performance of the restored database, and remove the dependency on the
+        /// restore source. The name is of the form `projects//instances//databases//operations/ where the  is the name
+        /// of database being created and restored to. The metadata type of the  long-running operation is
+        /// OptimizeRestoredDatabaseMetadata. This long-running operation will be automatically created by the system
+        /// after the RestoreDatabase long-running operation completes successfully. This operation will not be created
+        /// if the restore was not successful.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizeDatabaseOperationName")]
+        public virtual string OptimizeDatabaseOperationName { get; set; } 
+
+        /// <summary>The progress of the RestoreDatabase operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
+        public virtual OperationProgress Progress { get; set; } 
+
+        /// <summary>The type of the restore source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
+        public virtual string SourceType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request for RestoreDatabase.</summary>
+    public class RestoreDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the backup from which to restore.  Values are of the form
+        /// `projects//instances//backups/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
+        public virtual string Backup { get; set; } 
+
+        /// <summary>Required. The id of the database to create and restore to. This database must not already exist.
+        /// The `database_id` appended to `parent` forms the full database name of the form
+        /// `projects//instances//databases/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
+        public virtual string DatabaseId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about the database restore.</summary>
+    public class RestoreInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information about the backup used to restore the database. The backup may no longer
+        /// exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupInfo")]
+        public virtual BackupInfo BackupInfo { get; set; } 
+
+        /// <summary>The type of the restore source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
+        public virtual string SourceType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>Cloud Security Command Center API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200228 (1884)
+ *      <tr><th>API Rev<td>20200306 (1891)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview</a>
@@ -338,6 +338,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
         {
             this.service = service;
             assets = new AssetsResource(service);
+            notificationConfigs = new NotificationConfigsResource(service);
             operations = new OperationsResource(service);
             sources = new SourcesResource(service);
 
@@ -832,6 +833,417 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+        private readonly NotificationConfigsResource notificationConfigs;
+
+        /// <summary>Gets the NotificationConfigs resource.</summary>
+        public virtual NotificationConfigsResource NotificationConfigs
+        {
+            get { return notificationConfigs; }
+        }
+
+        /// <summary>The "notificationConfigs" collection of methods.</summary>
+        public class NotificationConfigsResource
+        {
+            private const string Resource = "notificationConfigs";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public NotificationConfigsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a notification config.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. Resource name of the new notification config's parent. Its format is
+            /// "organizations/[organization_id]".</param>
+            public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a notification config.</summary>
+            public class CreateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Resource name of the new notification config's parent. Its format is
+                /// "organizations/[organization_id]".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Required. Unique identifier provided by the client within the parent scope. It must be
+                /// between 1 and 128 characters, and contains alphanumeric characters, underscores or hyphens
+                /// only.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ConfigId { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/notificationConfigs"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "configId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "configId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes a notification config.</summary>
+            /// <param name="name">Required. Name of the notification config to delete. Its format is
+            /// "organizations/[organization_id]/notificationConfigs/[config_id]".</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes a notification config.</summary>
+            public class DeleteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Name of the notification config to delete. Its format is
+                /// "organizations/[organization_id]/notificationConfigs/[config_id]".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/notificationConfigs/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Gets a notification config.</summary>
+            /// <param name="name">Required. Name of the notification config to get. Its format is
+            /// "organizations/[organization_id]/notificationConfigs/[config_id]".</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets a notification config.</summary>
+            public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Name of the notification config to get. Its format is
+                /// "organizations/[organization_id]/notificationConfigs/[config_id]".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/notificationConfigs/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Lists notification configs.</summary>
+            /// <param name="parent">Required. Name of the organization to list notification configs. Its format is
+            /// "organizations/[organization_id]".</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists notification configs.</summary>
+            public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListNotificationConfigsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Name of the organization to list notification configs. Its format is
+                /// "organizations/[organization_id]".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                /// maximum is 1000.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The value returned by the last `ListNotificationConfigsResponse`; indicates that this is a
+                /// continuation of a prior `ListNotificationConfigs` call, and that the system should return the next
+                /// page of data.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/notificationConfigs"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary> Updates a notification config.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The relative resource name of this notification config. See:
+            /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
+            /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket".</param>
+            public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary> Updates a notification config.</summary>
+            public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The relative resource name of this notification config. See:
+                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
+                /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The FieldMask to use when updating the notification config.
+                ///
+                /// If empty all mutable fields will be updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/notificationConfigs/[^/]+$",
                         });
                     RequestParameters.Add(
                         "updateMask", new Google.Apis.Discovery.Parameter
@@ -2888,6 +3300,21 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Cloud SCC's Notification</summary>
+    public class GoogleCloudSecuritycenterV1NotificationMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If it's a Finding based notification config, this field will be populated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finding")]
+        public virtual Finding Finding { get; set; } 
+
+        /// <summary>Name of the notification config that generated current notification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationConfigName")]
+        public virtual string NotificationConfigName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response of asset discovery run</summary>
     public class GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3517,6 +3944,21 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message for listing notification configs.</summary>
+    public class ListNotificationConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>Notification configs belonging to the requested parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationConfigs")]
+        public virtual System.Collections.Generic.IList<NotificationConfig> NotificationConfigs { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3542,6 +3984,40 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>Sources belonging to the requested parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
         public virtual System.Collections.Generic.IList<Source> Sources { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Cloud Security Command Center (Cloud SCC) notification configs.
+    ///
+    /// A notification config is a Cloud SCC resource that contains the configuration to send notifications for
+    /// create/update events of findings, assets and etc.</summary>
+    public class NotificationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The description of the notification config (max of 1024 characters).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The relative resource name of this notification config. See:
+        /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
+        /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The PubSub topic to send notifications to. Its format is
+        /// "projects/[project_id]/topics/[topic]".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
+        public virtual string PubsubTopic { get; set; } 
+
+        /// <summary>Output only. The service account that needs "pubsub.topics.publish" permission to publish to the
+        /// PubSub topic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; } 
+
+        /// <summary>The config for triggering streaming-based notifications.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingConfig")]
+        public virtual StreamingConfig StreamingConfig { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3869,6 +4345,33 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The config for streaming-based notifications, which send each event as soon as it is
+    /// detected.</summary>
+    public class StreamingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Expression that defines the filter to apply across create/update events of assets or findings as
+        /// specified by the event type. The expression is a list of zero or more restrictions combined via logical
+        /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`.
+        ///
+        /// Restrictions have the form `  ` and may have a `-` character in front of them to indicate negation. The
+        /// fields map to those defined in the corresponding resource.
+        ///
+        /// The supported operators are:
+        ///
+        /// * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for
+        /// strings.
+        ///
+        /// The supported value types are:
+        ///
+        /// * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false`
+        /// without quotes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

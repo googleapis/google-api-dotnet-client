@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200229 (1885)
+ *      <tr><th>API Rev<td>20200308 (1893)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -10606,7 +10606,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobName")]
         public virtual string JobName { get; set; } 
 
-        /// <summary>The labels associated with this `InspectFinding`.
+        /// <summary>The labels associated with this `Finding`.
         ///
         /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression:
         /// \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
@@ -10628,8 +10628,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual GooglePrivacyDlpV2Location Location { get; set; } 
 
-        /// <summary>Resource name in format projects/{id}/locations/{id}/inspectFindings/{id} Populated only when
-        /// viewing persisted findings.</summary>
+        /// <summary>Resource name in format projects/{project}/locations/{location}/findings/{finding} Populated only
+        /// when viewing persisted findings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -10678,9 +10678,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The request message for finishing a DLP hybrid job. Early access feature is in a pre-release state and
-    /// might change or have limited support. For more information, see https://cloud.google.com/products#product-
-    /// launch-stages.</summary>
+    /// <summary>The request message for finishing a DLP hybrid job.</summary>
     public class GooglePrivacyDlpV2FinishDlpJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -10747,9 +10745,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An individual hybrid item to inspect. Will be stored temporarily during processing. Early access
-    /// feature is in a pre-release state and might change or have limited support. For more information, see
-    /// https://cloud.google.com/products#product-launch-stages.</summary>
+    /// <summary>An individual hybrid item to inspect. Will be stored temporarily during processing.</summary>
     public class GooglePrivacyDlpV2HybridContentItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Supplementary information that will be added to each finding.</summary>
@@ -10764,9 +10760,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Populate to associate additional data with each finding. Early access feature is in a pre-release state
-    /// and might change or have limited support. For more information, see https://cloud.google.com/products#product-
-    /// launch-stages.</summary>
+    /// <summary>Populate to associate additional data with each finding.</summary>
     public class GooglePrivacyDlpV2HybridFindingDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Details about the container where the content being inspected is from.</summary>
@@ -10810,9 +10804,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request to search for potentially sensitive info in a custom location. Early access feature is in a
-    /// pre-release state and might change or have limited support. For more information, see
-    /// https://cloud.google.com/products#product-launch-stages.</summary>
+    /// <summary>Request to search for potentially sensitive info in a custom location.</summary>
     public class GooglePrivacyDlpV2HybridInspectDlpJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The item to inspect.</summary>
@@ -10823,9 +10815,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request to search for potentially sensitive info in a custom location. Early access feature is in a
-    /// pre-release state and might change or have limited support. For more information, see
-    /// https://cloud.google.com/products#product-launch-stages.</summary>
+    /// <summary>Request to search for potentially sensitive info in a custom location.</summary>
     public class GooglePrivacyDlpV2HybridInspectJobTriggerRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The item to inspect.</summary>
@@ -10836,42 +10826,37 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Quota exceeded errors will be thrown once quota has been met. Early access feature is in a pre-release
-    /// state and might change or have limited support. For more information, see https://cloud.google.com/products
-    /// #product-launch-stages.</summary>
+    /// <summary>Quota exceeded errors will be thrown once quota has been met.</summary>
     public class GooglePrivacyDlpV2HybridInspectResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Statistics related to processing hybrid inspect requests Early access feature is in a pre-release state
-    /// and might change or have limited support. For more information, see https://cloud.google.com/products#product-
-    /// launch-stages.</summary>
+    /// <summary>Statistics related to processing hybrid inspect requests.</summary>
     public class GooglePrivacyDlpV2HybridInspectStatistics : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of hybrid inspection requests aborted because the job ran out of quota or was ended
         /// before they could be processed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hybridRequestsAborted")]
-        public virtual System.Nullable<long> HybridRequestsAborted { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("abortedCount")]
+        public virtual System.Nullable<long> AbortedCount { get; set; } 
 
         /// <summary>The number of hybrid requests currently being processed. Only populated when called via method
         /// `getDlpJob`. A burst of traffic may cause hybrid inspect requests to be enqueued. Processing will take place
         /// as quickly as possible, but resource limitations may impact how long a request is enqueued for.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hybridRequestsPending")]
-        public virtual System.Nullable<long> HybridRequestsPending { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingCount")]
+        public virtual System.Nullable<long> PendingCount { get; set; } 
 
         /// <summary>The number of hybrid inspection requests processed within this job.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hybridRequestsProcessed")]
-        public virtual System.Nullable<long> HybridRequestsProcessed { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("processedCount")]
+        public virtual System.Nullable<long> ProcessedCount { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
-    /// Early access feature is in a pre-release state and might change or have limited support. For more information,
-    /// see https://cloud.google.com/products#product-launch-stages.</summary>
+    /// <summary>Configuration to control jobs where the content being inspected is outside of Google Cloud
+    /// Platform.</summary>
     public class GooglePrivacyDlpV2HybridOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A short description of where the data is coming from. Will be stored once in the job. 256 max
@@ -11791,9 +11776,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Job trigger option for hybrid jobs. Jobs must be manually created and finished. Early access feature is
-    /// in a pre-release state and might change or have limited support. For more information, see
-    /// https://cloud.google.com/products#product-launch-stages.</summary>
+    /// <summary>Job trigger option for hybrid jobs. Jobs must be manually created and finished.</summary>
     public class GooglePrivacyDlpV2Manual : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -12687,9 +12670,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Instructions regarding the table content being inspected. Early access feature is in a pre-release
-    /// state and might change or have limited support. For more information, see https://cloud.google.com/products
-    /// #product-launch-stages.</summary>
+    /// <summary>Instructions regarding the table content being inspected.</summary>
     public class GooglePrivacyDlpV2TableOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The columns that are the primary keys for table objects included in ContentItem. A copy of this

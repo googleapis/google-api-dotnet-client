@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20200220 (1876)
+ *      <tr><th>API Rev<td>20200310 (1895)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -1368,8 +1368,10 @@ namespace Google.Apis.Dataproc.v1beta2
                 /// execution of workflow by polling operations.get. The Operation will complete when entire workflow is
                 /// finished.The running workflow can be aborted via operations.cancel. This will cause any inflight
                 /// jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be
-                /// WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will
-                /// be Empty.</summary>
+                /// WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2
+                /// #workflowmetadata). Also see Using WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+                /// successful completion, Operation.response will be Empty.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The resource name of the workflow template, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.instantiate, the
@@ -1386,8 +1388,10 @@ namespace Google.Apis.Dataproc.v1beta2
                 /// execution of workflow by polling operations.get. The Operation will complete when entire workflow is
                 /// finished.The running workflow can be aborted via operations.cancel. This will cause any inflight
                 /// jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be
-                /// WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will
-                /// be Empty.</summary>
+                /// WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2
+                /// #workflowmetadata). Also see Using WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+                /// successful completion, Operation.response will be Empty.</summary>
                 public class InstantiateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
                 {
                     /// <summary>Constructs a new Instantiate request.</summary>
@@ -1458,8 +1462,11 @@ namespace Google.Apis.Dataproc.v1beta2
                 /// Operation can be used to track execution of workflow by polling operations.get. The Operation will
                 /// complete when entire workflow is finished.The running workflow can be aborted via operations.cancel.
                 /// This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The
-                /// Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful
-                /// completion, Operation.response will be Empty.</summary>
+                /// Operation.metadata will be WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata).
+                /// Also see Using WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+                /// successful completion, Operation.response will be Empty.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The resource name of the region or location, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,instantiateinline, the
@@ -1476,8 +1483,11 @@ namespace Google.Apis.Dataproc.v1beta2
                 /// Operation can be used to track execution of workflow by polling operations.get. The Operation will
                 /// complete when entire workflow is finished.The running workflow can be aborted via operations.cancel.
                 /// This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The
-                /// Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful
-                /// completion, Operation.response will be Empty.</summary>
+                /// Operation.metadata will be WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata).
+                /// Also see Using WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+                /// successful completion, Operation.response will be Empty.</summary>
                 public class InstantiateInlineRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
                 {
                     /// <summary>Constructs a new InstantiateInline request.</summary>
@@ -2596,7 +2606,8 @@ namespace Google.Apis.Dataproc.v1beta2
 
 
                 /// <summary>Creates a cluster in a project. The returned Operation.metadata will be
-                /// ClusterOperationMetadata.</summary>
+                /// ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc
+                /// .v1beta2#clusteroperationmetadata).</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the cluster belongs
                 /// to.</param>
@@ -2607,7 +2618,8 @@ namespace Google.Apis.Dataproc.v1beta2
                 }
 
                 /// <summary>Creates a cluster in a project. The returned Operation.metadata will be
-                /// ClusterOperationMetadata.</summary>
+                /// ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc
+                /// .v1beta2#clusteroperationmetadata).</summary>
                 public class CreateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -2702,7 +2714,8 @@ namespace Google.Apis.Dataproc.v1beta2
                 }
 
                 /// <summary>Deletes a cluster in a project. The returned Operation.metadata will be
-                /// ClusterOperationMetadata.</summary>
+                /// ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc
+                /// .v1beta2#clusteroperationmetadata).</summary>
                 /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the cluster belongs
                 /// to.</param>
                 /// <param name="region">Required. The Dataproc region in which to handle the
@@ -2714,7 +2727,8 @@ namespace Google.Apis.Dataproc.v1beta2
                 }
 
                 /// <summary>Deletes a cluster in a project. The returned Operation.metadata will be
-                /// ClusterOperationMetadata.</summary>
+                /// ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc
+                /// .v1beta2#clusteroperationmetadata).</summary>
                 public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -2830,7 +2844,8 @@ namespace Google.Apis.Dataproc.v1beta2
                 }
 
                 /// <summary>Gets cluster diagnostic information. The returned Operation.metadata will be
-                /// ClusterOperationMetadata. After the operation completes, Operation.response contains
+                /// ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc
+                /// .v1beta2#clusteroperationmetadata). After the operation completes, Operation.response contains
                 /// Empty.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the cluster belongs
@@ -2844,7 +2859,8 @@ namespace Google.Apis.Dataproc.v1beta2
                 }
 
                 /// <summary>Gets cluster diagnostic information. The returned Operation.metadata will be
-                /// ClusterOperationMetadata. After the operation completes, Operation.response contains
+                /// ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc
+                /// .v1beta2#clusteroperationmetadata). After the operation completes, Operation.response contains
                 /// Empty.</summary>
                 public class DiagnoseRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
                 {
@@ -3107,7 +3123,7 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 }
 
-                /// <summary>Lists all regions/{region}/clusters in a project.</summary>
+                /// <summary>Lists all regions/{region}/clusters in a project alphabetically.</summary>
                 /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the cluster belongs
                 /// to.</param>
                 /// <param name="region">Required. The Dataproc region in which to handle the request.</param>
@@ -3116,7 +3132,7 @@ namespace Google.Apis.Dataproc.v1beta2
                     return new ListRequest(service, projectId, region);
                 }
 
-                /// <summary>Lists all regions/{region}/clusters in a project.</summary>
+                /// <summary>Lists all regions/{region}/clusters in a project alphabetically.</summary>
                 public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.ListClustersResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -3232,7 +3248,8 @@ namespace Google.Apis.Dataproc.v1beta2
                 }
 
                 /// <summary>Updates a cluster in a project. The returned Operation.metadata will be
-                /// ClusterOperationMetadata.</summary>
+                /// ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc
+                /// .v1beta2#clusteroperationmetadata).</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">Required. The ID of the Google Cloud Platform project the cluster belongs
                 /// to.</param>
@@ -3245,7 +3262,8 @@ namespace Google.Apis.Dataproc.v1beta2
                 }
 
                 /// <summary>Updates a cluster in a project. The returned Operation.metadata will be
-                /// ClusterOperationMetadata.</summary>
+                /// ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc
+                /// .v1beta2#clusteroperationmetadata).</summary>
                 public class PatchRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -3480,6 +3498,206 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 }
 
+                /// <summary>Starts a cluster in a project.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">Required. The ID of the Google Cloud Platform project the cluster belongs
+                /// to.</param>
+                /// <param name="region">Required. The Dataproc region in which to handle the
+                /// request.</param>
+                /// <param name="clusterName">Required. The cluster name.</param>
+                public virtual StartRequest Start(Google.Apis.Dataproc.v1beta2.Data.StartClusterRequest body, string projectId, string region, string clusterName)
+                {
+                    return new StartRequest(service, body, projectId, region, clusterName);
+                }
+
+                /// <summary>Starts a cluster in a project.</summary>
+                public class StartRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Start request.</summary>
+                    public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1beta2.Data.StartClusterRequest body, string projectId, string region, string clusterName)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        Region = region;
+                        ClusterName = clusterName;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The ID of the Google Cloud Platform project the cluster belongs to.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>Required. The Dataproc region in which to handle the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Region { get; private set; }
+
+                    /// <summary>Required. The cluster name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ClusterName { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1beta2.Data.StartClusterRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "start"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}:start"; }
+                    }
+
+                    /// <summary>Initializes Start parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "region", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "region",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Stops a cluster in a project.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">Required. The ID of the Google Cloud Platform project the cluster belongs
+                /// to.</param>
+                /// <param name="region">Required. The Dataproc region in which to handle the
+                /// request.</param>
+                /// <param name="clusterName">Required. The cluster name.</param>
+                public virtual StopRequest Stop(Google.Apis.Dataproc.v1beta2.Data.StopClusterRequest body, string projectId, string region, string clusterName)
+                {
+                    return new StopRequest(service, body, projectId, region, clusterName);
+                }
+
+                /// <summary>Stops a cluster in a project.</summary>
+                public class StopRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Stop request.</summary>
+                    public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1beta2.Data.StopClusterRequest body, string projectId, string region, string clusterName)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        Region = region;
+                        ClusterName = clusterName;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The ID of the Google Cloud Platform project the cluster belongs to.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>Required. The Dataproc region in which to handle the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Region { get; private set; }
+
+                    /// <summary>Required. The cluster name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ClusterName { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1beta2.Data.StopClusterRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "stop"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}:stop"; }
+                    }
+
+                    /// <summary>Initializes Stop parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "region", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "region",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
                 /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
                 /// exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is
                 /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
@@ -3581,7 +3799,10 @@ namespace Google.Apis.Dataproc.v1beta2
 
 
                 /// <summary>Starts a job cancellation request. To access the job resource after cancellation, call
-                /// regions/{region}/jobs.list or regions/{region}/jobs.get.</summary>
+                /// regions/{region}/jobs.list
+                /// (https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/list) or
+                /// regions/{region}/jobs.get
+                /// (https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/get).</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the job belongs
                 /// to.</param>
@@ -3594,7 +3815,10 @@ namespace Google.Apis.Dataproc.v1beta2
                 }
 
                 /// <summary>Starts a job cancellation request. To access the job resource after cancellation, call
-                /// regions/{region}/jobs.list or regions/{region}/jobs.get.</summary>
+                /// regions/{region}/jobs.list
+                /// (https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/list) or
+                /// regions/{region}/jobs.get
+                /// (https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/get).</summary>
                 public class CancelRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Job>
                 {
                     /// <summary>Constructs a new Cancel request.</summary>
@@ -4361,6 +4585,91 @@ namespace Google.Apis.Dataproc.v1beta2
                     }
 
                     /// <summary>Initializes Submit parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "region", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "region",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Submits job to a cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the job belongs
+                /// to.</param>
+                /// <param name="region">Required. The Dataproc region in which to handle the request.</param>
+                public virtual SubmitAsOperationRequest SubmitAsOperation(Google.Apis.Dataproc.v1beta2.Data.SubmitJobRequest body, string projectId, string region)
+                {
+                    return new SubmitAsOperationRequest(service, body, projectId, region);
+                }
+
+                /// <summary>Submits job to a cluster.</summary>
+                public class SubmitAsOperationRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
+                {
+                    /// <summary>Constructs a new SubmitAsOperation request.</summary>
+                    public SubmitAsOperationRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1beta2.Data.SubmitJobRequest body, string projectId, string region)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        Region = region;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The ID of the Google Cloud Platform project that the job belongs
+                    /// to.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>Required. The Dataproc region in which to handle the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Region { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1beta2.Data.SubmitJobRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "submitAsOperation"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/projects/{projectId}/regions/{region}/jobs:submitAsOperation"; }
+                    }
+
+                    /// <summary>Initializes SubmitAsOperation parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -5379,8 +5688,10 @@ namespace Google.Apis.Dataproc.v1beta2
                 /// execution of workflow by polling operations.get. The Operation will complete when entire workflow is
                 /// finished.The running workflow can be aborted via operations.cancel. This will cause any inflight
                 /// jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be
-                /// WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will
-                /// be Empty.</summary>
+                /// WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2
+                /// #workflowmetadata). Also see Using WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+                /// successful completion, Operation.response will be Empty.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The resource name of the workflow template, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.instantiate, the
@@ -5397,8 +5708,10 @@ namespace Google.Apis.Dataproc.v1beta2
                 /// execution of workflow by polling operations.get. The Operation will complete when entire workflow is
                 /// finished.The running workflow can be aborted via operations.cancel. This will cause any inflight
                 /// jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be
-                /// WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will
-                /// be Empty.</summary>
+                /// WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2
+                /// #workflowmetadata). Also see Using WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+                /// successful completion, Operation.response will be Empty.</summary>
                 public class InstantiateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
                 {
                     /// <summary>Constructs a new Instantiate request.</summary>
@@ -5469,8 +5782,11 @@ namespace Google.Apis.Dataproc.v1beta2
                 /// Operation can be used to track execution of workflow by polling operations.get. The Operation will
                 /// complete when entire workflow is finished.The running workflow can be aborted via operations.cancel.
                 /// This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The
-                /// Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful
-                /// completion, Operation.response will be Empty.</summary>
+                /// Operation.metadata will be WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata).
+                /// Also see Using WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+                /// successful completion, Operation.response will be Empty.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The resource name of the region or location, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,instantiateinline, the
@@ -5487,8 +5803,11 @@ namespace Google.Apis.Dataproc.v1beta2
                 /// Operation can be used to track execution of workflow by polling operations.get. The Operation will
                 /// complete when entire workflow is finished.The running workflow can be aborted via operations.cancel.
                 /// This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The
-                /// Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful
-                /// completion, Operation.response will be Empty.</summary>
+                /// Operation.metadata will be WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata).
+                /// Also see Using WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+                /// successful completion, Operation.response will be Empty.</summary>
                 public class InstantiateInlineRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
                 {
                     /// <summary>Constructs a new InstantiateInline request.</summary>
@@ -6846,6 +7165,29 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Job Operation metadata.</summary>
+    public class JobMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The job id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual string JobId { get; set; } 
+
+        /// <summary>Output only. Operation type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
+        public virtual string OperationType { get; set; } 
+
+        /// <summary>Output only. Job submission time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>Output only. Most recent job status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual JobStatus Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Dataproc job config.</summary>
     public class JobPlacement : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7661,6 +8003,27 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A request to start a cluster.</summary>
+    public class StartClusterRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND) if cluster
+        /// with specified UUID does not exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
+        public virtual string ClusterUuid { get; set; } 
+
+        /// <summary>Optional. A unique id used to identify the request. If the server receives two StartClusterRequest
+        /// requests with the same id, then the second request will be ignored and the first
+        /// google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set
+        /// this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only
+        /// letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        /// characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The Status type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains
     /// three pieces of data: error code, error message, and error details.You can find out more about this error model
@@ -7680,6 +8043,27 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to stop a cluster.</summary>
+    public class StopClusterRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND) if cluster
+        /// with specified UUID does not exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
+        public virtual string ClusterUuid { get; set; } 
+
+        /// <summary>Optional. A unique id used to identify the request. If the server receives two StopClusterRequest
+        /// requests with the same id, then the second request will be ignored and the first
+        /// google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set
+        /// this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only
+        /// letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        /// characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

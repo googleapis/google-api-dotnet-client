@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200220 (1876)
+ *      <tr><th>API Rev<td>20200310 (1895)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -1353,8 +1353,11 @@ namespace Google.Apis.Dataproc.v1
                 /// execution of workflow by polling operations.get. The Operation will complete when entire workflow is
                 /// finished.The running workflow can be aborted via operations.cancel. This will cause any inflight
                 /// jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be
-                /// WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will
-                /// be Empty.</summary>
+                /// WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata).
+                /// Also see Using WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+                /// successful completion, Operation.response will be Empty.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The resource name of the workflow template, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.instantiate, the
@@ -1371,8 +1374,11 @@ namespace Google.Apis.Dataproc.v1
                 /// execution of workflow by polling operations.get. The Operation will complete when entire workflow is
                 /// finished.The running workflow can be aborted via operations.cancel. This will cause any inflight
                 /// jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be
-                /// WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will
-                /// be Empty.</summary>
+                /// WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata).
+                /// Also see Using WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+                /// successful completion, Operation.response will be Empty.</summary>
                 public class InstantiateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Instantiate request.</summary>
@@ -1443,8 +1449,11 @@ namespace Google.Apis.Dataproc.v1
                 /// Operation can be used to track execution of workflow by polling operations.get. The Operation will
                 /// complete when entire workflow is finished.The running workflow can be aborted via operations.cancel.
                 /// This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The
-                /// Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful
-                /// completion, Operation.response will be Empty.</summary>
+                /// Operation.metadata will be WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata).
+                /// Also see Using WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+                /// successful completion, Operation.response will be Empty.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The resource name of the region or location, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,instantiateinline, the
@@ -1461,8 +1470,11 @@ namespace Google.Apis.Dataproc.v1
                 /// Operation can be used to track execution of workflow by polling operations.get. The Operation will
                 /// complete when entire workflow is finished.The running workflow can be aborted via operations.cancel.
                 /// This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The
-                /// Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful
-                /// completion, Operation.response will be Empty.</summary>
+                /// Operation.metadata will be WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata).
+                /// Also see Using WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+                /// successful completion, Operation.response will be Empty.</summary>
                 public class InstantiateInlineRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new InstantiateInline request.</summary>
@@ -2561,7 +2573,8 @@ namespace Google.Apis.Dataproc.v1
 
 
                 /// <summary>Creates a cluster in a project. The returned Operation.metadata will be
-                /// ClusterOperationMetadata.</summary>
+                /// ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc
+                /// .v1#clusteroperationmetadata).</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the cluster belongs
                 /// to.</param>
@@ -2572,7 +2585,8 @@ namespace Google.Apis.Dataproc.v1
                 }
 
                 /// <summary>Creates a cluster in a project. The returned Operation.metadata will be
-                /// ClusterOperationMetadata.</summary>
+                /// ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc
+                /// .v1#clusteroperationmetadata).</summary>
                 public class CreateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -2667,7 +2681,8 @@ namespace Google.Apis.Dataproc.v1
                 }
 
                 /// <summary>Deletes a cluster in a project. The returned Operation.metadata will be
-                /// ClusterOperationMetadata.</summary>
+                /// ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc
+                /// .v1#clusteroperationmetadata).</summary>
                 /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the cluster belongs
                 /// to.</param>
                 /// <param name="region">Required. The Dataproc region in which to handle the
@@ -2679,7 +2694,8 @@ namespace Google.Apis.Dataproc.v1
                 }
 
                 /// <summary>Deletes a cluster in a project. The returned Operation.metadata will be
-                /// ClusterOperationMetadata.</summary>
+                /// ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc
+                /// .v1#clusteroperationmetadata).</summary>
                 public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -2795,8 +2811,10 @@ namespace Google.Apis.Dataproc.v1
                 }
 
                 /// <summary>Gets cluster diagnostic information. The returned Operation.metadata will be
-                /// ClusterOperationMetadata. After the operation completes, Operation.response contains
-                /// DiagnoseClusterResults.</summary>
+                /// ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc
+                /// .v1#clusteroperationmetadata). After the operation completes, Operation.response contains
+                /// DiagnoseClusterResults (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v
+                /// 1#diagnoseclusterresults).</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the cluster belongs
                 /// to.</param>
@@ -2809,8 +2827,10 @@ namespace Google.Apis.Dataproc.v1
                 }
 
                 /// <summary>Gets cluster diagnostic information. The returned Operation.metadata will be
-                /// ClusterOperationMetadata. After the operation completes, Operation.response contains
-                /// DiagnoseClusterResults.</summary>
+                /// ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc
+                /// .v1#clusteroperationmetadata). After the operation completes, Operation.response contains
+                /// DiagnoseClusterResults (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v
+                /// 1#diagnoseclusterresults).</summary>
                 public class DiagnoseRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Diagnose request.</summary>
@@ -3064,7 +3084,7 @@ namespace Google.Apis.Dataproc.v1
 
                 }
 
-                /// <summary>Lists all regions/{region}/clusters in a project.</summary>
+                /// <summary>Lists all regions/{region}/clusters in a project alphabetically.</summary>
                 /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the cluster belongs
                 /// to.</param>
                 /// <param name="region">Required. The Dataproc region in which to handle the request.</param>
@@ -3073,7 +3093,7 @@ namespace Google.Apis.Dataproc.v1
                     return new ListRequest(service, projectId, region);
                 }
 
-                /// <summary>Lists all regions/{region}/clusters in a project.</summary>
+                /// <summary>Lists all regions/{region}/clusters in a project alphabetically.</summary>
                 public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.ListClustersResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -3189,7 +3209,8 @@ namespace Google.Apis.Dataproc.v1
                 }
 
                 /// <summary>Updates a cluster in a project. The returned Operation.metadata will be
-                /// ClusterOperationMetadata.</summary>
+                /// ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc
+                /// .v1#clusteroperationmetadata).</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">Required. The ID of the Google Cloud Platform project the cluster belongs
                 /// to.</param>
@@ -3202,7 +3223,8 @@ namespace Google.Apis.Dataproc.v1
                 }
 
                 /// <summary>Updates a cluster in a project. The returned Operation.metadata will be
-                /// ClusterOperationMetadata.</summary>
+                /// ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc
+                /// .v1#clusteroperationmetadata).</summary>
                 public class PatchRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -3524,7 +3546,10 @@ namespace Google.Apis.Dataproc.v1
 
 
                 /// <summary>Starts a job cancellation request. To access the job resource after cancellation, call
-                /// regions/{region}/jobs.list or regions/{region}/jobs.get.</summary>
+                /// regions/{region}/jobs.list
+                /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/list) or
+                /// regions/{region}/jobs.get
+                /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/get).</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the job belongs
                 /// to.</param>
@@ -3537,7 +3562,10 @@ namespace Google.Apis.Dataproc.v1
                 }
 
                 /// <summary>Starts a job cancellation request. To access the job resource after cancellation, call
-                /// regions/{region}/jobs.list or regions/{region}/jobs.get.</summary>
+                /// regions/{region}/jobs.list
+                /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/list) or
+                /// regions/{region}/jobs.get
+                /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/get).</summary>
                 public class CancelRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Job>
                 {
                     /// <summary>Constructs a new Cancel request.</summary>
@@ -5298,8 +5326,11 @@ namespace Google.Apis.Dataproc.v1
                 /// execution of workflow by polling operations.get. The Operation will complete when entire workflow is
                 /// finished.The running workflow can be aborted via operations.cancel. This will cause any inflight
                 /// jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be
-                /// WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will
-                /// be Empty.</summary>
+                /// WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata).
+                /// Also see Using WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+                /// successful completion, Operation.response will be Empty.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The resource name of the workflow template, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.instantiate, the
@@ -5316,8 +5347,11 @@ namespace Google.Apis.Dataproc.v1
                 /// execution of workflow by polling operations.get. The Operation will complete when entire workflow is
                 /// finished.The running workflow can be aborted via operations.cancel. This will cause any inflight
                 /// jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be
-                /// WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will
-                /// be Empty.</summary>
+                /// WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata).
+                /// Also see Using WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+                /// successful completion, Operation.response will be Empty.</summary>
                 public class InstantiateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Instantiate request.</summary>
@@ -5388,8 +5422,11 @@ namespace Google.Apis.Dataproc.v1
                 /// Operation can be used to track execution of workflow by polling operations.get. The Operation will
                 /// complete when entire workflow is finished.The running workflow can be aborted via operations.cancel.
                 /// This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The
-                /// Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful
-                /// completion, Operation.response will be Empty.</summary>
+                /// Operation.metadata will be WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata).
+                /// Also see Using WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+                /// successful completion, Operation.response will be Empty.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The resource name of the region or location, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,instantiateinline, the
@@ -5406,8 +5443,11 @@ namespace Google.Apis.Dataproc.v1
                 /// Operation can be used to track execution of workflow by polling operations.get. The Operation will
                 /// complete when entire workflow is finished.The running workflow can be aborted via operations.cancel.
                 /// This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The
-                /// Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful
-                /// completion, Operation.response will be Empty.</summary>
+                /// Operation.metadata will be WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata).
+                /// Also see Using WorkflowMetadata
+                /// (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+                /// successful completion, Operation.response will be Empty.</summary>
                 public class InstantiateInlineRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new InstantiateInline request.</summary>

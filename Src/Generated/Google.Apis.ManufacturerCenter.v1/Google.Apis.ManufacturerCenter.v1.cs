@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/manufacturers/'>Manufacturer Center API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200219 (1875)
+ *      <tr><th>API Rev<td>20200303 (1888)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/manufacturers/'>
  *              https://developers.google.com/manufacturers/</a>
@@ -975,6 +975,11 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// https://support.google.com/manufacturers/answer/6124116#release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseDate")]
         public virtual string ReleaseDate { get; set; } 
+
+        /// <summary>Rich product content. For more information, see
+        /// https://support.google.com/manufacturers/answer/9389865</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("richContent")]
+        public virtual System.Collections.Generic.IList<string> RichContent { get; set; } 
 
         /// <summary>The scent of the product. For more information, see
         /// https://support.google.com/manufacturers/answer/6124116#scent.</summary>

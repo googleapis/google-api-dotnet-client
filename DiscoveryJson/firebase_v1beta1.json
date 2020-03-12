@@ -471,7 +471,7 @@
        ], 
        "parameters": {
         "parent": {
-         "description": "The parent Project for which to list Apps, in the format:\n<br><code>projects/<var>projectId</var></code>", 
+         "description": "The parent Project in which to create an App, in the format:\n<br><code>projects/<var>projectId</var></code>", 
          "location": "path", 
          "pattern": "^projects/[^/]+$", 
          "required": true, 
@@ -799,7 +799,7 @@
        ], 
        "parameters": {
         "parent": {
-         "description": "The parent Project for which to list Apps, in the format:\n<br><code>projects/<var>projectId</var></code>", 
+         "description": "The parent Project in which to create an App, in the format:\n<br><code>projects/<var>projectId</var></code>", 
          "location": "path", 
          "pattern": "^projects/[^/]+$", 
          "required": true, 
@@ -962,7 +962,7 @@
        ], 
        "parameters": {
         "parent": {
-         "description": "The parent Project for which to list Apps, in the format:\n<br><code>projects/<var>projectId</var></code>", 
+         "description": "The parent Project in which to create an App, in the format:\n<br><code>projects/<var>projectId</var></code>", 
          "location": "path", 
          "pattern": "^projects/[^/]+$", 
          "required": true, 
@@ -1116,7 +1116,7 @@
    }
   }
  }, 
- "revision": "20200305", 
+ "revision": "20200310", 
  "rootUrl": "https://firebase.googleapis.com/", 
  "schemas": {
   "AddFirebaseRequest": {

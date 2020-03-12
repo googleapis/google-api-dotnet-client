@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/identity/'>Cloud Identity API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200303 (1888)
+ *      <tr><th>API Rev<td>20200308 (1893)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/identity/'>
  *              https://cloud.google.com/identity/</a>
@@ -1559,6 +1559,22 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response message for MembershipsService.GetMembershipGraph.</summary>
+    public class GetMembershipGraphResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The membership graph's path information represented as an adjacency list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adjacencyList")]
+        public virtual System.Collections.Generic.IList<MembershipAdjacencyList> AdjacencyList { get; set; } 
+
+        /// <summary>The resources representing each group in the adjacency list. Each group in this list can be
+        /// correlated to a 'group' of the MembershipAdjacencyList using the 'name' of the Group resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groups")]
+        public virtual System.Collections.Generic.IList<Group> Groups { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A group within the Cloud Identity Groups API.
     ///
     /// A `Group` is a collection of entities, where each entity is either a user or another group or a service
@@ -1718,6 +1734,21 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>Output only. The time when the `Membership` was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Membership graph's path information as an adjacency list.</summary>
+    public class MembershipAdjacencyList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Each edge contains information about the member that belongs to this group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edges")]
+        public virtual System.Collections.Generic.IList<Membership> Edges { get; set; } 
+
+        /// <summary>Resource name of the group that the members belong to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual string Group { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

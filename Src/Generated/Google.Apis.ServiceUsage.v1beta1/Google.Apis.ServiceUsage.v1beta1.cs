@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-usage/'>Service Usage API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200305 (1890)
+ *      <tr><th>API Rev<td>20200310 (1895)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-usage/'>
  *              https://cloud.google.com/service-usage/</a>
@@ -548,9 +548,1297 @@ namespace Google.Apis.ServiceUsage.v1beta1
         public ServicesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            consumerQuotaMetrics = new ConsumerQuotaMetricsResource(service);
 
         }
 
+        private readonly ConsumerQuotaMetricsResource consumerQuotaMetrics;
+
+        /// <summary>Gets the ConsumerQuotaMetrics resource.</summary>
+        public virtual ConsumerQuotaMetricsResource ConsumerQuotaMetrics
+        {
+            get { return consumerQuotaMetrics; }
+        }
+
+        /// <summary>The "consumerQuotaMetrics" collection of methods.</summary>
+        public class ConsumerQuotaMetricsResource
+        {
+            private const string Resource = "consumerQuotaMetrics";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ConsumerQuotaMetricsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                limits = new LimitsResource(service);
+
+            }
+
+            private readonly LimitsResource limits;
+
+            /// <summary>Gets the Limits resource.</summary>
+            public virtual LimitsResource Limits
+            {
+                get { return limits; }
+            }
+
+            /// <summary>The "limits" collection of methods.</summary>
+            public class LimitsResource
+            {
+                private const string Resource = "limits";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public LimitsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    adminOverrides = new AdminOverridesResource(service);
+                    consumerOverrides = new ConsumerOverridesResource(service);
+                    producerOverrides = new ProducerOverridesResource(service);
+
+                }
+
+                private readonly AdminOverridesResource adminOverrides;
+
+                /// <summary>Gets the AdminOverrides resource.</summary>
+                public virtual AdminOverridesResource AdminOverrides
+                {
+                    get { return adminOverrides; }
+                }
+
+                /// <summary>The "adminOverrides" collection of methods.</summary>
+                public class AdminOverridesResource
+                {
+                    private const string Resource = "adminOverrides";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AdminOverridesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Creates an admin override. An admin override is applied by an administrator of a parent
+                    /// folder or parent organization of the consumer receiving the override. An admin override is
+                    /// intended to limit the amount of quota the consumer can use out of the total quota pool allocated
+                    /// to all children of the folder or organization.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics or
+                    /// GetConsumerQuotaMetric call.
+                    ///
+                    /// An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%
+                    /// 2Fcpus/limits/%2Fproject%2Fregion`</param>
+                    public virtual CreateRequest Create(Google.Apis.ServiceUsage.v1beta1.Data.QuotaOverride body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates an admin override. An admin override is applied by an administrator of a parent
+                    /// folder or parent organization of the consumer receiving the override. An admin override is
+                    /// intended to limit the amount of quota the consumer can use out of the total quota pool allocated
+                    /// to all children of the folder or organization.</summary>
+                    public class CreateRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceUsage.v1beta1.Data.QuotaOverride body, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics
+                        /// or GetConsumerQuotaMetric call.
+                        ///
+                        /// An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics
+                        /// /compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Whether to force the creation of the quota override. If creating an override would
+                        /// cause the effective quota for the consumer to decrease by more than 10 percent, the call is
+                        /// rejected, as a safety measure to avoid accidentally decreasing quota too quickly. Setting
+                        /// the force parameter to true ignores this restriction.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Force { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ServiceUsage.v1beta1.Data.QuotaOverride Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "create"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta1/{+parent}/adminOverrides"; }
+                        }
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^[^/]+/[^/]+/services/[^/]+/consumerQuotaMetrics/[^/]+/limits/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "force", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "force",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Deletes an admin override.</summary>
+                    /// <param name="name">The resource name of the override to delete.
+                    ///
+                    /// An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%
+                    /// 2Fcpus/limits/%2Fproject%2Fregion/adminOverrides/4a3f2c1d`</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes an admin override.</summary>
+                    public class DeleteRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The resource name of the override to delete.
+                        ///
+                        /// An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics
+                        /// /compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/adminOverrides/4a3f2c1d`</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Whether to force the deletion of the quota override. If deleting an override would
+                        /// cause the effective quota for the consumer to decrease by more than 10 percent, the call is
+                        /// rejected, as a safety measure to avoid accidentally decreasing quota too quickly. Setting
+                        /// the force parameter to true ignores this restriction.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Force { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "delete"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "DELETE"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^[^/]+/[^/]+/services/[^/]+/consumerQuotaMetrics/[^/]+/limits/[^/]+/adminOverrides/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "force", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "force",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Lists all admin overrides on this limit.</summary>
+                    /// <param name="parent">The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics or
+                    /// GetConsumerQuotaMetric call.
+                    ///
+                    /// An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%
+                    /// 2Fcpus/limits/%2Fproject%2Fregion`</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists all admin overrides on this limit.</summary>
+                    public class ListRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.ListAdminOverridesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics
+                        /// or GetConsumerQuotaMetric call.
+                        ///
+                        /// An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics
+                        /// /compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Requested size of the next page of data.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Token identifying which result to start with; returned by a previous list
+                        /// call.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta1/{+parent}/adminOverrides"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^[^/]+/[^/]+/services/[^/]+/consumerQuotaMetrics/[^/]+/limits/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Updates an admin override.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">The resource name of the override to update.
+                    ///
+                    /// An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%
+                    /// 2Fcpus/limits/%2Fproject%2Fregion/adminOverrides/4a3f2c1d`</param>
+                    public virtual PatchRequest Patch(Google.Apis.ServiceUsage.v1beta1.Data.QuotaOverride body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates an admin override.</summary>
+                    public class PatchRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceUsage.v1beta1.Data.QuotaOverride body, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The resource name of the override to update.
+                        ///
+                        /// An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics
+                        /// /compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/adminOverrides/4a3f2c1d`</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Whether to force the update of the quota override. If updating an override would
+                        /// cause the effective quota for the consumer to decrease by more than 10 percent, the call is
+                        /// rejected, as a safety measure to avoid accidentally decreasing quota too quickly. Setting
+                        /// the force parameter to true ignores this restriction.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Force { get; set; }
+
+                        /// <summary>Update only the specified fields of the override. If unset, all fields will be
+                        /// updated.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ServiceUsage.v1beta1.Data.QuotaOverride Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "patch"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "PATCH"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^[^/]+/[^/]+/services/[^/]+/consumerQuotaMetrics/[^/]+/limits/[^/]+/adminOverrides/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "force", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "force",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+                }
+                private readonly ConsumerOverridesResource consumerOverrides;
+
+                /// <summary>Gets the ConsumerOverrides resource.</summary>
+                public virtual ConsumerOverridesResource ConsumerOverrides
+                {
+                    get { return consumerOverrides; }
+                }
+
+                /// <summary>The "consumerOverrides" collection of methods.</summary>
+                public class ConsumerOverridesResource
+                {
+                    private const string Resource = "consumerOverrides";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ConsumerOverridesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Creates a consumer override. A consumer override is applied to the consumer on its own
+                    /// authority to limit its own quota usage. Consumer overrides cannot be used to grant more quota
+                    /// than would be allowed by admin overrides, producer overrides, or the default limit of the
+                    /// service.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics or
+                    /// GetConsumerQuotaMetric call.
+                    ///
+                    /// An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%
+                    /// 2Fcpus/limits/%2Fproject%2Fregion`</param>
+                    public virtual CreateRequest Create(Google.Apis.ServiceUsage.v1beta1.Data.QuotaOverride body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a consumer override. A consumer override is applied to the consumer on its own
+                    /// authority to limit its own quota usage. Consumer overrides cannot be used to grant more quota
+                    /// than would be allowed by admin overrides, producer overrides, or the default limit of the
+                    /// service.</summary>
+                    public class CreateRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceUsage.v1beta1.Data.QuotaOverride body, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics
+                        /// or GetConsumerQuotaMetric call.
+                        ///
+                        /// An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics
+                        /// /compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Whether to force the creation of the quota override. If creating an override would
+                        /// cause the effective quota for the consumer to decrease by more than 10 percent, the call is
+                        /// rejected, as a safety measure to avoid accidentally decreasing quota too quickly. Setting
+                        /// the force parameter to true ignores this restriction.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Force { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ServiceUsage.v1beta1.Data.QuotaOverride Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "create"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta1/{+parent}/consumerOverrides"; }
+                        }
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^[^/]+/[^/]+/services/[^/]+/consumerQuotaMetrics/[^/]+/limits/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "force", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "force",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Deletes a consumer override.</summary>
+                    /// <param name="name">The resource name of the override to delete.
+                    ///
+                    /// An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%
+                    /// 2Fcpus/limits/%2Fproject%2Fregion/consumerOverrides/4a3f2c1d`</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a consumer override.</summary>
+                    public class DeleteRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The resource name of the override to delete.
+                        ///
+                        /// An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics
+                        /// /compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/consumerOverrides/4a3f2c1d`</summa
+                        /// ry>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Whether to force the deletion of the quota override. If deleting an override would
+                        /// cause the effective quota for the consumer to decrease by more than 10 percent, the call is
+                        /// rejected, as a safety measure to avoid accidentally decreasing quota too quickly. Setting
+                        /// the force parameter to true ignores this restriction.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Force { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "delete"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "DELETE"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^[^/]+/[^/]+/services/[^/]+/consumerQuotaMetrics/[^/]+/limits/[^/]+/consumerOverrides/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "force", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "force",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Lists all consumer overrides on this limit.</summary>
+                    /// <param name="parent">The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics or
+                    /// GetConsumerQuotaMetric call.
+                    ///
+                    /// An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%
+                    /// 2Fcpus/limits/%2Fproject%2Fregion`</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists all consumer overrides on this limit.</summary>
+                    public class ListRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.ListConsumerOverridesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics
+                        /// or GetConsumerQuotaMetric call.
+                        ///
+                        /// An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics
+                        /// /compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Requested size of the next page of data.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Token identifying which result to start with; returned by a previous list
+                        /// call.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta1/{+parent}/consumerOverrides"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^[^/]+/[^/]+/services/[^/]+/consumerQuotaMetrics/[^/]+/limits/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Updates a consumer override.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">The resource name of the override to update.
+                    ///
+                    /// An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%
+                    /// 2Fcpus/limits/%2Fproject%2Fregion/consumerOverrides/4a3f2c1d`</param>
+                    public virtual PatchRequest Patch(Google.Apis.ServiceUsage.v1beta1.Data.QuotaOverride body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates a consumer override.</summary>
+                    public class PatchRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceUsage.v1beta1.Data.QuotaOverride body, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The resource name of the override to update.
+                        ///
+                        /// An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics
+                        /// /compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/consumerOverrides/4a3f2c1d`</summa
+                        /// ry>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Whether to force the update of the quota override. If updating an override would
+                        /// cause the effective quota for the consumer to decrease by more than 10 percent, the call is
+                        /// rejected, as a safety measure to avoid accidentally decreasing quota too quickly. Setting
+                        /// the force parameter to true ignores this restriction.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Force { get; set; }
+
+                        /// <summary>Update only the specified fields of the override. If unset, all fields will be
+                        /// updated.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ServiceUsage.v1beta1.Data.QuotaOverride Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "patch"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "PATCH"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^[^/]+/[^/]+/services/[^/]+/consumerQuotaMetrics/[^/]+/limits/[^/]+/consumerOverrides/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "force", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "force",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+                }
+                private readonly ProducerOverridesResource producerOverrides;
+
+                /// <summary>Gets the ProducerOverrides resource.</summary>
+                public virtual ProducerOverridesResource ProducerOverrides
+                {
+                    get { return producerOverrides; }
+                }
+
+                /// <summary>The "producerOverrides" collection of methods.</summary>
+                public class ProducerOverridesResource
+                {
+                    private const string Resource = "producerOverrides";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ProducerOverridesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Lists all producer overrides on this limit. Unlike other types of overrides, producer
+                    /// overrides are under the control of the service producer and cannot be modified using this
+                    /// API.</summary>
+                    /// <param name="parent">The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics or
+                    /// GetConsumerQuotaMetric call.
+                    ///
+                    /// An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%
+                    /// 2Fcpus/limits/%2Fproject%2Fregion`</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists all producer overrides on this limit. Unlike other types of overrides, producer
+                    /// overrides are under the control of the service producer and cannot be modified using this
+                    /// API.</summary>
+                    public class ListRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.ListProducerOverridesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics
+                        /// or GetConsumerQuotaMetric call.
+                        ///
+                        /// An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics
+                        /// /compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Requested size of the next page of data.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Token identifying which result to start with; returned by a previous list
+                        /// call.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta1/{+parent}/producerOverrides"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^[^/]+/[^/]+/services/[^/]+/consumerQuotaMetrics/[^/]+/limits/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+                }
+
+                /// <summary>Retrieves a summary of quota information for a specific quota limit.</summary>
+                /// <param name="name">The resource name of the quota limit.
+                ///
+                /// Use the quota limit resource name returned by previous ListConsumerQuotaMetrics and GetConsumerQuotaMetric API
+                /// calls.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Retrieves a summary of quota information for a specific quota limit.</summary>
+                public class GetRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.ConsumerQuotaLimit>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The resource name of the quota limit.
+                    ///
+                    /// Use the quota limit resource name returned by previous ListConsumerQuotaMetrics and
+                    /// GetConsumerQuotaMetric API calls.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Specifies the level of detail for quota information in the response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>Specifies the level of detail for quota information in the response.</summary>
+                    public enum ViewEnum
+                    {
+                        [Google.Apis.Util.StringValueAttribute("QUOTA_VIEW_UNSPECIFIED")]
+                        QUOTAVIEWUNSPECIFIED,
+                        [Google.Apis.Util.StringValueAttribute("BASIC")]
+                        BASIC,
+                        [Google.Apis.Util.StringValueAttribute("FULL")]
+                        FULL,
+                    }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+/[^/]+/services/[^/]+/consumerQuotaMetrics/[^/]+/limits/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+
+            /// <summary>Retrieves a summary of quota information for a specific quota metric</summary>
+            /// <param name="name">The resource name of the quota limit.
+            ///
+            /// An example name would be: projects/123/services/serviceusage.googleapis.com/quotas/metrics/serviceusage.googleapis.c
+            /// om%2Fmutate_requests</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Retrieves a summary of quota information for a specific quota metric</summary>
+            public class GetRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.ConsumerQuotaMetric>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The resource name of the quota limit.
+                ///
+                /// An example name would be: projects/123/services/serviceusage.googleapis.com/quotas/metrics/serviceus
+                /// age.googleapis.com%2Fmutate_requests</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Specifies the level of detail for quota information in the response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                /// <summary>Specifies the level of detail for quota information in the response.</summary>
+                public enum ViewEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("QUOTA_VIEW_UNSPECIFIED")]
+                    QUOTAVIEWUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("BASIC")]
+                    BASIC,
+                    [Google.Apis.Util.StringValueAttribute("FULL")]
+                    FULL,
+                }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+/[^/]+/services/[^/]+/consumerQuotaMetrics/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Retrieves a summary of all quota information visible to the service consumer, organized by
+            /// service metric. Each metric includes information about all of its defined limits. Each limit includes
+            /// the limit configuration (quota unit, preciseness, default value), the current effective limit value, and
+            /// all of the overrides applied to the limit.</summary>
+            /// <param name="parent">Parent of the quotas resource.
+            ///
+            /// Some example names would be: projects/123/services/serviceconsumermanagement.googleapis.com
+            /// folders/345/services/serviceconsumermanagement.googleapis.com
+            /// organizations/456/services/serviceconsumermanagement.googleapis.com</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Retrieves a summary of all quota information visible to the service consumer, organized by
+            /// service metric. Each metric includes information about all of its defined limits. Each limit includes
+            /// the limit configuration (quota unit, preciseness, default value), the current effective limit value, and
+            /// all of the overrides applied to the limit.</summary>
+            public class ListRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.ListConsumerQuotaMetricsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Parent of the quotas resource.
+                ///
+                /// Some example names would be: projects/123/services/serviceconsumermanagement.googleapis.com
+                /// folders/345/services/serviceconsumermanagement.googleapis.com
+                /// organizations/456/services/serviceconsumermanagement.googleapis.com</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Requested size of the next page of data.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Specifies the level of detail for quota information in the response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                /// <summary>Specifies the level of detail for quota information in the response.</summary>
+                public enum ViewEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("QUOTA_VIEW_UNSPECIFIED")]
+                    QUOTAVIEWUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("BASIC")]
+                    BASIC,
+                    [Google.Apis.Util.StringValueAttribute("FULL")]
+                    FULL,
+                }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta1/{+parent}/consumerQuotaMetrics"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+/[^/]+/services/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
 
         /// <summary>Enable multiple services on a project. The operation is atomic: if enabling any service fails, then
         /// the entire batch fails, and no state changes occur.
@@ -1375,6 +2663,83 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         /// section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoredResource")]
         public virtual string MonitoredResource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Consumer quota settings for a quota limit.</summary>
+    public class ConsumerQuotaLimit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether admin overrides are allowed on this limit</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowsAdminOverrides")]
+        public virtual System.Nullable<bool> AllowsAdminOverrides { get; set; } 
+
+        /// <summary>Whether this limit is precise or imprecise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isPrecise")]
+        public virtual System.Nullable<bool> IsPrecise { get; set; } 
+
+        /// <summary>The name of the parent metric of this limit.
+        ///
+        /// An example name would be: `compute.googleapis.com/cpus`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual string Metric { get; set; } 
+
+        /// <summary>The resource name of the quota limit.
+        ///
+        /// An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googlea
+        /// pis.com%2Fcpus/limits/%2Fproject%2Fregion`
+        ///
+        /// The resource name is intended to be opaque and should not be parsed for its component strings, since its
+        /// representation could change in the future.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Summary of the enforced quota buckets, organized by quota dimension, ordered from least specific to
+        /// most specific (for example, the global default bucket, with no quota dimensions, will always appear
+        /// first).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaBuckets")]
+        public virtual System.Collections.Generic.IList<QuotaBucket> QuotaBuckets { get; set; } 
+
+        /// <summary>The limit unit.
+        ///
+        /// An example unit would be `1/{project}/{region}` Note that `{project}` and `{region}` are not placeholders in
+        /// this example; the literal characters `{` and `}` occur in the string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Consumer quota settings for a quota metric.</summary>
+    public class ConsumerQuotaMetric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The consumer quota for each quota limit defined on the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerQuotaLimits")]
+        public virtual System.Collections.Generic.IList<ConsumerQuotaLimit> ConsumerQuotaLimits { get; set; } 
+
+        /// <summary>The display name of the metric.
+        ///
+        /// An example name would be: "CPUs"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The name of the metric.
+        ///
+        /// An example name would be: `compute.googleapis.com/cpus`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual string Metric { get; set; } 
+
+        /// <summary>The resource name of the quota settings on this metric for this consumer.
+        ///
+        /// An example name would be:
+        /// `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus
+        ///
+        /// The resource name is intended to be opaque and should not be parsed for its component strings, since its
+        /// representation could change in the future.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2405,6 +3770,51 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message for ListAdminOverrides.</summary>
+    public class ListAdminOverridesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>Admin overrides on this limit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrides")]
+        public virtual System.Collections.Generic.IList<QuotaOverride> Overrides { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for ListConsumerOverrides.</summary>
+    public class ListConsumerOverridesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>Consumer overrides on this limit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrides")]
+        public virtual System.Collections.Generic.IList<QuotaOverride> Overrides { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for ListConsumerQuotaMetrics</summary>
+    public class ListConsumerQuotaMetricsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Quota settings for the consumer, organized by quota metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<ConsumerQuotaMetric> Metrics { get; set; } 
+
+        /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2415,6 +3825,21 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for ListProducerOverrides.</summary>
+    public class ListProducerOverridesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>Producer overrides on this limit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrides")]
+        public virtual System.Collections.Generic.IList<QuotaOverride> Overrides { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3043,6 +4468,47 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         /// metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricRules")]
         public virtual System.Collections.Generic.IList<MetricRule> MetricRules { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A quota bucket is a quota provisioning unit for a specific set of dimensions.</summary>
+    public class QuotaBucket : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Admin override on this quota bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminOverride")]
+        public virtual QuotaOverride AdminOverride { get; set; } 
+
+        /// <summary>Consumer override on this quota bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerOverride")]
+        public virtual QuotaOverride ConsumerOverride { get; set; } 
+
+        /// <summary>The default limit of this quota bucket, as specified by the service configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLimit")]
+        public virtual System.Nullable<long> DefaultLimit { get; set; } 
+
+        /// <summary>The dimensions of this quota bucket.
+        ///
+        /// If this map is empty, this is the global bucket, which is the default quota value applied to all requests
+        /// that do not have a more specific override.
+        ///
+        /// If this map is nonempty, the default limit, effective limit, and quota overrides apply only to requests that
+        /// have the dimensions given in the map.
+        ///
+        /// For example, if the map has key "region" and value "us-east-1", then the specified effective limit is only
+        /// effective in that region, and the specified overrides apply only in that region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Dimensions { get; set; } 
+
+        /// <summary>The effective limit of this quota bucket. Equal to default_limit if there are no
+        /// overrides.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveLimit")]
+        public virtual System.Nullable<long> EffectiveLimit { get; set; } 
+
+        /// <summary>Producer override on this quota bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerOverride")]
+        public virtual QuotaOverride ProducerOverride { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

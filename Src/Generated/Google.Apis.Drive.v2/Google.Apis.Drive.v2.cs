@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200220 (1876)
+ *      <tr><th>API Rev<td>20200303 (1888)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -1525,6 +1525,13 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("childId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ChildId { get; private set; }
 
+            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
+            /// parameter will only take effect if the item is not in a shared drive. If the item's last parent is
+            /// removed, the item will be placed under its owner's root.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1565,6 +1572,15 @@ namespace Google.Apis.Drive.v2
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enforceSingleParent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
             }
@@ -1671,6 +1687,15 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("folderId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FolderId { get; private set; }
 
+            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
+            /// parameter will only take effect if the item is not in a shared drive. If the child's owner makes the
+            /// request, the child will be removed from all current folders and placed in the requested folder. Any
+            /// other requests that increase the number of the child's parents will fail, except when the
+            /// canAddMyDriveParent file capability is true and a single parent is being added.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
+
             /// <summary>Deprecated - Whether the requesting application supports both My Drives and shared drives. This
             /// parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support
             /// shared drives.</summary>
@@ -1720,6 +1745,15 @@ namespace Google.Apis.Drive.v2
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enforceSingleParent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -2978,6 +3012,13 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("convert", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Convert { get; set; }
 
+            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
+            /// parameter will only take effect if the item is not in a shared drive. Requests that specify more than
+            /// one parent will fail.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
+
             /// <summary>Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("ocr", Google.Apis.Util.RequestParameterType.Query)]
@@ -3075,6 +3116,15 @@ namespace Google.Apis.Drive.v2
                     "convert", new Google.Apis.Discovery.Parameter
                     {
                         Name = "convert",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enforceSingleParent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
@@ -3735,6 +3785,13 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("convert", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Convert { get; set; }
 
+            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
+            /// parameter will only take effect if the item is not in a shared drive. Requests that specify more than
+            /// one parent will fail.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
+
             /// <summary>Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("ocr", Google.Apis.Util.RequestParameterType.Query)]
@@ -3826,6 +3883,15 @@ namespace Google.Apis.Drive.v2
                     "convert", new Google.Apis.Discovery.Parameter
                     {
                         Name = "convert",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enforceSingleParent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
@@ -3991,6 +4057,13 @@ namespace Google.Apis.Drive.v2
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("convert", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Convert { get; set; }
+
+            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
+            /// parameter will only take effect if the item is not in a shared drive. Requests that specify more than
+            /// one parent will fail.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
             /// <summary>Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.</summary>
             /// [default: false]
@@ -4377,6 +4450,15 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("convert", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Convert { get; set; }
 
+            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
+            /// parameter will only take effect if the item is not in a shared drive. If the item's owner makes a
+            /// request to add a single parent, the item will be removed from all current folders and placed in the
+            /// requested folder. Other requests that increase the number of parents will fail, except when the
+            /// canAddMyDriveParent file capability is true and a single parent is being added.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
+
             /// <summary>Determines the behavior in which modifiedDate is updated. This overrides
             /// setModifiedDate.</summary>
             [Google.Apis.Util.RequestParameterAttribute("modifiedDateBehavior", Google.Apis.Util.RequestParameterType.Query)]
@@ -4526,6 +4608,15 @@ namespace Google.Apis.Drive.v2
                     "convert", new Google.Apis.Discovery.Parameter
                     {
                         Name = "convert",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enforceSingleParent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
@@ -4958,6 +5049,15 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("convert", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Convert { get; set; }
 
+            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
+            /// parameter will only take effect if the item is not in a shared drive. If the item's owner makes a
+            /// request to add a single parent, the item will be removed from all current folders and placed in the
+            /// requested folder. Other requests that increase the number of parents will fail, except when the
+            /// canAddMyDriveParent file capability is true and a single parent is being added.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
+
             /// <summary>Determines the behavior in which modifiedDate is updated. This overrides
             /// setModifiedDate.</summary>
             [Google.Apis.Util.RequestParameterAttribute("modifiedDateBehavior", Google.Apis.Util.RequestParameterType.Query)]
@@ -5107,6 +5207,15 @@ namespace Google.Apis.Drive.v2
                     "convert", new Google.Apis.Discovery.Parameter
                     {
                         Name = "convert",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enforceSingleParent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
@@ -5317,6 +5426,15 @@ namespace Google.Apis.Drive.v2
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("convert", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Convert { get; set; }
+
+            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
+            /// parameter will only take effect if the item is not in a shared drive. If the item's owner makes a
+            /// request to add a single parent, the item will be removed from all current folders and placed in the
+            /// requested folder. Other requests that increase the number of parents will fail, except when the
+            /// canAddMyDriveParent file capability is true and a single parent is being added.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
             /// <summary>Determines the behavior in which modifiedDate is updated. This overrides
             /// setModifiedDate.</summary>
@@ -5707,6 +5825,13 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("parentId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ParentId { get; private set; }
 
+            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
+            /// parameter will only take effect if the item is not in a shared drive. If the item's last parent is
+            /// removed, the item will be placed under its owner's root.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -5747,6 +5872,15 @@ namespace Google.Apis.Drive.v2
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enforceSingleParent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
             }
@@ -5853,6 +5987,15 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
+            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
+            /// parameter will only take effect if the item is not in a shared drive. If the child's owner makes the
+            /// request, the child will be removed from all current folders and placed in the requested folder. Any
+            /// other requests that increase the number of the child's parents will fail, except when the
+            /// canAddMyDriveParent file capability is true and a single parent is being added.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
+
             /// <summary>Deprecated - Whether the requesting application supports both My Drives and shared drives. This
             /// parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support
             /// shared drives.</summary>
@@ -5902,6 +6045,15 @@ namespace Google.Apis.Drive.v2
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enforceSingleParent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -6336,6 +6488,23 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("emailMessage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EmailMessage { get; set; }
 
+            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
+            /// parameter will only take effect if the item is not in a shared drive. See moveToNewOwnersRoot for
+            /// details.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
+
+            /// <summary>This parameter will only take effect if the item is not in a shared drive and the request is
+            /// attempting to transfer the ownership of the item. When set to true, the item will be moved to the new
+            /// owner's My Drive root folder and all prior parents removed. If set to false, when
+            /// enforceSingleParent=true, parents are not changed. If set to false, when enforceSingleParent=false,
+            /// existing parents are not changed; however, the file will be added to the new owner's My Drive root
+            /// folder, unless it is already in the new owner's My Drive.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("moveToNewOwnersRoot", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> MoveToNewOwnersRoot { get; set; }
+
             /// <summary>Whether to send notification emails when sharing to users or groups. This parameter is ignored
             /// and an email is sent if the role is owner.</summary>
             /// [default: true]
@@ -6407,6 +6576,24 @@ namespace Google.Apis.Drive.v2
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enforceSingleParent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "moveToNewOwnersRoot", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "moveToNewOwnersRoot",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -10413,6 +10600,11 @@ namespace Google.Apis.Drive.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canAddChildren")]
             public virtual System.Nullable<bool> CanAddChildren { get; set; } 
 
+            /// <summary>Whether the current user can add a parent for the item without removing an existing parent in
+            /// the same request. Not populated for shared drive files.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canAddMyDriveParent")]
+            public virtual System.Nullable<bool> CanAddMyDriveParent { get; set; } 
+
             /// <summary>Whether the current user can change the copyRequiresWriterPermission restriction of this
             /// file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeCopyRequiresWriterPermission")]
@@ -10525,6 +10717,11 @@ namespace Google.Apis.Drive.v2.Data
             /// instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRemoveChildren")]
             public virtual System.Nullable<bool> CanRemoveChildren { get; set; } 
+
+            /// <summary>Whether the current user can remove a parent from the item without adding another parent in the
+            /// same request. Not populated for shared drive files.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canRemoveMyDriveParent")]
+            public virtual System.Nullable<bool> CanRemoveMyDriveParent { get; set; } 
 
             /// <summary>Whether the current user can rename this file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRename")]

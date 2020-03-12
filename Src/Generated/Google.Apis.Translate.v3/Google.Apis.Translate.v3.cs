@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/translate/docs/quickstarts'>Cloud Translation API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200228 (1884)
+ *      <tr><th>API Rev<td>20200306 (1891)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/translate/docs/quickstarts'>
  *              https://cloud.google.com/translate/docs/quickstarts</a>
@@ -2090,8 +2090,10 @@ namespace Google.Apis.Translate.v3.Data
     /// <summary>The Google Cloud Storage location for the output content.</summary>
     public class GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. There must be no files under 'output_uri_prefix'. 'output_uri_prefix' must end with "/"
-        /// and start with "gs://", otherwise an INVALID_ARGUMENT (400) error is returned.</summary>
+        /// <summary>Required. The bucket used in 'output_uri_prefix' must exist and there must be no files under
+        /// 'output_uri_prefix'. 'output_uri_prefix' must end with "/" and start with "gs://". One 'output_uri_prefix'
+        /// can only be used by one batch translation job at a time. Otherwise an INVALID_ARGUMENT (400) error is
+        /// returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUriPrefix")]
         public virtual string OutputUriPrefix { get; set; } 
 

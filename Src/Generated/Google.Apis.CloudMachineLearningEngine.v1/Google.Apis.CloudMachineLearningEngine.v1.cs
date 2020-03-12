@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>AI Platform Training & Prediction API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200229 (1885)
+ *      <tr><th>API Rev<td>20200307 (1892)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -1034,6 +1034,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             {
                 this.service = service;
                 operations = new OperationsResource(service);
+                studies = new StudiesResource(service);
 
             }
 
@@ -1190,6 +1191,913 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                            });
+                    }
+
+                }
+            }
+            private readonly StudiesResource studies;
+
+            /// <summary>Gets the Studies resource.</summary>
+            public virtual StudiesResource Studies
+            {
+                get { return studies; }
+            }
+
+            /// <summary>The "studies" collection of methods.</summary>
+            public class StudiesResource
+            {
+                private const string Resource = "studies";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public StudiesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    trials = new TrialsResource(service);
+
+                }
+
+                private readonly TrialsResource trials;
+
+                /// <summary>Gets the Trials resource.</summary>
+                public virtual TrialsResource Trials
+                {
+                    get { return trials; }
+                }
+
+                /// <summary>The "trials" collection of methods.</summary>
+                public class TrialsResource
+                {
+                    private const string Resource = "trials";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public TrialsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Adds a measurement of the objective metrics to a Trial. This measurement is assumed to
+                    /// have been taken before the Trial is complete.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The trial name.</param>
+                    public virtual AddMeasurementRequest AddMeasurement(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1AddTrialMeasurementRequest body, string name)
+                    {
+                        return new AddMeasurementRequest(service, body, name);
+                    }
+
+                    /// <summary>Adds a measurement of the objective metrics to a Trial. This measurement is assumed to
+                    /// have been taken before the Trial is complete.</summary>
+                    public class AddMeasurementRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial>
+                    {
+                        /// <summary>Constructs a new AddMeasurement request.</summary>
+                        public AddMeasurementRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1AddTrialMeasurementRequest body, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The trial name.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1AddTrialMeasurementRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "addMeasurement"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+name}:addMeasurement"; }
+                        }
+
+                        /// <summary>Initializes AddMeasurement parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Checks whether a trial should stop or not.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The trial name.</param>
+                    public virtual CheckEarlyStoppingStateRequest CheckEarlyStoppingState(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest body, string name)
+                    {
+                        return new CheckEarlyStoppingStateRequest(service, body, name);
+                    }
+
+                    /// <summary>Checks whether a trial should stop or not.</summary>
+                    public class CheckEarlyStoppingStateRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new CheckEarlyStoppingState request.</summary>
+                        public CheckEarlyStoppingStateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest body, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The trial name.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "checkEarlyStoppingState"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+name}:checkEarlyStoppingState"; }
+                        }
+
+                        /// <summary>Initializes CheckEarlyStoppingState parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Marks a Trial as complete.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The trial name.</param>
+                    public virtual CompleteRequest Complete(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CompleteTrialRequest body, string name)
+                    {
+                        return new CompleteRequest(service, body, name);
+                    }
+
+                    /// <summary>Marks a Trial as complete.</summary>
+                    public class CompleteRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial>
+                    {
+                        /// <summary>Constructs a new Complete request.</summary>
+                        public CompleteRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CompleteTrialRequest body, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The trial name.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CompleteTrialRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "complete"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+name}:complete"; }
+                        }
+
+                        /// <summary>Initializes Complete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Adds a user provided trial to a Study.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The name of the study that the trial belongs to.</param>
+                    public virtual CreateRequest Create(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Adds a user provided trial to a Study.</summary>
+                    public class CreateRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial body, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The name of the study that the trial belongs to.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "create"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+parent}/trials"; }
+                        }
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Deletes a Trial.</summary>
+                    /// <param name="name">Required. The trial name.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a Trial.</summary>
+                    public class DeleteRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The trial name.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "delete"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "DELETE"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Gets a Trial.</summary>
+                    /// <param name="name">Required. The trial name.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets a Trial.</summary>
+                    public class GetRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The trial name.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "get"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Lists the trials associated with a Study.</summary>
+                    /// <param name="parent">Required. The name of the study that the trial belongs to.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists the trials associated with a Study.</summary>
+                    public class ListRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListTrialsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The name of the study that the trial belongs to.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+parent}/trials"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Stops a trial.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The trial name.</param>
+                    public virtual StopRequest Stop(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1StopTrialRequest body, string name)
+                    {
+                        return new StopRequest(service, body, name);
+                    }
+
+                    /// <summary>Stops a trial.</summary>
+                    public class StopRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial>
+                    {
+                        /// <summary>Constructs a new Stop request.</summary>
+                        public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1StopTrialRequest body, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The trial name.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1StopTrialRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "stop"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+name}:stop"; }
+                        }
+
+                        /// <summary>Initializes Stop parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Returns a long-running operation associated with the generation of trial
+                    /// suggestions.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The name of the study that the trial belongs to.</param>
+                    public virtual SuggestRequest Suggest(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1SuggestTrialsRequest body, string parent)
+                    {
+                        return new SuggestRequest(service, body, parent);
+                    }
+
+                    /// <summary>Returns a long-running operation associated with the generation of trial
+                    /// suggestions.</summary>
+                    public class SuggestRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Suggest request.</summary>
+                        public SuggestRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1SuggestTrialsRequest body, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The name of the study that the trial belongs to.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1SuggestTrialsRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "suggest"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+parent}/trials:suggest"; }
+                        }
+
+                        /// <summary>Initializes Suggest parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+$",
+                                });
+                        }
+
+                    }
+                }
+
+                /// <summary>Creates a study.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The project and location that the study belongs to. Format:
+                /// projects/{project}/locations/{location}</param>
+                public virtual CreateRequest Create(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Study body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a study.</summary>
+                public class CreateRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Study>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Study body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The project and location that the study belongs to. Format:
+                    /// projects/{project}/locations/{location}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. The ID to use for the study, which will become the final component of the
+                    /// study's resource name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("studyId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string StudyId { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Study Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/studies"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "studyId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "studyId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Deletes a study.</summary>
+                /// <param name="name">Required. The study name.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a study.</summary>
+                public class DeleteRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The study name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Gets a study.</summary>
+                /// <param name="name">Required. The study name.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets a study.</summary>
+                public class GetRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Study>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The study name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists all the studies in a region for an associated project.</summary>
+                /// <param name="parent">Required. The project and location that the study belongs to. Format:
+                /// projects/{project}/locations/{location}</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists all the studies in a region for an associated project.</summary>
+                public class ListRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListStudiesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The project and location that the study belongs to. Format:
+                    /// projects/{project}/locations/{location}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/studies"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                     }
 
@@ -3110,6 +4018,17 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The request message for the AddTrialMeasurement service method.</summary>
+    public class GoogleCloudMlV1AddTrialMeasurementRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The measurement to be added to a trial.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("measurement")]
+        public virtual GoogleCloudMlV1Measurement Measurement { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Options for automatically scaling a model.</summary>
     public class GoogleCloudMlV1AutoScaling : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3146,6 +4065,47 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// @./update_body.json </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minNodes")]
         public virtual System.Nullable<int> MinNodes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration for Automated Early Stopping of Trials. If no implementation_config is set, automated
+    /// early stopping will not be run.</summary>
+    public class GoogleCloudMlV1AutomatedStoppingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("decayCurveStoppingConfig")]
+        public virtual GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig DecayCurveStoppingConfig { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("medianAutomatedStoppingConfig")]
+        public virtual GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig MedianAutomatedStoppingConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>True if measurement.elapsed_time is used as the x-axis of each Trials Decay Curve. Otherwise,
+        /// Measurement.steps will be used as the x-axis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useElapsedTime")]
+        public virtual System.Nullable<bool> UseElapsedTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The median automated stopping rule stops a pending trial if the trial's best objective_value is
+    /// strictly below the median 'performance' of all completed trials reported up to the trial's last measurement.
+    /// Currently, 'performance' refers to the running average of the objective values reported by the trial in each
+    /// measurement.</summary>
+    public class GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>True if median automated stopping rule applies on measurement.use_elapsed_time. it means that
+        /// elapsed_time field of latest measurement of current trial is used to compute median objective value for each
+        /// completed trials.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useElapsedTime")]
+        public virtual System.Nullable<bool> UseElapsedTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3195,6 +4155,75 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>This message will be placed in the metadata field of a google.longrunning.Operation associated with a
+    /// CheckTrialEarlyStoppingState request.</summary>
+    public class GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time operation was submitted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>The name of the study that the trial belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("study")]
+        public virtual string Study { get; set; } 
+
+        /// <summary>The Trial name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trial")]
+        public virtual string Trial { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for the CheckTrialEarlyStoppingState service method.</summary>
+    public class GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The message will be placed in the response field of a completed google.longrunning.Operation associated
+    /// with a CheckTrialEarlyStoppingState request.</summary>
+    public class GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time operation processing completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>True if the Trial should stop.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shouldStop")]
+        public virtual System.Nullable<bool> ShouldStop { get; set; } 
+
+        /// <summary>The time operation was started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for the CompleteTrial service method.</summary>
+    public class GoogleCloudMlV1CompleteTrialRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If provided, it will be used as the completed trial's final_measurement; Otherwise, the
+        /// service will auto-select a previously reported measurement as the final-measurement</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalMeasurement")]
+        public virtual GoogleCloudMlV1Measurement FinalMeasurement { get; set; } 
+
+        /// <summary>Optional. A human readable reason why the Trial was infeasible. This should only be provided if
+        /// `trial_infeasible` is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infeasibleReason")]
+        public virtual string InfeasibleReason { get; set; } 
+
+        /// <summary>Optional. True if the trial cannot be run with the given Parameter, and final_measurement will be
+        /// ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trialInfeasible")]
+        public virtual System.Nullable<bool> TrialInfeasible { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class GoogleCloudMlV1Config : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The service account Cloud ML uses to run on TPU node.</summary>
@@ -3230,15 +4259,27 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     }    
 
     /// <summary>Message holding configuration options for explaining model predictions. There are two feature
-    /// attribution methods supported for TensorFlow models: integrated gradients and sampled Shapley. Learn more about
-    /// feature attributions.</summary>
+    /// attribution methods supported for TensorFlow models: integrated gradients and sampled Shapley. [Learn more about
+    /// feature attributions.](/ml-engine/docs/ai-explanations/overview)</summary>
     public class GoogleCloudMlV1ExplanationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Attributes credit by computing the Aumann-Shapley value taking advantage of the model's fully
+        /// differentiable structure. Refer to this paper for more details:
+        /// http://proceedings.mlr.press/v70/sundararajan17a.html</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integratedGradientsAttribution")]
         public virtual GoogleCloudMlV1IntegratedGradientsAttribution IntegratedGradientsAttribution { get; set; } 
 
+        /// <summary>An attribution method that approximates Shapley values for features that contribute to the label
+        /// being predicted. A sampling strategy is used to approximate the value rather than considering all subsets of
+        /// features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampledShapleyAttribution")]
         public virtual GoogleCloudMlV1SampledShapleyAttribution SampledShapleyAttribution { get; set; } 
+
+        /// <summary>Attributes credit by computing the XRAI taking advantage of the model's fully differentiable
+        /// structure. Refer to this paper for more details: https://arxiv.org/abs/1906.02825 Currently only implemented
+        /// for models with natural image inputs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xraiAttribution")]
+        public virtual GoogleCloudMlV1XraiAttribution XraiAttribution { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3503,6 +4544,27 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class GoogleCloudMlV1ListStudiesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Studies associated with the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studies")]
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Study> Studies { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for the ListTrials method.</summary>
+    public class GoogleCloudMlV1ListTrialsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The trials associated with the study.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trials")]
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Trial> Trials { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response message for the ListVersions method.</summary>
     public class GoogleCloudMlV1ListVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3539,6 +4601,40 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// since last billing cycle plus the cost for each prediction performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Nullable<int> Nodes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A message representing a Measurement.</summary>
+    public class GoogleCloudMlV1Measurement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time that the Trial has been running at the point of this Measurement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elapsedTime")]
+        public virtual object ElapsedTime { get; set; } 
+
+        /// <summary>Provides a list of metrics that act as inputs into the objective function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1MeasurementMetric> Metrics { get; set; } 
+
+        /// <summary>The number of steps a machine learning model has been trained for. Must be non-negative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stepCount")]
+        public virtual System.Nullable<long> StepCount { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A message representing a metric in the measurement.</summary>
+    public class GoogleCloudMlV1MeasurementMetric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Metric name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual string Metric { get; set; } 
+
+        /// <summary>Required. The value for this metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<double> Value { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3909,6 +5005,279 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class GoogleCloudMlV1StopTrialRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A message representing a Study.</summary>
+    public class GoogleCloudMlV1Study : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Time that the study was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Output only. A human readable reason why the Study is inactive. This should be empty if a study is
+        /// ACTIVE or COMPLETED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inactiveReason")]
+        public virtual string InactiveReason { get; set; } 
+
+        /// <summary>Output only. The name of a study.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Output only. The detailed state of a study.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>Required. Configuration of the study.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studyConfig")]
+        public virtual GoogleCloudMlV1StudyConfig StudyConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents configuration of a study.</summary>
+    public class GoogleCloudMlV1StudyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The search algorithm specified for the study.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
+        public virtual string Algorithm { get; set; } 
+
+        /// <summary>Configuration for automated stopping of unpromising Trials.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automatedStoppingConfig")]
+        public virtual GoogleCloudMlV1AutomatedStoppingConfig AutomatedStoppingConfig { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1StudyConfigMetricSpec> Metrics { get; set; } 
+
+        /// <summary>Required. The set of parameters to tune.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1StudyConfigParameterSpec> Parameters { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a metric to optimize.</summary>
+    public class GoogleCloudMlV1StudyConfigMetricSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The optimization goal of the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goal")]
+        public virtual string Goal { get; set; } 
+
+        /// <summary>Required. The name of the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual string Metric { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a single parameter to optimize.</summary>
+    public class GoogleCloudMlV1StudyConfigParameterSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The value spec for a 'CATEGORICAL' parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoricalValueSpec")]
+        public virtual GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec CategoricalValueSpec { get; set; } 
+
+        /// <summary>A child node is active if the parameter's value matches the child node's matching_parent_values.
+        ///
+        /// If two items in child_parameter_specs have the same name, they must have disjoint
+        /// matching_parent_values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("childParameterSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1StudyConfigParameterSpec> ChildParameterSpecs { get; set; } 
+
+        /// <summary>The value spec for a 'DISCRETE' parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discreteValueSpec")]
+        public virtual GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec DiscreteValueSpec { get; set; } 
+
+        /// <summary>The value spec for a 'DOUBLE' parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doubleValueSpec")]
+        public virtual GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec DoubleValueSpec { get; set; } 
+
+        /// <summary>The value spec for an 'INTEGER' parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integerValueSpec")]
+        public virtual GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec IntegerValueSpec { get; set; } 
+
+        /// <summary>Required. The parameter name must be unique amongst all ParameterSpecs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
+        public virtual string Parameter { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("parentCategoricalValues")]
+        public virtual GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec ParentCategoricalValues { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("parentDiscreteValues")]
+        public virtual GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec ParentDiscreteValues { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("parentIntValues")]
+        public virtual GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec ParentIntValues { get; set; } 
+
+        /// <summary>How the parameter should be scaled. Leave unset for categorical parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaleType")]
+        public virtual string ScaleType { get; set; } 
+
+        /// <summary>Required. The type of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Must be specified if type is `CATEGORICAL`. The list of possible categories.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Must be specified if type is `DISCRETE`. A list of feasible points. The list should be in strictly
+        /// increasing order. For instance, this parameter might have possible settings of 1.5, 2.5, and 4.0. This list
+        /// should not contain more than 1,000 values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Must be specified if type is `DOUBLE`. Maximum value of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
+        public virtual System.Nullable<double> MaxValue { get; set; } 
+
+        /// <summary>Must be specified if type is `DOUBLE`. Minimum value of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
+        public virtual System.Nullable<double> MinValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Must be specified if type is `INTEGER`. Maximum value of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
+        public virtual System.Nullable<long> MaxValue { get; set; } 
+
+        /// <summary>Must be specified if type is `INTEGER`. Minimum value of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
+        public virtual System.Nullable<long> MinValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the spec to match categorical values from parent parameter.</summary>
+    public class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Matches values of the parent parameter with type 'CATEGORICAL'. All values must exist in
+        /// `categorical_value_spec` of parent parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the spec to match discrete values from parent parameter.</summary>
+    public class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Matches values of the parent parameter with type 'DISCRETE'. All values must exist in
+        /// `discrete_value_spec` of parent parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the spec to match integer values from parent parameter.</summary>
+    public class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Matches values of the parent parameter with type 'INTEGER'. All values must lie in
+        /// `integer_value_spec` of parent parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata field of a google.longrunning.Operation associated with a SuggestTrialsRequest.</summary>
+    public class GoogleCloudMlV1SuggestTrialsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The identifier of the client that is requesting the suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; } 
+
+        /// <summary>The time operation was submitted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>The name of the study that the trial belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("study")]
+        public virtual string Study { get; set; } 
+
+        /// <summary>The number of suggestions requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionCount")]
+        public virtual System.Nullable<int> SuggestionCount { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for the SuggestTrial service method.</summary>
+    public class GoogleCloudMlV1SuggestTrialsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The identifier of the client that is requesting the suggestion.
+        ///
+        /// If multiple SuggestTrialsRequests have the same `client_id`, the service will return the identical suggested
+        /// trial if the trial is pending, and provide a new trial if the last suggested trial was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; } 
+
+        /// <summary>Required. The number of suggestions requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionCount")]
+        public virtual System.Nullable<int> SuggestionCount { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This message will be placed in the response field of a completed google.longrunning.Operation
+    /// associated with a SuggestTrials request.</summary>
+    public class GoogleCloudMlV1SuggestTrialsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time operation processing completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>The time operation was started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The state of the study.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studyState")]
+        public virtual string StudyState { get; set; } 
+
+        /// <summary>A list of Trials.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trials")]
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Trial> Trials { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents input parameters for a training job. When using the gcloud command to submit your training
     /// job, you can specify the input parameters as command-line arguments and/or in a YAML configuration file
     /// referenced from the --config command-line argument. For details, see the guide to [submitting a training job
@@ -4137,6 +5506,78 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A message representing a Trial.</summary>
+    public class GoogleCloudMlV1Trial : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The identifier of the client that originally requested this trial.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; } 
+
+        /// <summary>Output only. Time the Trial's status changed to COMPLETED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>The final Measurement containing the objective value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalMeasurement")]
+        public virtual GoogleCloudMlV1Measurement FinalMeasurement { get; set; } 
+
+        /// <summary>Output only. A human readable string describing why the Trial is infeasible. This should only be
+        /// set if trial_infeasible is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infeasibleReason")]
+        public virtual string InfeasibleReason { get; set; } 
+
+        /// <summary>A list of measurements that are strictly lexicographically ordered by their induced tuples (steps,
+        /// elapsed_time). These are used for early stopping computations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("measurements")]
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Measurement> Measurements { get; set; } 
+
+        /// <summary>Output only. Name of the trial assigned by the service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The parameters of the Trial.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1TrialParameter> Parameters { get; set; } 
+
+        /// <summary>Output only. Time the Trial was started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The detailed state of a trial.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>Output only. True if the parameters in this trial should not be attempted again.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trialInfeasible")]
+        public virtual System.Nullable<bool> TrialInfeasible { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A message representing a parameter to be tuned.</summary>
+    public class GoogleCloudMlV1TrialParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Must be set if ParameterType is DOUBLE or DISCRETE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floatValue")]
+        public virtual System.Nullable<double> FloatValue { get; set; } 
+
+        /// <summary>Must be set if ParameterType is INTEGER</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
+        public virtual System.Nullable<long> IntValue { get; set; } 
+
+        /// <summary>The name of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
+        public virtual string Parameter { get; set; } 
+
+        /// <summary>Must be set if ParameterTypeis CATEGORICAL</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a version of the model.
     ///
     /// Each version is a trained model deployed in the cloud, ready to handle prediction requests. A model can have
@@ -4339,6 +5780,20 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
+    }    
+
+    /// <summary>Attributes credit by computing the XRAI taking advantage of the model's fully differentiable structure.
+    /// Refer to this paper for more details: https://arxiv.org/abs/1906.02825 Currently only implemented for models
+    /// with natural image inputs.</summary>
+    public class GoogleCloudMlV1XraiAttribution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of steps for approximating the path integral. A good value to start is 50 and gradually
+        /// increase until the sum to diff property is met within the desired error range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numIntegralSteps")]
+        public virtual System.Nullable<int> NumIntegralSteps { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types

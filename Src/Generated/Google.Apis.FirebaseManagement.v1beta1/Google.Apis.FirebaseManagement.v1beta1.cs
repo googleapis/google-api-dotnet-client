@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com'>Firebase Management API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200305 (1890)
+ *      <tr><th>API Rev<td>20200310 (1895)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com'>
  *              https://firebase.google.com</a>
@@ -827,7 +827,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// `Operation` is automatically deleted after completion, so there is no need to call
             /// `DeleteOperation`.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The parent Project for which to list Apps, in the format: projects/projectId</param>
+            /// <param name="parent">The parent Project in which to create an App, in the format: projects/projectId</param>
             public virtual CreateRequest Create(Google.Apis.FirebaseManagement.v1beta1.Data.AndroidApp body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -850,7 +850,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
 
 
-                /// <summary>The parent Project for which to list Apps, in the format: projects/projectId</summary>
+                /// <summary>The parent Project in which to create an App, in the format: projects/projectId</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1531,7 +1531,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// `Operation` is automatically deleted after completion, so there is no need to call
             /// `DeleteOperation`.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The parent Project for which to list Apps, in the format: projects/projectId</param>
+            /// <param name="parent">The parent Project in which to create an App, in the format: projects/projectId</param>
             public virtual CreateRequest Create(Google.Apis.FirebaseManagement.v1beta1.Data.IosApp body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -1554,7 +1554,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
 
 
-                /// <summary>The parent Project for which to list Apps, in the format: projects/projectId</summary>
+                /// <summary>The parent Project in which to create an App, in the format: projects/projectId</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1939,7 +1939,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// `Operation` is automatically deleted after completion, so there is no need to call
             /// `DeleteOperation`.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The parent Project for which to list Apps, in the format: projects/projectId</param>
+            /// <param name="parent">The parent Project in which to create an App, in the format: projects/projectId</param>
             public virtual CreateRequest Create(Google.Apis.FirebaseManagement.v1beta1.Data.WebApp body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -1962,7 +1962,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
 
 
-                /// <summary>The parent Project for which to list Apps, in the format: projects/projectId</summary>
+                /// <summary>The parent Project in which to create an App, in the format: projects/projectId</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
