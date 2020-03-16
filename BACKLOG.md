@@ -41,3 +41,24 @@ the request and want to put work into it.
 - Issue: [#1087](https://github.com/googleapis/google-api-dotnet-client/issues/1087)
 - Status: Investigation required.
 - Action: Unlikely, this repo is in maintenance mode.
+
+# Support / Documentation for limited device authorisation flow
+
+- Issue [#1105](https://github.com/googleapis/google-api-dotnet-client/issues/1105)
+- Status: Slightly unclear at the moment whether this is about
+  documenting existing features, or implementing a new flow
+- Action: Unlikely, this repo is in maintenance mode.
+
+# Polly integration for HttpClient
+
+- Issue [#1414](https://github.com/googleapis/google-api-dotnet-client/issues/1414)
+- Status: workaround feasible with small amounts of customer code
+- Action: Unlikely, this repo is in maintenance mode. We wouldn't
+  want to add a Polly dependency just for this, and it doesn't seem
+  worth creating a new library.
+
+# Server-Side Blazor and Google OAuth2
+
+- Issue [#1427](https://github.com/googleapis/google-api-dotnet-client/issues/1427)
+- Status: unclear right now, but we don't test on Blazor
+- Action: keep an eye; if Blazor becomes very popular or we get multiple requests, we may revisit.
