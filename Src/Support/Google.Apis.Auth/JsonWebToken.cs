@@ -68,6 +68,14 @@ namespace Google.Apis.Auth
             public object Audience { get; set; }
 
             /// <summary>
+            /// Gets or sets the target audience claim that identifies the audience that an OIDC token generated from
+            /// this JWT is intended for. Maybe be null. Multiple target audiences are not supported.
+            /// <c>null</c>.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("target_audience")]
+            public string TargetAudience { get; set; }
+
+            /// <summary>
             /// Gets or sets expiration time claim that identifies the expiration time (in seconds) on or after which 
             /// the token MUST NOT be accepted for processing or <c>null</c>.
             /// </summary>

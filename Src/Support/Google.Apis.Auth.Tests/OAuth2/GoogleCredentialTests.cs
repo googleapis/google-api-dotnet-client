@@ -242,6 +242,60 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
             Assert.Equal(3600, payload.ExpirationTimeSeconds - payload.IssuedAtTimeSeconds);
         }
 
+        [Fact]
+        public async Task FromUserCredential_OidcTokenFails()
+        {
+            var stream = new MemoryStream(Encoding.UTF8.GetBytes(DummyUserCredentialFileContents));
+            var credential = GoogleCredential.FromStream(stream);
+            await Assert.ThrowsAsync<InvalidOperationException>(
+                () => credential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("audience")));
+        }
+
+        [Fact]
+        public async Task FromAccessToken_OidcTokenFails()
+        {
+            var credential = GoogleCredential.FromAccessToken("fake_access_token");
+            await Assert.ThrowsAsync<InvalidOperationException>(
+                () => credential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("audience")));
+        }
+
+        [Fact]
+        public async Task FromServiceAccountCredential_FetchesOicdToken()
+        {
+            var clock = new MockClock { UtcNow = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
+            var messageHandler = new OidcTokenSuccessMessageHandler(clock);
+            var initializer = new ServiceAccountCredential.Initializer("MyId", "http://will.be.ignored")
+            {
+                Clock = clock,
+                ProjectId = "a_project_id",
+                HttpClientFactory = new MockHttpClientFactory(messageHandler)
+            };
+            var serviceAccountCredential = new ServiceAccountCredential(initializer.FromPrivateKey(ServiceAccountCredentialTests.PrivateKey));
+            var googleCredential = GoogleCredential.FromServiceAccountCredential(serviceAccountCredential);
+
+            var oidcToken = await googleCredential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("audience"));
+
+            Assert.Equal("very_fake_access_token_1", await oidcToken.GetAccessTokenAsync());
+        }
+
+        [Fact]
+        public async Task FromComputeCredential_FetchesOidcToken()
+        {
+            var clock = new MockClock { UtcNow = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
+            var messageHandler = new OidcTokenSuccessMessageHandler(clock);
+            var initializer = new ComputeCredential.Initializer("http://will.be.ignored", "http://will.be.ignored")
+            {
+                Clock = clock,
+                HttpClientFactory = new MockHttpClientFactory(messageHandler)
+            };
+            var computeCredential = new ComputeCredential(initializer);
+            var googleCredential = GoogleCredential.FromComputeCredential(computeCredential);
+
+            var oidcToken = await googleCredential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("audience"));
+
+            Assert.Equal("very_fake_access_token_1", await oidcToken.GetAccessTokenAsync());
+        }
+
         private string UrlSafeDecode64(string urlSafeBase64)
         {
             return Encoding.UTF8.GetString(Convert.FromBase64String(urlSafeBase64));

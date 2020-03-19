@@ -54,7 +54,7 @@ namespace Google.Apis.Auth.OAuth2
     /// is used and when regular OAuth2 token is used.
     /// </para>
     /// </summary>
-    public class ServiceAccountCredential : ServiceCredential
+    public class ServiceAccountCredential : ServiceCredential, IOidcTokenProvider
     {
         private const string Sha256Oid = "2.16.840.1.101.3.4.2.1";
         /// <summary>An initializer class for the service account credential. </summary>
@@ -235,6 +235,32 @@ namespace Google.Apis.Auth.OAuth2
             return await base.GetAccessTokenForRequestAsync(authUri, cancellationToken).ConfigureAwait(false);
         }
 
+        /// <inheritdoc/>
+        public Task<OidcToken> GetOidcTokenAsync(OidcTokenOptions options, CancellationToken cancellationToken = default)
+        {
+            options.ThrowIfNull(nameof(options));
+            // If at some point some properties are added to OidcToken that depend on the token having been fetched
+            // then initialize the token here.
+            TokenRefreshManager tokenRefreshManager = null;
+            tokenRefreshManager = new TokenRefreshManager(
+                ct => RefreshOidcTokenAsync(tokenRefreshManager, options, ct), Clock, Logger);
+            return Task.FromResult(new OidcToken(tokenRefreshManager));
+        }
+
+        private async Task<bool> RefreshOidcTokenAsync(TokenRefreshManager caller, OidcTokenOptions options, CancellationToken cancellationToken)
+        {
+            var now = Clock.UtcNow;
+            var jwtExpiry = now + JwtLifetime;
+            string jwtForOidc = CreateJwtAccessTokenForOidc(options, now, jwtExpiry);
+
+            var req = new GoogleAssertionTokenRequest()
+            {
+                Assertion = jwtForOidc
+            };
+            caller.Token = await req.ExecuteAsync(HttpClient, TokenServerUrl, cancellationToken, Clock).ConfigureAwait(false);
+            return true;
+        }
+
         private class JwtCacheEntry
         {
             public JwtCacheEntry(Task<string> jwtTask, string uri, DateTime expiryUtc)
@@ -317,6 +343,21 @@ namespace Google.Apis.Auth.OAuth2
             return CreateAssertionFromPayload(payload);
         }
 
+        private string CreateJwtAccessTokenForOidc(OidcTokenOptions options, DateTime issueUtc, DateTime expiryUtc)
+        {
+            var payload = new JsonWebSignature.Payload
+            {
+                Issuer = Id,
+                Subject = Id,
+                Audience = GoogleAuthConsts.OidcAuthorizationUrl,
+                IssuedAtTimeSeconds = (long)(issueUtc - UnixEpoch).TotalSeconds,
+                ExpirationTimeSeconds = (long)(expiryUtc - UnixEpoch).TotalSeconds,
+                TargetAudience = options.TargetAudience
+            };
+
+            return CreateAssertionFromPayload(payload);
+        }
+
         /// <summary>
         /// Signs JWT token using the private key and returns the serialized assertion.
         /// </summary>
@@ -331,7 +372,7 @@ namespace Google.Apis.Auth.OAuth2
                 .Append('.')
                 .Append(UrlSafeBase64Encode(serializedPayload));
             var signature = CreateSignature(Encoding.ASCII.GetBytes(assertion.ToString()));
-            assertion.Append('.') .Append(UrlSafeEncode(signature));
+            assertion.Append('.').Append(UrlSafeEncode(signature));
             return assertion.ToString();
         }
 

@@ -15,10 +15,12 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2.Responses;
+using Google.Apis.Util;
 using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -34,7 +36,7 @@ namespace Google.Apis.Auth.OAuth2
     /// https://cloud.google.com/compute/docs/authentication.
     /// </para>
     /// </summary>
-    public class ComputeCredential : ServiceCredential
+    public class ComputeCredential : ServiceCredential, IOidcTokenProvider
     {
         /// <summary>The metadata server url.</summary>
         public const string MetadataServerUrl = "http://169.254.169.254"; // IP address instead of name to avoid DNS resolution
@@ -57,6 +59,11 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>The Metadata header response indicating Google.</summary>
         private const string GoogleMetadataHeader = "Google";
+
+        /// <summary>
+        /// Gets the OIDC Token URL.
+        /// </summary>
+        public string OidcTokenUrl { get; }
         
         /// <summary>
         /// An initializer class for the Compute credential. It uses <see cref="GoogleAuthConsts.ComputeTokenUrl"/>
@@ -64,20 +71,32 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         new public class Initializer : ServiceCredential.Initializer
         {
-            /// <summary>Constructs a new initializer using the default compute token URL.</summary>
+            /// <summary>
+            /// Gets the OIDC Token URL.
+            /// </summary>
+            public string OidcTokenUrl { get; }
+
+            /// <summary>Constructs a new initializer using the default compute token URL
+            /// and the default OIDC token URL.</summary>
             public Initializer()
                 : this(GoogleAuthConsts.ComputeTokenUrl) {}
 
-            /// <summary>Constructs a new initializer using the given token URL.</summary>
+            /// <summary>Constructs a new initializer using the given token URL
+            /// and the default OIDC token URL.</summary>
             public Initializer(string tokenUrl)
-                : base(tokenUrl) {}
+                : this(tokenUrl, GoogleAuthConsts.OidcTokenUrl) {}
+
+            /// <summary>Constructs a new initializer using the given token URL
+            /// and OIDC token URL.</summary>
+            public Initializer(string tokenUrl, string oidcTokenUrl)
+                : base(tokenUrl) => OidcTokenUrl = oidcTokenUrl;
         }
 
         /// <summary>Constructs a new Compute credential instance.</summary>
         public ComputeCredential() : this(new Initializer()) { }
 
         /// <summary>Constructs a new Compute credential instance.</summary>
-        public ComputeCredential(Initializer initializer) : base(initializer) { }
+        public ComputeCredential(Initializer initializer) : base(initializer) => OidcTokenUrl = initializer.OidcTokenUrl;
 
         #region ServiceCredential overrides
 
@@ -93,6 +112,39 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         #endregion
+
+        /// <inheritdoc/>
+        public Task<OidcToken> GetOidcTokenAsync(OidcTokenOptions options, CancellationToken cancellationToken = default)
+        {
+            options.ThrowIfNull(nameof(options));
+            // If at some point some properties are added to OidcToken that depend on the token having been fetched
+            // then initialize the token here.
+            TokenRefreshManager tokenRefreshManager = null;
+            tokenRefreshManager = new TokenRefreshManager(
+                ct => RefreshOidcTokenAsync(tokenRefreshManager, options, ct), Clock, Logger);
+            return Task.FromResult(new OidcToken(tokenRefreshManager));
+        }
+
+        private async Task<bool> RefreshOidcTokenAsync(TokenRefreshManager caller, OidcTokenOptions options, CancellationToken cancellationToken)
+        {
+            string uri = $"{OidcTokenUrl}?audience={options.TargetAudience}";
+            if (options.TokenFormat == OidcTokenFormat.Full || options.TokenFormat == OidcTokenFormat.FullWithLicences)
+            {
+                uri = $"{uri}&format=full";
+                if (options.TokenFormat == OidcTokenFormat.FullWithLicences)
+                {
+                    uri = $"{uri}&licenses=true";
+                }
+            }
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, uri);
+            httpRequest.Headers.Add(MetadataFlavor, GoogleMetadataHeader);
+
+            var response = await HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            var token = await TokenResponse.FromHttpResponseAsync(response, Clock, Logger).ConfigureAwait(false);
+            caller.Token = token;
+            return true;
+        }
 
         /// <summary>
         /// Detects if application is running on Google Compute Engine. This is achieved by attempting to contact

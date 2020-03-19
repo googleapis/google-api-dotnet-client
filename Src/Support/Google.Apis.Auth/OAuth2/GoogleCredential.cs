@@ -33,7 +33,7 @@ namespace Google.Apis.Auth.OAuth2
     /// See <see cref="GetApplicationDefaultAsync(CancellationToken)"/> for the credential retrieval logic.
     /// </para>
     /// </summary>
-    public class GoogleCredential : ICredential, ITokenAccessWithHeaders
+    public class GoogleCredential : ICredential, ITokenAccessWithHeaders, IOidcTokenProvider
     {
         /// <summary>Provider implements the logic for creating the application default credential.</summary>
         private static DefaultCredentialProvider defaultCredentialProvider = new DefaultCredentialProvider();
@@ -289,6 +289,13 @@ namespace Google.Apis.Auth.OAuth2
                 await credentialWithHeaders.GetAccessTokenWithHeadersForRequestAsync(authUri, cancellationToken).ConfigureAwait(false) :
                 new AccessTokenWithHeaders(await credential.GetAccessTokenForRequestAsync(authUri, cancellationToken).ConfigureAwait(false));
         }
+
+        /// <inheritdoc/>
+        public Task<OidcToken> GetOidcTokenAsync(OidcTokenOptions options, CancellationToken cancellationToken = default) =>
+            (UnderlyingCredential is IOidcTokenProvider provider) ?
+            provider.GetOidcTokenAsync(options, cancellationToken) :
+            throw new InvalidOperationException(
+                $"{nameof(UnderlyingCredential)} is not an OIDC token provider. Only {nameof(ServiceAccountCredential)}, {nameof(ComputeCredential)} are supported OIDC token providers.");
 
         /// <summary>
         /// Gets the underlying credential instance being wrapped.
