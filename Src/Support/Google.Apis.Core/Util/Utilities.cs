@@ -69,6 +69,39 @@ namespace Google.Apis.Util
         }
 
         /// <summary>
+        /// Checks that the given value is in fact defined in the enum used as the type argument of the method.
+        /// </summary>
+        /// <typeparam name="T">The enum type to check the value within.</typeparam>
+        /// <param name="value">The value to check.</param>
+        /// <param name="paramName">The name of the parameter whose value is being tested.</param>
+        /// <returns><paramref name="value"/> if it was a defined value</returns>
+        public static T CheckEnumValue<T>(T value, string paramName) where T : struct
+        {
+            CheckArgument(
+                Enum.IsDefined(typeof(T), value),
+                paramName,
+                "Value {0} not defined in enum {1}", value, typeof(T).Name);
+            return value;
+        }
+
+        /// <summary>
+        /// Checks that given argument-based condition is met, throwing an <see cref="ArgumentException"/> otherwise.
+        /// </summary>
+        /// <param name="condition">The (already evaluated) condition to check.</param>
+        /// <param name="paramName">The name of the parameter whose value is being tested.</param>
+        /// <param name="format">The format string to use to create the exception message if the
+        /// condition is not met.</param>
+        /// <param name="arg0">The first argument to the format string.</param>
+        /// <param name="arg1">The second argument to the format string.</param>
+        public static void CheckArgument<T1, T2>(bool condition, string paramName, string format, T1 arg0, T2 arg1)
+        {
+            if (!condition)
+            {
+                throw new ArgumentException(string.Format(format, arg0, arg1), paramName);
+            }
+        }
+
+        /// <summary>
         /// A Google.Apis utility method for returning the first matching custom attribute (or <c>null</c>) of the specified member.
         /// </summary>
         public static T GetCustomAttribute<T>(this MemberInfo info) where T : Attribute

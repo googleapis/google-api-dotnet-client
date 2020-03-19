@@ -1,4 +1,5 @@
 ﻿using Google.Apis.Auth.OAuth2;
+using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Http;
 using Google.Apis.Json;
 using Google.Apis.Tests.Mocks;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -14,6 +16,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
 {
     public class ServiceAccountCredentialTests
     {
+        private static readonly TimeSpan JwtLifetime = TimeSpan.FromMinutes(60);
+        private static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         [Fact]
         public async Task ValidLocallySignedAccessToken_FromPrivateKey()
@@ -216,7 +220,7 @@ AQsFAAOBgQBQ9cMInb2rEcg8TTYq8MjDEegHWLUI9Dq/IvP/FHyKDczza4eX8m+G
             Assert.Equal(expectedToken, accessToken);
         }
 
-        private const string PrivateKey = @"-----BEGIN PRIVATE KEY-----
+        internal const string PrivateKey = @"-----BEGIN PRIVATE KEY-----
 MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
 2x4zrzrwSUtmtR37XTTi0sPARTDF8uzmXy8UnE5RcVJzEH5T2Ssz/ylX4Sl/CI4L
 no1l8j9GiHJb49LSRjWe4Yx936q0Xj9H0R1HTxvjUPqwAsTwy2fKBTog+q1frqc9
@@ -358,5 +362,93 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             Assert.Equal("user1", svc1.User);
             Assert.Equal("user2", svc2.User);
         }
+
+        [Fact]
+        public async Task FetchesOidcToken()
+        {
+            var clock = new MockClock { UtcNow = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
+            var messageHandler = new OidcTokenSuccessMessageHandler(clock);
+            var initializer = new ServiceAccountCredential.Initializer("MyId", "http://will.be.ignored")
+            {
+                Clock = clock,
+                ProjectId = "a_project_id",
+                HttpClientFactory = new MockHttpClientFactory(messageHandler)
+            };
+            var credential = new ServiceAccountCredential(initializer.FromPrivateKey(PrivateKey));
+
+            var oidcToken = await credential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("audience"));
+
+            Assert.Equal("very_fake_access_token_1", await oidcToken.GetAccessTokenAsync());
+            // Move the clock some but not enough that the token expires.
+            clock.UtcNow = clock.UtcNow.AddMinutes(20);
+            Assert.Equal("very_fake_access_token_1", await oidcToken.GetAccessTokenAsync());
+            // Only the first call should have resulted in a request. The second time the token hadn't expired.
+            Assert.Equal(1, messageHandler.Calls);
+        }
+
+        [Fact]
+        public async Task RefreshesOidcToken()
+        {
+            var clock = new MockClock { UtcNow = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
+            var messageHandler = new OidcTokenSuccessMessageHandler(clock);
+            var initializer = new ServiceAccountCredential.Initializer("MyId", "http://will.be.ignored")
+            {
+                Clock = clock,
+                ProjectId = "a_project_id",
+                HttpClientFactory = new MockHttpClientFactory(messageHandler)
+            };
+            var credential = new ServiceAccountCredential(initializer.FromPrivateKey(PrivateKey));
+
+            var oidcToken = await credential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("audience"));
+
+            Assert.Equal("very_fake_access_token_1", await oidcToken.GetAccessTokenAsync());
+            // Move the clock so that the token expires.
+            clock.UtcNow = clock.UtcNow.AddHours(2);
+            Assert.Equal("very_fake_access_token_2", await oidcToken.GetAccessTokenAsync());
+            // Two calls, because the second time we tried to get the token, the first one had expired.
+            Assert.Equal(2, messageHandler.Calls);
+        }
+
+        [Fact]
+        public async Task FetchesOidcToken_CorrectPayloadSent()
+        {
+            var clock = new MockClock { UtcNow = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
+            var messageHandler = new OidcTokenSuccessMessageHandler(clock);
+            var initializer = new ServiceAccountCredential.Initializer("MyId", "http://will.be.ignored")
+            {
+                Clock = clock,
+                ProjectId = "a_project_id",
+                HttpClientFactory = new MockHttpClientFactory(messageHandler)
+            };
+            var credential = new ServiceAccountCredential(initializer.FromPrivateKey(PrivateKey));
+
+            var expectedPayload = new JsonWebSignature.Payload
+            {
+                Issuer = "MyId",
+                Subject = "MyId",
+                Audience = GoogleAuthConsts.OidcAuthorizationUrl,
+                IssuedAtTimeSeconds = (long)(clock.UtcNow - UnixEpoch).TotalSeconds,
+                ExpirationTimeSeconds = (long)(clock.UtcNow.Add(JwtLifetime) - UnixEpoch).TotalSeconds,
+                TargetAudience = "any_audience"
+            };
+            var serializedExpectedPayload = NewtonsoftJsonSerializer.Instance.Serialize(expectedPayload);
+            var urlSafeEncodedExpectedPayload = UrlSafeBase64Encode(serializedExpectedPayload);
+
+            var oidcToken = await credential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("any_audience"));
+            await oidcToken.GetAccessTokenAsync();
+
+            var requestFormDict = messageHandler.LatestRequestContent.Split('&')
+                .ToDictionary(entry => entry.Split('=')[0], entry => entry.Split('=')[1]);
+            var assertion = requestFormDict["assertion"];
+            // Assertion format shoould be headers.payload.signature
+            var encodedPayload = assertion.Split('.')[1];
+
+            Assert.Contains(urlSafeEncodedExpectedPayload, encodedPayload);
+        }
+
+        private string UrlSafeBase64Encode(string serializedPayload) =>
+            Convert.ToBase64String(
+                Encoding.UTF8.GetBytes(serializedPayload))
+            .Replace("=", string.Empty).Replace('+', '-').Replace('/', '_');
     }
 }
