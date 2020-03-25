@@ -708,13 +708,9 @@ namespace Google.Apis.Upload
                 // ChunkSize + 1 to give room for one extra byte for end-of-stream checking
                 LastMediaBuffer = new UploadBuffer(ChunkSize + 1);
             }
-            // Re-use any bytes the server hasn't received
-            int copyCount = (int)(BytesClientSent - BytesServerReceived)
-                + Math.Max(0, LastMediaBuffer.Length - ChunkSize);
-            if (LastMediaBuffer.Length != copyCount)
+            else
             {
-                Buffer.BlockCopy(LastMediaBuffer.Data, LastMediaBuffer.Length - copyCount, LastMediaBuffer.Data, 0, copyCount);
-                LastMediaBuffer.Length = copyCount;
+                LastMediaBuffer.MoveUnsentDataToStartOfBuffer(BytesClientSent, BytesServerReceived, ChunkSize);
             }
             // Read any more required bytes from stream, to form the next chunk.
             // We don't rely on reading StreamLength to determine whether we've finished reading or not, as
@@ -829,6 +825,18 @@ namespace Google.Apis.Upload
                     bytesLeft -= bytesRead;
                 }
                 return false;
+            }
+
+            internal void MoveUnsentDataToStartOfBuffer(long bytesClientSent, long bytesServerReceived, int uploadChunkSize)
+            {
+                // Re-use any bytes the server hasn't received
+                int copyCount = (int) (bytesClientSent - bytesServerReceived)
+                    + Math.Max(0, Length - uploadChunkSize);
+                if (Length != copyCount)
+                {
+                    Buffer.BlockCopy(Data, Length - copyCount, Data, 0, copyCount);
+                    Length = copyCount;
+                }
             }
         }
 
