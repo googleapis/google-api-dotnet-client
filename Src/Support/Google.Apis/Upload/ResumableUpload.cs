@@ -787,16 +787,16 @@ namespace Google.Apis.Upload
             /// <summary>
             /// The amount of usable data within the buffer.
             /// </summary>
-            public int Length { get; set; }
+            public int Length { get; private set; }
 
             /// <summary>
             /// The data in the buffer.
             /// </summary>
-            public byte[] Data { get; }
+            private readonly byte[] data;
 
             public UploadBuffer(int capacity)
             {
-                Data = new byte[capacity];
+                data = new byte[capacity];
             }
 
             /// <summary>
@@ -808,11 +808,11 @@ namespace Google.Apis.Upload
             /// <returns>true if the stream is exhausted; false otherwise</returns>
             public async Task<bool> PopulateFromStreamAsync(Stream stream, int readChunkSize, CancellationToken cancellationToken)
             {
-                int bytesLeft = Data.Length - Length;
+                int bytesLeft = data.Length - Length;
                 while (bytesLeft > 0)
                 {
                     int readSize = Math.Min(bytesLeft, readChunkSize);
-                    int bytesRead = await stream.ReadAsync(Data, Length, readSize, cancellationToken).ConfigureAwait(false);
+                    int bytesRead = await stream.ReadAsync(data, Length, readSize, cancellationToken).ConfigureAwait(false);
                     if (bytesRead == 0)
                     {
                         return true;
@@ -840,7 +840,7 @@ namespace Google.Apis.Upload
 
                 if (unsentBytes != Length)
                 {
-                    Buffer.BlockCopy(Data, Length - unsentBytes, Data, 0, unsentBytes);
+                    Buffer.BlockCopy(data, Length - unsentBytes, data, 0, unsentBytes);
                     Length = unsentBytes;
                 }
             }
@@ -853,11 +853,11 @@ namespace Google.Apis.Upload
             internal HttpContent CreateContent(int uploadChunkSize, out int contentLength)
             {
                 contentLength = GetActualUploadChunkSize(uploadChunkSize);
-                return new ByteArrayContent(Data, 0, contentLength);
+                return new ByteArrayContent(data, 0, contentLength);
             }
 
             internal void ExecuteInterceptor(StreamInterceptor interceptor, int bytesReceivedFromChunk) =>
-                interceptor?.Invoke(Data, 0, bytesReceivedFromChunk);
+                interceptor?.Invoke(data, 0, bytesReceivedFromChunk);
 
             /// <summary>
             /// Determines how much data should actually be sent from this buffer.
