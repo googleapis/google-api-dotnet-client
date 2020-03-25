@@ -829,15 +829,26 @@ namespace Google.Apis.Upload
 
             internal void MoveUnsentDataToStartOfBuffer(long bytesClientSent, long bytesServerReceived, int uploadChunkSize)
             {
-                // Re-use any bytes the server hasn't received
-                int copyCount = (int) (bytesClientSent - bytesServerReceived)
-                    + Math.Max(0, Length - uploadChunkSize);
-                if (Length != copyCount)
+                // "Unsent" data is either data we didn't even try to send (because it's the last byte in the buffer)
+                // or data we sent, but the server didn't receive.
+                // Or to put it another way: once we work out how many bytes were successfully sent and received,
+                // everything else counts as unsent.
+                int unreceivedBytes = (int) (bytesClientSent - bytesServerReceived);
+                int lastChunkSize = GetActualUploadChunkSize(uploadChunkSize);
+                int successBytes = lastChunkSize - unreceivedBytes;
+                int unsentBytes = Length - successBytes;
+
+                if (unsentBytes != Length)
                 {
-                    Buffer.BlockCopy(Data, Length - copyCount, Data, 0, copyCount);
-                    Length = copyCount;
+                    Buffer.BlockCopy(Data, Length - unsentBytes, Data, 0, unsentBytes);
+                    Length = unsentBytes;
                 }
             }
+
+            /// <summary>
+            /// Determines how much data should actually be sent from this buffer.
+            /// </summary>
+            private int GetActualUploadChunkSize(int uploadChunkSize) => Math.Min(uploadChunkSize, Length);
         }
 
         #endregion Upload Implementation
