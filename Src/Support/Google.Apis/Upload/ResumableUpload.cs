@@ -720,18 +720,10 @@ namespace Google.Apis.Upload
             // We don't rely on reading StreamLength to determine whether we've finished reading or not, as
             // there are corner cases where it can be not unknown, even though we're in the "unknown size" case -
             // see https://github.com/googleapis/google-api-dotnet-client/issues/1449.
-            bool finished = false;
-            while (LastMediaBuffer.Length < ChunkSize + 1 && !finished)
+            bool finished = await LastMediaBuffer.PopulateFromStreamAsync(stream, BufferSize, cancellationToken).ConfigureAwait(false);
+            if (finished)
             {
-                cancellationToken.ThrowIfCancellationRequested();
-                int readSize = Math.Min(BufferSize, ChunkSize + 1 - LastMediaBuffer.Length);
-                int len = await stream.ReadAsync(LastMediaBuffer.Data, LastMediaBuffer.Length, readSize, cancellationToken).ConfigureAwait(false);
-                LastMediaBuffer.Length += len;
-                if (len == 0)
-                {
-                    StreamLength = BytesServerReceived + LastMediaBuffer.Length;
-                    finished = true;
-                }
+                StreamLength = BytesServerReceived + LastMediaBuffer.Length;
             }
             return LastMediaBuffer;
         }
@@ -751,21 +743,7 @@ namespace Google.Apis.Upload
             }
 
             var buffer = new UploadBuffer(chunkSize);
-            int bytesLeft = chunkSize;
-            while (bytesLeft > 0)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                // Make sure we only read at most BufferSize bytes at a time.
-                int readSize = Math.Min(bytesLeft, BufferSize);
-                int len = await stream.ReadAsync(buffer.Data, buffer.Length, readSize, cancellationToken).ConfigureAwait(false);
-                if (len == 0)
-                {
-                    // Presumably the stream lied about its length. Not great, but we still have a chunk to send.
-                    break;
-                }
-                buffer.Length += len;
-                bytesLeft -= len;
-            }
+            await buffer.PopulateFromStreamAsync(stream, BufferSize, cancellationToken).ConfigureAwait(false);
             return buffer;
         }
 
@@ -822,11 +800,35 @@ namespace Google.Apis.Upload
             /// <summary>
             /// The data in the buffer.
             /// </summary>
-            public byte[] Data { get; set; }
+            public byte[] Data { get; }
 
             public UploadBuffer(int capacity)
             {
                 Data = new byte[capacity];
+            }
+
+            /// <summary>
+            /// Reads from the stream until the stream has run out of data, or the buffer is full.
+            /// </summary>
+            /// <param name="stream">The stream to read from</param>
+            /// <param name="readChunkSize">The maximum number of bytes to read in any one call</param>
+            /// <param name="cancellationToken"></param>
+            /// <returns>true if the stream is exhausted; false otherwise</returns>
+            public async Task<bool> PopulateFromStreamAsync(Stream stream, int readChunkSize, CancellationToken cancellationToken)
+            {
+                int bytesLeft = Data.Length - Length;
+                while (bytesLeft > 0)
+                {
+                    int readSize = Math.Min(bytesLeft, readChunkSize);
+                    int bytesRead = await stream.ReadAsync(Data, Length, readSize, cancellationToken).ConfigureAwait(false);
+                    if (bytesRead == 0)
+                    {
+                        return true;
+                    }
+                    Length += bytesRead;
+                    bytesLeft -= bytesRead;
+                }
+                return false;
             }
         }
 
