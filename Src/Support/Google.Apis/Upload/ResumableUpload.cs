@@ -624,15 +624,11 @@ namespace Google.Apis.Upload
             var buffer = ContentStream.CanSeek
                 ? await PrepareNextChunkKnownSizeAsync(stream, cancellationToken).ConfigureAwait(false)
                 : await PrepareNextChunkUnknownSizeAsync(stream, cancellationToken).ConfigureAwait(false);
-            var chunk = buffer.Data;
-            // If we've read more than ChunkSize data, it'll be included in the next chunk. This only occurs
-            // when preparing chunks with unknown stream lengths.
-            var chunkLength = Math.Min(buffer.Length, ChunkSize);
-            var content = new ByteArrayContent(chunk, 0, chunkLength);
-            content.Headers.Add("Content-Range", GetContentRangeHeader(BytesServerReceived, chunkLength));
+            var content = buffer.CreateContent(ChunkSize, out var contentLength);
+            content.Headers.Add("Content-Range", GetContentRangeHeader(BytesServerReceived, contentLength));
             request.Content = content;
 
-            BytesClientSent = BytesServerReceived + chunkLength;
+            BytesClientSent = BytesServerReceived + contentLength;
             Logger.Debug("MediaUpload[{0}] - Sending bytes={1}-{2}", UploadUri, BytesServerReceived,
                 BytesClientSent - 1);
 
@@ -651,7 +647,7 @@ namespace Google.Apis.Upload
             // data as the server actually received.
             if (bytesReceivedFromChunk != 0)
             {
-                UploadStreamInterceptor?.Invoke(chunk, 0, bytesReceivedFromChunk);
+                buffer.ExecuteInterceptor(UploadStreamInterceptor, bytesReceivedFromChunk);
             }
             return completed;
         }
@@ -827,6 +823,10 @@ namespace Google.Apis.Upload
                 return false;
             }
 
+            /// <summary>
+            /// Moves any unsent data to the start of this buffer, based on the number of bytes we actually sent,
+            /// and the number of bytes the server received.
+            /// </summary>
             internal void MoveUnsentDataToStartOfBuffer(long bytesClientSent, long bytesServerReceived, int uploadChunkSize)
             {
                 // "Unsent" data is either data we didn't even try to send (because it's the last byte in the buffer)
@@ -844,6 +844,20 @@ namespace Google.Apis.Upload
                     Length = unsentBytes;
                 }
             }
+
+            /// <summary>
+            /// Creates an HttpContent for the data in this buffer, up to <paramref name="contentLength"/> bytes.
+            /// </summary>
+            /// <param name="uploadChunkSize">The maximum size of the content to create.</param>
+            /// <param name="contentLength">The length of the content.</param>
+            internal HttpContent CreateContent(int uploadChunkSize, out int contentLength)
+            {
+                contentLength = GetActualUploadChunkSize(uploadChunkSize);
+                return new ByteArrayContent(Data, 0, contentLength);
+            }
+
+            internal void ExecuteInterceptor(StreamInterceptor interceptor, int bytesReceivedFromChunk) =>
+                interceptor?.Invoke(Data, 0, bytesReceivedFromChunk);
 
             /// <summary>
             /// Determines how much data should actually be sent from this buffer.
