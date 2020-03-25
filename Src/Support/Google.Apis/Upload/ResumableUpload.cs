@@ -152,17 +152,11 @@ namespace Google.Apis.Upload
         internal long StreamLength { get; set; }
 
         /// <summary>
-        /// Gets or sets the content of the last buffer request to the server or <c>null</c>. It is used when the media
-        /// content length is unknown, for resending it in case of server error.
+        /// Gets or sets the last buffer request to the server or <c>null</c>
+        /// It is used when the media content length is unknown, for resending it in case of server error.
         /// Only used with a non-seekable stream.
         /// </summary>
-        private byte[] LastMediaRequest { get; set; }
-
-        /// <summary>
-        /// Gets or sets the last request length.
-        /// Only used with a non-seekable stream.
-        /// </summary>
-        private int LastMediaLength { get; set; }
+        private UploadBuffer LastMediaBuffer { get; set; }
 
         /// <summary>
         /// Gets or sets the resumable session URI. 
@@ -700,48 +694,45 @@ namespace Google.Apis.Upload
             BytesServerReceived = StreamLength;
 
             // Clear the last request byte array.
-            LastMediaRequest = null;
+            LastMediaBuffer = null;
         }
-
-        // TODO: Make this and the next method read the stream using ReadAsync?
 
         /// <summary>Prepares the given request with the next chunk in case the steam length is unknown.</summary>
         private async Task<Tuple<byte[], int>> PrepareNextChunkUnknownSizeAsync(Stream stream, CancellationToken cancellationToken)
         {
-            if (LastMediaRequest == null)
+            if (LastMediaBuffer == null)
             {
                 // Initialise state
                 // ChunkSize + 1 to give room for one extra byte for end-of-stream checking
-                LastMediaRequest = new byte[ChunkSize + 1];
-                LastMediaLength = 0;
+                LastMediaBuffer = new UploadBuffer(ChunkSize + 1);
             }
             // Re-use any bytes the server hasn't received
             int copyCount = (int)(BytesClientSent - BytesServerReceived)
-                + Math.Max(0, LastMediaLength - ChunkSize);
-            if (LastMediaLength != copyCount)
+                + Math.Max(0, LastMediaBuffer.Length - ChunkSize);
+            if (LastMediaBuffer.Length != copyCount)
             {
-                Buffer.BlockCopy(LastMediaRequest, LastMediaLength - copyCount, LastMediaRequest, 0, copyCount);
-                LastMediaLength = copyCount;
+                Buffer.BlockCopy(LastMediaBuffer.Data, LastMediaBuffer.Length - copyCount, LastMediaBuffer.Data, 0, copyCount);
+                LastMediaBuffer.Length = copyCount;
             }
             // Read any more required bytes from stream, to form the next chunk.
             // We don't rely on reading StreamLength to determine whether we've finished reading or not, as
             // there are corner cases where it can be not unknown, even though we're in the "unknown size" case -
             // see https://github.com/googleapis/google-api-dotnet-client/issues/1449.
             bool finished = false;
-            while (LastMediaLength < ChunkSize + 1 && !finished)
+            while (LastMediaBuffer.Length < ChunkSize + 1 && !finished)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                int readSize = Math.Min(BufferSize, ChunkSize + 1 - LastMediaLength);
-                int len = await stream.ReadAsync(LastMediaRequest, LastMediaLength, readSize, cancellationToken).ConfigureAwait(false);
-                LastMediaLength += len;
+                int readSize = Math.Min(BufferSize, ChunkSize + 1 - LastMediaBuffer.Length);
+                int len = await stream.ReadAsync(LastMediaBuffer.Data, LastMediaBuffer.Length, readSize, cancellationToken).ConfigureAwait(false);
+                LastMediaBuffer.Length += len;
                 if (len == 0)
                 {
-                    StreamLength = BytesServerReceived + LastMediaLength;
+                    StreamLength = BytesServerReceived + LastMediaBuffer.Length;
                     finished = true;
                 }
             }
             // If we've read an extra byte, it'll be included in the next chunk.
-            return new Tuple<byte[], int>(LastMediaRequest, Math.Min(ChunkSize, LastMediaLength));
+            return new Tuple<byte[], int>(LastMediaBuffer.Data, Math.Min(ChunkSize, LastMediaBuffer.Length));
         }
 
         /// <summary>Prepares the given request with the next chunk in case the steam length is known.</summary>
@@ -814,6 +805,22 @@ namespace Google.Apis.Upload
             {
                 long chunkEnd = chunkStart + chunkSize - 1;
                 return String.Format("bytes {0}-{1}/{2}", chunkStart, chunkEnd, strLength);
+            }
+        }
+
+        /// <summary>
+        /// A buffer to be uploaded. This abstraction will eventually avoid the requirement for large byte arrays
+        /// which might end up on the large object heap.
+        /// </summary>
+        private class UploadBuffer
+        {
+            public int Length { get; set; }
+
+            public byte[] Data { get; set; }
+
+            public UploadBuffer(int capacity)
+            {
+                Data = new byte[capacity];
             }
         }
 
