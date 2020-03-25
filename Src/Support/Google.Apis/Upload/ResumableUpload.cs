@@ -621,11 +621,13 @@ namespace Google.Apis.Upload
             new ServerErrorCallback(this).AddToRequest(request);
 
             // Prepare next chunk to send. This is always read into memory one way or another.
-            var tuple = ContentStream.CanSeek
+            var buffer = ContentStream.CanSeek
                 ? await PrepareNextChunkKnownSizeAsync(stream, cancellationToken).ConfigureAwait(false)
                 : await PrepareNextChunkUnknownSizeAsync(stream, cancellationToken).ConfigureAwait(false);
-            var chunk = tuple.Item1;
-            var chunkLength = tuple.Item2;
+            var chunk = buffer.Data;
+            // If we've read more than ChunkSize data, it'll be included in the next chunk. This only occurs
+            // when preparing chunks with unknown stream lengths.
+            var chunkLength = Math.Min(buffer.Length, ChunkSize);
             var content = new ByteArrayContent(chunk, 0, chunkLength);
             content.Headers.Add("Content-Range", GetContentRangeHeader(BytesServerReceived, chunkLength));
             request.Content = content;
@@ -698,7 +700,7 @@ namespace Google.Apis.Upload
         }
 
         /// <summary>Prepares the given request with the next chunk in case the steam length is unknown.</summary>
-        private async Task<Tuple<byte[], int>> PrepareNextChunkUnknownSizeAsync(Stream stream, CancellationToken cancellationToken)
+        private async Task<UploadBuffer> PrepareNextChunkUnknownSizeAsync(Stream stream, CancellationToken cancellationToken)
         {
             if (LastMediaBuffer == null)
             {
@@ -731,12 +733,11 @@ namespace Google.Apis.Upload
                     finished = true;
                 }
             }
-            // If we've read an extra byte, it'll be included in the next chunk.
-            return new Tuple<byte[], int>(LastMediaBuffer.Data, Math.Min(ChunkSize, LastMediaBuffer.Length));
+            return LastMediaBuffer;
         }
 
         /// <summary>Prepares the given request with the next chunk in case the steam length is known.</summary>
-        private async Task<Tuple<byte[], int>> PrepareNextChunkKnownSizeAsync(Stream stream, CancellationToken cancellationToken)
+        private async Task<UploadBuffer> PrepareNextChunkKnownSizeAsync(Stream stream, CancellationToken cancellationToken)
         {
             int chunkSize = (int)Math.Min(StreamLength - BytesServerReceived, (long)ChunkSize);
 
@@ -749,24 +750,23 @@ namespace Google.Apis.Upload
                 stream.Position = BytesServerReceived;
             }
 
-            var chunk = new byte[chunkSize];
+            var buffer = new UploadBuffer(chunkSize);
             int bytesLeft = chunkSize;
-            int bytesRead = 0;
             while (bytesLeft > 0)
             {
                 cancellationToken.ThrowIfCancellationRequested();
                 // Make sure we only read at most BufferSize bytes at a time.
                 int readSize = Math.Min(bytesLeft, BufferSize);
-                int len = await stream.ReadAsync(chunk, bytesRead, readSize, cancellationToken).ConfigureAwait(false);
+                int len = await stream.ReadAsync(buffer.Data, buffer.Length, readSize, cancellationToken).ConfigureAwait(false);
                 if (len == 0)
                 {
                     // Presumably the stream lied about its length. Not great, but we still have a chunk to send.
                     break;
                 }
-                bytesRead += len;
+                buffer.Length += len;
                 bytesLeft -= len;
             }
-            return new Tuple<byte[], int>(chunk, bytesRead);
+            return buffer;
         }
 
         /// <summary>Returns the next byte index need to be sent.</summary>
@@ -814,8 +814,14 @@ namespace Google.Apis.Upload
         /// </summary>
         private class UploadBuffer
         {
+            /// <summary>
+            /// The amount of usable data within the buffer.
+            /// </summary>
             public int Length { get; set; }
 
+            /// <summary>
+            /// The data in the buffer.
+            /// </summary>
             public byte[] Data { get; set; }
 
             public UploadBuffer(int capacity)
