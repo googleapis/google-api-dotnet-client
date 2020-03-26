@@ -85,14 +85,19 @@ if [ -z ${SKIPGENERATE+x} ]; then
   export PYTHONPATH=$(pwd)/ClientGenerator/src
   for jsonfile in $DISCOVERY_DOC_DIR/*.json; do
     IFS='/'; names=($jsonfile); unset IFS
-    name=${names[-1]}
+    name=$(echo ${names[-1]} | sed 's/.json//g')
     case $name in
-      identitytoolkit_v3.json|oauth2_v1.json)
+      identitytoolkit_v3|oauth2_v1)
         echo Ignoring: \'$name\'
         ;;
       *)
         echo Generating: \'$name\'
         python -uR $(pwd)/ClientGenerator/src/googleapis/codegen/generate_library.py --input="$jsonfile" --language=csharp --output_dir="$CODE_GENERATION_DIR"
+        if [[ -f $(pwd)/PostGeneration/$name.sh ]]
+        then
+          echo "Running post-generation step for $name"
+          $(pwd)/PostGeneration/$name.sh
+        fi
         ;;
     esac
   done
