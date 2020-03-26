@@ -624,7 +624,7 @@ namespace Google.Apis.Upload
             var buffer = ContentStream.CanSeek
                 ? await PrepareNextChunkKnownSizeAsync(stream, cancellationToken).ConfigureAwait(false)
                 : await PrepareNextChunkUnknownSizeAsync(stream, cancellationToken).ConfigureAwait(false);
-            var content = buffer.CreateContent(ChunkSize, out var contentLength);
+            var content = buffer.CreateContent(out var contentLength);
             content.Headers.Add("Content-Range", GetContentRangeHeader(BytesServerReceived, contentLength));
             request.Content = content;
 
@@ -702,17 +702,17 @@ namespace Google.Apis.Upload
             {
                 // Initialise state
                 // ChunkSize + 1 to give room for one extra byte for end-of-stream checking
-                LastMediaBuffer = new UploadBuffer(ChunkSize + 1);
+                LastMediaBuffer = new UploadBuffer(this, ChunkSize + 1);
             }
             else
             {
-                LastMediaBuffer.MoveUnsentDataToStartOfBuffer(BytesClientSent, BytesServerReceived, ChunkSize);
+                LastMediaBuffer.MoveUnsentDataToStartOfBuffer(BytesClientSent, BytesServerReceived);
             }
             // Read any more required bytes from stream, to form the next chunk.
             // We don't rely on reading StreamLength to determine whether we've finished reading or not, as
             // there are corner cases where it can be not unknown, even though we're in the "unknown size" case -
             // see https://github.com/googleapis/google-api-dotnet-client/issues/1449.
-            bool finished = await LastMediaBuffer.PopulateFromStreamAsync(stream, BufferSize, cancellationToken).ConfigureAwait(false);
+            bool finished = await LastMediaBuffer.PopulateFromStreamAsync(stream, cancellationToken).ConfigureAwait(false);
             if (finished)
             {
                 StreamLength = BytesServerReceived + LastMediaBuffer.Length;
@@ -734,8 +734,8 @@ namespace Google.Apis.Upload
                 stream.Position = BytesServerReceived;
             }
 
-            var buffer = new UploadBuffer(chunkSize);
-            await buffer.PopulateFromStreamAsync(stream, BufferSize, cancellationToken).ConfigureAwait(false);
+            var buffer = new UploadBuffer(this, chunkSize);
+            await buffer.PopulateFromStreamAsync(stream, cancellationToken).ConfigureAwait(false);
             return buffer;
         }
 
@@ -786,6 +786,15 @@ namespace Google.Apis.Upload
         {
             private const int BlockSize = 64 * KB;
 
+            /// <summary>
+            /// The upload using this buffer; used to find the chunk size etc.
+            /// </summary>
+            private readonly ResumableUpload upload;
+            
+            /// <summary>
+            /// The capacity of this buffer; <see cref="PopulateFromStreamAsync(Stream, CancellationToken)"/>
+            /// will read until the buffer contains this much data.
+            /// </summary>
             private readonly int capacity;
 
             /// <summary>
@@ -798,8 +807,9 @@ namespace Google.Apis.Upload
             /// </summary>
             private readonly byte[][] blocks;
 
-            public UploadBuffer(int capacity)
+            public UploadBuffer(ResumableUpload upload, int capacity)
             {
+                this.upload = upload;
                 this.capacity = capacity;
                 int blockCount = (capacity + BlockSize - 1) / BlockSize; // Effectively "round up".
                 blocks = new byte[blockCount][];
@@ -809,16 +819,16 @@ namespace Google.Apis.Upload
             /// Reads from the stream until the stream has run out of data, or the buffer is full.
             /// </summary>
             /// <param name="stream">The stream to read from</param>
-            /// <param name="readChunkSize">The maximum number of bytes to read in any one call</param>
             /// <param name="cancellationToken"></param>
             /// <returns>true if the stream is exhausted; false otherwise</returns>
-            public async Task<bool> PopulateFromStreamAsync(Stream stream, int readChunkSize, CancellationToken cancellationToken)
+            public async Task<bool> PopulateFromStreamAsync(Stream stream, CancellationToken cancellationToken)
             {
                 int bytesLeft = capacity - Length;
                 while (bytesLeft > 0)
                 {
                     byte[] block = EnsureBlockAtPosition(Length, out int blockOffset);
-                    int readSize = Math.Min(block.Length - blockOffset, readChunkSize);
+                    // Note that ResumableUpload.BufferSize is badly named at this point. See the docs for its real meaning.
+                    int readSize = Math.Min(block.Length - blockOffset, upload.BufferSize);
                     int bytesRead = await stream.ReadAsync(block, blockOffset, readSize, cancellationToken).ConfigureAwait(false);
                     if (bytesRead == 0)
                     {
@@ -854,14 +864,14 @@ namespace Google.Apis.Upload
             /// Moves any unsent data to the start of this buffer, based on the number of bytes we actually sent,
             /// and the number of bytes the server received.
             /// </summary>
-            internal void MoveUnsentDataToStartOfBuffer(long bytesClientSent, long bytesServerReceived, int uploadChunkSize)
+            internal void MoveUnsentDataToStartOfBuffer(long bytesClientSent, long bytesServerReceived)
             {
                 // "Unsent" data is either data we didn't even try to send (because it's the last byte in the buffer)
                 // or data we sent, but the server didn't receive.
                 // Or to put it another way: once we work out how many bytes were successfully sent and received,
                 // everything else counts as unsent.
                 int unreceivedBytes = (int) (bytesClientSent - bytesServerReceived);
-                int lastChunkSize = GetActualUploadChunkSize(uploadChunkSize);
+                int lastChunkSize = GetActualUploadChunkSize();
                 int successBytes = lastChunkSize - unreceivedBytes;
                 int unsentBytes = Length - successBytes;
 
@@ -896,11 +906,10 @@ namespace Google.Apis.Upload
             /// <summary>
             /// Creates an HttpContent for the data in this buffer, up to <paramref name="contentLength"/> bytes.
             /// </summary>
-            /// <param name="uploadChunkSize">The maximum size of the content to create.</param>
             /// <param name="contentLength">The length of the content.</param>
-            internal HttpContent CreateContent(int uploadChunkSize, out int contentLength)
+            internal HttpContent CreateContent(out int contentLength)
             {
-                contentLength = GetActualUploadChunkSize(uploadChunkSize);
+                contentLength = GetActualUploadChunkSize();
                 // Using the block size as the buffer size for copying should mean we copy a whole block at a time.
                 return new StreamContent(new BufferViewStream(this, contentLength), BlockSize);
             }
@@ -922,7 +931,7 @@ namespace Google.Apis.Upload
             /// <summary>
             /// Determines how much data should actually be sent from this buffer.
             /// </summary>
-            private int GetActualUploadChunkSize(int uploadChunkSize) => Math.Min(uploadChunkSize, Length);
+            private int GetActualUploadChunkSize() => Math.Min(upload.ChunkSize, Length);
 
             private class BufferViewStream : Stream
             {
