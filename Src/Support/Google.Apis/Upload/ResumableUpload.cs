@@ -152,11 +152,13 @@ namespace Google.Apis.Upload
         internal long StreamLength { get; set; }
 
         /// <summary>
-        /// Gets or sets the last buffer request to the server or <c>null</c>
-        /// It is used when the media content length is unknown, for resending it in case of server error.
-        /// Only used with a non-seekable stream.
+        /// The buffer used for reading from the stream, to prepare HTTP requests.
+        /// This is used for both seekable and non-seekable streams, but in a slightly different way:
+        /// with seekable streams, we never reuse any *data* between chunks, just the allocated byte arrays.
+        /// For non-seekable streams, if some of the data we sent was not received by the server,
+        /// we reuse the data in the buffer.
         /// </summary>
-        private UploadBuffer LastMediaBuffer { get; set; }
+        private UploadBuffer Buffer { get; set; }
 
         /// <summary>
         /// Gets or sets the resumable session URI. 
@@ -620,11 +622,13 @@ namespace Google.Apis.Upload
                 }.CreateRequest();
             new ServerErrorCallback(this).AddToRequest(request);
 
-            // Prepare next chunk to send. This is always read into memory one way or another.
-            var buffer = ContentStream.CanSeek
-                ? await PrepareNextChunkKnownSizeAsync(stream, cancellationToken).ConfigureAwait(false)
-                : await PrepareNextChunkUnknownSizeAsync(stream, cancellationToken).ConfigureAwait(false);
-            var content = buffer.CreateContent(out var contentLength);
+            // Prepare next chunk to send, populating the Buffer property. (This may reuse an existing
+            // buffer, or create a new one.)
+            var preparationTask = ContentStream.CanSeek
+                ? PrepareBufferKnownSizeAsync(stream, cancellationToken)
+                : PrepareBufferUnknownSizeAsync(stream, cancellationToken);
+            await preparationTask.ConfigureAwait(false);
+            var content = Buffer.CreateContent(out var contentLength);
             content.Headers.Add("Content-Range", GetContentRangeHeader(BytesServerReceived, contentLength));
             request.Content = content;
 
@@ -645,9 +649,11 @@ namespace Google.Apis.Upload
 
             // If we've got an interceptor (e.g. for hashing), we can use it now for as much
             // data as the server actually received.
-            if (bytesReceivedFromChunk != 0)
+            Buffer.ExecuteInterceptor(UploadStreamInterceptor, bytesReceivedFromChunk);
+
+            if (completed)
             {
-                buffer.ExecuteInterceptor(UploadStreamInterceptor, bytesReceivedFromChunk);
+                Buffer = null;
             }
             return completed;
         }
@@ -690,40 +696,48 @@ namespace Google.Apis.Upload
             Logger.Debug("MediaUpload[{0}] - media was uploaded successfully", UploadUri);
             ProcessResponse(response);
             BytesServerReceived = StreamLength;
-
-            // Clear the last request byte array.
-            LastMediaBuffer = null;
         }
 
         /// <summary>Prepares the given request with the next chunk in case the steam length is unknown.</summary>
-        private async Task<UploadBuffer> PrepareNextChunkUnknownSizeAsync(Stream stream, CancellationToken cancellationToken)
+        private async Task PrepareBufferUnknownSizeAsync(Stream stream, CancellationToken cancellationToken)
         {
-            if (LastMediaBuffer == null)
+            // On the first iteration, create a new buffer. On later iterations, reuse any data that hasn't
+            // been successfully received yet.
+            if (Buffer is null)
             {
                 // Initialise state
                 // ChunkSize + 1 to give room for one extra byte for end-of-stream checking
-                LastMediaBuffer = new UploadBuffer(this, ChunkSize + 1);
+                Buffer = new UploadBuffer(this, ChunkSize + 1);
             }
             else
             {
-                LastMediaBuffer.MoveUnsentDataToStartOfBuffer(BytesClientSent, BytesServerReceived);
+                Buffer.MoveUnsentDataToStartOfBuffer(BytesClientSent, BytesServerReceived);
             }
             // Read any more required bytes from stream, to form the next chunk.
             // We don't rely on reading StreamLength to determine whether we've finished reading or not, as
             // there are corner cases where it can be not unknown, even though we're in the "unknown size" case -
             // see https://github.com/googleapis/google-api-dotnet-client/issues/1449.
-            bool finished = await LastMediaBuffer.PopulateFromStreamAsync(stream, cancellationToken).ConfigureAwait(false);
+            bool finished = await Buffer.PopulateFromStreamAsync(stream, cancellationToken).ConfigureAwait(false);
             if (finished)
             {
-                StreamLength = BytesServerReceived + LastMediaBuffer.Length;
+                StreamLength = BytesServerReceived + Buffer.Length;
             }
-            return LastMediaBuffer;
         }
 
         /// <summary>Prepares the given request with the next chunk in case the steam length is known.</summary>
-        private async Task<UploadBuffer> PrepareNextChunkKnownSizeAsync(Stream stream, CancellationToken cancellationToken)
+        private async Task PrepareBufferKnownSizeAsync(Stream stream, CancellationToken cancellationToken)
         {
-            int chunkSize = (int)Math.Min(StreamLength - BytesServerReceived, (long)ChunkSize);
+            // On the first iteration, create a new buffer. On later iterations, just reset it so we can reuse the
+            // blocks inside. On the last iteration this may be larger than we need it to be, but that's okay -
+            // we just won't use it all.
+            if (Buffer is null)
+            {
+                Buffer = new UploadBuffer(this, ChunkSize);
+            }
+            else
+            {
+                Buffer.Reset();
+            }
 
             // Stream length is known and it supports seek and position operations.
             // We can change the stream position and read bytes from the last point.
@@ -734,9 +748,7 @@ namespace Google.Apis.Upload
                 stream.Position = BytesServerReceived;
             }
 
-            var buffer = new UploadBuffer(this, chunkSize);
-            await buffer.PopulateFromStreamAsync(stream, cancellationToken).ConfigureAwait(false);
-            return buffer;
+            await Buffer.PopulateFromStreamAsync(stream, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>Returns the next byte index need to be sent.</summary>
@@ -779,8 +791,8 @@ namespace Google.Apis.Upload
         }
 
         /// <summary>
-        /// A buffer to be uploaded. This abstraction will eventually avoid the requirement for large byte arrays
-        /// which might end up on the large object heap.
+        /// A buffer to be uploaded. This abstraction allows us to use small byte arrays,
+        /// avoiding anything which might end up on the large object heap.
         /// </summary>
         private class UploadBuffer
         {
@@ -795,7 +807,7 @@ namespace Google.Apis.Upload
             /// The capacity of this buffer; <see cref="PopulateFromStreamAsync(Stream, CancellationToken)"/>
             /// will read until the buffer contains this much data.
             /// </summary>
-            private readonly int capacity;
+            public int Capacity { get; }
 
             /// <summary>
             /// The amount of usable data within the buffer.
@@ -810,7 +822,7 @@ namespace Google.Apis.Upload
             public UploadBuffer(ResumableUpload upload, int capacity)
             {
                 this.upload = upload;
-                this.capacity = capacity;
+                Capacity = capacity;
                 int blockCount = (capacity + BlockSize - 1) / BlockSize; // Effectively "round up".
                 blocks = new byte[blockCount][];
             }
@@ -823,7 +835,7 @@ namespace Google.Apis.Upload
             /// <returns>true if the stream is exhausted; false otherwise</returns>
             public async Task<bool> PopulateFromStreamAsync(Stream stream, CancellationToken cancellationToken)
             {
-                int bytesLeft = capacity - Length;
+                int bytesLeft = Capacity - Length;
                 while (bytesLeft > 0)
                 {
                     byte[] block = EnsureBlockAtPosition(Length, out int blockOffset);
@@ -841,6 +853,12 @@ namespace Google.Apis.Upload
             }
 
             /// <summary>
+            /// Resets the length of this buffer to 0, *effectively* discarding the data within it.
+            /// (The blocks are actually retained for reuse.)
+            /// </summary>
+            public void Reset() => Length = 0;
+
+            /// <summary>
             /// Returns the block that contains the specified offset, creating it if necessary.
             /// </summary>
             /// <param name="bufferOffset">The offset within the buffer to fetch the block for.</param>
@@ -853,7 +871,7 @@ namespace Google.Apis.Upload
                 byte[] block = blocks[blockIndex];
                 if (block is null)
                 {
-                    int blockSize = Math.Min(BlockSize, capacity - blockIndex * BlockSize);
+                    int blockSize = Math.Min(BlockSize, Capacity - blockIndex * BlockSize);
                     block = new byte[blockSize];
                     blocks[blockIndex] = block;
                 }
@@ -893,7 +911,7 @@ namespace Google.Apis.Upload
                         // - How much data there is in the source block
                         // - How much space there is in the destination block
                         var bytesToCopy = Math.Min(bytesLeft, Math.Min(srcBlock.Length - srcBlockOffset, destBlock.Length - destBlockOffset));
-                        Buffer.BlockCopy(srcBlock, srcBlockOffset, destBlock, 0, bytesToCopy);
+                        System.Buffer.BlockCopy(srcBlock, srcBlockOffset, destBlock, 0, bytesToCopy);
                         bytesLeft -= bytesToCopy;
                         srcOffset += bytesToCopy;
                         destOffset += bytesToCopy;
@@ -933,6 +951,9 @@ namespace Google.Apis.Upload
             /// </summary>
             private int GetActualUploadChunkSize() => Math.Min(upload.ChunkSize, Length);
 
+            /// <summary>
+            /// A read-only stream reading from an UploadBuffer, reading all the blocks in turn.
+            /// </summary>
             private class BufferViewStream : Stream
             {
                 private readonly UploadBuffer _buffer;
@@ -981,7 +1002,7 @@ namespace Google.Apis.Upload
                     var effectiveCount = Math.Min(count, _length - _position);
                     // Now avoid reading past the end of the block.
                     var bytesToCopy = Math.Min(effectiveCount, block.Length - blockOffset);
-                    Buffer.BlockCopy(block, blockOffset, buffer, offset, bytesToCopy);
+                    System.Buffer.BlockCopy(block, blockOffset, buffer, offset, bytesToCopy);
                     _position += bytesToCopy;
                     return bytesToCopy;
                 }
