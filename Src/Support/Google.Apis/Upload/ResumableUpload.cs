@@ -784,19 +784,25 @@ namespace Google.Apis.Upload
         /// </summary>
         private class UploadBuffer
         {
+            private const int BlockSize = 64 * KB;
+
+            private readonly int capacity;
+
             /// <summary>
             /// The amount of usable data within the buffer.
             /// </summary>
             public int Length { get; private set; }
 
             /// <summary>
-            /// The data in the buffer.
+            /// The data in the buffer, divided into blocks each of size (at most) <see cref="BlockSize"/>.
             /// </summary>
-            private readonly byte[] data;
+            private readonly byte[][] blocks;
 
             public UploadBuffer(int capacity)
             {
-                data = new byte[capacity];
+                this.capacity = capacity;
+                int blockCount = (capacity + BlockSize - 1) / BlockSize; // Effectively "round up".
+                blocks = new byte[blockCount][];
             }
 
             /// <summary>
@@ -808,11 +814,12 @@ namespace Google.Apis.Upload
             /// <returns>true if the stream is exhausted; false otherwise</returns>
             public async Task<bool> PopulateFromStreamAsync(Stream stream, int readChunkSize, CancellationToken cancellationToken)
             {
-                int bytesLeft = data.Length - Length;
+                int bytesLeft = capacity - Length;
                 while (bytesLeft > 0)
                 {
-                    int readSize = Math.Min(bytesLeft, readChunkSize);
-                    int bytesRead = await stream.ReadAsync(data, Length, readSize, cancellationToken).ConfigureAwait(false);
+                    byte[] block = EnsureBlockAtPosition(Length, out int blockOffset);
+                    int readSize = Math.Min(block.Length - blockOffset, readChunkSize);
+                    int bytesRead = await stream.ReadAsync(block, blockOffset, readSize, cancellationToken).ConfigureAwait(false);
                     if (bytesRead == 0)
                     {
                         return true;
@@ -821,6 +828,26 @@ namespace Google.Apis.Upload
                     bytesLeft -= bytesRead;
                 }
                 return false;
+            }
+
+            /// <summary>
+            /// Returns the block that contains the specified offset, creating it if necessary.
+            /// </summary>
+            /// <param name="bufferOffset">The offset within the buffer to fetch the block for.</param>
+            /// <param name="blockOffset">The offset within the returned block corresponding to <paramref name="bufferOffset"/> within the buffer.</param>
+            /// <returns>The block for the given position.</returns>
+            private byte[] EnsureBlockAtPosition(int bufferOffset, out int blockOffset)
+            {
+                int blockIndex = bufferOffset / BlockSize;
+                blockOffset = bufferOffset % BlockSize;
+                byte[] block = blocks[blockIndex];
+                if (block is null)
+                {
+                    int blockSize = Math.Min(BlockSize, capacity - blockIndex * BlockSize);
+                    block = new byte[blockSize];
+                    blocks[blockIndex] = block;
+                }
+                return block;
             }
 
             /// <summary>
@@ -840,7 +867,28 @@ namespace Google.Apis.Upload
 
                 if (unsentBytes != Length)
                 {
-                    Buffer.BlockCopy(data, Length - unsentBytes, data, 0, unsentBytes);
+                    int srcOffset = Length - unsentBytes;
+                    int destOffset = 0;
+                    int bytesLeft = unsentBytes;
+
+                    // The way we copy data looks a little odd, but it's basically "copy as much as we can on each iteration"
+                    // where we get limited by the blocks we're copying from and to.
+                    while (bytesLeft > 0)
+                    {
+                        var srcBlock = EnsureBlockAtPosition(srcOffset, out int srcBlockOffset);
+                        var destBlock = EnsureBlockAtPosition(destOffset, out int destBlockOffset);
+
+                        // Three limits to how much to copy in each iteration:
+                        // - The number of bytes we have left to copy
+                        // - How much data there is in the source block
+                        // - How much space there is in the destination block
+                        var bytesToCopy = Math.Min(bytesLeft, Math.Min(srcBlock.Length - srcBlockOffset, destBlock.Length - destBlockOffset));
+                        Buffer.BlockCopy(srcBlock, srcBlockOffset, destBlock, 0, bytesToCopy);
+                        bytesLeft -= bytesToCopy;
+                        srcOffset += bytesToCopy;
+                        destOffset += bytesToCopy;
+                    }
+
                     Length = unsentBytes;
                 }
             }
@@ -853,16 +901,93 @@ namespace Google.Apis.Upload
             internal HttpContent CreateContent(int uploadChunkSize, out int contentLength)
             {
                 contentLength = GetActualUploadChunkSize(uploadChunkSize);
-                return new ByteArrayContent(data, 0, contentLength);
+                // Using the block size as the buffer size for copying should mean we copy a whole block at a time.
+                return new StreamContent(new BufferViewStream(this, contentLength), BlockSize);
             }
 
-            internal void ExecuteInterceptor(StreamInterceptor interceptor, int bytesReceivedFromChunk) =>
-                interceptor?.Invoke(data, 0, bytesReceivedFromChunk);
+            internal void ExecuteInterceptor(StreamInterceptor interceptor, int bytesReceivedFromChunk)
+            {
+                if (interceptor is null)
+                {
+                    return;
+                }
+                // Note: we assume the blocks have genuinely been populated.
+                for (int offset = 0; offset < bytesReceivedFromChunk; offset += BlockSize)
+                {
+                    byte[] block = blocks[offset / BlockSize];
+                    interceptor.Invoke(block, 0, Math.Min(BlockSize, bytesReceivedFromChunk - offset));
+                }
+            }
 
             /// <summary>
             /// Determines how much data should actually be sent from this buffer.
             /// </summary>
             private int GetActualUploadChunkSize(int uploadChunkSize) => Math.Min(uploadChunkSize, Length);
+
+            private class BufferViewStream : Stream
+            {
+                private readonly UploadBuffer _buffer;
+                private readonly int _length;
+                private int _position;
+
+                internal BufferViewStream(UploadBuffer buffer, int length)
+                {
+                    _buffer = buffer;
+                    _length = length;
+                }
+
+                public override bool CanRead => true;
+                public override bool CanSeek => true;
+                public override bool CanTimeout => false;
+                public override bool CanWrite => false;
+                public override long Length => _length;
+                public override long Position
+                {
+                    get => _position;
+                    set => _position = value >= 0 && value <= int.MaxValue ? (int) value : throw new ArgumentOutOfRangeException();
+                }
+                public override long Seek(long offset, SeekOrigin origin)
+                {
+                    switch (origin)
+                    {
+                        case SeekOrigin.Begin: return Position = offset;
+                        case SeekOrigin.Current: return Position += offset;
+                        case SeekOrigin.End: return Position = Length + offset;
+                        default: throw new ArgumentOutOfRangeException(nameof(origin));
+                    }
+                }
+
+                public override int Read(byte[] buffer, int offset, int count)
+                {
+                    if (_position >= _length)
+                    {
+                        return 0;
+                    }
+                    // Note: we don't validate buffer, offset and count here - we only use this stream in StreamContent,
+                    // which can be trusted to be sensible.
+
+                    var block = _buffer.EnsureBlockAtPosition(_position, out var blockOffset);
+
+                    // First limit the count parameter by how much data we've been asked to return in total.
+                    var effectiveCount = Math.Min(count, _length - _position);
+                    // Now avoid reading past the end of the block.
+                    var bytesToCopy = Math.Min(effectiveCount, block.Length - blockOffset);
+                    Buffer.BlockCopy(block, blockOffset, buffer, offset, bytesToCopy);
+                    _position += bytesToCopy;
+                    return bytesToCopy;
+                }
+
+                public override void SetLength(long value) => throw new NotSupportedException();
+                public override void Flush() => throw new NotSupportedException();
+                public override Task FlushAsync(CancellationToken cancellationToken) => throw new NotSupportedException();
+                public override void Write(byte[] buffer, int offset, int count) => throw new NotSupportedException();
+                public override Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken) => throw new NotSupportedException();
+                public override int WriteTimeout
+                {
+                    get => throw new NotSupportedException();
+                    set => throw new NotSupportedException();
+                }
+            }
         }
 
         #endregion Upload Implementation
