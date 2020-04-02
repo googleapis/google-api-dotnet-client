@@ -512,7 +512,7 @@
    }
   }
  }, 
- "revision": "20200308", 
+ "revision": "20200322", 
  "rootUrl": "https://cloudidentity.googleapis.com/", 
  "schemas": {
   "AndroidAttributes": {
@@ -880,7 +880,7 @@
    "type": "object"
   }, 
   "EndpointApp": {
-   "description": "An EndpointApp represents an app that is installed on a device\nNext ID to use: 7", 
+   "description": "An EndpointApp represents an app that is installed on a device", 
    "id": "EndpointApp", 
    "properties": {
     "displayName": {

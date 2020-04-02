@@ -2,14 +2,14 @@
  "auth": {
   "oauth2": {
    "scopes": {
-    "https://www.googleapis.com/auth/plus.me": {
-     "description": "Associate you with your personal info on Google"
-    }, 
     "https://www.googleapis.com/auth/userinfo.email": {
      "description": "View your email address"
     }, 
     "https://www.googleapis.com/auth/userinfo.profile": {
      "description": "See your personal info, including any personal info you've made publicly available"
+    }, 
+    "openid": {
+     "description": "Associate you with your personal info on Google"
     }
    }
   }
@@ -108,10 +108,10 @@
      "id": "oauth2.userinfo.get", 
      "path": "oauth2/v1/userinfo", 
      "response": {
-      "$ref": "Userinfoplus"
+      "$ref": "Userinfo"
      }, 
      "scopes": [
-      "https://www.googleapis.com/auth/plus.me", 
+      "openid", 
       "https://www.googleapis.com/auth/userinfo.email", 
       "https://www.googleapis.com/auth/userinfo.profile"
      ]
@@ -128,10 +128,10 @@
          "id": "oauth2.userinfo.v2.me.get", 
          "path": "userinfo/v2/me", 
          "response": {
-          "$ref": "Userinfoplus"
+          "$ref": "Userinfo"
          }, 
          "scopes": [
-          "https://www.googleapis.com/auth/plus.me", 
+          "openid", 
           "https://www.googleapis.com/auth/userinfo.email", 
           "https://www.googleapis.com/auth/userinfo.profile"
          ]
@@ -149,10 +149,6 @@
   "Tokeninfo": {
    "id": "Tokeninfo", 
    "properties": {
-    "access_type": {
-     "description": "The access type granted with this token. It can be offline or online.", 
-     "type": "string"
-    }, 
     "audience": {
      "description": "Who is the intended audience for this token. In general the same as issued_to.", 
      "type": "string"
@@ -202,8 +198,8 @@
    }, 
    "type": "object"
   }, 
-  "Userinfoplus": {
-   "id": "Userinfoplus", 
+  "Userinfo": {
+   "id": "Userinfo", 
    "properties": {
     "email": {
      "description": "The user's email address.", 

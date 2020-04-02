@@ -1997,7 +1997,7 @@
          ], 
          "parameters": {
           "locationId": {
-           "description": "The geographic location to process content inspection. Reserved for future\nextensions.", 
+           "description": "The geographic location to process content inspection. Reserved for future\nextensions.\nWhen inspecting images location is restricted to 'global', 'us', 'asia',\nand 'europe'.", 
            "location": "path", 
            "required": true, 
            "type": "string"
@@ -2472,7 +2472,7 @@
          ], 
          "parameters": {
           "locationId": {
-           "description": "The geographic location to process the request. Reserved for future\nextensions.", 
+           "description": "The geographic location to process the request. Reserved for future\nextensions.\nLocation is restricted to 'global', 'us', 'asia', and 'europe'.", 
            "location": "path", 
            "required": true, 
            "type": "string"
@@ -3215,7 +3215,7 @@
    }
   }
  }, 
- "revision": "20200308", 
+ "revision": "20200329", 
  "rootUrl": "https://dlp.googleapis.com/", 
  "schemas": {
   "GooglePrivacyDlpV2Action": {
@@ -3493,6 +3493,8 @@
       "IMAGE_PNG", 
       "IMAGE_SVG", 
       "TEXT_UTF8", 
+      "WORD_DOCUMENT", 
+      "PDF", 
       "AVRO"
      ], 
      "enumDescriptions": [
@@ -3503,6 +3505,8 @@
       "png", 
       "svg", 
       "plain text", 
+      "docx, docm, dotx, dotm", 
+      "pdf", 
       "avro"
      ], 
      "type": "string"
@@ -3663,12 +3667,12 @@
      "description": "The set of one or more files to scan."
     }, 
     "fileTypes": {
-     "description": "List of file type groups to include in the scan.\nIf empty, all files are scanned and available data format processors\nare applied. In addition, the binary content of the selected files\nis always scanned as well.", 
+     "description": "List of file type groups to include in the scan.\nIf empty, all files are scanned and available data format processors\nare applied. In addition, the binary content of the selected files\nis always scanned as well.\nImages are scanned only as binary if the specified region\ndoes not support image inspection and no file_types were specified.\nImage inspection is restricted to 'global', 'us', 'asia', and 'europe'.", 
      "enumDescriptions": [
       "Includes all files.", 
       "Includes all file extensions not covered by text file types.", 
       "Included file extensions:\n  asc, brf, c, cc, cpp, csv, cxx, c++, cs, css, dart, eml, go, h, hh, hpp,\n  hxx, h++, hs, html, htm, shtml, shtm, xhtml, lhs, ini, java, js, json,\n  ocaml, md, mkd, markdown, m, ml, mli, pl, pm, php, phtml, pht, py, pyw,\n  rb, rbw, rs, rc, scala, sh, sql, tex, txt, text, tsv, vcard, vcs, wml,\n  xml, xsl, xsd, yml, yaml.", 
-      "Included file extensions:\n  bmp, gif, jpg, jpeg, jpe, png.\nbytes_limit_per_file has no effect on image files.", 
+      "Included file extensions:\n  bmp, gif, jpg, jpeg, jpe, png.\nbytes_limit_per_file has no effect on image files.\nImage inspection is restricted to 'global', 'us', 'asia', and 'europe'.", 
       "Included file extensions:\n  docx, dotx, docm, dotm", 
       "Included file extensions:\n  pdf", 
       "Included file extensions:\n  avro"
@@ -3898,6 +3902,10 @@
     "imageLocation": {
      "$ref": "GooglePrivacyDlpV2ImageLocation", 
      "description": "Location within an image's pixels."
+    }, 
+    "metadataLocation": {
+     "$ref": "GooglePrivacyDlpV2MetadataLocation", 
+     "description": "Location within the metadata for inspected content."
     }, 
     "recordLocation": {
      "$ref": "GooglePrivacyDlpV2RecordLocation", 
@@ -4238,14 +4246,14 @@
       "SUNDAY"
      ], 
      "enumDescriptions": [
-      "The unspecified day-of-week.", 
-      "The day-of-week of Monday.", 
-      "The day-of-week of Tuesday.", 
-      "The day-of-week of Wednesday.", 
-      "The day-of-week of Thursday.", 
-      "The day-of-week of Friday.", 
-      "The day-of-week of Saturday.", 
-      "The day-of-week of Sunday."
+      "The day of the week is unspecified.", 
+      "Monday", 
+      "Tuesday", 
+      "Wednesday", 
+      "Thursday", 
+      "Friday", 
+      "Saturday", 
+      "Sunday"
      ], 
      "type": "string"
     }, 
@@ -5232,7 +5240,7 @@
      "description": "The item to inspect."
     }, 
     "locationId": {
-     "description": "The geographic location to process content inspection. Reserved for future\nextensions.", 
+     "description": "The geographic location to process content inspection. Reserved for future\nextensions.\nWhen inspecting images location is restricted to 'global', 'us', 'asia',\nand 'europe'.", 
      "type": "string"
     }
    }, 
@@ -5955,6 +5963,10 @@
      "$ref": "GooglePrivacyDlpV2Range", 
      "description": "Unicode character offsets delimiting the finding.\nThese are relative to the finding's containing element.\nProvided when the content is text."
     }, 
+    "container": {
+     "$ref": "GooglePrivacyDlpV2Container", 
+     "description": "Information about the container where this finding occurred, if available."
+    }, 
     "contentLocations": {
      "description": "List of nested objects pointing to the precise location of the finding\nwithin the file or record.", 
      "items": {
@@ -5969,6 +5981,29 @@
    "description": "Job trigger option for hybrid jobs. Jobs must be manually created\nand finished.", 
    "id": "GooglePrivacyDlpV2Manual", 
    "properties": {}, 
+   "type": "object"
+  }, 
+  "GooglePrivacyDlpV2MetadataLocation": {
+   "description": "Metadata Location", 
+   "id": "GooglePrivacyDlpV2MetadataLocation", 
+   "properties": {
+    "storageLabel": {
+     "$ref": "GooglePrivacyDlpV2StorageMetadataLabel", 
+     "description": "Storage metadata."
+    }, 
+    "type": {
+     "description": "Type of metadata containing the finding.", 
+     "enum": [
+      "METADATATYPE_UNSPECIFIED", 
+      "STORAGE_METADATA"
+     ], 
+     "enumDescriptions": [
+      "Unused", 
+      "General file metadata provided by GCS."
+     ], 
+     "type": "string"
+    }
+   }, 
    "type": "object"
   }, 
   "GooglePrivacyDlpV2NumericalStatsConfig": {
@@ -6391,7 +6426,7 @@
      "description": "Configuration for the inspector."
     }, 
     "locationId": {
-     "description": "The geographic location to process the request. Reserved for future\nextensions.", 
+     "description": "The geographic location to process the request. Reserved for future\nextensions.\nLocation is restricted to 'global', 'us', 'asia', and 'europe'.", 
      "type": "string"
     }
    }, 
@@ -6645,6 +6680,16 @@
     }, 
     "timespanConfig": {
      "$ref": "GooglePrivacyDlpV2TimespanConfig"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "GooglePrivacyDlpV2StorageMetadataLabel": {
+   "description": "Storage metadata label to indicate which metadata entry contains findings.", 
+   "id": "GooglePrivacyDlpV2StorageMetadataLabel", 
+   "properties": {
+    "key": {
+     "type": "string"
     }
    }, 
    "type": "object"
@@ -7151,14 +7196,14 @@
       "SUNDAY"
      ], 
      "enumDescriptions": [
-      "The unspecified day-of-week.", 
-      "The day-of-week of Monday.", 
-      "The day-of-week of Tuesday.", 
-      "The day-of-week of Wednesday.", 
-      "The day-of-week of Thursday.", 
-      "The day-of-week of Friday.", 
-      "The day-of-week of Saturday.", 
-      "The day-of-week of Sunday."
+      "The day of the week is unspecified.", 
+      "Monday", 
+      "Tuesday", 
+      "Wednesday", 
+      "Thursday", 
+      "Friday", 
+      "Saturday", 
+      "Sunday"
      ], 
      "type": "string"
     }, 

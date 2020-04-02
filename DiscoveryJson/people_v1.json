@@ -581,7 +581,7 @@
          "type": "integer"
         }, 
         "pageToken": {
-         "description": "Optional. The token of the page to be returned.", 
+         "description": "Optional. A page token, received from a previous `ListConnections` call.\nProvide this to retrieve the subsequent page.\n\nWhen paginating, all other parameters provided to `ListConnections`\nmust match the call that provided the page token.", 
          "location": "query", 
          "type": "string"
         }, 
@@ -598,7 +598,7 @@
          "type": "string"
         }, 
         "requestSyncToken": {
-         "description": "Optional. Whether the response should include a sync token, which can be used to get\nall changes since the last request. For subsequent sync requests use the\n`sync_token` param instead. Initial sync requests that specify\n`request_sync_token` have an additional rate limit.", 
+         "description": "Optional. Whether the response should include `next_sync_token`, which can be used to\nget all changes since the last request. For subsequent sync requests use\nthe `sync_token` param instead. Initial sync requests that specify\n`request_sync_token` have an additional rate limit.", 
          "location": "query", 
          "type": "boolean"
         }, 
@@ -621,7 +621,7 @@
          "type": "string"
         }, 
         "syncToken": {
-         "description": "Optional. A sync token returned by a previous call to `people.connections.list`.\nOnly resources changed since the sync token was created will be returned.\nSync requests that specify `sync_token` have an additional rate limit.", 
+         "description": "Optional. A sync token, received from a previous `ListConnections` call.\nProvide this to retrieve only the resources changed since the last request.\nSync requests that specify `sync_token` have an additional rate limit.\n\nWhen syncing, all other parameters provided to `ListConnections`\nmust match the call that provided the sync token.", 
          "location": "query", 
          "type": "string"
         }
@@ -640,7 +640,7 @@
    }
   }
  }, 
- "revision": "20200309", 
+ "revision": "20200329", 
  "rootUrl": "https://people.googleapis.com/", 
  "schemas": {
   "Address": {
@@ -1058,8 +1058,12 @@
    "description": "A person's gender.", 
    "id": "Gender", 
    "properties": {
+    "addressMeAs": {
+     "description": "The type of pronouns that should be used to address the person. The value\ncan be custom or one of these predefined values:\n\n* `male`\n* `female`\n* `other`", 
+     "type": "string"
+    }, 
     "formattedValue": {
-     "description": "Output only. The value of the gender translated and formatted in the viewer's\naccount locale or the `Accept-Language` HTTP header locale.", 
+     "description": "Output only. The value of the gender translated and formatted in the viewer's account\nlocale or the `Accept-Language` HTTP header locale. Unspecified or custom\nvalue are not localized.", 
      "type": "string"
     }, 
     "metadata": {
@@ -1067,7 +1071,7 @@
      "description": "Metadata about the gender."
     }, 
     "value": {
-     "description": "The gender for the person. The gender can be custom or one of these\npredefined values:\n\n* `male`\n* `female`\n* `other`\n* `unknown`", 
+     "description": "The gender for the person. The gender can be custom or one of these\npredefined values:\n\n* `male`\n* `female`\n* `unspecified`", 
      "type": "string"
     }
    }, 
@@ -1145,11 +1149,11 @@
      "type": "array"
     }, 
     "nextPageToken": {
-     "description": "The token that can be used to retrieve the next page of results.", 
+     "description": "A token, which can be sent as `page_token` to retrieve the next page.\nIf this field is omitted, there are no subsequent pages.", 
      "type": "string"
     }, 
     "nextSyncToken": {
-     "description": "The token that can be used to retrieve changes since the last request.", 
+     "description": "A token, which can be sent as `sync_token` to retrieve changes since the\nlast request. Request must set `request_sync_token` to return the sync\ntoken.", 
      "type": "string"
     }, 
     "totalItems": {

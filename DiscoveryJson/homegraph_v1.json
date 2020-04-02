@@ -192,7 +192,7 @@
    }
   }
  }, 
- "revision": "20200306", 
+ "revision": "20200317", 
  "rootUrl": "https://homegraph.googleapis.com/", 
  "schemas": {
   "AgentDeviceId": {

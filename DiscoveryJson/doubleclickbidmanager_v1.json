@@ -15,7 +15,7 @@
  "description": "API for viewing and managing your reports in DoubleClick Bid Manager.", 
  "discoveryVersion": "v1", 
  "documentationLink": "https://developers.google.com/bid-manager/", 
- "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/w_quvq82pzU5rXpQEUZ-IAPLomU\"", 
+ "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/HgR482mnyPA6xsLHjUjlQzYwL1g\"", 
  "icons": {
   "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png", 
   "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -257,7 +257,7 @@
    }
   }
  }, 
- "revision": "20200220", 
+ "revision": "20200316", 
  "rootUrl": "https://www.googleapis.com/", 
  "schemas": {
   "DownloadLineItemsRequest": {
