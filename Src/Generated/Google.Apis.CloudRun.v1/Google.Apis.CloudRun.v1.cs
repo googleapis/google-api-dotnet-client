@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/run/'>Cloud Run API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200320 (1905)
+ *      <tr><th>API Rev<td>20200327 (1912)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/run/'>
  *              https://cloud.google.com/run/</a>
@@ -5756,14 +5756,11 @@ namespace Google.Apis.CloudRun.v1.Data
 
         /// <summary>(Optional)
         ///
-        /// Cloud Run fully managed: not supported
+        /// List of ports to expose from the container. Only a single port can be specified. The specified ports must be
+        /// listening on all interfaces (0.0.0.0) within the container to be accessible.
         ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// List of ports to expose from the container. Exposing a port here gives the system additional information
-        /// about the network connections a container uses, but is primarily informational. Not specifying a port here
-        /// DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address
-        /// inside a container will be accessible from the network.</summary>
+        /// If omitted, a port number will be chosen and passed to the container through the PORT environment variable
+        /// for the container to listen on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ports")]
         public virtual System.Collections.Generic.IList<ContainerPort> Ports { get; set; } 
 
@@ -5853,18 +5850,10 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// ContainerPort represents a network port in a single container.</summary>
+    /// <summary>ContainerPort represents a network port in a single container.</summary>
     public class ContainerPort : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: supported
-        ///
-        /// Cloud Run for Anthos: supported
         ///
         /// Port number the container listens on. This must be a valid port number, 0 < x < 65536.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerPort")]
@@ -5886,7 +5875,7 @@ namespace Google.Apis.CloudRun.v1.Data
         ///
         /// Cloud Run for Anthos: supported
         ///
-        /// Protocol for port. Must be TCP. Defaults to "TCP".</summary>
+        /// Protocol for port. Must be "TCP". Defaults to "TCP".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; } 
 

@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/accounts/docs/OAuth2'>Google OAuth2 API</a>
+ *          <td><a href='https://developers.google.com/identity/protocols/oauth2/'>Google OAuth2 API</a>
  *      <tr><th>API Version<td>v2
  *      <tr><th>API Rev<td>20200213 (1869)
  *      <tr><th>API Docs
- *          <td><a href='https://developers.google.com/accounts/docs/OAuth2'>
- *              https://developers.google.com/accounts/docs/OAuth2</a>
+ *          <td><a href='https://developers.google.com/identity/protocols/oauth2/'>
+ *              https://developers.google.com/identity/protocols/oauth2/</a>
  *      <tr><th>Discovery Name<td>oauth2
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Google OAuth2 API can be found at
- * <a href='https://developers.google.com/accounts/docs/OAuth2'>https://developers.google.com/accounts/docs/OAuth2</a>.
+ * <a href='https://developers.google.com/identity/protocols/oauth2/'>https://developers.google.com/identity/protocols/oauth2/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>

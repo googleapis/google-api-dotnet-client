@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200310 (1895)
+ *      <tr><th>API Rev<td>20200326 (1911)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -10820,7 +10820,8 @@ namespace Google.Apis.Drive.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("meteringMode")]
             public virtual string MeteringMode { get; set; } 
 
-            /// <summary>The rotation in clockwise degrees from the image's original orientation.</summary>
+            /// <summary>The number of clockwise 90 degree rotations applied from the image's original
+            /// orientation.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("rotation")]
             public virtual System.Nullable<int> Rotation { get; set; } 
 

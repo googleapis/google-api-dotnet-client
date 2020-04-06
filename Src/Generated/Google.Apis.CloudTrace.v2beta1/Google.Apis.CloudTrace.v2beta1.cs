@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Cloud Trace API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20200323 (1908)
+ *      <tr><th>API Rev<td>20200330 (1915)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -871,7 +871,7 @@ namespace Google.Apis.CloudTrace.v2beta1.Data
         /// output configuration, see [Granting access for a resource](/iam/docs/granting-roles-to-service-
         /// accounts#granting_access_to_a_service_account_for_a_resource). To create tables and write data this account
         /// will need the dataEditor role. Read more about roles in the [BigQuery
-        /// documentation](https://cloud.google.com/bigquery/docs/access-control#permissions_and_roles). E.g.:
+        /// documentation](https://cloud.google.com/bigquery/docs/access-control). E.g.:
         ///
         /// "service-00000001@00000002.iam.gserviceaccount.com"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writerIdentity")]

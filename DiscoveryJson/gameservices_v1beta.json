@@ -1312,7 +1312,7 @@
    }
   }
  }, 
- "revision": "20200319", 
+ "revision": "20200327", 
  "rootUrl": "https://gameservices.googleapis.com/", 
  "schemas": {
   "AuditConfig": {
@@ -2742,7 +2742,7 @@
   }
  }, 
  "servicePath": "", 
- "title": "Game Servers API", 
+ "title": "Game Services API", 
  "version": "v1beta", 
  "version_module": true
 }

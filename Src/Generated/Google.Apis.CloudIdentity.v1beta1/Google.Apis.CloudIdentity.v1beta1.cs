@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/identity/'>Cloud Identity API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200322 (1907)
+ *      <tr><th>API Rev<td>20200401 (1917)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/identity/'>
  *              https://cloud.google.com/identity/</a>
@@ -1526,6 +1526,283 @@ namespace Google.Apis.CloudIdentity.v1beta1
 namespace Google.Apis.CloudIdentity.v1beta1.Data
 {    
 
+    /// <summary>Resource representing the Android specific attributes of a Device.</summary>
+    public class AndroidAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Baseband version of Android device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basebandVersion")]
+        public virtual string BasebandVersion { get; set; } 
+
+        /// <summary>Device bootloader version. Example: 0.6.7.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootloaderVersion")]
+        public virtual string BootloaderVersion { get; set; } 
+
+        /// <summary>Build number of Android device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildNumber")]
+        public virtual string BuildNumber { get; set; } 
+
+        /// <summary>Whether developer options is enabled on device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledDeveloperOptions")]
+        public virtual System.Nullable<bool> EnabledDeveloperOptions { get; set; } 
+
+        /// <summary>Whether applications from unknown sources can be installed on device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledUnknownSources")]
+        public virtual System.Nullable<bool> EnabledUnknownSources { get; set; } 
+
+        /// <summary>Whether adb (USB debugging) is enabled on device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledUsbDebugging")]
+        public virtual System.Nullable<bool> EnabledUsbDebugging { get; set; } 
+
+        /// <summary>Device encryption state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionState")]
+        public virtual string EncryptionState { get; set; } 
+
+        /// <summary>Device hardware. Example: Sprout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hardware")]
+        public virtual string Hardware { get; set; } 
+
+        /// <summary>Kernel version of Android device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kernelVersion")]
+        public virtual string KernelVersion { get; set; } 
+
+        /// <summary>Domain name for Google accounts on device. Type for other accounts on device. Will only be
+        /// populated if |ownership_privilege| is |PROFILE_OWNER| or |DEVICE_OWNER|. Does not include the account signed
+        /// in to the device policy app if that account's domain has only one account. Examples: "com.example",
+        /// "xyz.com".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherAccounts")]
+        public virtual System.Collections.Generic.IList<string> OtherAccounts { get; set; } 
+
+        /// <summary>Whether this account is on an owner/primary profile. For phones, only true for owner profiles.
+        /// Android 4+ devices can have secondary or restricted user profiles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerProfileAccount")]
+        public virtual System.Nullable<bool> OwnerProfileAccount { get; set; } 
+
+        /// <summary>Ownership privileges on device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownershipPrivilege")]
+        public virtual string OwnershipPrivilege { get; set; } 
+
+        /// <summary>OS security patch update time on device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityPatchTime")]
+        public virtual object SecurityPatchTime { get; set; } 
+
+        /// <summary>Whether device supports Android work profiles. If false, this service will not block access to corp
+        /// data even if an administrator turns on the "Enforce Work Profile" policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportsWorkProfile")]
+        public virtual System.Nullable<bool> SupportsWorkProfile { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for approving the device to access user data.</summary>
+    public class ApproveDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resultant DeviceUser object for the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
+        public virtual DeviceUser DeviceUser { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for blocking the device from accessing user data.</summary>
+    public class BlockDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resultant DeviceUser object for the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
+        public virtual DeviceUser DeviceUser { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for cancelling an unfinished device wipe.</summary>
+    public class CancelWipeDeviceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resultant Device object for the action. Note that asset tags will not be returned in the device
+        /// object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual Device Device { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for cancelling an unfinished user account wipe.</summary>
+    public class CancelWipeDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resultant DeviceUser object for the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
+        public virtual DeviceUser DeviceUser { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a Device known to Google Cloud, independent of the device ownership, type, and whether it is
+    /// assigned or in use by a user.</summary>
+    public class Device : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Attributes specific to Android devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidSpecificAttributes")]
+        public virtual AndroidAttributes AndroidSpecificAttributes { get; set; } 
+
+        /// <summary>Asset tag of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetTag")]
+        public virtual string AssetTag { get; set; } 
+
+        /// <summary>Output only. Device brand. Example: Samsung.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brand")]
+        public virtual string Brand { get; set; } 
+
+        /// <summary>Output only. Represents whether the Device is compromised.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compromisedState")]
+        public virtual string CompromisedState { get; set; } 
+
+        /// <summary>Output only. When the Company-Owned device was imported. This field is empty for BYOD
+        /// devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Output only. Type of device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
+        public virtual string DeviceType { get; set; } 
+
+        /// <summary>Output only. IMEI number of device if GSM device; empty otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imei")]
+        public virtual string Imei { get; set; } 
+
+        /// <summary>Most recent time when device synced with this service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastSyncTime")]
+        public virtual object LastSyncTime { get; set; } 
+
+        /// <summary>Output only. Management state of the device</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementState")]
+        public virtual string ManagementState { get; set; } 
+
+        /// <summary>Output only. Device manufacturer. Example: Motorola.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
+        public virtual string Manufacturer { get; set; } 
+
+        /// <summary>Output only. MEID number of device if CDMA device; empty otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meid")]
+        public virtual string Meid { get; set; } 
+
+        /// <summary>Output only. Model name of device. Example: Pixel 3.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; } 
+
+        /// <summary>Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
+        /// format: `devices/{device_id}`, where device_id is the unique id assigned to the Device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Output only. Mobile or network operator of device, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkOperator")]
+        public virtual string NetworkOperator { get; set; } 
+
+        /// <summary>Output only. OS version of the device. Example: Android 8.1.0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
+        public virtual string OsVersion { get; set; } 
+
+        /// <summary>Whether the device is owned by the company or an individual</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerType")]
+        public virtual string OwnerType { get; set; } 
+
+        /// <summary>Output only. OS release version. Example: 6.0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseVersion")]
+        public virtual string ReleaseVersion { get; set; } 
+
+        /// <summary>Serial Number of device. Example: HT82V1A01076.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual string SerialNumber { get; set; } 
+
+        /// <summary>WiFi MAC addresses of device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wifiMacAddresses")]
+        public virtual System.Collections.Generic.IList<string> WifiMacAddresses { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A DeviceUser is a resource representing a user's use of a Device</summary>
+    public class DeviceUser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Compromised State of the DeviceUser object</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compromisedState")]
+        public virtual string CompromisedState { get; set; } 
+
+        /// <summary>Output only. Most recent time when user registered with this service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstSyncTime")]
+        public virtual object FirstSyncTime { get; set; } 
+
+        /// <summary>Output only. Default locale used on device, in IETF BCP-47 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Output only. Last time when user synced with policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastSyncTime")]
+        public virtual object LastSyncTime { get; set; } 
+
+        /// <summary>Output only. Management state of the user on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementState")]
+        public virtual string ManagementState { get; set; } 
+
+        /// <summary>Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the DeviceUser
+        /// in format: `devices/{device_id}/deviceUsers/{user_id}`, where user_id is the ID of the user associated with
+        /// the user session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Password state of the DeviceUser object</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordState")]
+        public virtual string PasswordState { get; set; } 
+
+        /// <summary>Output only. User agent on the device for this specific user</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
+        public virtual string UserAgent { get; set; } 
+
+        /// <summary>Email address of the user registered on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
+        public virtual string UserEmail { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An EndpointApp represents an app that is installed on a device</summary>
+    public class EndpointApp : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Name of the app displayed to the user</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        /// EndpointApp in format: `devices/{device}/deviceUsers/{device_user}/endpointApps/{endpoint_app}`, where
+        /// client_app_id is the ID of the app associated with the Device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Output only. Full package name of the installed app</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; } 
+
+        /// <summary>Output only. Names of all permissions granted to the installed app</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+
+        /// <summary>Output only. Version code of the installed app</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
+        public virtual System.Nullable<int> VersionCode { get; set; } 
+
+        /// <summary>Output only. Version name of the installed app</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionName")]
+        public virtual string VersionName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A unique identifier for an entity in the Cloud Identity Groups API.
     ///
     /// An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The
@@ -1634,6 +1911,51 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message that is returned in LRO result of ListDeviceUsers Operation.</summary>
+    public class ListDeviceUsersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Devices meeting the list restrictions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceUsers")]
+        public virtual System.Collections.Generic.IList<DeviceUser> DeviceUsers { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results. Empty if there are no more results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message that is returned in LRO result of ListDevices Operation.</summary>
+    public class ListDevicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Devices meeting the list restrictions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("devices")]
+        public virtual System.Collections.Generic.IList<Device> Devices { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results. Empty if there are no more results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for listing all apps on the device.</summary>
+    public class ListEndpointAppsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of matching EndpointApps found as a result of the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointApps")]
+        public virtual System.Collections.Generic.IList<EndpointApp> EndpointApps { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results. Empty if there are no more results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response message for GroupsService.ListGroups.</summary>
     public class ListGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1687,6 +2009,29 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response containing resource names of the DeviceUsers associated with the caller's
+    /// credentials.</summary>
+    public class LookupSelfDeviceUsersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The obfuscated customer Id that may be passed back to other Devices API methods such as List, Get,
+        /// etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; } 
+
+        /// <summary>[Resource names](https://cloud.google.com/apis/design/resource_names) of the DeviceUsers in the
+        /// format: `devices/{device_id}/deviceUsers/{user_resource_id}`, where device_id is the unique ID assigned to a
+        /// Device and user_resource_id is the unique user ID</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results. Empty if there are no more results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1908,6 +2253,29 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// May only contain a `MembershipRole` with `name` `MEMBER`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipRole")]
         public virtual MembershipRole MembershipRole { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for wiping all data on the device.</summary>
+    public class WipeDeviceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resultant Device object for the action. Note that asset tags will not be returned in the device
+        /// object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual Device Device { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for wiping the user's account from the device.</summary>
+    public class WipeDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resultant DeviceUser object for the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
+        public virtual DeviceUser DeviceUser { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

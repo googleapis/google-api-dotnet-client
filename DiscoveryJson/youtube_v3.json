@@ -30,7 +30,7 @@
  "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.", 
  "discoveryVersion": "v1", 
  "documentationLink": "https://developers.google.com/youtube/v3", 
- "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/Qii0eKoU4qHDl43DKZfnTK9LX-g\"", 
+ "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/tqfQK86tpQhDuSHAIN5-6njGb8Q\"", 
  "icons": {
   "x16": "https://www.google.com/images/icons/product/youtube-16.png", 
   "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -2619,6 +2619,7 @@
        "type": "string"
       }, 
       "safeSearch": {
+       "default": "SAFE_SEARCH_MODERATE_FILTERING", 
        "description": "The safeSearch parameter indicates whether the search results should include restricted content as well as standard content.", 
        "enum": [
         "moderate", 
@@ -3591,7 +3592,7 @@
    }
   }
  }, 
- "revision": "20200312", 
+ "revision": "20200320", 
  "rootUrl": "https://www.googleapis.com/", 
  "schemas": {
   "AccessPolicy": {

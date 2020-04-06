@@ -617,34 +617,34 @@ namespace Google.Apis.Spanner.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>A filter expression that filters what operations are returned in the response.
+                    /// <summary>An expression that filters the list of returned backup operations.
                     ///
-                    /// The filter expression must specify the field name of an operation, a comparison operator, and
-                    /// the value that you want to use for filtering. The value must be a string, a number, or a
-                    /// boolean. The comparison operator must be <, >, <=, >=, !=, =, or :. Colon ‘:’ represents a HAS
-                    /// operator which is roughly synonymous with equality. Filter rules are case insensitive.
+                    /// A filter expression consists of a field name, a comparison operator, and a value for filtering.
+                    /// The value must be a string, a number, or a boolean. The comparison operator must be one of: `<`,
+                    /// `>`, `<=`, `>=`, `!=`, `=`, or `:`. Colon `:` is the contains operator. Filter rules are not
+                    /// case sensitive.
                     ///
-                    /// The long-running operation fields eligible for filtering are: * `name` --> The name of the long-
-                    /// running operation * `done` --> False if the operation is in progress, else true. *
-                    /// `metadata.type_url` (using filter string `metadata.@type`) and fields in `metadata.value` (using
-                    /// filter string `metadata.`, where  is a field in metadata.value) are eligible for filtering. *
-                    /// `error` --> Error associated with the long-running operation. * `response.type_url` (using
-                    /// filter string `response.@type`) and fields in `response.value` (using filter string `response.`,
-                    /// where  is a field in response.value) are eligible for filtering.
+                    /// The following fields in the operation are eligible for filtering:
                     ///
-                    /// To filter on multiple expressions, provide each separate expression within parentheses. By
-                    /// default, each expression is an AND expression. However, you can include AND, OR, and NOT
-                    /// expressions explicitly.
+                    /// * `name` - The name of the long-running operation * `done` - False if the operation is in
+                    /// progress, else true. * `metadata.@type` - the type of metadata. For example, the type string for
+                    /// CreateBackupMetadata is
+                    /// `type.googleapis.com/google.spanner.admin.database.v1.CreateBackupMetadata`. * `metadata.` - any
+                    /// field in metadata.value. * `error` - Error associated with the long-running operation. *
+                    /// `response.@type` - the type of response. * `response.` - any field in response.value.
                     ///
-                    /// Some examples of using filters are:
+                    /// You can combine multiple expressions by enclosing each expression in parentheses. By default,
+                    /// expressions are combined with AND logic, but you can specify AND, OR, and NOT logic explicitly.
                     ///
-                    /// * `done:true` --> The operation is complete. * `metadata.database:prod` --> The database the
-                    /// backup was taken from has a name containing the string "prod". *
-                    /// `(metadata.@type:type.googleapis.com/google.spanner.admin.database.v1.CreateBackupMetadata) AND
-                    /// (metadata.name:howl) AND (metadata.progress.start_time < \"2018-03-28T14:50:00Z\") AND
-                    /// (error:*)` --> Return CreateBackup operations where the created backup name contains the string
-                    /// "howl", the progress.start_time of the backup operation is before 2018-03-28T14:50:00Z, and the
-                    /// operation returned an error.</summary>
+                    /// Here are a few examples:
+                    ///
+                    /// * `done:true` - The operation is complete. * `metadata.database:prod` - The database the backup
+                    /// was taken from has a name containing the string "prod". *
+                    /// `(metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.CreateBackupMetadata) AND`
+                    /// `(metadata.name:howl) AND` `(metadata.progress.start_time < \"2018-03-28T14:50:00Z\") AND`
+                    /// `(error:*)` - Returns operations where: * The operation's metadata type is CreateBackupMetadata.
+                    /// * The backup name contains the string "howl". * The operation started before
+                    /// 2018-03-28T14:50:00Z. * The operation resulted in an error.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -1413,29 +1413,30 @@ namespace Google.Apis.Spanner.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>A filter expression that filters backups listed in the response. The expression must
-                    /// specify the field name, a comparison operator, and the value that you want to use for filtering.
-                    /// The value must be a string, a number, or a boolean. The comparison operator must be <, >, <=,
-                    /// >=, !=, =, or :. Colon ‘:’ represents a HAS operator which is roughly synonymous with equality.
-                    /// Filter rules are case insensitive.
+                    /// <summary>An expression that filters the list of returned backups.
                     ///
-                    /// The fields eligible for filtering are: * `name` * `database` * `state` * `create_time` (and
-                    /// values are of the format YYYY-MM-DDTHH:MM:SSZ) * `expire_time` (and values are of the format
-                    /// YYYY-MM-DDTHH:MM:SSZ) * `size_bytes`
+                    /// A filter expression consists of a field name, a comparison operator, and a value for filtering.
+                    /// The value must be a string, a number, or a boolean. The comparison operator must be one of: `<`,
+                    /// `>`, `<=`, `>=`, `!=`, `=`, or `:`. Colon `:` is the contains operator. Filter rules are not
+                    /// case sensitive.
                     ///
-                    /// To filter on multiple expressions, provide each separate expression within parentheses. By
-                    /// default, each expression is an AND expression. However, you can include AND, OR, and NOT
-                    /// expressions explicitly.
+                    /// The following fields in the Backup are eligible for filtering:
                     ///
-                    /// Some examples of using filters are:
+                    /// * `name` * `database` * `state` * `create_time` (and values are of the format YYYY-MM-
+                    /// DDTHH:MM:SSZ) * `expire_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) * `size_bytes`
                     ///
-                    /// * `name:Howl` --> The backup's name contains the string "howl". * `database:prod` --> The
-                    /// database's name contains the string "prod". * `state:CREATING` --> The backup is pending
-                    /// creation. * `state:READY` --> The backup is fully created and ready for use. * `(name:howl) AND
-                    /// (create_time < \"2018-03-28T14:50:00Z\")` --> The backup name contains the string "howl" and
-                    /// `create_time` of the backup is before 2018-03-28T14:50:00Z. * `expire_time <
-                    /// \"2018-03-28T14:50:00Z\"` --> The backup `expire_time` is before 2018-03-28T14:50:00Z. *
-                    /// `size_bytes > 10000000000` --> The backup's size is greater than 10GB</summary>
+                    /// You can combine multiple expressions by enclosing each expression in parentheses. By default,
+                    /// expressions are combined with AND logic, but you can specify AND, OR, and NOT logic explicitly.
+                    ///
+                    /// Here are a few examples:
+                    ///
+                    /// * `name:Howl` - The backup's name contains the string "howl". * `database:prod` - The database's
+                    /// name contains the string "prod". * `state:CREATING` - The backup is pending creation. *
+                    /// `state:READY` - The backup is fully created and ready for use. * `(name:howl) AND (create_time <
+                    /// \"2018-03-28T14:50:00Z\")` - The backup name contains the string "howl" and `create_time` of the
+                    /// backup is before 2018-03-28T14:50:00Z. * `expire_time < \"2018-03-28T14:50:00Z\"` - The backup
+                    /// `expire_time` is before 2018-03-28T14:50:00Z. * `size_bytes > 10000000000` - The backup's size
+                    /// is greater than 10GB</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -1515,8 +1516,7 @@ namespace Google.Apis.Spanner.v1
 
                 /// <summary>Updates a pending or completed Backup.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output only for the CreateBackup][DatabaseAdmin.CreateBackup] operation. Required for the
-                /// UpdateBackup operation.
+                /// <param name="name">Output only for the CreateBackup operation. Required for the UpdateBackup operation.
                 ///
                 /// A globally unique identifier for the backup which cannot be changed. Values are of the form
                 /// `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in
@@ -1542,8 +1542,7 @@ namespace Google.Apis.Spanner.v1
                     }
 
 
-                    /// <summary>Output only for the CreateBackup][DatabaseAdmin.CreateBackup] operation. Required for
-                    /// the UpdateBackup operation.
+                    /// <summary>Output only for the CreateBackup operation. Required for the UpdateBackup operation.
                     ///
                     /// A globally unique identifier for the backup which cannot be changed. Values are of the form
                     /// `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and
@@ -1833,34 +1832,36 @@ namespace Google.Apis.Spanner.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>A filter expression that filters what operations are returned in the response.
+                    /// <summary>An expression that filters the list of returned operations.
                     ///
-                    /// The filter expression must specify the field name, a comparison operator, and the value that you
-                    /// want to use for filtering. The value must be a string, a number, or a boolean. The comparison
-                    /// operator must be <, >, <=, >=, !=, =, or :. Colon ‘:’ represents a HAS operator which is roughly
-                    /// synonymous with equality. Filter rules are case insensitive.
+                    /// A filter expression consists of a field name, a comparison operator, and a value for filtering.
+                    /// The value must be a string, a number, or a boolean. The comparison operator must be one of: `<`,
+                    /// `>`, `<=`, `>=`, `!=`, `=`, or `:`. Colon `:` is the contains operator. Filter rules are not
+                    /// case sensitive.
                     ///
-                    /// The long-running operation fields eligible for filtering are: * `name` --> The name of the long-
-                    /// running operation * `done` --> False if the operation is in progress, else true. *
-                    /// `metadata.type_url` (using filter string `metadata.@type`) and fields in `metadata.value` (using
-                    /// filter string `metadata.`, where  is a field in metadata.value) are eligible for filtering. *
-                    /// `error` --> Error associated with the long-running operation. * `response.type_url` (using
-                    /// filter string `response.@type`) and fields in `response.value` (using filter string `response.`,
-                    /// where  is a field in response.value) are eligible for filtering.
+                    /// The following fields in the Operation are eligible for filtering:
                     ///
-                    /// To filter on multiple expressions, provide each separate expression within parentheses. By
-                    /// default, each expression is an AND expression. However, you can include AND, OR, and NOT
-                    /// expressions explicitly.
+                    /// * `name` - The name of the long-running operation * `done` - False if the operation is in
+                    /// progress, else true. * `metadata.@type` - the type of metadata. For example, the type string for
+                    /// RestoreDatabaseMetadata is
+                    /// `type.googleapis.com/google.spanner.admin.database.v1.RestoreDatabaseMetadata`. * `metadata.` -
+                    /// any field in metadata.value. * `error` - Error associated with the long-running operation. *
+                    /// `response.@type` - the type of response. * `response.` - any field in response.value.
                     ///
-                    /// Some examples of using filters are:
+                    /// You can combine multiple expressions by enclosing each expression in parentheses. By default,
+                    /// expressions are combined with AND logic. However, you can specify AND, OR, and NOT logic
+                    /// explicitly.
                     ///
-                    /// * `done:true` --> The operation is complete. *
-                    /// `(metadata.@type:type.googleapis.com/google.spanner.admin.database.v1.RestoreDatabaseMetadata)
-                    /// AND (metadata.source_type:BACKUP) AND (metadata.backup_info.backup:backup_howl) AND
-                    /// (metadata.name:restored_howl) AND (metadata.progress.start_time < \"2018-03-28T14:50:00Z\") AND
-                    /// (error:*)` --> Return RestoreDatabase operations from backups whose name contains "backup_howl",
-                    /// where the created database name contains the string "restored_howl", the start_time of the
-                    /// restore operation is before 2018-03-28T14:50:00Z, and the operation returned an error.</summary>
+                    /// Here are a few examples:
+                    ///
+                    /// * `done:true` - The operation is complete. *
+                    /// `(metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.RestoreDatabaseMetadata)
+                    /// AND` `(metadata.source_type:BACKUP) AND` `(metadata.backup_info.backup:backup_howl) AND`
+                    /// `(metadata.name:restored_howl) AND` `(metadata.progress.start_time < \"2018-03-28T14:50:00Z\")
+                    /// AND` `(error:*)` - Return operations where: * The operation's metadata type is
+                    /// RestoreDatabaseMetadata. * The database is restored from a backup. * The backup name contains
+                    /// "backup_howl". * The restored database's name contains "restored_howl". * The operation started
+                    /// before 2018-03-28T14:50:00Z. * The operation resulted in an error.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -3975,7 +3976,7 @@ namespace Google.Apis.Spanner.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The name of the instance in which to create the restored database. This instance must
                 /// be in the same project and have the same instance configuration as the instance containing the source backup. Values
-                /// are of the form `projects//instances/.</param>
+                /// are of the form `projects//instances/`.</param>
                 public virtual RestoreRequest Restore(Google.Apis.Spanner.v1.Data.RestoreDatabaseRequest body, string parent)
                 {
                     return new RestoreRequest(service, body, parent);
@@ -4004,7 +4005,7 @@ namespace Google.Apis.Spanner.v1
 
                     /// <summary>Required. The name of the instance in which to create the restored database. This
                     /// instance must be in the same project and have the same instance configuration as the instance
-                    /// containing the source backup. Values are of the form `projects//instances/.</summary>
+                    /// containing the source backup. Values are of the form `projects//instances/`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -5396,8 +5397,7 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual object ExpireTime { get; set; } 
 
-        /// <summary>Output only for the CreateBackup][DatabaseAdmin.CreateBackup] operation. Required for the
-        /// UpdateBackup operation.
+        /// <summary>Output only for the CreateBackup operation. Required for the UpdateBackup operation.
         ///
         /// A globally unique identifier for the backup which cannot be changed. Values are of the form
         /// `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60
@@ -7000,7 +7000,7 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>If exists, the name of the long-running operation that will be used to track the post-restore
         /// optimization process to optimize the performance of the restored database, and remove the dependency on the
-        /// restore source. The name is of the form `projects//instances//databases//operations/ where the  is the name
+        /// restore source. The name is of the form `projects//instances//databases//operations/` where the  is the name
         /// of database being created and restored to. The metadata type of the  long-running operation is
         /// OptimizeRestoredDatabaseMetadata. This long-running operation will be automatically created by the system
         /// after the RestoreDatabase long-running operation completes successfully. This operation will not be created

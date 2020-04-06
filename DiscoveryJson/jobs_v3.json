@@ -633,7 +633,7 @@
    }
   }
  }, 
- "revision": "20200313", 
+ "revision": "20200402", 
  "rootUrl": "https://jobs.googleapis.com/", 
  "schemas": {
   "ApplicationInfo": {

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200318 (1903)
+ *      <tr><th>API Rev<td>20200324 (1909)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -2113,7 +2113,7 @@ namespace Google.Apis.Container.v1
 
                 /// <summary>Sets the locations for a specific cluster. Deprecated. Use
                 /// [projects.locations.clusters.update](/kubernetes-
-                /// engine/docs/reference/rest/v1/projects.locations.clusters.update) instead.</summary>
+                /// engine/docs/reference/rest/v1/projects.locations.clusters/update) instead.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name (project, location, cluster) of the cluster to set locations. Specified in the format
                 /// 'projects/locations/clusters'.</param>
@@ -2124,7 +2124,7 @@ namespace Google.Apis.Container.v1
 
                 /// <summary>Sets the locations for a specific cluster. Deprecated. Use
                 /// [projects.locations.clusters.update](/kubernetes-
-                /// engine/docs/reference/rest/v1/projects.locations.clusters.update) instead.</summary>
+                /// engine/docs/reference/rest/v1/projects.locations.clusters/update) instead.</summary>
                 public class SetLocationsRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new SetLocations request.</summary>
@@ -5158,7 +5158,7 @@ namespace Google.Apis.Container.v1
 
                 /// <summary>Sets the locations for a specific cluster. Deprecated. Use
                 /// [projects.locations.clusters.update](/kubernetes-
-                /// engine/docs/reference/rest/v1/projects.locations.clusters.update) instead.</summary>
+                /// engine/docs/reference/rest/v1/projects.locations.clusters/update) instead.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
@@ -5175,7 +5175,7 @@ namespace Google.Apis.Container.v1
 
                 /// <summary>Sets the locations for a specific cluster. Deprecated. Use
                 /// [projects.locations.clusters.update](/kubernetes-
-                /// engine/docs/reference/rest/v1/projects.locations.clusters.update) instead.</summary>
+                /// engine/docs/reference/rest/v1/projects.locations.clusters/update) instead.</summary>
                 public class LocationsRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Locations request.</summary>

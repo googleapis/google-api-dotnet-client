@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>AI Platform Training & Prediction API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200313 (1898)
+ *      <tr><th>API Rev<td>20200328 (1913)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -4697,11 +4697,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("onlinePredictionLogging")]
         public virtual System.Nullable<bool> OnlinePredictionLogging { get; set; } 
 
-        /// <summary>Optional. The list of regions where the model is going to be deployed. Currently only one region
-        /// per model is supported. Defaults to 'us-central1' if nothing is set. See the available regions for AI
-        /// Platform services. Note: *   No matter where a model is deployed, it can always be accessed by users from
-        /// anywhere, both for online and batch prediction. *   The region for a batch prediction job is set by the
-        /// region field when submitting the batch prediction job and does not take its value from this field.</summary>
+        /// <summary>Optional. The list of regions where the model is going to be deployed. Only one region per model is
+        /// supported. Defaults to 'us-central1' if nothing is set. See the available regions for AI Platform services.
+        /// Note: *   No matter where a model is deployed, it can always be accessed by users from anywhere, both for
+        /// online and batch prediction. *   The region for a batch prediction job is set by the region field when
+        /// submitting the batch prediction job and does not take its value from this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regions")]
         public virtual System.Collections.Generic.IList<string> Regions { get; set; } 
 
@@ -4904,13 +4904,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     public class GoogleCloudMlV1ReplicaConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Represents the type and number of accelerators used by the replica. [Learn about restrictions on
-        /// accelerator configurations for training.](/ml-engine/docs/tensorflow/using-gpus#compute-engine-machine-
+        /// accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-
         /// types-with-gpu)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorConfig")]
         public virtual GoogleCloudMlV1AcceleratorConfig AcceleratorConfig { get; set; } 
 
         /// <summary>The Docker image to run on the replica. This image must be in Container Registry. Learn more about
-        /// [configuring custom containers](/ml-engine/docs/distributed-training-containers).</summary>
+        /// [configuring custom containers](/ai-platform/training/docs/distributed-training-containers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
         public virtual string ImageUri { get; set; } 
 
@@ -5284,7 +5284,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     /// ](/ai-platform/training/docs/training-jobs).</summary>
     public class GoogleCloudMlV1TrainingInput : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Command line arguments to pass to the program.</summary>
+        /// <summary>Optional. Arguments passed to the training. - If it is a python package training: It will be passed
+        /// as command line argument to the program. - If it is a custom container training, It will be passed as an
+        /// argument to the custom container image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; } 
 
@@ -5292,6 +5294,41 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// training job will be encrypted with the provided encryption key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
         public virtual GoogleCloudMlV1EncryptionConfig EncryptionConfig { get; set; } 
+
+        /// <summary>Optional. The configuration for evaluators.
+        ///
+        /// You should only set `evaluatorConfig.acceleratorConfig` if `evaluatorType` is set to a Compute Engine
+        /// machine type. [Learn about restrictions on accelerator configurations for training.](/ai-
+        /// platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
+        ///
+        /// Set `evaluatorConfig.imageUri` only if you build a custom image for your evaluator. If
+        /// `evaluatorConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri` . Learn
+        /// more about [configuring custom containers](/ai-platform/training/docs/distributed-training-
+        /// containers).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluatorConfig")]
+        public virtual GoogleCloudMlV1ReplicaConfig EvaluatorConfig { get; set; } 
+
+        /// <summary>Optional. The number of evaluator replicas to use for the training job. Each replica in the cluster
+        /// will be of the type specified in `evaluator_type`.
+        ///
+        /// This value can only be used when `scale_tier` is set to `CUSTOM`. If you set this value, you must also set
+        /// `evaluator_type`.
+        ///
+        /// The default value is zero.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluatorCount")]
+        public virtual System.Nullable<long> EvaluatorCount { get; set; } 
+
+        /// <summary>Optional. Specifies the type of virtual machine to use for your training job's evaluator nodes.
+        ///
+        /// The supported values are the same as those described in the entry for `masterType`.
+        ///
+        /// This value must be consistent with the category of machine type that `masterType` uses. In other words, both
+        /// must be Compute Engine machine types or both must be legacy machine types.
+        ///
+        /// This value must be present when `scaleTier` is set to `CUSTOM` and `evaluatorCount` is greater than
+        /// zero.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluatorType")]
+        public virtual string EvaluatorType { get; set; } 
 
         /// <summary>Optional. The set of Hyperparameters to tune.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hyperparameters")]
@@ -5306,11 +5343,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Optional. The configuration for your master worker.
         ///
         /// You should only set `masterConfig.acceleratorConfig` if `masterType` is set to a Compute Engine machine
-        /// type. Learn about [restrictions on accelerator configurations for training.](/ml-engine/docs/tensorflow
+        /// type. Learn about [restrictions on accelerator configurations for training.](/ai-platform/training/docs
         /// /using-gpus#compute-engine-machine-types-with-gpu)
         ///
         /// Set `masterConfig.imageUri` only if you build a custom image. Only one of `masterConfig.imageUri` and
-        /// `runtimeVersion` should be set. Learn more about [configuring custom containers](/ml-engine/docs
+        /// `runtimeVersion` should be set. Learn more about [configuring custom containers](/ai-platform/training/docs
         /// /distributed-training-containers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterConfig")]
         public virtual GoogleCloudMlV1ReplicaConfig MasterConfig { get; set; } 
@@ -5348,20 +5385,21 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
 
         /// <summary>Optional. The configuration for parameter servers.
         ///
-        /// You should only set `parameterServerConfig.acceleratorConfig` if `parameterServerConfigType` is set to a
-        /// Compute Engine machine type. [Learn about restrictions on accelerator configurations for training.](/ml-
-        /// engine/docs/tensorflow/using-gpus#compute-engine-machine-types-with-gpu)
+        /// You should only set `parameterServerConfig.acceleratorConfig` if `parameterServerType` is set to a Compute
+        /// Engine machine type. [Learn about restrictions on accelerator configurations for training.](/ai-
+        /// platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
         ///
         /// Set `parameterServerConfig.imageUri` only if you build a custom image for your parameter server. If
-        /// `parameterServerConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri`.
-        /// Learn more about [configuring custom containers](/ml-engine/docs/distributed-training-containers).</summary>
+        /// `parameterServerConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri` .
+        /// Learn more about [configuring custom containers](/ai-platform/training/docs/distributed-training-
+        /// containers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterServerConfig")]
         public virtual GoogleCloudMlV1ReplicaConfig ParameterServerConfig { get; set; } 
 
         /// <summary>Optional. The number of parameter server replicas to use for the training job. Each replica in the
         /// cluster will be of the type specified in `parameter_server_type`.
         ///
-        /// This value can only be used when `scale_tier` is set to `CUSTOM`.If you set this value, you must also set
+        /// This value can only be used when `scale_tier` is set to `CUSTOM`. If you set this value, you must also set
         /// `parameter_server_type`.
         ///
         /// The default value is zero.</summary>
@@ -5420,22 +5458,23 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
         public virtual GoogleCloudMlV1Scheduling Scheduling { get; set; } 
 
-        /// <summary>Optional. Use 'chief' instead of 'master' in TF_CONFIG when Custom Container is used and evaluator
-        /// is not specified.
+        /// <summary>Optional. Use `chief` instead of `master` in the `TF_CONFIG` environment variable when training
+        /// with a custom container. Defaults to `false`. [Learn more about this field.](/ai-platform/training/docs
+        /// /distributed-training-details#chief-versus-master)
         ///
-        /// Defaults to false.</summary>
+        /// This field has no effect for training jobs that don't use a custom container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useChiefInTfConfig")]
         public virtual System.Nullable<bool> UseChiefInTfConfig { get; set; } 
 
         /// <summary>Optional. The configuration for workers.
         ///
         /// You should only set `workerConfig.acceleratorConfig` if `workerType` is set to a Compute Engine machine
-        /// type. [Learn about restrictions on accelerator configurations for training.](/ml-engine/docs/tensorflow
+        /// type. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs
         /// /using-gpus#compute-engine-machine-types-with-gpu)
         ///
         /// Set `workerConfig.imageUri` only if you build a custom image for your worker. If `workerConfig.imageUri` has
-        /// not been set, AI Platform uses the value of `masterConfig.imageUri`. Learn more about [configuring custom
-        /// containers](/ml-engine/docs/distributed-training-containers).</summary>
+        /// not been set, AI Platform uses the value of `masterConfig.imageUri` . Learn more about [configuring custom
+        /// containers](/ai-platform/training/docs/distributed-training-containers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
         public virtual GoogleCloudMlV1ReplicaConfig WorkerConfig { get; set; } 
 

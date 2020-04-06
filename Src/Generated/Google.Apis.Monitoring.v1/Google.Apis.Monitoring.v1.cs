@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Cloud Monitoring API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200325 (1910)
+ *      <tr><th>API Rev<td>20200329 (1914)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -780,8 +780,8 @@ namespace Google.Apis.Monitoring.v1.Data
     /// Alignment and reduction transforms this mass of data into a more manageable and representative collection of
     /// data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can
     /// be more easily graphed and comprehended, and the individual time series data is still available for later
-    /// drilldown. For more details, see Aggregating Time Series
-    /// (https://cloud.google.com/monitoring/api/v3/metrics#aggregating_time_series).</summary>
+    /// drilldown. For more details, see Filtering and aggregation
+    /// (https://cloud.google.com/monitoring/api/v3/aggregation).</summary>
     public class Aggregation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The alignment_period specifies a time interval, in seconds, that is used to divide the data in all
@@ -1344,6 +1344,10 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>Parameters to fetch a ratio between two time series filters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesFilterRatio")]
         public virtual TimeSeriesFilterRatio TimeSeriesFilterRatio { get; set; } 
+
+        /// <summary>A query used to fetch time series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesQueryLanguage")]
+        public virtual string TimeSeriesQueryLanguage { get; set; } 
 
         /// <summary>The unit of data contained in fetched time series. If non-empty, this unit will override any unit
         /// that accompanies fetched data. The format is the same as the unit

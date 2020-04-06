@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200302 (1887)
+ *      <tr><th>API Rev<td>20200311 (1896)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -948,20 +948,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -974,9 +974,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -986,16 +986,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -1204,27 +1204,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -1234,16 +1234,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -1371,20 +1371,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -1397,9 +1397,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -1409,16 +1409,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -1848,27 +1848,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -1878,16 +1878,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -2015,20 +2015,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -2041,9 +2041,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -2053,16 +2053,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -2492,27 +2492,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -2522,16 +2522,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -3389,27 +3389,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -3419,16 +3419,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -3871,20 +3871,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -3897,9 +3897,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -3909,16 +3909,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -4496,27 +4496,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -4526,16 +4526,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -4983,20 +4983,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -5009,9 +5009,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -5021,16 +5021,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -5241,27 +5241,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -5271,16 +5271,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -5531,20 +5531,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -5557,9 +5557,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -5569,16 +5569,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -6258,27 +6258,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -6288,16 +6288,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -7256,27 +7256,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -7286,16 +7286,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -7848,27 +7848,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -7878,16 +7878,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -8224,20 +8224,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -8250,9 +8250,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -8262,16 +8262,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -8705,27 +8705,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -8735,16 +8735,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -9390,27 +9390,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -9420,16 +9420,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -9816,27 +9816,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -9846,16 +9846,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -10676,27 +10676,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -10706,16 +10706,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -10826,27 +10826,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -10856,16 +10856,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -10993,20 +10993,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -11019,9 +11019,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -11031,16 +11031,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -11202,7 +11202,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the specified Operations resource. Gets a list of operations by making a list()
+        /// <summary>Retrieves the specified Operations resource. Gets a list of operations by making a `list()`
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="operation">Name of the Operations
@@ -11212,7 +11212,7 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, operation);
         }
 
-        /// <summary>Retrieves the specified Operations resource. Gets a list of operations by making a list()
+        /// <summary>Retrieves the specified Operations resource. Gets a list of operations by making a `list()`
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
@@ -11305,27 +11305,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -11335,16 +11335,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -11421,15 +11421,15 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Waits for the specified Operation resource to return as DONE or for the request to approach the 2
-        /// minute deadline, and retrieves the specified Operation resource. This method differs from the GET method in
-        /// that it waits for no more than the default deadline (2 minutes) and then returns the current state of the
-        /// operation, which might be DONE or still in progress.
+        /// <summary>Waits for the specified Operation resource to return as `DONE` or for the request to approach the 2
+        /// minute deadline, and retrieves the specified Operation resource. This method differs from the `GET` method
+        /// in that it waits for no more than the default deadline (2 minutes) and then returns the current state of the
+        /// operation, which might be `DONE` or still in progress.
         ///
         /// This method is called on a best-effort basis. Specifically: - In uncommon cases, when the server is
         /// overloaded, the request might return before the default deadline is reached, or might return after zero
         /// seconds. - If the default deadline is reached, there is no guarantee that the operation is actually done
-        /// when the method returns. Be prepared to retry if the operation is not DONE.</summary>
+        /// when the method returns. Be prepared to retry if the operation is not `DONE`.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="operation">Name of the Operations
         /// resource to return.</param>
@@ -11438,15 +11438,15 @@ namespace Google.Apis.Compute.v1
             return new WaitRequest(service, project, operation);
         }
 
-        /// <summary>Waits for the specified Operation resource to return as DONE or for the request to approach the 2
-        /// minute deadline, and retrieves the specified Operation resource. This method differs from the GET method in
-        /// that it waits for no more than the default deadline (2 minutes) and then returns the current state of the
-        /// operation, which might be DONE or still in progress.
+        /// <summary>Waits for the specified Operation resource to return as `DONE` or for the request to approach the 2
+        /// minute deadline, and retrieves the specified Operation resource. This method differs from the `GET` method
+        /// in that it waits for no more than the default deadline (2 minutes) and then returns the current state of the
+        /// operation, which might be `DONE` or still in progress.
         ///
         /// This method is called on a best-effort basis. Specifically: - In uncommon cases, when the server is
         /// overloaded, the request might return before the default deadline is reached, or might return after zero
         /// seconds. - If the default deadline is reached, there is no guarantee that the operation is actually done
-        /// when the method returns. Be prepared to retry if the operation is not DONE.</summary>
+        /// when the method returns. Be prepared to retry if the operation is not `DONE`.</summary>
         public class WaitRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Wait request.</summary>
@@ -11557,20 +11557,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -11583,9 +11583,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -11595,16 +11595,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -11983,27 +11983,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -12013,16 +12013,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -12625,27 +12625,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -12655,16 +12655,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -13267,27 +13267,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -13297,16 +13297,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -14191,27 +14191,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -14221,16 +14221,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -14745,20 +14745,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -14771,9 +14771,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -14783,16 +14783,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -15613,27 +15613,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -15643,16 +15643,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -15782,27 +15782,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -15812,16 +15812,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -15961,27 +15961,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -15991,16 +15991,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -16946,20 +16946,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -16972,9 +16972,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -16984,16 +16984,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -17430,27 +17430,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -17460,16 +17460,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -17597,27 +17597,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -17627,16 +17627,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -18383,27 +18383,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -18413,16 +18413,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -18971,20 +18971,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -18997,9 +18997,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -19009,16 +19009,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -20309,27 +20309,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -20339,16 +20339,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -20476,27 +20476,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -20506,16 +20506,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -23624,20 +23624,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -23650,9 +23650,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -23662,16 +23662,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -24116,27 +24116,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -24146,16 +24146,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -24485,27 +24485,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -24515,16 +24515,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -24985,27 +24985,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -25015,16 +25015,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -25792,27 +25792,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -25822,16 +25822,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -26124,20 +26124,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -26150,9 +26150,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -26162,16 +26162,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -26382,27 +26382,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -26412,16 +26412,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -26549,20 +26549,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -26575,9 +26575,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -26587,16 +26587,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -27291,27 +27291,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -27321,16 +27321,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -27460,27 +27460,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -27490,16 +27490,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -28113,27 +28113,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -28143,16 +28143,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -28274,27 +28274,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -28304,16 +28304,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -29022,20 +29022,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -29048,9 +29048,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -29060,16 +29060,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -29733,27 +29733,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -29763,16 +29763,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -29897,27 +29897,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -29927,16 +29927,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -30513,20 +30513,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -30539,9 +30539,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -30551,16 +30551,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -31085,27 +31085,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -31115,16 +31115,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -31450,20 +31450,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -31476,9 +31476,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -31488,16 +31488,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -31708,27 +31708,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -31738,16 +31738,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -31875,20 +31875,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -31901,9 +31901,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -31913,16 +31913,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -32354,27 +32354,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -32384,16 +32384,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -33213,27 +33213,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -33243,16 +33243,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -33356,27 +33356,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -33386,16 +33386,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -34293,27 +34293,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -34323,16 +34323,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -35124,27 +35124,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -35154,16 +35154,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -35545,20 +35545,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -35571,9 +35571,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -35583,16 +35583,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -35909,27 +35909,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -35939,16 +35939,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -36176,27 +36176,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -36206,16 +36206,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -36923,27 +36923,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -36953,16 +36953,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -37873,27 +37873,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -37903,16 +37903,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -39127,27 +39127,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -39157,16 +39157,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -39296,27 +39296,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -39326,16 +39326,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -39471,27 +39471,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -39501,16 +39501,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -40408,27 +40408,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -40438,16 +40438,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -40578,27 +40578,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -40608,16 +40608,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -41071,27 +41071,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -41101,16 +41101,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -41196,15 +41196,15 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Waits for the specified Operation resource to return as DONE or for the request to approach the 2
-        /// minute deadline, and retrieves the specified Operation resource. This method differs from the GET method in
-        /// that it waits for no more than the default deadline (2 minutes) and then returns the current state of the
-        /// operation, which might be DONE or still in progress.
+        /// <summary>Waits for the specified Operation resource to return as `DONE` or for the request to approach the 2
+        /// minute deadline, and retrieves the specified Operation resource. This method differs from the `GET` method
+        /// in that it waits for no more than the default deadline (2 minutes) and then returns the current state of the
+        /// operation, which might be `DONE` or still in progress.
         ///
         /// This method is called on a best-effort basis. Specifically: - In uncommon cases, when the server is
         /// overloaded, the request might return before the default deadline is reached, or might return after zero
         /// seconds. - If the default deadline is reached, there is no guarantee that the operation is actually done
-        /// when the method returns. Be prepared to retry if the operation is not DONE.</summary>
+        /// when the method returns. Be prepared to retry if the operation is not `DONE`.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -41214,15 +41214,15 @@ namespace Google.Apis.Compute.v1
             return new WaitRequest(service, project, region, operation);
         }
 
-        /// <summary>Waits for the specified Operation resource to return as DONE or for the request to approach the 2
-        /// minute deadline, and retrieves the specified Operation resource. This method differs from the GET method in
-        /// that it waits for no more than the default deadline (2 minutes) and then returns the current state of the
-        /// operation, which might be DONE or still in progress.
+        /// <summary>Waits for the specified Operation resource to return as `DONE` or for the request to approach the 2
+        /// minute deadline, and retrieves the specified Operation resource. This method differs from the `GET` method
+        /// in that it waits for no more than the default deadline (2 minutes) and then returns the current state of the
+        /// operation, which might be `DONE` or still in progress.
         ///
         /// This method is called on a best-effort basis. Specifically: - In uncommon cases, when the server is
         /// overloaded, the request might return before the default deadline is reached, or might return after zero
         /// seconds. - If the default deadline is reached, there is no guarantee that the operation is actually done
-        /// when the method returns. Be prepared to retry if the operation is not DONE.</summary>
+        /// when the method returns. Be prepared to retry if the operation is not `DONE`.</summary>
         public class WaitRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Wait request.</summary>
@@ -41670,27 +41670,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -41700,16 +41700,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -42162,27 +42162,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -42192,16 +42192,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -42776,27 +42776,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -42806,16 +42806,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -43492,27 +43492,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -43522,16 +43522,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -44064,27 +44064,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -44094,16 +44094,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -44222,20 +44222,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -44248,9 +44248,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -44260,16 +44260,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -44792,27 +44792,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -44822,16 +44822,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -45280,20 +45280,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -45306,9 +45306,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -45318,16 +45318,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -45850,27 +45850,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -45880,16 +45880,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -46215,20 +46215,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -46241,9 +46241,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -46253,16 +46253,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -46593,27 +46593,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -46623,16 +46623,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -46958,27 +46958,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -46988,16 +46988,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -47740,27 +47740,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -47770,16 +47770,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -48335,27 +48335,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -48365,16 +48365,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -48398,6 +48398,147 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Gets the current list of preconfigured Web Application Firewall (WAF) expressions.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual ListPreconfiguredExpressionSetsRequest ListPreconfiguredExpressionSets(string project)
+        {
+            return new ListPreconfiguredExpressionSetsRequest(service, project);
+        }
+
+        /// <summary>Gets the current list of preconfigured Web Application Firewall (WAF) expressions.</summary>
+        public class ListPreconfiguredExpressionSetsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SecurityPoliciesListPreconfiguredExpressionSetsResponse>
+        {
+            /// <summary>Constructs a new ListPreconfiguredExpressionSets request.</summary>
+            public ListPreconfiguredExpressionSetsRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
+            ///
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
+            ///
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "listPreconfiguredExpressionSets"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/securityPolicies/listPreconfiguredExpressionSets"; }
+            }
+
+            /// <summary>Initializes ListPreconfiguredExpressionSets parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -49047,27 +49188,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -49077,16 +49218,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -49461,20 +49602,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -49487,9 +49628,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -49499,16 +49640,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -49887,27 +50028,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -49917,16 +50058,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -50315,27 +50456,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -50345,16 +50486,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -50456,27 +50597,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -50486,16 +50627,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -50721,20 +50862,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -50747,9 +50888,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -50759,16 +50900,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -51410,27 +51551,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -51440,16 +51581,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -51562,27 +51703,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -51592,16 +51733,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -51679,8 +51820,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Patches the specified subnetwork with the data included in the request. Only certain fields can up
-        /// updated with a patch request as indicated in the field descriptions. You must specify the current fingeprint
-        /// of the subnetwork resource being patched.</summary>
+        /// updated with a patch request as indicated in the field descriptions. You must specify the current
+        /// fingerprint of the subnetwork resource being patched.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -51692,8 +51833,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Patches the specified subnetwork with the data included in the request. Only certain fields can up
-        /// updated with a patch request as indicated in the field descriptions. You must specify the current fingeprint
-        /// of the subnetwork resource being patched.</summary>
+        /// updated with a patch request as indicated in the field descriptions. You must specify the current
+        /// fingerprint of the subnetwork resource being patched.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -52186,20 +52327,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -52212,9 +52353,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -52224,16 +52365,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -52612,27 +52753,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -52642,16 +52783,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -52878,20 +53019,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -52904,9 +53045,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -52916,16 +53057,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -53304,27 +53445,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -53334,16 +53475,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -53893,20 +54034,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -53919,9 +54060,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -53931,16 +54072,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -54372,27 +54513,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -54402,16 +54543,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -54783,20 +54924,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -54809,9 +54950,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -54821,16 +54962,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -55364,27 +55505,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -55394,16 +55535,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -56177,27 +56318,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -56207,16 +56348,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -57033,27 +57174,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -57063,16 +57204,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -57403,20 +57544,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -57429,9 +57570,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -57441,16 +57582,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -57882,27 +58023,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -57912,16 +58053,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -58051,20 +58192,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -58077,9 +58218,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -58089,16 +58230,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -58585,27 +58726,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -58615,16 +58756,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -59043,20 +59184,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -59069,9 +59210,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -59081,16 +59222,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -59613,27 +59754,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -59643,16 +59784,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -60002,20 +60143,20 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -60028,9 +60169,9 @@ namespace Google.Apis.Compute.v1
             public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -60040,16 +60181,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -60481,27 +60622,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -60511,16 +60652,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -60837,27 +60978,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -60867,16 +61008,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -60962,15 +61103,15 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Waits for the specified Operation resource to return as DONE or for the request to approach the 2
-        /// minute deadline, and retrieves the specified Operation resource. This method differs from the GET method in
-        /// that it waits for no more than the default deadline (2 minutes) and then returns the current state of the
-        /// operation, which might be DONE or still in progress.
+        /// <summary>Waits for the specified Operation resource to return as `DONE` or for the request to approach the 2
+        /// minute deadline, and retrieves the specified Operation resource. This method differs from the `GET` method
+        /// in that it waits for no more than the default deadline (2 minutes) and then returns the current state of the
+        /// operation, which might be `DONE` or still in progress.
         ///
         /// This method is called on a best-effort basis. Specifically: - In uncommon cases, when the server is
         /// overloaded, the request might return before the default deadline is reached, or might return after zero
         /// seconds. - If the default deadline is reached, there is no guarantee that the operation is actually done
-        /// when the method returns. Be prepared to retry if the operation is not DONE.</summary>
+        /// when the method returns. Be prepared to retry if the operation is not `DONE`.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
         /// request.</param>
@@ -60980,15 +61121,15 @@ namespace Google.Apis.Compute.v1
             return new WaitRequest(service, project, zone, operation);
         }
 
-        /// <summary>Waits for the specified Operation resource to return as DONE or for the request to approach the 2
-        /// minute deadline, and retrieves the specified Operation resource. This method differs from the GET method in
-        /// that it waits for no more than the default deadline (2 minutes) and then returns the current state of the
-        /// operation, which might be DONE or still in progress.
+        /// <summary>Waits for the specified Operation resource to return as `DONE` or for the request to approach the 2
+        /// minute deadline, and retrieves the specified Operation resource. This method differs from the `GET` method
+        /// in that it waits for no more than the default deadline (2 minutes) and then returns the current state of the
+        /// operation, which might be `DONE` or still in progress.
         ///
         /// This method is called on a best-effort basis. Specifically: - In uncommon cases, when the server is
         /// overloaded, the request might return before the default deadline is reached, or might return after zero
         /// seconds. - If the default deadline is reached, there is no guarantee that the operation is actually done
-        /// when the method returns. Be prepared to retry if the operation is not DONE.</summary>
+        /// when the method returns. Be prepared to retry if the operation is not `DONE`.</summary>
         public class WaitRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Wait request.</summary>
@@ -61189,27 +61330,27 @@ namespace Google.Apis.Compute.v1
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
             ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
-            /// instance by specifying name != example-instance.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`.
             ///
-            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
-            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
-            /// fields to filter based on resource labels.
+            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
+            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
+            /// nested fields to filter based on resource labels.
             ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
-            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true).</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
+            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
+            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
+            /// (Default: `500`)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -61219,16 +61360,16 @@ namespace Google.Apis.Compute.v1
             /// based on the resource name.
             ///
             /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
             /// operation is returned first.
             ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
+            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
+            /// list request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -62088,8 +62229,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The
         /// default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a
         /// persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance
-        /// characteristics of SCSI over NVMe, see Local SSD performance. TODO(b/131765817): Update documentation when
-        /// NVME is supported.</summary>
+        /// characteristics of SCSI over NVMe, see Local SSD performance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interface")]
         public virtual string Interface__ { get; set; } 
 
@@ -62141,9 +62281,9 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Specifies the disk name. If not specified, the default is to use the name of the instance. If the
-        /// disk with the instance name exists already in the given zone/region, a new name will be automatically
-        /// generated.</summary>
+        /// <summary>Specifies the disk name. If not specified, the default is to use the name of the instance. If a
+        /// disk with the same name already exists in the given region, the existing disk is attached to the new
+        /// instance and the new disk is not created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskName")]
         public virtual string DiskName { get; set; } 
 
@@ -64177,7 +64317,7 @@ namespace Google.Apis.Compute.v1.Data
     ///
     /// Google Compute Engine has two Disk resources:
     ///
-    /// * [Global](/compute/docs/reference/rest/{$api_version}/disks) *
+    /// * [Zonal](/compute/docs/reference/rest/{$api_version}/disks) *
     /// [Regional](/compute/docs/reference/rest/{$api_version}/regionDisks)
     ///
     /// Persistent disks are required for running your VM instances. Create both boot and non-boot (data) persistent
@@ -67790,6 +67930,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
         public virtual ReservationAffinity ReservationAffinity { get; set; } 
 
+        /// <summary>Resource policies applied to this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePolicies")]
+        public virtual System.Collections.Generic.IList<string> ResourcePolicies { get; set; } 
+
         /// <summary>Sets the scheduling options for this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
         public virtual Scheduling Scheduling { get; set; } 
@@ -68686,6 +68830,13 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] The list of instances in the managed instance group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedInstances")]
         public virtual System.Collections.Generic.IList<ManagedInstance> ManagedInstances { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -73046,8 +73197,9 @@ namespace Google.Apis.Compute.v1.Data
     /// You can use an operation resource to manage asynchronous API requests. For more information, read Handling API
     /// responses.
     ///
-    /// Operations can be global, regional or zonal. - For global operations, use the globalOperations resource. - For
-    /// regional operations, use the regionOperations resource. - For zonal operations, use the zoneOperations resource.
+    /// Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For
+    /// regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations`
+    /// resource.
     ///
     /// For more information, read  Global, Regional, and Zonal Resources. (== resource_for
     /// {$api_version}.globalOperations ==) (== resource_for {$api_version}.regionOperations ==) (== resource_for
@@ -73079,12 +73231,12 @@ namespace Google.Apis.Compute.v1.Data
         public virtual Operation.ErrorData Error { get; set; } 
 
         /// <summary>[Output Only] If the operation fails, this field contains the HTTP error message that was returned,
-        /// such as NOT FOUND.</summary>
+        /// such as `NOT FOUND`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpErrorMessage")]
         public virtual string HttpErrorMessage { get; set; } 
 
         /// <summary>[Output Only] If the operation fails, this field contains the HTTP error status code that was
-        /// returned. For example, a 404 means the resource was not found.</summary>
+        /// returned. For example, a `404` means the resource was not found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpErrorStatusCode")]
         public virtual System.Nullable<int> HttpErrorStatusCode { get; set; } 
 
@@ -73098,7 +73250,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
-        /// <summary>[Output Only] Type of the resource. Always compute#operation for Operation resources.</summary>
+        /// <summary>[Output Only] Type of the resource. Always `compute#operation` for Operation resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -73106,7 +73258,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>[Output Only] The type of operation, such as insert, update, or delete, and so on.</summary>
+        /// <summary>[Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
         public virtual string OperationType { get; set; } 
 
@@ -73130,8 +73282,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTime { get; set; } 
 
-        /// <summary>[Output Only] The status of the operation, which can be one of the following: PENDING, RUNNING, or
-        /// DONE.</summary>
+        /// <summary>[Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`,
+        /// or `DONE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -73149,7 +73301,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetLink")]
         public virtual string TargetLink { get; set; } 
 
-        /// <summary>[Output Only] User who requested the operation, for example: user@example.com.</summary>
+        /// <summary>[Output Only] User who requested the operation, for example: `user@example.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual string User { get; set; } 
 
@@ -73243,15 +73395,15 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,OperationsScopedList> Items { get; set; } 
 
-        /// <summary>[Output Only] Type of resource. Always compute#operationAggregatedList for aggregated lists of
+        /// <summary>[Output Only] Type of resource. Always `compute#operationAggregatedList` for aggregated lists of
         /// operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
         /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
-        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
-        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
-        /// paging through the results.</summary>
+        /// number of results is larger than `maxResults`, use the `nextPageToken` as a value for the query parameter
+        /// `pageToken` in the next list request. Subsequent list requests will have their own `nextPageToken` to
+        /// continue paging through the results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -73317,14 +73469,14 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Operation> Items { get; set; } 
 
-        /// <summary>[Output Only] Type of resource. Always compute#operations for Operations resource.</summary>
+        /// <summary>[Output Only] Type of resource. Always `compute#operations` for Operations resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
         /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
-        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
-        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
-        /// paging through the results.</summary>
+        /// number of results is larger than `maxResults`, use the `nextPageToken` as a value for the query parameter
+        /// `pageToken` in the next list request. Subsequent list requests will have their own `nextPageToken` to
+        /// continue paging through the results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -74089,6 +74241,16 @@ namespace Google.Apis.Compute.v1.Data
 
     }    
 
+    public class PreconfiguredWafSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of entities that are currently supported for WAF rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expressionSets")]
+        public virtual System.Collections.Generic.IList<WafExpressionSet> ExpressionSets { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a Project resource.
     ///
     /// A project is used to organize resources in a Google Cloud Platform environment. For more information, read about
@@ -74720,6 +74882,13 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>A list of managed instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedInstances")]
         public virtual System.Collections.Generic.IList<ManagedInstance> ManagedInstances { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -76224,13 +76393,14 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string IpRange { get; set; } 
 
         /// <summary>URI of the linked Interconnect attachment. It must be in the same region as the router. Each
-        /// interface can have one linked resource, which can be either be a VPN tunnel or an Interconnect
-        /// attachment.</summary>
+        /// interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual
+        /// machine instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedInterconnectAttachment")]
         public virtual string LinkedInterconnectAttachment { get; set; } 
 
         /// <summary>URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can
-        /// have one linked resource, which can be either a VPN tunnel or an Interconnect attachment.</summary>
+        /// have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine
+        /// instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedVpnTunnel")]
         public virtual string LinkedVpnTunnel { get; set; } 
 
@@ -76757,6 +76927,24 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Corresponds to the label values of Node resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SecurityPoliciesListPreconfiguredExpressionSetsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("preconfiguredExpressionSets")]
+        public virtual SecurityPoliciesWafConfig PreconfiguredExpressionSets { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SecurityPoliciesWafConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("wafRules")]
+        public virtual PreconfiguredWafSet WafRules { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -79552,7 +79740,7 @@ namespace Google.Apis.Compute.v1.Data
     ///
     /// A target TCP proxy is a component of a TCP Proxy load balancer. Global forwarding rules reference target TCP
     /// proxy, and the target proxy then references an external backend service. For more information, read TCP Proxy
-    /// Load Balancing Concepts. (== resource_for {$api_version}.targetTcpProxies ==)</summary>
+    /// Load Balancing overview. (== resource_for {$api_version}.targetTcpProxies ==)</summary>
     public class TargetTcpProxy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -81310,6 +81498,39 @@ namespace Google.Apis.Compute.v1.Data
 
             }
         }
+    }    
+
+    public class WafExpressionSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of alternate IDs. The format should be: - E.g. XSS-stable Generic suffix like "stable" is
+        /// particularly useful if a policy likes to avail newer set of expressions without having to change the policy.
+        /// A given alias name can't be used for more than one entity set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
+        public virtual System.Collections.Generic.IList<string> Aliases { get; set; } 
+
+        /// <summary>List of available expressions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expressions")]
+        public virtual System.Collections.Generic.IList<WafExpressionSetExpression> Expressions { get; set; } 
+
+        /// <summary>Google specified expression set ID. The format should be: - E.g. XSS-20170329</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class WafExpressionSetExpression : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Expression ID should uniquely identify the origin of the expression. E.g. owasp-
+        /// crs-v020901-id973337 identifies Owasp core rule set version 2.9.1 rule id 973337. The ID could be used to
+        /// determine the individual attack definition that has been detected. It could also be used to exclude it from
+        /// the policy in case of false positive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>In contrast to a single BackendService in  HttpRouteAction to which all matching traffic is directed

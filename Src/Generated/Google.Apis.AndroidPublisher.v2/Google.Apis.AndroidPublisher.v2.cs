@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200323 (1908)
+ *      <tr><th>API Rev<td>20200331 (1916)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -7522,7 +7522,7 @@ namespace Google.Apis.AndroidPublisher.v2.Data
 
         /// <summary>Grace period of the subscription, specified in ISO 8601 format. It will allow developers to give
         /// their subscribers a grace period when the payment for the new recurrence period is declined. Acceptable
-        /// values = "P3D" (three days) and "P7D" (seven days)</summary>
+        /// values = "P3D" (three days), "P7D" (seven days), "P14D" (fourteen days), and "P30D" (thirty days)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gracePeriod")]
         public virtual string GracePeriod { get; set; } 
 

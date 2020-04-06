@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/v3'>YouTube Data API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200312 (1897)
+ *      <tr><th>API Rev<td>20200320 (1905)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/v3'>
  *              https://developers.google.com/youtube/v3</a>
@@ -7995,6 +7995,7 @@ namespace Google.Apis.YouTube.v3
 
             /// <summary>The safeSearch parameter indicates whether the search results should include restricted content
             /// as well as standard content.</summary>
+            /// [default: SAFE_SEARCH_MODERATE_FILTERING]
             [Google.Apis.Util.RequestParameterAttribute("safeSearch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SafeSearchEnum> SafeSearch { get; set; }
 
@@ -8408,7 +8409,7 @@ namespace Google.Apis.YouTube.v3
                         Name = "safeSearch",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "SAFE_SEARCH_MODERATE_FILTERING",
                         Pattern = null,
                     });
                 RequestParameters.Add(

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/managed-microsoft-ad/'>Managed Service for Microsoft Active Directory API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20200219 (1875)
+ *      <tr><th>API Rev<td>20200326 (1911)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/managed-microsoft-ad/'>
  *              https://cloud.google.com/managed-microsoft-ad/</a>
@@ -2189,6 +2189,39 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
     }    
 
     /// <summary>Represents the metadata of the long-running operation.</summary>
+    public class GoogleCloudManagedidentitiesV1alpha1OpMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. API version used to start the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; } 
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>Output only. Identifies whether the user has requested cancellation of the operation. Operations
+        /// that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1,
+        /// corresponding to `Code.CANCELLED`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
+        public virtual System.Nullable<bool> RequestedCancellation { get; set; } 
+
+        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; } 
+
+        /// <summary>Output only. Name of the verb executed by the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
+        public virtual string Verb { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the metadata of the long-running operation.</summary>
     public class GoogleCloudManagedidentitiesV1beta1OpMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. API version used to start the operation.</summary>
@@ -2221,20 +2254,6 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Instance represents the interface for SLM services to actuate the state of control plane resources.
-    ///
-    /// Example Instance in JSON, where consumer-project=snapchat, producer-project=cloud-sql:
-    ///
-    /// ```json Instance: { "name": "projects/snapchat/locations/us-east1/instances/prod-instance", "create_time": {
-    /// "seconds": 1526406431, }, "labels": { "env": "prod", "foo": "bar" }, "state": READY, "software_versions": {
-    /// "software_update": "cloud-sql-09-28-2018", }, "maintenance_policy_names": { "UpdatePolicy":
-    /// "projects/snapchat/locations/us-east1/maintenancePolicies/prod-update-policy", } "tenant_project_id": "cloud-
-    /// sql-test-tenant", "producer_metadata": { "cloud-sql-tier": "basic", "cloud-sql-instance-size": "1G", },
-    /// "provisioned_resources": [ { "resource-type": "compute-instance", "resource-url":
-    /// "https://www.googleapis.com/compute/v1/projects/cloud-sql/zones/us-east1-b/instances/vm-1", } ],
-    /// "maintenance_schedules": { "csa_rollout": { "start_time": { "seconds": 1526406431, }, "end_time": { "seconds":
-    /// 1535406431, }, }, "ncsa_rollout": { "start_time": { "seconds": 1526406431, }, "end_time": { "seconds":
-    /// 1535406431, }, } }, "consumer_defined_name": "my-sql-instance1", } ```</summary>
     public class GoogleCloudSaasacceleratorManagementProvidersV1Instance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>consumer_defined_name is the name that is set by the consumer. On the other hand Name field
@@ -2278,13 +2297,6 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
         /// go/get-instance-metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisionedResources")]
         public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource> ProvisionedResources { get; set; } 
-
-        /// <summary>The map between RolloutType and the corresponding RolloutMetadata. This is only mutated by rollout
-        /// service. For actuation implementation, this information is pass-through for Rollout management. Producer
-        /// shall not modify by itself. For update of a single entry in this map, the update field mask shall follow
-        /// this sementics: go/advanced-field-masks</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rolloutMetadata")]
-        public virtual System.Collections.Generic.IDictionary<string,GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata> RolloutMetadata { get; set; } 
 
         /// <summary>Link to the SLM instance template. Only populated when updating SLM instances via SSA's Actuation
         /// service adaptor. Service producers with custom control plane (e.g. Cloud SQL) doesn't need to populate this
@@ -2368,32 +2380,6 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>This message has been deprecated. NotificationMetadata is the notification state for an
-    /// instance.</summary>
-    public class GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Whether the instance update has been rescheduled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rescheduled")]
-        public virtual System.Nullable<bool> Rescheduled { get; set; } 
-
-        /// <summary>The scheduled end time for the maintenance window during which update can be performed on the
-        /// instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scheduledEndTime")]
-        public virtual object ScheduledEndTime { get; set; } 
-
-        /// <summary>The scheduled start time for the maintenance window during which update can be performed on the
-        /// instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scheduledStartTime")]
-        public virtual object ScheduledStartTime { get; set; } 
-
-        /// <summary>The target release to be applied to the instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetRelease")]
-        public virtual string TargetRelease { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Describes provisioned dataplane resources.</summary>
     public class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2407,26 +2393,6 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
         /// <summary>URL identifying the resource, e.g. "https://www.googleapis.com/compute/v1/projects/...)".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
         public virtual string ResourceUrl { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>This message has been deprecated. RolloutMetadata for an actuation instance. It maps to a single
-    /// RolloutType.</summary>
-    public class GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Instance level notification metadata.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notification")]
-        public virtual GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata Notification { get; set; } 
-
-        /// <summary>The last Release that has been applied to the instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("releaseName")]
-        public virtual string ReleaseName { get; set; } 
-
-        /// <summary>The last rollout that has been applied to the instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rolloutName")]
-        public virtual string RolloutName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

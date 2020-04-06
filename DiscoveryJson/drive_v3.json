@@ -35,7 +35,7 @@
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.", 
  "discoveryVersion": "v1", 
  "documentationLink": "https://developers.google.com/drive/", 
- "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/dnMTr63kxP-4vbu2NCvhVRdBeX4\"", 
+ "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/Gwpv0RWj7aub3RuREPPSzE4kDlg\"", 
  "icons": {
   "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png", 
   "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -2126,7 +2126,7 @@
    }
   }
  }, 
- "revision": "20200310", 
+ "revision": "20200326", 
  "rootUrl": "https://www.googleapis.com/", 
  "schemas": {
   "About": {
@@ -3006,7 +3006,7 @@
        "type": "string"
       }, 
       "rotation": {
-       "description": "The rotation in clockwise degrees from the image's original orientation.", 
+       "description": "The number of clockwise 90 degree rotations applied from the image's original orientation.", 
        "format": "int32", 
        "type": "integer"
       }, 

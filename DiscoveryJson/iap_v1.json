@@ -487,9 +487,20 @@
    }
   }
  }, 
- "revision": "20200320", 
+ "revision": "20200327", 
  "rootUrl": "https://iap.googleapis.com/", 
  "schemas": {
+  "AccessDeniedPageSettings": {
+   "description": "Custom content configuration for access denied page.\nIAP allows customers to define a custom URI to use as the error page when\naccess is denied to users. If IAP prevents access to this page, the default\nIAP error page will be displayed instead.", 
+   "id": "AccessDeniedPageSettings", 
+   "properties": {
+    "accessDeniedPageUri": {
+     "description": "The URI to be redirected to when access is denied.", 
+     "type": "string"
+    }
+   }, 
+   "type": "object"
+  }, 
   "AccessSettings": {
    "description": "Access related settings for IAP protected apps.", 
    "id": "AccessSettings", 
@@ -517,6 +528,10 @@
    "description": "Wrapper over application specific settings for IAP.", 
    "id": "ApplicationSettings", 
    "properties": {
+    "accessDeniedPageSettings": {
+     "$ref": "AccessDeniedPageSettings", 
+     "description": "Customization for Access Denied page."
+    }, 
     "csmSettings": {
      "$ref": "CsmSettings", 
      "description": "Settings to configure IAP's behavior for a CSM mesh."

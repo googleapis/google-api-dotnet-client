@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/authorized-buyers/apis/reference/rest/'>Ad Exchange Buyer API II</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20200401 (1917)
+ *      <tr><th>API Rev<td>20200402 (1918)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/authorized-buyers/apis/reference/rest/'>
  *              https://developers.google.com/authorized-buyers/apis/reference/rest/</a>
@@ -8271,8 +8271,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; } 
 
-        /// <summary>The list of formats on which to filter; may be empty. The filters represented by multiple formats
-        /// are ORed together (i.e., if non-empty, results must match any one of the formats).</summary>
+        /// <summary>Creative format bidded on or allowed to bid on, can be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; } 
+
+        /// <summary>Creative formats bidded on or allowed to bid on, can be empty. Although this field is a list, it
+        /// can only be populated with a single item. A HTTP 400 bad request error will be returned in the response if
+        /// you specify multiple items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formats")]
         public virtual System.Collections.Generic.IList<string> Formats { get; set; } 
 

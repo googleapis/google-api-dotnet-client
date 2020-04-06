@@ -1848,11 +1848,11 @@
    }
   }
  }, 
- "revision": "20200325", 
+ "revision": "20200329", 
  "rootUrl": "https://monitoring.googleapis.com/", 
  "schemas": {
   "Aggregation": {
-   "description": "Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example \"the 95% latency across the average of all tasks in a cluster\". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Aggregating Time Series (https://cloud.google.com/monitoring/api/v3/metrics#aggregating_time_series).", 
+   "description": "Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example \"the 95% latency across the average of all tasks in a cluster\". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation).", 
    "id": "Aggregation", 
    "properties": {
     "alignmentPeriod": {
@@ -2278,7 +2278,7 @@
     }, 
     "conditionTimeSeriesQueryLanguage": {
      "$ref": "TimeSeriesQueryLanguageCondition", 
-     "description": "A condition that uses the time series query language format to define alerts. If set, no other conditions can be present."
+     "description": "A condition that uses the Monitoring Query Language to define alerts. If set, no other conditions can be present."
     }, 
     "displayName": {
      "description": "A short name or phrase used to identify the condition in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple conditions in the same policy.", 
@@ -3241,6 +3241,8 @@
      "description": "Optional. The launch stage of the metric definition.", 
      "enum": [
       "LAUNCH_STAGE_UNSPECIFIED", 
+      "UNIMPLEMENTED", 
+      "PRELAUNCH", 
       "EARLY_ACCESS", 
       "ALPHA", 
       "BETA", 
@@ -3249,6 +3251,8 @@
      ], 
      "enumDescriptions": [
       "Do not use this default value.", 
+      "The feature is not yet implemented. Users can not use it.", 
+      "Prelaunch features are hidden from users and are only visible internally.", 
       "Early Access features are limited to a closed group of testers. To use these features, you must sign up in advance and sign a Trusted Tester agreement (which includes confidentiality provisions). These features may be unstable, changed in backward-incompatible ways, and are not guaranteed to be released.", 
       "Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects whitelisted. Alpha releases don\u2019t have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.", 
       "Beta is the point at which we are ready to open a release for any customer to use. There are no SLA or technical support obligations in a Beta release. Products will be complete from a feature perspective, but may have some open outstanding issues. Beta releases are suitable for limited production use cases.", 
@@ -3334,6 +3338,8 @@
      "description": "Deprecated. Must use the MetricDescriptor.launch_stage instead.", 
      "enum": [
       "LAUNCH_STAGE_UNSPECIFIED", 
+      "UNIMPLEMENTED", 
+      "PRELAUNCH", 
       "EARLY_ACCESS", 
       "ALPHA", 
       "BETA", 
@@ -3342,6 +3348,8 @@
      ], 
      "enumDescriptions": [
       "Do not use this default value.", 
+      "The feature is not yet implemented. Users can not use it.", 
+      "Prelaunch features are hidden from users and are only visible internally.", 
       "Early Access features are limited to a closed group of testers. To use these features, you must sign up in advance and sign a Trusted Tester agreement (which includes confidentiality provisions). These features may be unstable, changed in backward-incompatible ways, and are not guaranteed to be released.", 
       "Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects whitelisted. Alpha releases don\u2019t have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.", 
       "Beta is the point at which we are ready to open a release for any customer to use. There are no SLA or technical support obligations in a Beta release. Products will be complete from a feature perspective, but may have some open outstanding issues. Beta releases are suitable for limited production use cases.", 
@@ -3479,6 +3487,8 @@
      "description": "Optional. The launch stage of the monitored resource definition.", 
      "enum": [
       "LAUNCH_STAGE_UNSPECIFIED", 
+      "UNIMPLEMENTED", 
+      "PRELAUNCH", 
       "EARLY_ACCESS", 
       "ALPHA", 
       "BETA", 
@@ -3487,6 +3497,8 @@
      ], 
      "enumDescriptions": [
       "Do not use this default value.", 
+      "The feature is not yet implemented. Users can not use it.", 
+      "Prelaunch features are hidden from users and are only visible internally.", 
       "Early Access features are limited to a closed group of testers. To use these features, you must sign up in advance and sign a Trusted Tester agreement (which includes confidentiality provisions). These features may be unstable, changed in backward-incompatible ways, and are not guaranteed to be released.", 
       "Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects whitelisted. Alpha releases don\u2019t have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.", 
       "Beta is the point at which we are ready to open a release for any customer to use. There are no SLA or technical support obligations in a Beta release. Products will be complete from a feature perspective, but may have some open outstanding issues. Beta releases are suitable for limited production use cases.", 
@@ -3622,6 +3634,8 @@
      "description": "The product launch stage for channels of this type.", 
      "enum": [
       "LAUNCH_STAGE_UNSPECIFIED", 
+      "UNIMPLEMENTED", 
+      "PRELAUNCH", 
       "EARLY_ACCESS", 
       "ALPHA", 
       "BETA", 
@@ -3630,6 +3644,8 @@
      ], 
      "enumDescriptions": [
       "Do not use this default value.", 
+      "The feature is not yet implemented. Users can not use it.", 
+      "Prelaunch features are hidden from users and are only visible internally.", 
       "Early Access features are limited to a closed group of testers. To use these features, you must sign up in advance and sign a Trusted Tester agreement (which includes confidentiality provisions). These features may be unstable, changed in backward-incompatible ways, and are not guaranteed to be released.", 
       "Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects whitelisted. Alpha releases don\u2019t have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.", 
       "Beta is the point at which we are ready to open a release for any customer to use. There are no SLA or technical support obligations in a Beta release. Products will be complete from a feature perspective, but may have some open outstanding issues. Beta releases are suitable for limited production use cases.", 
@@ -3735,7 +3751,7 @@
      "type": "string"
     }, 
     "query": {
-     "description": "Required. The query in the time series query language format. The default time zone is in UTC.", 
+     "description": "Required. The query in the monitoring query language format. The default time zone is in UTC.", 
      "type": "string"
     }
    }, 
@@ -4140,11 +4156,11 @@
    "type": "object"
   }, 
   "TimeSeriesQueryLanguageCondition": {
-   "description": "A condition type that allows alert policies to be defined using the time series query language.", 
+   "description": "A condition type that allows alert policies to be defined using Monitoring Query Language.", 
    "id": "TimeSeriesQueryLanguageCondition", 
    "properties": {
     "query": {
-     "description": "A query in the time series query language format that generates time series indicating points in time that the condition should be considered active.", 
+     "description": "Monitoring Query Language query that generates time series data and describes a condition for alerting on that data.", 
      "type": "string"
     }, 
     "summary": {

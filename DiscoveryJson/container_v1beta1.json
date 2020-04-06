@@ -472,7 +472,7 @@
          ]
         }, 
         "setLocations": {
-         "description": "Sets the locations for a specific cluster.\nDeprecated. Use\n[projects.locations.clusters.update](/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters/update)\ninstead.", 
+         "description": "Sets the locations for a specific cluster.\nDeprecated. Use\n[projects.locations.clusters.update](/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.update)\ninstead.", 
          "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}:setLocations", 
          "httpMethod": "POST", 
          "id": "container.projects.locations.clusters.setLocations", 
@@ -1514,7 +1514,7 @@
          ]
         }, 
         "locations": {
-         "description": "Sets the locations for a specific cluster.\nDeprecated. Use\n[projects.locations.clusters.update](/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters/update)\ninstead.", 
+         "description": "Sets the locations for a specific cluster.\nDeprecated. Use\n[projects.locations.clusters.update](/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.update)\ninstead.", 
          "flatPath": "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/locations", 
          "httpMethod": "POST", 
          "id": "container.projects.zones.clusters.locations", 
@@ -2484,7 +2484,7 @@
    }
   }
  }, 
- "revision": "20200324", 
+ "revision": "20200318", 
  "rootUrl": "https://container.googleapis.com/", 
  "schemas": {
   "AcceleratorConfig": {

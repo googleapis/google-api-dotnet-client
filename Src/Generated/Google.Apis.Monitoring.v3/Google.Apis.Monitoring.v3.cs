@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Cloud Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200325 (1910)
+ *      <tr><th>API Rev<td>20200329 (1914)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -4910,8 +4910,8 @@ namespace Google.Apis.Monitoring.v3.Data
     /// Alignment and reduction transforms this mass of data into a more manageable and representative collection of
     /// data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can
     /// be more easily graphed and comprehended, and the individual time series data is still available for later
-    /// drilldown. For more details, see Aggregating Time Series
-    /// (https://cloud.google.com/monitoring/api/v3/metrics#aggregating_time_series).</summary>
+    /// drilldown. For more details, see Filtering and aggregation
+    /// (https://cloud.google.com/monitoring/api/v3/aggregation).</summary>
     public class Aggregation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The alignment_period specifies a time interval, in seconds, that is used to divide the data in all
@@ -5293,8 +5293,8 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conditionThreshold")]
         public virtual MetricThreshold ConditionThreshold { get; set; } 
 
-        /// <summary>A condition that uses the time series query language format to define alerts. If set, no other
-        /// conditions can be present.</summary>
+        /// <summary>A condition that uses the Monitoring Query Language to define alerts. If set, no other conditions
+        /// can be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditionTimeSeriesQueryLanguage")]
         public virtual TimeSeriesQueryLanguageCondition ConditionTimeSeriesQueryLanguage { get; set; } 
 
@@ -6720,7 +6720,7 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; } 
 
-        /// <summary>Required. The query in the time series query language format. The default time zone is in
+        /// <summary>Required. The query in the monitoring query language format. The default time zone is in
         /// UTC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; } 
@@ -7102,12 +7102,11 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A condition type that allows alert policies to be defined using the time series query
-    /// language.</summary>
+    /// <summary>A condition type that allows alert policies to be defined using Monitoring Query Language.</summary>
     public class TimeSeriesQueryLanguageCondition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A query in the time series query language format that generates time series indicating points in
-        /// time that the condition should be considered active.</summary>
+        /// <summary>Monitoring Query Language query that generates time series data and describes a condition for
+        /// alerting on that data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; } 
 

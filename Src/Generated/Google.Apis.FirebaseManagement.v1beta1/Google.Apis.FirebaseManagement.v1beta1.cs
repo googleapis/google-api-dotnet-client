@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com'>Firebase Management API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200331 (1916)
+ *      <tr><th>API Rev<td>20200402 (1918)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com'>
  *              https://firebase.google.com</a>
@@ -1239,8 +1239,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// project resources, such as Cloud Firestore, will be provisioned by default. However, if the default GCP
             /// resource location has already been set for the Project, then this setting cannot be changed.
             ///
-            /// This call checks for any location restrictions for the specified Project and, thus, might return a
-            /// subset of all possible GCP resource locations. To list all GCP resource locations (regardless of any
+            /// This call checks for any possible [location restrictions](https://cloud.google.com/resource-manager/docs
+            /// /organization-policy/defining-locations) for the specified Project and, thus, might return a subset of
+            /// all possible GCP resource locations. To list all GCP resource locations (regardless of any
             /// restrictions), call the endpoint without specifying a `projectId` (that is,
             /// `/v1beta1/{parent=projects/-}/listAvailableLocations`).
             ///
@@ -1262,8 +1263,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// project resources, such as Cloud Firestore, will be provisioned by default. However, if the default GCP
             /// resource location has already been set for the Project, then this setting cannot be changed.
             ///
-            /// This call checks for any location restrictions for the specified Project and, thus, might return a
-            /// subset of all possible GCP resource locations. To list all GCP resource locations (regardless of any
+            /// This call checks for any possible [location restrictions](https://cloud.google.com/resource-manager/docs
+            /// /organization-policy/defining-locations) for the specified Project and, thus, might return a subset of
+            /// all possible GCP resource locations. To list all GCP resource locations (regardless of any
             /// restrictions), call the endpoint without specifying a `projectId` (that is,
             /// `/v1beta1/{parent=projects/-}/listAvailableLocations`).
             ///

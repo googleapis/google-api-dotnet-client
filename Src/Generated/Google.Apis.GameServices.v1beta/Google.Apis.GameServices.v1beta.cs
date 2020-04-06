@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Game Servers API Version v1beta
+ *   Game Services API Version v1beta
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/solutions/gaming/'>Game Servers API</a>
+ *          <td><a href='https://cloud.google.com/solutions/gaming/'>Game Services API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20200319 (1904)
+ *      <tr><th>API Rev<td>20200327 (1912)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/solutions/gaming/'>
  *              https://cloud.google.com/solutions/gaming/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Game Servers API can be found at
+ * The complete API documentation for using Game Services API can be found at
  * <a href='https://cloud.google.com/solutions/gaming/'>https://cloud.google.com/solutions/gaming/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -109,7 +109,7 @@ namespace Google.Apis.GameServices.v1beta
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Game Servers API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Game Services API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -117,7 +117,7 @@ namespace Google.Apis.GameServices.v1beta
 
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Game Servers API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Game Services API.</summary>
         public static class ScopeConstants
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>

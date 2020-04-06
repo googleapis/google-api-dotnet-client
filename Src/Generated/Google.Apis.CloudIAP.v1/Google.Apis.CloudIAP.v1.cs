@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iap'>Cloud Identity-Aware Proxy API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200320 (1905)
+ *      <tr><th>API Rev<td>20200327 (1912)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iap'>
  *              https://cloud.google.com/iap</a>
@@ -1367,6 +1367,19 @@ namespace Google.Apis.CloudIAP.v1
 namespace Google.Apis.CloudIAP.v1.Data
 {    
 
+    /// <summary>Custom content configuration for access denied page. IAP allows customers to define a custom URI to use
+    /// as the error page when access is denied to users. If IAP prevents access to this page, the default IAP error
+    /// page will be displayed instead.</summary>
+    public class AccessDeniedPageSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URI to be redirected to when access is denied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessDeniedPageUri")]
+        public virtual string AccessDeniedPageUri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Access related settings for IAP protected apps.</summary>
     public class AccessSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1394,6 +1407,10 @@ namespace Google.Apis.CloudIAP.v1.Data
     /// <summary>Wrapper over application specific settings for IAP.</summary>
     public class ApplicationSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Customization for Access Denied page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessDeniedPageSettings")]
+        public virtual AccessDeniedPageSettings AccessDeniedPageSettings { get; set; } 
+
         /// <summary>Settings to configure IAP's behavior for a CSM mesh.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("csmSettings")]
         public virtual CsmSettings CsmSettings { get; set; } 
