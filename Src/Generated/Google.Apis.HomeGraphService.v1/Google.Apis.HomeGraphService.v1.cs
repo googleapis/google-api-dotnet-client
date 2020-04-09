@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/actions/smarthome/create-app#request-sync'>HomeGraph API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200317 (1902)
+ *      <tr><th>API Rev<td>20200407 (1923)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/actions/smarthome/create-app#request-sync'>
  *              https://developers.google.com/actions/smarthome/create-app#request-sync</a>
@@ -336,48 +336,28 @@ namespace Google.Apis.HomeGraphService.v1
         }
 
 
-        /// <summary>Unlinks an agent user from Google. As a result, all data related to this user will be deleted.
+        /// <summary>Unlinks the given third-party user from your smart home Action. All data related to this user will
+        /// be deleted.
         ///
-        /// Here is how the agent user is created in Google:
+        /// For more details on how users link their accounts, see [fulfillment and
+        /// authentication](https://developers.google.com/assistant/smarthome/concepts/fulfillment-authentication).
         ///
-        /// 1.  When a user opens their Google Home App, they can begin linking a 3p partner. 2.  User is guided through
-        /// the OAuth process. 3.  After entering the 3p credentials, Google gets the 3p OAuth token and uses it to make
-        /// a Sync call to the 3p partner and gets back all of the user's data, including `agent_user_id` and devices.
-        /// 4.  Google creates the agent user and stores a mapping from the `agent_user_id` -> Google ID mapping. Google
-        /// also stores all of the user's devices under that Google ID.
-        ///
-        /// The mapping from `agent_user_id` to Google ID is many to many, since one Google user can have multiple 3p
-        /// accounts, and multiple Google users can map to one `agent_user_id` (e.g., a husband and wife share one Nest
-        /// account username/password).
-        ///
-        /// The third-party user's identity is passed in as `agent_user_id`. The agent is identified by the JWT signed
-        /// by the partner's service account.
-        ///
-        /// Note: Special characters (except "/") in `agent_user_id` must be URL-encoded.</summary>
+        /// The third-party user's identity is passed in via the `agent_user_id` (see DeleteAgentUserRequest). This
+        /// request must be authorized using service account credentials from your Actions console project.</summary>
         /// <param name="agentUserId">Required. Third-party user ID.</param>
         public virtual DeleteRequest Delete(string agentUserId)
         {
             return new DeleteRequest(service, agentUserId);
         }
 
-        /// <summary>Unlinks an agent user from Google. As a result, all data related to this user will be deleted.
+        /// <summary>Unlinks the given third-party user from your smart home Action. All data related to this user will
+        /// be deleted.
         ///
-        /// Here is how the agent user is created in Google:
+        /// For more details on how users link their accounts, see [fulfillment and
+        /// authentication](https://developers.google.com/assistant/smarthome/concepts/fulfillment-authentication).
         ///
-        /// 1.  When a user opens their Google Home App, they can begin linking a 3p partner. 2.  User is guided through
-        /// the OAuth process. 3.  After entering the 3p credentials, Google gets the 3p OAuth token and uses it to make
-        /// a Sync call to the 3p partner and gets back all of the user's data, including `agent_user_id` and devices.
-        /// 4.  Google creates the agent user and stores a mapping from the `agent_user_id` -> Google ID mapping. Google
-        /// also stores all of the user's devices under that Google ID.
-        ///
-        /// The mapping from `agent_user_id` to Google ID is many to many, since one Google user can have multiple 3p
-        /// accounts, and multiple Google users can map to one `agent_user_id` (e.g., a husband and wife share one Nest
-        /// account username/password).
-        ///
-        /// The third-party user's identity is passed in as `agent_user_id`. The agent is identified by the JWT signed
-        /// by the partner's service account.
-        ///
-        /// Note: Special characters (except "/") in `agent_user_id` must be URL-encoded.</summary>
+        /// The third-party user's identity is passed in via the `agent_user_id` (see DeleteAgentUserRequest). This
+        /// request must be authorized using service account credentials from your Actions console project.</summary>
         public class DeleteRequest : HomeGraphServiceBaseServiceRequest<Google.Apis.HomeGraphService.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -460,18 +440,20 @@ namespace Google.Apis.HomeGraphService.v1
         }
 
 
-        /// <summary>Gets the device states for the devices in QueryRequest. The third-party user's identity is passed
-        /// in as `agent_user_id`. The agent is identified by the JWT signed by the third-party partner's service
-        /// account.</summary>
+        /// <summary>Gets the current states in Home Graph for the given set of the third-party user's devices.
+        ///
+        /// The third-party user's identity is passed in via the `agent_user_id` (see QueryRequest). This request must
+        /// be authorized using service account credentials from your Actions console project.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual QueryRequest Query(Google.Apis.HomeGraphService.v1.Data.QueryRequest body)
         {
             return new QueryRequest(service, body);
         }
 
-        /// <summary>Gets the device states for the devices in QueryRequest. The third-party user's identity is passed
-        /// in as `agent_user_id`. The agent is identified by the JWT signed by the third-party partner's service
-        /// account.</summary>
+        /// <summary>Gets the current states in Home Graph for the given set of the third-party user's devices.
+        ///
+        /// The third-party user's identity is passed in via the `agent_user_id` (see QueryRequest). This request must
+        /// be authorized using service account credentials from your Actions console project.</summary>
         public class QueryRequest : HomeGraphServiceBaseServiceRequest<Google.Apis.HomeGraphService.v1.Data.QueryResponse>
         {
             /// <summary>Constructs a new Query request.</summary>
@@ -517,32 +499,36 @@ namespace Google.Apis.HomeGraphService.v1
 
         }
 
-        /// <summary>Reports device state and optionally sends device notifications. Called by an agent when the device
-        /// state of a third-party changes or the agent wants to send a notification about the device. See [Implement
-        /// Report State](/actions/smarthome/report-state) for more information. This method updates a predefined set of
-        /// states for a device, which all devices have according to their prescribed traits (for example, a light will
-        /// have the [OnOff](/actions/smarthome/traits/onoff) trait that reports the state `on` as a boolean value). A
-        /// new state may not be created and an INVALID_ARGUMENT code will be thrown if so. It also optionally takes in
-        /// a list of Notifications that may be created, which are associated to this state change.
+        /// <summary>Reports device state and optionally sends device notifications. Called by your smart home Action
+        /// when the state of a third-party device changes or you need to send a notification about the device. See
+        /// [Implement Report State](https://developers.google.com/assistant/smarthome/develop/report-state) for more
+        /// information.
         ///
-        /// The third-party user's identity is passed in as `agent_user_id`. The agent is identified by the JWT signed
-        /// by the partner's service account.</summary>
+        /// This method updates the device state according to its declared
+        /// [traits](https://developers.google.com/assistant/smarthome/concepts/devices-traits). Publishing a new state
+        /// value outside of these traits will result in an `INVALID_ARGUMENT` error response.
+        ///
+        /// The third-party user's identity is passed in via the `agent_user_id` (see
+        /// ReportStateAndNotificationRequest). This request must be authorized using service account credentials from
+        /// your Actions console project.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual ReportStateAndNotificationRequest ReportStateAndNotification(Google.Apis.HomeGraphService.v1.Data.ReportStateAndNotificationRequest body)
         {
             return new ReportStateAndNotificationRequest(service, body);
         }
 
-        /// <summary>Reports device state and optionally sends device notifications. Called by an agent when the device
-        /// state of a third-party changes or the agent wants to send a notification about the device. See [Implement
-        /// Report State](/actions/smarthome/report-state) for more information. This method updates a predefined set of
-        /// states for a device, which all devices have according to their prescribed traits (for example, a light will
-        /// have the [OnOff](/actions/smarthome/traits/onoff) trait that reports the state `on` as a boolean value). A
-        /// new state may not be created and an INVALID_ARGUMENT code will be thrown if so. It also optionally takes in
-        /// a list of Notifications that may be created, which are associated to this state change.
+        /// <summary>Reports device state and optionally sends device notifications. Called by your smart home Action
+        /// when the state of a third-party device changes or you need to send a notification about the device. See
+        /// [Implement Report State](https://developers.google.com/assistant/smarthome/develop/report-state) for more
+        /// information.
         ///
-        /// The third-party user's identity is passed in as `agent_user_id`. The agent is identified by the JWT signed
-        /// by the partner's service account.</summary>
+        /// This method updates the device state according to its declared
+        /// [traits](https://developers.google.com/assistant/smarthome/concepts/devices-traits). Publishing a new state
+        /// value outside of these traits will result in an `INVALID_ARGUMENT` error response.
+        ///
+        /// The third-party user's identity is passed in via the `agent_user_id` (see
+        /// ReportStateAndNotificationRequest). This request must be authorized using service account credentials from
+        /// your Actions console project.</summary>
         public class ReportStateAndNotificationRequest : HomeGraphServiceBaseServiceRequest<Google.Apis.HomeGraphService.v1.Data.ReportStateAndNotificationResponse>
         {
             /// <summary>Constructs a new ReportStateAndNotification request.</summary>
@@ -588,22 +574,24 @@ namespace Google.Apis.HomeGraphService.v1
 
         }
 
-        /// <summary>Requests a `SYNC` call from Google to a 3p partner's home control agent for a user.
+        /// <summary>Requests Google to send an `action.devices.SYNC`
+        /// [intent](https://developers.google.com/assistant/smarthome/reference/intent/sync) to your smart home Action
+        /// to update device metadata for the given user.
         ///
-        /// The third-party user's identity is passed in as `agent_user_id` (see RequestSyncDevicesRequest) and
-        /// forwarded back to the agent. The agent is identified by the API key or JWT signed by the partner's service
-        /// account.</summary>
+        /// The third-party user's identity is passed via the `agent_user_id` (see RequestSyncDevicesRequest). This
+        /// request must be authorized using service account credentials from your Actions console project.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual RequestSyncRequest RequestSync(Google.Apis.HomeGraphService.v1.Data.RequestSyncDevicesRequest body)
         {
             return new RequestSyncRequest(service, body);
         }
 
-        /// <summary>Requests a `SYNC` call from Google to a 3p partner's home control agent for a user.
+        /// <summary>Requests Google to send an `action.devices.SYNC`
+        /// [intent](https://developers.google.com/assistant/smarthome/reference/intent/sync) to your smart home Action
+        /// to update device metadata for the given user.
         ///
-        /// The third-party user's identity is passed in as `agent_user_id` (see RequestSyncDevicesRequest) and
-        /// forwarded back to the agent. The agent is identified by the API key or JWT signed by the partner's service
-        /// account.</summary>
+        /// The third-party user's identity is passed via the `agent_user_id` (see RequestSyncDevicesRequest). This
+        /// request must be authorized using service account credentials from your Actions console project.</summary>
         public class RequestSyncRequest : HomeGraphServiceBaseServiceRequest<Google.Apis.HomeGraphService.v1.Data.RequestSyncDevicesResponse>
         {
             /// <summary>Constructs a new RequestSync request.</summary>
@@ -649,18 +637,20 @@ namespace Google.Apis.HomeGraphService.v1
 
         }
 
-        /// <summary>Gets all the devices associated with the given third-party user. The third-party user's identity is
-        /// passed in as `agent_user_id`. The agent is identified by the JWT signed by the third-party partner's service
-        /// account.</summary>
+        /// <summary>Gets all the devices associated with the given third-party user.
+        ///
+        /// The third-party user's identity is passed in via the `agent_user_id` (see SyncRequest). This request must be
+        /// authorized using service account credentials from your Actions console project.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual SyncRequest Sync(Google.Apis.HomeGraphService.v1.Data.SyncRequest body)
         {
             return new SyncRequest(service, body);
         }
 
-        /// <summary>Gets all the devices associated with the given third-party user. The third-party user's identity is
-        /// passed in as `agent_user_id`. The agent is identified by the JWT signed by the third-party partner's service
-        /// account.</summary>
+        /// <summary>Gets all the devices associated with the given third-party user.
+        ///
+        /// The third-party user's identity is passed in via the `agent_user_id` (see SyncRequest). This request must be
+        /// authorized using service account credentials from your Actions console project.</summary>
         public class SyncRequest : HomeGraphServiceBaseServiceRequest<Google.Apis.HomeGraphService.v1.Data.SyncResponse>
         {
             /// <summary>Constructs a new Sync request.</summary>
@@ -711,10 +701,10 @@ namespace Google.Apis.HomeGraphService.v1
 namespace Google.Apis.HomeGraphService.v1.Data
 {    
 
-    /// <summary>Third-party partner's device ID for one device.</summary>
+    /// <summary>Third-party device ID for one device.</summary>
     public class AgentDeviceId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Third-party partner's device ID.</summary>
+        /// <summary>Third-party device ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -722,14 +712,14 @@ namespace Google.Apis.HomeGraphService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Identifies a device in the third party or first party system.</summary>
+    /// <summary>Alternate third-party device ID.</summary>
     public class AgentOtherDeviceId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The agent's ID. Generally it is the agent's AoG project id.</summary>
+        /// <summary>Project ID for your smart home Action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
         public virtual string AgentId { get; set; } 
 
-        /// <summary>Device ID defined by the agent. The device_id must be unique.</summary>
+        /// <summary>Unique third-party device ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual string DeviceId { get; set; } 
 
@@ -737,15 +727,16 @@ namespace Google.Apis.HomeGraphService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Third-party partner's device definition.</summary>
+    /// <summary>Third-party device definition.</summary>
     public class Device : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Attributes for the traits supported by the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string,object> Attributes { get; set; } 
 
-        /// <summary>Custom JSON data provided by the manufacturer and attached to QUERY and EXECUTE requests in
-        /// AoG.</summary>
+        /// <summary>Custom device attributes stored in Home Graph and provided to your smart home Action in each
+        /// [QUERY](https://developers.google.com/assistant/smarthome/reference/intent/query) and
+        /// [EXECUTE](https://developers.google.com/assistant/smarthome/reference/intent/execute) intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customData")]
         public virtual System.Collections.Generic.IDictionary<string,object> CustomData { get; set; } 
 
@@ -753,51 +744,49 @@ namespace Google.Apis.HomeGraphService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceInfo")]
         public virtual DeviceInfo DeviceInfo { get; set; } 
 
-        /// <summary>Third-party partner's device ID.</summary>
+        /// <summary>Third-party device ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Name of the device given by the third party. This includes names given to the device via third
-        /// party device manufacturer's app, model names for the device, etc.</summary>
+        /// <summary>Names given to this device by your smart home Action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual DeviceNames Name { get; set; } 
 
-        /// <summary>Indicates whether the device is capable of sending notifications. This field will be set by the
-        /// agent (partner) on an incoming SYNC. If a device is not capable of generating notifications, the partner
-        /// should set this flag to false. If a partner is not capable of calling ReportStateAndNotification to send
-        /// notifications to Google, the partner should set this flag to false. If there is a user setting in the
-        /// partner app to enable notifications and it is turned off, the partner should set this flag to
-        /// false.</summary>
+        /// <summary>Indicates whether your smart home Action will report notifications to Google for this device via
+        /// ReportStateAndNotification.
+        ///
+        /// If your smart home Action enables users to control device notifications, you should update this field and
+        /// call RequestSyncDevices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationSupportedByAgent")]
         public virtual System.Nullable<bool> NotificationSupportedByAgent { get; set; } 
 
-        /// <summary>IDs of other devices associated with this device. This is used to represent a device group (e.g.
-        /// bonded zone) or "facets" synced through different flows (e.g. Google Nest Hub Max with a Nest Camera).
-        ///
-        /// This may also be used to pass in alternate IDs used to identify a cloud synced device for local execution
-        /// (i.e. local verification). If used for local verification, this field is synced from the cloud.</summary>
+        /// <summary>Alternate IDs associated with this device. This is used to identify cloud synced devices enabled
+        /// for [local execution](https://developers.google.com/assistant/smarthome/concepts/local).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("otherDeviceIds")]
         public virtual System.Collections.Generic.IList<AgentOtherDeviceId> OtherDeviceIds { get; set; } 
 
-        /// <summary>If the third-party partner's cloud configuration includes placing devices in rooms, the name of the
-        /// room can be provided here.</summary>
+        /// <summary>Suggested name for the room where this device is installed. Google attempts to use this value
+        /// during user setup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roomHint")]
         public virtual string RoomHint { get; set; } 
 
-        /// <summary>As in roomHint, for structures that users set up in the partner's system.</summary>
+        /// <summary>Suggested name for the structure where this device is installed. Google attempts to use this value
+        /// during user setup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structureHint")]
         public virtual string StructureHint { get; set; } 
 
-        /// <summary>Traits supported by the device.</summary>
+        /// <summary>Traits supported by the device. See [device
+        /// traits](https://developers.google.com/assistant/smarthome/traits).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traits")]
         public virtual System.Collections.Generic.IList<string> Traits { get; set; } 
 
-        /// <summary>Hardware type of the device (e.g. light, outlet, etc).</summary>
+        /// <summary>Hardware type of the device. See [device
+        /// types](https://developers.google.com/assistant/smarthome/guides).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>Indicates whether the state of this device is being reported to Google through
-        /// ReportStateAndNotification call.</summary>
+        /// <summary>Indicates whether your smart home Action will report state of this device to Google via
+        /// ReportStateAndNotification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("willReportState")]
         public virtual System.Nullable<bool> WillReportState { get; set; } 
 
@@ -828,10 +817,10 @@ namespace Google.Apis.HomeGraphService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Different names for the device.</summary>
+    /// <summary>Identifiers used to describe the device.</summary>
     public class DeviceNames : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of names provided by the partner rather than the user, often manufacturer names, SKUs,
+        /// <summary>List of names provided by the manufacturer rather than the user, such as serial numbers, SKUs,
         /// etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultNames")]
         public virtual System.Collections.Generic.IList<string> DefaultNames { get; set; } 
@@ -860,18 +849,14 @@ namespace Google.Apis.HomeGraphService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request type for the [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call. This should be
-    /// the same format as the Actions on Google `action.devices.QUERY` [request](/actions/smarthome/create-
-    /// app#actiondevicesquery) with the exception of the extra `agent_user_id` and no `intent` and `customData`
-    /// fields.</summary>
+    /// <summary>Request type for the [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call.</summary>
     public class QueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Third-party user ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUserId")]
         public virtual string AgentUserId { get; set; } 
 
-        /// <summary>Required. Inputs containing third-party partner's device IDs for which to get the device
-        /// states.</summary>
+        /// <summary>Required. Inputs containing third-party device IDs for which to get the device states.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputs")]
         public virtual System.Collections.Generic.IList<QueryRequestInput> Inputs { get; set; } 
 
@@ -886,7 +871,7 @@ namespace Google.Apis.HomeGraphService.v1.Data
     /// <summary>Device ID inputs to QueryRequest.</summary>
     public class QueryRequestInput : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Payload containing third-party partner's device IDs.</summary>
+        /// <summary>Payload containing third-party device IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual QueryRequestPayload Payload { get; set; } 
 
@@ -897,7 +882,7 @@ namespace Google.Apis.HomeGraphService.v1.Data
     /// <summary>Payload containing device IDs.</summary>
     public class QueryRequestPayload : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Third-party partner's device IDs for which to get the device states.</summary>
+        /// <summary>Third-party device IDs for which to get the device states.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devices")]
         public virtual System.Collections.Generic.IList<AgentDeviceId> Devices { get; set; } 
 
@@ -906,8 +891,8 @@ namespace Google.Apis.HomeGraphService.v1.Data
     }    
 
     /// <summary>Response type for the [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call. This should
-    /// follow the same format as the Actions on Google `action.devices.QUERY` [response](/actions/smarthome/create-
-    /// app#actiondevicesquery). # Example
+    /// follow the same format as the Google smart home `action.devices.QUERY`
+    /// [response](https://developers.google.com/assistant/smarthome/reference/intent/query). # Example
     ///
     /// ```json { "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "payload": { "devices": { "123": { "on": true,
     /// "online": true }, "456": { "on": true, "online": true, "brightness": 80, "color": { "name": "cerulean",
@@ -940,11 +925,13 @@ namespace Google.Apis.HomeGraphService.v1.Data
     /// <summary>The states and notifications specific to a device.</summary>
     public class ReportStateAndNotificationDevice : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Notifications metadata for devices.</summary>
+        /// <summary>Notifications metadata for devices. See the **Device NOTIFICATIONS** section of the individual
+        /// trait [reference guides](https://developers.google.com/assistant/smarthome/traits).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notifications")]
         public virtual System.Collections.Generic.IDictionary<string,object> Notifications { get; set; } 
 
-        /// <summary>States of devices to update.</summary>
+        /// <summary>States of devices to update. See the **Device STATES** section of the individual trait [reference
+        /// guides](https://developers.google.com/assistant/smarthome/traits).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("states")]
         public virtual System.Collections.Generic.IDictionary<string,object> States { get; set; } 
 
@@ -954,12 +941,11 @@ namespace Google.Apis.HomeGraphService.v1.Data
 
     /// <summary>Request type for the
     /// [`ReportStateAndNotification`](#google.home.graph.v1.HomeGraphApiService.ReportStateAndNotification) call. It
-    /// may include States, Notifications, or both. This request uses globally unique flattened state names instead of
-    /// namespaces based on traits to align with the existing QUERY and EXECUTE APIs implemented by 90+ Smart Home
-    /// partners. States and notifications are defined per `device_id` (for example, "123" and "456" in the following
-    /// example). # Example ```json { "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "agentUserId": "1234",
-    /// "payload": { "devices": { "states": { "123": { "on": true }, "456": { "on": true, "brightness": 10 } }, } } }
-    /// ```</summary>
+    /// may include states, notifications, or both. States and notifications are defined per `device_id` (for example,
+    /// "123" and "456" in the following example). # Example
+    ///
+    /// ```json { "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "agentUserId": "1234", "payload": { "devices": {
+    /// "states": { "123": { "on": true }, "456": { "on": true, "brightness": 10 } }, } } } ```</summary>
     public class ReportStateAndNotificationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Third-party user ID.</summary>
@@ -974,13 +960,7 @@ namespace Google.Apis.HomeGraphService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("followUpToken")]
         public virtual string FollowUpToken { get; set; } 
 
-        /// <summary>Required. State of devices to update and notification metadata for devices. For example, if a user
-        /// turns a light on manually, a state update should be sent so that the information is always the current
-        /// status of the device. Notifications are independent from the state and its piece of the payload should
-        /// contain everything necessary to notify the user. Although it may be related to a state change, it does not
-        /// need to be. For example, if a device can turn on/off and change temperature, the states reported would
-        /// include both "on" and "70 degrees" but the 3p may choose not to send any notification for that, or to only
-        /// say that the "the room is heating up", keeping state and notification independent.</summary>
+        /// <summary>Required. State of devices to update and notification metadata for devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual StateAndNotificationPayload Payload { get; set; } 
 
@@ -1009,12 +989,13 @@ namespace Google.Apis.HomeGraphService.v1.Data
     /// [`RequestSyncDevices`](#google.home.graph.v1.HomeGraphApiService.RequestSyncDevices) call.</summary>
     public class RequestSyncDevicesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Third-party user ID issued by agent's third-party identity provider.</summary>
+        /// <summary>Required. Third-party user ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUserId")]
         public virtual string AgentUserId { get; set; } 
 
         /// <summary>Optional. If set, the request will be added to a queue and a response will be returned immediately.
-        /// The queue allows for de-duplication of simultaneous requests.</summary>
+        /// This enables concurrent requests for the given `agent_user_id`, but the caller will not receive any error
+        /// responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("async")]
         public virtual System.Nullable<bool> Async__ { get; set; } 
 
@@ -1023,8 +1004,9 @@ namespace Google.Apis.HomeGraphService.v1.Data
     }    
 
     /// <summary>Response type for the
-    /// [`RequestSyncDevices`](#google.home.graph.v1.HomeGraphApiService.RequestSyncDevices) call. Intentionally empty
-    /// upon success. An HTTP response code is returned with more details upon failure.</summary>
+    /// [`RequestSyncDevices`](#google.home.graph.v1.HomeGraphApiService.RequestSyncDevices) call.
+    ///
+    /// Intentionally empty upon success. An HTTP response code is returned with more details upon failure.</summary>
     public class RequestSyncDevicesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1042,9 +1024,7 @@ namespace Google.Apis.HomeGraphService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request type for the [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync) call. This should follow
-    /// the same format as the Actions on Google `action.devices.SYNC` [request](/actions/smarthome/create-
-    /// app#actiondevicessync) with the exception of the extra `agent_user_id` and no `intent` field.</summary>
+    /// <summary>Request type for the [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync) call.</summary>
     public class SyncRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Third-party user ID.</summary>
@@ -1060,8 +1040,8 @@ namespace Google.Apis.HomeGraphService.v1.Data
     }    
 
     /// <summary>Response type for the [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync) call. This should follow
-    /// the same format as the Actions on Google `action.devices.SYNC` [response](/actions/smarthome/create-
-    /// app#actiondevicessync). # Example
+    /// the same format as the Google smart home `action.devices.SYNC`
+    /// [response](https://developers.google.com/assistant/smarthome/reference/intent/sync). # Example
     ///
     /// ```json { "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "payload": { "agentUserId": "1836.15267389",
     /// "devices": [{ "id": "123", "type": "action.devices.types.OUTLET", "traits": [ "action.devices.traits.OnOff" ],

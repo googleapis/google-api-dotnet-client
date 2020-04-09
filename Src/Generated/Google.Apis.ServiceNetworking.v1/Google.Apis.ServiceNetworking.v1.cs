@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200402 (1918)
+ *      <tr><th>API Rev<td>20200408 (1924)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
  *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
@@ -719,8 +719,7 @@ namespace Google.Apis.ServiceNetworking.v1
             /// in the service producer's organization. The administrator of the service consumer's VPC network invokes
             /// this method. The administrator must assign one or more allocated IP ranges for provisioning subnetworks
             /// in the service producer's VPC network. This connection is used for all supported services in the service
-            /// producer's organization, so it only needs to be invoked once. The response from the `get` operation will
-            /// be of type `Connection` if the operation successfully completes.</summary>
+            /// producer's organization, so it only needs to be invoked once.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">The service that is managing peering connectivity for a service producer's organization. For
             /// Google services that support this functionality, this value is
@@ -734,8 +733,7 @@ namespace Google.Apis.ServiceNetworking.v1
             /// in the service producer's organization. The administrator of the service consumer's VPC network invokes
             /// this method. The administrator must assign one or more allocated IP ranges for provisioning subnetworks
             /// in the service producer's VPC network. This connection is used for all supported services in the service
-            /// producer's organization, so it only needs to be invoked once. The response from the `get` operation will
-            /// be of type `Connection` if the operation successfully completes.</summary>
+            /// producer's organization, so it only needs to be invoked once.</summary>
             public class CreateRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -879,8 +877,7 @@ namespace Google.Apis.ServiceNetworking.v1
 
             }
 
-            /// <summary>Updates the allocated ranges that are assigned to a connection. The response from the `get`
-            /// operation will be of type `Connection` if the operation successfully completes.</summary>
+            /// <summary>Updates the allocated ranges that are assigned to a connection.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The private service connection that connects to a service producer organization. The name
             /// includes both the private service name and the VPC network peering name in the format of
@@ -892,8 +889,7 @@ namespace Google.Apis.ServiceNetworking.v1
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Updates the allocated ranges that are assigned to a connection. The response from the `get`
-            /// operation will be of type `Connection` if the operation successfully completes.</summary>
+            /// <summary>Updates the allocated ranges that are assigned to a connection.</summary>
             public class PatchRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -1088,9 +1084,8 @@ namespace Google.Apis.ServiceNetworking.v1
         /// requested region and with the requested size that's expressed as a CIDR range (number of leading bits of
         /// ipV4 network mask). The method checks against the assigned allocated ranges to find a non-conflicting IP
         /// address range. The method will reuse a subnet if subsequent calls contain the same subnet name, region, and
-        /// prefix length. This method will make producer's tenant project to be a shared VPC service project as needed.
-        /// The response from the `get` operation will be of type `Subnetwork` if the operation successfully
-        /// completes.</summary>
+        /// prefix length. This method will make producer's tenant project to be a shared VPC service project as
+        /// needed.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">Required. A tenant project in the service producer organization, in the following format:
         /// services/{service}/{collection-id}/{resource-id}. {collection-id} is the cloud resource collection type that
@@ -1106,9 +1101,8 @@ namespace Google.Apis.ServiceNetworking.v1
         /// requested region and with the requested size that's expressed as a CIDR range (number of leading bits of
         /// ipV4 network mask). The method checks against the assigned allocated ranges to find a non-conflicting IP
         /// address range. The method will reuse a subnet if subsequent calls contain the same subnet name, region, and
-        /// prefix length. This method will make producer's tenant project to be a shared VPC service project as needed.
-        /// The response from the `get` operation will be of type `Subnetwork` if the operation successfully
-        /// completes.</summary>
+        /// prefix length. This method will make producer's tenant project to be a shared VPC service project as
+        /// needed.</summary>
         public class AddSubnetworkRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.Operation>
         {
             /// <summary>Constructs a new AddSubnetwork request.</summary>
@@ -1317,9 +1311,9 @@ namespace Google.Apis.ServiceNetworking.v1
         }
 
         /// <summary>Service producers can use this method to find a currently unused range within consumer allocated
-        /// ranges.   This returned range is not reserved, and not guaranteed to remain unused. It will validate
+        /// ranges. This returned range is not reserved, and not guaranteed to remain unused. It will validate
         /// previously provided allocated ranges, find non-conflicting sub-range of requested size (expressed in number
-        /// of leading bits of ipv4 network mask, as in CIDR range notation). Operation</summary>
+        /// of leading bits of ipv4 network mask, as in CIDR range notation).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">Required. This is in a form services/{service}. {service} the name of the private access
         /// management service, for example 'service-peering.example.com'.</param>
@@ -1329,9 +1323,9 @@ namespace Google.Apis.ServiceNetworking.v1
         }
 
         /// <summary>Service producers can use this method to find a currently unused range within consumer allocated
-        /// ranges.   This returned range is not reserved, and not guaranteed to remain unused. It will validate
+        /// ranges. This returned range is not reserved, and not guaranteed to remain unused. It will validate
         /// previously provided allocated ranges, find non-conflicting sub-range of requested size (expressed in number
-        /// of leading bits of ipv4 network mask, as in CIDR range notation). Operation</summary>
+        /// of leading bits of ipv4 network mask, as in CIDR range notation).</summary>
         public class SearchRangeRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.Operation>
         {
             /// <summary>Constructs a new SearchRange request.</summary>
@@ -1392,8 +1386,8 @@ namespace Google.Apis.ServiceNetworking.v1
 
         }
 
-        /// <summary>Service producers use this method to validate if the consumer provided network, project and the
-        /// requested range is valid. This allows them to use a fail-fast mechanism for consumer requests, and not have
+        /// <summary>Service producers use this method to validate if the consumer provided network, project and
+        /// requested range are valid. This allows them to use a fail-fast mechanism for consumer requests, and not have
         /// to wait for AddSubnetwork operation completion to determine if user request is invalid.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">Required. This is in a form services/{service} where {service} is the name of the private
@@ -1403,8 +1397,8 @@ namespace Google.Apis.ServiceNetworking.v1
             return new ValidateRequest(service, body, parent);
         }
 
-        /// <summary>Service producers use this method to validate if the consumer provided network, project and the
-        /// requested range is valid. This allows them to use a fail-fast mechanism for consumer requests, and not have
+        /// <summary>Service producers use this method to validate if the consumer provided network, project and
+        /// requested range are valid. This allows them to use a fail-fast mechanism for consumer requests, and not have
         /// to wait for AddSubnetwork operation completion to determine if user request is invalid.</summary>
         public class ValidateRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.ValidateConsumerConfigResponse>
         {

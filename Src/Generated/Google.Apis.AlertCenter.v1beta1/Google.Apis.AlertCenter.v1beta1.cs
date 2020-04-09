@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>G Suite Alert Center API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200328 (1913)
+ *      <tr><th>API Rev<td>20200406 (1922)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>
  *              https://developers.google.com/admin-sdk/alertcenter/</a>
@@ -1279,7 +1279,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; } 
 
-        /// <summary>List of alert ids superseded by this alert. It is used to indicate that this alert is essentially
+        /// <summary>List of alert IDs superseded by this alert. It is used to indicate that this alert is essentially
         /// extension of superseded alerts and we found the relationship after creating these alerts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supersededAlerts")]
         public virtual System.Collections.Generic.IList<string> SupersededAlerts { get; set; } 

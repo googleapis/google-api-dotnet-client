@@ -1312,7 +1312,7 @@
    }
   }
  }, 
- "revision": "20200327", 
+ "revision": "20200402", 
  "rootUrl": "https://gameservices.googleapis.com/", 
  "schemas": {
   "AuditConfig": {
@@ -1570,7 +1570,6 @@
    "id": "DataAccessOptions", 
    "properties": {
     "logMode": {
-     "description": "Whether Gin logging should happen in a fail-closed manner at the caller.\nThis is currently supported in the LocalIAM implementation, Stubby C++,\nand Stubby Java. For Apps Framework, see go/af-audit-logging#failclosed.", 
      "enum": [
       "LOG_MODE_UNSPECIFIED", 
       "LOG_FAIL_CLOSED"

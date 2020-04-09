@@ -2833,7 +2833,7 @@
                "type": "string"
               }, 
               "view": {
-               "description": "Specifies the parts of the Message to return in the response.\nWhen unspecified, equivalent to BASIC.", 
+               "description": "Specifies the parts of the Message to return in the response.\nWhen unspecified, equivalent to BASIC. Setting this to anything other than\nBASIC with a `page_size` larger than the default can generate a large\nresponse, which impacts the performance of this method.", 
                "enum": [
                 "MESSAGE_VIEW_UNSPECIFIED", 
                 "RAW_ONLY", 
@@ -2996,7 +2996,7 @@
    }
   }
  }, 
- "revision": "20200318", 
+ "revision": "20200327", 
  "rootUrl": "https://healthcare.googleapis.com/", 
  "schemas": {
   "AuditConfig": {
@@ -3440,6 +3440,10 @@
    "description": "Represents a FHIR store.", 
    "id": "FhirStore", 
    "properties": {
+    "defaultSearchHandlingStrict": {
+     "description": "If true, overrides the default search behavior for this FHIR store to\n`handling=strict` which returns an error for unrecognized search\nparameters. If false, uses the FHIR specification default\n`handling=lenient` which ignores unrecognized search parameters.\nThe handling can always be changed from the default on an individual API\ncall by setting the HTTP header `Prefer: handling=strict` or\n`Prefer: handling=lenient`.", 
+     "type": "boolean"
+    }, 
     "disableReferentialIntegrity": {
      "description": "Whether to disable referential integrity in this FHIR store. This field is\nimmutable after FHIR store creation.\nThe default value is false, meaning that the API enforces referential\nintegrity and fails the requests that result in inconsistent state in\nthe FHIR store.\nWhen this field is set to true, the API skips referential integrity\nchecks. Consequently, operations that rely on references, such as\nGetPatientEverything, do not return all the results if broken references\nexist.", 
      "type": "boolean"
@@ -3488,6 +3492,35 @@
       "Standard for Trial Use, [Release 3](https://www.hl7.org/fhir/STU3)", 
       "[Release 4](https://www.hl7.org/fhir/R4)"
      ], 
+     "type": "string"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "Field": {
+   "description": "A (sub) field of a type.", 
+   "id": "Field", 
+   "properties": {
+    "maxOccurs": {
+     "description": "The maximum number of times this field can be repeated. 0 or -1 means\nunbounded.", 
+     "format": "int32", 
+     "type": "integer"
+    }, 
+    "minOccurs": {
+     "description": "The minimum number of times this field must be present/repeated.", 
+     "format": "int32", 
+     "type": "integer"
+    }, 
+    "name": {
+     "description": "The name of the field. For example, \"PID-1\" or just \"1\".", 
+     "type": "string"
+    }, 
+    "table": {
+     "description": "The HL7v2 table this field refers to. For example, PID-15 (Patient's\nPrimary Language) usually refers to table \"0296\".", 
+     "type": "string"
+    }, 
+    "type": {
+     "description": "The type of this field. A Type with this name must be defined in an\nHl7TypesConfig.", 
      "type": "string"
     }
    }, 
@@ -3572,7 +3605,7 @@
    "id": "GoogleCloudHealthcareV1beta1DicomGcsDestination", 
    "properties": {
     "mimeType": {
-     "description": "MIME types supported by DICOM spec.\nEach file is written in the following format:\n`.../{study_id}/{series_id}/{instance_id}[/{frame_number}].{extension}`\nThe frame_number component exists only for multi-frame instances.\n\nRefer to the DICOM conformance statement for permissible MIME types:\nhttps://cloud.google.com/healthcare/docs/dicom#retrieve_transaction\n\nThe following extensions are used for output files:\n  application/dicom -> .dcm\n  image/jpeg -> .jpg\n  image/png -> .png\n\nIf unspecified, the instances are exported in their original\nDICOM format.", 
+     "description": "MIME types supported by DICOM spec.\nEach file is written in the following format:\n`.../{study_id}/{series_id}/{instance_id}[/{frame_number}].{extension}`\nThe frame_number component exists only for multi-frame instances.\n\nSupported MIME types are consistent with supported formats in DICOMweb:\nhttps://cloud.google.com/healthcare/docs/dicom#retrieve_transaction.\nSpecifically, the following are supported:\n\n  - application/dicom; transfer-syntax=1.2.840.10008.1.2.1\n    (uncompressed DICOM)\n  - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.50\n    (DICOM with embedded JPEG Baseline)\n  - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.90\n    (DICOM with embedded JPEG 2000 Lossless Only)\n  - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.91\n    (DICOM with embedded JPEG 2000)h\n  - application/dicom; transfer-syntax=*\n    (DICOM with no transcoding)\n  - application/octet-stream; transfer-syntax=1.2.840.10008.1.2.1\n    (raw uncompressed PixelData)\n  - application/octet-stream; transfer-syntax=*\n    (raw PixelData in whatever format it was uploaded in)\n  - image/jpeg; transfer-syntax=1.2.840.10008.1.2.4.50\n    (Consumer JPEG)\n  - image/png\n\nThe following extensions are used for output files:\n\n - application/dicom -> .dcm\n - image/jpeg -> .jpg\n - image/png -> .png\n - application/octet-stream -> no extension\n\nIf unspecified, the instances are exported in the original\nDICOM format they were uploaded in.", 
      "type": "string"
     }, 
     "uriPrefix": {
@@ -3714,6 +3747,61 @@
      "description": "The total number of resources included in the source data.", 
      "format": "int64", 
      "type": "string"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "GroupOrSegment": {
+   "description": "Construct representing a logical group or a segment.", 
+   "id": "GroupOrSegment", 
+   "properties": {
+    "group": {
+     "$ref": "SchemaGroup"
+    }, 
+    "segment": {
+     "$ref": "SchemaSegment"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "Hl7SchemaConfig": {
+   "description": "Root config message for HL7v2 schema. This contains a schema structure of\ngroups and segments, and filters that determine which messages to apply the\nschema structure to.", 
+   "id": "Hl7SchemaConfig", 
+   "properties": {
+    "messageSchemaConfigs": {
+     "additionalProperties": {
+      "$ref": "SchemaGroup"
+     }, 
+     "description": "Map from each HL7v2 message type and trigger event pair, such as ADT_A04,\nto its schema configuration root group.", 
+     "type": "object"
+    }, 
+    "version": {
+     "description": "Each VersionSource is tested and only if they all match is the schema used\nfor the message.", 
+     "items": {
+      "$ref": "VersionSource"
+     }, 
+     "type": "array"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "Hl7TypesConfig": {
+   "description": "Root config for HL7v2 datatype definitions for a specific HL7v2 version.", 
+   "id": "Hl7TypesConfig", 
+   "properties": {
+    "type": {
+     "description": "The HL7v2 type definitions.", 
+     "items": {
+      "$ref": "Type"
+     }, 
+     "type": "array"
+    }, 
+    "version": {
+     "description": "The version selectors that this config applies to. A message must match\nALL version sources to apply.", 
+     "items": {
+      "$ref": "VersionSource"
+     }, 
+     "type": "array"
     }
    }, 
    "type": "object"
@@ -4141,6 +4229,10 @@
      }, 
      "type": "array"
     }, 
+    "schematizedData": {
+     "$ref": "SchematizedData", 
+     "description": "The parsed version of the raw message data schematized according to this\nstore's schemas and type definitions."
+    }, 
     "sendFacility": {
      "description": "The hospital that this message came from. MSH-4.", 
      "type": "string"
@@ -4251,6 +4343,10 @@
     "allowNullHeader": {
      "description": "Determines whether messages with no header are allowed.", 
      "type": "boolean"
+    }, 
+    "schema": {
+     "$ref": "SchemaPackage", 
+     "description": "Schemas used to parse messages in this store, if schematized parsing is\ndesired."
     }, 
     "segmentTerminator": {
      "description": "Byte(s) to use as the segment terminator. If this is unset, '\\r' is\nused as segment terminator, matching the HL7 version 2\nspecification.", 
@@ -4375,6 +4471,113 @@
       "A data-driven schema generated from the fields present in the FHIR data\nbeing exported, with no additional simplification.", 
       "Analytics schema defined by the FHIR community.\nSee https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md."
      ], 
+     "type": "string"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "SchemaGroup": {
+   "description": "An HL7v2 logical group construct.", 
+   "id": "SchemaGroup", 
+   "properties": {
+    "choice": {
+     "description": "True indicates that this is a choice group, meaning that only one of its\nsegments can exist in a given message.", 
+     "type": "boolean"
+    }, 
+    "maxOccurs": {
+     "description": "The maximum number of times this group can be repeated. 0 or -1 means\nunbounded.", 
+     "format": "int32", 
+     "type": "integer"
+    }, 
+    "members": {
+     "description": "Nested groups and/or segments.", 
+     "items": {
+      "$ref": "GroupOrSegment"
+     }, 
+     "type": "array"
+    }, 
+    "minOccurs": {
+     "description": "The minimum number of times this group must be present/repeated.", 
+     "format": "int32", 
+     "type": "integer"
+    }, 
+    "name": {
+     "description": "The name of this group. For example, \"ORDER_DETAIL\".", 
+     "type": "string"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "SchemaPackage": {
+   "description": "A schema package contains a set of schemas and type definitions.", 
+   "id": "SchemaPackage", 
+   "properties": {
+    "ignoreMinOccurs": {
+     "description": "Flag to ignore all min_occurs restrictions in the schema. This means that\nincoming messages can omit any group, segment, field, component, or\nsubcomponent.", 
+     "type": "boolean"
+    }, 
+    "schemas": {
+     "description": "Schema configs that are layered based on their VersionSources that\nmatch the incoming message. Schema configs present in higher indices\noverride those in lower indices with the same message type and trigger\nevent if their VersionSources all match an incoming message.", 
+     "items": {
+      "$ref": "Hl7SchemaConfig"
+     }, 
+     "type": "array"
+    }, 
+    "schematizedParsingType": {
+     "description": "Determines how messages that don't parse successfully are handled.", 
+     "enum": [
+      "SCHEMATIZED_PARSING_TYPE_UNSPECIFIED", 
+      "SOFT_FAIL", 
+      "HARD_FAIL"
+     ], 
+     "enumDescriptions": [
+      "Unspecified schematized parsing type, equivalent to `SOFT_FAIL`.", 
+      "Messages that fail to parse are still stored and ACKed but a parser error\nis stored in place of the schematized data.", 
+      "Messages that fail to parse are rejected from ingestion/insertion and\nreturn an error code."
+     ], 
+     "type": "string"
+    }, 
+    "types": {
+     "description": "Schema type definitions that are layered based on their VersionSources\nthat match the incoming message. Type definitions present in higher indices\noverride those in lower indices with the same type name if their\nVersionSources all match an incoming message.", 
+     "items": {
+      "$ref": "Hl7TypesConfig"
+     }, 
+     "type": "array"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "SchemaSegment": {
+   "description": "An HL7v2 Segment.", 
+   "id": "SchemaSegment", 
+   "properties": {
+    "maxOccurs": {
+     "description": "The maximum number of times this segment can be present in this group.\n0 or -1 means unbounded.", 
+     "format": "int32", 
+     "type": "integer"
+    }, 
+    "minOccurs": {
+     "description": "The minimum number of times this segment can be present in this group.", 
+     "format": "int32", 
+     "type": "integer"
+    }, 
+    "type": {
+     "description": "The Segment type. For example, \"PID\".", 
+     "type": "string"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "SchematizedData": {
+   "description": "The content of an HL7v2 message in a structured format as specified by a\nschema.", 
+   "id": "SchematizedData", 
+   "properties": {
+    "data": {
+     "description": "JSON output of the parser.", 
+     "type": "string"
+    }, 
+    "error": {
+     "description": "The error output of the parser.", 
      "type": "string"
     }
    }, 
@@ -4525,6 +4728,55 @@
       "$ref": "InfoTypeTransformation"
      }, 
      "type": "array"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "Type": {
+   "description": "A type definition for some HL7v2 type (incl. Segments and Datatypes).", 
+   "id": "Type", 
+   "properties": {
+    "fields": {
+     "description": "The (sub) fields this type has (if not primitive).", 
+     "items": {
+      "$ref": "Field"
+     }, 
+     "type": "array"
+    }, 
+    "name": {
+     "description": "The name of this type. This would be the segment or datatype name.\nFor example, \"PID\" or \"XPN\".", 
+     "type": "string"
+    }, 
+    "primitive": {
+     "description": "If this is a primitive type then this field is the type of the primitive\nFor example, STRING. Leave unspecified for composite types.", 
+     "enum": [
+      "PRIMITIVE_UNSPECIFIED", 
+      "STRING", 
+      "VARIES", 
+      "UNESCAPED_STRING"
+     ], 
+     "enumDescriptions": [
+      "Not a primitive.", 
+      "String primitive.", 
+      "Element that can have unschematized children.", 
+      "Like STRING, but all delimiters below this element are ignored."
+     ], 
+     "type": "string"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "VersionSource": {
+   "description": "Describes a selector for extracting and matching an MSH field to a value.", 
+   "id": "VersionSource", 
+   "properties": {
+    "mshField": {
+     "description": "The field to extract from the MSH segment. For example, \"3.1\" or \"18[1].1\".", 
+     "type": "string"
+    }, 
+    "value": {
+     "description": "The value to match with the field. For example, \"My Application Name\" or\n\"2.3\".", 
+     "type": "string"
     }
    }, 
    "type": "object"

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>Google Cloud Memorystore for Redis API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200320 (1905)
+ *      <tr><th>API Rev<td>20200402 (1918)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>
  *              https://cloud.google.com/memorystore/docs/redis/</a>
@@ -1080,6 +1080,78 @@ namespace Google.Apis.CloudRedis.v1
                     }
 
                 }
+
+                /// <summary>Upgrades Redis instance to the newer Redis version specified in the request.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. Redis instance resource name using the form:
+                /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP
+                /// region.</param>
+                public virtual UpgradeRequest Upgrade(Google.Apis.CloudRedis.v1.Data.UpgradeInstanceRequest body, string name)
+                {
+                    return new UpgradeRequest(service, body, name);
+                }
+
+                /// <summary>Upgrades Redis instance to the newer Redis version specified in the request.</summary>
+                public class UpgradeRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Upgrade request.</summary>
+                    public UpgradeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRedis.v1.Data.UpgradeInstanceRequest body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Redis instance resource name using the form:
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id`
+                    /// refers to a GCP region.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRedis.v1.Data.UpgradeInstanceRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "upgrade"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}:upgrade"; }
+                    }
+
+                    /// <summary>Initializes Upgrade parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                            });
+                    }
+
+                }
             }
             private readonly OperationsResource operations;
 
@@ -1735,8 +1807,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedNetwork")]
         public virtual string AuthorizedNetwork { get; set; } 
 
-        /// <summary>Optional. The connect mode of Redis instance. If not provided, default one will be used. Current
-        /// default: DIRECT_PEERING.</summary>
+        /// <summary>Optional. The network connect mode of the Redis instance. If not provided, the connect mode
+        /// defaults to DIRECT_PEERING.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectMode")]
         public virtual string ConnectMode { get; set; } 
 
@@ -2015,6 +2087,17 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request for UpgradeInstance.</summary>
+    public class UpgradeInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specifies the target version of Redis software to upgrade to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redisVersion")]
+        public virtual string RedisVersion { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

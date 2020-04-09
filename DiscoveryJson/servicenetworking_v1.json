@@ -238,7 +238,7 @@
   "services": {
    "methods": {
     "addSubnetwork": {
-     "description": "For service producers, provisions a new subnet in a\npeered service's shared VPC network in the requested region and with the\nrequested size that's expressed as a CIDR range (number of leading bits of\nipV4 network mask). The method checks against the assigned allocated ranges\nto find a non-conflicting IP address range. The method will reuse a subnet\nif subsequent calls contain the same subnet name, region, and prefix\nlength. This method will make producer's tenant project to be a shared VPC\nservice project as needed. The response from the `get` operation will be of\ntype `Subnetwork` if the operation successfully completes.", 
+     "description": "For service producers, provisions a new subnet in a peered service's shared\nVPC network in the requested region and with the requested size that's\nexpressed as a CIDR range (number of leading bits of ipV4 network mask).\nThe method checks against the assigned allocated ranges to find a\nnon-conflicting IP address range. The method will reuse a subnet if\nsubsequent calls contain the same subnet name, region, and prefix length.\nThis method will make producer's tenant project to be a shared VPC service\nproject as needed.", 
      "flatPath": "v1/services/{servicesId}/{servicesId1}/{servicesId2}:addSubnetwork", 
      "httpMethod": "POST", 
      "id": "servicenetworking.services.addSubnetwork", 
@@ -325,7 +325,7 @@
      ]
     }, 
     "searchRange": {
-     "description": "Service producers can use this method to find a currently unused range\nwithin consumer allocated ranges.   This returned range is not reserved,\nand not guaranteed to remain unused.\nIt will validate previously provided allocated ranges, find\nnon-conflicting sub-range of requested size (expressed in\nnumber of leading bits of ipv4 network mask, as in CIDR range\nnotation).\nOperation<response: Range>", 
+     "description": "Service producers can use this method to find a currently unused range\nwithin consumer allocated ranges. This returned range is not reserved,\nand not guaranteed to remain unused. It will validate previously provided\nallocated ranges, find non-conflicting sub-range of requested size\n(expressed in number of leading bits of ipv4 network mask, as in CIDR range\nnotation).", 
      "flatPath": "v1/services/{servicesId}:searchRange", 
      "httpMethod": "POST", 
      "id": "servicenetworking.services.searchRange", 
@@ -354,7 +354,7 @@
      ]
     }, 
     "validate": {
-     "description": "Service producers use this method to validate if the consumer provided\nnetwork, project and the requested range is valid. This allows them to use\na fail-fast mechanism for consumer requests, and not have to wait for\nAddSubnetwork operation completion to determine if user request is invalid.", 
+     "description": "Service producers use this method to validate if the consumer provided\nnetwork, project and requested range are valid. This allows them to use\na fail-fast mechanism for consumer requests, and not have to wait for\nAddSubnetwork operation completion to determine if user request is invalid.", 
      "flatPath": "v1/services/{servicesId}:validate", 
      "httpMethod": "POST", 
      "id": "servicenetworking.services.validate", 
@@ -387,7 +387,7 @@
     "connections": {
      "methods": {
       "create": {
-       "description": "Creates a private connection that establishes a VPC Network Peering\nconnection to a VPC network in the service producer's organization.\nThe administrator of the service consumer's VPC network invokes this\nmethod. The administrator must assign one or more allocated IP ranges for\nprovisioning subnetworks in the service producer's VPC network. This\nconnection is used for all supported services in the service producer's\norganization, so it only needs to be invoked once. The response from the\n`get` operation will be of type `Connection` if the operation successfully\ncompletes.", 
+       "description": "Creates a private connection that establishes a VPC Network Peering\nconnection to a VPC network in the service producer's organization.\nThe administrator of the service consumer's VPC network invokes this\nmethod. The administrator must assign one or more allocated IP ranges for\nprovisioning subnetworks in the service producer's VPC network. This\nconnection is used for all supported services in the service producer's\norganization, so it only needs to be invoked once.", 
        "flatPath": "v1/services/{servicesId}/connections", 
        "httpMethod": "POST", 
        "id": "servicenetworking.services.connections.create", 
@@ -447,7 +447,7 @@
        ]
       }, 
       "patch": {
-       "description": "Updates the allocated ranges that are assigned to a connection.\nThe response from the `get` operation will be of type `Connection` if the\noperation successfully completes.", 
+       "description": "Updates the allocated ranges that are assigned to a connection.", 
        "flatPath": "v1/services/{servicesId}/connections/{connectionsId}", 
        "httpMethod": "PATCH", 
        "id": "servicenetworking.services.connections.patch", 
@@ -524,7 +524,7 @@
    }
   }
  }, 
- "revision": "20200402", 
+ "revision": "20200408", 
  "rootUrl": "https://servicenetworking.googleapis.com/", 
  "schemas": {
   "AddRolesMetadata": {

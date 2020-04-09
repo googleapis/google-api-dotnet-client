@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200323 (1908)
+ *      <tr><th>API Rev<td>20200330 (1915)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -851,7 +851,7 @@ namespace Google.Apis.AndroidManagement.v1
                     WIPEEXTERNALSTORAGE,
                 }
 
-                /// <summary>Optional short message displayed to the user before wiping the work profile on personal
+                /// <summary>Optional. A short message displayed to the user before wiping the work profile on personal
                 /// devices. This has no effect on company owned devices. The maximum message length is 200
                 /// characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("wipeReasonMessage", Google.Apis.Util.RequestParameterType.Query)]

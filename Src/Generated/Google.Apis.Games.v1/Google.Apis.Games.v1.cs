@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/services/'>Google Play Game Services API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200326 (1911)
+ *      <tr><th>API Rev<td>20200330 (1915)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/services/'>
  *              https://developers.google.com/games/services/</a>
@@ -6626,6 +6626,10 @@ namespace Google.Apis.Games.v1.Data
     /// <summary>This is a JSON template for profile settings</summary>
     public class ProfileSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether the player's friends list is visible to the game.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("friendsListVisibility")]
+        public virtual string FriendsListVisibility { get; set; } 
+
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// games#profileSettings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]

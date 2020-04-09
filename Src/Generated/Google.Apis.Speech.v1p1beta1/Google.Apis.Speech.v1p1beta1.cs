@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>Cloud Speech-to-Text API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20200326 (1911)
+ *      <tr><th>API Rev<td>20200406 (1922)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>
  *              https://cloud.google.com/speech-to-text/docs/quickstart-protocol</a>
@@ -1076,9 +1076,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
 
         /// <summary>If 'true', adds punctuation to recognition result hypotheses. This feature is only available in
         /// select languages. Setting this for requests in other languages has no effect at all. The default 'false'
-        /// value does not add punctuation to result hypotheses. Note: This is currently offered as an experimental
-        /// service, complimentary to all users. In the future this may be exclusively available as a premium
-        /// feature.</summary>
+        /// value does not add punctuation to result hypotheses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableAutomaticPunctuation")]
         public virtual System.Nullable<bool> EnableAutomaticPunctuation { get; set; } 
 

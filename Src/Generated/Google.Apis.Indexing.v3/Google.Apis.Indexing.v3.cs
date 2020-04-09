@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/search/apis/indexing-api/'>Indexing API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200326 (1911)
+ *      <tr><th>API Rev<td>20200402 (1918)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/search/apis/indexing-api/'>
  *              https://developers.google.com/search/apis/indexing-api/</a>

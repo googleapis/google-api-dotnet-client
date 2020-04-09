@@ -19,24 +19,24 @@
 
 /**
  * \brief
- *   CustomSearch API Version v1
+ *   Custom Search API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/custom-search/v1/using_rest'>CustomSearch API</a>
+ *          <td><a href='https://developers.google.com/custom-search/v1/introduction'>Custom Search API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181001 (1369)
+ *      <tr><th>API Rev<td>20200407 (1923)
  *      <tr><th>API Docs
- *          <td><a href='https://developers.google.com/custom-search/v1/using_rest'>
- *              https://developers.google.com/custom-search/v1/using_rest</a>
+ *          <td><a href='https://developers.google.com/custom-search/v1/introduction'>
+ *              https://developers.google.com/custom-search/v1/introduction</a>
  *      <tr><th>Discovery Name<td>customsearch
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using CustomSearch API can be found at
- * <a href='https://developers.google.com/custom-search/v1/using_rest'>https://developers.google.com/custom-search/v1/using_rest</a>.
+ * The complete API documentation for using Custom Search API can be found at
+ * <a href='https://developers.google.com/custom-search/v1/introduction'>https://developers.google.com/custom-search/v1/introduction</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -65,6 +65,7 @@ namespace Google.Apis.Customsearch.v1
             : base(initializer)
         {
             cse = new CseResource(this);
+            siterestrict = new SiterestrictResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -83,29 +84,29 @@ namespace Google.Apis.Customsearch.v1
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://www.googleapis.com/customsearch/"; }
+            get { return BaseUriOverride ?? "https://customsearch.googleapis.com/"; }
         #else
-            get { return "https://www.googleapis.com/customsearch/"; }
+            get { return "https://customsearch.googleapis.com/"; }
         #endif
         }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath
         {
-            get { return "customsearch/"; }
+            get { return ""; }
         }
 
         #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch/customsearch/v1"; }
+            get { return "https://customsearch.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch/customsearch/v1"; }
+            get { return "batch"; }
         }
         #endif
 
@@ -120,6 +121,14 @@ namespace Google.Apis.Customsearch.v1
         {
             get { return cse; }
         }
+
+        private readonly SiterestrictResource siterestrict;
+
+        /// <summary>Gets the Siterestrict resource.</summary>
+        public virtual SiterestrictResource Siterestrict
+        {
+            get { return siterestrict; }
+        }
     }
 
     ///<summary>A base abstract class for Customsearch requests.</summary>
@@ -131,18 +140,47 @@ namespace Google.Apis.Customsearch.v1
         {
         }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>V1 error format.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
+
+        /// <summary>OAuth access token.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>Data format for response.</summary>
         public enum AltEnum
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
         }
+
+        /// <summary>JSONP</summary>
+        [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string Callback { get; set; }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -162,14 +200,18 @@ namespace Google.Apis.Customsearch.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-        /// characters.</summary>
+        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
+        /// assigned to a user, but should not exceed 40 characters.</summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
-        /// <summary>Deprecated. Please use quotaUser instead.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string UserIp { get; set; }
+        /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadType { get; set; }
+
+        /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadProtocol { get; set; }
 
         /// <summary>Initializes Customsearch parameter list.</summary>
         protected override void InitParameters()
@@ -177,12 +219,39 @@ namespace Google.Apis.Customsearch.v1
             base.InitParameters();
 
             RequestParameters.Add(
+                "$.xgafv", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "$.xgafv",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "access_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "access_token",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
                 "alt", new Google.Apis.Discovery.Parameter
                 {
                     Name = "alt",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "json",
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "callback", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "callback",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
             RequestParameters.Add(
@@ -231,9 +300,18 @@ namespace Google.Apis.Customsearch.v1
                     Pattern = null,
                 });
             RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
+                "uploadType", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "userIp",
+                    Name = "uploadType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "upload_protocol", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "upload_protocol",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -254,765 +332,15 @@ namespace Google.Apis.Customsearch.v1
         public CseResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-            siterestrict = new SiterestrictResource(service);
 
         }
 
-        private readonly SiterestrictResource siterestrict;
-
-        /// <summary>Gets the Siterestrict resource.</summary>
-        public virtual SiterestrictResource Siterestrict
-        {
-            get { return siterestrict; }
-        }
-
-        /// <summary>The "siterestrict" collection of methods.</summary>
-        public class SiterestrictResource
-        {
-            private const string Resource = "siterestrict";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public SiterestrictResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-
-            }
-
-
-            /// <summary>Returns metadata about the search performed, metadata about the custom search engine used for
-            /// the search, and the search results. Uses a small set of url patterns.</summary>
-            /// <param name="q">Query</param>
-            public virtual ListRequest List(string q)
-            {
-                return new ListRequest(service, q);
-            }
-
-            /// <summary>Returns metadata about the search performed, metadata about the custom search engine used for
-            /// the search, and the search results. Uses a small set of url patterns.</summary>
-            public class ListRequest : CustomsearchBaseServiceRequest<Google.Apis.Customsearch.v1.Data.Search>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string q)
-                    : base(service)
-                {
-                    Q = q;
-                    InitParameters();
-                }
-
-
-                /// <summary>Query</summary>
-                [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Q { get; private set; }
-
-                /// <summary>Turns off the translation between zh-CN and zh-TW.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("c2coff", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string C2coff { get; set; }
-
-                /// <summary>Country restrict(s).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("cr", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Cr { get; set; }
-
-                /// <summary>The custom search engine ID to scope this search query</summary>
-                [Google.Apis.Util.RequestParameterAttribute("cx", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Cx { get; set; }
-
-                /// <summary>Specifies all search results are from a time period</summary>
-                [Google.Apis.Util.RequestParameterAttribute("dateRestrict", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string DateRestrict { get; set; }
-
-                /// <summary>Identifies a phrase that all documents in the search results must contain</summary>
-                [Google.Apis.Util.RequestParameterAttribute("exactTerms", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ExactTerms { get; set; }
-
-                /// <summary>Identifies a word or phrase that should not appear in any documents in the search
-                /// results</summary>
-                [Google.Apis.Util.RequestParameterAttribute("excludeTerms", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ExcludeTerms { get; set; }
-
-                /// <summary>Returns images of a specified type. Some of the allowed values are: bmp, gif, png, jpg,
-                /// svg, pdf, ...</summary>
-                [Google.Apis.Util.RequestParameterAttribute("fileType", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string FileType { get; set; }
-
-                /// <summary>Controls turning on or off the duplicate content filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<FilterEnum> Filter { get; set; }
-
-                /// <summary>Controls turning on or off the duplicate content filter.</summary>
-                public enum FilterEnum
-                {
-                    /// <summary>Turns off duplicate content filter.</summary>
-                    [Google.Apis.Util.StringValueAttribute("0")]
-                    Value0,
-                    /// <summary>Turns on duplicate content filter.</summary>
-                    [Google.Apis.Util.StringValueAttribute("1")]
-                    Value1,
-                }
-
-                /// <summary>Geolocation of end user.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("gl", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Gl { get; set; }
-
-                /// <summary>The local Google domain to use to perform the search.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("googlehost", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Googlehost { get; set; }
-
-                /// <summary>Creates a range in form as_nlo value..as_nhi value and attempts to append it to
-                /// query</summary>
-                [Google.Apis.Util.RequestParameterAttribute("highRange", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string HighRange { get; set; }
-
-                /// <summary>Sets the user interface language.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("hl", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Hl { get; set; }
-
-                /// <summary>Appends the extra query terms to the query.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("hq", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Hq { get; set; }
-
-                /// <summary>Returns black and white, grayscale, or color images: mono, gray, and color.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("imgColorType", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ImgColorTypeEnum> ImgColorType { get; set; }
-
-                /// <summary>Returns black and white, grayscale, or color images: mono, gray, and color.</summary>
-                public enum ImgColorTypeEnum
-                {
-                    /// <summary>color</summary>
-                    [Google.Apis.Util.StringValueAttribute("color")]
-                    Color,
-                    /// <summary>gray</summary>
-                    [Google.Apis.Util.StringValueAttribute("gray")]
-                    Gray,
-                    /// <summary>mono</summary>
-                    [Google.Apis.Util.StringValueAttribute("mono")]
-                    Mono,
-                }
-
-                /// <summary>Returns images of a specific dominant color: red, orange, yellow, green, teal, blue,
-                /// purple, pink, white, gray, black and brown.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("imgDominantColor", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ImgDominantColorEnum> ImgDominantColor { get; set; }
-
-                /// <summary>Returns images of a specific dominant color: red, orange, yellow, green, teal, blue,
-                /// purple, pink, white, gray, black and brown.</summary>
-                public enum ImgDominantColorEnum
-                {
-                    /// <summary>black</summary>
-                    [Google.Apis.Util.StringValueAttribute("black")]
-                    Black,
-                    /// <summary>blue</summary>
-                    [Google.Apis.Util.StringValueAttribute("blue")]
-                    Blue,
-                    /// <summary>brown</summary>
-                    [Google.Apis.Util.StringValueAttribute("brown")]
-                    Brown,
-                    /// <summary>gray</summary>
-                    [Google.Apis.Util.StringValueAttribute("gray")]
-                    Gray,
-                    /// <summary>green</summary>
-                    [Google.Apis.Util.StringValueAttribute("green")]
-                    Green,
-                    /// <summary>orange</summary>
-                    [Google.Apis.Util.StringValueAttribute("orange")]
-                    Orange,
-                    /// <summary>pink</summary>
-                    [Google.Apis.Util.StringValueAttribute("pink")]
-                    Pink,
-                    /// <summary>purple</summary>
-                    [Google.Apis.Util.StringValueAttribute("purple")]
-                    Purple,
-                    /// <summary>red</summary>
-                    [Google.Apis.Util.StringValueAttribute("red")]
-                    Red,
-                    /// <summary>teal</summary>
-                    [Google.Apis.Util.StringValueAttribute("teal")]
-                    Teal,
-                    /// <summary>white</summary>
-                    [Google.Apis.Util.StringValueAttribute("white")]
-                    White,
-                    /// <summary>yellow</summary>
-                    [Google.Apis.Util.StringValueAttribute("yellow")]
-                    Yellow,
-                }
-
-                /// <summary>Returns images of a specified size, where size can be one of: icon, small, medium, large,
-                /// xlarge, xxlarge, and huge.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("imgSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ImgSizeEnum> ImgSize { get; set; }
-
-                /// <summary>Returns images of a specified size, where size can be one of: icon, small, medium, large,
-                /// xlarge, xxlarge, and huge.</summary>
-                public enum ImgSizeEnum
-                {
-                    /// <summary>huge</summary>
-                    [Google.Apis.Util.StringValueAttribute("huge")]
-                    Huge,
-                    /// <summary>icon</summary>
-                    [Google.Apis.Util.StringValueAttribute("icon")]
-                    Icon,
-                    /// <summary>large</summary>
-                    [Google.Apis.Util.StringValueAttribute("large")]
-                    Large,
-                    /// <summary>medium</summary>
-                    [Google.Apis.Util.StringValueAttribute("medium")]
-                    Medium,
-                    /// <summary>small</summary>
-                    [Google.Apis.Util.StringValueAttribute("small")]
-                    Small,
-                    /// <summary>xlarge</summary>
-                    [Google.Apis.Util.StringValueAttribute("xlarge")]
-                    Xlarge,
-                    /// <summary>xxlarge</summary>
-                    [Google.Apis.Util.StringValueAttribute("xxlarge")]
-                    Xxlarge,
-                }
-
-                /// <summary>Returns images of a type, which can be one of: clipart, face, lineart, news, and
-                /// photo.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("imgType", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ImgTypeEnum> ImgType { get; set; }
-
-                /// <summary>Returns images of a type, which can be one of: clipart, face, lineart, news, and
-                /// photo.</summary>
-                public enum ImgTypeEnum
-                {
-                    /// <summary>clipart</summary>
-                    [Google.Apis.Util.StringValueAttribute("clipart")]
-                    Clipart,
-                    /// <summary>face</summary>
-                    [Google.Apis.Util.StringValueAttribute("face")]
-                    Face,
-                    /// <summary>lineart</summary>
-                    [Google.Apis.Util.StringValueAttribute("lineart")]
-                    Lineart,
-                    /// <summary>news</summary>
-                    [Google.Apis.Util.StringValueAttribute("news")]
-                    News,
-                    /// <summary>photo</summary>
-                    [Google.Apis.Util.StringValueAttribute("photo")]
-                    Photo,
-                }
-
-                /// <summary>Specifies that all search results should contain a link to a particular URL</summary>
-                [Google.Apis.Util.RequestParameterAttribute("linkSite", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string LinkSite { get; set; }
-
-                /// <summary>Creates a range in form as_nlo value..as_nhi value and attempts to append it to
-                /// query</summary>
-                [Google.Apis.Util.RequestParameterAttribute("lowRange", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string LowRange { get; set; }
-
-                /// <summary>The language restriction for the search results</summary>
-                [Google.Apis.Util.RequestParameterAttribute("lr", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<LrEnum> Lr { get; set; }
-
-                /// <summary>The language restriction for the search results</summary>
-                public enum LrEnum
-                {
-                    /// <summary>Arabic</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_ar")]
-                    LangAr,
-                    /// <summary>Bulgarian</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_bg")]
-                    LangBg,
-                    /// <summary>Catalan</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_ca")]
-                    LangCa,
-                    /// <summary>Czech</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_cs")]
-                    LangCs,
-                    /// <summary>Danish</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_da")]
-                    LangDa,
-                    /// <summary>German</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_de")]
-                    LangDe,
-                    /// <summary>Greek</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_el")]
-                    LangEl,
-                    /// <summary>English</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_en")]
-                    LangEn,
-                    /// <summary>Spanish</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_es")]
-                    LangEs,
-                    /// <summary>Estonian</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_et")]
-                    LangEt,
-                    /// <summary>Finnish</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_fi")]
-                    LangFi,
-                    /// <summary>French</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_fr")]
-                    LangFr,
-                    /// <summary>Croatian</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_hr")]
-                    LangHr,
-                    /// <summary>Hungarian</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_hu")]
-                    LangHu,
-                    /// <summary>Indonesian</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_id")]
-                    LangId,
-                    /// <summary>Icelandic</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_is")]
-                    LangIs,
-                    /// <summary>Italian</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_it")]
-                    LangIt,
-                    /// <summary>Hebrew</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_iw")]
-                    LangIw,
-                    /// <summary>Japanese</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_ja")]
-                    LangJa,
-                    /// <summary>Korean</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_ko")]
-                    LangKo,
-                    /// <summary>Lithuanian</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_lt")]
-                    LangLt,
-                    /// <summary>Latvian</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_lv")]
-                    LangLv,
-                    /// <summary>Dutch</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_nl")]
-                    LangNl,
-                    /// <summary>Norwegian</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_no")]
-                    LangNo,
-                    /// <summary>Polish</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_pl")]
-                    LangPl,
-                    /// <summary>Portuguese</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_pt")]
-                    LangPt,
-                    /// <summary>Romanian</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_ro")]
-                    LangRo,
-                    /// <summary>Russian</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_ru")]
-                    LangRu,
-                    /// <summary>Slovak</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_sk")]
-                    LangSk,
-                    /// <summary>Slovenian</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_sl")]
-                    LangSl,
-                    /// <summary>Serbian</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_sr")]
-                    LangSr,
-                    /// <summary>Swedish</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_sv")]
-                    LangSv,
-                    /// <summary>Turkish</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_tr")]
-                    LangTr,
-                    /// <summary>Chinese (Simplified)</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_zh-CN")]
-                    LangZhCN,
-                    /// <summary>Chinese (Traditional)</summary>
-                    [Google.Apis.Util.StringValueAttribute("lang_zh-TW")]
-                    LangZhTW,
-                }
-
-                /// <summary>Number of search results to return</summary>
-                /// [default: 10]
-                [Google.Apis.Util.RequestParameterAttribute("num", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<long> Num { get; set; }
-
-                /// <summary>Provides additional search terms to check for in a document, where each document in the
-                /// search results must contain at least one of the additional search terms</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orTerms", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrTerms { get; set; }
-
-                /// <summary>Specifies that all search results should be pages that are related to the specified
-                /// URL</summary>
-                [Google.Apis.Util.RequestParameterAttribute("relatedSite", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string RelatedSite { get; set; }
-
-                /// <summary>Filters based on licensing. Supported values include: cc_publicdomain, cc_attribute,
-                /// cc_sharealike, cc_noncommercial, cc_nonderived and combinations of these.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("rights", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Rights { get; set; }
-
-                /// <summary>Search safety level</summary>
-                /// [default: off]
-                [Google.Apis.Util.RequestParameterAttribute("safe", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<SafeEnum> Safe { get; set; }
-
-                /// <summary>Search safety level</summary>
-                public enum SafeEnum
-                {
-                    /// <summary>Enables highest level of safe search filtering.</summary>
-                    [Google.Apis.Util.StringValueAttribute("high")]
-                    High,
-                    /// <summary>Enables moderate safe search filtering.</summary>
-                    [Google.Apis.Util.StringValueAttribute("medium")]
-                    Medium,
-                    /// <summary>Disables safe search filtering.</summary>
-                    [Google.Apis.Util.StringValueAttribute("off")]
-                    Off,
-                }
-
-                /// <summary>Specifies the search type: image.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("searchType", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<SearchTypeEnum> SearchType { get; set; }
-
-                /// <summary>Specifies the search type: image.</summary>
-                public enum SearchTypeEnum
-                {
-                    /// <summary>custom image search</summary>
-                    [Google.Apis.Util.StringValueAttribute("image")]
-                    Image,
-                }
-
-                /// <summary>Specifies all search results should be pages from a given site</summary>
-                [Google.Apis.Util.RequestParameterAttribute("siteSearch", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string SiteSearch { get; set; }
-
-                /// <summary>Controls whether to include or exclude results from the site named in the as_sitesearch
-                /// parameter</summary>
-                [Google.Apis.Util.RequestParameterAttribute("siteSearchFilter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<SiteSearchFilterEnum> SiteSearchFilter { get; set; }
-
-                /// <summary>Controls whether to include or exclude results from the site named in the as_sitesearch
-                /// parameter</summary>
-                public enum SiteSearchFilterEnum
-                {
-                    /// <summary>exclude</summary>
-                    [Google.Apis.Util.StringValueAttribute("e")]
-                    E,
-                    /// <summary>include</summary>
-                    [Google.Apis.Util.StringValueAttribute("i")]
-                    I,
-                }
-
-                /// <summary>The sort expression to apply to the results</summary>
-                [Google.Apis.Util.RequestParameterAttribute("sort", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Sort { get; set; }
-
-                /// <summary>The index of the first result to return</summary>
-                [Google.Apis.Util.RequestParameterAttribute("start", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<long> Start { get; set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "list"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1/siterestrict"; }
-                }
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "q", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "q",
-                            IsRequired = true,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "c2coff", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "c2coff",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "cr", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "cr",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "cx", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "cx",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "dateRestrict", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "dateRestrict",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "exactTerms", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "exactTerms",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "excludeTerms", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "excludeTerms",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "fileType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "fileType",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "gl", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "gl",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "googlehost", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "googlehost",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "highRange", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "highRange",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "hl", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "hl",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "hq", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "hq",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "imgColorType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "imgColorType",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "imgDominantColor", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "imgDominantColor",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "imgSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "imgSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "imgType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "imgType",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "linkSite", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "linkSite",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "lowRange", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "lowRange",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "lr", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "lr",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "num", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "num",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "10",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orTerms", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orTerms",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "relatedSite", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "relatedSite",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "rights", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "rights",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "safe", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "safe",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "off",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "searchType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "searchType",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "siteSearch", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "siteSearch",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "siteSearchFilter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "siteSearchFilter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "sort", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sort",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-        }
 
         /// <summary>Returns metadata about the search performed, metadata about the custom search engine used for the
         /// search, and the search results.</summary>
-        /// <param name="q">Query</param>
-        public virtual ListRequest List(string q)
+        public virtual ListRequest List()
         {
-            return new ListRequest(service, q);
+            return new ListRequest(service);
         }
 
         /// <summary>Returns metadata about the search performed, metadata about the custom search engine used for the
@@ -1020,17 +348,12 @@ namespace Google.Apis.Customsearch.v1
         public class ListRequest : CustomsearchBaseServiceRequest<Google.Apis.Customsearch.v1.Data.Search>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string q)
+            public ListRequest(Google.Apis.Services.IClientService service)
                 : base(service)
             {
-                Q = q;
                 InitParameters();
             }
 
-
-            /// <summary>Query</summary>
-            [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Q { get; private set; }
 
             /// <summary>Turns off the translation between zh-CN and zh-TW.</summary>
             [Google.Apis.Util.RequestParameterAttribute("c2coff", Google.Apis.Util.RequestParameterType.Query)]
@@ -1062,20 +385,9 @@ namespace Google.Apis.Customsearch.v1
             [Google.Apis.Util.RequestParameterAttribute("fileType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string FileType { get; set; }
 
-            /// <summary>Controls turning on or off the duplicate content filter.</summary>
+            /// <summary>Controls turning on (1) or off (0) the duplicate content filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<FilterEnum> Filter { get; set; }
-
-            /// <summary>Controls turning on or off the duplicate content filter.</summary>
-            public enum FilterEnum
-            {
-                /// <summary>Turns off duplicate content filter.</summary>
-                [Google.Apis.Util.StringValueAttribute("0")]
-                Value0,
-                /// <summary>Turns on duplicate content filter.</summary>
-                [Google.Apis.Util.StringValueAttribute("1")]
-                Value1,
-            }
+            public virtual string Filter { get; set; }
 
             /// <summary>Geolocation of end user.</summary>
             [Google.Apis.Util.RequestParameterAttribute("gl", Google.Apis.Util.RequestParameterType.Query)]
@@ -1093,26 +405,29 @@ namespace Google.Apis.Customsearch.v1
             [Google.Apis.Util.RequestParameterAttribute("hl", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Hl { get; set; }
 
-            /// <summary>Appends the extra query terms to the query.</summary>
+            /// <summary>Appends the extra hidden query terms to the query.</summary>
             [Google.Apis.Util.RequestParameterAttribute("hq", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Hq { get; set; }
 
-            /// <summary>Returns black and white, grayscale, or color images: mono, gray, and color.</summary>
+            /// <summary>Returns black and white, grayscale, transparent-background or color images: mono, gray, trans,
+            /// and color.</summary>
             [Google.Apis.Util.RequestParameterAttribute("imgColorType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ImgColorTypeEnum> ImgColorType { get; set; }
 
-            /// <summary>Returns black and white, grayscale, or color images: mono, gray, and color.</summary>
+            /// <summary>Returns black and white, grayscale, transparent-background or color images: mono, gray, trans,
+            /// and color.</summary>
             public enum ImgColorTypeEnum
             {
-                /// <summary>color</summary>
-                [Google.Apis.Util.StringValueAttribute("color")]
-                Color,
-                /// <summary>gray</summary>
-                [Google.Apis.Util.StringValueAttribute("gray")]
-                Gray,
-                /// <summary>mono</summary>
+                [Google.Apis.Util.StringValueAttribute("imgColorTypeUndefined")]
+                ImgColorTypeUndefined,
                 [Google.Apis.Util.StringValueAttribute("mono")]
                 Mono,
+                [Google.Apis.Util.StringValueAttribute("gray")]
+                Gray,
+                [Google.Apis.Util.StringValueAttribute("color")]
+                Color,
+                [Google.Apis.Util.StringValueAttribute("trans")]
+                Trans,
             }
 
             /// <summary>Returns images of a specific dominant color: red, orange, yellow, green, teal, blue, purple,
@@ -1124,40 +439,30 @@ namespace Google.Apis.Customsearch.v1
             /// pink, white, gray, black and brown.</summary>
             public enum ImgDominantColorEnum
             {
-                /// <summary>black</summary>
+                [Google.Apis.Util.StringValueAttribute("imgDominantColorUndefined")]
+                ImgDominantColorUndefined,
                 [Google.Apis.Util.StringValueAttribute("black")]
                 Black,
-                /// <summary>blue</summary>
                 [Google.Apis.Util.StringValueAttribute("blue")]
                 Blue,
-                /// <summary>brown</summary>
                 [Google.Apis.Util.StringValueAttribute("brown")]
                 Brown,
-                /// <summary>gray</summary>
                 [Google.Apis.Util.StringValueAttribute("gray")]
                 Gray,
-                /// <summary>green</summary>
                 [Google.Apis.Util.StringValueAttribute("green")]
                 Green,
-                /// <summary>orange</summary>
                 [Google.Apis.Util.StringValueAttribute("orange")]
                 Orange,
-                /// <summary>pink</summary>
                 [Google.Apis.Util.StringValueAttribute("pink")]
                 Pink,
-                /// <summary>purple</summary>
                 [Google.Apis.Util.StringValueAttribute("purple")]
                 Purple,
-                /// <summary>red</summary>
                 [Google.Apis.Util.StringValueAttribute("red")]
                 Red,
-                /// <summary>teal</summary>
                 [Google.Apis.Util.StringValueAttribute("teal")]
                 Teal,
-                /// <summary>white</summary>
                 [Google.Apis.Util.StringValueAttribute("white")]
                 White,
-                /// <summary>yellow</summary>
                 [Google.Apis.Util.StringValueAttribute("yellow")]
                 Yellow,
             }
@@ -1171,53 +476,47 @@ namespace Google.Apis.Customsearch.v1
             /// xlarge, xxlarge, and huge.</summary>
             public enum ImgSizeEnum
             {
-                /// <summary>huge</summary>
-                [Google.Apis.Util.StringValueAttribute("huge")]
-                Huge,
-                /// <summary>icon</summary>
-                [Google.Apis.Util.StringValueAttribute("icon")]
-                Icon,
-                /// <summary>large</summary>
-                [Google.Apis.Util.StringValueAttribute("large")]
-                Large,
-                /// <summary>medium</summary>
-                [Google.Apis.Util.StringValueAttribute("medium")]
-                Medium,
-                /// <summary>small</summary>
-                [Google.Apis.Util.StringValueAttribute("small")]
-                Small,
-                /// <summary>xlarge</summary>
-                [Google.Apis.Util.StringValueAttribute("xlarge")]
-                Xlarge,
-                /// <summary>xxlarge</summary>
-                [Google.Apis.Util.StringValueAttribute("xxlarge")]
-                Xxlarge,
+                [Google.Apis.Util.StringValueAttribute("imgSizeUndefined")]
+                ImgSizeUndefined,
+                [Google.Apis.Util.StringValueAttribute("HUGE")]
+                HUGE,
+                [Google.Apis.Util.StringValueAttribute("ICON")]
+                ICON,
+                [Google.Apis.Util.StringValueAttribute("LARGE")]
+                LARGE,
+                [Google.Apis.Util.StringValueAttribute("MEDIUM")]
+                MEDIUM,
+                [Google.Apis.Util.StringValueAttribute("SMALL")]
+                SMALL,
+                [Google.Apis.Util.StringValueAttribute("XLARGE")]
+                XLARGE,
+                [Google.Apis.Util.StringValueAttribute("XXLARGE")]
+                XXLARGE,
             }
 
-            /// <summary>Returns images of a type, which can be one of: clipart, face, lineart, news, and
-            /// photo.</summary>
+            /// <summary>Returns images of a type, which can be one of: clipart, face, lineart, stock, photo, and
+            /// animated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("imgType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ImgTypeEnum> ImgType { get; set; }
 
-            /// <summary>Returns images of a type, which can be one of: clipart, face, lineart, news, and
-            /// photo.</summary>
+            /// <summary>Returns images of a type, which can be one of: clipart, face, lineart, stock, photo, and
+            /// animated.</summary>
             public enum ImgTypeEnum
             {
-                /// <summary>clipart</summary>
+                [Google.Apis.Util.StringValueAttribute("imgTypeUndefined")]
+                ImgTypeUndefined,
                 [Google.Apis.Util.StringValueAttribute("clipart")]
                 Clipart,
-                /// <summary>face</summary>
                 [Google.Apis.Util.StringValueAttribute("face")]
                 Face,
-                /// <summary>lineart</summary>
                 [Google.Apis.Util.StringValueAttribute("lineart")]
                 Lineart,
-                /// <summary>news</summary>
-                [Google.Apis.Util.StringValueAttribute("news")]
-                News,
-                /// <summary>photo</summary>
+                [Google.Apis.Util.StringValueAttribute("stock")]
+                Stock,
                 [Google.Apis.Util.StringValueAttribute("photo")]
                 Photo,
+                [Google.Apis.Util.StringValueAttribute("animated")]
+                Animated,
             }
 
             /// <summary>Specifies that all search results should contain a link to a particular URL</summary>
@@ -1230,127 +529,20 @@ namespace Google.Apis.Customsearch.v1
 
             /// <summary>The language restriction for the search results</summary>
             [Google.Apis.Util.RequestParameterAttribute("lr", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<LrEnum> Lr { get; set; }
-
-            /// <summary>The language restriction for the search results</summary>
-            public enum LrEnum
-            {
-                /// <summary>Arabic</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_ar")]
-                LangAr,
-                /// <summary>Bulgarian</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_bg")]
-                LangBg,
-                /// <summary>Catalan</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_ca")]
-                LangCa,
-                /// <summary>Czech</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_cs")]
-                LangCs,
-                /// <summary>Danish</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_da")]
-                LangDa,
-                /// <summary>German</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_de")]
-                LangDe,
-                /// <summary>Greek</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_el")]
-                LangEl,
-                /// <summary>English</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_en")]
-                LangEn,
-                /// <summary>Spanish</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_es")]
-                LangEs,
-                /// <summary>Estonian</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_et")]
-                LangEt,
-                /// <summary>Finnish</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_fi")]
-                LangFi,
-                /// <summary>French</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_fr")]
-                LangFr,
-                /// <summary>Croatian</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_hr")]
-                LangHr,
-                /// <summary>Hungarian</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_hu")]
-                LangHu,
-                /// <summary>Indonesian</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_id")]
-                LangId,
-                /// <summary>Icelandic</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_is")]
-                LangIs,
-                /// <summary>Italian</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_it")]
-                LangIt,
-                /// <summary>Hebrew</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_iw")]
-                LangIw,
-                /// <summary>Japanese</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_ja")]
-                LangJa,
-                /// <summary>Korean</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_ko")]
-                LangKo,
-                /// <summary>Lithuanian</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_lt")]
-                LangLt,
-                /// <summary>Latvian</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_lv")]
-                LangLv,
-                /// <summary>Dutch</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_nl")]
-                LangNl,
-                /// <summary>Norwegian</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_no")]
-                LangNo,
-                /// <summary>Polish</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_pl")]
-                LangPl,
-                /// <summary>Portuguese</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_pt")]
-                LangPt,
-                /// <summary>Romanian</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_ro")]
-                LangRo,
-                /// <summary>Russian</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_ru")]
-                LangRu,
-                /// <summary>Slovak</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_sk")]
-                LangSk,
-                /// <summary>Slovenian</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_sl")]
-                LangSl,
-                /// <summary>Serbian</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_sr")]
-                LangSr,
-                /// <summary>Swedish</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_sv")]
-                LangSv,
-                /// <summary>Turkish</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_tr")]
-                LangTr,
-                /// <summary>Chinese (Simplified)</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_zh-CN")]
-                LangZhCN,
-                /// <summary>Chinese (Traditional)</summary>
-                [Google.Apis.Util.StringValueAttribute("lang_zh-TW")]
-                LangZhTW,
-            }
+            public virtual string Lr { get; set; }
 
             /// <summary>Number of search results to return</summary>
-            /// [default: 10]
             [Google.Apis.Util.RequestParameterAttribute("num", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Num { get; set; }
+            public virtual System.Nullable<int> Num { get; set; }
 
             /// <summary>Provides additional search terms to check for in a document, where each document in the search
             /// results must contain at least one of the additional search terms</summary>
             [Google.Apis.Util.RequestParameterAttribute("orTerms", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrTerms { get; set; }
+
+            /// <summary>Query</summary>
+            [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Q { get; set; }
 
             /// <summary>Specifies that all search results should be pages that are related to the specified
             /// URL</summary>
@@ -1358,28 +550,26 @@ namespace Google.Apis.Customsearch.v1
             public virtual string RelatedSite { get; set; }
 
             /// <summary>Filters based on licensing. Supported values include: cc_publicdomain, cc_attribute,
-            /// cc_sharealike, cc_noncommercial, cc_nonderived and combinations of these.</summary>
+            /// cc_sharealike, cc_noncommercial, cc_nonderived and combinations of these. See
+            /// https://wiki.creativecommons.org/wiki/CC_Search_integration for typical combinations.</summary>
             [Google.Apis.Util.RequestParameterAttribute("rights", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Rights { get; set; }
 
-            /// <summary>Search safety level</summary>
-            /// [default: off]
+            /// <summary>Search safety level (active, off) (high, medium are same as active)</summary>
             [Google.Apis.Util.RequestParameterAttribute("safe", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SafeEnum> Safe { get; set; }
 
-            /// <summary>Search safety level</summary>
+            /// <summary>Search safety level (active, off) (high, medium are same as active)</summary>
             public enum SafeEnum
             {
-                /// <summary>Enables safe search filtering.</summary>
+                [Google.Apis.Util.StringValueAttribute("safeUndefined")]
+                SafeUndefined,
                 [Google.Apis.Util.StringValueAttribute("active")]
                 Active,
-                /// <summary>(Deprecated) Same as active.</summary>
                 [Google.Apis.Util.StringValueAttribute("high")]
                 High,
-                /// <summary>(Deprecated) Same as active.</summary>
                 [Google.Apis.Util.StringValueAttribute("medium")]
                 Medium,
-                /// <summary>Disables safe search filtering.</summary>
                 [Google.Apis.Util.StringValueAttribute("off")]
                 Off,
             }
@@ -1391,7 +581,8 @@ namespace Google.Apis.Customsearch.v1
             /// <summary>Specifies the search type: image.</summary>
             public enum SearchTypeEnum
             {
-                /// <summary>custom image search</summary>
+                [Google.Apis.Util.StringValueAttribute("searchTypeUndefined")]
+                SearchTypeUndefined,
                 [Google.Apis.Util.StringValueAttribute("image")]
                 Image,
             }
@@ -1400,19 +591,19 @@ namespace Google.Apis.Customsearch.v1
             [Google.Apis.Util.RequestParameterAttribute("siteSearch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SiteSearch { get; set; }
 
-            /// <summary>Controls whether to include or exclude results from the site named in the as_sitesearch
+            /// <summary>Controls whether to include (i) or exclude (e) results from the site named in the siteSearch
             /// parameter</summary>
             [Google.Apis.Util.RequestParameterAttribute("siteSearchFilter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SiteSearchFilterEnum> SiteSearchFilter { get; set; }
 
-            /// <summary>Controls whether to include or exclude results from the site named in the as_sitesearch
+            /// <summary>Controls whether to include (i) or exclude (e) results from the site named in the siteSearch
             /// parameter</summary>
             public enum SiteSearchFilterEnum
             {
-                /// <summary>exclude</summary>
+                [Google.Apis.Util.StringValueAttribute("siteSearchFilterUndefined")]
+                SiteSearchFilterUndefined,
                 [Google.Apis.Util.StringValueAttribute("e")]
                 E,
-                /// <summary>include</summary>
                 [Google.Apis.Util.StringValueAttribute("i")]
                 I,
             }
@@ -1441,7 +632,7 @@ namespace Google.Apis.Customsearch.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "v1"; }
+                get { return "customsearch/v1"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1449,15 +640,6 @@ namespace Google.Apis.Customsearch.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "q", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "q",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "c2coff", new Google.Apis.Discovery.Parameter
                     {
@@ -1644,13 +826,22 @@ namespace Google.Apis.Customsearch.v1
                         Name = "num",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = "10",
+                        DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
                     "orTerms", new Google.Apis.Discovery.Parameter
                     {
                         Name = "orTerms",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "q", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "q",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1680,7 +871,611 @@ namespace Google.Apis.Customsearch.v1
                         Name = "safe",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = "off",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "searchType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "searchType",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "siteSearch", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "siteSearch",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "siteSearchFilter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "siteSearchFilter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sort", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sort",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "start", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "siterestrict" collection of methods.</summary>
+    public class SiterestrictResource
+    {
+        private const string Resource = "siterestrict";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public SiterestrictResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Returns metadata about the search performed, metadata about the custom search engine used for the
+        /// search, and the search results. Uses a small set of url patterns.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>Returns metadata about the search performed, metadata about the custom search engine used for the
+        /// search, and the search results. Uses a small set of url patterns.</summary>
+        public class ListRequest : CustomsearchBaseServiceRequest<Google.Apis.Customsearch.v1.Data.Search>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>Turns off the translation between zh-CN and zh-TW.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("c2coff", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string C2coff { get; set; }
+
+            /// <summary>Country restrict(s).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("cr", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Cr { get; set; }
+
+            /// <summary>The custom search engine ID to scope this search query</summary>
+            [Google.Apis.Util.RequestParameterAttribute("cx", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Cx { get; set; }
+
+            /// <summary>Specifies all search results are from a time period</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dateRestrict", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DateRestrict { get; set; }
+
+            /// <summary>Identifies a phrase that all documents in the search results must contain</summary>
+            [Google.Apis.Util.RequestParameterAttribute("exactTerms", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ExactTerms { get; set; }
+
+            /// <summary>Identifies a word or phrase that should not appear in any documents in the search
+            /// results</summary>
+            [Google.Apis.Util.RequestParameterAttribute("excludeTerms", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ExcludeTerms { get; set; }
+
+            /// <summary>Returns images of a specified type. Some of the allowed values are: bmp, gif, png, jpg, svg,
+            /// pdf, ...</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fileType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string FileType { get; set; }
+
+            /// <summary>Controls turning on (1) or off (0) the duplicate content filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>Geolocation of end user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("gl", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Gl { get; set; }
+
+            /// <summary>The local Google domain to use to perform the search.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("googlehost", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Googlehost { get; set; }
+
+            /// <summary>Creates a range in form as_nlo value..as_nhi value and attempts to append it to query</summary>
+            [Google.Apis.Util.RequestParameterAttribute("highRange", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string HighRange { get; set; }
+
+            /// <summary>Sets the user interface language.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("hl", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Hl { get; set; }
+
+            /// <summary>Appends the extra hidden query terms to the query.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("hq", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Hq { get; set; }
+
+            /// <summary>Returns black and white, grayscale, transparent-background or color images: mono, gray, trans,
+            /// and color.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("imgColorType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ImgColorTypeEnum> ImgColorType { get; set; }
+
+            /// <summary>Returns black and white, grayscale, transparent-background or color images: mono, gray, trans,
+            /// and color.</summary>
+            public enum ImgColorTypeEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("imgColorTypeUndefined")]
+                ImgColorTypeUndefined,
+                [Google.Apis.Util.StringValueAttribute("mono")]
+                Mono,
+                [Google.Apis.Util.StringValueAttribute("gray")]
+                Gray,
+                [Google.Apis.Util.StringValueAttribute("color")]
+                Color,
+                [Google.Apis.Util.StringValueAttribute("trans")]
+                Trans,
+            }
+
+            /// <summary>Returns images of a specific dominant color: red, orange, yellow, green, teal, blue, purple,
+            /// pink, white, gray, black and brown.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("imgDominantColor", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ImgDominantColorEnum> ImgDominantColor { get; set; }
+
+            /// <summary>Returns images of a specific dominant color: red, orange, yellow, green, teal, blue, purple,
+            /// pink, white, gray, black and brown.</summary>
+            public enum ImgDominantColorEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("imgDominantColorUndefined")]
+                ImgDominantColorUndefined,
+                [Google.Apis.Util.StringValueAttribute("black")]
+                Black,
+                [Google.Apis.Util.StringValueAttribute("blue")]
+                Blue,
+                [Google.Apis.Util.StringValueAttribute("brown")]
+                Brown,
+                [Google.Apis.Util.StringValueAttribute("gray")]
+                Gray,
+                [Google.Apis.Util.StringValueAttribute("green")]
+                Green,
+                [Google.Apis.Util.StringValueAttribute("orange")]
+                Orange,
+                [Google.Apis.Util.StringValueAttribute("pink")]
+                Pink,
+                [Google.Apis.Util.StringValueAttribute("purple")]
+                Purple,
+                [Google.Apis.Util.StringValueAttribute("red")]
+                Red,
+                [Google.Apis.Util.StringValueAttribute("teal")]
+                Teal,
+                [Google.Apis.Util.StringValueAttribute("white")]
+                White,
+                [Google.Apis.Util.StringValueAttribute("yellow")]
+                Yellow,
+            }
+
+            /// <summary>Returns images of a specified size, where size can be one of: icon, small, medium, large,
+            /// xlarge, xxlarge, and huge.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("imgSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ImgSizeEnum> ImgSize { get; set; }
+
+            /// <summary>Returns images of a specified size, where size can be one of: icon, small, medium, large,
+            /// xlarge, xxlarge, and huge.</summary>
+            public enum ImgSizeEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("imgSizeUndefined")]
+                ImgSizeUndefined,
+                [Google.Apis.Util.StringValueAttribute("HUGE")]
+                HUGE,
+                [Google.Apis.Util.StringValueAttribute("ICON")]
+                ICON,
+                [Google.Apis.Util.StringValueAttribute("LARGE")]
+                LARGE,
+                [Google.Apis.Util.StringValueAttribute("MEDIUM")]
+                MEDIUM,
+                [Google.Apis.Util.StringValueAttribute("SMALL")]
+                SMALL,
+                [Google.Apis.Util.StringValueAttribute("XLARGE")]
+                XLARGE,
+                [Google.Apis.Util.StringValueAttribute("XXLARGE")]
+                XXLARGE,
+            }
+
+            /// <summary>Returns images of a type, which can be one of: clipart, face, lineart, stock, photo, and
+            /// animated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("imgType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ImgTypeEnum> ImgType { get; set; }
+
+            /// <summary>Returns images of a type, which can be one of: clipart, face, lineart, stock, photo, and
+            /// animated.</summary>
+            public enum ImgTypeEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("imgTypeUndefined")]
+                ImgTypeUndefined,
+                [Google.Apis.Util.StringValueAttribute("clipart")]
+                Clipart,
+                [Google.Apis.Util.StringValueAttribute("face")]
+                Face,
+                [Google.Apis.Util.StringValueAttribute("lineart")]
+                Lineart,
+                [Google.Apis.Util.StringValueAttribute("stock")]
+                Stock,
+                [Google.Apis.Util.StringValueAttribute("photo")]
+                Photo,
+                [Google.Apis.Util.StringValueAttribute("animated")]
+                Animated,
+            }
+
+            /// <summary>Specifies that all search results should contain a link to a particular URL</summary>
+            [Google.Apis.Util.RequestParameterAttribute("linkSite", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LinkSite { get; set; }
+
+            /// <summary>Creates a range in form as_nlo value..as_nhi value and attempts to append it to query</summary>
+            [Google.Apis.Util.RequestParameterAttribute("lowRange", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LowRange { get; set; }
+
+            /// <summary>The language restriction for the search results</summary>
+            [Google.Apis.Util.RequestParameterAttribute("lr", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Lr { get; set; }
+
+            /// <summary>Number of search results to return</summary>
+            [Google.Apis.Util.RequestParameterAttribute("num", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> Num { get; set; }
+
+            /// <summary>Provides additional search terms to check for in a document, where each document in the search
+            /// results must contain at least one of the additional search terms</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orTerms", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrTerms { get; set; }
+
+            /// <summary>Query</summary>
+            [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Q { get; set; }
+
+            /// <summary>Specifies that all search results should be pages that are related to the specified
+            /// URL</summary>
+            [Google.Apis.Util.RequestParameterAttribute("relatedSite", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RelatedSite { get; set; }
+
+            /// <summary>Filters based on licensing. Supported values include: cc_publicdomain, cc_attribute,
+            /// cc_sharealike, cc_noncommercial, cc_nonderived and combinations of these. See
+            /// https://wiki.creativecommons.org/wiki/CC_Search_integration for typical combinations.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("rights", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Rights { get; set; }
+
+            /// <summary>Search safety level (active, off) (high, medium are same as active)</summary>
+            [Google.Apis.Util.RequestParameterAttribute("safe", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SafeEnum> Safe { get; set; }
+
+            /// <summary>Search safety level (active, off) (high, medium are same as active)</summary>
+            public enum SafeEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("safeUndefined")]
+                SafeUndefined,
+                [Google.Apis.Util.StringValueAttribute("active")]
+                Active,
+                [Google.Apis.Util.StringValueAttribute("high")]
+                High,
+                [Google.Apis.Util.StringValueAttribute("medium")]
+                Medium,
+                [Google.Apis.Util.StringValueAttribute("off")]
+                Off,
+            }
+
+            /// <summary>Specifies the search type: image.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("searchType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SearchTypeEnum> SearchType { get; set; }
+
+            /// <summary>Specifies the search type: image.</summary>
+            public enum SearchTypeEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("searchTypeUndefined")]
+                SearchTypeUndefined,
+                [Google.Apis.Util.StringValueAttribute("image")]
+                Image,
+            }
+
+            /// <summary>Specifies all search results should be pages from a given site</summary>
+            [Google.Apis.Util.RequestParameterAttribute("siteSearch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SiteSearch { get; set; }
+
+            /// <summary>Controls whether to include (i) or exclude (e) results from the site named in the siteSearch
+            /// parameter</summary>
+            [Google.Apis.Util.RequestParameterAttribute("siteSearchFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SiteSearchFilterEnum> SiteSearchFilter { get; set; }
+
+            /// <summary>Controls whether to include (i) or exclude (e) results from the site named in the siteSearch
+            /// parameter</summary>
+            public enum SiteSearchFilterEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("siteSearchFilterUndefined")]
+                SiteSearchFilterUndefined,
+                [Google.Apis.Util.StringValueAttribute("e")]
+                E,
+                [Google.Apis.Util.StringValueAttribute("i")]
+                I,
+            }
+
+            /// <summary>The sort expression to apply to the results</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sort", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Sort { get; set; }
+
+            /// <summary>The index of the first result to return</summary>
+            [Google.Apis.Util.RequestParameterAttribute("start", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> Start { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "customsearch/v1/siterestrict"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "c2coff", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "c2coff",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "cr", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "cr",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "cx", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "cx",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "dateRestrict", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dateRestrict",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "exactTerms", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "exactTerms",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "excludeTerms", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "excludeTerms",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "fileType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fileType",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "gl", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "gl",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "googlehost", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "googlehost",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "highRange", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "highRange",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "hl", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "hl",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "hq", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "hq",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "imgColorType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "imgColorType",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "imgDominantColor", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "imgDominantColor",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "imgSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "imgSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "imgType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "imgType",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "linkSite", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "linkSite",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "lowRange", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "lowRange",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "lr", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "lr",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "num", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "num",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orTerms", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orTerms",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "q", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "q",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "relatedSite", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "relatedSite",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "rights", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "rights",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "safe", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "safe",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -1737,49 +1532,31 @@ namespace Google.Apis.Customsearch.v1
 namespace Google.Apis.Customsearch.v1.Data
 {    
 
-    public class Context : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("facets")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<Context.FacetsData>> Facets { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-        
-
-        public class FacetsData
-        {
-            [Newtonsoft.Json.JsonPropertyAttribute("anchor")]
-            public virtual string Anchor { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("label")]
-            public virtual string Label { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("label_with_op")]
-            public virtual string LabelWithOp { get; set; } 
-
-        }
-    }    
-
+    /// <summary>Promotion result.</summary>
     public class Promotion : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>An array of block objects for this promotion. See Google WebSearch Protocol reference for more
+        /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bodyLines")]
         public virtual System.Collections.Generic.IList<Promotion.BodyLinesData> BodyLines { get; set; } 
 
+        /// <summary>An abridged version of this search's result URL, e.g. www.example.com.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayLink")]
         public virtual string DisplayLink { get; set; } 
 
+        /// <summary>The title of the promotion, in HTML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("htmlTitle")]
         public virtual string HtmlTitle { get; set; } 
 
+        /// <summary>Image belonging to a promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual Promotion.ImageData Image { get; set; } 
 
+        /// <summary>The URL of the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual string Link { get; set; } 
 
+        /// <summary>The title of the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
@@ -1787,194 +1564,106 @@ namespace Google.Apis.Customsearch.v1.Data
         public virtual string ETag { get; set; }
         
 
+        /// <summary>Block object belonging to a promotion.</summary>
         public class BodyLinesData
         {
+            /// <summary>The block object's text in HTML, if it has text.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("htmlTitle")]
             public virtual string HtmlTitle { get; set; } 
 
+            /// <summary>The anchor text of the block object's link, if it has a link.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("link")]
             public virtual string Link { get; set; } 
 
+            /// <summary>The block object's text, if it has text.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("title")]
             public virtual string Title { get; set; } 
 
+            /// <summary>The URL of the block object's link, if it has one.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
             public virtual string Url { get; set; } 
 
         }    
 
+        /// <summary>Image belonging to a promotion.</summary>
         public class ImageData
         {
+            /// <summary>Image height in pixels.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("height")]
             public virtual System.Nullable<int> Height { get; set; } 
 
+            /// <summary>URL of the image for this promotion link.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("source")]
             public virtual string Source { get; set; } 
 
+            /// <summary>Image width in pixels.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("width")]
             public virtual System.Nullable<int> Width { get; set; } 
 
         }
     }    
 
-    public class Query : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<int> Count { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("cr")]
-        public virtual string Cr { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("cx")]
-        public virtual string Cx { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("dateRestrict")]
-        public virtual string DateRestrict { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("disableCnTwTranslation")]
-        public virtual string DisableCnTwTranslation { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("exactTerms")]
-        public virtual string ExactTerms { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("excludeTerms")]
-        public virtual string ExcludeTerms { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
-        public virtual string FileType { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("gl")]
-        public virtual string Gl { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("googleHost")]
-        public virtual string GoogleHost { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("highRange")]
-        public virtual string HighRange { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("hl")]
-        public virtual string Hl { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("hq")]
-        public virtual string Hq { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("imgColorType")]
-        public virtual string ImgColorType { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("imgDominantColor")]
-        public virtual string ImgDominantColor { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("imgSize")]
-        public virtual string ImgSize { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("imgType")]
-        public virtual string ImgType { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("inputEncoding")]
-        public virtual string InputEncoding { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("language")]
-        public virtual string Language { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("linkSite")]
-        public virtual string LinkSite { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("lowRange")]
-        public virtual string LowRange { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("orTerms")]
-        public virtual string OrTerms { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("outputEncoding")]
-        public virtual string OutputEncoding { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("relatedSite")]
-        public virtual string RelatedSite { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("rights")]
-        public virtual string Rights { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("safe")]
-        public virtual string Safe { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("searchTerms")]
-        public virtual string SearchTerms { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("searchType")]
-        public virtual string SearchType { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("siteSearch")]
-        public virtual string SiteSearch { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("siteSearchFilter")]
-        public virtual string SiteSearchFilter { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("sort")]
-        public virtual string Sort { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("startPage")]
-        public virtual System.Nullable<int> StartPage { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<long> TotalResults { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
+    /// <summary>A custom search result.</summary>
     public class Result : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Indicates the ID of Google's cached version of the search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheId")]
         public virtual string CacheId { get; set; } 
 
+        /// <summary>An abridged version of this search result’s URL, e.g. www.example.com.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayLink")]
         public virtual string DisplayLink { get; set; } 
 
+        /// <summary>The file format of the search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileFormat")]
         public virtual string FileFormat { get; set; } 
 
+        /// <summary>The URL displayed after the snippet for each search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedUrl")]
         public virtual string FormattedUrl { get; set; } 
 
+        /// <summary>The HTML-formatted URL displayed after the snippet for each search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("htmlFormattedUrl")]
         public virtual string HtmlFormattedUrl { get; set; } 
 
+        /// <summary>The snippet of the search result, in HTML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("htmlSnippet")]
         public virtual string HtmlSnippet { get; set; } 
 
+        /// <summary>The title of the search result, in HTML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("htmlTitle")]
         public virtual string HtmlTitle { get; set; } 
 
+        /// <summary>Image belonging to a custom search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual Result.ImageData Image { get; set; } 
 
+        /// <summary>A unique identifier for the type of current object. For this API, it is
+        /// customsearch#result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>Encapsulates all information about refinement labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<Result.LabelsData> Labels { get; set; } 
 
+        /// <summary>The full URL to which the search result is pointing, e.g. http://www.example.com/foo/bar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual string Link { get; set; } 
 
+        /// <summary>The MIME type of the search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mime")]
         public virtual string Mime { get; set; } 
 
+        /// <summary>Contains PageMap information for this search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pagemap")]
-        public virtual System.Collections.Generic.IDictionary<string,System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>>> Pagemap { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string,object> Pagemap { get; set; } 
 
+        /// <summary>The snippet of the search result, in plain text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
         public virtual string Snippet { get; set; } 
 
+        /// <summary>The title of the search result, in plain text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
@@ -1982,68 +1671,93 @@ namespace Google.Apis.Customsearch.v1.Data
         public virtual string ETag { get; set; }
         
 
+        /// <summary>Image belonging to a custom search result.</summary>
         public class ImageData
         {
+            /// <summary>The size of the image, in pixels.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("byteSize")]
             public virtual System.Nullable<int> ByteSize { get; set; } 
 
+            /// <summary>A URL pointing to the webpage hosting the image.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("contextLink")]
             public virtual string ContextLink { get; set; } 
 
+            /// <summary>The height of the image, in pixels.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("height")]
             public virtual System.Nullable<int> Height { get; set; } 
 
+            /// <summary>The height of the thumbnail image, in pixels.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("thumbnailHeight")]
             public virtual System.Nullable<int> ThumbnailHeight { get; set; } 
 
+            /// <summary>A URL to the thumbnail image.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("thumbnailLink")]
             public virtual string ThumbnailLink { get; set; } 
 
+            /// <summary>The width of the thumbnail image, in pixels.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("thumbnailWidth")]
             public virtual System.Nullable<int> ThumbnailWidth { get; set; } 
 
+            /// <summary>The width of the image, in pixels.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("width")]
             public virtual System.Nullable<int> Width { get; set; } 
 
         }    
 
+        /// <summary>Refinement label associated with a custom search result.</summary>
         public class LabelsData
         {
+            /// <summary>The display name of a refinement label. This is the name you should display in your user
+            /// interface.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
             public virtual string DisplayName { get; set; } 
 
+            /// <summary>Refinement label and the associated refinement operation.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("label_with_op")]
             public virtual string LabelWithOp { get; set; } 
 
+            /// <summary>The name of a refinement label, which you can use to refine searches. Don't display this in
+            /// your user interface; instead, use displayName.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
             public virtual string Name { get; set; } 
 
         }
     }    
 
+    /// <summary>Response to a custom search request.</summary>
     public class Search : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Metadata and refinements associated with the given search engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
-        public virtual Context Context { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string,object> Context { get; set; } 
 
+        /// <summary>The current set of custom search results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Result> Items { get; set; } 
 
+        /// <summary>Unique identifier for the type of current object. For this API, it is
+        /// customsearch#search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>The set of promotions. Present only if the custom search engine's configuration files define any
+        /// promotions for the given query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
         public virtual System.Collections.Generic.IList<Promotion> Promotions { get; set; } 
 
+        /// <summary>Query metadata for the previous, current, and next pages of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queries")]
-        public virtual System.Collections.Generic.IDictionary<string,System.Collections.Generic.IList<Query>> Queries { get; set; } 
+        public virtual Search.QueriesData Queries { get; set; } 
 
+        /// <summary>Metadata about a search operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchInformation")]
         public virtual Search.SearchInformationData SearchInformation { get; set; } 
 
+        /// <summary>Spell correction information for a query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spelling")]
         public virtual Search.SpellingData Spelling { get; set; } 
 
+        /// <summary>OpenSearch template and URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual Search.UrlData Url { get; set; } 
 
@@ -2051,37 +1765,619 @@ namespace Google.Apis.Customsearch.v1.Data
         public virtual string ETag { get; set; }
         
 
+        /// <summary>Query metadata for the previous, current, and next pages of results.</summary>
+        public class QueriesData
+        {
+            /// <summary>Metadata representing the next page of results, if applicable.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("nextPage")]
+            public virtual System.Collections.Generic.IList<QueriesData.NextPageData> NextPage { get; set; } 
+
+            /// <summary>Metadata representing the previous page of results, if applicable.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("previousPage")]
+            public virtual System.Collections.Generic.IList<QueriesData.PreviousPageData> PreviousPage { get; set; } 
+
+            /// <summary>Metadata representing the current request.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("request")]
+            public virtual System.Collections.Generic.IList<QueriesData.RequestData> Request { get; set; } 
+
+            
+
+            /// <summary>Custom search request metadata.</summary>
+            public class NextPageData
+            {
+                /// <summary>Number of search results returned in this set.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("count")]
+                public virtual System.Nullable<int> Count { get; set; } 
+
+                /// <summary>Restricts search results to documents originating in a particular country. You may use
+                /// Boolean operators in the cr parameter's value.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("cr")]
+                public virtual string Cr { get; set; } 
+
+                /// <summary>The identifier of a custom search engine created using the Custom Search Control Panel, if
+                /// specified in request. This is a custom property not defined in the OpenSearch spec.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("cx")]
+                public virtual string Cx { get; set; } 
+
+                /// <summary>Restricts results to URLs based on date. Supported values include: d[number]: requests
+                /// results from the specified number of past days. w[number]: requests results from the specified
+                /// number of past weeks. m[number]: requests results from the specified number of past months.
+                /// y[number]: requests results from the specified number of past years.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("dateRestrict")]
+                public virtual string DateRestrict { get; set; } 
+
+                /// <summary>Enables or disables the Simplified and Traditional Chinese Search feature. Supported values
+                /// are: 0: enabled (default) 1: disabled</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("disableCnTwTranslation")]
+                public virtual string DisableCnTwTranslation { get; set; } 
+
+                /// <summary>Identifies a phrase that all documents in the search results must contain.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("exactTerms")]
+                public virtual string ExactTerms { get; set; } 
+
+                /// <summary>Identifies a word or phrase that should not appear in any documents in the search
+                /// results.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("excludeTerms")]
+                public virtual string ExcludeTerms { get; set; } 
+
+                /// <summary>Restricts results to files of a specified extension. Filetypes supported by Google include:
+                /// Adobe Portable Document Format (pdf) Adobe PostScript (ps) Lotus 1-2-3 (wk1, wk2, wk3, wk4, wk5,
+                /// wki, wks, wku) Lotus WordPro (lwp) Macwrite (mw) Microsoft Excel (xls) Microsoft PowerPoint (ppt)
+                /// Microsoft Word (doc) Microsoft Works (wks, wps, wdb) Microsoft Write (wri) Rich Text Format (rtf)
+                /// Shockwave Flash (swf) Text (ans, txt).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
+                public virtual string FileType { get; set; } 
+
+                /// <summary>Activates or deactivates the automatic filtering of Google search results. The default
+                /// value for the filter parameter is 1, which indicates that the feature is enabled. Valid values for
+                /// this parameter are: 0: Disabled 1: Enabled</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+                public virtual string Filter { get; set; } 
+
+                /// <summary>Boosts search results whose country of origin matches the parameter value. Specifying a gl
+                /// parameter value in WebSearch requests should improve the relevance of results. This is particularly
+                /// true for international customers and, even more specifically, for customers in English-speaking
+                /// countries other than the United States.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("gl")]
+                public virtual string Gl { get; set; } 
+
+                /// <summary>Specifies the Google domain (for example, google.com, google.de, or google.fr) to which the
+                /// search should be limited.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("googleHost")]
+                public virtual string GoogleHost { get; set; } 
+
+                /// <summary>Specifies the ending value for a search range. Use cse:lowRange and cse:highrange to append
+                /// an inclusive search range of lowRange...highRange to the query.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("highRange")]
+                public virtual string HighRange { get; set; } 
+
+                /// <summary>Specifies the interface language (host language) of your user interface. Explicitly setting
+                /// this parameter improves the performance and the quality of your search results.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("hl")]
+                public virtual string Hl { get; set; } 
+
+                /// <summary>Appends the specified query terms to the query, as if they were combined with a logical AND
+                /// operator.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("hq")]
+                public virtual string Hq { get; set; } 
+
+                /// <summary>Restricts results to images of a specified color type. Supported values are: mono (black
+                /// and white) gray (grayscale) color (color)</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("imgColorType")]
+                public virtual string ImgColorType { get; set; } 
+
+                /// <summary>Restricts results to images with a specific dominant color. Supported values are: red
+                /// orange yellow green teal blue purple pink white gray black brown</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("imgDominantColor")]
+                public virtual string ImgDominantColor { get; set; } 
+
+                /// <summary>Restricts results to images of a specified size. Supported values are: icon (small)
+                /// small|medium|large|xlarge (medium) xxlarge (large) huge (extra-large)</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("imgSize")]
+                public virtual string ImgSize { get; set; } 
+
+                /// <summary>Restricts results to images of a specified type. Supported values are: clipart (Clip art)
+                /// face (Face) lineart (Line drawing) photo (Photo) animated (Animated) stock (Stock)</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("imgType")]
+                public virtual string ImgType { get; set; } 
+
+                /// <summary>The character encoding supported for search requests.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("inputEncoding")]
+                public virtual string InputEncoding { get; set; } 
+
+                /// <summary>The language of the search results.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("language")]
+                public virtual string Language { get; set; } 
+
+                /// <summary>Specifies that all results should contain a link to a specific URL.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("linkSite")]
+                public virtual string LinkSite { get; set; } 
+
+                /// <summary>Specifies the starting value for a search range. Use cse:lowRange and cse:highrange to
+                /// append an inclusive search range of lowRange...highRange to the query.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("lowRange")]
+                public virtual string LowRange { get; set; } 
+
+                /// <summary>Provides additional search terms to check for in a document, where each document in the
+                /// search results must contain at least one of the additional search terms. You can also use the
+                /// Boolean OR query term for this type of query.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("orTerms")]
+                public virtual string OrTerms { get; set; } 
+
+                /// <summary>The character encoding supported for search results.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("outputEncoding")]
+                public virtual string OutputEncoding { get; set; } 
+
+                /// <summary>Specifies that all search results should be pages that are related to the specified URL.
+                /// The parameter value should be a URL.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("relatedSite")]
+                public virtual string RelatedSite { get; set; } 
+
+                /// <summary>Filters based on licensing. Supported values include: cc_publicdomain cc_attribute
+                /// cc_sharealike cc_noncommercial cc_nonderived</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("rights")]
+                public virtual string Rights { get; set; } 
+
+                /// <summary>Specifies the  SafeSearch level used for filtering out adult results. This is a custom
+                /// property not defined in the OpenSearch spec. Valid parameter values are: off: Disable SafeSearch
+                /// active: Enable SafeSearch</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("safe")]
+                public virtual string Safe { get; set; } 
+
+                /// <summary>The search terms entered by the user.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("searchTerms")]
+                public virtual string SearchTerms { get; set; } 
+
+                /// <summary>Allowed values are web or image. If unspecified, results are limited to webpages.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("searchType")]
+                public virtual string SearchType { get; set; } 
+
+                /// <summary>Restricts results to URLs from a specified site.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("siteSearch")]
+                public virtual string SiteSearch { get; set; } 
+
+                /// <summary>Specifies whether to include or exclude results from the site named in the sitesearch
+                /// parameter. Supported values are: i: include content from site e: exclude content from site</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("siteSearchFilter")]
+                public virtual string SiteSearchFilter { get; set; } 
+
+                /// <summary>Specifies that results should be sorted according to the specified expression. For example,
+                /// sort by date.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("sort")]
+                public virtual string Sort { get; set; } 
+
+                /// <summary>The index of the current set of search results into the total set of results, where the
+                /// index of the first result is 1.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+                public virtual System.Nullable<int> StartIndex { get; set; } 
+
+                /// <summary>The page number of this set of results, where the page length is set by the count
+                /// property.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("startPage")]
+                public virtual System.Nullable<int> StartPage { get; set; } 
+
+                /// <summary>A description of the query.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("title")]
+                public virtual string Title { get; set; } 
+
+                /// <summary>Estimated number of total search results. May not be accurate.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
+                public virtual System.Nullable<long> TotalResults { get; set; } 
+
+            }    
+
+            /// <summary>Custom search request metadata.</summary>
+            public class PreviousPageData
+            {
+                /// <summary>Number of search results returned in this set.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("count")]
+                public virtual System.Nullable<int> Count { get; set; } 
+
+                /// <summary>Restricts search results to documents originating in a particular country. You may use
+                /// Boolean operators in the cr parameter's value.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("cr")]
+                public virtual string Cr { get; set; } 
+
+                /// <summary>The identifier of a custom search engine created using the Custom Search Control Panel, if
+                /// specified in request. This is a custom property not defined in the OpenSearch spec.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("cx")]
+                public virtual string Cx { get; set; } 
+
+                /// <summary>Restricts results to URLs based on date. Supported values include: d[number]: requests
+                /// results from the specified number of past days. w[number]: requests results from the specified
+                /// number of past weeks. m[number]: requests results from the specified number of past months.
+                /// y[number]: requests results from the specified number of past years.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("dateRestrict")]
+                public virtual string DateRestrict { get; set; } 
+
+                /// <summary>Enables or disables the Simplified and Traditional Chinese Search feature. Supported values
+                /// are: 0: enabled (default) 1: disabled</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("disableCnTwTranslation")]
+                public virtual string DisableCnTwTranslation { get; set; } 
+
+                /// <summary>Identifies a phrase that all documents in the search results must contain.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("exactTerms")]
+                public virtual string ExactTerms { get; set; } 
+
+                /// <summary>Identifies a word or phrase that should not appear in any documents in the search
+                /// results.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("excludeTerms")]
+                public virtual string ExcludeTerms { get; set; } 
+
+                /// <summary>Restricts results to files of a specified extension. Filetypes supported by Google include:
+                /// Adobe Portable Document Format (pdf) Adobe PostScript (ps) Lotus 1-2-3 (wk1, wk2, wk3, wk4, wk5,
+                /// wki, wks, wku) Lotus WordPro (lwp) Macwrite (mw) Microsoft Excel (xls) Microsoft PowerPoint (ppt)
+                /// Microsoft Word (doc) Microsoft Works (wks, wps, wdb) Microsoft Write (wri) Rich Text Format (rtf)
+                /// Shockwave Flash (swf) Text (ans, txt).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
+                public virtual string FileType { get; set; } 
+
+                /// <summary>Activates or deactivates the automatic filtering of Google search results. The default
+                /// value for the filter parameter is 1, which indicates that the feature is enabled. Valid values for
+                /// this parameter are: 0: Disabled 1: Enabled</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+                public virtual string Filter { get; set; } 
+
+                /// <summary>Boosts search results whose country of origin matches the parameter value. Specifying a gl
+                /// parameter value in WebSearch requests should improve the relevance of results. This is particularly
+                /// true for international customers and, even more specifically, for customers in English-speaking
+                /// countries other than the United States.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("gl")]
+                public virtual string Gl { get; set; } 
+
+                /// <summary>Specifies the Google domain (for example, google.com, google.de, or google.fr) to which the
+                /// search should be limited.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("googleHost")]
+                public virtual string GoogleHost { get; set; } 
+
+                /// <summary>Specifies the ending value for a search range. Use cse:lowRange and cse:highrange to append
+                /// an inclusive search range of lowRange...highRange to the query.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("highRange")]
+                public virtual string HighRange { get; set; } 
+
+                /// <summary>Specifies the interface language (host language) of your user interface. Explicitly setting
+                /// this parameter improves the performance and the quality of your search results.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("hl")]
+                public virtual string Hl { get; set; } 
+
+                /// <summary>Appends the specified query terms to the query, as if they were combined with a logical AND
+                /// operator.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("hq")]
+                public virtual string Hq { get; set; } 
+
+                /// <summary>Restricts results to images of a specified color type. Supported values are: mono (black
+                /// and white) gray (grayscale) color (color)</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("imgColorType")]
+                public virtual string ImgColorType { get; set; } 
+
+                /// <summary>Restricts results to images with a specific dominant color. Supported values are: red
+                /// orange yellow green teal blue purple pink white gray black brown</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("imgDominantColor")]
+                public virtual string ImgDominantColor { get; set; } 
+
+                /// <summary>Restricts results to images of a specified size. Supported values are: icon (small)
+                /// small|medium|large|xlarge (medium) xxlarge (large) huge (extra-large)</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("imgSize")]
+                public virtual string ImgSize { get; set; } 
+
+                /// <summary>Restricts results to images of a specified type. Supported values are: clipart (Clip art)
+                /// face (Face) lineart (Line drawing) photo (Photo) animated (Animated) stock (Stock)</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("imgType")]
+                public virtual string ImgType { get; set; } 
+
+                /// <summary>The character encoding supported for search requests.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("inputEncoding")]
+                public virtual string InputEncoding { get; set; } 
+
+                /// <summary>The language of the search results.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("language")]
+                public virtual string Language { get; set; } 
+
+                /// <summary>Specifies that all results should contain a link to a specific URL.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("linkSite")]
+                public virtual string LinkSite { get; set; } 
+
+                /// <summary>Specifies the starting value for a search range. Use cse:lowRange and cse:highrange to
+                /// append an inclusive search range of lowRange...highRange to the query.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("lowRange")]
+                public virtual string LowRange { get; set; } 
+
+                /// <summary>Provides additional search terms to check for in a document, where each document in the
+                /// search results must contain at least one of the additional search terms. You can also use the
+                /// Boolean OR query term for this type of query.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("orTerms")]
+                public virtual string OrTerms { get; set; } 
+
+                /// <summary>The character encoding supported for search results.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("outputEncoding")]
+                public virtual string OutputEncoding { get; set; } 
+
+                /// <summary>Specifies that all search results should be pages that are related to the specified URL.
+                /// The parameter value should be a URL.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("relatedSite")]
+                public virtual string RelatedSite { get; set; } 
+
+                /// <summary>Filters based on licensing. Supported values include: cc_publicdomain cc_attribute
+                /// cc_sharealike cc_noncommercial cc_nonderived</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("rights")]
+                public virtual string Rights { get; set; } 
+
+                /// <summary>Specifies the  SafeSearch level used for filtering out adult results. This is a custom
+                /// property not defined in the OpenSearch spec. Valid parameter values are: off: Disable SafeSearch
+                /// active: Enable SafeSearch</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("safe")]
+                public virtual string Safe { get; set; } 
+
+                /// <summary>The search terms entered by the user.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("searchTerms")]
+                public virtual string SearchTerms { get; set; } 
+
+                /// <summary>Allowed values are web or image. If unspecified, results are limited to webpages.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("searchType")]
+                public virtual string SearchType { get; set; } 
+
+                /// <summary>Restricts results to URLs from a specified site.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("siteSearch")]
+                public virtual string SiteSearch { get; set; } 
+
+                /// <summary>Specifies whether to include or exclude results from the site named in the sitesearch
+                /// parameter. Supported values are: i: include content from site e: exclude content from site</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("siteSearchFilter")]
+                public virtual string SiteSearchFilter { get; set; } 
+
+                /// <summary>Specifies that results should be sorted according to the specified expression. For example,
+                /// sort by date.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("sort")]
+                public virtual string Sort { get; set; } 
+
+                /// <summary>The index of the current set of search results into the total set of results, where the
+                /// index of the first result is 1.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+                public virtual System.Nullable<int> StartIndex { get; set; } 
+
+                /// <summary>The page number of this set of results, where the page length is set by the count
+                /// property.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("startPage")]
+                public virtual System.Nullable<int> StartPage { get; set; } 
+
+                /// <summary>A description of the query.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("title")]
+                public virtual string Title { get; set; } 
+
+                /// <summary>Estimated number of total search results. May not be accurate.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
+                public virtual System.Nullable<long> TotalResults { get; set; } 
+
+            }    
+
+            /// <summary>Custom search request metadata.</summary>
+            public class RequestData
+            {
+                /// <summary>Number of search results returned in this set.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("count")]
+                public virtual System.Nullable<int> Count { get; set; } 
+
+                /// <summary>Restricts search results to documents originating in a particular country. You may use
+                /// Boolean operators in the cr parameter's value.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("cr")]
+                public virtual string Cr { get; set; } 
+
+                /// <summary>The identifier of a custom search engine created using the Custom Search Control Panel, if
+                /// specified in request. This is a custom property not defined in the OpenSearch spec.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("cx")]
+                public virtual string Cx { get; set; } 
+
+                /// <summary>Restricts results to URLs based on date. Supported values include: d[number]: requests
+                /// results from the specified number of past days. w[number]: requests results from the specified
+                /// number of past weeks. m[number]: requests results from the specified number of past months.
+                /// y[number]: requests results from the specified number of past years.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("dateRestrict")]
+                public virtual string DateRestrict { get; set; } 
+
+                /// <summary>Enables or disables the Simplified and Traditional Chinese Search feature. Supported values
+                /// are: 0: enabled (default) 1: disabled</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("disableCnTwTranslation")]
+                public virtual string DisableCnTwTranslation { get; set; } 
+
+                /// <summary>Identifies a phrase that all documents in the search results must contain.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("exactTerms")]
+                public virtual string ExactTerms { get; set; } 
+
+                /// <summary>Identifies a word or phrase that should not appear in any documents in the search
+                /// results.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("excludeTerms")]
+                public virtual string ExcludeTerms { get; set; } 
+
+                /// <summary>Restricts results to files of a specified extension. Filetypes supported by Google include:
+                /// Adobe Portable Document Format (pdf) Adobe PostScript (ps) Lotus 1-2-3 (wk1, wk2, wk3, wk4, wk5,
+                /// wki, wks, wku) Lotus WordPro (lwp) Macwrite (mw) Microsoft Excel (xls) Microsoft PowerPoint (ppt)
+                /// Microsoft Word (doc) Microsoft Works (wks, wps, wdb) Microsoft Write (wri) Rich Text Format (rtf)
+                /// Shockwave Flash (swf) Text (ans, txt).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
+                public virtual string FileType { get; set; } 
+
+                /// <summary>Activates or deactivates the automatic filtering of Google search results. The default
+                /// value for the filter parameter is 1, which indicates that the feature is enabled. Valid values for
+                /// this parameter are: 0: Disabled 1: Enabled</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+                public virtual string Filter { get; set; } 
+
+                /// <summary>Boosts search results whose country of origin matches the parameter value. Specifying a gl
+                /// parameter value in WebSearch requests should improve the relevance of results. This is particularly
+                /// true for international customers and, even more specifically, for customers in English-speaking
+                /// countries other than the United States.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("gl")]
+                public virtual string Gl { get; set; } 
+
+                /// <summary>Specifies the Google domain (for example, google.com, google.de, or google.fr) to which the
+                /// search should be limited.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("googleHost")]
+                public virtual string GoogleHost { get; set; } 
+
+                /// <summary>Specifies the ending value for a search range. Use cse:lowRange and cse:highrange to append
+                /// an inclusive search range of lowRange...highRange to the query.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("highRange")]
+                public virtual string HighRange { get; set; } 
+
+                /// <summary>Specifies the interface language (host language) of your user interface. Explicitly setting
+                /// this parameter improves the performance and the quality of your search results.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("hl")]
+                public virtual string Hl { get; set; } 
+
+                /// <summary>Appends the specified query terms to the query, as if they were combined with a logical AND
+                /// operator.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("hq")]
+                public virtual string Hq { get; set; } 
+
+                /// <summary>Restricts results to images of a specified color type. Supported values are: mono (black
+                /// and white) gray (grayscale) color (color)</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("imgColorType")]
+                public virtual string ImgColorType { get; set; } 
+
+                /// <summary>Restricts results to images with a specific dominant color. Supported values are: red
+                /// orange yellow green teal blue purple pink white gray black brown</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("imgDominantColor")]
+                public virtual string ImgDominantColor { get; set; } 
+
+                /// <summary>Restricts results to images of a specified size. Supported values are: icon (small)
+                /// small|medium|large|xlarge (medium) xxlarge (large) huge (extra-large)</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("imgSize")]
+                public virtual string ImgSize { get; set; } 
+
+                /// <summary>Restricts results to images of a specified type. Supported values are: clipart (Clip art)
+                /// face (Face) lineart (Line drawing) photo (Photo) animated (Animated) stock (Stock)</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("imgType")]
+                public virtual string ImgType { get; set; } 
+
+                /// <summary>The character encoding supported for search requests.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("inputEncoding")]
+                public virtual string InputEncoding { get; set; } 
+
+                /// <summary>The language of the search results.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("language")]
+                public virtual string Language { get; set; } 
+
+                /// <summary>Specifies that all results should contain a link to a specific URL.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("linkSite")]
+                public virtual string LinkSite { get; set; } 
+
+                /// <summary>Specifies the starting value for a search range. Use cse:lowRange and cse:highrange to
+                /// append an inclusive search range of lowRange...highRange to the query.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("lowRange")]
+                public virtual string LowRange { get; set; } 
+
+                /// <summary>Provides additional search terms to check for in a document, where each document in the
+                /// search results must contain at least one of the additional search terms. You can also use the
+                /// Boolean OR query term for this type of query.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("orTerms")]
+                public virtual string OrTerms { get; set; } 
+
+                /// <summary>The character encoding supported for search results.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("outputEncoding")]
+                public virtual string OutputEncoding { get; set; } 
+
+                /// <summary>Specifies that all search results should be pages that are related to the specified URL.
+                /// The parameter value should be a URL.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("relatedSite")]
+                public virtual string RelatedSite { get; set; } 
+
+                /// <summary>Filters based on licensing. Supported values include: cc_publicdomain cc_attribute
+                /// cc_sharealike cc_noncommercial cc_nonderived</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("rights")]
+                public virtual string Rights { get; set; } 
+
+                /// <summary>Specifies the  SafeSearch level used for filtering out adult results. This is a custom
+                /// property not defined in the OpenSearch spec. Valid parameter values are: off: Disable SafeSearch
+                /// active: Enable SafeSearch</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("safe")]
+                public virtual string Safe { get; set; } 
+
+                /// <summary>The search terms entered by the user.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("searchTerms")]
+                public virtual string SearchTerms { get; set; } 
+
+                /// <summary>Allowed values are web or image. If unspecified, results are limited to webpages.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("searchType")]
+                public virtual string SearchType { get; set; } 
+
+                /// <summary>Restricts results to URLs from a specified site.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("siteSearch")]
+                public virtual string SiteSearch { get; set; } 
+
+                /// <summary>Specifies whether to include or exclude results from the site named in the sitesearch
+                /// parameter. Supported values are: i: include content from site e: exclude content from site</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("siteSearchFilter")]
+                public virtual string SiteSearchFilter { get; set; } 
+
+                /// <summary>Specifies that results should be sorted according to the specified expression. For example,
+                /// sort by date.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("sort")]
+                public virtual string Sort { get; set; } 
+
+                /// <summary>The index of the current set of search results into the total set of results, where the
+                /// index of the first result is 1.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+                public virtual System.Nullable<int> StartIndex { get; set; } 
+
+                /// <summary>The page number of this set of results, where the page length is set by the count
+                /// property.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("startPage")]
+                public virtual System.Nullable<int> StartPage { get; set; } 
+
+                /// <summary>A description of the query.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("title")]
+                public virtual string Title { get; set; } 
+
+                /// <summary>Estimated number of total search results. May not be accurate.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
+                public virtual System.Nullable<long> TotalResults { get; set; } 
+
+            }
+        }    
+
+        /// <summary>Metadata about a search operation.</summary>
         public class SearchInformationData
         {
+            /// <summary>The time taken for the server to return search results, formatted according to locale
+            /// style.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("formattedSearchTime")]
             public virtual string FormattedSearchTime { get; set; } 
 
+            /// <summary>The total number of search results, formatted according to locale style.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("formattedTotalResults")]
             public virtual string FormattedTotalResults { get; set; } 
 
+            /// <summary>The time taken for the server to return search results.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("searchTime")]
             public virtual System.Nullable<double> SearchTime { get; set; } 
 
+            /// <summary>The total number of search results returned by the query.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-            public virtual System.Nullable<long> TotalResults { get; set; } 
+            public virtual string TotalResults { get; set; } 
 
         }    
 
+        /// <summary>Spell correction information for a query.</summary>
         public class SpellingData
         {
+            /// <summary>The corrected query.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("correctedQuery")]
             public virtual string CorrectedQuery { get; set; } 
 
+            /// <summary>The corrected query, formatted in HTML.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("htmlCorrectedQuery")]
             public virtual string HtmlCorrectedQuery { get; set; } 
 
         }    
 
+        /// <summary>OpenSearch template and URL.</summary>
         public class UrlData
         {
+            /// <summary>The actual OpenSearch template for this API.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("template")]
             public virtual string Template { get; set; } 
 
+            /// <summary>The MIME type of the OpenSearch URL template for the Custom Search API.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
             public virtual string Type { get; set; } 
 

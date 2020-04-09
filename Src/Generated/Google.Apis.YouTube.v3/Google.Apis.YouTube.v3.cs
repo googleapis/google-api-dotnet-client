@@ -142,6 +142,10 @@ namespace Google.Apis.YouTube.v3
             /// <summary>Manage your YouTube account</summary>
             public static string Youtube = "https://www.googleapis.com/auth/youtube";
 
+            /// <summary>See a list of your current active channel members, their current level, and when they became a
+            /// member</summary>
+            public static string YoutubeChannelMembershipsCreator = "https://www.googleapis.com/auth/youtube.channel-memberships.creator";
+
             /// <summary>See, edit, and permanently delete your YouTube videos, ratings, comments and captions</summary>
             public static string YoutubeForceSsl = "https://www.googleapis.com/auth/youtube.force-ssl";
 
@@ -165,6 +169,10 @@ namespace Google.Apis.YouTube.v3
         {
             /// <summary>Manage your YouTube account</summary>
             public const string Youtube = "https://www.googleapis.com/auth/youtube";
+
+            /// <summary>See a list of your current active channel members, their current level, and when they became a
+            /// member</summary>
+            public const string YoutubeChannelMembershipsCreator = "https://www.googleapis.com/auth/youtube.channel-memberships.creator";
 
             /// <summary>See, edit, and permanently delete your YouTube videos, ratings, comments and captions</summary>
             public const string YoutubeForceSsl = "https://www.googleapis.com/auth/youtube.force-ssl";

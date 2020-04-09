@@ -290,7 +290,7 @@
    }
   }
  }, 
- "revision": "20200326", 
+ "revision": "20200406", 
  "rootUrl": "https://speech.googleapis.com/", 
  "schemas": {
   "ListOperationsResponse": {
@@ -443,7 +443,7 @@
      "type": "integer"
     }, 
     "enableAutomaticPunctuation": {
-     "description": "If 'true', adds punctuation to recognition result hypotheses.\nThis feature is only available in select languages. Setting this for\nrequests in other languages has no effect at all.\nThe default 'false' value does not add punctuation to result hypotheses.\nNote: This is currently offered as an experimental service, complimentary\nto all users. In the future this may be exclusively available as a\npremium feature.", 
+     "description": "If 'true', adds punctuation to recognition result hypotheses.\nThis feature is only available in select languages. Setting this for\nrequests in other languages has no effect at all.\nThe default 'false' value does not add punctuation to result hypotheses.", 
      "type": "boolean"
     }, 
     "enableSeparateRecognitionPerChannel": {

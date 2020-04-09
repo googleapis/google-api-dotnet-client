@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/natural-language/'>Cloud Natural Language API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20200330 (1915)
+ *      <tr><th>API Rev<td>20200406 (1922)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/natural-language/'>
  *              https://cloud.google.com/natural-language/</a>
@@ -875,8 +875,8 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
-        /// <summary>The name of the category representing the document, from the [predefined taxonomy](/natural-
-        /// language/docs/categories).</summary>
+        /// <summary>The name of the category representing the document, from the [predefined
+        /// taxonomy](https://cloud.google.com/natural-language/docs/categories).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -945,9 +945,10 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
         public virtual string GcsContentUri { get; set; } 
 
         /// <summary>The language of the document (if not specified, the language is automatically detected). Both ISO
-        /// and BCP-47 language codes are accepted. [Language Support](/natural-language/docs/languages) lists currently
-        /// supported languages for each API method. If the language (either specified by the caller or automatically
-        /// detected) is not supported by the called API method, an `INVALID_ARGUMENT` error is returned.</summary>
+        /// and BCP-47 language codes are accepted. [Language Support](https://cloud.google.com/natural-
+        /// language/docs/languages) lists currently supported languages for each API method. If the language (either
+        /// specified by the caller or automatically detected) is not supported by the called API method, an
+        /// `INVALID_ARGUMENT` error is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; } 
 
@@ -1034,7 +1035,8 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
     public class Features : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Classify the full document into categories. If this is true, the API will use the default model
-        /// which classifies into a [predefined taxonomy](/natural-language/docs/categories).</summary>
+        /// which classifies into a [predefined taxonomy](https://cloud.google.com/natural-
+        /// language/docs/categories).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("classifyText")]
         public virtual System.Nullable<bool> ClassifyText { get; set; } 
 

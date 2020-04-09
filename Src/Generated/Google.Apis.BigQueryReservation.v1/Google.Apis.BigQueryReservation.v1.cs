@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Reservation API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200328 (1913)
+ *      <tr><th>API Rev<td>20200403 (1919)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -2260,8 +2260,8 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         public virtual string Plan { get; set; } 
 
         /// <summary>The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan
-        /// is changed, committed period is extended according to commitment plan. Only applicable for MONTHLY and
-        /// ANNUAL commitments.</summary>
+        /// is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL
+        /// commitments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renewalPlan")]
         public virtual string RenewalPlan { get; set; } 
 

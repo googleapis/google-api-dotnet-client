@@ -15,7 +15,7 @@
  "description": "Reads and publishes results from Firebase Test Lab.", 
  "discoveryVersion": "v1", 
  "documentationLink": "https://firebase.google.com/docs/test-lab/", 
- "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/4Vod_v8wuxqq0sNNjIEe9pMAfTI\"", 
+ "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/GVvRFdhUY7vVs0qY7tKh73H_wrk\"", 
  "icons": {
   "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png", 
   "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -1395,7 +1395,7 @@
    }
   }
  }, 
- "revision": "20200401", 
+ "revision": "20200402", 
  "rootUrl": "https://www.googleapis.com/", 
  "schemas": {
   "AndroidAppInfo": {

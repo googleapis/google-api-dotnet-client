@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/solutions/gaming/'>Game Services API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20200327 (1912)
+ *      <tr><th>API Rev<td>20200402 (1918)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/solutions/gaming/'>
  *              https://cloud.google.com/solutions/gaming/</a>
@@ -3791,9 +3791,6 @@ namespace Google.Apis.GameServices.v1beta.Data
     /// <summary>Write a Data Access (Gin) log</summary>
     public class DataAccessOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether Gin logging should happen in a fail-closed manner at the caller. This is currently
-        /// supported in the LocalIAM implementation, Stubby C++, and Stubby Java. For Apps Framework, see go/af-audit-
-        /// logging#failclosed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logMode")]
         public virtual string LogMode { get; set; } 
 

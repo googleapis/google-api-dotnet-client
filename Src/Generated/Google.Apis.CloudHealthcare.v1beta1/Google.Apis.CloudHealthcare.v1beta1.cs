@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/healthcare'>Cloud Healthcare API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200318 (1903)
+ *      <tr><th>API Rev<td>20200327 (1912)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/healthcare'>
  *              https://cloud.google.com/healthcare</a>
@@ -6775,12 +6775,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             public virtual string PageToken { get; set; }
 
                             /// <summary>Specifies the parts of the Message to return in the response. When unspecified,
-                            /// equivalent to BASIC.</summary>
+                            /// equivalent to BASIC. Setting this to anything other than BASIC with a `page_size` larger
+                            /// than the default can generate a large response, which impacts the performance of this
+                            /// method.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<ViewEnum> View { get; set; }
 
                             /// <summary>Specifies the parts of the Message to return in the response. When unspecified,
-                            /// equivalent to BASIC.</summary>
+                            /// equivalent to BASIC. Setting this to anything other than BASIC with a `page_size` larger
+                            /// than the default can generate a large response, which impacts the performance of this
+                            /// method.</summary>
                             public enum ViewEnum
                             {
                                 [Google.Apis.Util.StringValueAttribute("MESSAGE_VIEW_UNSPECIFIED")]
@@ -9318,6 +9322,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>Represents a FHIR store.</summary>
     public class FhirStore : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If true, overrides the default search behavior for this FHIR store to `handling=strict` which
+        /// returns an error for unrecognized search parameters. If false, uses the FHIR specification default
+        /// `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the
+        /// default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer:
+        /// handling=lenient`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultSearchHandlingStrict")]
+        public virtual System.Nullable<bool> DefaultSearchHandlingStrict { get; set; } 
+
         /// <summary>Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR
         /// store creation. The default value is false, meaning that the API enforces referential integrity and fails
         /// the requests that result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -9383,6 +9395,34 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// value is treated as STU3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A (sub) field of a type.</summary>
+    public class Field : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum number of times this field can be repeated. 0 or -1 means unbounded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxOccurs")]
+        public virtual System.Nullable<int> MaxOccurs { get; set; } 
+
+        /// <summary>The minimum number of times this field must be present/repeated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minOccurs")]
+        public virtual System.Nullable<int> MinOccurs { get; set; } 
+
+        /// <summary>The name of the field. For example, "PID-1" or just "1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The HL7v2 table this field refers to. For example, PID-15 (Patient's Primary Language) usually
+        /// refers to table "0296".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; } 
+
+        /// <summary>The type of this field. A Type with this name must be defined in an Hl7TypesConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9463,13 +9503,24 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// `.../{study_id}/{series_id}/{instance_id}[/{frame_number}].{extension}` The frame_number component exists
         /// only for multi-frame instances.
         ///
-        /// Refer to the DICOM conformance statement for permissible MIME types:
-        /// https://cloud.google.com/healthcare/docs/dicom#retrieve_transaction
+        /// Supported MIME types are consistent with supported formats in DICOMweb:
+        /// https://cloud.google.com/healthcare/docs/dicom#retrieve_transaction. Specifically, the following are
+        /// supported:
         ///
-        /// The following extensions are used for output files: application/dicom -> .dcm image/jpeg -> .jpg image/png
-        /// -> .png
+        /// - application/dicom; transfer-syntax=1.2.840.10008.1.2.1 (uncompressed DICOM) - application/dicom; transfer-
+        /// syntax=1.2.840.10008.1.2.4.50 (DICOM with embedded JPEG Baseline) - application/dicom; transfer-
+        /// syntax=1.2.840.10008.1.2.4.90 (DICOM with embedded JPEG 2000 Lossless Only) - application/dicom; transfer-
+        /// syntax=1.2.840.10008.1.2.4.91 (DICOM with embedded JPEG 2000)h - application/dicom; transfer-syntax=* (DICOM
+        /// with no transcoding) - application/octet-stream; transfer-syntax=1.2.840.10008.1.2.1 (raw uncompressed
+        /// PixelData) - application/octet-stream; transfer-syntax=* (raw PixelData in whatever format it was uploaded
+        /// in) - image/jpeg; transfer-syntax=1.2.840.10008.1.2.4.50 (Consumer JPEG) - image/png
         ///
-        /// If unspecified, the instances are exported in their original DICOM format.</summary>
+        /// The following extensions are used for output files:
+        ///
+        /// - application/dicom -> .dcm - image/jpeg -> .jpg - image/png -> .png - application/octet-stream -> no
+        /// extension
+        ///
+        /// If unspecified, the instances are exported in the original DICOM format they were uploaded in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; } 
 
@@ -9644,6 +9695,53 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>The total number of resources included in the source data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputSize")]
         public virtual System.Nullable<long> InputSize { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Construct representing a logical group or a segment.</summary>
+    public class GroupOrSegment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual SchemaGroup Group { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual SchemaSegment Segment { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and
+    /// filters that determine which messages to apply the schema structure to.</summary>
+    public class Hl7SchemaConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema
+        /// configuration root group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageSchemaConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string,SchemaGroup> MessageSchemaConfigs { get; set; } 
+
+        /// <summary>Each VersionSource is tested and only if they all match is the schema used for the
+        /// message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Collections.Generic.IList<VersionSource> Version { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Root config for HL7v2 datatype definitions for a specific HL7v2 version.</summary>
+    public class Hl7TypesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The HL7v2 type definitions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual System.Collections.Generic.IList<Type> Type { get; set; } 
+
+        /// <summary>The version selectors that this config applies to. A message must match ALL version sources to
+        /// apply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Collections.Generic.IList<VersionSource> Version { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10096,6 +10194,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("patientIds")]
         public virtual System.Collections.Generic.IList<PatientId> PatientIds { get; set; } 
 
+        /// <summary>The parsed version of the raw message data schematized according to this store's schemas and type
+        /// definitions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schematizedData")]
+        public virtual SchematizedData SchematizedData { get; set; } 
+
         /// <summary>The hospital that this message came from. MSH-4.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendFacility")]
         public virtual string SendFacility { get; set; } 
@@ -10213,6 +10316,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>Determines whether messages with no header are allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowNullHeader")]
         public virtual System.Nullable<bool> AllowNullHeader { get; set; } 
+
+        /// <summary>Schemas used to parse messages in this store, if schematized parsing is desired.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual SchemaPackage Schema { get; set; } 
 
         /// <summary>Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator,
         /// matching the HL7 version 2 specification.</summary>
@@ -10372,6 +10479,97 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>Specifies the output schema type. If unspecified, the default is `LOSSLESS`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaType")]
         public virtual string SchemaType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An HL7v2 logical group construct.</summary>
+    public class SchemaGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>True indicates that this is a choice group, meaning that only one of its segments can exist in a
+        /// given message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("choice")]
+        public virtual System.Nullable<bool> Choice { get; set; } 
+
+        /// <summary>The maximum number of times this group can be repeated. 0 or -1 means unbounded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxOccurs")]
+        public virtual System.Nullable<int> MaxOccurs { get; set; } 
+
+        /// <summary>Nested groups and/or segments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("members")]
+        public virtual System.Collections.Generic.IList<GroupOrSegment> Members { get; set; } 
+
+        /// <summary>The minimum number of times this group must be present/repeated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minOccurs")]
+        public virtual System.Nullable<int> MinOccurs { get; set; } 
+
+        /// <summary>The name of this group. For example, "ORDER_DETAIL".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A schema package contains a set of schemas and type definitions.</summary>
+    public class SchemaPackage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can
+        /// omit any group, segment, field, component, or subcomponent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreMinOccurs")]
+        public virtual System.Nullable<bool> IgnoreMinOccurs { get; set; } 
+
+        /// <summary>Schema configs that are layered based on their VersionSources that match the incoming message.
+        /// Schema configs present in higher indices override those in lower indices with the same message type and
+        /// trigger event if their VersionSources all match an incoming message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemas")]
+        public virtual System.Collections.Generic.IList<Hl7SchemaConfig> Schemas { get; set; } 
+
+        /// <summary>Determines how messages that don't parse successfully are handled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schematizedParsingType")]
+        public virtual string SchematizedParsingType { get; set; } 
+
+        /// <summary>Schema type definitions that are layered based on their VersionSources that match the incoming
+        /// message. Type definitions present in higher indices override those in lower indices with the same type name
+        /// if their VersionSources all match an incoming message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("types")]
+        public virtual System.Collections.Generic.IList<Hl7TypesConfig> Types { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An HL7v2 Segment.</summary>
+    public class SchemaSegment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum number of times this segment can be present in this group. 0 or -1 means
+        /// unbounded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxOccurs")]
+        public virtual System.Nullable<int> MaxOccurs { get; set; } 
+
+        /// <summary>The minimum number of times this segment can be present in this group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minOccurs")]
+        public virtual System.Nullable<int> MinOccurs { get; set; } 
+
+        /// <summary>The Segment type. For example, "PID".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The content of an HL7v2 message in a structured format as specified by a schema.</summary>
+    public class SchematizedData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>JSON output of the parser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; } 
+
+        /// <summary>The error output of the parser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual string Error { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10551,6 +10749,42 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>The transformations to apply to the detected data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transformations")]
         public virtual System.Collections.Generic.IList<InfoTypeTransformation> Transformations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A type definition for some HL7v2 type (incl. Segments and Datatypes).</summary>
+    public class Type : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The (sub) fields this type has (if not primitive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<Field> Fields { get; set; } 
+
+        /// <summary>The name of this type. This would be the segment or datatype name. For example, "PID" or
+        /// "XPN".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>If this is a primitive type then this field is the type of the primitive For example, STRING. Leave
+        /// unspecified for composite types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primitive")]
+        public virtual string Primitive { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Describes a selector for extracting and matching an MSH field to a value.</summary>
+    public class VersionSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The field to extract from the MSH segment. For example, "3.1" or "18[1].1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mshField")]
+        public virtual string MshField { get; set; } 
+
+        /// <summary>The value to match with the field. For example, "My Application Name" or "2.3".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

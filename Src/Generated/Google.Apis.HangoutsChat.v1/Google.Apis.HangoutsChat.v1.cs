@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/hangouts/chat'>Hangouts Chat API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200329 (1914)
+ *      <tr><th>API Rev<td>20200405 (1921)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/hangouts/chat'>
  *              https://developers.google.com/hangouts/chat</a>
@@ -1201,7 +1201,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>The aspect ratio of this image (width/height). This field allows clients to reserve the right
         /// height for the image while waiting for it to load. It's not meant to override the native aspect ratio of the
-        /// image. If unset, server will fill it by prefetching the image.</summary>
+        /// image. If unset, the server fills it by prefetching the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aspectRatio")]
         public virtual System.Nullable<double> AspectRatio { get; set; } 
 

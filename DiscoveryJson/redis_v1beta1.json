@@ -571,7 +571,7 @@
    }
   }
  }, 
- "revision": "20200320", 
+ "revision": "20200402", 
  "rootUrl": "https://redis.googleapis.com/", 
  "schemas": {
   "Empty": {
@@ -726,7 +726,7 @@
      "type": "string"
     }, 
     "connectMode": {
-     "description": "Optional. The connect mode of Redis instance.\nIf not provided, default one will be used.\nCurrent default: DIRECT_PEERING.", 
+     "description": "Optional. The network connect mode of the Redis instance.\nIf not provided, the connect mode defaults to DIRECT_PEERING.", 
      "enum": [
       "CONNECT_MODE_UNSPECIFIED", 
       "DIRECT_PEERING", 
@@ -734,8 +734,8 @@
      ], 
      "enumDescriptions": [
       "Not set.", 
-      "Connect via directly peering with memorystore redis hosted service.", 
-      "Connect with google via private service access and share connection\nacross google managed services."
+      "Connect via direct peering to the Memorystore for Redis hosted service.", 
+      "Connect your Memorystore for Redis instance using Private Services\nAccess. Private services access provides an IP address range for multiple\nGoogle Cloud services, including Memorystore."
      ], 
      "type": "string"
     }, 

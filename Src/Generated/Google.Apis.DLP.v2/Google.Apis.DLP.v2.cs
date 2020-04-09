@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200329 (1914)
+ *      <tr><th>API Rev<td>20200405 (1921)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -10615,14 +10615,14 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>The labels associated with this `Finding`.
         ///
         /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression:
-        /// \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        /// `[a-z]([-a-z0-9]*[a-z0-9])?`.
         ///
         /// Label values must be between 0 and 63 characters long and must conform to the regular expression
-        /// (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
+        /// `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
         ///
         /// No more than 10 labels can be associated with a given finding.
         ///
-        /// Example: "environment" : "production" Example: "pipeline" : "etl"</summary>
+        /// Examples: * `"environment" : "production"` * `"pipeline" : "etl"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -10783,14 +10783,14 @@ namespace Google.Apis.DLP.v2.Data
         /// job, some key values may be required. The labels associated with `Finding`'s produced by hybrid inspection.
         ///
         /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression:
-        /// \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        /// `[a-z]([-a-z0-9]*[a-z0-9])?`.
         ///
         /// Label values must be between 0 and 63 characters long and must conform to the regular expression
-        /// (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
+        /// `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
         ///
         /// No more than 10 labels can be associated with a given finding.
         ///
-        /// Example: "environment" : "production" Example: "pipeline" : "etl"</summary>
+        /// Examples: * `"environment" : "production"` * `"pipeline" : "etl"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -10873,14 +10873,14 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>To organize findings, these labels will be added to each finding.
         ///
         /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression:
-        /// \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        /// `[a-z]([-a-z0-9]*[a-z0-9])?`.
         ///
         /// Label values must be between 0 and 63 characters long and must conform to the regular expression
-        /// (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
+        /// `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
         ///
         /// No more than 10 labels can be associated with a given finding.
         ///
-        /// Example: "environment" : "production" Example: "pipeline" : "etl"</summary>
+        /// Examples: * `"environment" : "production"` * `"pipeline" : "etl"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -10888,7 +10888,7 @@ namespace Google.Apis.DLP.v2.Data
         /// Request may contain others, but any missing one of these will be rejected.
         ///
         /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression:
-        /// \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        /// `[a-z]([-a-z0-9]*[a-z0-9])?`.
         ///
         /// No more than 10 keys can be required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredFindingLabelKeys")]
@@ -10942,7 +10942,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one
         /// of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in
-        /// type. InfoType names should conform to the pattern [a-zA-Z0-9_]{1,64}.</summary>
+        /// type. InfoType names should conform to the pattern `[a-zA-Z0-9_]{1,64}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

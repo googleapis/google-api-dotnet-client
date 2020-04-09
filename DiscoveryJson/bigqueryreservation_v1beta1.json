@@ -736,7 +736,7 @@
    }
   }
  }, 
- "revision": "20200328", 
+ "revision": "20200403", 
  "rootUrl": "https://bigqueryreservation.googleapis.com/", 
  "schemas": {
   "Assignment": {
@@ -854,7 +854,7 @@
      "type": "string"
     }, 
     "renewalPlan": {
-     "description": "The plan this capacity commitment is converted to after commitment_end_time\npasses. Once the plan is changed, committed period is extended according to\ncommitment plan. Only applicable for MONTHLY and ANNUAL commitments.", 
+     "description": "The plan this capacity commitment is converted to after commitment_end_time\npasses. Once the plan is changed, committed period is extended according to\ncommitment plan. Only applicable for ANNUAL commitments.", 
      "enum": [
       "COMMITMENT_PLAN_UNSPECIFIED", 
       "FLEX", 

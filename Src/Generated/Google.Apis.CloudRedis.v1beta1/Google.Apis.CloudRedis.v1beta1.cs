@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>Google Cloud Memorystore for Redis API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200320 (1905)
+ *      <tr><th>API Rev<td>20200402 (1918)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>
  *              https://cloud.google.com/memorystore/docs/redis/</a>
@@ -1809,8 +1809,8 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedNetwork")]
         public virtual string AuthorizedNetwork { get; set; } 
 
-        /// <summary>Optional. The connect mode of Redis instance. If not provided, default one will be used. Current
-        /// default: DIRECT_PEERING.</summary>
+        /// <summary>Optional. The network connect mode of the Redis instance. If not provided, the connect mode
+        /// defaults to DIRECT_PEERING.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectMode")]
         public virtual string ConnectMode { get; set; } 
 

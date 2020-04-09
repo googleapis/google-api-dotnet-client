@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200402 (1918)
+ *      <tr><th>API Rev<td>20200407 (1923)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -1022,10 +1022,10 @@ namespace Google.Apis.PeopleService.v1
                 /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple
                 /// fields can be specified by separating them with commas. Valid values are:
                 ///
-                /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses *
-                /// events * genders * imClients * interests * locales * memberships * metadata * names * nicknames *
-                /// occupations * organizations * phoneNumbers * photos * relations * relationshipInterests *
-                /// relationshipStatuses * residences * sipAddresses * skills * taglines * urls * userDefined</summary>
+                /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders
+                /// * imClients * interests * locales * memberships * metadata * names * nicknames * occupations *
+                /// organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
+                /// userDefined</summary>
                 [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object PersonFields { get; set; }
 
@@ -1309,10 +1309,10 @@ namespace Google.Apis.PeopleService.v1
             /// be specified by separating them with commas. Defaults to empty if not set, which will skip the post
             /// mutate get. Valid values are:
             ///
-            /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses *
-            /// events * genders * imClients * interests * locales * memberships * metadata * names * nicknames *
-            /// occupations * organizations * phoneNumbers * photos * relations * relationshipInterests *
-            /// relationshipStatuses * residences * sipAddresses * skills * taglines * urls * userDefined</summary>
+            /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
+            /// imClients * interests * locales * memberships * metadata * names * nicknames * occupations *
+            /// organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
+            /// userDefined</summary>
             [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object PersonFields { get; set; }
 
@@ -1403,10 +1403,10 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>Required. A field mask to restrict which fields on the person are returned. Multiple fields can
             /// be specified by separating them with commas. Valid values are:
             ///
-            /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses *
-            /// events * genders * imClients * interests * locales * memberships * metadata * names * nicknames *
-            /// occupations * organizations * phoneNumbers * photos * relations * relationshipInterests *
-            /// relationshipStatuses * residences * sipAddresses * skills * taglines * urls * userDefined</summary>
+            /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
+            /// imClients * interests * locales * memberships * metadata * names * nicknames * occupations *
+            /// organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
+            /// userDefined</summary>
             [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object PersonFields { get; set; }
 
@@ -1496,10 +1496,10 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple fields
             /// can be specified by separating them with commas. Valid values are:
             ///
-            /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses *
-            /// events * genders * imClients * interests * locales * memberships * metadata * names * nicknames *
-            /// occupations * organizations * phoneNumbers * photos * relations * relationshipInterests *
-            /// relationshipStatuses * residences * sipAddresses * skills * taglines * urls * userDefined</summary>
+            /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
+            /// imClients * interests * locales * memberships * metadata * names * nicknames * occupations *
+            /// organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
+            /// userDefined</summary>
             [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object PersonFields { get; set; }
 
@@ -1878,7 +1878,7 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A person's bragging rights.</summary>
+    /// <summary>**DEPRECATED**: No data will be returned A person's bragging rights.</summary>
     public class BraggingRights : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Metadata about the bragging rights.</summary>
@@ -2572,7 +2572,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("birthdays")]
         public virtual System.Collections.Generic.IList<Birthday> Birthdays { get; set; } 
 
-        /// <summary>The person's bragging rights.</summary>
+        /// <summary>**DEPRECATED**: No data will be returned The person's bragging rights.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("braggingRights")]
         public virtual System.Collections.Generic.IList<BraggingRights> BraggingRights { get; set; } 
 
@@ -2645,11 +2645,12 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("relations")]
         public virtual System.Collections.Generic.IList<Relation> Relations { get; set; } 
 
-        /// <summary>Output only. The person's relationship interests.</summary>
+        /// <summary>Output only. **DEPRECATED**: No data will be returned The person's relationship
+        /// interests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relationshipInterests")]
         public virtual System.Collections.Generic.IList<RelationshipInterest> RelationshipInterests { get; set; } 
 
-        /// <summary>Output only. The person's relationship statuses.</summary>
+        /// <summary>Output only. **DEPRECATED**: No data will be returned The person's relationship statuses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relationshipStatuses")]
         public virtual System.Collections.Generic.IList<RelationshipStatus> RelationshipStatuses { get; set; } 
 
@@ -2670,7 +2671,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("skills")]
         public virtual System.Collections.Generic.IList<Skill> Skills { get; set; } 
 
-        /// <summary>Output only. The person's taglines.</summary>
+        /// <summary>Output only. **DEPRECATED**: No data will be returned The person's taglines.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taglines")]
         public virtual System.Collections.Generic.IList<Tagline> Taglines { get; set; } 
 
@@ -2847,7 +2848,7 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A person's relationship interest .</summary>
+    /// <summary>**DEPRECATED**: No data will be returned A person's relationship interest .</summary>
     public class RelationshipInterest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The value of the relationship interest translated and formatted in the viewer's
@@ -2870,7 +2871,7 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A person's relationship status.</summary>
+    /// <summary>**DEPRECATED**: No data will be returned A person's relationship status.</summary>
     public class RelationshipStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The value of the relationship status translated and formatted in the viewer's account
@@ -3014,7 +3015,7 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A brief one-line description of the person.</summary>
+    /// <summary>**DEPRECATED**: No data will be returned A brief one-line description of the person.</summary>
     public class Tagline : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Metadata about the tagline.</summary>
@@ -3048,10 +3049,9 @@ namespace Google.Apis.PeopleService.v1.Data
         /// specified by separating them with commas. Defaults to empty if not set, which will skip the post mutate get.
         /// Valid values are:
         ///
-        /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses * events *
-        /// genders * imClients * interests * locales * memberships * metadata * names * nicknames * occupations *
-        /// organizations * phoneNumbers * photos * relations * relationshipInterests * relationshipStatuses *
-        /// residences * sipAddresses * skills * taglines * urls * userDefined</summary>
+        /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
+        /// imClients * interests * locales * memberships * metadata * names * nicknames * occupations * organizations *
+        /// phoneNumbers * photos * relations * residences * sipAddresses * skills * urls * userDefined</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("personFields")]
         public virtual object PersonFields { get; set; } 
 

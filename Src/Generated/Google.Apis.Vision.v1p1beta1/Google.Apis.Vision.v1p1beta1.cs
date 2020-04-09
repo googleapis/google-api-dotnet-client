@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20200329 (1914)
+ *      <tr><th>API Rev<td>20200407 (1923)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -2784,7 +2784,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// `language_hints` is not needed. In rare cases, when the language of the text in the image is known, setting
         /// a hint will help get better results (although it will be a significant hindrance if the hint is wrong). Text
         /// detection returns an error if one or more of the specified languages is not one of the [supported
-        /// languages](/vision/docs/languages).</summary>
+        /// languages](https://cloud.google.com/vision/docs/languages).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageHints")]
         public virtual System.Collections.Generic.IList<string> LanguageHints { get; set; } 
 

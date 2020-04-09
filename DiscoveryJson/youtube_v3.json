@@ -5,6 +5,9 @@
     "https://www.googleapis.com/auth/youtube": {
      "description": "Manage your YouTube account"
     }, 
+    "https://www.googleapis.com/auth/youtube.channel-memberships.creator": {
+     "description": "See a list of your current active channel members, their current level, and when they became a member"
+    }, 
     "https://www.googleapis.com/auth/youtube.force-ssl": {
      "description": "See, edit, and permanently delete your YouTube videos, ratings, comments and captions"
     }, 
@@ -30,7 +33,7 @@
  "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.", 
  "discoveryVersion": "v1", 
  "documentationLink": "https://developers.google.com/youtube/v3", 
- "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/tqfQK86tpQhDuSHAIN5-6njGb8Q\"", 
+ "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/2iM-es-rN0zq6Fv4g5JsLKzvFto\"", 
  "icons": {
   "x16": "https://www.google.com/images/icons/product/youtube-16.png", 
   "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -2104,6 +2107,7 @@
      }, 
      "scopes": [
       "https://www.googleapis.com/auth/youtube", 
+      "https://www.googleapis.com/auth/youtube.channel-memberships.creator", 
       "https://www.googleapis.com/auth/youtube.force-ssl", 
       "https://www.googleapis.com/auth/youtube.readonly", 
       "https://www.googleapis.com/auth/youtubepartner"
@@ -2134,6 +2138,7 @@
      }, 
      "scopes": [
       "https://www.googleapis.com/auth/youtube", 
+      "https://www.googleapis.com/auth/youtube.channel-memberships.creator", 
       "https://www.googleapis.com/auth/youtube.force-ssl", 
       "https://www.googleapis.com/auth/youtube.readonly", 
       "https://www.googleapis.com/auth/youtubepartner"

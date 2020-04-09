@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/cloud-messaging'>Firebase Cloud Messaging API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200330 (1915)
+ *      <tr><th>API Rev<td>20200406 (1922)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/cloud-messaging'>
  *              https://firebase.google.com/docs/cloud-messaging</a>
