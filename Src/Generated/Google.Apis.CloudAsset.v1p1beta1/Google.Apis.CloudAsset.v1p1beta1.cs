@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20200330 (1915)
+ *      <tr><th>API Rev<td>20200403 (1919)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>
  *              https://cloud.google.com/asset-inventory/docs/quickstart</a>
@@ -975,6 +975,10 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
         /// <summary>The display name of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
+
+        /// <summary>Location can be "global", regional like "us-east1", or zonal like "us-west1-b".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
 
         /// <summary>The full resource name. For example:
         /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource

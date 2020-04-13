@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200226 (1882)
+ *      <tr><th>API Rev<td>20200326 (1911)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -4663,6 +4663,12 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("destinationObject", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DestinationObject { get; private set; }
 
+            /// <summary>Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings
+            /// /my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's
+            /// kms_key_name value, if any.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("destinationKmsKeyName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DestinationKmsKeyName { get; set; }
+
             /// <summary>Apply a predefined set of access controls to the destination object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("destinationPredefinedAcl", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<DestinationPredefinedAclEnum> DestinationPredefinedAcl { get; set; }
@@ -4827,6 +4833,15 @@ namespace Google.Apis.Storage.v1
                         Name = "destinationObject",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "destinationKmsKeyName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "destinationKmsKeyName",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -8390,11 +8405,15 @@ namespace Google.Apis.Storage.v1.Data
         public virtual Bucket.WebsiteData Website { get; set; } 
 
         /// <summary>The zone or zones from which the bucket is intended to use zonal quota. Requests for data from
-        /// outside the specified affinities are still allowed but won’t be able to use zonal quota. The zone or zones
+        /// outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones
         /// need to be within the bucket location otherwise the requests will fail with a 400 Bad Request
         /// response.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("zone_affinity")]
+        [Newtonsoft.Json.JsonPropertyAttribute("zoneAffinity")]
         public virtual System.Collections.Generic.IList<string> ZoneAffinity { get; set; } 
+
+        /// <summary>If set, objects placed in this bucket are required to be separated by disaster domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zoneSeparation")]
+        public virtual System.Nullable<bool> ZoneSeparation { get; set; } 
 
         
 

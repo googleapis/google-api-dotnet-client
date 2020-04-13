@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-search/docs/guides/'>Cloud Search API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200324 (1909)
+ *      <tr><th>API Rev<td>20200331 (1916)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-search/docs/guides/'>
  *              https://developers.google.com/cloud-search/docs/guides/</a>
@@ -6252,8 +6252,9 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("searchQualityMetadata")]
         public virtual SearchQualityMetadata SearchQualityMetadata { get; set; } 
 
-        /// <summary>Link to the source repository serving the data.  earch results apply this link to the title. The
-        /// maximum length is 2048 characters.</summary>
+        /// <summary>Link to the source repository serving the data.  earch results apply this link to the title.
+        /// Whitespace or special characters may cause Cloud earch result links to trigger a redirect notice; to avoid
+        /// this, encode the URL. The maximum length is 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRepositoryUrl")]
         public virtual string SourceRepositoryUrl { get; set; } 
 

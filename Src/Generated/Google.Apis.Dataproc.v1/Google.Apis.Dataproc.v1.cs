@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200323 (1908)
+ *      <tr><th>API Rev<td>20200407 (1923)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -6144,8 +6144,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available
-        /// for testing purposes only. It may be changed before final release.</summary>
+        /// <summary>Output only. Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report
+        /// is available for testing purposes only. It may be changed before final release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual ClusterMetrics Metrics { get; set; } 
 
@@ -6689,8 +6689,14 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskConfig")]
         public virtual DiskConfig DiskConfig { get; set; } 
 
-        /// <summary>Optional. The Compute Engine image resource used for cluster instances. It can be specified or may
-        /// be inferred from SoftwareConfig.image_version.</summary>
+        /// <summary>Optional. The Compute Engine image resource used for cluster instances.The URI can represent an
+        /// image or image family.Image examples:
+        /// https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]
+        /// projects/[project_id]/global/images/[image-id] image-idImage family examples. Dataproc will use the most
+        /// recent image from the family:
+        /// https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-
+        /// name] projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it
+        /// will be inferred from SoftwareConfig.image_version or the system default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
         public virtual string ImageUri { get; set; } 
 
@@ -6972,7 +6978,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("crossRealmTrustSharedPasswordUri")]
         public virtual string CrossRealmTrustSharedPasswordUri { get; set; } 
 
-        /// <summary>Optional. Flag to indicate whether to Kerberize the cluster.</summary>
+        /// <summary>Optional. Flag to indicate whether to Kerberize the cluster (default: false). Set this field to
+        /// true to enable Kerberos on a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableKerberos")]
         public virtual System.Nullable<bool> EnableKerberos { get; set; } 
 
@@ -7406,7 +7413,8 @@ namespace Google.Apis.Dataproc.v1.Data
 
     }    
 
-    /// <summary>A Dataproc job for running Presto (https://prestosql.io/) queries</summary>
+    /// <summary>A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT: The Dataproc Presto
+    /// Optional Component must be enabled when the cluster is created to submit a Presto job to the cluster.</summary>
     public class PrestoJob : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Presto client tags to attach to this query</summary>

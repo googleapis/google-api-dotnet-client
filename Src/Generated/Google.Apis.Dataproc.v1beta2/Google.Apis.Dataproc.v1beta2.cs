@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20200323 (1908)
+ *      <tr><th>API Rev<td>20200407 (1923)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -7015,8 +7015,14 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskConfig")]
         public virtual DiskConfig DiskConfig { get; set; } 
 
-        /// <summary>Optional. The Compute Engine image resource used for cluster instances. It can be specified or may
-        /// be inferred from SoftwareConfig.image_version.</summary>
+        /// <summary>Optional. The Compute Engine image resource used for cluster instances.The URI can represent an
+        /// image or image family.Image examples:
+        /// https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]
+        /// projects/[project_id]/global/images/[image-id] image-idImage family examples. Dataproc will use the most
+        /// recent image from the family:
+        /// https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-
+        /// name] projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it
+        /// will be inferred from SoftwareConfig.image_version or the system default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
         public virtual string ImageUri { get; set; } 
 
@@ -7111,9 +7117,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("driverOutputResourceUri")]
         public virtual string DriverOutputResourceUri { get; set; } 
 
+        /// <summary>Optional. Job is a Hadoop job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hadoopJob")]
         public virtual HadoopJob HadoopJob { get; set; } 
 
+        /// <summary>Optional. Job is a Hive job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiveJob")]
         public virtual HiveJob HiveJob { get; set; } 
 
@@ -7129,6 +7137,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
+        /// <summary>Optional. Job is a Pig job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pigJob")]
         public virtual PigJob PigJob { get; set; } 
 
@@ -7136,9 +7145,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("placement")]
         public virtual JobPlacement Placement { get; set; } 
 
+        /// <summary>Optional. Job is a Presto job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prestoJob")]
         public virtual PrestoJob PrestoJob { get; set; } 
 
+        /// <summary>Optional. Job is a PySpark job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pysparkJob")]
         public virtual PySparkJob PysparkJob { get; set; } 
 
@@ -7152,12 +7163,15 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
         public virtual JobScheduling Scheduling { get; set; } 
 
+        /// <summary>Optional. Job is a Spark job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkJob")]
         public virtual SparkJob SparkJob { get; set; } 
 
+        /// <summary>Optional. Job is a SparkR job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkRJob")]
         public virtual SparkRJob SparkRJob { get; set; } 
 
+        /// <summary>Optional. Job is a SparkSql job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkSqlJob")]
         public virtual SparkSqlJob SparkSqlJob { get; set; } 
 
@@ -7299,7 +7313,8 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("crossRealmTrustSharedPasswordUri")]
         public virtual string CrossRealmTrustSharedPasswordUri { get; set; } 
 
-        /// <summary>Optional. Flag to indicate whether to Kerberize the cluster.</summary>
+        /// <summary>Optional. Flag to indicate whether to Kerberize the cluster (default: false). Set this field to
+        /// true to enable Kerberos on a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableKerberos")]
         public virtual System.Nullable<bool> EnableKerberos { get; set; } 
 
@@ -7749,7 +7764,8 @@ namespace Google.Apis.Dataproc.v1beta2.Data
 
     }    
 
-    /// <summary>A Dataproc job for running Presto (https://prestosql.io/) queries</summary>
+    /// <summary>A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT: The Dataproc Presto
+    /// Optional Component must be enabled when the cluster is created to submit a Presto job to the cluster.</summary>
     public class PrestoJob : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Presto client tags to attach to this query</summary>

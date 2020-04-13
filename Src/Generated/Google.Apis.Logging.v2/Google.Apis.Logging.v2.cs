@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Cloud Logging API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200325 (1910)
+ *      <tr><th>API Rev<td>20200407 (1923)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>

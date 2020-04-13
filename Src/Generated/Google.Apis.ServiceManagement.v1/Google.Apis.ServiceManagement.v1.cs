@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200327 (1912)
+ *      <tr><th>API Rev<td>20200406 (1922)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>Access Context Manager API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20200323 (1908)
+ *      <tr><th>API Rev<td>20200405 (1921)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>
  *              https://cloud.google.com/access-context-manager/docs/reference/rest/</a>
@@ -1686,10 +1686,6 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("basic")]
         public virtual BasicLevel Basic { get; set; } 
 
-        /// <summary>Output only. Time the `AccessLevel` was created in UTC.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
-
         /// <summary>A `CustomLevel` written in the Common Expression Language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("custom")]
         public virtual CustomLevel Custom { get; set; } 
@@ -1708,10 +1704,6 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
-        /// <summary>Output only. Time the `AccessLevel` was updated in UTC.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1722,10 +1714,6 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
     /// to all projects within an organization.</summary>
     public class AccessPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Time the `AccessPolicy` was created in UTC.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
-
         /// <summary>Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -1738,10 +1726,6 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
         /// <summary>Required. Human readable title. Does not affect behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
-
-        /// <summary>Output only. Time the `AccessPolicy` was updated in UTC.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2025,10 +2009,6 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
     /// multiple Service Perimeter Bridges.</summary>
     public class ServicePerimeter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Time the `ServicePerimeter` was created in UTC.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
-
         /// <summary>Description of the `ServicePerimeter` and its use. Does not affect behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
@@ -2054,10 +2034,6 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
         /// <summary>Human readable title. Must be unique within the Policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
-
-        /// <summary>Output only. Time the `ServicePerimeter` was updated in UTC.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

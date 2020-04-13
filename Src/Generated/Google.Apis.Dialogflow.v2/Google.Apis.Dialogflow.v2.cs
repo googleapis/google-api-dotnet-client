@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200329 (1914)
+ *      <tr><th>API Rev<td>20200408 (1924)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow/'>
  *              https://cloud.google.com/dialogflow/</a>
@@ -2887,7 +2887,7 @@ namespace Google.Apis.Dialogflow.v2
 
                 /// <summary>Updates the specified intent.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The unique identifier of this intent. Required for Intents.UpdateIntent and
+                /// <param name="name">Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and
                 /// Intents.BatchUpdateIntents methods. Format: `projects//agent/intents/`.</param>
                 public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent body, string name)
                 {
@@ -2907,7 +2907,7 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
 
-                    /// <summary>The unique identifier of this intent. Required for Intents.UpdateIntent and
+                    /// <summary>Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and
                     /// Intents.BatchUpdateIntents methods. Format: `projects//agent/intents/`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5675,7 +5675,6 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The request message for Intents.BatchUpdateIntents.</summary>
     public class GoogleCloudDialogflowV2BatchUpdateIntentsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The collection of intents to update or create.</summary>
@@ -5784,7 +5783,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Requests and responses for custom methods. The request to detect user's intent.</summary>
+    /// <summary>The request to detect user's intent.</summary>
     public class GoogleCloudDialogflowV2DetectIntentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The natural language speech audio to be processed. This field should be populated iff `query_input`
@@ -6185,7 +6184,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mlDisabled")]
         public virtual System.Nullable<bool> MlDisabled { get; set; } 
 
-        /// <summary>The unique identifier of this intent. Required for Intents.UpdateIntent and
+        /// <summary>Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and
         /// Intents.BatchUpdateIntents methods. Format: `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -6267,7 +6266,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Corresponds to the `Response` field in the Dialogflow console.</summary>
+    /// <summary>A rich response message. Corresponds to the intent `Response` field in the Dialogflow console. For more
+    /// information, see [Rich response messages](https://cloud.google.com/dialogflow/docs/intents-rich-
+    /// messages).</summary>
     public class GoogleCloudDialogflowV2IntentMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The basic card response for Actions on Google.</summary>
@@ -6302,8 +6303,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mediaContent")]
         public virtual GoogleCloudDialogflowV2IntentMessageMediaContent MediaContent { get; set; } 
 
-        /// <summary>Returns a response containing a custom, platform-specific payload. See the Intent.Message.Platform
-        /// type for a description of the structure that may be required for your platform.</summary>
+        /// <summary>A custom platform-specific response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
 
@@ -7045,10 +7045,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Optional. This field is set to the value of the `QueryParameters.payload` field passed in the
         /// request. Some integrations that query a Dialogflow agent may provide additional information in the payload.
         ///
-        /// In particular for the Telephony Gateway this field has the form: { "telephony": { "caller_id":
-        /// "+18558363987" } } Note: The caller ID field (`caller_id`) will be redacted for Standard Edition agents and
-        /// populated with the caller ID in [E.164 format](https://en.wikipedia.org/wiki/E.164) for Enterprise Edition
-        /// agents.</summary>
+        /// In particular, for the Dialogflow Phone Gateway integration, this field has the form: { "telephony": {
+        /// "caller_id": "+18558363987" } } Note: The caller ID field (`caller_id`) will be redacted for Standard
+        /// Edition agents and populated with the caller ID in [E.164 format](https://en.wikipedia.org/wiki/E.164) for
+        /// Enterprise Edition agents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
 
@@ -7124,8 +7124,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("geoLocation")]
         public virtual GoogleTypeLatLng GeoLocation { get; set; } 
 
-        /// <summary>This field can be used to pass custom data into the webhook associated with the agent. Arbitrary
-        /// JSON objects are supported.</summary>
+        /// <summary>This field can be used to pass custom data to your webhook. Arbitrary JSON objects are supported.
+        /// If supplied, the value is used to populate the `WebhookRequest.original_detect_intent_request.payload` field
+        /// sent to your webhook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
 
@@ -7560,14 +7561,12 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputContexts")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Context> OutputContexts { get; set; } 
 
-        /// <summary>Optional. This value is passed directly to `QueryResult.webhook_payload`. See the related
-        /// `fulfillment_messages[i].payload field`, which may be used as an alternative to this field.
-        ///
-        /// This field can be used for Actions on Google responses. It should have a structure similar to the JSON
-        /// message shown here. For more information, see [Actions on Google Webhook
-        /// Format](https://developers.google.com/actions/dialogflow/webhook) { "google": { "expectUserResponse": true,
-        /// "richResponse": { "items": [ { "simpleResponse": { "textToSpeech": "this is a simple response" } } ] } }
-        /// }</summary>
+        /// <summary>Optional. This field can be used to pass custom data from your webhook to the API caller. Arbitrary
+        /// JSON objects are supported. When provided, Dialogflow uses this field to populate
+        /// `QueryResult.webhook_payload` sent to the API caller. This field is also used by the [Google Assistant
+        /// integration](https://cloud.google.com/dialogflow/docs/integrations/aog) for rich response messages. See the
+        /// format definition at [Google Assistant Dialogflow webhook
+        /// format](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
 
@@ -7964,8 +7963,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mediaContent")]
         public virtual GoogleCloudDialogflowV2beta1IntentMessageMediaContent MediaContent { get; set; } 
 
-        /// <summary>Returns a response containing a custom, platform-specific payload. See the Intent.Message.Platform
-        /// type for a description of the structure that may be required for your platform.</summary>
+        /// <summary>A custom platform-specific response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
 
@@ -8960,10 +8958,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Optional. This field is set to the value of the `QueryParameters.payload` field passed in the
         /// request. Some integrations that query a Dialogflow agent may provide additional information in the payload.
         ///
-        /// In particular for the Telephony Gateway this field has the form: { "telephony": { "caller_id":
-        /// "+18558363987" } } Note: The caller ID field (`caller_id`) will be redacted for Standard Edition agents and
-        /// populated with the caller ID in [E.164 format](https://en.wikipedia.org/wiki/E.164) for Enterprise Edition
-        /// agents.</summary>
+        /// In particular, for the Dialogflow Phone Gateway integration, this field has the form: { "telephony": {
+        /// "caller_id": "+18558363987" } } Note: The caller ID field (`caller_id`) will be redacted for Standard
+        /// Edition agents and populated with the caller ID in [E.164 format](https://en.wikipedia.org/wiki/E.164) for
+        /// Enterprise Edition agents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
 
@@ -9212,14 +9210,12 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputContexts")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Context> OutputContexts { get; set; } 
 
-        /// <summary>Optional. This value is passed directly to `QueryResult.webhook_payload`. See the related
-        /// `fulfillment_messages[i].payload field`, which may be used as an alternative to this field.
-        ///
-        /// This field can be used for Actions on Google responses. It should have a structure similar to the JSON
-        /// message shown here. For more information, see [Actions on Google Webhook
-        /// Format](https://developers.google.com/actions/dialogflow/webhook) { "google": { "expectUserResponse": true,
-        /// "richResponse": { "items": [ { "simpleResponse": { "textToSpeech": "this is a simple response" } } ] } }
-        /// }</summary>
+        /// <summary>Optional. This field can be used to pass custom data from your webhook to the API caller. Arbitrary
+        /// JSON objects are supported. When provided, Dialogflow uses this field to populate
+        /// `QueryResult.webhook_payload` sent to the API caller. This field is also used by the [Google Assistant
+        /// integration](https://cloud.google.com/dialogflow/docs/integrations/aog) for rich response messages. See the
+        /// format definition at [Google Assistant Dialogflow webhook
+        /// format](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
 

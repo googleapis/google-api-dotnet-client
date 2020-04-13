@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200330 (1915)
+ *      <tr><th>API Rev<td>20200403 (1919)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>
  *              https://cloud.google.com/asset-inventory/docs/quickstart</a>
@@ -1618,10 +1618,6 @@ namespace Google.Apis.CloudAsset.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("basic")]
         public virtual GoogleIdentityAccesscontextmanagerV1BasicLevel Basic { get; set; } 
 
-        /// <summary>Output only. Time the `AccessLevel` was created in UTC.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
-
         /// <summary>A `CustomLevel` written in the Common Expression Language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("custom")]
         public virtual GoogleIdentityAccesscontextmanagerV1CustomLevel Custom { get; set; } 
@@ -1640,10 +1636,6 @@ namespace Google.Apis.CloudAsset.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
-        /// <summary>Output only. Time the `AccessLevel` was updated in UTC.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1654,10 +1646,6 @@ namespace Google.Apis.CloudAsset.v1.Data
     /// to all projects within an organization.</summary>
     public class GoogleIdentityAccesscontextmanagerV1AccessPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Time the `AccessPolicy` was created in UTC.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
-
         /// <summary>Output only. An opaque identifier for the current version of the `AccessPolicy`. This will always
         /// be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags
         /// are identical. Clients should not expect this to be in any specific format.</summary>
@@ -1676,10 +1664,6 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>Required. Human readable title. Does not affect behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
-
-        /// <summary>Output only. Time the `AccessPolicy` was updated in UTC.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
 
     }    
 
@@ -1827,10 +1811,6 @@ namespace Google.Apis.CloudAsset.v1.Data
     /// multiple Service Perimeter Bridges.</summary>
     public class GoogleIdentityAccesscontextmanagerV1ServicePerimeter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Time the `ServicePerimeter` was created in UTC.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
-
         /// <summary>Description of the `ServicePerimeter` and its use. Does not affect behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
@@ -1862,10 +1842,6 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>Human readable title. Must be unique within the Policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
-
-        /// <summary>Output only. Time the `ServicePerimeter` was updated in UTC.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
 
         /// <summary>Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists  for all Service
         /// Perimeters, and that spec is identical to the status for those Service Perimeters. When this flag is set, it

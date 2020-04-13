@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Cloud Monitoring API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200329 (1914)
+ *      <tr><th>API Rev<td>20200405 (1921)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -1304,6 +1304,10 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>Ranking based time series filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickTimeSeriesFilter")]
         public virtual PickTimeSeriesFilter PickTimeSeriesFilter { get; set; } 
+
+        /// <summary>Apply a second aggregation after aggregation is applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryAggregation")]
+        public virtual Aggregation SecondaryAggregation { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

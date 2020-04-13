@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/secret-manager/'>Secret Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200320 (1905)
+ *      <tr><th>API Rev<td>20200403 (1919)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/secret-manager/'>
  *              https://cloud.google.com/secret-manager/</a>
@@ -1119,7 +1119,10 @@ namespace Google.Apis.SecretManager.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Required. This must be unique within the project.</summary>
+                /// <summary>Required. This must be unique within the project.
+                ///
+                /// A secret ID is a string with a maximum length of 255 characters and can contain uppercase and
+                /// lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("secretId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string SecretId { get; set; }
 

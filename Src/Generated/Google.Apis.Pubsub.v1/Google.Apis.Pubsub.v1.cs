@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200324 (1909)
+ *      <tr><th>API Rev<td>20200403 (1919)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>

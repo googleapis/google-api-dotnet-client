@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/v3'>YouTube Data API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200320 (1905)
+ *      <tr><th>API Rev<td>20200402 (1918)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/v3'>
  *              https://developers.google.com/youtube/v3</a>
@@ -13364,6 +13364,9 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>This setting indicates whether auto start is enabled for this broadcast.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableAutoStart")]
         public virtual System.Nullable<bool> EnableAutoStart { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAutoStop")]
+        public virtual System.Nullable<bool> EnableAutoStop { get; set; } 
 
         /// <summary>This setting indicates whether HTTP POST closed captioning is enabled for this broadcast. The
         /// ingestion URL of the closed captions is returned through the liveStreams API. This is mutually exclusive
