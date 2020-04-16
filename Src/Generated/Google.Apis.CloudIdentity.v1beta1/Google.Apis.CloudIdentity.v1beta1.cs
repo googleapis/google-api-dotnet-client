@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/identity/'>Cloud Identity API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200401 (1917)
+ *      <tr><th>API Rev<td>20200411 (1927)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/identity/'>
  *              https://cloud.google.com/identity/</a>
@@ -1634,6 +1634,79 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>Resultant DeviceUser object for the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
         public virtual DeviceUser DeviceUser { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Resource representing ClientState and supports updates from API users</summary>
+    public class ClientState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The caller can specify asset tags for this resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetTags")]
+        public virtual System.Collections.Generic.IList<string> AssetTags { get; set; } 
+
+        /// <summary>The compliance state of the resource as specified by the API client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceState")]
+        public virtual string ComplianceState { get; set; } 
+
+        /// <summary>Output only. The time the client state data was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>This field may be used to store a unique identifier for the API resource within which these
+        /// CustomAttributes are a field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customId")]
+        public virtual string CustomId { get; set; } 
+
+        /// <summary>The token that needs to be passed back for concurrency control in updates. Token needs to be passed
+        /// back in UpdateRequest</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>The Health score of the resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthScore")]
+        public virtual string HealthScore { get; set; } 
+
+        /// <summary>The map of key-value attributes stored by callers specific to a device. The total serialized length
+        /// of this map may not exceed 10KB. No limit is placed on the number of attributes in a map.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyValuePairs")]
+        public virtual System.Collections.Generic.IDictionary<string,CustomAttributeValue> KeyValuePairs { get; set; } 
+
+        /// <summary>Output only. The time the client state data was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
+        public virtual object LastUpdateTime { get; set; } 
+
+        /// <summary>The management state of the resource as specified by the API client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managed")]
+        public virtual string Managed { get; set; } 
+
+        /// <summary>Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        /// ClientState in format: `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`, where
+        /// partner_id corresponds to the partner storing the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>A descriptive cause of the health score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scoreReason")]
+        public virtual string ScoreReason { get; set; } 
+
+    }    
+
+    /// <summary>Additional custom attribute values may be one of these types</summary>
+    public class CustomAttributeValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Represents a boolean value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; } 
+
+        /// <summary>Represents a double value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberValue")]
+        public virtual System.Nullable<double> NumberValue { get; set; } 
+
+        /// <summary>Represents a string value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/actions/smarthome/create-app#request-sync'>HomeGraph API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200407 (1923)
+ *      <tr><th>API Rev<td>20200410 (1926)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/actions/smarthome/create-app#request-sync'>
  *              https://developers.google.com/actions/smarthome/create-app#request-sync</a>
@@ -761,7 +761,7 @@ namespace Google.Apis.HomeGraphService.v1.Data
         public virtual System.Nullable<bool> NotificationSupportedByAgent { get; set; } 
 
         /// <summary>Alternate IDs associated with this device. This is used to identify cloud synced devices enabled
-        /// for [local execution](https://developers.google.com/assistant/smarthome/concepts/local).</summary>
+        /// for [local fulfillment](https://developers.google.com/assistant/smarthome/concepts/local).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("otherDeviceIds")]
         public virtual System.Collections.Generic.IList<AgentOtherDeviceId> OtherDeviceIds { get; set; } 
 

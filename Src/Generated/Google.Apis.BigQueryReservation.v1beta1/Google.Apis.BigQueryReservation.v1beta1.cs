@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Reservation API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200403 (1919)
+ *      <tr><th>API Rev<td>20200410 (1926)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -2048,8 +2048,9 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
     }    
 
     /// <summary>Capacity commitment is a way to purchase compute capacity for BigQuery jobs (in the form of slots) with
-    /// some committed period of usage. Monthly and annual commitments renew by default. Only flex commitments can be
-    /// removed. In order to remove monthly or annual commitments, their plan needs to be changed to flex first.
+    /// some committed period of usage. Annual commitments renew by default. Commitments can be removed after their
+    /// commitment end time passes. In order to remove annual commitment, its plan needs to be changed to monthly or
+    /// flex first.
     ///
     /// A capacity commitment resource exists as a child resource of the admin project.</summary>
     public class CapacityCommitment : Google.Apis.Requests.IDirectResponseSchema

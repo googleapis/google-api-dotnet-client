@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200324 (1909)
+ *      <tr><th>API Rev<td>20200331 (1916)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -6781,7 +6781,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dnsCacheConfig")]
         public virtual DnsCacheConfig DnsCacheConfig { get; set; } 
 
-        /// <summary>Configuration for the GCP Compute Persistent Disk CSI driver.</summary>
+        /// <summary>Configuration for the Compute Engine Persistent Disk CSI driver.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcePersistentDiskCsiDriverConfig")]
         public virtual GcePersistentDiskCsiDriverConfig GcePersistentDiskCsiDriverConfig { get; set; } 
 
@@ -8650,6 +8650,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateNodes")]
         public virtual System.Nullable<bool> EnablePrivateNodes { get; set; } 
 
+        /// <summary>Controls master global access settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("masterGlobalAccessConfig")]
+        public virtual PrivateClusterMasterGlobalAccessConfig MasterGlobalAccessConfig { get; set; } 
+
         /// <summary>The IP range in CIDR notation to use for the hosted master network. This range will be used for
         /// assigning internal IP addresses to the master or set of masters, as well as the ILB VIP. This range must not
         /// overlap with any other ranges in use within the cluster's network.</summary>
@@ -8667,6 +8671,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Output only. The external IP address of this cluster's master endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicEndpoint")]
         public virtual string PublicEndpoint { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration for controlling master global access settings.</summary>
+    public class PrivateClusterMasterGlobalAccessConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whenever master is accessible globally or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

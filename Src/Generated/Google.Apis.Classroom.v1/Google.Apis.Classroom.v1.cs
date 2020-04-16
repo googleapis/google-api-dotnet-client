@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/classroom/'>Google Classroom API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200405 (1921)
+ *      <tr><th>API Rev<td>20200411 (1927)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/classroom/'>
  *              https://developers.google.com/classroom/</a>
@@ -1401,7 +1401,7 @@ namespace Google.Apis.Classroom.v1
                 /// do an update. The update fails if invalid fields are specified. If a field supports empty values, it
                 /// can be cleared by specifying it in the update mask and not in the Announcement object. If a field
                 /// that does not support empty values is included in the update mask and not set in the Announcement
-                /// object, an `INVALID_ARGUMENT` error will be returned.
+                /// object, an `INVALID_ARGUMENT` error is returned.
                 ///
                 /// The following fields may be specified by teachers:
                 ///
@@ -3113,7 +3113,7 @@ namespace Google.Apis.Classroom.v1
                 /// do an update. The update fails if invalid fields are specified. If a field supports empty values, it
                 /// can be cleared by specifying it in the update mask and not in the CourseWork object. If a field that
                 /// does not support empty values is included in the update mask and not set in the CourseWork object,
-                /// an `INVALID_ARGUMENT` error will be returned.
+                /// an `INVALID_ARGUMENT` error is returned.
                 ///
                 /// The following fields may be specified by teachers:
                 ///
@@ -4444,7 +4444,7 @@ namespace Google.Apis.Classroom.v1
                 /// update. The update fails if invalid fields are specified. If a field supports empty values, it can
                 /// be cleared by specifying it in the update mask and not in the Topic object. If a field that does not
                 /// support empty values is included in the update mask and not set in the Topic object, an
-                /// `INVALID_ARGUMENT` error will be returned.
+                /// `INVALID_ARGUMENT` error is returned.
                 ///
                 /// The following fields may be specified:
                 ///
@@ -5973,7 +5973,7 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string StudentId { get; private set; }
 
-                /// <summary>If specified, only results with the specified `invited_email_address` will be
+                /// <summary>If specified, only results with the specified `invited_email_address` are
                 /// returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("invitedEmailAddress", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string InvitedEmailAddress { get; set; }
@@ -5992,13 +5992,13 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>If specified, only results with the specified `state` values will be returned. Otherwise,
-                /// results with a `state` of `PENDING` will be returned.</summary>
+                /// <summary>If specified, only results with the specified `state` values are returned. Otherwise,
+                /// results with a `state` of `PENDING` are returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("states", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<StatesEnum> States { get; set; }
 
-                /// <summary>If specified, only results with the specified `state` values will be returned. Otherwise,
-                /// results with a `state` of `PENDING` will be returned.</summary>
+                /// <summary>If specified, only results with the specified `state` values are returned. Otherwise,
+                /// results with a `state` of `PENDING` are returned.</summary>
                 public enum StatesEnum
                 {
                     [Google.Apis.Util.StringValueAttribute("GUARDIAN_INVITATION_STATE_UNSPECIFIED")]
@@ -6141,7 +6141,7 @@ namespace Google.Apis.Classroom.v1
                 public virtual string InvitationId { get; private set; }
 
                 /// <summary>Mask that identifies which fields on the course to update. This field is required to do an
-                /// update. The update will fail if invalid fields are specified. The following fields are valid:
+                /// update. The update fails if invalid fields are specified. The following fields are valid:
                 ///
                 /// * `state`
                 ///
@@ -6712,7 +6712,7 @@ namespace Google.Apis.Classroom.v1.Data
 
         /// <summary>Identifiers of students with access to the announcement. This field is set only if `assigneeMode`
         /// is `INDIVIDUAL_STUDENTS`. If the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students specified in
-        /// this field will be able to see the announcement.</summary>
+        /// this field can see the announcement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("individualStudentsOptions")]
         public virtual IndividualStudentsOptions IndividualStudentsOptions { get; set; } 
 
@@ -6764,7 +6764,7 @@ namespace Google.Apis.Classroom.v1.Data
         /// STUDENT_COPY may not exist yet if the student has not accessed the assignment in Classroom.
         ///
         /// Some attachment metadata is only populated if the requesting user has permission to access it. Identifier
-        /// and alternate_link fields are always available, but others (e.g. title) may not be.</summary>
+        /// and alternate_link fields are always available, but others (for example, title) may not be.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachments")]
         public virtual System.Collections.Generic.IList<Attachment> Attachments { get; set; } 
 
@@ -7039,7 +7039,7 @@ namespace Google.Apis.Classroom.v1.Data
 
         /// <summary>Whether this course work item is associated with the Developer Console project making the request.
         ///
-        /// See google.classroom.Work.CreateCourseWork for more details.
+        /// See CreateCourseWork for more details.
         ///
         /// Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associatedWithDeveloper")]
@@ -7086,7 +7086,7 @@ namespace Google.Apis.Classroom.v1.Data
 
         /// <summary>Identifiers of students with access to the coursework. This field is set only if `assigneeMode` is
         /// `INDIVIDUAL_STUDENTS`. If the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students specified in this
-        /// field will be assigned the coursework.</summary>
+        /// field are assigned the coursework.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("individualStudentsOptions")]
         public virtual IndividualStudentsOptions IndividualStudentsOptions { get; set; } 
 
@@ -7651,8 +7651,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("form")]
         public virtual Form Form { get; set; } 
 
-        /// <summary>Link material. On creation, will be upgraded to a more appropriate type if possible, and this will
-        /// be reflected in the response.</summary>
+        /// <summary>Link material. On creation, this is upgraded to a more appropriate type if possible, and this is
+        /// reflected in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual Link Link { get; set; } 
 
@@ -7667,7 +7667,7 @@ namespace Google.Apis.Classroom.v1.Data
     /// <summary>Request to modify assignee mode and options of an announcement.</summary>
     public class ModifyAnnouncementAssigneesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Mode of the announcement describing whether it will be accessible by all students or specified
+        /// <summary>Mode of the announcement describing whether it is accessible by all students or specified
         /// individual students.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assigneeMode")]
         public virtual string AssigneeMode { get; set; } 
@@ -7715,11 +7715,11 @@ namespace Google.Apis.Classroom.v1.Data
     /// is set to `INDIVIDUAL_STUDENTS`.</summary>
     public class ModifyIndividualStudentsOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Ids of students to be added as having access to this coursework/announcement.</summary>
+        /// <summary>IDs of students to be added as having access to this coursework/announcement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addStudentIds")]
         public virtual System.Collections.Generic.IList<string> AddStudentIds { get; set; } 
 
-        /// <summary>Ids of students to be removed from having access to this coursework/announcement.</summary>
+        /// <summary>IDs of students to be removed from having access to this coursework/announcement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removeStudentIds")]
         public virtual System.Collections.Generic.IList<string> RemoveStudentIds { get; set; } 
 
@@ -7846,7 +7846,7 @@ namespace Google.Apis.Classroom.v1.Data
     /// <summary>The history of each state this submission has been in.</summary>
     public class StateHistory : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The teacher or student who made the change</summary>
+        /// <summary>The teacher or student who made the change.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actorUserId")]
         public virtual string ActorUserId { get; set; } 
 
@@ -7911,8 +7911,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("alternateLink")]
         public virtual string AlternateLink { get; set; } 
 
-        /// <summary>Optional grade. If unset, no grade was set. This value must be non-negative. Decimal (i.e. non-
-        /// integer) values are allowed, but will be rounded to two decimal places.
+        /// <summary>Optional grade. If unset, no grade was set. This value must be non-negative. Decimal (that is, non-
+        /// integer) values are allowed, but are rounded to two decimal places.
         ///
         /// This may be modified only by course teachers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedGrade")]
@@ -7920,14 +7920,14 @@ namespace Google.Apis.Classroom.v1.Data
 
         /// <summary>Submission content when course_work_type is ASSIGNMENT.
         ///
-        /// Students can modify this content using google.classroom.Work.ModifyAttachments.</summary>
+        /// Students can modify this content using ModifyAttachments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignmentSubmission")]
         public virtual AssignmentSubmission AssignmentSubmission { get; set; } 
 
         /// <summary>Whether this student submission is associated with the Developer Console project making the
         /// request.
         ///
-        /// See google.classroom.Work.CreateCourseWork for more details.
+        /// See CreateCourseWork for more details.
         ///
         /// Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associatedWithDeveloper")]
@@ -7957,8 +7957,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual object CreationTime { get; set; } 
 
-        /// <summary>Optional pending grade. If unset, no grade was set. This value must be non-negative. Decimal (i.e.
-        /// non-integer) values are allowed, but will be rounded to two decimal places.
+        /// <summary>Optional pending grade. If unset, no grade was set. This value must be non-negative. Decimal (that
+        /// is, non-integer) values are allowed, but are rounded to two decimal places.
         ///
         /// This is only visible to and modifiable by course teachers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("draftGrade")]
@@ -8092,9 +8092,9 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("courseId")]
         public virtual string CourseId { get; set; } 
 
-        /// <summary>The name of the topic, generated by the user. Leading and trailing whitespaces, if any, will be
-        /// trimmed. Also, multiple consecutive whitespaces will be collapsed into one inside the name. The result must
-        /// be a non-empty string. Topic names are case sensitive, and must be no longer than 100 characters.</summary>
+        /// <summary>The name of the topic, generated by the user. Leading and trailing whitespaces, if any, are
+        /// trimmed. Also, multiple consecutive whitespaces are collapsed into one inside the name. The result must be a
+        /// non-empty string. Topic names are case sensitive, and must be no longer than 100 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -8155,8 +8155,8 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string PhotoUrl { get; set; } 
 
         /// <summary>Represents whether a G Suite for Education user's domain administrator has explicitly verified them
-        /// as being a teacher. If the user is not a member of a G Suite for Education domain, than this field will
-        /// always be false.
+        /// as being a teacher. If the user is not a member of a G Suite for Education domain, than this field is always
+        /// false.
         ///
         /// Read-only</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifiedTeacher")]

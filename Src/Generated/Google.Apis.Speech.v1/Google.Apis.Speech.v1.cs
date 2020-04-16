@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>Cloud Speech-to-Text API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200406 (1922)
+ *      <tr><th>API Rev<td>20200409 (1925)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>
  *              https://cloud.google.com/speech-to-text/docs/quickstart-protocol</a>
@@ -943,8 +943,8 @@ namespace Google.Apis.Speech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
-        /// <summary>The URI of the audio file being transcribed. Empty if the audio was sent as byte content.
-        /// </summary>
+        /// <summary>Output only. The URI of the audio file being transcribed. Empty if the audio was sent as byte
+        /// content. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
 

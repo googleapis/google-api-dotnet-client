@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/filestore/'>Cloud Filestore API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200406 (1922)
+ *      <tr><th>API Rev<td>20200413 (1929)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/filestore/'>
  *              https://cloud.google.com/filestore/</a>
@@ -392,8 +392,9 @@ namespace Google.Apis.CloudFilestore.v1
 
                 /// <summary>Creates an instance.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The instance's project and location, in the format projects/{project_id}/locations/{location}.
-                /// In Cloud Filestore, locations map to GCP zones, for example **us-west1-b**.</param>
+                /// <param name="parent">Required. The instance's project and location, in the format
+                /// projects/{project_id}/locations/{location}. In Cloud Filestore, locations map to GCP zones, for example **us-
+                /// west1-b**.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudFilestore.v1.Data.Instance body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -412,14 +413,14 @@ namespace Google.Apis.CloudFilestore.v1
                     }
 
 
-                    /// <summary>The instance's project and location, in the format
+                    /// <summary>Required. The instance's project and location, in the format
                     /// projects/{project_id}/locations/{location}. In Cloud Filestore, locations map to GCP zones, for
                     /// example **us-west1-b**.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The name of the instance to create. The name must be unique for the specified project
-                    /// and location.</summary>
+                    /// <summary>Required. The name of the instance to create. The name must be unique for the specified
+                    /// project and location.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string InstanceId { get; set; }
 
@@ -476,7 +477,7 @@ namespace Google.Apis.CloudFilestore.v1
                 }
 
                 /// <summary>Deletes an instance.</summary>
-                /// <param name="name">The instance resource name, in the format
+                /// <param name="name">Required. The instance resource name, in the format
                 /// projects/{project_id}/locations/{location}/instances/{instance_id}</param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -495,7 +496,7 @@ namespace Google.Apis.CloudFilestore.v1
                     }
 
 
-                    /// <summary>The instance resource name, in the format
+                    /// <summary>Required. The instance resource name, in the format
                     /// projects/{project_id}/locations/{location}/instances/{instance_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -538,7 +539,7 @@ namespace Google.Apis.CloudFilestore.v1
                 }
 
                 /// <summary>Gets the details of a specific instance.</summary>
-                /// <param name="name">The instance resource name, in the format
+                /// <param name="name">Required. The instance resource name, in the format
                 /// projects/{project_id}/locations/{location}/instances/{instance_id}.</param>
                 public virtual GetRequest Get(string name)
                 {
@@ -557,7 +558,7 @@ namespace Google.Apis.CloudFilestore.v1
                     }
 
 
-                    /// <summary>The instance resource name, in the format
+                    /// <summary>Required. The instance resource name, in the format
                     /// projects/{project_id}/locations/{location}/instances/{instance_id}.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -601,7 +602,7 @@ namespace Google.Apis.CloudFilestore.v1
 
                 /// <summary>Lists all instances in a project for either a specified location or for all
                 /// locations.</summary>
-                /// <param name="parent">The project and location for which to retrieve instance information, in the format
+                /// <param name="parent">Required. The project and location for which to retrieve instance information, in the format
                 /// projects/{project_id}/locations/{location}. In Cloud Filestore, locations map to GCP zones, for example **us-
                 /// west1-b**. To retrieve instance information for all locations, use "-" for the {location} value.</param>
                 public virtual ListRequest List(string parent)
@@ -622,10 +623,10 @@ namespace Google.Apis.CloudFilestore.v1
                     }
 
 
-                    /// <summary>The project and location for which to retrieve instance information, in the format
-                    /// projects/{project_id}/locations/{location}. In Cloud Filestore, locations map to GCP zones, for
-                    /// example **us-west1-b**. To retrieve instance information for all locations, use "-" for the
-                    /// {location} value.</summary>
+                    /// <summary>Required. The project and location for which to retrieve instance information, in the
+                    /// format projects/{project_id}/locations/{location}. In Cloud Filestore, locations map to GCP
+                    /// zones, for example **us-west1-b**. To retrieve instance information for all locations, use "-"
+                    /// for the {location} value.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1599,7 +1600,7 @@ namespace Google.Apis.CloudFilestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>Optional. The description of the instance (2048 characters or less).</summary>
+        /// <summary>The description of the instance (2048 characters or less).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 

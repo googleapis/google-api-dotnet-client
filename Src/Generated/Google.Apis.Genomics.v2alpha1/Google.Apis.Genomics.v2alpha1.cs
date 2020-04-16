@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v2alpha1
- *      <tr><th>API Rev<td>20200316 (1901)
+ *      <tr><th>API Rev<td>20200414 (1930)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -458,6 +458,7 @@ namespace Google.Apis.Genomics.v2alpha1
         {
             this.service = service;
             operations = new OperationsResource(service);
+            workers = new WorkersResource(service);
 
         }
 
@@ -751,6 +752,100 @@ namespace Google.Apis.Genomics.v2alpha1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                }
+
+            }
+        }
+        private readonly WorkersResource workers;
+
+        /// <summary>Gets the Workers resource.</summary>
+        public virtual WorkersResource Workers
+        {
+            get { return workers; }
+        }
+
+        /// <summary>The "workers" collection of methods.</summary>
+        public class WorkersResource
+        {
+            private const string Resource = "workers";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public WorkersResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>The worker uses this method to retrieve the assigned operation and provide periodic status
+            /// updates.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="id">The worker id, assigned when it was created.</param>
+            public virtual CheckInRequest CheckIn(Google.Apis.Genomics.v2alpha1.Data.CheckInRequest body, string id)
+            {
+                return new CheckInRequest(service, body, id);
+            }
+
+            /// <summary>The worker uses this method to retrieve the assigned operation and provide periodic status
+            /// updates.</summary>
+            public class CheckInRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v2alpha1.Data.CheckInResponse>
+            {
+                /// <summary>Constructs a new CheckIn request.</summary>
+                public CheckInRequest(Google.Apis.Services.IClientService service, Google.Apis.Genomics.v2alpha1.Data.CheckInRequest body, string id)
+                    : base(service)
+                {
+                    Id = id;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The worker id, assigned when it was created.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Id { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Genomics.v2alpha1.Data.CheckInRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "checkIn"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2alpha1/{+id}:checkIn"; }
+                }
+
+                /// <summary>Initializes CheckIn parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "id",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/workers/[^/]+$",
                         });
                 }
 

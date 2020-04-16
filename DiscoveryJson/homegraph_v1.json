@@ -192,7 +192,7 @@
    }
   }
  }, 
- "revision": "20200407", 
+ "revision": "20200410", 
  "rootUrl": "https://homegraph.googleapis.com/", 
  "schemas": {
   "AgentDeviceId": {
@@ -258,7 +258,7 @@
      "type": "boolean"
     }, 
     "otherDeviceIds": {
-     "description": "Alternate IDs associated with this device.\nThis is used to identify cloud synced devices enabled for\n[local\nexecution](https://developers.google.com/assistant/smarthome/concepts/local).", 
+     "description": "Alternate IDs associated with this device.\nThis is used to identify cloud synced devices enabled for [local\nfulfillment](https://developers.google.com/assistant/smarthome/concepts/local).", 
      "items": {
       "$ref": "AgentOtherDeviceId"
      }, 

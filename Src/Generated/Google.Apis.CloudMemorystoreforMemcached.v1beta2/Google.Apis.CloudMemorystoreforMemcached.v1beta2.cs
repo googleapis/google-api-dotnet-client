@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/memorystore/'>Cloud Memorystore for Memcached API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20200407 (1923)
+ *      <tr><th>API Rev<td>20200414 (1930)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/memorystore/'>
  *              https://cloud.google.com/memorystore/</a>
@@ -552,7 +552,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                 }
 
                 /// <summary>Deletes a single Instance.</summary>
-                /// <param name="name">Memcached instance resource name in the format:
+                /// <param name="name">Required. Memcached instance resource name in the format:
                 /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP
                 /// region</param>
                 public virtual DeleteRequest Delete(string name)
@@ -572,7 +572,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                     }
 
 
-                    /// <summary>Memcached instance resource name in the format:
+                    /// <summary>Required. Memcached instance resource name in the format:
                     /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id`
                     /// refers to a GCP region</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1920,33 +1920,33 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
     /// <summary>Represents the metadata of a long-running operation.</summary>
     public class GoogleCloudMemcacheV1beta2OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>API version used to start the operation.</summary>
+        /// <summary>Output only. API version used to start the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; } 
 
-        /// <summary>Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.</summary>
+        /// <summary>Output only. Identifies whether the user has requested cancellation of the operation. Operations
+        /// that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1,
+        /// corresponding to `Code.CANCELLED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
         public virtual System.Nullable<bool> CancelRequested { get; set; } 
 
-        /// <summary>Time when the operation was created.</summary>
+        /// <summary>Output only. Time when the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>Time when the operation finished running.</summary>
+        /// <summary>Output only. Time when the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
-        /// <summary>Human-readable status of the operation, if any.</summary>
+        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
         public virtual string StatusDetail { get; set; } 
 
-        /// <summary>Server-defined resource path for the target of the operation.</summary>
+        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; } 
 
-        /// <summary>Name of the verb executed by the operation.</summary>
+        /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; } 
 

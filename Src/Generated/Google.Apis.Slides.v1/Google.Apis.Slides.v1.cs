@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200409 (1925)
+ *      <tr><th>API Rev<td>20200413 (1929)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -517,13 +517,13 @@ namespace Google.Apis.Slides.v1
 
                 /// <summary>The optional mime type of the thumbnail image.
                 ///
-                /// If you don't specify the mime type, the default mime type will be PNG.</summary>
+                /// If you don't specify the mime type, the mime type defaults to PNG.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("thumbnailProperties.mimeType", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ThumbnailPropertiesMimeTypeEnum> ThumbnailPropertiesMimeType { get; set; }
 
                 /// <summary>The optional mime type of the thumbnail image.
                 ///
-                /// If you don't specify the mime type, the default mime type will be PNG.</summary>
+                /// If you don't specify the mime type, the mime type defaults to PNG.</summary>
                 public enum ThumbnailPropertiesMimeTypeEnum
                 {
                     [Google.Apis.Util.StringValueAttribute("PNG")]
@@ -2436,8 +2436,8 @@ namespace Google.Apis.Slides.v1.Data
         ///
         /// - Placeholder shapes on a master contain the default text styles and shape properties of all placeholder
         /// shapes on pages that use that master. - The master page properties define the common page properties
-        /// inherited by its layouts. - Any other shapes on the master slide will appear on all slides using that
-        /// master, regardless of their layout.</summary>
+        /// inherited by its layouts. - Any other shapes on the master slide appear on all slides using that master,
+        /// regardless of their layout.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masters")]
         public virtual System.Collections.Generic.IList<Page> Masters { get; set; } 
 
@@ -2446,8 +2446,8 @@ namespace Google.Apis.Slides.v1.Data
         /// - Placeholder shapes on a notes master contain the default text styles and shape properties of all
         /// placeholder shapes on notes pages. Specifically, a `SLIDE_IMAGE` placeholder shape contains the slide
         /// thumbnail, and a `BODY` placeholder shape contains the speaker notes. - The notes master page properties
-        /// define the common page properties inherited by all notes pages. - Any other shapes on the notes master will
-        /// appear on all notes pages.
+        /// define the common page properties inherited by all notes pages. - Any other shapes on the notes master
+        /// appears on all notes pages.
         ///
         /// The notes master is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notesMaster")]

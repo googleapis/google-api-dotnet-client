@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>Security Command Center API</a>
  *      <tr><th>API Version<td>v1p1alpha1
- *      <tr><th>API Rev<td>20200406 (1922)
+ *      <tr><th>API Rev<td>20200410 (1926)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview</a>
@@ -696,11 +696,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1alpha1.Data
     ///
     /// A finding is a record of assessment data like security, risk, health, or privacy, that is ingested into Security
     /// Command Center for presentation, notification, analysis, policy testing, and enforcement. For example, a cross-
-    /// site scripting (XSS) vulnerability in an App Engine application is a finding.
-    ///
-    /// When adding a new field hidden behind a visibility label, ensure it is also hidden from Notifications: http://go
-    /// ogle3/java/com/google/cloud/security/riskdashboard/notification/actions/streaming/FindingTranslator.java?l=26</s
-    /// ummary>
+    /// site scripting (XSS) vulnerability in an App Engine application is a finding.</summary>
     public class Finding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The additional taxonomy group within findings from a given source. This field is immutable after

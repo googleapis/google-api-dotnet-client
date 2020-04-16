@@ -3358,7 +3358,7 @@
    }
   }
  }, 
- "revision": "20200327", 
+ "revision": "20200407", 
  "rootUrl": "https://run.googleapis.com/", 
  "schemas": {
   "Addressable": {
@@ -5163,14 +5163,18 @@
    "description": "Probe describes a health check to be performed against a container to\ndetermine whether it is alive or ready to receive traffic.", 
    "id": "Probe", 
    "properties": {
+    "exec": {
+     "$ref": "ExecAction", 
+     "description": "One and only one of the following should be specified.\nExec specifies the action to take.\n\nA field inlined from the Handler message."
+    }, 
     "failureThreshold": {
      "description": "Minimum consecutive failures for the probe to be considered failed after\nhaving succeeded. Defaults to 3. Minimum value is 1. +optional", 
      "format": "int32", 
      "type": "integer"
     }, 
-    "handler": {
-     "$ref": "Handler", 
-     "description": "The action taken to determine the health of a container"
+    "httpGet": {
+     "$ref": "HTTPGetAction", 
+     "description": "HTTPGet specifies the http request to perform.\n\nA field inlined from the Handler message."
     }, 
     "initialDelaySeconds": {
      "description": "Number of seconds after the container has started before liveness probes\nare initiated. More info:\nhttps://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes\n+optional", 
@@ -5186,6 +5190,10 @@
      "description": "Minimum consecutive successes for the probe to be considered successful\nafter having failed. Defaults to 1. Must be 1 for liveness. Minimum value\nis 1. +optional", 
      "format": "int32", 
      "type": "integer"
+    }, 
+    "tcpSocket": {
+     "$ref": "TCPSocketAction", 
+     "description": "TCPSocket specifies an action involving a TCP port.\nTCP hooks not yet supported\n\nA field inlined from the Handler message."
     }, 
     "timeoutSeconds": {
      "description": "Number of seconds after which the probe times out.\nDefaults to 1 second. Minimum value is 1.\nMore info:\nhttps://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes\n+optional", 

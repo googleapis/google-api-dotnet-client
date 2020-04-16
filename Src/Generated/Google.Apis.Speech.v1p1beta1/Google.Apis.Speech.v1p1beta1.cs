@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>Cloud Speech-to-Text API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20200406 (1922)
+ *      <tr><th>API Rev<td>20200409 (1925)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>
  *              https://cloud.google.com/speech-to-text/docs/quickstart-protocol</a>
@@ -910,6 +910,39 @@ namespace Google.Apis.Speech.v1p1beta1
 namespace Google.Apis.Speech.v1p1beta1.Data
 {    
 
+    /// <summary>An item of the class.</summary>
+    public class ClassItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The class item's value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A set of words or phrases that represents a common concept likely to appear in your audio, for example
+    /// a list of passenger ship names. CustomClass items can be substituted into placeholders that you set in PhraseSet
+    /// phrases.</summary>
+    public class CustomClass : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If this custom class is a resource, the custom_class_id is the resource id of the
+        /// CustomClass.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customClassId")]
+        public virtual string CustomClassId { get; set; } 
+
+        /// <summary>A collection of class items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<ClassItem> Items { get; set; } 
+
+        /// <summary>The resource name of the custom class.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -943,8 +976,8 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
-        /// <summary>The URI of the audio file being transcribed. Empty if the audio was sent as byte content.
-        /// </summary>
+        /// <summary>Output only. The URI of the audio file being transcribed. Empty if the audio was sent as byte
+        /// content. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
 
@@ -1017,6 +1050,64 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A phrases containing words and phrase "hints" so that the speech recognition is more likely to
+    /// recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if
+    /// specific commands are typically spoken by the user. This can also be used to add additional words to the
+    /// vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech-to-text/quotas#content).
+    ///
+    /// List items can also include pre-built or custom classes containing groups of words that represent common
+    /// concepts that occur in natural language. For example, rather than providing a phrase hint for every month of the
+    /// year (e.g. "i was born in january", "i was born in febuary", ...), use the pre-built $MONTH class improves the
+    /// likelihood of correctly transcribing audio that includes months (e.g. "i was born in $month"). To refer to pre-
+    /// built classes, use the class' symbol prepended with $ e.g. $MONTH. To refer to custom classes that were defined
+    /// inline in the request, set the class's `custom_class_id` to a string unique to all class resources and inline
+    /// classes. Then use the class' id wrapped in ${...} e.g. "${my-months}". To refer to custom classes resources, use
+    /// the class' id wrapped in ${} (e.g. ${my-months}).</summary>
+    public class Phrase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hint Boost. Overrides the boost set at the phrase set level. Positive value will increase the
+        /// probability that a specific phrase will be recognized over other similar sounding phrases. The higher the
+        /// boost, the higher the chance of false positive recognition as well. Negative boost values would correspond
+        /// to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can
+        /// accept a wide range of positive values, most use cases are best served with values between 0 and 20. We
+        /// recommend using a binary search approach to finding the optimal value for your use case. Speech recognition
+        /// will skip PhraseSets with a boost value of 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boost")]
+        public virtual System.Nullable<float> Boost { get; set; } 
+
+        /// <summary>The phrase itself.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Provides "hints" to the speech recognizer to favor specific words and phrases in the results.</summary>
+    public class PhraseSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hint Boost. Positive value will increase the probability that a specific phrase will be recognized
+        /// over other similar sounding phrases. The higher the boost, the higher the chance of false positive
+        /// recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so
+        /// negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use
+        /// cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach
+        /// to finding the optimal value for your use case. Speech recognition will skip PhraseSets with a boost value
+        /// of 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boost")]
+        public virtual System.Nullable<float> Boost { get; set; } 
+
+        /// <summary>The resource name of the phrase set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>A list of word and phrases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phrases")]
+        public virtual System.Collections.Generic.IList<Phrase> Phrases { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Contains audio data in the encoding specified in the `RecognitionConfig`. Either `content` or `uri`
     /// must be supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT. See [content
     /// limits](https://cloud.google.com/speech-to-text/quotas#content).</summary>
@@ -1042,6 +1133,12 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     /// <summary>Provides information to the recognizer that specifies how to process the request.</summary>
     public class RecognitionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Speech adaptation configuration improves the accuracy of speech recognition. When speech adaptation
+        /// is set it supersedes the `speech_contexts` field. For more information, see the [speech
+        /// adaptation](https://cloud.google.com/speech-to-text/docs/context-strength) documentation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adaptation")]
+        public virtual SpeechAdaptation Adaptation { get; set; } 
+
         /// <summary>A list of up to 3 additional [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags,
         /// listing possible alternative languages of the supplied audio. See [Language
         /// Support](https://cloud.google.com/speech-to-text/docs/languages) for a list of the currently supported
@@ -1282,6 +1379,24 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// <summary>Output only. Unused.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speakerTag")]
         public virtual System.Nullable<int> SpeakerTag { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Speech adaptation configuration.</summary>
+    public class SpeechAdaptation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A collection of custom classes. To specify the classes inline, leave the class' `name` blank and
+        /// fill in the rest of its fields, giving it a unique `custom_class_id`. Refer to the inline defined class in
+        /// phrase hints by its `custom_class_id`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customClasses")]
+        public virtual System.Collections.Generic.IList<CustomClass> CustomClasses { get; set; } 
+
+        /// <summary>A collection of phrase sets. To specify the hints inline, leave the phrase set's `name` blank and
+        /// fill in the rest of its fields. Any phrase set can use any custom class.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phraseSets")]
+        public virtual System.Collections.Generic.IList<PhraseSet> PhraseSets { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-search/docs/guides/'>Cloud Search API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200331 (1916)
+ *      <tr><th>API Rev<td>20200407 (1923)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-search/docs/guides/'>
  *              https://developers.google.com/cloud-search/docs/guides/</a>
@@ -1980,8 +1980,8 @@ namespace Google.Apis.CloudSearch.v1
                 /// This API requires an admin or service account to execute. The service account used is the one
                 /// whitelisted in the corresponding data source.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Name of the Item to start a resumable upload. Format:
-                /// datasources/{source_id}/items/{item_id}.</param>
+                /// <param name="name">Name of the Item to start a resumable upload. Format: datasources/{source_id}/items/{item_id}.
+                /// The maximum length is 1536 bytes.</param>
                 public virtual UploadRequest Upload(Google.Apis.CloudSearch.v1.Data.StartUploadItemRequest body, string name)
                 {
                     return new UploadRequest(service, body, name);
@@ -2005,7 +2005,7 @@ namespace Google.Apis.CloudSearch.v1
 
 
                     /// <summary>Name of the Item to start a resumable upload. Format:
-                    /// datasources/{source_id}/items/{item_id}.</summary>
+                    /// datasources/{source_id}/items/{item_id}. The maximum length is 1536 bytes.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 

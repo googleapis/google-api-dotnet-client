@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>AI Platform Training & Prediction API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200328 (1913)
+ *      <tr><th>API Rev<td>20200413 (1929)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -1244,8 +1244,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     }
 
 
-                    /// <summary>Adds a measurement of the objective metrics to a Trial. This measurement is assumed to
-                    /// have been taken before the Trial is complete.</summary>
+                    /// <summary>Adds a measurement of the objective metrics to a trial. This measurement is assumed to
+                    /// have been taken before the trial is complete.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. The trial name.</param>
                     public virtual AddMeasurementRequest AddMeasurement(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1AddTrialMeasurementRequest body, string name)
@@ -1253,8 +1253,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         return new AddMeasurementRequest(service, body, name);
                     }
 
-                    /// <summary>Adds a measurement of the objective metrics to a Trial. This measurement is assumed to
-                    /// have been taken before the Trial is complete.</summary>
+                    /// <summary>Adds a measurement of the objective metrics to a trial. This measurement is assumed to
+                    /// have been taken before the trial is complete.</summary>
                     public class AddMeasurementRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial>
                     {
                         /// <summary>Constructs a new AddMeasurement request.</summary>
@@ -1314,7 +1314,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
 
                     }
 
-                    /// <summary>Checks whether a trial should stop or not.</summary>
+                    /// <summary>Checks  whether a trial should stop or not. Returns a long-running operation. When the
+                    /// operation is successful, it will contain a CheckTrialEarlyStoppingStateResponse.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. The trial name.</param>
                     public virtual CheckEarlyStoppingStateRequest CheckEarlyStoppingState(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest body, string name)
@@ -1322,7 +1323,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         return new CheckEarlyStoppingStateRequest(service, body, name);
                     }
 
-                    /// <summary>Checks whether a trial should stop or not.</summary>
+                    /// <summary>Checks  whether a trial should stop or not. Returns a long-running operation. When the
+                    /// operation is successful, it will contain a CheckTrialEarlyStoppingStateResponse.</summary>
                     public class CheckEarlyStoppingStateRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new CheckEarlyStoppingState request.</summary>
@@ -1382,15 +1384,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
 
                     }
 
-                    /// <summary>Marks a Trial as complete.</summary>
+                    /// <summary>Marks a trial as complete.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Required. The trial name.</param>
+                    /// <param name="name">Required. The trial name.metat</param>
                     public virtual CompleteRequest Complete(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CompleteTrialRequest body, string name)
                     {
                         return new CompleteRequest(service, body, name);
                     }
 
-                    /// <summary>Marks a Trial as complete.</summary>
+                    /// <summary>Marks a trial as complete.</summary>
                     public class CompleteRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial>
                     {
                         /// <summary>Constructs a new Complete request.</summary>
@@ -1403,7 +1405,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         }
 
 
-                        /// <summary>Required. The trial name.</summary>
+                        /// <summary>Required. The trial name.metat</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -1450,7 +1452,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
 
                     }
 
-                    /// <summary>Adds a user provided trial to a Study.</summary>
+                    /// <summary>Adds a user provided trial to a study.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The name of the study that the trial belongs to.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial body, string parent)
@@ -1458,7 +1460,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Adds a user provided trial to a Study.</summary>
+                    /// <summary>Adds a user provided trial to a study.</summary>
                     public class CreateRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -1518,14 +1520,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
 
                     }
 
-                    /// <summary>Deletes a Trial.</summary>
+                    /// <summary>Deletes a trial.</summary>
                     /// <param name="name">Required. The trial name.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes a Trial.</summary>
+                    /// <summary>Deletes a trial.</summary>
                     public class DeleteRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleProtobufEmpty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -1578,14 +1580,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
 
                     }
 
-                    /// <summary>Gets a Trial.</summary>
+                    /// <summary>Gets a trial.</summary>
                     /// <param name="name">Required. The trial name.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>Gets a Trial.</summary>
+                    /// <summary>Gets a trial.</summary>
                     public class GetRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -1638,14 +1640,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
 
                     }
 
-                    /// <summary>Lists the trials associated with a Study.</summary>
+                    /// <summary>Lists the trials associated with a study.</summary>
                     /// <param name="parent">Required. The name of the study that the trial belongs to.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Lists the trials associated with a Study.</summary>
+                    /// <summary>Lists the trials associated with a study.</summary>
                     public class ListRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListTrialsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -1766,8 +1768,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
 
                     }
 
-                    /// <summary>Returns a long-running operation associated with the generation of trial
-                    /// suggestions.</summary>
+                    /// <summary>Adds one or more trials to a study, with parameter values suggested by AI Platform
+                    /// Optimizer. Returns a long-running operation associated with the generation of trial suggestions.
+                    /// When this long-running operation succeeds, it will contain a SuggestTrialsResponse.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The name of the study that the trial belongs to.</param>
                     public virtual SuggestRequest Suggest(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1SuggestTrialsRequest body, string parent)
@@ -1775,8 +1778,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         return new SuggestRequest(service, body, parent);
                     }
 
-                    /// <summary>Returns a long-running operation associated with the generation of trial
-                    /// suggestions.</summary>
+                    /// <summary>Adds one or more trials to a study, with parameter values suggested by AI Platform
+                    /// Optimizer. Returns a long-running operation associated with the generation of trial suggestions.
+                    /// When this long-running operation succeeds, it will contain a SuggestTrialsResponse.</summary>
                     public class SuggestRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Suggest request.</summary>
@@ -4086,7 +4090,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
 
     public class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>True if measurement.elapsed_time is used as the x-axis of each Trials Decay Curve. Otherwise,
+        /// <summary>If true, measurement.elapsed_time is used as the x-axis of each Trials Decay Curve. Otherwise,
         /// Measurement.steps will be used as the x-axis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useElapsedTime")]
         public virtual System.Nullable<bool> UseElapsedTime { get; set; } 
@@ -4101,9 +4105,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     /// measurement.</summary>
     public class GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>True if median automated stopping rule applies on measurement.use_elapsed_time. it means that
-        /// elapsed_time field of latest measurement of current trial is used to compute median objective value for each
-        /// completed trials.</summary>
+        /// <summary>If true, the median automated stopping rule applies to measurement.use_elapsed_time, which means
+        /// the elapsed_time field of the current trial's latest measurement is used to compute the median objective
+        /// value for each completed trial.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useElapsedTime")]
         public virtual System.Nullable<bool> UseElapsedTime { get; set; } 
 
@@ -4159,7 +4163,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     /// CheckTrialEarlyStoppingState request.</summary>
     public class GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The time operation was submitted.</summary>
+        /// <summary>The time at which the operation was submitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
@@ -4167,7 +4171,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("study")]
         public virtual string Study { get; set; } 
 
-        /// <summary>The Trial name.</summary>
+        /// <summary>The trial name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trial")]
         public virtual string Trial { get; set; } 
 
@@ -4186,7 +4190,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     /// with a CheckTrialEarlyStoppingState request.</summary>
     public class GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The time operation processing completed.</summary>
+        /// <summary>The time at which operation processing completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
@@ -4194,7 +4198,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shouldStop")]
         public virtual System.Nullable<bool> ShouldStop { get; set; } 
 
-        /// <summary>The time operation was started.</summary>
+        /// <summary>The time at which the operation was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
@@ -4210,7 +4214,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("finalMeasurement")]
         public virtual GoogleCloudMlV1Measurement FinalMeasurement { get; set; } 
 
-        /// <summary>Optional. A human readable reason why the Trial was infeasible. This should only be provided if
+        /// <summary>Optional. A human readable reason why the trial was infeasible. This should only be provided if
         /// `trial_infeasible` is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infeasibleReason")]
         public virtual string InfeasibleReason { get; set; } 
@@ -4237,9 +4241,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     /// <summary>Represents a custom encryption key configuration that can be applied to a resource.</summary>
     public class GoogleCloudMlV1EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Cloud KMS resource identifier of the customer managed encryption key used to protect a
-        /// resource, such as a training job. Has the form: `projects/my-project/locations/my-region/keyRings/my-
-        /// kr/cryptoKeys/my-key`.</summary>
+        /// <summary>The Cloud KMS resource identifier of the customer-managed encryption key used to protect a
+        /// resource, such as a training job. It has the following format:
+        /// `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; } 
 
@@ -4546,7 +4550,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
 
     public class GoogleCloudMlV1ListStudiesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Studies associated with the project.</summary>
+        /// <summary>The studies associated with the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("studies")]
         public virtual System.Collections.Generic.IList<GoogleCloudMlV1Study> Studies { get; set; } 
 
@@ -4606,10 +4610,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A message representing a Measurement.</summary>
+    /// <summary>A message representing a measurement.</summary>
     public class GoogleCloudMlV1Measurement : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Time that the Trial has been running at the point of this Measurement.</summary>
+        /// <summary>Output only. Time that the trial has been running at the point of this measurement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elapsedTime")]
         public virtual object ElapsedTime { get; set; } 
 
@@ -5014,7 +5018,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     /// <summary>A message representing a Study.</summary>
     public class GoogleCloudMlV1Study : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Time that the study was created.</summary>
+        /// <summary>Output only. Time at which the study was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
@@ -5050,6 +5054,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("automatedStoppingConfig")]
         public virtual GoogleCloudMlV1AutomatedStoppingConfig AutomatedStoppingConfig { get; set; } 
 
+        /// <summary>Metric specs for the study.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<GoogleCloudMlV1StudyConfigMetricSpec> Metrics { get; set; } 
 
@@ -5258,11 +5263,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     /// associated with a SuggestTrials request.</summary>
     public class GoogleCloudMlV1SuggestTrialsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The time operation processing completed.</summary>
+        /// <summary>The time at which operation processing completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
-        /// <summary>The time operation was started.</summary>
+        /// <summary>The time at which the operation was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
@@ -5270,7 +5275,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("studyState")]
         public virtual string StudyState { get; set; } 
 
-        /// <summary>A list of Trials.</summary>
+        /// <summary>A list of trials.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trials")]
         public virtual System.Collections.Generic.IList<GoogleCloudMlV1Trial> Trials { get; set; } 
 
@@ -5284,14 +5289,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     /// ](/ai-platform/training/docs/training-jobs).</summary>
     public class GoogleCloudMlV1TrainingInput : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Arguments passed to the training. - If it is a python package training: It will be passed
-        /// as command line argument to the program. - If it is a custom container training, It will be passed as an
-        /// argument to the custom container image.</summary>
+        /// <summary>Optional. Command-line arguments passed to the training application when it starts. If your job
+        /// uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; } 
 
-        /// <summary>Custom encryption key options for a training job. If this is set, then all resources created by the
-        /// training job will be encrypted with the provided encryption key.</summary>
+        /// <summary>Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by
+        /// a training job, instead of using Google's default encryption. If this is set, then all resources created by
+        /// the training job will be encrypted with the customer-managed encryption key that you specify.
+        ///
+        /// [Learn how and when to use CMEK with AI Platform Training](/ai-platform/training/docs/cmek).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
         public virtual GoogleCloudMlV1EncryptionConfig EncryptionConfig { get; set; } 
 
@@ -5302,7 +5309,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
         ///
         /// Set `evaluatorConfig.imageUri` only if you build a custom image for your evaluator. If
-        /// `evaluatorConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri` . Learn
+        /// `evaluatorConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri`. Learn
         /// more about [configuring custom containers](/ai-platform/training/docs/distributed-training-
         /// containers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluatorConfig")]
@@ -5390,7 +5397,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
         ///
         /// Set `parameterServerConfig.imageUri` only if you build a custom image for your parameter server. If
-        /// `parameterServerConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri` .
+        /// `parameterServerConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri`.
         /// Learn more about [configuring custom containers](/ai-platform/training/docs/distributed-training-
         /// containers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterServerConfig")]
@@ -5473,7 +5480,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// /using-gpus#compute-engine-machine-types-with-gpu)
         ///
         /// Set `workerConfig.imageUri` only if you build a custom image for your worker. If `workerConfig.imageUri` has
-        /// not been set, AI Platform uses the value of `masterConfig.imageUri` . Learn more about [configuring custom
+        /// not been set, AI Platform uses the value of `masterConfig.imageUri`. Learn more about [configuring custom
         /// containers](/ai-platform/training/docs/distributed-training-containers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
         public virtual GoogleCloudMlV1ReplicaConfig WorkerConfig { get; set; } 
@@ -5545,22 +5552,22 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A message representing a Trial.</summary>
+    /// <summary>A message representing a trial.</summary>
     public class GoogleCloudMlV1Trial : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The identifier of the client that originally requested this trial.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; } 
 
-        /// <summary>Output only. Time the Trial's status changed to COMPLETED.</summary>
+        /// <summary>Output only. Time at which the trial's status changed to COMPLETED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
-        /// <summary>The final Measurement containing the objective value.</summary>
+        /// <summary>The final measurement containing the objective value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalMeasurement")]
         public virtual GoogleCloudMlV1Measurement FinalMeasurement { get; set; } 
 
-        /// <summary>Output only. A human readable string describing why the Trial is infeasible. This should only be
+        /// <summary>Output only. A human readable string describing why the trial is infeasible. This should only be
         /// set if trial_infeasible is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infeasibleReason")]
         public virtual string InfeasibleReason { get; set; } 
@@ -5574,11 +5581,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The parameters of the Trial.</summary>
+        /// <summary>The parameters of the trial.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<GoogleCloudMlV1TrialParameter> Parameters { get; set; } 
 
-        /// <summary>Output only. Time the Trial was started.</summary>
+        /// <summary>Output only. Time at which the trial was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
@@ -5586,7 +5593,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Output only. True if the parameters in this trial should not be attempted again.</summary>
+        /// <summary>Output only. If true, the parameters in this trial are not attempted again.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trialInfeasible")]
         public virtual System.Nullable<bool> TrialInfeasible { get; set; } 
 
@@ -5594,7 +5601,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A message representing a parameter to be tuned.</summary>
+    /// <summary>A message representing a parameter to be tuned. Contains the name of the parameter and the suggested
+    /// value to use for this trial.</summary>
     public class GoogleCloudMlV1TrialParameter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Must be set if ParameterType is DOUBLE or DISCRETE.</summary>

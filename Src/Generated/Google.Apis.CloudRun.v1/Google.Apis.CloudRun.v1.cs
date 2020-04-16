@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/run/'>Cloud Run API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200327 (1912)
+ *      <tr><th>API Rev<td>20200407 (1923)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/run/'>
  *              https://cloud.google.com/run/</a>
@@ -6249,47 +6249,6 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// Handler defines a specific action that should be taken</summary>
-    public class Handler : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// One and only one of the following should be specified. Exec specifies the action to take.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exec")]
-        public virtual ExecAction Exec { get; set; } 
-
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// HTTPGet specifies the http request to perform.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("httpGet")]
-        public virtual HTTPGetAction HttpGet { get; set; } 
-
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tcpSocket")]
-        public virtual TCPSocketAction TcpSocket { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>IntOrString is a type that can hold an int32 or a string.  When used in JSON or YAML marshalling and
     /// unmarshalling, it produces or consumes the inner type.  This allows you to have, for example, a JSON field that
     /// can accept a name or number.</summary>
@@ -6956,18 +6915,34 @@ namespace Google.Apis.CloudRun.v1.Data
         ///
         /// Cloud Run for Anthos: supported
         ///
+        /// One and only one of the following should be specified. Exec specifies the action to take.
+        ///
+        /// A field inlined from the Handler message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exec")]
+        public virtual ExecAction Exec { get; set; } 
+
+        /// <summary>(Optional)
+        ///
+        /// Cloud Run fully managed: not supported
+        ///
+        /// Cloud Run for Anthos: supported
+        ///
         /// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3.
         /// Minimum value is 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureThreshold")]
         public virtual System.Nullable<int> FailureThreshold { get; set; } 
 
-        /// <summary>Cloud Run fully managed: not supported
+        /// <summary>(Optional)
+        ///
+        /// Cloud Run fully managed: not supported
         ///
         /// Cloud Run for Anthos: supported
         ///
-        /// The action taken to determine the health of a container</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("handler")]
-        public virtual Handler Handler { get; set; } 
+        /// HTTPGet specifies the http request to perform.
+        ///
+        /// A field inlined from the Handler message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpGet")]
+        public virtual HTTPGetAction HttpGet { get; set; } 
 
         /// <summary>(Optional)
         ///
@@ -7000,6 +6975,18 @@ namespace Google.Apis.CloudRun.v1.Data
         /// Must be 1 for liveness. Minimum value is 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successThreshold")]
         public virtual System.Nullable<int> SuccessThreshold { get; set; } 
+
+        /// <summary>(Optional)
+        ///
+        /// Cloud Run fully managed: not supported
+        ///
+        /// Cloud Run for Anthos: supported
+        ///
+        /// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        ///
+        /// A field inlined from the Handler message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tcpSocket")]
+        public virtual TCPSocketAction TcpSocket { get; set; } 
 
         /// <summary>(Optional)
         ///
