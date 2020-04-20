@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20200403 (1919)
+ *      <tr><th>API Rev<td>20200410 (1926)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>
  *              https://cloud.google.com/asset-inventory/docs/quickstart</a>
@@ -357,7 +357,7 @@ namespace Google.Apis.CloudAsset.v1p1beta1
         /// rejected.</summary>
         /// <param name="scope">Required. The relative name of an asset. The search is limited to the resources within the
         /// `scope`. The allowed value must be: * Organization number (such as "organizations/123") * Folder number(such as
-        /// "folders/1234") * Project number (such as "projects/12345")</param>
+        /// "folders/1234") * Project number (such as "projects/12345") * Project id (such as "projects/abc")</param>
         public virtual SearchAllRequest SearchAll(string scope)
         {
             return new SearchAllRequest(service, scope);
@@ -381,7 +381,8 @@ namespace Google.Apis.CloudAsset.v1p1beta1
 
             /// <summary>Required. The relative name of an asset. The search is limited to the resources within the
             /// `scope`. The allowed value must be: * Organization number (such as "organizations/123") * Folder
-            /// number(such as "folders/1234") * Project number (such as "projects/12345")</summary>
+            /// number(such as "folders/1234") * Project number (such as "projects/12345") * Project id (such as
+            /// "projects/abc")</summary>
             [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Scope { get; private set; }
 
@@ -490,7 +491,7 @@ namespace Google.Apis.CloudAsset.v1p1beta1
         /// permission on the requested scope, otherwise it will be rejected.</summary>
         /// <param name="scope">Required. The relative name of an asset. The search is limited to the resources within the
         /// `scope`. The allowed value must be: * Organization number (such as "organizations/123") * Folder number(such as
-        /// "folders/1234") * Project number (such as "projects/12345")</param>
+        /// "folders/1234") * Project number (such as "projects/12345") * Project id (such as "projects/abc")</param>
         public virtual SearchAllRequest SearchAll(string scope)
         {
             return new SearchAllRequest(service, scope);
@@ -513,7 +514,8 @@ namespace Google.Apis.CloudAsset.v1p1beta1
 
             /// <summary>Required. The relative name of an asset. The search is limited to the resources within the
             /// `scope`. The allowed value must be: * Organization number (such as "organizations/123") * Folder
-            /// number(such as "folders/1234") * Project number (such as "projects/12345")</summary>
+            /// number(such as "folders/1234") * Project number (such as "projects/12345") * Project id (such as
+            /// "projects/abc")</summary>
             [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Scope { get; private set; }
 

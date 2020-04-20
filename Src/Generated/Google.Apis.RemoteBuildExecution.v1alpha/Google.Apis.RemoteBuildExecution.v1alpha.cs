@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20200408 (1924)
+ *      <tr><th>API Rev<td>20200416 (1932)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -2212,15 +2212,25 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
     /// <summary>The request used for `UpdateInstance`.</summary>
     public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether to enable Stackdriver logging for this instance.</summary>
+        /// <summary>Specifies the instance to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance Instance { get; set; } 
+
+        /// <summary>Deprecated, use instance.logging_enabled instead. Whether to enable Stackdriver logging for this
+        /// instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingEnabled")]
         public virtual System.Nullable<bool> LoggingEnabled { get; set; } 
 
-        /// <summary>Name of the instance to update. Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.</summary>
+        /// <summary>Deprecated, use instance.Name instead. Name of the instance to update. Format:
+        /// `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The fields to update.</summary>
+        /// <summary>The update mask applies to instance. For the `FieldMask` definition, see
+        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If an empty
+        /// update_mask is provided, only the non-default valued field in the worker pool field will be updated. Note
+        /// that in order to update a field to the default value (zero, false, empty string) an explicit update_mask
+        /// must be provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 

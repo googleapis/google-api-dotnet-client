@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Cloud Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200405 (1921)
+ *      <tr><th>API Rev<td>20200416 (1932)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -5293,11 +5293,6 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conditionThreshold")]
         public virtual MetricThreshold ConditionThreshold { get; set; } 
 
-        /// <summary>A condition that uses the Monitoring Query Language to define alerts. If set, no other conditions
-        /// can be present.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("conditionTimeSeriesQueryLanguage")]
-        public virtual TimeSeriesQueryLanguageCondition ConditionTimeSeriesQueryLanguage { get; set; } 
-
         /// <summary>A short name or phrase used to identify the condition in dashboards, notifications, and incidents.
         /// To avoid confusion, don't use the same display name for multiple conditions in the same policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -7097,23 +7092,6 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>Descriptors for the point data value columns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pointDescriptors")]
         public virtual System.Collections.Generic.IList<ValueDescriptor> PointDescriptors { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A condition type that allows alert policies to be defined using Monitoring Query Language.</summary>
-    public class TimeSeriesQueryLanguageCondition : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Monitoring Query Language query that generates time series data and describes a condition for
-        /// alerting on that data.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual string Query { get; set; } 
-
-        /// <summary>A short explanation of what the query represents. For example:"Error ratio exceeds 15% for >5% of
-        /// servers in >2 regions"</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
-        public virtual string Summary { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

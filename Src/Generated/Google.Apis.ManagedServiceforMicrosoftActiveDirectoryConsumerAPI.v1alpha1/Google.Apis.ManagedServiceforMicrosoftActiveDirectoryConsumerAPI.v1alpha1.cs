@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/managed-microsoft-ad/'>Managed Service for Microsoft Active Directory API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20200326 (1911)
+ *      <tr><th>API Rev<td>20200415 (1931)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/managed-microsoft-ad/'>
  *              https://cloud.google.com/managed-microsoft-ad/</a>
@@ -1199,7 +1199,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
 
                     /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
                     ///
-                    /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
+                    /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                     /// documentation for the appropriate value for this field.</param>
@@ -1210,7 +1210,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
 
                     /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
                     ///
-                    /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
+                    /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
                     public class SetIamPolicyRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alpha1.Data.Policy>
                     {
                         /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1272,7 +1272,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
                     }
 
                     /// <summary>Returns permissions that a caller has on the specified resource. If the resource does
-                    /// not exist, this will return an empty set of permissions, not a NOT_FOUND error.
+                    /// not exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
                     ///
                     /// Note: This operation is designed to be used for building permission-aware UIs and command-line
                     /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
@@ -1285,7 +1285,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
                     }
 
                     /// <summary>Returns permissions that a caller has on the specified resource. If the resource does
-                    /// not exist, this will return an empty set of permissions, not a NOT_FOUND error.
+                    /// not exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
                     ///
                     /// Note: This operation is designed to be used for building permission-aware UIs and command-line
                     /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200310 (1895)
+ *      <tr><th>API Rev<td>20200407 (1923)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -8373,9 +8373,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual System.Nullable<bool> AdultContent { get; set; } 
 
         /// <summary>List of linked AdWords accounts that are active or pending approval. To create a new link request,
-        /// add a new link with status active to the list. It will remain in a pending state until approved or rejected
-        /// either in the AdWords interface or through the  AdWords API. To delete an active link, or to cancel a link
-        /// request, remove it from the list.</summary>
+        /// add a new link with status `active` to the list. It will remain in a `pending` state until approved or
+        /// rejected either in the AdWords interface or through the  AdWords API. To delete an active link, or to cancel
+        /// a link request, remove it from the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adwordsLinks")]
         public virtual System.Collections.Generic.IList<AccountAdwordsLink> AdwordsLinks { get; set; } 
 
@@ -8392,7 +8392,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string "content#account".</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#account`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -8418,9 +8418,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string WebsiteUrl { get; set; } 
 
         /// <summary>List of linked YouTube channels that are active or pending approval. To create a new link request,
-        /// add a new link with status active to the list. It will remain in a pending state until approved or rejected
-        /// in the YT Creator Studio interface. To delete an active link, or to cancel a link request, remove it from
-        /// the list.</summary>
+        /// add a new link with status `active` to the list. It will remain in a `pending` state until approved or
+        /// rejected in the YT Creator Studio interface. To delete an active link, or to cancel a link request, remove
+        /// it from the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("youtubeChannelLinks")]
         public virtual System.Collections.Generic.IList<AccountYouTubeChannelLink> YoutubeChannelLinks { get; set; } 
 
@@ -8463,14 +8463,14 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual System.Nullable<ulong> AdwordsId { get; set; } 
 
         /// <summary>Status of the link between this Merchant Center account and the AdWords account. Upon retrieval, it
-        /// represents the actual status of the link and can be either active if it was approved in Google AdWords or
-        /// pending if it's pending approval. Upon insertion, it represents the intended status of the link. Re-
-        /// uploading a link with status active when it's still pending or with status pending when it's already active
-        /// will have no effect: the status will remain unchanged. Re-uploading a link with deprecated status inactive
-        /// is equivalent to not submitting the link at all and will delete the link if it was active or cancel the link
-        /// request if it was pending.
+        /// represents the actual status of the link and can be either `active` if it was approved in Google AdWords or
+        /// `pending` if it's pending approval. Upon insertion, it represents the intended status of the link. Re-
+        /// uploading a link with status `active` when it's still pending or with status `pending` when it's already
+        /// active will have no effect: the status will remain unchanged. Re-uploading a link with deprecated status
+        /// `inactive` is equivalent to not submitting the link at all and will delete the link if it was active or
+        /// cancel the link request if it was pending.
         ///
-        /// Acceptable values are: - "active" - "pending"</summary>
+        /// Acceptable values are: - "`active`" - "`pending`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -8523,7 +8523,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Status of the link between this Merchant Center account and the GMB account.
         ///
-        /// Acceptable values are: - "active" - "pending"</summary>
+        /// Acceptable values are: - "`active`" - "`pending`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -8563,7 +8563,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual System.Collections.Generic.IList<AccountStatusDataQualityIssue> DataQualityIssues { get; set; } 
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "content#accountStatus".</summary>
+        /// "`content#accountStatus`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -8604,7 +8604,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Severity of the issue.
         ///
-        /// Acceptable values are: - "critical" - "error" - "suggestion"</summary>
+        /// Acceptable values are: - "`critical`" - "`error`" - "`suggestion`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; } 
 
@@ -8645,7 +8645,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numItems")]
         public virtual System.Nullable<long> NumItems { get; set; } 
 
-        /// <summary>Acceptable values are: - "critical" - "error" - "suggestion"</summary>
+        /// <summary>Acceptable values are: - "`critical`" - "`error`" - "`suggestion`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; } 
 
@@ -8719,7 +8719,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The channel the data applies to.
         ///
-        /// Acceptable values are: - "local" - "online"</summary>
+        /// Acceptable values are: - "`local`" - "`online`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channel")]
         public virtual string Channel { get; set; } 
 
@@ -8847,12 +8847,12 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ChannelId { get; set; } 
 
         /// <summary>Status of the link between this Merchant Center account and the YouTube channel. Upon retrieval, it
-        /// represents the actual status of the link and can be either active if it was approved in YT Creator Studio or
-        /// pending if it's pending approval. Upon insertion, it represents the intended status of the link. Re-
-        /// uploading a link with status active when it's still pending or with status pending when it's already active
-        /// will have no effect: the status will remain unchanged. Re-uploading a link with deprecated status inactive
-        /// is equivalent to not submitting the link at all and will delete the link if it was active or cancel the link
-        /// request if it was pending.</summary>
+        /// represents the actual status of the link and can be either `active` if it was approved in YT Creator Studio
+        /// or `pending` if it's pending approval. Upon insertion, it represents the intended status of the link. Re-
+        /// uploading a link with status `active` when it's still pending or with status `pending` when it's already
+        /// active will have no effect: the status will remain unchanged. Re-uploading a link with deprecated status
+        /// `inactive` is equivalent to not submitting the link at all and will delete the link if it was active or
+        /// cancel the link request if it was pending.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -8901,11 +8901,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
     /// <summary>A batch entry encoding a single non-batch accounts request.</summary>
     public class AccountsCustomBatchRequestEntry : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The account to create or update. Only defined if the method is insert or update.</summary>
+        /// <summary>The account to create or update. Only defined if the method is `insert` or `update`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
         public virtual Account Account { get; set; } 
 
-        /// <summary>The ID of the targeted account. Only defined if the method is not insert.</summary>
+        /// <summary>The ID of the targeted account. Only defined if the method is not `insert`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual System.Nullable<ulong> AccountId { get; set; } 
 
@@ -8914,11 +8914,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual System.Nullable<long> BatchId { get; set; } 
 
         /// <summary>Whether the account should be deleted if the account has offers. Only applicable if the method is
-        /// delete.</summary>
+        /// `delete`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("force")]
         public virtual System.Nullable<bool> Force { get; set; } 
 
-        /// <summary>Details about the link request.</summary>
+        /// <summary>Details about the `link` request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkRequest")]
         public virtual AccountsCustomBatchRequestEntryLinkRequest LinkRequest { get; set; } 
 
@@ -8928,11 +8928,12 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The method of the batch entry.
         ///
-        /// Acceptable values are: - "claimWebsite" - "delete" - "get" - "insert" - "link" - "update"</summary>
+        /// Acceptable values are: - "`claimWebsite`" - "`delete`" - "`get`" - "`insert`" - "`link`" -
+        /// "`update`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 
-        /// <summary>Only applicable if the method is claimwebsite. Indicates whether or not to take the claim from
+        /// <summary>Only applicable if the method is `claimwebsite`. Indicates whether or not to take the claim from
         /// another account in case there is a conflict.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overwrite")]
         public virtual System.Nullable<bool> Overwrite { get; set; } 
@@ -8943,15 +8944,15 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class AccountsCustomBatchRequestEntryLinkRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Action to perform for this link. The "request" action is only available to select merchants.
+        /// <summary>Action to perform for this link. The `"request"` action is only available to select merchants.
         ///
-        /// Acceptable values are: - "approve" - "remove" - "request"</summary>
+        /// Acceptable values are: - "`approve`" - "`remove`" - "`request`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
         /// <summary>Type of the link between the two accounts.
         ///
-        /// Acceptable values are: - "channelPartner" - "eCommercePlatform"</summary>
+        /// Acceptable values are: - "`channelPartner`" - "`eCommercePlatform`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkType")]
         public virtual string LinkType { get; set; } 
 
@@ -8981,8 +8982,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
     /// <summary>A batch entry encoding a single non-batch accounts response.</summary>
     public class AccountsCustomBatchResponseEntry : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The retrieved, created, or updated account. Not defined if the method was delete, claimwebsite or
-        /// link.</summary>
+        /// <summary>The retrieved, created, or updated account. Not defined if the method was `delete`, `claimwebsite`
+        /// or `link`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
         public virtual Account Account { get; set; } 
 
@@ -8995,13 +8996,13 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual Errors Errors { get; set; } 
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "content#accountsCustomBatchResponseEntry".</summary>
+        /// "`content#accountsCustomBatchResponseEntry`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
         /// <summary>Deprecated. This field is never set.
         ///
-        /// Acceptable values are: - "active" - "inactive" - "pending"</summary>
+        /// Acceptable values are: - "`active`" - "`inactive`" - "`pending`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkStatus")]
         public virtual string LinkStatus { get; set; } 
 
@@ -9011,15 +9012,15 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class AccountsLinkRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Action to perform for this link. The "request" action is only available to select merchants.
+        /// <summary>Action to perform for this link. The `"request"` action is only available to select merchants.
         ///
-        /// Acceptable values are: - "approve" - "remove" - "request"</summary>
+        /// Acceptable values are: - "`approve`" - "`remove`" - "`request`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
         /// <summary>Type of the link between the two accounts.
         ///
-        /// Acceptable values are: - "channelPartner" - "eCommercePlatform"</summary>
+        /// Acceptable values are: - "`channelPartner`" - "`eCommercePlatform`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkType")]
         public virtual string LinkType { get; set; } 
 
@@ -9092,7 +9093,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The method of the batch entry.
         ///
-        /// Acceptable values are: - "get"</summary>
+        /// Acceptable values are: - "`get`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 
@@ -9169,7 +9170,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual System.Nullable<ulong> AccountId { get; set; } 
 
-        /// <summary>The account tax settings to update. Only defined if the method is update.</summary>
+        /// <summary>The account tax settings to update. Only defined if the method is `update`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountTax")]
         public virtual AccountTax AccountTax { get; set; } 
 
@@ -9183,7 +9184,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The method of the batch entry.
         ///
-        /// Acceptable values are: - "get" - "update"</summary>
+        /// Acceptable values are: - "`get`" - "`update`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 
@@ -9222,7 +9223,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual Errors Errors { get; set; } 
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "content#accounttaxCustomBatchResponseEntry".</summary>
+        /// "`content#accounttaxCustomBatchResponseEntry`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -9274,18 +9275,19 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class CarrierRate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Carrier service, such as "UPS" or "Fedex". The list of supported carriers can be retrieved via the
-        /// getSupportedCarriers method. Required.</summary>
+        /// <summary>Carrier service, such as `"UPS"` or `"Fedex"`. The list of supported carriers can be retrieved via
+        /// the `getSupportedCarriers` method. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierName")]
         public virtual string CarrierName { get; set; } 
 
-        /// <summary>Carrier service, such as "ground" or "2 days". The list of supported services for a carrier can be
-        /// retrieved via the getSupportedCarriers method. Required.</summary>
+        /// <summary>Carrier service, such as `"ground"` or `"2 days"`. The list of supported services for a carrier can
+        /// be retrieved via the `getSupportedCarriers` method. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierService")]
         public virtual string CarrierService { get; set; } 
 
-        /// <summary>Additive shipping rate modifier. Can be negative. For example { "value": "1", "currency" : "USD" }
-        /// adds $1 to the rate, { "value": "-3", "currency" : "USD" } removes $3 from the rate. Optional.</summary>
+        /// <summary>Additive shipping rate modifier. Can be negative. For example `{ "value": "1", "currency" : "USD"
+        /// }` adds $1 to the rate, `{ "value": "-3", "currency" : "USD" }` removes $3 from the rate.
+        /// Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flatAdjustment")]
         public virtual Price FlatAdjustment { get; set; } 
 
@@ -9298,7 +9300,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string OriginPostalCode { get; set; } 
 
         /// <summary>Multiplicative shipping rate modifier as a number in decimal notation. Can be negative. For example
-        /// "5.4" increases the rate by 5.4%, "-3" decreases the rate by 3%. Optional.</summary>
+        /// `"5.4"` increases the rate by 5.4%, `"-3"` decreases the rate by 3%. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percentageAdjustment")]
         public virtual string PercentageAdjustment { get; set; } 
 
@@ -9312,11 +9314,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; } 
 
-        /// <summary>The name of the carrier (e.g., "UPS"). Always present.</summary>
+        /// <summary>The name of the carrier (e.g., `"UPS"`). Always present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>A list of supported services (e.g., "ground") for that carrier. Contains at least one
+        /// <summary>A list of supported services (e.g., `"ground"`) for that carrier. Contains at least one
         /// service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<string> Services { get; set; } 
@@ -9333,8 +9335,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The type of the attribute.
         ///
-        /// Acceptable values are: - "boolean" - "datetimerange" - "float" - "group" - "int" - "price" - "text" - "time"
-        /// - "url"</summary>
+        /// Acceptable values are: - "`boolean`" - "`datetimerange`" - "`float`" - "`group`" - "`int`" - "`price`" -
+        /// "`text`" - "`time`" - "`url`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -9373,10 +9375,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Code of the return reason.
         ///
-        /// Acceptable values are: - "betterPriceFound" - "changedMind" - "damagedOrDefectiveItem" -
-        /// "didNotMatchDescription" - "doesNotFit" - "expiredItem" - "incorrectItemReceived" - "noLongerNeeded" -
-        /// "notSpecified" - "orderedWrongItem" - "other" - "qualityNotExpected" - "receivedTooLate" -
-        /// "undeliverable"</summary>
+        /// Acceptable values are: - "`betterPriceFound`" - "`changedMind`" - "`damagedOrDefectiveItem`" -
+        /// "`didNotMatchDescription`" - "`doesNotFit`" - "`expiredItem`" - "`incorrectItemReceived`" -
+        /// "`noLongerNeeded`" - "`notSpecified`" - "`orderedWrongItem`" - "`other`" - "`qualityNotExpected`" -
+        /// "`receivedTooLate`" - "`undeliverable`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonCode")]
         public virtual string ReasonCode { get; set; } 
 
@@ -9413,14 +9415,14 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string AttributeLanguage { get; set; } 
 
         /// <summary>[DEPRECATED] Please use targets[].language instead. The two-letter ISO 639-1 language of the items
-        /// in the feed. Must be a valid language for targetCountry.</summary>
+        /// in the feed. Must be a valid language for `targetCountry`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
         public virtual string ContentLanguage { get; set; } 
 
         /// <summary>Required. The type of data feed. For product inventory feeds, only feeds for local stores, not
         /// online stores, are supported.
         ///
-        /// Acceptable values are: - "local products" - "product inventory" - "products"</summary>
+        /// Acceptable values are: - "`local products`" - "`product inventory`" - "`products`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
         public virtual string ContentType { get; set; } 
 
@@ -9445,7 +9447,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("intendedDestinations")]
         public virtual System.Collections.Generic.IList<string> IntendedDestinations { get; set; } 
 
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string "content#datafeed".</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#datafeed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -9507,8 +9509,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The day of the week the feed file should be fetched.
         ///
-        /// Acceptable values are: - "monday" - "tuesday" - "wednesday" - "thursday" - "friday" - "saturday" -
-        /// "sunday"</summary>
+        /// Acceptable values are: - "`monday`" - "`tuesday`" - "`wednesday`" - "`thursday`" - "`friday`" - "`saturday`"
+        /// - "`sunday`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weekday")]
         public virtual string Weekday { get; set; } 
 
@@ -9521,20 +9523,20 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>Delimiter for the separation of values in a delimiter-separated values feed. If not specified, the
         /// delimiter will be auto-detected. Ignored for non-DSV data feeds.
         ///
-        /// Acceptable values are: - "pipe" - "tab" - "tilde"</summary>
+        /// Acceptable values are: - "`pipe`" - "`tab`" - "`tilde`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnDelimiter")]
         public virtual string ColumnDelimiter { get; set; } 
 
         /// <summary>Character encoding scheme of the data feed. If not specified, the encoding will be auto-detected.
         ///
-        /// Acceptable values are: - "latin-1" - "utf-16be" - "utf-16le" - "utf-8" - "windows-1252"</summary>
+        /// Acceptable values are: - "`latin-1`" - "`utf-16be`" - "`utf-16le`" - "`utf-8`" - "`windows-1252`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileEncoding")]
         public virtual string FileEncoding { get; set; } 
 
         /// <summary>Specifies how double quotes are interpreted. If not specified, the mode will be auto-detected.
         /// Ignored for non-DSV data feeds.
         ///
-        /// Acceptable values are: - "normal character" - "value quoting"</summary>
+        /// Acceptable values are: - "`normal character`" - "`value quoting`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotingMode")]
         public virtual string QuotingMode { get; set; } 
 
@@ -9567,7 +9569,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual System.Nullable<ulong> ItemsValid { get; set; } 
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "content#datafeedStatus".</summary>
+        /// "`content#datafeedStatus`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -9581,9 +9583,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The processing status of the feed.
         ///
-        /// Acceptable values are: - ""failure": The feed could not be processed or all items had errors." - "in
-        /// progress": The feed is being processed. - "none": The feed has not yet been processed. For example, a feed
-        /// that has never been uploaded will have this processing status. - "success": The feed was processed
+        /// Acceptable values are: - "`"`failure`": The feed could not be processed or all items had errors.`" - "`in
+        /// progress`": The feed is being processed. - "`none`": The feed has not yet been processed. For example, a
+        /// feed that has never been uploaded will have this processing status. - "`success`": The feed was processed
         /// successfully, though some items might have had errors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingStatus")]
         public virtual string ProcessingStatus { get; set; } 
@@ -9651,7 +9653,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual System.Collections.Generic.IList<string> ExcludedDestinations { get; set; } 
 
         /// <summary>The list of destinations to include for this target (corresponds to checked check boxes in Merchant
-        /// Center). Default destinations are always included unless provided in excludedDestinations.
+        /// Center). Default destinations are always included unless provided in `excludedDestinations`.
         ///
         /// List of supported destinations (if available to the account): - DisplayAds - Shopping - ShoppingActions -
         /// SurfacesAcrossGoogle</summary>
@@ -9659,7 +9661,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual System.Collections.Generic.IList<string> IncludedDestinations { get; set; } 
 
         /// <summary>The two-letter ISO 639-1 language of the items in the feed. Must be a valid language for
-        /// targets[].country.</summary>
+        /// `targets[].country`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; } 
 
@@ -9698,7 +9700,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The method of the batch entry.
         ///
-        /// Acceptable values are: - "delete" - "fetchNow" - "get" - "insert" - "update"</summary>
+        /// Acceptable values are: - "`delete`" - "`fetchNow`" - "`get`" - "`insert`" - "`update`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 
@@ -9806,7 +9808,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The method of the batch entry.
         ///
-        /// Acceptable values are: - "get"</summary>
+        /// Acceptable values are: - "`get`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 
@@ -9884,12 +9886,12 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual System.Collections.Generic.IList<HolidayCutoff> HolidayCutoffs { get; set; } 
 
         /// <summary>Maximum number of business days spent before an order is shipped. 0 means same day shipped, 1 means
-        /// next day shipped. Must be greater than or equal to minHandlingTimeInDays.</summary>
+        /// next day shipped. Must be greater than or equal to `minHandlingTimeInDays`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxHandlingTimeInDays")]
         public virtual System.Nullable<long> MaxHandlingTimeInDays { get; set; } 
 
         /// <summary>Maximum number of business days that is spent in transit. 0 means same day delivery, 1 means next
-        /// day delivery. Must be greater than or equal to minTransitTimeInDays.</summary>
+        /// day delivery. Must be greater than or equal to `minTransitTimeInDays`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTransitTimeInDays")]
         public virtual System.Nullable<long> MaxTransitTimeInDays { get; set; } 
 
@@ -9899,7 +9901,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual System.Nullable<long> MinHandlingTimeInDays { get; set; } 
 
         /// <summary>Minimum number of business days that is spent in transit. 0 means same day delivery, 1 means next
-        /// day delivery. Either {min,max}TransitTimeInDays or transitTimeTable must be set, but not both.</summary>
+        /// day delivery. Either `{min,max}TransitTimeInDays` or `transitTimeTable` must be set, but not both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTransitTimeInDays")]
         public virtual System.Nullable<long> MinTransitTimeInDays { get; set; } 
 
@@ -9909,7 +9911,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual BusinessDayConfig TransitBusinessDayConfig { get; set; } 
 
         /// <summary>Transit time table, number of business days spent in transit based on row and column dimensions.
-        /// Either {min,max}TransitTimeInDays or transitTimeTable can be set, but not both.</summary>
+        /// Either `{min,max}TransitTimeInDays` or `transitTimeTable` can be set, but not both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitTimeTable")]
         public virtual TransitTable TransitTimeTable { get; set; } 
 
@@ -9939,7 +9941,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     /// <summary>A list of errors returned by a failed batch entry.</summary>
     public class Errors : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The HTTP status of the first error in errors.</summary>
+        /// <summary>The HTTP status of the first error in `errors`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<long> Code { get; set; } 
 
@@ -9947,7 +9949,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<Error> ErrorsValue { get; set; } 
 
-        /// <summary>The message of the first error in errors.</summary>
+        /// <summary>The message of the first error in `errors`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
 
@@ -9991,8 +9993,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A non-empty list of row or column headers for a table. Exactly one of prices, weights, numItems,
-    /// postalCodeGroupNames, or location must be set.</summary>
+    /// <summary>A non-empty list of row or column headers for a table. Exactly one of `prices`, `weights`, `numItems`,
+    /// `postalCodeGroupNames`, or `location` must be set.</summary>
     public class Headers : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of location ID sets. Must be non-empty. Can only be set if all other fields are not
@@ -10000,29 +10002,29 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual System.Collections.Generic.IList<LocationIdSet> Locations { get; set; } 
 
-        /// <summary>A list of inclusive number of items upper bounds. The last value can be "infinity". For example
-        /// ["10", "50", "infinity"] represents the headers "<= 10 items", " 50 items". Must be non-empty. Can only be
+        /// <summary>A list of inclusive number of items upper bounds. The last value can be `"infinity"`. For example
+        /// `["10", "50", "infinity"]` represents the headers "<= 10 items", " 50 items". Must be non-empty. Can only be
         /// set if all other fields are not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberOfItems")]
         public virtual System.Collections.Generic.IList<string> NumberOfItems { get; set; } 
 
-        /// <summary>A list of postal group names. The last value can be "all other locations". Example: ["zone 1",
-        /// "zone 2", "all other locations"]. The referred postal code groups must match the delivery country of the
+        /// <summary>A list of postal group names. The last value can be `"all other locations"`. Example: `["zone 1",
+        /// "zone 2", "all other locations"]`. The referred postal code groups must match the delivery country of the
         /// service. Must be non-empty. Can only be set if all other fields are not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCodeGroupNames")]
         public virtual System.Collections.Generic.IList<string> PostalCodeGroupNames { get; set; } 
 
-        /// <summary>A list of inclusive order price upper bounds. The last price's value can be "infinity". For example
-        /// [{"value": "10", "currency": "USD"}, {"value": "500", "currency": "USD"}, {"value": "infinity", "currency":
-        /// "USD"}] represents the headers "<= $10", " $500". All prices within a service must have the same currency.
-        /// Must be non-empty. Can only be set if all other fields are not set.</summary>
+        /// <summary>A list of inclusive order price upper bounds. The last price's value can be `"infinity"`. For
+        /// example `[{"value": "10", "currency": "USD"}, {"value": "500", "currency": "USD"}, {"value": "infinity",
+        /// "currency": "USD"}]` represents the headers "<= $10", " $500". All prices within a service must have the
+        /// same currency. Must be non-empty. Can only be set if all other fields are not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prices")]
         public virtual System.Collections.Generic.IList<Price> Prices { get; set; } 
 
-        /// <summary>A list of inclusive order weight upper bounds. The last weight's value can be "infinity". For
-        /// example [{"value": "10", "unit": "kg"}, {"value": "50", "unit": "kg"}, {"value": "infinity", "unit": "kg"}]
-        /// represents the headers "<= 10kg", " 50kg". All weights within a service must have the same unit. Must be
-        /// non-empty. Can only be set if all other fields are not set.</summary>
+        /// <summary>A list of inclusive order weight upper bounds. The last weight's value can be `"infinity"`. For
+        /// example `[{"value": "10", "unit": "kg"}, {"value": "50", "unit": "kg"}, {"value": "infinity", "unit":
+        /// "kg"}]` represents the headers "<= 10kg", " 50kg". All weights within a service must have the same unit.
+        /// Must be non-empty. Can only be set if all other fields are not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weights")]
         public virtual System.Collections.Generic.IList<Weight> Weights { get; set; } 
 
@@ -10091,8 +10093,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The holiday type. Always present.
         ///
-        /// Acceptable values are: - "Christmas" - "Easter" - "Father's Day" - "Halloween" - "Independence Day (USA)" -
-        /// "Mother's Day" - "Thanksgiving" - "Valentine's Day"</summary>
+        /// Acceptable values are: - "`Christmas`" - "`Easter`" - "`Father's Day`" - "`Halloween`" - "`Independence Day
+        /// (USA)`" - "`Mother's Day`" - "`Thanksgiving`" - "`Valentine's Day`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -10114,11 +10116,12 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>(== resource_for v2.inventory ==)</summary>
     public class Inventory : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The availability of the product.
         ///
-        /// Acceptable values are: - "in stock" - "out of stock" - "preorder"</summary>
+        /// Acceptable values are: - "`in stock`" - "`out of stock`" - "`preorder`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
         public virtual string Availability { get; set; } 
 
@@ -10155,7 +10158,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instoreProductLocation")]
         public virtual string InstoreProductLocation { get; set; } 
 
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string "content#inventory".</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#inventory`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -10163,9 +10166,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("loyaltyPoints")]
         public virtual LoyaltyPoints LoyaltyPoints { get; set; } 
 
-        /// <summary>Store pickup information. Only supported for local inventory. Not setting pickup means "don't
-        /// update" while setting it to the empty value ({} in JSON) means "delete". Otherwise, pickupMethod and
-        /// pickupSla must be set together, unless pickupMethod is "not supported".</summary>
+        /// <summary>Store pickup information. Only supported for local inventory. Not setting `pickup` means "don't
+        /// update" while setting it to the empty value (`{}` in JSON) means "delete". Otherwise, `pickupMethod` and
+        /// `pickupSla` must be set together, unless `pickupMethod` is "not supported".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickup")]
         public virtual InventoryPickup Pickup { get; set; } 
 
@@ -10178,7 +10181,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; } 
 
-        /// <summary>The sale price of the product. Mandatory if sale_price_effective_date is defined.</summary>
+        /// <summary>The sale price of the product. Mandatory if `sale_price_effective_date` is defined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salePrice")]
         public virtual Price SalePrice { get; set; } 
 
@@ -10225,7 +10228,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
-        /// <summary>The code of the store for which to update price and availability. Use online to update price and
+        /// <summary>The code of the store for which to update price and availability. Use `online` to update price and
         /// availability of an online product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; } 
@@ -10261,7 +10264,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual Errors Errors { get; set; } 
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "content#inventoryCustomBatchResponseEntry".</summary>
+        /// "`content#inventoryCustomBatchResponseEntry`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -10273,17 +10276,17 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>Whether store pickup is available for this offer and whether the pickup option should be shown as
         /// buy, reserve, or not supported. Only supported for local inventory. Unless the value is "not supported",
-        /// must be submitted together with pickupSla.
+        /// must be submitted together with `pickupSla`.
         ///
-        /// Acceptable values are: - "buy" - "not supported" - "reserve" - "ship to store"</summary>
+        /// Acceptable values are: - "`buy`" - "`not supported`" - "`reserve`" - "`ship to store`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupMethod")]
         public virtual string PickupMethod { get; set; } 
 
         /// <summary>The expected date that an order will be ready for pickup, relative to when the order is placed.
-        /// Only supported for local inventory. Must be submitted together with pickupMethod.
+        /// Only supported for local inventory. Must be submitted together with `pickupMethod`.
         ///
-        /// Acceptable values are: - "five day" - "four day" - "multi day" - "multi week" - "next day" - "same day" -
-        /// "seven day" - "six day" - "three day" - "two day"</summary>
+        /// Acceptable values are: - "`five day`" - "`four day`" - "`multi day`" - "`multi week`" - "`next day`" -
+        /// "`same day`" - "`seven day`" - "`six day`" - "`three day`" - "`two day`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupSla")]
         public virtual string PickupSla { get; set; } 
 
@@ -10295,7 +10298,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The availability of the product.
         ///
-        /// Acceptable values are: - "in stock" - "out of stock" - "preorder"</summary>
+        /// Acceptable values are: - "`in stock`" - "`out of stock`" - "`preorder`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
         public virtual string Availability { get; set; } 
 
@@ -10336,9 +10339,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("loyaltyPoints")]
         public virtual LoyaltyPoints LoyaltyPoints { get; set; } 
 
-        /// <summary>Store pickup information. Only supported for local inventory. Not setting pickup means "don't
-        /// update" while setting it to the empty value ({} in JSON) means "delete". Otherwise, pickupMethod and
-        /// pickupSla must be set together, unless pickupMethod is "not supported".</summary>
+        /// <summary>Store pickup information. Only supported for local inventory. Not setting `pickup` means "don't
+        /// update" while setting it to the empty value (`{}` in JSON) means "delete". Otherwise, `pickupMethod` and
+        /// `pickupSla` must be set together, unless `pickupMethod` is "not supported".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickup")]
         public virtual InventoryPickup Pickup { get; set; } 
 
@@ -10351,7 +10354,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; } 
 
-        /// <summary>The sale price of the product. Mandatory if sale_price_effective_date is defined.</summary>
+        /// <summary>The sale price of the product. Mandatory if `sale_price_effective_date` is defined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salePrice")]
         public virtual Price SalePrice { get; set; } 
 
@@ -10418,7 +10421,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>[required] Type of the additional charge.
         ///
-        /// Acceptable values are: - "shipping"</summary>
+        /// Acceptable values are: - "`shipping`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -10430,7 +10433,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The status of the verification process for the About page.
         ///
-        /// Acceptable values are: - "active" - "inactive" - "pending"</summary>
+        /// Acceptable values are: - "`active`" - "`inactive`" - "`pending`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -10488,13 +10491,13 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The status of the verification contact.
         ///
-        /// Acceptable values are: - "active" - "inactive" - "pending"</summary>
+        /// Acceptable values are: - "`active`" - "`inactive`" - "`pending`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventoryVerificationContactStatus")]
         public virtual string InventoryVerificationContactStatus { get; set; } 
 
         /// <summary>The status of the inventory verification process.
         ///
-        /// Acceptable values are: - "active" - "inactive" - "pending"</summary>
+        /// Acceptable values are: - "`active`" - "`inactive`" - "`pending`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -10510,7 +10513,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The status of the ?On display to order? feature.
         ///
-        /// Acceptable values are: - "active" - "inactive" - "pending"</summary>
+        /// Acceptable values are: - "`active`" - "`inactive`" - "`pending`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -10545,7 +10548,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("countrySettings")]
         public virtual System.Collections.Generic.IList<LiaCountrySettings> CountrySettings { get; set; } 
 
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string "content#liaSettings".</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#liaSettings`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -10589,7 +10592,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gmbEmail")]
         public virtual string GmbEmail { get; set; } 
 
-        /// <summary>The account Lia settings to update. Only defined if the method is update.</summary>
+        /// <summary>The account Lia settings to update. Only defined if the method is `update`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liaSettings")]
         public virtual LiaSettings LiaSettings { get; set; } 
 
@@ -10599,8 +10602,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The method of the batch entry.
         ///
-        /// Acceptable values are: - "get" - "getAccessibleGmbAccounts" - "requestGmbAccess" -
-        /// "requestInventoryVerification" - "setInventoryVerificationContact" - "update"</summary>
+        /// Acceptable values are: - "`get`" - "`getAccessibleGmbAccounts`" - "`requestGmbAccess`" -
+        /// "`requestInventoryVerification`" - "`setInventoryVerificationContact`" - "`update`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 
@@ -10646,7 +10649,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual GmbAccounts GmbAccounts { get; set; } 
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "content#liasettingsCustomBatchResponseEntry".</summary>
+        /// "`content#liasettingsCustomBatchResponseEntry`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -10846,7 +10849,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>State of the item.
         ///
-        /// Acceptable values are: - "canceled" - "new" - "received" - "refunded" - "rejected"</summary>
+        /// Acceptable values are: - "`canceled`" - "`new`" - "`received`" - "`refunded`" - "`rejected`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
@@ -10854,8 +10857,34 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Order. Production access (all methods) requires the order manager role. Sandbox access does
-    /// not.</summary>
+    public class MinimumOrderValueTable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("storeCodeSetWithMovs")]
+        public virtual System.Collections.Generic.IList<MinimumOrderValueTableStoreCodeSetWithMov> StoreCodeSetWithMovs { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A list of store code sets sharing the same minimum order value. At least two sets are required and the
+    /// last one must be empty, which signifies 'MOV for all other stores'. Each store code can only appear once across
+    /// all the sets. All prices within a service must have the same currency.</summary>
+    public class MinimumOrderValueTableStoreCodeSetWithMov : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of unique store codes or empty for the catch all.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeCodes")]
+        public virtual System.Collections.Generic.IList<string> StoreCodes { get; set; } 
+
+        /// <summary>The minimum order value for the given stores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual Price Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Order. Production access (all methods) requires the order manager role. Sandbox access does not. (==
+    /// resource_for v2.orders ==) (== resource_for v2.1.orders ==)</summary>
     public class Order : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the order was acknowledged.</summary>
@@ -10864,7 +10893,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Deprecated.
         ///
-        /// Acceptable values are: - "googleExpress" - "purchasesOnGoogle"</summary>
+        /// Acceptable values are: - "`googleExpress`" - "`purchasesOnGoogle`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelType")]
         public virtual string ChannelType { get; set; } 
 
@@ -10872,7 +10901,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual OrderCustomer Customer { get; set; } 
 
-        /// <summary>Delivery details for shipments of type delivery.</summary>
+        /// <summary>Delivery details for shipments of type `delivery`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryDetails")]
         public virtual OrderDeliveryDetails DeliveryDetails { get; set; } 
 
@@ -10880,7 +10909,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string "content#order".</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#order`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -10906,12 +10935,12 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The status of the payment.
         ///
-        /// Acceptable values are: - "paymentCaptured" - "paymentRejected" - "paymentSecured" -
-        /// "pendingAuthorization"</summary>
+        /// Acceptable values are: - "`paymentCaptured`" - "`paymentRejected`" - "`paymentSecured`" -
+        /// "`pendingAuthorization`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paymentStatus")]
         public virtual string PaymentStatus { get; set; } 
 
-        /// <summary>Pickup details for shipments of type pickup.</summary>
+        /// <summary>Pickup details for shipments of type `pickup`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupDetails")]
         public virtual OrderPickupDetails PickupDetails { get; set; } 
 
@@ -10921,16 +10950,16 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The details of the merchant provided promotions applied to the order.
         ///
-        /// To determine which promotions apply to which products, check the Promotions[].Benefits[].OfferIds field
-        /// against the LineItems[].Product.OfferId field for each promotion. If a promotion is applied to more than 1
-        /// offerId, divide the discount value by the number of affected offers to determine how much discount to apply
-        /// to each offerId.
+        /// To determine which promotions apply to which products, check the `Promotions[].Benefits[].OfferIds` field
+        /// against the `LineItems[].Product.OfferId` field for each promotion. If a promotion is applied to more than 1
+        /// `offerId`, divide the discount value by the number of affected offers to determine how much discount to
+        /// apply to each `offerId`.
         ///
         /// Examples: - To calculate the line item level discount for a single specific item: For each promotion,
-        /// subtract the Promotions[].Benefits[].Discount.value amount from the LineItems[].Price.value. - To calculate
-        /// the line item level discount for multiple quantity of a specific item: For each promotion, divide the
-        /// Promotions[].Benefits[].Discount.value by the quantity of products and substract it from
-        /// LineItems[].Product.Price.value for each quantity item.
+        /// subtract the `Promotions[].Benefits[].Discount.value` amount from the `LineItems[].Price.value`. - To
+        /// calculate the line item level discount for multiple quantity of a specific item: For each promotion, divide
+        /// the `Promotions[].Benefits[].Discount.value` by the quantity of products and substract it from
+        /// `LineItems[].Product.Price.value` for each quantity item.
         ///
         /// Only 1 promotion can be applied to an offerId in a given order. To refund an item which had a promotion
         /// applied to it, make sure to refund the amount after first subtracting the promotion discount from the item
@@ -10958,20 +10987,21 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Deprecated. Shipping details are provided with line items instead.
         ///
-        /// Acceptable values are: - "economy" - "expedited" - "oneDay" - "sameDay" - "standard" - "twoDay"</summary>
+        /// Acceptable values are: - "`economy`" - "`expedited`" - "`oneDay`" - "`sameDay`" - "`standard`" -
+        /// "`twoDay`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingOption")]
         public virtual string ShippingOption { get; set; } 
 
         /// <summary>The status of the order.
         ///
-        /// Acceptable values are: - "canceled" - "delivered" - "inProgress" - "partiallyDelivered" -
-        /// "partiallyReturned" - "partiallyShipped" - "pendingShipment" - "returned" - "shipped"</summary>
+        /// Acceptable values are: - "`canceled`" - "`delivered`" - "`inProgress`" - "`partiallyDelivered`" -
+        /// "`partiallyReturned`" - "`partiallyShipped`" - "`pendingShipment`" - "`returned`" - "`shipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
         /// <summary>The party responsible for collecting and remitting taxes.
         ///
-        /// Acceptable values are: - "marketplaceFacilitator" - "merchant"</summary>
+        /// Acceptable values are: - "`marketplaceFacilitator`" - "`merchant`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxCollector")]
         public virtual string TaxCollector { get; set; } 
 
@@ -11024,8 +11054,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The actor that created the cancellation.
         ///
-        /// Acceptable values are: - "customer" - "googleBot" - "googleCustomerService" - "googlePayments" -
-        /// "googleSabre" - "merchant"</summary>
+        /// Acceptable values are: - "`customer`" - "`googleBot`" - "`googleCustomerService`" - "`googlePayments`" -
+        /// "`googleSabre`" - "`merchant`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actor")]
         public virtual string Actor { get; set; } 
 
@@ -11041,14 +11071,14 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// the removal of the product from Shopping Actions until you make an update to that product. This will not
         /// affect your Shopping ads.
         ///
-        /// Acceptable values are: - "autoPostInternal" - "autoPostInvalidBillingAddress" - "autoPostNoInventory" -
-        /// "autoPostPriceError" - "autoPostUndeliverableShippingAddress" - "couponAbuse" - "customerCanceled" -
-        /// "customerInitiatedCancel" - "customerSupportRequested" - "failToPushOrderGoogleError" -
-        /// "failToPushOrderMerchantError" - "failToPushOrderMerchantFulfillmentError" - "failToPushOrderToMerchant" -
-        /// "failToPushOrderToMerchantOutOfStock" - "invalidCoupon" - "malformedShippingAddress" -
-        /// "merchantDidNotShipOnTime" - "noInventory" - "orderTimeout" - "other" - "paymentAbuse" - "paymentDeclined" -
-        /// "priceError" - "returnRefundAbuse" - "shippingPriceError" - "taxError" - "undeliverableShippingAddress" -
-        /// "unsupportedPoBoxAddress"</summary>
+        /// Acceptable values are: - "`autoPostInternal`" - "`autoPostInvalidBillingAddress`" - "`autoPostNoInventory`"
+        /// - "`autoPostPriceError`" - "`autoPostUndeliverableShippingAddress`" - "`couponAbuse`" - "`customerCanceled`"
+        /// - "`customerInitiatedCancel`" - "`customerSupportRequested`" - "`failToPushOrderGoogleError`" -
+        /// "`failToPushOrderMerchantError`" - "`failToPushOrderMerchantFulfillmentError`" -
+        /// "`failToPushOrderToMerchant`" - "`failToPushOrderToMerchantOutOfStock`" - "`invalidCoupon`" -
+        /// "`malformedShippingAddress`" - "`merchantDidNotShipOnTime`" - "`noInventory`" - "`orderTimeout`" - "`other`"
+        /// - "`paymentAbuse`" - "`paymentDeclined`" - "`priceError`" - "`returnRefundAbuse`" - "`shippingPriceError`" -
+        /// "`taxError`" - "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -11074,8 +11104,6 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fullName")]
         public virtual string FullName { get; set; } 
 
-        /// <summary>Email address for the merchant to send value-added tax or invoice documentation of the order. This
-        /// documentation is made available to the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invoiceReceivingEmail")]
         public virtual string InvoiceReceivingEmail { get; set; } 
 
@@ -11092,11 +11120,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
     public class OrderCustomerMarketingRightsInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Last known customer selection regarding marketing preferences. In certain cases this selection
-        /// might not be known, so this field would be empty. If a customer selected granted in their most recent order,
-        /// they can be subscribed to marketing emails. Customers who have chosen denied must not be subscribed, or must
-        /// be unsubscribed if already opted-in.
+        /// might not be known, so this field would be empty. If a customer selected `granted` in their most recent
+        /// order, they can be subscribed to marketing emails. Customers who have chosen `denied` must not be
+        /// subscribed, or must be unsubscribed if already opted-in.
         ///
-        /// Acceptable values are: - "denied" - "granted"</summary>
+        /// Acceptable values are: - "`denied`" - "`granted`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explicitMarketingPreference")]
         public virtual string ExplicitMarketingPreference { get; set; } 
 
@@ -11106,7 +11134,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string LastUpdatedTimestamp { get; set; } 
 
         /// <summary>Email address that can be used for marketing purposes. The field may be empty even if
-        /// explicitMarketingPreference is 'granted'. This happens when retrieving an old order from the customer who
+        /// `explicitMarketingPreference` is 'granted'. This happens when retrieving an old order from the customer who
         /// deleted their account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marketingEmailAddress")]
         public virtual string MarketingEmailAddress { get; set; } 
@@ -11157,13 +11185,13 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Whether the promotion is applicable to all products or only specific products.
         ///
-        /// Acceptable values are: - "allProducts" - "specificProducts"</summary>
+        /// Acceptable values are: - "`allProducts`" - "`specificProducts`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productApplicability")]
         public virtual string ProductApplicability { get; set; } 
 
         /// <summary>Indicates that the promotion is valid online.
         ///
-        /// Acceptable values are: - "online"</summary>
+        /// Acceptable values are: - "`online`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redemptionChannel")]
         public virtual string RedemptionChannel { get; set; } 
 
@@ -11185,9 +11213,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>Further describes the benefit of the promotion. Note that we will expand on this enumeration as we
         /// support new promotion sub-types.
         ///
-        /// Acceptable values are: - "buyMGetMoneyOff" - "buyMGetNMoneyOff" - "buyMGetNPercentOff" - "buyMGetPercentOff"
-        /// - "freeGift" - "freeGiftWithItemId" - "freeGiftWithValue" - "freeOvernightShipping" - "freeShipping" -
-        /// "freeTwoDayShipping" - "moneyOff" - "percentageOff" - "rewardPoints" - "salePrice"</summary>
+        /// Acceptable values are: - "`buyMGetMoneyOff`" - "`buyMGetNMoneyOff`" - "`buyMGetNPercentOff`" -
+        /// "`buyMGetPercentOff`" - "`freeGift`" - "`freeGiftWithItemId`" - "`freeGiftWithValue`" -
+        /// "`freeOvernightShipping`" - "`freeShipping`" - "`freeTwoDayShipping`" - "`moneyOff`" - "`percentageOff`" -
+        /// "`rewardPoints`" - "`salePrice`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subType")]
         public virtual string SubType { get; set; } 
 
@@ -11198,7 +11227,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>Describes whether the promotion applies to products (e.g. 20% off) or to shipping (e.g. Free
         /// Shipping).
         ///
-        /// Acceptable values are: - "product" - "shipping"</summary>
+        /// Acceptable values are: - "`product`" - "`shipping`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -11288,13 +11317,13 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The item's channel (online or local).
         ///
-        /// Acceptable values are: - "local" - "online"</summary>
+        /// Acceptable values are: - "`local`" - "`online`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channel")]
         public virtual string Channel { get; set; } 
 
         /// <summary>Condition or state of the item.
         ///
-        /// Acceptable values are: - "new" - "refurbished" - "used"</summary>
+        /// Acceptable values are: - "`new`" - "`refurbished`" - "`used`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; } 
 
@@ -11415,10 +11444,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shipByDate")]
         public virtual string ShipByDate { get; set; } 
 
-        /// <summary>Type of shipment. Indicates whether deliveryDetails or pickupDetails is applicable for this
+        /// <summary>Type of shipment. Indicates whether `deliveryDetails` or `pickupDetails` is applicable for this
         /// shipment.
         ///
-        /// Acceptable values are: - "delivery" - "pickup"</summary>
+        /// Acceptable values are: - "`delivery`" - "`pickup`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -11428,7 +11457,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrderLineItemShippingDetailsMethod : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The carrier for the shipping. Optional. See shipments[].carrier for a list of acceptable
+        /// <summary>The carrier for the shipping. Optional. See `shipments[].carrier` for a list of acceptable
         /// values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
@@ -11488,7 +11517,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The type of instrument.
         ///
-        /// Acceptable values are: - "AMEX" - "DISCOVER" - "JCB" - "MASTERCARD" - "UNIONPAY" - "VISA" - ""</summary>
+        /// Acceptable values are: - "`AMEX`" - "`DISCOVER`" - "`JCB`" - "`MASTERCARD`" - "`UNIONPAY`" - "`VISA`" -
+        /// "``"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -11498,7 +11528,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrderPickupDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Address of the pickup location where the shipment should be sent. Note that recipientName in the
+        /// <summary>Address of the pickup location where the shipment should be sent. Note that `recipientName` in the
         /// address is the name of the business at the pickup location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual OrderAddress Address { get; set; } 
@@ -11533,8 +11563,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The actor that created the refund.
         ///
-        /// Acceptable values are: - "customer" - "googleBot" - "googleCustomerService" - "googlePayments" -
-        /// "googleSabre" - "merchant"</summary>
+        /// Acceptable values are: - "`customer`" - "`googleBot`" - "`googleCustomerService`" - "`googlePayments`" -
+        /// "`googleSabre`" - "`merchant`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actor")]
         public virtual string Actor { get; set; } 
 
@@ -11548,18 +11578,18 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The reason for the refund.
         ///
-        /// Acceptable values are: - "adjustment" - "autoPostInternal" - "autoPostInvalidBillingAddress" -
-        /// "autoPostNoInventory" - "autoPostPriceError" - "autoPostUndeliverableShippingAddress" - "couponAbuse" -
-        /// "courtesyAdjustment" - "customerCanceled" - "customerDiscretionaryReturn" -
-        /// "customerInitiatedMerchantCancel" - "customerSupportRequested" - "deliveredLateByCarrier" -
-        /// "deliveredTooLate" - "expiredItem" - "failToPushOrderGoogleError" - "failToPushOrderMerchantError" -
-        /// "failToPushOrderMerchantFulfillmentError" - "failToPushOrderToMerchant" -
-        /// "failToPushOrderToMerchantOutOfStock" - "feeAdjustment" - "invalidCoupon" - "lateShipmentCredit" -
-        /// "malformedShippingAddress" - "merchantDidNotShipOnTime" - "noInventory" - "orderTimeout" - "other" -
-        /// "paymentAbuse" - "paymentDeclined" - "priceAdjustment" - "priceError" - "productArrivedDamaged" -
-        /// "productNotAsDescribed" - "promoReallocation" - "qualityNotAsExpected" - "returnRefundAbuse" -
-        /// "shippingCostAdjustment" - "shippingPriceError" - "taxAdjustment" - "taxError" -
-        /// "undeliverableShippingAddress" - "unsupportedPoBoxAddress" - "wrongProductShipped"</summary>
+        /// Acceptable values are: - "`adjustment`" - "`autoPostInternal`" - "`autoPostInvalidBillingAddress`" -
+        /// "`autoPostNoInventory`" - "`autoPostPriceError`" - "`autoPostUndeliverableShippingAddress`" -
+        /// "`couponAbuse`" - "`courtesyAdjustment`" - "`customerCanceled`" - "`customerDiscretionaryReturn`" -
+        /// "`customerInitiatedMerchantCancel`" - "`customerSupportRequested`" - "`deliveredLateByCarrier`" -
+        /// "`deliveredTooLate`" - "`expiredItem`" - "`failToPushOrderGoogleError`" - "`failToPushOrderMerchantError`" -
+        /// "`failToPushOrderMerchantFulfillmentError`" - "`failToPushOrderToMerchant`" -
+        /// "`failToPushOrderToMerchantOutOfStock`" - "`feeAdjustment`" - "`invalidCoupon`" - "`lateShipmentCredit`" -
+        /// "`malformedShippingAddress`" - "`merchantDidNotShipOnTime`" - "`noInventory`" - "`orderTimeout`" - "`other`"
+        /// - "`paymentAbuse`" - "`paymentDeclined`" - "`priceAdjustment`" - "`priceError`" - "`productArrivedDamaged`"
+        /// - "`productNotAsDescribed`" - "`promoReallocation`" - "`qualityNotAsExpected`" - "`returnRefundAbuse`" -
+        /// "`shippingCostAdjustment`" - "`shippingPriceError`" - "`taxAdjustment`" - "`taxError`" -
+        /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -11571,7 +11601,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Order disbursement. All methods require the payment analyst role.</summary>
+    /// <summary>Order disbursement. All methods require the payment analyst role. (== resource_for v2.orderreports ==)
+    /// (== resource_for v2.1.orderreports ==)</summary>
     public class OrderReportDisbursement : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The disbursement amount.</summary>
@@ -11648,8 +11679,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The actor that created the refund.
         ///
-        /// Acceptable values are: - "customer" - "googleBot" - "googleCustomerService" - "googlePayments" -
-        /// "googleSabre" - "merchant"</summary>
+        /// Acceptable values are: - "`customer`" - "`googleBot`" - "`googleCustomerService`" - "`googlePayments`" -
+        /// "`googleSabre`" - "`merchant`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actor")]
         public virtual string Actor { get; set; } 
 
@@ -11663,10 +11694,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The reason for the return.
         ///
-        /// Acceptable values are: - "customerDiscretionaryReturn" - "customerInitiatedMerchantCancel" -
-        /// "deliveredTooLate" - "expiredItem" - "invalidCoupon" - "malformedShippingAddress" - "other" -
-        /// "productArrivedDamaged" - "productNotAsDescribed" - "qualityNotAsExpected" - "undeliverableShippingAddress"
-        /// - "unsupportedPoBoxAddress" - "wrongProductShipped"</summary>
+        /// Acceptable values are: - "`customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" -
+        /// "`deliveredTooLate`" - "`expiredItem`" - "`invalidCoupon`" - "`malformedShippingAddress`" - "`other`" -
+        /// "`productArrivedDamaged`" - "`productNotAsDescribed`" - "`qualityNotAsExpected`" -
+        /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -11685,19 +11716,20 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// For supported carriers, Google includes the carrier name and tracking URL in emails to customers. For select
         /// supported carriers, Google also automatically updates the shipment status based on the provided shipment ID.
         /// Note: You can also use unsupported carriers, but emails to customers will not include the carrier name or
-        /// tracking URL, and there will be no automatic order status updates. Supported carriers for US are: - "ups"
-        /// (United Parcel Service) automatic status updates - "usps" (United States Postal Service) automatic status
-        /// updates - "fedex" (FedEx) automatic status updates - "dhl" (DHL eCommerce) automatic status updates (US
-        /// only) - "ontrac" (OnTrac) automatic status updates - "dhl express" (DHL Express) - "deliv" (Deliv) -
-        /// "dynamex" (TForce) - "lasership" (LaserShip) - "mpx" (Military Parcel Xpress) - "uds" (United Delivery
-        /// Service) - "efw" (Estes Forwarding Worldwide) - "jd logistics" (JD Logistics) - "yunexpress" (YunExpress) -
-        /// "china post" (China Post) - "china ems" (China Post Express Mail Service) - "singapore post" (Singapore
-        /// Post) - "pos malaysia" (Pos Malaysia) - "postnl" (PostNL) - "ptt" (PTT Turkish Post) - "eub" (ePacket) -
-        /// "chukou1" (Chukou1 Logistics) Supported carriers for FR are: - "la poste" (La Poste) automatic status
-        /// updates - "colissimo" (Colissimo by La Poste) automatic status updates - "ups" (United Parcel Service)
-        /// automatic status updates - "chronopost" (Chronopost by La Poste) - "gls" (General Logistics Systems France)
-        /// - "dpd" (DPD Group by GeoPost) - "bpost" (Belgian Post Group) - "colis prive" (Colis Privé) - "boxtal"
-        /// (Boxtal) - "geodis" (GEODIS) - "tnt" (TNT) - "db schenker" (DB Schenker) - "aramex" (Aramex)</summary>
+        /// tracking URL, and there will be no automatic order status updates. Supported carriers for US are: - "`ups`"
+        /// (United Parcel Service) automatic status updates - "`usps`" (United States Postal Service) automatic status
+        /// updates - "`fedex`" (FedEx) automatic status updates - "`dhl`" (DHL eCommerce) automatic status updates (US
+        /// only) - "`ontrac`" (OnTrac) automatic status updates - "`dhl express`" (DHL Express) - "`deliv`" (Deliv) -
+        /// "`dynamex`" (TForce) - "`lasership`" (LaserShip) - "`mpx`" (Military Parcel Xpress) - "`uds`" (United
+        /// Delivery Service) - "`efw`" (Estes Forwarding Worldwide) - "`jd logistics`" (JD Logistics) - "`yunexpress`"
+        /// (YunExpress) - "`china post`" (China Post) - "`china ems`" (China Post Express Mail Service) - "`singapore
+        /// post`" (Singapore Post) - "`pos malaysia`" (Pos Malaysia) - "`postnl`" (PostNL) - "`ptt`" (PTT Turkish Post)
+        /// - "`eub`" (ePacket) - "`chukou1`" (Chukou1 Logistics) Supported carriers for FR are: - "`la poste`" (La
+        /// Poste) automatic status updates - "`colissimo`" (Colissimo by La Poste) automatic status updates - "`ups`"
+        /// (United Parcel Service) automatic status updates - "`chronopost`" (Chronopost by La Poste) - "`gls`"
+        /// (General Logistics Systems France) - "`dpd`" (DPD Group by GeoPost) - "`bpost`" (Belgian Post Group) -
+        /// "`colis prive`" (Colis Privé) - "`boxtal`" (Boxtal) - "`geodis`" (GEODIS) - "`tnt`" (TNT) - "`db schenker`"
+        /// (DB Schenker) - "`aramex`" (Aramex)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 
@@ -11705,8 +11737,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationDate")]
         public virtual string CreationDate { get; set; } 
 
-        /// <summary>Date on which the shipment has been delivered, in ISO 8601 format. Present only if status is
-        /// delivered</summary>
+        /// <summary>Date on which the shipment has been delivered, in ISO 8601 format. Present only if `status` is
+        /// `delivered`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryDate")]
         public virtual string DeliveryDate { get; set; } 
 
@@ -11720,7 +11752,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The status of the shipment.
         ///
-        /// Acceptable values are: - "delivered" - "readyForPickup" - "shipped" - "undeliverable"</summary>
+        /// Acceptable values are: - "`delivered`" - "`readyForPickup`" - "`shipped`" - "`undeliverable`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -11770,8 +11802,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; } 
 
-        /// <summary>[required] ID of the shipment group. It is assigned by the merchant in the shipLineItems method and
-        /// is used to group multiple line items that have the same kind of shipping charges.</summary>
+        /// <summary>[required] ID of the shipment group. It is assigned by the merchant in the `shipLineItems` method
+        /// and is used to group multiple line items that have the same kind of shipping charges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentGroupId")]
         public virtual string ShipmentGroupId { get; set; } 
 
@@ -11806,13 +11838,13 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; } 
 
-        /// <summary>Option to create a refund-only invoice. Exactly one of refundOnlyOption or returnOption must be
+        /// <summary>Option to create a refund-only invoice. Exactly one of `refundOnlyOption` or `returnOption` must be
         /// provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refundOnlyOption")]
         public virtual OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption RefundOnlyOption { get; set; } 
 
         /// <summary>Option to create an invoice for a refund and mark all items within the invoice as returned. Exactly
-        /// one of refundOnlyOption or returnOption must be provided.</summary>
+        /// one of `refundOnlyOption` or `returnOption` must be provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnOption")]
         public virtual OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption ReturnOption { get; set; } 
 
@@ -11849,18 +11881,18 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>[required] Reason for the refund.
         ///
-        /// Acceptable values are: - "adjustment" - "autoPostInternal" - "autoPostInvalidBillingAddress" -
-        /// "autoPostNoInventory" - "autoPostPriceError" - "autoPostUndeliverableShippingAddress" - "couponAbuse" -
-        /// "courtesyAdjustment" - "customerCanceled" - "customerDiscretionaryReturn" -
-        /// "customerInitiatedMerchantCancel" - "customerSupportRequested" - "deliveredLateByCarrier" -
-        /// "deliveredTooLate" - "expiredItem" - "failToPushOrderGoogleError" - "failToPushOrderMerchantError" -
-        /// "failToPushOrderMerchantFulfillmentError" - "failToPushOrderToMerchant" -
-        /// "failToPushOrderToMerchantOutOfStock" - "feeAdjustment" - "invalidCoupon" - "lateShipmentCredit" -
-        /// "malformedShippingAddress" - "merchantDidNotShipOnTime" - "noInventory" - "orderTimeout" - "other" -
-        /// "paymentAbuse" - "paymentDeclined" - "priceAdjustment" - "priceError" - "productArrivedDamaged" -
-        /// "productNotAsDescribed" - "promoReallocation" - "qualityNotAsExpected" - "returnRefundAbuse" -
-        /// "shippingCostAdjustment" - "shippingPriceError" - "taxAdjustment" - "taxError" -
-        /// "undeliverableShippingAddress" - "unsupportedPoBoxAddress" - "wrongProductShipped"</summary>
+        /// Acceptable values are: - "`adjustment`" - "`autoPostInternal`" - "`autoPostInvalidBillingAddress`" -
+        /// "`autoPostNoInventory`" - "`autoPostPriceError`" - "`autoPostUndeliverableShippingAddress`" -
+        /// "`couponAbuse`" - "`courtesyAdjustment`" - "`customerCanceled`" - "`customerDiscretionaryReturn`" -
+        /// "`customerInitiatedMerchantCancel`" - "`customerSupportRequested`" - "`deliveredLateByCarrier`" -
+        /// "`deliveredTooLate`" - "`expiredItem`" - "`failToPushOrderGoogleError`" - "`failToPushOrderMerchantError`" -
+        /// "`failToPushOrderMerchantFulfillmentError`" - "`failToPushOrderToMerchant`" -
+        /// "`failToPushOrderToMerchantOutOfStock`" - "`feeAdjustment`" - "`invalidCoupon`" - "`lateShipmentCredit`" -
+        /// "`malformedShippingAddress`" - "`merchantDidNotShipOnTime`" - "`noInventory`" - "`orderTimeout`" - "`other`"
+        /// - "`paymentAbuse`" - "`paymentDeclined`" - "`priceAdjustment`" - "`priceError`" - "`productArrivedDamaged`"
+        /// - "`productNotAsDescribed`" - "`promoReallocation`" - "`qualityNotAsExpected`" - "`returnRefundAbuse`" -
+        /// "`shippingCostAdjustment`" - "`shippingPriceError`" - "`taxAdjustment`" - "`taxError`" -
+        /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -11876,10 +11908,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>[required] Reason for the return.
         ///
-        /// Acceptable values are: - "customerDiscretionaryReturn" - "customerInitiatedMerchantCancel" -
-        /// "deliveredTooLate" - "expiredItem" - "invalidCoupon" - "malformedShippingAddress" - "other" -
-        /// "productArrivedDamaged" - "productNotAsDescribed" - "qualityNotAsExpected" - "undeliverableShippingAddress"
-        /// - "unsupportedPoBoxAddress" - "wrongProductShipped"</summary>
+        /// Acceptable values are: - "`customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" -
+        /// "`deliveredTooLate`" - "`expiredItem`" - "`invalidCoupon`" - "`malformedShippingAddress`" - "`other`" -
+        /// "`productArrivedDamaged`" - "`productNotAsDescribed`" - "`qualityNotAsExpected`" -
+        /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -12017,9 +12049,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The reason for the cancellation.
         ///
-        /// Acceptable values are: - "customerInitiatedCancel" - "invalidCoupon" - "malformedShippingAddress" -
-        /// "noInventory" - "other" - "priceError" - "shippingPriceError" - "taxError" - "undeliverableShippingAddress"
-        /// - "unsupportedPoBoxAddress"</summary>
+        /// Acceptable values are: - "`customerInitiatedCancel`" - "`invalidCoupon`" - "`malformedShippingAddress`" -
+        /// "`noInventory`" - "`other`" - "`priceError`" - "`shippingPriceError`" - "`taxError`" -
+        /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -12056,9 +12088,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The reason for the cancellation.
         ///
-        /// Acceptable values are: - "customerInitiatedCancel" - "invalidCoupon" - "malformedShippingAddress" -
-        /// "noInventory" - "other" - "priceError" - "shippingPriceError" - "taxError" - "undeliverableShippingAddress"
-        /// - "unsupportedPoBoxAddress"</summary>
+        /// Acceptable values are: - "`customerInitiatedCancel`" - "`invalidCoupon`" - "`malformedShippingAddress`" -
+        /// "`noInventory`" - "`other`" - "`priceError`" - "`shippingPriceError`" - "`taxError`" -
+        /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -12091,7 +12123,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The reason for the cancellation.
         ///
-        /// Acceptable values are: - "changedMind" - "orderedWrongItem" - "other"</summary>
+        /// Acceptable values are: - "`changedMind`" - "`orderedWrongItem`" - "`other`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -12113,16 +12145,17 @@ namespace Google.Apis.ShoppingContent.v2.Data
     public class OrdersCreateTestOrderRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The  CLDR territory code of the country of the test order to create. Affects the currency and
-        /// addresses of orders created via template_name, or the addresses of orders created via test_order.
+        /// addresses of orders created via `template_name`, or the addresses of orders created via `test_order`.
         ///
-        /// Acceptable values are: - "US" - "FR"  Defaults to US.</summary>
+        /// Acceptable values are: - "`US`" - "`FR`"  Defaults to `US`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; } 
 
-        /// <summary>The test order template to use. Specify as an alternative to testOrder as a shortcut for retrieving
-        /// a template and then creating an order using that template.
+        /// <summary>The test order template to use. Specify as an alternative to `testOrder` as a shortcut for
+        /// retrieving a template and then creating an order using that template.
         ///
-        /// Acceptable values are: - "template1" - "template1a" - "template1b" - "template2" - "template3"</summary>
+        /// Acceptable values are: - "`template1`" - "`template1a`" - "`template1b`" - "`template2`" -
+        /// "`template3`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateName")]
         public virtual string TemplateName { get; set; } 
 
@@ -12190,15 +12223,15 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
         public virtual System.Nullable<long> BatchId { get; set; } 
 
-        /// <summary>Required for cancel method.</summary>
+        /// <summary>Required for `cancel` method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancel")]
         public virtual OrdersCustomBatchRequestEntryCancel Cancel { get; set; } 
 
-        /// <summary>Required for cancelLineItem method.</summary>
+        /// <summary>Required for `cancelLineItem` method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelLineItem")]
         public virtual OrdersCustomBatchRequestEntryCancelLineItem CancelLineItem { get; set; } 
 
-        /// <summary>Required for inStoreReturnLineItem method.</summary>
+        /// <summary>Required for `inStoreReturnLineItem` method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inStoreRefundLineItem")]
         public virtual OrdersCustomBatchRequestEntryInStoreRefundLineItem InStoreRefundLineItem { get; set; } 
 
@@ -12206,58 +12239,58 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
         public virtual System.Nullable<ulong> MerchantId { get; set; } 
 
-        /// <summary>The merchant order ID. Required for updateMerchantOrderId and getByMerchantOrderId
+        /// <summary>The merchant order ID. Required for `updateMerchantOrderId` and `getByMerchantOrderId`
         /// methods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantOrderId")]
         public virtual string MerchantOrderId { get; set; } 
 
         /// <summary>The method of the batch entry.
         ///
-        /// Acceptable values are: - "acknowledge" - "cancel" - "cancelLineItem" - "get" - "getByMerchantOrderId" -
-        /// "inStoreRefundLineItem" - "refund" - "rejectReturnLineItem" - "returnLineItem" - "returnRefundLineItem" -
-        /// "setLineItemMetadata" - "shipLineItems" - "updateLineItemShippingDetails" - "updateMerchantOrderId" -
-        /// "updateShipment"</summary>
+        /// Acceptable values are: - "`acknowledge`" - "`cancel`" - "`cancelLineItem`" - "`get`" -
+        /// "`getByMerchantOrderId`" - "`inStoreRefundLineItem`" - "`refund`" - "`rejectReturnLineItem`" -
+        /// "`returnLineItem`" - "`returnRefundLineItem`" - "`setLineItemMetadata`" - "`shipLineItems`" -
+        /// "`updateLineItemShippingDetails`" - "`updateMerchantOrderId`" - "`updateShipment`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 
         /// <summary>The ID of the operation. Unique across all operations for a given order. Required for all methods
-        /// beside get and getByMerchantOrderId.</summary>
+        /// beside `get` and `getByMerchantOrderId`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; } 
 
-        /// <summary>The ID of the order. Required for all methods beside getByMerchantOrderId.</summary>
+        /// <summary>The ID of the order. Required for all methods beside `getByMerchantOrderId`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
         public virtual string OrderId { get; set; } 
 
-        /// <summary>Required for refund method.</summary>
+        /// <summary>Required for `refund` method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refund")]
         public virtual OrdersCustomBatchRequestEntryRefund Refund { get; set; } 
 
-        /// <summary>Required for rejectReturnLineItem method.</summary>
+        /// <summary>Required for `rejectReturnLineItem` method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rejectReturnLineItem")]
         public virtual OrdersCustomBatchRequestEntryRejectReturnLineItem RejectReturnLineItem { get; set; } 
 
-        /// <summary>Required for returnLineItem method.</summary>
+        /// <summary>Required for `returnLineItem` method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnLineItem")]
         public virtual OrdersCustomBatchRequestEntryReturnLineItem ReturnLineItem { get; set; } 
 
-        /// <summary>Required for returnRefundLineItem method.</summary>
+        /// <summary>Required for `returnRefundLineItem` method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnRefundLineItem")]
         public virtual OrdersCustomBatchRequestEntryReturnRefundLineItem ReturnRefundLineItem { get; set; } 
 
-        /// <summary>Required for setLineItemMetadata method.</summary>
+        /// <summary>Required for `setLineItemMetadata` method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setLineItemMetadata")]
         public virtual OrdersCustomBatchRequestEntrySetLineItemMetadata SetLineItemMetadata { get; set; } 
 
-        /// <summary>Required for shipLineItems method.</summary>
+        /// <summary>Required for `shipLineItems` method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipLineItems")]
         public virtual OrdersCustomBatchRequestEntryShipLineItems ShipLineItems { get; set; } 
 
-        /// <summary>Required for updateLineItemShippingDate method.</summary>
+        /// <summary>Required for `updateLineItemShippingDate` method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateLineItemShippingDetails")]
         public virtual OrdersCustomBatchRequestEntryUpdateLineItemShippingDetails UpdateLineItemShippingDetails { get; set; } 
 
-        /// <summary>Required for updateShipment method.</summary>
+        /// <summary>Required for `updateShipment` method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateShipment")]
         public virtual OrdersCustomBatchRequestEntryUpdateShipment UpdateShipment { get; set; } 
 
@@ -12269,9 +12302,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The reason for the cancellation.
         ///
-        /// Acceptable values are: - "customerInitiatedCancel" - "invalidCoupon" - "malformedShippingAddress" -
-        /// "noInventory" - "other" - "priceError" - "shippingPriceError" - "taxError" - "undeliverableShippingAddress"
-        /// - "unsupportedPoBoxAddress"</summary>
+        /// Acceptable values are: - "`customerInitiatedCancel`" - "`invalidCoupon`" - "`malformedShippingAddress`" -
+        /// "`noInventory`" - "`other`" - "`priceError`" - "`shippingPriceError`" - "`taxError`" -
+        /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -12315,9 +12348,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The reason for the cancellation.
         ///
-        /// Acceptable values are: - "customerInitiatedCancel" - "invalidCoupon" - "malformedShippingAddress" -
-        /// "noInventory" - "other" - "priceError" - "shippingPriceError" - "taxError" - "undeliverableShippingAddress"
-        /// - "unsupportedPoBoxAddress"</summary>
+        /// Acceptable values are: - "`customerInitiatedCancel`" - "`invalidCoupon`" - "`malformedShippingAddress`" -
+        /// "`noInventory`" - "`other`" - "`priceError`" - "`shippingPriceError`" - "`taxError`" -
+        /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -12368,10 +12401,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The reason for the return.
         ///
-        /// Acceptable values are: - "customerDiscretionaryReturn" - "customerInitiatedMerchantCancel" -
-        /// "deliveredTooLate" - "expiredItem" - "invalidCoupon" - "malformedShippingAddress" - "other" -
-        /// "productArrivedDamaged" - "productNotAsDescribed" - "qualityNotAsExpected" - "undeliverableShippingAddress"
-        /// - "unsupportedPoBoxAddress" - "wrongProductShipped"</summary>
+        /// Acceptable values are: - "`customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" -
+        /// "`deliveredTooLate`" - "`expiredItem`" - "`invalidCoupon`" - "`malformedShippingAddress`" - "`other`" -
+        /// "`productArrivedDamaged`" - "`productNotAsDescribed`" - "`qualityNotAsExpected`" -
+        /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -12400,11 +12433,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The reason for the refund.
         ///
-        /// Acceptable values are: - "adjustment" - "courtesyAdjustment" - "customerCanceled" -
-        /// "customerDiscretionaryReturn" - "deliveredLateByCarrier" - "feeAdjustment" - "lateShipmentCredit" -
-        /// "noInventory" - "other" - "priceError" - "productArrivedDamaged" - "productNotAsDescribed" -
-        /// "shippingCostAdjustment" - "taxAdjustment" - "undeliverableShippingAddress" -
-        /// "wrongProductShipped"</summary>
+        /// Acceptable values are: - "`adjustment`" - "`courtesyAdjustment`" - "`customerCanceled`" -
+        /// "`customerDiscretionaryReturn`" - "`deliveredLateByCarrier`" - "`feeAdjustment`" - "`lateShipmentCredit`" -
+        /// "`noInventory`" - "`other`" - "`priceError`" - "`productArrivedDamaged`" - "`productNotAsDescribed`" -
+        /// "`shippingCostAdjustment`" - "`taxAdjustment`" - "`undeliverableShippingAddress`" -
+        /// "`wrongProductShipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -12433,8 +12466,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The reason for the return.
         ///
-        /// Acceptable values are: - "damagedOrUsed" - "missingComponent" - "notEligible" - "other" -
-        /// "outOfReturnWindow"</summary>
+        /// Acceptable values are: - "`damagedOrUsed`" - "`missingComponent`" - "`notEligible`" - "`other`" -
+        /// "`outOfReturnWindow`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -12463,10 +12496,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The reason for the return.
         ///
-        /// Acceptable values are: - "customerDiscretionaryReturn" - "customerInitiatedMerchantCancel" -
-        /// "deliveredTooLate" - "expiredItem" - "invalidCoupon" - "malformedShippingAddress" - "other" -
-        /// "productArrivedDamaged" - "productNotAsDescribed" - "qualityNotAsExpected" - "undeliverableShippingAddress"
-        /// - "unsupportedPoBoxAddress" - "wrongProductShipped"</summary>
+        /// Acceptable values are: - "`customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" -
+        /// "`deliveredTooLate`" - "`expiredItem`" - "`invalidCoupon`" - "`malformedShippingAddress`" - "`other`" -
+        /// "`productArrivedDamaged`" - "`productNotAsDescribed`" - "`qualityNotAsExpected`" -
+        /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -12505,10 +12538,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The reason for the return.
         ///
-        /// Acceptable values are: - "customerDiscretionaryReturn" - "customerInitiatedMerchantCancel" -
-        /// "deliveredTooLate" - "expiredItem" - "invalidCoupon" - "malformedShippingAddress" - "other" -
-        /// "productArrivedDamaged" - "productNotAsDescribed" - "qualityNotAsExpected" - "undeliverableShippingAddress"
-        /// - "unsupportedPoBoxAddress" - "wrongProductShipped"</summary>
+        /// Acceptable values are: - "`customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" -
+        /// "`deliveredTooLate`" - "`expiredItem`" - "`invalidCoupon`" - "`malformedShippingAddress`" - "`other`" -
+        /// "`productArrivedDamaged`" - "`productNotAsDescribed`" - "`qualityNotAsExpected`" -
+        /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -12541,7 +12574,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     public class OrdersCustomBatchRequestEntryShipLineItems : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Deprecated. Please use shipmentInfo instead. The carrier handling the shipment. See
-        /// shipments[].carrier in the  Orders resource representation for a list of acceptable values.</summary>
+        /// `shipments[].carrier` in the  Orders resource representation for a list of acceptable values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 
@@ -12572,7 +12605,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The carrier handling the shipment. See shipments[].carrier in the  Orders resource representation
+        /// <summary>The carrier handling the shipment. See `shipments[].carrier` in the  Orders resource representation
         /// for a list of acceptable values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
@@ -12619,13 +12652,13 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrdersCustomBatchRequestEntryUpdateShipment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The carrier handling the shipment. Not updated if missing. See shipments[].carrier in the  Orders
+        /// <summary>The carrier handling the shipment. Not updated if missing. See `shipments[].carrier` in the  Orders
         /// resource representation for a list of acceptable values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 
         /// <summary>Date on which the shipment has been delivered, in ISO 8601 format. Optional and can be provided
-        /// only if status is delivered.</summary>
+        /// only if `status` is `delivered`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryDate")]
         public virtual string DeliveryDate { get; set; } 
 
@@ -12635,7 +12668,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>New status for the shipment. Not updated if missing.
         ///
-        /// Acceptable values are: - "delivered" - "undeliverable"</summary>
+        /// Acceptable values are: - "`delivered`" - "`undeliverable`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -12673,18 +12706,19 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual Errors Errors { get; set; } 
 
         /// <summary>The status of the execution. Only defined if - the request was successful; and - the method is not
-        /// get, getByMerchantOrderId, or one of the test methods.
+        /// `get`, `getByMerchantOrderId`, or one of the test methods.
         ///
-        /// Acceptable values are: - "duplicate" - "executed"</summary>
+        /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
         public virtual string ExecutionStatus { get; set; } 
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "content#ordersCustomBatchResponseEntry".</summary>
+        /// "`content#ordersCustomBatchResponseEntry`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The retrieved order. Only defined if the method is get and if the request was successful.</summary>
+        /// <summary>The retrieved order. Only defined if the method is `get` and if the request was
+        /// successful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("order")]
         public virtual Order Order { get; set; } 
 
@@ -12751,10 +12785,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The reason for the return.
         ///
-        /// Acceptable values are: - "customerDiscretionaryReturn" - "customerInitiatedMerchantCancel" -
-        /// "deliveredTooLate" - "expiredItem" - "invalidCoupon" - "malformedShippingAddress" - "other" -
-        /// "productArrivedDamaged" - "productNotAsDescribed" - "qualityNotAsExpected" - "undeliverableShippingAddress"
-        /// - "unsupportedPoBoxAddress" - "wrongProductShipped"</summary>
+        /// Acceptable values are: - "`customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" -
+        /// "`deliveredTooLate`" - "`expiredItem`" - "`invalidCoupon`" - "`malformedShippingAddress`" - "`other`" -
+        /// "`productArrivedDamaged`" - "`productNotAsDescribed`" - "`qualityNotAsExpected`" -
+        /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -12822,11 +12856,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The reason for the refund.
         ///
-        /// Acceptable values are: - "adjustment" - "courtesyAdjustment" - "customerCanceled" -
-        /// "customerDiscretionaryReturn" - "deliveredLateByCarrier" - "feeAdjustment" - "lateShipmentCredit" -
-        /// "noInventory" - "other" - "priceError" - "productArrivedDamaged" - "productNotAsDescribed" -
-        /// "shippingCostAdjustment" - "taxAdjustment" - "undeliverableShippingAddress" -
-        /// "wrongProductShipped"</summary>
+        /// Acceptable values are: - "`adjustment`" - "`courtesyAdjustment`" - "`customerCanceled`" -
+        /// "`customerDiscretionaryReturn`" - "`deliveredLateByCarrier`" - "`feeAdjustment`" - "`lateShipmentCredit`" -
+        /// "`noInventory`" - "`other`" - "`priceError`" - "`productArrivedDamaged`" - "`productNotAsDescribed`" -
+        /// "`shippingCostAdjustment`" - "`taxAdjustment`" - "`undeliverableShippingAddress`" -
+        /// "`wrongProductShipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -12876,8 +12910,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The reason for the return.
         ///
-        /// Acceptable values are: - "damagedOrUsed" - "missingComponent" - "notEligible" - "other" -
-        /// "outOfReturnWindow"</summary>
+        /// Acceptable values are: - "`damagedOrUsed`" - "`missingComponent`" - "`notEligible`" - "`other`" -
+        /// "`outOfReturnWindow`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -12927,10 +12961,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The reason for the return.
         ///
-        /// Acceptable values are: - "customerDiscretionaryReturn" - "customerInitiatedMerchantCancel" -
-        /// "deliveredTooLate" - "expiredItem" - "invalidCoupon" - "malformedShippingAddress" - "other" -
-        /// "productArrivedDamaged" - "productNotAsDescribed" - "qualityNotAsExpected" - "undeliverableShippingAddress"
-        /// - "unsupportedPoBoxAddress" - "wrongProductShipped"</summary>
+        /// Acceptable values are: - "`customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" -
+        /// "`deliveredTooLate`" - "`expiredItem`" - "`invalidCoupon`" - "`malformedShippingAddress`" - "`other`" -
+        /// "`productArrivedDamaged`" - "`productNotAsDescribed`" - "`qualityNotAsExpected`" -
+        /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -12990,10 +13024,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The reason for the return.
         ///
-        /// Acceptable values are: - "customerDiscretionaryReturn" - "customerInitiatedMerchantCancel" -
-        /// "deliveredTooLate" - "expiredItem" - "invalidCoupon" - "malformedShippingAddress" - "other" -
-        /// "productArrivedDamaged" - "productNotAsDescribed" - "qualityNotAsExpected" - "undeliverableShippingAddress"
-        /// - "unsupportedPoBoxAddress" - "wrongProductShipped"</summary>
+        /// Acceptable values are: - "`customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" -
+        /// "`deliveredTooLate`" - "`expiredItem`" - "`invalidCoupon`" - "`malformedShippingAddress`" - "`other`" -
+        /// "`productArrivedDamaged`" - "`productNotAsDescribed`" - "`qualityNotAsExpected`" -
+        /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -13064,7 +13098,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     public class OrdersShipLineItemsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Deprecated. Please use shipmentInfo instead. The carrier handling the shipment. See
-        /// shipments[].carrier in the  Orders resource representation for a list of acceptable values.</summary>
+        /// `shipments[].carrier` in the  Orders resource representation for a list of acceptable values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 
@@ -13195,13 +13229,13 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrdersUpdateShipmentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The carrier handling the shipment. Not updated if missing. See shipments[].carrier in the  Orders
+        /// <summary>The carrier handling the shipment. Not updated if missing. See `shipments[].carrier` in the  Orders
         /// resource representation for a list of acceptable values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 
         /// <summary>Date on which the shipment has been delivered, in ISO 8601 format. Optional and can be provided
-        /// only if status is delivered.</summary>
+        /// only if `status` is `delivered`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryDate")]
         public virtual string DeliveryDate { get; set; } 
 
@@ -13215,7 +13249,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>New status for the shipment. Not updated if missing.
         ///
-        /// Acceptable values are: - "delivered" - "undeliverable"</summary>
+        /// Acceptable values are: - "`delivered`" - "`undeliverable`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -13246,11 +13280,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class PickupCarrierService : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the pickup carrier (e.g., "UPS"). Required.</summary>
+        /// <summary>The name of the pickup carrier (e.g., `"UPS"`). Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierName")]
         public virtual string CarrierName { get; set; } 
 
-        /// <summary>The name of the pickup service (e.g., "Access point"). Required.</summary>
+        /// <summary>The name of the pickup service (e.g., `"Access point"`). Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
         public virtual string ServiceName { get; set; } 
 
@@ -13260,7 +13294,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class PickupServicesPickupService : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the carrier (e.g., "UPS"). Always present.</summary>
+        /// <summary>The name of the carrier (e.g., `"UPS"`). Always present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierName")]
         public virtual string CarrierName { get; set; } 
 
@@ -13268,7 +13302,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; } 
 
-        /// <summary>The name of the pickup service (e.g., "Access point"). Always present.</summary>
+        /// <summary>The name of the pickup service (e.g., `"Access point"`). Always present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
         public virtual string ServiceName { get; set; } 
 
@@ -13292,7 +13326,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
         public virtual System.Nullable<long> BatchId { get; set; } 
 
-        /// <summary>The inventory to submit. Set this only if the method is inventory.</summary>
+        /// <summary>The inventory to submit. Set this only if the method is `inventory`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventory")]
         public virtual PosInventory Inventory { get; set; } 
 
@@ -13302,19 +13336,19 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The method of the batch entry.
         ///
-        /// Acceptable values are: - "delete" - "get" - "insert" - "inventory" - "sale"</summary>
+        /// Acceptable values are: - "`delete`" - "`get`" - "`insert`" - "`inventory`" - "`sale`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 
-        /// <summary>The sale information to submit. Set this only if the method is sale.</summary>
+        /// <summary>The sale information to submit. Set this only if the method is `sale`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sale")]
         public virtual PosSale Sale { get; set; } 
 
-        /// <summary>The store information to submit. Set this only if the method is insert.</summary>
+        /// <summary>The store information to submit. Set this only if the method is `insert`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("store")]
         public virtual PosStore Store { get; set; } 
 
-        /// <summary>The store code. Set this only if the method is delete or get.</summary>
+        /// <summary>The store code. Set this only if the method is `delete` or `get`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; } 
 
@@ -13356,7 +13390,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual PosInventory Inventory { get; set; } 
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "content#posCustomBatchResponseEntry".</summary>
+        /// "`content#posCustomBatchResponseEntry`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -13419,7 +13453,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
         public virtual string ItemId { get; set; } 
 
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string "content#posInventory".</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "`content#posInventory`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -13431,7 +13466,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; } 
 
-        /// <summary>Required. The identifier of the merchant's store. Either a storeCode inserted via the API or the
+        /// <summary>Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the
         /// code of the store in Google My Business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; } 
@@ -13470,7 +13505,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; } 
 
-        /// <summary>Required. The identifier of the merchant's store. Either a storeCode inserted via the API or the
+        /// <summary>Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the
         /// code of the store in Google My Business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; } 
@@ -13514,7 +13549,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; } 
 
-        /// <summary>Required. The identifier of the merchant's store. Either a storeCode inserted via the API or the
+        /// <summary>Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the
         /// code of the store in Google My Business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; } 
@@ -13560,7 +13595,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
         public virtual string ItemId { get; set; } 
 
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string "content#posSale".</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#posSale`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -13576,7 +13611,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("saleId")]
         public virtual string SaleId { get; set; } 
 
-        /// <summary>Required. The identifier of the merchant's store. Either a storeCode inserted via the API or the
+        /// <summary>Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the
         /// code of the store in Google My Business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; } 
@@ -13619,7 +13654,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("saleId")]
         public virtual string SaleId { get; set; } 
 
-        /// <summary>Required. The identifier of the merchant's store. Either a storeCode inserted via the API or the
+        /// <summary>Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the
         /// code of the store in Google My Business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; } 
@@ -13667,7 +13702,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("saleId")]
         public virtual string SaleId { get; set; } 
 
-        /// <summary>Required. The identifier of the merchant's store. Either a storeCode inserted via the API or the
+        /// <summary>Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the
         /// code of the store in Google My Business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; } 
@@ -13687,7 +13722,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     /// <summary>Store resource.</summary>
     public class PosStore : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string "content#posStore".</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#posStore`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -13723,16 +13758,16 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class PostalCodeRange : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A postal code or a pattern of the form prefix* denoting the inclusive lower bound of the range
-        /// defining the area. Examples values: "94108", "9410*", "9*". Required.</summary>
+        /// <summary>A postal code or a pattern of the form `prefix*` denoting the inclusive lower bound of the range
+        /// defining the area. Examples values: `"94108"`, `"9410*"`, `"9*"`. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCodeRangeBegin")]
         public virtual string PostalCodeRangeBegin { get; set; } 
 
-        /// <summary>A postal code or a pattern of the form prefix* denoting the inclusive upper bound of the range
-        /// defining the area. It must have the same length as postalCodeRangeBegin: if postalCodeRangeBegin is a postal
-        /// code then postalCodeRangeEnd must be a postal code too; if postalCodeRangeBegin is a pattern then
-        /// postalCodeRangeEnd must be a pattern with the same prefix length. Optional: if not set, then the area is
-        /// defined as being all the postal codes matching postalCodeRangeBegin.</summary>
+        /// <summary>A postal code or a pattern of the form `prefix*` denoting the inclusive upper bound of the range
+        /// defining the area. It must have the same length as `postalCodeRangeBegin`: if `postalCodeRangeBegin` is a
+        /// postal code then `postalCodeRangeEnd` must be a postal code too; if `postalCodeRangeBegin` is a pattern then
+        /// `postalCodeRangeEnd` must be a pattern with the same prefix length. Optional: if not set, then the area is
+        /// defined as being all the postal codes matching `postalCodeRangeBegin`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCodeRangeEnd")]
         public virtual string PostalCodeRangeEnd { get; set; } 
 
@@ -13754,8 +13789,14 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Product data. After inserting, updating, or deleting a product, it may take several minutes before
-    /// changes take effect.</summary>
+    /// <summary>Required product attributes are primarily defined by the products data specification. See the  Products
+    /// Data Specification Help Center article for information.
+    ///
+    /// Some attributes are country-specific, so make sure you select the appropriate country in the drop-down selector
+    /// at the top of the page.
+    ///
+    /// Product data. After inserting, updating, or deleting a product, it may take several minutes before changes take
+    /// effect.</summary>
     public class Product : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Additional URLs of images of the item.</summary>
@@ -13785,7 +13826,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Target age group of the item.
         ///
-        /// Acceptable values are: - "adult" - "infant" - "kids" - "newborn" - "toddler" - "youngAdult"</summary>
+        /// Acceptable values are: - "`adult`" - "`infant`" - "`kids`" - "`newborn`" - "`toddler`" -
+        /// "`youngAdult`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageGroup")]
         public virtual string AgeGroup { get; set; } 
 
@@ -13795,7 +13837,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Availability status of the item.
         ///
-        /// Acceptable values are: - "in stock" - "out of stock" - "preorder"</summary>
+        /// Acceptable values are: - "`in stock`" - "`out of stock`" - "`preorder`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
         public virtual string Availability { get; set; } 
 
@@ -13809,7 +13851,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Required. The item's channel (online or local).
         ///
-        /// Acceptable values are: - "local" - "online"</summary>
+        /// Acceptable values are: - "`local`" - "`online`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channel")]
         public virtual string Channel { get; set; } 
 
@@ -13819,7 +13861,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Condition or state of the item.
         ///
-        /// Acceptable values are: - "local" - "online"</summary>
+        /// Acceptable values are: - "`local`" - "`online`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; } 
 
@@ -13832,7 +13874,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual Price CostOfGoodsSold { get; set; } 
 
         /// <summary>A list of custom (merchant-provided) attributes. It can also be used for submitting any attribute
-        /// of the feed specification in its generic form (e.g., { "name": "size type", "value": "regular" }). This is
+        /// of the feed specification in its generic form (e.g., `{ "name": "size type", "value": "regular" }`). This is
         /// useful for submitting attributes not explicitly exposed by the API, such as additional attributes used for
         /// Shopping Actions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customAttributes")]
@@ -13892,19 +13934,20 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The energy efficiency class as defined in EU directive 2010/30/EU.
         ///
-        /// Acceptable values are: - "A" - "A+" - "A++" - "A+++" - "B" - "C" - "D" - "E" - "F" - "G"</summary>
+        /// Acceptable values are: - "`A`" - "`A+`" - "`A++`" - "`A+++`" - "`B`" - "`C`" - "`D`" - "`E`" - "`F`" -
+        /// "`G`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("energyEfficiencyClass")]
         public virtual string EnergyEfficiencyClass { get; set; } 
 
         /// <summary>Date on which the item should expire, as specified upon insertion, in ISO 8601 format. The actual
-        /// expiration date in Google Shopping is exposed in productstatuses as googleExpirationDate and might be
-        /// earlier if expirationDate is too far in the future.</summary>
+        /// expiration date in Google Shopping is exposed in `productstatuses` as `googleExpirationDate` and might be
+        /// earlier if `expirationDate` is too far in the future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationDate")]
         public virtual string ExpirationDate { get; set; } 
 
         /// <summary>Target gender of the item.
         ///
-        /// Acceptable values are: - "female" - "male" - "unisex"</summary>
+        /// Acceptable values are: - "`female`" - "`male`" - "`unisex`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
         public virtual string Gender { get; set; } 
 
@@ -13917,7 +13960,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string Gtin { get; set; } 
 
         /// <summary>The REST ID of the product. Content API methods that operate on products take this as their
-        /// productId parameter. The REST ID for a product is of the form
+        /// `productId` parameter. The REST ID for a product is of the form
         /// channel:contentLanguage:targetCountry:offerId.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
@@ -13945,7 +13988,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("itemGroupId")]
         public virtual string ItemGroupId { get; set; } 
 
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string "content#product".</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#product`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -13963,7 +14006,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The energy efficiency class as defined in EU directive 2010/30/EU.
         ///
-        /// Acceptable values are: - "A" - "A+" - "A++" - "A+++" - "B" - "C" - "D" - "E" - "F" - "G"</summary>
+        /// Acceptable values are: - "`A`" - "`A+`" - "`A++`" - "`A+++`" - "`B`" - "`C`" - "`D`" - "`E`" - "`F`" -
+        /// "`G`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxEnergyEfficiencyClass")]
         public virtual string MaxEnergyEfficiencyClass { get; set; } 
 
@@ -13973,7 +14017,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The energy efficiency class as defined in EU directive 2010/30/EU.
         ///
-        /// Acceptable values are: - "A" - "A+" - "A++" - "A+++" - "B" - "C" - "D" - "E" - "F" - "G"</summary>
+        /// Acceptable values are: - "`A`" - "`A+`" - "`A++`" - "`A+++`" - "`B`" - "`C`" - "`D`" - "`E`" - "`F`" -
+        /// "`G`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minEnergyEfficiencyClass")]
         public virtual string MinEnergyEfficiencyClass { get; set; } 
 
@@ -14000,7 +14045,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
         public virtual string OfferId { get; set; } 
 
-        /// <summary>Deprecated. Whether an item is available for purchase only online.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onlineOnly")]
         public virtual System.Nullable<bool> OnlineOnly { get; set; } 
 
@@ -14059,25 +14104,26 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>System in which the size is specified. Recommended for apparel items.
         ///
-        /// Acceptable values are: - "AU" - "BR" - "CN" - "DE" - "EU" - "FR" - "IT" - "JP" - "MEX" - "UK" -
-        /// "US"</summary>
+        /// Acceptable values are: - "`AU`" - "`BR`" - "`CN`" - "`DE`" - "`EU`" - "`FR`" - "`IT`" - "`JP`" - "`MEX`" -
+        /// "`UK`" - "`US`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeSystem")]
         public virtual string SizeSystem { get; set; } 
 
         /// <summary>The cut of the item. Recommended for apparel items.
         ///
-        /// Acceptable values are: - "big and tall" - "maternity" - "oversize" - "petite" - "plus" - "regular"</summary>
+        /// Acceptable values are: - "`big and tall`" - "`maternity`" - "`oversize`" - "`petite`" - "`plus`" -
+        /// "`regular`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeType")]
         public virtual string SizeType { get; set; } 
 
         /// <summary>Size of the item. Only one value is allowed. For variants with different sizes, insert a separate
-        /// product for each size with the same itemGroupId value (see size definition).</summary>
+        /// product for each size with the same `itemGroupId` value (see size definition).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizes")]
         public virtual System.Collections.Generic.IList<string> Sizes { get; set; } 
 
         /// <summary>The source of the offer, i.e., how the offer was created.
         ///
-        /// Acceptable values are: - "api" - "crawl" - "feed"</summary>
+        /// Acceptable values are: - "`api`" - "`crawl`" - "`feed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; } 
 
@@ -14133,15 +14179,15 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class ProductAspect : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the aspect.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aspectName")]
         public virtual string AspectName { get; set; } 
 
-        /// <summary>The name of the destination. Leave out to apply to all destinations.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationName")]
         public virtual string DestinationName { get; set; } 
 
-        /// <summary>Whether the aspect is required, excluded or should be validated.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intention")]
         public virtual string Intention { get; set; } 
 
@@ -14157,7 +14203,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Whether the destination is required, excluded or should be validated.
         ///
-        /// Acceptable values are: - "default" - "excluded" - "optional" - "required"</summary>
+        /// Acceptable values are: - "`default`" - "`excluded`" - "`optional`" - "`required`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intention")]
         public virtual string Intention { get; set; } 
 
@@ -14254,7 +14300,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual System.Collections.Generic.IList<ProductStatusItemLevelIssue> ItemLevelIssues { get; set; } 
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "content#productStatus".</summary>
+        /// "`content#productStatus`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -14323,7 +14369,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The destination's approval status.
         ///
-        /// Acceptable values are: - "approved" - "disapproved"</summary>
+        /// Acceptable values are: - "`approved`" - "`disapproved`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approvalStatus")]
         public virtual string ApprovalStatus { get; set; } 
 
@@ -14333,7 +14379,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Provided for backward compatibility only. Always set to "required".
         ///
-        /// Acceptable values are: - "default" - "excluded" - "optional" - "required"</summary>
+        /// Acceptable values are: - "`default`" - "`excluded`" - "`optional`" - "`required`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intention")]
         public virtual string Intention { get; set; } 
 
@@ -14462,15 +14508,15 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The method of the batch entry.
         ///
-        /// Acceptable values are: - "delete" - "get" - "insert"</summary>
+        /// Acceptable values are: - "`delete`" - "`get`" - "`insert`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 
-        /// <summary>The product to insert. Only required if the method is insert.</summary>
+        /// <summary>The product to insert. Only required if the method is `insert`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
         public virtual Product Product { get; set; } 
 
-        /// <summary>The ID of the product to get or delete. Only defined if the method is get or delete.</summary>
+        /// <summary>The ID of the product to get or delete. Only defined if the method is `get` or `delete`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
@@ -14505,11 +14551,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual Errors Errors { get; set; } 
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "content#productsCustomBatchResponseEntry".</summary>
+        /// "`content#productsCustomBatchResponseEntry`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The inserted product. Only defined if the method is insert and if the request was
+        /// <summary>The inserted product. Only defined if the method is `insert` and if the request was
         /// successful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
         public virtual Product Product { get; set; } 
@@ -14567,7 +14613,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The method of the batch entry.
         ///
-        /// Acceptable values are: - "get"</summary>
+        /// Acceptable values are: - "`get`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 
@@ -14606,7 +14652,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual Errors Errors { get; set; } 
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "content#productstatusesCustomBatchResponseEntry".</summary>
+        /// "`content#productstatusesCustomBatchResponseEntry`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -14659,12 +14705,12 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("applicableShippingLabels")]
         public virtual System.Collections.Generic.IList<string> ApplicableShippingLabels { get; set; } 
 
-        /// <summary>A list of carrier rates that can be referred to by mainTable or singleValue.</summary>
+        /// <summary>A list of carrier rates that can be referred to by `mainTable` or `singleValue`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierRates")]
         public virtual System.Collections.Generic.IList<CarrierRate> CarrierRates { get; set; } 
 
-        /// <summary>A table defining the rate group, when singleValue is not expressive enough. Can only be set if
-        /// singleValue is not set.</summary>
+        /// <summary>A table defining the rate group, when `singleValue` is not expressive enough. Can only be set if
+        /// `singleValue` is not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mainTable")]
         public virtual Table MainTable { get; set; } 
 
@@ -14672,12 +14718,12 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The value of the rate group (e.g. flat rate $10). Can only be set if mainTable and subtables are
-        /// not set.</summary>
+        /// <summary>The value of the rate group (e.g. flat rate $10). Can only be set if `mainTable` and `subtables`
+        /// are not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleValue")]
         public virtual Value SingleValue { get; set; } 
 
-        /// <summary>A list of subtables referred to by mainTable. Can only be set if mainTable is set.</summary>
+        /// <summary>A list of subtables referred to by `mainTable`. Can only be set if `mainTable` is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtables")]
         public virtual System.Collections.Generic.IList<Table> Subtables { get; set; } 
 
@@ -14693,18 +14739,18 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Code of the refund reason.
         ///
-        /// Acceptable values are: - "adjustment" - "autoPostInternal" - "autoPostInvalidBillingAddress" -
-        /// "autoPostNoInventory" - "autoPostPriceError" - "autoPostUndeliverableShippingAddress" - "couponAbuse" -
-        /// "courtesyAdjustment" - "customerCanceled" - "customerDiscretionaryReturn" -
-        /// "customerInitiatedMerchantCancel" - "customerSupportRequested" - "deliveredLateByCarrier" -
-        /// "deliveredTooLate" - "expiredItem" - "failToPushOrderGoogleError" - "failToPushOrderMerchantError" -
-        /// "failToPushOrderMerchantFulfillmentError" - "failToPushOrderToMerchant" -
-        /// "failToPushOrderToMerchantOutOfStock" - "feeAdjustment" - "invalidCoupon" - "lateShipmentCredit" -
-        /// "malformedShippingAddress" - "merchantDidNotShipOnTime" - "noInventory" - "orderTimeout" - "other" -
-        /// "paymentAbuse" - "paymentDeclined" - "priceAdjustment" - "priceError" - "productArrivedDamaged" -
-        /// "productNotAsDescribed" - "promoReallocation" - "qualityNotAsExpected" - "returnRefundAbuse" -
-        /// "shippingCostAdjustment" - "shippingPriceError" - "taxAdjustment" - "taxError" -
-        /// "undeliverableShippingAddress" - "unsupportedPoBoxAddress" - "wrongProductShipped"</summary>
+        /// Acceptable values are: - "`adjustment`" - "`autoPostInternal`" - "`autoPostInvalidBillingAddress`" -
+        /// "`autoPostNoInventory`" - "`autoPostPriceError`" - "`autoPostUndeliverableShippingAddress`" -
+        /// "`couponAbuse`" - "`courtesyAdjustment`" - "`customerCanceled`" - "`customerDiscretionaryReturn`" -
+        /// "`customerInitiatedMerchantCancel`" - "`customerSupportRequested`" - "`deliveredLateByCarrier`" -
+        /// "`deliveredTooLate`" - "`expiredItem`" - "`failToPushOrderGoogleError`" - "`failToPushOrderMerchantError`" -
+        /// "`failToPushOrderMerchantFulfillmentError`" - "`failToPushOrderToMerchant`" -
+        /// "`failToPushOrderToMerchantOutOfStock`" - "`feeAdjustment`" - "`invalidCoupon`" - "`lateShipmentCredit`" -
+        /// "`malformedShippingAddress`" - "`merchantDidNotShipOnTime`" - "`noInventory`" - "`orderTimeout`" - "`other`"
+        /// - "`paymentAbuse`" - "`paymentDeclined`" - "`priceAdjustment`" - "`priceError`" - "`productArrivedDamaged`"
+        /// - "`productNotAsDescribed`" - "`promoReallocation`" - "`qualityNotAsExpected`" - "`returnRefundAbuse`" -
+        /// "`shippingCostAdjustment`" - "`shippingPriceError`" - "`taxAdjustment`" - "`taxError`" -
+        /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonCode")]
         public virtual string ReasonCode { get; set; } 
 
@@ -14724,7 +14770,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Type of the return method.
         ///
-        /// Acceptable values are: - "byMail" - "contactCustomerSupport" - "returnless"</summary>
+        /// Acceptable values are: - "`byMail`" - "`contactCustomerSupport`" - "`returnless`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnMethodType")]
         public virtual string ReturnMethodType { get; set; } 
 
@@ -14743,7 +14789,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>State of the shipment.
         ///
-        /// Acceptable values are: - "completed" - "new" - "shipped" - "undeliverable"</summary>
+        /// Acceptable values are: - "`completed`" - "`new`" - "`shipped`" - "`undeliverable`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
@@ -14753,7 +14799,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class Row : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of cells that constitute the row. Must have the same length as columnHeaders for two-
+        /// <summary>The list of cells that constitute the row. Must have the same length as `columnHeaders` for two-
         /// dimensional tables, a length of 1 for one-dimensional tables. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cells")]
         public virtual System.Collections.Generic.IList<Value> Cells { get; set; } 
@@ -14783,35 +14829,41 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Eligibility for this service.
         ///
-        /// Acceptable values are: - "All scenarios" - "All scenarios except Shopping Actions" - "Shopping
-        /// Actions"</summary>
+        /// Acceptable values are: - "`All scenarios`" - "`All scenarios except Shopping Actions`" - "`Shopping
+        /// Actions`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eligibility")]
         public virtual string Eligibility { get; set; } 
 
         /// <summary>Minimum order value for this service. If set, indicates that customers will have to spend at least
-        /// this amount. All prices within a service must have the same currency.</summary>
+        /// this amount. All prices within a service must have the same currency. Cannot be set together with
+        /// minimum_order_value_table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumOrderValue")]
         public virtual Price MinimumOrderValue { get; set; } 
+
+        /// <summary>Table of per store minimum order values for the pickup fulfillment type. Cannot be set together
+        /// with minimum_order_value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumOrderValueTable")]
+        public virtual MinimumOrderValueTable MinimumOrderValueTable { get; set; } 
 
         /// <summary>Free-form name of the service. Must be unique within target account. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>The carrier-service pair delivering items to collection points. The list of supported pickup
-        /// services can be retrieved via the getSupportedPickupServices method. Required if and only if the service
-        /// delivery type is pickup.</summary>
+        /// services can be retrieved via the `getSupportedPickupServices` method. Required if and only if the service
+        /// delivery type is `pickup`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupService")]
         public virtual PickupCarrierService PickupService { get; set; } 
 
         /// <summary>Shipping rate group definitions. Only the last one is allowed to have an empty
-        /// applicableShippingLabels, which means "everything else". The other applicableShippingLabels must not
+        /// `applicableShippingLabels`, which means "everything else". The other `applicableShippingLabels` must not
         /// overlap.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rateGroups")]
         public virtual System.Collections.Generic.IList<RateGroup> RateGroups { get; set; } 
 
         /// <summary>Type of locations this service ships orders to.
         ///
-        /// Acceptable values are: - "delivery" - "pickup"</summary>
+        /// Acceptable values are: - "`delivery`" - "`pickup`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentType")]
         public virtual string ShipmentType { get; set; } 
 
@@ -14829,8 +14881,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemInvoices")]
         public virtual System.Collections.Generic.IList<ShipmentInvoiceLineItemInvoice> LineItemInvoices { get; set; } 
 
-        /// <summary>[required] ID of the shipment group. It is assigned by the merchant in the shipLineItems method and
-        /// is used to group multiple line items that have the same kind of shipping charges.</summary>
+        /// <summary>[required] ID of the shipment group. It is assigned by the merchant in the `shipLineItems` method
+        /// and is used to group multiple line items that have the same kind of shipping charges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentGroupId")]
         public virtual string ShipmentGroupId { get; set; } 
 
@@ -14867,10 +14919,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The shipping carrier that handles the package.
         ///
-        /// Acceptable values are: - "boxtal" - "bpost" - "chronopost" - "colisPrive" - "colissimo" - "cxt" - "deliv" -
-        /// "dhl" - "dpd" - "dynamex" - "eCourier" - "easypost" - "efw" - "fedex" - "fedexSmartpost" - "geodis" - "gls"
-        /// - "googleCourier" - "gsx" - "jdLogistics" - "laPoste" - "lasership" - "manual" - "mpx" - "onTrac" - "other"
-        /// - "tnt" - "uds" - "ups" - "usps"</summary>
+        /// Acceptable values are: - "`boxtal`" - "`bpost`" - "`chronopost`" - "`colisPrive`" - "`colissimo`" - "`cxt`"
+        /// - "`deliv`" - "`dhl`" - "`dpd`" - "`dynamex`" - "`eCourier`" - "`easypost`" - "`efw`" - "`fedex`" -
+        /// "`fedexSmartpost`" - "`geodis`" - "`gls`" - "`googleCourier`" - "`gsx`" - "`jdLogistics`" - "`laPoste`" -
+        /// "`lasership`" - "`manual`" - "`mpx`" - "`onTrac`" - "`other`" - "`tnt`" - "`uds`" - "`ups`" -
+        /// "`usps`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 
@@ -14891,7 +14944,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual System.Nullable<ulong> AccountId { get; set; } 
 
-        /// <summary>A list of postal code groups that can be referred to in services. Optional.</summary>
+        /// <summary>A list of postal code groups that can be referred to in `services`. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCodeGroups")]
         public virtual System.Collections.Generic.IList<PostalCodeGroup> PostalCodeGroups { get; set; } 
 
@@ -14930,11 +14983,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The method of the batch entry.
         ///
-        /// Acceptable values are: - "get" - "update"</summary>
+        /// Acceptable values are: - "`get`" - "`update`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 
-        /// <summary>The account shipping settings to update. Only defined if the method is update.</summary>
+        /// <summary>The account shipping settings to update. Only defined if the method is `update`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingSettings")]
         public virtual ShippingSettings ShippingSettings { get; set; } 
 
@@ -14969,7 +15022,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual Errors Errors { get; set; } 
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "content#shippingsettingsCustomBatchResponseEntry".</summary>
+        /// "`content#shippingsettingsCustomBatchResponseEntry`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -15059,7 +15112,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rowHeaders")]
         public virtual Headers RowHeaders { get; set; } 
 
-        /// <summary>The list of rows that constitute the table. Must have the same length as rowHeaders.
+        /// <summary>The list of rows that constitute the table. Must have the same length as `rowHeaders`.
         /// Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
         public virtual System.Collections.Generic.IList<Row> Rows { get; set; } 
@@ -15078,7 +15131,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableOrderinvoices")]
         public virtual System.Nullable<bool> EnableOrderinvoices { get; set; } 
 
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string "content#testOrder".</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#testOrder`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -15086,9 +15139,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
         public virtual System.Collections.Generic.IList<TestOrderLineItem> LineItems { get; set; } 
 
-        /// <summary>Determines if test order must be pulled by merchant or pushed to merchant via push integration.
-        ///
-        /// Acceptable values are: - "checkoutIntegration" - "merchantPull"</summary>
+        /// <summary>Restricted. Do not use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationMode")]
         public virtual string NotificationMode { get; set; } 
 
@@ -15098,14 +15149,14 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Required. Identifier of one of the predefined delivery addresses for the delivery.
         ///
-        /// Acceptable values are: - "dwight" - "jim" - "pam"</summary>
+        /// Acceptable values are: - "`dwight`" - "`jim`" - "`pam`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predefinedDeliveryAddress")]
         public virtual string PredefinedDeliveryAddress { get; set; } 
 
         /// <summary>Identifier of one of the predefined pickup details. Required for orders containing line items with
-        /// shipping type pickup.
+        /// shipping type `pickup`.
         ///
-        /// Acceptable values are: - "dwight" - "jim" - "pam"</summary>
+        /// Acceptable values are: - "`dwight`" - "`jim`" - "`pam`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predefinedPickupDetails")]
         public virtual string PredefinedPickupDetails { get; set; } 
 
@@ -15125,7 +15176,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Required. The requested shipping option.
         ///
-        /// Acceptable values are: - "economy" - "expedited" - "oneDay" - "sameDay" - "standard" - "twoDay"</summary>
+        /// Acceptable values are: - "`economy`" - "`expedited`" - "`oneDay`" - "`sameDay`" - "`standard`" -
+        /// "`twoDay`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingOption")]
         public virtual string ShippingOption { get; set; } 
 
@@ -15137,8 +15189,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>Required. Email address of the customer.
         ///
-        /// Acceptable values are: - "pog.dwight.schrute@gmail.com" - "pog.jim.halpert@gmail.com" -
-        /// "penpog.pam.beesly@gmail.comding"</summary>
+        /// Acceptable values are: - "`pog.dwight.schrute@gmail.com`" - "`pog.jim.halpert@gmail.com`" -
+        /// "`penpog.pam.beesly@gmail.comding`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
@@ -15163,7 +15215,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>Last know user use selection regards marketing preferences. In certain cases selection might not be
         /// known, so this field would be empty.
         ///
-        /// Acceptable values are: - "denied" - "granted"</summary>
+        /// Acceptable values are: - "`denied`" - "`granted`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explicitMarketingPreference")]
         public virtual string ExplicitMarketingPreference { get; set; } 
 
@@ -15210,19 +15262,19 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Deprecated.
         ///
-        /// Acceptable values are: - "online"</summary>
+        /// Acceptable values are: - "`online`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channel")]
         public virtual string Channel { get; set; } 
 
         /// <summary>Required. Condition or state of the item.
         ///
-        /// Acceptable values are: - "new"</summary>
+        /// Acceptable values are: - "`new`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; } 
 
         /// <summary>Required. The two-letter ISO 639-1 language code for the item.
         ///
-        /// Acceptable values are: - "en" - "fr"</summary>
+        /// Acceptable values are: - "`en`" - "`fr`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
         public virtual string ContentLanguage { get; set; } 
 
@@ -15287,14 +15339,14 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>The billing address.
         ///
-        /// Acceptable values are: - "dwight" - "jim" - "pam"</summary>
+        /// Acceptable values are: - "`dwight`" - "`jim`" - "`pam`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predefinedBillingAddress")]
         public virtual string PredefinedBillingAddress { get; set; } 
 
         /// <summary>The type of instrument. Note that real orders might have different values than the four values
-        /// accepted by createTestOrder.
+        /// accepted by `createTestOrder`.
         ///
-        /// Acceptable values are: - "AMEX" - "DISCOVER" - "MASTERCARD" - "VISA"</summary>
+        /// Acceptable values are: - "`AMEX`" - "`DISCOVER`" - "`MASTERCARD`" - "`VISA`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -15304,8 +15356,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class TransitTable : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of postal group names. The last value can be "all other locations". Example: ["zone 1",
-        /// "zone 2", "all other locations"]. The referred postal code groups must match the delivery country of the
+        /// <summary>A list of postal group names. The last value can be `"all other locations"`. Example: `["zone 1",
+        /// "zone 2", "all other locations"]`. The referred postal code groups must match the delivery country of the
         /// service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCodeGroupNames")]
         public virtual System.Collections.Generic.IList<string> PostalCodeGroupNames { get; set; } 
@@ -15313,8 +15365,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
         public virtual System.Collections.Generic.IList<TransitTableTransitTimeRow> Rows { get; set; } 
 
-        /// <summary>A list of transit time labels. The last value can be "all other labels". Example: ["food",
-        /// "electronics", "all other labels"].</summary>
+        /// <summary>A list of transit time labels. The last value can be `"all other labels"`. Example: `["food",
+        /// "electronics", "all other labels"]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitTimeLabels")]
         public virtual System.Collections.Generic.IList<string> TransitTimeLabels { get; set; } 
 
@@ -15333,7 +15385,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class TransitTableTransitTimeRowTransitTimeValue : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Must be greater than or equal to minTransitTimeInDays.</summary>
+        /// <summary>Must be greater than or equal to `minTransitTimeInDays`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTransitTimeInDays")]
         public virtual System.Nullable<long> MaxTransitTimeInDays { get; set; } 
 
@@ -15380,7 +15432,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>[required] Type of the additional charge.
         ///
-        /// Acceptable values are: - "shipping"</summary>
+        /// Acceptable values are: - "`shipping`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -15394,13 +15446,14 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("taxAmount")]
         public virtual Price TaxAmount { get; set; } 
 
-        /// <summary>Optional name of the tax type. This should only be provided if taxType is otherFeeTax.</summary>
+        /// <summary>Optional name of the tax type. This should only be provided if `taxType` is
+        /// `otherFeeTax`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxName")]
         public virtual string TaxName { get; set; } 
 
         /// <summary>[required] Type of the tax.
         ///
-        /// Acceptable values are: - "otherFee" - "otherFeeTax" - "sales"</summary>
+        /// Acceptable values are: - "`otherFee`" - "`otherFeeTax`" - "`sales`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxType")]
         public virtual string TaxType { get; set; } 
 
@@ -15408,8 +15461,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The single value of a rate group or the value of a rate group table's cell. Exactly one of noShipping,
-    /// flatRate, pricePercentage, carrierRateName, subtableName must be set.</summary>
+    /// <summary>The single value of a rate group or the value of a rate group table's cell. Exactly one of
+    /// `noShipping`, `flatRate`, `pricePercentage`, `carrierRateName`, `subtableName` must be set.</summary>
     public class Value : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The name of a carrier rate referring to a carrier rate defined in the same rate group. Can only be
@@ -15426,7 +15479,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("noShipping")]
         public virtual System.Nullable<bool> NoShipping { get; set; } 
 
-        /// <summary>A percentage of the price represented as a number in decimal notation (e.g., "5.4"). Can only be
+        /// <summary>A percentage of the price represented as a number in decimal notation (e.g., `"5.4"`). Can only be
         /// set if all other fields are not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricePercentage")]
         public virtual string PricePercentage { get; set; } 
@@ -15444,7 +15497,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>Required. The weight unit.
         ///
-        /// Acceptable values are: - "kg" - "lb"</summary>
+        /// Acceptable values are: - "`kg`" - "`lb`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-directory'>Service Directory API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200401 (1917)
+ *      <tr><th>API Rev<td>20200408 (1924)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-directory'>
  *              https://cloud.google.com/service-directory</a>

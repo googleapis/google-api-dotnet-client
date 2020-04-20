@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200331 (1916)
+ *      <tr><th>API Rev<td>20200414 (1930)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -1053,22 +1053,24 @@ namespace Google.Apis.AndroidPublisher.v3
             }
 
 
-            /// <summary>Uploads the deobfuscation file of the specified APK. If a deobfuscation file already exists, it
-            /// will be replaced.</summary>
-            /// <param name="packageName">Unique identifier of the Android app for which the deobfuscatiuon files are being
-            /// uploaded; for example, "com.spiffygame".</param>
-            /// <param name="editId">Unique identifier for this
-            /// edit.</param>
-            /// <param name="apkVersionCode">The version code of the APK whose deobfuscation file is being
-            /// uploaded.</param>
+            /// <summary>Uploads the deobfuscation file of the specified APK. If a deobfuscation or symbolication file
+            /// already exists, it will be replaced. See https://developer.android.com/studio/build/shrink-code to learn
+            /// more about deobfuscation files.</summary>
+            /// <param name="packageName">Unique identifier of the Android app for which the deobfuscation files are being uploaded;
+            /// for example, "com.spiffygame".</param>
+            /// <param name="editId">Unique identifier for this edit.</param>
+            ///
+            /// <param name="apkVersionCode">The version code of the APK whose deobfuscation file is being uploaded.</param>
+            ///
             /// <param name="deobfuscationFileType"></param>
             public virtual UploadRequest Upload(string packageName, string editId, int apkVersionCode, UploadRequest.DeobfuscationFileTypeEnum deobfuscationFileType)
             {
                 return new UploadRequest(service, packageName, editId, apkVersionCode, deobfuscationFileType);
             }
 
-            /// <summary>Uploads the deobfuscation file of the specified APK. If a deobfuscation file already exists, it
-            /// will be replaced.</summary>
+            /// <summary>Uploads the deobfuscation file of the specified APK. If a deobfuscation or symbolication file
+            /// already exists, it will be replaced. See https://developer.android.com/studio/build/shrink-code to learn
+            /// more about deobfuscation files.</summary>
             public class UploadRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.DeobfuscationFilesUploadResponse>
             {
                 /// <summary>Constructs a new Upload request.</summary>
@@ -1083,7 +1085,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
 
 
-                /// <summary>Unique identifier of the Android app for which the deobfuscatiuon files are being uploaded;
+                /// <summary>Unique identifier of the Android app for which the deobfuscation files are being uploaded;
                 /// for example, "com.spiffygame".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -1103,6 +1105,8 @@ namespace Google.Apis.AndroidPublisher.v3
 
                 public enum DeobfuscationFileTypeEnum
                 {
+                    [Google.Apis.Util.StringValueAttribute("nativeCode")]
+                    NativeCode,
                     [Google.Apis.Util.StringValueAttribute("proguard")]
                     Proguard,
                 }
@@ -1171,8 +1175,9 @@ namespace Google.Apis.AndroidPublisher.v3
 
             }
 
-            /// <summary>Uploads the deobfuscation file of the specified APK. If a deobfuscation file already exists, it
-            /// will be replaced.</summary>
+            /// <summary>Uploads the deobfuscation file of the specified APK. If a deobfuscation or symbolication file
+            /// already exists, it will be replaced. See https://developer.android.com/studio/build/shrink-code to learn
+            /// more about deobfuscation files.</summary>
             /// <remarks>
             /// Considerations regarding <paramref name="stream"/>:
             /// <list type="bullet">
@@ -1191,12 +1196,12 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </list>
             /// </remarks>
 
-            /// <param name="packageName">Unique identifier of the Android app for which the deobfuscatiuon files are being
-            /// uploaded; for example, "com.spiffygame".</param>
-            /// <param name="editId">Unique identifier for this
-            /// edit.</param>
-            /// <param name="apkVersionCode">The version code of the APK whose deobfuscation file is being
-            /// uploaded.</param>
+            /// <param name="packageName">Unique identifier of the Android app for which the deobfuscation files are being uploaded;
+            /// for example, "com.spiffygame".</param>
+            /// <param name="editId">Unique identifier for this edit.</param>
+            ///
+            /// <param name="apkVersionCode">The version code of the APK whose deobfuscation file is being uploaded.</param>
+            ///
             /// <param name="deobfuscationFileType"></param>
             /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
@@ -1250,7 +1255,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string UserIp { get; set; }
 
 
-                /// <summary>Unique identifier of the Android app for which the deobfuscatiuon files are being uploaded;
+                /// <summary>Unique identifier of the Android app for which the deobfuscation files are being uploaded;
                 /// for example, "com.spiffygame".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -1270,6 +1275,8 @@ namespace Google.Apis.AndroidPublisher.v3
 
                 public enum DeobfuscationFileTypeEnum
                 {
+                    [Google.Apis.Util.StringValueAttribute("nativeCode")]
+                    NativeCode,
                     [Google.Apis.Util.StringValueAttribute("proguard")]
                     Proguard,
                 }
@@ -8642,7 +8649,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>In-app update priority of the release. All newly added APKs in the release will be considered at
         /// this priority. in_app_update_priority can take values between [0, 5]. 5 is the highest priority. Default
-        /// priority is 0. See https://developer.android.com/guide/playcore/in-app-updates.</summary>
+        /// priority is 0. in_app_update_priority can not be updated once the release is rolled out. See
+        /// https://developer.android.com/guide/playcore/in-app-updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inAppUpdatePriority")]
         public virtual System.Nullable<int> InAppUpdatePriority { get; set; } 
 

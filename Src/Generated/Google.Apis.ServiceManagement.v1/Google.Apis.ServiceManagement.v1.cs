@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200406 (1922)
+ *      <tr><th>API Rev<td>20200411 (1927)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -1495,7 +1495,13 @@ namespace Google.Apis.ServiceManagement.v1
             }
         }
 
-        /// <summary>Creates a new managed service. Please note one producer project can own no more than 20 services.
+        /// <summary>Creates a new managed service.
+        ///
+        /// A managed service is immutable, and is subject to mandatory 30-day data retention. You cannot move a service
+        /// or recreate it within 30 days after deletion.
+        ///
+        /// One producer project can own no more than 500 services. For security and reliability purposes, a production
+        /// service should be hosted in a dedicated producer project.
         ///
         /// Operation</summary>
         /// <param name="body">The body of the request.</param>
@@ -1504,7 +1510,13 @@ namespace Google.Apis.ServiceManagement.v1
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Creates a new managed service. Please note one producer project can own no more than 20 services.
+        /// <summary>Creates a new managed service.
+        ///
+        /// A managed service is immutable, and is subject to mandatory 30-day data retention. You cannot move a service
+        /// or recreate it within 30 days after deletion.
+        ///
+        /// One producer project can own no more than 500 services. For security and reliability purposes, a production
+        /// service should be hosted in a dedicated producer project.
         ///
         /// Operation</summary>
         public class CreateRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>

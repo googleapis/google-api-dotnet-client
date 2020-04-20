@@ -307,7 +307,7 @@
    }
   }
  }, 
- "revision": "20200408", 
+ "revision": "20200415", 
  "rootUrl": "https://servicenetworking.googleapis.com/", 
  "schemas": {
   "AddRolesMetadata": {

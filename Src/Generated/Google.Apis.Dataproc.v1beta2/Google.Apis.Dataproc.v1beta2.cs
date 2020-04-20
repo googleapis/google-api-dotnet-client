@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20200407 (1923)
+ *      <tr><th>API Rev<td>20200409 (1925)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -6234,7 +6234,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
 {    
 
     /// <summary>Specifies the type and number of accelerator cards attached to the instances of an instance group (see
-    /// GPUs on Compute Engine).</summary>
+    /// GPUs on Compute Engine (https://cloud.google.com/compute/docs/gpus/)).</summary>
     public class AcceleratorConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of the accelerator cards of this type exposed to this instance.</summary>
@@ -6242,11 +6242,14 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         public virtual System.Nullable<int> AcceleratorCount { get; set; } 
 
         /// <summary>Full URL, partial URI, or short name of the accelerator type resource to expose to this instance.
-        /// See Compute Engine AcceleratorTypesExamples *
+        /// See Compute Engine AcceleratorTypes
+        /// (https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes)Examples *
         /// https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-
         /// tesla-k80 * projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 * nvidia-tesla-k80Auto
-        /// Zone Exception: If you are using the Dataproc Auto Zone Placement feature, you must use the short name of
-        /// the accelerator type resource, for example, nvidia-tesla-k80.</summary>
+        /// Zone Exception: If you are using the Dataproc Auto Zone Placement
+        /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
+        /// feature, you must use the short name of the accelerator type resource, for example, nvidia-
+        /// tesla-k80.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorTypeUri")]
         public virtual string AcceleratorTypeUri { get; set; } 
 
@@ -6465,7 +6468,8 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage
         /// location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your
         /// cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc
-        /// staging bucket).</summary>
+        /// staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-
+        /// bucket)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configBucket")]
         public virtual string ConfigBucket { get; set; } 
 
@@ -6797,9 +6801,9 @@ namespace Google.Apis.Dataproc.v1beta2.Data
 
         /// <summary>Optional. The Compute Engine network to be used for machine communications. Cannot be specified
         /// with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the
-        /// project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks for more
-        /// information).A full URL, partial URI, or short name are valid. Examples:
-        /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default
+        /// project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks
+        /// (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short
+        /// name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default
         /// projects/[project_id]/regions/global/default default</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; } 
@@ -6808,9 +6812,12 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
         public virtual ReservationAffinity ReservationAffinity { get; set; } 
 
-        /// <summary>Optional. The Dataproc service account (also see VM Data Plane identity) used by Dataproc cluster
-        /// VM instances to access Google Cloud Platform services.If not specified, the Compute Engine default service
-        /// account is used.</summary>
+        /// <summary>Optional. The Dataproc service account (https://cloud.google.com/dataproc/docs/concepts
+        /// /configuring-clusters/service-accounts#service_accounts_in_cloud_dataproc) (also see VM Data Plane identity
+        /// (https://cloud.google.com/dataproc/docs/concepts/iam/dataproc-
+        /// principals#vm_service_account_data_plane_identity)) used by Dataproc cluster VM instances to access Google
+        /// Cloud Platform services.If not specified, the Compute Engine default service account
+        /// (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; } 
 
@@ -6830,7 +6837,8 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworkUri")]
         public virtual string SubnetworkUri { get; set; } 
 
-        /// <summary>The Compute Engine tags to add to all instances (see Tagging instances).</summary>
+        /// <summary>The Compute Engine tags to add to all instances (see Tagging instances
+        /// (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
 
@@ -7038,8 +7046,9 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or
         /// short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-
         /// east1-a/machineTypes/n1-standard-2 projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 n1
-        /// -standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement feature, you must use the
-        /// short name of the machine type resource, for example, n1-standard-2.</summary>
+        /// -standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement
+        /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
+        /// feature, you must use the short name of the machine type resource, for example, n1-standard-2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineTypeUri")]
         public virtual string MachineTypeUri { get; set; } 
 
@@ -7048,8 +7057,8 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managedGroupConfig")]
         public virtual ManagedGroupConfig ManagedGroupConfig { get; set; } 
 
-        /// <summary>Specifies the minimum cpu platform for the Instance Group. See DataprocMinimum CPU
-        /// Platform.</summary>
+        /// <summary>Specifies the minimum cpu platform for the Instance Group. See Dataproc - Minimum CPU Platform
+        /// (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; } 
 
@@ -7606,9 +7615,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>A job executed by the workflow.</summary>
     public class OrderedJob : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Job is a Hadoop job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hadoopJob")]
         public virtual HadoopJob HadoopJob { get; set; } 
 
+        /// <summary>Optional. Job is a Hive job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiveJob")]
         public virtual HiveJob HiveJob { get; set; } 
 
@@ -7619,6 +7630,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
+        /// <summary>Optional. Job is a Pig job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pigJob")]
         public virtual PigJob PigJob { get; set; } 
 
@@ -7627,10 +7639,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("prerequisiteStepIds")]
         public virtual System.Collections.Generic.IList<string> PrerequisiteStepIds { get; set; } 
 
-        /// <summary>Presto job</summary>
+        /// <summary>Optional. Job is a Presto job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prestoJob")]
         public virtual PrestoJob PrestoJob { get; set; } 
 
+        /// <summary>Optional. Job is a PySpark job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pysparkJob")]
         public virtual PySparkJob PysparkJob { get; set; } 
 
@@ -7638,13 +7651,15 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
         public virtual JobScheduling Scheduling { get; set; } 
 
+        /// <summary>Optional. Job is a Spark job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkJob")]
         public virtual SparkJob SparkJob { get; set; } 
 
-        /// <summary>Spark R job</summary>
+        /// <summary>Optional. Job is a SparkR job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkRJob")]
         public virtual SparkRJob SparkRJob { get; set; } 
 
+        /// <summary>Optional. Job is a SparkSql job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkSqlJob")]
         public virtual SparkSqlJob SparkSqlJob { get; set; } 
 
@@ -7765,7 +7780,8 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     }    
 
     /// <summary>A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT: The Dataproc Presto
-    /// Optional Component must be enabled when the cluster is created to submit a Presto job to the cluster.</summary>
+    /// Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/presto) must be enabled when the
+    /// cluster is created to submit a Presto job to the cluster.</summary>
     public class PrestoJob : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Presto client tags to attach to this query</summary>
@@ -7923,8 +7939,10 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     public class SoftwareConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The version of software inside the cluster. It must be one of the supported Dataproc
-        /// Versions, such as "1.2" (including a subminor version, such as "1.2.29"), or the "preview" version. If
-        /// unspecified, it defaults to the latest Debian version.</summary>
+        /// Versions (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
+        /// versions#supported_cloud_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"),
+        /// or the "preview" version (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
+        /// versions#other_versions). If unspecified, it defaults to the latest Debian version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageVersion")]
         public virtual string ImageVersion { get; set; } 
 
@@ -7936,7 +7954,8 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// prefix:property format, for example core:hadoop.tmp.dir. The following are supported prefixes and their
         /// mappings: capacity-scheduler: capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml hdfs:
         /// hdfs-site.xml hive: hive-site.xml mapred: mapred-site.xml pig: pig.properties spark: spark-defaults.conf
-        /// yarn: yarn-site.xmlFor more information, see Cluster properties.</summary>
+        /// yarn: yarn-site.xmlFor more information, see Cluster properties
+        /// (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string,string> Properties { get; set; } 
 

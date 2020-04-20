@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/secret-manager/'>Secret Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200403 (1919)
+ *      <tr><th>API Rev<td>20200413 (1929)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/secret-manager/'>
  *              https://cloud.google.com/secret-manager/</a>
@@ -2209,8 +2209,9 @@ namespace Google.Apis.SecretManager.v1.Data
         public virtual Policy Policy { get; set; } 
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, the following default mask is used: paths: "bindings, etag" This
-        /// field is only used by Cloud IAM.</summary>
+        /// will be modified. If no mask is provided, the following default mask is used:
+        ///
+        /// `paths: "bindings, etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 

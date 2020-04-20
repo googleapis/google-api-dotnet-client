@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/activity/'>Drive Activity API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200407 (1923)
+ *      <tr><th>API Rev<td>20200415 (1931)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/activity/'>
  *              https://developers.google.com/drive/activity/</a>
@@ -1063,7 +1063,7 @@ namespace Google.Apis.DriveActivity.v2.Data
         public virtual string AncestorName { get; set; } 
 
         /// <summary>Details on how to consolidate related actions that make up the activity. If not set, then related
-        /// actions will not be consolidated.</summary>
+        /// actions are not consolidated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consolidationStrategy")]
         public virtual ConsolidationStrategy ConsolidationStrategy { get; set; } 
 
@@ -1087,7 +1087,7 @@ namespace Google.Apis.DriveActivity.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("itemName")]
         public virtual string ItemName { get; set; } 
 
-        /// <summary>The requested number of activity to return. If not set, a default value will be used.</summary>
+        /// <summary>The requested number of activities to return. If not set, a default value is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; } 
 

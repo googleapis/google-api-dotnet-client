@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/apps-script/api/'>Apps Script API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200409 (1925)
+ *      <tr><th>API Rev<td>20200411 (1927)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/apps-script/api/'>
  *              https://developers.google.com/apps-script/api/</a>
@@ -2254,7 +2254,7 @@ namespace Google.Apis.Script.v1.Data
     /// <summary>The response for executing or debugging a function in an Apps Script project.</summary>
     public class ExecuteStreamResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The result of the execution. TODO (johnlattin): Add debugging and logging.</summary>
+        /// <summary>The result of the execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual ScriptExecutionResult Result { get; set; } 
 
@@ -2589,8 +2589,7 @@ namespace Google.Apis.Script.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`ListValue` is a wrapper around a repeated field of values. Based on LustValue at:
-    /// google3/apps/maestro/api/struct.proto?q=message%5c%20ListValue</summary>
+    /// <summary>`ListValue` is a wrapper around a repeated field of values.</summary>
     public class ListValue : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Repeated field of dynamically typed values.</summary>
@@ -2726,12 +2725,10 @@ namespace Google.Apis.Script.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The result of an execution Based on ScriptExecutionResult at:
-    /// google3/apps/maestro/api/frontend_execution_common.proto?q=message%5c%20ScriptExecutionResult</summary>
+    /// <summary>The result of an execution.</summary>
     public class ScriptExecutionResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The returned value of the execution. TODO (johnlattin): Add HtmlResponse TODO (johnlattin): Add
-        /// ExceptionResponse TODO (johlnattin): Add TextResponse</summary>
+        /// <summary>The returned value of the execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnValue")]
         public virtual Value ReturnValue { get; set; } 
 
@@ -2778,7 +2775,7 @@ namespace Google.Apis.Script.v1.Data
     }    
 
     /// <summary>`Struct` represents a structured data value, consisting of fields which map to dynamically typed
-    /// values. Based on Struct at: google3/apps/maestro/api/struct.proto?q=message%5c%20Struct</summary>
+    /// values.</summary>
     public class Struct : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Unordered map of dynamically typed values.</summary>
@@ -2800,8 +2797,7 @@ namespace Google.Apis.Script.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`Value` represents a dynamically typed value which is the outcome of an executed script Based on Value
-    /// at: google3/apps/maestro/api/struct.proto?q=message%5c%20Value</summary>
+    /// <summary>`Value` represents a dynamically typed value which is the outcome of an executed script.</summary>
     public class Value : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Represents a boolean value.</summary>

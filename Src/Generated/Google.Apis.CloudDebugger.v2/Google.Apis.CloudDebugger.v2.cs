@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/debugger'>Cloud Debugger API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200405 (1921)
+ *      <tr><th>API Rev<td>20200410 (1926)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/debugger'>
  *              https://cloud.google.com/debugger</a>
@@ -447,6 +447,11 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
 
+                    /// <summary>Identifies the agent. This is the ID returned in the RegisterDebuggee
+                    /// response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("agentId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string AgentId { get; set; }
+
                     /// <summary>If set to `true` (recommended), returns `google.rpc.Code.OK` status and sets the
                     /// `wait_expired` response field to `true` when the server-selected timeout has expired.
                     ///
@@ -492,6 +497,15 @@ namespace Google.Apis.CloudDebugger.v2
                                 Name = "debuggeeId",
                                 IsRequired = true,
                                 ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "agentId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "agentId",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -1106,6 +1120,21 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
 
+                    /// <summary>The canary option set by the user upon setting breakpoint.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("canaryOption", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<CanaryOptionEnum> CanaryOption { get; set; }
+
+                    /// <summary>The canary option set by the user upon setting breakpoint.</summary>
+                    public enum CanaryOptionEnum
+                    {
+                        [Google.Apis.Util.StringValueAttribute("CANARY_OPTION_UNSPECIFIED")]
+                        CANARYOPTIONUNSPECIFIED,
+                        [Google.Apis.Util.StringValueAttribute("CANARY_OPTION_TRY_ENABLE")]
+                        CANARYOPTIONTRYENABLE,
+                        [Google.Apis.Util.StringValueAttribute("CANARY_OPTION_TRY_DISABLE")]
+                        CANARYOPTIONTRYDISABLE,
+                    }
+
                     /// <summary>Required. The client version making the call. Schema: `domain/type/version` (e.g.,
                     /// `google.com/intellij/v1`).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -1147,6 +1176,15 @@ namespace Google.Apis.CloudDebugger.v2
                                 Name = "debuggeeId",
                                 IsRequired = true,
                                 ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "canaryOption", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "canaryOption",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -1281,6 +1319,11 @@ namespace Google.Apis.CloudDebugger.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
+        /// <summary>The deadline for the breakpoint to stay in CANARY_ACTIVE state. The value is meaningless when the
+        /// breakpoint is not in CANARY_ACTIVE state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canaryExpireTime")]
+        public virtual object CanaryExpireTime { get; set; } 
+
         /// <summary>Condition that triggers the breakpoint. The condition is a compound boolean expression composed
         /// using expressions in a programming language at the source location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
@@ -1343,6 +1386,10 @@ namespace Google.Apis.CloudDebugger.v2.Data
         /// function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackFrames")]
         public virtual System.Collections.Generic.IList<StackFrame> StackFrames { get; set; } 
+
+        /// <summary>The current state of the breakpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
 
         /// <summary>Breakpoint status.
         ///
@@ -1447,6 +1494,10 @@ namespace Google.Apis.CloudDebugger.v2.Data
         /// /java-gcp/v1.1`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentVersion")]
         public virtual string AgentVersion { get; set; } 
+
+        /// <summary>Used when setting breakpoint canary for this debuggee.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canaryMode")]
+        public virtual string CanaryMode { get; set; } 
 
         /// <summary>Human readable description of the debuggee. Including a human-readable project name, environment
         /// name and version information is recommended.</summary>
@@ -1690,6 +1741,11 @@ namespace Google.Apis.CloudDebugger.v2.Data
     /// <summary>Response for registering a debuggee.</summary>
     public class RegisterDebuggeeResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A unique ID generated for the agent. Each RegisterDebuggee request will generate a new agent
+        /// ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; } 
+
         /// <summary>Debuggee resource. The field `id` is guaranteed to be set (in addition to the echoed fields). If
         /// the field `is_disabled` is set to `true`, the agent should disable itself by removing all breakpoints and
         /// detaching from the application. It should however continue to poll `RegisterDebuggee` until
