@@ -473,7 +473,13 @@ namespace Google.Apis.Auth.OAuth2
                 // See https://stackoverflow.com/a/6040946/44360 for why this is required
                 url = System.Text.RegularExpressions.Regex.Replace(url, @"(\\*)" + "\"", @"$1$1\" + "\"");
                 url = System.Text.RegularExpressions.Regex.Replace(url, @"(\\+)$", @"$1$1");
-                Process.Start(new ProcessStartInfo("cmd", $"/c start \"\" \"{url}\"") { CreateNoWindow = true });
+                Process proc = Process.Start(new ProcessStartInfo($"\"{url}\"") { CreateNoWindow = true });
+
+                // check for premature process exit
+                if (proc.WaitForExit(1000))
+                {
+                    return (proc.ExitCode == 0);
+                }
                 return true;
             }
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
