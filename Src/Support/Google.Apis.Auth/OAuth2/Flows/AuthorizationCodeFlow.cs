@@ -14,21 +14,19 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
-
 using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Http;
 using Google.Apis.Logging;
+using Google.Apis.Testing;
 using Google.Apis.Util;
 using Google.Apis.Util.Store;
-using Google.Apis.Testing;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Google.Apis.Auth.OAuth2.Flows
 {
@@ -313,7 +311,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
             try
             {
                 var tokenResponse = await request.ExecuteAsync
-                    (httpClient, TokenServerUrl, taskCancellationToken, Clock).ConfigureAwait(false);
+                    (httpClient, TokenServerUrl, taskCancellationToken, Clock, Logger).ConfigureAwait(false);
                 return tokenResponse;
             }
             catch (TokenResponseException ex)

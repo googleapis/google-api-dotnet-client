@@ -63,6 +63,9 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>The OpenID Connect Json Web Key Set (jwks) URL.</summary>
         public const string JsonWebKeySetUrl = "https://www.googleapis.com/oauth2/v3/certs";
 
+        /// <summary>The IAP Json Web Key Set (jwks) URL.</summary>
+        public const string IapKeySetUrl = "https://www.gstatic.com/iap/verify/public_key-jwk";
+
         /// <summary>Installed application redirect URI.</summary>
         public const string InstalledAppRedirectUri = "urn:ietf:wg:oauth:2.0:oob";
 

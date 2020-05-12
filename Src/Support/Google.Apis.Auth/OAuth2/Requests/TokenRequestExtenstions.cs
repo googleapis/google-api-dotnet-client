@@ -14,14 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.OAuth2.Responses;
+using Google.Apis.Logging;
+using Google.Apis.Requests.Parameters;
+using Google.Apis.Util;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Google.Apis.Auth.OAuth2.Responses;
-using Google.Apis.Json;
-using Google.Apis.Requests.Parameters;
-using Google.Apis.Util;
 
 namespace Google.Apis.Auth.OAuth2.Requests
 {
@@ -42,25 +41,20 @@ namespace Google.Apis.Auth.OAuth2.Requests
         /// <see cref="Google.Apis.Auth.OAuth2.Responses.TokenResponse.Issued"/> property.
         /// </param>
         /// <returns>Token response with the new access token.</returns>
-        public static async Task<TokenResponse> ExecuteAsync(this TokenRequest request, HttpClient httpClient,
-            string tokenServerUrl, CancellationToken taskCancellationToken, IClock clock)
+        public static Task<TokenResponse> ExecuteAsync(this TokenRequest request, HttpClient httpClient,
+            string tokenServerUrl, CancellationToken taskCancellationToken, IClock clock) =>
+            ExecuteAsync(request, httpClient, tokenServerUrl, taskCancellationToken, clock, ApplicationContext.Logger);
+
+        internal static async Task<TokenResponse> ExecuteAsync(this TokenRequest request, HttpClient httpClient,
+            string tokenServerUrl, CancellationToken taskCancellationToken, IClock clock, ILogger logger)
         {
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, tokenServerUrl);
-            httpRequest.Content = ParameterUtils.CreateFormUrlEncodedContent(request);
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, tokenServerUrl)
+            {
+                Content = ParameterUtils.CreateFormUrlEncodedContent(request)
+            };
 
             var response = await httpClient.SendAsync(httpRequest, taskCancellationToken).ConfigureAwait(false);
-            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-
-            if (!response.IsSuccessStatusCode)
-            {
-                var error = NewtonsoftJsonSerializer.Instance.Deserialize<TokenErrorResponse>(content);
-                throw new TokenResponseException(error, response.StatusCode);
-            }
-
-            // Gets the token and sets its issued time.
-            var newToken = NewtonsoftJsonSerializer.Instance.Deserialize<TokenResponse>(content);
-            newToken.IssuedUtc = clock.UtcNow;
-            return newToken;
+            return await TokenResponse.FromHttpResponseAsync(response, clock, logger).ConfigureAwait(false);
         }
     }
 }

@@ -19,6 +19,7 @@ using Google.Apis.Tests.Mocks;
 using System;
 using System.Threading.Tasks;
 using Xunit;
+using static Google.Apis.Auth.JsonWebSignature;
 
 namespace Google.Apis.Auth.Tests.OAuth2
 {
@@ -44,8 +45,9 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task FetchesOidcToken()
         {
-            var clock = new MockClock { UtcNow = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
-            var messageHandler = new OidcTokenSuccessMessageHandler(clock);
+            // A little bit after the tokens returned from OidcTokenFakes were issued.
+            var clock = new MockClock { UtcNow = new DateTime(2020, 5, 21, 9, 20, 0, 0, DateTimeKind.Utc) };
+            var messageHandler = new OidcComputeSuccessMessageHandler();
             var initializer = new ComputeCredential.Initializer("http://will.be.ignored", "http://will.be.ignored")
             {
                 Clock = clock,
@@ -53,12 +55,16 @@ namespace Google.Apis.Auth.Tests.OAuth2
             };
             var credential = new ComputeCredential(initializer);
 
-            var oidcToken = await credential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("audience"));
+            // The fake Oidc server returns valid tokens (expired in the real world for safty)
+            // but with a set audience that lets us know if the token was refreshed or not.
+            var oidcToken = await credential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("will.be.ignored"));
 
-            Assert.Equal("very_fake_access_token_1", await oidcToken.GetAccessTokenAsync());
+            var signedToken = SignedToken<Header, Payload>.FromSignedToken(await oidcToken.GetAccessTokenAsync());
+            Assert.Equal("https://first_call.test", signedToken.Payload.Audience);
             // Move the clock some but not enough that the token expires.
             clock.UtcNow = clock.UtcNow.AddMinutes(20);
-            Assert.Equal("very_fake_access_token_1", await oidcToken.GetAccessTokenAsync());
+            signedToken = SignedToken<Header, Payload>.FromSignedToken(await oidcToken.GetAccessTokenAsync());
+            Assert.Equal("https://first_call.test", signedToken.Payload.Audience);
             // Only the first call should have resulted in a request. The second time the token hadn't expired.
             Assert.Equal(1, messageHandler.Calls);
         }
@@ -66,8 +72,9 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task RefreshesOidcToken()
         {
-            var clock = new MockClock { UtcNow = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
-            var messageHandler = new OidcTokenSuccessMessageHandler(clock);
+            // A little bit after the tokens returned from OidcTokenFakes were issued.
+            var clock = new MockClock { UtcNow = new DateTime(2020, 5, 21, 9, 20, 0, 0, DateTimeKind.Utc) };
+            var messageHandler = new OidcComputeSuccessMessageHandler();
             var initializer = new ComputeCredential.Initializer("http://will.be.ignored", "http://will.be.ignored")
             {
                 Clock = clock,
@@ -75,12 +82,16 @@ namespace Google.Apis.Auth.Tests.OAuth2
             };
             var credential = new ComputeCredential(initializer);
 
-            var oidcToken = await credential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("audience"));
+            // The fake Oidc server returns valid tokens (expired in the real world for safty)
+            // but with a set audience that lets us know if the token was refreshed or not.
+            var oidcToken = await credential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("will.be.ignored"));
 
-            Assert.Equal("very_fake_access_token_1", await oidcToken.GetAccessTokenAsync());
+            var signedToken = SignedToken<Header, Payload>.FromSignedToken(await oidcToken.GetAccessTokenAsync());
+            Assert.Equal("https://first_call.test", signedToken.Payload.Audience);
             // Move the clock so that the token expires.
             clock.UtcNow = clock.UtcNow.AddHours(2);
-            Assert.Equal("very_fake_access_token_2", await oidcToken.GetAccessTokenAsync());
+            signedToken = SignedToken<Header, Payload>.FromSignedToken(await oidcToken.GetAccessTokenAsync());
+            Assert.Equal("https://subsequent_calls.test", signedToken.Payload.Audience);
             // Two calls, because the second time we tried to get the token, the first one had expired.
             Assert.Equal(2, messageHandler.Calls);
         }
@@ -88,8 +99,9 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task FetchesOidcToken_WithDefaultOptions()
         {
-            var clock = new MockClock { UtcNow = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
-            var messageHandler = new OidcTokenSuccessMessageHandler(clock);
+            // A little bit after the tokens returned from OidcTokenFakes were issued.
+            var clock = new MockClock { UtcNow = new DateTime(2020, 5, 21, 9, 20, 0, 0, DateTimeKind.Utc) };
+            var messageHandler = new OidcComputeSuccessMessageHandler();
             var initializer = new ComputeCredential.Initializer("http://will.be.ignored", "http://will.be.ignored")
             {
                 Clock = clock,
@@ -109,8 +121,9 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [InlineData(OidcTokenFormat.FullWithLicences, "another_audience", "?audience=another_audience&format=full&licenses=true")]
         public async Task FetchesOidcToken_WithOptions(OidcTokenFormat format, string targetAudience, string expectedQueryString)
         {
-            var clock = new MockClock { UtcNow = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
-            var messageHandler = new OidcTokenSuccessMessageHandler(clock);
+            // A little bit after the tokens returned from OidcTokenFakes were issued.
+            var clock = new MockClock { UtcNow = new DateTime(2020, 5, 21, 9, 20, 0, 0, DateTimeKind.Utc) };
+            var messageHandler = new OidcComputeSuccessMessageHandler();
             var initializer = new ComputeCredential.Initializer("http://will.be.ignored", "http://will.be.ignored")
             {
                 Clock = clock,
