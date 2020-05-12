@@ -84,7 +84,7 @@ namespace Google.Apis.Auth.OAuth2
             /// <summary>Constructs a new initializer using the given token URL
             /// and the default OIDC token URL.</summary>
             public Initializer(string tokenUrl)
-                : this(tokenUrl, GoogleAuthConsts.OidcTokenUrl) {}
+                : this(tokenUrl, GoogleAuthConsts.ComputeOidcTokenUrl) {}
 
             /// <summary>Constructs a new initializer using the given token URL
             /// and OIDC token URL.</summary>

@@ -15,6 +15,8 @@ limitations under the License.
 */
 
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Google.Apis.Auth
 {
@@ -24,8 +26,22 @@ namespace Google.Apis.Auth
     /// </summary>
     public class JsonWebSignature
     {
-        // TODO(peleyal): Implement some verify method:
-        // http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-08#section-7
+        /// <summary>
+        /// Verifies that the given token is a valid, not expired, signed token.
+        /// </summary>
+        /// <param name="signedJwt">The token to verify.</param>
+        /// <param name="options">The options to use for verification.
+        /// May be null in which case default options will be used.</param>
+        /// <param name="cancellationToken">The cancellation token for the operation.</param>
+        /// <returns>The payload contained by the token.</returns>
+        /// <exception cref="InvalidJwtException">If the token is invalid or expired.</exception>
+        public async static Task<Payload> VerifySignedTokenAsync(
+            string signedJwt, SignedTokenVerificationOptions options = null, CancellationToken cancellationToken = default)
+        {
+            var signedToken = SignedToken<Header, Payload>.FromSignedToken(signedJwt);
+            await SignedTokenVerification.VerifySignedTokenAsync(signedToken, options, cancellationToken).ConfigureAwait(false);
+            return signedToken.Payload;
+        }
 
         /// <summary>
         /// Header as specified in http://tools.ietf.org/html/draft-ietf-jose-json-web-signature-11#section-4.1.

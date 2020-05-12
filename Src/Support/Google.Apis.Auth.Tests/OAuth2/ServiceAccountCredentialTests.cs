@@ -1,5 +1,20 @@
-﻿using Google.Apis.Auth.OAuth2;
-using Google.Apis.Auth.OAuth2.Requests;
+﻿/*
+Copyright 2017 Google LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+using Google.Apis.Auth.OAuth2;
 using Google.Apis.Http;
 using Google.Apis.Json;
 using Google.Apis.Tests.Mocks;
@@ -8,9 +23,9 @@ using System.Linq;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using static Google.Apis.Auth.JsonWebSignature;
 
 namespace Google.Apis.Auth.Tests.OAuth2
 {
@@ -366,8 +381,9 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         [Fact]
         public async Task FetchesOidcToken()
         {
-            var clock = new MockClock { UtcNow = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
-            var messageHandler = new OidcTokenSuccessMessageHandler(clock);
+            // A little bit after the tokens returned from OidcTokenFakes were issued.
+            var clock = new MockClock { UtcNow = new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc) };
+            var messageHandler = new OidcTokenResponseSuccessMessageHandler();
             var initializer = new ServiceAccountCredential.Initializer("MyId", "http://will.be.ignored")
             {
                 Clock = clock,
@@ -376,12 +392,16 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             };
             var credential = new ServiceAccountCredential(initializer.FromPrivateKey(PrivateKey));
 
-            var oidcToken = await credential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("audience"));
+            // The fake Oidc server returns valid tokens (expired in the real world for safety)
+            // but with a set audience that lets us know if the token was refreshed or not.
+            var oidcToken = await credential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("will.be.ignored"));
 
-            Assert.Equal("very_fake_access_token_1", await oidcToken.GetAccessTokenAsync());
+            var signedToken = SignedToken<Header, Payload>.FromSignedToken(await oidcToken.GetAccessTokenAsync());
+            Assert.Equal("https://first_call.test", signedToken.Payload.Audience);
             // Move the clock some but not enough that the token expires.
             clock.UtcNow = clock.UtcNow.AddMinutes(20);
-            Assert.Equal("very_fake_access_token_1", await oidcToken.GetAccessTokenAsync());
+            signedToken = SignedToken<Header, Payload>.FromSignedToken(await oidcToken.GetAccessTokenAsync());
+            Assert.Equal("https://first_call.test", signedToken.Payload.Audience);
             // Only the first call should have resulted in a request. The second time the token hadn't expired.
             Assert.Equal(1, messageHandler.Calls);
         }
@@ -389,8 +409,9 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         [Fact]
         public async Task RefreshesOidcToken()
         {
-            var clock = new MockClock { UtcNow = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
-            var messageHandler = new OidcTokenSuccessMessageHandler(clock);
+            // A little bit after the tokens returned from OidcTokenFakes were issued.
+            var clock = new MockClock { UtcNow = new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc) };
+            var messageHandler = new OidcTokenResponseSuccessMessageHandler();
             var initializer = new ServiceAccountCredential.Initializer("MyId", "http://will.be.ignored")
             {
                 Clock = clock,
@@ -401,10 +422,12 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
 
             var oidcToken = await credential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("audience"));
 
-            Assert.Equal("very_fake_access_token_1", await oidcToken.GetAccessTokenAsync());
+            var signedToken = SignedToken<Header, Payload>.FromSignedToken(await oidcToken.GetAccessTokenAsync());
+            Assert.Equal("https://first_call.test", signedToken.Payload.Audience);
             // Move the clock so that the token expires.
             clock.UtcNow = clock.UtcNow.AddHours(2);
-            Assert.Equal("very_fake_access_token_2", await oidcToken.GetAccessTokenAsync());
+            signedToken = SignedToken<Header, Payload>.FromSignedToken(await oidcToken.GetAccessTokenAsync());
+            Assert.Equal("https://subsequent_calls.test", signedToken.Payload.Audience);
             // Two calls, because the second time we tried to get the token, the first one had expired.
             Assert.Equal(2, messageHandler.Calls);
         }
@@ -412,8 +435,9 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         [Fact]
         public async Task FetchesOidcToken_CorrectPayloadSent()
         {
-            var clock = new MockClock { UtcNow = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
-            var messageHandler = new OidcTokenSuccessMessageHandler(clock);
+            // A little bit after the tokens returned from OidcTokenFakes were issued.
+            var clock = new MockClock { UtcNow = new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc) };
+            var messageHandler = new OidcTokenResponseSuccessMessageHandler();
             var initializer = new ServiceAccountCredential.Initializer("MyId", "http://will.be.ignored")
             {
                 Clock = clock,
@@ -426,13 +450,13 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             {
                 Issuer = "MyId",
                 Subject = "MyId",
-                Audience = GoogleAuthConsts.OidcAuthorizationUrl,
+                Audience = GoogleAuthConsts.OidcTokenUrl,
                 IssuedAtTimeSeconds = (long)(clock.UtcNow - UnixEpoch).TotalSeconds,
                 ExpirationTimeSeconds = (long)(clock.UtcNow.Add(JwtLifetime) - UnixEpoch).TotalSeconds,
                 TargetAudience = "any_audience"
             };
             var serializedExpectedPayload = NewtonsoftJsonSerializer.Instance.Serialize(expectedPayload);
-            var urlSafeEncodedExpectedPayload = UrlSafeBase64Encode(serializedExpectedPayload);
+            var urlSafeEncodedExpectedPayload = TokenEncodingHelpers.UrlSafeBase64Encode(serializedExpectedPayload);
 
             var oidcToken = await credential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("any_audience"));
             await oidcToken.GetAccessTokenAsync();
@@ -445,10 +469,5 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
 
             Assert.Contains(urlSafeEncodedExpectedPayload, encodedPayload);
         }
-
-        private string UrlSafeBase64Encode(string serializedPayload) =>
-            Convert.ToBase64String(
-                Encoding.UTF8.GetBytes(serializedPayload))
-            .Replace("=", string.Empty).Replace('+', '-').Replace('/', '_');
     }
 }

@@ -29,6 +29,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
+using static Google.Apis.Auth.JsonWebSignature;
 using static Google.Apis.Auth.OAuth2.BearerToken;
 
 namespace Google.Apis.Auth.Tests.OAuth2
@@ -230,11 +231,11 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
             var parts = accessToken.Split(new[] {'.'});
             Assert.Equal(3, parts.Length);
 
-            var header = NewtonsoftJsonSerializer.Instance.Deserialize<JsonWebSignature.Header>(UrlSafeDecode64(parts[0]));
+            var header = NewtonsoftJsonSerializer.Instance.Deserialize<JsonWebSignature.Header>(TokenEncodingHelpers.Base64UrlToString(parts[0]));
             Assert.Equal("JWT", header.Type);
             Assert.Equal("RS256", header.Algorithm);
 
-            var payload = NewtonsoftJsonSerializer.Instance.Deserialize<JsonWebSignature.Payload>(UrlSafeDecode64(parts[1]));
+            var payload = NewtonsoftJsonSerializer.Instance.Deserialize<JsonWebSignature.Payload>(TokenEncodingHelpers.Base64UrlToString(parts[1]));
 
             Assert.Equal("CLIENT_EMAIL", payload.Issuer);
             Assert.Equal("CLIENT_EMAIL", payload.Subject);
@@ -262,8 +263,9 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
         [Fact]
         public async Task FromServiceAccountCredential_FetchesOicdToken()
         {
-            var clock = new MockClock { UtcNow = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
-            var messageHandler = new OidcTokenSuccessMessageHandler(clock);
+            // A little bit after the tokens returned from OidcTokenFakes were issued.
+            var clock = new MockClock { UtcNow = new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc) };
+            var messageHandler = new OidcTokenResponseSuccessMessageHandler();
             var initializer = new ServiceAccountCredential.Initializer("MyId", "http://will.be.ignored")
             {
                 Clock = clock,
@@ -273,16 +275,20 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
             var serviceAccountCredential = new ServiceAccountCredential(initializer.FromPrivateKey(ServiceAccountCredentialTests.PrivateKey));
             var googleCredential = GoogleCredential.FromServiceAccountCredential(serviceAccountCredential);
 
-            var oidcToken = await googleCredential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("audience"));
+            // The fake Oidc server returns valid tokens (expired in the real world for safty)
+            // but with a set audience that lets us know if the token was refreshed or not.
+            var oidcToken = await googleCredential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("will.be.ignored"));
 
-            Assert.Equal("very_fake_access_token_1", await oidcToken.GetAccessTokenAsync());
+            var signedToken = SignedToken<Header, Payload>.FromSignedToken(await oidcToken.GetAccessTokenAsync());
+            Assert.Equal("https://first_call.test", signedToken.Payload.Audience);
         }
 
         [Fact]
         public async Task FromComputeCredential_FetchesOidcToken()
         {
-            var clock = new MockClock { UtcNow = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
-            var messageHandler = new OidcTokenSuccessMessageHandler(clock);
+            // A little bit after the tokens returned from OidcTokenFakes were issued.
+            var clock = new MockClock { UtcNow = new DateTime(2020, 5, 21, 9, 20, 0, 0, DateTimeKind.Utc) };
+            var messageHandler = new OidcComputeSuccessMessageHandler();
             var initializer = new ComputeCredential.Initializer("http://will.be.ignored", "http://will.be.ignored")
             {
                 Clock = clock,
@@ -291,14 +297,12 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
             var computeCredential = new ComputeCredential(initializer);
             var googleCredential = GoogleCredential.FromComputeCredential(computeCredential);
 
-            var oidcToken = await googleCredential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("audience"));
+            // The fake Oidc server returns valid tokens (expired in the real world for safty)
+            // but with a set audience that lets us know if the token was refreshed or not.
+            var oidcToken = await googleCredential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("will.be.ignored"));
 
-            Assert.Equal("very_fake_access_token_1", await oidcToken.GetAccessTokenAsync());
-        }
-
-        private string UrlSafeDecode64(string urlSafeBase64)
-        {
-            return Encoding.UTF8.GetString(Convert.FromBase64String(urlSafeBase64));
+            var signedToken = SignedToken<Header, Payload>.FromSignedToken(await oidcToken.GetAccessTokenAsync());
+            Assert.Equal("https://first_call.test", signedToken.Payload.Audience);
         }
 
         private class FakeHandler : HttpMessageHandler

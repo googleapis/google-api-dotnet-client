@@ -209,7 +209,8 @@ namespace Google.Apis.Auth.OAuth2
 
             Logger.Debug("Request a new access token. Assertion data is: " + request.Assertion);
 
-            var newToken = await request.ExecuteAsync(HttpClient, TokenServerUrl, taskCancellationToken, Clock)
+            var newToken = await request
+                .ExecuteAsync(HttpClient, TokenServerUrl, taskCancellationToken, Clock, Logger)
                 .ConfigureAwait(false);
             Token = newToken;
             return true;
@@ -257,7 +258,9 @@ namespace Google.Apis.Auth.OAuth2
             {
                 Assertion = jwtForOidc
             };
-            caller.Token = await req.ExecuteAsync(HttpClient, TokenServerUrl, cancellationToken, Clock).ConfigureAwait(false);
+            caller.Token = await req
+                .ExecuteAsync(HttpClient, TokenServerUrl, cancellationToken, Clock, Logger)
+                .ConfigureAwait(false);
             return true;
         }
 
@@ -349,7 +352,7 @@ namespace Google.Apis.Auth.OAuth2
             {
                 Issuer = Id,
                 Subject = Id,
-                Audience = GoogleAuthConsts.OidcAuthorizationUrl,
+                Audience = GoogleAuthConsts.OidcTokenUrl,
                 IssuedAtTimeSeconds = (long)(issueUtc - UnixEpoch).TotalSeconds,
                 ExpirationTimeSeconds = (long)(expiryUtc - UnixEpoch).TotalSeconds,
                 TargetAudience = options.TargetAudience
@@ -368,11 +371,11 @@ namespace Google.Apis.Auth.OAuth2
             string serializedPayload = NewtonsoftJsonSerializer.Instance.Serialize(payload);
 
             var assertion = new StringBuilder();
-            assertion.Append(UrlSafeBase64Encode(serializedHeader))
+            assertion.Append(TokenEncodingHelpers.UrlSafeBase64Encode(serializedHeader))
                 .Append('.')
-                .Append(UrlSafeBase64Encode(serializedPayload));
+                .Append(TokenEncodingHelpers.UrlSafeBase64Encode(serializedPayload));
             var signature = CreateSignature(Encoding.ASCII.GetBytes(assertion.ToString()));
-            assertion.Append('.').Append(UrlSafeEncode(signature));
+            assertion.Append('.').Append(TokenEncodingHelpers.UrlSafeEncode(signature));
             return assertion.ToString();
         }
 
@@ -430,30 +433,6 @@ namespace Google.Apis.Auth.OAuth2
                 Subject = User,
                 Scope = String.Join(" ", Scopes)
             };
-        }
-
-        /// <summary>Encodes the provided UTF8 string into an URL safe base64 string.</summary>
-        /// <param name="value">Value to encode.</param>
-        /// <returns>The URL safe base64 string.</returns>
-        private string UrlSafeBase64Encode(string value)
-        {
-            return UrlSafeBase64Encode(Encoding.UTF8.GetBytes(value));
-        }
-
-        /// <summary>Encodes the byte array into an URL safe base64 string.</summary>
-        /// <param name="bytes">Byte array to encode.</param>
-        /// <returns>The URL safe base64 string.</returns>
-        private string UrlSafeBase64Encode(byte[] bytes)
-        {
-            return UrlSafeEncode(Convert.ToBase64String(bytes));
-        }
-
-        /// <summary>Encodes the base64 string into an URL safe string.</summary>
-        /// <param name="base64Value">The base64 string to make URL safe.</param>
-        /// <returns>The URL safe base64 string.</returns>
-        private string UrlSafeEncode(string base64Value)
-        {
-            return base64Value.Replace("=", String.Empty).Replace('+', '-').Replace('/', '_');
         }
     }
 }

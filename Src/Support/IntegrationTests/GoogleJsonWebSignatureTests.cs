@@ -18,12 +18,8 @@ using Google.Apis.Auth;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Auth.OAuth2.Requests;
-using Google.Apis.Util;
-using Google.Apis.Util.Store;
 using IntegrationTests.Utils;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -35,14 +31,6 @@ namespace IntegrationTests
 {
     public class GoogleJsonWebSignatureTests
     {
-        [Fact]
-        public async Task GetGoogleCerts()
-        {
-            // Verifies certs are downloaded and loaded into RSAs
-            var certs = await GoogleJsonWebSignature.GetGoogleCertsAsync(SystemClock.Default, false, null);
-            Assert.NotEmpty(certs);
-        }
-
         [Fact]
         public async Task GetAndValidateJwt()
         {

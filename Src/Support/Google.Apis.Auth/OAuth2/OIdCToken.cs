@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Util;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,6 +27,11 @@ namespace Google.Apis.Auth.OAuth2
     public sealed class OidcToken
     {
         private readonly TokenRefreshManager _refreshManager;
+
+        /// <summary>
+        /// The <see cref="TokenResponse"/> this OIDC token is built from.
+        /// </summary>
+        internal TokenResponse TokenResponse { get => _refreshManager.Token; }
 
         internal OidcToken(TokenRefreshManager refreshManager) =>
             _refreshManager = refreshManager.ThrowIfNull(nameof(refreshManager));

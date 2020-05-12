@@ -15,17 +15,12 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2;
-using Google.Apis.Json;
 using Google.Apis.Util;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
+using static Google.Apis.Auth.SignedTokenVerification;
 
 namespace Google.Apis.Auth
 {
@@ -34,22 +29,14 @@ namespace Google.Apis.Auth
     /// </summary>
     public class GoogleJsonWebSignature
     {
-
         internal const int MaxJwtLength = 10000;
-        internal readonly static TimeSpan CertCacheRefreshInterval = TimeSpan.FromHours(1);
-
-        // See http://oid-info.com/get/2.16.840.1.101.3.4.2.1
-        private const string Sha256Oid = "2.16.840.1.101.3.4.2.1";
-
         private const string SupportedJwtAlgorithm = "RS256";
 
-        private static readonly IEnumerable<string> ValidJwtIssuers = new[]
+        internal static readonly IEnumerable<string> ValidJwtIssuers = new[]
         {
             "https://accounts.google.com",
             "accounts.google.com"
         };
-
-        private static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         /// <summary>
         /// Validates a Google-issued Json Web Token (JWT).
@@ -88,6 +75,7 @@ namespace Google.Apis.Auth
                 ForceGoogleCertRefresh = other.ForceGoogleCertRefresh;
                 IssuedAtClockTolerance = other.IssuedAtClockTolerance;
                 ExpirationTimeClockTolerance = other.ExpirationTimeClockTolerance;
+                CertificateCache = other.CertificateCache;
             }
 
             /// <summary>
@@ -124,7 +112,41 @@ namespace Google.Apis.Auth
             /// </summary>
             public TimeSpan ExpirationTimeClockTolerance { get; set; } = TimeSpan.FromSeconds(0);
 
+            /// <summary>
+            /// CertificateCache for testing purposes.
+            /// If null, the default CertificateCache
+            /// <see cref="SignedTokenVerification.s_certificateCache"/> will
+            /// be used.
+            /// </summary>
+            internal CertificateCacheBase CertificateCache { get; set; }
+
             internal ValidationSettings Clone() => new ValidationSettings(this);
+
+            internal SignedTokenVerificationOptions ToVerificationOptions()
+            {
+                var options = new SignedTokenVerificationOptions
+                {
+                    // Google signed tokens must be signed with these certificates.
+                    CertificatesUrl = GoogleAuthConsts.JsonWebKeySetUrl,
+                    ForceCertificateRefresh = ForceGoogleCertRefresh,
+                    IssuedAtClockTolerance = IssuedAtClockTolerance,
+                    ExpiryClockTolerance = ExpirationTimeClockTolerance,
+                    CertificateCache = CertificateCache,
+                };
+                options.Clock = Clock ?? options.Clock;
+
+                foreach (string audience in Audience ?? Enumerable.Empty<string>())
+                {
+                    options.TrustedAudiences.Add(audience);
+                }
+                // These are the trusted issuers for Google signed tokens.
+                foreach (string issuer in ValidJwtIssuers)
+                {
+                    options.TrustedIssuers.Add(issuer);
+                }
+
+                return options;
+            }
         }
 
         /// <summary>
@@ -151,174 +173,47 @@ namespace Google.Apis.Auth
         /// </remarks>
         /// <param name="jwt">The JWT to validate.</param>
         /// <param name="validationSettings">Specifies how to carry out the validation.</param>
-        /// <returns></returns>
+        /// <returns>The payload of the verified token.</returns>
+        /// <exception cref="InvalidJwtException">If the token does not pass verification.</exception>
         public static Task<Payload> ValidateAsync(string jwt, ValidationSettings validationSettings) =>
-            ValidateInternalAsync(jwt, validationSettings, null, false);
+            ValidateInternalAsync(jwt, validationSettings);
 
         // internal for testing
-        internal static async Task<Payload> ValidateInternalAsync(string jwt, ValidationSettings validationSettings, string certsJson, bool ignoreCertCheck)
+        internal static async Task<Payload> ValidateInternalAsync(string jwt, ValidationSettings validationSettings)
         {
-            // Check arguments
-            jwt.ThrowIfNull(nameof(jwt));
-            jwt.ThrowIfNullOrEmpty(nameof(jwt));
             var settings = validationSettings.ThrowIfNull(nameof(validationSettings)).Clone();
-            var clock = settings.Clock ?? SystemClock.Default;
+            var verificationOptions = validationSettings.ToVerificationOptions();
+            var signedToken = SignedToken<Header, Payload>.FromSignedToken(jwt);
 
+            // Start general validation task ...
+            var generalValidationTask = SignedTokenVerification.VerifySignedTokenAsync(signedToken, verificationOptions, default);
+
+            // ... and do Google specific validation in the meantime.
+
+            // Google signed tokens must not exceed this length.
+            // It's not clear if there's an absolute size limit for all possible tokens,
+            // that's why this check is only here and not on SignedTokenVerification.
             if (jwt.Length > MaxJwtLength)
             {
                 throw new InvalidJwtException($"JWT exceeds maximum allowed length of {MaxJwtLength}");
             }
-            var parts = jwt.Split('.');
-            if (parts.Length != 3)
-            {
-                throw new InvalidJwtException($"JWT must consist of Header, Payload, and Signature");
-            }
-            
-            // Decode the three parts of the JWT: header.payload.signature
-            Header header = NewtonsoftJsonSerializer.Instance.Deserialize<Header>(Base64UrlToString(parts[0]));
-            Payload payload = NewtonsoftJsonSerializer.Instance.Deserialize<Payload>(Base64UrlToString(parts[1]));
-            byte[] signature = Base64UrlDecode(parts[2]);
-
-            // Verify algorithm in JWT
-            if (header.Algorithm != SupportedJwtAlgorithm)
+            // Google signed tokens are signed with RS256.
+            if (signedToken.Header.Algorithm != SupportedJwtAlgorithm)
             {
                 throw new InvalidJwtException($"JWT algorithm must be '{SupportedJwtAlgorithm}'");
             }
-
-            // Validate the JWT, using process defined at:
-            // https://developers.google.com/identity/protocols/OpenIDConnect#validatinganidtoken
-
-            // Step 1: Verify that the ID token is properly signed by the issuer (Google, in our case).
-            if (!ignoreCertCheck)
-            {
-                byte[] hash;
-                using (var hashAlg = SHA256.Create())
-                {
-                    hash = hashAlg.ComputeHash(Encoding.ASCII.GetBytes($"{parts[0]}.{parts[1]}"));
-                }
-                bool verifiedOk = false;
-                foreach (var googleCert in await GetGoogleCertsAsync(clock, settings.ForceGoogleCertRefresh, certsJson).ConfigureAwait(false))
-                {
-#if NET45
-                    verifiedOk = ((RSACryptoServiceProvider)googleCert).VerifyHash(hash, Sha256Oid, signature);
-#elif NETSTANDARD1_3 || NETSTANDARD2_0
-                    verifiedOk = googleCert.VerifyHash(hash, signature, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
-#else
-#error Unsupported platform
-#endif
-                    if (verifiedOk)
-                    {
-                        break;
-                    }
-                }
-                if (!verifiedOk)
-                {
-                    throw new InvalidJwtException("JWT invalid, unable to verify signature.");
-                }
-            }
-
-            // Step 2: Verify that the value of iss in the ID token is equal to https://accounts.google.com or accounts.google.com.
-            if (!ValidJwtIssuers.Contains(payload.Issuer))
-            {
-                var validList = string.Join(", ", ValidJwtIssuers.Select(x => $"'{x}'"));
-                throw new InvalidJwtException($"JWT issuer incorrect. Must be one of: {validList}");
-            }
-
-            // Step 3: Verify that the value of aud in the ID token is equal to your app’s client ID.
-            if (settings.Audience != null)
-            {
-                // Verify that all audiences in the JWT are trusted; i.e. in settings.Audience.
-                if (payload.AudienceAsList.Except(settings.Audience).Any())
-                {
-                    throw new InvalidJwtException("JWT contains untrusted 'aud' claim.");
-                }
-            }
-
-            // Step 4: Verify that the expiry time (exp) of the ID token has not passed.
-            // And the issued-at time (iat) *is* passed.
-            // Both checks are performed with tolerance for local clock skew.
-            if (payload.IssuedAtTimeSeconds == null || payload.ExpirationTimeSeconds == null)
-            {
-                throw new InvalidJwtException("JWT must contain 'iat' and 'exp' claims");
-            }
-            var nowSeconds = (clock.UtcNow - UnixEpoch).TotalSeconds;
-            if (nowSeconds + settings.IssuedAtClockTolerance.TotalSeconds < payload.IssuedAtTimeSeconds.Value)
-            {
-                throw new InvalidJwtException("JWT is not yet valid.");
-            }
-            if (nowSeconds - settings.ExpirationTimeClockTolerance.TotalSeconds > payload.ExpirationTimeSeconds.Value)
-            {
-                throw new InvalidJwtException("JWT has expired.");
-            }
-
-            // Step 5: If you passed a hd parameter in the request,
-            // verify that the ID token has a hd claim that matches your G Suite hosted domain.
-            if (settings.HostedDomain != null && payload.HostedDomain != settings.HostedDomain)
+            // Google signed tokens can contain a G Suite hosted domain claim.
+            if (settings.HostedDomain != null && signedToken.Payload.HostedDomain != settings.HostedDomain)
             {
                 throw new InvalidJwtException("JWT contains invalid 'hd' claim.");
             }
 
+            // ... finally wait for the general verifications to be done.
+            await generalValidationTask.ConfigureAwait(false);
+
             // All verification passed, return payload.
-            return payload;
+            return signedToken.Payload;
         }
-
-        private static string Base64UrlToString(string base64Url) => Encoding.UTF8.GetString(Base64UrlDecode(base64Url));
-
-        private static byte[] Base64UrlDecode(string base64Url)
-        {
-            var base64 = base64Url.Replace('-', '+').Replace('_', '/');
-            switch (base64.Length % 4)
-            {
-                case 2: base64 += "=="; break;
-                case 3: base64 += "="; break;
-            }
-            return Convert.FromBase64String(base64);
-        }
-
-        private static SemaphoreSlim _certCacheLock = new SemaphoreSlim(1);
-        private static DateTime _certCacheDownloadTime;
-        private static List<RSA> _certCache;
-
-        // internal for testing
-        internal static async Task<List<RSA>> GetGoogleCertsAsync(IClock clock, bool forceGoogleCertRefresh, string certsJson)
-        {
-            var now = clock.UtcNow;
-            await _certCacheLock.WaitAsync().ConfigureAwait(false);
-            try
-            {
-                if (forceGoogleCertRefresh || _certCache == null || (_certCacheDownloadTime + CertCacheRefreshInterval) < now)
-                {
-                    using (var httpClient = new HttpClient())
-                    {
-                        // certsJson used for unit tests
-                        if (certsJson == null)
-                        {
-                            certsJson = await httpClient.GetStringAsync(GoogleAuthConsts.JsonWebKeySetUrl).ConfigureAwait(false);
-                        }
-                    }
-                    _certCache = GetGoogleCertsFromJson(certsJson);
-                    _certCacheDownloadTime = now;
-                }
-                return _certCache;
-            }
-            finally
-            {
-                _certCacheLock.Release();
-            }
-        }
-
-        private static List<RSA> GetGoogleCertsFromJson(string json) =>
-            JToken.Parse(json)["keys"].AsEnumerable().Select(key =>
-                {
-                    var rsa = RSA.Create();
-                    rsa.ImportParameters(new RSAParameters
-                    {
-                        Modulus = Base64UrlDecode((string)key["n"]),
-                        Exponent = Base64UrlDecode((string)key["e"]),
-                    });
-                    return rsa;
-                })
-                .ToList();
 
         /// <summary>
         /// The header as specified in https://developers.google.com/accounts/docs/OAuth2ServiceAccount#formingheader.

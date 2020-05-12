@@ -14,13 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-
-using Google.Apis.Util;
-using System.Threading.Tasks;
-using System.Net.Http;
 using Google.Apis.Json;
 using Google.Apis.Logging;
+using Google.Apis.Util;
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Google.Apis.Auth.OAuth2.Responses
 {
@@ -30,6 +29,8 @@ namespace Google.Apis.Auth.OAuth2.Responses
     /// </summary>
     public class TokenResponse
     {
+        private static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
         // Internal for testing.
         // Refresh token 6 minutes before it expires.
         internal const int TokenRefreshTimeWindowSeconds = 60 * 6;
@@ -48,7 +49,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
 
         /// <summary>Gets or sets the lifetime in seconds of the access token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expires_in")]
-        public Nullable<long> ExpiresInSeconds { get; set; }
+        public long? ExpiresInSeconds { get; set; }
 
         /// <summary>
         /// Gets or sets the refresh token which can be used to obtain a new access token.
@@ -94,30 +95,26 @@ namespace Google.Apis.Auth.OAuth2.Responses
 
         // Note: ideally this would be called ShouldRefresh or similar.
         /// <summary>
-        /// Returns <c>true</c> if the token is expired or it's going expire soon.
+        /// Returns true if the token is expired or it's going to expire soon.
         /// </summary>
-        public bool IsExpired(IClock clock)
-        {
-            if (AccessToken == null || !ExpiresInSeconds.HasValue)
-            {
-                return true;
-            }
-
-            return IssuedUtc.AddSeconds(ExpiresInSeconds.Value - TokenRefreshTimeWindowSeconds) <= clock.UtcNow;
-        }
+        /// <remarks>If a token response doens't have at least one of <see cref="TokenResponse.AccessToken"/>
+        /// or <see cref="TokenResponse.IdToken"/> set then it's considered expired.
+        /// If <see cref="TokenResponse.ExpiresInSeconds"/> is null, the token is also considered expired. </remarks>
+        public bool IsExpired(IClock clock) =>
+            (AccessToken == null && IdToken == null) ||
+            !ExpiresInSeconds.HasValue ||
+            IssuedUtc.AddSeconds(ExpiresInSeconds.Value - TokenRefreshTimeWindowSeconds) <= clock.UtcNow;
 
         /// <summary>
-        /// Returns true if the token is missing, expired, or sufficiently close to expiry that it shouldn't be used.
+        /// Returns true if the token is expired or it's so close to expiring that it shouldn't be used.
         /// </summary>
-        internal bool IsEffectivelyExpired(IClock clock)
-        {
-            if (AccessToken == null || !ExpiresInSeconds.HasValue)
-            {
-                return true;
-            }
-
-            return IssuedUtc.AddSeconds(ExpiresInSeconds.Value - TokenHardExpiryTimeWindowSeconds) <= clock.UtcNow;
-        }
+        /// <remarks>If a token response doens't have at least one of <see cref="TokenResponse.AccessToken"/>
+        /// or <see cref="TokenResponse.IdToken"/> set then it's considered expired.
+        /// If <see cref="TokenResponse.ExpiresInSeconds"/> is null, the token is also considered expired. </remarks>
+        internal bool IsEffectivelyExpired(IClock clock) =>
+            (AccessToken == null && IdToken == null) ||
+            !ExpiresInSeconds.HasValue ||
+            IssuedUtc.AddSeconds(ExpiresInSeconds.Value - TokenHardExpiryTimeWindowSeconds) <= clock.UtcNow;
 
         /// <summary>
         /// Asynchronously parses a <see cref="TokenResponse"/> instance from the specified <see cref="HttpResponseMessage"/>.
@@ -131,7 +128,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
         /// <returns>
         /// A task containing the <see cref="TokenResponse"/> parsed form the response message.
         /// </returns>
-        public static async Task<TokenResponse> FromHttpResponseAsync(HttpResponseMessage response, Util.IClock clock, ILogger logger)
+        public static async Task<TokenResponse> FromHttpResponseAsync(HttpResponseMessage response, IClock clock, ILogger logger)
         {
             var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             var typeName = "";
@@ -144,10 +141,43 @@ namespace Google.Apis.Auth.OAuth2.Responses
                     throw new TokenResponseException(error, response.StatusCode);
                 }
 
-                // Gets the token and sets its issued time.
-                typeName = nameof(TokenResponse);
-                var newToken = NewtonsoftJsonSerializer.Instance.Deserialize<TokenResponse>(content);
+                TokenResponse newToken;
+                // GCE's metadata server identity endpoint doesn't return a TokenResponse but the raw
+                // id_token, so we build a TokenResponse from that.
+                if (response.RequestMessage?.RequestUri?.AbsoluteUri.StartsWith(GoogleAuthConsts.ComputeOidcTokenUrl) == true)
+                {
+                    newToken = new TokenResponse
+                    {
+                        IdToken = content
+                    };
+                }
+                else
+                {
+                    typeName = nameof(TokenResponse);
+                    newToken = NewtonsoftJsonSerializer.Instance.Deserialize<TokenResponse>(content);
+                }
+                // We make some modifications to the token before returning, to guarantee consistency
+                // for our code across endpoint usage.
+
+                // We should set issuance ourselves.
                 newToken.IssuedUtc = clock.UtcNow;
+                // If no access token was specified, then we're probably receiving
+                // and OIDC token for IAP. The IdToken is used for access in that case.
+                newToken.AccessToken ??= newToken.IdToken;
+
+                // If no expiry is specified, maybe the IdToken has it specified.
+                // We can try and get it from there.
+                if (newToken.ExpiresInSeconds is null && newToken.IdToken != null)
+                {
+                    // Unpack the IdToken.
+                    var idToken = SignedToken<JsonWebSignature.Header, JsonWebSignature.Payload>.FromSignedToken(newToken.IdToken);
+                    // If no expiry was specified in the ID token, there's nothing we can do.
+                    if (idToken.Payload.ExpirationTimeSeconds.HasValue)
+                    {
+                        var expiration = UnixEpoch.AddSeconds(idToken.Payload.ExpirationTimeSeconds.Value);
+                        newToken.ExpiresInSeconds = (long)(expiration - newToken.IssuedUtc).TotalSeconds;
+                    }
+                }
                 return newToken;
             }
             catch (Newtonsoft.Json.JsonException ex)
