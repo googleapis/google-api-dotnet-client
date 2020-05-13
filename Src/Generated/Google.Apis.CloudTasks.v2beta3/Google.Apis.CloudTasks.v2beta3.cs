@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta3
- *      <tr><th>API Rev<td>20200331 (1916)
+ *      <tr><th>API Rev<td>20200505 (1951)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tasks/'>
  *              https://cloud.google.com/tasks/</a>
@@ -2157,11 +2157,11 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         /// <summary>The HTTP method to use for the request. The default is POST.
         ///
         /// The app's request handler for the task's target URL must be able to handle HTTP requests with this
-        /// http_method, otherwise the task attempt will fail with error code 405 (Method Not Allowed). See [Writing a
-        /// push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-
-        /// handlers#writing_a_push_task_request_handler) and the documentation for the request handlers in the language
-        /// your app is written in e.g. [Python Request
-        /// Handler](https://cloud.google.com/appengine/docs/python/tools/webapp/requesthandlerclass).</summary>
+        /// http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push
+        /// task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-
+        /// handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How
+        /// Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-
+        /// handled).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
         public virtual string HttpMethod { get; set; } 
 
@@ -2275,9 +2275,15 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. NOTE: An unsatisfied condition will not allow
-        /// user access via current binding. Different bindings, including their conditions, are examined
-        /// independently.</summary>
+        /// <summary>The condition that is associated with this binding.
+        ///
+        /// If the condition evaluates to `true`, then this binding applies to the current request.
+        ///
+        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
+        /// different role binding might grant the same role to one or more of the members in this binding.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
@@ -2437,8 +2443,7 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
     /// <summary>Request message for `GetIamPolicy` method.</summary>
     public class GetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. This field is only
-        /// used by Cloud IAM.</summary>
+        /// <summary>OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual GetPolicyOptions Options { get; set; } 
 
@@ -2454,7 +2459,10 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
         ///
         /// Requests for policies with any conditional bindings must specify version 3. Policies without any conditional
-        /// bindings may specify any valid value or leave the field unset.</summary>
+        /// bindings may specify any valid value or leave the field unset.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
 
@@ -2691,15 +2699,17 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
     /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
     /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
     ///
-    /// Optionally, a `binding` can specify a `condition`, which is a logical expression that allows access to a
-    /// resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the
-    /// request, the resource, or both.
+    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
+    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
+    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
+    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
+    /// /resource-policies).
     ///
     /// **JSON example:**
     ///
     /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
     /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
     ///
@@ -2748,7 +2758,10 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         /// `1` policy, and all of the conditions in the version `3` policy are lost.
         ///
         /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.</summary>
+        /// leave the field unset.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -2944,7 +2957,7 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         /// <summary>The time between retries will double `max_doublings` times.
         ///
         /// A task's retry interval starts at min_backoff, then doubles `max_doublings` times, then increases linearly,
-        /// and finally retries retries at intervals of max_backoff up to max_attempts times.
+        /// and finally retries at intervals of max_backoff up to max_attempts times.
         ///
         /// For example, if min_backoff is 10s, max_backoff is 300s, and `max_doublings` is 3, then the a task will
         /// first be retried in 10s. The retry interval will double three times, and then increase linearly by 2^3 *

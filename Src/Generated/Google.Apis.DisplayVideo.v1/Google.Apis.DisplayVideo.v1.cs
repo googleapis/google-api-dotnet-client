@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/display-video/'>Display & Video 360 API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200416 (1932)
+ *      <tr><th>API Rev<td>20200512 (1958)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/display-video/'>
  *              https://developers.google.com/display-video/</a>
@@ -2217,7 +2217,7 @@ namespace Google.Apis.DisplayVideo.v1
                 ///
                 /// * All insertion orders under a campaign: `campaignId="1234"` * All `ENTITY_STATUS_ACTIVE` or
                 /// `ENTITY_STATUS_PAUSED` insertion orders under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE"
-                /// or entityStatus="ENTITY_STATUS_PAUSED")`
+                /// OR entityStatus="ENTITY_STATUS_PAUSED")`
                 ///
                 /// The length of this field should be no more than 500 characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -3822,7 +3822,7 @@ namespace Google.Apis.DisplayVideo.v1
                 ///
                 /// * All line items under an insertion order: `insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or
                 /// `ENTITY_STATUS_PAUSED` and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser:
-                /// `(entityStatus="ENTITY_STATUS_ACTIVE" or entityStatus="ENTITY_STATUS_PAUSED") AND
+                /// `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND
                 /// lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"`
                 ///
                 /// The length of this field should be no more than 500 characters.</summary>
@@ -7819,8 +7819,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Details for assigned app category targeting option. This will be populated in the details field of an
-    /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_APP_CATEGORY`.</summary>
+    /// <summary>Details for assigned app category targeting option. This will be populated in the app_category_details
+    /// field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_APP_CATEGORY`.</summary>
     public class AppCategoryAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The display name of the app category.</summary>
@@ -7842,7 +7842,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     /// <summary>Represents a targetable collection of apps. A collection lets you target dynamic groups of related apps
     /// that are maintained by the platform, for example `All Apps/Google Play/Games`. This will be populated in the
-    /// app_category field when targeting_type is `TARGETING_TYPE_APP_CATEGORY`.</summary>
+    /// app_category_details field when targeting_type is `TARGETING_TYPE_APP_CATEGORY`.</summary>
     public class AppCategoryTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The name of the app collection.</summary>
@@ -8290,7 +8290,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class BulkEditLineItemAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of assigned targeting options that have been successfully created.</summary>
+        /// <summary>The list of assigned targeting options that have been successfully created.
+        ///
+        /// This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdAssignedTargetingOptions")]
         public virtual System.Collections.Generic.IList<AssignedTargetingOption> CreatedAssignedTargetingOptions { get; set; } 
 
@@ -8300,7 +8302,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class BulkListLineItemAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of assigned targeting options.</summary>
+        /// <summary>The list of assigned targeting options.
+        ///
+        /// This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptions")]
         public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; } 
 
@@ -9442,8 +9446,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`.</summary>
     public class DigitalContentLabelTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. An enum for the content label brand safety tiers. Values from content-labels.txt. Must
-        /// be kept in sync with //contentads/bidder/proto/video_ratings.proto</summary>
+        /// <summary>Output only. An enum for the content label brand safety tiers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentRatingTier")]
         public virtual string ContentRatingTier { get; set; } 
 
@@ -9649,7 +9652,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     }    
 
     /// <summary>Represents a targetable exchange. This will be populated in the exchange_details field of a
-    /// TargetingOption when targeting_type is `TAREGTING_TYPE_EXCHANGE`.</summary>
+    /// TargetingOption when targeting_type is `TARGETING_TYPE_EXCHANGE`.</summary>
     public class ExchangeTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The type of exchange.</summary>
@@ -10147,6 +10150,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// currency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("budgetAmountMicros")]
         public virtual System.Nullable<long> BudgetAmountMicros { get; set; } 
+
+        /// <summary>The ID of the campaign budget linked to this insertion order budget segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignBudgetId")]
+        public virtual System.Nullable<long> CampaignBudgetId { get; set; } 
 
         /// <summary>Required. The start and end date settings of the budget segment. They are resolved relative to the
         /// parent advertiser's time zone.
@@ -10655,7 +10662,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListAdvertisersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of advertisers.</summary>
+        /// <summary>The list of advertisers.
+        ///
+        /// This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertisers")]
         public virtual System.Collections.Generic.IList<Advertiser> Advertisers { get; set; } 
 
@@ -10670,7 +10679,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListCampaignsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of campaigns.</summary>
+        /// <summary>The list of campaigns.
+        ///
+        /// This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaigns")]
         public virtual System.Collections.Generic.IList<Campaign> Campaigns { get; set; } 
 
@@ -10685,7 +10696,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListChannelsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of channels.</summary>
+        /// <summary>The list of channels.
+        ///
+        /// This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channels")]
         public virtual System.Collections.Generic.IList<Channel> Channels { get; set; } 
 
@@ -10700,7 +10713,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListCombinedAudiencesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of combined audiences.</summary>
+        /// <summary>The list of combined audiences.
+        ///
+        /// This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("combinedAudiences")]
         public virtual System.Collections.Generic.IList<CombinedAudience> CombinedAudiences { get; set; } 
 
@@ -10715,7 +10730,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListCreativesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of creatives.</summary>
+        /// <summary>The list of creatives.
+        ///
+        /// This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatives")]
         public virtual System.Collections.Generic.IList<Creative> Creatives { get; set; } 
 
@@ -10731,7 +10748,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListCustomListsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of custom lists.</summary>
+        /// <summary>The list of custom lists.
+        ///
+        /// This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customLists")]
         public virtual System.Collections.Generic.IList<CustomList> CustomLists { get; set; } 
 
@@ -10746,7 +10765,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListFirstAndThirdPartyAudiencesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of first and third party audiences.</summary>
+        /// <summary>The list of first and third party audiences. Audience size properties will not be included.
+        ///
+        /// This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstAndThirdPartyAudiences")]
         public virtual System.Collections.Generic.IList<FirstAndThirdPartyAudience> FirstAndThirdPartyAudiences { get; set; } 
 
@@ -10761,7 +10782,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListGoogleAudiencesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of Google audiences.</summary>
+        /// <summary>The list of Google audiences.
+        ///
+        /// This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleAudiences")]
         public virtual System.Collections.Generic.IList<GoogleAudience> GoogleAudiences { get; set; } 
 
@@ -10776,7 +10799,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListInsertionOrdersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of insertion orders.</summary>
+        /// <summary>The list of insertion orders.
+        ///
+        /// This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertionOrders")]
         public virtual System.Collections.Generic.IList<InsertionOrder> InsertionOrders { get; set; } 
 
@@ -10792,7 +10817,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Response message for InventorySourceGroupService.ListInventorySourceGroups.</summary>
     public class ListInventorySourceGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of inventory source groups.</summary>
+        /// <summary>The list of inventory source groups.
+        ///
+        /// This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceGroups")]
         public virtual System.Collections.Generic.IList<InventorySourceGroup> InventorySourceGroups { get; set; } 
 
@@ -10807,7 +10834,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListInventorySourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of inventory sources.</summary>
+        /// <summary>The list of inventory sources.
+        ///
+        /// This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySources")]
         public virtual System.Collections.Generic.IList<InventorySource> InventorySources { get; set; } 
 
@@ -10823,7 +10852,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Response message for ListLineItemAssignedTargetingOptions.</summary>
     public class ListLineItemAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of assigned targeting options.</summary>
+        /// <summary>The list of assigned targeting options.
+        ///
+        /// This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptions")]
         public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; } 
 
@@ -10839,7 +10870,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListLineItemsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of line items.</summary>
+        /// <summary>The list of line items.
+        ///
+        /// This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
         public virtual System.Collections.Generic.IList<LineItem> LineItems { get; set; } 
 
@@ -10854,7 +10887,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListLocationListsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of location lists.</summary>
+        /// <summary>The list of location lists.
+        ///
+        /// This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationLists")]
         public virtual System.Collections.Generic.IList<LocationList> LocationLists { get; set; } 
 
@@ -10872,7 +10907,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Response message for NegativeKeywordListService.ListNegativeKeywordLists.</summary>
     public class ListNegativeKeywordListsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of negative keyword lists.</summary>
+        /// <summary>The list of negative keyword lists.
+        ///
+        /// This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeKeywordLists")]
         public virtual System.Collections.Generic.IList<NegativeKeywordList> NegativeKeywordLists { get; set; } 
 
@@ -10895,7 +10932,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>The list of targeting options.</summary>
+        /// <summary>The list of targeting options.
+        ///
+        /// This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptions")]
         public virtual System.Collections.Generic.IList<TargetingOption> TargetingOptions { get; set; } 
 
@@ -11132,7 +11171,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     }    
 
     /// <summary>Represents a targetable operating system. This will be populated in the operating_system_details field
-    /// of a TargetingOption when targeting_type is `TAREGTING_TYPE_OPERATING_SYSTEM`.</summary>
+    /// of a TargetingOption when targeting_type is `TARGETING_TYPE_OPERATING_SYSTEM`.</summary>
     public class OperatingSystemTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The display name of the operating system.</summary>
@@ -11639,7 +11678,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     }    
 
     /// <summary>Represents a targetable sub-exchange. This will be populated in the sub_exchange_details field of a
-    /// TargetingOption when targeting_type is `TAREGTING_TYPE_SUB_EXCHANGE`.</summary>
+    /// TargetingOption when targeting_type is `TARGETING_TYPE_SUB_EXCHANGE`.</summary>
     public class SubExchangeTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The display name of the sub-exchange.</summary>
@@ -12011,8 +12050,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Assigned viewability targeting option details. This will be populated in the details field of an
-    /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_VIEWABILITY`.</summary>
+    /// <summary>Assigned viewability targeting option details. This will be populated in the viewability_details field
+    /// of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_VIEWABILITY`.</summary>
     public class ViewabilityAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_VIEWABILITY` (e.g.,
@@ -12028,8 +12067,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a targetable viewability. This will be populated in the details field of a TargetingOption
-    /// when targeting_type is `TARGETING_TYPE_VIEWABILITY`.</summary>
+    /// <summary>Represents a targetable viewability. This will be populated in the viewability_details field of a
+    /// TargetingOption when targeting_type is `TARGETING_TYPE_VIEWABILITY`.</summary>
     public class ViewabilityTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The predicted viewability percentage.</summary>

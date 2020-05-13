@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/vault'>G Suite Vault API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200409 (1925)
+ *      <tr><th>API Rev<td>20200501 (1947)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/vault'>
  *              https://developers.google.com/vault</a>
@@ -1633,7 +1633,7 @@ namespace Google.Apis.Vault.v1
 
             /// <summary>Creates a saved query.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="matterId">The matter id of the parent matter for which the saved query is to be created.</param>
+            /// <param name="matterId">The matter ID of the parent matter for which the saved query is to be created.</param>
             public virtual CreateRequest Create(Google.Apis.Vault.v1.Data.SavedQuery body, string matterId)
             {
                 return new CreateRequest(service, body, matterId);
@@ -1652,7 +1652,7 @@ namespace Google.Apis.Vault.v1
                 }
 
 
-                /// <summary>The matter id of the parent matter for which the saved query is to be created.</summary>
+                /// <summary>The matter ID of the parent matter for which the saved query is to be created.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
 
@@ -1700,9 +1700,9 @@ namespace Google.Apis.Vault.v1
             }
 
             /// <summary>Deletes a saved query by Id.</summary>
-            /// <param name="matterId">The matter id of the parent matter for which the saved query is to be
+            /// <param name="matterId">The matter ID of the parent matter for which the saved query is to be
             /// deleted.</param>
-            /// <param name="savedQueryId">Id of the saved query to be deleted.</param>
+            /// <param name="savedQueryId">ID of the saved query to be deleted.</param>
             public virtual DeleteRequest Delete(string matterId, string savedQueryId)
             {
                 return new DeleteRequest(service, matterId, savedQueryId);
@@ -1721,11 +1721,11 @@ namespace Google.Apis.Vault.v1
                 }
 
 
-                /// <summary>The matter id of the parent matter for which the saved query is to be deleted.</summary>
+                /// <summary>The matter ID of the parent matter for which the saved query is to be deleted.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
 
-                /// <summary>Id of the saved query to be deleted.</summary>
+                /// <summary>ID of the saved query to be deleted.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("savedQueryId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SavedQueryId { get; private set; }
 
@@ -1776,9 +1776,9 @@ namespace Google.Apis.Vault.v1
             }
 
             /// <summary>Retrieves a saved query by Id.</summary>
-            /// <param name="matterId">The matter id of the parent matter for which the saved query is to be
+            /// <param name="matterId">The matter ID of the parent matter for which the saved query is to be
             /// retrieved.</param>
-            /// <param name="savedQueryId">Id of the saved query to be retrieved.</param>
+            /// <param name="savedQueryId">ID of the saved query to be retrieved.</param>
             public virtual GetRequest Get(string matterId, string savedQueryId)
             {
                 return new GetRequest(service, matterId, savedQueryId);
@@ -1797,11 +1797,11 @@ namespace Google.Apis.Vault.v1
                 }
 
 
-                /// <summary>The matter id of the parent matter for which the saved query is to be retrieved.</summary>
+                /// <summary>The matter ID of the parent matter for which the saved query is to be retrieved.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
 
-                /// <summary>Id of the saved query to be retrieved.</summary>
+                /// <summary>ID of the saved query to be retrieved.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("savedQueryId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SavedQueryId { get; private set; }
 
@@ -1853,7 +1853,7 @@ namespace Google.Apis.Vault.v1
 
             /// <summary>Lists saved queries within a matter. An empty page token in ListSavedQueriesResponse denotes no
             /// more saved queries to list.</summary>
-            /// <param name="matterId">The matter id of the parent matter for which the saved queries are to be
+            /// <param name="matterId">The matter ID of the parent matter for which the saved queries are to be
             /// retrieved.</param>
             public virtual ListRequest List(string matterId)
             {
@@ -1873,7 +1873,7 @@ namespace Google.Apis.Vault.v1
                 }
 
 
-                /// <summary>The matter id of the parent matter for which the saved queries are to be
+                /// <summary>The matter ID of the parent matter for which the saved queries are to be
                 /// retrieved.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
@@ -2606,7 +2606,7 @@ namespace Google.Apis.Vault.v1
         }
 
         /// <summary>Updates the specified matter. This updates only the name and description of the matter, identified
-        /// by matter id. Changes to any other fields are ignored. Returns the default view of the matter.</summary>
+        /// by matter ID. Changes to any other fields are ignored. Returns the default view of the matter.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="matterId">The matter ID.</param>
         public virtual UpdateRequest Update(Google.Apis.Vault.v1.Data.Matter body, string matterId)
@@ -2615,7 +2615,7 @@ namespace Google.Apis.Vault.v1
         }
 
         /// <summary>Updates the specified matter. This updates only the name and description of the matter, identified
-        /// by matter id. Changes to any other fields are ignored. Returns the default view of the matter.</summary>
+        /// by matter ID. Changes to any other fields are ignored. Returns the default view of the matter.</summary>
         public class UpdateRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Matter>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -2790,7 +2790,7 @@ namespace Google.Apis.Vault.v1.Data
     /// <summary>Add a list of accounts to a hold.</summary>
     public class AddHeldAccountsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Account ids to identify which accounts to add. Only account_ids or only emails should be specified,
+        /// <summary>Account IDs to identify which accounts to add. Only account_ids or only emails should be specified,
         /// but not both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountIds")]
         public virtual System.Collections.Generic.IList<string> AccountIds { get; set; } 
@@ -2858,8 +2858,8 @@ namespace Google.Apis.Vault.v1.Data
     /// <summary>An export file on cloud storage</summary>
     public class CloudStorageFile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The cloud storage bucket name of this export file. Can be used in cloud storage JSON/XML
-        /// API.</summary>
+        /// <summary>The cloud storage bucket name of this export file. Can be used in cloud storage JSON/XML API, but
+        /// not to list the bucket contents. Instead, you can get individual export files by object name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
         public virtual string BucketName { get; set; } 
 
@@ -3376,7 +3376,7 @@ namespace Google.Apis.Vault.v1.Data
     /// its corresponding MatterPermission resources cease to exist.</summary>
     public class MatterPermission : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The account id, as provided by Admin SDK.</summary>
+        /// <summary>The account ID, as provided by Admin SDK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; } 
 
@@ -3479,7 +3479,7 @@ namespace Google.Apis.Vault.v1.Data
     /// <summary>Remove a list of accounts from a hold.</summary>
     public class RemoveHeldAccountsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Account ids to identify HeldAccounts to remove.</summary>
+        /// <summary>Account IDs to identify HeldAccounts to remove.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountIds")]
         public virtual System.Collections.Generic.IList<string> AccountIds { get; set; } 
 
@@ -3538,7 +3538,7 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Output only. The matter id of the associated matter. The server does not look at this field during
+        /// <summary>Output only. The matter ID of the associated matter. The server does not look at this field during
         /// create and always uses matter id in the URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matterId")]
         public virtual string MatterId { get; set; } 
@@ -3558,7 +3558,7 @@ namespace Google.Apis.Vault.v1.Data
     /// <summary>Shared drives to search</summary>
     public class SharedDriveInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of Shared drive ids, as provided by Drive API.</summary>
+        /// <summary>List of Shared drive IDs, as provided by Drive API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharedDriveIds")]
         public virtual System.Collections.Generic.IList<string> SharedDriveIds { get; set; } 
 
@@ -3595,7 +3595,7 @@ namespace Google.Apis.Vault.v1.Data
     /// <summary>Team Drives to search</summary>
     public class TeamDriveInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of Team Drive ids, as provided by Drive API.</summary>
+        /// <summary>List of Team Drive IDs, as provided by Drive API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDriveIds")]
         public virtual System.Collections.Generic.IList<string> TeamDriveIds { get; set; } 
 

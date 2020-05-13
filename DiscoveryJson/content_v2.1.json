@@ -15,7 +15,7 @@
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.", 
  "discoveryVersion": "v1", 
  "documentationLink": "https://developers.google.com/shopping-content", 
- "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/r4shRQvnftmk9oKEFkO1vikXImo\"", 
+ "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/7c3KYKLrlwx3Kl7VS3SQ1eP9osM\"", 
  "icons": {
   "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png", 
   "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -103,14 +103,14 @@
        "type": "string"
       }, 
       "merchantId": {
-       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.", 
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account.", 
        "format": "uint64", 
        "location": "path", 
        "required": true, 
        "type": "string"
       }, 
       "overwrite": {
-       "description": "Only available to selected merchants. When set to True, this flag removes any existing claim on the requested website by another account and replaces it with a claim from this account.", 
+       "description": "Only available to selected merchants. When set to `True`, this flag removes any existing claim on the requested website by another account and replaces it with a claim from this account.", 
        "location": "query", 
        "type": "boolean"
       }
@@ -190,7 +190,7 @@
        "type": "string"
       }, 
       "merchantId": {
-       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.", 
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account.", 
        "format": "uint64", 
        "location": "path", 
        "required": true, 
@@ -249,7 +249,7 @@
        "type": "string"
       }, 
       "merchantId": {
-       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.", 
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account.", 
        "format": "uint64", 
        "location": "path", 
        "required": true, 
@@ -325,7 +325,7 @@
        "type": "integer"
       }, 
       "merchantId": {
-       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.", 
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account.", 
        "format": "uint64", 
        "location": "path", 
        "required": true, 
@@ -362,7 +362,7 @@
        "type": "string"
       }, 
       "merchantId": {
-       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.", 
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account.", 
        "format": "uint64", 
        "location": "path", 
        "required": true, 
@@ -422,7 +422,7 @@
        "type": "string"
       }, 
       "merchantId": {
-       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.", 
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account.", 
        "format": "uint64", 
        "location": "path", 
        "required": true, 
@@ -514,7 +514,7 @@
        "type": "string"
       }, 
       "merchantId": {
-       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.", 
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account.", 
        "format": "uint64", 
        "location": "path", 
        "required": true, 
@@ -581,7 +581,7 @@
        "type": "string"
       }, 
       "merchantId": {
-       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.", 
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account.", 
        "format": "uint64", 
        "location": "path", 
        "required": true, 
@@ -940,7 +940,7 @@
        "type": "string"
       }, 
       "merchantId": {
-       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.", 
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account.", 
        "format": "uint64", 
        "location": "path", 
        "required": true, 
@@ -972,7 +972,7 @@
        "type": "string"
       }, 
       "merchantId": {
-       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.", 
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account.", 
        "format": "uint64", 
        "location": "path", 
        "required": true, 
@@ -1058,7 +1058,7 @@
        "type": "string"
       }, 
       "merchantId": {
-       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.", 
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account.", 
        "format": "uint64", 
        "location": "path", 
        "required": true, 
@@ -1097,7 +1097,7 @@
        "type": "string"
       }, 
       "merchantId": {
-       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.", 
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account.", 
        "format": "uint64", 
        "location": "path", 
        "required": true, 
@@ -1157,7 +1157,7 @@
        "type": "string"
       }, 
       "merchantId": {
-       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.", 
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account.", 
        "format": "uint64", 
        "location": "path", 
        "required": true, 
@@ -1196,7 +1196,7 @@
        "type": "string"
       }, 
       "merchantId": {
-       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.", 
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account.", 
        "format": "uint64", 
        "location": "path", 
        "required": true, 
@@ -1239,7 +1239,7 @@
        "type": "string"
       }, 
       "merchantId": {
-       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.", 
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account.", 
        "format": "uint64", 
        "location": "path", 
        "required": true, 
@@ -1349,7 +1349,7 @@
      ]
     }, 
     "createrefundinvoice": {
-     "description": "Creates a refund invoice for one or more shipment groups, and triggers a refund for orderinvoice enabled orders. This can only be used for line items that have previously been charged using createChargeInvoice. All amounts (except for the summary) are incremental with respect to the previous invoice.", 
+     "description": "Creates a refund invoice for one or more shipment groups, and triggers a refund for orderinvoice enabled orders. This can only be used for line items that have previously been charged using `createChargeInvoice`. All amounts (except for the summary) are incremental with respect to the previous invoice.", 
      "httpMethod": "POST", 
      "id": "content.orderinvoices.createrefundinvoice", 
      "parameterOrder": [
@@ -1491,6 +1491,40 @@
   }, 
   "orderreturns": {
    "methods": {
+    "acknowledge": {
+     "description": "Acks an order return in your Merchant Center account.", 
+     "httpMethod": "POST", 
+     "id": "content.orderreturns.acknowledge", 
+     "parameterOrder": [
+      "merchantId", 
+      "returnId"
+     ], 
+     "parameters": {
+      "merchantId": {
+       "description": "The ID of the account that manages the order. This cannot be a multi-client account.", 
+       "format": "uint64", 
+       "location": "path", 
+       "required": true, 
+       "type": "string"
+      }, 
+      "returnId": {
+       "description": "The ID of the return.", 
+       "location": "path", 
+       "required": true, 
+       "type": "string"
+      }
+     }, 
+     "path": "{merchantId}/orderreturns/{returnId}/acknowledge", 
+     "request": {
+      "$ref": "OrderreturnsAcknowledgeRequest"
+     }, 
+     "response": {
+      "$ref": "OrderreturnsAcknowledgeResponse"
+     }, 
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    }, 
     "get": {
      "description": "Retrieves an order return from your Merchant Center account.", 
      "httpMethod": "GET", 
@@ -1530,6 +1564,11 @@
       "merchantId"
      ], 
      "parameters": {
+      "acknowledged": {
+       "description": "Obtains order returns that match the acknowledgement status. When set to true, obtains order returns that have been acknowledged. When false, obtains order returns that have not been acknowledged. When not provided, obtains order returns regardless of their acknowledgement status.\nWe recommend using this filter set to `false`, in conjunction with the `acknowledge` call, such that only un-acknowledged order returns are returned.", 
+       "location": "query", 
+       "type": "boolean"
+      }, 
       "createdEndDate": {
        "description": "Obtains order returns created before this date (inclusively), in ISO 8601 format.", 
        "location": "query", 
@@ -1538,6 +1577,12 @@
       "createdStartDate": {
        "description": "Obtains order returns created after this date (inclusively), in ISO 8601 format.", 
        "location": "query", 
+       "type": "string"
+      }, 
+      "googleOrderIds": {
+       "description": "Obtains order returns with the specified order ids. If this parameter is provided, createdStartDate, createdEndDate, shipmentType, shipmentStatus, shipmentState and acknowledged parameters must be not set.\nNote: if googleOrderId and shipmentTrackingNumber parameters are provided, the obtained results will include all order returns that either match the specified order id or the specified tracking number.", 
+       "location": "query", 
+       "repeated": true, 
        "type": "string"
       }, 
       "maxResults": {
@@ -1570,11 +1615,101 @@
        "description": "The token returned by the previous request.", 
        "location": "query", 
        "type": "string"
+      }, 
+      "shipmentStates": {
+       "description": "Obtains order returns that match any shipment state provided in this parameter. When this parameter is not provided, order returns are obtained regardless of their shipment states.", 
+       "enum": [
+        "completed", 
+        "new", 
+        "shipped", 
+        "undeliverable"
+       ], 
+       "enumDescriptions": [
+        "", 
+        "", 
+        "", 
+        ""
+       ], 
+       "location": "query", 
+       "repeated": true, 
+       "type": "string"
+      }, 
+      "shipmentStatus": {
+       "description": "Obtains order returns that match any shipment status provided in this parameter. When this parameter is not provided, order returns are obtained regardless of their shipment statuses.", 
+       "enum": [
+        "inProgress", 
+        "new", 
+        "processed"
+       ], 
+       "enumDescriptions": [
+        "", 
+        "", 
+        ""
+       ], 
+       "location": "query", 
+       "repeated": true, 
+       "type": "string"
+      }, 
+      "shipmentTrackingNumbers": {
+       "description": "Obtains order returns with the specified tracking numbers. If this parameter is provided, createdStartDate, createdEndDate, shipmentType, shipmentStatus, shipmentState and acknowledged parameters must be not set.\nNote: if googleOrderId and shipmentTrackingNumber parameters are provided, the obtained results will include all order returns that either match the specified order id or the specified tracking number.", 
+       "location": "query", 
+       "repeated": true, 
+       "type": "string"
+      }, 
+      "shipmentTypes": {
+       "description": "Obtains order returns that match any shipment type provided in this parameter. When this parameter is not provided, order returns are obtained regardless of their shipment types.", 
+       "enum": [
+        "byMail", 
+        "contactCustomerSupport", 
+        "returnless"
+       ], 
+       "enumDescriptions": [
+        "", 
+        "", 
+        ""
+       ], 
+       "location": "query", 
+       "repeated": true, 
+       "type": "string"
       }
      }, 
      "path": "{merchantId}/orderreturns", 
      "response": {
       "$ref": "OrderreturnsListResponse"
+     }, 
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    }, 
+    "process": {
+     "description": "Processes return in your Merchant Center account.", 
+     "httpMethod": "POST", 
+     "id": "content.orderreturns.process", 
+     "parameterOrder": [
+      "merchantId", 
+      "returnId"
+     ], 
+     "parameters": {
+      "merchantId": {
+       "description": "The ID of the account that manages the order. This cannot be a multi-client account.", 
+       "format": "uint64", 
+       "location": "path", 
+       "required": true, 
+       "type": "string"
+      }, 
+      "returnId": {
+       "description": "The ID of the return.", 
+       "location": "path", 
+       "required": true, 
+       "type": "string"
+      }
+     }, 
+     "path": "{merchantId}/orderreturns/{returnId}/process", 
+     "request": {
+      "$ref": "OrderreturnsProcessRequest"
+     }, 
+     "response": {
+      "$ref": "OrderreturnsProcessResponse"
      }, 
      "scopes": [
       "https://www.googleapis.com/auth/content"
@@ -1619,7 +1754,7 @@
      ]
     }, 
     "advancetestorder": {
-     "description": "Sandbox only. Moves a test order from state \"inProgress\" to state \"pendingShipment\".", 
+     "description": "Sandbox only. Moves a test order from state \"`inProgress`\" to state \"`pendingShipment`\".", 
      "httpMethod": "POST", 
      "id": "content.orders.advancetestorder", 
      "parameterOrder": [
@@ -1884,7 +2019,7 @@
      ], 
      "parameters": {
       "country": {
-       "description": "The country of the template to retrieve. Defaults to US.", 
+       "description": "The country of the template to retrieve. Defaults to `US`.", 
        "location": "query", 
        "type": "string"
       }, 
@@ -1967,7 +2102,7 @@
      ], 
      "parameters": {
       "acknowledged": {
-       "description": "Obtains orders that match the acknowledgement status. When set to true, obtains orders that have been acknowledged. When false, obtains orders that have not been acknowledged.\nWe recommend using this filter set to false, in conjunction with the acknowledge call, such that only un-acknowledged orders are returned.", 
+       "description": "Obtains orders that match the acknowledgement status. When set to true, obtains orders that have been acknowledged. When false, obtains orders that have not been acknowledged.\nWe recommend using this filter set to `false`, in conjunction with the `acknowledge` call, such that only un-acknowledged orders are returned.", 
        "location": "query", 
        "type": "boolean"
       }, 
@@ -2005,7 +2140,7 @@
        "type": "string"
       }, 
       "statuses": {
-       "description": "Obtains orders that match any of the specified statuses. Please note that active is a shortcut for pendingShipment and partiallyShipped, and completed is a shortcut for shipped, partiallyDelivered, delivered, partiallyReturned, returned, and canceled.", 
+       "description": "Obtains orders that match any of the specified statuses. Please note that `active` is a shortcut for `pendingShipment` and `partiallyShipped`, and `completed` is a shortcut for `shipped`, `partiallyDelivered`, `delivered`, `partiallyReturned`, `returned`, and `canceled`.", 
        "enum": [
         "active", 
         "canceled", 
@@ -3313,7 +3448,7 @@
        "type": "string"
       }, 
       "merchantId": {
-       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.", 
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account.", 
        "format": "uint64", 
        "location": "path", 
        "required": true, 
@@ -3452,7 +3587,7 @@
        "type": "string"
       }, 
       "merchantId": {
-       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.", 
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account.", 
        "format": "uint64", 
        "location": "path", 
        "required": true, 
@@ -3473,7 +3608,7 @@
    }
   }
  }, 
- "revision": "20200407", 
+ "revision": "20200508", 
  "rootUrl": "https://www.googleapis.com/", 
  "schemas": {
   "Account": {
@@ -3629,6 +3764,10 @@
   "AccountGoogleMyBusinessLink": {
    "id": "AccountGoogleMyBusinessLink", 
    "properties": {
+    "gmbAccountId": {
+     "description": "The ID of the GMB account. If this is provided, then `gmbEmail` is ignored. The value of this field should match the `accountId` used by the GMB API.", 
+     "type": "string"
+    }, 
     "gmbEmail": {
      "description": "The GMB email address of which a specific account within a GMB account. A sample account within a GMB account could be a business account with set of locations, managed under the GMB account.", 
      "type": "string"
@@ -5076,7 +5215,7 @@
    "id": "GmbAccounts", 
    "properties": {
     "accountId": {
-     "description": "The ID of the account.", 
+     "description": "The ID of the Merchant Center account.", 
      "format": "uint64", 
      "type": "string"
     }, 
@@ -5404,7 +5543,7 @@
    "id": "LiasettingsCustomBatchRequestEntry", 
    "properties": {
     "accountId": {
-     "description": "The ID of the account for which to get/update account shipping settings.", 
+     "description": "The ID of the account for which to get/update account LIA settings.", 
      "format": "uint64", 
      "type": "string"
     }, 
@@ -5511,7 +5650,7 @@
    "id": "LiasettingsGetAccessibleGmbAccountsResponse", 
    "properties": {
     "accountId": {
-     "description": "The ID of the account.", 
+     "description": "The ID of the Merchant Center account.", 
      "format": "uint64", 
      "type": "string"
     }, 
@@ -5834,6 +5973,10 @@
      }, 
      "type": "array"
     }, 
+    "returnPricingInfo": {
+     "$ref": "ReturnPricingInfo", 
+     "description": "Information about shipping costs."
+    }, 
     "returnShipments": {
      "description": "Shipments of the return.", 
      "items": {
@@ -5855,6 +5998,10 @@
      "description": "Product level item ID. If the returned items are of the same product, they will have the same ID.", 
      "type": "string"
     }, 
+    "merchantRejectionReason": {
+     "$ref": "MerchantRejectionReason", 
+     "description": "The reason that the merchant chose to reject an item return."
+    }, 
     "merchantReturnReason": {
      "$ref": "RefundReason", 
      "description": "The reason that merchant chooses to accept a return item."
@@ -5863,6 +6010,14 @@
      "$ref": "OrderLineItemProduct", 
      "description": "Product data from the time of the order placement."
     }, 
+    "refundableAmount": {
+     "$ref": "MonetaryAmount", 
+     "description": "Maximum amount that can be refunded for this return item."
+    }, 
+    "returnItemId": {
+     "description": "Unit level ID for the return item. Different units of the same product will have different IDs.", 
+     "type": "string"
+    }, 
     "returnShipmentIds": {
      "description": "IDs of the return shipments that this return item belongs to.", 
      "items": {
@@ -5870,8 +6025,30 @@
      }, 
      "type": "array"
     }, 
+    "shipmentGroupId": {
+     "description": "ID of the original shipment group. Provided for shipments with invoice support.", 
+     "type": "string"
+    }, 
+    "shipmentUnitId": {
+     "description": "ID of the shipment unit assigned by the merchant. Provided for shipments with invoice support.", 
+     "type": "string"
+    }, 
     "state": {
      "description": "State of the item.\n\nAcceptable values are:  \n- \"`canceled`\" \n- \"`new`\" \n- \"`received`\" \n- \"`refunded`\" \n- \"`rejected`\"", 
+     "type": "string"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "MerchantRejectionReason": {
+   "id": "MerchantRejectionReason", 
+   "properties": {
+    "description": {
+     "description": "Description of the reason.", 
+     "type": "string"
+    }, 
+    "reasonCode": {
+     "description": "Code of the rejection reason.", 
      "type": "string"
     }
    }, 
@@ -5903,6 +6080,20 @@
     "value": {
      "$ref": "Price", 
      "description": "The minimum order value for the given stores."
+    }
+   }, 
+   "type": "object"
+  }, 
+  "MonetaryAmount": {
+   "id": "MonetaryAmount", 
+   "properties": {
+    "priceAmount": {
+     "$ref": "Price", 
+     "description": "The pre-tax or post-tax price depends on the location of the order. - For countries (e.g. US) where price attribute excludes tax, this field corresponds to the pre-tax value. - For coutries (e.g. France) where price attribute includes tax, this field corresponds to the post-tax value ."
+    }, 
+    "taxAmount": {
+     "$ref": "Price", 
+     "description": "Tax value, present only for countries where price attribute excludes tax (e.g. US). No tax is referenced as 0 value with the corresponding `currency`."
     }
    }, 
    "type": "object"
@@ -6090,6 +6281,7 @@
      "type": "string"
     }, 
     "invoiceReceivingEmail": {
+     "description": "Email address for the merchant to send value-added tax or invoice documentation of the order. Only the last document sent is made available to the customer. For more information, see  About automated VAT invoicing for Shopping Actions.", 
      "type": "string"
     }, 
     "loyaltyInfo": {
@@ -6854,7 +7046,7 @@
    "id": "OrderinvoicesCreateChargeInvoiceResponse", 
    "properties": {
     "executionStatus": {
-     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"duplicate\" \n- \"executed\"", 
+     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"", 
      "type": "string"
     }, 
     "kind": {
@@ -6898,7 +7090,7 @@
    "id": "OrderinvoicesCreateRefundInvoiceResponse", 
    "properties": {
     "executionStatus": {
-     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"duplicate\" \n- \"executed\"", 
+     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"", 
      "type": "string"
     }, 
     "kind": {
@@ -6981,6 +7173,31 @@
    }, 
    "type": "object"
   }, 
+  "OrderreturnsAcknowledgeRequest": {
+   "id": "OrderreturnsAcknowledgeRequest", 
+   "properties": {
+    "operationId": {
+     "description": "[required] The ID of the operation, unique across all operations for a given order return.", 
+     "type": "string"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "OrderreturnsAcknowledgeResponse": {
+   "id": "OrderreturnsAcknowledgeResponse", 
+   "properties": {
+    "executionStatus": {
+     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"", 
+     "type": "string"
+    }, 
+    "kind": {
+     "default": "content#orderreturnsAcknowledgeResponse", 
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#orderreturnsAcknowledgeResponse\".", 
+     "type": "string"
+    }
+   }, 
+   "type": "object"
+  }, 
   "OrderreturnsListResponse": {
    "id": "OrderreturnsListResponse", 
    "properties": {
@@ -7002,6 +7219,114 @@
    }, 
    "type": "object"
   }, 
+  "OrderreturnsPartialRefund": {
+   "id": "OrderreturnsPartialRefund", 
+   "properties": {
+    "priceAmount": {
+     "$ref": "Price", 
+     "description": "The pre-tax or post-tax amount to be refunded, depending on the location of the order."
+    }, 
+    "taxAmount": {
+     "$ref": "Price", 
+     "description": "Tax amount to be refunded. Note: This has different meaning depending on the location of the order."
+    }
+   }, 
+   "type": "object"
+  }, 
+  "OrderreturnsProcessRequest": {
+   "id": "OrderreturnsProcessRequest", 
+   "properties": {
+    "fullChargeReturnShippingCost": {
+     "description": "Option to charge the customer return shipping cost.", 
+     "type": "boolean"
+    }, 
+    "operationId": {
+     "description": "[required] The ID of the operation, unique across all operations for a given order return.", 
+     "type": "string"
+    }, 
+    "refundShippingFee": {
+     "$ref": "OrderreturnsRefundOperation", 
+     "description": "Refunds for original shipping fee."
+    }, 
+    "returnItems": {
+     "description": "The list of items to return.", 
+     "items": {
+      "$ref": "OrderreturnsReturnItem"
+     }, 
+     "type": "array"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "OrderreturnsProcessResponse": {
+   "id": "OrderreturnsProcessResponse", 
+   "properties": {
+    "executionStatus": {
+     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"", 
+     "type": "string"
+    }, 
+    "kind": {
+     "default": "content#orderreturnsProcessResponse", 
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#orderreturnsProcessResponse\".", 
+     "type": "string"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "OrderreturnsRefundOperation": {
+   "id": "OrderreturnsRefundOperation", 
+   "properties": {
+    "fullRefund": {
+     "description": "If true, the item will be fully refunded.", 
+     "type": "boolean"
+    }, 
+    "partialRefund": {
+     "$ref": "OrderreturnsPartialRefund", 
+     "description": "If this is set, the item will be partially refunded."
+    }, 
+    "reasonText": {
+     "description": "The explanation of the reason.", 
+     "type": "string"
+    }, 
+    "returnRefundReason": {
+     "description": "Code of the refund reason.", 
+     "type": "string"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "OrderreturnsRejectOperation": {
+   "id": "OrderreturnsRejectOperation", 
+   "properties": {
+    "reason": {
+     "description": "The reason for the return.", 
+     "type": "string"
+    }, 
+    "reasonText": {
+     "description": "The explanation of the reason.", 
+     "type": "string"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "OrderreturnsReturnItem": {
+   "id": "OrderreturnsReturnItem", 
+   "properties": {
+    "refund": {
+     "$ref": "OrderreturnsRefundOperation", 
+     "description": "Refunds the item."
+    }, 
+    "reject": {
+     "$ref": "OrderreturnsRejectOperation", 
+     "description": "Rejects the item."
+    }, 
+    "returnItemId": {
+     "description": "Unit level ID for the return item. Different units of the same product will have different IDs.", 
+     "type": "string"
+    }
+   }, 
+   "type": "object"
+  }, 
   "OrdersAcknowledgeRequest": {
    "id": "OrdersAcknowledgeRequest", 
    "properties": {
@@ -7016,7 +7341,7 @@
    "id": "OrdersAcknowledgeResponse", 
    "properties": {
     "executionStatus": {
-     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"duplicate\" \n- \"executed\"", 
+     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"", 
      "type": "string"
     }, 
     "kind": {
@@ -7073,7 +7398,7 @@
    "id": "OrdersCancelLineItemResponse", 
    "properties": {
     "executionStatus": {
-     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"duplicate\" \n- \"executed\"", 
+     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"", 
      "type": "string"
     }, 
     "kind": {
@@ -7106,7 +7431,7 @@
    "id": "OrdersCancelResponse", 
    "properties": {
     "executionStatus": {
-     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"duplicate\" \n- \"executed\"", 
+     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"", 
      "type": "string"
     }, 
     "kind": {
@@ -7310,7 +7635,7 @@
    "id": "OrdersInStoreRefundLineItemResponse", 
    "properties": {
     "executionStatus": {
-     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"duplicate\" \n- \"executed\"", 
+     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"", 
      "type": "string"
     }, 
     "kind": {
@@ -7377,7 +7702,7 @@
    "id": "OrdersRejectReturnLineItemResponse", 
    "properties": {
     "executionStatus": {
-     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"duplicate\" \n- \"executed\"", 
+     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"", 
      "type": "string"
     }, 
     "kind": {
@@ -7431,7 +7756,7 @@
    "id": "OrdersReturnRefundLineItemResponse", 
    "properties": {
     "executionStatus": {
-     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"duplicate\" \n- \"executed\"", 
+     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"", 
      "type": "string"
     }, 
     "kind": {
@@ -7470,7 +7795,7 @@
    "id": "OrdersSetLineItemMetadataResponse", 
    "properties": {
     "executionStatus": {
-     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"duplicate\" \n- \"executed\"", 
+     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"", 
      "type": "string"
     }, 
     "kind": {
@@ -7513,7 +7838,7 @@
    "id": "OrdersShipLineItemsResponse", 
    "properties": {
     "executionStatus": {
-     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"duplicate\" \n- \"executed\"", 
+     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"", 
      "type": "string"
     }, 
     "kind": {
@@ -7554,7 +7879,7 @@
    "id": "OrdersUpdateLineItemShippingDetailsResponse", 
    "properties": {
     "executionStatus": {
-     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"duplicate\" \n- \"executed\"", 
+     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"", 
      "type": "string"
     }, 
     "kind": {
@@ -7583,7 +7908,7 @@
    "id": "OrdersUpdateMerchantOrderIdResponse", 
    "properties": {
     "executionStatus": {
-     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"duplicate\" \n- \"executed\"", 
+     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"", 
      "type": "string"
     }, 
     "kind": {
@@ -7628,7 +7953,7 @@
    "id": "OrdersUpdateShipmentResponse", 
    "properties": {
     "executionStatus": {
-     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"duplicate\" \n- \"executed\"", 
+     "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"", 
      "type": "string"
     }, 
     "kind": {
@@ -8544,7 +8869,7 @@
      "type": "string"
     }, 
     "id": {
-     "description": "The REST ID of the product. Content API methods that operate on products take this as their `productId` parameter.\nThe REST ID for a product is of the form channel:contentLanguage:targetCountry:offerId.", 
+     "description": "The REST ID of the product. Content API methods that operate on products take this as their `productId` parameter.\nThe REST ID for a product is of the form channel:contentLanguage:targetCountry: offerId.", 
      "type": "string"
     }, 
     "identifierExists": {
@@ -9637,6 +9962,32 @@
    }, 
    "type": "object"
   }, 
+  "ReturnPricingInfo": {
+   "id": "ReturnPricingInfo", 
+   "properties": {
+    "chargeReturnShippingFee": {
+     "description": "Default option for whether merchant should charge the customer for return shipping costs, based on customer selected return reason and merchant's return policy for the items being returned.", 
+     "type": "boolean"
+    }, 
+    "maxReturnShippingFee": {
+     "$ref": "MonetaryAmount", 
+     "description": "Maximum return shipping costs that may be charged to the customer depending on merchant's assessment of the return reason and the merchant's return policy for the items being returned."
+    }, 
+    "refundableItemsTotalAmount": {
+     "$ref": "MonetaryAmount", 
+     "description": "Total amount that can be refunded for the items in this return. It represents the total amount received by the merchant for the items, after applying merchant coupons."
+    }, 
+    "refundableShippingAmount": {
+     "$ref": "MonetaryAmount", 
+     "description": "Maximum amount that can be refunded for the original shipping fee."
+    }, 
+    "totalRefundedAmount": {
+     "$ref": "MonetaryAmount", 
+     "description": "Total amount already refunded by the merchant. It includes all types of refunds (items, shipping, etc.) Not provided if no refund has been applied yet."
+    }
+   }, 
+   "type": "object"
+  }, 
   "ReturnShipment": {
    "id": "ReturnShipment", 
    "properties": {
@@ -9988,7 +10339,7 @@
    "type": "object"
   }, 
   "SettlementTransaction": {
-   "description": "Settlement transactions give a detailed breakdown of the  settlement report.", 
+   "description": "Settlement transactions give a detailed breakdown of the  settlement report. (== resource_for v2.1.settlementtransactions ==)", 
    "id": "SettlementTransaction", 
    "properties": {
     "amount": {

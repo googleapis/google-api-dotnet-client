@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200326 (1911)
+ *      <tr><th>API Rev<td>20200430 (1946)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -8587,6 +8587,39 @@ namespace Google.Apis.Storage.v1.Data
                     [Newtonsoft.Json.JsonPropertyAttribute("createdBefore")]
                     public virtual string CreatedBefore { get; set; } 
 
+                    /// <summary>A timestamp in RFC 3339 format. This condition is satisfied when the custom time on an
+                    /// object is before this timestamp.</summary>
+                    [Newtonsoft.Json.JsonPropertyAttribute("customTimeBefore")]
+                    public virtual string CustomTimeBeforeRaw { get; set; }
+
+                    /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CustomTimeBeforeRaw"/>.</summary>
+                    [Newtonsoft.Json.JsonIgnore]
+                    public virtual System.Nullable<System.DateTime> CustomTimeBefore
+                    {
+                        get
+                        {
+                            return Google.Apis.Util.Utilities.GetDateTimeFromString(CustomTimeBeforeRaw);
+                        }
+                        set
+                        {
+                            CustomTimeBeforeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+                        }
+                    }
+
+                    /// <summary>Number of days elapsed since the user-specified timestamp set on an object. The
+                    /// condition is satisfied if the days elapsed is at least this number. If no custom timestamp is
+                    /// specified on an object, the condition does not apply.</summary>
+                    [Newtonsoft.Json.JsonPropertyAttribute("daysSinceCustomTime")]
+                    public virtual System.Nullable<int> DaysSinceCustomTime { get; set; } 
+
+                    /// <summary>Number of days elapsed since the noncurrent timestamp of an object. The condition is
+                    /// satisfied if the days elapsed is at least this number. This condition is relevant only for
+                    /// versioned objects. The value of the field must be a nonnegative integer. If it's zero, the
+                    /// object version will become eligible for Lifecycle action as soon as it becomes
+                    /// noncurrent.</summary>
+                    [Newtonsoft.Json.JsonPropertyAttribute("daysSinceNoncurrentTime")]
+                    public virtual System.Nullable<int> DaysSinceNoncurrentTime { get; set; } 
+
                     /// <summary>Relevant only for versioned objects. If the value is true, this condition matches live
                     /// objects; if the value is false, it matches archived objects.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("isLive")]
@@ -8605,6 +8638,26 @@ namespace Google.Apis.Storage.v1.Data
                     /// DURABLE_REDUCED_AVAILABILITY.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("matchesStorageClass")]
                     public virtual System.Collections.Generic.IList<string> MatchesStorageClass { get; set; } 
+
+                    /// <summary>A timestamp in RFC 3339 format. This condition is satisfied when the noncurrent time on
+                    /// an object is before this timestamp. This condition is relevant only for versioned
+                    /// objects.</summary>
+                    [Newtonsoft.Json.JsonPropertyAttribute("noncurrentTimeBefore")]
+                    public virtual string NoncurrentTimeBeforeRaw { get; set; }
+
+                    /// <summary><seealso cref="System.DateTime"/> representation of <see cref="NoncurrentTimeBeforeRaw"/>.</summary>
+                    [Newtonsoft.Json.JsonIgnore]
+                    public virtual System.Nullable<System.DateTime> NoncurrentTimeBefore
+                    {
+                        get
+                        {
+                            return Google.Apis.Util.Utilities.GetDateTimeFromString(NoncurrentTimeBeforeRaw);
+                        }
+                        set
+                        {
+                            NoncurrentTimeBeforeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+                        }
+                    }
 
                     /// <summary>Relevant only for versioned objects. If the value is N, this condition is satisfied
                     /// when there are at least N versions (including the live version) newer than this version of the
@@ -9156,6 +9209,24 @@ namespace Google.Apis.Storage.v1.Data
         /// order. For more information about using the CRC32c checksum, see Hashes and ETags: Best Practices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crc32c")]
         public virtual string Crc32c { get; set; } 
+
+        /// <summary>A timestamp in RFC 3339 format specified by the user for an object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customTime")]
+        public virtual string CustomTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CustomTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnore]
+        public virtual System.Nullable<System.DateTime> CustomTime
+        {
+            get
+            {
+                return Google.Apis.Util.Utilities.GetDateTimeFromString(CustomTimeRaw);
+            }
+            set
+            {
+                CustomTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+        }
 
         /// <summary>Metadata of customer-supplied encryption key, if the object is encrypted by such a key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerEncryption")]

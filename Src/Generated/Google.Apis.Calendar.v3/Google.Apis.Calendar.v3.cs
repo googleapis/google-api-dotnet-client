@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>Calendar API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200412 (1928)
+ *      <tr><th>API Rev<td>20200503 (1949)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>
  *              https://developers.google.com/google-apps/calendar/firstapp</a>
@@ -4873,7 +4873,8 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("foregroundColor")]
         public virtual string ForegroundColor { get; set; } 
 
-        /// <summary>Whether the calendar has been hidden from the list. Optional. The default is False.</summary>
+        /// <summary>Whether the calendar has been hidden from the list. Optional. The attribute is only returned when
+        /// the calendar is hidden, in which case the value is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hidden")]
         public virtual System.Nullable<bool> Hidden { get; set; } 
 
@@ -5057,7 +5058,7 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conferenceId")]
         public virtual string ConferenceId { get; set; } 
 
-        /// <summary>The conference solution, such as Hangouts or Hangouts Meet. Unset for a conference with a failed
+        /// <summary>The conference solution, such as Hangouts or Google Meet. Unset for a conference with a failed
         /// create request. Either conferenceSolution and at least one entryPoint, or createRequest is
         /// required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conferenceSolution")]
@@ -5172,7 +5173,7 @@ namespace Google.Apis.Calendar.v3.Data
 
     public class CreateConferenceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The conference solution, such as Hangouts or Hangouts Meet.</summary>
+        /// <summary>The conference solution, such as Hangouts or Google Meet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conferenceSolutionKey")]
         public virtual ConferenceSolutionKey ConferenceSolutionKey { get; set; } 
 
@@ -5310,7 +5311,7 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("colorId")]
         public virtual string ColorId { get; set; } 
 
-        /// <summary>The conference-related information, such as details of a Hangouts Meet conference. To create new
+        /// <summary>The conference-related information, such as details of a Google Meet conference. To create new
         /// conference details use the createRequest field. To persist your changes, remember to set the
         /// conferenceDataVersion request parameter to 1 for all event modification requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conferenceData")]

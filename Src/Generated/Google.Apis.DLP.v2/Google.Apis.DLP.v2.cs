@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200405 (1921)
+ *      <tr><th>API Rev<td>20200505 (1951)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -10714,13 +10714,13 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>Required. Lower bound value of buckets. All values less than `lower_bound` are grouped together
         /// into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the
-        /// value “-10”.</summary>
+        /// value "-10".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lowerBound")]
         public virtual GooglePrivacyDlpV2Value LowerBound { get; set; } 
 
         /// <summary>Required. Upper bound value of buckets. All values greater than upper_bound are grouped together
         /// into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with
-        /// the value “89+”.</summary>
+        /// the value "89+".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upperBound")]
         public virtual GooglePrivacyDlpV2Value UpperBound { get; set; } 
 
@@ -12699,7 +12699,10 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Location of a finding within a table.</summary>
     public class GooglePrivacyDlpV2TableLocation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The zero-based index of the row where the finding is located.</summary>
+        /// <summary>The zero-based index of the row where the finding is located. Only populated for resources that
+        /// have a natural ordering, not BigQuery. In BigQuery, to identify the row a finding came from, populate
+        /// BigQueryOptions.identifying_fields with your primary key column names and when you store the findings the
+        /// value of those columns will be stored inside of Finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowIndex")]
         public virtual System.Nullable<long> RowIndex { get; set; } 
 

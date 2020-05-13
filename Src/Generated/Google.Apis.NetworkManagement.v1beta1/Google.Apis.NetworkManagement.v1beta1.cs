@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/'>Network Management API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200303 (1888)
+ *      <tr><th>API Rev<td>20200505 (1951)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/'>
  *              https://cloud.google.com/</a>
@@ -522,7 +522,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
 
                     /// <summary>Deletes a specific `ConnectivityTest`.</summary>
                     /// <param name="name">Required. Connectivity Test resource name using the form:
-                    /// `projects/{project_id}/connectivityTests/{test_id}`</param>
+                    /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
@@ -541,7 +541,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
 
 
                         /// <summary>Required. Connectivity Test resource name using the form:
-                        /// `projects/{project_id}/connectivityTests/{test_id}`</summary>
+                        /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -676,7 +676,10 @@ namespace Google.Apis.NetworkManagement.v1beta1
                         /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
                         ///
                         /// Requests for policies with any conditional bindings must specify version 3. Policies without
-                        /// any conditional bindings may specify any valid value or leave the field unset.</summary>
+                        /// any conditional bindings may specify any valid value or leave the field unset.
+                        ///
+                        /// To learn which resources support conditions in their IAM policies, see the [IAM
+                        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
                         [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -757,7 +760,8 @@ namespace Google.Apis.NetworkManagement.v1beta1
                         /// operator which is roughly synonymous with equality).  can refer to a proto or JSON field, or
                         /// a synthetic field. Field names can be camelCase or snake_case.
                         ///
-                        /// Examples: - Filter by name: name = "projects/proj-1/connectivityTests/test-1
+                        /// Examples: - Filter by name: name =
+                        /// "projects/proj-1/locations/global/connectivityTests/test-1
                         ///
                         /// - Filter by labels: - Resources that have a key called `foo` labels.foo:* - Resources that
                         /// have a key called `foo` whose value is `bar` labels.foo = bar</summary>
@@ -863,7 +867,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
                     /// details.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. Unique name of the resource using the form:
-                    /// `projects/{project_id}/tests/{test_id}`</param>
+                    /// `projects/{project_id}/locations/global/connectivityTests/{test}`</param>
                     public virtual PatchRequest Patch(Google.Apis.NetworkManagement.v1beta1.Data.ConnectivityTest body, string name)
                     {
                         return new PatchRequest(service, body, name);
@@ -894,7 +898,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
 
 
                         /// <summary>Required. Unique name of the resource using the form:
-                        /// `projects/{project_id}/tests/{test_id}`</summary>
+                        /// `projects/{project_id}/locations/global/connectivityTests/{test}`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -967,7 +971,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
                     /// of listed projects), then the reachability result returns a value of `UNKNOWN`.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. Connectivity Test resource name using the form:
-                    /// `projects/{project_id}/connectivityTests/{test_id}`</param>
+                    /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`</param>
                     public virtual RerunRequest Rerun(Google.Apis.NetworkManagement.v1beta1.Data.RerunConnectivityTestRequest body, string name)
                     {
                         return new RerunRequest(service, body, name);
@@ -996,7 +1000,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
 
 
                         /// <summary>Required. Connectivity Test resource name using the form:
-                        /// `projects/{project_id}/connectivityTests/{test_id}`</summary>
+                        /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -1045,7 +1049,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
 
                     /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
                     ///
-                    /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
+                    /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                     /// documentation for the appropriate value for this field.</param>
@@ -1056,7 +1060,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
 
                     /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
                     ///
-                    /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
+                    /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
                     public class SetIamPolicyRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1beta1.Data.Policy>
                     {
                         /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1118,7 +1122,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
                     }
 
                     /// <summary>Returns permissions that a caller has on the specified resource. If the resource does
-                    /// not exist, this will return an empty set of permissions, not a NOT_FOUND error.
+                    /// not exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
                     ///
                     /// Note: This operation is designed to be used for building permission-aware UIs and command-line
                     /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
@@ -1131,7 +1135,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
                     }
 
                     /// <summary>Returns permissions that a caller has on the specified resource. If the resource does
-                    /// not exist, this will return an empty set of permissions, not a NOT_FOUND error.
+                    /// not exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
                     ///
                     /// Note: This operation is designed to be used for building permission-aware UIs and command-line
                     /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
@@ -1779,9 +1783,15 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. NOTE: An unsatisfied condition will not allow
-        /// user access via current binding. Different bindings, including their conditions, are examined
-        /// independently.</summary>
+        /// <summary>The condition that is associated with this binding.
+        ///
+        /// If the condition evaluates to `true`, then this binding applies to the current request.
+        ///
+        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
+        /// different role binding might grant the same role to one or more of the members in this binding.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
@@ -1875,7 +1885,7 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Required. Unique name of the resource using the form:
-        /// `projects/{project_id}/tests/{test_id}`</summary>
+        /// `projects/{project_id}/locations/global/connectivityTests/{test}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -2427,7 +2437,8 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
         public virtual string StatusDetail { get; set; } 
 
-        /// <summary>Target of the operation - for example projects/project-1/connectivityTests/test-1</summary>
+        /// <summary>Target of the operation - for example
+        /// projects/project-1/locations/global/connectivityTests/test-1</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; } 
 
@@ -2446,15 +2457,17 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
     /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
     ///
-    /// Optionally, a `binding` can specify a `condition`, which is a logical expression that allows access to a
-    /// resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the
-    /// request, the resource, or both.
+    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
+    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
+    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
+    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
+    /// /resource-policies).
     ///
     /// **JSON example:**
     ///
     /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
     /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
     ///
@@ -2507,7 +2520,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// `1` policy, and all of the conditions in the version `3` policy are lost.
         ///
         /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.</summary>
+        /// leave the field unset.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -2598,8 +2614,9 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual Policy Policy { get; set; } 
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, the following default mask is used: paths: "bindings, etag" This
-        /// field is only used by Cloud IAM.</summary>
+        /// will be modified. If no mask is provided, the following default mask is used:
+        ///
+        /// `paths: "bindings, etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 

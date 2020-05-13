@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200330 (1915)
+ *      <tr><th>API Rev<td>20200429 (1945)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3246,6 +3246,78 @@ namespace Google.Apis.Bigquery.v2
 
         }
 
+        /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+        /// does not have a policy set.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+        /// documentation for the appropriate value for this field.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Bigquery.v2.Data.GetIamPolicyRequest body, string resource)
+        {
+            return new GetIamPolicyRequest(service, body, resource);
+        }
+
+        /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+        /// does not have a policy set.</summary>
+        public class GetIamPolicyRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.GetIamPolicyRequest body, string resource)
+                : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation documentation
+            /// for the appropriate value for this field.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Bigquery.v2.Data.GetIamPolicyRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{+resource}:getIamPolicy"; }
+            }
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/datasets/[^/]+/tables/[^/]+$",
+                    });
+            }
+
+        }
+
         /// <summary>Creates a new, empty table in the dataset.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Project ID of the new table</param>
@@ -3535,6 +3607,158 @@ namespace Google.Apis.Bigquery.v2
 
         }
 
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
+        ///
+        /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+        /// documentation for the appropriate value for this field.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest body, string resource)
+        {
+            return new SetIamPolicyRequest(service, body, resource);
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
+        ///
+        /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
+        public class SetIamPolicyRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest body, string resource)
+                : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation documentation
+            /// for the appropriate value for this field.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{+resource}:setIamPolicy"; }
+            }
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/datasets/[^/]+/tables/[^/]+$",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not exist,
+        /// this will return an empty set of permissions, not a `NOT_FOUND` error.
+        ///
+        /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not
+        /// for authorization checking. This operation may "fail open" without warning.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+        /// documentation for the appropriate value for this field.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Bigquery.v2.Data.TestIamPermissionsRequest body, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not exist,
+        /// this will return an empty set of permissions, not a `NOT_FOUND` error.
+        ///
+        /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not
+        /// for authorization checking. This operation may "fail open" without warning.</summary>
+        public class TestIamPermissionsRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.TestIamPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.TestIamPermissionsRequest body, string resource)
+                : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
+            /// documentation for the appropriate value for this field.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Bigquery.v2.Data.TestIamPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{+resource}:testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/datasets/[^/]+/tables/[^/]+$",
+                    });
+            }
+
+        }
+
         /// <summary>Updates information in an existing table. The update method replaces the entire table resource,
         /// whereas the patch method only replaces fields that are provided in the submitted table resource.</summary>
         /// <param name="body">The body of the request.</param>
@@ -3730,15 +3954,15 @@ namespace Google.Apis.Bigquery.v2.Data
     /// <summary>ARIMA model fitting metrics.</summary>
     public class ArimaFittingMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>AIC</summary>
+        /// <summary>AIC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aic")]
         public virtual System.Nullable<double> Aic { get; set; } 
 
-        /// <summary>log-likelihood</summary>
+        /// <summary>Log-likelihood.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logLikelihood")]
         public virtual System.Nullable<double> LogLikelihood { get; set; } 
 
-        /// <summary>variance.</summary>
+        /// <summary>Variance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variance")]
         public virtual System.Nullable<double> Variance { get; set; } 
 
@@ -3757,9 +3981,21 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("arimaFittingMetrics")]
         public virtual ArimaFittingMetrics ArimaFittingMetrics { get; set; } 
 
+        /// <summary>Whether Arima model fitted with drift or not. It is always false when d is not 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasDrift")]
+        public virtual System.Nullable<bool> HasDrift { get; set; } 
+
         /// <summary>Non-seasonal order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonSeasonalOrder")]
         public virtual ArimaOrder NonSeasonalOrder { get; set; } 
+
+        /// <summary>Seasonal periods. Repeated because multiple periods are supported for one time series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seasonalPeriods")]
+        public virtual System.Collections.Generic.IList<string> SeasonalPeriods { get; set; } 
+
+        /// <summary>The id to indicate different time series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesId")]
+        public virtual string TimeSeriesId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3796,6 +4032,60 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Seasonal periods. Repeated because multiple periods are supported for one time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seasonalPeriods")]
         public virtual System.Collections.Generic.IList<string> SeasonalPeriods { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
+    /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
+    /// AuditLogConfigs.
+    ///
+    /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
+    /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
+    /// AuditLogConfig are exempted.
+    ///
+    /// Example Policy with multiple AuditConfigs:
+    ///
+    /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", }
+    /// ] }, { "service": "sampleservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, {
+    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
+    ///
+    /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
+    /// jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.</summary>
+    public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The configuration for logging of each type of permission.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+
+        /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
+        /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Provides the configuration for logging a type of permissions. Example:
+    ///
+    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
+    /// "log_type": "DATA_WRITE", } ] }
+    ///
+    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
+    /// logging.</summary>
+    public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
+        /// format of Binding.members.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+
+        /// <summary>The log type that this config enables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logType")]
+        public virtual string LogType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3986,6 +4276,68 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Number of true samples predicted as true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("truePositives")]
         public virtual System.Nullable<long> TruePositives { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Associates `members` with a `role`.</summary>
+    public class Binding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The condition that is associated with this binding.
+        ///
+        /// If the condition evaluates to `true`, then this binding applies to the current request.
+        ///
+        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
+        /// different role binding might grant the same role to one or more of the members in this binding.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual Expr Condition { get; set; } 
+
+        /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
+        /// following values:
+        ///
+        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
+        /// account.
+        ///
+        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
+        /// account or a service account.
+        ///
+        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
+        /// `alice@example.com` .
+        ///
+        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
+        /// app@appspot.gserviceaccount.com`.
+        ///
+        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
+        ///
+        /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
+        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
+        ///
+        /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
+        /// a service account that has been recently deleted. For example, `my-other-
+        /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
+        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
+        ///
+        /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
+        /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
+        /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
+        /// binding.
+        ///
+        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
+        /// `google.com` or `example.com`.
+        ///
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("members")]
+        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+
+        /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
+        /// `roles/owner`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4206,6 +4558,20 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>One row per actual label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
         public virtual System.Collections.Generic.IList<Row> Rows { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ConnectionProperty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Required] Name of the connection property to set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>[Required] Value of the connection property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4726,6 +5092,56 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
+    /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
+    ///
+    /// Example (Comparison):
+    ///
+    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
+    /// "document.summary.size() < 100"
+    ///
+    /// Example (Equality):
+    ///
+    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
+    /// "document.owner == request.auth.claims.email"
+    ///
+    /// Example (Logic):
+    ///
+    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
+    /// "document.type != 'private' && document.type != 'internal'"
+    ///
+    /// Example (Data Manipulation):
+    ///
+    /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
+    /// message received at ' + string(document.create_time)"
+    ///
+    /// The exact variables and functions that may be referenced within an expression are determined by the service that
+    /// evaluates it. See the service documentation for additional information.</summary>
+    public class Expr : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
+        /// when hovered over it in a UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual string Expression { get; set; } 
+
+        /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
+        /// and a position in the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
+
+        /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
+        /// e.g. in UIs which allow to enter the expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class ExternalDataConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Try to detect schema and format options automatically. Any option specified explicitly will be
@@ -4750,11 +5166,6 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleSheetsOptions")]
         public virtual GoogleSheetsOptions GoogleSheetsOptions { get; set; } 
-
-        /// <summary>[Optional, Trusted Tester] Deprecated, do not use. Please set hivePartitioningOptions
-        /// instead.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hivePartitioningMode")]
-        public virtual string HivePartitioningMode { get; set; } 
 
         /// <summary>[Optional, Trusted Tester] Options to configure hive partitioning support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hivePartitioningOptions")]
@@ -4815,6 +5226,36 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>The numerical feature value. This is the centroid value for this feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numericalValue")]
         public virtual System.Nullable<double> NumericalValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for `GetIamPolicy` method.</summary>
+    public class GetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual GetPolicyOptions Options { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
+    public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The policy format version to be returned.
+        ///
+        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+        ///
+        /// Requests for policies with any conditional bindings must specify version 3. Policies without any conditional
+        /// bindings may specify any valid value or leave the field unset.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
+        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5187,11 +5628,6 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fieldDelimiter")]
         public virtual string FieldDelimiter { get; set; } 
 
-        /// <summary>[Optional, Trusted Tester] Deprecated, do not use. Please set hivePartitioningOptions
-        /// instead.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hivePartitioningMode")]
-        public virtual string HivePartitioningMode { get; set; } 
-
         /// <summary>[Optional, Trusted Tester] Options to configure hive partitioning support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hivePartitioningOptions")]
         public virtual HivePartitioningOptions HivePartitioningOptions { get; set; } 
@@ -5323,7 +5759,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>Connection properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionProperties")]
-        public virtual System.Collections.Generic.IList<object> ConnectionProperties { get; set; } 
+        public virtual System.Collections.Generic.IList<ConnectionProperty> ConnectionProperties { get; set; } 
 
         /// <summary>[Optional] Specifies whether the job is allowed to create new tables. The following values are
         /// supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The
@@ -6078,6 +6514,85 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
+    /// resources.
+    ///
+    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
+    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
+    /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
+    ///
+    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
+    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
+    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
+    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
+    /// /resource-policies).
+    ///
+    /// **JSON example:**
+    ///
+    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
+    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
+    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
+    ///
+    /// **YAML example:**
+    ///
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
+    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
+    /// description: Does not grant access after Sep 2020 expression: request.time <
+    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
+    ///
+    /// For a description of IAM and its features, see the [IAM
+    /// documentation](https://cloud.google.com/iam/docs/).</summary>
+    public class Policy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
+
+        /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
+        /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+
+        /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
+        /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
+        /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
+        /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
+        ///
+        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
+        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
+        /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>Specifies the format of the policy.
+        ///
+        /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected.
+        ///
+        /// Any operation that affects conditional role bindings must specify version `3`. This requirement applies to
+        /// the following operations:
+        ///
+        /// * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy
+        /// * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition,
+        /// from a policy that includes conditions
+        ///
+        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
+        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
+        /// `1` policy, and all of the conditions in the version `3` policy are lost.
+        ///
+        /// If a policy does not include any conditions, operations on that policy may specify any valid version or
+        /// leave the field unset.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; } 
+
+    }    
+
     public class ProjectList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A hash of the page of results</summary>
@@ -6214,7 +6729,7 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Connection properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionProperties")]
-        public virtual System.Collections.Generic.IList<object> ConnectionProperties { get; set; } 
+        public virtual System.Collections.Generic.IList<ConnectionProperty> ConnectionProperties { get; set; } 
 
         /// <summary>[Optional] Specifies the default datasetId and projectId to assume for any unqualified table names
         /// in the query. If not set, all table names in the query string must be qualified in the format
@@ -6658,6 +7173,26 @@ namespace Google.Apis.Bigquery.v2.Data
         /// the current evaluation happened. The leaf frame is first, the primary script is last. Never empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackFrames")]
         public virtual System.Collections.Generic.IList<ScriptStackFrame> StackFrames { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for `SetIamPolicy` method.</summary>
+    public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to
+        /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
+        /// might reject them.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual Policy Policy { get; set; } 
+
+        /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
+        /// will be modified. If no mask is provided, the following default mask is used:
+        ///
+        /// `paths: "bindings, etag"`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7162,6 +7697,30 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Describes the fields in a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<TableFieldSchema> Fields { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for `TestIamPermissions` method.</summary>
+    public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or
+        /// 'storage.*') are not allowed. For more information see [IAM
+        /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for `TestIamPermissions` method.</summary>
+    public class TestIamPermissionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

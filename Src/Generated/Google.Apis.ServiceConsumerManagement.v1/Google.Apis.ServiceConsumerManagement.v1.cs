@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>Service Consumer Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200415 (1931)
+ *      <tr><th>API Rev<td>20200509 (1955)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>
  *              https://cloud.google.com/service-consumer-management/docs/overview</a>
@@ -1935,13 +1935,17 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
 
     /// <summary>Billing related configuration of the service.
     ///
-    /// The following example shows how to configure monitored resources and metrics for billing:
+    /// The following example shows how to configure monitored resources and metrics for billing,
+    /// `consumer_destinations` is the only supported destination and the monitored resources need at least one label
+    /// key `cloud.googleapis.com/location` to indicate the location of the billing usage, using different monitored
+    /// resources between monitoring and billing is recommended so they can be evolved independently:
     ///
-    /// monitored_resources: - type: library.googleapis.com/branch labels: - key: /city description: The city where the
-    /// library branch is located in. - key: /name description: The name of the branch. metrics: - name:
-    /// library.googleapis.com/book/borrowed_count metric_kind: DELTA value_type: INT64 billing: consumer_destinations:
-    /// - monitored_resource: library.googleapis.com/branch metrics: -
-    /// library.googleapis.com/book/borrowed_count</summary>
+    /// monitored_resources: - type: library.googleapis.com/billing_branch labels: - key: cloud.googleapis.com/location
+    /// description: | Predefined label to support billing location restriction. - key: city description: | Custom label
+    /// to define the city where the library branch is located in. - key: name description: Custom label to define the
+    /// name of the library branch. metrics: - name: library.googleapis.com/book/borrowed_count metric_kind: DELTA
+    /// value_type: INT64 unit: "1" billing: consumer_destinations: - monitored_resource:
+    /// library.googleapis.com/billing_branch metrics: - library.googleapis.com/book/borrowed_count</summary>
     public class Billing : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Billing configurations for sending metrics to the consumer project. There can be multiple consumer

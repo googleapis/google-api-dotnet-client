@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/run/'>Cloud Run API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20200407 (1923)
+ *      <tr><th>API Rev<td>20200415 (1931)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/run/'>
  *              https://cloud.google.com/run/</a>
@@ -11063,22 +11063,14 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
     /// ready to receive traffic.</summary>
     public class Probe : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>One and only one of the following should be specified. Exec specifies the action to take.
-        ///
-        /// A field inlined from the Handler message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exec")]
-        public virtual ExecAction Exec { get; set; } 
-
         /// <summary>Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults
         /// to 3. Minimum value is 1. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureThreshold")]
         public virtual System.Nullable<int> FailureThreshold { get; set; } 
 
-        /// <summary>HTTPGet specifies the http request to perform.
-        ///
-        /// A field inlined from the Handler message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("httpGet")]
-        public virtual HTTPGetAction HttpGet { get; set; } 
+        /// <summary>The action taken to determine the health of a container</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("handler")]
+        public virtual Handler Handler { get; set; } 
 
         /// <summary>Number of seconds after the container has started before liveness probes are initiated. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional</summary>
@@ -11094,12 +11086,6 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         /// Defaults to 1. Must be 1 for liveness. Minimum value is 1. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successThreshold")]
         public virtual System.Nullable<int> SuccessThreshold { get; set; } 
-
-        /// <summary>TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-        ///
-        /// A field inlined from the Handler message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tcpSocket")]
-        public virtual TCPSocketAction TcpSocket { get; set; } 
 
         /// <summary>Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More
         /// info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional</summary>
@@ -11931,8 +11917,9 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual Policy Policy { get; set; } 
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, the following default mask is used: paths: "bindings, etag" This
-        /// field is only used by Cloud IAM.</summary>
+        /// will be modified. If no mask is provided, the following default mask is used:
+        ///
+        /// `paths: "bindings, etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 

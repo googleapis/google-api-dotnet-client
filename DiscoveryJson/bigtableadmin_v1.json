@@ -96,7 +96,7 @@
  }, 
  "protocol": "rest", 
  "resources": {}, 
- "revision": "20200211", 
+ "revision": "20200421", 
  "rootUrl": "https://bigtableadmin.googleapis.com/", 
  "schemas": {
   "Cluster": {

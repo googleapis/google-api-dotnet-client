@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200417 (1933)
+ *      <tr><th>API Rev<td>20200512 (1958)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow/'>
  *              https://cloud.google.com/dialogflow/</a>
@@ -2323,6 +2323,93 @@ namespace Google.Apis.Dialogflow.v2
 
                         }
                     }
+                }
+
+                /// <summary>Returns the list of all non-draft environments of the specified agent.</summary>
+                /// <param name="parent">Required. The agent to list all environments from. Format: `projects//agent`.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Returns the list of all non-draft environments of the specified agent.</summary>
+                public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListEnvironmentsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The agent to list all environments from. Format: `projects//agent`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
+                    /// most 1000.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+parent}/environments"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent$",
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
                 }
             }
             private readonly IntentsResource intents;
@@ -5926,6 +6013,38 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents an agent environment.</summary>
+    public class GoogleCloudDialogflowV2Environment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The agent version loaded into this environment. Format:
+        /// `projects//agent/versions/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentVersion")]
+        public virtual string AgentVersion { get; set; } 
+
+        /// <summary>Optional. The developer-provided description for this environment. The maximum length is 500
+        /// characters. If exceeded, the request is rejected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Output only. The unique identifier of this agent environment. Format:
+        /// `projects//agent/environments/`. For Environment ID, "-" is reserved for 'draft' environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Output only. The state of this environment. This field is read-only, i.e., it cannot be set by
+        /// create and update methods.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>Output only. The last update time of this environment. This field is read-only, i.e., it cannot be
+        /// set by create and update methods.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Events allow for matching intents by event name instead of the natural language input. For instance,
     /// input `` can trigger a personalized welcome response. The parameter `name` may be used by the agent in the
     /// response: `"Hello #welcome_event.name! What can I do for you today?"`.</summary>
@@ -6045,7 +6164,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestHeaders")]
         public virtual System.Collections.Generic.IDictionary<string,string> RequestHeaders { get; set; } 
 
-        /// <summary>Required. The fulfillment URI for receiving POST requests.</summary>
+        /// <summary>Required. The fulfillment URI for receiving POST requests. It must use https protocol.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
 
@@ -6960,6 +7079,23 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response message for Environments.ListEnvironments.</summary>
+    public class GoogleCloudDialogflowV2ListEnvironmentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of agent environments. There will be a maximum number of items returned based on the
+        /// page_size field in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Environment> Environments { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response message for Intents.ListIntents.</summary>
     public class GoogleCloudDialogflowV2ListIntentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7375,9 +7511,11 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Hints for the speech recognizer to help with recognition in a specific conversation state.</summary>
     public class GoogleCloudDialogflowV2SpeechContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Boost for this context compared to other contexts: * If the boost is positive, Dialogflow
-        /// will increase the probability that the phrases in this context are recognized over similar sounding phrases.
-        /// * If the boost is unspecified or non-positive, Dialogflow will not apply any boost.
+        /// <summary>Optional. Boost for this context compared to other contexts:
+        ///
+        /// * If the boost is positive, Dialogflow will increase the probability that the phrases in this context are
+        /// recognized over similar sounding phrases. * If the boost is unspecified or non-positive, Dialogflow will not
+        /// apply any boost.
         ///
         /// Dialogflow recommends that you use boosts in the range (0, 20] and that you find a value that fits your use
         /// case with binary search.</summary>
@@ -7556,44 +7694,47 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// buffers/docs/proto3#json).</summary>
     public class GoogleCloudDialogflowV2WebhookResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Makes the platform immediately invoke another `DetectIntent` call internally with the
-        /// specified event as input. When this field is set, Dialogflow ignores the `fulfillment_text`,
-        /// `fulfillment_messages`, and `payload` fields.</summary>
+        /// <summary>Optional. Invokes the supplied events. When this field is set, Dialogflow ignores the
+        /// `fulfillment_text`, `fulfillment_messages`, and `payload` fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("followupEventInput")]
         public virtual GoogleCloudDialogflowV2EventInput FollowupEventInput { get; set; } 
 
-        /// <summary>Optional. The collection of rich messages to present to the user. This value is passed directly to
-        /// `QueryResult.fulfillment_messages`.</summary>
+        /// <summary>Optional. The rich response messages intended for the end-user. When provided, Dialogflow uses this
+        /// field to populate QueryResult.fulfillment_messages sent to the integration or API caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentMessages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessage> FulfillmentMessages { get; set; } 
 
-        /// <summary>Optional. The text to be shown on the screen. This value is passed directly to
-        /// `QueryResult.fulfillment_text`.</summary>
+        /// <summary>Optional. The text response message intended for the end-user. It is recommended to use
+        /// `fulfillment_messages.text.text[0]` instead. When provided, Dialogflow uses this field to populate
+        /// QueryResult.fulfillment_text sent to the integration or API caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentText")]
         public virtual string FulfillmentText { get; set; } 
 
-        /// <summary>Optional. The collection of output contexts. This value is passed directly to
-        /// `QueryResult.output_contexts`.</summary>
+        /// <summary>Optional. The collection of output contexts that will overwrite currently active contexts for the
+        /// session and reset their lifespans. When provided, Dialogflow uses this field to populate
+        /// QueryResult.output_contexts sent to the integration or API caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputContexts")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Context> OutputContexts { get; set; } 
 
-        /// <summary>Optional. This field can be used to pass custom data from your webhook to the API caller. Arbitrary
-        /// JSON objects are supported. When provided, Dialogflow uses this field to populate
-        /// `QueryResult.webhook_payload` sent to the API caller. This field is also used by the [Google Assistant
-        /// integration](https://cloud.google.com/dialogflow/docs/integrations/aog) for rich response messages. See the
-        /// format definition at [Google Assistant Dialogflow webhook
+        /// <summary>Optional. This field can be used to pass custom data from your webhook to the integration or API
+        /// caller. Arbitrary JSON objects are supported. When provided, Dialogflow uses this field to populate
+        /// QueryResult.webhook_payload sent to the integration or API caller. This field is also used by the [Google
+        /// Assistant integration](https://cloud.google.com/dialogflow/docs/integrations/aog) for rich response
+        /// messages. See the format definition at [Google Assistant Dialogflow webhook
         /// format](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
 
         /// <summary>Optional. Additional session entity types to replace or extend developer entity types with. The
-        /// entity synonyms apply to all languages and persist for the session of this query. Setting the session entity
-        /// types inside webhook overwrites the session entity types that have been set through
-        /// `DetectIntentRequest.query_params.session_entity_types`.</summary>
+        /// entity synonyms apply to all languages and persist for the session. Setting this data from a webhook
+        /// overwrites the session entity types that have been set using `detectIntent`, `streamingDetectIntent` or
+        /// SessionEntityType management methods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionEntityTypes")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SessionEntityType> SessionEntityTypes { get; set; } 
 
-        /// <summary>Optional. This value is passed directly to `QueryResult.webhook_source`.</summary>
+        /// <summary>Optional. A custom field used to identify the webhook source. Arbitrary strings are supported. When
+        /// provided, Dialogflow uses this field to populate QueryResult.webhook_source sent to the integration or API
+        /// caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; } 
 
@@ -7847,7 +7988,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("events")]
         public virtual System.Collections.Generic.IList<string> Events { get; set; } 
 
-        /// <summary>Read-only. Information about all followup intents that have this intent as a direct or indirect
+        /// <summary>Output only. Information about all followup intents that have this intent as a direct or indirect
         /// parent. We populate this field only in the output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("followupIntentInfo")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo> FollowupIntentInfo { get; set; } 
@@ -7881,7 +8022,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mlEnabled")]
         public virtual System.Nullable<bool> MlEnabled { get; set; } 
 
-        /// <summary>The unique identifier of this intent. Required for Intents.UpdateIntent and
+        /// <summary>Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and
         /// Intents.BatchUpdateIntents methods. Format: `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -7896,15 +8037,15 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentParameter> Parameters { get; set; } 
 
-        /// <summary>Read-only after creation. The unique identifier of the parent intent in the chain of followup
-        /// intents. You can set this field when creating an intent, for example with CreateIntent or
-        /// BatchUpdateIntents, in order to make this intent a followup intent.
+        /// <summary>Optional. The unique identifier of the parent intent in the chain of followup intents. You can set
+        /// this field when creating an intent, for example with CreateIntent or BatchUpdateIntents, in order to make
+        /// this intent a followup intent.
         ///
         /// It identifies the parent followup intent. Format: `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentFollowupIntentName")]
         public virtual string ParentFollowupIntentName { get; set; } 
 
-        /// <summary>The priority of this intent. Higher numbers represent higher priorities.
+        /// <summary>Optional. The priority of this intent. Higher numbers represent higher priorities.
         ///
         /// - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
         /// to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in
@@ -7917,8 +8058,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resetContexts")]
         public virtual System.Nullable<bool> ResetContexts { get; set; } 
 
-        /// <summary>Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies
-        /// the correct followup intents chain for this intent. We populate this field only in the output.
+        /// <summary>Output only. The unique identifier of the root intent in the chain of followup intents. It
+        /// identifies the correct followup intents chain for this intent.
         ///
         /// Format: `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootFollowupIntentName")]
@@ -8956,7 +9097,7 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Metadata in google::longrunning::Operation for Knowledge operations.</summary>
     public class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The current state of this operation.</summary>
+        /// <summary>Required. Output only. The current state of this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
@@ -9221,46 +9362,65 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endInteraction")]
         public virtual System.Nullable<bool> EndInteraction { get; set; } 
 
-        /// <summary>Optional. Makes the platform immediately invoke another `DetectIntent` call internally with the
-        /// specified event as input. When this field is set, Dialogflow ignores the `fulfillment_text`,
-        /// `fulfillment_messages`, and `payload` fields.</summary>
+        /// <summary>Optional. Invokes the supplied events. When this field is set, Dialogflow ignores the
+        /// `fulfillment_text`, `fulfillment_messages`, and `payload` fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("followupEventInput")]
         public virtual GoogleCloudDialogflowV2beta1EventInput FollowupEventInput { get; set; } 
 
-        /// <summary>Optional. The collection of rich messages to present to the user. This value is passed directly to
-        /// `QueryResult.fulfillment_messages`.</summary>
+        /// <summary>Optional. The rich response messages intended for the end-user. When provided, Dialogflow uses this
+        /// field to populate QueryResult.fulfillment_messages sent to the integration or API caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentMessages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessage> FulfillmentMessages { get; set; } 
 
-        /// <summary>Optional. The text to be shown on the screen. This value is passed directly to
-        /// `QueryResult.fulfillment_text`.</summary>
+        /// <summary>Optional. The text response message intended for the end-user. It is recommended to use
+        /// `fulfillment_messages.text.text[0]` instead. When provided, Dialogflow uses this field to populate
+        /// QueryResult.fulfillment_text sent to the integration or API caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentText")]
         public virtual string FulfillmentText { get; set; } 
 
-        /// <summary>Optional. The collection of output contexts. This value is passed directly to
-        /// `QueryResult.output_contexts`.</summary>
+        /// <summary>Optional. The collection of output contexts that will overwrite currently active contexts for the
+        /// session and reset their lifespans. When provided, Dialogflow uses this field to populate
+        /// QueryResult.output_contexts sent to the integration or API caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputContexts")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Context> OutputContexts { get; set; } 
 
-        /// <summary>Optional. This field can be used to pass custom data from your webhook to the API caller. Arbitrary
-        /// JSON objects are supported. When provided, Dialogflow uses this field to populate
-        /// `QueryResult.webhook_payload` sent to the API caller. This field is also used by the [Google Assistant
-        /// integration](https://cloud.google.com/dialogflow/docs/integrations/aog) for rich response messages. See the
-        /// format definition at [Google Assistant Dialogflow webhook
+        /// <summary>Optional. This field can be used to pass custom data from your webhook to the integration or API
+        /// caller. Arbitrary JSON objects are supported. When provided, Dialogflow uses this field to populate
+        /// QueryResult.webhook_payload sent to the integration or API caller. This field is also used by the [Google
+        /// Assistant integration](https://cloud.google.com/dialogflow/docs/integrations/aog) for rich response
+        /// messages. See the format definition at [Google Assistant Dialogflow webhook
         /// format](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
 
         /// <summary>Optional. Additional session entity types to replace or extend developer entity types with. The
-        /// entity synonyms apply to all languages and persist for the session of this query. Setting the session entity
-        /// types inside webhook overwrites the session entity types that have been set through
-        /// `DetectIntentRequest.query_params.session_entity_types`.</summary>
+        /// entity synonyms apply to all languages and persist for the session. Setting this data from a webhook
+        /// overwrites the session entity types that have been set using `detectIntent`, `streamingDetectIntent` or
+        /// SessionEntityType management methods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionEntityTypes")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1SessionEntityType> SessionEntityTypes { get; set; } 
 
-        /// <summary>Optional. This value is passed directly to `QueryResult.webhook_source`.</summary>
+        /// <summary>Optional. A custom field used to identify the webhook source. Arbitrary strings are supported. When
+        /// provided, Dialogflow uses this field to populate QueryResult.webhook_source sent to the integration or API
+        /// caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for Agents.ExportAgent.</summary>
+    public class GoogleCloudDialogflowV3alpha1ExportAgentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Uncompressed raw byte content for agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
+        public virtual string AgentContent { get; set; } 
+
+        /// <summary>The URI to a file containing the exported agent. This field is populated only if `agent_uri` is
+        /// specified in ExportAgentRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
+        public virtual string AgentUri { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

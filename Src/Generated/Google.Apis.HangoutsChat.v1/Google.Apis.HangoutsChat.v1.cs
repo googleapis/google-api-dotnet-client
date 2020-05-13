@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/hangouts/chat'>Hangouts Chat API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200411 (1927)
+ *      <tr><th>API Rev<td>20200508 (1954)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/hangouts/chat'>
  *              https://developers.google.com/hangouts/chat</a>
@@ -1454,7 +1454,15 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Output only. The type of a space.</summary>
+        /// <summary>Whether the space is a DM between a bot and a single human.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleUserBotDm")]
+        public virtual System.Nullable<bool> SingleUserBotDm { get; set; } 
+
+        /// <summary>Whether the messages are threaded in this space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threaded")]
+        public virtual System.Nullable<bool> Threaded { get; set; } 
+
+        /// <summary>Output only. The type of a space. This is deprecated. Use `single_user_bot_dm` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

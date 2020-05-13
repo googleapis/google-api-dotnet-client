@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-analysis/api/reference/rest/'>Container Analysis API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200327 (1912)
+ *      <tr><th>API Rev<td>20200501 (1947)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-analysis/api/reference/rest/'>
  *              https://cloud.google.com/container-analysis/api/reference/rest/</a>
@@ -2348,6 +2348,26 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Defines a hash object for use in Materials and Products.</summary>
+    public class ArtifactHashes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
+        public virtual string Sha256 { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines an object to declare an in-toto artifact rule</summary>
+    public class ArtifactRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactRule")]
+        public virtual System.Collections.Generic.IList<string> ArtifactRuleValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Occurrence that represents a single "attestation". The authenticity of an attestation can be verified
     /// using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature
     /// is sufficient to establish trust. In this circumstance, the authority to which this attestation is attached is
@@ -2447,9 +2467,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. NOTE: An unsatisfied condition will not allow
-        /// user access via current binding. Different bindings, including their conditions, are examined
-        /// independently.</summary>
+        /// <summary>The condition that is associated with this binding.
+        ///
+        /// If the condition evaluates to `true`, then this binding applies to the current request.
+        ///
+        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
+        /// different role binding might grant the same role to one or more of the members in this binding.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
@@ -2609,6 +2635,17 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>Required. Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
         public virtual string Signature { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines an object for the byproducts field in in-toto links. The suggested fields are "stderr",
+    /// "stdout", and "return-value".</summary>
+    public class ByProducts : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("customValues")]
+        public virtual System.Collections.Generic.IDictionary<string,string> CustomValues { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2926,6 +2963,17 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Defines an object for the environment field in in-toto links. The suggested fields are "variables",
+    /// "filesystem", and "workdir".</summary>
+    public class Environment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("customValues")]
+        public virtual System.Collections.Generic.IDictionary<string,string> CustomValues { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
     /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
     ///
@@ -3084,8 +3132,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
     /// <summary>Request message for `GetIamPolicy` method.</summary>
     public class GetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. This field is only
-        /// used by Cloud IAM.</summary>
+        /// <summary>OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual GetPolicyOptions Options { get; set; } 
 
@@ -3101,7 +3148,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
         ///
         /// Requests for policies with any conditional bindings must specify version 3. Policies without any conditional
-        /// bindings may specify any valid value or leave the field unset.</summary>
+        /// bindings may specify any valid value or leave the field unset.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
 
@@ -3196,6 +3246,45 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class GrafeasV1beta1IntotoArtifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("hashes")]
+        public virtual ArtifactHashes Hashes { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
+        public virtual string ResourceUri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This corresponds to a signed in-toto link - it is made up of one or more signatures and the in-toto
+    /// link itself. This is used for occurrences of a Grafeas in-toto note.</summary>
+    public class GrafeasV1beta1IntotoDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("signatures")]
+        public virtual System.Collections.Generic.IList<GrafeasV1beta1IntotoSignature> Signatures { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("signed")]
+        public virtual Link Signed { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A signature object consists of the KeyID used and the signature itself.</summary>
+    public class GrafeasV1beta1IntotoSignature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("keyid")]
+        public virtual string Keyid { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sig")]
+        public virtual string Sig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Details of a package occurrence.</summary>
     public class GrafeasV1beta1PackageDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3279,6 +3368,40 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>This contains the fields corresponding to the definition of a software supply chain step in an in-toto
+    /// layout. This information goes into a Grafeas note.</summary>
+    public class InToto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This field contains the expected command used to perform the step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedCommand")]
+        public virtual System.Collections.Generic.IList<string> ExpectedCommand { get; set; } 
+
+        /// <summary>The following fields contain in-toto artifact rules identifying the artifacts that enter this
+        /// supply chain step, and exit the supply chain step, i.e. materials and products of the step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedMaterials")]
+        public virtual System.Collections.Generic.IList<ArtifactRule> ExpectedMaterials { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedProducts")]
+        public virtual System.Collections.Generic.IList<ArtifactRule> ExpectedProducts { get; set; } 
+
+        /// <summary>This field contains the public keys that can be used to verify the signatures on the step
+        /// metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signingKeys")]
+        public virtual System.Collections.Generic.IList<SigningKey> SigningKeys { get; set; } 
+
+        /// <summary>This field identifies the name of the step in the supply chain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stepName")]
+        public virtual string StepName { get; set; } 
+
+        /// <summary>This field contains a value that indicates the minimum number of keys that need to be used to sign
+        /// the step's in-toto link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
+        public virtual System.Nullable<long> Threshold { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>This represents how a particular software package may be installed on a system.</summary>
     public class Installation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3320,6 +3443,44 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>Required. The recovered Dockerfile directive used to construct this layer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directive")]
         public virtual string Directive { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This corresponds to an in-toto link.</summary>
+    public class Link : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ByProducts are data generated as part of a software supply chain step, but are not the actual
+        /// result of the step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("byproducts")]
+        public virtual ByProducts Byproducts { get; set; } 
+
+        /// <summary>This field contains the full command executed for the step. This can also be empty if links are
+        /// generated for operations that aren't directly mapped to a specific command. Each term in the command is an
+        /// independent string in the list. An example of a command in the in-toto metadata field is: "command": ["git",
+        /// "clone", "https://github.com/in-toto/demo-project.git"]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("command")]
+        public virtual System.Collections.Generic.IList<string> Command { get; set; } 
+
+        /// <summary>This is a field that can be used to capture information about the environment. It is suggested for
+        /// this field to contain information that details environment variables, filesystem information, and the
+        /// present working directory. The recommended structure of this field is: "environment": { "custom_values": {
+        /// "variables": "", "filesystem": "", "workdir": "", "": "..." } }</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual Environment Environment { get; set; } 
+
+        /// <summary>Materials are the supply chain artifacts that go into the step and are used for the operation
+        /// performed. The key of the map is the path of the artifact and the structure contains the recorded hash
+        /// information. An example is: "materials": [ { "resource_uri": "foo/bar", "hashes": { "sha256": "ebebf...", :
+        /// } } ]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("materials")]
+        public virtual System.Collections.Generic.IList<GrafeasV1beta1IntotoArtifact> Materials { get; set; } 
+
+        /// <summary>Products are the supply chain artifacts generated as a result of the step. The structure is
+        /// identical to that of materials.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("products")]
+        public virtual System.Collections.Generic.IList<GrafeasV1beta1IntotoArtifact> Products { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3441,6 +3602,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
         public virtual object ExpirationTime { get; set; } 
 
+        /// <summary>A note describing an in-toto link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intoto")]
+        public virtual InToto Intoto { get; set; } 
+
         /// <summary>Output only. The type of analysis. This field can be used as a filter in list requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
@@ -3513,6 +3678,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>Describes the installation of a package on the linked resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installation")]
         public virtual GrafeasV1beta1PackageDetails Installation { get; set; } 
+
+        /// <summary>Describes a specific in-toto link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intoto")]
+        public virtual GrafeasV1beta1IntotoDetails Intoto { get; set; } 
 
         /// <summary>Output only. This explicitly denotes which of the occurrence details are specified. This field can
         /// be used as a filter in list requests.</summary>
@@ -3629,15 +3798,17 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
     /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
     /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
     ///
-    /// Optionally, a `binding` can specify a `condition`, which is a logical expression that allows access to a
-    /// resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the
-    /// request, the resource, or both.
+    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
+    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
+    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
+    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
+    /// /resource-policies).
     ///
     /// **JSON example:**
     ///
     /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
     /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
     ///
@@ -3686,7 +3857,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// `1` policy, and all of the conditions in the version `3` policy are lost.
         ///
         /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.</summary>
+        /// leave the field unset.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -3843,6 +4017,33 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// unambiguously computed to derive the payload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
         public virtual string SignatureValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This defines the format used to record keys used in the software supply chain. An in-toto link is
+    /// attested using one or more keys defined in the in-toto layout. An example of this is: { "key_id":
+    /// "776a00e29f3559e0141b3b096f696abc6cfb0c657ab40f441132b345b0...", "key_type": "rsa", "public_key_value": "-----
+    /// BEGIN PUBLIC KEY-----\nMIIBojANBgkqhkiG9w0B...", "key_scheme": "rsassa-pss-sha256" } The format for in-toto's
+    /// key definition can be found in section 4.2 of the in-toto specification.</summary>
+    public class SigningKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>key_id is an identifier for the signing key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyId")]
+        public virtual string KeyId { get; set; } 
+
+        /// <summary>This field contains the corresponding signature scheme. Eg: "rsassa-pss-sha256".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyScheme")]
+        public virtual string KeyScheme { get; set; } 
+
+        /// <summary>This field identifies the specific signing method. Eg: "rsa", "ed25519", and "ecdsa".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyType")]
+        public virtual string KeyType { get; set; } 
+
+        /// <summary>This field contains the actual public key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKeyValue")]
+        public virtual string PublicKeyValue { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

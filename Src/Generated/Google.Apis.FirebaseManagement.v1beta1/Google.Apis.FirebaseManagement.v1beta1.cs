@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com'>Firebase Management API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200416 (1932)
+ *      <tr><th>API Rev<td>20200512 (1958)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com'>
  *              https://firebase.google.com</a>
@@ -2336,8 +2336,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         ///
         /// This method does not modify any billing account information on the underlying GCP `Project`.
         ///
-        /// To call `AddFirebase`, a member must be an Editor or Owner for the existing GCP `Project`. Service accounts
-        /// cannot call `AddFirebase`.</summary>
+        /// To call `AddFirebase`, a project member or service account must have the following permissions (the IAM
+        /// roles of Editor and Owner contain these permissions): `firebase.projects.update`,
+        /// `resourcemanager.projects.get`, `serviceusage.services.enable`, and `serviceusage.services.get`.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">The resource name of the GCP `Project` to which Firebase resources will be added, in the
         /// format: projects/projectId After calling `AddFirebase`, the [`projectId`](https://cloud.google.com/resource-
@@ -2364,8 +2365,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         ///
         /// This method does not modify any billing account information on the underlying GCP `Project`.
         ///
-        /// To call `AddFirebase`, a member must be an Editor or Owner for the existing GCP `Project`. Service accounts
-        /// cannot call `AddFirebase`.</summary>
+        /// To call `AddFirebase`, a project member or service account must have the following permissions (the IAM
+        /// roles of Editor and Owner contain these permissions): `firebase.projects.update`,
+        /// `resourcemanager.projects.get`, `serviceusage.services.enable`, and `serviceusage.services.get`.</summary>
         public class AddFirebaseRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
         {
             /// <summary>Constructs a new AddFirebase request.</summary>

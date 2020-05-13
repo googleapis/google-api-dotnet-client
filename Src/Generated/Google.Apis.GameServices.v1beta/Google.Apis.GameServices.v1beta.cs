@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/solutions/gaming/'>Game Services API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20200409 (1925)
+ *      <tr><th>API Rev<td>20200423 (1939)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/solutions/gaming/'>
  *              https://cloud.google.com/solutions/gaming/</a>
@@ -1519,7 +1519,7 @@ namespace Google.Apis.GameServices.v1beta
 
                 /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
                 ///
-                /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
+                /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -1530,7 +1530,7 @@ namespace Google.Apis.GameServices.v1beta
 
                 /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
                 ///
-                /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
+                /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
                 public class SetIamPolicyRequest : GameServicesBaseServiceRequest<Google.Apis.GameServices.v1beta.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1592,7 +1592,7 @@ namespace Google.Apis.GameServices.v1beta
                 }
 
                 /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+                /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
                 ///
                 /// Note: This operation is designed to be used for building permission-aware UIs and command-line
                 /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
@@ -1605,7 +1605,7 @@ namespace Google.Apis.GameServices.v1beta
                 }
 
                 /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+                /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
                 ///
                 /// Note: This operation is designed to be used for building permission-aware UIs and command-line
                 /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
@@ -4768,8 +4768,9 @@ namespace Google.Apis.GameServices.v1beta.Data
         public virtual Policy Policy { get; set; } 
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, the following default mask is used: paths: "bindings, etag" This
-        /// field is only used by Cloud IAM.</summary>
+        /// will be modified. If no mask is provided, the following default mask is used:
+        ///
+        /// `paths: "bindings, etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 

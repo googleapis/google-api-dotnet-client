@@ -615,7 +615,7 @@
    }
   }
  }, 
- "revision": "20200414", 
+ "revision": "20200504", 
  "rootUrl": "https://memcache.googleapis.com/", 
  "schemas": {
   "ApplyParametersRequest": {

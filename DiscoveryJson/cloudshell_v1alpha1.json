@@ -288,7 +288,7 @@
    }
   }
  }, 
- "revision": "20200411", 
+ "revision": "20200512", 
  "rootUrl": "https://cloudshell.googleapis.com/", 
  "schemas": {
   "AuthorizeEnvironmentRequest": {
@@ -384,13 +384,15 @@
       "STATE_UNSPECIFIED", 
       "DISABLED", 
       "STARTING", 
-      "RUNNING"
+      "RUNNING", 
+      "DELETING"
      ], 
      "enumDescriptions": [
       "The environment's states is unknown.", 
       "The environment is not running and can't be connected to. Starting the\nenvironment will transition it to the STARTING state.", 
       "The environment is being started but is not yet ready to accept\nconnections.", 
-      "The environment is running and ready to accept connections. It will\nautomatically transition back to DISABLED after a period of inactivity or\nif another environment is started."
+      "The environment is running and ready to accept connections. It will\nautomatically transition back to DISABLED after a period of inactivity or\nif another environment is started.", 
+      "The environment is being deleted and can't be connected to."
      ], 
      "type": "string"
     }, 
@@ -519,6 +521,13 @@
     "accessToken": {
      "description": "The initial access token passed to the environment. If this is present and\nvalid, the environment will be pre-authenticated with gcloud so that the\nuser can run gcloud commands in Cloud Shell without having to log in. This\ncode can be updated later by calling AuthorizeEnvironment.", 
      "type": "string"
+    }, 
+    "publicKeys": {
+     "description": "Public keys that should be added to the environment before it is started.", 
+     "items": {
+      "$ref": "PublicKey"
+     }, 
+     "type": "array"
     }
    }, 
    "type": "object"

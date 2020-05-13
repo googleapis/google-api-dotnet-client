@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Reservation API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200410 (1926)
+ *      <tr><th>API Rev<td>20200509 (1955)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -2008,25 +2008,6 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Auto scaling settings and current situation. System will create a dedicated FLEX capacity commitment to
-    /// hold the slots for auto-scale. Users won't be able to manage it,to avoid conflicts. Scale-up will happen, if
-    /// there are always pending tasks for the past 10 minutes. Scale-down will happen, if the system knows that scale-
-    /// up won't be triggered again. Note this is an alpha feature.</summary>
-    public class Autoscale : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The slot capacity added to this reservation when autoscale happens. Will be between
-        /// [0, max_slots].</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("currentSlots")]
-        public virtual System.Nullable<long> CurrentSlots { get; set; } 
-
-        /// <summary>Number of slots to be scaled when needed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxSlots")]
-        public virtual System.Nullable<long> MaxSlots { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Represents a BI Reservation.</summary>
     public class BiReservation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2192,10 +2173,6 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
     /// <summary>A reservation is a mechanism used to guarantee slots to users.</summary>
     public class Reservation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The configuration parameters for the auto scaling feature. Note this is an alpha feature.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("autoscale")]
-        public virtual Autoscale Autoscale { get; set; } 
-
         /// <summary>If false, any query using this reservation will use idle slots from other reservations within the
         /// same admin project. If true, a query using this reservation will execute with the slot capacity specified
         /// above at most.</summary>

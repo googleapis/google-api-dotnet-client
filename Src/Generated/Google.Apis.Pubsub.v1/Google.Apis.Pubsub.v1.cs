@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200403 (1919)
+ *      <tr><th>API Rev<td>20200427 (1943)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -637,7 +637,10 @@ namespace Google.Apis.Pubsub.v1
                 /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
                 ///
                 /// Requests for policies with any conditional bindings must specify version 3. Policies without any
-                /// conditional bindings may specify any valid value or leave the field unset.</summary>
+                /// conditional bindings may specify any valid value or leave the field unset.
+                ///
+                /// To learn which resources support conditions in their IAM policies, see the [IAM
+                /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -855,7 +858,7 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
             ///
-            /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
+            /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
             /// documentation for the appropriate value for this field.</param>
@@ -866,7 +869,7 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
             ///
-            /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
+            /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
             public class SetIamPolicyRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Policy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -928,7 +931,7 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
             ///
             /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
             /// not for authorization checking. This operation may "fail open" without warning.</summary>
@@ -941,7 +944,7 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
             ///
             /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
             /// not for authorization checking. This operation may "fail open" without warning.</summary>
@@ -1363,7 +1366,10 @@ namespace Google.Apis.Pubsub.v1
                 /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
                 ///
                 /// Requests for policies with any conditional bindings must specify version 3. Policies without any
-                /// conditional bindings may specify any valid value or leave the field unset.</summary>
+                /// conditional bindings may specify any valid value or leave the field unset.
+                ///
+                /// To learn which resources support conditions in their IAM policies, see the [IAM
+                /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -1887,7 +1893,7 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
             ///
-            /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
+            /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
             /// documentation for the appropriate value for this field.</param>
@@ -1898,7 +1904,7 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
             ///
-            /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
+            /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
             public class SetIamPolicyRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Policy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1960,7 +1966,7 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
             ///
             /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
             /// not for authorization checking. This operation may "fail open" without warning.</summary>
@@ -1973,7 +1979,7 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
             ///
             /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
             /// not for authorization checking. This operation may "fail open" without warning.</summary>
@@ -2536,7 +2542,10 @@ namespace Google.Apis.Pubsub.v1
                 /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
                 ///
                 /// Requests for policies with any conditional bindings must specify version 3. Policies without any
-                /// conditional bindings may specify any valid value or leave the field unset.</summary>
+                /// conditional bindings may specify any valid value or leave the field unset.
+                ///
+                /// To learn which resources support conditions in their IAM policies, see the [IAM
+                /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -2826,7 +2835,7 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
             ///
-            /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
+            /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
             /// documentation for the appropriate value for this field.</param>
@@ -2837,7 +2846,7 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
             ///
-            /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
+            /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
             public class SetIamPolicyRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Policy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -2899,7 +2908,7 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
             ///
             /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
             /// not for authorization checking. This operation may "fail open" without warning.</summary>
@@ -2912,7 +2921,7 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
             ///
             /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
             /// not for authorization checking. This operation may "fail open" without warning.</summary>
@@ -2997,9 +3006,15 @@ namespace Google.Apis.Pubsub.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. NOTE: An unsatisfied condition will not allow
-        /// user access via current binding. Different bindings, including their conditions, are examined
-        /// independently.</summary>
+        /// <summary>The condition that is associated with this binding.
+        ///
+        /// If the condition evaluates to `true`, then this binding applies to the current request.
+        ///
+        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
+        /// different role binding might grant the same role to one or more of the members in this binding.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
@@ -3338,15 +3353,17 @@ namespace Google.Apis.Pubsub.v1.Data
     /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
     /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
     ///
-    /// Optionally, a `binding` can specify a `condition`, which is a logical expression that allows access to a
-    /// resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the
-    /// request, the resource, or both.
+    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
+    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
+    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
+    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
+    /// /resource-policies).
     ///
     /// **JSON example:**
     ///
     /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
     /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
     ///
@@ -3395,7 +3412,10 @@ namespace Google.Apis.Pubsub.v1.Data
         /// `1` policy, and all of the conditions in the version `3` policy are lost.
         ///
         /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.</summary>
+        /// leave the field unset.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -3518,7 +3538,7 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual OidcToken OidcToken { get; set; } 
 
         /// <summary>A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint
-        /// might use "https://example.com/push".</summary>
+        /// might use `https://example.com/push`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pushEndpoint")]
         public virtual string PushEndpoint { get; set; } 
 
@@ -3656,9 +3676,7 @@ namespace Google.Apis.Pubsub.v1.Data
         ///
         /// The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e.,
         /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge()
-        /// messages on this subscription. EXPERIMENTAL: This feature is part of a closed alpha release. This API might
-        /// be changed in backward-incompatible ways and is not recommended for production use. It is not subject to any
-        /// SLA or deprecation policy.</summary>
+        /// messages on this subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deadLetterPolicy")]
         public virtual DeadLetterPolicy DeadLetterPolicy { get; set; } 
 
@@ -3669,6 +3687,14 @@ namespace Google.Apis.Pubsub.v1.Data
         /// day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationPolicy")]
         public virtual ExpirationPolicy ExpirationPolicy { get; set; } 
+
+        /// <summary>An expression written in the Cloud Pub/Sub filter language. If non-empty, then only
+        /// `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty,
+        /// then no messages are filtered out. EXPERIMENTAL: This feature is part of a closed alpha release. This API
+        /// might be changed in backward-incompatible ways and is not recommended for production use. It is not subject
+        /// to any SLA or deprecation policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; } 
 
         /// <summary>See  Creating and managing labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]

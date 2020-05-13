@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>Cloud Speech-to-Text API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20200409 (1925)
+ *      <tr><th>API Rev<td>20200507 (1953)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>
  *              https://cloud.google.com/speech-to-text/docs/quickstart-protocol</a>
@@ -926,8 +926,8 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     /// phrases.</summary>
     public class CustomClass : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If this custom class is a resource, the custom_class_id is the resource id of the
-        /// CustomClass.</summary>
+        /// <summary>If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case
+        /// sensitive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customClassId")]
         public virtual string CustomClassId { get; set; } 
 
@@ -1057,12 +1057,12 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     ///
     /// List items can also include pre-built or custom classes containing groups of words that represent common
     /// concepts that occur in natural language. For example, rather than providing a phrase hint for every month of the
-    /// year (e.g. "i was born in january", "i was born in febuary", ...), use the pre-built $MONTH class improves the
+    /// year (e.g. "i was born in january", "i was born in febuary", ...), use the pre-built `$MONTH` class improves the
     /// likelihood of correctly transcribing audio that includes months (e.g. "i was born in $month"). To refer to pre-
-    /// built classes, use the class' symbol prepended with $ e.g. $MONTH. To refer to custom classes that were defined
-    /// inline in the request, set the class's `custom_class_id` to a string unique to all class resources and inline
-    /// classes. Then use the class' id wrapped in ${...} e.g. "${my-months}". To refer to custom classes resources, use
-    /// the class' id wrapped in ${} (e.g. ${my-months}).</summary>
+    /// built classes, use the class' symbol prepended with `$` e.g. `$MONTH`. To refer to custom classes that were
+    /// defined inline in the request, set the class's `custom_class_id` to a string unique to all class resources and
+    /// inline classes. Then use the class' id wrapped in $`{...}` e.g. "${my-months}". To refer to custom classes
+    /// resources, use the class' id wrapped in `${}` (e.g. `${my-months}`).</summary>
     public class Phrase : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Hint Boost. Overrides the boost set at the phrase set level. Positive value will increase the

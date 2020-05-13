@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/shell/docs/'>Cloud Shell API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20200411 (1927)
+ *      <tr><th>API Rev<td>20200512 (1958)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/shell/docs/'>
  *              https://cloud.google.com/shell/docs/</a>
@@ -1019,6 +1019,10 @@ namespace Google.Apis.CloudShell.v1alpha1.Data
         /// to log in. This code can be updated later by calling AuthorizeEnvironment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
         public virtual string AccessToken { get; set; } 
+
+        /// <summary>Public keys that should be added to the environment before it is started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKeys")]
+        public virtual System.Collections.Generic.IList<PublicKey> PublicKeys { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

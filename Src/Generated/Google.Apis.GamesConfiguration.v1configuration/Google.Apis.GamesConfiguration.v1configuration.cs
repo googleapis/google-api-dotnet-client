@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/'>Google Play Game Services Publishing API</a>
  *      <tr><th>API Version<td>v1configuration
- *      <tr><th>API Rev<td>20200402 (1918)
+ *      <tr><th>API Rev<td>20200504 (1950)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/'>
  *              https://developers.google.com/games/</a>
@@ -572,7 +572,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
 
             /// <summary>The maximum number of resource configurations to return in the response, used for paging. For
             /// any response, the actual number of resources returned may be less than the specified
-            /// maxResults.</summary>
+            /// `maxResults`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -1191,7 +1191,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
 
             /// <summary>The maximum number of resource configurations to return in the response, used for paging. For
             /// any response, the actual number of resources returned may be less than the specified
-            /// maxResults.</summary>
+            /// `maxResults`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -1347,7 +1347,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         public virtual string InitialState { get; set; } 
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesConfiguration#achievementConfiguration.</summary>
+        /// `gamesConfiguration#achievementConfiguration`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -1379,7 +1379,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         public virtual string IconUrl { get; set; } 
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesConfiguration#achievementConfigurationDetail.</summary>
+        /// `gamesConfiguration#achievementConfigurationDetail`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -1407,7 +1407,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         public virtual System.Collections.Generic.IList<AchievementConfiguration> Items { get; set; } 
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesConfiguration#achievementConfigurationListResponse.</summary>
+        /// `gamesConfiguration#achievementConfigurationListResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -1488,7 +1488,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         public virtual string ImageType { get; set; } 
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesConfiguration#imageConfiguration.</summary>
+        /// `gamesConfiguration#imageConfiguration`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -1516,7 +1516,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         public virtual string Id { get; set; } 
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesConfiguration#leaderboardConfiguration.</summary>
+        /// `gamesConfiguration#leaderboardConfiguration`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -1551,7 +1551,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         public virtual string IconUrl { get; set; } 
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesConfiguration#leaderboardConfigurationDetail.</summary>
+        /// `gamesConfiguration#leaderboardConfigurationDetail`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -1579,7 +1579,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         public virtual System.Collections.Generic.IList<LeaderboardConfiguration> Items { get; set; } 
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesConfiguration#leaderboardConfigurationListResponse.</summary>
+        /// `gamesConfiguration#leaderboardConfigurationListResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -1595,7 +1595,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
     public class LocalizedString : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesConfiguration#localizedString.</summary>
+        /// `gamesConfiguration#localizedString`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -1615,7 +1615,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
     public class LocalizedStringBundle : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesConfiguration#localizedStringBundle.</summary>
+        /// `gamesConfiguration#localizedStringBundle`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 

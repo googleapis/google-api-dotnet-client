@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/source-repositories/docs/apis'>Cloud Source Repositories API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200121 (1846)
+ *      <tr><th>API Rev<td>20200415 (1931)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/source-repositories/docs/apis'>
  *              https://cloud.google.com/source-repositories/docs/apis</a>
@@ -509,7 +509,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/repos/.+$",
+                            Pattern = @"^projects/[^/]+/repos/.*$",
                         });
                 }
 
@@ -569,7 +569,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/repos/.+$",
+                            Pattern = @"^projects/[^/]+/repos/.*$",
                         });
                 }
 
@@ -642,7 +642,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/repos/.+$",
+                            Pattern = @"^projects/[^/]+/repos/.*$",
                         });
                     RequestParameters.Add(
                         "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
@@ -810,7 +810,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/repos/.+$",
+                            Pattern = @"^projects/[^/]+/repos/.*$",
                         });
                 }
 
@@ -882,7 +882,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/repos/.+$",
+                            Pattern = @"^projects/[^/]+/repos/.*$",
                         });
                 }
 
@@ -954,7 +954,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/repos/.+$",
+                            Pattern = @"^projects/[^/]+/repos/.*$",
                         });
                 }
 
@@ -1026,7 +1026,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/repos/.+$",
+                            Pattern = @"^projects/[^/]+/repos/.*$",
                         });
                 }
 
@@ -1569,8 +1569,9 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         public virtual Policy Policy { get; set; } 
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, the following default mask is used: paths: "bindings, etag" This
-        /// field is only used by Cloud IAM.</summary>
+        /// will be modified. If no mask is provided, the following default mask is used:
+        ///
+        /// `paths: "bindings, etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 

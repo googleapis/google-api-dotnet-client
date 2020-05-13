@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/authorized-buyers/apis/reference/rest/'>Ad Exchange Buyer API II</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20200416 (1932)
+ *      <tr><th>API Rev<td>20200509 (1955)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/authorized-buyers/apis/reference/rest/'>
  *              https://developers.google.com/authorized-buyers/apis/reference/rest/</a>
@@ -7426,6 +7426,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("measurableImpressions")]
         public virtual MetricValue MeasurableImpressions { get; set; } 
 
+        /// <summary>The number of bids that won the auction and also won the mediation waterfall (if any).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reachedQueries")]
+        public virtual MetricValue ReachedQueries { get; set; } 
+
         /// <summary>The values of all dimensions associated with metric values in this row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowDimensions")]
         public virtual RowDimensions RowDimensions { get; set; } 
@@ -9365,7 +9369,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     /// <summary>Note: this resource requires whitelisting for access. Please contact your account manager for access to
     /// Marketplace resources.
     ///
-    /// Represents a publisher profile in Marketplace.
+    /// Represents a publisher profile (https://support.google.com/admanager/answer/6035806?hl=en) in Marketplace.
     ///
     /// All fields are read only. All string fields are free-form text entered by the publisher unless noted
     /// otherwise.</summary>
@@ -9398,6 +9402,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>URL to publisher's Google+ page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googlePlusUrl")]
         public virtual string GooglePlusUrl { get; set; } 
+
+        /// <summary>Indicates if this profile is the parent profile of the seller. A parent profile represents all the
+        /// inventory from the seller, as opposed to child profile that is created to brand a portion of inventory. One
+        /// seller should have only one parent publisher profile, and can have multiple child profiles. Publisher
+        /// profiles for the same seller will have same value of field
+        /// google.ads.adexchange.buyer.v2beta1.PublisherProfile.seller. See
+        /// https://support.google.com/admanager/answer/6035806?hl=en for details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isParent")]
+        public virtual System.Nullable<bool> IsParent { get; set; } 
 
         /// <summary>A Google public URL to the logo for this publisher profile. The logo is stored as a PNG, JPG, or
         /// GIF image.</summary>

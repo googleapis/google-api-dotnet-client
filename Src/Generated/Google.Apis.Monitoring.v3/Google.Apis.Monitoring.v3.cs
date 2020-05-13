@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Cloud Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200416 (1932)
+ *      <tr><th>API Rev<td>20200502 (1948)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -415,9 +415,10 @@ namespace Google.Apis.Monitoring.v3
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Required. The project in which to create the alerting policy. The format is:
             /// projects/[PROJECT_ID_OR_NUMBER] Note that this field names the parent container in which the alerting policy will be
-            /// written, not the name of the created policy. The alerting policy that is returned will have a name that contains a
-            /// normalized representation of this name as a prefix but adds a suffix of the form /alertPolicies/[ALERT_POLICY_ID],
-            /// identifying the policy in the container.</param>
+            /// written, not the name of the created policy. |name| must be a host project of a workspace, otherwise
+            /// INVALID_ARGUMENT error will return. The alerting policy that is returned will have a name that contains a normalized
+            /// representation of this name as a prefix but adds a suffix of the form /alertPolicies/[ALERT_POLICY_ID], identifying
+            /// the policy in the container.</param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.AlertPolicy body, string name)
             {
                 return new CreateRequest(service, body, name);
@@ -438,9 +439,10 @@ namespace Google.Apis.Monitoring.v3
 
                 /// <summary>Required. The project in which to create the alerting policy. The format is:
                 /// projects/[PROJECT_ID_OR_NUMBER] Note that this field names the parent container in which the
-                /// alerting policy will be written, not the name of the created policy. The alerting policy that is
-                /// returned will have a name that contains a normalized representation of this name as a prefix but
-                /// adds a suffix of the form /alertPolicies/[ALERT_POLICY_ID], identifying the policy in the
+                /// alerting policy will be written, not the name of the created policy. |name| must be a host project
+                /// of a workspace, otherwise INVALID_ARGUMENT error will return. The alerting policy that is returned
+                /// will have a name that contains a normalized representation of this name as a prefix but adds a
+                /// suffix of the form /alertPolicies/[ALERT_POLICY_ID], identifying the policy in the
                 /// container.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -613,7 +615,7 @@ namespace Google.Apis.Monitoring.v3
 
             }
 
-            /// <summary>Lists the existing alerting policies for the project.</summary>
+            /// <summary>Lists the existing alerting policies for the workspace.</summary>
             /// <param name="name">Required. The project whose alert policies are to be listed. The format is:
             /// projects/[PROJECT_ID_OR_NUMBER] Note that this field names the parent container in which the alerting policies to be
             /// listed are stored. To retrieve a single alerting policy by name, use the GetAlertPolicy operation,
@@ -623,7 +625,7 @@ namespace Google.Apis.Monitoring.v3
                 return new ListRequest(service, name);
             }
 
-            /// <summary>Lists the existing alerting policies for the project.</summary>
+            /// <summary>Lists the existing alerting policies for the workspace.</summary>
             public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListAlertPoliciesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -5766,6 +5768,18 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authInfo")]
         public virtual BasicAuthentication AuthInfo { get; set; } 
 
+        /// <summary>The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body
+        /// passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API
+        /// will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum
+        /// byte size is 1 megabyte. Note: As with all bytes fields JSON representations are base64 encoded. e.g.:
+        /// "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual string Body { get; set; } 
+
+        /// <summary>The content type to use for the check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
+        public virtual string ContentType { get; set; } 
+
         /// <summary>The list of headers to send as part of the Uptime check request. If two headers have the same key
         /// and different values, they should be entered as a single header, with the value being a comma-separated list
         /// of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31).
@@ -5774,7 +5788,7 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IDictionary<string,string> Headers { get; set; } 
 
-        /// <summary>Boolean specifiying whether to encrypt the header information. Encryption should be specified for
+        /// <summary>Boolean specifying whether to encrypt the header information. Encryption should be specified for
         /// any headers related to authentication that you do not wish to be seen when retrieving the configuration. The
         /// server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to true
         /// then the headers will be obscured with ******.</summary>
@@ -5792,6 +5806,11 @@ namespace Google.Apis.Monitoring.v3.Data
         /// monitored_resource) and path to construct the full URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; } 
+
+        /// <summary>The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then request_method
+        /// defaults to GET.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestMethod")]
+        public virtual string RequestMethod { get; set; } 
 
         /// <summary>If true, use HTTPS instead of HTTP to run the check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useSsl")]
@@ -6998,7 +7017,7 @@ namespace Google.Apis.Monitoring.v3.Data
     /// specified, the start time defaults to the value of the  end time, and the interval represents a single point in
     /// time. If both  start and end times are specified, they must be identical. Such an  interval is valid only for
     /// GAUGE metrics, which are point-in-time  measurements. For DELTA and CUMULATIVE metrics, the start time must be
-    /// earlier  than the end time. In all cases, the start time of the next interval must be  at least a microsecond
+    /// earlier  than the end time. In all cases, the start time of the next interval must be  at least a millisecond
     /// after the end time of the previous interval.  Because the interval is closed, if the start time of a new
     /// interval  is the same as the end time of the previous interval, data written  at the new start time could
     /// overwrite data written at the previous  end time.</summary>
@@ -7022,9 +7041,9 @@ namespace Google.Apis.Monitoring.v3.Data
     /// used for both listing and creating time series.</summary>
     public class TimeSeries : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The associated monitored resource metadata. When reading a a timeseries, this field
-        /// will include metadata labels that are explicitly named in the reduction. When creating a timeseries, this
-        /// field is ignored.</summary>
+        /// <summary>Output only. The associated monitored resource metadata. When reading a timeseries, this field will
+        /// include metadata labels that are explicitly named in the reduction. When creating a timeseries, this field
+        /// is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual MonitoredResourceMetadata Metadata { get; set; } 
 

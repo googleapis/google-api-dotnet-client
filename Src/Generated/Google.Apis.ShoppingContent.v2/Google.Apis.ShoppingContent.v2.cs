@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200407 (1923)
+ *      <tr><th>API Rev<td>20200508 (1954)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -445,7 +445,7 @@ namespace Google.Apis.ShoppingContent.v2
 
         /// <summary>Claims the website of a Merchant Center sub-account.</summary>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
-        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
         /// account.</param>
         /// <param name="accountId">The ID of the account whose website is claimed.</param>
         public virtual ClaimwebsiteRequest Claimwebsite(ulong merchantId, ulong accountId)
@@ -467,7 +467,7 @@ namespace Google.Apis.ShoppingContent.v2
 
 
             /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
-            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
             /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
@@ -476,8 +476,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
-            /// <summary>Only available to selected merchants. When set to True, this flag removes any existing claim on
-            /// the requested website by another account and replaces it with a claim from this account.</summary>
+            /// <summary>Only available to selected merchants. When set to `True`, this flag removes any existing claim
+            /// on the requested website by another account and replaces it with a claim from this account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("overwrite", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Overwrite { get; set; }
 
@@ -712,7 +712,7 @@ namespace Google.Apis.ShoppingContent.v2
 
         /// <summary>Retrieves a Merchant Center account.</summary>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
-        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
         /// account.</param>
         /// <param name="accountId">The ID of the account.</param>
         public virtual GetRequest Get(ulong merchantId, ulong accountId)
@@ -734,7 +734,7 @@ namespace Google.Apis.ShoppingContent.v2
 
 
             /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
-            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
             /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
@@ -875,7 +875,7 @@ namespace Google.Apis.ShoppingContent.v2
         /// linkedAccountId.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
-        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
         /// account.</param>
         /// <param name="accountId">The ID of the account that should be linked.</param>
         public virtual LinkRequest Link(Google.Apis.ShoppingContent.v2.Data.AccountsLinkRequest body, ulong merchantId, ulong accountId)
@@ -899,7 +899,7 @@ namespace Google.Apis.ShoppingContent.v2
 
 
             /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
-            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
             /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
@@ -1049,7 +1049,7 @@ namespace Google.Apis.ShoppingContent.v2
         /// <summary>Updates a Merchant Center account.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
-        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
         /// account.</param>
         /// <param name="accountId">The ID of the account.</param>
         public virtual UpdateRequest Update(Google.Apis.ShoppingContent.v2.Data.Account body, ulong merchantId, ulong accountId)
@@ -1072,7 +1072,7 @@ namespace Google.Apis.ShoppingContent.v2
 
 
             /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
-            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
             /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
@@ -1220,7 +1220,7 @@ namespace Google.Apis.ShoppingContent.v2
         /// <summary>Retrieves the status of a Merchant Center account. No itemLevelIssues are returned for multi-client
         /// accounts.</summary>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
-        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
         /// account.</param>
         /// <param name="accountId">The ID of the account.</param>
         public virtual GetRequest Get(ulong merchantId, ulong accountId)
@@ -1243,7 +1243,7 @@ namespace Google.Apis.ShoppingContent.v2
 
 
             /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
-            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
             /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
@@ -1498,7 +1498,7 @@ namespace Google.Apis.ShoppingContent.v2
 
         /// <summary>Retrieves the tax settings of the account.</summary>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
-        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
         /// account.</param>
         /// <param name="accountId">The ID of the account for which to get/update account tax
         /// settings.</param>
@@ -1521,7 +1521,7 @@ namespace Google.Apis.ShoppingContent.v2
 
 
             /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
-            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
             /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
@@ -1665,7 +1665,7 @@ namespace Google.Apis.ShoppingContent.v2
         /// <summary>Updates the tax settings of the account.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
-        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
         /// account.</param>
         /// <param name="accountId">The ID of the account for which to get/update account tax
         /// settings.</param>
@@ -1689,7 +1689,7 @@ namespace Google.Apis.ShoppingContent.v2
 
 
             /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
-            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
             /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
@@ -2734,7 +2734,7 @@ namespace Google.Apis.ShoppingContent.v2
         /// <param name="merchantId">The ID of the account that contains the product. This account cannot be a multi-client
         /// account.</param>
         /// <param name="storeCode">The code of the store for which to update price and availability.
-        /// Use online to update price and availability of an online product.</param>
+        /// Use `online` to update price and availability of an online product.</param>
         /// <param name="productId">The REST
         /// ID of the product for which to update price and availability.</param>
         public virtual SetRequest Set(Google.Apis.ShoppingContent.v2.Data.InventorySetRequest body, ulong merchantId, string storeCode, string productId)
@@ -2762,7 +2762,7 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>The code of the store for which to update price and availability. Use online to update price
+            /// <summary>The code of the store for which to update price and availability. Use `online` to update price
             /// and availability of an online product.</summary>
             [Google.Apis.Util.RequestParameterAttribute("storeCode", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string StoreCode { get; private set; }
@@ -2932,7 +2932,7 @@ namespace Google.Apis.ShoppingContent.v2
 
         /// <summary>Retrieves the LIA settings of the account.</summary>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
-        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
         /// account.</param>
         /// <param name="accountId">The ID of the account for which to get or update LIA
         /// settings.</param>
@@ -2955,7 +2955,7 @@ namespace Google.Apis.ShoppingContent.v2
 
 
             /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
-            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
             /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
@@ -3012,7 +3012,7 @@ namespace Google.Apis.ShoppingContent.v2
 
         /// <summary>Retrieves the list of accessible Google My Business accounts.</summary>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
-        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
         /// account.</param>
         /// <param name="accountId">The ID of the account for which to retrieve accessible Google My
         /// Business accounts.</param>
@@ -3035,7 +3035,7 @@ namespace Google.Apis.ShoppingContent.v2
 
 
             /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
-            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
             /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
@@ -3225,7 +3225,7 @@ namespace Google.Apis.ShoppingContent.v2
 
         /// <summary>Requests access to a specified Google My Business account.</summary>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
-        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
         /// account.</param>
         /// <param name="accountId">The ID of the account for which GMB access is
         /// requested.</param>
@@ -3250,7 +3250,7 @@ namespace Google.Apis.ShoppingContent.v2
 
 
             /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
-            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
             /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
@@ -3320,7 +3320,7 @@ namespace Google.Apis.ShoppingContent.v2
 
         /// <summary>Requests inventory validation for the specified country.</summary>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
-        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
         /// account.</param>
         /// <param name="accountId">The ID of the account that manages the order. This cannot be a
         /// multi-client account.</param>
@@ -3346,7 +3346,7 @@ namespace Google.Apis.ShoppingContent.v2
 
 
             /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
-            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
             /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
@@ -3416,7 +3416,7 @@ namespace Google.Apis.ShoppingContent.v2
 
         /// <summary>Sets the inventory verification contract for the specified country.</summary>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
-        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
         /// account.</param>
         /// <param name="accountId">The ID of the account that manages the order. This cannot be a
         /// multi-client account.</param>
@@ -3450,7 +3450,7 @@ namespace Google.Apis.ShoppingContent.v2
 
 
             /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
-            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
             /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
@@ -3559,7 +3559,7 @@ namespace Google.Apis.ShoppingContent.v2
 
         /// <summary>Sets the POS data provider for the specified country.</summary>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
-        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
         /// account.</param>
         /// <param name="accountId">The ID of the account for which to retrieve accessible Google My
         /// Business accounts.</param>
@@ -3585,7 +3585,7 @@ namespace Google.Apis.ShoppingContent.v2
 
 
             /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
-            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
             /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
@@ -3682,7 +3682,7 @@ namespace Google.Apis.ShoppingContent.v2
         /// <summary>Updates the LIA settings of the account.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
-        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
         /// account.</param>
         /// <param name="accountId">The ID of the account for which to get or update LIA
         /// settings.</param>
@@ -3706,7 +3706,7 @@ namespace Google.Apis.ShoppingContent.v2
 
 
             /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
-            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
             /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
@@ -3886,7 +3886,7 @@ namespace Google.Apis.ShoppingContent.v2
 
         /// <summary>Creates a refund invoice for one or more shipment groups, and triggers a refund for orderinvoice
         /// enabled orders. This can only be used for line items that have previously been charged using
-        /// createChargeInvoice. All amounts (except for the summary) are incremental with respect to the previous
+        /// `createChargeInvoice`. All amounts (except for the summary) are incremental with respect to the previous
         /// invoice.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
@@ -3899,7 +3899,7 @@ namespace Google.Apis.ShoppingContent.v2
 
         /// <summary>Creates a refund invoice for one or more shipment groups, and triggers a refund for orderinvoice
         /// enabled orders. This can only be used for line items that have previously been charged using
-        /// createChargeInvoice. All amounts (except for the summary) are incremental with respect to the previous
+        /// `createChargeInvoice`. All amounts (except for the summary) are incremental with respect to the previous
         /// invoice.</summary>
         public class CreaterefundinvoiceRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrderinvoicesCreateRefundInvoiceResponse>
         {
@@ -4571,7 +4571,7 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Sandbox only. Moves a test order from state "inProgress" to state "pendingShipment".</summary>
+        /// <summary>Sandbox only. Moves a test order from state "`inProgress`" to state "`pendingShipment`".</summary>
         /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
         /// account.</param>
         /// <param name="orderId">The ID of the test order to modify.</param>
@@ -4580,7 +4580,7 @@ namespace Google.Apis.ShoppingContent.v2
             return new AdvancetestorderRequest(service, merchantId, orderId);
         }
 
-        /// <summary>Sandbox only. Moves a test order from state "inProgress" to state "pendingShipment".</summary>
+        /// <summary>Sandbox only. Moves a test order from state "`inProgress`" to state "`pendingShipment`".</summary>
         public class AdvancetestorderRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersAdvanceTestOrderResponse>
         {
             /// <summary>Constructs a new Advancetestorder request.</summary>
@@ -5306,7 +5306,7 @@ namespace Google.Apis.ShoppingContent.v2
                 Template3,
             }
 
-            /// <summary>The country of the template to retrieve. Defaults to US.</summary>
+            /// <summary>The country of the template to retrieve. Defaults to `US`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("country", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Country { get; set; }
 
@@ -5485,7 +5485,7 @@ namespace Google.Apis.ShoppingContent.v2
 
             /// <summary>Obtains orders that match the acknowledgement status. When set to true, obtains orders that
             /// have been acknowledged. When false, obtains orders that have not been acknowledged. We recommend using
-            /// this filter set to false, in conjunction with the acknowledge call, such that only un-acknowledged
+            /// this filter set to `false`, in conjunction with the `acknowledge` call, such that only un-acknowledged
             /// orders are returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("acknowledged", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Acknowledged { get; set; }
@@ -5513,15 +5513,15 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("placedDateStart", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PlacedDateStart { get; set; }
 
-            /// <summary>Obtains orders that match any of the specified statuses. Please note that active is a shortcut
-            /// for pendingShipment and partiallyShipped, and completed is a shortcut for shipped, partiallyDelivered,
-            /// delivered, partiallyReturned, returned, and canceled.</summary>
+            /// <summary>Obtains orders that match any of the specified statuses. Please note that `active` is a
+            /// shortcut for `pendingShipment` and `partiallyShipped`, and `completed` is a shortcut for `shipped`,
+            /// `partiallyDelivered`, `delivered`, `partiallyReturned`, `returned`, and `canceled`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("statuses", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StatusesEnum> Statuses { get; set; }
 
-            /// <summary>Obtains orders that match any of the specified statuses. Please note that active is a shortcut
-            /// for pendingShipment and partiallyShipped, and completed is a shortcut for shipped, partiallyDelivered,
-            /// delivered, partiallyReturned, returned, and canceled.</summary>
+            /// <summary>Obtains orders that match any of the specified statuses. Please note that `active` is a
+            /// shortcut for `pendingShipment` and `partiallyShipped`, and `completed` is a shortcut for `shipped`,
+            /// `partiallyDelivered`, `delivered`, `partiallyReturned`, `returned`, and `canceled`.</summary>
             public enum StatusesEnum
             {
                 [Google.Apis.Util.StringValueAttribute("active")]
@@ -7913,7 +7913,7 @@ namespace Google.Apis.ShoppingContent.v2
 
         /// <summary>Retrieves the shipping settings of the account.</summary>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
-        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
         /// account.</param>
         /// <param name="accountId">The ID of the account for which to get/update shipping
         /// settings.</param>
@@ -7936,7 +7936,7 @@ namespace Google.Apis.ShoppingContent.v2
 
 
             /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
-            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
             /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
@@ -8260,7 +8260,7 @@ namespace Google.Apis.ShoppingContent.v2
         /// <summary>Updates the shipping settings of the account.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
-        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
         /// account.</param>
         /// <param name="accountId">The ID of the account for which to get/update shipping
         /// settings.</param>
@@ -8284,7 +8284,7 @@ namespace Google.Apis.ShoppingContent.v2
 
 
             /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
-            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
             /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
@@ -9442,7 +9442,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<long> Id { get; set; } 
 
-        /// <summary>[DEPRECATED] Please use targets[].includedDestinations instead. The list of intended destinations
+        /// <summary>[DEPRECATED] Please use  targets[].includedDestinations instead. The list of intended destinations
         /// (corresponds to checked check boxes in Merchant Center).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intendedDestinations")]
         public virtual System.Collections.Generic.IList<string> IntendedDestinations { get; set; } 
@@ -9959,7 +9959,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class GmbAccounts : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the account.</summary>
+        /// <summary>The ID of the Merchant Center account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual System.Nullable<ulong> AccountId { get; set; } 
 
@@ -10568,7 +10568,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class LiasettingsCustomBatchRequestEntry : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the account for which to get/update account shipping settings.</summary>
+        /// <summary>The ID of the account for which to get/update account LIA settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual System.Nullable<ulong> AccountId { get; set; } 
 
@@ -10667,7 +10667,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class LiasettingsGetAccessibleGmbAccountsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the account.</summary>
+        /// <summary>The ID of the Merchant Center account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual System.Nullable<ulong> AccountId { get; set; } 
 
@@ -11104,6 +11104,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fullName")]
         public virtual string FullName { get; set; } 
 
+        /// <summary>Email address for the merchant to send value-added tax or invoice documentation of the order. Only
+        /// the last document sent is made available to the customer. For more information, see  About automated VAT
+        /// invoicing for Shopping Actions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invoiceReceivingEmail")]
         public virtual string InvoiceReceivingEmail { get; set; } 
 
@@ -11815,7 +11818,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The status of the execution.
         ///
-        /// Acceptable values are: - "duplicate" - "executed"</summary>
+        /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
         public virtual string ExecutionStatus { get; set; } 
 
@@ -11860,7 +11863,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The status of the execution.
         ///
-        /// Acceptable values are: - "duplicate" - "executed"</summary>
+        /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
         public virtual string ExecutionStatus { get; set; } 
 
@@ -11989,7 +11992,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The status of the execution.
         ///
-        /// Acceptable values are: - "duplicate" - "executed"</summary>
+        /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
         public virtual string ExecutionStatus { get; set; } 
 
@@ -12067,7 +12070,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The status of the execution.
         ///
-        /// Acceptable values are: - "duplicate" - "executed"</summary>
+        /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
         public virtual string ExecutionStatus { get; set; } 
 
@@ -12106,7 +12109,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The status of the execution.
         ///
-        /// Acceptable values are: - "duplicate" - "executed"</summary>
+        /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
         public virtual string ExecutionStatus { get; set; } 
 
@@ -12804,7 +12807,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The status of the execution.
         ///
-        /// Acceptable values are: - "duplicate" - "executed"</summary>
+        /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
         public virtual string ExecutionStatus { get; set; } 
 
@@ -12876,7 +12879,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The status of the execution.
         ///
-        /// Acceptable values are: - "duplicate" - "executed"</summary>
+        /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
         public virtual string ExecutionStatus { get; set; } 
 
@@ -12927,7 +12930,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The status of the execution.
         ///
-        /// Acceptable values are: - "duplicate" - "executed"</summary>
+        /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
         public virtual string ExecutionStatus { get; set; } 
 
@@ -12980,7 +12983,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The status of the execution.
         ///
-        /// Acceptable values are: - "duplicate" - "executed"</summary>
+        /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
         public virtual string ExecutionStatus { get; set; } 
 
@@ -13043,7 +13046,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The status of the execution.
         ///
-        /// Acceptable values are: - "duplicate" - "executed"</summary>
+        /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
         public virtual string ExecutionStatus { get; set; } 
 
@@ -13082,7 +13085,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The status of the execution.
         ///
-        /// Acceptable values are: - "duplicate" - "executed"</summary>
+        /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
         public virtual string ExecutionStatus { get; set; } 
 
@@ -13135,7 +13138,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The status of the execution.
         ///
-        /// Acceptable values are: - "duplicate" - "executed"</summary>
+        /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
         public virtual string ExecutionStatus { get; set; } 
 
@@ -13183,7 +13186,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The status of the execution.
         ///
-        /// Acceptable values are: - "duplicate" - "executed"</summary>
+        /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
         public virtual string ExecutionStatus { get; set; } 
 
@@ -13214,7 +13217,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The status of the execution.
         ///
-        /// Acceptable values are: - "duplicate" - "executed"</summary>
+        /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
         public virtual string ExecutionStatus { get; set; } 
 
@@ -13265,7 +13268,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The status of the execution.
         ///
-        /// Acceptable values are: - "duplicate" - "executed"</summary>
+        /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
         public virtual string ExecutionStatus { get; set; } 
 
@@ -13960,8 +13963,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string Gtin { get; set; } 
 
         /// <summary>The REST ID of the product. Content API methods that operate on products take this as their
-        /// `productId` parameter. The REST ID for a product is of the form
-        /// channel:contentLanguage:targetCountry:offerId.</summary>
+        /// `productId` parameter. The REST ID for a product is of the form channel:contentLanguage:targetCountry:
+        /// offerId.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 

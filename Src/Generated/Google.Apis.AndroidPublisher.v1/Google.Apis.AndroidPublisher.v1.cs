@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200414 (1930)
+ *      <tr><th>API Rev<td>20200505 (1951)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -64,7 +64,7 @@ namespace Google.Apis.AndroidPublisher.v1
         public AndroidPublisherService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
-            purchases = new PurchasesResource(this);
+
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -83,16 +83,16 @@ namespace Google.Apis.AndroidPublisher.v1
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://www.googleapis.com/androidpublisher/v1/applications/"; }
+            get { return BaseUriOverride ?? "https://www.googleapis.com/"; }
         #else
-            get { return "https://www.googleapis.com/androidpublisher/v1/applications/"; }
+            get { return "https://www.googleapis.com/"; }
         #endif
         }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath
         {
-            get { return "androidpublisher/v1/applications/"; }
+            get { return ""; }
         }
 
         #if !NET40
@@ -109,31 +109,9 @@ namespace Google.Apis.AndroidPublisher.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Play Developer API.</summary>
-        public class Scope
-        {
-            /// <summary>View and manage your Google Play Developer account</summary>
-            public static string Androidpublisher = "https://www.googleapis.com/auth/androidpublisher";
-
-        }
-
-        /// <summary>Available OAuth 2.0 scope constants for use with the Google Play Developer API.</summary>
-        public static class ScopeConstants
-        {
-            /// <summary>View and manage your Google Play Developer account</summary>
-            public const string Androidpublisher = "https://www.googleapis.com/auth/androidpublisher";
-
-        }
 
 
 
-        private readonly PurchasesResource purchases;
-
-        /// <summary>Gets the Purchases resource.</summary>
-        public virtual PurchasesResource Purchases
-        {
-            get { return purchases; }
-        }
     }
 
     ///<summary>A base abstract class for AndroidPublisher requests.</summary>
@@ -255,239 +233,8 @@ namespace Google.Apis.AndroidPublisher.v1
                 });
         }
     }
-
-    /// <summary>The "purchases" collection of methods.</summary>
-    public class PurchasesResource
-    {
-        private const string Resource = "purchases";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public PurchasesResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-
-        }
-
-
-        /// <summary>Cancels a user's subscription purchase. The subscription remains valid until its expiration
-        /// time.</summary>
-        /// <param name="packageName">The package name of the application for which this subscription was purchased (for
-        /// example, 'com.some.thing').</param>
-        /// <param name="subscriptionId">The purchased subscription ID (for example,
-        /// 'monthly001').</param>
-        /// <param name="token">The token provided to the user's device when the subscription was
-        /// purchased.</param>
-        public virtual CancelRequest Cancel(string packageName, string subscriptionId, string token)
-        {
-            return new CancelRequest(service, packageName, subscriptionId, token);
-        }
-
-        /// <summary>Cancels a user's subscription purchase. The subscription remains valid until its expiration
-        /// time.</summary>
-        public class CancelRequest : AndroidPublisherBaseServiceRequest<string>
-        {
-            /// <summary>Constructs a new Cancel request.</summary>
-            public CancelRequest(Google.Apis.Services.IClientService service, string packageName, string subscriptionId, string token)
-                : base(service)
-            {
-                PackageName = packageName;
-                SubscriptionId = subscriptionId;
-                Token = token;
-                InitParameters();
-            }
-
-
-            /// <summary>The package name of the application for which this subscription was purchased (for example,
-            /// 'com.some.thing').</summary>
-            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string PackageName { get; private set; }
-
-            /// <summary>The purchased subscription ID (for example, 'monthly001').</summary>
-            [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string SubscriptionId { get; private set; }
-
-            /// <summary>The token provided to the user's device when the subscription was purchased.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Token { get; private set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "cancel"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "{packageName}/subscriptions/{subscriptionId}/purchases/{token}/cancel"; }
-            }
-
-            /// <summary>Initializes Cancel parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "packageName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "subscriptionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "subscriptionId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "token", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "token",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
-        /// <summary>Checks whether a user's subscription purchase is valid and returns its expiry time.</summary>
-        /// <param name="packageName">The package name of the application for which this subscription was purchased (for
-        /// example, 'com.some.thing').</param>
-        /// <param name="subscriptionId">The purchased subscription ID (for example,
-        /// 'monthly001').</param>
-        /// <param name="token">The token provided to the user's device when the subscription was
-        /// purchased.</param>
-        public virtual GetRequest Get(string packageName, string subscriptionId, string token)
-        {
-            return new GetRequest(service, packageName, subscriptionId, token);
-        }
-
-        /// <summary>Checks whether a user's subscription purchase is valid and returns its expiry time.</summary>
-        public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v1.Data.SubscriptionPurchase>
-        {
-            /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string packageName, string subscriptionId, string token)
-                : base(service)
-            {
-                PackageName = packageName;
-                SubscriptionId = subscriptionId;
-                Token = token;
-                InitParameters();
-            }
-
-
-            /// <summary>The package name of the application for which this subscription was purchased (for example,
-            /// 'com.some.thing').</summary>
-            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string PackageName { get; private set; }
-
-            /// <summary>The purchased subscription ID (for example, 'monthly001').</summary>
-            [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string SubscriptionId { get; private set; }
-
-            /// <summary>The token provided to the user's device when the subscription was purchased.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Token { get; private set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "get"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "GET"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "{packageName}/subscriptions/{subscriptionId}/purchases/{token}"; }
-            }
-
-            /// <summary>Initializes Get parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "packageName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "subscriptionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "subscriptionId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "token", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "token",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-    }
 }
 
 namespace Google.Apis.AndroidPublisher.v1.Data
-{    
-
-    /// <summary>A SubscriptionPurchase resource indicates the status of a user's subscription purchase.</summary>
-    public class SubscriptionPurchase : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Whether the subscription will automatically be renewed when it reaches its current expiry
-        /// time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("autoRenewing")]
-        public virtual System.Nullable<bool> AutoRenewing { get; set; } 
-
-        /// <summary>Time at which the subscription was granted, in milliseconds since the Epoch.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("initiationTimestampMsec")]
-        public virtual System.Nullable<long> InitiationTimestampMsec { get; set; } 
-
-        /// <summary>This kind represents a subscriptionPurchase object in the androidpublisher service.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>Time at which the subscription will expire, in milliseconds since the Epoch.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("validUntilTimestampMsec")]
-        public virtual System.Nullable<long> ValidUntilTimestampMsec { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
+{
 }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/scheduler/'>Cloud Scheduler API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200331 (1916)
+ *      <tr><th>API Rev<td>20200505 (1951)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/scheduler/'>
  *              https://cloud.google.com/scheduler/</a>
@@ -1693,7 +1693,7 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// <summary>The time between retries will double `max_doublings` times.
         ///
         /// A job's retry interval starts at min_backoff_duration, then doubles `max_doublings` times, then increases
-        /// linearly, and finally retries retries at intervals of max_backoff_duration up to retry_count times.
+        /// linearly, and finally retries at intervals of max_backoff_duration up to retry_count times.
         ///
         /// For example, if min_backoff_duration is 10s, max_backoff_duration is 300s, and `max_doublings` is 3, then
         /// the a job will first be retried in 10s. The retry interval will double three times, and then increase

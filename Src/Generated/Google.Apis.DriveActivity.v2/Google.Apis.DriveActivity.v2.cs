@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/activity/'>Drive Activity API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200415 (1931)
+ *      <tr><th>API Rev<td>20200509 (1955)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/activity/'>
  *              https://developers.google.com/drive/activity/</a>
@@ -1079,7 +1079,7 @@ namespace Google.Apis.DriveActivity.v2.Data
         ///
         /// - detail.action_detail_case: Uses the "has" operator (:) and either a singular value or a list of allowed
         /// action types enclosed in parentheses. Examples: - detail.action_detail_case: RENAME -
-        /// detail.action_detail_case:(CREATE UPLOAD) - -detail.action_detail_case:MOVE</summary>
+        /// detail.action_detail_case:(CREATE EDIT) - -detail.action_detail_case:MOVE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
@@ -1087,11 +1087,15 @@ namespace Google.Apis.DriveActivity.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("itemName")]
         public virtual string ItemName { get; set; } 
 
-        /// <summary>The requested number of activities to return. If not set, a default value is used.</summary>
+        /// <summary>The miminum number of activities desired in the response; the server will attempt to return at
+        /// least this quanitity. The server may also return fewer activities if it has a partial response ready before
+        /// the request times out. If not set, a default value is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; } 
 
-        /// <summary>The next_page_token value returned from a previous QueryDriveActivity request, if any.</summary>
+        /// <summary>The token identifying which page of results to return. Set this to the next_page_token value
+        /// returned from a previous query to obtain the following page of results. If not set, the first page of
+        /// results will be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; } 
 

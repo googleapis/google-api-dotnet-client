@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/'>Cloud OS Config API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20200410 (1926)
+ *      <tr><th>API Rev<td>20200504 (1950)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/'>
  *              https://cloud.google.com/</a>
@@ -2136,7 +2136,8 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Sets the time for a one time patch deployment. Timestamp is in RFC3339 text format.</summary>
+    /// <summary>Sets the time for a one time patch deployment. Timestamp is in
+    /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
     public class OneTimeSchedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The desired patch job execution time.</summary>
@@ -2251,11 +2252,12 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
 
     /// <summary>Patch deployments are configurations that individual patch jobs use to complete a patch. These
     /// configurations include instance filter, package repository settings, and a schedule. For more information about
-    /// creating and managing patch deployments, see [Scheduling patch jobs](/compute/docs/os-patch-management/schedule-
-    /// patch-jobs).</summary>
+    /// creating and managing patch deployments, see [Scheduling patch jobs](https://cloud.google.com/compute/docs/os-
+    /// patch-management/schedule-patch-jobs).</summary>
     public class PatchDeployment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Time the patch deployment was created. Timestamp is in RFC3339 text format.</summary>
+        /// <summary>Output only. Time the patch deployment was created. Timestamp is in
+        /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
@@ -2272,8 +2274,8 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceFilter")]
         public virtual PatchInstanceFilter InstanceFilter { get; set; } 
 
-        /// <summary>Output only. The last time a patch job was started by this deployment. Timestamp is in RFC3339 text
-        /// format.</summary>
+        /// <summary>Output only. The last time a patch job was started by this deployment. Timestamp is in
+        /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastExecuteTime")]
         public virtual object LastExecuteTime { get; set; } 
 
@@ -2295,8 +2297,8 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("recurringSchedule")]
         public virtual RecurringSchedule RecurringSchedule { get; set; } 
 
-        /// <summary>Output only. Time the patch deployment was last updated. Timestamp is in RFC3339 text
-        /// format.</summary>
+        /// <summary>Output only. Time the patch deployment was last updated. Timestamp is in
+        /// [RFC3339]("https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -2357,8 +2359,8 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
     /// Instances details are not included in the job. To paginate through instance details, use
     /// ListPatchJobInstanceDetails.
     ///
-    /// For more information about patch jobs, see [Creating patch jobs](/compute/docs/os-patch-management/create-patch-
-    /// job).</summary>
+    /// For more information about patch jobs, see [Creating patch jobs](https://cloud.google.com/compute/docs/os-patch-
+    /// management/create-patch-job).</summary>
     public class PatchJob : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Time this patch job was created.</summary>
@@ -2424,8 +2426,8 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
     }    
 
     /// <summary>Patch details for a VM instance. For more information about reviewing VM instance details, see [Listing
-    /// all VM instance details for a specific patch job](/compute/docs/os-patch-management/manage-patch-jobs#list-
-    /// instance-details).</summary>
+    /// all VM instance details for a specific patch job](https://cloud.google.com/compute/docs/os-patch-management
+    /// /manage-patch-jobs#list-instance-details).</summary>
     public class PatchJobInstanceDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of times the agent that the agent attempts to apply the patch.</summary>
@@ -2581,8 +2583,7 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
     /// Updating a software recipe
     ///
     /// If a recipe is assigned to an instance and there is a recipe with the same name but a lower version already
-    /// installed and the assigned state of the recipe is `INSTALLED_KEEP_UPDATED`, then the recipe is updated to the
-    /// new version.
+    /// installed and the assigned state of the recipe is `UPDATED`, then the recipe is updated to the new version.
     ///
     /// Script Working Directories
     ///
@@ -2596,10 +2597,10 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
 
         /// <summary>Default is INSTALLED. The desired state the agent should maintain for this recipe.
         ///
-        /// INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
-        /// INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher
-        /// version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for
-        /// software recipes and attempts to create or update a recipe to the REMOVE state is rejected.</summary>
+        /// INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED:
+        /// The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher
+        /// version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and
+        /// attempts to create or update a recipe to the REMOVE state is rejected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredState")]
         public virtual string DesiredState { get; set; } 
 

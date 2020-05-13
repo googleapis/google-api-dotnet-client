@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/identity/'>Cloud Identity API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200411 (1927)
+ *      <tr><th>API Rev<td>20200509 (1955)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/identity/'>
  *              https://cloud.google.com/identity/</a>
@@ -1529,48 +1529,9 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// <summary>Resource representing the Android specific attributes of a Device.</summary>
     public class AndroidAttributes : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Baseband version of Android device.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("basebandVersion")]
-        public virtual string BasebandVersion { get; set; } 
-
-        /// <summary>Device bootloader version. Example: 0.6.7.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bootloaderVersion")]
-        public virtual string BootloaderVersion { get; set; } 
-
-        /// <summary>Build number of Android device.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("buildNumber")]
-        public virtual string BuildNumber { get; set; } 
-
-        /// <summary>Whether developer options is enabled on device.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabledDeveloperOptions")]
-        public virtual System.Nullable<bool> EnabledDeveloperOptions { get; set; } 
-
         /// <summary>Whether applications from unknown sources can be installed on device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledUnknownSources")]
         public virtual System.Nullable<bool> EnabledUnknownSources { get; set; } 
-
-        /// <summary>Whether adb (USB debugging) is enabled on device.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabledUsbDebugging")]
-        public virtual System.Nullable<bool> EnabledUsbDebugging { get; set; } 
-
-        /// <summary>Device encryption state.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("encryptionState")]
-        public virtual string EncryptionState { get; set; } 
-
-        /// <summary>Device hardware. Example: Sprout.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hardware")]
-        public virtual string Hardware { get; set; } 
-
-        /// <summary>Kernel version of Android device.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kernelVersion")]
-        public virtual string KernelVersion { get; set; } 
-
-        /// <summary>Domain name for Google accounts on device. Type for other accounts on device. Will only be
-        /// populated if |ownership_privilege| is |PROFILE_OWNER| or |DEVICE_OWNER|. Does not include the account signed
-        /// in to the device policy app if that account's domain has only one account. Examples: "com.example",
-        /// "xyz.com".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("otherAccounts")]
-        public virtual System.Collections.Generic.IList<string> OtherAccounts { get; set; } 
 
         /// <summary>Whether this account is on an owner/primary profile. For phones, only true for owner profiles.
         /// Android 4+ devices can have secondary or restricted user profiles.</summary>
@@ -1580,10 +1541,6 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>Ownership privileges on device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownershipPrivilege")]
         public virtual string OwnershipPrivilege { get; set; } 
-
-        /// <summary>OS security patch update time on device.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("securityPatchTime")]
-        public virtual object SecurityPatchTime { get; set; } 
 
         /// <summary>Whether device supports Android work profiles. If false, this service will not block access to corp
         /// data even if an administrator turns on the "Enforce Work Profile" policy.</summary>
@@ -1687,6 +1644,10 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>Output only. The owner of the ClientState</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerType")]
+        public virtual string OwnerType { get; set; } 
+
         /// <summary>A descriptive cause of the health score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreReason")]
         public virtual string ScoreReason { get; set; } 
@@ -1724,9 +1685,21 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assetTag")]
         public virtual string AssetTag { get; set; } 
 
+        /// <summary>Output only. Baseband version of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basebandVersion")]
+        public virtual string BasebandVersion { get; set; } 
+
+        /// <summary>Output only. Device bootloader version. Example: 0.6.7.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootloaderVersion")]
+        public virtual string BootloaderVersion { get; set; } 
+
         /// <summary>Output only. Device brand. Example: Samsung.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual string Brand { get; set; } 
+
+        /// <summary>Output only. Build number of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildNumber")]
+        public virtual string BuildNumber { get; set; } 
 
         /// <summary>Output only. Represents whether the Device is compromised.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compromisedState")]
@@ -1741,9 +1714,25 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
         public virtual string DeviceType { get; set; } 
 
+        /// <summary>Output only. Whether developer options is enabled on device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledDeveloperOptions")]
+        public virtual System.Nullable<bool> EnabledDeveloperOptions { get; set; } 
+
+        /// <summary>Output only. Whether USB debugging is enabled on device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledUsbDebugging")]
+        public virtual System.Nullable<bool> EnabledUsbDebugging { get; set; } 
+
+        /// <summary>Output only. Device encryption state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionState")]
+        public virtual string EncryptionState { get; set; } 
+
         /// <summary>Output only. IMEI number of device if GSM device; empty otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imei")]
         public virtual string Imei { get; set; } 
+
+        /// <summary>Output only. Kernel version of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kernelVersion")]
+        public virtual string KernelVersion { get; set; } 
 
         /// <summary>Most recent time when device synced with this service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastSyncTime")]
@@ -1778,6 +1767,13 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
         public virtual string OsVersion { get; set; } 
 
+        /// <summary>Output only. Domain name for Google accounts on device. Type for other accounts on device. On
+        /// Android, will only be populated if |ownership_privilege| is |PROFILE_OWNER| or |DEVICE_OWNER|. Does not
+        /// include the account signed in to the device policy app if that account's domain has only one account.
+        /// Examples: "com.example", "xyz.com".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherAccounts")]
+        public virtual System.Collections.Generic.IList<string> OtherAccounts { get; set; } 
+
         /// <summary>Whether the device is owned by the company or an individual</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerType")]
         public virtual string OwnerType { get; set; } 
@@ -1785,6 +1781,10 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>Output only. OS release version. Example: 6.0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseVersion")]
         public virtual string ReleaseVersion { get; set; } 
+
+        /// <summary>Output only. OS security patch update time on device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityPatchTime")]
+        public virtual object SecurityPatchTime { get; set; } 
 
         /// <summary>Serial Number of device. Example: HT82V1A01076.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
@@ -1979,6 +1979,21 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>Output only. The time when the `Group` was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message that is returned in LRO result of ListClientStates Operation.</summary>
+    public class ListClientStatesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Client states meeting the list restrictions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientStates")]
+        public virtual System.Collections.Generic.IList<ClientState> ClientStates { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results. Empty if there are no more results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

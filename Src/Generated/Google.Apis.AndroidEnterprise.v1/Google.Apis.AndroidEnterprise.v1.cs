@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200413 (1929)
+ *      <tr><th>API Rev<td>20200429 (1945)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -8336,7 +8336,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productAvailabilityPolicy")]
         public virtual string ProductAvailabilityPolicy { get; set; } 
 
-        /// <summary>The list of product policies.</summary>
+        /// <summary>The list of product policies. The productAvailabilityPolicy needs to be set to WHITELIST or ALL for
+        /// the product policies to be applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productPolicy")]
         public virtual System.Collections.Generic.IList<ProductPolicy> ProductPolicy { get; set; } 
 

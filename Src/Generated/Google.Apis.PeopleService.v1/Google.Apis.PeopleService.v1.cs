@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200415 (1931)
+ *      <tr><th>API Rev<td>20200509 (1955)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -119,6 +119,9 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>See and download your contacts</summary>
             public static string ContactsReadonly = "https://www.googleapis.com/auth/contacts.readonly";
 
+            /// <summary>See and download your organization's GSuite directory</summary>
+            public static string DirectoryReadonly = "https://www.googleapis.com/auth/directory.readonly";
+
             /// <summary>View your street addresses</summary>
             public static string UserAddressesRead = "https://www.googleapis.com/auth/user.addresses.read";
 
@@ -127,6 +130,9 @@ namespace Google.Apis.PeopleService.v1
 
             /// <summary>View your email addresses</summary>
             public static string UserEmailsRead = "https://www.googleapis.com/auth/user.emails.read";
+
+            /// <summary>See your gender</summary>
+            public static string UserGenderRead = "https://www.googleapis.com/auth/user.gender.read";
 
             /// <summary>See your education, work history and org info</summary>
             public static string UserOrganizationRead = "https://www.googleapis.com/auth/user.organization.read";
@@ -151,6 +157,9 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>See and download your contacts</summary>
             public const string ContactsReadonly = "https://www.googleapis.com/auth/contacts.readonly";
 
+            /// <summary>See and download your organization's GSuite directory</summary>
+            public const string DirectoryReadonly = "https://www.googleapis.com/auth/directory.readonly";
+
             /// <summary>View your street addresses</summary>
             public const string UserAddressesRead = "https://www.googleapis.com/auth/user.addresses.read";
 
@@ -159,6 +168,9 @@ namespace Google.Apis.PeopleService.v1
 
             /// <summary>View your email addresses</summary>
             public const string UserEmailsRead = "https://www.googleapis.com/auth/user.emails.read";
+
+            /// <summary>See your gender</summary>
+            public const string UserGenderRead = "https://www.googleapis.com/auth/user.gender.read";
 
             /// <summary>See your education, work history and org info</summary>
             public const string UserOrganizationRead = "https://www.googleapis.com/auth/user.organization.read";

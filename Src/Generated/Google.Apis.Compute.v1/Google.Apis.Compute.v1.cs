@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200311 (1896)
+ *      <tr><th>API Rev<td>20200331 (1916)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -4293,7 +4293,11 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Gets the most recent health check results for this BackendService.</summary>
+        /// <summary>Gets the most recent health check results for this BackendService.
+        ///
+        /// Example request body:
+        ///
+        /// { "group": "/zones/us-east1-b/instanceGroups/lb-backend-example" }</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project"></param>
         /// <param name="backendService">Name of the BackendService resource to which the
@@ -4303,7 +4307,11 @@ namespace Google.Apis.Compute.v1
             return new GetHealthRequest(service, body, project, backendService);
         }
 
-        /// <summary>Gets the most recent health check results for this BackendService.</summary>
+        /// <summary>Gets the most recent health check results for this BackendService.
+        ///
+        /// Example request body:
+        ///
+        /// { "group": "/zones/us-east1-b/instanceGroups/lb-backend-example" }</summary>
         public class GetHealthRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.BackendServiceGroupHealth>
         {
             /// <summary>Constructs a new GetHealth request.</summary>
@@ -30031,7 +30039,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Patch the node group.</summary>
+        /// <summary>Updates the specified node group.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -30042,7 +30050,7 @@ namespace Google.Apis.Compute.v1
             return new PatchRequest(service, body, project, zone, nodeGroup);
         }
 
-        /// <summary>Patch the node group.</summary>
+        /// <summary>Updates the specified node group.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -65304,8 +65312,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
         public virtual string LabelFingerprint { get; set; } 
 
-        /// <summary>Labels to apply to this ExternalVpnGateway resource. These can be later modified by the setLabels
-        /// method. Each label key/value must comply with RFC1035. Label values may be empty.</summary>
+        /// <summary>Labels for this resource. These can only be added or modified by the setLabels method. Each label
+        /// key/value pair must comply with RFC1035. Label values may be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -68112,7 +68120,9 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("namedPorts")]
         public virtual System.Collections.Generic.IList<NamedPort> NamedPorts { get; set; } 
 
-        /// <summary>The URL of the network to which all instances in the instance group belong.</summary>
+        /// <summary>[Output Only] The URL of the network to which all instances in the instance group belong. If your
+        /// instance has multiple network interfaces, then the network and subnetwork fields only refer to the network
+        /// and subnet used by your primary interface (nic0).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
@@ -68129,8 +68139,9 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<int> Size { get; set; } 
 
-        /// <summary>[Output Only] The URL of the subnetwork to which all instances in the instance group
-        /// belong.</summary>
+        /// <summary>[Output Only] The URL of the subnetwork to which all instances in the instance group belong. If
+        /// your instance has multiple network interfaces, then the network and subnetwork fields only refer to the
+        /// network and subnet used by your primary interface (nic0).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; } 
 
@@ -72129,9 +72140,21 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exportCustomRoutes")]
         public virtual System.Nullable<bool> ExportCustomRoutes { get; set; } 
 
+        /// <summary>Whether subnet routes with public IP range are exported. The default value is true, all subnet
+        /// routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are
+        /// always exported to peers and are not controlled by this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportSubnetRoutesWithPublicIp")]
+        public virtual System.Nullable<bool> ExportSubnetRoutesWithPublicIp { get; set; } 
+
         /// <summary>Whether to import the custom routes from peer network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importCustomRoutes")]
         public virtual System.Nullable<bool> ImportCustomRoutes { get; set; } 
+
+        /// <summary>Whether subnet routes with public IP range are imported. The default value is false. The IPv4
+        /// special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and
+        /// are not controlled by this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importSubnetRoutesWithPublicIp")]
+        public virtual System.Nullable<bool> ImportSubnetRoutesWithPublicIp { get; set; } 
 
         /// <summary>Name of this peering. Provided by the client when the peering is created. The name must comply with
         /// RFC1035. Specifically, the name must be 1-63 characters long and match regular expression
@@ -77540,6 +77563,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
+        /// <summary>[Output Only] Expire time of the certificate. RFC3339</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTime { get; set; } 
+
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -77548,6 +77575,10 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Type of the resource. Always compute#sslCertificate for SSL certificates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>Configuration and status of a managed SSL certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managed")]
+        public virtual SslCertificateManagedSslCertificate Managed { get; set; } 
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
@@ -77569,6 +77600,19 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>Configuration and status of a self-managed SSL certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfManaged")]
+        public virtual SslCertificateSelfManagedSslCertificate SelfManaged { get; set; } 
+
+        /// <summary>[Output Only] Domains associated with the certificate via Subject Alternative Name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subjectAlternativeNames")]
+        public virtual System.Collections.Generic.IList<string> SubjectAlternativeNames { get; set; } 
+
+        /// <summary>(Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not
+        /// specified, the certificate is self-managed and the fields certificate and private_key are used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -77716,6 +77760,43 @@ namespace Google.Apis.Compute.v1.Data
 
             }
         }
+    }    
+
+    /// <summary>Configuration and status of a managed SSL certificate.</summary>
+    public class SslCertificateManagedSslCertificate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output only] Detailed statuses of the domains specified for managed certificate
+        /// resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainStatus")]
+        public virtual System.Collections.Generic.IDictionary<string,string> DomainStatus { get; set; } 
+
+        /// <summary>The domains for which a managed SSL certificate will be generated. Currently only single-domain
+        /// certs are supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domains")]
+        public virtual System.Collections.Generic.IList<string> Domains { get; set; } 
+
+        /// <summary>[Output only] Status of the managed certificate resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration and status of a self-managed SSL certificate.</summary>
+    public class SslCertificateSelfManagedSslCertificate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A local certificate file. The certificate must be in PEM format. The certificate chain must be no
+        /// greater than 5 certs long. The chain must include at least one intermediate cert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificate")]
+        public virtual string Certificate { get; set; } 
+
+        /// <summary>A write-only private key in PEM format. Only insert requests will include this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKey")]
+        public virtual string PrivateKey { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     public class SslCertificatesScopedList : Google.Apis.Requests.IDirectResponseSchema
@@ -80845,8 +80926,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
         public virtual string LabelFingerprint { get; set; } 
 
-        /// <summary>Labels to apply to this VpnGateway resource. These can be later modified by the setLabels method.
-        /// Each label key/value must comply with RFC1035. Label values may be empty.</summary>
+        /// <summary>Labels for this resource. These can only be added or modified by the setLabels method. Each label
+        /// key/value pair must comply with RFC1035. Label values may be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -80871,7 +80952,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>[Output Only] A list of interfaces on this VPN gateway.</summary>
+        /// <summary>A list of interfaces on this VPN gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpnInterfaces")]
         public virtual System.Collections.Generic.IList<VpnGatewayVpnGatewayInterface> VpnInterfaces { get; set; } 
 
@@ -81103,7 +81184,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<long> Id { get; set; } 
 
-        /// <summary>The external IP address for this VPN gateway interface.</summary>
+        /// <summary>[Output Only] The external IP address for this VPN gateway interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; } 
 

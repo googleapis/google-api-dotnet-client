@@ -910,7 +910,7 @@
          "type": "string"
         }, 
         "filter": {
-         "description": "Allows filtering by insertion order properties.\n\nSupported syntax:\n\n* Filter expressions are made up of one or more restrictions.\n* Restrictions can be combined by `AND` or `OR` logical operators. A\nsequence of restrictions implicitly uses `AND`.\n* A restriction has the form of `{field} {operator} {value}`.\n* The operator must be `EQUALS (=)`.\n* Supported fields:\n    - `campaignId`\n    - `entityStatus`\n\nExamples:\n\n* All insertion orders under a campaign: `campaignId=\"1234\"`\n* All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` insertion orders\nunder an advertiser:\n`(entityStatus=\"ENTITY_STATUS_ACTIVE\" or\nentityStatus=\"ENTITY_STATUS_PAUSED\")`\n\nThe length of this field should be no more than 500 characters.", 
+         "description": "Allows filtering by insertion order properties.\n\nSupported syntax:\n\n* Filter expressions are made up of one or more restrictions.\n* Restrictions can be combined by `AND` or `OR` logical operators. A\nsequence of restrictions implicitly uses `AND`.\n* A restriction has the form of `{field} {operator} {value}`.\n* The operator must be `EQUALS (=)`.\n* Supported fields:\n    - `campaignId`\n    - `entityStatus`\n\nExamples:\n\n* All insertion orders under a campaign: `campaignId=\"1234\"`\n* All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` insertion orders\nunder an advertiser:\n`(entityStatus=\"ENTITY_STATUS_ACTIVE\" OR\nentityStatus=\"ENTITY_STATUS_PAUSED\")`\n\nThe length of this field should be no more than 500 characters.", 
          "location": "query", 
          "type": "string"
         }, 
@@ -1198,7 +1198,7 @@
          "type": "string"
         }, 
         "filter": {
-         "description": "Allows filtering by line item properties.\n\nSupported syntax:\n\n* Filter expressions are made up of one or more restrictions.\n* Restrictions can be combined by `AND` or `OR` logical operators. A\nsequence of restrictions implicitly uses `AND`.\n* A restriction has the form of `{field} {operator} {value}`.\n* The operator must be `EQUALS (=)`.\n* Supported fields:\n    - `campaignId`\n    - `insertionOrderId`\n    - `entityStatus`\n    - `lineItemType`.\n\nExamples:\n\n* All line items under an insertion order: `insertionOrderId=\"1234\"`\n* All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`\nand `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser:\n`(entityStatus=\"ENTITY_STATUS_ACTIVE\" or\nentityStatus=\"ENTITY_STATUS_PAUSED\") AND\nlineItemType=\"LINE_ITEM_TYPE_DISPLAY_DEFAULT\"`\n\nThe length of this field should be no more than 500 characters.", 
+         "description": "Allows filtering by line item properties.\n\nSupported syntax:\n\n* Filter expressions are made up of one or more restrictions.\n* Restrictions can be combined by `AND` or `OR` logical operators. A\nsequence of restrictions implicitly uses `AND`.\n* A restriction has the form of `{field} {operator} {value}`.\n* The operator must be `EQUALS (=)`.\n* Supported fields:\n    - `campaignId`\n    - `insertionOrderId`\n    - `entityStatus`\n    - `lineItemType`.\n\nExamples:\n\n* All line items under an insertion order: `insertionOrderId=\"1234\"`\n* All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`\nand `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser:\n`(entityStatus=\"ENTITY_STATUS_ACTIVE\" OR\nentityStatus=\"ENTITY_STATUS_PAUSED\") AND\nlineItemType=\"LINE_ITEM_TYPE_DISPLAY_DEFAULT\"`\n\nThe length of this field should be no more than 500 characters.", 
          "location": "query", 
          "type": "string"
         }, 
@@ -2796,7 +2796,7 @@
    }
   }
  }, 
- "revision": "20200416", 
+ "revision": "20200512", 
  "rootUrl": "https://displayvideo.googleapis.com/", 
  "schemas": {
   "ActiveViewVideoViewabilityMetricConfig": {
@@ -3190,7 +3190,7 @@
    "type": "object"
   }, 
   "AppCategoryAssignedTargetingOptionDetails": {
-   "description": "Details for assigned app category targeting option. This will be\npopulated in the details field of an AssignedTargetingOption when\ntargeting_type\nis `TARGETING_TYPE_APP_CATEGORY`.", 
+   "description": "Details for assigned app category targeting option. This will be\npopulated in the\napp_category_details field of\nan AssignedTargetingOption when\ntargeting_type\nis `TARGETING_TYPE_APP_CATEGORY`.", 
    "id": "AppCategoryAssignedTargetingOptionDetails", 
    "properties": {
     "displayName": {
@@ -3209,7 +3209,7 @@
    "type": "object"
   }, 
   "AppCategoryTargetingOptionDetails": {
-   "description": "Represents a targetable collection of apps. A collection lets you target\ndynamic groups of related apps that are maintained by the platform, for\nexample `All Apps/Google Play/Games`. This will be populated in the\napp_category field when\ntargeting_type is\n`TARGETING_TYPE_APP_CATEGORY`.", 
+   "description": "Represents a targetable collection of apps. A collection lets you target\ndynamic groups of related apps that are maintained by the platform, for\nexample `All Apps/Google Play/Games`. This will be populated in the\napp_category_details field when\ntargeting_type is\n`TARGETING_TYPE_APP_CATEGORY`.", 
    "id": "AppCategoryTargetingOptionDetails", 
    "properties": {
     "displayName": {
@@ -3724,7 +3724,7 @@
    "id": "BulkEditLineItemAssignedTargetingOptionsResponse", 
    "properties": {
     "createdAssignedTargetingOptions": {
-     "description": "The list of assigned targeting options that have been successfully created.", 
+     "description": "The list of assigned targeting options that have been successfully created.\n\nThis list will be absent if empty.", 
      "items": {
       "$ref": "AssignedTargetingOption"
      }, 
@@ -3737,7 +3737,7 @@
    "id": "BulkListLineItemAssignedTargetingOptionsResponse", 
    "properties": {
     "assignedTargetingOptions": {
-     "description": "The list of assigned targeting options.", 
+     "description": "The list of assigned targeting options.\n\nThis list will be absent if empty.", 
      "items": {
       "$ref": "AssignedTargetingOption"
      }, 
@@ -4498,20 +4498,20 @@
      ], 
      "enumDescriptions": [
       "Type value is not specified or is unknown in this version.", 
-      "Standard image creative.", 
-      "Expandable creative.", 
-      "Video creative.", 
-      "Native creative rendered by publishers with assets from advertiser.", 
-      "Templated app install mobile creative (banner).", 
-      "Square native creative.", 
-      "Interstitial creative including both display and video.", 
-      "Responsive and expandable Lightbox creative.", 
-      "Native app install creative.", 
-      "Square native app install creative.", 
-      "Audio creative.", 
-      "Publisher hosted creative.", 
-      "Native video creative.", 
-      "Templated app install mobile video creative."
+      "Standard display creative.\n\nCreate and update methods are supported for this creative type if the\nhosting_source is one of the following:\n\n* `HOSTING_SOURCE_HOSTED`\n* `HOSTING_SOURCE_THIRD_PARTY`", 
+      "Expandable creative.\n\nCreate and update methods are supported for this creative type if the\nhosting_source is `HOSTING_SOURCE_THIRD_PARTY`", 
+      "Video creative.\n\nCreate and update methods are supported for this creative type if the\nhosting_source is one of the following:\n\n* `HOSTING_SOURCE_HOSTED`\n* `HOSTING_SOURCE_THIRD_PARTY`", 
+      "Native creative rendered by publishers with assets from advertiser.\n\nCreate and update methods are supported for this creative type if the\nhosting_source is `HOSTING_SOURCE_HOSTED`", 
+      "Templated app install mobile creative (banner).\n\nCreate and update methods are **not** supported for this creative type.", 
+      "Square native creative.\n\nCreate and update methods are supported for this creative type if the\nhosting_source is `HOSTING_SOURCE_HOSTED`", 
+      "Interstitial creative including both display and video.\n\nCreate and update methods are **not** supported for this creative type.", 
+      "Responsive and expandable Lightbox creative.\n\nCreate and update methods are **not** supported for this creative type.", 
+      "Native app install creative.\n\nCreate and update methods are supported for this creative type if the\nhosting_source is `HOSTING_SOURCE_HOSTED`", 
+      "Square native app install creative.\n\nCreate and update methods are supported for this creative type if the\nhosting_source is `HOSTING_SOURCE_HOSTED`", 
+      "Audio creative.\n\nCreate and update methods are supported for this creative type if the\nhosting_source is `HOSTING_SOURCE_HOSTED`", 
+      "Publisher hosted creative.\n\nCreate and update methods are **not** supported for this creative type.", 
+      "Native video creative.\n\nCreate and update methods are supported for this creative type if the\nhosting_source is `HOSTING_SOURCE_HOSTED`", 
+      "Templated app install mobile video creative.\n\nCreate and update methods are **not** supported for this creative type."
      ], 
      "type": "string"
     }, 
@@ -4603,10 +4603,10 @@
      ], 
      "enumDescriptions": [
       "Hosting source is not specified or is unknown in this version.", 
-      "A creative synced from Campaign Manager.", 
-      "A creative hosted by a third-party ad server (3PAS).", 
-      "A creative created in DV360 and hosted by Campaign Manager.", 
-      "A rich media creative created in Studio and hosted by Campaign Manager."
+      "A creative synced from Campaign Manager.\n\nCreate and update methods are **not** supported for this hosting type.", 
+      "A creative hosted by a third-party ad server (3PAS).\n\nCreate and update methods are supported for this hosting type if the\ncreative_type is one of the following:\n\n* `CREATIVE_TYPE_EXPANDABLE`\n* `CREATIVE_TYPE_STANDARD`\n* `CREATIVE_TYPE_VIDEO`", 
+      "A creative created in DV360 and hosted by Campaign Manager.\n\nCreate and update methods are supported for this hosting type if the\ncreative_type is one of the following:\n\n* `CREATIVE_TYPE_AUDIO`\n* `CREATIVE_TYPE_NATIVE`\n* `CREATIVE_TYPE_NATIVE_APP_INSTALL`\n* `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE`\n* `CREATIVE_TYPE_NATIVE_SITE_SQUARE`\n* `CREATIVE_TYPE_NATIVE_VIDEO`\n* `CREATIVE_TYPE_STANDARD`\n* `CREATIVE_TYPE_VIDEO`", 
+      "A rich media creative created in Studio and hosted by Campaign Manager.\n\nCreate and update methods are **not** supported for this hosting type."
      ], 
      "type": "string"
     }, 
@@ -4748,20 +4748,20 @@
      ], 
      "enumDescriptions": [
       "Type value is not specified or is unknown in this version.", 
-      "Standard image creative.", 
-      "Expandable creative.", 
-      "Video creative.", 
-      "Native creative rendered by publishers with assets from advertiser.", 
-      "Templated app install mobile creative (banner).", 
-      "Square native creative.", 
-      "Interstitial creative including both display and video.", 
-      "Responsive and expandable Lightbox creative.", 
-      "Native app install creative.", 
-      "Square native app install creative.", 
-      "Audio creative.", 
-      "Publisher hosted creative.", 
-      "Native video creative.", 
-      "Templated app install mobile video creative."
+      "Standard display creative.\n\nCreate and update methods are supported for this creative type if the\nhosting_source is one of the following:\n\n* `HOSTING_SOURCE_HOSTED`\n* `HOSTING_SOURCE_THIRD_PARTY`", 
+      "Expandable creative.\n\nCreate and update methods are supported for this creative type if the\nhosting_source is `HOSTING_SOURCE_THIRD_PARTY`", 
+      "Video creative.\n\nCreate and update methods are supported for this creative type if the\nhosting_source is one of the following:\n\n* `HOSTING_SOURCE_HOSTED`\n* `HOSTING_SOURCE_THIRD_PARTY`", 
+      "Native creative rendered by publishers with assets from advertiser.\n\nCreate and update methods are supported for this creative type if the\nhosting_source is `HOSTING_SOURCE_HOSTED`", 
+      "Templated app install mobile creative (banner).\n\nCreate and update methods are **not** supported for this creative type.", 
+      "Square native creative.\n\nCreate and update methods are supported for this creative type if the\nhosting_source is `HOSTING_SOURCE_HOSTED`", 
+      "Interstitial creative including both display and video.\n\nCreate and update methods are **not** supported for this creative type.", 
+      "Responsive and expandable Lightbox creative.\n\nCreate and update methods are **not** supported for this creative type.", 
+      "Native app install creative.\n\nCreate and update methods are supported for this creative type if the\nhosting_source is `HOSTING_SOURCE_HOSTED`", 
+      "Square native app install creative.\n\nCreate and update methods are supported for this creative type if the\nhosting_source is `HOSTING_SOURCE_HOSTED`", 
+      "Audio creative.\n\nCreate and update methods are supported for this creative type if the\nhosting_source is `HOSTING_SOURCE_HOSTED`", 
+      "Publisher hosted creative.\n\nCreate and update methods are **not** supported for this creative type.", 
+      "Native video creative.\n\nCreate and update methods are supported for this creative type if the\nhosting_source is `HOSTING_SOURCE_HOSTED`", 
+      "Templated app install mobile video creative.\n\nCreate and update methods are **not** supported for this creative type."
      ], 
      "type": "string"
     }, 
@@ -5134,7 +5134,7 @@
    "id": "DigitalContentLabelTargetingOptionDetails", 
    "properties": {
     "contentRatingTier": {
-     "description": "Output only. An enum for the content label brand safety tiers. Values from\ncontent-labels.txt. Must be kept in sync with\n//contentads/bidder/proto/video_ratings.proto", 
+     "description": "Output only. An enum for the content label brand safety tiers.", 
      "enum": [
       "CONTENT_RATING_TIER_UNSPECIFIED", 
       "CONTENT_RATING_TIER_UNRATED", 
@@ -5727,7 +5727,7 @@
    "type": "object"
   }, 
   "ExchangeTargetingOptionDetails": {
-   "description": "Represents a targetable exchange. This will be populated in the\nexchange_details field\nof a TargetingOption when\ntargeting_type is\n`TAREGTING_TYPE_EXCHANGE`.", 
+   "description": "Represents a targetable exchange. This will be populated in the\nexchange_details field\nof a TargetingOption when\ntargeting_type is\n`TARGETING_TYPE_EXCHANGE`.", 
    "id": "ExchangeTargetingOptionDetails", 
    "properties": {
     "exchange": {
@@ -6668,6 +6668,11 @@
      "format": "int64", 
      "type": "string"
     }, 
+    "campaignBudgetId": {
+     "description": "The ID of the campaign budget linked to this insertion order budget\nsegment.", 
+     "format": "int64", 
+     "type": "string"
+    }, 
     "dateRange": {
      "$ref": "DateRange", 
      "description": "Required. The start and end date settings of the budget segment. They are resolved\nrelative to the parent advertiser's time zone.\n\n* When creating a new budget segment, both `start_date` and `end_date`\nmust be in the future.\n* An existing budget segment with a `start_date` in the past has a mutable\n`end_date` but an immutable `start_date`.\n* `end_date` must be the `start_date` or later, both before the year 2037."
@@ -7511,7 +7516,7 @@
    "id": "ListAdvertisersResponse", 
    "properties": {
     "advertisers": {
-     "description": "The list of advertisers.", 
+     "description": "The list of advertisers.\n\nThis list will be absent if empty.", 
      "items": {
       "$ref": "Advertiser"
      }, 
@@ -7528,7 +7533,7 @@
    "id": "ListCampaignsResponse", 
    "properties": {
     "campaigns": {
-     "description": "The list of campaigns.", 
+     "description": "The list of campaigns.\n\nThis list will be absent if empty.", 
      "items": {
       "$ref": "Campaign"
      }, 
@@ -7545,7 +7550,7 @@
    "id": "ListChannelsResponse", 
    "properties": {
     "channels": {
-     "description": "The list of channels.", 
+     "description": "The list of channels.\n\nThis list will be absent if empty.", 
      "items": {
       "$ref": "Channel"
      }, 
@@ -7562,7 +7567,7 @@
    "id": "ListCombinedAudiencesResponse", 
    "properties": {
     "combinedAudiences": {
-     "description": "The list of combined audiences.", 
+     "description": "The list of combined audiences.\n\nThis list will be absent if empty.", 
      "items": {
       "$ref": "CombinedAudience"
      }, 
@@ -7579,7 +7584,7 @@
    "id": "ListCreativesResponse", 
    "properties": {
     "creatives": {
-     "description": "The list of creatives.", 
+     "description": "The list of creatives.\n\nThis list will be absent if empty.", 
      "items": {
       "$ref": "Creative"
      }, 
@@ -7596,7 +7601,7 @@
    "id": "ListCustomListsResponse", 
    "properties": {
     "customLists": {
-     "description": "The list of custom lists.", 
+     "description": "The list of custom lists.\n\nThis list will be absent if empty.", 
      "items": {
       "$ref": "CustomList"
      }, 
@@ -7613,7 +7618,7 @@
    "id": "ListFirstAndThirdPartyAudiencesResponse", 
    "properties": {
     "firstAndThirdPartyAudiences": {
-     "description": "The list of first and third party audiences.", 
+     "description": "The list of first and third party audiences. Audience size properties will\nnot be included.\n\nThis list will be absent if empty.", 
      "items": {
       "$ref": "FirstAndThirdPartyAudience"
      }, 
@@ -7630,7 +7635,7 @@
    "id": "ListGoogleAudiencesResponse", 
    "properties": {
     "googleAudiences": {
-     "description": "The list of Google audiences.", 
+     "description": "The list of Google audiences.\n\nThis list will be absent if empty.", 
      "items": {
       "$ref": "GoogleAudience"
      }, 
@@ -7647,7 +7652,7 @@
    "id": "ListInsertionOrdersResponse", 
    "properties": {
     "insertionOrders": {
-     "description": "The list of insertion orders.", 
+     "description": "The list of insertion orders.\n\nThis list will be absent if empty.", 
      "items": {
       "$ref": "InsertionOrder"
      }, 
@@ -7665,7 +7670,7 @@
    "id": "ListInventorySourceGroupsResponse", 
    "properties": {
     "inventorySourceGroups": {
-     "description": "The list of inventory source groups.", 
+     "description": "The list of inventory source groups.\n\nThis list will be absent if empty.", 
      "items": {
       "$ref": "InventorySourceGroup"
      }, 
@@ -7682,7 +7687,7 @@
    "id": "ListInventorySourcesResponse", 
    "properties": {
     "inventorySources": {
-     "description": "The list of inventory sources.", 
+     "description": "The list of inventory sources.\n\nThis list will be absent if empty.", 
      "items": {
       "$ref": "InventorySource"
      }, 
@@ -7700,7 +7705,7 @@
    "id": "ListLineItemAssignedTargetingOptionsResponse", 
    "properties": {
     "assignedTargetingOptions": {
-     "description": "The list of assigned targeting options.", 
+     "description": "The list of assigned targeting options.\n\nThis list will be absent if empty.", 
      "items": {
       "$ref": "AssignedTargetingOption"
      }, 
@@ -7717,7 +7722,7 @@
    "id": "ListLineItemsResponse", 
    "properties": {
     "lineItems": {
-     "description": "The list of line items.", 
+     "description": "The list of line items.\n\nThis list will be absent if empty.", 
      "items": {
       "$ref": "LineItem"
      }, 
@@ -7734,7 +7739,7 @@
    "id": "ListLocationListsResponse", 
    "properties": {
     "locationLists": {
-     "description": "The list of location lists.", 
+     "description": "The list of location lists.\n\nThis list will be absent if empty.", 
      "items": {
       "$ref": "LocationList"
      }, 
@@ -7752,7 +7757,7 @@
    "id": "ListNegativeKeywordListsResponse", 
    "properties": {
     "negativeKeywordLists": {
-     "description": "The list of negative keyword lists.", 
+     "description": "The list of negative keyword lists.\n\nThis list will be absent if empty.", 
      "items": {
       "$ref": "NegativeKeywordList"
      }, 
@@ -7774,7 +7779,7 @@
      "type": "string"
     }, 
     "targetingOptions": {
-     "description": "The list of targeting options.", 
+     "description": "The list of targeting options.\n\nThis list will be absent if empty.", 
      "items": {
       "$ref": "TargetingOption"
      }, 
@@ -8054,7 +8059,7 @@
    "type": "object"
   }, 
   "OperatingSystemTargetingOptionDetails": {
-   "description": "Represents a targetable operating system. This will be populated in the\noperating_system_details field\nof a TargetingOption when\ntargeting_type is\n`TAREGTING_TYPE_OPERATING_SYSTEM`.", 
+   "description": "Represents a targetable operating system. This will be populated in the\noperating_system_details field\nof a TargetingOption when\ntargeting_type is\n`TARGETING_TYPE_OPERATING_SYSTEM`.", 
    "id": "OperatingSystemTargetingOptionDetails", 
    "properties": {
     "displayName": {
@@ -8891,7 +8896,7 @@
    "type": "object"
   }, 
   "SubExchangeTargetingOptionDetails": {
-   "description": "Represents a targetable sub-exchange. This will be populated in the\nsub_exchange_details field\nof a TargetingOption when\ntargeting_type is\n`TAREGTING_TYPE_SUB_EXCHANGE`.", 
+   "description": "Represents a targetable sub-exchange. This will be populated in the\nsub_exchange_details field\nof a TargetingOption when\ntargeting_type is\n`TARGETING_TYPE_SUB_EXCHANGE`.", 
    "id": "SubExchangeTargetingOptionDetails", 
    "properties": {
     "displayName": {
@@ -9432,7 +9437,7 @@
    "type": "object"
   }, 
   "ViewabilityAssignedTargetingOptionDetails": {
-   "description": "Assigned viewability targeting option details. This will be populated in the\ndetails field of an AssignedTargetingOption when\ntargeting_type is\n`TARGETING_TYPE_VIEWABILITY`.", 
+   "description": "Assigned viewability targeting option details. This will be populated in the\nviewability_details field of\nan AssignedTargetingOption when\ntargeting_type is\n`TARGETING_TYPE_VIEWABILITY`.", 
    "id": "ViewabilityAssignedTargetingOptionDetails", 
    "properties": {
     "targetingOptionId": {
@@ -9471,7 +9476,7 @@
    "type": "object"
   }, 
   "ViewabilityTargetingOptionDetails": {
-   "description": "Represents a targetable viewability. This will be populated in the\ndetails field of a TargetingOption when\ntargeting_type is\n`TARGETING_TYPE_VIEWABILITY`.", 
+   "description": "Represents a targetable viewability. This will be populated in the\nviewability_details field of a\nTargetingOption when targeting_type is\n`TARGETING_TYPE_VIEWABILITY`.", 
    "id": "ViewabilityTargetingOptionDetails", 
    "properties": {
     "viewability": {

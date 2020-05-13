@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/hosting/'>Firebase Hosting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200409 (1925)
+ *      <tr><th>API Rev<td>20200430 (1946)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/hosting/'>
  *              https://firebase.google.com/docs/hosting/</a>
@@ -1438,78 +1438,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         }
 
                     }
-                }
-
-                /// <summary>Creates a new version on the target site using the content of the specified
-                /// version.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The target site where the cloned version will reside, in the format:
-                /// `sites/{site}`</param>
-                public virtual CloneRequest Clone(Google.Apis.FirebaseHosting.v1beta1.Data.CloneVersionRequest body, string parent)
-                {
-                    return new CloneRequest(service, body, parent);
-                }
-
-                /// <summary>Creates a new version on the target site using the content of the specified
-                /// version.</summary>
-                public class CloneRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Operation>
-                {
-                    /// <summary>Constructs a new Clone request.</summary>
-                    public CloneRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseHosting.v1beta1.Data.CloneVersionRequest body, string parent)
-                        : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>Required. The target site where the cloned version will reside, in the format:
-                    /// `sites/{site}`</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.FirebaseHosting.v1beta1.Data.CloneVersionRequest Body { get; set; }
-
-                    ///<summary>Returns the body of the request.</summary>
-                    protected override object GetBody() { return Body; }
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "clone"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "POST"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1beta1/{+parent}/versions:clone"; }
-                    }
-
-                    /// <summary>Initializes Clone parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/sites/[^/]+$",
-                            });
-                    }
-
                 }
 
                 /// <summary>Creates a new version for a site.</summary>
@@ -3061,76 +2989,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
             }
 
-            /// <summary>Creates a new version on the target site using the content of the specified version.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The target site where the cloned version will reside, in the format:
-            /// `sites/{site}`</param>
-            public virtual CloneRequest Clone(Google.Apis.FirebaseHosting.v1beta1.Data.CloneVersionRequest body, string parent)
-            {
-                return new CloneRequest(service, body, parent);
-            }
-
-            /// <summary>Creates a new version on the target site using the content of the specified version.</summary>
-            public class CloneRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Operation>
-            {
-                /// <summary>Constructs a new Clone request.</summary>
-                public CloneRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseHosting.v1beta1.Data.CloneVersionRequest body, string parent)
-                    : base(service)
-                {
-                    Parent = parent;
-                    Body = body;
-                    InitParameters();
-                }
-
-
-                /// <summary>Required. The target site where the cloned version will reside, in the format:
-                /// `sites/{site}`</summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.FirebaseHosting.v1beta1.Data.CloneVersionRequest Body { get; set; }
-
-                ///<summary>Returns the body of the request.</summary>
-                protected override object GetBody() { return Body; }
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "clone"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "POST"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1beta1/{+parent}/versions:clone"; }
-                }
-
-                /// <summary>Initializes Clone parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^sites/[^/]+$",
-                        });
-                }
-
-            }
-
             /// <summary>Creates a new version for a site.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The parent to create the version for, in the format: sites/site-name</param>
@@ -3758,32 +3616,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The request sent to CloneVersion.</summary>
-    public class CloneVersionRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If provided, only paths that do not match any of the regexes in this list will be included in the
-        /// new version.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exclude")]
-        public virtual PathFilter Exclude { get; set; } 
-
-        /// <summary>If true, immediately finalize the version after cloning is complete.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("finalize")]
-        public virtual System.Nullable<bool> Finalize { get; set; } 
-
-        /// <summary>If provided, only paths that match one or more regexes in this list will be included in the new
-        /// version.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("include")]
-        public virtual PathFilter Include { get; set; } 
-
-        /// <summary>Required. The name of the version to be cloned, in the format:
-        /// `sites/{site}/versions/{version}`</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceVersion")]
-        public virtual string SourceVersion { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not
     /// exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the
     /// Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to
@@ -4021,17 +3853,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A representation of filter path.</summary>
-    public class PathFilter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>An array of regexes to filter by.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("regexes")]
-        public virtual System.Collections.Generic.IList<string> Regexes { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>The request to populate a Version's Files.</summary>
     public class PopulateVersionFilesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4218,6 +4039,10 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     /// behavior</summary>
     public class SiteConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether or not web requests made by site visitors are logged via Cloud Logging.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudLoggingEnabled")]
+        public virtual System.Nullable<bool> CloudLoggingEnabled { get; set; } 
+
         /// <summary>The number of FINALIZED versions that will be held for a site before automatic deletion. When a new
         /// version is deployed, content for versions in storage in excess of this number will be deleted, and will no
         /// longer be billed for storage usage. Oldest versions will be deleted first; sites are created with an

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/services'>Google Play Game Services Management API</a>
  *      <tr><th>API Version<td>v1management
- *      <tr><th>API Rev<td>20200402 (1918)
+ *      <tr><th>API Rev<td>20200416 (1932)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/services'>
  *              https://developers.google.com/games/services</a>
@@ -1913,9 +1913,6 @@ namespace Google.Apis.GamesManagement.v1management.Data
         /// <summary>The ID of the player.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playerId")]
         public virtual string PlayerId { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("playerStattus")]
-        public virtual string PlayerStattus { get; set; } 
 
         /// <summary>The player's profile settings. Controls whether or not the player's profile is visible to other
         /// players.</summary>

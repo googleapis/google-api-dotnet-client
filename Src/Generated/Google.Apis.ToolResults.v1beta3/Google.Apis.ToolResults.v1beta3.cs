@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20200414 (1930)
+ *      <tr><th>API Rev<td>20200512 (1958)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -64,7 +64,17 @@ namespace Google.Apis.ToolResults.v1beta3
         public ToolResultsService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
+            clusters = new ClustersResource(this);
+            environments = new EnvironmentsResource(this);
+            executions = new ExecutionsResource(this);
+            histories = new HistoriesResource(this);
+            perfMetricsSummary = new PerfMetricsSummaryResource(this);
+            perfSampleSeries = new PerfSampleSeriesResource(this);
             projects = new ProjectsResource(this);
+            samples = new SamplesResource(this);
+            steps = new StepsResource(this);
+            testCases = new TestCasesResource(this);
+            thumbnails = new ThumbnailsResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -83,16 +93,16 @@ namespace Google.Apis.ToolResults.v1beta3
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://www.googleapis.com/toolresults/v1beta3/"; }
+            get { return BaseUriOverride ?? "https://www.googleapis.com/"; }
         #else
-            get { return "https://www.googleapis.com/toolresults/v1beta3/"; }
+            get { return "https://www.googleapis.com/"; }
         #endif
         }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath
         {
-            get { return "toolresults/v1beta3/"; }
+            get { return ""; }
         }
 
         #if !NET40
@@ -127,12 +137,92 @@ namespace Google.Apis.ToolResults.v1beta3
 
 
 
+        private readonly ClustersResource clusters;
+
+        /// <summary>Gets the Clusters resource.</summary>
+        public virtual ClustersResource Clusters
+        {
+            get { return clusters; }
+        }
+
+        private readonly EnvironmentsResource environments;
+
+        /// <summary>Gets the Environments resource.</summary>
+        public virtual EnvironmentsResource Environments
+        {
+            get { return environments; }
+        }
+
+        private readonly ExecutionsResource executions;
+
+        /// <summary>Gets the Executions resource.</summary>
+        public virtual ExecutionsResource Executions
+        {
+            get { return executions; }
+        }
+
+        private readonly HistoriesResource histories;
+
+        /// <summary>Gets the Histories resource.</summary>
+        public virtual HistoriesResource Histories
+        {
+            get { return histories; }
+        }
+
+        private readonly PerfMetricsSummaryResource perfMetricsSummary;
+
+        /// <summary>Gets the PerfMetricsSummary resource.</summary>
+        public virtual PerfMetricsSummaryResource PerfMetricsSummary
+        {
+            get { return perfMetricsSummary; }
+        }
+
+        private readonly PerfSampleSeriesResource perfSampleSeries;
+
+        /// <summary>Gets the PerfSampleSeries resource.</summary>
+        public virtual PerfSampleSeriesResource PerfSampleSeries
+        {
+            get { return perfSampleSeries; }
+        }
+
         private readonly ProjectsResource projects;
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects
         {
             get { return projects; }
+        }
+
+        private readonly SamplesResource samples;
+
+        /// <summary>Gets the Samples resource.</summary>
+        public virtual SamplesResource Samples
+        {
+            get { return samples; }
+        }
+
+        private readonly StepsResource steps;
+
+        /// <summary>Gets the Steps resource.</summary>
+        public virtual StepsResource Steps
+        {
+            get { return steps; }
+        }
+
+        private readonly TestCasesResource testCases;
+
+        /// <summary>Gets the TestCases resource.</summary>
+        public virtual TestCasesResource TestCases
+        {
+            get { return testCases; }
+        }
+
+        private readonly ThumbnailsResource thumbnails;
+
+        /// <summary>Gets the Thumbnails resource.</summary>
+        public virtual ThumbnailsResource Thumbnails
+        {
+            get { return thumbnails; }
         }
     }
 
@@ -145,18 +235,47 @@ namespace Google.Apis.ToolResults.v1beta3
         {
         }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>V1 error format.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
+
+        /// <summary>OAuth access token.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>Data format for response.</summary>
         public enum AltEnum
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
         }
+
+        /// <summary>JSONP</summary>
+        [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string Callback { get; set; }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -176,14 +295,18 @@ namespace Google.Apis.ToolResults.v1beta3
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-        /// characters.</summary>
+        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
+        /// assigned to a user, but should not exceed 40 characters.</summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
-        /// <summary>Deprecated. Please use quotaUser instead.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string UserIp { get; set; }
+        /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadType { get; set; }
+
+        /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadProtocol { get; set; }
 
         /// <summary>Initializes ToolResults parameter list.</summary>
         protected override void InitParameters()
@@ -191,12 +314,39 @@ namespace Google.Apis.ToolResults.v1beta3
             base.InitParameters();
 
             RequestParameters.Add(
+                "$.xgafv", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "$.xgafv",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "access_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "access_token",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
                 "alt", new Google.Apis.Discovery.Parameter
                 {
                     Name = "alt",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "json",
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "callback", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "callback",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
             RequestParameters.Add(
@@ -245,14 +395,1935 @@ namespace Google.Apis.ToolResults.v1beta3
                     Pattern = null,
                 });
             RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
+                "uploadType", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "userIp",
+                    Name = "uploadType",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
+            RequestParameters.Add(
+                "upload_protocol", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "upload_protocol",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+        }
+    }
+
+    /// <summary>The "clusters" collection of methods.</summary>
+    public class ClustersResource
+    {
+        private const string Resource = "clusters";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ClustersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Retrieves a single screenshot cluster by its ID</summary>
+        /// <param name="projectId">A Project id.
+        ///
+        /// Required.</param>
+        /// <param name="historyId">A History id.
+        ///
+        /// Required.</param>
+        /// <param name="executionId">An Execution id.
+        ///
+        /// Required.</param>
+        /// <param name="clusterId">A Cluster id
+        ///
+        /// Required.</param>
+        public virtual GetRequest Get(string projectId, string historyId, string executionId, string clusterId)
+        {
+            return new GetRequest(service, projectId, historyId, executionId, clusterId);
+        }
+
+        /// <summary>Retrieves a single screenshot cluster by its ID</summary>
+        public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ScreenshotCluster>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string clusterId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                ClusterId = clusterId;
+                InitParameters();
+            }
+
+
+            /// <summary>A Project id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A History id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>An Execution id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+            /// <summary>A Cluster id
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ClusterId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/clusters/{clusterId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "clusterId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "clusterId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists Screenshot Clusters
+        ///
+        /// Returns the list of screenshot clusters corresponding to an execution. Screenshot clusters are created after
+        /// the execution is finished. Clusters are created from a set of screenshots. Between any two screenshots, a
+        /// matching score is calculated based off their metadata that determines how similar they are. Screenshots are
+        /// placed in the cluster that has screens which have the highest matching scores.</summary>
+        /// <param name="projectId">A Project id.
+        ///
+        /// Required.</param>
+        /// <param name="historyId">A History id.
+        ///
+        /// Required.</param>
+        /// <param name="executionId">An Execution id.
+        ///
+        /// Required.</param>
+        public virtual ListRequest List(string projectId, string historyId, string executionId)
+        {
+            return new ListRequest(service, projectId, historyId, executionId);
+        }
+
+        /// <summary>Lists Screenshot Clusters
+        ///
+        /// Returns the list of screenshot clusters corresponding to an execution. Screenshot clusters are created after
+        /// the execution is finished. Clusters are created from a set of screenshots. Between any two screenshots, a
+        /// matching score is calculated based off their metadata that determines how similar they are. Screenshots are
+        /// placed in the cluster that has screens which have the highest matching scores.</summary>
+        public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListScreenshotClustersResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                InitParameters();
+            }
+
+
+            /// <summary>A Project id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A History id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>An Execution id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/clusters"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "environments" collection of methods.</summary>
+    public class EnvironmentsResource
+    {
+        private const string Resource = "environments";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public EnvironmentsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Gets an Environment.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is
+        /// malformed - NOT_FOUND - if the Environment does not exist</summary>
+        /// <param name="projectId">Required. A Project id.</param>
+        /// <param name="historyId">Required. A History
+        /// id.</param>
+        /// <param name="executionId">Required. An Execution id.</param>
+        /// <param
+        /// name="environmentId">Required. An Environment id.</param>
+        public virtual GetRequest Get(string projectId, string historyId, string executionId, string environmentId)
+        {
+            return new GetRequest(service, projectId, historyId, executionId, environmentId);
+        }
+
+        /// <summary>Gets an Environment.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is
+        /// malformed - NOT_FOUND - if the Environment does not exist</summary>
+        public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Environment>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string environmentId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                EnvironmentId = environmentId;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. A Project id.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Required. A History id.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>Required. An Execution id.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+            /// <summary>Required. An Environment id.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("environmentId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnvironmentId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/environments/{environmentId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "environmentId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "environmentId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists Environments for a given Execution.
+        ///
+        /// The Environments are sorted by display name.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is
+        /// malformed - NOT_FOUND - if the containing Execution does not exist</summary>
+        /// <param name="projectId">Required. A Project id.</param>
+        /// <param name="historyId">Required. A History
+        /// id.</param>
+        /// <param name="executionId">Required. An Execution id.</param>
+        public virtual ListRequest List(string projectId, string historyId, string executionId)
+        {
+            return new ListRequest(service, projectId, historyId, executionId);
+        }
+
+        /// <summary>Lists Environments for a given Execution.
+        ///
+        /// The Environments are sorted by display name.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is
+        /// malformed - NOT_FOUND - if the containing Execution does not exist</summary>
+        public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListEnvironmentsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. A Project id.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Required. A History id.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>Required. An Execution id.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+            /// <summary>The maximum number of Environments to fetch.
+            ///
+            /// Default value: 25. The server will use this default if the field is not set or has a value of
+            /// 0.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A continuation token to resume the query at the next item.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/environments"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "executions" collection of methods.</summary>
+    public class ExecutionsResource
+    {
+        private const string Resource = "executions";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ExecutionsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Creates an Execution.
+        ///
+        /// The returned Execution will have the id set.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request
+        /// is malformed - NOT_FOUND - if the containing History does not exist</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="projectId">A Project id.
+        ///
+        /// Required.</param>
+        /// <param name="historyId">A History id.
+        ///
+        /// Required.</param>
+        public virtual CreateRequest Create(Google.Apis.ToolResults.v1beta3.Data.Execution body, string projectId, string historyId)
+        {
+            return new CreateRequest(service, body, projectId, historyId);
+        }
+
+        /// <summary>Creates an Execution.
+        ///
+        /// The returned Execution will have the id set.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request
+        /// is malformed - NOT_FOUND - if the containing History does not exist</summary>
+        public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Execution>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.Execution body, string projectId, string historyId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>A Project id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A History id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>A unique request ID for server to detect duplicated requests. For example, a UUID.
+            ///
+            /// Optional, but strongly recommended.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ToolResults.v1beta3.Data.Execution Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Gets an Execution.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request
+        /// is malformed - NOT_FOUND - if the Execution does not exist</summary>
+        /// <param name="projectId">A Project id.
+        ///
+        /// Required.</param>
+        /// <param name="historyId">A History id.
+        ///
+        /// Required.</param>
+        /// <param name="executionId">An Execution id.
+        ///
+        /// Required.</param>
+        public virtual GetRequest Get(string projectId, string historyId, string executionId)
+        {
+            return new GetRequest(service, projectId, historyId, executionId);
+        }
+
+        /// <summary>Gets an Execution.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request
+        /// is malformed - NOT_FOUND - if the Execution does not exist</summary>
+        public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Execution>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                InitParameters();
+            }
+
+
+            /// <summary>A Project id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A History id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>An Execution id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists Executions for a given History.
+        ///
+        /// The executions are sorted by creation_time in descending order. The execution_id key will be used to order
+        /// the executions with the same creation_time.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is
+        /// malformed - NOT_FOUND - if the containing History does not exist</summary>
+        /// <param name="projectId">A Project id.
+        ///
+        /// Required.</param>
+        /// <param name="historyId">A History id.
+        ///
+        /// Required.</param>
+        public virtual ListRequest List(string projectId, string historyId)
+        {
+            return new ListRequest(service, projectId, historyId);
+        }
+
+        /// <summary>Lists Executions for a given History.
+        ///
+        /// The executions are sorted by creation_time in descending order. The execution_id key will be used to order
+        /// the executions with the same creation_time.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is
+        /// malformed - NOT_FOUND - if the containing History does not exist</summary>
+        public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListExecutionsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                InitParameters();
+            }
+
+
+            /// <summary>A Project id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A History id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>The maximum number of Executions to fetch.
+            ///
+            /// Default value: 25. The server will use this default if the field is not set or has a value of 0.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A continuation token to resume the query at the next item.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates an existing Execution with the supplied partial entity.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request
+        /// is malformed - FAILED_PRECONDITION - if the requested state transition is illegal - NOT_FOUND - if the
+        /// containing History does not exist</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="projectId">A Project id. Required.</param>
+        /// <param name="historyId">Required.</param>
+        ///
+        /// <param name="executionId">Required.</param>
+        public virtual PatchRequest Patch(Google.Apis.ToolResults.v1beta3.Data.Execution body, string projectId, string historyId, string executionId)
+        {
+            return new PatchRequest(service, body, projectId, historyId, executionId);
+        }
+
+        /// <summary>Updates an existing Execution with the supplied partial entity.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request
+        /// is malformed - FAILED_PRECONDITION - if the requested state transition is illegal - NOT_FOUND - if the
+        /// containing History does not exist</summary>
+        public class PatchRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Execution>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.Execution body, string projectId, string historyId, string executionId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>A Project id. Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+            /// <summary>A unique request ID for server to detect duplicated requests. For example, a UUID.
+            ///
+            /// Optional, but strongly recommended.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ToolResults.v1beta3.Data.Execution Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "histories" collection of methods.</summary>
+    public class HistoriesResource
+    {
+        private const string Resource = "histories";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public HistoriesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Creates a History.
+        ///
+        /// The returned History will have the id set.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request
+        /// is malformed - NOT_FOUND - if the containing project does not exist</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="projectId">A Project id.
+        ///
+        /// Required.</param>
+        public virtual CreateRequest Create(Google.Apis.ToolResults.v1beta3.Data.History body, string projectId)
+        {
+            return new CreateRequest(service, body, projectId);
+        }
+
+        /// <summary>Creates a History.
+        ///
+        /// The returned History will have the id set.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request
+        /// is malformed - NOT_FOUND - if the containing project does not exist</summary>
+        public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.History>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.History body, string projectId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>A Project id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A unique request ID for server to detect duplicated requests. For example, a UUID.
+            ///
+            /// Optional, but strongly recommended.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ToolResults.v1beta3.Data.History Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Gets a History.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is
+        /// malformed - NOT_FOUND - if the History does not exist</summary>
+        /// <param name="projectId">A Project id.
+        ///
+        /// Required.</param>
+        /// <param name="historyId">A History id.
+        ///
+        /// Required.</param>
+        public virtual GetRequest Get(string projectId, string historyId)
+        {
+            return new GetRequest(service, projectId, historyId);
+        }
+
+        /// <summary>Gets a History.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is
+        /// malformed - NOT_FOUND - if the History does not exist</summary>
+        public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.History>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                InitParameters();
+            }
+
+
+            /// <summary>A Project id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A History id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists Histories for a given Project.
+        ///
+        /// The histories are sorted by modification time in descending order. The history_id key will be used to order
+        /// the history with the same modification time.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is
+        /// malformed - NOT_FOUND - if the History does not exist</summary>
+        /// <param name="projectId">A Project id.
+        ///
+        /// Required.</param>
+        public virtual ListRequest List(string projectId)
+        {
+            return new ListRequest(service, projectId);
+        }
+
+        /// <summary>Lists Histories for a given Project.
+        ///
+        /// The histories are sorted by modification time in descending order. The history_id key will be used to order
+        /// the history with the same modification time.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is
+        /// malformed - NOT_FOUND - if the History does not exist</summary>
+        public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListHistoriesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string projectId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                InitParameters();
+            }
+
+
+            /// <summary>A Project id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>If set, only return histories with the given name.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filterByName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string FilterByName { get; set; }
+
+            /// <summary>The maximum number of Histories to fetch.
+            ///
+            /// Default value: 20. The server will use this default if the field is not set or has a value of 0. Any
+            /// value greater than 100 will be treated as 100.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A continuation token to resume the query at the next item.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filterByName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filterByName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "perfMetricsSummary" collection of methods.</summary>
+    public class PerfMetricsSummaryResource
+    {
+        private const string Resource = "perfMetricsSummary";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public PerfMetricsSummaryResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Creates a PerfMetricsSummary resource. Returns the existing one if it has already been created.
+        ///
+        /// May return any of the following error code(s): - NOT_FOUND - The containing Step does not exist</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="projectId">The cloud project</param>
+        /// <param name="historyId">A tool results history
+        /// ID.</param>
+        /// <param name="executionId">A tool results execution ID.</param>
+        /// <param name="stepId">A
+        /// tool results step ID.</param>
+        public virtual CreateRequest Create(Google.Apis.ToolResults.v1beta3.Data.PerfMetricsSummary body, string projectId, string historyId, string executionId, string stepId)
+        {
+            return new CreateRequest(service, body, projectId, historyId, executionId, stepId);
+        }
+
+        /// <summary>Creates a PerfMetricsSummary resource. Returns the existing one if it has already been created.
+        ///
+        /// May return any of the following error code(s): - NOT_FOUND - The containing Step does not exist</summary>
+        public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.PerfMetricsSummary>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.PerfMetricsSummary body, string projectId, string historyId, string executionId, string stepId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                StepId = stepId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The cloud project</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A tool results history ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>A tool results execution ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+            /// <summary>A tool results step ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string StepId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ToolResults.v1beta3.Data.PerfMetricsSummary Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "stepId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "stepId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "perfSampleSeries" collection of methods.</summary>
+    public class PerfSampleSeriesResource
+    {
+        private const string Resource = "perfSampleSeries";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public PerfSampleSeriesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Creates a PerfSampleSeries.
+        ///
+        /// May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already exists for the
+        /// given Step - NOT_FOUND - The containing Step does not exist</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="projectId">The cloud project</param>
+        /// <param name="historyId">A tool results history
+        /// ID.</param>
+        /// <param name="executionId">A tool results execution ID.</param>
+        /// <param name="stepId">A
+        /// tool results step ID.</param>
+        public virtual CreateRequest Create(Google.Apis.ToolResults.v1beta3.Data.PerfSampleSeries body, string projectId, string historyId, string executionId, string stepId)
+        {
+            return new CreateRequest(service, body, projectId, historyId, executionId, stepId);
+        }
+
+        /// <summary>Creates a PerfSampleSeries.
+        ///
+        /// May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already exists for the
+        /// given Step - NOT_FOUND - The containing Step does not exist</summary>
+        public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.PerfSampleSeries>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.PerfSampleSeries body, string projectId, string historyId, string executionId, string stepId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                StepId = stepId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The cloud project</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A tool results history ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>A tool results execution ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+            /// <summary>A tool results step ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string StepId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ToolResults.v1beta3.Data.PerfSampleSeries Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "stepId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "stepId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Gets a PerfSampleSeries.
+        ///
+        /// May return any of the following error code(s): - NOT_FOUND - The specified PerfSampleSeries does not
+        /// exist</summary>
+        /// <param name="projectId">The cloud project</param>
+        /// <param name="historyId">A tool results history
+        /// ID.</param>
+        /// <param name="executionId">A tool results execution ID.</param>
+        /// <param name="stepId">A
+        /// tool results step ID.</param>
+        /// <param name="sampleSeriesId">A sample series id</param>
+        public virtual GetRequest Get(string projectId, string historyId, string executionId, string stepId, string sampleSeriesId)
+        {
+            return new GetRequest(service, projectId, historyId, executionId, stepId, sampleSeriesId);
+        }
+
+        /// <summary>Gets a PerfSampleSeries.
+        ///
+        /// May return any of the following error code(s): - NOT_FOUND - The specified PerfSampleSeries does not
+        /// exist</summary>
+        public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.PerfSampleSeries>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId, string sampleSeriesId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                StepId = stepId;
+                SampleSeriesId = sampleSeriesId;
+                InitParameters();
+            }
+
+
+            /// <summary>The cloud project</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A tool results history ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>A tool results execution ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+            /// <summary>A tool results step ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string StepId { get; private set; }
+
+            /// <summary>A sample series id</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sampleSeriesId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string SampleSeriesId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "stepId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "stepId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sampleSeriesId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sampleSeriesId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists PerfSampleSeries for a given Step.
+        ///
+        /// The request provides an optional filter which specifies one or more PerfMetricsType to include in the
+        /// result; if none returns all. The resulting PerfSampleSeries are sorted by ids.
+        ///
+        /// May return any of the following canonical error codes: - NOT_FOUND - The containing Step does not
+        /// exist</summary>
+        /// <param name="projectId">The cloud project</param>
+        /// <param name="historyId">A tool results history
+        /// ID.</param>
+        /// <param name="executionId">A tool results execution ID.</param>
+        /// <param name="stepId">A
+        /// tool results step ID.</param>
+        public virtual ListRequest List(string projectId, string historyId, string executionId, string stepId)
+        {
+            return new ListRequest(service, projectId, historyId, executionId, stepId);
+        }
+
+        /// <summary>Lists PerfSampleSeries for a given Step.
+        ///
+        /// The request provides an optional filter which specifies one or more PerfMetricsType to include in the
+        /// result; if none returns all. The resulting PerfSampleSeries are sorted by ids.
+        ///
+        /// May return any of the following canonical error codes: - NOT_FOUND - The containing Step does not
+        /// exist</summary>
+        public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListPerfSampleSeriesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                StepId = stepId;
+                InitParameters();
+            }
+
+
+            /// <summary>The cloud project</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A tool results history ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>A tool results execution ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+            /// <summary>A tool results step ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string StepId { get; private set; }
+
+            /// <summary>Specify one or more PerfMetricType values such as CPU to filter the result</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<FilterEnum> Filter { get; set; }
+
+            /// <summary>Specify one or more PerfMetricType values such as CPU to filter the result</summary>
+            public enum FilterEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("PERF_METRIC_TYPE_UNSPECIFIED")]
+                PERFMETRICTYPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("MEMORY")]
+                MEMORY,
+                [Google.Apis.Util.StringValueAttribute("CPU")]
+                CPU,
+                [Google.Apis.Util.StringValueAttribute("NETWORK")]
+                NETWORK,
+                [Google.Apis.Util.StringValueAttribute("GRAPHICS")]
+                GRAPHICS,
+            }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "stepId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "stepId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
         }
     }
 
@@ -268,3800 +2339,9 @@ namespace Google.Apis.ToolResults.v1beta3
         public ProjectsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-            histories = new HistoriesResource(service);
 
         }
 
-        private readonly HistoriesResource histories;
-
-        /// <summary>Gets the Histories resource.</summary>
-        public virtual HistoriesResource Histories
-        {
-            get { return histories; }
-        }
-
-        /// <summary>The "histories" collection of methods.</summary>
-        public class HistoriesResource
-        {
-            private const string Resource = "histories";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public HistoriesResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-                executions = new ExecutionsResource(service);
-
-            }
-
-            private readonly ExecutionsResource executions;
-
-            /// <summary>Gets the Executions resource.</summary>
-            public virtual ExecutionsResource Executions
-            {
-                get { return executions; }
-            }
-
-            /// <summary>The "executions" collection of methods.</summary>
-            public class ExecutionsResource
-            {
-                private const string Resource = "executions";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public ExecutionsResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                    clusters = new ClustersResource(service);
-                    environments = new EnvironmentsResource(service);
-                    steps = new StepsResource(service);
-
-                }
-
-                private readonly ClustersResource clusters;
-
-                /// <summary>Gets the Clusters resource.</summary>
-                public virtual ClustersResource Clusters
-                {
-                    get { return clusters; }
-                }
-
-                /// <summary>The "clusters" collection of methods.</summary>
-                public class ClustersResource
-                {
-                    private const string Resource = "clusters";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public ClustersResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-
-                    }
-
-
-                    /// <summary>Retrieves a single screenshot cluster by its ID</summary>
-                    /// <param name="projectId">A Project id.
-                    ///
-                    /// Required.</param>
-                    /// <param name="historyId">A History id.
-                    ///
-                    /// Required.</param>
-                    /// <param name="executionId">An Execution id.
-                    ///
-                    /// Required.</param>
-                    /// <param name="clusterId">A Cluster id
-                    ///
-                    /// Required.</param>
-                    public virtual GetRequest Get(string projectId, string historyId, string executionId, string clusterId)
-                    {
-                        return new GetRequest(service, projectId, historyId, executionId, clusterId);
-                    }
-
-                    /// <summary>Retrieves a single screenshot cluster by its ID</summary>
-                    public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ScreenshotCluster>
-                    {
-                        /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string clusterId)
-                            : base(service)
-                        {
-                            ProjectId = projectId;
-                            HistoryId = historyId;
-                            ExecutionId = executionId;
-                            ClusterId = clusterId;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>A Project id.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ProjectId { get; private set; }
-
-                        /// <summary>A History id.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string HistoryId { get; private set; }
-
-                        /// <summary>An Execution id.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ExecutionId { get; private set; }
-
-                        /// <summary>A Cluster id
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ClusterId { get; private set; }
-
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "get"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "GET"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}/clusters/{clusterId}"; }
-                        }
-
-                        /// <summary>Initializes Get parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "historyId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "historyId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "executionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "executionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "clusterId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "clusterId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                        }
-
-                    }
-
-                    /// <summary>Lists Screenshot Clusters
-                    ///
-                    /// Returns the list of screenshot clusters corresponding to an execution. Screenshot clusters are
-                    /// created after the execution is finished. Clusters are created from a set of screenshots. Between
-                    /// any two screenshots, a matching score is calculated based off their metadata that determines how
-                    /// similar they are. Screenshots are placed in the cluster that has screens which have the highest
-                    /// matching scores.</summary>
-                    /// <param name="projectId">A Project id.
-                    ///
-                    /// Required.</param>
-                    /// <param name="historyId">A History id.
-                    ///
-                    /// Required.</param>
-                    /// <param name="executionId">An Execution id.
-                    ///
-                    /// Required.</param>
-                    public virtual ListRequest List(string projectId, string historyId, string executionId)
-                    {
-                        return new ListRequest(service, projectId, historyId, executionId);
-                    }
-
-                    /// <summary>Lists Screenshot Clusters
-                    ///
-                    /// Returns the list of screenshot clusters corresponding to an execution. Screenshot clusters are
-                    /// created after the execution is finished. Clusters are created from a set of screenshots. Between
-                    /// any two screenshots, a matching score is calculated based off their metadata that determines how
-                    /// similar they are. Screenshots are placed in the cluster that has screens which have the highest
-                    /// matching scores.</summary>
-                    public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListScreenshotClustersResponse>
-                    {
-                        /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId)
-                            : base(service)
-                        {
-                            ProjectId = projectId;
-                            HistoryId = historyId;
-                            ExecutionId = executionId;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>A Project id.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ProjectId { get; private set; }
-
-                        /// <summary>A History id.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string HistoryId { get; private set; }
-
-                        /// <summary>An Execution id.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ExecutionId { get; private set; }
-
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "list"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "GET"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}/clusters"; }
-                        }
-
-                        /// <summary>Initializes List parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "historyId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "historyId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "executionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "executionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                        }
-
-                    }
-                }
-                private readonly EnvironmentsResource environments;
-
-                /// <summary>Gets the Environments resource.</summary>
-                public virtual EnvironmentsResource Environments
-                {
-                    get { return environments; }
-                }
-
-                /// <summary>The "environments" collection of methods.</summary>
-                public class EnvironmentsResource
-                {
-                    private const string Resource = "environments";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public EnvironmentsResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-
-                    }
-
-
-                    /// <summary>Gets an Environment.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                    /// request is malformed - NOT_FOUND - if the Environment does not exist</summary>
-                    /// <param name="projectId">Required. A Project id.</param>
-                    /// <param name="historyId">Required. A History
-                    /// id.</param>
-                    /// <param name="executionId">Required. An Execution id.</param>
-                    /// <param
-                    /// name="environmentId">Required. An Environment id.</param>
-                    public virtual GetRequest Get(string projectId, string historyId, string executionId, string environmentId)
-                    {
-                        return new GetRequest(service, projectId, historyId, executionId, environmentId);
-                    }
-
-                    /// <summary>Gets an Environment.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                    /// request is malformed - NOT_FOUND - if the Environment does not exist</summary>
-                    public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Environment>
-                    {
-                        /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string environmentId)
-                            : base(service)
-                        {
-                            ProjectId = projectId;
-                            HistoryId = historyId;
-                            ExecutionId = executionId;
-                            EnvironmentId = environmentId;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>Required. A Project id.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ProjectId { get; private set; }
-
-                        /// <summary>Required. A History id.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string HistoryId { get; private set; }
-
-                        /// <summary>Required. An Execution id.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ExecutionId { get; private set; }
-
-                        /// <summary>Required. An Environment id.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("environmentId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string EnvironmentId { get; private set; }
-
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "get"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "GET"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}/environments/{environmentId}"; }
-                        }
-
-                        /// <summary>Initializes Get parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "historyId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "historyId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "executionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "executionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "environmentId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "environmentId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                        }
-
-                    }
-
-                    /// <summary>Lists Environments for a given Execution.
-                    ///
-                    /// The Environments are sorted by display name.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                    /// request is malformed - NOT_FOUND - if the containing Execution does not exist</summary>
-                    /// <param name="projectId">Required. A Project id.</param>
-                    /// <param name="historyId">Required. A History
-                    /// id.</param>
-                    /// <param name="executionId">Required. An Execution id.</param>
-                    public virtual ListRequest List(string projectId, string historyId, string executionId)
-                    {
-                        return new ListRequest(service, projectId, historyId, executionId);
-                    }
-
-                    /// <summary>Lists Environments for a given Execution.
-                    ///
-                    /// The Environments are sorted by display name.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                    /// request is malformed - NOT_FOUND - if the containing Execution does not exist</summary>
-                    public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListEnvironmentsResponse>
-                    {
-                        /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId)
-                            : base(service)
-                        {
-                            ProjectId = projectId;
-                            HistoryId = historyId;
-                            ExecutionId = executionId;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>Required. A Project id.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ProjectId { get; private set; }
-
-                        /// <summary>Required. A History id.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string HistoryId { get; private set; }
-
-                        /// <summary>Required. An Execution id.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ExecutionId { get; private set; }
-
-                        /// <summary>The maximum number of Environments to fetch.
-                        ///
-                        /// Default value: 25. The server will use this default if the field is not set or has a value
-                        /// of 0.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>A continuation token to resume the query at the next item.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "list"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "GET"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}/environments"; }
-                        }
-
-                        /// <summary>Initializes List parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "historyId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "historyId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "executionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "executionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                        }
-
-                    }
-                }
-                private readonly StepsResource steps;
-
-                /// <summary>Gets the Steps resource.</summary>
-                public virtual StepsResource Steps
-                {
-                    get { return steps; }
-                }
-
-                /// <summary>The "steps" collection of methods.</summary>
-                public class StepsResource
-                {
-                    private const string Resource = "steps";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public StepsResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                        perfMetricsSummary = new PerfMetricsSummaryResource(service);
-                        perfSampleSeries = new PerfSampleSeriesResource(service);
-                        testCases = new TestCasesResource(service);
-                        thumbnails = new ThumbnailsResource(service);
-
-                    }
-
-                    private readonly PerfMetricsSummaryResource perfMetricsSummary;
-
-                    /// <summary>Gets the PerfMetricsSummary resource.</summary>
-                    public virtual PerfMetricsSummaryResource PerfMetricsSummary
-                    {
-                        get { return perfMetricsSummary; }
-                    }
-
-                    /// <summary>The "perfMetricsSummary" collection of methods.</summary>
-                    public class PerfMetricsSummaryResource
-                    {
-                        private const string Resource = "perfMetricsSummary";
-
-                        /// <summary>The service which this resource belongs to.</summary>
-                        private readonly Google.Apis.Services.IClientService service;
-
-                        /// <summary>Constructs a new resource.</summary>
-                        public PerfMetricsSummaryResource(Google.Apis.Services.IClientService service)
-                        {
-                            this.service = service;
-
-                        }
-
-
-                        /// <summary>Creates a PerfMetricsSummary resource. Returns the existing one if it has already
-                        /// been created.
-                        ///
-                        /// May return any of the following error code(s): - NOT_FOUND - The containing Step does not
-                        /// exist</summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="projectId">The cloud project</param>
-                        /// <param name="historyId">A tool results history
-                        /// ID.</param>
-                        /// <param name="executionId">A tool results execution ID.</param>
-                        /// <param name="stepId">A
-                        /// tool results step ID.</param>
-                        public virtual CreateRequest Create(Google.Apis.ToolResults.v1beta3.Data.PerfMetricsSummary body, string projectId, string historyId, string executionId, string stepId)
-                        {
-                            return new CreateRequest(service, body, projectId, historyId, executionId, stepId);
-                        }
-
-                        /// <summary>Creates a PerfMetricsSummary resource. Returns the existing one if it has already
-                        /// been created.
-                        ///
-                        /// May return any of the following error code(s): - NOT_FOUND - The containing Step does not
-                        /// exist</summary>
-                        public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.PerfMetricsSummary>
-                        {
-                            /// <summary>Constructs a new Create request.</summary>
-                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.PerfMetricsSummary body, string projectId, string historyId, string executionId, string stepId)
-                                : base(service)
-                            {
-                                ProjectId = projectId;
-                                HistoryId = historyId;
-                                ExecutionId = executionId;
-                                StepId = stepId;
-                                Body = body;
-                                InitParameters();
-                            }
-
-
-                            /// <summary>The cloud project</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string ProjectId { get; private set; }
-
-                            /// <summary>A tool results history ID.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string HistoryId { get; private set; }
-
-                            /// <summary>A tool results execution ID.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string ExecutionId { get; private set; }
-
-                            /// <summary>A tool results step ID.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string StepId { get; private set; }
-
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.ToolResults.v1beta3.Data.PerfMetricsSummary Body { get; set; }
-
-                            ///<summary>Returns the body of the request.</summary>
-                            protected override object GetBody() { return Body; }
-
-                            ///<summary>Gets the method name.</summary>
-                            public override string MethodName
-                            {
-                                get { return "create"; }
-                            }
-
-                            ///<summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod
-                            {
-                                get { return "POST"; }
-                            }
-
-                            ///<summary>Gets the REST path.</summary>
-                            public override string RestPath
-                            {
-                                get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary"; }
-                            }
-
-                            /// <summary>Initializes Create parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-
-                                RequestParameters.Add(
-                                    "projectId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "projectId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "historyId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "historyId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "executionId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "executionId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "stepId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "stepId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                            }
-
-                        }
-                    }
-                    private readonly PerfSampleSeriesResource perfSampleSeries;
-
-                    /// <summary>Gets the PerfSampleSeries resource.</summary>
-                    public virtual PerfSampleSeriesResource PerfSampleSeries
-                    {
-                        get { return perfSampleSeries; }
-                    }
-
-                    /// <summary>The "perfSampleSeries" collection of methods.</summary>
-                    public class PerfSampleSeriesResource
-                    {
-                        private const string Resource = "perfSampleSeries";
-
-                        /// <summary>The service which this resource belongs to.</summary>
-                        private readonly Google.Apis.Services.IClientService service;
-
-                        /// <summary>Constructs a new resource.</summary>
-                        public PerfSampleSeriesResource(Google.Apis.Services.IClientService service)
-                        {
-                            this.service = service;
-                            samples = new SamplesResource(service);
-
-                        }
-
-                        private readonly SamplesResource samples;
-
-                        /// <summary>Gets the Samples resource.</summary>
-                        public virtual SamplesResource Samples
-                        {
-                            get { return samples; }
-                        }
-
-                        /// <summary>The "samples" collection of methods.</summary>
-                        public class SamplesResource
-                        {
-                            private const string Resource = "samples";
-
-                            /// <summary>The service which this resource belongs to.</summary>
-                            private readonly Google.Apis.Services.IClientService service;
-
-                            /// <summary>Constructs a new resource.</summary>
-                            public SamplesResource(Google.Apis.Services.IClientService service)
-                            {
-                                this.service = service;
-
-                            }
-
-
-                            /// <summary>Creates a batch of PerfSamples - a client can submit multiple batches of Perf
-                            /// Samples through repeated calls to this method in order to split up a large request
-                            /// payload - duplicates and existing timestamp entries will be ignored. - the batch
-                            /// operation may partially succeed - the set of elements successfully inserted is returned
-                            /// in the response (omits items which already existed in the database).
-                            ///
-                            /// May return any of the following canonical error codes: - NOT_FOUND - The containing
-                            /// PerfSampleSeries does not exist</summary>
-                            /// <param name="body">The body of the request.</param>
-                            /// <param name="projectId">The cloud project</param>
-                            /// <param name="historyId">A tool results history
-                            /// ID.</param>
-                            /// <param name="executionId">A tool results execution ID.</param>
-                            /// <param name="stepId">A
-                            /// tool results step ID.</param>
-                            /// <param name="sampleSeriesId">A sample series id</param>
-                            public virtual BatchCreateRequest BatchCreate(Google.Apis.ToolResults.v1beta3.Data.BatchCreatePerfSamplesRequest body, string projectId, string historyId, string executionId, string stepId, string sampleSeriesId)
-                            {
-                                return new BatchCreateRequest(service, body, projectId, historyId, executionId, stepId, sampleSeriesId);
-                            }
-
-                            /// <summary>Creates a batch of PerfSamples - a client can submit multiple batches of Perf
-                            /// Samples through repeated calls to this method in order to split up a large request
-                            /// payload - duplicates and existing timestamp entries will be ignored. - the batch
-                            /// operation may partially succeed - the set of elements successfully inserted is returned
-                            /// in the response (omits items which already existed in the database).
-                            ///
-                            /// May return any of the following canonical error codes: - NOT_FOUND - The containing
-                            /// PerfSampleSeries does not exist</summary>
-                            public class BatchCreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.BatchCreatePerfSamplesResponse>
-                            {
-                                /// <summary>Constructs a new BatchCreate request.</summary>
-                                public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.BatchCreatePerfSamplesRequest body, string projectId, string historyId, string executionId, string stepId, string sampleSeriesId)
-                                    : base(service)
-                                {
-                                    ProjectId = projectId;
-                                    HistoryId = historyId;
-                                    ExecutionId = executionId;
-                                    StepId = stepId;
-                                    SampleSeriesId = sampleSeriesId;
-                                    Body = body;
-                                    InitParameters();
-                                }
-
-
-                                /// <summary>The cloud project</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string ProjectId { get; private set; }
-
-                                /// <summary>A tool results history ID.</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string HistoryId { get; private set; }
-
-                                /// <summary>A tool results execution ID.</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string ExecutionId { get; private set; }
-
-                                /// <summary>A tool results step ID.</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string StepId { get; private set; }
-
-                                /// <summary>A sample series id</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("sampleSeriesId", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string SampleSeriesId { get; private set; }
-
-
-                                /// <summary>Gets or sets the body of this request.</summary>
-                                Google.Apis.ToolResults.v1beta3.Data.BatchCreatePerfSamplesRequest Body { get; set; }
-
-                                ///<summary>Returns the body of the request.</summary>
-                                protected override object GetBody() { return Body; }
-
-                                ///<summary>Gets the method name.</summary>
-                                public override string MethodName
-                                {
-                                    get { return "batchCreate"; }
-                                }
-
-                                ///<summary>Gets the HTTP method.</summary>
-                                public override string HttpMethod
-                                {
-                                    get { return "POST"; }
-                                }
-
-                                ///<summary>Gets the REST path.</summary>
-                                public override string RestPath
-                                {
-                                    get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples:batchCreate"; }
-                                }
-
-                                /// <summary>Initializes BatchCreate parameter list.</summary>
-                                protected override void InitParameters()
-                                {
-                                    base.InitParameters();
-
-                                    RequestParameters.Add(
-                                        "projectId", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "projectId",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "historyId", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "historyId",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "executionId", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "executionId",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "stepId", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "stepId",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "sampleSeriesId", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "sampleSeriesId",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                }
-
-                            }
-
-                            /// <summary>Lists the Performance Samples of a given Sample Series - The list results are
-                            /// sorted by timestamps ascending - The default page size is 500 samples; and maximum size
-                            /// allowed 5000 - The response token indicates the last returned PerfSample timestamp -
-                            /// When the results size exceeds the page size, submit a subsequent request including the
-                            /// page token to return the rest of the samples up to the page limit
-                            ///
-                            /// May return any of the following canonical error codes: - OUT_OF_RANGE - The specified
-                            /// request page_token is out of valid range - NOT_FOUND - The containing PerfSampleSeries
-                            /// does not exist</summary>
-                            /// <param name="projectId">The cloud project</param>
-                            /// <param name="historyId">A tool results history
-                            /// ID.</param>
-                            /// <param name="executionId">A tool results execution ID.</param>
-                            /// <param name="stepId">A
-                            /// tool results step ID.</param>
-                            /// <param name="sampleSeriesId">A sample series id</param>
-                            public virtual ListRequest List(string projectId, string historyId, string executionId, string stepId, string sampleSeriesId)
-                            {
-                                return new ListRequest(service, projectId, historyId, executionId, stepId, sampleSeriesId);
-                            }
-
-                            /// <summary>Lists the Performance Samples of a given Sample Series - The list results are
-                            /// sorted by timestamps ascending - The default page size is 500 samples; and maximum size
-                            /// allowed 5000 - The response token indicates the last returned PerfSample timestamp -
-                            /// When the results size exceeds the page size, submit a subsequent request including the
-                            /// page token to return the rest of the samples up to the page limit
-                            ///
-                            /// May return any of the following canonical error codes: - OUT_OF_RANGE - The specified
-                            /// request page_token is out of valid range - NOT_FOUND - The containing PerfSampleSeries
-                            /// does not exist</summary>
-                            public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListPerfSamplesResponse>
-                            {
-                                /// <summary>Constructs a new List request.</summary>
-                                public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId, string sampleSeriesId)
-                                    : base(service)
-                                {
-                                    ProjectId = projectId;
-                                    HistoryId = historyId;
-                                    ExecutionId = executionId;
-                                    StepId = stepId;
-                                    SampleSeriesId = sampleSeriesId;
-                                    InitParameters();
-                                }
-
-
-                                /// <summary>The cloud project</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string ProjectId { get; private set; }
-
-                                /// <summary>A tool results history ID.</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string HistoryId { get; private set; }
-
-                                /// <summary>A tool results execution ID.</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string ExecutionId { get; private set; }
-
-                                /// <summary>A tool results step ID.</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string StepId { get; private set; }
-
-                                /// <summary>A sample series id</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("sampleSeriesId", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string SampleSeriesId { get; private set; }
-
-                                /// <summary>The default page size is 500 samples, and the maximum size is 5000. If the
-                                /// page_size is greater than 5000, the effective page size will be 5000</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                                public virtual System.Nullable<int> PageSize { get; set; }
-
-                                /// <summary>Optional, the next_page_token returned in the previous response</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                                public virtual string PageToken { get; set; }
-
-
-                                ///<summary>Gets the method name.</summary>
-                                public override string MethodName
-                                {
-                                    get { return "list"; }
-                                }
-
-                                ///<summary>Gets the HTTP method.</summary>
-                                public override string HttpMethod
-                                {
-                                    get { return "GET"; }
-                                }
-
-                                ///<summary>Gets the REST path.</summary>
-                                public override string RestPath
-                                {
-                                    get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples"; }
-                                }
-
-                                /// <summary>Initializes List parameter list.</summary>
-                                protected override void InitParameters()
-                                {
-                                    base.InitParameters();
-
-                                    RequestParameters.Add(
-                                        "projectId", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "projectId",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "historyId", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "historyId",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "executionId", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "executionId",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "stepId", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "stepId",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "sampleSeriesId", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "sampleSeriesId",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "pageSize", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "pageSize",
-                                            IsRequired = false,
-                                            ParameterType = "query",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "pageToken", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "pageToken",
-                                            IsRequired = false,
-                                            ParameterType = "query",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                }
-
-                            }
-                        }
-
-                        /// <summary>Creates a PerfSampleSeries.
-                        ///
-                        /// May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already
-                        /// exists for the given Step - NOT_FOUND - The containing Step does not exist</summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="projectId">The cloud project</param>
-                        /// <param name="historyId">A tool results history
-                        /// ID.</param>
-                        /// <param name="executionId">A tool results execution ID.</param>
-                        /// <param name="stepId">A
-                        /// tool results step ID.</param>
-                        public virtual CreateRequest Create(Google.Apis.ToolResults.v1beta3.Data.PerfSampleSeries body, string projectId, string historyId, string executionId, string stepId)
-                        {
-                            return new CreateRequest(service, body, projectId, historyId, executionId, stepId);
-                        }
-
-                        /// <summary>Creates a PerfSampleSeries.
-                        ///
-                        /// May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already
-                        /// exists for the given Step - NOT_FOUND - The containing Step does not exist</summary>
-                        public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.PerfSampleSeries>
-                        {
-                            /// <summary>Constructs a new Create request.</summary>
-                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.PerfSampleSeries body, string projectId, string historyId, string executionId, string stepId)
-                                : base(service)
-                            {
-                                ProjectId = projectId;
-                                HistoryId = historyId;
-                                ExecutionId = executionId;
-                                StepId = stepId;
-                                Body = body;
-                                InitParameters();
-                            }
-
-
-                            /// <summary>The cloud project</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string ProjectId { get; private set; }
-
-                            /// <summary>A tool results history ID.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string HistoryId { get; private set; }
-
-                            /// <summary>A tool results execution ID.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string ExecutionId { get; private set; }
-
-                            /// <summary>A tool results step ID.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string StepId { get; private set; }
-
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.ToolResults.v1beta3.Data.PerfSampleSeries Body { get; set; }
-
-                            ///<summary>Returns the body of the request.</summary>
-                            protected override object GetBody() { return Body; }
-
-                            ///<summary>Gets the method name.</summary>
-                            public override string MethodName
-                            {
-                                get { return "create"; }
-                            }
-
-                            ///<summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod
-                            {
-                                get { return "POST"; }
-                            }
-
-                            ///<summary>Gets the REST path.</summary>
-                            public override string RestPath
-                            {
-                                get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries"; }
-                            }
-
-                            /// <summary>Initializes Create parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-
-                                RequestParameters.Add(
-                                    "projectId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "projectId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "historyId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "historyId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "executionId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "executionId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "stepId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "stepId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                            }
-
-                        }
-
-                        /// <summary>Gets a PerfSampleSeries.
-                        ///
-                        /// May return any of the following error code(s): - NOT_FOUND - The specified PerfSampleSeries
-                        /// does not exist</summary>
-                        /// <param name="projectId">The cloud project</param>
-                        /// <param name="historyId">A tool results history
-                        /// ID.</param>
-                        /// <param name="executionId">A tool results execution ID.</param>
-                        /// <param name="stepId">A
-                        /// tool results step ID.</param>
-                        /// <param name="sampleSeriesId">A sample series id</param>
-                        public virtual GetRequest Get(string projectId, string historyId, string executionId, string stepId, string sampleSeriesId)
-                        {
-                            return new GetRequest(service, projectId, historyId, executionId, stepId, sampleSeriesId);
-                        }
-
-                        /// <summary>Gets a PerfSampleSeries.
-                        ///
-                        /// May return any of the following error code(s): - NOT_FOUND - The specified PerfSampleSeries
-                        /// does not exist</summary>
-                        public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.PerfSampleSeries>
-                        {
-                            /// <summary>Constructs a new Get request.</summary>
-                            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId, string sampleSeriesId)
-                                : base(service)
-                            {
-                                ProjectId = projectId;
-                                HistoryId = historyId;
-                                ExecutionId = executionId;
-                                StepId = stepId;
-                                SampleSeriesId = sampleSeriesId;
-                                InitParameters();
-                            }
-
-
-                            /// <summary>The cloud project</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string ProjectId { get; private set; }
-
-                            /// <summary>A tool results history ID.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string HistoryId { get; private set; }
-
-                            /// <summary>A tool results execution ID.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string ExecutionId { get; private set; }
-
-                            /// <summary>A tool results step ID.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string StepId { get; private set; }
-
-                            /// <summary>A sample series id</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("sampleSeriesId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string SampleSeriesId { get; private set; }
-
-
-                            ///<summary>Gets the method name.</summary>
-                            public override string MethodName
-                            {
-                                get { return "get"; }
-                            }
-
-                            ///<summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod
-                            {
-                                get { return "GET"; }
-                            }
-
-                            ///<summary>Gets the REST path.</summary>
-                            public override string RestPath
-                            {
-                                get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}"; }
-                            }
-
-                            /// <summary>Initializes Get parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-
-                                RequestParameters.Add(
-                                    "projectId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "projectId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "historyId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "historyId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "executionId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "executionId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "stepId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "stepId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "sampleSeriesId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "sampleSeriesId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                            }
-
-                        }
-
-                        /// <summary>Lists PerfSampleSeries for a given Step.
-                        ///
-                        /// The request provides an optional filter which specifies one or more PerfMetricsType to
-                        /// include in the result; if none returns all. The resulting PerfSampleSeries are sorted by
-                        /// ids.
-                        ///
-                        /// May return any of the following canonical error codes: - NOT_FOUND - The containing Step
-                        /// does not exist</summary>
-                        /// <param name="projectId">The cloud project</param>
-                        /// <param name="historyId">A tool results history
-                        /// ID.</param>
-                        /// <param name="executionId">A tool results execution ID.</param>
-                        /// <param name="stepId">A
-                        /// tool results step ID.</param>
-                        public virtual ListRequest List(string projectId, string historyId, string executionId, string stepId)
-                        {
-                            return new ListRequest(service, projectId, historyId, executionId, stepId);
-                        }
-
-                        /// <summary>Lists PerfSampleSeries for a given Step.
-                        ///
-                        /// The request provides an optional filter which specifies one or more PerfMetricsType to
-                        /// include in the result; if none returns all. The resulting PerfSampleSeries are sorted by
-                        /// ids.
-                        ///
-                        /// May return any of the following canonical error codes: - NOT_FOUND - The containing Step
-                        /// does not exist</summary>
-                        public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListPerfSampleSeriesResponse>
-                        {
-                            /// <summary>Constructs a new List request.</summary>
-                            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId)
-                                : base(service)
-                            {
-                                ProjectId = projectId;
-                                HistoryId = historyId;
-                                ExecutionId = executionId;
-                                StepId = stepId;
-                                InitParameters();
-                            }
-
-
-                            /// <summary>The cloud project</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string ProjectId { get; private set; }
-
-                            /// <summary>A tool results history ID.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string HistoryId { get; private set; }
-
-                            /// <summary>A tool results execution ID.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string ExecutionId { get; private set; }
-
-                            /// <summary>A tool results step ID.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string StepId { get; private set; }
-
-                            /// <summary>Specify one or more PerfMetricType values such as CPU to filter the
-                            /// result</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<FilterEnum> Filter { get; set; }
-
-                            /// <summary>Specify one or more PerfMetricType values such as CPU to filter the
-                            /// result</summary>
-                            public enum FilterEnum
-                            {
-                                [Google.Apis.Util.StringValueAttribute("cpu")]
-                                Cpu,
-                                [Google.Apis.Util.StringValueAttribute("graphics")]
-                                Graphics,
-                                [Google.Apis.Util.StringValueAttribute("memory")]
-                                Memory,
-                                [Google.Apis.Util.StringValueAttribute("network")]
-                                Network,
-                                [Google.Apis.Util.StringValueAttribute("perfMetricTypeUnspecified")]
-                                PerfMetricTypeUnspecified,
-                            }
-
-
-                            ///<summary>Gets the method name.</summary>
-                            public override string MethodName
-                            {
-                                get { return "list"; }
-                            }
-
-                            ///<summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod
-                            {
-                                get { return "GET"; }
-                            }
-
-                            ///<summary>Gets the REST path.</summary>
-                            public override string RestPath
-                            {
-                                get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries"; }
-                            }
-
-                            /// <summary>Initializes List parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-
-                                RequestParameters.Add(
-                                    "projectId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "projectId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "historyId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "historyId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "executionId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "executionId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "stepId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "stepId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "filter", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "filter",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                            }
-
-                        }
-                    }
-                    private readonly TestCasesResource testCases;
-
-                    /// <summary>Gets the TestCases resource.</summary>
-                    public virtual TestCasesResource TestCases
-                    {
-                        get { return testCases; }
-                    }
-
-                    /// <summary>The "testCases" collection of methods.</summary>
-                    public class TestCasesResource
-                    {
-                        private const string Resource = "testCases";
-
-                        /// <summary>The service which this resource belongs to.</summary>
-                        private readonly Google.Apis.Services.IClientService service;
-
-                        /// <summary>Constructs a new resource.</summary>
-                        public TestCasesResource(Google.Apis.Services.IClientService service)
-                        {
-                            this.service = service;
-
-                        }
-
-
-                        /// <summary>Gets details of a Test Case for a Step. Experimental test cases API. Still in
-                        /// active development.
-                        ///
-                        /// May return any of the following canonical error codes:
-                        ///
-                        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT -
-                        /// if the request is malformed - NOT_FOUND - if the containing Test Case does not
-                        /// exist</summary>
-                        /// <param name="projectId">A Project id.
-                        ///
-                        /// Required.</param>
-                        /// <param name="historyId">A History id.
-                        ///
-                        /// Required.</param>
-                        /// <param name="executionId">A Execution id
-                        ///
-                        /// Required.</param>
-                        /// <param name="stepId">A Step id. Note: This step must include a TestExecutionStep.
-                        ///
-                        /// Required.</param>
-                        /// <param name="testCaseId">A Test Case id.
-                        ///
-                        /// Required.</param>
-                        public virtual GetRequest Get(string projectId, string historyId, string executionId, string stepId, string testCaseId)
-                        {
-                            return new GetRequest(service, projectId, historyId, executionId, stepId, testCaseId);
-                        }
-
-                        /// <summary>Gets details of a Test Case for a Step. Experimental test cases API. Still in
-                        /// active development.
-                        ///
-                        /// May return any of the following canonical error codes:
-                        ///
-                        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT -
-                        /// if the request is malformed - NOT_FOUND - if the containing Test Case does not
-                        /// exist</summary>
-                        public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.TestCase>
-                        {
-                            /// <summary>Constructs a new Get request.</summary>
-                            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId, string testCaseId)
-                                : base(service)
-                            {
-                                ProjectId = projectId;
-                                HistoryId = historyId;
-                                ExecutionId = executionId;
-                                StepId = stepId;
-                                TestCaseId = testCaseId;
-                                InitParameters();
-                            }
-
-
-                            /// <summary>A Project id.
-                            ///
-                            /// Required.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string ProjectId { get; private set; }
-
-                            /// <summary>A History id.
-                            ///
-                            /// Required.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string HistoryId { get; private set; }
-
-                            /// <summary>A Execution id
-                            ///
-                            /// Required.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string ExecutionId { get; private set; }
-
-                            /// <summary>A Step id. Note: This step must include a TestExecutionStep.
-                            ///
-                            /// Required.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string StepId { get; private set; }
-
-                            /// <summary>A Test Case id.
-                            ///
-                            /// Required.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("testCaseId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string TestCaseId { get; private set; }
-
-
-                            ///<summary>Gets the method name.</summary>
-                            public override string MethodName
-                            {
-                                get { return "get"; }
-                            }
-
-                            ///<summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod
-                            {
-                                get { return "GET"; }
-                            }
-
-                            ///<summary>Gets the REST path.</summary>
-                            public override string RestPath
-                            {
-                                get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases/{testCaseId}"; }
-                            }
-
-                            /// <summary>Initializes Get parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-
-                                RequestParameters.Add(
-                                    "projectId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "projectId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "historyId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "historyId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "executionId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "executionId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "stepId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "stepId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "testCaseId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "testCaseId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                            }
-
-                        }
-
-                        /// <summary>Lists Test Cases attached to a Step. Experimental test cases API. Still in active
-                        /// development.
-                        ///
-                        /// May return any of the following canonical error codes:
-                        ///
-                        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT -
-                        /// if the request is malformed - NOT_FOUND - if the containing Step does not exist</summary>
-                        /// <param name="projectId">A Project id.
-                        ///
-                        /// Required.</param>
-                        /// <param name="historyId">A History id.
-                        ///
-                        /// Required.</param>
-                        /// <param name="executionId">A Execution id
-                        ///
-                        /// Required.</param>
-                        /// <param name="stepId">A Step id. Note: This step must include a TestExecutionStep.
-                        ///
-                        /// Required.</param>
-                        public virtual ListRequest List(string projectId, string historyId, string executionId, string stepId)
-                        {
-                            return new ListRequest(service, projectId, historyId, executionId, stepId);
-                        }
-
-                        /// <summary>Lists Test Cases attached to a Step. Experimental test cases API. Still in active
-                        /// development.
-                        ///
-                        /// May return any of the following canonical error codes:
-                        ///
-                        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT -
-                        /// if the request is malformed - NOT_FOUND - if the containing Step does not exist</summary>
-                        public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListTestCasesResponse>
-                        {
-                            /// <summary>Constructs a new List request.</summary>
-                            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId)
-                                : base(service)
-                            {
-                                ProjectId = projectId;
-                                HistoryId = historyId;
-                                ExecutionId = executionId;
-                                StepId = stepId;
-                                InitParameters();
-                            }
-
-
-                            /// <summary>A Project id.
-                            ///
-                            /// Required.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string ProjectId { get; private set; }
-
-                            /// <summary>A History id.
-                            ///
-                            /// Required.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string HistoryId { get; private set; }
-
-                            /// <summary>A Execution id
-                            ///
-                            /// Required.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string ExecutionId { get; private set; }
-
-                            /// <summary>A Step id. Note: This step must include a TestExecutionStep.
-                            ///
-                            /// Required.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string StepId { get; private set; }
-
-                            /// <summary>The maximum number of TestCases to fetch.
-                            ///
-                            /// Default value: 100. The server will use this default if the field is not set or has a
-                            /// value of 0.
-                            ///
-                            /// Optional.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<int> PageSize { get; set; }
-
-                            /// <summary>A continuation token to resume the query at the next item.
-                            ///
-                            /// Optional.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string PageToken { get; set; }
-
-
-                            ///<summary>Gets the method name.</summary>
-                            public override string MethodName
-                            {
-                                get { return "list"; }
-                            }
-
-                            ///<summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod
-                            {
-                                get { return "GET"; }
-                            }
-
-                            ///<summary>Gets the REST path.</summary>
-                            public override string RestPath
-                            {
-                                get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases"; }
-                            }
-
-                            /// <summary>Initializes List parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-
-                                RequestParameters.Add(
-                                    "projectId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "projectId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "historyId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "historyId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "executionId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "executionId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "stepId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "stepId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageSize", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageToken", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageToken",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                            }
-
-                        }
-                    }
-                    private readonly ThumbnailsResource thumbnails;
-
-                    /// <summary>Gets the Thumbnails resource.</summary>
-                    public virtual ThumbnailsResource Thumbnails
-                    {
-                        get { return thumbnails; }
-                    }
-
-                    /// <summary>The "thumbnails" collection of methods.</summary>
-                    public class ThumbnailsResource
-                    {
-                        private const string Resource = "thumbnails";
-
-                        /// <summary>The service which this resource belongs to.</summary>
-                        private readonly Google.Apis.Services.IClientService service;
-
-                        /// <summary>Constructs a new resource.</summary>
-                        public ThumbnailsResource(Google.Apis.Services.IClientService service)
-                        {
-                            this.service = service;
-
-                        }
-
-
-                        /// <summary>Lists thumbnails of images attached to a step.
-                        ///
-                        /// May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is
-                        /// not authorized to read from the project, or from any of the images - INVALID_ARGUMENT - if
-                        /// the request is malformed - NOT_FOUND - if the step does not exist, or if any of the images
-                        /// do not exist</summary>
-                        /// <param name="projectId">A Project id.
-                        ///
-                        /// Required.</param>
-                        /// <param name="historyId">A History id.
-                        ///
-                        /// Required.</param>
-                        /// <param name="executionId">An Execution id.
-                        ///
-                        /// Required.</param>
-                        /// <param name="stepId">A Step id.
-                        ///
-                        /// Required.</param>
-                        public virtual ListRequest List(string projectId, string historyId, string executionId, string stepId)
-                        {
-                            return new ListRequest(service, projectId, historyId, executionId, stepId);
-                        }
-
-                        /// <summary>Lists thumbnails of images attached to a step.
-                        ///
-                        /// May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is
-                        /// not authorized to read from the project, or from any of the images - INVALID_ARGUMENT - if
-                        /// the request is malformed - NOT_FOUND - if the step does not exist, or if any of the images
-                        /// do not exist</summary>
-                        public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListStepThumbnailsResponse>
-                        {
-                            /// <summary>Constructs a new List request.</summary>
-                            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId)
-                                : base(service)
-                            {
-                                ProjectId = projectId;
-                                HistoryId = historyId;
-                                ExecutionId = executionId;
-                                StepId = stepId;
-                                InitParameters();
-                            }
-
-
-                            /// <summary>A Project id.
-                            ///
-                            /// Required.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string ProjectId { get; private set; }
-
-                            /// <summary>A History id.
-                            ///
-                            /// Required.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string HistoryId { get; private set; }
-
-                            /// <summary>An Execution id.
-                            ///
-                            /// Required.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string ExecutionId { get; private set; }
-
-                            /// <summary>A Step id.
-                            ///
-                            /// Required.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string StepId { get; private set; }
-
-                            /// <summary>The maximum number of thumbnails to fetch.
-                            ///
-                            /// Default value: 50. The server will use this default if the field is not set or has a
-                            /// value of 0.
-                            ///
-                            /// Optional.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<int> PageSize { get; set; }
-
-                            /// <summary>A continuation token to resume the query at the next item.
-                            ///
-                            /// Optional.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string PageToken { get; set; }
-
-
-                            ///<summary>Gets the method name.</summary>
-                            public override string MethodName
-                            {
-                                get { return "list"; }
-                            }
-
-                            ///<summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod
-                            {
-                                get { return "GET"; }
-                            }
-
-                            ///<summary>Gets the REST path.</summary>
-                            public override string RestPath
-                            {
-                                get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/thumbnails"; }
-                            }
-
-                            /// <summary>Initializes List parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-
-                                RequestParameters.Add(
-                                    "projectId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "projectId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "historyId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "historyId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "executionId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "executionId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "stepId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "stepId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageSize", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageToken", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageToken",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                            }
-
-                        }
-                    }
-
-                    /// <summary>Lists accessibility clusters for a given Step
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                    /// request is malformed - FAILED_PRECONDITION - if an argument in the request happens to be
-                    /// invalid; e.g. if the locale format is incorrect - NOT_FOUND - if the containing Step does not
-                    /// exist</summary>
-                    /// <param name="name">A full resource name of the step. For example, projects/my-
-                    /// project/histories/bh.1234567890abcdef/executions/ 1234567890123456789/steps/bs.1234567890abcdef
-                    ///
-                    /// Required.</param>
-                    public virtual AccessibilityClustersRequest AccessibilityClusters(string name)
-                    {
-                        return new AccessibilityClustersRequest(service, name);
-                    }
-
-                    /// <summary>Lists accessibility clusters for a given Step
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                    /// request is malformed - FAILED_PRECONDITION - if an argument in the request happens to be
-                    /// invalid; e.g. if the locale format is incorrect - NOT_FOUND - if the containing Step does not
-                    /// exist</summary>
-                    public class AccessibilityClustersRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListStepAccessibilityClustersResponse>
-                    {
-                        /// <summary>Constructs a new AccessibilityClusters request.</summary>
-                        public AccessibilityClustersRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>A full resource name of the step. For example, projects/my-
-                        /// project/histories/bh.1234567890abcdef/executions/
-                        /// 1234567890123456789/steps/bs.1234567890abcdef
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>The accepted format is the canonical Unicode format with hyphen as a delimiter.
-                        /// Language must be lowercase, Language Script - Capitalized, Region - UPPERCASE. See
-                        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier for details.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("locale", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Locale { get; set; }
-
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "accessibilityClusters"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "GET"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "{+name}:accessibilityClusters"; }
-                        }
-
-                        /// <summary>Initializes AccessibilityClusters parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "locale", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "locale",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                        }
-
-                    }
-
-                    /// <summary>Creates a Step.
-                    ///
-                    /// The returned Step will have the id set.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if
-                    /// the request is malformed - FAILED_PRECONDITION - if the step is too large (more than 10Mib) -
-                    /// NOT_FOUND - if the containing Execution does not exist</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="projectId">Required. A Project id.</param>
-                    /// <param name="historyId">Required. A History
-                    /// id.</param>
-                    /// <param name="executionId">Required. An Execution id.</param>
-                    public virtual CreateRequest Create(Google.Apis.ToolResults.v1beta3.Data.Step body, string projectId, string historyId, string executionId)
-                    {
-                        return new CreateRequest(service, body, projectId, historyId, executionId);
-                    }
-
-                    /// <summary>Creates a Step.
-                    ///
-                    /// The returned Step will have the id set.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if
-                    /// the request is malformed - FAILED_PRECONDITION - if the step is too large (more than 10Mib) -
-                    /// NOT_FOUND - if the containing Execution does not exist</summary>
-                    public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Step>
-                    {
-                        /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.Step body, string projectId, string historyId, string executionId)
-                            : base(service)
-                        {
-                            ProjectId = projectId;
-                            HistoryId = historyId;
-                            ExecutionId = executionId;
-                            Body = body;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>Required. A Project id.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ProjectId { get; private set; }
-
-                        /// <summary>Required. A History id.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string HistoryId { get; private set; }
-
-                        /// <summary>Required. An Execution id.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ExecutionId { get; private set; }
-
-                        /// <summary>A unique request ID for server to detect duplicated requests. For example, a UUID.
-                        ///
-                        /// Optional, but strongly recommended.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string RequestId { get; set; }
-
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.ToolResults.v1beta3.Data.Step Body { get; set; }
-
-                        ///<summary>Returns the body of the request.</summary>
-                        protected override object GetBody() { return Body; }
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "create"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "POST"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}/steps"; }
-                        }
-
-                        /// <summary>Initializes Create parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "historyId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "historyId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "executionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "executionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "requestId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "requestId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                        }
-
-                    }
-
-                    /// <summary>Gets a Step.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                    /// request is malformed - NOT_FOUND - if the Step does not exist</summary>
-                    /// <param name="projectId">A Project id.
-                    ///
-                    /// Required.</param>
-                    /// <param name="historyId">A History id.
-                    ///
-                    /// Required.</param>
-                    /// <param name="executionId">A Execution id.
-                    ///
-                    /// Required.</param>
-                    /// <param name="stepId">A Step id.
-                    ///
-                    /// Required.</param>
-                    public virtual GetRequest Get(string projectId, string historyId, string executionId, string stepId)
-                    {
-                        return new GetRequest(service, projectId, historyId, executionId, stepId);
-                    }
-
-                    /// <summary>Gets a Step.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                    /// request is malformed - NOT_FOUND - if the Step does not exist</summary>
-                    public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Step>
-                    {
-                        /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId)
-                            : base(service)
-                        {
-                            ProjectId = projectId;
-                            HistoryId = historyId;
-                            ExecutionId = executionId;
-                            StepId = stepId;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>A Project id.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ProjectId { get; private set; }
-
-                        /// <summary>A History id.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string HistoryId { get; private set; }
-
-                        /// <summary>A Execution id.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ExecutionId { get; private set; }
-
-                        /// <summary>A Step id.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string StepId { get; private set; }
-
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "get"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "GET"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}"; }
-                        }
-
-                        /// <summary>Initializes Get parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "historyId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "historyId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "executionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "executionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "stepId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "stepId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                        }
-
-                    }
-
-                    /// <summary>Retrieves a PerfMetricsSummary.
-                    ///
-                    /// May return any of the following error code(s): - NOT_FOUND - The specified PerfMetricsSummary
-                    /// does not exist</summary>
-                    /// <param name="projectId">The cloud project</param>
-                    /// <param name="historyId">A tool results history
-                    /// ID.</param>
-                    /// <param name="executionId">A tool results execution ID.</param>
-                    /// <param name="stepId">A
-                    /// tool results step ID.</param>
-                    public virtual GetPerfMetricsSummaryRequest GetPerfMetricsSummary(string projectId, string historyId, string executionId, string stepId)
-                    {
-                        return new GetPerfMetricsSummaryRequest(service, projectId, historyId, executionId, stepId);
-                    }
-
-                    /// <summary>Retrieves a PerfMetricsSummary.
-                    ///
-                    /// May return any of the following error code(s): - NOT_FOUND - The specified PerfMetricsSummary
-                    /// does not exist</summary>
-                    public class GetPerfMetricsSummaryRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.PerfMetricsSummary>
-                    {
-                        /// <summary>Constructs a new GetPerfMetricsSummary request.</summary>
-                        public GetPerfMetricsSummaryRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId)
-                            : base(service)
-                        {
-                            ProjectId = projectId;
-                            HistoryId = historyId;
-                            ExecutionId = executionId;
-                            StepId = stepId;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>The cloud project</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ProjectId { get; private set; }
-
-                        /// <summary>A tool results history ID.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string HistoryId { get; private set; }
-
-                        /// <summary>A tool results execution ID.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ExecutionId { get; private set; }
-
-                        /// <summary>A tool results step ID.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string StepId { get; private set; }
-
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "getPerfMetricsSummary"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "GET"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary"; }
-                        }
-
-                        /// <summary>Initializes GetPerfMetricsSummary parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "historyId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "historyId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "executionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "executionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "stepId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "stepId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                        }
-
-                    }
-
-                    /// <summary>Lists Steps for a given Execution.
-                    ///
-                    /// The steps are sorted by creation_time in descending order. The step_id key will be used to order
-                    /// the steps with the same creation_time.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                    /// request is malformed - FAILED_PRECONDITION - if an argument in the request happens to be
-                    /// invalid; e.g. if an attempt is made to list the children of a nonexistent Step - NOT_FOUND - if
-                    /// the containing Execution does not exist</summary>
-                    /// <param name="projectId">A Project id.
-                    ///
-                    /// Required.</param>
-                    /// <param name="historyId">A History id.
-                    ///
-                    /// Required.</param>
-                    /// <param name="executionId">A Execution id.
-                    ///
-                    /// Required.</param>
-                    public virtual ListRequest List(string projectId, string historyId, string executionId)
-                    {
-                        return new ListRequest(service, projectId, historyId, executionId);
-                    }
-
-                    /// <summary>Lists Steps for a given Execution.
-                    ///
-                    /// The steps are sorted by creation_time in descending order. The step_id key will be used to order
-                    /// the steps with the same creation_time.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                    /// request is malformed - FAILED_PRECONDITION - if an argument in the request happens to be
-                    /// invalid; e.g. if an attempt is made to list the children of a nonexistent Step - NOT_FOUND - if
-                    /// the containing Execution does not exist</summary>
-                    public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListStepsResponse>
-                    {
-                        /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId)
-                            : base(service)
-                        {
-                            ProjectId = projectId;
-                            HistoryId = historyId;
-                            ExecutionId = executionId;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>A Project id.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ProjectId { get; private set; }
-
-                        /// <summary>A History id.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string HistoryId { get; private set; }
-
-                        /// <summary>A Execution id.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ExecutionId { get; private set; }
-
-                        /// <summary>The maximum number of Steps to fetch.
-                        ///
-                        /// Default value: 25. The server will use this default if the field is not set or has a value
-                        /// of 0.
-                        ///
-                        /// Optional.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>A continuation token to resume the query at the next item.
-                        ///
-                        /// Optional.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "list"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "GET"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}/steps"; }
-                        }
-
-                        /// <summary>Initializes List parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "historyId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "historyId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "executionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "executionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                        }
-
-                    }
-
-                    /// <summary>Updates an existing Step with the supplied partial entity.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT - if the
-                    /// request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal (e.g
-                    /// try to upload a duplicate xml file), if the updated step is too large (more than 10Mib) -
-                    /// NOT_FOUND - if the containing Execution does not exist</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="projectId">A Project id.
-                    ///
-                    /// Required.</param>
-                    /// <param name="historyId">A History id.
-                    ///
-                    /// Required.</param>
-                    /// <param name="executionId">A Execution id.
-                    ///
-                    /// Required.</param>
-                    /// <param name="stepId">A Step id.
-                    ///
-                    /// Required.</param>
-                    public virtual PatchRequest Patch(Google.Apis.ToolResults.v1beta3.Data.Step body, string projectId, string historyId, string executionId, string stepId)
-                    {
-                        return new PatchRequest(service, body, projectId, historyId, executionId, stepId);
-                    }
-
-                    /// <summary>Updates an existing Step with the supplied partial entity.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT - if the
-                    /// request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal (e.g
-                    /// try to upload a duplicate xml file), if the updated step is too large (more than 10Mib) -
-                    /// NOT_FOUND - if the containing Execution does not exist</summary>
-                    public class PatchRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Step>
-                    {
-                        /// <summary>Constructs a new Patch request.</summary>
-                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.Step body, string projectId, string historyId, string executionId, string stepId)
-                            : base(service)
-                        {
-                            ProjectId = projectId;
-                            HistoryId = historyId;
-                            ExecutionId = executionId;
-                            StepId = stepId;
-                            Body = body;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>A Project id.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ProjectId { get; private set; }
-
-                        /// <summary>A History id.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string HistoryId { get; private set; }
-
-                        /// <summary>A Execution id.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ExecutionId { get; private set; }
-
-                        /// <summary>A Step id.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string StepId { get; private set; }
-
-                        /// <summary>A unique request ID for server to detect duplicated requests. For example, a UUID.
-                        ///
-                        /// Optional, but strongly recommended.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string RequestId { get; set; }
-
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.ToolResults.v1beta3.Data.Step Body { get; set; }
-
-                        ///<summary>Returns the body of the request.</summary>
-                        protected override object GetBody() { return Body; }
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "patch"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "PATCH"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}"; }
-                        }
-
-                        /// <summary>Initializes Patch parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "historyId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "historyId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "executionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "executionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "stepId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "stepId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "requestId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "requestId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                        }
-
-                    }
-
-                    /// <summary>Publish xml files to an existing Step.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT - if the
-                    /// request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal, e.g
-                    /// try to upload a duplicate xml file or a file too large. - NOT_FOUND - if the containing
-                    /// Execution does not exist</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="projectId">A Project id.
-                    ///
-                    /// Required.</param>
-                    /// <param name="historyId">A History id.
-                    ///
-                    /// Required.</param>
-                    /// <param name="executionId">A Execution id.
-                    ///
-                    /// Required.</param>
-                    /// <param name="stepId">A Step id. Note: This step must include a TestExecutionStep.
-                    ///
-                    /// Required.</param>
-                    public virtual PublishXunitXmlFilesRequest PublishXunitXmlFiles(Google.Apis.ToolResults.v1beta3.Data.PublishXunitXmlFilesRequest body, string projectId, string historyId, string executionId, string stepId)
-                    {
-                        return new PublishXunitXmlFilesRequest(service, body, projectId, historyId, executionId, stepId);
-                    }
-
-                    /// <summary>Publish xml files to an existing Step.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT - if the
-                    /// request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal, e.g
-                    /// try to upload a duplicate xml file or a file too large. - NOT_FOUND - if the containing
-                    /// Execution does not exist</summary>
-                    public class PublishXunitXmlFilesRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Step>
-                    {
-                        /// <summary>Constructs a new PublishXunitXmlFiles request.</summary>
-                        public PublishXunitXmlFilesRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.PublishXunitXmlFilesRequest body, string projectId, string historyId, string executionId, string stepId)
-                            : base(service)
-                        {
-                            ProjectId = projectId;
-                            HistoryId = historyId;
-                            ExecutionId = executionId;
-                            StepId = stepId;
-                            Body = body;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>A Project id.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ProjectId { get; private set; }
-
-                        /// <summary>A History id.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string HistoryId { get; private set; }
-
-                        /// <summary>A Execution id.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ExecutionId { get; private set; }
-
-                        /// <summary>A Step id. Note: This step must include a TestExecutionStep.
-                        ///
-                        /// Required.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string StepId { get; private set; }
-
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.ToolResults.v1beta3.Data.PublishXunitXmlFilesRequest Body { get; set; }
-
-                        ///<summary>Returns the body of the request.</summary>
-                        protected override object GetBody() { return Body; }
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "publishXunitXmlFiles"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "POST"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}:publishXunitXmlFiles"; }
-                        }
-
-                        /// <summary>Initializes PublishXunitXmlFiles parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "historyId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "historyId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "executionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "executionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "stepId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "stepId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                        }
-
-                    }
-                }
-
-                /// <summary>Creates an Execution.
-                ///
-                /// The returned Execution will have the id set.
-                ///
-                /// May return any of the following canonical error codes:
-                ///
-                /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the
-                /// request is malformed - NOT_FOUND - if the containing History does not exist</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">A Project id.
-                ///
-                /// Required.</param>
-                /// <param name="historyId">A History id.
-                ///
-                /// Required.</param>
-                public virtual CreateRequest Create(Google.Apis.ToolResults.v1beta3.Data.Execution body, string projectId, string historyId)
-                {
-                    return new CreateRequest(service, body, projectId, historyId);
-                }
-
-                /// <summary>Creates an Execution.
-                ///
-                /// The returned Execution will have the id set.
-                ///
-                /// May return any of the following canonical error codes:
-                ///
-                /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the
-                /// request is malformed - NOT_FOUND - if the containing History does not exist</summary>
-                public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Execution>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.Execution body, string projectId, string historyId)
-                        : base(service)
-                    {
-                        ProjectId = projectId;
-                        HistoryId = historyId;
-                        Body = body;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>A Project id.
-                    ///
-                    /// Required.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ProjectId { get; private set; }
-
-                    /// <summary>A History id.
-                    ///
-                    /// Required.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string HistoryId { get; private set; }
-
-                    /// <summary>A unique request ID for server to detect duplicated requests. For example, a UUID.
-                    ///
-                    /// Optional, but strongly recommended.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.ToolResults.v1beta3.Data.Execution Body { get; set; }
-
-                    ///<summary>Returns the body of the request.</summary>
-                    protected override object GetBody() { return Body; }
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "create"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "POST"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "projects/{projectId}/histories/{historyId}/executions"; }
-                    }
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "historyId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "historyId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "requestId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                    }
-
-                }
-
-                /// <summary>Gets an Execution.
-                ///
-                /// May return any of the following canonical error codes:
-                ///
-                /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the
-                /// request is malformed - NOT_FOUND - if the Execution does not exist</summary>
-                /// <param name="projectId">A Project id.
-                ///
-                /// Required.</param>
-                /// <param name="historyId">A History id.
-                ///
-                /// Required.</param>
-                /// <param name="executionId">An Execution id.
-                ///
-                /// Required.</param>
-                public virtual GetRequest Get(string projectId, string historyId, string executionId)
-                {
-                    return new GetRequest(service, projectId, historyId, executionId);
-                }
-
-                /// <summary>Gets an Execution.
-                ///
-                /// May return any of the following canonical error codes:
-                ///
-                /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the
-                /// request is malformed - NOT_FOUND - if the Execution does not exist</summary>
-                public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Execution>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId)
-                        : base(service)
-                    {
-                        ProjectId = projectId;
-                        HistoryId = historyId;
-                        ExecutionId = executionId;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>A Project id.
-                    ///
-                    /// Required.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ProjectId { get; private set; }
-
-                    /// <summary>A History id.
-                    ///
-                    /// Required.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string HistoryId { get; private set; }
-
-                    /// <summary>An Execution id.
-                    ///
-                    /// Required.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ExecutionId { get; private set; }
-
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "get"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "GET"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}"; }
-                    }
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "historyId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "historyId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "executionId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "executionId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                    }
-
-                }
-
-                /// <summary>Lists Executions for a given History.
-                ///
-                /// The executions are sorted by creation_time in descending order. The execution_id key will be used to
-                /// order the executions with the same creation_time.
-                ///
-                /// May return any of the following canonical error codes:
-                ///
-                /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                /// request is malformed - NOT_FOUND - if the containing History does not exist</summary>
-                /// <param name="projectId">A Project id.
-                ///
-                /// Required.</param>
-                /// <param name="historyId">A History id.
-                ///
-                /// Required.</param>
-                public virtual ListRequest List(string projectId, string historyId)
-                {
-                    return new ListRequest(service, projectId, historyId);
-                }
-
-                /// <summary>Lists Executions for a given History.
-                ///
-                /// The executions are sorted by creation_time in descending order. The execution_id key will be used to
-                /// order the executions with the same creation_time.
-                ///
-                /// May return any of the following canonical error codes:
-                ///
-                /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                /// request is malformed - NOT_FOUND - if the containing History does not exist</summary>
-                public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListExecutionsResponse>
-                {
-                    /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId)
-                        : base(service)
-                    {
-                        ProjectId = projectId;
-                        HistoryId = historyId;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>A Project id.
-                    ///
-                    /// Required.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ProjectId { get; private set; }
-
-                    /// <summary>A History id.
-                    ///
-                    /// Required.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string HistoryId { get; private set; }
-
-                    /// <summary>The maximum number of Executions to fetch.
-                    ///
-                    /// Default value: 25. The server will use this default if the field is not set or has a value of 0.
-                    ///
-                    /// Optional.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>A continuation token to resume the query at the next item.
-                    ///
-                    /// Optional.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "list"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "GET"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "projects/{projectId}/histories/{historyId}/executions"; }
-                    }
-
-                    /// <summary>Initializes List parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "historyId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "historyId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                    }
-
-                }
-
-                /// <summary>Updates an existing Execution with the supplied partial entity.
-                ///
-                /// May return any of the following canonical error codes:
-                ///
-                /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the
-                /// request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal -
-                /// NOT_FOUND - if the containing History does not exist</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">A Project id. Required.</param>
-                /// <param name="historyId">Required.</param>
-                ///
-                /// <param name="executionId">Required.</param>
-                public virtual PatchRequest Patch(Google.Apis.ToolResults.v1beta3.Data.Execution body, string projectId, string historyId, string executionId)
-                {
-                    return new PatchRequest(service, body, projectId, historyId, executionId);
-                }
-
-                /// <summary>Updates an existing Execution with the supplied partial entity.
-                ///
-                /// May return any of the following canonical error codes:
-                ///
-                /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the
-                /// request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal -
-                /// NOT_FOUND - if the containing History does not exist</summary>
-                public class PatchRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Execution>
-                {
-                    /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.Execution body, string projectId, string historyId, string executionId)
-                        : base(service)
-                    {
-                        ProjectId = projectId;
-                        HistoryId = historyId;
-                        ExecutionId = executionId;
-                        Body = body;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>A Project id. Required.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ProjectId { get; private set; }
-
-                    /// <summary>Required.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string HistoryId { get; private set; }
-
-                    /// <summary>Required.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ExecutionId { get; private set; }
-
-                    /// <summary>A unique request ID for server to detect duplicated requests. For example, a UUID.
-                    ///
-                    /// Optional, but strongly recommended.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.ToolResults.v1beta3.Data.Execution Body { get; set; }
-
-                    ///<summary>Returns the body of the request.</summary>
-                    protected override object GetBody() { return Body; }
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "patch"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "PATCH"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "projects/{projectId}/histories/{historyId}/executions/{executionId}"; }
-                    }
-
-                    /// <summary>Initializes Patch parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "historyId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "historyId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "executionId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "executionId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "requestId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                    }
-
-                }
-            }
-
-            /// <summary>Creates a History.
-            ///
-            /// The returned History will have the id set.
-            ///
-            /// May return any of the following canonical error codes:
-            ///
-            /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the
-            /// request is malformed - NOT_FOUND - if the containing project does not exist</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="projectId">A Project id.
-            ///
-            /// Required.</param>
-            public virtual CreateRequest Create(Google.Apis.ToolResults.v1beta3.Data.History body, string projectId)
-            {
-                return new CreateRequest(service, body, projectId);
-            }
-
-            /// <summary>Creates a History.
-            ///
-            /// The returned History will have the id set.
-            ///
-            /// May return any of the following canonical error codes:
-            ///
-            /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the
-            /// request is malformed - NOT_FOUND - if the containing project does not exist</summary>
-            public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.History>
-            {
-                /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.History body, string projectId)
-                    : base(service)
-                {
-                    ProjectId = projectId;
-                    Body = body;
-                    InitParameters();
-                }
-
-
-                /// <summary>A Project id.
-                ///
-                /// Required.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProjectId { get; private set; }
-
-                /// <summary>A unique request ID for server to detect duplicated requests. For example, a UUID.
-                ///
-                /// Optional, but strongly recommended.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string RequestId { get; set; }
-
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.ToolResults.v1beta3.Data.History Body { get; set; }
-
-                ///<summary>Returns the body of the request.</summary>
-                protected override object GetBody() { return Body; }
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "create"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "POST"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "projects/{projectId}/histories"; }
-                }
-
-                /// <summary>Initializes Create parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-
-            /// <summary>Gets a History.
-            ///
-            /// May return any of the following canonical error codes:
-            ///
-            /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request
-            /// is malformed - NOT_FOUND - if the History does not exist</summary>
-            /// <param name="projectId">A Project id.
-            ///
-            /// Required.</param>
-            /// <param name="historyId">A History id.
-            ///
-            /// Required.</param>
-            public virtual GetRequest Get(string projectId, string historyId)
-            {
-                return new GetRequest(service, projectId, historyId);
-            }
-
-            /// <summary>Gets a History.
-            ///
-            /// May return any of the following canonical error codes:
-            ///
-            /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request
-            /// is malformed - NOT_FOUND - if the History does not exist</summary>
-            public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.History>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId)
-                    : base(service)
-                {
-                    ProjectId = projectId;
-                    HistoryId = historyId;
-                    InitParameters();
-                }
-
-
-                /// <summary>A Project id.
-                ///
-                /// Required.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProjectId { get; private set; }
-
-                /// <summary>A History id.
-                ///
-                /// Required.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string HistoryId { get; private set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "get"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "projects/{projectId}/histories/{historyId}"; }
-                }
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "historyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "historyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-
-            /// <summary>Lists Histories for a given Project.
-            ///
-            /// The histories are sorted by modification time in descending order. The history_id key will be used to
-            /// order the history with the same modification time.
-            ///
-            /// May return any of the following canonical error codes:
-            ///
-            /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request
-            /// is malformed - NOT_FOUND - if the History does not exist</summary>
-            /// <param name="projectId">A Project id.
-            ///
-            /// Required.</param>
-            public virtual ListRequest List(string projectId)
-            {
-                return new ListRequest(service, projectId);
-            }
-
-            /// <summary>Lists Histories for a given Project.
-            ///
-            /// The histories are sorted by modification time in descending order. The history_id key will be used to
-            /// order the history with the same modification time.
-            ///
-            /// May return any of the following canonical error codes:
-            ///
-            /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request
-            /// is malformed - NOT_FOUND - if the History does not exist</summary>
-            public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListHistoriesResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string projectId)
-                    : base(service)
-                {
-                    ProjectId = projectId;
-                    InitParameters();
-                }
-
-
-                /// <summary>A Project id.
-                ///
-                /// Required.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProjectId { get; private set; }
-
-                /// <summary>If set, only return histories with the given name.
-                ///
-                /// Optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filterByName", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string FilterByName { get; set; }
-
-                /// <summary>The maximum number of Histories to fetch.
-                ///
-                /// Default value: 20. The server will use this default if the field is not set or has a value of 0. Any
-                /// value greater than 100 will be treated as 100.
-                ///
-                /// Optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>A continuation token to resume the query at the next item.
-                ///
-                /// Optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "list"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "projects/{projectId}/histories"; }
-                }
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filterByName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterByName",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-        }
 
         /// <summary>Gets the Tool Results settings for a project.
         ///
@@ -4114,7 +2394,7 @@ namespace Google.Apis.ToolResults.v1beta3
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{projectId}/settings"; }
+                get { return "toolresults/v1beta3/projects/{projectId}/settings"; }
             }
 
             /// <summary>Initializes GetSettings parameter list.</summary>
@@ -4218,7 +2498,7 @@ namespace Google.Apis.ToolResults.v1beta3
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{projectId}:initializeSettings"; }
+                get { return "toolresults/v1beta3/projects/{projectId}:initializeSettings"; }
             }
 
             /// <summary>Initializes InitializeSettings parameter list.</summary>
@@ -4239,10 +2519,1788 @@ namespace Google.Apis.ToolResults.v1beta3
 
         }
     }
+
+    /// <summary>The "samples" collection of methods.</summary>
+    public class SamplesResource
+    {
+        private const string Resource = "samples";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public SamplesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Creates a batch of PerfSamples - a client can submit multiple batches of Perf Samples through
+        /// repeated calls to this method in order to split up a large request payload - duplicates and existing
+        /// timestamp entries will be ignored. - the batch operation may partially succeed - the set of elements
+        /// successfully inserted is returned in the response (omits items which already existed in the database).
+        ///
+        /// May return any of the following canonical error codes: - NOT_FOUND - The containing PerfSampleSeries does
+        /// not exist</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="projectId">The cloud project</param>
+        /// <param name="historyId">A tool results history
+        /// ID.</param>
+        /// <param name="executionId">A tool results execution ID.</param>
+        /// <param name="stepId">A
+        /// tool results step ID.</param>
+        /// <param name="sampleSeriesId">A sample series id</param>
+        public virtual BatchCreateRequest BatchCreate(Google.Apis.ToolResults.v1beta3.Data.BatchCreatePerfSamplesRequest body, string projectId, string historyId, string executionId, string stepId, string sampleSeriesId)
+        {
+            return new BatchCreateRequest(service, body, projectId, historyId, executionId, stepId, sampleSeriesId);
+        }
+
+        /// <summary>Creates a batch of PerfSamples - a client can submit multiple batches of Perf Samples through
+        /// repeated calls to this method in order to split up a large request payload - duplicates and existing
+        /// timestamp entries will be ignored. - the batch operation may partially succeed - the set of elements
+        /// successfully inserted is returned in the response (omits items which already existed in the database).
+        ///
+        /// May return any of the following canonical error codes: - NOT_FOUND - The containing PerfSampleSeries does
+        /// not exist</summary>
+        public class BatchCreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.BatchCreatePerfSamplesResponse>
+        {
+            /// <summary>Constructs a new BatchCreate request.</summary>
+            public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.BatchCreatePerfSamplesRequest body, string projectId, string historyId, string executionId, string stepId, string sampleSeriesId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                StepId = stepId;
+                SampleSeriesId = sampleSeriesId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The cloud project</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A tool results history ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>A tool results execution ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+            /// <summary>A tool results step ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string StepId { get; private set; }
+
+            /// <summary>A sample series id</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sampleSeriesId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string SampleSeriesId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ToolResults.v1beta3.Data.BatchCreatePerfSamplesRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "batchCreate"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples:batchCreate"; }
+            }
+
+            /// <summary>Initializes BatchCreate parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "stepId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "stepId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sampleSeriesId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sampleSeriesId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists the Performance Samples of a given Sample Series - The list results are sorted by timestamps
+        /// ascending - The default page size is 500 samples; and maximum size allowed 5000 - The response token
+        /// indicates the last returned PerfSample timestamp - When the results size exceeds the page size, submit a
+        /// subsequent request including the page token to return the rest of the samples up to the page limit
+        ///
+        /// May return any of the following canonical error codes: - OUT_OF_RANGE - The specified request page_token is
+        /// out of valid range - NOT_FOUND - The containing PerfSampleSeries does not exist</summary>
+        /// <param name="projectId">The cloud project</param>
+        /// <param name="historyId">A tool results history
+        /// ID.</param>
+        /// <param name="executionId">A tool results execution ID.</param>
+        /// <param name="stepId">A
+        /// tool results step ID.</param>
+        /// <param name="sampleSeriesId">A sample series id</param>
+        public virtual ListRequest List(string projectId, string historyId, string executionId, string stepId, string sampleSeriesId)
+        {
+            return new ListRequest(service, projectId, historyId, executionId, stepId, sampleSeriesId);
+        }
+
+        /// <summary>Lists the Performance Samples of a given Sample Series - The list results are sorted by timestamps
+        /// ascending - The default page size is 500 samples; and maximum size allowed 5000 - The response token
+        /// indicates the last returned PerfSample timestamp - When the results size exceeds the page size, submit a
+        /// subsequent request including the page token to return the rest of the samples up to the page limit
+        ///
+        /// May return any of the following canonical error codes: - OUT_OF_RANGE - The specified request page_token is
+        /// out of valid range - NOT_FOUND - The containing PerfSampleSeries does not exist</summary>
+        public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListPerfSamplesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId, string sampleSeriesId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                StepId = stepId;
+                SampleSeriesId = sampleSeriesId;
+                InitParameters();
+            }
+
+
+            /// <summary>The cloud project</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A tool results history ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>A tool results execution ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+            /// <summary>A tool results step ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string StepId { get; private set; }
+
+            /// <summary>A sample series id</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sampleSeriesId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string SampleSeriesId { get; private set; }
+
+            /// <summary>The default page size is 500 samples, and the maximum size is 5000. If the page_size is greater
+            /// than 5000, the effective page size will be 5000</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional, the next_page_token returned in the previous response</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "stepId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "stepId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sampleSeriesId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sampleSeriesId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "steps" collection of methods.</summary>
+    public class StepsResource
+    {
+        private const string Resource = "steps";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public StepsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Lists accessibility clusters for a given Step
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is
+        /// malformed - FAILED_PRECONDITION - if an argument in the request happens to be invalid; e.g. if the locale
+        /// format is incorrect - NOT_FOUND - if the containing Step does not exist</summary>
+        /// <param name="name">A full resource name of the step. For example, projects/my-
+        /// project/histories/bh.1234567890abcdef/executions/ 1234567890123456789/steps/bs.1234567890abcdef
+        ///
+        /// Required.</param>
+        public virtual AccessibilityClustersRequest AccessibilityClusters(string name)
+        {
+            return new AccessibilityClustersRequest(service, name);
+        }
+
+        /// <summary>Lists accessibility clusters for a given Step
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is
+        /// malformed - FAILED_PRECONDITION - if an argument in the request happens to be invalid; e.g. if the locale
+        /// format is incorrect - NOT_FOUND - if the containing Step does not exist</summary>
+        public class AccessibilityClustersRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListStepAccessibilityClustersResponse>
+        {
+            /// <summary>Constructs a new AccessibilityClusters request.</summary>
+            public AccessibilityClustersRequest(Google.Apis.Services.IClientService service, string name)
+                : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+
+            /// <summary>A full resource name of the step. For example, projects/my-
+            /// project/histories/bh.1234567890abcdef/executions/ 1234567890123456789/steps/bs.1234567890abcdef
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>The accepted format is the canonical Unicode format with hyphen as a delimiter. Language must
+            /// be lowercase, Language Script - Capitalized, Region - UPPERCASE. See
+            /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier for details.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("locale", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Locale { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "accessibilityClusters"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/{+name}:accessibilityClusters"; }
+            }
+
+            /// <summary>Initializes AccessibilityClusters parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/histories/[^/]+/executions/[^/]+/steps/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "locale", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "locale",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Creates a Step.
+        ///
+        /// The returned Step will have the id set.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request
+        /// is malformed - FAILED_PRECONDITION - if the step is too large (more than 10Mib) - NOT_FOUND - if the
+        /// containing Execution does not exist</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="projectId">Required. A Project id.</param>
+        /// <param name="historyId">Required. A History
+        /// id.</param>
+        /// <param name="executionId">Required. An Execution id.</param>
+        public virtual CreateRequest Create(Google.Apis.ToolResults.v1beta3.Data.Step body, string projectId, string historyId, string executionId)
+        {
+            return new CreateRequest(service, body, projectId, historyId, executionId);
+        }
+
+        /// <summary>Creates a Step.
+        ///
+        /// The returned Step will have the id set.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request
+        /// is malformed - FAILED_PRECONDITION - if the step is too large (more than 10Mib) - NOT_FOUND - if the
+        /// containing Execution does not exist</summary>
+        public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Step>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.Step body, string projectId, string historyId, string executionId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. A Project id.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Required. A History id.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>Required. An Execution id.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+            /// <summary>A unique request ID for server to detect duplicated requests. For example, a UUID.
+            ///
+            /// Optional, but strongly recommended.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ToolResults.v1beta3.Data.Step Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Gets a Step.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is
+        /// malformed - NOT_FOUND - if the Step does not exist</summary>
+        /// <param name="projectId">A Project id.
+        ///
+        /// Required.</param>
+        /// <param name="historyId">A History id.
+        ///
+        /// Required.</param>
+        /// <param name="executionId">A Execution id.
+        ///
+        /// Required.</param>
+        /// <param name="stepId">A Step id.
+        ///
+        /// Required.</param>
+        public virtual GetRequest Get(string projectId, string historyId, string executionId, string stepId)
+        {
+            return new GetRequest(service, projectId, historyId, executionId, stepId);
+        }
+
+        /// <summary>Gets a Step.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is
+        /// malformed - NOT_FOUND - if the Step does not exist</summary>
+        public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Step>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                StepId = stepId;
+                InitParameters();
+            }
+
+
+            /// <summary>A Project id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A History id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>A Execution id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+            /// <summary>A Step id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string StepId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "stepId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "stepId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves a PerfMetricsSummary.
+        ///
+        /// May return any of the following error code(s): - NOT_FOUND - The specified PerfMetricsSummary does not
+        /// exist</summary>
+        /// <param name="projectId">The cloud project</param>
+        /// <param name="historyId">A tool results history
+        /// ID.</param>
+        /// <param name="executionId">A tool results execution ID.</param>
+        /// <param name="stepId">A
+        /// tool results step ID.</param>
+        public virtual GetPerfMetricsSummaryRequest GetPerfMetricsSummary(string projectId, string historyId, string executionId, string stepId)
+        {
+            return new GetPerfMetricsSummaryRequest(service, projectId, historyId, executionId, stepId);
+        }
+
+        /// <summary>Retrieves a PerfMetricsSummary.
+        ///
+        /// May return any of the following error code(s): - NOT_FOUND - The specified PerfMetricsSummary does not
+        /// exist</summary>
+        public class GetPerfMetricsSummaryRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.PerfMetricsSummary>
+        {
+            /// <summary>Constructs a new GetPerfMetricsSummary request.</summary>
+            public GetPerfMetricsSummaryRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                StepId = stepId;
+                InitParameters();
+            }
+
+
+            /// <summary>The cloud project</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A tool results history ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>A tool results execution ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+            /// <summary>A tool results step ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string StepId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getPerfMetricsSummary"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary"; }
+            }
+
+            /// <summary>Initializes GetPerfMetricsSummary parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "stepId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "stepId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists Steps for a given Execution.
+        ///
+        /// The steps are sorted by creation_time in descending order. The step_id key will be used to order the steps
+        /// with the same creation_time.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is
+        /// malformed - FAILED_PRECONDITION - if an argument in the request happens to be invalid; e.g. if an attempt is
+        /// made to list the children of a nonexistent Step - NOT_FOUND - if the containing Execution does not
+        /// exist</summary>
+        /// <param name="projectId">A Project id.
+        ///
+        /// Required.</param>
+        /// <param name="historyId">A History id.
+        ///
+        /// Required.</param>
+        /// <param name="executionId">A Execution id.
+        ///
+        /// Required.</param>
+        public virtual ListRequest List(string projectId, string historyId, string executionId)
+        {
+            return new ListRequest(service, projectId, historyId, executionId);
+        }
+
+        /// <summary>Lists Steps for a given Execution.
+        ///
+        /// The steps are sorted by creation_time in descending order. The step_id key will be used to order the steps
+        /// with the same creation_time.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is
+        /// malformed - FAILED_PRECONDITION - if an argument in the request happens to be invalid; e.g. if an attempt is
+        /// made to list the children of a nonexistent Step - NOT_FOUND - if the containing Execution does not
+        /// exist</summary>
+        public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListStepsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                InitParameters();
+            }
+
+
+            /// <summary>A Project id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A History id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>A Execution id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+            /// <summary>The maximum number of Steps to fetch.
+            ///
+            /// Default value: 25. The server will use this default if the field is not set or has a value of 0.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A continuation token to resume the query at the next item.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates an existing Step with the supplied partial entity.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT - if the request is
+        /// malformed - FAILED_PRECONDITION - if the requested state transition is illegal (e.g try to upload a
+        /// duplicate xml file), if the updated step is too large (more than 10Mib) - NOT_FOUND - if the containing
+        /// Execution does not exist</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="projectId">A Project id.
+        ///
+        /// Required.</param>
+        /// <param name="historyId">A History id.
+        ///
+        /// Required.</param>
+        /// <param name="executionId">A Execution id.
+        ///
+        /// Required.</param>
+        /// <param name="stepId">A Step id.
+        ///
+        /// Required.</param>
+        public virtual PatchRequest Patch(Google.Apis.ToolResults.v1beta3.Data.Step body, string projectId, string historyId, string executionId, string stepId)
+        {
+            return new PatchRequest(service, body, projectId, historyId, executionId, stepId);
+        }
+
+        /// <summary>Updates an existing Step with the supplied partial entity.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT - if the request is
+        /// malformed - FAILED_PRECONDITION - if the requested state transition is illegal (e.g try to upload a
+        /// duplicate xml file), if the updated step is too large (more than 10Mib) - NOT_FOUND - if the containing
+        /// Execution does not exist</summary>
+        public class PatchRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Step>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.Step body, string projectId, string historyId, string executionId, string stepId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                StepId = stepId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>A Project id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A History id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>A Execution id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+            /// <summary>A Step id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string StepId { get; private set; }
+
+            /// <summary>A unique request ID for server to detect duplicated requests. For example, a UUID.
+            ///
+            /// Optional, but strongly recommended.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ToolResults.v1beta3.Data.Step Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "stepId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "stepId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Publish xml files to an existing Step.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT - if the request is
+        /// malformed - FAILED_PRECONDITION - if the requested state transition is illegal, e.g try to upload a
+        /// duplicate xml file or a file too large. - NOT_FOUND - if the containing Execution does not exist</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="projectId">A Project id.
+        ///
+        /// Required.</param>
+        /// <param name="historyId">A History id.
+        ///
+        /// Required.</param>
+        /// <param name="executionId">A Execution id.
+        ///
+        /// Required.</param>
+        /// <param name="stepId">A Step id. Note: This step must include a TestExecutionStep.
+        ///
+        /// Required.</param>
+        public virtual PublishXunitXmlFilesRequest PublishXunitXmlFiles(Google.Apis.ToolResults.v1beta3.Data.PublishXunitXmlFilesRequest body, string projectId, string historyId, string executionId, string stepId)
+        {
+            return new PublishXunitXmlFilesRequest(service, body, projectId, historyId, executionId, stepId);
+        }
+
+        /// <summary>Publish xml files to an existing Step.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT - if the request is
+        /// malformed - FAILED_PRECONDITION - if the requested state transition is illegal, e.g try to upload a
+        /// duplicate xml file or a file too large. - NOT_FOUND - if the containing Execution does not exist</summary>
+        public class PublishXunitXmlFilesRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Step>
+        {
+            /// <summary>Constructs a new PublishXunitXmlFiles request.</summary>
+            public PublishXunitXmlFilesRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.PublishXunitXmlFilesRequest body, string projectId, string historyId, string executionId, string stepId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                StepId = stepId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>A Project id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A History id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>A Execution id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+            /// <summary>A Step id. Note: This step must include a TestExecutionStep.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string StepId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ToolResults.v1beta3.Data.PublishXunitXmlFilesRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "publishXunitXmlFiles"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}:publishXunitXmlFiles"; }
+            }
+
+            /// <summary>Initializes PublishXunitXmlFiles parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "stepId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "stepId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "testCases" collection of methods.</summary>
+    public class TestCasesResource
+    {
+        private const string Resource = "testCases";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public TestCasesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Gets details of a Test Case for a Step. Experimental test cases API. Still in active development.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request
+        /// is malformed - NOT_FOUND - if the containing Test Case does not exist</summary>
+        /// <param name="projectId">A Project id.
+        ///
+        /// Required.</param>
+        /// <param name="historyId">A History id.
+        ///
+        /// Required.</param>
+        /// <param name="executionId">A Execution id
+        ///
+        /// Required.</param>
+        /// <param name="stepId">A Step id. Note: This step must include a TestExecutionStep.
+        ///
+        /// Required.</param>
+        /// <param name="testCaseId">A Test Case id.
+        ///
+        /// Required.</param>
+        public virtual GetRequest Get(string projectId, string historyId, string executionId, string stepId, string testCaseId)
+        {
+            return new GetRequest(service, projectId, historyId, executionId, stepId, testCaseId);
+        }
+
+        /// <summary>Gets details of a Test Case for a Step. Experimental test cases API. Still in active development.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request
+        /// is malformed - NOT_FOUND - if the containing Test Case does not exist</summary>
+        public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.TestCase>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId, string testCaseId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                StepId = stepId;
+                TestCaseId = testCaseId;
+                InitParameters();
+            }
+
+
+            /// <summary>A Project id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A History id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>A Execution id
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+            /// <summary>A Step id. Note: This step must include a TestExecutionStep.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string StepId { get; private set; }
+
+            /// <summary>A Test Case id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("testCaseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TestCaseId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases/{testCaseId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "stepId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "stepId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "testCaseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "testCaseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists Test Cases attached to a Step. Experimental test cases API. Still in active development.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request
+        /// is malformed - NOT_FOUND - if the containing Step does not exist</summary>
+        /// <param name="projectId">A Project id.
+        ///
+        /// Required.</param>
+        /// <param name="historyId">A History id.
+        ///
+        /// Required.</param>
+        /// <param name="executionId">A Execution id
+        ///
+        /// Required.</param>
+        /// <param name="stepId">A Step id. Note: This step must include a TestExecutionStep.
+        ///
+        /// Required.</param>
+        public virtual ListRequest List(string projectId, string historyId, string executionId, string stepId)
+        {
+            return new ListRequest(service, projectId, historyId, executionId, stepId);
+        }
+
+        /// <summary>Lists Test Cases attached to a Step. Experimental test cases API. Still in active development.
+        ///
+        /// May return any of the following canonical error codes:
+        ///
+        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request
+        /// is malformed - NOT_FOUND - if the containing Step does not exist</summary>
+        public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListTestCasesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                StepId = stepId;
+                InitParameters();
+            }
+
+
+            /// <summary>A Project id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A History id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>A Execution id
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+            /// <summary>A Step id. Note: This step must include a TestExecutionStep.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string StepId { get; private set; }
+
+            /// <summary>The maximum number of TestCases to fetch.
+            ///
+            /// Default value: 100. The server will use this default if the field is not set or has a value of 0.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A continuation token to resume the query at the next item.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "stepId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "stepId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "thumbnails" collection of methods.</summary>
+    public class ThumbnailsResource
+    {
+        private const string Resource = "thumbnails";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ThumbnailsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Lists thumbnails of images attached to a step.
+        ///
+        /// May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized
+        /// to read from the project, or from any of the images - INVALID_ARGUMENT - if the request is malformed -
+        /// NOT_FOUND - if the step does not exist, or if any of the images do not exist</summary>
+        /// <param name="projectId">A Project id.
+        ///
+        /// Required.</param>
+        /// <param name="historyId">A History id.
+        ///
+        /// Required.</param>
+        /// <param name="executionId">An Execution id.
+        ///
+        /// Required.</param>
+        /// <param name="stepId">A Step id.
+        ///
+        /// Required.</param>
+        public virtual ListRequest List(string projectId, string historyId, string executionId, string stepId)
+        {
+            return new ListRequest(service, projectId, historyId, executionId, stepId);
+        }
+
+        /// <summary>Lists thumbnails of images attached to a step.
+        ///
+        /// May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized
+        /// to read from the project, or from any of the images - INVALID_ARGUMENT - if the request is malformed -
+        /// NOT_FOUND - if the step does not exist, or if any of the images do not exist</summary>
+        public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListStepThumbnailsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                HistoryId = historyId;
+                ExecutionId = executionId;
+                StepId = stepId;
+                InitParameters();
+            }
+
+
+            /// <summary>A Project id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>A History id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string HistoryId { get; private set; }
+
+            /// <summary>An Execution id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExecutionId { get; private set; }
+
+            /// <summary>A Step id.
+            ///
+            /// Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string StepId { get; private set; }
+
+            /// <summary>The maximum number of thumbnails to fetch.
+            ///
+            /// Default value: 50. The server will use this default if the field is not set or has a value of 0.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A continuation token to resume the query at the next item.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/thumbnails"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "executionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "executionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "stepId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "stepId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
 }
 
 namespace Google.Apis.ToolResults.v1beta3.Data
 {    
+
+    /// <summary>Additional details for an ANR crash.</summary>
+    public class ANR : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The stack trace of the ANR crash. Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stackTrace")]
+        public virtual StackTrace StackTrace { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>Android app information.</summary>
     public class AndroidAppInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -4339,6 +4397,10 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("androidRoboTest")]
         public virtual AndroidRoboTest AndroidRoboTest { get; set; } 
 
+        /// <summary>An Android test loop.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidTestLoop")]
+        public virtual AndroidTestLoop AndroidTestLoop { get; set; } 
+
         /// <summary>Max time a test is allowed to run before it is automatically cancelled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTimeout")]
         public virtual Duration TestTimeout { get; set; } 
@@ -4347,8 +4409,16 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type
-    /// of the serialized message.
+    /// <summary>Test Loops are tests that can be launched by the app itself, determining when to run by listening for
+    /// an intent. go/ftl-games-dd</summary>
+    public class AndroidTestLoop : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary> `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the
+    /// type of the serialized message.
     ///
     /// Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional
     /// generated methods of the Any type.
@@ -4374,16 +4444,18 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for
     /// example "foo.bar.com/x/y.z" will yield type name "y.z".
     ///
-    /// JSON ==== The JSON representation of an `Any` value uses the regular representation of the deserialized,
-    /// embedded message, with an additional field `@type` which contains the type URL. Example:
+    /// # JSON
+    ///
+    /// The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message,
+    /// with an additional field `@type` which contains the type URL. Example:
     ///
     /// package google.profile; message Person { string first_name = 1; string last_name = 2; }
     ///
-    /// { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName":  }
+    /// { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": }
     ///
     /// If the embedded message type is well-known and has a custom JSON representation, that representation will be
     /// embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for
-    /// message [google.protobuf.Duration][]):
+    /// message google.protobuf.Duration):
     ///
     /// { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" }</summary>
     public class Any : Google.Apis.Requests.IDirectResponseSchema
@@ -4397,11 +4469,10 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// Any. However, for URLs which use the scheme `http`, `https`, or no scheme, one can optionally set up a type
         /// server that maps type URLs to message definitions as follows:
         ///
-        /// * If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must yield a
-        /// [google.protobuf.Type][] value in binary format, or produce an error. * Applications are allowed to cache
-        /// lookup results based on the URL, or have them precompiled into a binary to avoid any lookup. Therefore,
-        /// binary compatibility needs to be preserved on changes to types. (Use versioned type names to manage breaking
-        /// changes.)
+        /// * If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must yield a google.protobuf.Type
+        /// value in binary format, or produce an error. * Applications are allowed to cache lookup results based on the
+        /// URL, or have them precompiled into a binary to avoid any lookup. Therefore, binary compatibility needs to be
+        /// preserved on changes to types. (Use versioned type names to manage breaking changes.)
         ///
         /// Note: this functionality is not currently available in the official protobuf release, and it is not used for
         /// type URLs beginning with type.googleapis.com.
@@ -4432,6 +4503,13 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("initialDisplayTime")]
         public virtual Duration InitialDisplayTime { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A suggestion to use deep links for a Robo run.</summary>
+    public class AvailableDeepLinks : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -4473,6 +4551,18 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A warning that Robo encountered a screen that was mostly blank; this may indicate a problem with the
+    /// app.</summary>
+    public class BlankScreen : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The screen id of the element</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenId")]
+        public virtual string ScreenId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class CPUInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>description of the device processor ie '1.8 GHz hexa core 64-bit ARMv8-A'</summary>
@@ -4491,41 +4581,21 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Duration represents a signed, fixed-length span of time represented as a count of seconds and
+    /// <summary>Crash dialog was detected during the test execution</summary>
+    public class CrashDialogError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the package that caused the dialog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crashPackage")]
+        public virtual string CrashPackage { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary> A Duration represents a signed, fixed-length span of time represented as a count of seconds and
     /// fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or
     /// "month". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can
-    /// be added or subtracted from a Timestamp. Range is approximately +-10,000 years.
-    ///
-    /// # Examples
-    ///
-    /// Example 1: Compute Duration from two Timestamps in pseudo code.
-    ///
-    /// Timestamp start = ...; Timestamp end = ...; Duration duration = ...;
-    ///
-    /// duration.seconds = end.seconds - start.seconds; duration.nanos = end.nanos - start.nanos;
-    ///
-    /// if (duration.seconds  0) { duration.seconds += 1; duration.nanos -= 1000000000; } else if (duration.seconds > 0
-    /// && duration.nanos < 0) { duration.seconds -= 1; duration.nanos += 1000000000; }
-    ///
-    /// Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
-    ///
-    /// Timestamp start = ...; Duration duration = ...; Timestamp end = ...;
-    ///
-    /// end.seconds = start.seconds + duration.seconds; end.nanos = start.nanos + duration.nanos;
-    ///
-    /// if (end.nanos = 1000000000) { end.seconds += 1; end.nanos -= 1000000000; }
-    ///
-    /// Example 3: Compute Duration from datetime.timedelta in Python.
-    ///
-    /// td = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.FromTimedelta(td)
-    ///
-    /// # JSON Mapping
-    ///
-    /// In JSON format, the Duration type is encoded as a string rather than an object, where the string ends in the
-    /// suffix "s" (indicating seconds) and is preceded by the number of seconds, with nanoseconds expressed as
-    /// fractional seconds. For example, 3 seconds with 0 nanoseconds should be encoded in JSON format as "3s", while 3
-    /// seconds and 1 nanosecond should be expressed in JSON format as "3.000000001s", and 3 seconds and 1 microsecond
-    /// should be expressed in JSON format as "3.000001s".</summary>
+    /// be added or subtracted from a Timestamp. Range is approximately +-10,000 years.</summary>
     public class Duration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Signed fractions of a second at nanosecond resolution of the span of time. Durations less than one
@@ -4540,6 +4610,36 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// years</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
         public virtual System.Nullable<long> Seconds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Additional details about encountered login screens.</summary>
+    public class EncounteredLoginScreen : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of encountered distinct login screens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distinctScreens")]
+        public virtual System.Nullable<int> DistinctScreens { get; set; } 
+
+        /// <summary>Subset of login screens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenIds")]
+        public virtual System.Collections.Generic.IList<string> ScreenIds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Additional details about encountered screens with elements that are not Android UI widgets.</summary>
+    public class EncounteredNonAndroidUiWidgetScreen : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of encountered distinct screens with non Android UI widgets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distinctScreens")]
+        public virtual System.Nullable<int> DistinctScreens { get; set; } 
+
+        /// <summary>Subset of screens which contain non Android UI widgets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenIds")]
+        public virtual System.Collections.Generic.IList<string> ScreenIds { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4643,6 +4743,20 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual Timestamp CreationTime { get; set; } 
 
+        /// <summary>The dimensions along which different steps in this execution may vary. This must remain fixed over
+        /// the life of the execution.
+        ///
+        /// Returns INVALID_ARGUMENT if this field is set in an update request.
+        ///
+        /// Returns INVALID_ARGUMENT if the same name occurs in more than one dimension_definition.
+        ///
+        /// Returns INVALID_ARGUMENT if the size of the list is over 100.
+        ///
+        /// - In response: present if set by create - In create request: optional - In update request: never
+        /// set</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionDefinitions")]
+        public virtual System.Collections.Generic.IList<MatrixDimensionDefinition> DimensionDefinitions { get; set; } 
+
         /// <summary>A unique identifier within a History for this Execution.
         ///
         /// Returns INVALID_ARGUMENT if this field is set or overwritten by the caller.
@@ -4689,6 +4803,13 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Failed to install the APK.</summary>
+    public class FailedToInstall : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Details for an outcome with a FAILURE outcome summary.</summary>
     public class FailureDetail : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4712,6 +4833,17 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>If the robo was unable to crawl the app; perhaps because the app did not start.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unableToCrawl")]
         public virtual System.Nullable<bool> UnableToCrawl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Additional details for a fatal exception.</summary>
+    public class FatalException : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The stack trace of the fatal exception. Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stackTrace")]
+        public virtual StackTrace StackTrace { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4867,6 +4999,22 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Additional details of in-app purchases encountered during the crawl.</summary>
+    public class InAppPurchasesFound : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total number of in-app purchases flows explored: how many times the robo tries to buy a
+        /// SKU.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inAppPurchasesFlowsExplored")]
+        public virtual System.Nullable<int> InAppPurchasesFlowsExplored { get; set; } 
+
+        /// <summary>The total number of in-app purchases flows started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inAppPurchasesFlowsStarted")]
+        public virtual System.Nullable<int> InAppPurchasesFlowsStarted { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Details for an outcome with an INCONCLUSIVE outcome summary.</summary>
     public class InconclusiveDetail : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4910,6 +5058,31 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
         public virtual string StepId { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A warning that Robo did not crawl potentially important parts of the app.</summary>
+    public class InsufficientCoverage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Additional details for an iOS app crash.</summary>
+    public class IosAppCrashed : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The stack trace, if one is available. Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stackTrace")]
+        public virtual StackTrace StackTrace { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Failed to find the launcher activity of an app.</summary>
+    public class LauncherActivityNotFound : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -5101,6 +5274,13 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>One dimension of the matrix of different runs of a step.</summary>
+    public class MatrixDimensionDefinition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class MemoryInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Maximum memory that can be allocated to the process in KiB</summary>
@@ -5166,6 +5346,110 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Additional details for a native crash.</summary>
+    public class NativeCrash : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The stack trace of the native crash. Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stackTrace")]
+        public virtual StackTrace StackTrace { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A non-sdk API and examples of it being called along with other metadata See
+    /// https://developer.android.com/distribute/best-practices/develop/restrictions-non-sdk-interfaces</summary>
+    public class NonSdkApi : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The signature of the Non-SDK API</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiSignature")]
+        public virtual string ApiSignature { get; set; } 
+
+        /// <summary>Example stack traces of this API being called.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exampleStackTraces")]
+        public virtual System.Collections.Generic.IList<string> ExampleStackTraces { get; set; } 
+
+        /// <summary>Optional debugging insights for non-SDK API violations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insights")]
+        public virtual System.Collections.Generic.IList<NonSdkApiInsight> Insights { get; set; } 
+
+        /// <summary>The total number of times this API was observed to have been called.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invocationCount")]
+        public virtual System.Nullable<int> InvocationCount { get; set; } 
+
+        /// <summary>Which list this API appears on</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("list")]
+        public virtual string List { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Non-SDK API insights (to address debugging solutions).</summary>
+    public class NonSdkApiInsight : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional sample stack traces, for which this insight applies (there should be at least
+        /// one).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exampleTraceMessages")]
+        public virtual System.Collections.Generic.IList<string> ExampleTraceMessages { get; set; } 
+
+        /// <summary>A unique ID, to be used for determining the effectiveness of this particular insight in the context
+        /// of a matcher. (required)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matcherId")]
+        public virtual string MatcherId { get; set; } 
+
+        /// <summary>An insight indicating that the hidden API usage originates from a Google-provided
+        /// library.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingGoogleUpdateInsight")]
+        public virtual PendingGoogleUpdateInsight PendingGoogleUpdateInsight { get; set; } 
+
+        /// <summary>An insight indicating that the hidden API usage originates from the use of a library that needs to
+        /// be upgraded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeInsight")]
+        public virtual UpgradeInsight UpgradeInsight { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Additional details for a non-sdk API usage violation.</summary>
+    public class NonSdkApiUsageViolation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Signatures of a subset of those hidden API's.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiSignatures")]
+        public virtual System.Collections.Generic.IList<string> ApiSignatures { get; set; } 
+
+        /// <summary>Total number of unique hidden API's accessed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uniqueApis")]
+        public virtual System.Nullable<int> UniqueApis { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains a summary and examples of non-sdk API usage violations.</summary>
+    public class NonSdkApiUsageViolationReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Examples of the detected API usages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exampleApis")]
+        public virtual System.Collections.Generic.IList<NonSdkApi> ExampleApis { get; set; } 
+
+        /// <summary>Minimum API level required for the application to run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minSdkVersion")]
+        public virtual System.Nullable<int> MinSdkVersion { get; set; } 
+
+        /// <summary>Specifies the API Level on which the application is designed to run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetSdkVersion")]
+        public virtual System.Nullable<int> TargetSdkVersion { get; set; } 
+
+        /// <summary>Total number of unique Non-SDK API's accessed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uniqueApis")]
+        public virtual System.Nullable<int> UniqueApis { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Interprets a result so that humans and machines can act on it.</summary>
     public class Outcome : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5211,6 +5495,34 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A warning that Robo encountered a screen that has overlapping clickable elements; this may indicate a
+    /// potential UI issue.</summary>
+    public class OverlappingUIElements : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resource names of the overlapping screen elements</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual System.Collections.Generic.IList<string> ResourceName { get; set; } 
+
+        /// <summary>The screen id of the elements</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenId")]
+        public virtual string ScreenId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This insight indicates that the hidden API usage originates from a Google-provided library. Users need
+    /// not take any action.</summary>
+    public class PendingGoogleUpdateInsight : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the Google-provided library with the non-SDK API dependency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nameOfGoogleLibrary")]
+        public virtual string NameOfGoogleLibrary { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Encapsulates performance environment info</summary>
     public class PerfEnvironment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5232,7 +5544,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appStartTime")]
         public virtual AppStartTime AppStartTime { get; set; } 
 
-        /// <summary>A tool results execution ID.</summary>
+        /// <summary>A tool results execution ID. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
         public virtual string ExecutionId { get; set; } 
 
@@ -5241,7 +5553,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("graphicsStats")]
         public virtual GraphicsStats GraphicsStats { get; set; } 
 
-        /// <summary>A tool results history ID.</summary>
+        /// <summary>A tool results history ID. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
         public virtual string HistoryId { get; set; } 
 
@@ -5253,11 +5565,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("perfMetrics")]
         public virtual System.Collections.Generic.IList<string> PerfMetrics { get; set; } 
 
-        /// <summary>The cloud project</summary>
+        /// <summary>The cloud project @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>A tool results step ID.</summary>
+        /// <summary>A tool results step ID. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
         public virtual string StepId { get; set; } 
 
@@ -5287,25 +5599,43 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("basicPerfSampleSeries")]
         public virtual BasicPerfSampleSeries BasicPerfSampleSeries { get; set; } 
 
-        /// <summary>A tool results execution ID.</summary>
+        /// <summary>A tool results execution ID. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
         public virtual string ExecutionId { get; set; } 
 
-        /// <summary>A tool results history ID.</summary>
+        /// <summary>A tool results history ID. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
         public virtual string HistoryId { get; set; } 
 
-        /// <summary>The cloud project</summary>
+        /// <summary>The cloud project @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>A sample series id</summary>
+        /// <summary>A sample series id @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleSeriesId")]
         public virtual string SampleSeriesId { get; set; } 
 
-        /// <summary>A tool results step ID.</summary>
+        /// <summary>A tool results step ID. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
         public virtual string StepId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A notification that Robo signed in with Google.</summary>
+    public class PerformedGoogleLogin : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A notification that Robo performed some monkey actions.</summary>
+    public class PerformedMonkeyActions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total number of monkey actions performed during the crawl.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalActions")]
+        public virtual System.Nullable<int> TotalActions { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5404,6 +5734,21 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Execution stats for a user-provided Robo script.</summary>
+    public class RoboScriptExecution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of Robo script actions executed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successfulActions")]
+        public virtual System.Nullable<int> SuccessfulActions { get; set; } 
+
+        /// <summary>The total number of actions in the Robo script.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalActions")]
+        public virtual System.Nullable<int> TotalActions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>IMPORTANT: It is unsafe to accept this message from an untrusted source, since it's trivial for an
     /// attacker to forge serialized messages that don't fulfill the type's safety contract -- for example, it could
     /// contain attacker controlled script. A system which receives a SafeHtmlProto implicitly trusts the producer of
@@ -5448,7 +5793,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("activity")]
         public virtual string Activity { get; set; } 
 
-        /// <summary>A unique identifier for the cluster.</summary>
+        /// <summary>A unique identifier for the cluster. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
@@ -5469,6 +5814,13 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// <summary>Result summary for a shard in an environment.</summary>
     public class ShardSummary : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Summaries of the steps belonging to the shard.
+        ///
+        /// With flaky_test_attempts enabled from TestExecutionService, more than one run (Step) can present. And the
+        /// runs will be sorted by multistep_number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runs")]
+        public virtual System.Collections.Generic.IList<StepSummary> Runs { get; set; } 
+
         /// <summary>Merged result of the shard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shardResult")]
         public virtual MergedResult ShardResult { get; set; } 
@@ -5520,6 +5872,19 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>User provided intent failed to resolve to an activity.</summary>
+    public class StartActivityNotFound : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
     /// message contains three pieces of data: error code, error message, and error details.
@@ -5528,17 +5893,17 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The status code, which should be an enum value of [google.rpc.Code][].</summary>
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
-        /// use.</summary>
+        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
+        /// to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<Any> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
-        /// be localized and sent in the [google.rpc.Status.details][] field, or localized by the client.</summary>
+        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
 
@@ -5740,6 +6105,13 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Lightweight summary of a step within this execution.</summary>
+    public class StepSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Details for an outcome with a SUCCESS outcome summary. LINT.IfChange</summary>
     public class SuccessDetail : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5832,9 +6204,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("elapsedTime")]
         public virtual Duration ElapsedTime { get; set; } 
 
-        /// <summary>The end time of the test case.
-        ///
-        /// Optional.</summary>
+        /// <summary>The end time of the test case.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual Timestamp EndTime { get; set; } 
 
@@ -5852,9 +6222,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stackTraces")]
         public virtual System.Collections.Generic.IList<StackTrace> StackTraces { get; set; } 
 
-        /// <summary>The start time of the test case.
-        ///
-        /// Optional.</summary>
+        /// <summary>The start time of the test case.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual Timestamp StartTime { get; set; } 
 
@@ -5874,7 +6242,9 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("testCaseReference")]
         public virtual TestCaseReference TestCaseReference { get; set; } 
 
-        /// <summary>References to opaque files of any format output by the tool execution.</summary>
+        /// <summary>References to opaque files of any format output by the tool execution.
+        ///
+        /// @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolOutputs")]
         public virtual System.Collections.Generic.IList<ToolOutputReference> ToolOutputs { get; set; } 
 
@@ -6102,60 +6472,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// interpretation, using a [24-hour linear smear](https://developers.google.com/time/smear).
     ///
     /// The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to that range, we
-    /// ensure that we can convert to and from [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
-    ///
-    /// # Examples
-    ///
-    /// Example 1: Compute Timestamp from POSIX `time()`.
-    ///
-    /// Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
-    ///
-    /// Example 2: Compute Timestamp from POSIX `gettimeofday()`.
-    ///
-    /// struct timeval tv; gettimeofday(, NULL);
-    ///
-    /// Timestamp timestamp; timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.tv_usec * 1000);
-    ///
-    /// Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
-    ///
-    /// FILETIME ft; GetSystemTimeAsFileTime(); UINT64 ticks = (((UINT64)ft.dwHighDateTime) << 32) | ft.dwLowDateTime;
-    ///
-    /// // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is 11644473600 seconds before Unix
-    /// epoch 1970-01-01T00:00:00Z. Timestamp timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) -
-    /// 11644473600LL)); timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
-    ///
-    /// Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
-    ///
-    /// long millis = System.currentTimeMillis();
-    ///
-    /// Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .setNanos((int) ((millis % 1000) *
-    /// 1000000)).build();
-    ///
-    /// Example 5: Compute Timestamp from current time in Python.
-    ///
-    /// timestamp = Timestamp() timestamp.GetCurrentTime()
-    ///
-    /// # JSON Mapping
-    ///
-    /// In JSON format, the Timestamp type is encoded as a string in the [RFC
-    /// 3339](https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is
-    /// "{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z" where {year} is always expressed using four digits while
-    /// {month}, {day}, {hour}, {min}, and {sec} are zero-padded to two digits each. The fractional seconds, which can
-    /// go up to 9 digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix indicates the timezone
-    /// ("UTC"); the timezone is required. A proto3 JSON serializer should always use UTC (as indicated by "Z") when
-    /// printing the Timestamp type and a proto3 JSON parser should be able to accept both UTC and other timezones (as
-    /// indicated by an offset).
-    ///
-    /// For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on January 15, 2017.
-    ///
-    /// In JavaScript, one can convert a Date object to this format using the standard
-    /// [toISOString()](https://developer.mozilla.org/en-
-    /// US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString) method. In Python, a standard
-    /// `datetime.datetime` object can be converted to this format using
-    /// [`strftime`](https://docs.python.org/2/library/time.html#time.strftime) with the time format spec
-    /// '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda Time's [`ISODateTimeFormat.dateTime()`](
-    /// http://www.joda.org/joda-time/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
-    /// formatter capable of generating timestamps in this format.</summary>
+    /// ensure that we can convert to and from [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.</summary>
     public class Timestamp : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions
@@ -6263,6 +6580,83 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// - In response: present if set by create/update request - In create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testCase")]
         public virtual TestCaseReference TestCase { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A warning that the screen hierarchy is deeper than the recommended threshold.</summary>
+    public class UIElementTooDeep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The depth of the screen element</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("depth")]
+        public virtual System.Nullable<int> Depth { get; set; } 
+
+        /// <summary>The screen id of the element</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenId")]
+        public virtual string ScreenId { get; set; } 
+
+        /// <summary>The screen state id of the element</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenStateId")]
+        public virtual string ScreenStateId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Default unspecified warning.</summary>
+    public class UnspecifiedWarning : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Additional details of an unused robodirective.</summary>
+    public class UnusedRoboDirective : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the resource that was unused.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This insight is a recommendation to upgrade a given library to the specified version, in order to avoid
+    /// dependencies on non-SDK APIs.</summary>
+    public class UpgradeInsight : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the package to be upgraded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; } 
+
+        /// <summary>The suggested version to upgrade to. Optional: In case we are not sure which version solves this
+        /// problem</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeToVersion")]
+        public virtual string UpgradeToVersion { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Additional details of a used Robo directive.</summary>
+    public class UsedRoboDirective : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the resource that was used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Additional details of a used Robo directive with an ignore action. Note: This is a different scenario
+    /// than unused directive.</summary>
+    public class UsedRoboIgnoreDirective : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the resource that was ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

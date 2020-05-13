@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/'>Cloud OS Config API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200410 (1926)
+ *      <tr><th>API Rev<td>20200504 (1950)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/'>
  *              https://cloud.google.com/</a>
@@ -1185,7 +1185,7 @@ namespace Google.Apis.SystemsManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowedSuccessCodes")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> AllowedSuccessCodes { get; set; } 
 
-        /// <summary>A Google Cloud Storage object containing the executable.</summary>
+        /// <summary>A Cloud Storage object containing the executable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsObject")]
         public virtual GcsObject GcsObject { get; set; } 
 
@@ -1203,7 +1203,7 @@ namespace Google.Apis.SystemsManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A request message to initiate patching across Google Compute Engine instances.</summary>
+    /// <summary>A request message to initiate patching across Compute Engine instances.</summary>
     public class ExecutePatchJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Description of the patch job. Length of the description is limited to 1024 characters.</summary>
@@ -1236,19 +1236,19 @@ namespace Google.Apis.SystemsManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Google Cloud Storage object representation.</summary>
+    /// <summary>Cloud Storage object representation.</summary>
     public class GcsObject : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Bucket of the Google Cloud Storage object.</summary>
+        /// <summary>Required. Bucket of the Cloud Storage object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
         public virtual string Bucket { get; set; } 
 
-        /// <summary>Required. Generation number of the Google Cloud Storage object. This is used to ensure that the
-        /// ExecStep specified by this PatchJob does not change.</summary>
+        /// <summary>Required. Generation number of the Cloud Storage object. This is used to ensure that the ExecStep
+        /// specified by this PatchJob does not change.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generationNumber")]
         public virtual System.Nullable<long> GenerationNumber { get; set; } 
 
-        /// <summary>Required. Name of the Google Cloud Storage object.</summary>
+        /// <summary>Required. Name of the Cloud Storage object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
         public virtual string Object__ { get; set; } 
 
@@ -1326,7 +1326,8 @@ namespace Google.Apis.SystemsManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Sets the time for a one time patch deployment. Timestamp is in RFC3339 text format.</summary>
+    /// <summary>Sets the time for a one time patch deployment. Timestamp is in
+    /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
     public class OneTimeSchedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The desired patch job execution time.</summary>
@@ -1379,11 +1380,12 @@ namespace Google.Apis.SystemsManagement.v1.Data
 
     /// <summary>Patch deployments are configurations that individual patch jobs use to complete a patch. These
     /// configurations include instance filter, package repository settings, and a schedule. For more information about
-    /// creating and managing patch deployments, see [Scheduling patch jobs](/compute/docs/os-patch-management/schedule-
-    /// patch-jobs).</summary>
+    /// creating and managing patch deployments, see [Scheduling patch jobs](https://cloud.google.com/compute/docs/os-
+    /// patch-management/schedule-patch-jobs).</summary>
     public class PatchDeployment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Time the patch deployment was created. Timestamp is in RFC3339 text format.</summary>
+        /// <summary>Output only. Time the patch deployment was created. Timestamp is in
+        /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
@@ -1400,8 +1402,8 @@ namespace Google.Apis.SystemsManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceFilter")]
         public virtual PatchInstanceFilter InstanceFilter { get; set; } 
 
-        /// <summary>Output only. The last time a patch job was started by this deployment. Timestamp is in RFC3339 text
-        /// format.</summary>
+        /// <summary>Output only. The last time a patch job was started by this deployment. Timestamp is in
+        /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastExecuteTime")]
         public virtual object LastExecuteTime { get; set; } 
 
@@ -1423,8 +1425,8 @@ namespace Google.Apis.SystemsManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("recurringSchedule")]
         public virtual RecurringSchedule RecurringSchedule { get; set; } 
 
-        /// <summary>Output only. Time the patch deployment was last updated. Timestamp is in RFC3339 text
-        /// format.</summary>
+        /// <summary>Output only. Time the patch deployment was last updated. Timestamp is in
+        /// [RFC3339]("https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -1441,8 +1443,8 @@ namespace Google.Apis.SystemsManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("all")]
         public virtual System.Nullable<bool> All { get; set; } 
 
-        /// <summary>Targets VM instances matching at least one of these label sets. This allows targeting of disparate
-        /// groups, for example "env=prod or env=staging".</summary>
+        /// <summary>Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups
+        /// of VM instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupLabels")]
         public virtual System.Collections.Generic.IList<PatchInstanceFilterGroupLabel> GroupLabels { get; set; } 
 
@@ -1467,11 +1469,15 @@ namespace Google.Apis.SystemsManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a group of VMs that can be identified as having all these labels, for example "env=prod and
-    /// app=web".</summary>
+    /// <summary>Targets a group of VM instances by using their [assigned labels](https://cloud.google.com/compute/docs
+    /// /labeling-resources). Labels are key-value pairs. A `GroupLabel` is a combination of labels that is used to
+    /// target VMs for a patch job.
+    ///
+    /// For example, a patch job can target VMs that have the following `GroupLabel`: `{"env":"test", "app":"web"}`.
+    /// This means that the patch job is applied to VMs that have both the labels `env=test` and `app=web`.</summary>
     public class PatchInstanceFilterGroupLabel : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Google Compute Engine instance labels that must be present for a VM instance to be targeted by this
+        /// <summary>Compute Engine instance labels that must be present for a VM instance to be targeted by this
         /// filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
@@ -1485,8 +1491,8 @@ namespace Google.Apis.SystemsManagement.v1.Data
     /// Instances details are not included in the job. To paginate through instance details, use
     /// ListPatchJobInstanceDetails.
     ///
-    /// For more information about patch jobs, see [Creating patch jobs](/compute/docs/os-patch-management/create-patch-
-    /// job).</summary>
+    /// For more information about patch jobs, see [Creating patch jobs](https://cloud.google.com/compute/docs/os-patch-
+    /// management/create-patch-job).</summary>
     public class PatchJob : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Time this patch job was created.</summary>
@@ -1552,8 +1558,8 @@ namespace Google.Apis.SystemsManagement.v1.Data
     }    
 
     /// <summary>Patch details for a VM instance. For more information about reviewing VM instance details, see [Listing
-    /// all VM instance details for a specific patch job](/compute/docs/os-patch-management/manage-patch-jobs#list-
-    /// instance-details).</summary>
+    /// all VM instance details for a specific patch job](https://cloud.google.com/compute/docs/os-patch-management
+    /// /manage-patch-jobs#list-instance-details).</summary>
     public class PatchJobInstanceDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of times the agent that the agent attempts to apply the patch.</summary>

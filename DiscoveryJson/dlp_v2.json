@@ -3215,7 +3215,7 @@
    }
   }
  }, 
- "revision": "20200405", 
+ "revision": "20200505", 
  "rootUrl": "https://dlp.googleapis.com/", 
  "schemas": {
   "GooglePrivacyDlpV2Action": {
@@ -4848,11 +4848,11 @@
     }, 
     "lowerBound": {
      "$ref": "GooglePrivacyDlpV2Value", 
-     "description": "Required. Lower bound value of buckets. All values less than `lower_bound` are\ngrouped together into a single bucket; for example if `lower_bound` = 10,\nthen all values less than 10 are replaced with the value \u201c-10\u201d."
+     "description": "Required. Lower bound value of buckets. All values less than `lower_bound` are\ngrouped together into a single bucket; for example if `lower_bound` = 10,\nthen all values less than 10 are replaced with the value \"-10\"."
     }, 
     "upperBound": {
      "$ref": "GooglePrivacyDlpV2Value", 
-     "description": "Required. Upper bound value of buckets. All values greater than upper_bound are\ngrouped together into a single bucket; for example if `upper_bound` = 89,\nthen all values greater than 89 are replaced with the value \u201c89+\u201d."
+     "description": "Required. Upper bound value of buckets. All values greater than upper_bound are\ngrouped together into a single bucket; for example if `upper_bound` = 89,\nthen all values greater than 89 are replaced with the value \"89+\"."
     }
    }, 
    "type": "object"
@@ -5999,7 +5999,7 @@
      ], 
      "enumDescriptions": [
       "Unused", 
-      "General file metadata provided by GCS."
+      "General file metadata provided by Cloud Storage."
      ], 
      "type": "string"
     }
@@ -6877,7 +6877,7 @@
    "id": "GooglePrivacyDlpV2TableLocation", 
    "properties": {
     "rowIndex": {
-     "description": "The zero-based index of the row where the finding is located.", 
+     "description": "The zero-based index of the row where the finding is located. Only\npopulated for resources that have a natural ordering, not BigQuery. In\nBigQuery, to identify the row a finding came from, populate\nBigQueryOptions.identifying_fields with your primary key column names and\nwhen you store the findings the value of those columns will be stored\ninside of Finding.", 
      "format": "int64", 
      "type": "string"
     }

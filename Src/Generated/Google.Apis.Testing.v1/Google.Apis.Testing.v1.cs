@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200408 (1924)
+ *      <tr><th>API Rev<td>20200509 (1955)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1699,6 +1699,12 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>Output only. The bundle id for the application under test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appBundleId")]
         public virtual string AppBundleId { get; set; } 
+
+        /// <summary>The option to test special app entitlements. Setting this would re-sign the app having special
+        /// entitlements with an explicit application-identifier. Currently supports testing aps-environment
+        /// entitlement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testSpecialEntitlements")]
+        public virtual System.Nullable<bool> TestSpecialEntitlements { get; set; } 
 
         /// <summary>Required. The .zip containing the .xctestrun file and the contents of the
         /// DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is

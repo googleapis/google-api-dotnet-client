@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200410 (1926)
+ *      <tr><th>API Rev<td>20200506 (1952)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -2304,7 +2304,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("branch")]
         public virtual string Branch { get; set; } 
 
-        /// <summary>Whether to block builds on a "/gcbrun" comment from a repository admin or collaborator.</summary>
+        /// <summary>Configure builds to run only when a repository owner or collaborator comments `/gcbrun`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commentControl")]
         public virtual string CommentControl { get; set; } 
 

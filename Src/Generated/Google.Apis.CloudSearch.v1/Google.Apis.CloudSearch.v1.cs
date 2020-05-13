@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-search/docs/guides/'>Cloud Search API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200407 (1923)
+ *      <tr><th>API Rev<td>20200421 (1937)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-search/docs/guides/'>
  *              https://developers.google.com/cloud-search/docs/guides/</a>
@@ -2714,7 +2714,8 @@ namespace Google.Apis.CloudSearch.v1
                 [Google.Apis.Util.RequestParameterAttribute("requestOptions.languageCode", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RequestOptionsLanguageCode { get; set; }
 
-                /// <summary>Id of the application created using SearchApplicationsService.</summary>
+                /// <summary>The ID generated when you create a search application using the [admin
+                /// console](https://support.google.com/a/answer/9043922).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestOptions.searchApplicationId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RequestOptionsSearchApplicationId { get; set; }
 
@@ -6122,8 +6123,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Access control list information for the item. For more information see https://developers.google.com
-    /// /cloud-search/docs/guides/index-your-data#acls</summary>
+    /// <summary>Access control list information for the item. For more information see [Map ACLs](/cloud-
+    /// search/docs/guides/acls).</summary>
     public class ItemAcl : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Sets the type of access rules to apply when an item inherits its ACL from a parent. This should
@@ -7125,7 +7126,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; } 
 
-        /// <summary>Id of the application created using SearchApplicationsService.</summary>
+        /// <summary>The ID generated when you create a search application using the [admin
+        /// console](https://support.google.com/a/answer/9043922).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchApplicationId")]
         public virtual string SearchApplicationId { get; set; } 
 
@@ -7321,8 +7323,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>IDs of the Long Running Operations (LROs) currently running for this schema. Output only
-        /// field.</summary>
+        /// <summary>Output only. IDs of the Long Running Operations (LROs) currently running for this schema. Output
+        /// only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationIds")]
         public virtual System.Collections.Generic.IList<string> OperationIds { get; set; } 
 

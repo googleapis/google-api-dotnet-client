@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/services/'>Google Play Game Services API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200402 (1918)
+ *      <tr><th>API Rev<td>20200416 (1932)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/services/'>
  *              https://developers.google.com/games/services/</a>
@@ -888,10 +888,6 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("achievementId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AchievementId { get; private set; }
 
-            /// <summary>Override used only by built-in games in Play Games application.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("builtinGameId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string BuiltinGameId { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -925,15 +921,6 @@ namespace Google.Apis.Games.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
-                RequestParameters.Add(
-                    "builtinGameId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "builtinGameId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
             }
 
         }
@@ -956,10 +943,6 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
-            /// <summary>Override used only by built-in games in Play Games application.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("builtinGameId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string BuiltinGameId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -991,15 +974,6 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "builtinGameId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "builtinGameId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
             }
 
         }
@@ -1142,10 +1116,6 @@ namespace Google.Apis.Games.v1
             }
 
 
-            /// <summary>Override used only by built-in games in Play Games application.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("builtinGameId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string BuiltinGameId { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1170,15 +1140,6 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "builtinGameId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "builtinGameId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
             }
 
         }
@@ -5153,7 +5114,7 @@ namespace Google.Apis.Games.v1.Data
     public class AchievementUpdateMultipleResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// games#achievementUpdateListResponse.</summary>
+        /// games#achievementUpdateMultipleResponse.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -6240,9 +6201,6 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>The ID of the player.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playerId")]
         public virtual string PlayerId { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("playerStattus")]
-        public virtual string PlayerStattus { get; set; } 
 
         /// <summary>The player's profile settings. Controls whether or not the player's profile is visible to other
         /// players.</summary>

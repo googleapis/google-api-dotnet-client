@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials'>IAM Service Account Credentials API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200327 (1912)
+ *      <tr><th>API Rev<td>20200501 (1947)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials'>
  *              https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials</a>
@@ -763,7 +763,7 @@ namespace Google.Apis.IAMCredentials.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keyId")]
         public virtual string KeyId { get; set; } 
 
-        /// <summary>The signed blob.</summary>
+        /// <summary>The signature for the blob. Does not include the original blob.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signedBlob")]
         public virtual string SignedBlob { get; set; } 
 
@@ -783,7 +783,11 @@ namespace Google.Apis.IAMCredentials.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("delegates")]
         public virtual System.Collections.Generic.IList<string> Delegates { get; set; } 
 
-        /// <summary>Required. The JWT payload to sign: a JSON object that contains a JWT Claims Set.</summary>
+        /// <summary>Required. The JWT payload to sign. Must be a serialized JSON object that contains a JWT Claim Set.
+        /// For example: `{"sub": "user@example.com", "iat": 313435}`
+        ///
+        /// If the claim set contains an `exp` claim, it must be an integer timestamp that is not in the past and at
+        /// most 12 hours in the future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual string Payload { get; set; } 
 
@@ -797,7 +801,8 @@ namespace Google.Apis.IAMCredentials.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keyId")]
         public virtual string KeyId { get; set; } 
 
-        /// <summary>The signed JWT.</summary>
+        /// <summary>The signed JWT. Contains the automatically generated header; the client-supplied payload; and the
+        /// signature, which is generated using the key referenced by the `kid` field in the header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signedJwt")]
         public virtual string SignedJwt { get; set; } 
 

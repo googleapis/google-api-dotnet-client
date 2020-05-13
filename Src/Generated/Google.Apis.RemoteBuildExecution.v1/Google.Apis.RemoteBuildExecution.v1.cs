@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200416 (1932)
+ *      <tr><th>API Rev<td>20200505 (1951)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -1978,6 +1978,21 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Autoscale defines the autoscaling policy of a worker pool.</summary>
+    public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximal number of workers. Must be equal to or greater than min_size.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSize")]
+        public virtual System.Nullable<long> MaxSize { get; set; } 
+
+        /// <summary>The minimal number of workers. Must be greater than 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minSize")]
+        public virtual System.Nullable<long> MinSize { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The request used for `CreateInstance`.</summary>
     public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2269,6 +2284,14 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
     /// <summary>A worker pool resource in the Remote Build Execution API.</summary>
     public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The autoscale policy to apply on a pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscale")]
+        public virtual GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale Autoscale { get; set; } 
+
+        /// <summary>Channel specifies the release channel of the pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channel")]
+        public virtual string Channel { get; set; } 
+
         /// <summary>WorkerPool resource name formatted as:
         /// `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when
         /// creating a worker pool since it is provided in the `poolId` field.</summary>

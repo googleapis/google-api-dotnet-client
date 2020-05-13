@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Cloud Trace API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200405 (1921)
+ *      <tr><th>API Rev<td>20200504 (1950)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -599,8 +599,8 @@ namespace Google.Apis.CloudTrace.v2.Data
         /// <summary>The set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string
         /// up to 256 bytes, a signed 64-bit integer, or the Boolean values `true` and `false`. For example:
         ///
-        /// "/instance_id": "my-instance" "/http/user_agent": "" "/http/request_bytes": 300 "abc.com/myattribute":
-        /// true</summary>
+        /// "/instance_id": { "string_value": { "value": "my-instance" } } "/http/request_bytes": { "int_value": 300 }
+        /// "abc.com/myattribute": { "bool_value": false }</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeMap")]
         public virtual System.Collections.Generic.IDictionary<string,AttributeValue> AttributeMap { get; set; } 
 
