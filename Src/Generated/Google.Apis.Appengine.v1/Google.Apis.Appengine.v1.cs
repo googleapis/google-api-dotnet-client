@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>App Engine Admin API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200507 (1953)
+ *      <tr><th>API Rev<td>20200410 (1926)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -4240,11 +4240,6 @@ namespace Google.Apis.Appengine.v1.Data
         /// commands.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codeBucket")]
         public virtual string CodeBucket { get; set; } 
-
-        /// <summary>The type of the Cloud Firestore or Cloud Datastore database associated with this
-        /// application.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("databaseType")]
-        public virtual string DatabaseType { get; set; } 
 
         /// <summary>Google Cloud Storage bucket that can be used by this application to store
         /// content.@OutputOnly</summary>

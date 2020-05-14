@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20200512 (1958)
+ *      <tr><th>API Rev<td>20200513 (1959)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -4410,7 +4410,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     }    
 
     /// <summary>Test Loops are tests that can be launched by the app itself, determining when to run by listening for
-    /// an intent. go/ftl-games-dd</summary>
+    /// an intent.</summary>
     public class AndroidTestLoop : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -4966,6 +4966,12 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>The platform of the test history.
+        ///
+        /// - In response: always set. Returns the platform of the last execution if unknown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testPlatform")]
+        public virtual string TestPlatform { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -5075,6 +5081,77 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>The stack trace, if one is available. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackTrace")]
         public virtual StackTrace StackTrace { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>iOS app information</summary>
+    public class IosAppInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the app. Required</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Robo test for an iOS application.</summary>
+    public class IosRoboTest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A iOS mobile test specification</summary>
+    public class IosTest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information about the application under test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iosAppInfo")]
+        public virtual IosAppInfo IosAppInfo { get; set; } 
+
+        /// <summary>An iOS Robo test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iosRoboTest")]
+        public virtual IosRoboTest IosRoboTest { get; set; } 
+
+        /// <summary>An iOS test loop.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iosTestLoop")]
+        public virtual IosTestLoop IosTestLoop { get; set; } 
+
+        /// <summary>An iOS XCTest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iosXcTest")]
+        public virtual IosXcTest IosXcTest { get; set; } 
+
+        /// <summary>Max time a test is allowed to run before it is automatically cancelled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testTimeout")]
+        public virtual Duration TestTimeout { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A game loop test of an iOS application.</summary>
+    public class IosTestLoop : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Bundle ID of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundleId")]
+        public virtual string BundleId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A test of an iOS application that uses the XCTest framework.</summary>
+    public class IosXcTest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Bundle ID of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundleId")]
+        public virtual string BundleId { get; set; } 
+
+        /// <summary>Xcode version that the test was run with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xcodeVersion")]
+        public virtual string XcodeVersion { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5854,6 +5931,10 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>An Android mobile test execution specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidTest")]
         public virtual AndroidTest AndroidTest { get; set; } 
+
+        /// <summary>An iOS mobile test execution specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iosTest")]
+        public virtual IosTest IosTest { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

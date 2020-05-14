@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200509 (1955)
+ *      <tr><th>API Rev<td>20200508 (1954)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1080,7 +1080,8 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
 
-        /// <summary>URL of a thumbnail image of the device.</summary>
+        /// <summary>URL of a thumbnail image (photo) of the device. e.g.
+        /// https://lh3.googleusercontent.com/90WcauuJiCYABEl8U0lcZeuS5STUbf2yW...</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
         public virtual string ThumbnailUrl { get; set; } 
 
@@ -1568,7 +1569,7 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A description of an iOS device tests may be run on. Next tag: 12</summary>
+    /// <summary>A description of an iOS device tests may be run on. Next tag: 13</summary>
     public class IosModel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Device capabilities. Copied from https://developer.apple.com/library/archive/documentation/DeviceIn

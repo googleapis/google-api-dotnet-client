@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/run/'>Cloud Run API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200415 (1931)
+ *      <tr><th>API Rev<td>20200505 (1951)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/run/'>
  *              https://cloud.google.com/run/</a>
@@ -4780,7 +4780,10 @@ namespace Google.Apis.CloudRun.v1
                     /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
                     ///
                     /// Requests for policies with any conditional bindings must specify version 3. Policies without any
-                    /// conditional bindings may specify any valid value or leave the field unset.</summary>
+                    /// conditional bindings may specify any valid value or leave the field unset.
+                    ///
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
+                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -5405,9 +5408,15 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. NOTE: An unsatisfied condition will not allow
-        /// user access via current binding. Different bindings, including their conditions, are examined
-        /// independently.</summary>
+        /// <summary>The condition that is associated with this binding.
+        ///
+        /// If the condition evaluates to `true`, then this binding applies to the current request.
+        ///
+        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
+        /// different role binding might grant the same role to one or more of the members in this binding.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
@@ -6249,27 +6258,6 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>IntOrString is a type that can hold an int32 or a string.  When used in JSON or YAML marshalling and
-    /// unmarshalling, it produces or consumes the inner type.  This allows you to have, for example, a JSON field that
-    /// can accept a name or number.</summary>
-    public class IntOrString : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The int value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("intVal")]
-        public virtual System.Nullable<int> IntVal { get; set; } 
-
-        /// <summary>The string value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("strVal")]
-        public virtual string StrVal { get; set; } 
-
-        /// <summary>The type of the value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual System.Nullable<int> Type { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Cloud Run fully managed: not supported
     ///
     /// Cloud Run for Anthos: supported
@@ -6834,15 +6822,17 @@ namespace Google.Apis.CloudRun.v1.Data
     /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
     /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
     ///
-    /// Optionally, a `binding` can specify a `condition`, which is a logical expression that allows access to a
-    /// resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the
-    /// request, the resource, or both.
+    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
+    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
+    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
+    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
+    /// /resource-policies).
     ///
     /// **JSON example:**
     ///
     /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
     /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
     ///
@@ -6895,7 +6885,10 @@ namespace Google.Apis.CloudRun.v1.Data
         /// `1` policy, and all of the conditions in the version `3` policy are lost.
         ///
         /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.</summary>
+        /// leave the field unset.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -7710,9 +7703,12 @@ namespace Google.Apis.CloudRun.v1.Data
         /// Cloud Run for Anthos: supported
         ///
         /// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be
-        /// an IANA_SVC_NAME.</summary>
+        /// an IANA_SVC_NAME.
+        ///
+        /// This field is currently limited to integer types only because of proto's inability to properly support the
+        /// IntOrString golang type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
-        public virtual IntOrString Port { get; set; } 
+        public virtual System.Nullable<int> Port { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

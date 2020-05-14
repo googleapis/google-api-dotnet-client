@@ -19,24 +19,24 @@
 
 /**
  * \brief
- *   Google Play Game Services Management API Version v1management
+ *   Google Play Game Management Version v1management
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/games/services'>Google Play Game Services Management API</a>
+ *          <td><a href='https://developers.google.com/games/'>Google Play Game Management</a>
  *      <tr><th>API Version<td>v1management
- *      <tr><th>API Rev<td>20200416 (1932)
+ *      <tr><th>API Rev<td>20200504 (1950)
  *      <tr><th>API Docs
- *          <td><a href='https://developers.google.com/games/services'>
- *              https://developers.google.com/games/services</a>
+ *          <td><a href='https://developers.google.com/games/'>
+ *              https://developers.google.com/games/</a>
  *      <tr><th>Discovery Name<td>gamesManagement
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Play Game Services Management API can be found at
- * <a href='https://developers.google.com/games/services'>https://developers.google.com/games/services</a>.
+ * The complete API documentation for using Google Play Game Management can be found at
+ * <a href='https://developers.google.com/games/'>https://developers.google.com/games/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -68,9 +68,7 @@ namespace Google.Apis.GamesManagement.v1management
             applications = new ApplicationsResource(this);
             events = new EventsResource(this);
             players = new PlayersResource(this);
-            rooms = new RoomsResource(this);
             scores = new ScoresResource(this);
-            turnBasedMatches = new TurnBasedMatchesResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -89,33 +87,33 @@ namespace Google.Apis.GamesManagement.v1management
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://www.googleapis.com/games/v1management/"; }
+            get { return BaseUriOverride ?? "https://www.googleapis.com/"; }
         #else
-            get { return "https://www.googleapis.com/games/v1management/"; }
+            get { return "https://www.googleapis.com/"; }
         #endif
         }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath
         {
-            get { return "games/v1management/"; }
+            get { return ""; }
         }
 
         #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch/gamesManagement/v1management"; }
+            get { return "https://www.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch/gamesManagement/v1management"; }
+            get { return "batch"; }
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Play Game Services Management API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Play Game Management.</summary>
         public class Scope
         {
             /// <summary>Create, edit, and delete your Google Play Games activity</summary>
@@ -123,7 +121,7 @@ namespace Google.Apis.GamesManagement.v1management
 
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Google Play Game Services Management API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Google Play Game Management.</summary>
         public static class ScopeConstants
         {
             /// <summary>Create, edit, and delete your Google Play Games activity</summary>
@@ -165,28 +163,12 @@ namespace Google.Apis.GamesManagement.v1management
             get { return players; }
         }
 
-        private readonly RoomsResource rooms;
-
-        /// <summary>Gets the Rooms resource.</summary>
-        public virtual RoomsResource Rooms
-        {
-            get { return rooms; }
-        }
-
         private readonly ScoresResource scores;
 
         /// <summary>Gets the Scores resource.</summary>
         public virtual ScoresResource Scores
         {
             get { return scores; }
-        }
-
-        private readonly TurnBasedMatchesResource turnBasedMatches;
-
-        /// <summary>Gets the TurnBasedMatches resource.</summary>
-        public virtual TurnBasedMatchesResource TurnBasedMatches
-        {
-            get { return turnBasedMatches; }
         }
     }
 
@@ -199,18 +181,47 @@ namespace Google.Apis.GamesManagement.v1management
         {
         }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>V1 error format.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
+
+        /// <summary>OAuth access token.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>Data format for response.</summary>
         public enum AltEnum
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
         }
+
+        /// <summary>JSONP</summary>
+        [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string Callback { get; set; }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -230,14 +241,18 @@ namespace Google.Apis.GamesManagement.v1management
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-        /// characters.</summary>
+        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
+        /// assigned to a user, but should not exceed 40 characters.</summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
-        /// <summary>Deprecated. Please use quotaUser instead.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string UserIp { get; set; }
+        /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadType { get; set; }
+
+        /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadProtocol { get; set; }
 
         /// <summary>Initializes GamesManagement parameter list.</summary>
         protected override void InitParameters()
@@ -245,12 +260,39 @@ namespace Google.Apis.GamesManagement.v1management
             base.InitParameters();
 
             RequestParameters.Add(
+                "$.xgafv", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "$.xgafv",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "access_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "access_token",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
                 "alt", new Google.Apis.Discovery.Parameter
                 {
                     Name = "alt",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "json",
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "callback", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "callback",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
             RequestParameters.Add(
@@ -299,9 +341,18 @@ namespace Google.Apis.GamesManagement.v1management
                     Pattern = null,
                 });
             RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
+                "uploadType", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "userIp",
+                    Name = "uploadType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "upload_protocol", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "upload_protocol",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -367,7 +418,7 @@ namespace Google.Apis.GamesManagement.v1management
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "achievements/{achievementId}/reset"; }
+                get { return "games/v1management/achievements/{achievementId}/reset"; }
             }
 
             /// <summary>Initializes Reset parameter list.</summary>
@@ -423,7 +474,7 @@ namespace Google.Apis.GamesManagement.v1management
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "achievements/reset"; }
+                get { return "games/v1management/achievements/reset"; }
             }
 
             /// <summary>Initializes ResetAll parameter list.</summary>
@@ -470,7 +521,7 @@ namespace Google.Apis.GamesManagement.v1management
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "achievements/resetAllForAllPlayers"; }
+                get { return "games/v1management/achievements/resetAllForAllPlayers"; }
             }
 
             /// <summary>Initializes ResetAllForAllPlayers parameter list.</summary>
@@ -523,7 +574,7 @@ namespace Google.Apis.GamesManagement.v1management
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "achievements/{achievementId}/resetForAllPlayers"; }
+                get { return "games/v1management/achievements/{achievementId}/resetForAllPlayers"; }
             }
 
             /// <summary>Initializes ResetForAllPlayers parameter list.</summary>
@@ -587,7 +638,7 @@ namespace Google.Apis.GamesManagement.v1management
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "achievements/resetMultipleForAllPlayers"; }
+                get { return "games/v1management/achievements/resetMultipleForAllPlayers"; }
             }
 
             /// <summary>Initializes ResetMultipleForAllPlayers parameter list.</summary>
@@ -643,9 +694,7 @@ namespace Google.Apis.GamesManagement.v1management
 
             /// <summary>The maximum number of player resources to return in the response, used for paging. For any
             /// response, the actual number of player resources returned may be less than the specified
-            /// maxResults.</summary>
-            /// [minimum: 1]
-            /// [maximum: 50]
+            /// `maxResults`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -669,7 +718,7 @@ namespace Google.Apis.GamesManagement.v1management
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "applications/{applicationId}/players/hidden"; }
+                get { return "games/v1management/applications/{applicationId}/players/hidden"; }
             }
 
             /// <summary>Initializes ListHidden parameter list.</summary>
@@ -766,7 +815,7 @@ namespace Google.Apis.GamesManagement.v1management
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "events/{eventId}/reset"; }
+                get { return "games/v1management/events/{eventId}/reset"; }
             }
 
             /// <summary>Initializes Reset parameter list.</summary>
@@ -822,7 +871,7 @@ namespace Google.Apis.GamesManagement.v1management
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "events/reset"; }
+                get { return "games/v1management/events/reset"; }
             }
 
             /// <summary>Initializes ResetAll parameter list.</summary>
@@ -869,7 +918,7 @@ namespace Google.Apis.GamesManagement.v1management
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "events/resetAllForAllPlayers"; }
+                get { return "games/v1management/events/resetAllForAllPlayers"; }
             }
 
             /// <summary>Initializes ResetAllForAllPlayers parameter list.</summary>
@@ -922,7 +971,7 @@ namespace Google.Apis.GamesManagement.v1management
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "events/{eventId}/resetForAllPlayers"; }
+                get { return "games/v1management/events/{eventId}/resetForAllPlayers"; }
             }
 
             /// <summary>Initializes ResetForAllPlayers parameter list.</summary>
@@ -986,7 +1035,7 @@ namespace Google.Apis.GamesManagement.v1management
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "events/resetMultipleForAllPlayers"; }
+                get { return "games/v1management/events/resetMultipleForAllPlayers"; }
             }
 
             /// <summary>Initializes ResetMultipleForAllPlayers parameter list.</summary>
@@ -1019,7 +1068,7 @@ namespace Google.Apis.GamesManagement.v1management
         /// available to user accounts for your developer console.</summary>
         /// <param name="applicationId">The application ID from the Google Play developer console.</param>
         /// <param
-        /// name="playerId">A player ID. A value of me may be used in place of the authenticated player's ID.</param>
+        /// name="playerId">A player ID. A value of `me` may be used in place of the authenticated player's ID.</param>
         public virtual HideRequest Hide(string applicationId, string playerId)
         {
             return new HideRequest(service, applicationId, playerId);
@@ -1043,7 +1092,7 @@ namespace Google.Apis.GamesManagement.v1management
             [Google.Apis.Util.RequestParameterAttribute("applicationId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ApplicationId { get; private set; }
 
-            /// <summary>A player ID. A value of me may be used in place of the authenticated player's ID.</summary>
+            /// <summary>A player ID. A value of `me` may be used in place of the authenticated player's ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("playerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PlayerId { get; private set; }
 
@@ -1063,7 +1112,7 @@ namespace Google.Apis.GamesManagement.v1management
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "applications/{applicationId}/players/hidden/{playerId}"; }
+                get { return "games/v1management/applications/{applicationId}/players/hidden/{playerId}"; }
             }
 
             /// <summary>Initializes Hide parameter list.</summary>
@@ -1097,7 +1146,7 @@ namespace Google.Apis.GamesManagement.v1management
         /// available to user accounts for your developer console.</summary>
         /// <param name="applicationId">The application ID from the Google Play developer console.</param>
         /// <param
-        /// name="playerId">A player ID. A value of me may be used in place of the authenticated player's ID.</param>
+        /// name="playerId">A player ID. A value of `me` may be used in place of the authenticated player's ID.</param>
         public virtual UnhideRequest Unhide(string applicationId, string playerId)
         {
             return new UnhideRequest(service, applicationId, playerId);
@@ -1121,7 +1170,7 @@ namespace Google.Apis.GamesManagement.v1management
             [Google.Apis.Util.RequestParameterAttribute("applicationId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ApplicationId { get; private set; }
 
-            /// <summary>A player ID. A value of me may be used in place of the authenticated player's ID.</summary>
+            /// <summary>A player ID. A value of `me` may be used in place of the authenticated player's ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("playerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PlayerId { get; private set; }
 
@@ -1141,7 +1190,7 @@ namespace Google.Apis.GamesManagement.v1management
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "applications/{applicationId}/players/hidden/{playerId}"; }
+                get { return "games/v1management/applications/{applicationId}/players/hidden/{playerId}"; }
             }
 
             /// <summary>Initializes Unhide parameter list.</summary>
@@ -1167,117 +1216,6 @@ namespace Google.Apis.GamesManagement.v1management
                         DefaultValue = null,
                         Pattern = null,
                     });
-            }
-
-        }
-    }
-
-    /// <summary>The "rooms" collection of methods.</summary>
-    public class RoomsResource
-    {
-        private const string Resource = "rooms";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public RoomsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-
-        }
-
-
-        /// <summary>Reset all rooms for the currently authenticated player for your application. This method is only
-        /// accessible to whitelisted tester accounts for your application.</summary>
-        public virtual ResetRequest Reset()
-        {
-            return new ResetRequest(service);
-        }
-
-        /// <summary>Reset all rooms for the currently authenticated player for your application. This method is only
-        /// accessible to whitelisted tester accounts for your application.</summary>
-        public class ResetRequest : GamesManagementBaseServiceRequest<string>
-        {
-            /// <summary>Constructs a new Reset request.</summary>
-            public ResetRequest(Google.Apis.Services.IClientService service)
-                : base(service)
-            {
-                InitParameters();
-            }
-
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "reset"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "rooms/reset"; }
-            }
-
-            /// <summary>Initializes Reset parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-            }
-
-        }
-
-        /// <summary>Deletes rooms where the only room participants are from whitelisted tester accounts for your
-        /// application. This method is only available to user accounts for your developer console.</summary>
-        public virtual ResetForAllPlayersRequest ResetForAllPlayers()
-        {
-            return new ResetForAllPlayersRequest(service);
-        }
-
-        /// <summary>Deletes rooms where the only room participants are from whitelisted tester accounts for your
-        /// application. This method is only available to user accounts for your developer console.</summary>
-        public class ResetForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
-        {
-            /// <summary>Constructs a new ResetForAllPlayers request.</summary>
-            public ResetForAllPlayersRequest(Google.Apis.Services.IClientService service)
-                : base(service)
-            {
-                InitParameters();
-            }
-
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "resetForAllPlayers"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "rooms/resetForAllPlayers"; }
-            }
-
-            /// <summary>Initializes ResetForAllPlayers parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
             }
 
         }
@@ -1340,7 +1278,7 @@ namespace Google.Apis.GamesManagement.v1management
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "leaderboards/{leaderboardId}/scores/reset"; }
+                get { return "games/v1management/leaderboards/{leaderboardId}/scores/reset"; }
             }
 
             /// <summary>Initializes Reset parameter list.</summary>
@@ -1396,7 +1334,7 @@ namespace Google.Apis.GamesManagement.v1management
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "scores/reset"; }
+                get { return "games/v1management/scores/reset"; }
             }
 
             /// <summary>Initializes ResetAll parameter list.</summary>
@@ -1443,7 +1381,7 @@ namespace Google.Apis.GamesManagement.v1management
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "scores/resetAllForAllPlayers"; }
+                get { return "games/v1management/scores/resetAllForAllPlayers"; }
             }
 
             /// <summary>Initializes ResetAllForAllPlayers parameter list.</summary>
@@ -1496,7 +1434,7 @@ namespace Google.Apis.GamesManagement.v1management
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "leaderboards/{leaderboardId}/scores/resetForAllPlayers"; }
+                get { return "games/v1management/leaderboards/{leaderboardId}/scores/resetForAllPlayers"; }
             }
 
             /// <summary>Initializes ResetForAllPlayers parameter list.</summary>
@@ -1560,121 +1498,10 @@ namespace Google.Apis.GamesManagement.v1management
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "scores/resetMultipleForAllPlayers"; }
+                get { return "games/v1management/scores/resetMultipleForAllPlayers"; }
             }
 
             /// <summary>Initializes ResetMultipleForAllPlayers parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-            }
-
-        }
-    }
-
-    /// <summary>The "turnBasedMatches" collection of methods.</summary>
-    public class TurnBasedMatchesResource
-    {
-        private const string Resource = "turnBasedMatches";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public TurnBasedMatchesResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-
-        }
-
-
-        /// <summary>Reset all turn-based match data for a user. This method is only accessible to whitelisted tester
-        /// accounts for your application.</summary>
-        public virtual ResetRequest Reset()
-        {
-            return new ResetRequest(service);
-        }
-
-        /// <summary>Reset all turn-based match data for a user. This method is only accessible to whitelisted tester
-        /// accounts for your application.</summary>
-        public class ResetRequest : GamesManagementBaseServiceRequest<string>
-        {
-            /// <summary>Constructs a new Reset request.</summary>
-            public ResetRequest(Google.Apis.Services.IClientService service)
-                : base(service)
-            {
-                InitParameters();
-            }
-
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "reset"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "turnbasedmatches/reset"; }
-            }
-
-            /// <summary>Initializes Reset parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-            }
-
-        }
-
-        /// <summary>Deletes turn-based matches where the only match participants are from whitelisted tester accounts
-        /// for your application. This method is only available to user accounts for your developer console.</summary>
-        public virtual ResetForAllPlayersRequest ResetForAllPlayers()
-        {
-            return new ResetForAllPlayersRequest(service);
-        }
-
-        /// <summary>Deletes turn-based matches where the only match participants are from whitelisted tester accounts
-        /// for your application. This method is only available to user accounts for your developer console.</summary>
-        public class ResetForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
-        {
-            /// <summary>Constructs a new ResetForAllPlayers request.</summary>
-            public ResetForAllPlayersRequest(Google.Apis.Services.IClientService service)
-                : base(service)
-            {
-                InitParameters();
-            }
-
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "resetForAllPlayers"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "turnbasedmatches/resetForAllPlayers"; }
-            }
-
-            /// <summary>Initializes ResetForAllPlayers parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -1688,11 +1515,11 @@ namespace Google.Apis.GamesManagement.v1management
 namespace Google.Apis.GamesManagement.v1management.Data
 {    
 
-    /// <summary>This is a JSON template for achievement reset all response.</summary>
+    /// <summary>Achievement reset all response.</summary>
     public class AchievementResetAllResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesManagement#achievementResetAllResponse.</summary>
+        /// `gamesManagement#achievementResetAllResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -1704,7 +1531,6 @@ namespace Google.Apis.GamesManagement.v1management.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>This is a JSON template for multiple achievements reset all request.</summary>
     public class AchievementResetMultipleForAllRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The IDs of achievements to reset.</summary>
@@ -1712,7 +1538,7 @@ namespace Google.Apis.GamesManagement.v1management.Data
         public virtual System.Collections.Generic.IList<string> AchievementIds { get; set; } 
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesManagement#achievementResetMultipleForAllRequest.</summary>
+        /// `gamesManagement#achievementResetMultipleForAllRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -1720,12 +1546,12 @@ namespace Google.Apis.GamesManagement.v1management.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>This is a JSON template for an achievement reset response.</summary>
+    /// <summary>An achievement reset response.</summary>
     public class AchievementResetResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The current state of the achievement. This is the same as the initial state of the achievement.
-        /// Possible values are: - "HIDDEN"- Achievement is hidden. - "REVEALED" - Achievement is revealed. - "UNLOCKED"
-        /// - Achievement is unlocked.</summary>
+        /// <summary>The current state of the achievement.  This is the same as the initial state of the achievement.
+        /// Possible values are: "`HIDDEN`"- Achievement is hidden. "`REVEALED`" - Achievement is revealed. "`UNLOCKED`"
+        /// - Achievement is unlocked. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentState")]
         public virtual string CurrentState { get; set; } 
 
@@ -1734,7 +1560,7 @@ namespace Google.Apis.GamesManagement.v1management.Data
         public virtual string DefinitionId { get; set; } 
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesManagement#achievementResetResponse.</summary>
+        /// `gamesManagement#achievementResetResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -1746,7 +1572,7 @@ namespace Google.Apis.GamesManagement.v1management.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>This is a JSON template for multiple events reset all request.</summary>
+    /// <summary>Multiple events reset all request.</summary>
     public class EventsResetMultipleForAllRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The IDs of events to reset.</summary>
@@ -1754,7 +1580,7 @@ namespace Google.Apis.GamesManagement.v1management.Data
         public virtual System.Collections.Generic.IList<string> EventIds { get; set; } 
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesManagement#eventsResetMultipleForAllRequest.</summary>
+        /// `gamesManagement#eventsResetMultipleForAllRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -1762,23 +1588,7 @@ namespace Google.Apis.GamesManagement.v1management.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>This is a JSON template for metadata about a player playing a game with the currently authenticated
-    /// user.</summary>
-    public class GamesPlayedResource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>True if the player was auto-matched with the currently authenticated user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("autoMatched")]
-        public virtual System.Nullable<bool> AutoMatched { get; set; } 
-
-        /// <summary>The last time the player played the game in milliseconds since the epoch in UTC.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("timeMillis")]
-        public virtual System.Nullable<long> TimeMillis { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>This is a JSON template for 1P/3P metadata about the player's experience.</summary>
+    /// <summary>1P/3P metadata about the player's experience.</summary>
     public class GamesPlayerExperienceInfoResource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The current number of experience points for the player.</summary>
@@ -1802,7 +1612,7 @@ namespace Google.Apis.GamesManagement.v1management.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>This is a JSON template for 1P/3P metadata about a user's level.</summary>
+    /// <summary>1P/3P metadata about a user's level.</summary>
     public class GamesPlayerLevelResource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The level for the user.</summary>
@@ -1821,19 +1631,19 @@ namespace Google.Apis.GamesManagement.v1management.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>This is a JSON template for the HiddenPlayer resource.</summary>
+    /// <summary>The HiddenPlayer resource.</summary>
     public class HiddenPlayer : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The time this player was hidden.</summary>
+        /// <summary>Output only. The time this player was hidden.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiddenTimeMillis")]
         public virtual System.Nullable<long> HiddenTimeMillis { get; set; } 
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesManagement#hiddenPlayer.</summary>
+        /// <summary>Output only. Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `gamesManagement#hiddenPlayer`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The player information.</summary>
+        /// <summary>Output only. The player information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("player")]
         public virtual Player Player { get; set; } 
 
@@ -1841,7 +1651,7 @@ namespace Google.Apis.GamesManagement.v1management.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>This is a JSON template for a list of hidden players.</summary>
+    /// <summary>A list of hidden players.</summary>
     public class HiddenPlayerList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The players.</summary>
@@ -1849,7 +1659,7 @@ namespace Google.Apis.GamesManagement.v1management.Data
         public virtual System.Collections.Generic.IList<HiddenPlayer> Items { get; set; } 
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesManagement#hiddenPlayerList.</summary>
+        /// `gamesManagement#hiddenPlayerList`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -1861,7 +1671,7 @@ namespace Google.Apis.GamesManagement.v1management.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>This is a JSON template for a Player resource.</summary>
+    /// <summary>A Player resource.</summary>
     public class Player : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The base URL for the image that represents the player.</summary>
@@ -1884,20 +1694,10 @@ namespace Google.Apis.GamesManagement.v1management.Data
         [Newtonsoft.Json.JsonPropertyAttribute("experienceInfo")]
         public virtual GamesPlayerExperienceInfoResource ExperienceInfo { get; set; } 
 
-        /// <summary>The friend status of the given player, relative to the requester. This is unset if the player is
-        /// not sharing their friends list with the game.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("friendStatus")]
-        public virtual string FriendStatus { get; set; } 
-
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesManagement#player.</summary>
+        /// `gamesManagement#player`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
-
-        /// <summary>Details about the last time this player played a multiplayer game with the currently authenticated
-        /// player. Populated for PLAYED_WITH player collection members.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastPlayedWith")]
-        public virtual GamesPlayedResource LastPlayedWith { get; set; } 
 
         /// <summary>An object representation of the individual components of the player's name. For some players, these
         /// fields may not be present.</summary>
@@ -1942,11 +1742,11 @@ namespace Google.Apis.GamesManagement.v1management.Data
         }
     }    
 
-    /// <summary>This is a JSON template for a list of leaderboard reset resources.</summary>
+    /// <summary>A list of leaderboard reset resources.</summary>
     public class PlayerScoreResetAllResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesManagement#playerScoreResetResponse.</summary>
+        /// `gamesManagement#playerScoreResetAllResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -1958,7 +1758,7 @@ namespace Google.Apis.GamesManagement.v1management.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>This is a JSON template for a list of reset leaderboard entry resources.</summary>
+    /// <summary>A list of reset leaderboard entry resources.</summary>
     public class PlayerScoreResetResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of an leaderboard for which player state has been updated.</summary>
@@ -1966,12 +1766,12 @@ namespace Google.Apis.GamesManagement.v1management.Data
         public virtual string DefinitionId { get; set; } 
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesManagement#playerScoreResetResponse.</summary>
+        /// `gamesManagement#playerScoreResetResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The time spans of the updated score. Possible values are: - "ALL_TIME" - The score is an all-time
-        /// score. - "WEEKLY" - The score is a weekly score. - "DAILY" - The score is a daily score.</summary>
+        /// <summary>The time spans of the updated score. Possible values are: "`ALL_TIME`" - The score is an all-time
+        /// score. "`WEEKLY`" - The score is a weekly score. "`DAILY`" - The score is a daily score. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resetScoreTimeSpans")]
         public virtual System.Collections.Generic.IList<string> ResetScoreTimeSpans { get; set; } 
 
@@ -1979,11 +1779,11 @@ namespace Google.Apis.GamesManagement.v1management.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>This is a JSON template for profile settings</summary>
+    /// <summary>Profile settings</summary>
     public class ProfileSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesManagement#profileSettings.</summary>
+        /// `gamesManagement#profileSettings`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -1994,11 +1794,10 @@ namespace Google.Apis.GamesManagement.v1management.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>This is a JSON template for multiple scores reset all request.</summary>
     public class ScoresResetMultipleForAllRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesManagement#scoresResetMultipleForAllRequest.</summary>
+        /// `gamesManagement#scoresResetMultipleForAllRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 

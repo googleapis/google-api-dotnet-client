@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/hosting/'>Firebase Hosting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200430 (1946)
+ *      <tr><th>API Rev<td>20200512 (1958)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/hosting/'>
  *              https://firebase.google.com/docs/hosting/</a>
@@ -3771,7 +3771,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response when listing Releases.</summary>
     public class ListReleasesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If there are additional releases remaining beyond the ones in this response, then supply this token
@@ -3787,7 +3786,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response when listing a Version's Files..</summary>
     public class ListVersionFilesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list path/hashes in the specified version.</summary>
@@ -3802,7 +3800,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response when listing Versions.</summary>
     public class ListVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The pagination token, if more results exist</summary>
@@ -3866,7 +3863,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response to a PopulateVersionFilesRequest.</summary>
     public class PopulateVersionFilesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The content hashes of the specified files that need to be uploaded to the specified

@@ -6968,9 +6968,11 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("prompts")]
         public virtual System.Collections.Generic.IList<string> Prompts { get; set; } 
 
-        /// <summary>Optional. The definition of the parameter value. It can be: - a constant string, - a parameter
-        /// value defined as `$parameter_name`, - an original parameter value defined as `$parameter_name.original`, - a
-        /// parameter value from some context defined as `#context_name.parameter_name`.</summary>
+        /// <summary>Optional. The definition of the parameter value. It can be:
+        ///
+        /// - a constant string, - a parameter value defined as `$parameter_name`, - an original parameter value defined
+        /// as `$parameter_name.original`, - a parameter value from some context defined as
+        /// `#context_name.parameter_name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
@@ -8969,9 +8971,11 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("prompts")]
         public virtual System.Collections.Generic.IList<string> Prompts { get; set; } 
 
-        /// <summary>Optional. The definition of the parameter value. It can be: - a constant string, - a parameter
-        /// value defined as `$parameter_name`, - an original parameter value defined as `$parameter_name.original`, - a
-        /// parameter value from some context defined as `#context_name.parameter_name`.</summary>
+        /// <summary>Optional. The definition of the parameter value. It can be:
+        ///
+        /// - a constant string, - a parameter value defined as `$parameter_name`, - an original parameter value defined
+        /// as `$parameter_name.original`, - a parameter value from some context defined as
+        /// `#context_name.parameter_name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 

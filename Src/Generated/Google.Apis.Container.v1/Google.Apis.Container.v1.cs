@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200425 (1941)
+ *      <tr><th>API Rev<td>20200501 (1947)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -8257,8 +8257,8 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>Kubernetes taint is comprised of three fields: key, value, and effect. Effect can only be one of three
     /// types:  NoSchedule, PreferNoSchedule or NoExecute.
     ///
-    /// For more information, including usage and the valid values, see:
-    /// https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/</summary>
+    /// See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information,
+    /// including usage and the valid values.</summary>
     public class NodeTaint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Effect for taint.</summary>

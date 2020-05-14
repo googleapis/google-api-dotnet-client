@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/error-reporting/'>Error Reporting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200415 (1931)
+ *      <tr><th>API Rev<td>20200506 (1952)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/error-reporting/'>
  *              https://cloud.google.com/error-reporting/</a>
