@@ -17,6 +17,7 @@ limitations under the License.
 using Google;
 using Google.Apis.Http;
 using Google.Apis.Logging;
+using Google.Apis.Requests;
 using Google.Apis.Services;
 using Google.Apis.Storage.v1;
 using Google.Apis.Storage.v1.Data;
@@ -44,9 +45,8 @@ namespace IntegrationTests
             var memLog = new MemoryLogger(LogLevel.All, clock: new MockClock());
             client.HttpClient.MessageHandler.InstanceLogger = memLog;
             client.HttpClient.MessageHandler.LogEvents = ConfigurableMessageHandler.LogEventType.ResponseBody;
-            var req = client.Buckets.List(Helper.GetProjectId());
-
-            req.PrettyPrint = true;
+            var req = client.Buckets.List(Helper.GetProjectId()).Configure(req => req.PrettyPrint = true);
+                
             var resp = req.Execute();
             Assert.Equal(1, memLog.LogEntries.Count);
             var entry = memLog.LogEntries[0];
@@ -108,24 +108,28 @@ namespace IntegrationTests
             {
                 // Set a label with If-None-Match header. This should not change any labels
                 bucket.Labels = new Dictionary<string, string> { ["label"] = "1" };
-                var req1 = client.Buckets.Patch(bucket, bucket.Name);
-                req1.ETagAction = Google.Apis.ETagAction.IfNoneMatch;
+                var req1 = client.Buckets.Patch(bucket, bucket.Name)
+                    .Configure(req => req.ETagAction = Google.Apis.ETagAction.IfNoneMatch);
+
                 var ex1 = Assert.Throws<GoogleApiException>(() => req1.Execute());
+
                 Assert.Contains("[Precondition Failed", ex1.Message);
                 // Check that labels have not been added, and etag is the same
                 var bucket1 = client.Buckets.Get(bucket.Name).Execute();
                 Assert.Empty(bucket1.Labels.EmptyIfNull());
                 Assert.Equal(bucket.ETag, bucket1.ETag);
                 // Set a label with If-Match header. This should change labels
-                var req2 = client.Buckets.Patch(bucket, bucket.Name);
-                req2.ETagAction = Google.Apis.ETagAction.IfMatch;
-                var bucket2 = req2.Execute();
+                var bucket2 = client.Buckets.Patch(bucket, bucket.Name)
+                    .Configure(req => req.ETagAction = Google.Apis.ETagAction.IfMatch)
+                    .Execute();
+
                 // Check that labels have been added, and etag is different
                 Assert.NotEmpty(bucket2.Labels.EmptyIfNull());
                 Assert.NotEqual(bucket.ETag, bucket2.ETag);
                 // Set a label with If-Match header, with an out of date etag. This should not change any labels
-                var req3 = client.Buckets.Patch(bucket, bucket.Name);
-                req3.ETagAction = Google.Apis.ETagAction.IfMatch;
+                var req3 = client.Buckets.Patch(bucket, bucket.Name)
+                    .Configure(req => req.ETagAction = Google.Apis.ETagAction.IfMatch);
+                
                 var ex3 = Assert.Throws<GoogleApiException>(() => req3.Execute());
                 Assert.Contains("[Precondition Failed", ex3.Message);
             }
