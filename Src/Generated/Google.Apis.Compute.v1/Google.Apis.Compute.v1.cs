@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200331 (1916)
+ *      <tr><th>API Rev<td>20200427 (1943)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -36778,6 +36778,99 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string project, string region, string resource)
+        {
+            return new GetIamPolicyRequest(service, project, region, resource);
+        }
+
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/disks/{resource}/getIamPolicy"; }
+            }
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
         /// <summary>Creates a persistent regional disk in the specified project using the data included in the
         /// request.</summary>
         /// <param name="body">The body of the request.</param>
@@ -37293,6 +37386,105 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.v1.Data.RegionSetPolicyRequest body, string project, string region, string resource)
+        {
+            return new SetIamPolicyRequest(service, body, project, region, resource);
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.RegionSetPolicyRequest body, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.RegionSetPolicyRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/disks/{resource}/setIamPolicy"; }
+            }
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -63336,7 +63528,7 @@ namespace Google.Apis.Compute.v1.Data
         /// and the backends are instance groups. The named port must be defined on each backend instance group. This
         /// parameter has no meaning if the backends are NEGs.
         ///
-        /// Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Blaancing).</summary>
+        /// Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portName")]
         public virtual string PortName { get; set; } 
 
@@ -63705,9 +63897,15 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. NOTE: An unsatisfied condition will not allow
-        /// user access via current binding. Different bindings, including their conditions, are examined
-        /// independently.</summary>
+        /// <summary>The condition that is associated with this binding.
+        ///
+        /// If the condition evaluates to `true`, then this binding applies to the current request.
+        ///
+        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
+        /// different role binding might grant the same role to one or more of the members in this binding.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
@@ -64214,13 +64412,13 @@ namespace Google.Apis.Compute.v1.Data
         public virtual System.Collections.Generic.IList<string> AllowMethods { get; set; } 
 
         /// <summary>Specifies the regualar expression patterns that match allowed origins. For regular expression
-        /// grammar please see en.cppreference.com/w/cpp/regex/ecmascript An origin is allowed if it matches either
-        /// allow_origins or allow_origin_regex.</summary>
+        /// grammar please see en.cppreference.com/w/cpp/regex/ecmascript An origin is allowed if it matches either an
+        /// item in allowOrigins or an item in allowOriginRegexes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowOriginRegexes")]
         public virtual System.Collections.Generic.IList<string> AllowOriginRegexes { get; set; } 
 
         /// <summary>Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it
-        /// matches either allow_origins or allow_origin_regex.</summary>
+        /// matches either an item in allowOrigins or an item in allowOriginRegexes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowOrigins")]
         public virtual System.Collections.Generic.IList<string> AllowOrigins { get; set; } 
 
@@ -65274,10 +65472,16 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>External VPN gateway is the on-premises VPN gateway(s) or another cloud provider's VPN gateway that
-    /// connects to your Google Cloud VPN gateway. To create a highly available VPN from Google Cloud to your on-
-    /// premises side or another Cloud provider's VPN gateway, you must create a external VPN gateway resource in GCP,
-    /// which provides the information to GCP about your external VPN gateway.</summary>
+    /// <summary>Represents an external VPN gateway.
+    ///
+    /// External VPN gateway is the on-premises VPN gateway(s) or another cloud provider's VPN gateway that connects to
+    /// your Google Cloud VPN gateway.
+    ///
+    /// To create a highly available VPN from Google Cloud Platform to your VPN gateway or another cloud provider's VPN
+    /// gateway, you must create a external VPN gateway resource with information about the other gateway.
+    ///
+    /// For more information about using external VPN gateways, see  Creating an HA VPN gateway and tunnel pair to a
+    /// peer VPN. (== resource_for {$api_version}.externalVpnGateways ==)</summary>
     public class ExternalVpnGateway : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -65436,6 +65640,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; } 
 
+        /// <summary>The file type of source file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
         public virtual string FileType { get; set; } 
 
@@ -70994,10 +71199,6 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Write a Data Access (Gin) log</summary>
     public class LogConfigDataAccessOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether Gin logging should happen in a fail-closed manner at the caller. This is currently
-        /// supported in the LocalIAM implementation, Stubby C++, and Stubby Java. For Apps Framework, see go/af-audit-
-        /// logging#failclosed. TODO(b/77591626): Add support for Stubby Go. TODO(b/129671387): Add support for
-        /// Scaffolding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logMode")]
         public virtual string LogMode { get; set; } 
 
@@ -71011,6 +71212,10 @@ namespace Google.Apis.Compute.v1.Data
     /// information, read Machine Types. (== resource_for {$api_version}.machineTypes ==)</summary>
     public class MachineType : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>[Output Only] A list of accelerator configurations assigned to this machine type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
+        public virtual System.Collections.Generic.IList<MachineType.AcceleratorsData> Accelerators { get; set; } 
+
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
@@ -71077,6 +71282,18 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
         
+
+        public class AcceleratorsData
+        {
+            /// <summary>Number of accelerator cards exposed to the guest.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("guestAcceleratorCount")]
+            public virtual System.Nullable<int> GuestAcceleratorCount { get; set; } 
+
+            /// <summary>The accelerator type resource name, not a full URL, e.g. 'nvidia-tesla-k80'.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("guestAcceleratorType")]
+            public virtual string GuestAcceleratorType { get; set; } 
+
+        }    
 
         public class ScratchDisksData
         {
@@ -71611,8 +71828,10 @@ namespace Google.Apis.Compute.v1.Data
 
     /// <summary>Represents a collection of network endpoints.
     ///
-    /// For more information read Network endpoint groups overview. (== resource_for
-    /// {$api_version}.networkEndpointGroups ==) Next ID: 21</summary>
+    /// A network endpoint group (NEG) defines how a set of endpoints should be reached, whether they are reachable, and
+    /// where they are located. For more information about using NEGs, see  Setting up internet NEGs or  Setting up
+    /// zonal NEGs. (== resource_for {$api_version}.networkEndpointGroups ==) (== resource_for
+    /// {$api_version}.globalNetworkEndpointGroups ==)</summary>
     public class NetworkEndpointGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -71842,7 +72061,7 @@ namespace Google.Apis.Compute.v1.Data
     public class NetworkEndpointGroupsListEndpointsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional query parameter for showing the health status of each network endpoint. Valid options are
-        /// SKIP or SHOW. If you don't specifiy this parameter, the health status of network endpoints will not be
+        /// SKIP or SHOW. If you don't specify this parameter, the health status of network endpoints will not be
         /// provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthStatus")]
         public virtual string HealthStatus { get; set; } 
@@ -73680,7 +73899,12 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a PacketMirroring resource.</summary>
+    /// <summary>Represents a Packet Mirroring resource.
+    ///
+    /// Packet Mirroring clones the traffic of specified instances in your Virtual Private Cloud (VPC) network and
+    /// forwards it to a collector destination, such as an instance group of an internal TCP/UDP load balancer, for
+    /// analysis or examination. For more information about setting up Packet Mirroring, see Using Packet Mirroring. (==
+    /// resource_for {$api_version}.packetMirrorings ==)</summary>
     public class PacketMirroring : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The Forwarding Rule resource of type loadBalancingScheme=INTERNAL that will be used as collector
@@ -74186,15 +74410,17 @@ namespace Google.Apis.Compute.v1.Data
     /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
     /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
     ///
-    /// Optionally, a `binding` can specify a `condition`, which is a logical expression that allows access to a
-    /// resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the
-    /// request, the resource, or both.
+    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
+    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
+    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
+    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
+    /// /resource-policies).
     ///
     /// **JSON example:**
     ///
     /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
     /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
     ///
@@ -74258,7 +74484,10 @@ namespace Google.Apis.Compute.v1.Data
         /// `1` policy, and all of the conditions in the version `3` policy are lost.
         ///
         /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.</summary>
+        /// leave the field unset.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -76902,7 +77131,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Sets the scheduling options for an Instance. NextID: 10</summary>
+    /// <summary>Sets the scheduling options for an Instance. NextID: 11</summary>
     public class Scheduling : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies whether the instance should be automatically restarted if it is terminated by Compute
@@ -77235,15 +77464,15 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>A set of Shielded Instance options.</summary>
     public class ShieldedInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Defines whether the instance has integrity monitoring enabled.</summary>
+        /// <summary>Defines whether the instance has integrity monitoring enabled. Enabled by default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableIntegrityMonitoring")]
         public virtual System.Nullable<bool> EnableIntegrityMonitoring { get; set; } 
 
-        /// <summary>Defines whether the instance has Secure Boot enabled.</summary>
+        /// <summary>Defines whether the instance has Secure Boot enabled. Disabled by default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSecureBoot")]
         public virtual System.Nullable<bool> EnableSecureBoot { get; set; } 
 
-        /// <summary>Defines whether the instance has the vTPM enabled.</summary>
+        /// <summary>Defines whether the instance has the vTPM enabled. Enabled by default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableVtpm")]
         public virtual System.Nullable<bool> EnableVtpm { get; set; } 
 
@@ -78071,7 +78300,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Description { get; set; } 
 
         /// <summary>Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will
-        /// not appear in get listings. If not set the default behavior is to disable flow logging.</summary>
+        /// not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't
+        /// supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableFlowLogs")]
         public virtual System.Nullable<bool> EnableFlowLogs { get; set; } 
 
@@ -78131,7 +78361,8 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>The purpose of the resource. This field can be either PRIVATE_RFC_1918 or
         /// INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-
         /// created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose
-        /// defaults to PRIVATE_RFC_1918.</summary>
+        /// defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to
+        /// INTERNAL_HTTPS_LOAD_BALANCER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
         public virtual string Purpose { get; set; } 
 
@@ -80896,7 +81127,12 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>Represents a VPN gateway resource. Next ID: 13</summary>
+    /// <summary>Represents a HA VPN gateway.
+    ///
+    /// HA VPN is a high-availability (HA) Cloud VPN solution that lets you securely connect your on-premises network to
+    /// your Google Cloud Virtual Private Cloud network through an IPsec VPN connection in a single region. For more
+    /// information about Cloud HA VPN solutions, see  Cloud VPN topologies . (== resource_for
+    /// {$api_version}.vpnGateways ==)</summary>
     public class VpnGateway : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>

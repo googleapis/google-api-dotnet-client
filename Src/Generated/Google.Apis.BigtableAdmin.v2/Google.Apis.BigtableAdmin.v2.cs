@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigtable/'>Cloud Bigtable Admin API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200421 (1937)
+ *      <tr><th>API Rev<td>20200424 (1940)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigtable/'>
  *              https://cloud.google.com/bigtable/</a>
@@ -526,7 +526,7 @@ namespace Google.Apis.BigtableAdmin.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^operations/projects/.+$",
+                                Pattern = @"^operations/projects/.*$",
                             });
                         RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
@@ -625,7 +625,7 @@ namespace Google.Apis.BigtableAdmin.v2
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^operations/.+$",
+                        Pattern = @"^operations/.*$",
                     });
             }
 
@@ -689,7 +689,7 @@ namespace Google.Apis.BigtableAdmin.v2
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^operations/.+$",
+                        Pattern = @"^operations/.*$",
                     });
             }
 
@@ -751,7 +751,7 @@ namespace Google.Apis.BigtableAdmin.v2
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^operations/.+$",
+                        Pattern = @"^operations/.*$",
                     });
             }
 
@@ -1303,8 +1303,8 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
 
 
-                    /// <summary>Gets the access control policy for a Table or Backup resource. Returns an empty policy
-                    /// if the resource exists but does not have a policy set.</summary>
+                    /// <summary>Gets the access control policy for a Table resource. Returns an empty policy if the
+                    /// resource exists but does not have a policy set.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
                     /// documentation for the appropriate value for this field.</param>
@@ -1313,8 +1313,8 @@ namespace Google.Apis.BigtableAdmin.v2
                         return new GetIamPolicyRequest(service, body, resource);
                     }
 
-                    /// <summary>Gets the access control policy for a Table or Backup resource. Returns an empty policy
-                    /// if the resource exists but does not have a policy set.</summary>
+                    /// <summary>Gets the access control policy for a Table resource. Returns an empty policy if the
+                    /// resource exists but does not have a policy set.</summary>
                     public class GetIamPolicyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Policy>
                     {
                         /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -1375,7 +1375,7 @@ namespace Google.Apis.BigtableAdmin.v2
 
                     }
 
-                    /// <summary>Sets the access control policy on a Table or Backup resource. Replaces any existing
+                    /// <summary>Sets the access control policy on a Table resource. Replaces any existing
                     /// policy.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
@@ -1385,7 +1385,7 @@ namespace Google.Apis.BigtableAdmin.v2
                         return new SetIamPolicyRequest(service, body, resource);
                     }
 
-                    /// <summary>Sets the access control policy on a Table or Backup resource. Replaces any existing
+                    /// <summary>Sets the access control policy on a Table resource. Replaces any existing
                     /// policy.</summary>
                     public class SetIamPolicyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Policy>
                     {
@@ -2342,8 +2342,8 @@ namespace Google.Apis.BigtableAdmin.v2
 
                 }
 
-                /// <summary>Gets the access control policy for a Table or Backup resource. Returns an empty policy if
-                /// the resource exists but does not have a policy set.</summary>
+                /// <summary>Gets the access control policy for a Table resource. Returns an empty policy if the
+                /// resource exists but does not have a policy set.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -2352,8 +2352,8 @@ namespace Google.Apis.BigtableAdmin.v2
                     return new GetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Gets the access control policy for a Table or Backup resource. Returns an empty policy if
-                /// the resource exists but does not have a policy set.</summary>
+                /// <summary>Gets the access control policy for a Table resource. Returns an empty policy if the
+                /// resource exists but does not have a policy set.</summary>
                 public class GetIamPolicyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Policy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -2613,8 +2613,7 @@ namespace Google.Apis.BigtableAdmin.v2
 
                 }
 
-                /// <summary>Sets the access control policy on a Table or Backup resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on a Table resource. Replaces any existing policy.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -2623,8 +2622,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on a Table or Backup resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on a Table resource. Replaces any existing policy.</summary>
                 public class SetIamPolicyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>

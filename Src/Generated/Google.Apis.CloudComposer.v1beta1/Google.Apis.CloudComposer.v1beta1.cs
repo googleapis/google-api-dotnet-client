@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/composer/'>Cloud Composer API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200421 (1937)
+ *      <tr><th>API Rev<td>20200505 (1951)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/composer/'>
  *              https://cloud.google.com/composer/</a>
@@ -756,6 +756,9 @@ namespace Google.Apis.CloudComposer.v1beta1
                     /// config.nodeCount Horizontally scale the number of nodes in the environment. An integer greater
                     /// than or equal to 3 must be provided in the `config.nodeCount` field.
                     ///
+                    /// config.webServerNetworkAccessControl Replace the environment's current
+                    /// WebServerNetworkAccessControl.
+                    ///
                     /// config.softwareConfig.airflowConfigOverrides Replace all Apache Airflow config overrides. If a
                     /// replacement config overrides map is not included in `environment`, all config overrides are
                     /// cleared. It is an error to provide both this mask and a mask specifying one or more individual
@@ -1236,6 +1239,18 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The configuration of Cloud SQL instance that is used by the Apache Airflow software.</summary>
+    public class DatabaseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Cloud SQL tier used by Airflow database. If not specified, db-n1-standard-2 will be
+        /// used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance:
     ///
@@ -1308,6 +1323,11 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dagGcsPrefix")]
         public virtual string DagGcsPrefix { get; set; } 
 
+        /// <summary>Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow
+        /// software.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseConfig")]
+        public virtual DatabaseConfig DatabaseConfig { get; set; } 
+
         /// <summary>Output only. The Kubernetes Engine cluster used to run this environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeCluster")]
         public virtual string GkeCluster { get; set; } 
@@ -1328,6 +1348,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>The configuration settings for software inside the environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
         public virtual SoftwareConfig SoftwareConfig { get; set; } 
+
+        /// <summary>Optional. The configuration settings for the Airflow web server App Engine instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webServerConfig")]
+        public virtual WebServerConfig WebServerConfig { get; set; } 
 
         /// <summary>Optional. The network-level access control policy for the Airflow web server. If unspecified, no
         /// network-level access restrictions will be applied.</summary>
@@ -1750,6 +1774,20 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The configuration settings for the Airflow web server App Engine instance.</summary>
+    public class WebServerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Machine type on which Airflow web server is running. For example:
+        /// composer-n1-webserver-2, composer-n1-webserver-4, composer-n1-webserver-8. If not specified,
+        /// composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server
+        /// parameters were manually changed to a non-standard values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

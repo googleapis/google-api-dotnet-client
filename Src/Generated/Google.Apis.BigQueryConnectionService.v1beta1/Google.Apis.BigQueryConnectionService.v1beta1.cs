@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Connection API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200430 (1946)
+ *      <tr><th>API Rev<td>20200508 (1954)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>

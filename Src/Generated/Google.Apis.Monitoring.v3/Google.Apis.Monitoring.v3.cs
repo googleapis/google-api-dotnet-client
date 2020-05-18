@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Cloud Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200502 (1948)
+ *      <tr><th>API Rev<td>20200509 (1955)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -3422,7 +3422,7 @@ namespace Google.Apis.Monitoring.v3
 
             }
 
-            /// <summary>Queries time series using the time series query language. This method does not require a
+            /// <summary>Queries time series using Monitoring Query Language. This method does not require a
             /// Workspace.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Required. The project on which to execute the request. The format is:
@@ -3432,7 +3432,7 @@ namespace Google.Apis.Monitoring.v3
                 return new QueryRequest(service, body, name);
             }
 
-            /// <summary>Queries time series using the time series query language. This method does not require a
+            /// <summary>Queries time series using Monitoring Query Language. This method does not require a
             /// Workspace.</summary>
             public class QueryRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.QueryTimeSeriesResponse>
             {

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v3p1beta1
- *      <tr><th>API Rev<td>20200506 (1952)
+ *      <tr><th>API Rev<td>20200505 (1951)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -2398,8 +2398,9 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1.Data
     /// <summary>Custom attribute values that are either filterable or non-filterable.</summary>
     public class CustomAttribute : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. If the `filterable` flag is true, custom field values are searchable. If false, values
-        /// are not searchable.
+        /// <summary>Optional. If the `filterable` flag is true, the custom field values may be used for custom
+        /// attribute filters JobQuery.custom_attribute_filter. If false, these values may not be used for custom
+        /// attribute filters.
         ///
         /// Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterable")]

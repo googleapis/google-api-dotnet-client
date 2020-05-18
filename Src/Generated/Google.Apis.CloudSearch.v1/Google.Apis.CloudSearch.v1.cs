@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-search/docs/guides/'>Cloud Search API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200421 (1937)
+ *      <tr><th>API Rev<td>20200505 (1951)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-search/docs/guides/'>
  *              https://developers.google.com/cloud-search/docs/guides/</a>
@@ -5669,9 +5669,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<int> Count { get; set; } 
 
-        /// <summary>Percent of results that match the bucket value. This value is between (0-100]. Percentages are
-        /// returned for all searches, but are an estimate. Because percentages are always returned, you should render
-        /// percentages instead of counts.</summary>
+        /// <summary>Percent of results that match the bucket value. The returned value is between (0-100], and is
+        /// rounded down to an integer if fractional. If the value is not explicitly returned, it represents a
+        /// percentage value that rounds to 0. Percentages are returned for all searches, but are an estimate. Because
+        /// percentages are always returned, you should render percentages instead of counts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percentage")]
         public virtual System.Nullable<int> Percentage { get; set; } 
 
@@ -6559,7 +6560,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         /// <summary>The user friendly label to display in the search result to indicate the type of the item. This is
         /// OPTIONAL; if not provided, an object label isn't displayed on the context line of the search results. The
-        /// maximum length is 32 characters.</summary>
+        /// maximum length is 64 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectDisplayLabel")]
         public virtual string ObjectDisplayLabel { get; set; } 
 
@@ -6864,7 +6865,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// property is part of the object display options. For example, if the property value is '1', the value by
         /// itself may not be useful context for the user. If the display name given was 'priority', then the user sees
         /// 'priority : 1' in the search results which provides clear context to search users. This is OPTIONAL; if not
-        /// given, only the property values are displayed. The maximum length is 32 characters.</summary>
+        /// given, only the property values are displayed. The maximum length is 64 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayLabel")]
         public virtual string DisplayLabel { get; set; } 
 

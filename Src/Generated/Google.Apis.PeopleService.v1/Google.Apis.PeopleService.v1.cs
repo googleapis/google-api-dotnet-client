@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200512 (1958)
+ *      <tr><th>API Rev<td>20200513 (1959)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -1019,7 +1019,7 @@ namespace Google.Apis.PeopleService.v1
                 public virtual string ResourceName { get; private set; }
 
                 /// <summary>Optional. The number of connections to include in the response. Valid values are between 1
-                /// and 2000, inclusive. Defaults to 100 if not set or set to 0.</summary>
+                /// and 1000, inclusive. Defaults to 100 if not set or set to 0.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
