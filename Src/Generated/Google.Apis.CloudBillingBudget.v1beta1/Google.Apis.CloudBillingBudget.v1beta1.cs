@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/billing/docs/how-to/budget-api-overview'>Cloud Billing Budget API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200509 (1955)
+ *      <tr><th>API Rev<td>20200516 (1962)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/billing/docs/how-to/budget-api-overview'>
  *              https://cloud.google.com/billing/docs/how-to/budget-api-overview</a>
@@ -848,6 +848,12 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creditTypesTreatment")]
         public virtual string CreditTypesTreatment { get; set; } 
 
+        /// <summary>Optional. A single label and value pair specifying that usage from only this set of labeled
+        /// resources should be included in the budget. Multiple entries or multiple values per entry are not allowed.
+        /// If omitted, the report will include all labeled and unlabeled usage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,System.Collections.Generic.IList<object>> Labels { get; set; } 
+
         /// <summary>Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this
         /// set of projects should be included in the budget. If omitted, the report will include all usage for the
         /// billing account, regardless of which project the usage occurred on. Only zero or one project can be
@@ -861,6 +867,13 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
         /// tos/catalog-api.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<string> Services { get; set; } 
+
+        /// <summary>Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying that usage
+        /// from only this set of subaccounts should be included in the budget. If a subaccount is set to the name of
+        /// the master account, usage from the master account will be included. If omitted, the report will include
+        /// usage from the master account and all subaccounts, if they exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subaccounts")]
+        public virtual System.Collections.Generic.IList<string> Subaccounts { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

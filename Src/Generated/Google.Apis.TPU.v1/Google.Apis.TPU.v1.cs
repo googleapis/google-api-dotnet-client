@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tpu/'>Cloud TPU API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200318 (1903)
+ *      <tr><th>API Rev<td>20200518 (1964)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tpu/'>
  *              https://cloud.google.com/tpu/</a>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>Security Command Center API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200410 (1926)
+ *      <tr><th>API Rev<td>20200519 (1965)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview</a>
@@ -2593,9 +2593,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. NOTE: An unsatisfied condition will not allow
-        /// user access via current binding. Different bindings, including their conditions, are examined
-        /// independently.</summary>
+        /// <summary>The condition that is associated with this binding.
+        ///
+        /// If the condition evaluates to `true`, then this binding applies to the current request.
+        ///
+        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
+        /// different role binding might grant the same role to one or more of the members in this binding.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
@@ -2784,8 +2790,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
     /// <summary>Request message for `GetIamPolicy` method.</summary>
     public class GetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. This field is only
-        /// used by Cloud IAM.</summary>
+        /// <summary>OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual GetPolicyOptions Options { get; set; } 
 
@@ -2801,7 +2806,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
         ///
         /// Requests for policies with any conditional bindings must specify version 3. Policies without any conditional
-        /// bindings may specify any valid value or leave the field unset.</summary>
+        /// bindings may specify any valid value or leave the field unset.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
 
@@ -3537,15 +3545,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
     /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
     /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
     ///
-    /// Optionally, a `binding` can specify a `condition`, which is a logical expression that allows access to a
-    /// resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the
-    /// request, the resource, or both.
+    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
+    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
+    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
+    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
+    /// /resource-policies).
     ///
     /// **JSON example:**
     ///
     /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
     /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
     ///
@@ -3598,7 +3608,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// `1` policy, and all of the conditions in the version `3` policy are lost.
         ///
         /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.</summary>
+        /// leave the field unset.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -3694,8 +3707,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual Policy Policy { get; set; } 
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, the following default mask is used: paths: "bindings, etag" This
-        /// field is only used by Cloud IAM.</summary>
+        /// will be modified. If no mask is provided, the following default mask is used:
+        ///
+        /// `paths: "bindings, etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 

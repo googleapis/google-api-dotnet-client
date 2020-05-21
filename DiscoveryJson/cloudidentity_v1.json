@@ -512,7 +512,7 @@
    }
   }
  }, 
- "revision": "20200512", 
+ "revision": "20200516", 
  "rootUrl": "https://cloudidentity.googleapis.com/", 
  "schemas": {
   "EntityKey": {

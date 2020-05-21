@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/binary-authorization/'>Binary Authorization API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200508 (1954)
+ *      <tr><th>API Rev<td>20200515 (1961)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/binary-authorization/'>
  *              https://cloud.google.com/binary-authorization/</a>
@@ -1727,10 +1727,11 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("admissionWhitelistPatterns")]
         public virtual System.Collections.Generic.IList<AdmissionWhitelistPattern> AdmissionWhitelistPatterns { get; set; } 
 
-        /// <summary>Optional. Per-cluster admission rules. Cluster spec format: `location.clusterId`. There can be at
-        /// most one admission rule per cluster spec. A `location` is either a compute zone (e.g. us-central1-a) or a
-        /// region (e.g. us-central1). For `clusterId` syntax restrictions see https://cloud.google.com/container-
-        /// engine/reference/rest/v1/projects.zones.clusters.</summary>
+        /// <summary>Optional. LINT.IfChange(cluster_regex) Per-cluster admission rules. Cluster spec format:
+        /// `location.clusterId`. There can be at most one admission rule per cluster spec. A `location` is either a
+        /// compute zone (e.g. us-central1-a) or a region (e.g. us-central1). For `clusterId` syntax restrictions see
+        /// https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters. LINT.ThenChange(//depot
+        /// /google3/cloud/console/web/binary_authorization/api/models/admission_rule_type.ts:cluster_regex)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterAdmissionRules")]
         public virtual System.Collections.Generic.IDictionary<string,AdmissionRule> ClusterAdmissionRules { get; set; } 
 

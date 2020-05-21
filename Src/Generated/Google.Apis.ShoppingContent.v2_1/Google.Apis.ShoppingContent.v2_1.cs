@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2.1
- *      <tr><th>API Rev<td>20200508 (1954)
+ *      <tr><th>API Rev<td>20200512 (1958)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -15985,6 +15985,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The merchant provided order ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantOrderId")]
         public virtual string MerchantOrderId { get; set; } 
+
+        /// <summary>The identifier of the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderItemId")]
+        public virtual string OrderItemId { get; set; } 
 
         /// <summary>The unique ID of the settlement transaction entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("settlementEntryId")]

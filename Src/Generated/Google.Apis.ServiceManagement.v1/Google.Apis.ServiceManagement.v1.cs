@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200508 (1954)
+ *      <tr><th>API Rev<td>20200515 (1961)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -2770,32 +2770,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// ids for more details on the supported values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; } 
-
-        /// <summary>Unimplemented. Do not use.
-        ///
-        /// The new name the selected proto elements should be renamed to.
-        ///
-        /// The package, the service and the method can all be renamed. The backend server should implement the renamed
-        /// proto. However, clients should call the original method, and ESF routes the traffic to the renamed method.
-        ///
-        /// HTTP clients should call the URL mapped to the original method. gRPC and Stubby clients should call the
-        /// original method with package name.
-        ///
-        /// For legacy reasons, ESF allows Stubby clients to call with the short name (without the package name).
-        /// However, for API Versioning(or multiple methods mapped to the same short name), all Stubby clients must call
-        /// the method's full name with the package name, otherwise the first one (selector) wins.
-        ///
-        /// If this `rename_to` is specified with a trailing `*`, the `selector` must be specified with a trailing `*`
-        /// as well. The all element short names matched by the `*` in the selector will be kept in the `rename_to`.
-        ///
-        /// For example, rename_rules: - selector: |- google.example.library.v1.* rename_to: google.example.library.*
-        ///
-        /// The selector matches `google.example.library.v1.Library.CreateShelf` and
-        /// `google.example.library.v1.Library.CreateBook`, they will be renamed to
-        /// `google.example.library.Library.CreateShelf` and `google.example.library.Library.CreateBook`. It essentially
-        /// renames the proto package name section of the matched proto service and methods.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("renameTo")]
-        public virtual string RenameTo { get; set; } 
 
         /// <summary>Selects the methods to which this rule applies.
         ///

@@ -19,24 +19,24 @@
 
 /**
  * \brief
- *   Verified Access API Version v1
+ *   Chrome Verified Access API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://www.google.com/work/chrome/'>Verified Access API</a>
+ *          <td><a href='https://developers.google.com/chrome/verified-access'>Chrome Verified Access API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190718 (1659)
+ *      <tr><th>API Rev<td>20200512 (1958)
  *      <tr><th>API Docs
- *          <td><a href='https://www.google.com/work/chrome/'>
- *              https://www.google.com/work/chrome/</a>
+ *          <td><a href='https://developers.google.com/chrome/verified-access'>
+ *              https://developers.google.com/chrome/verified-access</a>
  *      <tr><th>Discovery Name<td>verifiedaccess
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Verified Access API can be found at
- * <a href='https://www.google.com/work/chrome/'>https://www.google.com/work/chrome/</a>.
+ * The complete API documentation for using Chrome Verified Access API can be found at
+ * <a href='https://developers.google.com/chrome/verified-access'>https://developers.google.com/chrome/verified-access</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -109,7 +109,7 @@ namespace Google.Apis.Verifiedaccess.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Verified Access API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Chrome Verified Access API.</summary>
         public class Scope
         {
             /// <summary>Verify your enterprise credentials</summary>
@@ -117,7 +117,7 @@ namespace Google.Apis.Verifiedaccess.v1
 
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Verified Access API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Chrome Verified Access API.</summary>
         public static class ScopeConstants
         {
             /// <summary>Verify your enterprise credentials</summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/identity/'>Cloud Identity API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200512 (1958)
+ *      <tr><th>API Rev<td>20200516 (1962)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/identity/'>
  *              https://cloud.google.com/identity/</a>
@@ -1804,6 +1804,10 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>Compromised State of the DeviceUser object</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compromisedState")]
         public virtual string CompromisedState { get; set; } 
+
+        /// <summary>When the user first signed in to the device</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
 
         /// <summary>Output only. Most recent time when user registered with this service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstSyncTime")]

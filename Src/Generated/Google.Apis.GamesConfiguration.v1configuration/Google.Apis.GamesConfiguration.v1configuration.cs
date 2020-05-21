@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/'>Google Play Game Services Publishing API</a>
  *      <tr><th>API Version<td>v1configuration
- *      <tr><th>API Rev<td>20200515 (1961)
+ *      <tr><th>API Rev<td>20200519 (1965)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/'>
  *              https://developers.google.com/games/</a>
@@ -101,13 +101,13 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch"; }
+            get { return "https://www.googleapis.com/batch/games/v1configuration"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch"; }
+            get { return "batch/games/v1configuration"; }
         }
         #endif
 

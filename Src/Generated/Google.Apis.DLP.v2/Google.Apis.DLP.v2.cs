@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200509 (1955)
+ *      <tr><th>API Rev<td>20200516 (1962)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -397,9 +397,13 @@ namespace Google.Apis.DLP.v2
             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string LanguageCode { get; set; }
 
-            /// <summary>The geographic location to list info types. Reserved for future extensions.</summary>
+            /// <summary>Deprecated. This field has no effect.</summary>
             [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string LocationId { get; set; }
+
+            /// <summary>The parent resource name, for example locations/{location_id}.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -452,6 +456,15 @@ namespace Google.Apis.DLP.v2
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -499,10 +512,10 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>Returns a list of the sensitive information types that the DLP API supports. See
             /// https://cloud.google.com/dlp/docs/infotypes-reference to learn more.</summary>
-            /// <param name="locationId">The geographic location to list info types. Reserved for future extensions.</param>
-            public virtual ListRequest List(string locationId)
+            /// <param name="parent">The parent resource name, for example locations/{location_id}.</param>
+            public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, locationId);
+                return new ListRequest(service, parent);
             }
 
             /// <summary>Returns a list of the sensitive information types that the DLP API supports. See
@@ -510,17 +523,17 @@ namespace Google.Apis.DLP.v2
             public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInfoTypesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string locationId)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
                     : base(service)
                 {
-                    LocationId = locationId;
+                    Parent = parent;
                     InitParameters();
                 }
 
 
-                /// <summary>The geographic location to list info types. Reserved for future extensions.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string LocationId { get; private set; }
+                /// <summary>The parent resource name, for example locations/{location_id}.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
 
                 /// <summary>filter to only return infoTypes supported by certain parts of the API. Defaults to
                 /// supported_by=INSPECT.</summary>
@@ -531,6 +544,10 @@ namespace Google.Apis.DLP.v2
                 /// strings are not available, en-US strings will be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LanguageCode { get; set; }
+
+                /// <summary>Deprecated. This field has no effect.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string LocationId { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -548,7 +565,7 @@ namespace Google.Apis.DLP.v2
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2/locations/{locationId}/infoTypes"; }
+                    get { return "v2/{+parent}/infoTypes"; }
                 }
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -557,13 +574,13 @@ namespace Google.Apis.DLP.v2
                     base.InitParameters();
 
                     RequestParameters.Add(
-                        "locationId", new Google.Apis.Discovery.Parameter
+                        "parent", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "locationId",
+                            Name = "parent",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = null,
+                            Pattern = @"^locations/[^/]+$",
                         });
                     RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
@@ -578,6 +595,15 @@ namespace Google.Apis.DLP.v2
                         "languageCode", new Google.Apis.Discovery.Parameter
                         {
                             Name = "languageCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "locationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "locationId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -865,8 +891,7 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The geographic location where deidentifications templates will be retrieved from. Use `-`
-                /// for all locations. Reserved for future extensions.</summary>
+                /// <summary>Deprecated. This field has no effect.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LocationId { get; set; }
 
@@ -1294,8 +1319,7 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The geographic location where inspection templates will be retrieved from. Use `-` for all
-                /// locations. Reserved for future extensions.</summary>
+                /// <summary>Deprecated. This field has no effect.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LocationId { get; set; }
 
@@ -1525,11 +1549,9 @@ namespace Google.Apis.DLP.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
                 /// id.</param>
-                /// <param name="locationId">The geographic location to store the deidentification template.
-                /// Reserved for future extensions.</param>
-                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent, string locationId)
+                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent, locationId);
+                    return new CreateRequest(service, body, parent);
                 }
 
                 /// <summary>Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying
@@ -1538,11 +1560,10 @@ namespace Google.Apis.DLP.v2
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent, string locationId)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent)
                         : base(service)
                     {
                         Parent = parent;
-                        LocationId = locationId;
                         Body = body;
                         InitParameters();
                     }
@@ -1552,11 +1573,6 @@ namespace Google.Apis.DLP.v2
                     /// /my-org-id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
-                    /// <summary>The geographic location to store the deidentification template. Reserved for future
-                    /// extensions.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationId { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1580,7 +1596,7 @@ namespace Google.Apis.DLP.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+parent}/locations/{locationId}/deidentifyTemplates"; }
+                        get { return "v2/{+parent}/deidentifyTemplates"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -1595,16 +1611,7 @@ namespace Google.Apis.DLP.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^organizations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "locationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+$",
                             });
                     }
 
@@ -1746,11 +1753,9 @@ namespace Google.Apis.DLP.v2
                 /// learn more.</summary>
                 /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
                 /// id.</param>
-                /// <param name="locationId">The geographic location where deidentifications templates will be
-                /// retrieved from. Use `-` for all locations. Reserved for future extensions.</param>
-                public virtual ListRequest List(string parent, string locationId)
+                public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent, locationId);
+                    return new ListRequest(service, parent);
                 }
 
                 /// <summary>Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to
@@ -1758,11 +1763,10 @@ namespace Google.Apis.DLP.v2
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent, string locationId)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
                         : base(service)
                     {
                         Parent = parent;
-                        LocationId = locationId;
                         InitParameters();
                     }
 
@@ -1772,10 +1776,9 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The geographic location where deidentifications templates will be retrieved from. Use
-                    /// `-` for all locations. Reserved for future extensions.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationId { get; private set; }
+                    /// <summary>Deprecated. This field has no effect.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LocationId { get; set; }
 
                     /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
                     /// list is case-insensitive, default sorting order is ascending, redundant space characters are
@@ -1817,7 +1820,7 @@ namespace Google.Apis.DLP.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+parent}/locations/{locationId}/deidentifyTemplates"; }
+                        get { return "v2/{+parent}/deidentifyTemplates"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1832,14 +1835,14 @@ namespace Google.Apis.DLP.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^organizations/[^/]+$",
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
                             "locationId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "locationId",
-                                IsRequired = true,
-                                ParameterType = "path",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -1978,11 +1981,9 @@ namespace Google.Apis.DLP.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
                 /// id.</param>
-                /// <param name="locationId">The geographic location to store the inspection template. Reserved for
-                /// future extensions.</param>
-                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent, string locationId)
+                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent, locationId);
+                    return new CreateRequest(service, body, parent);
                 }
 
                 /// <summary>Creates an InspectTemplate for re-using frequently used configuration for inspecting
@@ -1991,11 +1992,10 @@ namespace Google.Apis.DLP.v2
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent, string locationId)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent)
                         : base(service)
                     {
                         Parent = parent;
-                        LocationId = locationId;
                         Body = body;
                         InitParameters();
                     }
@@ -2005,11 +2005,6 @@ namespace Google.Apis.DLP.v2
                     /// /my-org-id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
-                    /// <summary>The geographic location to store the inspection template. Reserved for future
-                    /// extensions.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationId { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -2033,7 +2028,7 @@ namespace Google.Apis.DLP.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+parent}/locations/{locationId}/inspectTemplates"; }
+                        get { return "v2/{+parent}/inspectTemplates"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -2048,16 +2043,7 @@ namespace Google.Apis.DLP.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^organizations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "locationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+$",
                             });
                     }
 
@@ -2197,11 +2183,9 @@ namespace Google.Apis.DLP.v2
                 /// more.</summary>
                 /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
                 /// id.</param>
-                /// <param name="locationId">The geographic location where inspection templates will be retrieved
-                /// from. Use `-` for all locations. Reserved for future extensions.</param>
-                public virtual ListRequest List(string parent, string locationId)
+                public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent, locationId);
+                    return new ListRequest(service, parent);
                 }
 
                 /// <summary>Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn
@@ -2209,11 +2193,10 @@ namespace Google.Apis.DLP.v2
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInspectTemplatesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent, string locationId)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
                         : base(service)
                     {
                         Parent = parent;
-                        LocationId = locationId;
                         InitParameters();
                     }
 
@@ -2223,10 +2206,9 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The geographic location where inspection templates will be retrieved from. Use `-` for
-                    /// all locations. Reserved for future extensions.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationId { get; private set; }
+                    /// <summary>Deprecated. This field has no effect.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LocationId { get; set; }
 
                     /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
                     /// list is case-insensitive, default sorting order is ascending, redundant space characters are
@@ -2268,7 +2250,7 @@ namespace Google.Apis.DLP.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+parent}/locations/{locationId}/inspectTemplates"; }
+                        get { return "v2/{+parent}/inspectTemplates"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -2283,14 +2265,14 @@ namespace Google.Apis.DLP.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^organizations/[^/]+$",
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
                             "locationId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "locationId",
-                                IsRequired = true,
-                                ParameterType = "path",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -2427,11 +2409,9 @@ namespace Google.Apis.DLP.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
                 /// id.</param>
-                /// <param name="locationId">The geographic location to store the stored infoType. Reserved for
-                /// future extensions.</param>
-                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent, string locationId)
+                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent, locationId);
+                    return new CreateRequest(service, body, parent);
                 }
 
                 /// <summary>Creates a pre-built stored infoType to be used for inspection. See
@@ -2439,11 +2419,10 @@ namespace Google.Apis.DLP.v2
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent, string locationId)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
                         : base(service)
                     {
                         Parent = parent;
-                        LocationId = locationId;
                         Body = body;
                         InitParameters();
                     }
@@ -2453,11 +2432,6 @@ namespace Google.Apis.DLP.v2
                     /// /my-org-id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
-                    /// <summary>The geographic location to store the stored infoType. Reserved for future
-                    /// extensions.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationId { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -2481,7 +2455,7 @@ namespace Google.Apis.DLP.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+parent}/locations/{locationId}/storedInfoTypes"; }
+                        get { return "v2/{+parent}/storedInfoTypes"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -2496,16 +2470,7 @@ namespace Google.Apis.DLP.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^organizations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "locationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+$",
                             });
                     }
 
@@ -2645,11 +2610,9 @@ namespace Google.Apis.DLP.v2
                 /// learn more.</summary>
                 /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
                 /// id.</param>
-                /// <param name="locationId">The geographic location where stored infoTypes will be retrieved from.
-                /// Use `-` for all locations. Reserved for future extensions.</param>
-                public virtual ListRequest List(string parent, string locationId)
+                public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent, locationId);
+                    return new ListRequest(service, parent);
                 }
 
                 /// <summary>Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
@@ -2657,11 +2620,10 @@ namespace Google.Apis.DLP.v2
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListStoredInfoTypesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent, string locationId)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
                         : base(service)
                     {
                         Parent = parent;
-                        LocationId = locationId;
                         InitParameters();
                     }
 
@@ -2671,10 +2633,9 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The geographic location where stored infoTypes will be retrieved from. Use `-` for all
-                    /// locations. Reserved for future extensions.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationId { get; private set; }
+                    /// <summary>Deprecated. This field has no effect.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LocationId { get; set; }
 
                     /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
                     /// list is case-insensitive, default sorting order is ascending, redundant space characters are
@@ -2716,7 +2677,7 @@ namespace Google.Apis.DLP.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+parent}/locations/{locationId}/storedInfoTypes"; }
+                        get { return "v2/{+parent}/storedInfoTypes"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -2731,14 +2692,14 @@ namespace Google.Apis.DLP.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^organizations/[^/]+$",
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
                             "locationId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "locationId",
-                                IsRequired = true,
-                                ParameterType = "path",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -3102,8 +3063,7 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The geographic location where stored infoTypes will be retrieved from. Use `-` for all
-                /// locations. Reserved for future extensions.</summary>
+                /// <summary>Deprecated. This field has no effect.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LocationId { get; set; }
 
@@ -3819,8 +3779,7 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The geographic location where deidentifications templates will be retrieved from. Use `-`
-                /// for all locations. Reserved for future extensions.</summary>
+                /// <summary>Deprecated. This field has no effect.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LocationId { get; set; }
 
@@ -4348,8 +4307,7 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>The geographic location where jobs will be retrieved from. Use `-` for all locations.
-                /// Reserved for future extensions.</summary>
+                /// <summary>Deprecated. This field has no effect.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LocationId { get; set; }
 
@@ -4837,8 +4795,7 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The geographic location where inspection templates will be retrieved from. Use `-` for all
-                /// locations. Reserved for future extensions.</summary>
+                /// <summary>Deprecated. This field has no effect.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LocationId { get; set; }
 
@@ -5353,8 +5310,7 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>The geographic location where job triggers will be retrieved from. Use `-` for all
-                /// locations. Reserved for future extensions.</summary>
+                /// <summary>Deprecated. This field has no effect.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LocationId { get; set; }
 
@@ -5599,11 +5555,9 @@ namespace Google.Apis.DLP.v2
                 /// detectors are updated.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">The parent resource name, for example projects/my-project-id.</param>
-                /// <param
-                /// name="locationId">The geographic location to process de-identification. Reserved for future extensions.</param>
-                public virtual DeidentifyRequest Deidentify(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyContentRequest body, string parent, string locationId)
+                public virtual DeidentifyRequest Deidentify(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyContentRequest body, string parent)
                 {
-                    return new DeidentifyRequest(service, body, parent, locationId);
+                    return new DeidentifyRequest(service, body, parent);
                 }
 
                 /// <summary>De-identifies potentially sensitive info from a ContentItem. This method has limits on
@@ -5616,11 +5570,10 @@ namespace Google.Apis.DLP.v2
                 public class DeidentifyRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyContentResponse>
                 {
                     /// <summary>Constructs a new Deidentify request.</summary>
-                    public DeidentifyRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyContentRequest body, string parent, string locationId)
+                    public DeidentifyRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyContentRequest body, string parent)
                         : base(service)
                     {
                         Parent = parent;
-                        LocationId = locationId;
                         Body = body;
                         InitParameters();
                     }
@@ -5629,11 +5582,6 @@ namespace Google.Apis.DLP.v2
                     /// <summary>The parent resource name, for example projects/my-project-id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
-                    /// <summary>The geographic location to process de-identification. Reserved for future
-                    /// extensions.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationId { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -5657,7 +5605,7 @@ namespace Google.Apis.DLP.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+parent}/locations/{locationId}/content:deidentify"; }
+                        get { return "v2/{+parent}/content:deidentify"; }
                     }
 
                     /// <summary>Initializes Deidentify parameter list.</summary>
@@ -5672,16 +5620,7 @@ namespace Google.Apis.DLP.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "locationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                     }
 
@@ -5698,12 +5637,9 @@ namespace Google.Apis.DLP.v2
                 /// https://cloud.google.com/dlp/docs/inspecting-text,</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">The parent resource name, for example projects/my-project-id.</param>
-                /// <param
-                /// name="locationId">The geographic location to process content inspection. Reserved for future extensions. When
-                /// inspecting images location is restricted to 'global', 'us', 'asia', and 'europe'.</param>
-                public virtual InspectRequest Inspect(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectContentRequest body, string parent, string locationId)
+                public virtual InspectRequest Inspect(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectContentRequest body, string parent)
                 {
-                    return new InspectRequest(service, body, parent, locationId);
+                    return new InspectRequest(service, body, parent);
                 }
 
                 /// <summary>Finds potentially sensitive info in content. This method has limits on input size,
@@ -5718,11 +5654,10 @@ namespace Google.Apis.DLP.v2
                 public class InspectRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectContentResponse>
                 {
                     /// <summary>Constructs a new Inspect request.</summary>
-                    public InspectRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectContentRequest body, string parent, string locationId)
+                    public InspectRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectContentRequest body, string parent)
                         : base(service)
                     {
                         Parent = parent;
-                        LocationId = locationId;
                         Body = body;
                         InitParameters();
                     }
@@ -5731,11 +5666,6 @@ namespace Google.Apis.DLP.v2
                     /// <summary>The parent resource name, for example projects/my-project-id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
-                    /// <summary>The geographic location to process content inspection. Reserved for future extensions.
-                    /// When inspecting images location is restricted to 'global', 'us', 'asia', and 'europe'.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationId { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -5759,7 +5689,7 @@ namespace Google.Apis.DLP.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+parent}/locations/{locationId}/content:inspect"; }
+                        get { return "v2/{+parent}/content:inspect"; }
                     }
 
                     /// <summary>Initializes Inspect parameter list.</summary>
@@ -5774,16 +5704,7 @@ namespace Google.Apis.DLP.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "locationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                     }
 
@@ -5794,11 +5715,9 @@ namespace Google.Apis.DLP.v2
                 /// learn more.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The parent resource name.</param>
-                /// <param name="locationId">The geographic
-                /// location to process content reidentification.  Reserved for future extensions.</param>
-                public virtual ReidentifyRequest Reidentify(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ReidentifyContentRequest body, string parent, string locationId)
+                public virtual ReidentifyRequest Reidentify(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ReidentifyContentRequest body, string parent)
                 {
-                    return new ReidentifyRequest(service, body, parent, locationId);
+                    return new ReidentifyRequest(service, body, parent);
                 }
 
                 /// <summary>Re-identifies content that has been de-identified. See
@@ -5807,11 +5726,10 @@ namespace Google.Apis.DLP.v2
                 public class ReidentifyRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ReidentifyContentResponse>
                 {
                     /// <summary>Constructs a new Reidentify request.</summary>
-                    public ReidentifyRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ReidentifyContentRequest body, string parent, string locationId)
+                    public ReidentifyRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ReidentifyContentRequest body, string parent)
                         : base(service)
                     {
                         Parent = parent;
-                        LocationId = locationId;
                         Body = body;
                         InitParameters();
                     }
@@ -5820,11 +5738,6 @@ namespace Google.Apis.DLP.v2
                     /// <summary>Required. The parent resource name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
-                    /// <summary>The geographic location to process content reidentification.  Reserved for future
-                    /// extensions.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationId { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -5848,7 +5761,7 @@ namespace Google.Apis.DLP.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+parent}/locations/{locationId}/content:reidentify"; }
+                        get { return "v2/{+parent}/content:reidentify"; }
                     }
 
                     /// <summary>Initializes Reidentify parameter list.</summary>
@@ -5863,16 +5776,7 @@ namespace Google.Apis.DLP.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "locationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                     }
 
@@ -5908,11 +5812,9 @@ namespace Google.Apis.DLP.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
                 /// id.</param>
-                /// <param name="locationId">The geographic location to store the deidentification template.
-                /// Reserved for future extensions.</param>
-                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent, string locationId)
+                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent, locationId);
+                    return new CreateRequest(service, body, parent);
                 }
 
                 /// <summary>Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying
@@ -5921,11 +5823,10 @@ namespace Google.Apis.DLP.v2
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent, string locationId)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent)
                         : base(service)
                     {
                         Parent = parent;
-                        LocationId = locationId;
                         Body = body;
                         InitParameters();
                     }
@@ -5935,11 +5836,6 @@ namespace Google.Apis.DLP.v2
                     /// /my-org-id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
-                    /// <summary>The geographic location to store the deidentification template. Reserved for future
-                    /// extensions.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationId { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -5963,7 +5859,7 @@ namespace Google.Apis.DLP.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+parent}/locations/{locationId}/deidentifyTemplates"; }
+                        get { return "v2/{+parent}/deidentifyTemplates"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -5978,16 +5874,7 @@ namespace Google.Apis.DLP.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "locationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                     }
 
@@ -6129,11 +6016,9 @@ namespace Google.Apis.DLP.v2
                 /// learn more.</summary>
                 /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
                 /// id.</param>
-                /// <param name="locationId">The geographic location where deidentifications templates will be
-                /// retrieved from. Use `-` for all locations. Reserved for future extensions.</param>
-                public virtual ListRequest List(string parent, string locationId)
+                public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent, locationId);
+                    return new ListRequest(service, parent);
                 }
 
                 /// <summary>Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to
@@ -6141,11 +6026,10 @@ namespace Google.Apis.DLP.v2
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent, string locationId)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
                         : base(service)
                     {
                         Parent = parent;
-                        LocationId = locationId;
                         InitParameters();
                     }
 
@@ -6155,10 +6039,9 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The geographic location where deidentifications templates will be retrieved from. Use
-                    /// `-` for all locations. Reserved for future extensions.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationId { get; private set; }
+                    /// <summary>Deprecated. This field has no effect.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LocationId { get; set; }
 
                     /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
                     /// list is case-insensitive, default sorting order is ascending, redundant space characters are
@@ -6200,7 +6083,7 @@ namespace Google.Apis.DLP.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+parent}/locations/{locationId}/deidentifyTemplates"; }
+                        get { return "v2/{+parent}/deidentifyTemplates"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -6215,14 +6098,14 @@ namespace Google.Apis.DLP.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+$",
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
                             "locationId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "locationId",
-                                IsRequired = true,
-                                ParameterType = "path",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -6438,11 +6321,9 @@ namespace Google.Apis.DLP.v2
                 /// detectors are updated.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The parent resource name, for example projects/my-project-id.</param>
-                /// <param
-                /// name="locationId">The geographic location to store and process the job. Reserved for future extensions.</param>
-                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDlpJobRequest body, string parent, string locationId)
+                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDlpJobRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent, locationId);
+                    return new CreateRequest(service, body, parent);
                 }
 
                 /// <summary>Creates a new job to inspect storage or calculate risk metrics. See
@@ -6455,11 +6336,10 @@ namespace Google.Apis.DLP.v2
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DlpJob>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDlpJobRequest body, string parent, string locationId)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDlpJobRequest body, string parent)
                         : base(service)
                     {
                         Parent = parent;
-                        LocationId = locationId;
                         Body = body;
                         InitParameters();
                     }
@@ -6468,11 +6348,6 @@ namespace Google.Apis.DLP.v2
                     /// <summary>Required. The parent resource name, for example projects/my-project-id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
-                    /// <summary>The geographic location to store and process the job. Reserved for future
-                    /// extensions.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationId { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -6496,7 +6371,7 @@ namespace Google.Apis.DLP.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+parent}/locations/{locationId}/dlpJobs"; }
+                        get { return "v2/{+parent}/dlpJobs"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -6511,16 +6386,7 @@ namespace Google.Apis.DLP.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "locationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                     }
 
@@ -6810,12 +6676,9 @@ namespace Google.Apis.DLP.v2
                 /// https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-
                 /// risk-analysis to learn more.</summary>
                 /// <param name="parent">Required. The parent resource name, for example projects/my-project-id.</param>
-                /// <param
-                /// name="locationId">The geographic location where jobs will be retrieved from. Use `-` for all locations. Reserved for
-                /// future extensions.</param>
-                public virtual ListRequest List(string parent, string locationId)
+                public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent, locationId);
+                    return new ListRequest(service, parent);
                 }
 
                 /// <summary>Lists DlpJobs that match the specified filter in the request. See
@@ -6824,11 +6687,10 @@ namespace Google.Apis.DLP.v2
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListDlpJobsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent, string locationId)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
                         : base(service)
                     {
                         Parent = parent;
-                        LocationId = locationId;
                         InitParameters();
                     }
 
@@ -6836,11 +6698,6 @@ namespace Google.Apis.DLP.v2
                     /// <summary>Required. The parent resource name, for example projects/my-project-id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
-                    /// <summary>The geographic location where jobs will be retrieved from. Use `-` for all locations.
-                    /// Reserved for future extensions.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationId { get; private set; }
 
                     /// <summary>Allows filtering.
                     ///
@@ -6865,6 +6722,10 @@ namespace Google.Apis.DLP.v2
                     /// The length of this field should be no more than 500 characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
+
+                    /// <summary>Deprecated. This field has no effect.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LocationId { get; set; }
 
                     /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
                     /// list is case-insensitive, default sorting order is ascending, redundant space characters are
@@ -6918,7 +6779,7 @@ namespace Google.Apis.DLP.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+parent}/locations/{locationId}/dlpJobs"; }
+                        get { return "v2/{+parent}/dlpJobs"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -6933,21 +6794,21 @@ namespace Google.Apis.DLP.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "locationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "locationId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -7026,12 +6887,9 @@ namespace Google.Apis.DLP.v2
                 /// detectors are updated.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">The parent resource name, for example projects/my-project-id.</param>
-                /// <param
-                /// name="locationId">The geographic location to process the request. Reserved for future extensions. Location is
-                /// restricted to 'global', 'us', 'asia', and 'europe'.</param>
-                public virtual RedactRequest Redact(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2RedactImageRequest body, string parent, string locationId)
+                public virtual RedactRequest Redact(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2RedactImageRequest body, string parent)
                 {
-                    return new RedactRequest(service, body, parent, locationId);
+                    return new RedactRequest(service, body, parent);
                 }
 
                 /// <summary>Redacts potentially sensitive info from an image. This method has limits on input size,
@@ -7044,11 +6902,10 @@ namespace Google.Apis.DLP.v2
                 public class RedactRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2RedactImageResponse>
                 {
                     /// <summary>Constructs a new Redact request.</summary>
-                    public RedactRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2RedactImageRequest body, string parent, string locationId)
+                    public RedactRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2RedactImageRequest body, string parent)
                         : base(service)
                     {
                         Parent = parent;
-                        LocationId = locationId;
                         Body = body;
                         InitParameters();
                     }
@@ -7057,11 +6914,6 @@ namespace Google.Apis.DLP.v2
                     /// <summary>The parent resource name, for example projects/my-project-id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
-                    /// <summary>The geographic location to process the request. Reserved for future extensions.
-                    /// Location is restricted to 'global', 'us', 'asia', and 'europe'.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationId { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -7085,7 +6937,7 @@ namespace Google.Apis.DLP.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+parent}/locations/{locationId}/image:redact"; }
+                        get { return "v2/{+parent}/image:redact"; }
                     }
 
                     /// <summary>Initializes Redact parameter list.</summary>
@@ -7100,16 +6952,7 @@ namespace Google.Apis.DLP.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "locationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                     }
 
@@ -7145,11 +6988,9 @@ namespace Google.Apis.DLP.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
                 /// id.</param>
-                /// <param name="locationId">The geographic location to store the inspection template. Reserved for
-                /// future extensions.</param>
-                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent, string locationId)
+                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent, locationId);
+                    return new CreateRequest(service, body, parent);
                 }
 
                 /// <summary>Creates an InspectTemplate for re-using frequently used configuration for inspecting
@@ -7158,11 +6999,10 @@ namespace Google.Apis.DLP.v2
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent, string locationId)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent)
                         : base(service)
                     {
                         Parent = parent;
-                        LocationId = locationId;
                         Body = body;
                         InitParameters();
                     }
@@ -7172,11 +7012,6 @@ namespace Google.Apis.DLP.v2
                     /// /my-org-id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
-                    /// <summary>The geographic location to store the inspection template. Reserved for future
-                    /// extensions.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationId { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -7200,7 +7035,7 @@ namespace Google.Apis.DLP.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+parent}/locations/{locationId}/inspectTemplates"; }
+                        get { return "v2/{+parent}/inspectTemplates"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -7215,16 +7050,7 @@ namespace Google.Apis.DLP.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "locationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                     }
 
@@ -7364,11 +7190,9 @@ namespace Google.Apis.DLP.v2
                 /// more.</summary>
                 /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
                 /// id.</param>
-                /// <param name="locationId">The geographic location where inspection templates will be retrieved
-                /// from. Use `-` for all locations. Reserved for future extensions.</param>
-                public virtual ListRequest List(string parent, string locationId)
+                public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent, locationId);
+                    return new ListRequest(service, parent);
                 }
 
                 /// <summary>Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn
@@ -7376,11 +7200,10 @@ namespace Google.Apis.DLP.v2
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInspectTemplatesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent, string locationId)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
                         : base(service)
                     {
                         Parent = parent;
-                        LocationId = locationId;
                         InitParameters();
                     }
 
@@ -7390,10 +7213,9 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The geographic location where inspection templates will be retrieved from. Use `-` for
-                    /// all locations. Reserved for future extensions.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationId { get; private set; }
+                    /// <summary>Deprecated. This field has no effect.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LocationId { get; set; }
 
                     /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
                     /// list is case-insensitive, default sorting order is ascending, redundant space characters are
@@ -7435,7 +7257,7 @@ namespace Google.Apis.DLP.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+parent}/locations/{locationId}/inspectTemplates"; }
+                        get { return "v2/{+parent}/inspectTemplates"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -7450,14 +7272,14 @@ namespace Google.Apis.DLP.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+$",
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
                             "locationId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "locationId",
-                                IsRequired = true,
-                                ParameterType = "path",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -7666,11 +7488,9 @@ namespace Google.Apis.DLP.v2
                 /// more.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The parent resource name, for example projects/my-project-id.</param>
-                /// <param
-                /// name="locationId">The geographic location to store the job trigger. Reserved for future extensions.</param>
-                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateJobTriggerRequest body, string parent, string locationId)
+                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateJobTriggerRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent, locationId);
+                    return new CreateRequest(service, body, parent);
                 }
 
                 /// <summary>Creates a job trigger to run DLP actions such as scanning storage for sensitive information
@@ -7679,11 +7499,10 @@ namespace Google.Apis.DLP.v2
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2JobTrigger>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateJobTriggerRequest body, string parent, string locationId)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateJobTriggerRequest body, string parent)
                         : base(service)
                     {
                         Parent = parent;
-                        LocationId = locationId;
                         Body = body;
                         InitParameters();
                     }
@@ -7692,11 +7511,6 @@ namespace Google.Apis.DLP.v2
                     /// <summary>Required. The parent resource name, for example projects/my-project-id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
-                    /// <summary>The geographic location to store the job trigger. Reserved for future
-                    /// extensions.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationId { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -7720,7 +7534,7 @@ namespace Google.Apis.DLP.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+parent}/locations/{locationId}/jobTriggers"; }
+                        get { return "v2/{+parent}/jobTriggers"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -7735,16 +7549,7 @@ namespace Google.Apis.DLP.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "locationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                     }
 
@@ -7957,12 +7762,9 @@ namespace Google.Apis.DLP.v2
                 /// <summary>Lists job triggers. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn
                 /// more.</summary>
                 /// <param name="parent">Required. The parent resource name, for example `projects/my-project-id`.</param>
-                ///
-                /// <param name="locationId">The geographic location where job triggers will be retrieved from. Use `-` for all
-                /// locations. Reserved for future extensions.</param>
-                public virtual ListRequest List(string parent, string locationId)
+                public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent, locationId);
+                    return new ListRequest(service, parent);
                 }
 
                 /// <summary>Lists job triggers. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn
@@ -7970,11 +7772,10 @@ namespace Google.Apis.DLP.v2
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListJobTriggersResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent, string locationId)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
                         : base(service)
                     {
                         Parent = parent;
-                        LocationId = locationId;
                         InitParameters();
                     }
 
@@ -7982,11 +7783,6 @@ namespace Google.Apis.DLP.v2
                     /// <summary>Required. The parent resource name, for example `projects/my-project-id`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
-                    /// <summary>The geographic location where job triggers will be retrieved from. Use `-` for all
-                    /// locations. Reserved for future extensions.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationId { get; private set; }
 
                     /// <summary>Allows filtering.
                     ///
@@ -8009,6 +7805,10 @@ namespace Google.Apis.DLP.v2
                     /// The length of this field should be no more than 500 characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
+
+                    /// <summary>Deprecated. This field has no effect.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LocationId { get; set; }
 
                     /// <summary>Comma separated list of triggeredJob fields to order by, followed by `asc` or `desc`
                     /// postfix. This list is case-insensitive, default sorting order is ascending, redundant space
@@ -8050,7 +7850,7 @@ namespace Google.Apis.DLP.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+parent}/locations/{locationId}/jobTriggers"; }
+                        get { return "v2/{+parent}/jobTriggers"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -8065,21 +7865,21 @@ namespace Google.Apis.DLP.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "locationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "locationId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -8217,11 +8017,9 @@ namespace Google.Apis.DLP.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
                 /// id.</param>
-                /// <param name="locationId">The geographic location to store the stored infoType. Reserved for
-                /// future extensions.</param>
-                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent, string locationId)
+                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent, locationId);
+                    return new CreateRequest(service, body, parent);
                 }
 
                 /// <summary>Creates a pre-built stored infoType to be used for inspection. See
@@ -8229,11 +8027,10 @@ namespace Google.Apis.DLP.v2
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent, string locationId)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
                         : base(service)
                     {
                         Parent = parent;
-                        LocationId = locationId;
                         Body = body;
                         InitParameters();
                     }
@@ -8243,11 +8040,6 @@ namespace Google.Apis.DLP.v2
                     /// /my-org-id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
-                    /// <summary>The geographic location to store the stored infoType. Reserved for future
-                    /// extensions.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationId { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -8271,7 +8063,7 @@ namespace Google.Apis.DLP.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+parent}/locations/{locationId}/storedInfoTypes"; }
+                        get { return "v2/{+parent}/storedInfoTypes"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -8286,16 +8078,7 @@ namespace Google.Apis.DLP.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "locationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                     }
 
@@ -8435,11 +8218,9 @@ namespace Google.Apis.DLP.v2
                 /// learn more.</summary>
                 /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
                 /// id.</param>
-                /// <param name="locationId">The geographic location where stored infoTypes will be retrieved from.
-                /// Use `-` for all locations. Reserved for future extensions.</param>
-                public virtual ListRequest List(string parent, string locationId)
+                public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent, locationId);
+                    return new ListRequest(service, parent);
                 }
 
                 /// <summary>Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
@@ -8447,11 +8228,10 @@ namespace Google.Apis.DLP.v2
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListStoredInfoTypesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent, string locationId)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
                         : base(service)
                     {
                         Parent = parent;
-                        LocationId = locationId;
                         InitParameters();
                     }
 
@@ -8461,10 +8241,9 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The geographic location where stored infoTypes will be retrieved from. Use `-` for all
-                    /// locations. Reserved for future extensions.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationId { get; private set; }
+                    /// <summary>Deprecated. This field has no effect.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LocationId { get; set; }
 
                     /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
                     /// list is case-insensitive, default sorting order is ascending, redundant space characters are
@@ -8506,7 +8285,7 @@ namespace Google.Apis.DLP.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+parent}/locations/{locationId}/storedInfoTypes"; }
+                        get { return "v2/{+parent}/storedInfoTypes"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -8521,14 +8300,14 @@ namespace Google.Apis.DLP.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+$",
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
                             "locationId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "locationId",
-                                IsRequired = true,
-                                ParameterType = "path",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -8892,8 +8671,7 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The geographic location where stored infoTypes will be retrieved from. Use `-` for all
-                /// locations. Reserved for future extensions.</summary>
+                /// <summary>Deprecated. This field has no effect.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LocationId { get; set; }
 
@@ -9741,8 +9519,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deidentifyTemplate")]
         public virtual GooglePrivacyDlpV2DeidentifyTemplate DeidentifyTemplate { get; set; } 
 
-        /// <summary>The geographic location to store the deidentification template. Reserved for future
-        /// extensions.</summary>
+        /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
@@ -9770,7 +9547,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
         public virtual string JobId { get; set; } 
 
-        /// <summary>The geographic location to store and process the job. Reserved for future extensions.</summary>
+        /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
@@ -9789,7 +9566,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplate")]
         public virtual GooglePrivacyDlpV2InspectTemplate InspectTemplate { get; set; } 
 
-        /// <summary>The geographic location to store the inspection template. Reserved for future extensions.</summary>
+        /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
@@ -9810,7 +9587,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobTrigger")]
         public virtual GooglePrivacyDlpV2JobTrigger JobTrigger { get; set; } 
 
-        /// <summary>The geographic location to store the job trigger. Reserved for future extensions.</summary>
+        /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
@@ -9831,7 +9608,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual GooglePrivacyDlpV2StoredInfoTypeConfig Config { get; set; } 
 
-        /// <summary>The geographic location to store the stored infoType. Reserved for future extensions.</summary>
+        /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
@@ -10196,7 +9973,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("item")]
         public virtual GooglePrivacyDlpV2ContentItem Item { get; set; } 
 
-        /// <summary>The geographic location to process de-identification. Reserved for future extensions.</summary>
+        /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
@@ -11107,8 +10884,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("item")]
         public virtual GooglePrivacyDlpV2ContentItem Item { get; set; } 
 
-        /// <summary>The geographic location to process content inspection. Reserved for future extensions. When
-        /// inspecting images location is restricted to 'global', 'us', 'asia', and 'europe'.</summary>
+        /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
@@ -12249,8 +12025,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inspectConfig")]
         public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; } 
 
-        /// <summary>The geographic location to process the request. Reserved for future extensions. Location is
-        /// restricted to 'global', 'us', 'asia', and 'europe'.</summary>
+        /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
@@ -12312,8 +12087,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("item")]
         public virtual GooglePrivacyDlpV2ContentItem Item { get; set; } 
 
-        /// <summary>The geographic location to process content reidentification.  Reserved for future
-        /// extensions.</summary>
+        /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 

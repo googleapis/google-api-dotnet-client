@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/security-scanner/'>Web Security Scanner API</a>
+ *          <td><a href='https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/'>Web Security Scanner API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20200411 (1927)
+ *      <tr><th>API Rev<td>20200516 (1962)
  *      <tr><th>API Docs
- *          <td><a href='https://cloud.google.com/security-scanner/'>
- *              https://cloud.google.com/security-scanner/</a>
+ *          <td><a href='https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/'>
+ *              https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/</a>
  *      <tr><th>Discovery Name<td>websecurityscanner
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Web Security Scanner API can be found at
- * <a href='https://cloud.google.com/security-scanner/'>https://cloud.google.com/security-scanner/</a>.
+ * <a href='https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/'>https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -1748,8 +1748,8 @@ namespace Google.Apis.WebSecurityScanner.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authentication")]
         public virtual Authentication Authentication { get; set; } 
 
-        /// <summary>The blacklist URL patterns as described in https://cloud.google.com/security-scanner/docs/excluded-
-        /// urls</summary>
+        /// <summary>The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs
+        /// /how-to-use-web-security-scanner#excluding_urls</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blacklistPatterns")]
         public virtual System.Collections.Generic.IList<string> BlacklistPatterns { get; set; } 
 
@@ -1780,7 +1780,7 @@ namespace Google.Apis.WebSecurityScanner.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startingUrls")]
         public virtual System.Collections.Generic.IList<string> StartingUrls { get; set; } 
 
-        /// <summary>Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a
+        /// <summary>Set of Google Cloud platforms targeted by the scan. If empty, APP_ENGINE will be used as a
         /// default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetPlatforms")]
         public virtual System.Collections.Generic.IList<string> TargetPlatforms { get; set; } 

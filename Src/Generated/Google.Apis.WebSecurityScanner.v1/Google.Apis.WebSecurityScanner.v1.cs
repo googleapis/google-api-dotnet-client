@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/security-scanner/'>Web Security Scanner API</a>
+ *          <td><a href='https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/'>Web Security Scanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200411 (1927)
+ *      <tr><th>API Rev<td>20200516 (1962)
  *      <tr><th>API Docs
- *          <td><a href='https://cloud.google.com/security-scanner/'>
- *              https://cloud.google.com/security-scanner/</a>
+ *          <td><a href='https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/'>
+ *              https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/</a>
  *      <tr><th>Discovery Name<td>websecurityscanner
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Web Security Scanner API can be found at
- * <a href='https://cloud.google.com/security-scanner/'>https://cloud.google.com/security-scanner/</a>.
+ * <a href='https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/'>https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -1545,7 +1545,8 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         public virtual string FinalUrl { get; set; } 
 
         /// <summary>Output only. The type of the Finding. Detailed and up-to-date information on findings can be found
-        /// here: https://cloud.google.com/security-scanner/docs/scan-result-details</summary>
+        /// here: https://cloud.google.com/security-command-center/docs/how-to-remediate-web-security-scanner-
+        /// findings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findingType")]
         public virtual string FindingType { get; set; } 
 
@@ -1804,8 +1805,8 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authentication")]
         public virtual Authentication Authentication { get; set; } 
 
-        /// <summary>The blacklist URL patterns as described in https://cloud.google.com/security-scanner/docs/excluded-
-        /// urls</summary>
+        /// <summary>The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs
+        /// /how-to-use-web-security-scanner#excluding_urls</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blacklistPatterns")]
         public virtual System.Collections.Generic.IList<string> BlacklistPatterns { get; set; } 
 
@@ -1813,11 +1814,11 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Controls export of scan configurations and results to Cloud Security Command Center.</summary>
+        /// <summary>Controls export of scan configurations and results to Security Command Center.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportToSecurityCommandCenter")]
         public virtual string ExportToSecurityCommandCenter { get; set; } 
 
-        /// <summary>Whether the scan config is managed by Cloud Web Security Scanner, output only.</summary>
+        /// <summary>Whether the scan config is managed by Web Security Scanner, output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedScan")]
         public virtual System.Nullable<bool> ManagedScan { get; set; } 
 

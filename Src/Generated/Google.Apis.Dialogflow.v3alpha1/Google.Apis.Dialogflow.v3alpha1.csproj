@@ -2,8 +2,8 @@
 
   <!-- nupkg information -->
   <PropertyGroup>
-    <Title>Google.Apis.Pagespeedonline.v4 Client Library</Title>
-    <Version>1.45.0.1800</Version>
+    <Title>Google.Apis.Dialogflow.v3alpha1 Client Library</Title>
+    <Version>1.45.0.1964</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>
@@ -13,7 +13,7 @@
     <RepositoryUrl>https://github.com/google/google-api-dotnet-client</RepositoryUrl>
     <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
     <Description>
-      Google APIs Client Library for working with Pagespeedonline v4.
+      Google APIs Client Library for working with Dialogflow v3alpha1.
 
       Supported Platforms:
       - .NET Framework 4.5+
@@ -32,7 +32,7 @@
       - Xamarin
 
       More documentation on the API is available at:
-      https://developers.google.com/api-client-library/dotnet/apis/pagespeedonline/v4
+      https://developers.google.com/api-client-library/dotnet/apis/dialogflow/v3alpha1
 
       The package source code is available at:
       https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated
@@ -62,10 +62,12 @@
   <!-- per-target dependencies -->
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
     <PackageReference Include="Google.Apis" Version="1.45.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.45.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
     <PackageReference Include="Google.Apis" Version="1.45.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.45.0" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
@@ -74,11 +76,13 @@
   </PropertyGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
     <PackageReference Include="Google.Apis" Version="[1.25.0]" ExcludeAssets="build" />
+    <PackageReference Include="Google.Apis.Auth" Version="[1.25.0]" ExcludeAssets="build" />
     <PackageReference Include="Microsoft.NETCore.Portable.Compatibility" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">
     <PackageReference Include="Google.Apis" Version="1.45.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.45.0" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net40'">
@@ -87,6 +91,7 @@
   </PropertyGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='net40'">
     <PackageReference Include="Google.Apis" Version="[1.10.0]" ExcludeAssets="build" />
+    <PackageReference Include="Google.Apis.Auth" Version="[1.10.0]" ExcludeAssets="build" />
   </ItemGroup>
 
 </Project>

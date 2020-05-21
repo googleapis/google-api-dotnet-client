@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Cloud Trace API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20200504 (1950)
+ *      <tr><th>API Rev<td>20200509 (1955)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>

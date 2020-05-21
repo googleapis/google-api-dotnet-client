@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200512 (1958)
+ *      <tr><th>API Rev<td>20200518 (1964)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow/'>
  *              https://cloud.google.com/dialogflow/</a>
@@ -5914,7 +5914,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>The audio data bytes encoded as specified in the request. Note: The output audio is generated based
         /// on the values of default platform text responses found in the `query_result.fulfillment_messages` field. If
         /// multiple default text responses exist, they will be concatenated when generating audio. If no default
-        /// platform text responses exist, the generated audio content will be empty.</summary>
+        /// platform text responses exist, the generated audio content will be empty.
+        ///
+        /// In some scenarios, multiple output audio fields may be present in the response structure. In these cases,
+        /// only the top-most-level audio output has content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputAudio")]
         public virtual string OutputAudio { get; set; } 
 

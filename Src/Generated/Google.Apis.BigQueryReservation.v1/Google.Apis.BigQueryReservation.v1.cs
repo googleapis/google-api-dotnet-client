@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Reservation API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200509 (1955)
+ *      <tr><th>API Rev<td>20200516 (1962)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -602,7 +602,7 @@ namespace Google.Apis.BigQueryReservation.v1
                 /// <summary>Creates a new capacity commitment resource.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. Resource name of the parent reservation. E.g.,
-                /// projects/myproject/locations/US</param>
+                /// `projects/myproject/locations/US`</param>
                 public virtual CreateRequest Create(Google.Apis.BigQueryReservation.v1.Data.CapacityCommitment body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -622,7 +622,7 @@ namespace Google.Apis.BigQueryReservation.v1
 
 
                     /// <summary>Required. Resource name of the parent reservation. E.g.,
-                    /// projects/myproject/locations/US</summary>
+                    /// `projects/myproject/locations/US`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -686,7 +686,7 @@ namespace Google.Apis.BigQueryReservation.v1
                 /// <summary>Deletes a capacity commitment. Attempting to delete capacity commitment before its
                 /// commitment_end_time will fail with the error code `google.rpc.Code.FAILED_PRECONDITION`.</summary>
                 /// <param name="name">Required. Resource name of the capacity commitment to delete. E.g.,
-                /// projects/myproject/locations/US/capacityCommitments/123</param>
+                /// `projects/myproject/locations/US/capacityCommitments/123`</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -706,7 +706,7 @@ namespace Google.Apis.BigQueryReservation.v1
 
 
                     /// <summary>Required. Resource name of the capacity commitment to delete. E.g.,
-                    /// projects/myproject/locations/US/capacityCommitments/123</summary>
+                    /// `projects/myproject/locations/US/capacityCommitments/123`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -749,7 +749,7 @@ namespace Google.Apis.BigQueryReservation.v1
 
                 /// <summary>Returns information about the capacity commitment.</summary>
                 /// <param name="name">Required. Resource name of the capacity commitment to retrieve. E.g.,
-                /// projects/myproject/locations/US/capacityCommitments/123</param>
+                /// `projects/myproject/locations/US/capacityCommitments/123`</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -768,7 +768,7 @@ namespace Google.Apis.BigQueryReservation.v1
 
 
                     /// <summary>Required. Resource name of the capacity commitment to retrieve. E.g.,
-                    /// projects/myproject/locations/US/capacityCommitments/123</summary>
+                    /// `projects/myproject/locations/US/capacityCommitments/123`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -811,7 +811,7 @@ namespace Google.Apis.BigQueryReservation.v1
 
                 /// <summary>Lists all the capacity commitments for the admin project.</summary>
                 /// <param name="parent">Required. Resource name of the parent reservation. E.g.,
-                /// projects/myproject/locations/US</param>
+                /// `projects/myproject/locations/US`</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -830,7 +830,7 @@ namespace Google.Apis.BigQueryReservation.v1
 
 
                     /// <summary>Required. Resource name of the parent reservation. E.g.,
-                    /// projects/myproject/locations/US</summary>
+                    /// `projects/myproject/locations/US`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -906,7 +906,7 @@ namespace Google.Apis.BigQueryReservation.v1
                 /// `google.rpc.Code.FAILED_PRECONDITION`.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Parent resource that identifies admin project and location e.g.,
-                /// projects/myproject/locations/us</param>
+                /// `projects/myproject/locations/us`</param>
                 public virtual MergeRequest Merge(Google.Apis.BigQueryReservation.v1.Data.MergeCapacityCommitmentsRequest body, string parent)
                 {
                     return new MergeRequest(service, body, parent);
@@ -932,7 +932,7 @@ namespace Google.Apis.BigQueryReservation.v1
 
 
                     /// <summary>Parent resource that identifies admin project and location e.g.,
-                    /// projects/myproject/locations/us</summary>
+                    /// `projects/myproject/locations/us`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1083,7 +1083,7 @@ namespace Google.Apis.BigQueryReservation.v1
                 /// `FLEX` and then delete it.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The resource name e.g.,:
-                /// projects/myproject/locations/US/capacityCommitments/123</param>
+                /// `projects/myproject/locations/US/capacityCommitments/123`</param>
                 public virtual SplitRequest Split(Google.Apis.BigQueryReservation.v1.Data.SplitCapacityCommitmentRequest body, string name)
                 {
                     return new SplitRequest(service, body, name);
@@ -1109,7 +1109,7 @@ namespace Google.Apis.BigQueryReservation.v1
 
 
                     /// <summary>Required. The resource name e.g.,:
-                    /// projects/myproject/locations/US/capacityCommitments/123</summary>
+                    /// `projects/myproject/locations/US/capacityCommitments/123`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1821,7 +1821,7 @@ namespace Google.Apis.BigQueryReservation.v1
 
                 /// <summary>Lists all the reservations for the project in the specified location.</summary>
                 /// <param name="parent">Required. The parent resource name containing project and location, e.g.:
-                /// "projects/myproject/locations/US"</param>
+                /// `projects/myproject/locations/US`</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -1840,7 +1840,7 @@ namespace Google.Apis.BigQueryReservation.v1
 
 
                     /// <summary>Required. The parent resource name containing project and location, e.g.:
-                    /// "projects/myproject/locations/US"</summary>
+                    /// `projects/myproject/locations/US`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -2072,7 +2072,7 @@ namespace Google.Apis.BigQueryReservation.v1
             ///
             /// **Note** "-" cannot be used for projects nor locations.</summary>
             /// <param name="parent">Required. The resource name of the admin project(containing project and location), e.g.:
-            /// "projects/myproject/locations/US".</param>
+            /// `projects/myproject/locations/US`.</param>
             public virtual SearchAssignmentsRequest SearchAssignments(string parent)
             {
                 return new SearchAssignmentsRequest(service, parent);
@@ -2108,7 +2108,7 @@ namespace Google.Apis.BigQueryReservation.v1
 
 
                 /// <summary>Required. The resource name of the admin project(containing project and location), e.g.:
-                /// "projects/myproject/locations/US".</summary>
+                /// `projects/myproject/locations/US`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 

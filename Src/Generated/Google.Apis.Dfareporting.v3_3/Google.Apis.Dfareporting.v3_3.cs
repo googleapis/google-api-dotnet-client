@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>DCM/DFA Reporting And Trafficking API</a>
  *      <tr><th>API Version<td>v3.3
- *      <tr><th>API Rev<td>20200326 (1911)
+ *      <tr><th>API Rev<td>20200514 (1960)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>
  *              https://developers.google.com/doubleclick-advertisers/</a>
@@ -18573,8 +18573,8 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
             /// <summary>Lists files for a report.</summary>
-            /// <param name="profileId">The DFA user profile ID.</param>
-            /// <param name="reportId">The ID of the
+            /// <param name="profileId">The DFA profile ID.</param>
+            /// <param name="reportId">The ID of the parent
             /// report.</param>
             public virtual ListRequest List(long profileId, long reportId)
             {
@@ -18594,11 +18594,11 @@ namespace Google.Apis.Dfareporting.v3_3
                 }
 
 
-                /// <summary>The DFA user profile ID.</summary>
+                /// <summary>The DFA profile ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long ProfileId { get; private set; }
 
-                /// <summary>The ID of the report.</summary>
+                /// <summary>The ID of the parent report.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("reportId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long ReportId { get; private set; }
 
@@ -26293,6 +26293,8 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     /// "REPORT_AVAILABLE".</summary>
     public class File : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The date range for which the file has report data. The date range will always be the absolute date
+        /// range for which the report is run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
         public virtual DateRange DateRange { get; set; } 
 
@@ -26348,12 +26350,14 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         }
     }    
 
+    /// <summary>List of files for a report.</summary>
     public class FileList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
+        /// <summary>The files returned in this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<File> Items { get; set; } 
 

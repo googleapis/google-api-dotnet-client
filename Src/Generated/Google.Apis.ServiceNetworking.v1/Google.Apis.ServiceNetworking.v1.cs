@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200513 (1959)
+ *      <tr><th>API Rev<td>20200519 (1965)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
  *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
@@ -687,6 +687,8 @@ namespace Google.Apis.ServiceNetworking.v1
         {
             this.service = service;
             connections = new ConnectionsResource(service);
+            dnsRecordSets = new DnsRecordSetsResource(service);
+            dnsZones = new DnsZonesResource(service);
             roles = new RolesResource(service);
 
         }
@@ -976,6 +978,424 @@ namespace Google.Apis.ServiceNetworking.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                }
+
+            }
+        }
+        private readonly DnsRecordSetsResource dnsRecordSets;
+
+        /// <summary>Gets the DnsRecordSets resource.</summary>
+        public virtual DnsRecordSetsResource DnsRecordSets
+        {
+            get { return dnsRecordSets; }
+        }
+
+        /// <summary>The "dnsRecordSets" collection of methods.</summary>
+        public class DnsRecordSetsResource
+        {
+            private const string Resource = "dnsRecordSets";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public DnsRecordSetsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Service producers can use this method to add DNS record sets to private DNS zones in the shared
+            /// producer host project.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The service that is managing peering connectivity for a service producer's
+            /// organization. For Google services that support this functionality, this value is
+            /// `services/servicenetworking.googleapis.com`.</param>
+            public virtual AddRequest Add(Google.Apis.ServiceNetworking.v1.Data.AddDnsRecordSetRequest body, string parent)
+            {
+                return new AddRequest(service, body, parent);
+            }
+
+            /// <summary>Service producers can use this method to add DNS record sets to private DNS zones in the shared
+            /// producer host project.</summary>
+            public class AddRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Add request.</summary>
+                public AddRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceNetworking.v1.Data.AddDnsRecordSetRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The service that is managing peering connectivity for a service producer's
+                /// organization. For Google services that support this functionality, this value is
+                /// `services/servicenetworking.googleapis.com`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ServiceNetworking.v1.Data.AddDnsRecordSetRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "add"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/dnsRecordSets:add"; }
+                }
+
+                /// <summary>Initializes Add parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^services/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Service producers can use this method to remove DNS record sets from private DNS zones in the
+            /// shared producer host project.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The service that is managing peering connectivity for a service producer's
+            /// organization. For Google services that support this functionality, this value is
+            /// `services/servicenetworking.googleapis.com`.</param>
+            public virtual RemoveRequest Remove(Google.Apis.ServiceNetworking.v1.Data.RemoveDnsRecordSetRequest body, string parent)
+            {
+                return new RemoveRequest(service, body, parent);
+            }
+
+            /// <summary>Service producers can use this method to remove DNS record sets from private DNS zones in the
+            /// shared producer host project.</summary>
+            public class RemoveRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Remove request.</summary>
+                public RemoveRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceNetworking.v1.Data.RemoveDnsRecordSetRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The service that is managing peering connectivity for a service producer's
+                /// organization. For Google services that support this functionality, this value is
+                /// `services/servicenetworking.googleapis.com`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ServiceNetworking.v1.Data.RemoveDnsRecordSetRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "remove"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/dnsRecordSets:remove"; }
+                }
+
+                /// <summary>Initializes Remove parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^services/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Service producers can use this method to update DNS record sets from private DNS zones in the
+            /// shared producer host project.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The service that is managing peering connectivity for a service producer's
+            /// organization. For Google services that support this functionality, this value is
+            /// `services/servicenetworking.googleapis.com`.</param>
+            public virtual UpdateRequest Update(Google.Apis.ServiceNetworking.v1.Data.UpdateDnsRecordSetRequest body, string parent)
+            {
+                return new UpdateRequest(service, body, parent);
+            }
+
+            /// <summary>Service producers can use this method to update DNS record sets from private DNS zones in the
+            /// shared producer host project.</summary>
+            public class UpdateRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Update request.</summary>
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceNetworking.v1.Data.UpdateDnsRecordSetRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The service that is managing peering connectivity for a service producer's
+                /// organization. For Google services that support this functionality, this value is
+                /// `services/servicenetworking.googleapis.com`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ServiceNetworking.v1.Data.UpdateDnsRecordSetRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "update"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/dnsRecordSets:update"; }
+                }
+
+                /// <summary>Initializes Update parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^services/[^/]+$",
+                        });
+                }
+
+            }
+        }
+        private readonly DnsZonesResource dnsZones;
+
+        /// <summary>Gets the DnsZones resource.</summary>
+        public virtual DnsZonesResource DnsZones
+        {
+            get { return dnsZones; }
+        }
+
+        /// <summary>The "dnsZones" collection of methods.</summary>
+        public class DnsZonesResource
+        {
+            private const string Resource = "dnsZones";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public DnsZonesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Service producers can use this method to add private DNS zones in the shared producer host
+            /// project and matching peering zones in the consumer project.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The service that is managing peering connectivity for a service producer's
+            /// organization. For Google services that support this functionality, this value is
+            /// `services/servicenetworking.googleapis.com`.</param>
+            public virtual AddRequest Add(Google.Apis.ServiceNetworking.v1.Data.AddDnsZoneRequest body, string parent)
+            {
+                return new AddRequest(service, body, parent);
+            }
+
+            /// <summary>Service producers can use this method to add private DNS zones in the shared producer host
+            /// project and matching peering zones in the consumer project.</summary>
+            public class AddRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Add request.</summary>
+                public AddRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceNetworking.v1.Data.AddDnsZoneRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The service that is managing peering connectivity for a service producer's
+                /// organization. For Google services that support this functionality, this value is
+                /// `services/servicenetworking.googleapis.com`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ServiceNetworking.v1.Data.AddDnsZoneRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "add"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/dnsZones:add"; }
+                }
+
+                /// <summary>Initializes Add parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^services/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Service producers can use this method to remove private DNS zones in the shared producer host
+            /// project and matching peering zones in the consumer project.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The service that is managing peering connectivity for a service producer's
+            /// organization. For Google services that support this functionality, this value is
+            /// `services/servicenetworking.googleapis.com`.</param>
+            public virtual RemoveRequest Remove(Google.Apis.ServiceNetworking.v1.Data.RemoveDnsZoneRequest body, string parent)
+            {
+                return new RemoveRequest(service, body, parent);
+            }
+
+            /// <summary>Service producers can use this method to remove private DNS zones in the shared producer host
+            /// project and matching peering zones in the consumer project.</summary>
+            public class RemoveRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Remove request.</summary>
+                public RemoveRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceNetworking.v1.Data.RemoveDnsZoneRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The service that is managing peering connectivity for a service producer's
+                /// organization. For Google services that support this functionality, this value is
+                /// `services/servicenetworking.googleapis.com`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ServiceNetworking.v1.Data.RemoveDnsZoneRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "remove"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/dnsZones:remove"; }
+                }
+
+                /// <summary>Initializes Remove parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^services/[^/]+$",
                         });
                 }
 
@@ -1465,6 +1885,83 @@ namespace Google.Apis.ServiceNetworking.v1
 namespace Google.Apis.ServiceNetworking.v1.Data
 {    
 
+    /// <summary>Metadata provided through GetOperation request for the LRO generated by AddDnsRecordSet API</summary>
+    public class AddDnsRecordSetMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to add a record set to a private managed DNS zone in the shared producer host
+    /// project.</summary>
+    public class AddDnsRecordSetRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The network that the consumer is using to connect with services. Must be in the form of
+        /// projects/{project}/global/networks/{network} {project} is the project number, as in '12345' {network} is the
+        /// network name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerNetwork")]
+        public virtual string ConsumerNetwork { get; set; } 
+
+        /// <summary>Required. The DNS record set to add.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsRecordSet")]
+        public virtual DnsRecordSet DnsRecordSet { get; set; } 
+
+        /// <summary>Required. The name of the private DNS zone in the shared producer host project to which the record
+        /// set will be added.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata provided through GetOperation request for the LRO generated by AddDnsZone API</summary>
+    public class AddDnsZoneMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to add a private managed DNS zone in the shared producer host project and a matching DNS
+    /// peering zone in the consumer project.</summary>
+    public class AddDnsZoneRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The network that the consumer is using to connect with services. Must be in the form of
+        /// projects/{project}/global/networks/{network} {project} is the project number, as in '12345' {network} is the
+        /// network name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerNetwork")]
+        public virtual string ConsumerNetwork { get; set; } 
+
+        /// <summary>Required. The DNS name suffix for the zones e.g. `example.com`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsSuffix")]
+        public virtual string DnsSuffix { get; set; } 
+
+        /// <summary>Required. The name for both the private zone in the shared producer host project and the peering
+        /// zone in the consumer project. Must be unique within both projects. The name must be 1-63 characters long,
+        /// must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or
+        /// dashes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents managed DNS zones created in the shared producer host and consumer projects.</summary>
+    public class AddDnsZoneResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The DNS peering zone created in the consumer project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerPeeringZone")]
+        public virtual DnsZone ConsumerPeeringZone { get; set; } 
+
+        /// <summary>The private DNS zone created in the shared producer host project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerPrivateZone")]
+        public virtual DnsZone ProducerPrivateZone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Metadata provided through GetOperation request for the LRO generated by AddRoles API</summary>
     public class AddRolesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1838,32 +2335,6 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; } 
 
-        /// <summary>Unimplemented. Do not use.
-        ///
-        /// The new name the selected proto elements should be renamed to.
-        ///
-        /// The package, the service and the method can all be renamed. The backend server should implement the renamed
-        /// proto. However, clients should call the original method, and ESF routes the traffic to the renamed method.
-        ///
-        /// HTTP clients should call the URL mapped to the original method. gRPC and Stubby clients should call the
-        /// original method with package name.
-        ///
-        /// For legacy reasons, ESF allows Stubby clients to call with the short name (without the package name).
-        /// However, for API Versioning(or multiple methods mapped to the same short name), all Stubby clients must call
-        /// the method's full name with the package name, otherwise the first one (selector) wins.
-        ///
-        /// If this `rename_to` is specified with a trailing `*`, the `selector` must be specified with a trailing `*`
-        /// as well. The all element short names matched by the `*` in the selector will be kept in the `rename_to`.
-        ///
-        /// For example, rename_rules: - selector: |- google.example.library.v1.* rename_to: google.example.library.*
-        ///
-        /// The selector matches `google.example.library.v1.Library.CreateShelf` and
-        /// `google.example.library.v1.Library.CreateBook`, they will be renamed to
-        /// `google.example.library.Library.CreateShelf` and `google.example.library.Library.CreateBook`. It essentially
-        /// renames the proto package name section of the matched proto service and methods.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("renameTo")]
-        public virtual string RenameTo { get; set; } 
-
         /// <summary>Selects the methods to which this rule applies.
         ///
         /// Refer to selector for syntax details.</summary>
@@ -2111,6 +2582,47 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         /// network name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerNetwork")]
         public virtual string ConsumerNetwork { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a DNS record set resource.</summary>
+    public class DnsRecordSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) for examples see
+        /// https://cloud.google.com/dns/records/json-record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual System.Collections.Generic.IList<string> Data { get; set; } 
+
+        /// <summary>Required. The DNS or domain name of the record set, e.g. `test.example.com`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; } 
+
+        /// <summary>Required. The period of time for which this RecordSet can be cached by resolvers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; } 
+
+        /// <summary>Required. The identifier of a supported record type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a DNS zone resource.</summary>
+    public class DnsZone : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The DNS name suffix of this zone e.g. `example.com.`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsSuffix")]
+        public virtual string DnsSuffix { get; set; } 
+
+        /// <summary>User assigned name for this resource. Must be unique within the project. The name must be 1-63
+        /// characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters,
+        /// digits or dashes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3449,6 +3961,77 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Metadata provided through GetOperation request for the LRO generated by RemoveDnsRecordSet
+    /// API</summary>
+    public class RemoveDnsRecordSetMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to remove a record set from a private managed DNS zone in the shared producer host project. The
+    /// name, type, ttl, and data values must all exactly match an existing record set in the specified zone.</summary>
+    public class RemoveDnsRecordSetRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The network that the consumer is using to connect with services. Must be in the form of
+        /// projects/{project}/global/networks/{network} {project} is the project number, as in '12345' {network} is the
+        /// network name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerNetwork")]
+        public virtual string ConsumerNetwork { get; set; } 
+
+        /// <summary>Required. The DNS record set to remove.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsRecordSet")]
+        public virtual DnsRecordSet DnsRecordSet { get; set; } 
+
+        /// <summary>Required. The name of the private DNS zone in the shared producer host project from which the
+        /// record set will be removed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Blank message response type for RemoveDnsRecordSet API</summary>
+    public class RemoveDnsRecordSetResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata provided through GetOperation request for the LRO generated by RemoveDnsZone API</summary>
+    public class RemoveDnsZoneMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to remove a private managed DNS zone in the shared producer host project and a matching DNS
+    /// peering zone in the consumer project.</summary>
+    public class RemoveDnsZoneRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The network that the consumer is using to connect with services. Must be in the form of
+        /// projects/{project}/global/networks/{network} {project} is the project number, as in '12345' {network} is the
+        /// network name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerNetwork")]
+        public virtual string ConsumerNetwork { get; set; } 
+
+        /// <summary>Required. The name for both the private zone in the shared producer host project and the peering
+        /// zone in the consumer project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Blank message response type for RemoveDnsZone API</summary>
+    public class RemoveDnsZoneResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a route that was created or discovered by a private access management service.</summary>
     public class Route : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3839,6 +4422,42 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         /// <summary>The source syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syntax")]
         public virtual string Syntax { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata provided through GetOperation request for the LRO generated by UpdateDnsRecordSet
+    /// API</summary>
+    public class UpdateDnsRecordSetMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to update a record set from a private managed DNS zone in the shared producer host project. The
+    /// name, type, ttl, and data values of the existing record set must all exactly match an existing record set in the
+    /// specified zone.</summary>
+    public class UpdateDnsRecordSetRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The network that the consumer is using to connect with services. Must be in the form of
+        /// projects/{project}/global/networks/{network} {project} is the project number, as in '12345' {network} is the
+        /// network name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerNetwork")]
+        public virtual string ConsumerNetwork { get; set; } 
+
+        /// <summary>Required. The existing DNS record set to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("existingDnsRecordSet")]
+        public virtual DnsRecordSet ExistingDnsRecordSet { get; set; } 
+
+        /// <summary>Required. The new values that the DNS record set should be updated to hold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newDnsRecordSet")]
+        public virtual DnsRecordSet NewDnsRecordSet { get; set; } 
+
+        /// <summary>Required. The name of the private DNS zone in the shared producer host project from which the
+        /// record set will be removed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

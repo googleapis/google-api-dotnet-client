@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/datastore/'>Cloud Datastore API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20200405 (1921)
+ *      <tr><th>API Rev<td>20200510 (1956)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/datastore/'>
  *              https://cloud.google.com/datastore/</a>
@@ -1904,7 +1904,7 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual string NullValue { get; set; } 
 
         /// <summary>A UTF-8 encoded string value. When `exclude_from_indexes` is false (it is indexed) , may have at
-        /// most 1500 bytes. Otherwise, may be set to at least 1,000,000 bytes.</summary>
+        /// most 1500 bytes. Otherwise, may be set to at most 1,000,000 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; } 
 

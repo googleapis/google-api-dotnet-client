@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/translate/docs/quickstarts'>Cloud Translation API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200513 (1959)
+ *      <tr><th>API Rev<td>20200515 (1961)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/translate/docs/quickstarts'>
  *              https://cloud.google.com/translate/docs/quickstarts</a>
@@ -2166,9 +2166,9 @@ namespace Google.Apis.Translate.v3.Data
         ///
         /// For equivalent term sets glossaries:
         ///
-        /// - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. The format
-        /// is defined for Google Translation Toolkit and documented in [Use a
-        /// glossary](https://support.google.com/translatortoolkit/answer/6306379?hl=en).</summary>
+        /// - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See
+        /// documentation for more information -
+        /// [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GcsSource GcsSource { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/authorized-buyers/apis/reference/rest/'>Ad Exchange Buyer API II</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20200514 (1960)
+ *      <tr><th>API Rev<td>20200520 (1966)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/authorized-buyers/apis/reference/rest/'>
  *              https://developers.google.com/authorized-buyers/apis/reference/rest/</a>
@@ -7522,7 +7522,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ClientName { get; set; } 
 
         /// <summary>Numerical identifier of the client entity. The entity can be an advertiser, a brand, or an agency.
-        /// This identifier is unique among all the entities with the same type.
+        /// This identifier is unique among all the entities with the same type. The value of this field is ignored if
+        /// the entity type is not provided.
         ///
         /// A list of all known advertisers with their identifiers is available in the
         /// [advertisers.txt](https://storage.googleapis.com/adx-rtb-dictionaries/advertisers.txt) file.
@@ -7540,7 +7541,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entityName")]
         public virtual string EntityName { get; set; } 
 
-        /// <summary>The type of the client entity: `ADVERTISER`, `BRAND`, or `AGENCY`.</summary>
+        /// <summary>An optional field for specifying the type of the client entity: `ADVERTISER`, `BRAND`, or
+        /// `AGENCY`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
         public virtual string EntityType { get; set; } 
 
