@@ -52,9 +52,14 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>
+        /// Obsolete.
         /// Thread-safe OAuth 2.0 method for accessing protected resources using an <c>access_token</c> query parameter
         /// as specified in http://tools.ietf.org/html/rfc6750#section-2.3.
+        /// This access method is being made obsolete. Please read here for more up to date information:
+        /// `https://developers.google.com/identity/protocols/oauth2/index.html#4.-send-the-access-token-to-an-api.`.
+        /// Please use <see cref="AuthorizationHeaderAccessMethod"/> instead.
         /// </summary>
+        [Obsolete("https://developers.google.com/identity/protocols/oauth2/index.html#4.-send-the-access-token-to-an-api.")]
         public class QueryParameterAccessMethod : IAccessMethod
         {
             const string AccessTokenKey = "access_token";

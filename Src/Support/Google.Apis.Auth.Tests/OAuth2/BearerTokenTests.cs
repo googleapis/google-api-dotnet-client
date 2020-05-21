@@ -59,7 +59,9 @@ namespace Google.Apis.Auth.Tests.OAuth2
         public void QueryParameterAccessMethod_Intercept()
         {
             var request = new HttpRequestMessage(HttpMethod.Get, new Uri("https://sample.com/path"));
+#pragma warning disable CS0618 // Type or member is obsolete
             new BearerToken.QueryParameterAccessMethod().Intercept(request, "abc");
+#pragma warning restore CS0618 // Type or member is obsolete
             Assert.Equal(new Uri("https://sample.com/path?access_token=abc"), request.RequestUri);
         }
 
@@ -67,7 +69,9 @@ namespace Google.Apis.Auth.Tests.OAuth2
         public void QueryParameterAccessMethod_Intercept_WithQueryParameters()
         {
             var request = new HttpRequestMessage(HttpMethod.Get, new Uri("https://sample.com/path?a=1"));
+#pragma warning disable CS0618 // Type or member is obsolete
             new BearerToken.QueryParameterAccessMethod().Intercept(request, "abc");
+#pragma warning restore CS0618 // Type or member is obsolete
             Assert.Equal(new Uri("https://sample.com/path?a=1&access_token=abc"), request.RequestUri);
         }
 
@@ -76,22 +80,30 @@ namespace Google.Apis.Auth.Tests.OAuth2
         {
             // No query parameter at all.
             var request = new HttpRequestMessage(HttpMethod.Get, new Uri("https://sample.com"));
+#pragma warning disable CS0618 // Type or member is obsolete
             var accessToken = new BearerToken.QueryParameterAccessMethod().GetAccessToken(request);
+#pragma warning restore CS0618 // Type or member is obsolete
             Assert.Null(accessToken);
 
             // Different query parameter.
             request = new HttpRequestMessage(HttpMethod.Get, new Uri("https://sample.com?a=1"));
+#pragma warning disable CS0618 // Type or member is obsolete
             accessToken = new BearerToken.QueryParameterAccessMethod().GetAccessToken(request);
+#pragma warning restore CS0618 // Type or member is obsolete
             Assert.Null(accessToken);
 
             // One query parameter and it's access_token.
             request = new HttpRequestMessage(HttpMethod.Get, new Uri("https://sample.com?a=1&access_token=abc"));
+#pragma warning disable CS0618 // Type or member is obsolete
             accessToken = new BearerToken.QueryParameterAccessMethod().GetAccessToken(request);
+#pragma warning restore CS0618 // Type or member is obsolete
             Assert.Equal("abc", accessToken);
 
             // 2 query parameters and one of them is access_token.
             request = new HttpRequestMessage(HttpMethod.Get, new Uri("https://sample.com?access_token=abc"));
+#pragma warning disable CS0618 // Type or member is obsolete
             accessToken = new BearerToken.QueryParameterAccessMethod().GetAccessToken(request);
+#pragma warning restore CS0618 // Type or member is obsolete
             Assert.Equal("abc", accessToken);
         }
 
