@@ -102,8 +102,10 @@ namespace IntegrationTests
         [Fact]
         public void OverridesServiceCredentialWithPerCallCredential_QueryString()
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             var serviceCredential = new RequestInterceptorCredentialWrapper("SERVICE_CREDENTIAL_TOKEN", new BearerToken.QueryParameterAccessMethod());
             var callCredential = new AccessTokenCredential("CALL_CREDENTIAL_TOKEN", new BearerToken.QueryParameterAccessMethod());
+#pragma warning restore CS0618 // Type or member is obsolete
 
             var request = BuildListBucketsRequest(serviceCredential, callCredential);
 
@@ -122,7 +124,9 @@ namespace IntegrationTests
         public void OverridesServiceCredentialWithPerCallCredential_Mixed_Header_Query()
         {
             var serviceCredential = new RequestInterceptorCredentialWrapper("SERVICE_CREDENTIAL_TOKEN", new BearerToken.AuthorizationHeaderAccessMethod());
+#pragma warning disable CS0618 // Type or member is obsolete
             var callCredential = new AccessTokenCredential("CALL_CREDENTIAL_TOKEN", new BearerToken.QueryParameterAccessMethod());
+#pragma warning restore CS0618 // Type or member is obsolete
 
             var request = BuildListBucketsRequest(serviceCredential, callCredential);
 
@@ -141,7 +145,9 @@ namespace IntegrationTests
         [Fact]
         public void OverridesServiceCredentialWithPerCallCredential_Mixed_Query_Header()
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             var serviceCredential = new RequestInterceptorCredentialWrapper("SERVICE_CREDENTIAL_TOKEN", new BearerToken.QueryParameterAccessMethod());
+#pragma warning restore CS0618 // Type or member is obsolete
             var callCredential = new AccessTokenCredential("CALL_CREDENTIAL_TOKEN", new BearerToken.AuthorizationHeaderAccessMethod());
 
             var request = BuildListBucketsRequest(serviceCredential, callCredential);
@@ -161,9 +167,11 @@ namespace IntegrationTests
         [Fact]
         public void OverridesServiceCredentialWithPerCallCredential_TwoCallCredentials()
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             var serviceCredential = new RequestInterceptorCredentialWrapper("SERVICE_CREDENTIAL_TOKEN", new BearerToken.QueryParameterAccessMethod());
             var callCredential1 = new AccessTokenCredential("CALL_CREDENTIAL_TOKEN_1", new BearerToken.QueryParameterAccessMethod());
             var callCredential2 = new AccessTokenCredential("CALL_CREDENTIAL_TOKEN_2", new BearerToken.QueryParameterAccessMethod());
+#pragma warning restore CS0618 // Type or member is obsolete
 
             var request = BuildListBucketsRequest(serviceCredential, callCredential1);
             request.AddCredential(callCredential2);
