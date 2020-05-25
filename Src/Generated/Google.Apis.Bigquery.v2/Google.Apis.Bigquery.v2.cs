@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200507 (1953)
+ *      <tr><th>API Rev<td>20200514 (1960)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -5159,6 +5159,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("compression")]
         public virtual string Compression { get; set; } 
 
+        /// <summary>[Optional, Trusted Tester] Connection for external data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionId")]
+        public virtual string ConnectionId { get; set; } 
+
         /// <summary>Additional properties to set if sourceFormat is set to CSV.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("csvOptions")]
         public virtual CsvOptions CsvOptions { get; set; } 
@@ -7926,6 +7930,10 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>This is used for defining User Defined Function (UDF) resources only when using legacy SQL. Users of
+    /// Standard SQL should leverage either DDL (e.g. CREATE [TEMPORARY] FUNCTION ... ) or the Routines API to define
+    /// UDF resources. For additional information on migrating, see: https://cloud.google.com/bigquery/docs/reference
+    /// /standard-sql/migrating-from-legacy-sql#differences_in_user-defined_javascript_functions</summary>
     public class UserDefinedFunctionResource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Pick one] An inline resource that contains code for a user-defined function (UDF). Providing a

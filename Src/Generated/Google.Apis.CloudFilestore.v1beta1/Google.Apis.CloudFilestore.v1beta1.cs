@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/filestore/'>Cloud Filestore API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200513 (1959)
+ *      <tr><th>API Rev<td>20200520 (1966)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/filestore/'>
  *              https://cloud.google.com/filestore/</a>
@@ -1674,6 +1674,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedules")]
         public virtual System.Collections.Generic.IDictionary<string,GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule> MaintenanceSchedules { get; set; } 
 
+        /// <summary>Optional. The MaintenanceSettings associated with instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSettings")]
+        public virtual GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings MaintenanceSettings { get; set; } 
+
         /// <summary>Unique name of the resource. It uses the form:
         /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -1743,6 +1747,20 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>The scheduled start time for the maintenance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Maintenance settings associated with instance. Allows service producers and end users to assign
+    /// settings that controls maintenance on this instance.</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Exclude instance from maintenance. When true, rollout service will not attempt
+        /// maintenance on the instance. Rollout service will include the instance in reported rollout progress as not
+        /// attempted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclude")]
+        public virtual System.Nullable<bool> Exclude { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.AndroidProvisioningPartner.v1 Client Library</Title>
-    <Version>1.45.0.1965</Version>
+    <Version>1.45.0.1966</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

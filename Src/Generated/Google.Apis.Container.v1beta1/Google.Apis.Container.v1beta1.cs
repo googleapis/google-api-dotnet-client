@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200501 (1947)
+ *      <tr><th>API Rev<td>20200505 (1951)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -7374,6 +7374,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDatabaseEncryption")]
         public virtual DatabaseEncryption DesiredDatabaseEncryption { get; set; } 
 
+        /// <summary>The desired status of whether to disable default sNAT for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredDefaultSnatStatus")]
+        public virtual DefaultSnatStatus DesiredDefaultSnatStatus { get; set; } 
+
         /// <summary>The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as
         /// well.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredImageType")]
@@ -7631,6 +7635,18 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Denotes the state of etcd encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the
+    /// cluster.</summary>
+    public class DefaultSnatStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Disables cluster default sNAT rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8235,6 +8251,12 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>NetworkConfig reports the relative names of network & subnetwork.</summary>
     public class NetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when
+        /// default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied
+        /// to the nodes to prevent sNAT on cluster internal traffic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultSnatStatus")]
+        public virtual DefaultSnatStatus DefaultSnatStatus { get; set; } 
+
         /// <summary>Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic
         /// visible for VPC network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableIntraNodeVisibility")]

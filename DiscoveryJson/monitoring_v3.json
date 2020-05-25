@@ -1848,7 +1848,7 @@
    }
   }
  }, 
- "revision": "20200509", 
+ "revision": "20200518", 
  "rootUrl": "https://monitoring.googleapis.com/", 
  "schemas": {
   "Aggregation": {
