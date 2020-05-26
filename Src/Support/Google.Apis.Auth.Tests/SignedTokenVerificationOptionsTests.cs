@@ -52,7 +52,7 @@ namespace Google.Apis.Auth.Tests
                 IssuedAtClockTolerance = TimeSpan.FromSeconds(5),
                 ExpiryClockTolerance = TimeSpan.FromSeconds(10),
                 CertificateCache = new FakeCertificateCache(),
-                Clock = new MockClock(),
+                Clock = new MockClock(DateTime.UtcNow),
                 TrustedAudiences = { "audience" },
                 TrustedIssuers = { "issuers" }
             };
@@ -79,7 +79,7 @@ namespace Google.Apis.Auth.Tests
                 IssuedAtClockTolerance = TimeSpan.FromSeconds(5),
                 ExpiryClockTolerance = TimeSpan.FromSeconds(10),
                 CertificateCache = new FakeCertificateCache(),
-                Clock = new MockClock(),
+                Clock = new MockClock(DateTime.UtcNow),
                 TrustedAudiences = { "audience" },
                 TrustedIssuers = { "issuers" }
             };
@@ -91,7 +91,7 @@ namespace Google.Apis.Auth.Tests
             options1.IssuedAtClockTolerance = TimeSpan.Zero;
             options1.ExpiryClockTolerance = TimeSpan.Zero;
             options1.CertificateCache = new FakeCertificateCache();
-            options1.Clock = new MockClock();
+            options1.Clock = new MockClock(DateTime.UtcNow);
             options1.TrustedAudiences.Add("another");
             options1.TrustedIssuers.Add("another");
 

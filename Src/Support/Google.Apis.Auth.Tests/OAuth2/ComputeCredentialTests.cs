@@ -46,7 +46,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         public async Task FetchesOidcToken()
         {
             // A little bit after the tokens returned from OidcTokenFakes were issued.
-            var clock = new MockClock { UtcNow = new DateTime(2020, 5, 21, 9, 20, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2020, 5, 21, 9, 20, 0, 0, DateTimeKind.Utc));
             var messageHandler = new OidcComputeSuccessMessageHandler();
             var initializer = new ComputeCredential.Initializer("http://will.be.ignored", "http://will.be.ignored")
             {
@@ -73,7 +73,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         public async Task RefreshesOidcToken()
         {
             // A little bit after the tokens returned from OidcTokenFakes were issued.
-            var clock = new MockClock { UtcNow = new DateTime(2020, 5, 21, 9, 20, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2020, 5, 21, 9, 20, 0, 0, DateTimeKind.Utc));
             var messageHandler = new OidcComputeSuccessMessageHandler();
             var initializer = new ComputeCredential.Initializer("http://will.be.ignored", "http://will.be.ignored")
             {
@@ -100,7 +100,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         public async Task FetchesOidcToken_WithDefaultOptions()
         {
             // A little bit after the tokens returned from OidcTokenFakes were issued.
-            var clock = new MockClock { UtcNow = new DateTime(2020, 5, 21, 9, 20, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2020, 5, 21, 9, 20, 0, 0, DateTimeKind.Utc));
             var messageHandler = new OidcComputeSuccessMessageHandler();
             var initializer = new ComputeCredential.Initializer("http://will.be.ignored", "http://will.be.ignored")
             {
@@ -122,7 +122,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         public async Task FetchesOidcToken_WithOptions(OidcTokenFormat format, string targetAudience, string expectedQueryString)
         {
             // A little bit after the tokens returned from OidcTokenFakes were issued.
-            var clock = new MockClock { UtcNow = new DateTime(2020, 5, 21, 9, 20, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2020, 5, 21, 9, 20, 0, 0, DateTimeKind.Utc));
             var messageHandler = new OidcComputeSuccessMessageHandler();
             var initializer = new ComputeCredential.Initializer("http://will.be.ignored", "http://will.be.ignored")
             {

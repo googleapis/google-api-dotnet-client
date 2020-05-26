@@ -1062,7 +1062,7 @@ namespace Google.Apis.Tests.Apis.Http
 
         private async Task<IList<string>> LogTest(ConfigurableMessageHandler.LogEventType logEvents, bool errorResponse = false)
         {
-            var clock = new MockClock { UtcNow = new DateTime(2017, 1, 2, 3, 4, 5, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2017, 1, 2, 3, 4, 5, DateTimeKind.Utc));
             var logger = new MemoryLogger(LogLevel.All, clock: clock);
             HttpMessageHandler handler;
             if (errorResponse)

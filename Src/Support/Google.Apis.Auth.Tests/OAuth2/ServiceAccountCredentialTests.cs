@@ -62,7 +62,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             var credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(dummyServiceAccountCredentialFileContents);
             var initializer = new ServiceAccountCredential.Initializer(credentialParameters.ClientEmail)
             {
-                Clock = new MockClock { UtcNow = new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc) }
+                Clock = new MockClock(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc))
             };
             var cred = new ServiceAccountCredential(initializer.FromPrivateKey(credentialParameters.PrivateKey));
 
@@ -124,7 +124,7 @@ lK1DcBvq+IFLucBdi0/9hXE=
             var credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(dummyServiceAccountCredentialFileContents);
             var initializer = new ServiceAccountCredential.Initializer(credentialParameters.ClientEmail)
             {
-                Clock = new MockClock { UtcNow = new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc) }
+                Clock = new MockClock(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc))
             };
             initializer.FromPrivateKey(credentialParameters.PrivateKey);
             var ps = initializer.Key.ExportParameters(true);
@@ -218,7 +218,7 @@ AQsFAAOBgQBQ9cMInb2rEcg8TTYq8MjDEegHWLUI9Dq/IvP/FHyKDczza4eX8m+G
 
             var initializer = new ServiceAccountCredential.Initializer("some-id")
             {
-                Clock = new MockClock { UtcNow = new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc) }
+                Clock = new MockClock(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc))
             };
             var cred = new ServiceAccountCredential(initializer.FromCertificate(x509Cert));
 
@@ -255,7 +255,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         [Fact]
         public async Task JwtCache_Size()
         {
-            var clock = new MockClock { UtcNow = new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc));
             var initializer = new ServiceAccountCredential.Initializer("some-id")
             {
                 Clock = clock
@@ -280,7 +280,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         [Fact]
         public async Task JwtCache_Expiry()
         {
-            var clock = new MockClock { UtcNow = new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc));
             var initializer = new ServiceAccountCredential.Initializer("some-id")
             {
                 Clock = clock
@@ -313,7 +313,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         {
             var serviceAccountCred = new ServiceAccountCredential(new ServiceAccountCredential.Initializer("MyId", "MyTokenServerUrl")
             {
-                Clock = new MockClock(),
+                Clock = new MockClock(DateTime.UtcNow),
                 AccessMethod = new DummyAccessMethod(),
                 HttpClientFactory = new DummyHttpClientFactory(),
                 DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.Exception, // This is not the default
@@ -348,7 +348,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         {
             var serviceAccountCred = new ServiceAccountCredential(new ServiceAccountCredential.Initializer("MyId", "MyTokenServerUrl")
             {
-                Clock = new MockClock(),
+                Clock = new MockClock(DateTime.UtcNow),
                 AccessMethod = new DummyAccessMethod(),
                 HttpClientFactory = new DummyHttpClientFactory(),
                 DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.Exception, // This is not the default
@@ -382,7 +382,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         public async Task FetchesOidcToken()
         {
             // A little bit after the tokens returned from OidcTokenFakes were issued.
-            var clock = new MockClock { UtcNow = new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc));
             var messageHandler = new OidcTokenResponseSuccessMessageHandler();
             var initializer = new ServiceAccountCredential.Initializer("MyId", "http://will.be.ignored")
             {
@@ -410,7 +410,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         public async Task RefreshesOidcToken()
         {
             // A little bit after the tokens returned from OidcTokenFakes were issued.
-            var clock = new MockClock { UtcNow = new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc));
             var messageHandler = new OidcTokenResponseSuccessMessageHandler();
             var initializer = new ServiceAccountCredential.Initializer("MyId", "http://will.be.ignored")
             {
@@ -436,7 +436,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         public async Task FetchesOidcToken_CorrectPayloadSent()
         {
             // A little bit after the tokens returned from OidcTokenFakes were issued.
-            var clock = new MockClock { UtcNow = new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc));
             var messageHandler = new OidcTokenResponseSuccessMessageHandler();
             var initializer = new ServiceAccountCredential.Initializer("MyId", "http://will.be.ignored")
             {

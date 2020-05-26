@@ -30,7 +30,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task FetchesAccessToken()
         {
-            MockClock clock = new MockClock { UtcNow = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
+            MockClock clock = new MockClock(new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
 
             TokenRefreshManager refreshManager = null;
             refreshManager = new TokenRefreshManager(RefreshTokenAsync, clock, new NullLogger());
@@ -54,7 +54,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task RefreshesAccessToken()
         {
-            MockClock clock = new MockClock { UtcNow = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
+            MockClock clock = new MockClock(new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
 
             TokenRefreshManager refreshManager = null;
             bool firstToken = true;
@@ -85,7 +85,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task FetchTokenFails()
         {
-            MockClock clock = new MockClock { UtcNow = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
+            MockClock clock = new MockClock(new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
 
             TokenRefreshManager refreshManager = new TokenRefreshManager(ct => Task.FromResult(false), clock, new NullLogger());
             OidcToken token = new OidcToken(refreshManager);
@@ -96,7 +96,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task RefreshTokenFails()
         {
-            MockClock clock = new MockClock { UtcNow = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
+            MockClock clock = new MockClock(new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
 
             TokenRefreshManager refreshManager = null;
             bool firstToken = true;

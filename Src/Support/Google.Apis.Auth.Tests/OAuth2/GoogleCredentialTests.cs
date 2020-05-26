@@ -264,7 +264,7 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
         public async Task FromServiceAccountCredential_FetchesOicdToken()
         {
             // A little bit after the tokens returned from OidcTokenFakes were issued.
-            var clock = new MockClock { UtcNow = new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc));
             var messageHandler = new OidcTokenResponseSuccessMessageHandler();
             var initializer = new ServiceAccountCredential.Initializer("MyId", "http://will.be.ignored")
             {
@@ -287,7 +287,7 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
         public async Task FromComputeCredential_FetchesOidcToken()
         {
             // A little bit after the tokens returned from OidcTokenFakes were issued.
-            var clock = new MockClock { UtcNow = new DateTime(2020, 5, 21, 9, 20, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2020, 5, 21, 9, 20, 0, 0, DateTimeKind.Utc));
             var messageHandler = new OidcComputeSuccessMessageHandler();
             var initializer = new ComputeCredential.Initializer("http://will.be.ignored", "http://will.be.ignored")
             {
@@ -334,7 +334,7 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
         [Fact]
         public async Task AccessTokenWithHeadersCredential()
         {
-            var mockClock = new MockClock();
+            var mockClock = new MockClock(DateTime.UtcNow);
             var tokenResponse = new TokenResponse
             {
                 AccessToken = "ACCESS_TOKEN",
