@@ -42,7 +42,7 @@ namespace IntegrationTests
                 HttpClientInitializer = Helper.GetServiceCredential().CreateScoped(StorageService.Scope.DevstorageFullControl),
                 ApplicationName = "IntegrationTest"
             });
-            var memLog = new MemoryLogger(LogLevel.All, clock: new MockClock());
+            var memLog = new MemoryLogger(LogLevel.All, clock: new MockClock(DateTime.UtcNow));
             client.HttpClient.MessageHandler.InstanceLogger = memLog;
             client.HttpClient.MessageHandler.LogEvents = ConfigurableMessageHandler.LogEventType.ResponseBody;
             var req = client.Buckets.List(Helper.GetProjectId()).Configure(req => req.PrettyPrint = true);

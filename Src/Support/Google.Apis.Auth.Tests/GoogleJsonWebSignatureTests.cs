@@ -47,7 +47,7 @@ namespace Google.Apis.Auth.Tests
         [Fact]
         public void ValidationSettingsToSignedTokenVerificationOptions()
         {
-            MockClock clock = new MockClock();
+            MockClock clock = new MockClock(DateTime.UtcNow);
             FakeCertificateCache cache = new FakeCertificateCache();
             var options = new GoogleJsonWebSignature.ValidationSettings
             {
@@ -75,7 +75,7 @@ namespace Google.Apis.Auth.Tests
         {
             // The date is irrelevant here since we are not passing any actual valid token for verification.
             // In any case we are using a fixed date (any fixed date would do) so that the test always runs the same.
-            var settings = MakeSettings(new MockClock() { UtcNow = FakeCertificateCache.ValidJwtGoogleSigned});
+            var settings = MakeSettings(new MockClock(FakeCertificateCache.ValidJwtGoogleSigned));
             // Null JWT
             await Assert.ThrowsAsync<ArgumentNullException>(() => GoogleJsonWebSignature.ValidateInternalAsync(null, settings));
             // Empty JWT
@@ -91,7 +91,7 @@ namespace Google.Apis.Auth.Tests
         [Fact]
         public async Task WrongAlgorithm()
         {
-            var settings = MakeSettings(new MockClock() { UtcNow = DateTime.UtcNow });
+            var settings = MakeSettings(new MockClock(DateTime.UtcNow));
             string jwt = $"{UrlSafeBase64Encode("{\"alg\":\"HS256\"}")}.{UrlSafeBase64Encode("{}")}.";
             var ex = await Assert.ThrowsAsync<InvalidJwtException>(() =>
                 GoogleJsonWebSignature.ValidateInternalAsync(jwt, settings));
@@ -101,14 +101,14 @@ namespace Google.Apis.Auth.Tests
         [Fact]
         public async Task ValidateInternalAsync_Valid()
         {
-            var clockValid = new MockClock() { UtcNow = FakeCertificateCache.ValidJwtGoogleSigned };
+            var clockValid = new MockClock(FakeCertificateCache.ValidJwtGoogleSigned);
             Assert.NotNull(await GoogleJsonWebSignature.ValidateInternalAsync(FakeCertificateCache.JwtGoogleSigned, MakeSettings(clockValid)));
         }
 
         [Fact]
         public async Task ValidateInternalAsync_Invalid()
         {
-            var clockValid = new MockClock() { UtcNow = FakeCertificateCache.ValidJwtGoogleSigned };
+            var clockValid = new MockClock(FakeCertificateCache.ValidJwtGoogleSigned);
             // Lets just change the last character of the Google signed token to break the signature.
             // But Headers and Payload are still valid for a Google token so we guarantee that the only
             // failure comes from the signature being invalid.
@@ -124,7 +124,7 @@ namespace Google.Apis.Auth.Tests
         [Fact]
         public async Task Invalid_Iss()
         {
-            var clock = new MockClock() { UtcNow = FakeCertificateCache.ValidJwtNonGoogleSigned };
+            var clock = new MockClock(FakeCertificateCache.ValidJwtNonGoogleSigned);
             var ex = await Assert.ThrowsAsync<InvalidJwtException>(() =>
                 GoogleJsonWebSignature.ValidateInternalAsync(FakeCertificateCache.JwtNonGoogleSigned, MakeSettings(clock)));
             Assert.Equal("JWT issuer incorrect. Must be one of: 'https://accounts.google.com', 'accounts.google.com'", ex.Message);
@@ -133,7 +133,7 @@ namespace Google.Apis.Auth.Tests
         [Fact]
         public async Task Invalid_Aud()
         {
-            var clock = new MockClock() { UtcNow = FakeCertificateCache.ValidJwtGoogleSigned };
+            var clock = new MockClock(FakeCertificateCache.ValidJwtGoogleSigned);
             var ex = await Assert.ThrowsAsync<InvalidJwtException>(() =>
                 GoogleJsonWebSignature.ValidateInternalAsync(FakeCertificateCache.JwtGoogleSigned, MakeSettings(clock, "bad_aud")));
             Assert.Equal("JWT contains untrusted 'aud' claim.", ex.Message);
@@ -142,9 +142,9 @@ namespace Google.Apis.Auth.Tests
         [Fact]
         public async Task Validate_Signature_Time()
         {
-            var clockInvalid1 = new MockClock() { UtcNow = FakeCertificateCache.BeforeValidJwtGoogleSigned };
-            var clockValid1 = new MockClock() { UtcNow = FakeCertificateCache.ValidJwtGoogleSigned };
-            var clockInvalid2 = new MockClock() { UtcNow = FakeCertificateCache.AfterValidJwtGoogleSigned };
+            var clockInvalid1 = new MockClock(FakeCertificateCache.BeforeValidJwtGoogleSigned);
+            var clockValid1 = new MockClock(FakeCertificateCache.ValidJwtGoogleSigned);
+            var clockInvalid2 = new MockClock(FakeCertificateCache.AfterValidJwtGoogleSigned);
 
             // Test with no tolerance
             Assert.NotNull(await GoogleJsonWebSignature.ValidateInternalAsync(FakeCertificateCache.JwtGoogleSigned, MakeSettings(clockValid1)));
@@ -169,7 +169,7 @@ namespace Google.Apis.Auth.Tests
         [Fact]
         public async Task Invalid_HostedDomain()
         {
-            var clock = new MockClock() { UtcNow = FakeCertificateCache.ValidJwtGoogleSigned };
+            var clock = new MockClock(FakeCertificateCache.ValidJwtGoogleSigned);
             var ex = await Assert.ThrowsAsync<InvalidJwtException>(() =>
                 GoogleJsonWebSignature.ValidateInternalAsync(FakeCertificateCache.JwtGoogleSigned, MakeSettings(clock, hd: "hd")));
             Assert.Equal("JWT contains invalid 'hd' claim.", ex.Message);

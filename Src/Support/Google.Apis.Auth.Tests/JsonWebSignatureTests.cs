@@ -38,7 +38,7 @@ namespace Google.Apis.Auth.Tests
             var options = new SignedTokenVerificationOptions
             {
                 CertificateCache = new FakeCertificateCache(),
-                Clock = clock ?? new MockClock() { UtcNow = FakeCertificateCache.ValidJwtGoogleSigned }
+                Clock = clock ?? new MockClock(FakeCertificateCache.ValidJwtGoogleSigned)
             };
             foreach (var issuer in trustedIssuers ?? Enumerable.Empty<string>())
             {
@@ -90,13 +90,13 @@ namespace Google.Apis.Auth.Tests
         [Fact]
         public async Task ValidES256Signature() =>
             Assert.NotNull(await JsonWebSignature.VerifySignedTokenAsync(
-                FakeCertificateCache.Es256ForIap, BuildOptions(new MockClock { UtcNow = FakeCertificateCache.ValidEs256ForIap })));
+                FakeCertificateCache.Es256ForIap, BuildOptions(new MockClock(FakeCertificateCache.ValidEs256ForIap))));
 #else
         [Fact]
         public async Task ValidES256Signature_Unsupported()
         {
             var ex = await Assert.ThrowsAsync<InvalidOperationException>(() => JsonWebSignature.VerifySignedTokenAsync(
-                FakeCertificateCache.Es256ForIap, BuildOptions(new MockClock { UtcNow = FakeCertificateCache.ValidEs256ForIap })));
+                FakeCertificateCache.Es256ForIap, BuildOptions(new MockClock(FakeCertificateCache.ValidEs256ForIap))));
             Assert.Equal("ES256 signed token verification is not supported in this platform.", ex.Message);
         }
 #endif
@@ -129,7 +129,7 @@ namespace Google.Apis.Auth.Tests
             // this test will fail and then we'll have to replace the 4 by an A or any other character.
             var invalidToken = FakeCertificateCache.Es256ForIap.Substring(0, FakeCertificateCache.Es256ForIap.Length - 1) + "4";
             var ex = await Assert.ThrowsAsync<InvalidJwtException>(() =>
-                JsonWebSignature.VerifySignedTokenAsync(invalidToken, BuildOptions(new MockClock { UtcNow = FakeCertificateCache.ValidEs256ForIap })));
+                JsonWebSignature.VerifySignedTokenAsync(invalidToken, BuildOptions(new MockClock(FakeCertificateCache.ValidEs256ForIap))));
             Assert.Equal("JWT invalid, unable to verify signature.", ex.Message);
         }
 #else
@@ -144,7 +144,7 @@ namespace Google.Apis.Auth.Tests
             // this test will fail and then we'll have to replace the 4 by an A or any other character.
             var invalidToken = FakeCertificateCache.Es256ForIap.Substring(0, FakeCertificateCache.Es256ForIap.Length - 1) + "4";
             var ex = await Assert.ThrowsAsync<InvalidOperationException>(() =>
-                JsonWebSignature.VerifySignedTokenAsync(invalidToken, BuildOptions(new MockClock { UtcNow = FakeCertificateCache.ValidEs256ForIap })));
+                JsonWebSignature.VerifySignedTokenAsync(invalidToken, BuildOptions(new MockClock(FakeCertificateCache.ValidEs256ForIap))));
             Assert.Equal("ES256 signed token verification is not supported in this platform.", ex.Message);
         }
 #endif
@@ -170,9 +170,9 @@ namespace Google.Apis.Auth.Tests
         [Fact]
         public async Task Validate_Signature_Time()
         {
-            var clockInvalid1 = new MockClock() { UtcNow = FakeCertificateCache.BeforeValidJwtGoogleSigned };
-            var clockValid1 = new MockClock() { UtcNow = FakeCertificateCache.ValidJwtGoogleSigned };
-            var clockInvalid2 = new MockClock() { UtcNow = FakeCertificateCache.AfterValidJwtGoogleSigned };
+            var clockInvalid1 = new MockClock(FakeCertificateCache.BeforeValidJwtGoogleSigned);
+            var clockValid1 = new MockClock(FakeCertificateCache.ValidJwtGoogleSigned);
+            var clockInvalid2 = new MockClock(FakeCertificateCache.AfterValidJwtGoogleSigned);
 
             // Test with no tolerance
             Assert.NotNull(await JsonWebSignature.VerifySignedTokenAsync(FakeCertificateCache.JwtGoogleSigned, BuildOptions(clockValid1)));

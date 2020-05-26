@@ -28,7 +28,7 @@ namespace Google.Apis.Auth.Tests
         [Fact]
         public async Task CertificateCache_Caches()
         {
-            MockClock clock = new MockClock() { UtcNow = DateTime.UtcNow };
+            MockClock clock = new MockClock(DateTime.UtcNow);
 
             // The fake only fakes the fetching of the certificates from the web.
             // The rest of the code can't be mocked and that's what we are testing here.
@@ -46,7 +46,7 @@ namespace Google.Apis.Auth.Tests
         [Fact]
         public async Task CertificateCache_Refreshes()
         {
-            MockClock clock = new MockClock() { UtcNow = DateTime.UtcNow };
+            MockClock clock = new MockClock(DateTime.UtcNow);
             // The fake only fakes the fetching of the certificates from the web.
             // The rest of the code can't be mocked and that's what we are testing here.
             var certCache = new FakeCertificateCache(clock);
@@ -64,7 +64,7 @@ namespace Google.Apis.Auth.Tests
         [Fact]
         public async Task CertificateCache_ForceRefresh()
         {
-            MockClock clock = new MockClock() { UtcNow = DateTime.UtcNow };
+            MockClock clock = new MockClock(DateTime.UtcNow);
             // The fake only fakes the fetching of the certificates from the web.
             // The rest of the code can't be mocked and that's what we are testing here.
             var certCache = new FakeCertificateCache(clock);

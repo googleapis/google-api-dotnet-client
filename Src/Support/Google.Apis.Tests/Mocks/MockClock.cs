@@ -28,8 +28,8 @@ namespace Google.Apis.Tests.Mocks
     {
         public DateTime Now
         {
-            get { return UtcNow.ToLocalTime(); }
-            set { UtcNow = value.ToUniversalTime(); }
+            get => throw new NotSupportedException("Our tests shouldn't use IClock.Now");
+            set => throw new NotSupportedException("Our tests shouldn't use IClock.Now");
         }
 
         private object _lock = new object();
@@ -51,6 +51,15 @@ namespace Google.Apis.Tests.Mocks
                     _utcNow = value;
                 }
             }
+        }
+
+        public MockClock(DateTime utcNow)
+        {
+            if (utcNow.Kind != DateTimeKind.Utc)
+            {
+                throw new ArgumentException("The value should have a Kind of Utc", nameof(utcNow));
+            }
+            UtcNow = utcNow;
         }
     }
 }

@@ -36,7 +36,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         {
             // Test multiple refreshes concurrently and sequentially,
             // where all refreshes return the same token.
-            var clock = new MockClock { UtcNow = new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc));
             var logger = new NullLogger();
             int refreshFnCount = 0;
             TaskCompletionSource<int> delayTask = null;
@@ -81,7 +81,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         {
             // Test multiple refreshes concurrently and sequentially,
             // where the sequential refreshes are after the previous token has completely expired.
-            var clock = new MockClock { UtcNow = new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc));
             var logger = new NullLogger();
             int refreshFnCount = 0;
             TaskCompletionSource<int> delayTask = null;
@@ -129,7 +129,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         {
             // Test multiple refreshes concurrently and sequentially,
             // where the sequential refreshes are after the previous token has completely expired.
-            var clock = new MockClock { UtcNow = new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc));
             var logger = new NullLogger();
             TaskCompletionSource<int> delayTask = null;
             TokenRefreshManager trm = null;
@@ -172,7 +172,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task ExpiredToken()
         {
-            var clock = new MockClock { UtcNow = new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc));
             var logger = new NullLogger();
             int refreshFnCount = 0;
             string accessToken = null;
@@ -203,7 +203,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task CancelDuringRefresh()
         {
-            var clock = new MockClock { UtcNow = new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc));
             var logger = new NullLogger();
             int refreshCalled = 0;
             int refreshCompleted = 0;
@@ -231,7 +231,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task RetriesTimeout_Sync()
         {
-            var clock = new MockClock { UtcNow = new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc));
             var logger = new NullLogger();
             int refreshCallCount = 0;
             int refreshCompleted = 0;
@@ -255,7 +255,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task RetriesTimeout_Async()
         {
-            var clock = new MockClock { UtcNow = new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc));
             var logger = new NullLogger();
             int refreshCallCount = 0;
             int refreshCompleted = 0;
@@ -280,7 +280,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task RetriesError_Sync()
         {
-            var clock = new MockClock { UtcNow = new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc));
             var logger = new NullLogger();
             int refreshCallCount = 0;
             int refreshCompleted = 0;
@@ -300,7 +300,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task RetriesError_Async()
         {
-            var clock = new MockClock { UtcNow = new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc));
             var logger = new NullLogger();
             int refreshCallCount = 0;
             int refreshCompleted = 0;

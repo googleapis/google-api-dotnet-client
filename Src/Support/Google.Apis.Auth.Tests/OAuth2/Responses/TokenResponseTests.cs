@@ -117,7 +117,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Responses
             string accessToken, string idToken,
             bool expectedExpired, bool expectedEffectiveExpires)
         {
-            var clock = new MockClock { UtcNow = now };
+            var clock = new MockClock(now);
             var token = new TokenResponse
             {
                 IssuedUtc = issuedAt,
@@ -150,7 +150,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Responses
                 Content = new StringContent(serializedToken)
             };
 
-            MockClock clock = new MockClock { UtcNow = new DateTime(2020, 02, 02, 2, 20, 20, DateTimeKind.Utc) };
+            MockClock clock = new MockClock(new DateTime(2020, 02, 02, 2, 20, 20, DateTimeKind.Utc));
             TokenResponse token = await TokenResponse.FromHttpResponseAsync(response, clock, new NullLogger());
 
             Assert.Equal("IdToken", token.IdToken);
@@ -172,7 +172,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Responses
                 RequestMessage = new HttpRequestMessage(HttpMethod.Get, GoogleAuthConsts.ComputeOidcTokenUrl)
             };
 
-            MockClock clock = new MockClock { UtcNow = new DateTime(2020, 02, 02, 2, 20, 20, DateTimeKind.Utc) };
+            MockClock clock = new MockClock(new DateTime(2020, 02, 02, 2, 20, 20, DateTimeKind.Utc));
             TokenResponse token = await TokenResponse.FromHttpResponseAsync(response, clock, new NullLogger());
 
             Assert.Equal(OidcComputeSuccessMessageHandler.FirstCallToken, token.IdToken);
@@ -226,7 +226,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Responses
                 Content = new StringContent(serializedToken)
             };
 
-            var clock = new MockClock { UtcNow = new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc));
             TokenResponse token = await TokenResponse.FromHttpResponseAsync(response, clock, new NullLogger());
 
             Assert.Equal(expectedIdToken, token.IdToken);
@@ -248,7 +248,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Responses
                 Content = new StringContent(serializedToken)
             };
 
-            var clock = new MockClock { UtcNow = new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc) };
+            var clock = new MockClock(new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc));
             TokenResponse token = await TokenResponse.FromHttpResponseAsync(response, clock, new NullLogger());
 
             Assert.Equal(OidcTokenResponseSuccessMessageHandler.FirstCallToken, token.IdToken);
