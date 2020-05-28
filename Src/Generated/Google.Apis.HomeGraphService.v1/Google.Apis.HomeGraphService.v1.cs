@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/actions/smarthome/create-app#request-sync'>HomeGraph API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200518 (1964)
+ *      <tr><th>API Rev<td>20200522 (1968)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/actions/smarthome/create-app#request-sync'>
  *              https://developers.google.com/actions/smarthome/create-app#request-sync</a>
@@ -956,7 +956,9 @@ namespace Google.Apis.HomeGraphService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
         public virtual string EventId { get; set; } 
 
-        /// <summary>Token to maintain state in the follow up notification response.</summary>
+        /// <summary>Token to maintain state in the follow up notification response. Deprecated. See the [notifications
+        /// guide](https://developers.google.com/assistant/smarthome/develop/notifications) for details on implementing
+        /// follow up notifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("followUpToken")]
         public virtual string FollowUpToken { get; set; } 
 

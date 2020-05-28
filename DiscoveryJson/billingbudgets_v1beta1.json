@@ -256,7 +256,7 @@
    }
   }
  }, 
- "revision": "20200516", 
+ "revision": "20200522", 
  "rootUrl": "https://billingbudgets.googleapis.com/", 
  "schemas": {
   "GoogleCloudBillingBudgetsV1beta1AllUpdatesRule": {
@@ -363,7 +363,7 @@
       }, 
       "type": "array"
      }, 
-     "description": "Optional. A single label and value pair specifying that usage from only this set of\nlabeled resources should be included in the budget. Multiple entries or\nmultiple values per entry are not allowed. If omitted, the report will\ninclude all labeled and unlabeled usage.", 
+     "description": "Optional. A single label and value pair specifying that usage from only this set of\nlabeled resources should be included in the budget. Currently, multiple\nentries or multiple values per entry are not allowed. If omitted, the\nreport will include all labeled and unlabeled usage.", 
      "type": "object"
     }, 
     "projects": {

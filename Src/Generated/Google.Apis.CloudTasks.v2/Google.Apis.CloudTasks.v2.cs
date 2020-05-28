@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200505 (1951)
+ *      <tr><th>API Rev<td>20200513 (1959)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tasks/'>
  *              https://cloud.google.com/tasks/</a>
@@ -3083,7 +3083,7 @@ namespace Google.Apis.CloudTasks.v2.Data
         /// the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. Cloud Tasks will retry
         /// the task according to the RetryConfig.
         ///
-        /// Note that when the request is cancelled, Cloud Tasks will stop listing for the response, but whether the
+        /// Note that when the request is cancelled, Cloud Tasks will stop listening for the response, but whether the
         /// worker stops processing depends on the worker. For example, if the worker is stuck, it may not react to
         /// cancelled requests.
         ///

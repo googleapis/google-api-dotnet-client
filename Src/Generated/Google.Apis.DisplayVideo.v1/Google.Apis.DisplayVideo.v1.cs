@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/display-video/'>Display & Video 360 API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200519 (1965)
+ *      <tr><th>API Rev<td>20200526 (1972)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/display-video/'>
  *              https://developers.google.com/display-video/</a>
@@ -452,6 +452,7 @@ namespace Google.Apis.DisplayVideo.v1
             lineItems = new LineItemsResource(service);
             locationLists = new LocationListsResource(service);
             negativeKeywordLists = new NegativeKeywordListsResource(service);
+            targetingTypes = new TargetingTypesResource(service);
 
         }
 
@@ -2608,8 +2609,6 @@ namespace Google.Apis.DisplayVideo.v1
                             TARGETINGTYPEGEOREGION,
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
                             TARGETINGTYPEINVENTORYSOURCEGROUP,
-                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION")]
-                            TARGETINGTYPEPROXIMITYLOCATION,
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
                             TARGETINGTYPEEXCHANGE,
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
@@ -2793,8 +2792,6 @@ namespace Google.Apis.DisplayVideo.v1
                             TARGETINGTYPEGEOREGION,
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
                             TARGETINGTYPEINVENTORYSOURCEGROUP,
-                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION")]
-                            TARGETINGTYPEPROXIMITYLOCATION,
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
                             TARGETINGTYPEEXCHANGE,
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
@@ -2986,8 +2983,6 @@ namespace Google.Apis.DisplayVideo.v1
                             TARGETINGTYPEGEOREGION,
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
                             TARGETINGTYPEINVENTORYSOURCEGROUP,
-                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION")]
-                            TARGETINGTYPEPROXIMITYLOCATION,
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
                             TARGETINGTYPEEXCHANGE,
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
@@ -3175,8 +3170,6 @@ namespace Google.Apis.DisplayVideo.v1
                             TARGETINGTYPEGEOREGION,
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
                             TARGETINGTYPEINVENTORYSOURCEGROUP,
-                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION")]
-                            TARGETINGTYPEPROXIMITYLOCATION,
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
                             TARGETINGTYPEEXCHANGE,
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
@@ -4452,6 +4445,1004 @@ namespace Google.Apis.DisplayVideo.v1
                 }
 
             }
+        }
+        private readonly TargetingTypesResource targetingTypes;
+
+        /// <summary>Gets the TargetingTypes resource.</summary>
+        public virtual TargetingTypesResource TargetingTypes
+        {
+            get { return targetingTypes; }
+        }
+
+        /// <summary>The "targetingTypes" collection of methods.</summary>
+        public class TargetingTypesResource
+        {
+            private const string Resource = "targetingTypes";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public TargetingTypesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                assignedTargetingOptions = new AssignedTargetingOptionsResource(service);
+
+            }
+
+            private readonly AssignedTargetingOptionsResource assignedTargetingOptions;
+
+            /// <summary>Gets the AssignedTargetingOptions resource.</summary>
+            public virtual AssignedTargetingOptionsResource AssignedTargetingOptions
+            {
+                get { return assignedTargetingOptions; }
+            }
+
+            /// <summary>The "assignedTargetingOptions" collection of methods.</summary>
+            public class AssignedTargetingOptionsResource
+            {
+                private const string Resource = "assignedTargetingOptions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AssignedTargetingOptionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Assigns a targeting option to an advertiser. Returns the assigned targeting option if
+                /// successful.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="advertiserId">Required. The ID of the advertiser.</param>
+                /// <param name="targetingType">Required.
+                /// Identifies the type of this assigned targeting option.</param>
+                public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption body, long advertiserId, CreateRequest.TargetingTypeEnum targetingType)
+                {
+                    return new CreateRequest(service, body, advertiserId, targetingType);
+                }
+
+                /// <summary>Assigns a targeting option to an advertiser. Returns the assigned targeting option if
+                /// successful.</summary>
+                public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption body, long advertiserId, CreateRequest.TargetingTypeEnum targetingType)
+                        : base(service)
+                    {
+                        AdvertiserId = advertiserId;
+                        TargetingType = targetingType;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The ID of the advertiser.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AdvertiserId { get; private set; }
+
+                    /// <summary>Required. Identifies the type of this assigned targeting option.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual TargetingTypeEnum TargetingType { get; private set; }
+
+                    /// <summary>Required. Identifies the type of this assigned targeting option.</summary>
+                    public enum TargetingTypeEnum
+                    {
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
+                        TARGETINGTYPEUNSPECIFIED,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
+                        TARGETINGTYPECHANNEL,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
+                        TARGETINGTYPEAPPCATEGORY,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
+                        TARGETINGTYPEAPP,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
+                        TARGETINGTYPEURL,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
+                        TARGETINGTYPEDAYANDTIME,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
+                        TARGETINGTYPEAGERANGE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
+                        TARGETINGTYPEREGIONALLOCATIONLIST,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
+                        TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
+                        TARGETINGTYPEGENDER,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
+                        TARGETINGTYPEVIDEOPLAYERSIZE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
+                        TARGETINGTYPEUSERREWARDEDCONTENT,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
+                        TARGETINGTYPEPARENTALSTATUS,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
+                        TARGETINGTYPECONTENTINSTREAMPOSITION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
+                        TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
+                        TARGETINGTYPEDEVICETYPE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
+                        TARGETINGTYPEAUDIENCEGROUP,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
+                        TARGETINGTYPEBROWSER,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
+                        TARGETINGTYPEHOUSEHOLDINCOME,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
+                        TARGETINGTYPEONSCREENPOSITION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
+                        TARGETINGTYPETHIRDPARTYVERIFIER,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
+                        TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
+                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
+                        TARGETINGTYPEENVIRONMENT,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
+                        TARGETINGTYPECARRIERANDISP,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
+                        TARGETINGTYPEOPERATINGSYSTEM,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
+                        TARGETINGTYPEDEVICEMAKEMODEL,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
+                        TARGETINGTYPEKEYWORD,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
+                        TARGETINGTYPENEGATIVEKEYWORDLIST,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
+                        TARGETINGTYPEVIEWABILITY,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
+                        TARGETINGTYPECATEGORY,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
+                        TARGETINGTYPEINVENTORYSOURCE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
+                        TARGETINGTYPELANGUAGE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
+                        TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
+                        TARGETINGTYPEGEOREGION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
+                        TARGETINGTYPEINVENTORYSOURCEGROUP,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
+                        TARGETINGTYPEEXCHANGE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
+                        TARGETINGTYPESUBEXCHANGE,
+                    }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "targetingType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "targetingType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Deletes an assigned targeting option from an advertiser.</summary>
+                /// <param name="advertiserId">Required. The ID of the advertiser.</param>
+                /// <param name="targetingType">Required.
+                /// Identifies the type of this assigned targeting option.</param>
+                /// <param
+                /// name="assignedTargetingOptionId">Required. The ID of the assigned targeting option to delete.</param>
+                public virtual DeleteRequest Delete(long advertiserId, DeleteRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
+                {
+                    return new DeleteRequest(service, advertiserId, targetingType, assignedTargetingOptionId);
+                }
+
+                /// <summary>Deletes an assigned targeting option from an advertiser.</summary>
+                public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, DeleteRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
+                        : base(service)
+                    {
+                        AdvertiserId = advertiserId;
+                        TargetingType = targetingType;
+                        AssignedTargetingOptionId = assignedTargetingOptionId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The ID of the advertiser.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AdvertiserId { get; private set; }
+
+                    /// <summary>Required. Identifies the type of this assigned targeting option.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual TargetingTypeEnum TargetingType { get; private set; }
+
+                    /// <summary>Required. Identifies the type of this assigned targeting option.</summary>
+                    public enum TargetingTypeEnum
+                    {
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
+                        TARGETINGTYPEUNSPECIFIED,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
+                        TARGETINGTYPECHANNEL,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
+                        TARGETINGTYPEAPPCATEGORY,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
+                        TARGETINGTYPEAPP,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
+                        TARGETINGTYPEURL,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
+                        TARGETINGTYPEDAYANDTIME,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
+                        TARGETINGTYPEAGERANGE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
+                        TARGETINGTYPEREGIONALLOCATIONLIST,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
+                        TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
+                        TARGETINGTYPEGENDER,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
+                        TARGETINGTYPEVIDEOPLAYERSIZE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
+                        TARGETINGTYPEUSERREWARDEDCONTENT,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
+                        TARGETINGTYPEPARENTALSTATUS,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
+                        TARGETINGTYPECONTENTINSTREAMPOSITION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
+                        TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
+                        TARGETINGTYPEDEVICETYPE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
+                        TARGETINGTYPEAUDIENCEGROUP,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
+                        TARGETINGTYPEBROWSER,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
+                        TARGETINGTYPEHOUSEHOLDINCOME,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
+                        TARGETINGTYPEONSCREENPOSITION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
+                        TARGETINGTYPETHIRDPARTYVERIFIER,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
+                        TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
+                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
+                        TARGETINGTYPEENVIRONMENT,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
+                        TARGETINGTYPECARRIERANDISP,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
+                        TARGETINGTYPEOPERATINGSYSTEM,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
+                        TARGETINGTYPEDEVICEMAKEMODEL,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
+                        TARGETINGTYPEKEYWORD,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
+                        TARGETINGTYPENEGATIVEKEYWORDLIST,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
+                        TARGETINGTYPEVIEWABILITY,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
+                        TARGETINGTYPECATEGORY,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
+                        TARGETINGTYPEINVENTORYSOURCE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
+                        TARGETINGTYPELANGUAGE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
+                        TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
+                        TARGETINGTYPEGEOREGION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
+                        TARGETINGTYPEINVENTORYSOURCEGROUP,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
+                        TARGETINGTYPEEXCHANGE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
+                        TARGETINGTYPESUBEXCHANGE,
+                    }
+
+                    /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("assignedTargetingOptionId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string AssignedTargetingOptionId { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}"; }
+                    }
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "targetingType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "targetingType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "assignedTargetingOptionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "assignedTargetingOptionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Gets a single targeting option assigned to an advertiser.</summary>
+                /// <param name="advertiserId">Required. The ID of the advertiser.</param>
+                /// <param name="targetingType">Required.
+                /// Identifies the type of this assigned targeting option.</param>
+                /// <param
+                /// name="assignedTargetingOptionId">Required. An identifier unique to the targeting type in this advertiser that
+                /// identifies the assigned targeting option being requested.</param>
+                public virtual GetRequest Get(long advertiserId, GetRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
+                {
+                    return new GetRequest(service, advertiserId, targetingType, assignedTargetingOptionId);
+                }
+
+                /// <summary>Gets a single targeting option assigned to an advertiser.</summary>
+                public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, GetRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
+                        : base(service)
+                    {
+                        AdvertiserId = advertiserId;
+                        TargetingType = targetingType;
+                        AssignedTargetingOptionId = assignedTargetingOptionId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The ID of the advertiser.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AdvertiserId { get; private set; }
+
+                    /// <summary>Required. Identifies the type of this assigned targeting option.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual TargetingTypeEnum TargetingType { get; private set; }
+
+                    /// <summary>Required. Identifies the type of this assigned targeting option.</summary>
+                    public enum TargetingTypeEnum
+                    {
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
+                        TARGETINGTYPEUNSPECIFIED,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
+                        TARGETINGTYPECHANNEL,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
+                        TARGETINGTYPEAPPCATEGORY,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
+                        TARGETINGTYPEAPP,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
+                        TARGETINGTYPEURL,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
+                        TARGETINGTYPEDAYANDTIME,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
+                        TARGETINGTYPEAGERANGE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
+                        TARGETINGTYPEREGIONALLOCATIONLIST,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
+                        TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
+                        TARGETINGTYPEGENDER,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
+                        TARGETINGTYPEVIDEOPLAYERSIZE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
+                        TARGETINGTYPEUSERREWARDEDCONTENT,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
+                        TARGETINGTYPEPARENTALSTATUS,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
+                        TARGETINGTYPECONTENTINSTREAMPOSITION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
+                        TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
+                        TARGETINGTYPEDEVICETYPE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
+                        TARGETINGTYPEAUDIENCEGROUP,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
+                        TARGETINGTYPEBROWSER,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
+                        TARGETINGTYPEHOUSEHOLDINCOME,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
+                        TARGETINGTYPEONSCREENPOSITION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
+                        TARGETINGTYPETHIRDPARTYVERIFIER,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
+                        TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
+                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
+                        TARGETINGTYPEENVIRONMENT,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
+                        TARGETINGTYPECARRIERANDISP,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
+                        TARGETINGTYPEOPERATINGSYSTEM,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
+                        TARGETINGTYPEDEVICEMAKEMODEL,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
+                        TARGETINGTYPEKEYWORD,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
+                        TARGETINGTYPENEGATIVEKEYWORDLIST,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
+                        TARGETINGTYPEVIEWABILITY,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
+                        TARGETINGTYPECATEGORY,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
+                        TARGETINGTYPEINVENTORYSOURCE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
+                        TARGETINGTYPELANGUAGE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
+                        TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
+                        TARGETINGTYPEGEOREGION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
+                        TARGETINGTYPEINVENTORYSOURCEGROUP,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
+                        TARGETINGTYPEEXCHANGE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
+                        TARGETINGTYPESUBEXCHANGE,
+                    }
+
+                    /// <summary>Required. An identifier unique to the targeting type in this advertiser that identifies
+                    /// the assigned targeting option being requested.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("assignedTargetingOptionId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string AssignedTargetingOptionId { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "targetingType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "targetingType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "assignedTargetingOptionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "assignedTargetingOptionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists the targeting options assigned to an advertiser.</summary>
+                /// <param name="advertiserId">Required. The ID of the advertiser.</param>
+                /// <param name="targetingType">Required.
+                /// Identifies the type of assigned targeting options to list.</param>
+                public virtual ListRequest List(long advertiserId, ListRequest.TargetingTypeEnum targetingType)
+                {
+                    return new ListRequest(service, advertiserId, targetingType);
+                }
+
+                /// <summary>Lists the targeting options assigned to an advertiser.</summary>
+                public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListAdvertiserAssignedTargetingOptionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, ListRequest.TargetingTypeEnum targetingType)
+                        : base(service)
+                    {
+                        AdvertiserId = advertiserId;
+                        TargetingType = targetingType;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The ID of the advertiser.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AdvertiserId { get; private set; }
+
+                    /// <summary>Required. Identifies the type of assigned targeting options to list.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual TargetingTypeEnum TargetingType { get; private set; }
+
+                    /// <summary>Required. Identifies the type of assigned targeting options to list.</summary>
+                    public enum TargetingTypeEnum
+                    {
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
+                        TARGETINGTYPEUNSPECIFIED,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
+                        TARGETINGTYPECHANNEL,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
+                        TARGETINGTYPEAPPCATEGORY,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
+                        TARGETINGTYPEAPP,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
+                        TARGETINGTYPEURL,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
+                        TARGETINGTYPEDAYANDTIME,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
+                        TARGETINGTYPEAGERANGE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
+                        TARGETINGTYPEREGIONALLOCATIONLIST,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
+                        TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
+                        TARGETINGTYPEGENDER,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
+                        TARGETINGTYPEVIDEOPLAYERSIZE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
+                        TARGETINGTYPEUSERREWARDEDCONTENT,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
+                        TARGETINGTYPEPARENTALSTATUS,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
+                        TARGETINGTYPECONTENTINSTREAMPOSITION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
+                        TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
+                        TARGETINGTYPEDEVICETYPE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
+                        TARGETINGTYPEAUDIENCEGROUP,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
+                        TARGETINGTYPEBROWSER,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
+                        TARGETINGTYPEHOUSEHOLDINCOME,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
+                        TARGETINGTYPEONSCREENPOSITION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
+                        TARGETINGTYPETHIRDPARTYVERIFIER,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
+                        TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
+                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
+                        TARGETINGTYPEENVIRONMENT,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
+                        TARGETINGTYPECARRIERANDISP,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
+                        TARGETINGTYPEOPERATINGSYSTEM,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
+                        TARGETINGTYPEDEVICEMAKEMODEL,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
+                        TARGETINGTYPEKEYWORD,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
+                        TARGETINGTYPENEGATIVEKEYWORDLIST,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
+                        TARGETINGTYPEVIEWABILITY,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
+                        TARGETINGTYPECATEGORY,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
+                        TARGETINGTYPEINVENTORYSOURCE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
+                        TARGETINGTYPELANGUAGE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
+                        TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
+                        TARGETINGTYPEGEOREGION,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
+                        TARGETINGTYPEINVENTORYSOURCEGROUP,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
+                        TARGETINGTYPEEXCHANGE,
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
+                        TARGETINGTYPESUBEXCHANGE,
+                    }
+
+                    /// <summary>Allows filtering by assigned targeting option properties.
+                    ///
+                    /// Supported syntax:
+                    ///
+                    /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
+                    /// the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * The
+                    /// operator must be `EQUALS (=)`. * Supported fields: - `assignedTargetingOptionId`
+                    ///
+                    /// Examples:
+                    ///
+                    /// * AssignedTargetingOption with ID 123456 `assignedTargetingOptionId="123456"`
+                    ///
+                    /// The length of this field should be no more than 500 characters.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Field by which to sort the list. Acceptable values are:
+                    ///
+                    /// * `assignedTargetingOptionId` (default)
+                    ///
+                    /// The default sorting order is ascending. To specify descending order for a field, a suffix "desc"
+                    /// should be added to the field name. Example: `assignedTargetingOptionId desc`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>Requested page size. Must be between `1` and `100`. If unspecified will default to
+                    /// `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>A token identifying a page of results the server should return. Typically, this is the
+                    /// value of next_page_token returned from the previous call to
+                    /// `ListAdvertiserAssignedTargetingOptions` method. If not specified, the first page of results
+                    /// will be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "targetingType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "targetingType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+        }
+
+        /// <summary>Bulk edits targeting options under a single advertiser. The operation will delete the assigned
+        /// targeting options provided in BulkEditAdvertiserAssignedTargetingOptionsRequest.delete_requests and then
+        /// create the assigned targeting options provided in
+        /// BulkEditAdvertiserAssignedTargetingOptionsRequest.create_requests .</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="advertiserId">Required. The ID of the advertiser.</param>
+        public virtual BulkEditAdvertiserAssignedTargetingOptionsRequest BulkEditAdvertiserAssignedTargetingOptions(Google.Apis.DisplayVideo.v1.Data.BulkEditAdvertiserAssignedTargetingOptionsRequest body, long advertiserId)
+        {
+            return new BulkEditAdvertiserAssignedTargetingOptionsRequest(service, body, advertiserId);
+        }
+
+        /// <summary>Bulk edits targeting options under a single advertiser. The operation will delete the assigned
+        /// targeting options provided in BulkEditAdvertiserAssignedTargetingOptionsRequest.delete_requests and then
+        /// create the assigned targeting options provided in
+        /// BulkEditAdvertiserAssignedTargetingOptionsRequest.create_requests .</summary>
+        public class BulkEditAdvertiserAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditAdvertiserAssignedTargetingOptionsResponse>
+        {
+            /// <summary>Constructs a new BulkEditAdvertiserAssignedTargetingOptions request.</summary>
+            public BulkEditAdvertiserAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditAdvertiserAssignedTargetingOptionsRequest body, long advertiserId)
+                : base(service)
+            {
+                AdvertiserId = advertiserId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The ID of the advertiser.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long AdvertiserId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DisplayVideo.v1.Data.BulkEditAdvertiserAssignedTargetingOptionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "bulkEditAdvertiserAssignedTargetingOptions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/advertisers/{+advertiserId}:bulkEditAdvertiserAssignedTargetingOptions"; }
+            }
+
+            /// <summary>Initializes BulkEditAdvertiserAssignedTargetingOptions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+            }
+
+        }
+
+        /// <summary>Lists assigned targeting options of an advertiser across targeting types.</summary>
+        /// <param name="advertiserId">Required. The ID of the advertiser the line item belongs to.</param>
+        public virtual BulkListAdvertiserAssignedTargetingOptionsRequest BulkListAdvertiserAssignedTargetingOptions(long advertiserId)
+        {
+            return new BulkListAdvertiserAssignedTargetingOptionsRequest(service, advertiserId);
+        }
+
+        /// <summary>Lists assigned targeting options of an advertiser across targeting types.</summary>
+        public class BulkListAdvertiserAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkListAdvertiserAssignedTargetingOptionsResponse>
+        {
+            /// <summary>Constructs a new BulkListAdvertiserAssignedTargetingOptions request.</summary>
+            public BulkListAdvertiserAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, long advertiserId)
+                : base(service)
+            {
+                AdvertiserId = advertiserId;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The ID of the advertiser the line item belongs to.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long AdvertiserId { get; private set; }
+
+            /// <summary>Allows filtering by assigned targeting option properties. Supported syntax:
+            ///
+            /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the
+            /// logical operator `OR`.. * A restriction has the form of `{field} {operator} {value}`. * The operator
+            /// must be `EQUALS (=)`. * Supported fields: - `targetingType`
+            ///
+            /// Examples:
+            ///
+            /// * targetingType with value TARGETING_TYPE_CHANNEL `targetingType="TARGETING_TYPE_CHANNEL"`
+            ///
+            /// The length of this field should be no more than 500 characters.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>Field by which to sort the list. Acceptable values are:
+            ///
+            /// * `targetingType` (default)
+            ///
+            /// The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should
+            /// be added to the field name. Example: `targetingType desc`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the
+            /// default is '5000'. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A token that lets the client fetch the next page of results. Typically, this is the value of
+            /// next_page_token returned from the previous call to `BulkListAdvertiserAssignedTargetingOptions` method.
+            /// If not specified, the first page of results will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "bulkListAdvertiserAssignedTargetingOptions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/advertisers/{+advertiserId}:bulkListAdvertiserAssignedTargetingOptions"; }
+            }
+
+            /// <summary>Initializes BulkListAdvertiserAssignedTargetingOptions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
         }
 
         /// <summary>Creates a new advertiser. Returns the newly created advertiser if successful. This method can take
@@ -7237,8 +8228,6 @@ namespace Google.Apis.DisplayVideo.v1
                     TARGETINGTYPEGEOREGION,
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
                     TARGETINGTYPEINVENTORYSOURCEGROUP,
-                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION")]
-                    TARGETINGTYPEPROXIMITYLOCATION,
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
                     TARGETINGTYPEEXCHANGE,
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
@@ -7406,8 +8395,6 @@ namespace Google.Apis.DisplayVideo.v1
                     TARGETINGTYPEGEOREGION,
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
                     TARGETINGTYPEINVENTORYSOURCEGROUP,
-                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION")]
-                    TARGETINGTYPEPROXIMITYLOCATION,
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
                     TARGETINGTYPEEXCHANGE,
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
@@ -7636,6 +8623,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
         public virtual System.Nullable<long> PartnerId { get; set; } 
 
+        /// <summary>Targeting settings related to ad serving of the advertiser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfig")]
+        public virtual AdvertiserTargetingConfig ServingConfig { get; set; } 
+
         /// <summary>Output only. The timestamp when the advertiser was last updated. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
@@ -7762,6 +8753,18 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sdfConfig")]
         public virtual SdfConfig SdfConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Targeting settings related to ad serving of an advertiser.</summary>
+    public class AdvertiserTargetingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether or not connected TV devices are exempt from viewability targeting for all video line items
+        /// under the advertiser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptTvFromViewabilityTargeting")]
+        public virtual System.Nullable<bool> ExemptTvFromViewabilityTargeting { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8274,6 +9277,35 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request message for BulkEditAdvertiserAssignedTargetingOptions.</summary>
+    public class BulkEditAdvertiserAssignedTargetingOptionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The assigned targeting options to create in batch, specified as a list of
+        /// `CreateAssignedTargetingOptionsRequest`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createRequests")]
+        public virtual System.Collections.Generic.IList<CreateAssignedTargetingOptionsRequest> CreateRequests { get; set; } 
+
+        /// <summary>The assigned targeting options to delete in batch, specified as a list of
+        /// `DeleteAssignedTargetingOptionsRequest`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteRequests")]
+        public virtual System.Collections.Generic.IList<DeleteAssignedTargetingOptionsRequest> DeleteRequests { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class BulkEditAdvertiserAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of assigned targeting options that have been successfully created.
+        ///
+        /// This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdAssignedTargetingOptions")]
+        public virtual System.Collections.Generic.IList<AssignedTargetingOption> CreatedAssignedTargetingOptions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request message for BulkEditLineItemAssignedTargetingOptions.</summary>
     public class BulkEditLineItemAssignedTargetingOptionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8298,6 +9330,24 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdAssignedTargetingOptions")]
         public virtual System.Collections.Generic.IList<AssignedTargetingOption> CreatedAssignedTargetingOptions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class BulkListAdvertiserAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of assigned targeting options.
+        ///
+        /// This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptions")]
+        public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; } 
+
+        /// <summary>A token identifying the next page of results. This value should be specified as the pageToken in a
+        /// subsequent BulkListAdvertiserAssignedTargetingOptionsRequest to fetch the next page of results. This token
+        /// will be absent if there are no more assigned_targeting_options to return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10658,6 +11708,25 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. The type of the line item's flight dates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flightDateType")]
         public virtual string FlightDateType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for ListAdvertiserAssignedTargetingOptions.</summary>
+    public class ListAdvertiserAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of assigned targeting options.
+        ///
+        /// This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptions")]
+        public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; } 
+
+        /// <summary>A token identifying the next page of results. This value should be specified as the pageToken in a
+        /// subsequent ListAdvertiserAssignedTargetingOptionsRequest to fetch the next page of results. This token will
+        /// be absent if there are no more assigned_targeting_options to return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

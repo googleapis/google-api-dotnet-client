@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/healthcare'>Cloud Healthcare API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200501 (1947)
+ *      <tr><th>API Rev<td>20200515 (1961)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/healthcare'>
  *              https://cloud.google.com/healthcare</a>
@@ -513,8 +513,8 @@ namespace Google.Apis.CloudHealthcare.v1
 
 
                                     /// <summary>RetrieveFrames returns instances associated with the given study,
-                                    /// series, SOP Instance UID and frame numbers. See http://dicom.nema.org/medical/di
-                                    /// com/current/output/html/part18.html#sect_10.4.</summary>
+                                    /// series, SOP Instance UID and frame numbers. See [RetrieveTransaction] (http://di
+                                    /// com.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4}.</summary>
                                     /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                                     ///
@@ -526,8 +526,8 @@ namespace Google.Apis.CloudHealthcare.v1
                                     }
 
                                     /// <summary>RetrieveFrames returns instances associated with the given study,
-                                    /// series, SOP Instance UID and frame numbers. See http://dicom.nema.org/medical/di
-                                    /// com/current/output/html/part18.html#sect_10.4.</summary>
+                                    /// series, SOP Instance UID and frame numbers. See [RetrieveTransaction] (http://di
+                                    /// com.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4}.</summary>
                                     public class RetrieveFramesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                                     {
                                         /// <summary>Constructs a new RetrieveFrames request.</summary>
@@ -600,8 +600,8 @@ namespace Google.Apis.CloudHealthcare.v1
 
                                     /// <summary>RetrieveRenderedFrames returns instances associated with the given
                                     /// study, series, SOP Instance UID and frame numbers in an acceptable Rendered
-                                    /// Media Type. See http://dicom.nema.org/medical/dicom/current/output/html/part18.h
-                                    /// tml#sect_10.4.</summary>
+                                    /// Media Type. See [RetrieveTransaction] (http://dicom.nema.org/medical/dicom/curre
+                                    /// nt/output/html/part18.html#sect_10.4).</summary>
                                     /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                                     ///
@@ -614,8 +614,8 @@ namespace Google.Apis.CloudHealthcare.v1
 
                                     /// <summary>RetrieveRenderedFrames returns instances associated with the given
                                     /// study, series, SOP Instance UID and frame numbers in an acceptable Rendered
-                                    /// Media Type. See http://dicom.nema.org/medical/dicom/current/output/html/part18.h
-                                    /// tml#sect_10.4.</summary>
+                                    /// Media Type. See [RetrieveTransaction] (http://dicom.nema.org/medical/dicom/curre
+                                    /// nt/output/html/part18.html#sect_10.4).</summary>
                                     public class RetrieveRenderedRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                                     {
                                         /// <summary>Constructs a new RetrieveRendered request.</summary>
@@ -773,8 +773,8 @@ namespace Google.Apis.CloudHealthcare.v1
                                 }
 
                                 /// <summary>RetrieveInstance returns instance associated with the given study, series,
-                                /// and SOP Instance UID. See http://dicom.nema.org/medical/dicom/current/output/html/pa
-                                /// rt18.html#sect_10.4.</summary>
+                                /// and SOP Instance UID. See [RetrieveTransaction] (http://dicom.nema.org/medical/dicom
+                                /// /current/output/html/part18.html#sect_10.4).</summary>
                                 /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                                 /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                                 ///
@@ -786,8 +786,8 @@ namespace Google.Apis.CloudHealthcare.v1
                                 }
 
                                 /// <summary>RetrieveInstance returns instance associated with the given study, series,
-                                /// and SOP Instance UID. See http://dicom.nema.org/medical/dicom/current/output/html/pa
-                                /// rt18.html#sect_10.4.</summary>
+                                /// and SOP Instance UID. See [RetrieveTransaction] (http://dicom.nema.org/medical/dicom
+                                /// /current/output/html/part18.html#sect_10.4).</summary>
                                 public class RetrieveInstanceRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                                 {
                                     /// <summary>Constructs a new RetrieveInstance request.</summary>
@@ -858,9 +858,9 @@ namespace Google.Apis.CloudHealthcare.v1
                                 }
 
                                 /// <summary>RetrieveInstanceMetadata returns instance associated with the given study,
-                                /// series, and SOP Instance UID presented as metadata with the bulk data removed. See h
-                                /// ttp://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.</summa
-                                /// ry>
+                                /// series, and SOP Instance UID presented as metadata with the bulk data removed. See
+                                /// [RetrieveTransaction] (http://dicom.nema.org/medical/dicom/current/output/html/part1
+                                /// 8.html#sect_10.4).</summary>
                                 /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                                 /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                                 ///
@@ -872,9 +872,9 @@ namespace Google.Apis.CloudHealthcare.v1
                                 }
 
                                 /// <summary>RetrieveInstanceMetadata returns instance associated with the given study,
-                                /// series, and SOP Instance UID presented as metadata with the bulk data removed. See h
-                                /// ttp://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.</summa
-                                /// ry>
+                                /// series, and SOP Instance UID presented as metadata with the bulk data removed. See
+                                /// [RetrieveTransaction] (http://dicom.nema.org/medical/dicom/current/output/html/part1
+                                /// 8.html#sect_10.4).</summary>
                                 public class RetrieveMetadataRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                                 {
                                     /// <summary>Constructs a new RetrieveMetadata request.</summary>
@@ -946,8 +946,9 @@ namespace Google.Apis.CloudHealthcare.v1
                                 }
 
                                 /// <summary>RetrieveRenderedInstance returns instance associated with the given study,
-                                /// series, and SOP Instance UID in an acceptable Rendered Media Type. See http://dicom.
-                                /// nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.</summary>
+                                /// series, and SOP Instance UID in an acceptable Rendered Media Type. See
+                                /// [RetrieveTransaction] (http://dicom.nema.org/medical/dicom/current/output/html/part1
+                                /// 8.html#sect_10.4).</summary>
                                 /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                                 /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                                 ///
@@ -959,8 +960,9 @@ namespace Google.Apis.CloudHealthcare.v1
                                 }
 
                                 /// <summary>RetrieveRenderedInstance returns instance associated with the given study,
-                                /// series, and SOP Instance UID in an acceptable Rendered Media Type. See http://dicom.
-                                /// nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.</summary>
+                                /// series, and SOP Instance UID in an acceptable Rendered Media Type. See
+                                /// [RetrieveTransaction] (http://dicom.nema.org/medical/dicom/current/output/html/part1
+                                /// 8.html#sect_10.4).</summary>
                                 public class RetrieveRenderedRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                                 {
                                     /// <summary>Constructs a new RetrieveRendered request.</summary>
@@ -1120,8 +1122,8 @@ namespace Google.Apis.CloudHealthcare.v1
                             }
 
                             /// <summary>RetrieveSeriesMetadata returns instance associated with the given study and
-                            /// series, presented as metadata with the bulk data removed. See
-                            /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.</summary>
+                            /// series, presented as metadata with the bulk data removed. See [RetrieveTransaction] (htt
+                            /// p://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).</summary>
                             /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                             ///
@@ -1133,8 +1135,8 @@ namespace Google.Apis.CloudHealthcare.v1
                             }
 
                             /// <summary>RetrieveSeriesMetadata returns instance associated with the given study and
-                            /// series, presented as metadata with the bulk data removed. See
-                            /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.</summary>
+                            /// series, presented as metadata with the bulk data removed. See [RetrieveTransaction] (htt
+                            /// p://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).</summary>
                             public class RetrieveMetadataRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                             {
                                 /// <summary>Constructs a new RetrieveMetadata request.</summary>
@@ -1205,7 +1207,8 @@ namespace Google.Apis.CloudHealthcare.v1
                             }
 
                             /// <summary>RetrieveSeries returns all instances within the given study and series. See
-                            /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.</summary>
+                            /// [RetrieveTransaction] (http://dicom.nema.org/medical/dicom/current/output/html/part18.ht
+                            /// ml#sect_10.4).</summary>
                             /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                             ///
@@ -1217,7 +1220,8 @@ namespace Google.Apis.CloudHealthcare.v1
                             }
 
                             /// <summary>RetrieveSeries returns all instances within the given study and series. See
-                            /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.</summary>
+                            /// [RetrieveTransaction] (http://dicom.nema.org/medical/dicom/current/output/html/part18.ht
+                            /// ml#sect_10.4).</summary>
                             public class RetrieveSeriesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                             {
                                 /// <summary>Constructs a new RetrieveSeries request.</summary>
@@ -1287,8 +1291,9 @@ namespace Google.Apis.CloudHealthcare.v1
 
                             }
 
-                            /// <summary>SearchForInstances returns a list of matching instances. See
-                            /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.</summary>
+                            /// <summary>SearchForInstances returns a list of matching instances. See [Search
+                            /// Transaction] (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_1
+                            /// 0.6).</summary>
                             /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                             ///
@@ -1299,8 +1304,9 @@ namespace Google.Apis.CloudHealthcare.v1
                                 return new SearchForInstancesRequest(service, parent, dicomWebPath);
                             }
 
-                            /// <summary>SearchForInstances returns a list of matching instances. See
-                            /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.</summary>
+                            /// <summary>SearchForInstances returns a list of matching instances. See [Search
+                            /// Transaction] (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_1
+                            /// 0.6).</summary>
                             public class SearchForInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                             {
                                 /// <summary>Constructs a new SearchForInstances request.</summary>
@@ -1454,8 +1460,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
                         /// <summary>RetrieveStudyMetadata returns instance associated with the given study presented as
-                        /// metadata with the bulk data removed. See
-                        /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.</summary>
+                        /// metadata with the bulk data removed. See [RetrieveTransaction]
+                        /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).</summary>
                         /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                         ///
@@ -1467,8 +1473,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
                         /// <summary>RetrieveStudyMetadata returns instance associated with the given study presented as
-                        /// metadata with the bulk data removed. See
-                        /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.</summary>
+                        /// metadata with the bulk data removed. See [RetrieveTransaction]
+                        /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).</summary>
                         public class RetrieveMetadataRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new RetrieveMetadata request.</summary>
@@ -1539,7 +1545,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
                         /// <summary>RetrieveStudy returns all instances within the given study. See
-                        /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.</summary>
+                        /// [RetrieveTransaction]
+                        /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).</summary>
                         /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                         ///
@@ -1551,7 +1558,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
                         /// <summary>RetrieveStudy returns all instances within the given study. See
-                        /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.</summary>
+                        /// [RetrieveTransaction]
+                        /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).</summary>
                         public class RetrieveStudyRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new RetrieveStudy request.</summary>
@@ -1621,8 +1629,8 @@ namespace Google.Apis.CloudHealthcare.v1
 
                         }
 
-                        /// <summary>SearchForInstances returns a list of matching instances. See
-                        /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.</summary>
+                        /// <summary>SearchForInstances returns a list of matching instances. See [Search Transaction]
+                        /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).</summary>
                         /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                         ///
@@ -1633,8 +1641,8 @@ namespace Google.Apis.CloudHealthcare.v1
                             return new SearchForInstancesRequest(service, parent, dicomWebPath);
                         }
 
-                        /// <summary>SearchForInstances returns a list of matching instances. See
-                        /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.</summary>
+                        /// <summary>SearchForInstances returns a list of matching instances. See [Search Transaction]
+                        /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).</summary>
                         public class SearchForInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new SearchForInstances request.</summary>
@@ -1705,8 +1713,8 @@ namespace Google.Apis.CloudHealthcare.v1
 
                         }
 
-                        /// <summary>SearchForSeries returns a list of matching series. See
-                        /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.</summary>
+                        /// <summary>SearchForSeries returns a list of matching series. See [Search Transaction]
+                        /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).</summary>
                         /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                         ///
@@ -1717,8 +1725,8 @@ namespace Google.Apis.CloudHealthcare.v1
                             return new SearchForSeriesRequest(service, parent, dicomWebPath);
                         }
 
-                        /// <summary>SearchForSeries returns a list of matching series. See
-                        /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.</summary>
+                        /// <summary>SearchForSeries returns a list of matching series. See [Search Transaction]
+                        /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).</summary>
                         public class SearchForSeriesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new SearchForSeries request.</summary>
@@ -1789,8 +1797,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
                         /// <summary>StoreInstances stores DICOM instances associated with study instance unique
-                        /// identifiers (SUID). See
-                        /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5.</summary>
+                        /// identifiers (SUID). See [Store Transaction]
+                        /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5).</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
@@ -1803,8 +1811,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
                         /// <summary>StoreInstances stores DICOM instances associated with study instance unique
-                        /// identifiers (SUID). See
-                        /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5.</summary>
+                        /// identifiers (SUID). See [Store Transaction]
+                        /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5).</summary>
                         public class StoreInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new StoreInstances request.</summary>
@@ -2591,8 +2599,8 @@ namespace Google.Apis.CloudHealthcare.v1
 
                     }
 
-                    /// <summary>SearchForInstances returns a list of matching instances. See
-                    /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.</summary>
+                    /// <summary>SearchForInstances returns a list of matching instances. See [Search Transaction]
+                    /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).</summary>
                     /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                     ///
@@ -2603,8 +2611,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         return new SearchForInstancesRequest(service, parent, dicomWebPath);
                     }
 
-                    /// <summary>SearchForInstances returns a list of matching instances. See
-                    /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.</summary>
+                    /// <summary>SearchForInstances returns a list of matching instances. See [Search Transaction]
+                    /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).</summary>
                     public class SearchForInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                     {
                         /// <summary>Constructs a new SearchForInstances request.</summary>
@@ -2673,8 +2681,8 @@ namespace Google.Apis.CloudHealthcare.v1
 
                     }
 
-                    /// <summary>SearchForSeries returns a list of matching series. See
-                    /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.</summary>
+                    /// <summary>SearchForSeries returns a list of matching series. See [Search Transaction]
+                    /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).</summary>
                     /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                     ///
@@ -2685,8 +2693,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         return new SearchForSeriesRequest(service, parent, dicomWebPath);
                     }
 
-                    /// <summary>SearchForSeries returns a list of matching series. See
-                    /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.</summary>
+                    /// <summary>SearchForSeries returns a list of matching series. See [Search Transaction]
+                    /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).</summary>
                     public class SearchForSeriesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                     {
                         /// <summary>Constructs a new SearchForSeries request.</summary>
@@ -2755,8 +2763,8 @@ namespace Google.Apis.CloudHealthcare.v1
 
                     }
 
-                    /// <summary>SearchForStudies returns a list of matching studies. See
-                    /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.</summary>
+                    /// <summary>SearchForStudies returns a list of matching studies. See [Search Transaction]
+                    /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).</summary>
                     /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                     ///
@@ -2766,8 +2774,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         return new SearchForStudiesRequest(service, parent, dicomWebPath);
                     }
 
-                    /// <summary>SearchForStudies returns a list of matching studies. See
-                    /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.</summary>
+                    /// <summary>SearchForStudies returns a list of matching studies. See [Search Transaction]
+                    /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).</summary>
                     public class SearchForStudiesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                     {
                         /// <summary>Constructs a new SearchForStudies request.</summary>
@@ -2911,8 +2919,8 @@ namespace Google.Apis.CloudHealthcare.v1
                     }
 
                     /// <summary>StoreInstances stores DICOM instances associated with study instance unique identifiers
-                    /// (SUID). See
-                    /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5.</summary>
+                    /// (SUID). See [Store Transaction]
+                    /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5).</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
@@ -2925,8 +2933,8 @@ namespace Google.Apis.CloudHealthcare.v1
                     }
 
                     /// <summary>StoreInstances stores DICOM instances associated with study instance unique identifiers
-                    /// (SUID). See
-                    /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5.</summary>
+                    /// (SUID). See [Store Transaction]
+                    /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5).</summary>
                     public class StoreInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                     {
                         /// <summary>Constructs a new StoreInstances request.</summary>
@@ -4700,7 +4708,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// detailed response of type ExportResourcesResponse is returned in the response field. The
                     /// metadata field type for this operation is OperationMetadata.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">The name of the FHIR store to export resource from. The name should be in the format of
+                    /// <param name="name">The name of the FHIR store to export resource from, in the format of
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.</param>
                     public virtual ExportRequest Export(Google.Apis.CloudHealthcare.v1.Data.ExportResourcesRequest body, string name)
                     {
@@ -4728,9 +4736,9 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
 
-                        /// <summary>The name of the FHIR store to export resource from. The name should be in the
-                        /// format of `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{f
-                        /// hir_store_id}`.</summary>
+                        /// <summary>The name of the FHIR store to export resource from, in the format of `projects/{pro
+                        /// ject_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.</summary
+                        /// >
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -4922,14 +4930,14 @@ namespace Google.Apis.CloudHealthcare.v1
 
                     }
 
-                    /// <summary>Import resources to the FHIR store by loading data from the specified sources. This
+                    /// <summary>Imports resources to the FHIR store by loading data from the specified sources. This
                     /// method is optimized to load large quantities of data using import semantics that ignore some
                     /// FHIR store configuration options and are not suitable for all use cases. It is primarily
                     /// intended to load data into an empty FHIR store that is not being used by other clients. In cases
                     /// where this method is not appropriate, consider using ExecuteBundle to load data.
                     ///
-                    /// Every resource in the input must contain a client-supplied ID, and will be stored using that ID
-                    /// regardless of the enable_update_create setting on the FHIR store.
+                    /// Every resource in the input must contain a client-supplied ID. Each resource is stored using the
+                    /// supplied ID regardless of the enable_update_create setting on the FHIR store.
                     ///
                     /// The import process does not enforce referential integrity, regardless of the
                     /// disable_referential_integrity setting on the FHIR store. This allows the import of resources
@@ -4943,16 +4951,16 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// If a resource with the specified ID already exists, the most recent version of the resource is
                     /// overwritten without creating a new historical version, regardless of the
                     /// disable_resource_versioning setting on the FHIR store. If transient failures occur during the
-                    /// import, it is possible that successfully imported resources will be overwritten more than once.
+                    /// import, it's possible that successfully imported resources will be overwritten more than once.
                     ///
                     /// The import operation is idempotent unless the input data contains multiple valid resources with
-                    /// the same ID but different contents. In that case, after the import completes, the store will
-                    /// contain exactly one resource with that ID but there is no ordering guarantee on which version of
-                    /// the contents it will have. The operation result counters do not count duplicate IDs as an error
-                    /// and will count one success for each resource in the input, which might result in a success count
-                    /// larger than the number of resources in the FHIR store. This often occurs when importing data
-                    /// organized in bundles produced by Patient-everything where each bundle contains its own copy of a
-                    /// resource such as Practitioner that might be referred to by many patients.
+                    /// the same ID but different contents. In that case, after the import completes, the store contains
+                    /// exactly one resource with that ID but there is no ordering guarantee on which version of the
+                    /// contents it will have. The operation result counters do not count duplicate IDs as an error and
+                    /// count one success for each resource in the input, which might result in a success count larger
+                    /// than the number of resources in the FHIR store. This often occurs when importing data organized
+                    /// in bundles produced by Patient-everything where each bundle contains its own copy of a resource
+                    /// such as Practitioner that might be referred to by many patients.
                     ///
                     /// If some resources fail to import, for example due to parsing errors, successfully imported
                     /// resources are not rolled back.
@@ -4975,21 +4983,21 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// detailed response of type ImportResourcesResponse is returned in the response field. The
                     /// metadata field type for this operation is OperationMetadata.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">The name of the FHIR store to import FHIR resources to. The name should be in the format of
+                    /// <param name="name">The name of the FHIR store to import FHIR resources to, in the format of
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.</param>
                     public virtual ImportRequest Import(Google.Apis.CloudHealthcare.v1.Data.ImportResourcesRequest body, string name)
                     {
                         return new ImportRequest(service, body, name);
                     }
 
-                    /// <summary>Import resources to the FHIR store by loading data from the specified sources. This
+                    /// <summary>Imports resources to the FHIR store by loading data from the specified sources. This
                     /// method is optimized to load large quantities of data using import semantics that ignore some
                     /// FHIR store configuration options and are not suitable for all use cases. It is primarily
                     /// intended to load data into an empty FHIR store that is not being used by other clients. In cases
                     /// where this method is not appropriate, consider using ExecuteBundle to load data.
                     ///
-                    /// Every resource in the input must contain a client-supplied ID, and will be stored using that ID
-                    /// regardless of the enable_update_create setting on the FHIR store.
+                    /// Every resource in the input must contain a client-supplied ID. Each resource is stored using the
+                    /// supplied ID regardless of the enable_update_create setting on the FHIR store.
                     ///
                     /// The import process does not enforce referential integrity, regardless of the
                     /// disable_referential_integrity setting on the FHIR store. This allows the import of resources
@@ -5003,16 +5011,16 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// If a resource with the specified ID already exists, the most recent version of the resource is
                     /// overwritten without creating a new historical version, regardless of the
                     /// disable_resource_versioning setting on the FHIR store. If transient failures occur during the
-                    /// import, it is possible that successfully imported resources will be overwritten more than once.
+                    /// import, it's possible that successfully imported resources will be overwritten more than once.
                     ///
                     /// The import operation is idempotent unless the input data contains multiple valid resources with
-                    /// the same ID but different contents. In that case, after the import completes, the store will
-                    /// contain exactly one resource with that ID but there is no ordering guarantee on which version of
-                    /// the contents it will have. The operation result counters do not count duplicate IDs as an error
-                    /// and will count one success for each resource in the input, which might result in a success count
-                    /// larger than the number of resources in the FHIR store. This often occurs when importing data
-                    /// organized in bundles produced by Patient-everything where each bundle contains its own copy of a
-                    /// resource such as Practitioner that might be referred to by many patients.
+                    /// the same ID but different contents. In that case, after the import completes, the store contains
+                    /// exactly one resource with that ID but there is no ordering guarantee on which version of the
+                    /// contents it will have. The operation result counters do not count duplicate IDs as an error and
+                    /// count one success for each resource in the input, which might result in a success count larger
+                    /// than the number of resources in the FHIR store. This often occurs when importing data organized
+                    /// in bundles produced by Patient-everything where each bundle contains its own copy of a resource
+                    /// such as Practitioner that might be referred to by many patients.
                     ///
                     /// If some resources fail to import, for example due to parsing errors, successfully imported
                     /// resources are not rolled back.
@@ -5046,9 +5054,9 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
 
-                        /// <summary>The name of the FHIR store to import FHIR resources to. The name should be in the
-                        /// format of `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{f
-                        /// hir_store_id}`.</summary>
+                        /// <summary>The name of the FHIR store to import FHIR resources to, in the format of `projects/
+                        /// {project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.</sum
+                        /// mary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -6136,16 +6144,14 @@ namespace Google.Apis.CloudHealthcare.v1
 
                     }
 
-                    /// <summary>Deletes the specified HL7v2 store and removes all messages that are contained within
-                    /// it.</summary>
+                    /// <summary>Deletes the specified HL7v2 store and removes all messages that it contains.</summary>
                     /// <param name="name">The resource name of the HL7v2 store to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes the specified HL7v2 store and removes all messages that are contained within
-                    /// it.</summary>
+                    /// <summary>Deletes the specified HL7v2 store and removes all messages that it contains.</summary>
                     public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -8101,7 +8107,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         ///
         /// The BigQuery location requires two IAM roles: `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`.
         ///
-        /// The output will be one BigQuery table per resource type.</summary>
+        /// The output is one BigQuery table per resource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
         public virtual GoogleCloudHealthcareV1FhirBigQueryDestination BigqueryDestination { get; set; } 
 
@@ -8109,8 +8115,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         ///
         /// The Cloud Storage location requires the `roles/storage.objectAdmin` Cloud IAM role.
         ///
-        /// The exported outputs are organized by FHIR resource types. The server will create one object per resource
-        /// type. Each object contains newline delimited JSON, and each line is a FHIR resource.</summary>
+        /// The exported outputs are organized by FHIR resource types. The server creates one object per resource type.
+        /// Each object contains newline delimited JSON, and each line is a FHIR resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
         public virtual GoogleCloudHealthcareV1FhirGcsDestination GcsDestination { get; set; } 
 
@@ -8118,8 +8124,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response when all resources export successfully. This structure will be included in the response to
-    /// describe the detailed outcome. It will only be included when the operation finishes successfully.</summary>
+    /// <summary>Response when all resources export successfully. This structure is included in the response to describe
+    /// the detailed outcome after the operation finishes successfully.</summary>
     public class ExportResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -8284,7 +8290,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// component is either a field name or FHIR type name, for example: Patient, HumanName. For "choice" types
         /// (those defined in the FHIR spec with the form: field[x]) we use two separate components. For example,
         /// "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported types are: AdministrativeGenderCode, Code,
-        /// Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.</summary>
+        /// Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml. Base64Binary
+        /// is also supported, but may only be kept as-is or have all the content removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paths")]
         public virtual System.Collections.Generic.IList<string> Paths { get; set; } 
 
@@ -8392,8 +8399,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datasetUri")]
         public virtual string DatasetUri { get; set; } 
 
-        /// <summary>If this flag is `TRUE`, all tables will be deleted from the dataset before the new exported tables
-        /// are written. If the flag is not set and the destination dataset contains tables, the export call returns an
+        /// <summary>If this flag is `TRUE`, all tables are deleted from the dataset before the new exported tables are
+        /// written. If the flag is not set and the destination dataset contains tables, the export call returns an
         /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("force")]
         public virtual System.Nullable<bool> Force { get; set; } 
@@ -8409,8 +8416,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// <summary>The configuration for exporting to Cloud Storage.</summary>
     public class GoogleCloudHealthcareV1FhirGcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>URI for a Cloud Storage directory where result files should be written (in the format `gs
-        /// ://{bucket-id}/{path/to/destination/dir}`). If there is no trailing slash, the service will append one when
+        /// <summary>URI for a Cloud Storage directory where result files should be written, in the format of `gs
+        /// ://{bucket-id}/{path/to/destination/dir}`. If there is no trailing slash, the service appends one when
         /// composing the object path. The user is responsible for creating the Cloud Storage bucket referenced in
         /// `uri_prefix`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uriPrefix")]
@@ -8448,7 +8455,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>Restricts notifications sent for messages matching a filter. If this is empty, all messages are
         /// matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
         ///
-        /// Fields/functions available for filtering are:
+        /// The following fields and functions are available for filtering:
         ///
         /// *  `message_type`, from the MSH-9.1 field. For example, `NOT message_type = "ADT"`. *  `send_date` or
         /// `sendDate`, the YYYY-MM-DD date the message was sent in the dataset's time_zone, from the MSH-7 segment. For
@@ -8464,19 +8471,23 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string Filter { get; set; } 
 
         /// <summary>The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are
-        /// published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields:
+        /// published on. Supplied by the client.
+        ///
+        /// The notification is a `PubsubMessage` with the following fields:
         ///
         /// *  `PubsubMessage.Data` contains the resource name. *  `PubsubMessage.MessageId` is the ID of this
-        /// notification. It is guaranteed to be unique within the topic. *  `PubsubMessage.PublishTime` is the time at
-        /// which the message was published.
+        /// notification. It's guaranteed to be unique within the topic. *  `PubsubMessage.PublishTime` is the time when
+        /// the message was published.
         ///
         /// Note that notifications are only sent if the topic is non-empty. [Topic
-        /// names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare
-        /// API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate
-        /// permissions causes the calls that send notifications to fail.
+        /// names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project.
         ///
-        /// If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Cloud Logging (see [Viewing
-        /// logs](/healthcare/docs/how- tos/logging)).</summary>
+        /// The Cloud Healthcare API service account, service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com,
+        /// must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls
+        /// that send notifications to fail.
+        ///
+        /// If a notification cannot be published to Cloud Pub/Sub, errors are logged to Cloud Logging. For more
+        /// information, see [Viewing error logs in Cloud Logging](/healthcare/docs/how-tos/logging)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; } 
 
@@ -8514,9 +8525,9 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parserConfig")]
         public virtual ParserConfig ParserConfig { get; set; } 
 
-        /// <summary>Determines whether duplicate messages should be rejected. A duplicate message is a message with the
-        /// same raw bytes as a message that has already been ingested/created in this HL7v2 store. The default value is
-        /// false, meaning that the store accepts the duplicate messages and it also returns the same ACK message in the
+        /// <summary>Determines whether to reject duplicate messages. A duplicate message is a message with the same raw
+        /// bytes as a message that has already been ingested/created in this HL7v2 store. The default value is false,
+        /// meaning that the store accepts the duplicate messages and it also returns the same ACK message in the
         /// IngestMessageResponse as has been returned previously. Note that only one resource is created in the store.
         /// When this field is set to true, CreateMessage/IngestMessage requests with a duplicate message will be
         /// rejected by the store, and IngestMessageErrorDetail returns a NACK message upon rejection.</summary>
@@ -8624,8 +8635,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Final response of importing resources. This structure will be included in the response to describe the
-    /// detailed outcome. It will only be included when the operation finishes successfully.</summary>
+    /// <summary>Final response of importing resources. This structure is included in the response to describe the
+    /// detailed outcome after the operation finishes successfully.</summary>
     public class ImportResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -8789,8 +8800,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A complete HL7v2 message. See http://www.hl7.org/implement/standards/index.cfm?ref=common for details
-    /// on the standard.</summary>
+    /// <summary>A complete HL7v2 message. See [Introduction to HL7 Standards]
+    /// (https://www.hl7.org/implement/standards/index.cfm?ref=common) for details on the standard.</summary>
     public class Message : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The datetime when the message was created. Set by the server.</summary>
@@ -9209,21 +9220,21 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>This structure contains configuration for streaming FHIR export.</summary>
+    /// <summary>Contains configuration for streaming FHIR export.</summary>
     public class StreamConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The destination BigQuery structure that contains both the dataset location and corresponding schema
         /// config.
         ///
         /// The output is organized in one table per resource type. The server reuses the existing tables (if any) that
-        /// are named after the resource types, e.g. "Patient", "Observation". When there is no existing table for a
-        /// given resource type, the server attempts to create one.
+        /// are named after the resource types. For example, "Patient", "Observation". When there is no existing table
+        /// for a given resource type, the server attempts to create one.
         ///
         /// When a table schema doesn't align with the schema config, either because of existing incompatible schema or
         /// out of band incompatible modification, the server does not stream in new data.
         ///
         /// BigQuery imposes a 1 MB limit on streaming insert row size, therefore any resource mutation that generates
-        /// more than 1 MB of BigQuery data will not be streamed.
+        /// more than 1 MB of BigQuery data is not streamed.
         ///
         /// One resolution in this case is to delete the incompatible table and let the server recreate one, though the
         /// newly created table only contains data after the table recreation.
@@ -9241,8 +9252,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// id and meta.versionId pair. Alternatively, the server created view mentioned above also filters out
         /// duplicates.
         ///
-        /// If a resource mutation cannot be streamed to BigQuery, errors will be logged to Cloud Logging (see [Viewing
-        /// logs](/healthcare/docs/how-tos/logging)).</summary>
+        /// If a resource mutation cannot be streamed to BigQuery, errors are logged to Cloud Logging. For more
+        /// information, see [Viewing error logs in Cloud Logging](/healthcare/docs/how-tos/logging)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
         public virtual GoogleCloudHealthcareV1FhirBigQueryDestination BigqueryDestination { get; set; } 
 

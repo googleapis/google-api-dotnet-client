@@ -174,7 +174,7 @@
    }
   }
  }, 
- "revision": "20200318", 
+ "revision": "20200520", 
  "rootUrl": "https://pagespeedonline.googleapis.com/", 
  "schemas": {
   "AuditRefs": {

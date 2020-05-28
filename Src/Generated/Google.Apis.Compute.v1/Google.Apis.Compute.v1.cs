@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200427 (1943)
+ *      <tr><th>API Rev<td>20200501 (1947)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -68139,6 +68139,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; } 
 
+        /// <summary>The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as
+        /// default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateIpv6GoogleAccess")]
+        public virtual string PrivateIpv6GoogleAccess { get; set; } 
+
         /// <summary>Specifies the reservations that this instance can consume from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
         public virtual ReservationAffinity ReservationAffinity { get; set; } 
@@ -68175,7 +68180,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual System.Nullable<bool> StartRestricted { get; set; } 
 
         /// <summary>[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING,
-        /// RUNNING, STOPPING, STOPPED, SUSPENDING, SUSPENDED, and TERMINATED.</summary>
+        /// RUNNING, STOPPING, SUSPENDING, SUSPENDED, and TERMINATED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -69598,6 +69603,11 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>An array of network access configurations for this interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; } 
+
+        /// <summary>The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as
+        /// default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateIpv6GoogleAccess")]
+        public virtual string PrivateIpv6GoogleAccess { get; set; } 
 
         /// <summary>Specifies the reservations that this instance can consume from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
@@ -72225,6 +72235,10 @@ namespace Google.Apis.Compute.v1.Data
         /// update the NetworkInterface, otherwise the request will fail with error 412 conditionNotMet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
+
+        /// <summary>[Output Only] An IPv6 internal network address for this network interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipv6Address")]
+        public virtual string Ipv6Address { get; set; } 
 
         /// <summary>[Output Only] Type of the resource. Always compute#networkInterface for network
         /// interfaces.</summary>
@@ -78330,6 +78344,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
         public virtual string IpCidrRange { get; set; } 
 
+        /// <summary>[Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipv6CidrRange")]
+        public virtual string Ipv6CidrRange { get; set; } 
+
         /// <summary>[Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
@@ -78357,6 +78375,13 @@ namespace Google.Apis.Compute.v1.Data
         /// This field can be both set at resource creation time and updated using setPrivateIpGoogleAccess.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateIpGoogleAccess")]
         public virtual System.Nullable<bool> PrivateIpGoogleAccess { get; set; } 
+
+        /// <summary>The private IPv6 google access type for the VMs in this subnet. This is an expanded field of
+        /// enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
+        ///
+        /// This field can be both set at resource creation time and updated using patch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateIpv6GoogleAccess")]
+        public virtual string PrivateIpv6GoogleAccess { get; set; } 
 
         /// <summary>The purpose of the resource. This field can be either PRIVATE_RFC_1918 or
         /// INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-

@@ -138,7 +138,7 @@
    }
   }
  }, 
- "revision": "20200516", 
+ "revision": "20200522", 
  "rootUrl": "https://adexperiencereport.googleapis.com/", 
  "schemas": {
   "PlatformSummary": {

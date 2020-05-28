@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Reservation API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200516 (1962)
+ *      <tr><th>API Rev<td>20200519 (1965)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -2475,7 +2475,8 @@ namespace Google.Apis.BigQueryReservation.v1.Data
     public class MergeCapacityCommitmentsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Ids of capacity commitments to merge. These capacity commitments must exist under admin project and
-        /// location specified in the parent.</summary>
+        /// location specified in the parent. ID is the last portion of capacity commitment name e.g., 'abc' for
+        /// projects/myproject/locations/US/capacityCommitments/abc</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capacityCommitmentIds")]
         public virtual System.Collections.Generic.IList<string> CapacityCommitmentIds { get; set; } 
 
