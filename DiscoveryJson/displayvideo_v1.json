@@ -3210,7 +3210,7 @@
    }
   }
  }, 
- "revision": "20200526", 
+ "revision": "20200528", 
  "rootUrl": "https://displayvideo.googleapis.com/", 
  "schemas": {
   "ActiveViewVideoViewabilityMetricConfig": {
@@ -5101,6 +5101,14 @@
     "jsTrackerUrl": {
      "description": "JavaScript measurement URL from supported third-party verification\nproviders (ComScore, DoubleVerify, IAS, Moat). HTML script tags are not\nsupported.\n\nThis field is only supported in following\ncreative_type:\n\n* `CREATIVE_TYPE_NATIVE`\n* `CREATIVE_TYPE_NATIVE_SITE_SQUARE`\n* `CREATIVE_TYPE_NATIVE_APP_INSTALL`\n* `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE`\n* `CREATIVE_TYPE_NATIVE_VIDEO`", 
      "type": "string"
+    }, 
+    "lineItemIds": {
+     "description": "Output only. The IDs of the line items this creative associated with.\n\nTo associate a creative to a line item, use\nLineItem.creative_ids instead.", 
+     "items": {
+      "format": "int64", 
+      "type": "string"
+     }, 
+     "type": "array"
     }, 
     "mediaDuration": {
      "description": "Output only. Media duration of the creative.\nApplicable when creative_type\nis one of:\n\n* `CREATIVE_TYPE_VIDEO`\n* `CREATIVE_TYPE_AUDIO`\n* `CREATIVE_TYPE_NATIVE_VIDEO`\n* `CREATIVE_TYPE_PUBLISHER_HOSTED`", 

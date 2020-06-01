@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200514 (1960)
+ *      <tr><th>API Rev<td>20200523 (1969)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -6751,6 +6751,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>The labels associated with this job. You can use these to organize and group your jobs. Label keys
+        /// and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters,
+        /// underscores and dashes. International characters are allowed. Label values are optional. Label keys must
+        /// start with a letter and each label in the list must have a different key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
         /// <summary>The geographic location where the job should run. See details at
         /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
@@ -6762,6 +6769,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// row count, and only the byte limit applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxResults")]
         public virtual System.Nullable<long> MaxResults { get; set; } 
+
+        /// <summary>[Optional] Limits the bytes billed for this job. Queries that will have bytes billed beyond this
+        /// limit will fail (without incurring a charge). If unspecified, this will be set to your project
+        /// default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximumBytesBilled")]
+        public virtual System.Nullable<long> MaximumBytesBilled { get; set; } 
 
         /// <summary>Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use
         /// named (@myparam) query parameters in this query.</summary>
@@ -6780,6 +6793,17 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Query parameters for Standard SQL queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryParameters")]
         public virtual System.Collections.Generic.IList<QueryParameter> QueryParameters { get; set; } 
+
+        /// <summary>A unique user provided identifier to ensure idempotent behavior for queries. Note that this is
+        /// different from the job_id. It has the following properties: 1. It is case-sensitive, limited to up to 36
+        /// ASCII characters. A UUID is recommended. 2. Read only queries can ignore this token since they are
+        /// nullipotent by definition. 3. When a duplicate mutating query request is detected (i.e. having the same
+        /// request_id as an earlier query), it returns: a. the results of the mutation if it completes successfully
+        /// within the timeout. b. the running operation if it is still in progress at the end of the timeout. 4. Its
+        /// lifetime is limited to 15 minutes. In other words, if two requests are sent with the same request_id, but
+        /// more than 15 minutes apart, idempotency is not guaranteed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; } 
 
         /// <summary>[Optional] How long to wait for the query to complete, in milliseconds, before the request times
         /// out and returns. Note that this is only a timeout for the request, not the query. If the query takes longer

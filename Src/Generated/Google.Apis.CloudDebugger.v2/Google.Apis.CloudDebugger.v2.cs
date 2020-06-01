@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/debugger'>Cloud Debugger API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200511 (1957)
+ *      <tr><th>API Rev<td>20200522 (1968)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/debugger'>
  *              https://cloud.google.com/debugger</a>

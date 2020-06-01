@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tpu/'>Cloud TPU API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200518 (1964)
+ *      <tr><th>API Rev<td>20200527 (1973)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tpu/'>
  *              https://cloud.google.com/tpu/</a>
@@ -2101,8 +2101,10 @@ namespace Google.Apis.TPU.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Sets the scheduling options for this node.</summary>
     public class SchedulingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Defines whether the node is preemptible.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptible")]
         public virtual System.Nullable<bool> Preemptible { get; set; } 
 

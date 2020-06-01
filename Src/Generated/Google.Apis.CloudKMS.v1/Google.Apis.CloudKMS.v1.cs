@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/kms/'>Cloud Key Management Service (KMS) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200509 (1955)
+ *      <tr><th>API Rev<td>20200522 (1968)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/kms/'>
  *              https://cloud.google.com/kms/</a>
@@ -3301,6 +3301,19 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ciphertext")]
         public virtual string Ciphertext { get; set; } 
 
+        /// <summary>Optional. An optional CRC32C checksum of the AsymmetricDecryptRequest.ciphertext. If specified,
+        /// KeyManagementService will verify the integrity of the received AsymmetricDecryptRequest.ciphertext using
+        /// this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive
+        /// a checksum error, your client should verify that CRC32C(AsymmetricDecryptRequest.ciphertext) is equal to
+        /// AsymmetricDecryptRequest.ciphertext_crc32c, and if so, perform a limited number of retries. A persistent
+        /// mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as
+        /// int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which
+        /// will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
+        ///
+        /// NOTE: This field is in Beta.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ciphertextCrc32c")]
+        public virtual System.Nullable<long> CiphertextCrc32c { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3311,6 +3324,29 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>The decrypted data originally encrypted with the matching public key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plaintext")]
         public virtual string Plaintext { get; set; } 
+
+        /// <summary>Integrity verification field. A CRC32C checksum of the returned
+        /// AsymmetricDecryptResponse.plaintext. An integrity check of AsymmetricDecryptResponse.plaintext can be
+        /// performed by computing the CRC32C checksum of AsymmetricDecryptResponse.plaintext and comparing your results
+        /// to this field. Discard the response in case of non-matching checksum values, and perform a limited number of
+        /// retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This
+        /// field is defined as int64 for reasons of compatibility across different languages. However, it is a non-
+        /// negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages
+        /// that support this type.
+        ///
+        /// NOTE: This field is in Beta.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plaintextCrc32c")]
+        public virtual System.Nullable<long> PlaintextCrc32c { get; set; } 
+
+        /// <summary>Integrity verification field. A flag indicating whether AsymmetricDecryptRequest.ciphertext_crc32c
+        /// was received by KeyManagementService and used for the integrity verification of the ciphertext. A false
+        /// value of this field indicates either that AsymmetricDecryptRequest.ciphertext_crc32c was left unset or that
+        /// it was not delivered to KeyManagementService. If you've set AsymmetricDecryptRequest.ciphertext_crc32c but
+        /// this field is still false, discard the response and perform a limited number of retries.
+        ///
+        /// NOTE: This field is in Beta.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedCiphertextCrc32c")]
+        public virtual System.Nullable<bool> VerifiedCiphertextCrc32c { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3324,6 +3360,19 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("digest")]
         public virtual Digest Digest { get; set; } 
 
+        /// <summary>Optional. An optional CRC32C checksum of the AsymmetricSignRequest.digest. If specified,
+        /// KeyManagementService will verify the integrity of the received AsymmetricSignRequest.digest using this
+        /// checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a
+        /// checksum error, your client should verify that CRC32C(AsymmetricSignRequest.digest) is equal to
+        /// AsymmetricSignRequest.digest_crc32c, and if so, perform a limited number of retries. A persistent mismatch
+        /// may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for
+        /// reasons of compatibility across different languages. However, it is a non-negative integer, which will never
+        /// exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
+        ///
+        /// NOTE: This field is in Beta.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("digestCrc32c")]
+        public virtual System.Nullable<long> DigestCrc32c { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3331,9 +3380,38 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// <summary>Response message for KeyManagementService.AsymmetricSign.</summary>
     public class AsymmetricSignResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The resource name of the CryptoKeyVersion used for signing. Check this field to verify that the
+        /// intended resource was used for signing.
+        ///
+        /// NOTE: This field is in Beta.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
         /// <summary>The created signature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
         public virtual string Signature { get; set; } 
+
+        /// <summary>Integrity verification field. A CRC32C checksum of the returned AsymmetricSignResponse.signature.
+        /// An integrity check of AsymmetricSignResponse.signature can be performed by computing the CRC32C checksum of
+        /// AsymmetricSignResponse.signature and comparing your results to this field. Discard the response in case of
+        /// non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an
+        /// issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of
+        /// compatibility across different languages. However, it is a non-negative integer, which will never exceed
+        /// 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
+        ///
+        /// NOTE: This field is in Beta.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signatureCrc32c")]
+        public virtual System.Nullable<long> SignatureCrc32c { get; set; } 
+
+        /// <summary>Integrity verification field. A flag indicating whether AsymmetricSignRequest.digest_crc32c was
+        /// received by KeyManagementService and used for the integrity verification of the digest. A false value of
+        /// this field indicates either that AsymmetricSignRequest.digest_crc32c was left unset or that it was not
+        /// delivered to KeyManagementService. If you've set AsymmetricSignRequest.digest_crc32c but this field is still
+        /// false, discard the response and perform a limited number of retries.
+        ///
+        /// NOTE: This field is in Beta.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedDigestCrc32c")]
+        public virtual System.Nullable<bool> VerifiedDigestCrc32c { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3621,9 +3699,37 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalAuthenticatedData")]
         public virtual string AdditionalAuthenticatedData { get; set; } 
 
+        /// <summary>Optional. An optional CRC32C checksum of the DecryptRequest.additional_authenticated_data. If
+        /// specified, KeyManagementService will verify the integrity of the received
+        /// DecryptRequest.additional_authenticated_data using this checksum. KeyManagementService will report an error
+        /// if the checksum verification fails. If you receive a checksum error, your client should verify that
+        /// CRC32C(DecryptRequest.additional_authenticated_data) is equal to
+        /// DecryptRequest.additional_authenticated_data_crc32c, and if so, perform a limited number of retries. A
+        /// persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is
+        /// defined as int64 for reasons of compatibility across different languages. However, it is a non-negative
+        /// integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support
+        /// this type.
+        ///
+        /// NOTE: This field is in Beta.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalAuthenticatedDataCrc32c")]
+        public virtual System.Nullable<long> AdditionalAuthenticatedDataCrc32c { get; set; } 
+
         /// <summary>Required. The encrypted data originally returned in EncryptResponse.ciphertext.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ciphertext")]
         public virtual string Ciphertext { get; set; } 
+
+        /// <summary>Optional. An optional CRC32C checksum of the DecryptRequest.ciphertext. If specified,
+        /// KeyManagementService will verify the integrity of the received DecryptRequest.ciphertext using this
+        /// checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a
+        /// checksum error, your client should verify that CRC32C(DecryptRequest.ciphertext) is equal to
+        /// DecryptRequest.ciphertext_crc32c, and if so, perform a limited number of retries. A persistent mismatch may
+        /// indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for
+        /// reasons of compatibility across different languages. However, it is a non-negative integer, which will never
+        /// exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
+        ///
+        /// NOTE: This field is in Beta.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ciphertextCrc32c")]
+        public virtual System.Nullable<long> CiphertextCrc32c { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3635,6 +3741,19 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>The decrypted data originally supplied in EncryptRequest.plaintext.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plaintext")]
         public virtual string Plaintext { get; set; } 
+
+        /// <summary>Integrity verification field. A CRC32C checksum of the returned DecryptResponse.plaintext. An
+        /// integrity check of DecryptResponse.plaintext can be performed by computing the CRC32C checksum of
+        /// DecryptResponse.plaintext and comparing your results to this field. Discard the response in case of non-
+        /// matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an
+        /// issue in your computation of the CRC32C checksum. Note: receiving this response message indicates that
+        /// KeyManagementService is able to successfully decrypt the ciphertext. Note: This field is defined as int64
+        /// for reasons of compatibility across different languages. However, it is a non-negative integer, which will
+        /// never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
+        ///
+        /// NOTE: This field is in Beta.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plaintextCrc32c")]
+        public virtual System.Nullable<long> PlaintextCrc32c { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3678,6 +3797,21 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalAuthenticatedData")]
         public virtual string AdditionalAuthenticatedData { get; set; } 
 
+        /// <summary>Optional. An optional CRC32C checksum of the EncryptRequest.additional_authenticated_data. If
+        /// specified, KeyManagementService will verify the integrity of the received
+        /// EncryptRequest.additional_authenticated_data using this checksum. KeyManagementService will report an error
+        /// if the checksum verification fails. If you receive a checksum error, your client should verify that
+        /// CRC32C(EncryptRequest.additional_authenticated_data) is equal to
+        /// EncryptRequest.additional_authenticated_data_crc32c, and if so, perform a limited number of retries. A
+        /// persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is
+        /// defined as int64 for reasons of compatibility across different languages. However, it is a non-negative
+        /// integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support
+        /// this type.
+        ///
+        /// NOTE: This field is in Beta.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalAuthenticatedDataCrc32c")]
+        public virtual System.Nullable<long> AdditionalAuthenticatedDataCrc32c { get; set; } 
+
         /// <summary>Required. The data to encrypt. Must be no larger than 64KiB.
         ///
         /// The maximum size depends on the key version's protection_level. For SOFTWARE keys, the plaintext must be no
@@ -3685,6 +3819,19 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// fields must be no larger than 8KiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plaintext")]
         public virtual string Plaintext { get; set; } 
+
+        /// <summary>Optional. An optional CRC32C checksum of the EncryptRequest.plaintext. If specified,
+        /// KeyManagementService will verify the integrity of the received EncryptRequest.plaintext using this checksum.
+        /// KeyManagementService will report an error if the checksum verification fails. If you receive a checksum
+        /// error, your client should verify that CRC32C(EncryptRequest.plaintext) is equal to
+        /// EncryptRequest.plaintext_crc32c, and if so, perform a limited number of retries. A persistent mismatch may
+        /// indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for
+        /// reasons of compatibility across different languages. However, it is a non-negative integer, which will never
+        /// exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
+        ///
+        /// NOTE: This field is in Beta.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plaintextCrc32c")]
+        public virtual System.Nullable<long> PlaintextCrc32c { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3697,10 +3844,43 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ciphertext")]
         public virtual string Ciphertext { get; set; } 
 
+        /// <summary>Integrity verification field. A CRC32C checksum of the returned EncryptResponse.ciphertext. An
+        /// integrity check of EncryptResponse.ciphertext can be performed by computing the CRC32C checksum of
+        /// EncryptResponse.ciphertext and comparing your results to this field. Discard the response in case of non-
+        /// matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an
+        /// issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of
+        /// compatibility across different languages. However, it is a non-negative integer, which will never exceed
+        /// 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
+        ///
+        /// NOTE: This field is in Beta.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ciphertextCrc32c")]
+        public virtual System.Nullable<long> CiphertextCrc32c { get; set; } 
+
         /// <summary>The resource name of the CryptoKeyVersion used in encryption. Check this field to verify that the
         /// intended resource was used for encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Integrity verification field. A flag indicating whether
+        /// EncryptRequest.additional_authenticated_data_crc32c was received by KeyManagementService and used for the
+        /// integrity verification of the AAD. A false value of this field indicates either that
+        /// EncryptRequest.additional_authenticated_data_crc32c was left unset or that it was not delivered to
+        /// KeyManagementService. If you've set EncryptRequest.additional_authenticated_data_crc32c but this field is
+        /// still false, discard the response and perform a limited number of retries.
+        ///
+        /// NOTE: This field is in Beta.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedAdditionalAuthenticatedDataCrc32c")]
+        public virtual System.Nullable<bool> VerifiedAdditionalAuthenticatedDataCrc32c { get; set; } 
+
+        /// <summary>Integrity verification field. A flag indicating whether EncryptRequest.plaintext_crc32c was
+        /// received by KeyManagementService and used for the integrity verification of the plaintext. A false value of
+        /// this field indicates either that EncryptRequest.plaintext_crc32c was left unset or that it was not delivered
+        /// to KeyManagementService. If you've set EncryptRequest.plaintext_crc32c but this field is still false,
+        /// discard the response and perform a limited number of retries.
+        ///
+        /// NOTE: This field is in Beta.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedPlaintextCrc32c")]
+        public virtual System.Nullable<bool> VerifiedPlaintextCrc32c { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4131,12 +4311,30 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
         public virtual string Algorithm { get; set; } 
 
+        /// <summary>The name of the CryptoKeyVersion public key. Provided here for verification.
+        ///
+        /// NOTE: This field is in Beta.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
         /// <summary>The public key, encoded in PEM format. For more information, see the [RFC
         /// 7468](https://tools.ietf.org/html/rfc7468) sections for [General
         /// Considerations](https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding of Subject Public Key
         /// Info] (https://tools.ietf.org/html/rfc7468#section-13).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pem")]
         public virtual string Pem { get; set; } 
+
+        /// <summary>Integrity verification field. A CRC32C checksum of the returned PublicKey.pem. An integrity check
+        /// of PublicKey.pem can be performed by computing the CRC32C checksum of PublicKey.pem and comparing your
+        /// results to this field. Discard the response in case of non-matching checksum values, and perform a limited
+        /// number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum.
+        /// Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is
+        /// a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in
+        /// languages that support this type.
+        ///
+        /// NOTE: This field is in Beta.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pemCrc32c")]
+        public virtual System.Nullable<long> PemCrc32c { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/spanner/'>Cloud Spanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200522 (1968)
+ *      <tr><th>API Rev<td>20200526 (1972)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/spanner/'>
  *              https://cloud.google.com/spanner/</a>
@@ -641,7 +641,7 @@ namespace Google.Apis.Spanner.v1
                     /// * `done:true` - The operation is complete. * `metadata.database:prod` - The database the backup
                     /// was taken from has a name containing the string "prod". *
                     /// `(metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.CreateBackupMetadata) AND`
-                    /// `(metadata.name:howl) AND` `(metadata.progress.start_time < \"2018-03-28T14:50:00Z\") AND`
+                    /// \ `(metadata.name:howl) AND` \ `(metadata.progress.start_time < \"2018-03-28T14:50:00Z\") AND` \
                     /// `(error:*)` - Returns operations where: * The operation's metadata type is CreateBackupMetadata.
                     /// * The backup name contains the string "howl". * The operation started before
                     /// 2018-03-28T14:50:00Z. * The operation resulted in an error.</summary>
@@ -1856,9 +1856,9 @@ namespace Google.Apis.Spanner.v1
                     ///
                     /// * `done:true` - The operation is complete. *
                     /// `(metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.RestoreDatabaseMetadata)
-                    /// AND` `(metadata.source_type:BACKUP) AND` `(metadata.backup_info.backup:backup_howl) AND`
-                    /// `(metadata.name:restored_howl) AND` `(metadata.progress.start_time < \"2018-03-28T14:50:00Z\")
-                    /// AND` `(error:*)` - Return operations where: * The operation's metadata type is
+                    /// AND` \ `(metadata.source_type:BACKUP) AND` \ `(metadata.backup_info.backup:backup_howl) AND` \
+                    /// `(metadata.name:restored_howl) AND` \ `(metadata.progress.start_time < \"2018-03-28T14:50:00Z\")
+                    /// AND` \ `(error:*)` - Return operations where: * The operation's metadata type is
                     /// RestoreDatabaseMetadata. * The database is restored from a backup. * The backup name contains
                     /// "backup_howl". * The restored database's name contains "restored_howl". * The operation started
                     /// before 2018-03-28T14:50:00Z. * The operation resulted in an error.</summary>
@@ -5711,7 +5711,7 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>The request for CreateSession.</summary>
     public class CreateSessionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The session to create.</summary>
+        /// <summary>Required. The session to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
         public virtual Session Session { get; set; } 
 
@@ -7174,8 +7174,7 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>The name of the session. This is always system-assigned; values provided when creating a session
-        /// are ignored.</summary>
+        /// <summary>Output only. The name of the session. This is always system-assigned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/display-video/'>Display & Video 360 API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200526 (1972)
+ *      <tr><th>API Rev<td>20200528 (1974)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/display-video/'>
  *              https://developers.google.com/display-video/</a>
@@ -10048,6 +10048,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jsTrackerUrl")]
         public virtual string JsTrackerUrl { get; set; } 
+
+        /// <summary>Output only. The IDs of the line items this creative associated with.
+        ///
+        /// To associate a creative to a line item, use LineItem.creative_ids instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> LineItemIds { get; set; } 
 
         /// <summary>Output only. Media duration of the creative. Applicable when creative_type is one of:
         ///

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admob/api/'>AdMob API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200527 (1973)
+ *      <tr><th>API Rev<td>20200528 (1974)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admob/api/'>
  *              https://developers.google.com/admob/api/</a>
