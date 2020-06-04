@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admob/api/'>AdMob API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200528 (1974)
+ *      <tr><th>API Rev<td>20200603 (1980)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admob/api/'>
  *              https://developers.google.com/admob/api/</a>
@@ -719,7 +719,7 @@ namespace Google.Apis.AdMob.v1.Data
     /// For example:
     ///
     /// [{ "header": { "date_range": { "start_date": {"year": 2018, "month": 9, "day": 1}, "end_date": {"year": 2018,
-    /// "month": 9, "day": 30} } "localization_settings": { "currency_code": "USD", "language_code": "en-US" } } }, {
+    /// "month": 9, "day": 1} }, "localization_settings": { "currency_code": "USD", "language_code": "en-US" } } }, {
     /// "row": { "dimension_values": { "DATE": {"value": "20180918"}, "APP": { "value": "ca-app-
     /// pub-8123415297019784~1001342552", "display_label": "My app name!" } }, "metric_values": { "ESTIMATED_EARNINGS":
     /// {"decimal_value": "1324746"} } } }, { "footer": {"matching_row_count": 1} }]</summary>
@@ -759,10 +759,10 @@ namespace Google.Apis.AdMob.v1.Data
     /// For example:
     ///
     /// [{ "header": { "dateRange": { "startDate": {"year": 2018, "month": 9, "day": 1}, "endDate": {"year": 2018,
-    /// "month": 9, "day": 30} } "localizationSettings": { "currencyCode": "USD", "languageCode": "en-US" } } }, {
+    /// "month": 9, "day": 1} }, "localizationSettings": { "currencyCode": "USD", "languageCode": "en-US" } } }, {
     /// "row": { "dimensionValues": { "DATE": {"value": "20180918"}, "APP": { "value": "ca-app-
     /// pub-8123415297019784~1001342552", displayLabel: "My app name!" } }, "metricValues": { "ESTIMATED_EARNINGS":
-    /// {"microsValue": 6500000} } } }, ... { "footer": {"matchingRowCount": 5} }]</summary>
+    /// {"microsValue": 6500000} } } }, { "footer": {"matchingRowCount": 1} }]</summary>
     public class GenerateNetworkReportResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Additional information about the generated report, such as warnings about the data.</summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200505 (1951)
+ *      <tr><th>API Rev<td>20200519 (1965)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -6785,13 +6785,11 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
         public virtual NodeManagement Management { get; set; } 
 
-        /// <summary>Scopes that are used by NAP when creating node pools. If oauth_scopes are specified,
-        /// service_account should be empty.</summary>
+        /// <summary>Scopes that are used by NAP when creating node pools.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthScopes")]
         public virtual System.Collections.Generic.IList<string> OauthScopes { get; set; } 
 
-        /// <summary>The Google Cloud Platform Service Account to be used by the node VMs. If service_account is
-        /// specified, scopes should be empty.</summary>
+        /// <summary>The Google Cloud Platform Service Account to be used by the node VMs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; } 
 

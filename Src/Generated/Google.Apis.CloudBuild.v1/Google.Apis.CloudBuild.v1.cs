@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200520 (1966)
+ *      <tr><th>API Rev<td>20200601 (1978)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -66,6 +66,7 @@ namespace Google.Apis.CloudBuild.v1
         {
             operations = new OperationsResource(this);
             projects = new ProjectsResource(this);
+            vbeta1 = new Vbeta1Resource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -142,6 +143,14 @@ namespace Google.Apis.CloudBuild.v1
         public virtual ProjectsResource Projects
         {
             get { return projects; }
+        }
+
+        private readonly Vbeta1Resource vbeta1;
+
+        /// <summary>Gets the Vbeta1 resource.</summary>
+        public virtual Vbeta1Resource Vbeta1
+        {
+            get { return vbeta1; }
         }
     }
 
@@ -1942,6 +1951,178 @@ namespace Google.Apis.CloudBuild.v1
             }
         }
     }
+
+    /// <summary>The "vbeta1" collection of methods.</summary>
+    public class Vbeta1Resource
+    {
+        private const string Resource = "vbeta1";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public Vbeta1Resource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            projects = new ProjectsResource(service);
+
+        }
+
+        private readonly ProjectsResource projects;
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects
+        {
+            get { return projects; }
+        }
+
+        /// <summary>The "projects" collection of methods.</summary>
+        public class ProjectsResource
+        {
+            private const string Resource = "projects";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ProjectsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                locations = new LocationsResource(service);
+
+            }
+
+            private readonly LocationsResource locations;
+
+            /// <summary>Gets the Locations resource.</summary>
+            public virtual LocationsResource Locations
+            {
+                get { return locations; }
+            }
+
+            /// <summary>The "locations" collection of methods.</summary>
+            public class LocationsResource
+            {
+                private const string Resource = "locations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public LocationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    operations = new OperationsResource(service);
+
+                }
+
+                private readonly OperationsResource operations;
+
+                /// <summary>Gets the Operations resource.</summary>
+                public virtual OperationsResource Operations
+                {
+                    get { return operations; }
+                }
+
+                /// <summary>The "operations" collection of methods.</summary>
+                public class OperationsResource
+                {
+                    private const string Resource = "operations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OperationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
+                    /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support
+                    /// this method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
+                    /// Operations.GetOperation or other methods to check whether the cancellation succeeded or whether
+                    /// the operation completed despite cancellation. On successful cancellation, the operation is not
+                    /// deleted; instead, it becomes an operation with an Operation.error value with a
+                    /// google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">The name of the operation resource to be cancelled.</param>
+                    public virtual CancelRequest Cancel(Google.Apis.CloudBuild.v1.Data.CancelOperationRequest body, string name)
+                    {
+                        return new CancelRequest(service, body, name);
+                    }
+
+                    /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
+                    /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support
+                    /// this method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
+                    /// Operations.GetOperation or other methods to check whether the cancellation succeeded or whether
+                    /// the operation completed despite cancellation. On successful cancellation, the operation is not
+                    /// deleted; instead, it becomes an operation with an Operation.error value with a
+                    /// google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
+                    public class CancelRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Cancel request.</summary>
+                        public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.CancelOperationRequest body, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The name of the operation resource to be cancelled.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudBuild.v1.Data.CancelOperationRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "cancel"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "vbeta1/{+name}:cancel"; }
+                        }
+
+                        /// <summary>Initializes Cancel parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                                });
+                        }
+
+                    }
+                }
+            }
+        }
+    }
 }
 
 namespace Google.Apis.CloudBuild.v1.Data
@@ -2174,6 +2355,13 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<long> DiskSizeGb { get; set; } 
 
+        /// <summary>Option to specify whether or not to apply bash style string operations to the substitutions.
+        ///
+        /// NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration
+        /// file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicSubstitutions")]
+        public virtual System.Nullable<bool> DynamicSubstitutions { get; set; } 
+
         /// <summary>A list of global environment variable definitions that will exist for all build steps in this
         /// build. If a variable is defined in both globally and in a build step, the variable will use the build step
         /// value.
@@ -2209,7 +2397,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceProvenanceHash")]
         public virtual System.Collections.Generic.IList<string> SourceProvenanceHash { get; set; } 
 
-        /// <summary>Option to specify behavior when there is an error in the substitution checks.</summary>
+        /// <summary>Option to specify behavior when there is an error in the substitution checks.
+        ///
+        /// NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build
+        /// configuration file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substitutionOption")]
         public virtual string SubstitutionOption { get; set; } 
 
@@ -2611,7 +2802,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("branch")]
         public virtual string Branch { get; set; } 
 
-        /// <summary>Configure builds to run only when a repository owner or collaborator comments `/gcbrun`.</summary>
+        /// <summary>Configure builds to run whether a repository owner or collaborator need to comment
+        /// `/gcbrun`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commentControl")]
         public virtual string CommentControl { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200528 (1974)
+ *      <tr><th>API Rev<td>20200602 (1979)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -65,7 +65,9 @@ namespace Google.Apis.PeopleService.v1
             : base(initializer)
         {
             contactGroups = new ContactGroupsResource(this);
+            otherContacts = new OtherContactsResource(this);
             people = new PeopleResource(this);
+            v1 = new V1Resource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -196,12 +198,28 @@ namespace Google.Apis.PeopleService.v1
             get { return contactGroups; }
         }
 
+        private readonly OtherContactsResource otherContacts;
+
+        /// <summary>Gets the OtherContacts resource.</summary>
+        public virtual OtherContactsResource OtherContacts
+        {
+            get { return otherContacts; }
+        }
+
         private readonly PeopleResource people;
 
         /// <summary>Gets the People resource.</summary>
         public virtual PeopleResource People
         {
             get { return people; }
+        }
+
+        private readonly V1Resource v1;
+
+        /// <summary>Gets the V1 resource.</summary>
+        public virtual V1Resource V1
+        {
+            get { return v1; }
         }
     }
 
@@ -950,6 +968,91 @@ namespace Google.Apis.PeopleService.v1
         }
     }
 
+    /// <summary>The "otherContacts" collection of methods.</summary>
+    public class OtherContactsResource
+    {
+        private const string Resource = "otherContacts";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OtherContactsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Copies an other contact to a new contact in the user's MY_CONTACTS group</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resourceName">Required. The resource name of the other contact to copy.</param>
+        public virtual CopyOtherContactToMyContactsGroupRequest CopyOtherContactToMyContactsGroup(Google.Apis.PeopleService.v1.Data.CopyOtherContactToMyContactsGroupRequest body, string resourceName)
+        {
+            return new CopyOtherContactToMyContactsGroupRequest(service, body, resourceName);
+        }
+
+        /// <summary>Copies an other contact to a new contact in the user's MY_CONTACTS group</summary>
+        public class CopyOtherContactToMyContactsGroupRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Person>
+        {
+            /// <summary>Constructs a new CopyOtherContactToMyContactsGroup request.</summary>
+            public CopyOtherContactToMyContactsGroupRequest(Google.Apis.Services.IClientService service, Google.Apis.PeopleService.v1.Data.CopyOtherContactToMyContactsGroupRequest body, string resourceName)
+                : base(service)
+            {
+                ResourceName = resourceName;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The resource name of the other contact to copy.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResourceName { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.PeopleService.v1.Data.CopyOtherContactToMyContactsGroupRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "copyOtherContactToMyContactsGroup"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+resourceName}:copyOtherContactToMyContactsGroup"; }
+            }
+
+            /// <summary>Initializes CopyOtherContactToMyContactsGroup parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "resourceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^otherContacts/[^/]+$",
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "people" collection of methods.</summary>
     public class PeopleResource
     {
@@ -990,7 +1093,7 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>Provides a list of the authenticated user's contacts merged with any connected profiles.
+            /// <summary>Provides a list of the authenticated user's contacts.
             ///
             /// The request throws a 400 error if 'personFields' is not specified.</summary>
             /// <param name="resourceName">Required. The resource name to return connections for. Only `people/me` is
@@ -1000,7 +1103,7 @@ namespace Google.Apis.PeopleService.v1
                 return new ListRequest(service, resourceName);
             }
 
-            /// <summary>Provides a list of the authenticated user's contacts merged with any connected profiles.
+            /// <summary>Provides a list of the authenticated user's contacts.
             ///
             /// The request throws a 400 error if 'personFields' is not specified.</summary>
             public class ListRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ListConnectionsResponse>
@@ -1760,6 +1863,150 @@ namespace Google.Apis.PeopleService.v1
 
         }
     }
+
+    /// <summary>The "v1" collection of methods.</summary>
+    public class V1Resource
+    {
+        private const string Resource = "v1";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public V1Resource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>List all other contacts, that is contacts that are not in a contact group. Other contacts are
+        /// typically auto created contacts from interactions.</summary>
+        public virtual OtherContactsRequest OtherContacts()
+        {
+            return new OtherContactsRequest(service);
+        }
+
+        /// <summary>List all other contacts, that is contacts that are not in a contact group. Other contacts are
+        /// typically auto created contacts from interactions.</summary>
+        public class OtherContactsRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ListOtherContactsResponse>
+        {
+            /// <summary>Constructs a new OtherContacts request.</summary>
+            public OtherContactsRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>Optional. The number of other contacts to include in the response. Valid values are between 1
+            /// and 1000, inclusive. Defaults to 100 if not set or set to 0.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional. A page token, received from a previous `ListOtherContacts` call. Provide this to
+            /// retrieve the subsequent page.
+            ///
+            /// When paginating, all other parameters provided to `ListOtherContacts` must match the call that provided
+            /// the page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple fields
+            /// can be specified by separating them with commas. Valid values are:
+            ///
+            /// * emailAddresses * names * phoneNumbers</summary>
+            [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ReadMask { get; set; }
+
+            /// <summary>Optional. Whether the response should include `next_sync_token`, which can be used to get all
+            /// changes since the last request. For subsequent sync requests use the `sync_token` param instead. Initial
+            /// sync requests that specify `request_sync_token` have an additional rate limit.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestSyncToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> RequestSyncToken { get; set; }
+
+            /// <summary>Optional. A sync token, received from a previous `ListOtherContacts` call. Provide this to
+            /// retrieve only the resources changed since the last request. Sync requests that specify `sync_token` have
+            /// an additional rate limit.
+            ///
+            /// When syncing, all other parameters provided to `ListOtherContacts` must match the call that provided the
+            /// sync token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SyncToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "otherContacts"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/otherContacts"; }
+            }
+
+            /// <summary>Initializes OtherContacts parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "readMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "readMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestSyncToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestSyncToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "syncToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "syncToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
 }
 
 namespace Google.Apis.PeopleService.v1.Data
@@ -1998,6 +2245,29 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>The status of the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual Status Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to copy an other contact to my contacts group.</summary>
+    public class CopyOtherContactToMyContactsGroupRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A field mask to restrict which fields are copied into the new contact. Valid values are:
+        ///
+        /// * emailAddresses * names * phoneNumbers</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("copyMask")]
+        public virtual object CopyMask { get; set; } 
+
+        /// <summary>Optional. A field mask to restrict which fields on the person are returned. Multiple fields can be
+        /// specified by separating them with commas. Defaults to empty if not set, which will skip the post mutate get.
+        /// Valid values are:
+        ///
+        /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
+        /// imClients * interests * locales * memberships * metadata * names * nicknames * occupations * organizations *
+        /// phoneNumbers * photos * relations * residences * sipAddresses * skills * urls * userDefined</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readMask")]
+        public virtual object ReadMask { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2315,6 +2585,28 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>The total number of items in the list without pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalItems")]
         public virtual System.Nullable<int> TotalItems { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response to a request for the authenticated user's other contacts.</summary>
+    public class ListOtherContactsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>A token, which can be sent as `sync_token` to retrieve changes since the last request. Request must
+        /// set `request_sync_token` to return the sync token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextSyncToken")]
+        public virtual string NextSyncToken { get; set; } 
+
+        /// <summary>The list of other contacts returned as Person resources. Other contacts support a limited subset of
+        /// supported fields. See ListOtherContactsRequest.request_mask for more detailed information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherContacts")]
+        public virtual System.Collections.Generic.IList<Person> OtherContacts { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200517 (1963)
+ *      <tr><th>API Rev<td>20200526 (1972)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -7973,9 +7973,16 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
     public class InAppProductListing : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The localized entitlement benefits of the in-app product. These are supported only for
+        /// subscriptions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("benefits")]
+        public virtual System.Collections.Generic.IList<string> Benefits { get; set; } 
+
+        /// <summary>The localized description of the in-app product. These are deprecated for subscriptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
+        /// <summary>The localized title of the in-app product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 

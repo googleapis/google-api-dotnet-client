@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/healthcare'>Cloud Healthcare API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200515 (1961)
+ *      <tr><th>API Rev<td>20200525 (1971)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/healthcare'>
  *              https://cloud.google.com/healthcare</a>
@@ -2776,7 +2776,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                     /// <summary>Updates the specified DICOM store.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Output only. Resource name of the DICOM store, of the form
+                    /// <param name="name">Resource name of the DICOM store, of the form
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                     public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.DicomStore body, string name)
                     {
@@ -2796,8 +2796,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
 
-                        /// <summary>Output only. Resource name of the DICOM store, of the form `projects/{project_id}/l
-                        /// ocations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</summary>
+                        /// <summary>Resource name of the DICOM store, of the form `projects/{project_id}/locations/{loc
+                        /// ation_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -7565,7 +7565,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                     /// <summary>Updates the HL7v2 store.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Output only. Resource name of the HL7v2 store, of the form
+                    /// <param name="name">Resource name of the HL7v2 store, of the form
                     /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.</param>
                     public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.Hl7V2Store body, string name)
                     {
@@ -7585,7 +7585,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
 
-                        /// <summary>Output only. Resource name of the HL7v2 store, of the form
+                        /// <summary>Resource name of the HL7v2 store, of the form
                         /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -8556,7 +8556,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                 /// <summary>Updates dataset metadata.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output only. Resource name of the dataset, of the form
+                /// <param name="name">Resource name of the dataset, of the form
                 /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.Dataset body, string name)
                 {
@@ -8576,7 +8576,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
 
-                    /// <summary>Output only. Resource name of the dataset, of the form
+                    /// <summary>Resource name of the dataset, of the form
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -9122,7 +9122,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// multiple modalities of healthcare data, such as electronic medical records or medical imaging data.</summary>
     public class Dataset : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Resource name of the dataset, of the form
+        /// <summary>Resource name of the dataset, of the form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -9350,8 +9350,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Output only. Resource name of the DICOM store, of the form `projects/{project_id}/locations/{locati
-        /// on_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</summary>
+        /// <summary>Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datase
+        /// ts/{dataset_id}/dicomStores/{dicom_store_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -10008,7 +10008,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Output only. Resource name of the HL7v2 store, of the form
+        /// <summary>Resource name of the HL7v2 store, of the form
         /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 

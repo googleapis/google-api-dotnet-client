@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/hosting/'>Firebase Hosting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200520 (1966)
+ *      <tr><th>API Rev<td>20200601 (1978)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/hosting/'>
  *              https://firebase.google.com/docs/hosting/</a>
@@ -3735,12 +3735,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A [`header`](/docs/hosting/full-config#headers) defines custom headers to add to a response should the
-    /// request URL path match the pattern.</summary>
+    /// <summary>A [`header`](/docs/hosting/full-config#headers) is an object that specifies a URL pattern that, if
+    /// matched to the request URL path, triggers Hosting to apply the specified custom response headers.</summary>
     public class Header : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The user-supplied [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match against
-        /// the request URL path.</summary>
+        /// <summary>The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to match against the
+        /// request URL path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glob")]
         public virtual string Glob { get; set; } 
 
@@ -3898,12 +3898,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A [`redirect`](/docs/hosting/full-config#redirects) represents the configuration for returning an HTTP
-    /// redirect response given a matching request URL path.</summary>
+    /// <summary>A [`redirect`](/docs/hosting/full-config#redirects) object specifies a URL pattern that, if matched to
+    /// the request URL path, triggers Hosting to respond with a redirect to the specified destination path.</summary>
     public class Redirect : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The user-supplied [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match against
-        /// the request URL path.</summary>
+        /// <summary>The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to match against the
+        /// request URL path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glob")]
         public virtual string Glob { get; set; } 
 
@@ -3963,9 +3963,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A [`rewrite`](/docs/hosting/full-config#rewrites) represents an internal content rewrite on the
-    /// version. If the pattern matches, the request will be handled as if it were to the destination path specified in
-    /// the configuration.</summary>
+    /// <summary>A [`rewrite`](/docs/hosting/full-config#rewrites) object specifies a URL pattern that, if matched to
+    /// the request URL path, triggers Hosting to respond as if the service were given the specified destination
+    /// URL.</summary>
     public class Rewrite : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The request will be forwarded to Firebase Dynamic Links.</summary>
@@ -3976,8 +3976,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("function")]
         public virtual string Function { get; set; } 
 
-        /// <summary>The user-supplied [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match against
-        /// the request URL path.</summary>
+        /// <summary>The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to match against the
+        /// request URL path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glob")]
         public virtual string Glob { get; set; } 
 
@@ -3998,7 +3998,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     }    
 
     /// <summary>The configuration for how incoming requests to a site should be routed and processed before serving
-    /// content. The patterns are matched and applied according to a specific [priority order](/docs/hosting/full-
+    /// content. The URL request paths are matched against the specified URL patterns in the configuration, then Hosting
+    /// applies the applicable configuration according to a specific [priority order](/docs/hosting/full-
     /// config#hosting_priority_order).</summary>
     public class ServingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4010,16 +4011,20 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cleanUrls")]
         public virtual System.Nullable<bool> CleanUrls { get; set; } 
 
-        /// <summary>A list of custom response headers that are added to the content if the request URL path matches the
-        /// glob.</summary>
+        /// <summary>An array of objects, where each object specifies a URL pattern that, if matched to the request URL
+        /// path, triggers Hosting to apply the specified custom response headers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IList<Header> Headers { get; set; } 
 
-        /// <summary>A list of globs that will cause the response to redirect to another location.</summary>
+        /// <summary>An array of objects (called redirect rules), where each rule specifies a URL pattern that, if
+        /// matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination
+        /// path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirects")]
         public virtual System.Collections.Generic.IList<Redirect> Redirects { get; set; } 
 
-        /// <summary>A list of rewrites that will act as if the service were given the destination URL.</summary>
+        /// <summary>An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if
+        /// matched to the request URL path, triggers Hosting to respond as if the service were given the specified
+        /// destination URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rewrites")]
         public virtual System.Collections.Generic.IList<Rewrite> Rewrites { get; set; } 
 

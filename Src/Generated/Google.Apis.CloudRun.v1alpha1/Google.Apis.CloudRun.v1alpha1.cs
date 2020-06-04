@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/run/'>Cloud Run API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20200514 (1960)
+ *      <tr><th>API Rev<td>20200521 (1967)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/run/'>
  *              https://cloud.google.com/run/</a>
@@ -10122,6 +10122,14 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         /// domain's DNS configuration in order to serve the application via this domain mapping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceRecords")]
         public virtual System.Collections.Generic.IList<ResourceRecord> ResourceRecords { get; set; } 
+
+        /// <summary>Cloud Run fully managed: not supported
+        ///
+        /// Cloud Run on GKE: supported
+        ///
+        /// Holds the URL that will serve the traffic of the DomainMapping. +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

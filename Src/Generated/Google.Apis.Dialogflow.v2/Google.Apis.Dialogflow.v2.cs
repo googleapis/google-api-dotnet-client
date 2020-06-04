@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200527 (1973)
+ *      <tr><th>API Rev<td>20200602 (1979)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow/'>
  *              https://cloud.google.com/dialogflow/</a>
@@ -5579,14 +5579,6 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("formInfo")]
         public virtual GoogleCloudDialogflowCxV3beta1PageInfoFormInfo FormInfo { get; set; } 
 
-        /// <summary>Deprecated. Please use WebhookResponse.target_page or WebhookResponse.target_flow instead.
-        ///
-        /// Optional for WebhookResponse. The unique identifier of the next page. This field can be set by the webhook
-        /// to immediately transition to a page different from `current_page`. Format:
-        /// `projects//locations//agents//flows//pages/`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPage")]
-        public virtual string NextPage { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -5598,11 +5590,6 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// that the webhook cannot add or remove any form parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterInfo")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo> ParameterInfo { get; set; } 
-
-        /// <summary>Always present for WebhookRequest. Ignored for WebhookResponse. The current state of the
-        /// form.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5620,12 +5607,6 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// collected on the last conversation turn.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("justCollected")]
         public virtual System.Nullable<bool> JustCollected { get; set; } 
-
-        /// <summary>Not set for WebhookRequest. Optional for WebhookResponse. The prompt to send to the user to fill a
-        /// required form parameter. This field can be set by the webhook. If set, this field overrides the prompt
-        /// defined for the form parameter.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("prompt")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ResponseMessage> Prompt { get; set; } 
 
         /// <summary>Optional for both WebhookRequest and WebhookResponse. Indicates whether the parameter is required.
         /// Optional parameters will not trigger prompts; however, they are filled if the user specifies them. Required
@@ -5883,7 +5864,13 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a conversational agent.</summary>
+    /// <summary>A Dialogflow agent is a virtual agent that handles conversations with your end-users. It is a natural
+    /// language understanding module that understands the nuances of human language. Dialogflow translates end-user
+    /// text or audio during a conversation to structured data that your apps and services can understand. You design
+    /// and build a Dialogflow agent to handle the types of conversations required for your system.
+    ///
+    /// For more information about agents, see the [Agents documentation](https://cloud.google.com/dialogflow/docs
+    /// /agents-overview).</summary>
     public class GoogleCloudDialogflowV2Agent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. API version displayed in Dialogflow console. If not specified, V2 API is assumed. Clients

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fit/rest/v1/get-started'>Fitness API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200527 (1973)
+ *      <tr><th>API Rev<td>20200601 (1978)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fit/rest/v1/get-started'>
  *              https://developers.google.com/fit/rest/v1/get-started</a>
@@ -2000,7 +2000,7 @@ namespace Google.Apis.Fitness.v1.Data
         public virtual BucketByActivity BucketByActivitySegment { get; set; } 
 
         /// <summary>Specifies that data be aggregated by the type of activity being performed when the data was
-        /// recorded. All data that was recorded during a certain activity type (for the given time range) will be
+        /// recorded. All data that was recorded during a certain activity type (.for the given time range) will be
         /// aggregated into the same bucket. Data that was recorded while the user was not active will not be included
         /// in the response. Mutually exclusive of other bucketing specifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketByActivityType")]

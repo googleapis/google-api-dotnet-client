@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-sql/'>Cloud SQL Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20200331 (1916)
+ *      <tr><th>API Rev<td>20200518 (1964)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-sql/'>
  *              https://developers.google.com/cloud-sql/</a>
@@ -5233,6 +5233,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>This is always sql#exportContext.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>Option for export offload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offload")]
+        public virtual System.Nullable<bool> Offload { get; set; } 
 
         /// <summary>Options for exporting data as SQL statements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlExportOptions")]

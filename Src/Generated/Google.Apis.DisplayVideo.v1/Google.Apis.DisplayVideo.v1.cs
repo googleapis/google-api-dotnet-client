@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/display-video/'>Display & Video 360 API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200528 (1974)
+ *      <tr><th>API Rev<td>20200602 (1979)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/display-video/'>
  *              https://developers.google.com/display-video/</a>
@@ -1190,9 +1190,486 @@ namespace Google.Apis.DisplayVideo.v1
             public ChannelsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                sites = new SitesResource(service);
 
             }
 
+            private readonly SitesResource sites;
+
+            /// <summary>Gets the Sites resource.</summary>
+            public virtual SitesResource Sites
+            {
+                get { return sites; }
+            }
+
+            /// <summary>The "sites" collection of methods.</summary>
+            public class SitesResource
+            {
+                private const string Resource = "sites";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SitesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Bulk edits sites under a single channel.
+                ///
+                /// The operation will delete the sites provided in BulkEditSitesRequest.deleted_sites and then create
+                /// the sites provided in BulkEditSitesRequest.created_sites.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="advertiserId">The ID of the advertiser that owns the parent channel.</param>
+                /// <param
+                /// name="channelId">Required. The ID of the parent channel to which the sites belong.</param>
+                public virtual BulkEditRequest BulkEdit(Google.Apis.DisplayVideo.v1.Data.BulkEditSitesRequest body, long advertiserId, long channelId)
+                {
+                    return new BulkEditRequest(service, body, advertiserId, channelId);
+                }
+
+                /// <summary>Bulk edits sites under a single channel.
+                ///
+                /// The operation will delete the sites provided in BulkEditSitesRequest.deleted_sites and then create
+                /// the sites provided in BulkEditSitesRequest.created_sites.</summary>
+                public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditSitesResponse>
+                {
+                    /// <summary>Constructs a new BulkEdit request.</summary>
+                    public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditSitesRequest body, long advertiserId, long channelId)
+                        : base(service)
+                    {
+                        AdvertiserId = advertiserId;
+                        ChannelId = channelId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The ID of the advertiser that owns the parent channel.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AdvertiserId { get; private set; }
+
+                    /// <summary>Required. The ID of the parent channel to which the sites belong.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("channelId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long ChannelId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DisplayVideo.v1.Data.BulkEditSitesRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "bulkEdit"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/advertisers/{advertiserId}/channels/{+channelId}/sites:bulkEdit"; }
+                    }
+
+                    /// <summary>Initializes BulkEdit parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "channelId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "channelId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Creates a site in a channel.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="advertiserId">The ID of the advertiser that owns the parent channel.</param>
+                /// <param
+                /// name="channelId">Required. The ID of the parent channel in which the site will be created.</param>
+                public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.Site body, long advertiserId, long channelId)
+                {
+                    return new CreateRequest(service, body, advertiserId, channelId);
+                }
+
+                /// <summary>Creates a site in a channel.</summary>
+                public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Site>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Site body, long advertiserId, long channelId)
+                        : base(service)
+                    {
+                        AdvertiserId = advertiserId;
+                        ChannelId = channelId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The ID of the advertiser that owns the parent channel.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AdvertiserId { get; private set; }
+
+                    /// <summary>Required. The ID of the parent channel in which the site will be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("channelId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long ChannelId { get; private set; }
+
+                    /// <summary>The ID of the partner that owns the parent channel.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<long> PartnerId { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DisplayVideo.v1.Data.Site Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/advertisers/{advertiserId}/channels/{+channelId}/sites"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "channelId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "channelId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "partnerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "partnerId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Deletes a site from a channel.</summary>
+                /// <param name="advertiserId">The ID of the advertiser that owns the parent channel.</param>
+                /// <param
+                /// name="channelId">Required. The ID of the parent channel to which the site belongs.</param>
+                /// <param
+                /// name="urlOrAppId">Required. The URL or app ID of the site to delete.</param>
+                public virtual DeleteRequest Delete(long advertiserId, long channelId, string urlOrAppId)
+                {
+                    return new DeleteRequest(service, advertiserId, channelId, urlOrAppId);
+                }
+
+                /// <summary>Deletes a site from a channel.</summary>
+                public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long channelId, string urlOrAppId)
+                        : base(service)
+                    {
+                        AdvertiserId = advertiserId;
+                        ChannelId = channelId;
+                        UrlOrAppId = urlOrAppId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The ID of the advertiser that owns the parent channel.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AdvertiserId { get; private set; }
+
+                    /// <summary>Required. The ID of the parent channel to which the site belongs.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("channelId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long ChannelId { get; private set; }
+
+                    /// <summary>Required. The URL or app ID of the site to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("urlOrAppId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string UrlOrAppId { get; private set; }
+
+                    /// <summary>The ID of the partner that owns the parent channel.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<long> PartnerId { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/advertisers/{advertiserId}/channels/{+channelId}/sites/{+urlOrAppId}"; }
+                    }
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "channelId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "channelId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "urlOrAppId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "urlOrAppId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "partnerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "partnerId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists sites in a channel.</summary>
+                /// <param name="advertiserId">The ID of the advertiser that owns the parent channel.</param>
+                /// <param
+                /// name="channelId">Required. The ID of the parent channel to which the requested sites belong.</param>
+                public virtual ListRequest List(long advertiserId, long channelId)
+                {
+                    return new ListRequest(service, advertiserId, channelId);
+                }
+
+                /// <summary>Lists sites in a channel.</summary>
+                public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListSitesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long channelId)
+                        : base(service)
+                    {
+                        AdvertiserId = advertiserId;
+                        ChannelId = channelId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The ID of the advertiser that owns the parent channel.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AdvertiserId { get; private set; }
+
+                    /// <summary>Required. The ID of the parent channel to which the requested sites belong.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("channelId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long ChannelId { get; private set; }
+
+                    /// <summary>Allows filtering by site fields.
+                    ///
+                    /// Supported syntax:
+                    ///
+                    /// * Filter expressions for site currently can only contain at most one * restriction. * A
+                    /// restriction has the form of `{field} {operator} {value}`. * The operator must be `CONTAINS (:)`.
+                    /// * Supported fields: - `urlOrAppId`
+                    ///
+                    /// Examples:
+                    ///
+                    /// * All sites for which the URL or app ID contains "google": `urlOrAppId : "google"`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Field by which to sort the list. Acceptable values are:
+                    ///
+                    /// * `urlOrAppId` (default)
+                    ///
+                    /// The default sorting order is ascending. To specify descending order for a field, a suffix "
+                    /// desc" should be added to the field name. Example: `urlOrAppId desc`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>Requested page size. Must be between `1` and `100`. If unspecified will default to
+                    /// `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>A token identifying a page of results the server should return.
+                    ///
+                    /// Typically, this is the value of next_page_token returned from the previous call to `ListSites`
+                    /// method. If not specified, the first page of results will be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>The ID of the partner that owns the parent channel.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<long> PartnerId { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/advertisers/{+advertiserId}/channels/{+channelId}/sites"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "channelId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "channelId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "partnerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "partnerId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
 
             /// <summary>Gets a channel for a partner or advertiser.</summary>
             /// <param name="advertiserId">The ID of the advertiser that owns the fetched channel.</param>
@@ -1419,6 +1896,116 @@ namespace Google.Apis.DisplayVideo.v1
                         "partnerId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "partnerId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates a channel. Returns the updated channel if successful.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">The ID of the advertiser that owns the created channel.</param>
+            /// <param
+            /// name="channelId">Output only. The unique ID of the channel. Assigned by the system.</param>
+            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.Channel body, long advertiserId, long channelId)
+            {
+                return new PatchRequest(service, body, advertiserId, channelId);
+            }
+
+            /// <summary>Updates a channel. Returns the updated channel if successful.</summary>
+            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Channel>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Channel body, long advertiserId, long channelId)
+                    : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    ChannelId = channelId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The ID of the advertiser that owns the created channel.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Output only. The unique ID of the channel. Assigned by the system.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("channelId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long ChannelId { get; private set; }
+
+                /// <summary>The ID of the partner that owns the created channel.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> PartnerId { get; set; }
+
+                /// <summary>Required. The mask to control which fields to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v1.Data.Channel Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/advertisers/{+advertiserId}/channels/{channelId}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "channelId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "channelId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "partnerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "partnerId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4035,9 +4622,523 @@ namespace Google.Apis.DisplayVideo.v1
             public LocationListsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                assignedLocations = new AssignedLocationsResource(service);
 
             }
 
+            private readonly AssignedLocationsResource assignedLocations;
+
+            /// <summary>Gets the AssignedLocations resource.</summary>
+            public virtual AssignedLocationsResource AssignedLocations
+            {
+                get { return assignedLocations; }
+            }
+
+            /// <summary>The "assignedLocations" collection of methods.</summary>
+            public class AssignedLocationsResource
+            {
+                private const string Resource = "assignedLocations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AssignedLocationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Bulk edits multiple assignments between locations and a single location list.
+                ///
+                /// The operation will delete the assigned locations provided in
+                /// BulkEditAssignedLocationsRequest.deleted_assigned_locations and then create the assigned locations
+                /// provided in BulkEditAssignedLocationsRequest.created_assigned_locations.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="advertiserId">Required. The ID of the DV360 advertiser to which the location list
+                /// belongs.</param>
+                /// <param name="locationListId">Required. The ID of the location list to which these
+                /// assignments are assigned.</param>
+                public virtual BulkEditRequest BulkEdit(Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedLocationsRequest body, long advertiserId, long locationListId)
+                {
+                    return new BulkEditRequest(service, body, advertiserId, locationListId);
+                }
+
+                /// <summary>Bulk edits multiple assignments between locations and a single location list.
+                ///
+                /// The operation will delete the assigned locations provided in
+                /// BulkEditAssignedLocationsRequest.deleted_assigned_locations and then create the assigned locations
+                /// provided in BulkEditAssignedLocationsRequest.created_assigned_locations.</summary>
+                public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedLocationsResponse>
+                {
+                    /// <summary>Constructs a new BulkEdit request.</summary>
+                    public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedLocationsRequest body, long advertiserId, long locationListId)
+                        : base(service)
+                    {
+                        AdvertiserId = advertiserId;
+                        LocationListId = locationListId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The ID of the DV360 advertiser to which the location list belongs.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AdvertiserId { get; private set; }
+
+                    /// <summary>Required. The ID of the location list to which these assignments are
+                    /// assigned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("locationListId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long LocationListId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedLocationsRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "bulkEdit"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/advertisers/{advertiserId}/locationLists/{+locationListId}/assignedLocations:bulkEdit"; }
+                    }
+
+                    /// <summary>Initializes BulkEdit parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "locationListId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationListId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Creates an assignment between a location and a location list.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="advertiserId">Required. The ID of the DV360 advertiser to which the location list
+                /// belongs.</param>
+                /// <param name="locationListId">Required. The ID of the location list for which the assignment
+                /// will be created.</param>
+                public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.AssignedLocation body, long advertiserId, long locationListId)
+                {
+                    return new CreateRequest(service, body, advertiserId, locationListId);
+                }
+
+                /// <summary>Creates an assignment between a location and a location list.</summary>
+                public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedLocation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedLocation body, long advertiserId, long locationListId)
+                        : base(service)
+                    {
+                        AdvertiserId = advertiserId;
+                        LocationListId = locationListId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The ID of the DV360 advertiser to which the location list belongs.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AdvertiserId { get; private set; }
+
+                    /// <summary>Required. The ID of the location list for which the assignment will be
+                    /// created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("locationListId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long LocationListId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DisplayVideo.v1.Data.AssignedLocation Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "locationListId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationListId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Deletes the assignment between a location and a location list.</summary>
+                /// <param name="advertiserId">Required. The ID of the DV360 advertiser to which the location list
+                /// belongs.</param>
+                /// <param name="locationListId">Required. The ID of the location list to which this assignment
+                /// is assigned.</param>
+                /// <param name="assignedLocationId">Required. The ID of the assigned location to
+                /// delete.</param>
+                public virtual DeleteRequest Delete(long advertiserId, long locationListId, long assignedLocationId)
+                {
+                    return new DeleteRequest(service, advertiserId, locationListId, assignedLocationId);
+                }
+
+                /// <summary>Deletes the assignment between a location and a location list.</summary>
+                public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long locationListId, long assignedLocationId)
+                        : base(service)
+                    {
+                        AdvertiserId = advertiserId;
+                        LocationListId = locationListId;
+                        AssignedLocationId = assignedLocationId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The ID of the DV360 advertiser to which the location list belongs.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AdvertiserId { get; private set; }
+
+                    /// <summary>Required. The ID of the location list to which this assignment is assigned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("locationListId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long LocationListId { get; private set; }
+
+                    /// <summary>Required. The ID of the assigned location to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("assignedLocationId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AssignedLocationId { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations/{+assignedLocationId}"; }
+                    }
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "locationListId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationListId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "assignedLocationId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "assignedLocationId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists locations assigned to a location list.</summary>
+                /// <param name="advertiserId">Required. The ID of the DV360 advertiser to which the location list
+                /// belongs.</param>
+                /// <param name="locationListId">Required. The ID of the location list to which these
+                /// assignments are assigned.</param>
+                public virtual ListRequest List(long advertiserId, long locationListId)
+                {
+                    return new ListRequest(service, advertiserId, locationListId);
+                }
+
+                /// <summary>Lists locations assigned to a location list.</summary>
+                public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListAssignedLocationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long locationListId)
+                        : base(service)
+                    {
+                        AdvertiserId = advertiserId;
+                        LocationListId = locationListId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The ID of the DV360 advertiser to which the location list belongs.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AdvertiserId { get; private set; }
+
+                    /// <summary>Required. The ID of the location list to which these assignments are
+                    /// assigned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("locationListId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long LocationListId { get; private set; }
+
+                    /// <summary>Allows filtering by location list assignment fields.
+                    ///
+                    /// Supported syntax:
+                    ///
+                    /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
+                    /// the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * The
+                    /// operator must be `EQUALS (=)`. * Supported fields: - `assignedLocationId`
+                    ///
+                    /// The length of this field should be no more than 500 characters.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Field by which to sort the list. Acceptable values are:
+                    ///
+                    /// * `assignedLocationId` (default)
+                    ///
+                    /// The default sorting order is ascending. To specify descending order for a field, a suffix "
+                    /// desc" should be added to the field name. Example: `assignedLocationId desc`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>Requested page size. Must be between `1` and `100`. If unspecified will default to
+                    /// `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>A token identifying a page of results the server should return.
+                    ///
+                    /// Typically, this is the value of next_page_token returned from the previous call to
+                    /// `ListAssignedLocations` method. If not specified, the first page of results will be
+                    /// returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "locationListId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationListId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+
+            /// <summary>Creates a new location list. Returns the newly created location list if successful.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Required. The ID of the DV360 advertiser to which the location list belongs.</param>
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.LocationList body, long advertiserId)
+            {
+                return new CreateRequest(service, body, advertiserId);
+            }
+
+            /// <summary>Creates a new location list. Returns the newly created location list if successful.</summary>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.LocationList>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.LocationList body, long advertiserId)
+                    : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The ID of the DV360 advertiser to which the location list belongs.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v1.Data.LocationList Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/advertisers/{+advertiserId}/locationLists"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                }
+
+            }
 
             /// <summary>Gets a location list.</summary>
             /// <param name="advertiserId">Required. The ID of the DV360 advertiser to which the fetched location list
@@ -4250,6 +5351,104 @@ namespace Google.Apis.DisplayVideo.v1
                 }
 
             }
+
+            /// <summary>Updates a location list. Returns the updated location list if successful.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Required. The ID of the DV360 advertiser to which the location lists
+            /// belongs.</param>
+            /// <param name="locationListId">Output only. The unique ID of the location list. Assigned by
+            /// the system.</param>
+            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.LocationList body, long advertiserId, long locationListId)
+            {
+                return new PatchRequest(service, body, advertiserId, locationListId);
+            }
+
+            /// <summary>Updates a location list. Returns the updated location list if successful.</summary>
+            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.LocationList>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.LocationList body, long advertiserId, long locationListId)
+                    : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    LocationListId = locationListId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The ID of the DV360 advertiser to which the location lists belongs.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Output only. The unique ID of the location list. Assigned by the system.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("locationListId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long LocationListId { get; private set; }
+
+                /// <summary>Required. The mask to control which fields to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v1.Data.LocationList Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/advertisers/{+advertiserId}/locationLists/{locationListId}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "locationListId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "locationListId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
         }
         private readonly NegativeKeywordListsResource negativeKeywordLists;
 
@@ -4271,9 +5470,621 @@ namespace Google.Apis.DisplayVideo.v1
             public NegativeKeywordListsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                negativeKeywords = new NegativeKeywordsResource(service);
 
             }
 
+            private readonly NegativeKeywordsResource negativeKeywords;
+
+            /// <summary>Gets the NegativeKeywords resource.</summary>
+            public virtual NegativeKeywordsResource NegativeKeywords
+            {
+                get { return negativeKeywords; }
+            }
+
+            /// <summary>The "negativeKeywords" collection of methods.</summary>
+            public class NegativeKeywordsResource
+            {
+                private const string Resource = "negativeKeywords";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public NegativeKeywordsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Bulk edits negative keywords in a single negative keyword list.
+                ///
+                /// The operation will delete the negative keywords provided in
+                /// BulkEditNegativeKeywordsRequest.deleted_negative_keywords and then create the negative keywords
+                /// provided in BulkEditNegativeKeywordsRequest.created_negative_keywords.
+                ///
+                /// This operation is guaranteed to be atomic and will never result in a partial success or partial
+                /// failure.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="advertiserId">Required. The ID of the DV360 advertiser to which the parent negative keyword list
+                /// belongs.</param>
+                /// <param name="negativeKeywordListId">Required. The ID of the parent negative keyword list to
+                /// which the negative keywords belong.</param>
+                public virtual BulkEditRequest BulkEdit(Google.Apis.DisplayVideo.v1.Data.BulkEditNegativeKeywordsRequest body, long advertiserId, long negativeKeywordListId)
+                {
+                    return new BulkEditRequest(service, body, advertiserId, negativeKeywordListId);
+                }
+
+                /// <summary>Bulk edits negative keywords in a single negative keyword list.
+                ///
+                /// The operation will delete the negative keywords provided in
+                /// BulkEditNegativeKeywordsRequest.deleted_negative_keywords and then create the negative keywords
+                /// provided in BulkEditNegativeKeywordsRequest.created_negative_keywords.
+                ///
+                /// This operation is guaranteed to be atomic and will never result in a partial success or partial
+                /// failure.</summary>
+                public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditNegativeKeywordsResponse>
+                {
+                    /// <summary>Constructs a new BulkEdit request.</summary>
+                    public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditNegativeKeywordsRequest body, long advertiserId, long negativeKeywordListId)
+                        : base(service)
+                    {
+                        AdvertiserId = advertiserId;
+                        NegativeKeywordListId = negativeKeywordListId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The ID of the DV360 advertiser to which the parent negative keyword list
+                    /// belongs.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AdvertiserId { get; private set; }
+
+                    /// <summary>Required. The ID of the parent negative keyword list to which the negative keywords
+                    /// belong.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("negativeKeywordListId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long NegativeKeywordListId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DisplayVideo.v1.Data.BulkEditNegativeKeywordsRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "bulkEdit"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:bulkEdit"; }
+                    }
+
+                    /// <summary>Initializes BulkEdit parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "negativeKeywordListId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "negativeKeywordListId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Creates a negative keyword in a negative keyword list.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="advertiserId">Required. The ID of the DV360 advertiser to which the parent negative keyword list
+                /// belongs.</param>
+                /// <param name="negativeKeywordListId">Required. The ID of the parent negative keyword list in
+                /// which the negative keyword will be created.</param>
+                public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.NegativeKeyword body, long advertiserId, long negativeKeywordListId)
+                {
+                    return new CreateRequest(service, body, advertiserId, negativeKeywordListId);
+                }
+
+                /// <summary>Creates a negative keyword in a negative keyword list.</summary>
+                public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.NegativeKeyword>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.NegativeKeyword body, long advertiserId, long negativeKeywordListId)
+                        : base(service)
+                    {
+                        AdvertiserId = advertiserId;
+                        NegativeKeywordListId = negativeKeywordListId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The ID of the DV360 advertiser to which the parent negative keyword list
+                    /// belongs.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AdvertiserId { get; private set; }
+
+                    /// <summary>Required. The ID of the parent negative keyword list in which the negative keyword will
+                    /// be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("negativeKeywordListId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long NegativeKeywordListId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DisplayVideo.v1.Data.NegativeKeyword Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "negativeKeywordListId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "negativeKeywordListId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Deletes a negative keyword from a negative keyword list.</summary>
+                /// <param name="advertiserId">Required. The ID of the DV360 advertiser to which the parent negative keyword list
+                /// belongs.</param>
+                /// <param name="negativeKeywordListId">Required. The ID of the parent negative keyword list to
+                /// which the negative keyword belongs.</param>
+                /// <param name="keywordValue">Required. The keyword value of the
+                /// negative keyword to delete.</param>
+                public virtual DeleteRequest Delete(long advertiserId, long negativeKeywordListId, string keywordValue)
+                {
+                    return new DeleteRequest(service, advertiserId, negativeKeywordListId, keywordValue);
+                }
+
+                /// <summary>Deletes a negative keyword from a negative keyword list.</summary>
+                public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long negativeKeywordListId, string keywordValue)
+                        : base(service)
+                    {
+                        AdvertiserId = advertiserId;
+                        NegativeKeywordListId = negativeKeywordListId;
+                        KeywordValue = keywordValue;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The ID of the DV360 advertiser to which the parent negative keyword list
+                    /// belongs.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AdvertiserId { get; private set; }
+
+                    /// <summary>Required. The ID of the parent negative keyword list to which the negative keyword
+                    /// belongs.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("negativeKeywordListId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long NegativeKeywordListId { get; private set; }
+
+                    /// <summary>Required. The keyword value of the negative keyword to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("keywordValue", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string KeywordValue { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords/{+keywordValue}"; }
+                    }
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "negativeKeywordListId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "negativeKeywordListId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "keywordValue", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "keywordValue",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists negative keywords in a negative keyword list.</summary>
+                /// <param name="advertiserId">Required. The ID of the DV360 advertiser to which the parent negative keyword list
+                /// belongs.</param>
+                /// <param name="negativeKeywordListId">Required. The ID of the parent negative keyword list to
+                /// which the requested negative keywords belong.</param>
+                public virtual ListRequest List(long advertiserId, long negativeKeywordListId)
+                {
+                    return new ListRequest(service, advertiserId, negativeKeywordListId);
+                }
+
+                /// <summary>Lists negative keywords in a negative keyword list.</summary>
+                public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListNegativeKeywordsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long negativeKeywordListId)
+                        : base(service)
+                    {
+                        AdvertiserId = advertiserId;
+                        NegativeKeywordListId = negativeKeywordListId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The ID of the DV360 advertiser to which the parent negative keyword list
+                    /// belongs.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AdvertiserId { get; private set; }
+
+                    /// <summary>Required. The ID of the parent negative keyword list to which the requested negative
+                    /// keywords belong.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("negativeKeywordListId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long NegativeKeywordListId { get; private set; }
+
+                    /// <summary>Allows filtering by negative keyword fields.
+                    ///
+                    /// Supported syntax:
+                    ///
+                    /// * Filter expressions for negative keyword currently can only contain at most one * restriction.
+                    /// * A restriction has the form of `{field} {operator} {value}`. * The operator must be `CONTAINS
+                    /// (:)`. * Supported fields: - `keywordValue`
+                    ///
+                    /// Examples:
+                    ///
+                    /// * All negative keywords for which the keyword value contains "google": `keywordValue :
+                    /// "google"`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Field by which to sort the list. Acceptable values are:
+                    ///
+                    /// * `keywordValue` (default)
+                    ///
+                    /// The default sorting order is ascending. To specify descending order for a field, a suffix "
+                    /// desc" should be added to the field name. Example: `keywordValue desc`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>Requested page size. Must be between `1` and `100`. If unspecified will default to
+                    /// `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>A token identifying a page of results the server should return.
+                    ///
+                    /// Typically, this is the value of next_page_token returned from the previous call to
+                    /// `ListNegativeKeywords` method. If not specified, the first page of results will be
+                    /// returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "negativeKeywordListId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "negativeKeywordListId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+
+            /// <summary>Creates a new negative keyword list. Returns the newly created negative keyword list if
+            /// successful.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Required. The ID of the DV360 advertiser to which the negative keyword list will
+            /// belong.</param>
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList body, long advertiserId)
+            {
+                return new CreateRequest(service, body, advertiserId);
+            }
+
+            /// <summary>Creates a new negative keyword list. Returns the newly created negative keyword list if
+            /// successful.</summary>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList body, long advertiserId)
+                    : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The ID of the DV360 advertiser to which the negative keyword list will
+                /// belong.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/advertisers/{+advertiserId}/negativeKeywordLists"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes a negative keyword list given an advertiser ID and a negative keyword list
+            /// ID.</summary>
+            /// <param name="advertiserId">Required. The ID of the DV360 advertiser to which the negative keyword list
+            /// belongs.</param>
+            /// <param name="negativeKeywordListId">Required. The ID of the negative keyword list to
+            /// delete.</param>
+            public virtual DeleteRequest Delete(long advertiserId, long negativeKeywordListId)
+            {
+                return new DeleteRequest(service, advertiserId, negativeKeywordListId);
+            }
+
+            /// <summary>Deletes a negative keyword list given an advertiser ID and a negative keyword list
+            /// ID.</summary>
+            public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long negativeKeywordListId)
+                    : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    NegativeKeywordListId = negativeKeywordListId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The ID of the DV360 advertiser to which the negative keyword list
+                /// belongs.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Required. The ID of the negative keyword list to delete.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("negativeKeywordListId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long NegativeKeywordListId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "negativeKeywordListId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "negativeKeywordListId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                }
+
+            }
 
             /// <summary>Gets a negative keyword list given an advertiser ID and a negative keyword list ID.</summary>
             /// <param name="advertiserId">Required. The ID of the DV360 advertiser to which the fetched negative keyword list
@@ -4437,6 +6248,107 @@ namespace Google.Apis.DisplayVideo.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates a negative keyword list. Returns the updated negative keyword list if
+            /// successful.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Required. The ID of the DV360 advertiser to which the negative keyword list
+            /// belongs.</param>
+            /// <param name="negativeKeywordListId">Output only. The unique ID of the negative keyword
+            /// list. Assigned by the system.</param>
+            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList body, long advertiserId, long negativeKeywordListId)
+            {
+                return new PatchRequest(service, body, advertiserId, negativeKeywordListId);
+            }
+
+            /// <summary>Updates a negative keyword list. Returns the updated negative keyword list if
+            /// successful.</summary>
+            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList body, long advertiserId, long negativeKeywordListId)
+                    : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    NegativeKeywordListId = negativeKeywordListId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The ID of the DV360 advertiser to which the negative keyword list
+                /// belongs.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Output only. The unique ID of the negative keyword list. Assigned by the system.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("negativeKeywordListId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long NegativeKeywordListId { get; private set; }
+
+                /// <summary>Required. The mask to control which fields to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/advertisers/{+advertiserId}/negativeKeywordLists/{negativeKeywordListId}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "negativeKeywordListId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "negativeKeywordListId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -7019,9 +8931,662 @@ namespace Google.Apis.DisplayVideo.v1
         public InventorySourceGroupsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            assignedInventorySources = new AssignedInventorySourcesResource(service);
 
         }
 
+        private readonly AssignedInventorySourcesResource assignedInventorySources;
+
+        /// <summary>Gets the AssignedInventorySources resource.</summary>
+        public virtual AssignedInventorySourcesResource AssignedInventorySources
+        {
+            get { return assignedInventorySources; }
+        }
+
+        /// <summary>The "assignedInventorySources" collection of methods.</summary>
+        public class AssignedInventorySourcesResource
+        {
+            private const string Resource = "assignedInventorySources";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AssignedInventorySourcesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Bulk edits multiple assignments between inventory sources and a single inventory source group.
+            ///
+            /// The operation will delete the assigned inventory sources provided in
+            /// BulkEditAssignedInventorySourcesRequest.deleted_assigned_inventory_sources and then create the assigned
+            /// inventory sources provided in
+            /// BulkEditAssignedInventorySourcesRequest.created_assigned_inventory_sources.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="inventorySourceGroupId">Required. The ID of the inventory source group to which the assignments are
+            /// assigned.</param>
+            public virtual BulkEditRequest BulkEdit(Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedInventorySourcesRequest body, long inventorySourceGroupId)
+            {
+                return new BulkEditRequest(service, body, inventorySourceGroupId);
+            }
+
+            /// <summary>Bulk edits multiple assignments between inventory sources and a single inventory source group.
+            ///
+            /// The operation will delete the assigned inventory sources provided in
+            /// BulkEditAssignedInventorySourcesRequest.deleted_assigned_inventory_sources and then create the assigned
+            /// inventory sources provided in
+            /// BulkEditAssignedInventorySourcesRequest.created_assigned_inventory_sources.</summary>
+            public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedInventorySourcesResponse>
+            {
+                /// <summary>Constructs a new BulkEdit request.</summary>
+                public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedInventorySourcesRequest body, long inventorySourceGroupId)
+                    : base(service)
+                {
+                    InventorySourceGroupId = inventorySourceGroupId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The ID of the inventory source group to which the assignments are
+                /// assigned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("inventorySourceGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long InventorySourceGroupId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedInventorySourcesRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "bulkEdit"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources:bulkEdit"; }
+                }
+
+                /// <summary>Initializes BulkEdit parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "inventorySourceGroupId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "inventorySourceGroupId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Creates an assignment between an inventory source and an inventory source group.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="inventorySourceGroupId">Required. The ID of the inventory source group to which the assignment will be
+            /// assigned.</param>
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.AssignedInventorySource body, long inventorySourceGroupId)
+            {
+                return new CreateRequest(service, body, inventorySourceGroupId);
+            }
+
+            /// <summary>Creates an assignment between an inventory source and an inventory source group.</summary>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedInventorySource>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedInventorySource body, long inventorySourceGroupId)
+                    : base(service)
+                {
+                    InventorySourceGroupId = inventorySourceGroupId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The ID of the inventory source group to which the assignment will be
+                /// assigned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("inventorySourceGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long InventorySourceGroupId { get; private set; }
+
+                /// <summary>The ID of the advertiser that owns the parent inventory source group.
+                ///
+                /// The parent partner will not have access to this assigned inventory source.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+                /// <summary>The ID of the partner that owns the parent inventory source group.
+                ///
+                /// Only this partner will have write access to this assigned inventory source.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> PartnerId { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v1.Data.AssignedInventorySource Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "inventorySourceGroupId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "inventorySourceGroupId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "partnerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "partnerId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes the assignment between an inventory source and an inventory source group.</summary>
+            /// <param name="inventorySourceGroupId">Required. The ID of the inventory source group to which this assignment is
+            /// assigned.</param>
+            /// <param name="assignedInventorySourceId">Required. The ID of the assigned inventory source
+            /// to delete.</param>
+            public virtual DeleteRequest Delete(long inventorySourceGroupId, long assignedInventorySourceId)
+            {
+                return new DeleteRequest(service, inventorySourceGroupId, assignedInventorySourceId);
+            }
+
+            /// <summary>Deletes the assignment between an inventory source and an inventory source group.</summary>
+            public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, long inventorySourceGroupId, long assignedInventorySourceId)
+                    : base(service)
+                {
+                    InventorySourceGroupId = inventorySourceGroupId;
+                    AssignedInventorySourceId = assignedInventorySourceId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The ID of the inventory source group to which this assignment is
+                /// assigned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("inventorySourceGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long InventorySourceGroupId { get; private set; }
+
+                /// <summary>Required. The ID of the assigned inventory source to delete.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("assignedInventorySourceId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AssignedInventorySourceId { get; private set; }
+
+                /// <summary>The ID of the advertiser that owns the parent inventory source group.
+                ///
+                /// The parent partner does not have access to this assigned inventory source.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+                /// <summary>The ID of the partner that owns the parent inventory source group.
+                ///
+                /// Only this partner has write access to this assigned inventory source.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> PartnerId { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources/{+assignedInventorySourceId}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "inventorySourceGroupId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "inventorySourceGroupId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "assignedInventorySourceId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "assignedInventorySourceId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "partnerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "partnerId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Lists inventory sources assigned to an inventory source group.</summary>
+            /// <param name="inventorySourceGroupId">Required. The ID of the inventory source group to which these assignments are
+            /// assigned.</param>
+            public virtual ListRequest List(long inventorySourceGroupId)
+            {
+                return new ListRequest(service, inventorySourceGroupId);
+            }
+
+            /// <summary>Lists inventory sources assigned to an inventory source group.</summary>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListAssignedInventorySourcesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, long inventorySourceGroupId)
+                    : base(service)
+                {
+                    InventorySourceGroupId = inventorySourceGroupId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The ID of the inventory source group to which these assignments are
+                /// assigned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("inventorySourceGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long InventorySourceGroupId { get; private set; }
+
+                /// <summary>The ID of the advertiser that has access to the assignment.
+                ///
+                /// If the parent inventory source group is partner-owned, only advertisers to which the parent group is
+                /// explicitly shared can access the assigned inventory source.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+                /// <summary>Allows filtering by assigned inventory source fields.
+                ///
+                /// Supported syntax:
+                ///
+                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the
+                /// logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * The operator
+                /// must be `EQUALS (=)`. * Supported fields: - `assignedInventorySourceId`
+                ///
+                /// The length of this field should be no more than 500 characters.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>Field by which to sort the list. Acceptable values are:
+                ///
+                /// * `assignedInventorySourceId` (default)
+                ///
+                /// The default sorting order is ascending. To specify descending order for a field, a suffix " desc"
+                /// should be added to the field name. Example: `assignedInventorySourceId desc`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>Requested page size. Must be between `1` and `100`. If unspecified will default to `100`.
+                /// Returns error code `INVALID_ARGUMENT` if an invalid value is specified.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>A token identifying a page of results the server should return.
+                ///
+                /// Typically, this is the value of next_page_token returned from the previous call to
+                /// `ListAssignedInventorySources` method. If not specified, the first page of results will be
+                /// returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The ID of the partner that has access to the assignment.
+                ///
+                /// If the parent inventory source group is advertiser-owned, the assignment cannot be accessed via a
+                /// partner.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> PartnerId { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "inventorySourceGroupId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "inventorySourceGroupId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "partnerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "partnerId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+
+        /// <summary>Creates a new inventory source group. Returns the newly created inventory source group if
+        /// successful.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>Creates a new inventory source group. Returns the newly created inventory source group if
+        /// successful.</summary>
+        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the advertiser that owns the inventory source group.
+            ///
+            /// The parent partner will not have access to this group.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+            /// <summary>The ID of the partner that owns the inventory source group.
+            ///
+            /// Only this partner will have write access to this group. Only advertisers to which this group is
+            /// explicitly shared will have read access to this group.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> PartnerId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/inventorySourceGroups"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Deletes an inventory source group.</summary>
+        /// <param name="inventorySourceGroupId">Required. The ID of the inventory source group to delete.</param>
+        public virtual DeleteRequest Delete(long inventorySourceGroupId)
+        {
+            return new DeleteRequest(service, inventorySourceGroupId);
+        }
+
+        /// <summary>Deletes an inventory source group.</summary>
+        public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, long inventorySourceGroupId)
+                : base(service)
+            {
+                InventorySourceGroupId = inventorySourceGroupId;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The ID of the inventory source group to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("inventorySourceGroupId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long InventorySourceGroupId { get; private set; }
+
+            /// <summary>The ID of the advertiser that owns the inventory source group.
+            ///
+            /// The parent partner does not have access to this group.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+            /// <summary>The ID of the partner that owns the inventory source group.
+            ///
+            /// Only this partner has write access to this group.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> PartnerId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/inventorySourceGroups/{+inventorySourceGroupId}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "inventorySourceGroupId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "inventorySourceGroupId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
 
         /// <summary>Gets an inventory source group.</summary>
         /// <param name="inventorySourceGroupId">Required. The ID of the inventory source group to fetch.</param>
@@ -7253,6 +9818,120 @@ namespace Google.Apis.DisplayVideo.v1
                     "partnerId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates an inventory source group. Returns the updated inventory source group if
+        /// successful.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="inventorySourceGroupId">Output only. The unique ID of the inventory source group. Assigned by the
+        /// system.</param>
+        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup body, long inventorySourceGroupId)
+        {
+            return new PatchRequest(service, body, inventorySourceGroupId);
+        }
+
+        /// <summary>Updates an inventory source group. Returns the updated inventory source group if
+        /// successful.</summary>
+        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup body, long inventorySourceGroupId)
+                : base(service)
+            {
+                InventorySourceGroupId = inventorySourceGroupId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Output only. The unique ID of the inventory source group. Assigned by the system.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("inventorySourceGroupId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long InventorySourceGroupId { get; private set; }
+
+            /// <summary>The ID of the advertiser that owns the inventory source group.
+            ///
+            /// The parent partner does not have access to this group.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+            /// <summary>The ID of the partner that owns the inventory source group.
+            ///
+            /// Only this partner has write access to this group.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> PartnerId { get; set; }
+
+            /// <summary>Required. The mask to control which fields to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/inventorySourceGroups/{inventorySourceGroupId}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "inventorySourceGroupId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "inventorySourceGroupId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -7676,9 +10355,486 @@ namespace Google.Apis.DisplayVideo.v1
             public ChannelsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                sites = new SitesResource(service);
 
             }
 
+            private readonly SitesResource sites;
+
+            /// <summary>Gets the Sites resource.</summary>
+            public virtual SitesResource Sites
+            {
+                get { return sites; }
+            }
+
+            /// <summary>The "sites" collection of methods.</summary>
+            public class SitesResource
+            {
+                private const string Resource = "sites";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SitesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Bulk edits sites under a single channel.
+                ///
+                /// The operation will delete the sites provided in BulkEditSitesRequest.deleted_sites and then create
+                /// the sites provided in BulkEditSitesRequest.created_sites.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="partnerId">The ID of the partner that owns the parent channel.</param>
+                /// <param
+                /// name="channelId">Required. The ID of the parent channel to which the sites belong.</param>
+                public virtual BulkEditRequest BulkEdit(Google.Apis.DisplayVideo.v1.Data.BulkEditSitesRequest body, long partnerId, long channelId)
+                {
+                    return new BulkEditRequest(service, body, partnerId, channelId);
+                }
+
+                /// <summary>Bulk edits sites under a single channel.
+                ///
+                /// The operation will delete the sites provided in BulkEditSitesRequest.deleted_sites and then create
+                /// the sites provided in BulkEditSitesRequest.created_sites.</summary>
+                public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditSitesResponse>
+                {
+                    /// <summary>Constructs a new BulkEdit request.</summary>
+                    public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditSitesRequest body, long partnerId, long channelId)
+                        : base(service)
+                    {
+                        PartnerId = partnerId;
+                        ChannelId = channelId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The ID of the partner that owns the parent channel.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long PartnerId { get; private set; }
+
+                    /// <summary>Required. The ID of the parent channel to which the sites belong.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("channelId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long ChannelId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DisplayVideo.v1.Data.BulkEditSitesRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "bulkEdit"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/partners/{partnerId}/channels/{+channelId}/sites:bulkEdit"; }
+                    }
+
+                    /// <summary>Initializes BulkEdit parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "partnerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "partnerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "channelId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "channelId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Creates a site in a channel.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="partnerId">The ID of the partner that owns the parent channel.</param>
+                /// <param
+                /// name="channelId">Required. The ID of the parent channel in which the site will be created.</param>
+                public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.Site body, long partnerId, long channelId)
+                {
+                    return new CreateRequest(service, body, partnerId, channelId);
+                }
+
+                /// <summary>Creates a site in a channel.</summary>
+                public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Site>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Site body, long partnerId, long channelId)
+                        : base(service)
+                    {
+                        PartnerId = partnerId;
+                        ChannelId = channelId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The ID of the partner that owns the parent channel.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long PartnerId { get; private set; }
+
+                    /// <summary>Required. The ID of the parent channel in which the site will be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("channelId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long ChannelId { get; private set; }
+
+                    /// <summary>The ID of the advertiser that owns the parent channel.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DisplayVideo.v1.Data.Site Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/partners/{partnerId}/channels/{+channelId}/sites"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "partnerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "partnerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "channelId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "channelId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Deletes a site from a channel.</summary>
+                /// <param name="partnerId">The ID of the partner that owns the parent channel.</param>
+                /// <param
+                /// name="channelId">Required. The ID of the parent channel to which the site belongs.</param>
+                /// <param
+                /// name="urlOrAppId">Required. The URL or app ID of the site to delete.</param>
+                public virtual DeleteRequest Delete(long partnerId, long channelId, string urlOrAppId)
+                {
+                    return new DeleteRequest(service, partnerId, channelId, urlOrAppId);
+                }
+
+                /// <summary>Deletes a site from a channel.</summary>
+                public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, long partnerId, long channelId, string urlOrAppId)
+                        : base(service)
+                    {
+                        PartnerId = partnerId;
+                        ChannelId = channelId;
+                        UrlOrAppId = urlOrAppId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The ID of the partner that owns the parent channel.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long PartnerId { get; private set; }
+
+                    /// <summary>Required. The ID of the parent channel to which the site belongs.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("channelId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long ChannelId { get; private set; }
+
+                    /// <summary>Required. The URL or app ID of the site to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("urlOrAppId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string UrlOrAppId { get; private set; }
+
+                    /// <summary>The ID of the advertiser that owns the parent channel.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/partners/{partnerId}/channels/{+channelId}/sites/{+urlOrAppId}"; }
+                    }
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "partnerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "partnerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "channelId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "channelId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "urlOrAppId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "urlOrAppId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists sites in a channel.</summary>
+                /// <param name="partnerId">The ID of the partner that owns the parent channel.</param>
+                /// <param
+                /// name="channelId">Required. The ID of the parent channel to which the requested sites belong.</param>
+                public virtual ListRequest List(long partnerId, long channelId)
+                {
+                    return new ListRequest(service, partnerId, channelId);
+                }
+
+                /// <summary>Lists sites in a channel.</summary>
+                public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListSitesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, long partnerId, long channelId)
+                        : base(service)
+                    {
+                        PartnerId = partnerId;
+                        ChannelId = channelId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The ID of the partner that owns the parent channel.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long PartnerId { get; private set; }
+
+                    /// <summary>Required. The ID of the parent channel to which the requested sites belong.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("channelId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long ChannelId { get; private set; }
+
+                    /// <summary>The ID of the advertiser that owns the parent channel.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+                    /// <summary>Allows filtering by site fields.
+                    ///
+                    /// Supported syntax:
+                    ///
+                    /// * Filter expressions for site currently can only contain at most one * restriction. * A
+                    /// restriction has the form of `{field} {operator} {value}`. * The operator must be `CONTAINS (:)`.
+                    /// * Supported fields: - `urlOrAppId`
+                    ///
+                    /// Examples:
+                    ///
+                    /// * All sites for which the URL or app ID contains "google": `urlOrAppId : "google"`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Field by which to sort the list. Acceptable values are:
+                    ///
+                    /// * `urlOrAppId` (default)
+                    ///
+                    /// The default sorting order is ascending. To specify descending order for a field, a suffix "
+                    /// desc" should be added to the field name. Example: `urlOrAppId desc`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>Requested page size. Must be between `1` and `100`. If unspecified will default to
+                    /// `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>A token identifying a page of results the server should return.
+                    ///
+                    /// Typically, this is the value of next_page_token returned from the previous call to `ListSites`
+                    /// method. If not specified, the first page of results will be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/partners/{+partnerId}/channels/{+channelId}/sites"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "partnerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "partnerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "channelId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "channelId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
 
             /// <summary>Gets a channel for a partner or advertiser.</summary>
             /// <param name="partnerId">The ID of the partner that owns the fetched channel.</param>
@@ -7905,6 +11061,116 @@ namespace Google.Apis.DisplayVideo.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates a channel. Returns the updated channel if successful.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="partnerId">The ID of the partner that owns the created channel.</param>
+            /// <param
+            /// name="channelId">Output only. The unique ID of the channel. Assigned by the system.</param>
+            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.Channel body, long partnerId, long channelId)
+            {
+                return new PatchRequest(service, body, partnerId, channelId);
+            }
+
+            /// <summary>Updates a channel. Returns the updated channel if successful.</summary>
+            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Channel>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Channel body, long partnerId, long channelId)
+                    : base(service)
+                {
+                    PartnerId = partnerId;
+                    ChannelId = channelId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The ID of the partner that owns the created channel.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long PartnerId { get; private set; }
+
+                /// <summary>Output only. The unique ID of the channel. Assigned by the system.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("channelId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long ChannelId { get; private set; }
+
+                /// <summary>The ID of the advertiser that owns the created channel.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+                /// <summary>Required. The mask to control which fields to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v1.Data.Channel Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/partners/{+partnerId}/channels/{channelId}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "partnerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "partnerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "channelId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "channelId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -8890,6 +12156,48 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>An assignment between a targetable inventory source and an inventory source group.</summary>
+    public class AssignedInventorySource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The unique ID of the assigned inventory source. The ID is only unique within a given
+        /// inventory source group. It may be reused in other contexts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignedInventorySourceId")]
+        public virtual System.Nullable<long> AssignedInventorySourceId { get; set; } 
+
+        /// <summary>Required. The ID of the inventory source entity being targeted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceId")]
+        public virtual string InventorySourceId { get; set; } 
+
+        /// <summary>Output only. The resource name of the assigned inventory source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An assignment between a location list and a relevant targeting option. Currently, geo region targeting
+    /// options are the only supported option for assignment.</summary>
+    public class AssignedLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The unique ID of the assigned location. The ID is only unique within a location list.
+        /// It may be reused in other contexts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignedLocationId")]
+        public virtual System.Nullable<long> AssignedLocationId { get; set; } 
+
+        /// <summary>Output only. The resource name of the assigned location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Required. The ID of the targeting option assigned to the location list. Must be of type
+        /// TARGETING_TYPE_GEO_REGION.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
+        public virtual string TargetingOptionId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A single assigned targeting option, which defines the state of a targeting option for an entity with
     /// targeting settings, such as a Line Item or Insertion Order.</summary>
     public class AssignedTargetingOption : Google.Apis.Requests.IDirectResponseSchema
@@ -9306,6 +12614,77 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request message for AssignedInventorySourceService.BulkEdit.</summary>
+    public class BulkEditAssignedInventorySourcesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the advertiser that owns the parent inventory source group.
+        ///
+        /// The parent partner does not have access to these assigned inventory sources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
+        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+
+        /// <summary>The assigned inventory sources to create in bulk, specified as a list of
+        /// AssignedInventorySources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdAssignedInventorySources")]
+        public virtual System.Collections.Generic.IList<AssignedInventorySource> CreatedAssignedInventorySources { get; set; } 
+
+        /// <summary>The IDs of the assigned inventory sources to delete in bulk, specified as a list of
+        /// assigned_inventory_source_ids.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletedAssignedInventorySources")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> DeletedAssignedInventorySources { get; set; } 
+
+        /// <summary>The ID of the partner that owns the inventory source group.
+        ///
+        /// Only this partner has write access to these assigned inventory sources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
+        public virtual System.Nullable<long> PartnerId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for AssignedInventorySourceService.BulkEdit.</summary>
+    public class BulkEditAssignedInventorySourcesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of assigned inventory sources that have been successfully created.
+        ///
+        /// This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignedInventorySources")]
+        public virtual System.Collections.Generic.IList<AssignedInventorySource> AssignedInventorySources { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for AssignedLocationService.BulkEditAssignedLocations.</summary>
+    public class BulkEditAssignedLocationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The assigned locations to create in bulk, specified as a list of AssignedLocations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdAssignedLocations")]
+        public virtual System.Collections.Generic.IList<AssignedLocation> CreatedAssignedLocations { get; set; } 
+
+        /// <summary>The IDs of the assigned locations to delete in bulk, specified as a list of
+        /// assigned_location_ids.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletedAssignedLocations")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> DeletedAssignedLocations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for AssignedLocationService.BulkEditAssignedLocations.</summary>
+    public class BulkEditAssignedLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of assigned locations that have been successfully created.
+        ///
+        /// This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignedLocations")]
+        public virtual System.Collections.Generic.IList<AssignedLocation> AssignedLocations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request message for BulkEditLineItemAssignedTargetingOptions.</summary>
     public class BulkEditLineItemAssignedTargetingOptionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9330,6 +12709,70 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdAssignedTargetingOptions")]
         public virtual System.Collections.Generic.IList<AssignedTargetingOption> CreatedAssignedTargetingOptions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for NegativeKeywordService.BulkEditNegativeKeywords.</summary>
+    public class BulkEditNegativeKeywordsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The negative keywords to create in batch, specified as a list of NegativeKeywords.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdNegativeKeywords")]
+        public virtual System.Collections.Generic.IList<NegativeKeyword> CreatedNegativeKeywords { get; set; } 
+
+        /// <summary>The negative keywords to delete in batch, specified as a list of keyword_values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletedNegativeKeywords")]
+        public virtual System.Collections.Generic.IList<string> DeletedNegativeKeywords { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for NegativeKeywordService.BulkEditNegativeKeywords.</summary>
+    public class BulkEditNegativeKeywordsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of negative keywords that have been successfully created.
+        ///
+        /// This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("negativeKeywords")]
+        public virtual System.Collections.Generic.IList<NegativeKeyword> NegativeKeywords { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for SiteService.BulkEditSites.</summary>
+    public class BulkEditSitesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the advertiser that owns the parent channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
+        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+
+        /// <summary>The sites to create in batch, specified as a list of Sites.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdSites")]
+        public virtual System.Collections.Generic.IList<Site> CreatedSites { get; set; } 
+
+        /// <summary>The sites to delete in batch, specified as a list of site url_or_app_ids.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletedSites")]
+        public virtual System.Collections.Generic.IList<string> DeletedSites { get; set; } 
+
+        /// <summary>The ID of the partner that owns the parent channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
+        public virtual System.Nullable<long> PartnerId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for SiteService.BulkEditSites.</summary>
+    public class BulkEditSitesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of sites that have been successfully created.
+        ///
+        /// This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sites")]
+        public virtual System.Collections.Generic.IList<Site> Sites { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11755,6 +15198,46 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message for AssignedInventorySourceService.ListAssignedInventorySources.</summary>
+    public class ListAssignedInventorySourcesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of assigned inventory sources.
+        ///
+        /// This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignedInventorySources")]
+        public virtual System.Collections.Generic.IList<AssignedInventorySource> AssignedInventorySources { get; set; } 
+
+        /// <summary>A token to retrieve the next page of results.
+        ///
+        /// Pass this value in the page_token field in the subsequent call to `ListAssignedInventorySources` method to
+        /// retrieve the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for AssignedLocationService.ListAssignedLocations.</summary>
+    public class ListAssignedLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of assigned locations.
+        ///
+        /// This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignedLocations")]
+        public virtual System.Collections.Generic.IList<AssignedLocation> AssignedLocations { get; set; } 
+
+        /// <summary>A token to retrieve the next page of results.
+        ///
+        /// Pass this value in the page_token field in the subsequent call to `ListAssignedLocations` method to retrieve
+        /// the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class ListCampaignsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of campaigns.
@@ -12002,6 +15485,46 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message for NegativeKeywordService.ListNegativeKeywords.</summary>
+    public class ListNegativeKeywordsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of negative keywords.
+        ///
+        /// This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("negativeKeywords")]
+        public virtual System.Collections.Generic.IList<NegativeKeyword> NegativeKeywords { get; set; } 
+
+        /// <summary>A token to retrieve the next page of results.
+        ///
+        /// Pass this value in the page_token field in the subsequent call to `ListNegativeKeywords` method to retrieve
+        /// the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for SiteService.ListSites.</summary>
+    public class ListSitesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token to retrieve the next page of results.
+        ///
+        /// Pass this value in the page_token field in the subsequent call to `ListSites` method to retrieve the next
+        /// page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The list of sites.
+        ///
+        /// This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sites")]
+        public virtual System.Collections.Generic.IList<Site> Sites { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response message for ListTargetingOptions.</summary>
     public class ListTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12104,6 +15627,27 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// dollar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("units")]
         public virtual System.Nullable<long> Units { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A negatively targeted keyword that belongs to a negative keyword list.</summary>
+    public class NegativeKeyword : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Immutable. The negatively targeted keyword, for example `car insurance`.
+        ///
+        /// Must be UTF-8 encoded with a maximum size of 255 bytes. Maximum number of characters is 80. Maximum number
+        /// of words is 10.
+        ///
+        /// Valid characters are restricted to ASCII characters only. The only URL-escaping permitted is for
+        /// representing whitespace between words. Leading or trailing whitespace is ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keywordValue")]
+        public virtual string KeywordValue { get; set; } 
+
+        /// <summary>Output only. The resource name of the negative keyword.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12711,6 +16255,22 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Output only. An enum for the DV360 Sensitive category content classifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveCategory")]
         public virtual string SensitiveCategory { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A single site. Sites are apps or websites belonging to a channel.</summary>
+    public class Site : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The resource name of the site.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Required. The URL or app ID of the site. Must be UTF-8 encoded with a maximum length of 240
+        /// bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlOrAppId")]
+        public virtual string UrlOrAppId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

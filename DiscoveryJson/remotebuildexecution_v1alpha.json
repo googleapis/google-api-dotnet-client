@@ -388,7 +388,7 @@
    }
   }
  }, 
- "revision": "20200522", 
+ "revision": "20200602", 
  "rootUrl": "https://admin-remotebuildexecution.googleapis.com/", 
  "schemas": {
   "BuildBazelRemoteExecutionV2Action": {

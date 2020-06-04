@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20200520 (1966)
+ *      <tr><th>API Rev<td>20200601 (1978)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -1260,6 +1260,13 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<long> DiskSizeGb { get; set; } 
 
+        /// <summary>Option to specify whether or not to apply bash style string operations to the substitutions.
+        ///
+        /// NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration
+        /// file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicSubstitutions")]
+        public virtual System.Nullable<bool> DynamicSubstitutions { get; set; } 
+
         /// <summary>A list of global environment variable definitions that will exist for all build steps in this
         /// build. If a variable is defined in both globally and in a build step, the variable will use the build step
         /// value.
@@ -1295,7 +1302,10 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceProvenanceHash")]
         public virtual System.Collections.Generic.IList<string> SourceProvenanceHash { get; set; } 
 
-        /// <summary>Option to specify behavior when there is an error in the substitution checks.</summary>
+        /// <summary>Option to specify behavior when there is an error in the substitution checks.
+        ///
+        /// NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build
+        /// configuration file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substitutionOption")]
         public virtual string SubstitutionOption { get; set; } 
 

@@ -19,13 +19,13 @@
 
 /**
  * \brief
- *   Recommender API Version v1beta1
+ *   Recommender API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/recommender/docs/'>Recommender API</a>
- *      <tr><th>API Version<td>v1beta1
+ *      <tr><th>API Version<td>v1
  *      <tr><th>API Rev<td>20200530 (1976)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/recommender/docs/'>
@@ -43,13 +43,13 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.Recommender.v1beta1
+namespace Google.Apis.Recommender.v1
 {
     /// <summary>The Recommender Service.</summary>
     public class RecommenderService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
-        public const string Version = "v1beta1";
+        public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
         public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
@@ -361,316 +361,10 @@ namespace Google.Apis.Recommender.v1beta1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-                insightTypes = new InsightTypesResource(service);
                 recommenders = new RecommendersResource(service);
 
             }
 
-            private readonly InsightTypesResource insightTypes;
-
-            /// <summary>Gets the InsightTypes resource.</summary>
-            public virtual InsightTypesResource InsightTypes
-            {
-                get { return insightTypes; }
-            }
-
-            /// <summary>The "insightTypes" collection of methods.</summary>
-            public class InsightTypesResource
-            {
-                private const string Resource = "insightTypes";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public InsightTypesResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                    insights = new InsightsResource(service);
-
-                }
-
-                private readonly InsightsResource insights;
-
-                /// <summary>Gets the Insights resource.</summary>
-                public virtual InsightsResource Insights
-                {
-                    get { return insights; }
-                }
-
-                /// <summary>The "insights" collection of methods.</summary>
-                public class InsightsResource
-                {
-                    private const string Resource = "insights";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public InsightsResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-
-                    }
-
-
-                    /// <summary>Gets the requested insight. Requires the recommender.*.get IAM permission for the
-                    /// specified insight type.</summary>
-                    /// <param name="name">Required. Name of the insight.</param>
-                    public virtual GetRequest Get(string name)
-                    {
-                        return new GetRequest(service, name);
-                    }
-
-                    /// <summary>Gets the requested insight. Requires the recommender.*.get IAM permission for the
-                    /// specified insight type.</summary>
-                    public class GetRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1Insight>
-                    {
-                        /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>Required. Name of the insight.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "get"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "GET"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "v1beta1/{+name}"; }
-                        }
-
-                        /// <summary>Initializes Get parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
-                                });
-                        }
-
-                    }
-
-                    /// <summary>Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for
-                    /// the specified insight type.</summary>
-                    /// <param name="parent">Required. The container resource on which to execute the request. Acceptable formats:
-                    ///
-                    /// 1. "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]",
-                    ///
-                    /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/</param>
-                    public virtual ListRequest List(string parent)
-                    {
-                        return new ListRequest(service, parent);
-                    }
-
-                    /// <summary>Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for
-                    /// the specified insight type.</summary>
-                    public class ListRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1ListInsightsResponse>
-                    {
-                        /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                            : base(service)
-                        {
-                            Parent = parent;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>Required. The container resource on which to execute the request. Acceptable
-                        /// formats:
-                        ///
-                        /// 1. "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]",
-                        ///
-                        /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>Optional. Filter expression to restrict the insights returned. Supported filter
-                        /// fields: state Eg: `state:"DISMISSED" or state:"ACTIVE"</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Filter { get; set; }
-
-                        /// <summary>Optional. The maximum number of results to return from this request.  Non-positive
-                        /// values are ignored. If not specified, the server will determine the number of results to
-                        /// return.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>Optional. If present, retrieves the next batch of results from the preceding call
-                        /// to this method. `page_token` must be the value of `next_page_token` from the previous
-                        /// response. The values of other method parameters must be identical to those in the previous
-                        /// call.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "list"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "GET"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "v1beta1/{+parent}/insights"; }
-                        }
-
-                        /// <summary>Initializes List parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/insightTypes/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                        }
-
-                    }
-
-                    /// <summary>Marks the Insight State as Accepted. Users can use this method to indicate to the
-                    /// Recommender API that they have applied some action based on the insight. This stops the insight
-                    /// content from being updated.
-                    ///
-                    /// MarkInsightAccepted can be applied to insights in ACTIVE state. Requires the
-                    /// recommender.*.update IAM permission for the specified insight.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Required. Name of the insight.</param>
-                    public virtual MarkAcceptedRequest MarkAccepted(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest body, string name)
-                    {
-                        return new MarkAcceptedRequest(service, body, name);
-                    }
-
-                    /// <summary>Marks the Insight State as Accepted. Users can use this method to indicate to the
-                    /// Recommender API that they have applied some action based on the insight. This stops the insight
-                    /// content from being updated.
-                    ///
-                    /// MarkInsightAccepted can be applied to insights in ACTIVE state. Requires the
-                    /// recommender.*.update IAM permission for the specified insight.</summary>
-                    public class MarkAcceptedRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1Insight>
-                    {
-                        /// <summary>Constructs a new MarkAccepted request.</summary>
-                        public MarkAcceptedRequest(Google.Apis.Services.IClientService service, Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest body, string name)
-                            : base(service)
-                        {
-                            Name = name;
-                            Body = body;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>Required. Name of the insight.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest Body { get; set; }
-
-                        ///<summary>Returns the body of the request.</summary>
-                        protected override object GetBody() { return Body; }
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "markAccepted"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "POST"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "v1beta1/{+name}:markAccepted"; }
-                        }
-
-                        /// <summary>Initializes MarkAccepted parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
-                                });
-                        }
-
-                    }
-                }
-            }
             private readonly RecommendersResource recommenders;
 
             /// <summary>Gets the Recommenders resource.</summary>
@@ -729,7 +423,7 @@ namespace Google.Apis.Recommender.v1beta1
 
                     /// <summary>Gets the requested recommendation. Requires the recommender.*.get IAM permission for
                     /// the specified recommender.</summary>
-                    public class GetRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1Recommendation>
+                    public class GetRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1Recommendation>
                     {
                         /// <summary>Constructs a new Get request.</summary>
                         public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -760,7 +454,7 @@ namespace Google.Apis.Recommender.v1beta1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "v1beta1/{+name}"; }
+                            get { return "v1/{+name}"; }
                         }
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -795,7 +489,7 @@ namespace Google.Apis.Recommender.v1beta1
 
                     /// <summary>Lists recommendations for a Cloud project. Requires the recommender.*.list IAM
                     /// permission for the specified recommender.</summary>
-                    public class ListRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1ListRecommendationsResponse>
+                    public class ListRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1ListRecommendationsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
                         public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -850,7 +544,7 @@ namespace Google.Apis.Recommender.v1beta1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "v1beta1/{+parent}/recommendations"; }
+                            get { return "v1/{+parent}/recommendations"; }
                         }
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -903,12 +597,13 @@ namespace Google.Apis.Recommender.v1beta1
                     /// recommendation content from being updated. Associated insights are frozen and placed in the
                     /// ACCEPTED state.
                     ///
-                    /// MarkRecommendationClaimed can be applied to recommendations in CLAIMED or ACTIVE state.
+                    /// MarkRecommendationClaimed can be applied to recommendations in CLAIMED, SUCCEEDED, FAILED, or
+                    /// ACTIVE state.
                     ///
                     /// Requires the recommender.*.update IAM permission for the specified recommender.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. Name of the recommendation.</param>
-                    public virtual MarkClaimedRequest MarkClaimed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest body, string name)
+                    public virtual MarkClaimedRequest MarkClaimed(Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1MarkRecommendationClaimedRequest body, string name)
                     {
                         return new MarkClaimedRequest(service, body, name);
                     }
@@ -918,13 +613,14 @@ namespace Google.Apis.Recommender.v1beta1
                     /// recommendation content from being updated. Associated insights are frozen and placed in the
                     /// ACCEPTED state.
                     ///
-                    /// MarkRecommendationClaimed can be applied to recommendations in CLAIMED or ACTIVE state.
+                    /// MarkRecommendationClaimed can be applied to recommendations in CLAIMED, SUCCEEDED, FAILED, or
+                    /// ACTIVE state.
                     ///
                     /// Requires the recommender.*.update IAM permission for the specified recommender.</summary>
-                    public class MarkClaimedRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1Recommendation>
+                    public class MarkClaimedRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1Recommendation>
                     {
                         /// <summary>Constructs a new MarkClaimed request.</summary>
-                        public MarkClaimedRequest(Google.Apis.Services.IClientService service, Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest body, string name)
+                        public MarkClaimedRequest(Google.Apis.Services.IClientService service, Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1MarkRecommendationClaimedRequest body, string name)
                             : base(service)
                         {
                             Name = name;
@@ -939,7 +635,7 @@ namespace Google.Apis.Recommender.v1beta1
 
 
                         /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest Body { get; set; }
+                        Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1MarkRecommendationClaimedRequest Body { get; set; }
 
                         ///<summary>Returns the body of the request.</summary>
                         protected override object GetBody() { return Body; }
@@ -959,7 +655,7 @@ namespace Google.Apis.Recommender.v1beta1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "v1beta1/{+name}:markClaimed"; }
+                            get { return "v1/{+name}:markClaimed"; }
                         }
 
                         /// <summary>Initializes MarkClaimed parameter list.</summary>
@@ -991,7 +687,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// Requires the recommender.*.update IAM permission for the specified recommender.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. Name of the recommendation.</param>
-                    public virtual MarkFailedRequest MarkFailed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest body, string name)
+                    public virtual MarkFailedRequest MarkFailed(Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1MarkRecommendationFailedRequest body, string name)
                     {
                         return new MarkFailedRequest(service, body, name);
                     }
@@ -1005,10 +701,10 @@ namespace Google.Apis.Recommender.v1beta1
                     /// FAILED state.
                     ///
                     /// Requires the recommender.*.update IAM permission for the specified recommender.</summary>
-                    public class MarkFailedRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1Recommendation>
+                    public class MarkFailedRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1Recommendation>
                     {
                         /// <summary>Constructs a new MarkFailed request.</summary>
-                        public MarkFailedRequest(Google.Apis.Services.IClientService service, Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest body, string name)
+                        public MarkFailedRequest(Google.Apis.Services.IClientService service, Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1MarkRecommendationFailedRequest body, string name)
                             : base(service)
                         {
                             Name = name;
@@ -1023,7 +719,7 @@ namespace Google.Apis.Recommender.v1beta1
 
 
                         /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest Body { get; set; }
+                        Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1MarkRecommendationFailedRequest Body { get; set; }
 
                         ///<summary>Returns the body of the request.</summary>
                         protected override object GetBody() { return Body; }
@@ -1043,7 +739,7 @@ namespace Google.Apis.Recommender.v1beta1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "v1beta1/{+name}:markFailed"; }
+                            get { return "v1/{+name}:markFailed"; }
                         }
 
                         /// <summary>Initializes MarkFailed parameter list.</summary>
@@ -1075,7 +771,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// Requires the recommender.*.update IAM permission for the specified recommender.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. Name of the recommendation.</param>
-                    public virtual MarkSucceededRequest MarkSucceeded(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest body, string name)
+                    public virtual MarkSucceededRequest MarkSucceeded(Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1MarkRecommendationSucceededRequest body, string name)
                     {
                         return new MarkSucceededRequest(service, body, name);
                     }
@@ -1089,10 +785,10 @@ namespace Google.Apis.Recommender.v1beta1
                     /// FAILED state.
                     ///
                     /// Requires the recommender.*.update IAM permission for the specified recommender.</summary>
-                    public class MarkSucceededRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1Recommendation>
+                    public class MarkSucceededRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1Recommendation>
                     {
                         /// <summary>Constructs a new MarkSucceeded request.</summary>
-                        public MarkSucceededRequest(Google.Apis.Services.IClientService service, Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest body, string name)
+                        public MarkSucceededRequest(Google.Apis.Services.IClientService service, Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1MarkRecommendationSucceededRequest body, string name)
                             : base(service)
                         {
                             Name = name;
@@ -1107,7 +803,7 @@ namespace Google.Apis.Recommender.v1beta1
 
 
                         /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest Body { get; set; }
+                        Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1MarkRecommendationSucceededRequest Body { get; set; }
 
                         ///<summary>Returns the body of the request.</summary>
                         protected override object GetBody() { return Body; }
@@ -1127,7 +823,7 @@ namespace Google.Apis.Recommender.v1beta1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "v1beta1/{+name}:markSucceeded"; }
+                            get { return "v1/{+name}:markSucceeded"; }
                         }
 
                         /// <summary>Initializes MarkSucceeded parameter list.</summary>
@@ -1153,11 +849,11 @@ namespace Google.Apis.Recommender.v1beta1
     }
 }
 
-namespace Google.Apis.Recommender.v1beta1.Data
+namespace Google.Apis.Recommender.v1.Data
 {    
 
     /// <summary>Contains metadata about how much money a recommendation can save or incur.</summary>
-    public class GoogleCloudRecommenderV1beta1CostProjection : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRecommenderV1CostProjection : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An approximate projection on amount saved or amount incurred. Negative cost units indicate cost
         /// savings and positive cost units indicate increase. See google.type.Money documentation for positive/negative
@@ -1174,7 +870,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
     }    
 
     /// <summary>Contains the impact a recommendation can have for a given category.</summary>
-    public class GoogleCloudRecommenderV1beta1Impact : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRecommenderV1Impact : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Category that is being targeted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
@@ -1182,109 +878,14 @@ namespace Google.Apis.Recommender.v1beta1.Data
 
         /// <summary>Use with CategoryType.COST</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costProjection")]
-        public virtual GoogleCloudRecommenderV1beta1CostProjection CostProjection { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>An insight along with the information used to derive the insight. The insight may have associated
-    /// recomendations as well.</summary>
-    public class GoogleCloudRecommenderV1beta1Insight : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Recommendations derived from this insight.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("associatedRecommendations")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1InsightRecommendationReference> AssociatedRecommendations { get; set; } 
-
-        /// <summary>Category being targeted by the insight.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("category")]
-        public virtual string Category { get; set; } 
-
-        /// <summary>A struct of custom fields to explain the insight. Example: "grantedPermissionsCount":
-        /// "1000"</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Content { get; set; } 
-
-        /// <summary>Free-form human readable summary in English. The maximum length is 500 characters.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
-
-        /// <summary>Fingerprint of the Insight. Provides optimistic locking when updating states.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
-
-        /// <summary>Insight subtype. Insight content schema will be stable for a given subtype.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("insightSubtype")]
-        public virtual string InsightSubtype { get; set; } 
-
-        /// <summary>Timestamp of the latest data used to generate the insight.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
-        public virtual object LastRefreshTime { get; set; } 
-
-        /// <summary>Name of the insight.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>Observation period that led to the insight. The source data used to generate the insight ends at
-        /// last_refresh_time and begins at (last_refresh_time - observation_period).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("observationPeriod")]
-        public virtual object ObservationPeriod { get; set; } 
-
-        /// <summary>Information state and metadata.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stateInfo")]
-        public virtual GoogleCloudRecommenderV1beta1InsightStateInfo StateInfo { get; set; } 
-
-        /// <summary>Fully qualified resource names that this insight is targeting.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetResources")]
-        public virtual System.Collections.Generic.IList<string> TargetResources { get; set; } 
-
-    }    
-
-    /// <summary>Reference to an associated recommendation.</summary>
-    public class GoogleCloudRecommenderV1beta1InsightRecommendationReference : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Recommendation resource name, e.g. projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[REC
-        /// OMMENDER_ID]/recommendations/[RECOMMENDATION_ID]</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("recommendation")]
-        public virtual string Recommendation { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Information related to insight state.</summary>
-    public class GoogleCloudRecommenderV1beta1InsightStateInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Insight state.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
-
-        /// <summary>A map of metadata for the state, provided by user or automations systems.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stateMetadata")]
-        public virtual System.Collections.Generic.IDictionary<string,string> StateMetadata { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Response to the `ListInsights` method.</summary>
-    public class GoogleCloudRecommenderV1beta1ListInsightsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The set of insights for the `parent` resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("insights")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1Insight> Insights { get; set; } 
-
-        /// <summary>A token that can be used to request the next page of results. This field is empty if there are no
-        /// additional results.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual GoogleCloudRecommenderV1CostProjection CostProjection { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>Response to the `ListRecommendations` method.</summary>
-    public class GoogleCloudRecommenderV1beta1ListRecommendationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRecommenderV1ListRecommendationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A token that can be used to request the next page of results. This field is empty if there are no
         /// additional results.</summary>
@@ -1293,28 +894,14 @@ namespace Google.Apis.Recommender.v1beta1.Data
 
         /// <summary>The set of recommendations for the `parent` resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendations")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1Recommendation> Recommendations { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1Recommendation> Recommendations { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request for the `MarkInsightAccepted` method.</summary>
-    public class GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Fingerprint of the Insight. Provides optimistic locking.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
-
-        /// <summary>Optional. State properties user wish to include with this state.  Full replace of the current
-        /// state_metadata.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stateMetadata")]
-        public virtual System.Collections.Generic.IDictionary<string,string> StateMetadata { get; set; } 
-
-    }    
-
     /// <summary>Request for the `MarkRecommendationClaimed` Method.</summary>
-    public class GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRecommenderV1MarkRecommendationClaimedRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Fingerprint of the Recommendation. Provides optimistic locking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -1328,7 +915,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
     }    
 
     /// <summary>Request for the `MarkRecommendationFailed` Method.</summary>
-    public class GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRecommenderV1MarkRecommendationFailedRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Fingerprint of the Recommendation. Provides optimistic locking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -1342,7 +929,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
     }    
 
     /// <summary>Request for the `MarkRecommendationSucceeded` Method.</summary>
-    public class GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRecommenderV1MarkRecommendationSucceededRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Fingerprint of the Recommendation. Provides optimistic locking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -1361,10 +948,10 @@ namespace Google.Apis.Recommender.v1beta1.Data
     /// Custom fields for describing the resource for which the operation is being described. * Allows extension to
     /// custom operations not natively supported by RFC6902. See https://tools.ietf.org/html/rfc6902 for details on the
     /// original RFC.</summary>
-    public class GoogleCloudRecommenderV1beta1Operation : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRecommenderV1Operation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Type of this operation. Contains one of 'and', 'remove', 'replace', 'move', 'copy', 'test' and
-        /// 'custom' operations. This field is case-insensitive and always populated.</summary>
+        /// custom operations. This field is case-insensitive and always populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
@@ -1389,7 +976,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// path_filters. When both path_filters and path_value_matchers are set, an implicit AND must be
         /// performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathValueMatchers")]
-        public virtual System.Collections.Generic.IDictionary<string,GoogleCloudRecommenderV1beta1ValueMatcher> PathValueMatchers { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string,GoogleCloudRecommenderV1ValueMatcher> PathValueMatchers { get; set; } 
 
         /// <summary>Contains the fully qualified resource name. This field is always populated. ex:
         /// //cloudresourcemanager.googleapis.com/projects/foo.</summary>
@@ -1420,19 +1007,19 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// <summary>Can be set for action 'test' for advanced matching for the value of 'path' field. Either this or
         /// `value` will be set for 'test' operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueMatcher")]
-        public virtual GoogleCloudRecommenderV1beta1ValueMatcher ValueMatcher { get; set; } 
+        public virtual GoogleCloudRecommenderV1ValueMatcher ValueMatcher { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>Group of operations that need to be performed atomically.</summary>
-    public class GoogleCloudRecommenderV1beta1OperationGroup : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRecommenderV1OperationGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of operations across one or more resources that belong to this group. Loosely based on RFC6902
         /// and should be performed in the order they appear.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1Operation> Operations { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1440,20 +1027,16 @@ namespace Google.Apis.Recommender.v1beta1.Data
 
     /// <summary>A recommendation along with a suggested action. E.g., a rightsizing recommendation for an underutilized
     /// VM, IAM role recommendations, etc</summary>
-    public class GoogleCloudRecommenderV1beta1Recommendation : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRecommenderV1Recommendation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional set of additional impact that this recommendation may have when trying to optimize for the
         /// primary category. These may be positive or negative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalImpact")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1Impact> AdditionalImpact { get; set; } 
-
-        /// <summary>Insights that led to this recommendation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("associatedInsights")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1RecommendationInsightReference> AssociatedInsights { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1Impact> AdditionalImpact { get; set; } 
 
         /// <summary>Content of the recommendation describing recommended changes to resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual GoogleCloudRecommenderV1beta1RecommendationContent Content { get; set; } 
+        public virtual GoogleCloudRecommenderV1RecommendationContent Content { get; set; } 
 
         /// <summary>Free-form human readable summary in English. The maximum length is 500 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -1475,7 +1058,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// <summary>The primary impact that this recommendation can have while trying to optimize for one
         /// category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryImpact")]
-        public virtual GoogleCloudRecommenderV1beta1Impact PrimaryImpact { get; set; } 
+        public virtual GoogleCloudRecommenderV1Impact PrimaryImpact { get; set; } 
 
         /// <summary>Contains an identifier for a subtype of recommendations produced for the same recommender. Subtype
         /// is a function of content and impact, meaning a new subtype might be added when significant changes to
@@ -1489,36 +1072,24 @@ namespace Google.Apis.Recommender.v1beta1.Data
 
         /// <summary>Information for state. Contains state and metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateInfo")]
-        public virtual GoogleCloudRecommenderV1beta1RecommendationStateInfo StateInfo { get; set; } 
+        public virtual GoogleCloudRecommenderV1RecommendationStateInfo StateInfo { get; set; } 
 
     }    
 
     /// <summary>Contains what resources are changing and how they are changing.</summary>
-    public class GoogleCloudRecommenderV1beta1RecommendationContent : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRecommenderV1RecommendationContent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Operations to one or more Google Cloud resources grouped in such a way that, all operations within
         /// one group are expected to be performed atomically and in an order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationGroups")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1OperationGroup> OperationGroups { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Reference to an associated insight.</summary>
-    public class GoogleCloudRecommenderV1beta1RecommendationInsightReference : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Insight resource name, e.g. projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TY
-        /// PE_ID]/insights/[INSIGHT_ID]</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("insight")]
-        public virtual string Insight { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1OperationGroup> OperationGroups { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>Information for state. Contains state and metadata.</summary>
-    public class GoogleCloudRecommenderV1beta1RecommendationStateInfo : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRecommenderV1RecommendationStateInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The state of the recommendation, Eg ACTIVE, SUCCEEDED, FAILED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -1533,7 +1104,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
     }    
 
     /// <summary>Contains various matching options for values for a GCP resource field.</summary>
-    public class GoogleCloudRecommenderV1beta1ValueMatcher : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRecommenderV1ValueMatcher : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>To be used for full regex matching. The regular expression is using the Google RE2 syntax
         /// (https://github.com/google/re2/wiki/Syntax), so to be used with RE2::FullMatch</summary>

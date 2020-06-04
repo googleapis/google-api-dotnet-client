@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200508 (1954)
+ *      <tr><th>API Rev<td>20200603 (1980)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1446,8 +1446,8 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>A reference to a file, used for user inputs.</summary>
     public class FileReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app-debug-
-        /// unaligned.apk</summary>
+        /// <summary>A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-
+        /// unaligned.apk These paths are expected to be url encoded (percent encoding)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPath")]
         public virtual string GcsPath { get; set; } 
 
