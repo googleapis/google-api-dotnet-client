@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2.1
- *      <tr><th>API Rev<td>20200512 (1958)
+ *      <tr><th>API Rev<td>20200529 (1975)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -5480,6 +5480,8 @@ namespace Google.Apis.ShoppingContent.v2_1
                 Template2,
                 [Google.Apis.Util.StringValueAttribute("template3")]
                 Template3,
+                [Google.Apis.Util.StringValueAttribute("template4")]
+                Template4,
             }
 
             /// <summary>The country of the template to retrieve. Defaults to `US`.</summary>
@@ -5824,6 +5826,174 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         }
 
+        /// <summary>Issues a partial or total refund for items and shipment.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the order to refund.</param>
+        public virtual RefunditemRequest Refunditem(Google.Apis.ShoppingContent.v2_1.Data.OrdersRefundItemRequest body, ulong merchantId, string orderId)
+        {
+            return new RefunditemRequest(service, body, merchantId, orderId);
+        }
+
+        /// <summary>Issues a partial or total refund for items and shipment.</summary>
+        public class RefunditemRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersRefundItemResponse>
+        {
+            /// <summary>Constructs a new Refunditem request.</summary>
+            public RefunditemRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersRefundItemRequest body, ulong merchantId, string orderId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                OrderId = orderId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the order to refund.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string OrderId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.OrdersRefundItemRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "refunditem"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/orders/{orderId}/refunditem"; }
+            }
+
+            /// <summary>Initializes Refunditem parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Issues a partial or total refund for an order.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the order to refund.</param>
+        public virtual RefundorderRequest Refundorder(Google.Apis.ShoppingContent.v2_1.Data.OrdersRefundOrderRequest body, ulong merchantId, string orderId)
+        {
+            return new RefundorderRequest(service, body, merchantId, orderId);
+        }
+
+        /// <summary>Issues a partial or total refund for an order.</summary>
+        public class RefundorderRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersRefundOrderResponse>
+        {
+            /// <summary>Constructs a new Refundorder request.</summary>
+            public RefundorderRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersRefundOrderRequest body, ulong merchantId, string orderId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                OrderId = orderId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the order to refund.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string OrderId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.OrdersRefundOrderRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "refundorder"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/orders/{orderId}/refundorder"; }
+            }
+
+            /// <summary>Initializes Refundorder parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Rejects return on an line item.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
@@ -5908,8 +6078,11 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         }
 
-        /// <summary>Returns and refunds a line item. Note that this method can only be called on fully shipped
-        /// orders.</summary>
+        /// <summary>Returns and refunds a line item. Note that this method can only be called on fully shipped orders.
+        /// Please also note that the Orderreturns API is the preferred way to handle returns after you receive a return
+        /// from a customer. You can use Orderreturns.list or Orderreturns.get to search for the return, and then use
+        /// Orderreturns.processreturn to issue the refund. If the return cannot be found, then we recommend using this
+        /// API to issue a refund.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
         /// account.</param>
@@ -5919,8 +6092,11 @@ namespace Google.Apis.ShoppingContent.v2_1
             return new ReturnrefundlineitemRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Returns and refunds a line item. Note that this method can only be called on fully shipped
-        /// orders.</summary>
+        /// <summary>Returns and refunds a line item. Note that this method can only be called on fully shipped orders.
+        /// Please also note that the Orderreturns API is the preferred way to handle returns after you receive a return
+        /// from a customer. You can use Orderreturns.list or Orderreturns.get to search for the return, and then use
+        /// Orderreturns.processreturn to issue the refund. If the return cannot be found, then we recommend using this
+        /// API to issue a refund.</summary>
         public class ReturnrefundlineitemRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersReturnRefundLineItemResponse>
         {
             /// <summary>Constructs a new Returnrefundlineitem request.</summary>
@@ -11956,6 +12132,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acknowledged")]
         public virtual System.Nullable<bool> Acknowledged { get; set; } 
 
+        /// <summary>List of key-value pairs that are attached to a given order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IList<OrderOrderAnnotation> Annotations { get; set; } 
+
         /// <summary>The billing address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingAddress")]
         public virtual OrderAddress BillingAddress { get; set; } 
@@ -12455,6 +12635,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual OrderLineItemShippingDetailsMethod Method { get; set; } 
 
+        /// <summary>The promised time in minutes in which the order will be ready for pickup. This only applies to buy-
+        /// online-pickup-in-store same-day order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupPromiseInMinutes")]
+        public virtual System.Nullable<long> PickupPromiseInMinutes { get; set; } 
+
         /// <summary>Required. The ship by date, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipByDate")]
         public virtual string ShipByDate { get; set; } 
@@ -12508,6 +12693,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class OrderOrderAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Key for additional google provided (as key-value pairs) annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>Value for additional google provided (as key-value pairs) annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class OrderPickupDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Address of the pickup location where the shipment should be sent. Note that `recipientName` in the
@@ -12522,6 +12721,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>ID of the pickup location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
+
+        /// <summary>The pickup type of this order.
+        ///
+        /// Acceptable values are: - "`merchantStore`" - "`merchantStoreCurbside`" - "`merchantStoreLocker`" -
+        /// "`thirdPartyPickupPoint`" - "`thirdPartyLocker`"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupType")]
+        public virtual string PickupType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12543,13 +12749,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class OrderPromotion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Items which this promotion may be applied to. If empty, there are no restrictions on applicable
-        /// items and quantity.</summary>
+        /// <summary>Items that this promotion may be applied to. If empty, there are no restrictions on applicable
+        /// items and quantity. This field will also be empty for shipping promotions because shipping is not tied to
+        /// any specific item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicableItems")]
         public virtual System.Collections.Generic.IList<OrderPromotionItem> ApplicableItems { get; set; } 
 
-        /// <summary>Items which this promotion have been applied to. Do not provide for
-        /// `orders.createtestorder`.</summary>
+        /// <summary>Items that this promotion have been applied to. Do not provide for `orders.createtestorder`. This
+        /// field will be empty for shipping promotions because shipping is not tied to any specific item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appliedItems")]
         public virtual System.Collections.Generic.IList<OrderPromotionItem> AppliedItems { get; set; } 
 
@@ -12821,6 +13028,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
         public virtual System.Collections.Generic.IList<OrderShipmentLineItemShipment> LineItems { get; set; } 
 
+        /// <summary>Delivery details of the shipment if scheduling is needed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledDeliveryDetails")]
+        public virtual OrderShipmentScheduledDeliveryDetails ScheduledDeliveryDetails { get; set; } 
+
         /// <summary>The shipment group ID of the shipment. This is set in shiplineitems request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentGroupId")]
         public virtual string ShipmentGroupId { get; set; } 
@@ -12854,6 +13065,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The quantity that is shipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderShipmentScheduledDeliveryDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The phone number of the carrier fulfilling the delivery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierPhoneNumber")]
+        public virtual string CarrierPhoneNumber { get; set; } 
+
+        /// <summary>The date a shipment is scheduled for delivery, in ISO 8601 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledDate")]
+        public virtual string ScheduledDate { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13419,6 +13644,52 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class OrdersCustomBatchRequestEntryRefundItemItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The amount that is refunded. In case of multiple refunds, - If the quantity of refunded items
+        /// changed, this should contain the total refund per item. - If the quantity of the refunded items remained the
+        /// same, this should be the newly refunded amount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        public virtual MonetaryAmount Amount { get; set; } 
+
+        /// <summary>If true, the full item will be refunded. If this is true, amount should not be provided and will be
+        /// ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullRefund")]
+        public virtual System.Nullable<bool> FullRefund { get; set; } 
+
+        /// <summary>The ID of the line item. Either lineItemId or productId is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
+        public virtual string LineItemId { get; set; } 
+
+        /// <summary>The ID of the product. This is the REST ID used in the products service. Either lineItemId or
+        /// productId is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; } 
+
+        /// <summary>The number of products that are refunded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual System.Nullable<int> Quantity { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrdersCustomBatchRequestEntryRefundItemShipping : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The amount that is refunded. If this is not the first refund for the shipment, this should be the
+        /// newly refunded amount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        public virtual Price Amount { get; set; } 
+
+        /// <summary>If set to true, all shipping costs for the order will be refunded. If this is true, amount should
+        /// not be provided and will be ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullRefund")]
+        public virtual System.Nullable<bool> FullRefund { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The carrier handling the shipment. See `shipments[].carrier` in the  Orders resource representation
@@ -13544,6 +13815,102 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<Order> Resources { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrdersRefundItemRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The items that are refunded. Either Item or Shipping must be provided in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<OrdersCustomBatchRequestEntryRefundItemItem> Items { get; set; } 
+
+        /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; } 
+
+        /// <summary>The reason for the refund.
+        ///
+        /// Acceptable values are: - "`shippingCostAdjustment`" - "`priceAdjustment`" - "`taxAdjustment`" -
+        /// "`feeAdjustment`" - "`courtesyAdjustment`" - "`adjustment`" - "`customerCancelled`" - "`noInventory`" -
+        /// "`productNotAsDescribed`" - "`undeliverableShippingAddress`" - "`wrongProductShipped`" -
+        /// "`lateShipmentCredit`" - "`deliveredLateByCarrier`" - "`productArrivedDamaged`"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; } 
+
+        /// <summary>The explanation of the reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reasonText")]
+        public virtual string ReasonText { get; set; } 
+
+        /// <summary>The refund on shipping. Optional, but either Item or Shipping must be provided in the
+        /// request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shipping")]
+        public virtual OrdersCustomBatchRequestEntryRefundItemShipping Shipping { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrdersRefundItemResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status of the execution.
+        ///
+        /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
+        public virtual string ExecutionStatus { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#ordersRefundItemResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrdersRefundOrderRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The amount that is refunded. If this is not the first refund for the order, this should be the
+        /// newly refunded amount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        public virtual MonetaryAmount Amount { get; set; } 
+
+        /// <summary>If true, the full order will be refunded, including shipping. If this is true, amount should not be
+        /// provided and will be ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullRefund")]
+        public virtual System.Nullable<bool> FullRefund { get; set; } 
+
+        /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; } 
+
+        /// <summary>The reason for the refund.
+        ///
+        /// Acceptable values are: - "`courtesyAdjustment`" - "`other`"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; } 
+
+        /// <summary>The explanation of the reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reasonText")]
+        public virtual string ReasonText { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrdersRefundOrderResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status of the execution.
+        ///
+        /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
+        public virtual string ExecutionStatus { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#ordersRefundOrderResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13833,9 +14200,19 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryDate")]
         public virtual string DeliveryDate { get; set; } 
 
+        /// <summary>Date after which the pickup will expire, in ISO 8601 format. Required only when order is buy-
+        /// online-pickup-in-store(BOPIS) and `status` is `ready for pickup`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastPickupDate")]
+        public virtual string LastPickupDate { get; set; } 
+
         /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; } 
+
+        /// <summary>Date on which the shipment has been ready for pickup, in ISO 8601 format. Optional and can be
+        /// provided only if `status` is `ready for pickup`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readyPickupDate")]
+        public virtual string ReadyPickupDate { get; set; } 
 
         /// <summary>The ID of the shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentId")]
@@ -13843,13 +14220,18 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>New status for the shipment. Not updated if missing.
         ///
-        /// Acceptable values are: - "`delivered`" - "`undeliverable`"</summary>
+        /// Acceptable values are: - "`delivered`" - "`undeliverable`" - "`readyForPickup`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
         /// <summary>The tracking ID for the shipment. Not updated if missing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
         public virtual string TrackingId { get; set; } 
+
+        /// <summary>Date on which the shipment has been undeliverable, in ISO 8601 format. Optional and can be provided
+        /// only if `status` is `undeliverable`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("undeliveredDate")]
+        public virtual string UndeliveredDate { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14854,6 +15236,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; } 
 
+        /// <summary>Destination approval status in targetCountry of the offer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -15580,7 +15963,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>State of the shipment.
         ///
-        /// Acceptable values are: - "`completed`" - "`new`" - "`shipped`" - "`undeliverable`"</summary>
+        /// Acceptable values are: - "`completed`" - "`new`" - "`shipped`" - "`undeliverable`" - "`pending`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 

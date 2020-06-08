@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/services/'>Google Play Game Services API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200519 (1965)
+ *      <tr><th>API Rev<td>20200602 (1979)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/services/'>
  *              https://developers.google.com/games/services/</a>
@@ -2977,13 +2977,13 @@ namespace Google.Apis.Games.v1
             /// <summary>The types of ranks to return. If the parameter is omitted, no ranks will be returned.</summary>
             public enum IncludeRankTypeEnum
             {
-                /// <summary>Retrieve public and social ranks.</summary>
+                /// <summary>Retrieve all supported ranks.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL")]
                 ALL,
                 /// <summary>Retrieve public ranks, if the player is sharing their gameplay activity publicly.</summary>
                 [Google.Apis.Util.StringValueAttribute("PUBLIC")]
                 PUBLIC__,
-                /// <summary>Retrieve the social rank.</summary>
+                /// <summary>(Obsolete) Legacy G+ social leaderboards rank, always 1.</summary>
                 [Google.Apis.Util.StringValueAttribute("SOCIAL")]
                 SOCIAL,
             }
@@ -3130,10 +3130,13 @@ namespace Google.Apis.Games.v1
             /// <summary>The collection of scores you're requesting.</summary>
             public enum CollectionEnum
             {
+                /// <summary>List only scores of friends.</summary>
+                [Google.Apis.Util.StringValueAttribute("FRIENDS")]
+                FRIENDS,
                 /// <summary>List all scores in the public leaderboard.</summary>
                 [Google.Apis.Util.StringValueAttribute("PUBLIC")]
                 PUBLIC__,
-                /// <summary>List only social scores.</summary>
+                /// <summary>(Obsolete) Legacy G+ social scores. Use the FRIENDS collection instead.</summary>
                 [Google.Apis.Util.StringValueAttribute("SOCIAL")]
                 SOCIAL,
             }
@@ -3289,10 +3292,13 @@ namespace Google.Apis.Games.v1
             /// <summary>The collection of scores you're requesting.</summary>
             public enum CollectionEnum
             {
+                /// <summary>List only scores of friends.</summary>
+                [Google.Apis.Util.StringValueAttribute("FRIENDS")]
+                FRIENDS,
                 /// <summary>List all scores in the public leaderboard.</summary>
                 [Google.Apis.Util.StringValueAttribute("PUBLIC")]
                 PUBLIC__,
-                /// <summary>List only social scores.</summary>
+                /// <summary>(Obsolete) Legacy G+ social scores. Use the FRIENDS collection instead.</summary>
                 [Google.Apis.Util.StringValueAttribute("SOCIAL")]
                 SOCIAL,
             }

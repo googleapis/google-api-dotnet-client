@@ -434,7 +434,7 @@
    }
   }
  }, 
- "revision": "20200602", 
+ "revision": "20200604", 
  "rootUrl": "https://www.googleapis.com/", 
  "schemas": {
   "AchievementConfiguration": {

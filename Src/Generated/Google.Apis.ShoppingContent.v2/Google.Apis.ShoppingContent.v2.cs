@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200512 (1958)
+ *      <tr><th>API Rev<td>20200529 (1975)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -5900,8 +5900,11 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Returns and refunds a line item. Note that this method can only be called on fully shipped
-        /// orders.</summary>
+        /// <summary>Returns and refunds a line item. Note that this method can only be called on fully shipped orders.
+        /// Please also note that the Orderreturns API is the preferred way to handle returns after you receive a return
+        /// from a customer. You can use Orderreturns.list or Orderreturns.get to search for the return, and then use
+        /// Orderreturns.processreturn to issue the refund. If the return cannot be found, then we recommend using this
+        /// API to issue a refund.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
         /// account.</param>
@@ -5911,8 +5914,11 @@ namespace Google.Apis.ShoppingContent.v2
             return new ReturnrefundlineitemRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Returns and refunds a line item. Note that this method can only be called on fully shipped
-        /// orders.</summary>
+        /// <summary>Returns and refunds a line item. Note that this method can only be called on fully shipped orders.
+        /// Please also note that the Orderreturns API is the preferred way to handle returns after you receive a return
+        /// from a customer. You can use Orderreturns.list or Orderreturns.get to search for the return, and then use
+        /// Orderreturns.processreturn to issue the refund. If the return cannot be found, then we recommend using this
+        /// API to issue a refund.</summary>
         public class ReturnrefundlineitemRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersReturnRefundLineItemResponse>
         {
             /// <summary>Constructs a new Returnrefundlineitem request.</summary>
@@ -11753,6 +11759,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
         public virtual System.Collections.Generic.IList<OrderShipmentLineItemShipment> LineItems { get; set; } 
 
+        /// <summary>Delivery details of the shipment if scheduling is needed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledDeliveryDetails")]
+        public virtual OrderShipmentScheduledDeliveryDetails ScheduledDeliveryDetails { get; set; } 
+
         /// <summary>The status of the shipment.
         ///
         /// Acceptable values are: - "`delivered`" - "`readyForPickup`" - "`shipped`" - "`undeliverable`"</summary>
@@ -11782,6 +11792,20 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>The quantity that is shipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderShipmentScheduledDeliveryDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The phone number of the carrier fulfilling the delivery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierPhoneNumber")]
+        public virtual string CarrierPhoneNumber { get; set; } 
+
+        /// <summary>The date a shipment is scheduled for delivery, in ISO 8601 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledDate")]
+        public virtual string ScheduledDate { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12671,7 +12695,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>New status for the shipment. Not updated if missing.
         ///
-        /// Acceptable values are: - "`delivered`" - "`undeliverable`"</summary>
+        /// Acceptable values are: - "`delivered`" - "`undeliverable`" - "`readyForPickup`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -13252,7 +13276,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>New status for the shipment. Not updated if missing.
         ///
-        /// Acceptable values are: - "`delivered`" - "`undeliverable`"</summary>
+        /// Acceptable values are: - "`delivered`" - "`undeliverable`" - "`readyForPickup`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -14792,7 +14816,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>State of the shipment.
         ///
-        /// Acceptable values are: - "`completed`" - "`new`" - "`shipped`" - "`undeliverable`"</summary>
+        /// Acceptable values are: - "`completed`" - "`new`" - "`shipped`" - "`undeliverable`" - "`pending`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 

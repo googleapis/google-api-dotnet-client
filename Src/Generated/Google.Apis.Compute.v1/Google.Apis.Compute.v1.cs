@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200501 (1947)
+ *      <tr><th>API Rev<td>20200511 (1957)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -64704,7 +64704,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Status { get; set; } 
 
         /// <summary>URL of the disk type resource describing which disk type to use to create the disk. Provide this
-        /// when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard or pd-ssd</summary>
+        /// when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -68180,7 +68180,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual System.Nullable<bool> StartRestricted { get; set; } 
 
         /// <summary>[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING,
-        /// RUNNING, STOPPING, SUSPENDING, SUSPENDED, and TERMINATED.</summary>
+        /// RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -76405,7 +76405,7 @@ namespace Google.Apis.Compute.v1.Data
 
     /// <summary>Represents a Cloud Router resource.
     ///
-    /// For more information about Cloud Router, read the the Cloud Router overview.</summary>
+    /// For more information about Cloud Router, read the Cloud Router overview.</summary>
     public class Router : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>BGP information specific to this router.</summary>

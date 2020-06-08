@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200505 (1951)
+ *      <tr><th>API Rev<td>20200525 (1971)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -1272,6 +1272,72 @@ namespace Google.Apis.Pubsub.v1
 
             }
 
+            /// <summary>Detaches a subscription from this topic. All messages retained in the subscription are dropped.
+            /// Subsequent `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a
+            /// push subscription, pushes to the endpoint will stop.</summary>
+            /// <param name="subscription">Required. The subscription to detach. Format is
+            /// `projects/{project}/subscriptions/{subscription}`.</param>
+            public virtual DetachRequest Detach(string subscription)
+            {
+                return new DetachRequest(service, subscription);
+            }
+
+            /// <summary>Detaches a subscription from this topic. All messages retained in the subscription are dropped.
+            /// Subsequent `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a
+            /// push subscription, pushes to the endpoint will stop.</summary>
+            public class DetachRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.DetachSubscriptionResponse>
+            {
+                /// <summary>Constructs a new Detach request.</summary>
+                public DetachRequest(Google.Apis.Services.IClientService service, string subscription)
+                    : base(service)
+                {
+                    Subscription = subscription;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The subscription to detach. Format is
+                /// `projects/{project}/subscriptions/{subscription}`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("subscription", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Subscription { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "detach"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+subscription}:detach"; }
+                }
+
+                /// <summary>Initializes Detach parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "subscription", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "subscription",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
+                        });
+                }
+
+            }
+
             /// <summary>Gets the configuration details of a subscription.</summary>
             /// <param name="subscription">Required. The name of the subscription to get. Format is
             /// `projects/{project}/subscriptions/{sub}`.</param>
@@ -2210,7 +2276,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>Lists the names of the subscriptions on this topic.</summary>
+                /// <summary>Lists the names of the attached subscriptions on this topic.</summary>
                 /// <param name="topic">Required. The name of the topic that subscriptions are attached to. Format is
                 /// `projects/{project}/topics/{topic}`.</param>
                 public virtual ListRequest List(string topic)
@@ -2218,7 +2284,7 @@ namespace Google.Apis.Pubsub.v1
                     return new ListRequest(service, topic);
                 }
 
-                /// <summary>Lists the names of the subscriptions on this topic.</summary>
+                /// <summary>Lists the names of the attached subscriptions on this topic.</summary>
                 public class ListRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.ListTopicSubscriptionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -3119,6 +3185,13 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response for the DetachSubscription method. Reserved for future use.</summary>
+    public class DetachSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance:
     ///
@@ -3252,7 +3325,7 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>The names of the subscriptions that match the request.</summary>
+        /// <summary>The names of subscriptions attached to the topic specified in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptions")]
         public virtual System.Collections.Generic.IList<string> Subscriptions { get; set; } 
 

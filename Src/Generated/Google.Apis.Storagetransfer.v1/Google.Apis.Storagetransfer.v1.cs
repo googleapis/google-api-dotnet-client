@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>Storage Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200602 (1979)
+ *      <tr><th>API Rev<td>20200605 (1982)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>
  *              https://cloud.google.com/storage-transfer/docs</a>
@@ -1499,7 +1499,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Represents the transfer operation object.</summary>
+        /// <summary>Represents the transfer operation object. To request a TransferOperation object, use
+        /// transferOperations.get.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1p3beta1
- *      <tr><th>API Rev<td>20200518 (1964)
+ *      <tr><th>API Rev<td>20200602 (1979)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -3563,8 +3563,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotationResults")]
         public virtual GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults AnnotationResults { get; set; } 
 
-        /// <summary>Google Cloud Storage(GCS) URI that stores annotation results of one streaming session in JSON
-        /// format. It is the annotation_result_storage_directory from the request followed by '/cloud_project_number-
+        /// <summary>Google Cloud Storage URI that stores annotation results of one streaming session in JSON format. It
+        /// is the annotation_result_storage_directory from the request followed by '/cloud_project_number-
         /// session_id'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotationResultsUri")]
         public virtual string AnnotationResultsUri { get; set; } 

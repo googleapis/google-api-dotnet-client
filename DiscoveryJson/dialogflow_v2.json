@@ -2049,7 +2049,7 @@
    }
   }
  }, 
- "revision": "20200602", 
+ "revision": "20200604", 
  "rootUrl": "https://dialogflow.googleapis.com/", 
  "schemas": {
   "GoogleCloudDialogflowCxV3beta1ExportAgentResponse": {

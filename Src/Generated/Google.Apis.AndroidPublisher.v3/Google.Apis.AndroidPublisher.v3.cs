@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200526 (1972)
+ *      <tr><th>API Rev<td>20200602 (1979)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -7949,6 +7949,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Purchase type enum value. Unmodifiable after creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseType")]
         public virtual string PurchaseType { get; set; } 
+
+        /// <summary>Whether or not the developer wants the specific subscription to be resubscribable. If the developer
+        /// doesn't use PBL2.0, this value is ignored since the feature is only for developers using PBL2.0. This
+        /// feature allows users to resubscribe to an expired subscription directly from the subscription center by
+        /// clicking on a "Resubscribe" CTA under the entry for the expired subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resubscribeEligibility")]
+        public virtual string ResubscribeEligibility { get; set; } 
 
         /// <summary>The stock-keeping-unit (SKU) of the product, unique within an app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sku")]

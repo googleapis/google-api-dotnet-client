@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200526 (1972)
+ *      <tr><th>API Rev<td>20200601 (1978)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -841,9 +841,10 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// within a JWT. The audience value(s) depends on the `issuer`, but typically include one or more of the
         /// following pieces of information:
         ///
-        /// *  The services intended to receive the credential such as ["pubsub.googleapis.com",
-        /// "storage.googleapis.com"] *  A set of service-based scopes. For example, ["https://www.googleapis.com/auth
-        /// /cloud-platform"] *  The client id of an app, such as the Firebase project id for JWTs from Firebase Auth.
+        /// *  The services intended to receive the credential. For example, ["https://pubsub.googleapis.com/",
+        /// "https://storage.googleapis.com/"]. *  A set of service-based scopes. For example,
+        /// ["https://www.googleapis.com/auth/cloud-platform"]. *  The client id of an app, such as the Firebase project
+        /// id for JWTs from Firebase Auth.
         ///
         /// Consult the documentation for the credential issuer to determine the information provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audiences")]

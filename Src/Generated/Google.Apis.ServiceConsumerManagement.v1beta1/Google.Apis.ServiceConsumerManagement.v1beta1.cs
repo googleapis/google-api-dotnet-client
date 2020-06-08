@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>Service Consumer Management API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200527 (1973)
+ *      <tr><th>API Rev<td>20200603 (1980)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>
  *              https://cloud.google.com/service-consumer-management/docs/overview</a>
@@ -3491,6 +3491,17 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message for ImportProducerQuotaPolicies</summary>
+    public class V1Beta1ImportProducerQuotaPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The policies that were created from the imported data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policies")]
+        public virtual System.Collections.Generic.IList<V1Beta1ProducerQuotaPolicy> Policies { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response message for ListConsumerQuotaMetrics.</summary>
     public class V1Beta1ListConsumerQuotaMetricsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3528,6 +3539,59 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         /// metric and which limit the override should be applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overrides")]
         public virtual System.Collections.Generic.IList<V1Beta1QuotaOverride> Overrides { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Quota policy created by service producer.</summary>
+    public class V1Beta1ProducerQuotaPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The cloud resource container at which the quota policy is created. The format is
+        /// {container_type}/{container_number}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("container")]
+        public virtual string Container { get; set; } 
+
+        /// <summary> If this map is nonempty, then this policy applies only to specific values for dimensions defined
+        /// in the limit unit.
+        ///
+        /// For example, an policy on a limit with the unit 1/{project}/{region} could contain an entry with the key
+        /// "region" and the value "us-east-1"; the policy is only applied to quota consumed in that region.
+        ///
+        /// This map has the following restrictions:
+        ///
+        /// *   Keys that are not defined in the limit's unit are not valid keys. Any string appearing in {brackets} in
+        /// the unit (besides {project} or {user}) is a defined key. *   "project" is not a valid key; the project is
+        /// already specified in the parent resource name. *   "user" is not a valid key; the API does not support quota
+        /// polcies that apply only to a specific user. *   If "region" appears as a key, its value must be a valid
+        /// Cloud region. *   If "zone" appears as a key, its value must be a valid Cloud zone. *   If any valid key
+        /// other than "region" or "zone" appears in the map, then all valid keys other than "region" or "zone" must
+        /// also appear in the map.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Dimensions { get; set; } 
+
+        /// <summary>The name of the metric to which this policy applies.
+        ///
+        /// An example name would be: `compute.googleapis.com/cpus`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual string Metric { get; set; } 
+
+        /// <summary>The resource name of the producer policy. An example name would be: `services/compute.googleapis.co
+        /// m/organizations/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/producerQu
+        /// otaPolicies/4a3f2c1d`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The quota policy value. Can be any nonnegative integer, or -1 (unlimited quota).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyValue")]
+        public virtual System.Nullable<long> PolicyValue { get; set; } 
+
+        /// <summary>The limit unit of the limit to which this policy applies.
+        ///
+        /// An example unit would be: `1/{project}/{region}` Note that `{project}` and `{region}` are not placeholders
+        /// in this example; the literal characters `{` and `}` occur in the string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

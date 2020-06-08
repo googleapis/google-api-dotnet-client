@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200602 (1979)
+ *      <tr><th>API Rev<td>20200604 (1981)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -2740,6 +2740,10 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>The middle name(s) spelled as they sound.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneticMiddleName")]
         public virtual string PhoneticMiddleName { get; set; } 
+
+        /// <summary>The free form name value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unstructuredName")]
+        public virtual string UnstructuredName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

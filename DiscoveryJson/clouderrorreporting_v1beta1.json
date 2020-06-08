@@ -402,7 +402,7 @@
    }
   }
  }, 
- "revision": "20200519", 
+ "revision": "20200526", 
  "rootUrl": "https://clouderrorreporting.googleapis.com/", 
  "schemas": {
   "DeleteEventsResponse": {

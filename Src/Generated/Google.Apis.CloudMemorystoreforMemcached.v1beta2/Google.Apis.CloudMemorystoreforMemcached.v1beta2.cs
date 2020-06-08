@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/memorystore/'>Cloud Memorystore for Memcached API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20200512 (1958)
+ *      <tr><th>API Rev<td>20200603 (1980)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/memorystore/'>
  *              https://cloud.google.com/memorystore/</a>
@@ -1992,6 +1992,10 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedules")]
         public virtual System.Collections.Generic.IDictionary<string,GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule> MaintenanceSchedules { get; set; } 
 
+        /// <summary>Optional. The MaintenanceSettings associated with instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSettings")]
+        public virtual GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings MaintenanceSettings { get; set; } 
+
         /// <summary>Unique name of the resource. It uses the form:
         /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -2061,6 +2065,20 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         /// <summary>The scheduled start time for the maintenance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Maintenance settings associated with instance. Allows service producers and end users to assign
+    /// settings that controls maintenance on this instance.</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Exclude instance from maintenance. When true, rollout service will not attempt
+        /// maintenance on the instance. Rollout service will include the instance in reported rollout progress as not
+        /// attempted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclude")]
+        public virtual System.Nullable<bool> Exclude { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2196,9 +2214,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
 
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The full name of the Google Compute Engine [network](/compute/docs/networks-and-
-        /// firewalls#networks) to which the instance is connected. If left unspecified, the `default` network will be
-        /// used.</summary>
+        /// <summary>The full name of the Google Compute Engine [network](/compute/docs/networks-and-firewalls#networks)
+        /// to which the instance is connected. If left unspecified, the `default` network will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedNetwork")]
         public virtual string AuthorizedNetwork { get; set; } 
 
@@ -2210,8 +2227,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("discoveryEndpoint")]
         public virtual string DiscoveryEndpoint { get; set; } 
 
-        /// <summary>Optional. User provided name for the instance only used for display purposes. Cannot be more than
-        /// 80 characters.</summary>
+        /// <summary>User provided name for the instance only used for display purposes. Cannot be more than 80
+        /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
@@ -2219,8 +2236,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceMessages")]
         public virtual System.Collections.Generic.IList<InstanceMessage> InstanceMessages { get; set; } 
 
-        /// <summary>Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on
-        /// labels for more details. https://cloud.google.com/compute/docs/labeling-resources</summary>
+        /// <summary>Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for
+        /// more details. https://cloud.google.com/compute/docs/labeling-resources</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -2234,9 +2251,9 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("memcacheNodes")]
         public virtual System.Collections.Generic.IList<Node> MemcacheNodes { get; set; } 
 
-        /// <summary>Optional. The major version of Memcached software. If not provided, latest supported version will
-        /// be used. Currently the latest supported major version is MEMCACHE_1_5. The minor version will be
-        /// automatically determined by our system based on the latest supported minor version.</summary>
+        /// <summary>The major version of Memcached software. If not provided, latest supported version will be used.
+        /// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+        /// determined by our system based on the latest supported minor version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memcacheVersion")]
         public virtual string MemcacheVersion { get; set; } 
 
@@ -2269,9 +2286,9 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
-        /// <summary>Optional. Zones where Memcached nodes should be provisioned in. Memcached nodes will be equally
-        /// distributed across these zones. If not provided, the service will by default create nodes in all zones in
-        /// the region for the instance.</summary>
+        /// <summary>Zones where Memcached nodes should be provisioned in. Memcached nodes will be equally distributed
+        /// across these zones. If not provided, the service will by default create nodes in all zones in the region for
+        /// the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zones")]
         public virtual System.Collections.Generic.IList<string> Zones { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200511 (1957)
+ *      <tr><th>API Rev<td>20200528 (1974)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -6042,10 +6042,11 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gracefulDecommissionTimeout")]
         public virtual object GracefulDecommissionTimeout { get; set; } 
 
-        /// <summary>Required. Fraction of average pending memory in the last cooldown period for which to remove
+        /// <summary>Required. Fraction of average YARN pending memory in the last cooldown period for which to remove
         /// workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining
         /// after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be
-        /// beneficial for autoscaling a single job.Bounds: 0.0, 1.0.</summary>
+        /// beneficial for autoscaling a single job. See How autoscaling works for more information.Bounds: 0.0,
+        /// 1.0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaleDownFactor")]
         public virtual System.Nullable<double> ScaleDownFactor { get; set; } 
 
@@ -6056,10 +6057,11 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scaleDownMinWorkerFraction")]
         public virtual System.Nullable<double> ScaleDownMinWorkerFraction { get; set; } 
 
-        /// <summary>Required. Fraction of average pending memory in the last cooldown period for which to add workers.
-        /// A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the
-        /// update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of
-        /// scaling up (less aggressive scaling).Bounds: 0.0, 1.0.</summary>
+        /// <summary>Required. Fraction of average YARN pending memory in the last cooldown period for which to add
+        /// workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining
+        /// after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude
+        /// of scaling up (less aggressive scaling). See How autoscaling works for more information.Bounds: 0.0,
+        /// 1.0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaleUpFactor")]
         public virtual System.Nullable<double> ScaleUpFactor { get; set; } 
 
@@ -7477,8 +7479,8 @@ namespace Google.Apis.Dataproc.v1.Data
     /// guide.html) applications on YARN.</summary>
     public class PySparkJob : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz,
-        /// .tgz, and .zip.</summary>
+        /// <summary>Optional. HCFS URIs of archives to be extracted into the working directory of each executor.
+        /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archiveUris")]
         public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; } 
 
@@ -7487,8 +7489,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; } 
 
-        /// <summary>Optional. HCFS URIs of files to be copied to the working directory of Python drivers and
-        /// distributed tasks. Useful for naively parallel tasks.</summary>
+        /// <summary>Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for
+        /// naively parallel tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileUris")]
         public virtual System.Collections.Generic.IList<string> FileUris { get; set; } 
 
@@ -7619,8 +7621,8 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>A Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN.</summary>
     public class SparkJob : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. HCFS URIs of archives to be extracted in the working directory of Spark drivers and
-        /// tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.</summary>
+        /// <summary>Optional. HCFS URIs of archives to be extracted into the working directory of each executor.
+        /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archiveUris")]
         public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; } 
 
@@ -7629,8 +7631,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; } 
 
-        /// <summary>Optional. HCFS URIs of files to be copied to the working directory of Spark drivers and distributed
-        /// tasks. Useful for naively parallel tasks.</summary>
+        /// <summary>Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for
+        /// naively parallel tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileUris")]
         public virtual System.Collections.Generic.IList<string> FileUris { get; set; } 
 
@@ -7665,8 +7667,8 @@ namespace Google.Apis.Dataproc.v1.Data
     /// applications on YARN.</summary>
     public class SparkRJob : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. HCFS URIs of archives to be extracted in the working directory of Spark drivers and
-        /// tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.</summary>
+        /// <summary>Optional. HCFS URIs of archives to be extracted into the working directory of each executor.
+        /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archiveUris")]
         public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; } 
 
@@ -7675,8 +7677,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; } 
 
-        /// <summary>Optional. HCFS URIs of files to be copied to the working directory of R drivers and distributed
-        /// tasks. Useful for naively parallel tasks.</summary>
+        /// <summary>Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for
+        /// naively parallel tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileUris")]
         public virtual System.Collections.Generic.IList<string> FileUris { get; set; } 
 
