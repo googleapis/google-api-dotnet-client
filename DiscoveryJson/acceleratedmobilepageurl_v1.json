@@ -115,7 +115,7 @@
    }
   }
  }, 
- "revision": "20200605", 
+ "revision": "20200609", 
  "rootUrl": "https://acceleratedmobilepageurl.googleapis.com/", 
  "schemas": {
   "AmpUrl": {

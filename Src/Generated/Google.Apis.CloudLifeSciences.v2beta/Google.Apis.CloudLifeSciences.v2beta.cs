@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/life-sciences'>Cloud Life Sciences API</a>
  *      <tr><th>API Version<td>v2beta
- *      <tr><th>API Rev<td>20200520 (1966)
+ *      <tr><th>API Rev<td>20200526 (1972)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/life-sciences'>
  *              https://cloud.google.com/life-sciences</a>

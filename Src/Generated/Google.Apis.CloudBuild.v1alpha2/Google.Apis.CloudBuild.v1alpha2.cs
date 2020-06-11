@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20200601 (1978)
+ *      <tr><th>API Rev<td>20200606 (1983)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -1280,7 +1280,7 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("logStreamingOption")]
         public virtual string LogStreamingOption { get; set; } 
 
-        /// <summary>Option to specify the logging mode, which determines where the logs are stored.</summary>
+        /// <summary>Option to specify the logging mode, which determines if and where build logs are stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logging")]
         public virtual string Logging { get; set; } 
 

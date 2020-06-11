@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200515 (1961)
+ *      <tr><th>API Rev<td>20200605 (1982)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>
  *              https://cloud.google.com/asset-inventory/docs/quickstart</a>
@@ -630,10 +630,10 @@ namespace Google.Apis.CloudAsset.v1beta1
             }
         }
 
-        /// <summary>Batch gets the update history of assets that overlap a time window. For RESOURCE content, this API
-        /// outputs history with asset in both non-delete or deleted status. For IAM_POLICY content, this API outputs
-        /// history when the asset and its attached IAM POLICY both exist. This can create gaps in the output history.
-        /// If a specified asset does not exist, this API returns an INVALID_ARGUMENT error.</summary>
+        /// <summary>Batch gets the update history of assets that overlap a time window. For IAM_POLICY content, this
+        /// API outputs history when the asset and its attached IAM POLICY both exist. This can create gaps in the
+        /// output history. Otherwise, this API outputs history with asset in both non-delete or deleted status. If a
+        /// specified asset does not exist, this API returns an INVALID_ARGUMENT error.</summary>
         /// <param name="parent">Required. The relative name of the root asset. It can only be an organization number (such as
         /// "organizations/123"), a project ID (such as "projects/my-project-id")", or a project number (such as
         /// "projects/12345").</param>
@@ -642,10 +642,10 @@ namespace Google.Apis.CloudAsset.v1beta1
             return new BatchGetAssetsHistoryRequest(service, parent);
         }
 
-        /// <summary>Batch gets the update history of assets that overlap a time window. For RESOURCE content, this API
-        /// outputs history with asset in both non-delete or deleted status. For IAM_POLICY content, this API outputs
-        /// history when the asset and its attached IAM POLICY both exist. This can create gaps in the output history.
-        /// If a specified asset does not exist, this API returns an INVALID_ARGUMENT error.</summary>
+        /// <summary>Batch gets the update history of assets that overlap a time window. For IAM_POLICY content, this
+        /// API outputs history when the asset and its attached IAM POLICY both exist. This can create gaps in the
+        /// output history. Otherwise, this API outputs history with asset in both non-delete or deleted status. If a
+        /// specified asset does not exist, this API returns an INVALID_ARGUMENT error.</summary>
         public class BatchGetAssetsHistoryRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1beta1.Data.BatchGetAssetsHistoryResponse>
         {
             /// <summary>Constructs a new BatchGetAssetsHistory request.</summary>
@@ -952,10 +952,10 @@ namespace Google.Apis.CloudAsset.v1beta1
             }
         }
 
-        /// <summary>Batch gets the update history of assets that overlap a time window. For RESOURCE content, this API
-        /// outputs history with asset in both non-delete or deleted status. For IAM_POLICY content, this API outputs
-        /// history when the asset and its attached IAM POLICY both exist. This can create gaps in the output history.
-        /// If a specified asset does not exist, this API returns an INVALID_ARGUMENT error.</summary>
+        /// <summary>Batch gets the update history of assets that overlap a time window. For IAM_POLICY content, this
+        /// API outputs history when the asset and its attached IAM POLICY both exist. This can create gaps in the
+        /// output history. Otherwise, this API outputs history with asset in both non-delete or deleted status. If a
+        /// specified asset does not exist, this API returns an INVALID_ARGUMENT error.</summary>
         /// <param name="parent">Required. The relative name of the root asset. It can only be an organization number (such as
         /// "organizations/123"), a project ID (such as "projects/my-project-id")", or a project number (such as
         /// "projects/12345").</param>
@@ -964,10 +964,10 @@ namespace Google.Apis.CloudAsset.v1beta1
             return new BatchGetAssetsHistoryRequest(service, parent);
         }
 
-        /// <summary>Batch gets the update history of assets that overlap a time window. For RESOURCE content, this API
-        /// outputs history with asset in both non-delete or deleted status. For IAM_POLICY content, this API outputs
-        /// history when the asset and its attached IAM POLICY both exist. This can create gaps in the output history.
-        /// If a specified asset does not exist, this API returns an INVALID_ARGUMENT error.</summary>
+        /// <summary>Batch gets the update history of assets that overlap a time window. For IAM_POLICY content, this
+        /// API outputs history when the asset and its attached IAM POLICY both exist. This can create gaps in the
+        /// output history. Otherwise, this API outputs history with asset in both non-delete or deleted status. If a
+        /// specified asset does not exist, this API returns an INVALID_ARGUMENT error.</summary>
         public class BatchGetAssetsHistoryRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1beta1.Data.BatchGetAssetsHistoryResponse>
         {
             /// <summary>Constructs a new BatchGetAssetsHistory request.</summary>
@@ -1213,9 +1213,9 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
     ///
     /// Example Policy with multiple AuditConfigs:
     ///
-    /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
-    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", }
-    /// ] }, { "service": "sampleservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, {
+    /// { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ]
+    /// }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, {
     /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
     ///
     /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
@@ -1238,7 +1238,7 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
     /// <summary>Provides the configuration for logging a type of permissions. Example:
     ///
     /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
-    /// "log_type": "DATA_WRITE", } ] }
+    /// "log_type": "DATA_WRITE" } ] }
     ///
     /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200604 (1981)
+ *      <tr><th>API Rev<td>20200609 (1986)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -67,7 +67,6 @@ namespace Google.Apis.PeopleService.v1
             contactGroups = new ContactGroupsResource(this);
             otherContacts = new OtherContactsResource(this);
             people = new PeopleResource(this);
-            v1 = new V1Resource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -212,14 +211,6 @@ namespace Google.Apis.PeopleService.v1
         public virtual PeopleResource People
         {
             get { return people; }
-        }
-
-        private readonly V1Resource v1;
-
-        /// <summary>Gets the V1 resource.</summary>
-        public virtual V1Resource V1
-        {
-            get { return v1; }
         }
     }
 
@@ -1051,6 +1042,133 @@ namespace Google.Apis.PeopleService.v1
             }
 
         }
+
+        /// <summary>List all other contacts, that is contacts that are not in a contact group. Other contacts are
+        /// typically auto created contacts from interactions.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>List all other contacts, that is contacts that are not in a contact group. Other contacts are
+        /// typically auto created contacts from interactions.</summary>
+        public class ListRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ListOtherContactsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>Optional. The number of other contacts to include in the response. Valid values are between 1
+            /// and 1000, inclusive. Defaults to 100 if not set or set to 0.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional. A page token, received from a previous `ListOtherContacts` call. Provide this to
+            /// retrieve the subsequent page.
+            ///
+            /// When paginating, all other parameters provided to `ListOtherContacts` must match the call that provided
+            /// the page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple fields
+            /// can be specified by separating them with commas. Valid values are:
+            ///
+            /// * emailAddresses * names * phoneNumbers</summary>
+            [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ReadMask { get; set; }
+
+            /// <summary>Optional. Whether the response should include `next_sync_token`, which can be used to get all
+            /// changes since the last request. For subsequent sync requests use the `sync_token` param instead. Initial
+            /// sync requests that specify `request_sync_token` have an additional rate limit.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestSyncToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> RequestSyncToken { get; set; }
+
+            /// <summary>Optional. A sync token, received from a previous `ListOtherContacts` call. Provide this to
+            /// retrieve only the resources changed since the last request. Sync requests that specify `sync_token` have
+            /// an additional rate limit.
+            ///
+            /// When syncing, all other parameters provided to `ListOtherContacts` must match the call that provided the
+            /// sync token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SyncToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/otherContacts"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "readMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "readMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestSyncToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestSyncToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "syncToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "syncToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
     }
 
     /// <summary>The "people" collection of methods.</summary>
@@ -1174,6 +1292,25 @@ namespace Google.Apis.PeopleService.v1
                     LASTNAMEASCENDING,
                 }
 
+                /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
+                /// ReadSourceType.PROFILE if not set.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+                /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
+                /// ReadSourceType.PROFILE if not set.</summary>
+                public enum SourcesEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_UNSPECIFIED")]
+                    READSOURCETYPEUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_PROFILE")]
+                    READSOURCETYPEPROFILE,
+                    [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_CONTACT")]
+                    READSOURCETYPECONTACT,
+                    [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
+                    READSOURCETYPEDOMAINCONTACT,
+                }
+
                 /// <summary>Optional. A sync token, received from a previous `ListConnections` call. Provide this to
                 /// retrieve only the resources changed since the last request. Sync requests that specify `sync_token`
                 /// have an additional rate limit.
@@ -1271,6 +1408,15 @@ namespace Google.Apis.PeopleService.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "sources", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sources",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "syncToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "syncToken",
@@ -1303,6 +1449,35 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
+            /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple fields
+            /// can be specified by separating them with commas. Defaults to all fields if not set. Valid values are:
+            ///
+            /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
+            /// imClients * interests * locales * memberships * metadata * names * nicknames * occupations *
+            /// organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
+            /// userDefined</summary>
+            [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object PersonFields { get; set; }
+
+            /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
+            /// ReadSourceType.PROFILE if not set.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
+            /// ReadSourceType.PROFILE if not set.</summary>
+            public enum SourcesEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_UNSPECIFIED")]
+                READSOURCETYPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_PROFILE")]
+                READSOURCETYPEPROFILE,
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_CONTACT")]
+                READSOURCETYPECONTACT,
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
+                READSOURCETYPEDOMAINCONTACT,
+            }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.PeopleService.v1.Data.Person Body { get; set; }
@@ -1333,6 +1508,24 @@ namespace Google.Apis.PeopleService.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "personFields", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "personFields",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sources", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sources",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -1431,6 +1624,25 @@ namespace Google.Apis.PeopleService.v1
             [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object PersonFields { get; set; }
 
+            /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
+            /// ReadSourceType.PROFILE if not set.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
+            /// ReadSourceType.PROFILE if not set.</summary>
+            public enum SourcesEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_UNSPECIFIED")]
+                READSOURCETYPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_PROFILE")]
+                READSOURCETYPEPROFILE,
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_CONTACT")]
+                READSOURCETYPECONTACT,
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
+                READSOURCETYPEDOMAINCONTACT,
+            }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1468,6 +1680,15 @@ namespace Google.Apis.PeopleService.v1
                     "personFields", new Google.Apis.Discovery.Parameter
                     {
                         Name = "personFields",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sources", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sources",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1530,6 +1751,25 @@ namespace Google.Apis.PeopleService.v1
             [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object RequestMaskIncludeField { get; set; }
 
+            /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.PROFILE and
+            /// ReadSourceType.CONTACT if not set.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.PROFILE and
+            /// ReadSourceType.CONTACT if not set.</summary>
+            public enum SourcesEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_UNSPECIFIED")]
+                READSOURCETYPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_PROFILE")]
+                READSOURCETYPEPROFILE,
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_CONTACT")]
+                READSOURCETYPECONTACT,
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
+                READSOURCETYPEDOMAINCONTACT,
+            }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1576,6 +1816,15 @@ namespace Google.Apis.PeopleService.v1
                     "requestMask.includeField", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestMask.includeField",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sources", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sources",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1634,6 +1883,25 @@ namespace Google.Apis.PeopleService.v1
             [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
+            /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
+            /// ReadSourceType.PROFILE if not set.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
+            /// ReadSourceType.PROFILE if not set.</summary>
+            public enum SourcesEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_UNSPECIFIED")]
+                READSOURCETYPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_PROFILE")]
+                READSOURCETYPEPROFILE,
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_CONTACT")]
+                READSOURCETYPECONTACT,
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
+                READSOURCETYPEDOMAINCONTACT,
+            }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1680,6 +1948,351 @@ namespace Google.Apis.PeopleService.v1
                     "resourceNames", new Google.Apis.Discovery.Parameter
                     {
                         Name = "resourceNames",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sources", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sources",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Provides a list of domain profiles and domain contacts in the authenticated user's domain
+        /// directory.</summary>
+        public virtual ListDirectoryPeopleRequest ListDirectoryPeople()
+        {
+            return new ListDirectoryPeopleRequest(service);
+        }
+
+        /// <summary>Provides a list of domain profiles and domain contacts in the authenticated user's domain
+        /// directory.</summary>
+        public class ListDirectoryPeopleRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ListDirectoryPeopleResponse>
+        {
+            /// <summary>Constructs a new ListDirectoryPeople request.</summary>
+            public ListDirectoryPeopleRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>Optional. Additional data to merge into the directory sources if they are connected through
+            /// verified join keys such as email addresses or phone numbers.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("mergeSources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<MergeSourcesEnum> MergeSources { get; set; }
+
+            /// <summary>Optional. Additional data to merge into the directory sources if they are connected through
+            /// verified join keys such as email addresses or phone numbers.</summary>
+            public enum MergeSourcesEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED")]
+                DIRECTORYMERGESOURCETYPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("DIRECTORY_MERGE_SOURCE_TYPE_CONTACT")]
+                DIRECTORYMERGESOURCETYPECONTACT,
+            }
+
+            /// <summary>Optional. The number of people to include in the response. Valid values are between 1 and 1000,
+            /// inclusive. Defaults to 100 if not set or set to 0.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional. A page token, received from a previous `ListDirectoryPeople` call. Provide this to
+            /// retrieve the subsequent page.
+            ///
+            /// When paginating, all other parameters provided to `ListDirectoryPeople` must match the call that
+            /// provided the page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple fields
+            /// can be specified by separating them with commas. Valid values are:
+            ///
+            /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
+            /// imClients * interests * locales * memberships * metadata * names * nicknames * occupations *
+            /// organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
+            /// userDefined</summary>
+            [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ReadMask { get; set; }
+
+            /// <summary>Optional. Whether the response should include `next_sync_token`, which can be used to get all
+            /// changes since the last request. For subsequent sync requests use the `sync_token` param
+            /// instead.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestSyncToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> RequestSyncToken { get; set; }
+
+            /// <summary>Required. Directory sources to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>Required. Directory sources to return.</summary>
+            public enum SourcesEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_UNSPECIFIED")]
+                DIRECTORYSOURCETYPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT")]
+                DIRECTORYSOURCETYPEDOMAINCONTACT,
+                [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE")]
+                DIRECTORYSOURCETYPEDOMAINPROFILE,
+            }
+
+            /// <summary>Optional. A sync token, received from a previous `ListDirectoryPeople` call. Provide this to
+            /// retrieve only the resources changed since the last request.
+            ///
+            /// When syncing, all other parameters provided to `ListDirectoryPeople` must match the call that provided
+            /// the sync token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SyncToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "listDirectoryPeople"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/people:listDirectoryPeople"; }
+            }
+
+            /// <summary>Initializes ListDirectoryPeople parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "mergeSources", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "mergeSources",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "readMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "readMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestSyncToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestSyncToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sources", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sources",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "syncToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "syncToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Provides a list of domain profiles and domain contacts in the authenticated user's domain directory
+        /// that match the search query.</summary>
+        public virtual SearchDirectoryPeopleRequest SearchDirectoryPeople()
+        {
+            return new SearchDirectoryPeopleRequest(service);
+        }
+
+        /// <summary>Provides a list of domain profiles and domain contacts in the authenticated user's domain directory
+        /// that match the search query.</summary>
+        public class SearchDirectoryPeopleRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.SearchDirectoryPeopleResponse>
+        {
+            /// <summary>Constructs a new SearchDirectoryPeople request.</summary>
+            public SearchDirectoryPeopleRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>Optional. Additional data to merge into the directory sources if they are connected through
+            /// verified join keys such as email addresses or phone numbers.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("mergeSources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<MergeSourcesEnum> MergeSources { get; set; }
+
+            /// <summary>Optional. Additional data to merge into the directory sources if they are connected through
+            /// verified join keys such as email addresses or phone numbers.</summary>
+            public enum MergeSourcesEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED")]
+                DIRECTORYMERGESOURCETYPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("DIRECTORY_MERGE_SOURCE_TYPE_CONTACT")]
+                DIRECTORYMERGESOURCETYPECONTACT,
+            }
+
+            /// <summary>Optional. The number of people to include in the response. Valid values are between 1 and 500,
+            /// inclusive. Defaults to 100 if not set or set to 0.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional. A page token, received from a previous `SearchDirectoryPeople` call. Provide this to
+            /// retrieve the subsequent page.
+            ///
+            /// When paginating, all other parameters provided to `SearchDirectoryPeople` must match the call that
+            /// provided the page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Required. Prefix query that matches fields in the person. Does NOT use the read_mask for
+            /// determining what fields to match.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Query { get; set; }
+
+            /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple fields
+            /// can be specified by separating them with commas. Valid values are:
+            ///
+            /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
+            /// imClients * interests * locales * memberships * metadata * names * nicknames * occupations *
+            /// organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
+            /// userDefined</summary>
+            [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ReadMask { get; set; }
+
+            /// <summary>Required. Directory sources to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>Required. Directory sources to return.</summary>
+            public enum SourcesEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_UNSPECIFIED")]
+                DIRECTORYSOURCETYPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT")]
+                DIRECTORYSOURCETYPEDOMAINCONTACT,
+                [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE")]
+                DIRECTORYSOURCETYPEDOMAINPROFILE,
+            }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "searchDirectoryPeople"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/people:searchDirectoryPeople"; }
+            }
+
+            /// <summary>Initializes SearchDirectoryPeople parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "mergeSources", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "mergeSources",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "readMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "readMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sources", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sources",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1734,6 +2347,35 @@ namespace Google.Apis.PeopleService.v1
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
+            /// <summary>Optional. A field mask to restrict which fields on each person are returned. Multiple fields
+            /// can be specified by separating them with commas. Defaults to all fields if not set. Valid values are:
+            ///
+            /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
+            /// imClients * interests * locales * memberships * metadata * names * nicknames * occupations *
+            /// organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
+            /// userDefined</summary>
+            [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object PersonFields { get; set; }
+
+            /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
+            /// ReadSourceType.PROFILE if not set.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
+            /// ReadSourceType.PROFILE if not set.</summary>
+            public enum SourcesEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_UNSPECIFIED")]
+                READSOURCETYPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_PROFILE")]
+                READSOURCETYPEPROFILE,
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_CONTACT")]
+                READSOURCETYPECONTACT,
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
+                READSOURCETYPEDOMAINCONTACT,
+            }
+
             /// <summary>Required. A field mask to restrict which fields on the person are updated. Multiple fields can
             /// be specified by separating them with commas. All updated fields will be replaced. Valid values are:
             ///
@@ -1781,6 +2423,24 @@ namespace Google.Apis.PeopleService.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^people/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "personFields", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "personFields",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sources", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sources",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "updatePersonFields", new Google.Apis.Discovery.Parameter
@@ -1858,150 +2518,6 @@ namespace Google.Apis.PeopleService.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^people/[^/]+$",
-                    });
-            }
-
-        }
-    }
-
-    /// <summary>The "v1" collection of methods.</summary>
-    public class V1Resource
-    {
-        private const string Resource = "v1";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public V1Resource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-
-        }
-
-
-        /// <summary>List all other contacts, that is contacts that are not in a contact group. Other contacts are
-        /// typically auto created contacts from interactions.</summary>
-        public virtual OtherContactsRequest OtherContacts()
-        {
-            return new OtherContactsRequest(service);
-        }
-
-        /// <summary>List all other contacts, that is contacts that are not in a contact group. Other contacts are
-        /// typically auto created contacts from interactions.</summary>
-        public class OtherContactsRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ListOtherContactsResponse>
-        {
-            /// <summary>Constructs a new OtherContacts request.</summary>
-            public OtherContactsRequest(Google.Apis.Services.IClientService service)
-                : base(service)
-            {
-                InitParameters();
-            }
-
-
-            /// <summary>Optional. The number of other contacts to include in the response. Valid values are between 1
-            /// and 1000, inclusive. Defaults to 100 if not set or set to 0.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Optional. A page token, received from a previous `ListOtherContacts` call. Provide this to
-            /// retrieve the subsequent page.
-            ///
-            /// When paginating, all other parameters provided to `ListOtherContacts` must match the call that provided
-            /// the page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple fields
-            /// can be specified by separating them with commas. Valid values are:
-            ///
-            /// * emailAddresses * names * phoneNumbers</summary>
-            [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object ReadMask { get; set; }
-
-            /// <summary>Optional. Whether the response should include `next_sync_token`, which can be used to get all
-            /// changes since the last request. For subsequent sync requests use the `sync_token` param instead. Initial
-            /// sync requests that specify `request_sync_token` have an additional rate limit.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestSyncToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> RequestSyncToken { get; set; }
-
-            /// <summary>Optional. A sync token, received from a previous `ListOtherContacts` call. Provide this to
-            /// retrieve only the resources changed since the last request. Sync requests that specify `sync_token` have
-            /// an additional rate limit.
-            ///
-            /// When syncing, all other parameters provided to `ListOtherContacts` must match the call that provided the
-            /// sync token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SyncToken { get; set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "otherContacts"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/otherContacts"; }
-            }
-
-            /// <summary>Initializes OtherContacts parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "readMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "readMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "requestSyncToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestSyncToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "syncToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "syncToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
                     });
             }
 
@@ -2260,14 +2776,19 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual object CopyMask { get; set; } 
 
         /// <summary>Optional. A field mask to restrict which fields on the person are returned. Multiple fields can be
-        /// specified by separating them with commas. Defaults to empty if not set, which will skip the post mutate get.
-        /// Valid values are:
+        /// specified by separating them with commas. Defaults to the copy mask with metadata and membership fields if
+        /// not set. Valid values are:
         ///
         /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
         /// imClients * interests * locales * memberships * metadata * names * nicknames * occupations * organizations *
         /// phoneNumbers * photos * relations * residences * sipAddresses * skills * urls * userDefined</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readMask")]
         public virtual object ReadMask { get; set; } 
+
+        /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
+        /// ReadSourceType.PROFILE if not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual System.Collections.Generic.IList<string> Sources { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2445,6 +2966,21 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The name that should be used to sort the person in a list.</summary>
+    public class FileAs : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metadata about the file-as.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual FieldMetadata Metadata { get; set; } 
+
+        /// <summary>The file-as value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A person's gender.</summary>
     public class Gender : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2585,6 +3121,27 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>The total number of items in the list without pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalItems")]
         public virtual System.Nullable<int> TotalItems { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response to a request for the authenticated user's domain directory.</summary>
+    public class ListDirectoryPeopleResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>A token, which can be sent as `sync_token` to retrieve changes since the last request. Request must
+        /// set `request_sync_token` to return the sync token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextSyncToken")]
+        public virtual string NextSyncToken { get; set; } 
+
+        /// <summary>The list of people in the domain directory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("people")]
+        public virtual System.Collections.Generic.IList<Person> People { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2900,6 +3457,10 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>The person's events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("events")]
         public virtual System.Collections.Generic.IList<Event> Events { get; set; } 
+
+        /// <summary>The person's file-ases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileAses")]
+        public virtual System.Collections.Generic.IList<FileAs> FileAses { get; set; } 
 
         /// <summary>The person's genders.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("genders")]
@@ -3222,6 +3783,27 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response to a request for people in the authenticated user's domain directory that match the
+    /// specified query.</summary>
+    public class SearchDirectoryPeopleResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The list of people in the domain directory that match the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("people")]
+        public virtual System.Collections.Generic.IList<Person> People { get; set; } 
+
+        /// <summary>The total number of items in the list without pagination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A person's SIP address. Session Initial Protocol addresses are used for VoIP communications to make
     /// voice or video calls over the internet.</summary>
     public class SipAddress : Google.Apis.Requests.IDirectResponseSchema
@@ -3366,6 +3948,11 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Required. Raw photo bytes</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoBytes")]
         public virtual string PhotoBytes { get; set; } 
+
+        /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
+        /// ReadSourceType.PROFILE if not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual System.Collections.Generic.IList<string> Sources { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

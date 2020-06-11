@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/data-fusion/docs'>Cloud Data Fusion API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200318 (1903)
+ *      <tr><th>API Rev<td>20200609 (1986)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/data-fusion/docs'>
  *              https://cloud.google.com/data-fusion/docs</a>
@@ -160,10 +160,6 @@ namespace Google.Apis.DataFusion.v1beta1
             Value2,
         }
 
-        /// <summary>OAuth access token.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string AccessToken { get; set; }
-
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
@@ -196,10 +192,6 @@ namespace Google.Apis.DataFusion.v1beta1
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
-        /// <summary>OAuth 2.0 token for the current user.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string OauthToken { get; set; }
-
         /// <summary>Returns response with indentations and line breaks.</summary>
         /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
@@ -227,15 +219,6 @@ namespace Google.Apis.DataFusion.v1beta1
                 "$.xgafv", new Google.Apis.Discovery.Parameter
                 {
                     Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -272,15 +255,6 @@ namespace Google.Apis.DataFusion.v1beta1
                 "key", new Google.Apis.Discovery.Parameter
                 {
                     Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -363,6 +337,7 @@ namespace Google.Apis.DataFusion.v1beta1
                 this.service = service;
                 instances = new InstancesResource(service);
                 operations = new OperationsResource(service);
+                versions = new VersionsResource(service);
 
             }
 
@@ -629,7 +604,10 @@ namespace Google.Apis.DataFusion.v1beta1
                     /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
                     ///
                     /// Requests for policies with any conditional bindings must specify version 3. Policies without any
-                    /// conditional bindings may specify any valid value or leave the field unset.</summary>
+                    /// conditional bindings may specify any valid value or leave the field unset.
+                    ///
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
+                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -956,7 +934,7 @@ namespace Google.Apis.DataFusion.v1beta1
 
                 /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
                 ///
-                /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
+                /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -967,7 +945,7 @@ namespace Google.Apis.DataFusion.v1beta1
 
                 /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
                 ///
-                /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
+                /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
                 public class SetIamPolicyRequest : DataFusionBaseServiceRequest<Google.Apis.DataFusion.v1beta1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1029,7 +1007,7 @@ namespace Google.Apis.DataFusion.v1beta1
                 }
 
                 /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+                /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
                 ///
                 /// Note: This operation is designed to be used for building permission-aware UIs and command-line
                 /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
@@ -1042,7 +1020,7 @@ namespace Google.Apis.DataFusion.v1beta1
                 }
 
                 /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+                /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
                 ///
                 /// Note: This operation is designed to be used for building permission-aware UIs and command-line
                 /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
@@ -1523,6 +1501,136 @@ namespace Google.Apis.DataFusion.v1beta1
 
                 }
             }
+            private readonly VersionsResource versions;
+
+            /// <summary>Gets the Versions resource.</summary>
+            public virtual VersionsResource Versions
+            {
+                get { return versions; }
+            }
+
+            /// <summary>The "versions" collection of methods.</summary>
+            public class VersionsResource
+            {
+                private const string Resource = "versions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public VersionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Lists possible versions for Data Fusion instances in the specified project and
+                /// location.</summary>
+                /// <param name="parent">Required. The project and location for which to retrieve instance information in the format
+                /// projects/{project}/locations/{location}.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists possible versions for Data Fusion instances in the specified project and
+                /// location.</summary>
+                public class ListRequest : DataFusionBaseServiceRequest<Google.Apis.DataFusion.v1beta1.Data.ListAvailableVersionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The project and location for which to retrieve instance information in the
+                    /// format projects/{project}/locations/{location}.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Whether or not to return the latest patch of every available minor version. If true,
+                    /// only the latest patch will be returned. Ex. if allowed versions is [6.1.1, 6.1.2, 6.2.0] then
+                    /// response will be [6.1.2, 6.2.0]</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("latestPatchOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> LatestPatchOnly { get; set; }
+
+                    /// <summary>The maximum number of items to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The next_page_token value to use if there are additional results to retrieve for this
+                    /// list request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+parent}/versions"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "latestPatchOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "latestPatchOnly",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
 
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
@@ -1723,9 +1831,9 @@ namespace Google.Apis.DataFusion.v1beta1.Data
     ///
     /// Example Policy with multiple AuditConfigs:
     ///
-    /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
-    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", }
-    /// ] }, { "service": "sampleservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, {
+    /// { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ]
+    /// }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, {
     /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
     ///
     /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
@@ -1748,7 +1856,7 @@ namespace Google.Apis.DataFusion.v1beta1.Data
     /// <summary>Provides the configuration for logging a type of permissions. Example:
     ///
     /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
-    /// "log_type": "DATA_WRITE", } ] }
+    /// "log_type": "DATA_WRITE" } ] }
     ///
     /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
@@ -1770,9 +1878,15 @@ namespace Google.Apis.DataFusion.v1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. NOTE: An unsatisfied condition will not allow
-        /// user access via current binding. Different bindings, including their conditions, are examined
-        /// independently.</summary>
+        /// <summary>The condition that is associated with this binding.
+        ///
+        /// If the condition evaluates to `true`, then this binding applies to the current request.
+        ///
+        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
+        /// different role binding might grant the same role to one or more of the members in this binding.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
@@ -1911,7 +2025,7 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>Optional. An optional description of this instance.</summary>
+        /// <summary>A description of this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -1988,6 +2102,22 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         /// <summary>Name of the zone in which the Data Fusion instance will be created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for the list available versions request.</summary>
+    public class ListAvailableVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Represents a list of versions that are supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableVersions")]
+        public virtual System.Collections.Generic.IList<Version> AvailableVersions { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2175,15 +2305,17 @@ namespace Google.Apis.DataFusion.v1beta1.Data
     /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
     /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
     ///
-    /// Optionally, a `binding` can specify a `condition`, which is a logical expression that allows access to a
-    /// resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the
-    /// request, the resource, or both.
+    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
+    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
+    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
+    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
+    /// /resource-policies).
     ///
     /// **JSON example:**
     ///
     /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
     /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
     ///
@@ -2236,7 +2368,10 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         /// `1` policy, and all of the conditions in the version `3` policy are lost.
         ///
         /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.</summary>
+        /// leave the field unset.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -2259,8 +2394,9 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         public virtual Policy Policy { get; set; } 
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, the following default mask is used: paths: "bindings, etag" This
-        /// field is only used by Cloud IAM.</summary>
+        /// will be modified. If no mask is provided, the following default mask is used:
+        ///
+        /// `paths: "bindings, etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 
@@ -2329,6 +2465,10 @@ namespace Google.Apis.DataFusion.v1beta1.Data
     /// <summary>The Data Fusion version.</summary>
     public class Version : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether this is currently the default version for Cloud Data Fusion</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultVersion")]
+        public virtual System.Nullable<bool> DefaultVersion { get; set; } 
+
         /// <summary>The version number of the Data Fusion instance, such as '6.0.1.0'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionNumber")]
         public virtual string VersionNumber { get; set; } 

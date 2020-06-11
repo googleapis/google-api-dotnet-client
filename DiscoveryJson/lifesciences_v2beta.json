@@ -312,7 +312,7 @@
    }
   }
  }, 
- "revision": "20200520", 
+ "revision": "20200526", 
  "rootUrl": "https://lifesciences.googleapis.com/", 
  "schemas": {
   "Accelerator": {

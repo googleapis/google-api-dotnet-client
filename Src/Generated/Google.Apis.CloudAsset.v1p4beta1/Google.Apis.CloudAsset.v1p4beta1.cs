@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1p4beta1
- *      <tr><th>API Rev<td>20200515 (1961)
+ *      <tr><th>API Rev<td>20200605 (1982)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>
  *              https://cloud.google.com/asset-inventory/docs/quickstart</a>
@@ -345,7 +345,13 @@ namespace Google.Apis.CloudAsset.v1p4beta1
         /// matching the request.</summary>
         /// <param name="parent">Required. The relative name of the root asset. Only resources and IAM policies within the
         /// parent will be analyzed. This can only be an organization number (such as "organizations/123") or a folder number
-        /// (such as "folders/123").</param>
+        /// (such as "folders/123").
+        ///
+        /// To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
+        /// organization#retrieving_your_organization_id).
+        ///
+        /// To know how to get folder id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
+        /// folders#viewing_or_listing_folders_and_projects).</param>
         public virtual AnalyzeIamPolicyRequest AnalyzeIamPolicy(string parent)
         {
             return new AnalyzeIamPolicyRequest(service, parent);
@@ -366,7 +372,13 @@ namespace Google.Apis.CloudAsset.v1p4beta1
 
             /// <summary>Required. The relative name of the root asset. Only resources and IAM policies within the
             /// parent will be analyzed. This can only be an organization number (such as "organizations/123") or a
-            /// folder number (such as "folders/123").</summary>
+            /// folder number (such as "folders/123").
+            ///
+            /// To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs
+            /// /creating-managing-organization#retrieving_your_organization_id).
+            ///
+            /// To know how to get folder id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-
+            /// managing-folders#viewing_or_listing_folders_and_projects).</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -379,18 +391,25 @@ namespace Google.Apis.CloudAsset.v1p4beta1
             public virtual Google.Apis.Util.Repeatable<string> AnalysisQueryAccessSelectorRoles { get; set; }
 
             /// <summary>Required. The identity appear in the form of members in [IAM policy
-            /// binding](https://cloud.google.com/iam/reference/rest/v1/Binding).</summary>
+            /// binding](https://cloud.google.com/iam/reference/rest/v1/Binding).
+            ///
+            /// The examples of supported forms are: "user:mike@example.com", "group:admins@example.com",
+            /// "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com".
+            ///
+            /// Notice that wildcard characters (such as * and ?) are not supported. You must give a specific
+            /// identity.</summary>
             [Google.Apis.Util.RequestParameterAttribute("analysisQuery.identitySelector.identity", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string AnalysisQueryIdentitySelectorIdentity { get; set; }
 
-            /// <summary>Required. The [full resource
-            /// name](https://cloud.google.com/apis/design/resource_names#full_resource_name) .</summary>
+            /// <summary>Required. The [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-
+            /// format) of a resource of [supported resource types](https://cloud.google.com/asset-inventory/docs
+            /// /supported-asset-types#analyzable_asset_types).</summary>
             [Google.Apis.Util.RequestParameterAttribute("analysisQuery.resourceSelector.fullResourceName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string AnalysisQueryResourceSelectorFullResourceName { get; set; }
 
             /// <summary>Optional. If true, the response will include access analysis from identities to resources via
             /// service account impersonation. This is a very expensive operation, because many derived queries will be
-            /// executed. We highly recommend you use ExportIamPolicyAnalysis rpc instead.
+            /// executed. We highly recommend you use AssetService.ExportIamPolicyAnalysis rpc instead.
             ///
             /// For example, if the request analyzes for which resources user A has permission P, and there's an IAM
             /// policy states user A has iam.serviceAccounts.getAccessToken permission to a service account SA, and
@@ -604,7 +623,13 @@ namespace Google.Apis.CloudAsset.v1p4beta1
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">Required. The relative name of the root asset. Only resources and IAM policies within the
         /// parent will be analyzed. This can only be an organization number (such as "organizations/123") or a folder number
-        /// (such as "folders/123").</param>
+        /// (such as "folders/123").
+        ///
+        /// To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
+        /// organization#retrieving_your_organization_id).
+        ///
+        /// To know how to get folder id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
+        /// folders#viewing_or_listing_folders_and_projects).</param>
         public virtual ExportIamPolicyAnalysisRequest ExportIamPolicyAnalysis(Google.Apis.CloudAsset.v1p4beta1.Data.ExportIamPolicyAnalysisRequest body, string parent)
         {
             return new ExportIamPolicyAnalysisRequest(service, body, parent);
@@ -627,7 +652,13 @@ namespace Google.Apis.CloudAsset.v1p4beta1
 
             /// <summary>Required. The relative name of the root asset. Only resources and IAM policies within the
             /// parent will be analyzed. This can only be an organization number (such as "organizations/123") or a
-            /// folder number (such as "folders/123").</summary>
+            /// folder number (such as "folders/123").
+            ///
+            /// To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs
+            /// /creating-managing-organization#retrieving_your_organization_id).
+            ///
+            /// To know how to get folder id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-
+            /// managing-folders#viewing_or_listing_folders_and_projects).</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -996,7 +1027,8 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("analysisState")]
         public virtual GoogleCloudAssetV1p4beta1AnalysisState AnalysisState { get; set; } 
 
-        /// <summary>The [full resource name](https://aip.dev/122#full-resource-names).</summary>
+        /// <summary>The [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-
+        /// format)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
         public virtual string FullResourceName { get; set; } 
 
@@ -1049,7 +1081,13 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
 
         /// <summary>Required. The relative name of the root asset. Only resources and IAM policies within the parent
         /// will be analyzed. This can only be an organization number (such as "organizations/123") or a folder number
-        /// (such as "folders/123").</summary>
+        /// (such as "folders/123").
+        ///
+        /// To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-
+        /// managing-organization#retrieving_your_organization_id).
+        ///
+        /// To know how to get folder id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-
+        /// managing-folders#viewing_or_listing_folders_and_projects).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 
@@ -1070,7 +1108,8 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessControlLists")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssetV1p4beta1AccessControlList> AccessControlLists { get; set; } 
 
-        /// <summary>The full name of the resource to which the iam_binding policy attaches.</summary>
+        /// <summary>The [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format) of the
+        /// resource to which the iam_binding policy attaches.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachedResourceFullName")]
         public virtual string AttachedResourceFullName { get; set; } 
 
@@ -1097,7 +1136,13 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
     public class IdentitySelector : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The identity appear in the form of members in [IAM policy
-        /// binding](https://cloud.google.com/iam/reference/rest/v1/Binding).</summary>
+        /// binding](https://cloud.google.com/iam/reference/rest/v1/Binding).
+        ///
+        /// The examples of supported forms are: "user:mike@example.com", "group:admins@example.com",
+        /// "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com".
+        ///
+        /// Notice that wildcard characters (such as * and ?) are not supported. You must give a specific
+        /// identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identity")]
         public virtual string Identity { get; set; } 
 
@@ -1210,12 +1255,13 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
     }    
 
     /// <summary>Specifies the resource to analyze for access policies, which may be set directly on the resource, or on
-    /// ancestors such as organizations, folders or projects. At least one of ResourceSelector, IdentitySelector or
-    /// AccessSelector must be specified in a request.</summary>
+    /// ancestors such as organizations, folders or projects. Either ResourceSelector or IdentitySelector must be
+    /// specified in a request.</summary>
     public class ResourceSelector : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The [full resource
-        /// name](https://cloud.google.com/apis/design/resource_names#full_resource_name) .</summary>
+        /// <summary>Required. The [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-
+        /// format) of a resource of [supported resource types](https://cloud.google.com/asset-inventory/docs/supported-
+        /// asset-types#analyzable_asset_types).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
         public virtual string FullResourceName { get; set; } 
 

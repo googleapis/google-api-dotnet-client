@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200601 (1978)
+ *      <tr><th>API Rev<td>20200606 (1983)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -401,7 +401,7 @@ namespace Google.Apis.DLP.v2
             [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string LocationId { get; set; }
 
-            /// <summary>The parent resource name, for example locations/{location_id}.</summary>
+            /// <summary>The parent resource name. - Format:locations/[LOCATION-ID]</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
 
@@ -512,7 +512,7 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>Returns a list of the sensitive information types that the DLP API supports. See
             /// https://cloud.google.com/dlp/docs/infotypes-reference to learn more.</summary>
-            /// <param name="parent">The parent resource name, for example locations/{location_id}.</param>
+            /// <param name="parent">The parent resource name. - Format:locations/[LOCATION-ID]</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -531,7 +531,7 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>The parent resource name, for example locations/{location_id}.</summary>
+                /// <summary>The parent resource name. - Format:locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -662,8 +662,9 @@ namespace Google.Apis.DLP.v2
             /// content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
             /// more.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-            /// id.</param>
+            /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+            /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+            /// ID]/locations/[LOCATION-ID]</param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -684,8 +685,9 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations/my-
-                /// org-id.</summary>
+                /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -866,8 +868,9 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to
             /// learn more.</summary>
-            /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-            /// id.</param>
+            /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+            /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+            /// ID]/locations/[LOCATION-ID]</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -886,8 +889,9 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations/my-
-                /// org-id.</summary>
+                /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1093,8 +1097,9 @@ namespace Google.Apis.DLP.v2
             /// <summary>Creates an InspectTemplate for re-using frequently used configuration for inspecting content,
             /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-            /// id.</param>
+            /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+            /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+            /// ID]/locations/[LOCATION-ID]</param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -1114,8 +1119,9 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations/my-
-                /// org-id.</summary>
+                /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1294,8 +1300,9 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn
             /// more.</summary>
-            /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-            /// id.</param>
+            /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+            /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+            /// ID]/locations/[LOCATION-ID]</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -1314,8 +1321,9 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations/my-
-                /// org-id.</summary>
+                /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1547,8 +1555,9 @@ namespace Google.Apis.DLP.v2
                 /// content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
                 /// more.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-                /// id.</param>
+                /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+                /// ID]/locations/[LOCATION-ID]</param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -1569,8 +1578,9 @@ namespace Google.Apis.DLP.v2
                     }
 
 
-                    /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations
-                    /// /my-org-id.</summary>
+                    /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1751,8 +1761,9 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to
                 /// learn more.</summary>
-                /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-                /// id.</param>
+                /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+                /// ID]/locations/[LOCATION-ID]</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -1771,8 +1782,9 @@ namespace Google.Apis.DLP.v2
                     }
 
 
-                    /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations
-                    /// /my-org-id.</summary>
+                    /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1979,8 +1991,9 @@ namespace Google.Apis.DLP.v2
                 /// content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn
                 /// more.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-                /// id.</param>
+                /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+                /// ID]/locations/[LOCATION-ID]</param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -2001,8 +2014,9 @@ namespace Google.Apis.DLP.v2
                     }
 
 
-                    /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations
-                    /// /my-org-id.</summary>
+                    /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -2181,8 +2195,9 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn
                 /// more.</summary>
-                /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-                /// id.</param>
+                /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+                /// ID]/locations/[LOCATION-ID]</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -2201,8 +2216,9 @@ namespace Google.Apis.DLP.v2
                     }
 
 
-                    /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations
-                    /// /my-org-id.</summary>
+                    /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -2407,8 +2423,9 @@ namespace Google.Apis.DLP.v2
                 /// <summary>Creates a pre-built stored infoType to be used for inspection. See
                 /// https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-                /// id.</param>
+                /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+                /// ID]/locations/[LOCATION-ID]</param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -2428,8 +2445,9 @@ namespace Google.Apis.DLP.v2
                     }
 
 
-                    /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations
-                    /// /my-org-id.</summary>
+                    /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -2608,8 +2626,9 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
                 /// learn more.</summary>
-                /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-                /// id.</param>
+                /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+                /// ID]/locations/[LOCATION-ID]</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -2628,8 +2647,9 @@ namespace Google.Apis.DLP.v2
                     }
 
 
-                    /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations
-                    /// /my-org-id.</summary>
+                    /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -2837,8 +2857,9 @@ namespace Google.Apis.DLP.v2
             /// <summary>Creates a pre-built stored infoType to be used for inspection. See
             /// https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-            /// id.</param>
+            /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+            /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+            /// ID]/locations/[LOCATION-ID]</param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -2858,8 +2879,9 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations/my-
-                /// org-id.</summary>
+                /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -3038,8 +3060,9 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
             /// learn more.</summary>
-            /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-            /// id.</param>
+            /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+            /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+            /// ID]/locations/[LOCATION-ID]</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -3058,8 +3081,9 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations/my-
-                /// org-id.</summary>
+                /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -3295,7 +3319,8 @@ namespace Google.Apis.DLP.v2
             /// what detectors to run. By default this may be all types, but may change over time as detectors are
             /// updated.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The parent resource name, for example projects/my-project-id.</param>
+            /// <param name="parent">Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-ID]/locations
+            /// /[LOCATION-ID]</param>
             public virtual DeidentifyRequest Deidentify(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyContentRequest body, string parent)
             {
                 return new DeidentifyRequest(service, body, parent);
@@ -3319,7 +3344,8 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>The parent resource name, for example projects/my-project-id.</summary>
+                /// <summary>Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+                /// ID]/locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -3376,7 +3402,8 @@ namespace Google.Apis.DLP.v2
             /// For how to guides, see https://cloud.google.com/dlp/docs/inspecting-images and
             /// https://cloud.google.com/dlp/docs/inspecting-text,</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The parent resource name, for example projects/my-project-id.</param>
+            /// <param name="parent">Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-ID]/locations
+            /// /[LOCATION-ID]</param>
             public virtual InspectRequest Inspect(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectContentRequest body, string parent)
             {
                 return new InspectRequest(service, body, parent);
@@ -3403,7 +3430,8 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>The parent resource name, for example projects/my-project-id.</summary>
+                /// <summary>Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+                /// ID]/locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -3454,7 +3482,8 @@ namespace Google.Apis.DLP.v2
             /// https://cloud.google.com/dlp/docs/pseudonymization#re-identification_in_free_text_code_example to learn
             /// more.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent resource name.</param>
+            /// <param name="parent">Required. The parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+            /// ID]/locations/[LOCATION-ID]</param>
             public virtual ReidentifyRequest Reidentify(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ReidentifyContentRequest body, string parent)
             {
                 return new ReidentifyRequest(service, body, parent);
@@ -3475,7 +3504,8 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>Required. The parent resource name.</summary>
+                /// <summary>Required. The parent resource name. - Format:projects/[PROJECT-ID] - Format:projects
+                /// /[PROJECT-ID]/locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -3550,8 +3580,9 @@ namespace Google.Apis.DLP.v2
             /// content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
             /// more.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-            /// id.</param>
+            /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+            /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+            /// ID]/locations/[LOCATION-ID]</param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -3572,8 +3603,9 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations/my-
-                /// org-id.</summary>
+                /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -3754,8 +3786,9 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to
             /// learn more.</summary>
-            /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-            /// id.</param>
+            /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+            /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+            /// ID]/locations/[LOCATION-ID]</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -3774,8 +3807,9 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations/my-
-                /// org-id.</summary>
+                /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -4058,7 +4092,8 @@ namespace Google.Apis.DLP.v2
             /// what detectors to run. By default this may be all types, but may change over time as detectors are
             /// updated.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent resource name, for example projects/my-project-id.</param>
+            /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+            /// ID]/locations/[LOCATION-ID]</param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDlpJobRequest body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -4083,7 +4118,8 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>Required. The parent resource name, for example projects/my-project-id.</summary>
+                /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+                /// ID]/locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -4259,7 +4295,8 @@ namespace Google.Apis.DLP.v2
             /// <summary>Lists DlpJobs that match the specified filter in the request. See
             /// https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-
             /// analysis to learn more.</summary>
-            /// <param name="parent">Required. The parent resource name, for example projects/my-project-id.</param>
+            /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+            /// ID]/locations/[LOCATION-ID]</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -4279,7 +4316,8 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>Required. The parent resource name, for example projects/my-project-id.</summary>
+                /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+                /// ID]/locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -4470,7 +4508,8 @@ namespace Google.Apis.DLP.v2
             /// what detectors to run. By default this may be all types, but may change over time as detectors are
             /// updated.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The parent resource name, for example projects/my-project-id.</param>
+            /// <param name="parent">The parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+            /// ID]/locations/[LOCATION-ID]</param>
             public virtual RedactRequest Redact(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2RedactImageRequest body, string parent)
             {
                 return new RedactRequest(service, body, parent);
@@ -4495,7 +4534,8 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>The parent resource name, for example projects/my-project-id.</summary>
+                /// <summary>The parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+                /// ID]/locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -4569,8 +4609,9 @@ namespace Google.Apis.DLP.v2
             /// <summary>Creates an InspectTemplate for re-using frequently used configuration for inspecting content,
             /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-            /// id.</param>
+            /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+            /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+            /// ID]/locations/[LOCATION-ID]</param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -4590,8 +4631,9 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations/my-
-                /// org-id.</summary>
+                /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -4770,8 +4812,9 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn
             /// more.</summary>
-            /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-            /// id.</param>
+            /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+            /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+            /// ID]/locations/[LOCATION-ID]</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -4790,8 +4833,9 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations/my-
-                /// org-id.</summary>
+                /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -5068,7 +5112,8 @@ namespace Google.Apis.DLP.v2
             /// <summary>Creates a job trigger to run DLP actions such as scanning storage for sensitive information on
             /// a set schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent resource name, for example projects/my-project-id.</param>
+            /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+            /// ID]/locations/[LOCATION-ID]</param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateJobTriggerRequest body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -5088,7 +5133,8 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>Required. The parent resource name, for example projects/my-project-id.</summary>
+                /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+                /// ID]/locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -5265,7 +5311,8 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>Lists job triggers. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn
             /// more.</summary>
-            /// <param name="parent">Required. The parent resource name, for example `projects/my-project-id`.</param>
+            /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+            /// ID]/locations/[LOCATION-ID]</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -5284,7 +5331,8 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>Required. The parent resource name, for example `projects/my-project-id`.</summary>
+                /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+                /// ID]/locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -5554,7 +5602,8 @@ namespace Google.Apis.DLP.v2
                 /// choose what detectors to run. By default this may be all types, but may change over time as
                 /// detectors are updated.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The parent resource name, for example projects/my-project-id.</param>
+                /// <param name="parent">Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-ID]/locations
+                /// /[LOCATION-ID]</param>
                 public virtual DeidentifyRequest Deidentify(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyContentRequest body, string parent)
                 {
                     return new DeidentifyRequest(service, body, parent);
@@ -5579,7 +5628,8 @@ namespace Google.Apis.DLP.v2
                     }
 
 
-                    /// <summary>The parent resource name, for example projects/my-project-id.</summary>
+                    /// <summary>Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+                    /// ID]/locations/[LOCATION-ID]</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -5636,7 +5686,8 @@ namespace Google.Apis.DLP.v2
                 /// For how to guides, see https://cloud.google.com/dlp/docs/inspecting-images and
                 /// https://cloud.google.com/dlp/docs/inspecting-text,</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The parent resource name, for example projects/my-project-id.</param>
+                /// <param name="parent">Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-ID]/locations
+                /// /[LOCATION-ID]</param>
                 public virtual InspectRequest Inspect(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectContentRequest body, string parent)
                 {
                     return new InspectRequest(service, body, parent);
@@ -5663,7 +5714,8 @@ namespace Google.Apis.DLP.v2
                     }
 
 
-                    /// <summary>The parent resource name, for example projects/my-project-id.</summary>
+                    /// <summary>Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+                    /// ID]/locations/[LOCATION-ID]</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -5714,7 +5766,8 @@ namespace Google.Apis.DLP.v2
                 /// https://cloud.google.com/dlp/docs/pseudonymization#re-identification_in_free_text_code_example to
                 /// learn more.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent resource name.</param>
+                /// <param name="parent">Required. The parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+                /// ID]/locations/[LOCATION-ID]</param>
                 public virtual ReidentifyRequest Reidentify(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ReidentifyContentRequest body, string parent)
                 {
                     return new ReidentifyRequest(service, body, parent);
@@ -5735,7 +5788,8 @@ namespace Google.Apis.DLP.v2
                     }
 
 
-                    /// <summary>Required. The parent resource name.</summary>
+                    /// <summary>Required. The parent resource name. - Format:projects/[PROJECT-ID] - Format:projects
+                    /// /[PROJECT-ID]/locations/[LOCATION-ID]</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -5810,8 +5864,9 @@ namespace Google.Apis.DLP.v2
                 /// content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
                 /// more.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-                /// id.</param>
+                /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+                /// ID]/locations/[LOCATION-ID]</param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -5832,8 +5887,9 @@ namespace Google.Apis.DLP.v2
                     }
 
 
-                    /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations
-                    /// /my-org-id.</summary>
+                    /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -6014,8 +6070,9 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to
                 /// learn more.</summary>
-                /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-                /// id.</param>
+                /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+                /// ID]/locations/[LOCATION-ID]</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -6034,8 +6091,9 @@ namespace Google.Apis.DLP.v2
                     }
 
 
-                    /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations
-                    /// /my-org-id.</summary>
+                    /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -6320,7 +6378,8 @@ namespace Google.Apis.DLP.v2
                 /// choose what detectors to run. By default this may be all types, but may change over time as
                 /// detectors are updated.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent resource name, for example projects/my-project-id.</param>
+                /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+                /// ID]/locations/[LOCATION-ID]</param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDlpJobRequest body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -6345,7 +6404,8 @@ namespace Google.Apis.DLP.v2
                     }
 
 
-                    /// <summary>Required. The parent resource name, for example projects/my-project-id.</summary>
+                    /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects
+                    /// /[PROJECT-ID]/locations/[LOCATION-ID]</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -6675,7 +6735,8 @@ namespace Google.Apis.DLP.v2
                 /// <summary>Lists DlpJobs that match the specified filter in the request. See
                 /// https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-
                 /// risk-analysis to learn more.</summary>
-                /// <param name="parent">Required. The parent resource name, for example projects/my-project-id.</param>
+                /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+                /// ID]/locations/[LOCATION-ID]</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -6695,7 +6756,8 @@ namespace Google.Apis.DLP.v2
                     }
 
 
-                    /// <summary>Required. The parent resource name, for example projects/my-project-id.</summary>
+                    /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects
+                    /// /[PROJECT-ID]/locations/[LOCATION-ID]</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -6886,7 +6948,8 @@ namespace Google.Apis.DLP.v2
                 /// choose what detectors to run. By default this may be all types, but may change over time as
                 /// detectors are updated.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The parent resource name, for example projects/my-project-id.</param>
+                /// <param name="parent">The parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+                /// ID]/locations/[LOCATION-ID]</param>
                 public virtual RedactRequest Redact(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2RedactImageRequest body, string parent)
                 {
                     return new RedactRequest(service, body, parent);
@@ -6911,7 +6974,8 @@ namespace Google.Apis.DLP.v2
                     }
 
 
-                    /// <summary>The parent resource name, for example projects/my-project-id.</summary>
+                    /// <summary>The parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+                    /// ID]/locations/[LOCATION-ID]</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -6986,8 +7050,9 @@ namespace Google.Apis.DLP.v2
                 /// content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn
                 /// more.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-                /// id.</param>
+                /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+                /// ID]/locations/[LOCATION-ID]</param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -7008,8 +7073,9 @@ namespace Google.Apis.DLP.v2
                     }
 
 
-                    /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations
-                    /// /my-org-id.</summary>
+                    /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -7188,8 +7254,9 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn
                 /// more.</summary>
-                /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-                /// id.</param>
+                /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+                /// ID]/locations/[LOCATION-ID]</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -7208,8 +7275,9 @@ namespace Google.Apis.DLP.v2
                     }
 
 
-                    /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations
-                    /// /my-org-id.</summary>
+                    /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -7487,7 +7555,8 @@ namespace Google.Apis.DLP.v2
                 /// on a set schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn
                 /// more.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent resource name, for example projects/my-project-id.</param>
+                /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+                /// ID]/locations/[LOCATION-ID]</param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateJobTriggerRequest body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -7508,7 +7577,8 @@ namespace Google.Apis.DLP.v2
                     }
 
 
-                    /// <summary>Required. The parent resource name, for example projects/my-project-id.</summary>
+                    /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects
+                    /// /[PROJECT-ID]/locations/[LOCATION-ID]</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -7761,7 +7831,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Lists job triggers. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn
                 /// more.</summary>
-                /// <param name="parent">Required. The parent resource name, for example `projects/my-project-id`.</param>
+                /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
+                /// ID]/locations/[LOCATION-ID]</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -7780,7 +7851,8 @@ namespace Google.Apis.DLP.v2
                     }
 
 
-                    /// <summary>Required. The parent resource name, for example `projects/my-project-id`.</summary>
+                    /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects
+                    /// /[PROJECT-ID]/locations/[LOCATION-ID]</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -8015,8 +8087,9 @@ namespace Google.Apis.DLP.v2
                 /// <summary>Creates a pre-built stored infoType to be used for inspection. See
                 /// https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-                /// id.</param>
+                /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+                /// ID]/locations/[LOCATION-ID]</param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -8036,8 +8109,9 @@ namespace Google.Apis.DLP.v2
                     }
 
 
-                    /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations
-                    /// /my-org-id.</summary>
+                    /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -8216,8 +8290,9 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
                 /// learn more.</summary>
-                /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-                /// id.</param>
+                /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+                /// ID]/locations/[LOCATION-ID]</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -8236,8 +8311,9 @@ namespace Google.Apis.DLP.v2
                     }
 
 
-                    /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations
-                    /// /my-org-id.</summary>
+                    /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                    /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -8445,8 +8521,9 @@ namespace Google.Apis.DLP.v2
             /// <summary>Creates a pre-built stored infoType to be used for inspection. See
             /// https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-            /// id.</param>
+            /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+            /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+            /// ID]/locations/[LOCATION-ID]</param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -8466,8 +8543,9 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations/my-
-                /// org-id.</summary>
+                /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -8646,8 +8724,9 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
             /// learn more.</summary>
-            /// <param name="parent">Required. The parent resource name, for example projects/my-project-id or organizations/my-org-
-            /// id.</param>
+            /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+            /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations/[ORGANIZATION-
+            /// ID]/locations/[LOCATION-ID]</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -8666,8 +8745,9 @@ namespace Google.Apis.DLP.v2
                 }
 
 
-                /// <summary>Required. The parent resource name, for example projects/my-project-id or organizations/my-
-                /// org-id.</summary>
+                /// <summary>Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:organizations
+                /// /[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID] - Format:organizations
+                /// /[ORGANIZATION-ID]/locations/[LOCATION-ID]</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -9776,8 +9856,8 @@ namespace Google.Apis.DLP.v2.Data
         /// replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc'
         ///
         /// This annotation identifies the surrogate when inspecting content using the custom infoType
-        /// [`SurrogateType`](/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the
-        /// surrogate when it occurs in free text.
+        /// [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This
+        /// facilitates reversal of the surrogate when it occurs in free text.
         ///
         /// In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in
         /// your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier.
@@ -11812,7 +11892,8 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>Publish a message into given Pub/Sub topic when DlpJob has completed. The message contains a single
     /// field, `DlpJobName`, which is equal to the finished job's
-    /// [`DlpJob.name`](/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk</summary>
+    /// [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with:
+    /// Inspect, Risk</summary>
     public class GooglePrivacyDlpV2PublishToPubSub : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Cloud Pub/Sub topic to send notifications to. The topic must have given publishing access rights to
@@ -12444,10 +12525,10 @@ namespace Google.Apis.DLP.v2.Data
     }    
 
     /// <summary>Message for detecting output from deidentification transformations such as [`CryptoReplaceFfxFpeConfig`
-    /// ](/dlp/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig). These types of
-    /// transformations are those that perform pseudonymization, thereby producing a "surrogate" as output. This should
-    /// be used in conjunction with a field on the transformation such as `surrogate_info_type`. This CustomInfoType
-    /// does not support the use of `detection_rules`.</summary>
+    /// ](https://cloud.google.com/dlp/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfi
+    /// g). These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as
+    /// output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`.
+    /// This CustomInfoType does not support the use of `detection_rules`.</summary>
     public class GooglePrivacyDlpV2SurrogateType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>

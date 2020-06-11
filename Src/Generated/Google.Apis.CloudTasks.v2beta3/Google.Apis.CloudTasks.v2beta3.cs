@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta3
- *      <tr><th>API Rev<td>20200513 (1959)
+ *      <tr><th>API Rev<td>20200529 (1975)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tasks/'>
  *              https://cloud.google.com/tasks/</a>
@@ -2853,6 +2853,13 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         /// to change `state`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
+
+        /// <summary>Immutable. The type of a queue (push or pull).
+        ///
+        /// `Queue.type` is an immutable property of the queue that is set at the queue creation time. When left
+        /// unspecified, the default value of `PUSH` is selected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200518 (1964)
+ *      <tr><th>API Rev<td>20200602 (1979)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -669,10 +669,122 @@ namespace Google.Apis.CloudVideoIntelligence.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                corpura = new CorpuraResource(service);
                 operations = new OperationsResource(service);
 
             }
 
+            private readonly CorpuraResource corpura;
+
+            /// <summary>Gets the Corpura resource.</summary>
+            public virtual CorpuraResource Corpura
+            {
+                get { return corpura; }
+            }
+
+            /// <summary>The "corpura" collection of methods.</summary>
+            public class CorpuraResource
+            {
+                private const string Resource = "corpura";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CorpuraResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    operations = new OperationsResource(service);
+
+                }
+
+                private readonly OperationsResource operations;
+
+                /// <summary>Gets the Operations resource.</summary>
+                public virtual OperationsResource Operations
+                {
+                    get { return operations; }
+                }
+
+                /// <summary>The "operations" collection of methods.</summary>
+                public class OperationsResource
+                {
+                    private const string Resource = "operations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OperationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll
+                    /// the operation result at intervals as recommended by the API service.</summary>
+                    /// <param name="name">The name of the operation resource.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll
+                    /// the operation result at intervals as recommended by the API service.</summary>
+                    public class GetRequest : CloudVideoIntelligenceBaseServiceRequest<Google.Apis.CloudVideoIntelligence.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The name of the operation resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "get"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/corpura/[^/]+/operations/[^/]+$",
+                                });
+                        }
+
+                    }
+                }
+            }
             private readonly OperationsResource operations;
 
             /// <summary>Gets the Operations resource.</summary>
@@ -4269,8 +4381,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotationResults")]
         public virtual GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults AnnotationResults { get; set; } 
 
-        /// <summary>Google Cloud Storage(GCS) URI that stores annotation results of one streaming session in JSON
-        /// format. It is the annotation_result_storage_directory from the request followed by '/cloud_project_number-
+        /// <summary>Google Cloud Storage URI that stores annotation results of one streaming session in JSON format. It
+        /// is the annotation_result_storage_directory from the request followed by '/cloud_project_number-
         /// session_id'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotationResultsUri")]
         public virtual string AnnotationResultsUri { get; set; } 

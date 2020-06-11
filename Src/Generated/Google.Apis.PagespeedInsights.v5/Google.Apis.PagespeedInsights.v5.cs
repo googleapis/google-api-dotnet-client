@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/speed/docs/insights/v5/about'>PageSpeed Insights API</a>
  *      <tr><th>API Version<td>v5
- *      <tr><th>API Rev<td>20200520 (1966)
+ *      <tr><th>API Rev<td>20200608 (1985)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/speed/docs/insights/v5/about'>
  *              https://developers.google.com/speed/docs/insights/v5/about</a>
@@ -815,6 +815,10 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         /// <summary>The map of .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IDictionary<string,UserPageLoadMetricV5> Metrics { get; set; } 
+
+        /// <summary>True if the result is an origin fallback from a page, false otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("origin_fallback")]
+        public virtual System.Nullable<bool> OriginFallback { get; set; } 
 
         /// <summary>The human readable speed "category" of the id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overall_category")]

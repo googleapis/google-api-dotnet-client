@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/'>Cloud OS Config API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20200509 (1955)
+ *      <tr><th>API Rev<td>20200601 (1978)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/'>
  *              https://cloud.google.com/</a>
@@ -1906,7 +1906,7 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A request message to initiate patching across Google Compute Engine instances.</summary>
+    /// <summary>A request message to initiate patching across Compute Engine instances.</summary>
     public class ExecutePatchJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Description of the patch job. Length of the description is limited to 1024 characters.</summary>
@@ -2345,7 +2345,7 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
     /// app=web".</summary>
     public class PatchInstanceFilterGroupLabel : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Google Compute Engine instance labels that must be present for a VM instance to be targeted by this
+        /// <summary>Compute Engine instance labels that must be present for a VM instance to be targeted by this
         /// filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
@@ -2356,8 +2356,8 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
 
     /// <summary>A high level representation of a patch job that is either in progress or has completed.
     ///
-    /// Instances details are not included in the job. To paginate through instance details, use
-    /// ListPatchJobInstanceDetails.
+    /// Instance details are not included in the job. To paginate through instance details, use
+    /// `ListPatchJobInstanceDetails`.
     ///
     /// For more information about patch jobs, see [Creating patch jobs](https://cloud.google.com/compute/docs/os-patch-
     /// management/create-patch-job).</summary>
@@ -2413,7 +2413,7 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("percentComplete")]
         public virtual System.Nullable<double> PercentComplete { get; set; } 
 
-        /// <summary>The current state of the PatchJob .</summary>
+        /// <summary>The current state of the PatchJob.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/'>Cloud OS Config API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200509 (1955)
+ *      <tr><th>API Rev<td>20200601 (1978)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/'>
  *              https://cloud.google.com/</a>
@@ -1488,7 +1488,7 @@ namespace Google.Apis.SystemsManagement.v1.Data
 
     /// <summary>A high level representation of a patch job that is either in progress or has completed.
     ///
-    /// Instances details are not included in the job. To paginate through instance details, use
+    /// Instance details are not included in the job. To paginate through instance details, use
     /// ListPatchJobInstanceDetails.
     ///
     /// For more information about patch jobs, see [Creating patch jobs](https://cloud.google.com/compute/docs/os-patch-
@@ -1545,7 +1545,7 @@ namespace Google.Apis.SystemsManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("percentComplete")]
         public virtual System.Nullable<double> PercentComplete { get; set; } 
 
-        /// <summary>The current state of the PatchJob .</summary>
+        /// <summary>The current state of the PatchJob.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 

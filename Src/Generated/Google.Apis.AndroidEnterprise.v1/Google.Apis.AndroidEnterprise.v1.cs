@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200527 (1973)
+ *      <tr><th>API Rev<td>20200606 (1983)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -98,16 +98,16 @@ namespace Google.Apis.AndroidEnterprise.v1
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://www.googleapis.com/androidenterprise/v1/"; }
+            get { return BaseUriOverride ?? "https://www.googleapis.com/"; }
         #else
-            get { return "https://www.googleapis.com/androidenterprise/v1/"; }
+            get { return "https://www.googleapis.com/"; }
         #endif
         }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath
         {
-            get { return "androidenterprise/v1/"; }
+            get { return ""; }
         }
 
         #if !NET40
@@ -280,18 +280,47 @@ namespace Google.Apis.AndroidEnterprise.v1
         {
         }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>V1 error format.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
+
+        /// <summary>OAuth access token.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>Data format for response.</summary>
         public enum AltEnum
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
         }
+
+        /// <summary>JSONP</summary>
+        [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string Callback { get; set; }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -311,14 +340,18 @@ namespace Google.Apis.AndroidEnterprise.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-        /// characters.</summary>
+        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
+        /// assigned to a user, but should not exceed 40 characters.</summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
-        /// <summary>Deprecated. Please use quotaUser instead.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string UserIp { get; set; }
+        /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadType { get; set; }
+
+        /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadProtocol { get; set; }
 
         /// <summary>Initializes AndroidEnterprise parameter list.</summary>
         protected override void InitParameters()
@@ -326,12 +359,39 @@ namespace Google.Apis.AndroidEnterprise.v1
             base.InitParameters();
 
             RequestParameters.Add(
+                "$.xgafv", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "$.xgafv",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "access_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "access_token",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
                 "alt", new Google.Apis.Discovery.Parameter
                 {
                     Name = "alt",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "json",
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "callback", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "callback",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
             RequestParameters.Add(
@@ -380,9 +440,18 @@ namespace Google.Apis.AndroidEnterprise.v1
                     Pattern = null,
                 });
             RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
+                "uploadType", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "userIp",
+                    Name = "uploadType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "upload_protocol", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "upload_protocol",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -408,7 +477,8 @@ namespace Google.Apis.AndroidEnterprise.v1
 
 
         /// <summary>Uploads a report containing any changes in app states on the device since the last report was
-        /// generated. You can call this method up to 3 times every 24 hours for a given device.</summary>
+        /// generated. You can call this method up to 3 times every 24 hours for a given device. If you exceed the
+        /// quota, then the Google Play EMM API returns HTTP 429 Too Many Requests.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="userId">The ID of the
         /// user.</param>
@@ -419,7 +489,8 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
         /// <summary>Uploads a report containing any changes in app states on the device since the last report was
-        /// generated. You can call this method up to 3 times every 24 hours for a given device.</summary>
+        /// generated. You can call this method up to 3 times every 24 hours for a given device. If you exceed the
+        /// quota, then the Google Play EMM API returns HTTP 429 Too Many Requests.</summary>
         public class ForceReportUploadRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ForceReportUpload request.</summary>
@@ -461,7 +532,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/forceReportUpload"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/forceReportUpload"; }
             }
 
             /// <summary>Initializes ForceReportUpload parameter list.</summary>
@@ -552,7 +623,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -649,7 +720,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state"; }
             }
 
             /// <summary>Initializes GetState parameter list.</summary>
@@ -734,7 +805,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/devices"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -830,7 +901,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state"; }
             }
 
             /// <summary>Initializes SetState parameter list.</summary>
@@ -910,7 +981,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Mask that identifies which fields to update. If not set, all modifiable fields will be
             /// modified.
             ///
-            /// When set in a query parameter, this field should be specified as updateMask=,,...</summary>
+            /// When set in a query parameter, this field should be specified as updateMask=field1,field2,...</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UpdateMask { get; set; }
 
@@ -936,7 +1007,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}"; }
             }
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -1041,7 +1112,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/acknowledgeNotificationSet"; }
+                get { return "androidenterprise/v1/enterprises/acknowledgeNotificationSet"; }
             }
 
             /// <summary>Initializes AcknowledgeNotificationSet parameter list.</summary>
@@ -1105,7 +1176,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/completeSignup"; }
+                get { return "androidenterprise/v1/enterprises/completeSignup"; }
             }
 
             /// <summary>Initializes CompleteSignup parameter list.</summary>
@@ -1186,7 +1257,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/createWebToken"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/createWebToken"; }
             }
 
             /// <summary>Initializes CreateWebToken parameter list.</summary>
@@ -1209,7 +1280,7 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Enrolls an enterprise with the calling EMM.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="token">The token provided by the enterprise to register the EMM.</param>
+        /// <param name="token">Required. The token provided by the enterprise to register the EMM.</param>
         public virtual EnrollRequest Enroll(Google.Apis.AndroidEnterprise.v1.Data.Enterprise body, string token)
         {
             return new EnrollRequest(service, body, token);
@@ -1228,7 +1299,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
 
 
-            /// <summary>The token provided by the enterprise to register the EMM.</summary>
+            /// <summary>Required. The token provided by the enterprise to register the EMM.</summary>
             [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Token { get; private set; }
 
@@ -1254,7 +1325,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/enroll"; }
+                get { return "androidenterprise/v1/enterprises/enroll"; }
             }
 
             /// <summary>Initializes Enroll parameter list.</summary>
@@ -1317,7 +1388,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/signupUrl"; }
+                get { return "androidenterprise/v1/enterprises/signupUrl"; }
             }
 
             /// <summary>Initializes GenerateSignupUrl parameter list.</summary>
@@ -1377,7 +1448,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1450,10 +1521,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>The type of credential to return with the service account. Required.</summary>
             public enum KeyTypeEnum
             {
-                [Google.Apis.Util.StringValueAttribute("googleCredentials")]
-                GoogleCredentials,
-                [Google.Apis.Util.StringValueAttribute("pkcs12")]
-                Pkcs12,
+                [Google.Apis.Util.StringValueAttribute("GOOGLE_CREDENTIALS")]
+                GOOGLECREDENTIALS,
+                [Google.Apis.Util.StringValueAttribute("PKCS12")]
+                PKCS12,
             }
 
 
@@ -1472,7 +1543,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/serviceAccount"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccount"; }
             }
 
             /// <summary>Initializes GetServiceAccount parameter list.</summary>
@@ -1543,7 +1614,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/storeLayout"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout"; }
             }
 
             /// <summary>Initializes GetStoreLayout parameter list.</summary>
@@ -1565,19 +1636,19 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
         /// <summary>Looks up an enterprise by domain name. This is only supported for enterprises created via the
-        /// Google-initiated creation flow. Lookup of the id is not needed for enterprises created via the EMM-initiated
-        /// flow since the EMM learns the enterprise ID in the callback specified in the Enterprises.generateSignupUrl
-        /// call.</summary>
-        /// <param name="domain">The exact primary domain name of the enterprise to look up.</param>
+        /// Google-initiated creation flow.  Lookup of the id is not needed for enterprises created via the EMM-
+        /// initiated flow since the EMM learns the enterprise ID in the callback specified in the
+        /// Enterprises.generateSignupUrl call.</summary>
+        /// <param name="domain">Required. The exact primary domain name of the enterprise to look up.</param>
         public virtual ListRequest List(string domain)
         {
             return new ListRequest(service, domain);
         }
 
         /// <summary>Looks up an enterprise by domain name. This is only supported for enterprises created via the
-        /// Google-initiated creation flow. Lookup of the id is not needed for enterprises created via the EMM-initiated
-        /// flow since the EMM learns the enterprise ID in the callback specified in the Enterprises.generateSignupUrl
-        /// call.</summary>
+        /// Google-initiated creation flow.  Lookup of the id is not needed for enterprises created via the EMM-
+        /// initiated flow since the EMM learns the enterprise ID in the callback specified in the
+        /// Enterprises.generateSignupUrl call.</summary>
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.EnterprisesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1589,7 +1660,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
 
 
-            /// <summary>The exact primary domain name of the enterprise to look up.</summary>
+            /// <summary>Required. The exact primary domain name of the enterprise to look up.</summary>
             [Google.Apis.Util.RequestParameterAttribute("domain", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Domain { get; private set; }
 
@@ -1609,7 +1680,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises"; }
+                get { return "androidenterprise/v1/enterprises"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1631,30 +1702,40 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
         /// <summary>Pulls and returns a notification set for the enterprises associated with the service account
-        /// authenticated for the request. The notification set may be empty if no notification are pending. A
-        /// notification set returned needs to be acknowledged within 20 seconds by calling
-        /// Enterprises.AcknowledgeNotificationSet, unless the notification set is empty. Notifications that are not
-        /// acknowledged within the 20 seconds will eventually be included again in the response to another
-        /// PullNotificationSet request, and those that are never acknowledged will ultimately be deleted according to
-        /// the Google Cloud Platform Pub/Sub system policy. Multiple requests might be performed concurrently to
-        /// retrieve notifications, in which case the pending notifications (if any) will be split among each caller, if
-        /// any are pending. If no notifications are present, an empty notification list is returned. Subsequent
-        /// requests may return more notifications once they become available.</summary>
+        /// authenticated for the request. The notification set may be empty if no notification are pending.
+        ///
+        /// A notification set returned needs to be acknowledged within 20 seconds by calling
+        /// Enterprises.AcknowledgeNotificationSet, unless the notification set is empty.
+        ///
+        /// Notifications that are not acknowledged within the 20 seconds will eventually be included again in the
+        /// response to another PullNotificationSet request, and those that are never acknowledged will ultimately be
+        /// deleted according to the Google Cloud Platform Pub/Sub system policy.
+        ///
+        /// Multiple requests might be performed concurrently to retrieve notifications, in which case the pending
+        /// notifications (if any) will be split among each caller, if any are pending.
+        ///
+        /// If no notifications are present, an empty notification list is returned. Subsequent requests may return more
+        /// notifications once they become available.</summary>
         public virtual PullNotificationSetRequest PullNotificationSet()
         {
             return new PullNotificationSetRequest(service);
         }
 
         /// <summary>Pulls and returns a notification set for the enterprises associated with the service account
-        /// authenticated for the request. The notification set may be empty if no notification are pending. A
-        /// notification set returned needs to be acknowledged within 20 seconds by calling
-        /// Enterprises.AcknowledgeNotificationSet, unless the notification set is empty. Notifications that are not
-        /// acknowledged within the 20 seconds will eventually be included again in the response to another
-        /// PullNotificationSet request, and those that are never acknowledged will ultimately be deleted according to
-        /// the Google Cloud Platform Pub/Sub system policy. Multiple requests might be performed concurrently to
-        /// retrieve notifications, in which case the pending notifications (if any) will be split among each caller, if
-        /// any are pending. If no notifications are present, an empty notification list is returned. Subsequent
-        /// requests may return more notifications once they become available.</summary>
+        /// authenticated for the request. The notification set may be empty if no notification are pending.
+        ///
+        /// A notification set returned needs to be acknowledged within 20 seconds by calling
+        /// Enterprises.AcknowledgeNotificationSet, unless the notification set is empty.
+        ///
+        /// Notifications that are not acknowledged within the 20 seconds will eventually be included again in the
+        /// response to another PullNotificationSet request, and those that are never acknowledged will ultimately be
+        /// deleted according to the Google Cloud Platform Pub/Sub system policy.
+        ///
+        /// Multiple requests might be performed concurrently to retrieve notifications, in which case the pending
+        /// notifications (if any) will be split among each caller, if any are pending.
+        ///
+        /// If no notifications are present, an empty notification list is returned. Subsequent requests may return more
+        /// notifications once they become available.</summary>
         public class PullNotificationSetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.NotificationSet>
         {
             /// <summary>Constructs a new PullNotificationSet request.</summary>
@@ -1665,25 +1746,33 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
 
 
-            /// <summary>The request mode for pulling notifications. Specifying waitForNotifications will cause the
-            /// request to block and wait until one or more notifications are present, or return an empty notification
-            /// list if no notifications are present after some time. Speciying returnImmediately will cause the request
-            /// to immediately return the pending notifications, or an empty list if no notifications are present. If
-            /// omitted, defaults to waitForNotifications.</summary>
+            /// <summary>The request mode for pulling notifications.
+            ///
+            /// Specifying waitForNotifications will cause the request to block and wait until one or more notifications
+            /// are present, or return an empty notification list if no notifications are present after some time.
+            ///
+            /// Speciying returnImmediately will cause the request to immediately return the pending notifications, or
+            /// an empty list if no notifications are present.
+            ///
+            /// If omitted, defaults to waitForNotifications.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<RequestModeEnum> RequestMode { get; set; }
 
-            /// <summary>The request mode for pulling notifications. Specifying waitForNotifications will cause the
-            /// request to block and wait until one or more notifications are present, or return an empty notification
-            /// list if no notifications are present after some time. Speciying returnImmediately will cause the request
-            /// to immediately return the pending notifications, or an empty list if no notifications are present. If
-            /// omitted, defaults to waitForNotifications.</summary>
+            /// <summary>The request mode for pulling notifications.
+            ///
+            /// Specifying waitForNotifications will cause the request to block and wait until one or more notifications
+            /// are present, or return an empty notification list if no notifications are present after some time.
+            ///
+            /// Speciying returnImmediately will cause the request to immediately return the pending notifications, or
+            /// an empty list if no notifications are present.
+            ///
+            /// If omitted, defaults to waitForNotifications.</summary>
             public enum RequestModeEnum
             {
-                [Google.Apis.Util.StringValueAttribute("returnImmediately")]
-                ReturnImmediately,
-                [Google.Apis.Util.StringValueAttribute("waitForNotifications")]
-                WaitForNotifications,
+                [Google.Apis.Util.StringValueAttribute("WAIT_FOR_NOTIFICATIONS")]
+                WAITFORNOTIFICATIONS,
+                [Google.Apis.Util.StringValueAttribute("RETURN_IMMEDIATELY")]
+                RETURNIMMEDIATELY,
             }
 
 
@@ -1702,7 +1791,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/pullNotificationSet"; }
+                get { return "androidenterprise/v1/enterprises/pullNotificationSet"; }
             }
 
             /// <summary>Initializes PullNotificationSet parameter list.</summary>
@@ -1764,7 +1853,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/sendTestPushNotification"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/sendTestPushNotification"; }
             }
 
             /// <summary>Initializes SendTestPushNotification parameter list.</summary>
@@ -1832,7 +1921,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/account"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/account"; }
             }
 
             /// <summary>Initializes SetAccount parameter list.</summary>
@@ -1855,9 +1944,11 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Sets the store layout for the enterprise. By default, storeLayoutType is set to "basic" and the
         /// basic store layout is enabled. The basic layout only contains apps approved by the admin, and that have been
-        /// added to the available product set for a user (using the  setAvailableProductSet call). Apps on the page are
-        /// sorted in order of their product ID value. If you create a custom store layout (by setting storeLayoutType =
-        /// "custom" and setting a homepage), the basic store layout is disabled.</summary>
+        /// added to the available product set for a user (using the
+        ///
+        /// setAvailableProductSet call). Apps on the page are sorted in order of their product ID value. If you create
+        /// a custom store layout (by setting storeLayoutType = "custom" and setting a homepage), the basic store layout
+        /// is disabled.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual SetStoreLayoutRequest SetStoreLayout(Google.Apis.AndroidEnterprise.v1.Data.StoreLayout body, string enterpriseId)
@@ -1867,9 +1958,11 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Sets the store layout for the enterprise. By default, storeLayoutType is set to "basic" and the
         /// basic store layout is enabled. The basic layout only contains apps approved by the admin, and that have been
-        /// added to the available product set for a user (using the  setAvailableProductSet call). Apps on the page are
-        /// sorted in order of their product ID value. If you create a custom store layout (by setting storeLayoutType =
-        /// "custom" and setting a homepage), the basic store layout is disabled.</summary>
+        /// added to the available product set for a user (using the
+        ///
+        /// setAvailableProductSet call). Apps on the page are sorted in order of their product ID value. If you create
+        /// a custom store layout (by setting storeLayoutType = "custom" and setting a homepage), the basic store layout
+        /// is disabled.</summary>
         public class SetStoreLayoutRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.StoreLayout>
         {
             /// <summary>Constructs a new SetStoreLayout request.</summary>
@@ -1908,7 +2001,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/storeLayout"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout"; }
             }
 
             /// <summary>Initializes SetStoreLayout parameter list.</summary>
@@ -1968,7 +2061,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/unenroll"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/unenroll"; }
             }
 
             /// <summary>Initializes Unenroll parameter list.</summary>
@@ -2059,7 +2152,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}"; }
             }
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -2151,7 +2244,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2236,7 +2329,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/entitlements"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2333,7 +2426,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}"; }
             }
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -2444,7 +2537,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/groupLicenses/{groupLicenseId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/groupLicenses/{groupLicenseId}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2513,7 +2606,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/groupLicenses"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/groupLicenses"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2597,7 +2690,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/groupLicenses/{groupLicenseId}/users"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/groupLicenses/{groupLicenseId}/users"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2705,7 +2798,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}"; }
             }
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -2812,7 +2905,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2912,7 +3005,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3020,7 +3113,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}"; }
             }
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -3145,7 +3238,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}"; }
             }
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -3253,7 +3346,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -3355,7 +3448,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3462,7 +3555,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}"; }
             }
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -3580,7 +3673,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}"; }
             }
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -3672,7 +3765,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -3757,7 +3850,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3854,7 +3947,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}"; }
             }
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -3956,7 +4049,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/products/{productId}/managedConfigurationsSettings"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/managedConfigurationsSettings"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -4046,7 +4139,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "permissions/{permissionId}"; }
+                get { return "androidenterprise/v1/permissions/{permissionId}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -4094,10 +4187,9 @@ namespace Google.Apis.AndroidEnterprise.v1
 
 
         /// <summary>Approves the specified product and the relevant app permissions, if any. The maximum number of
-        /// products that you can approve per enterprise customer is 1,000.
-        ///
-        /// To learn how to use managed Google Play to design and create a store layout to display approved products to
-        /// your users, see Store Layout Design.</summary>
+        /// products that you can approve per enterprise customer is 1,000. To learn how to use managed Google Play to
+        /// design and create a store layout to display approved products to your users, see Store Layout
+        /// Design.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="productId">The ID of the
@@ -4108,10 +4200,9 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
         /// <summary>Approves the specified product and the relevant app permissions, if any. The maximum number of
-        /// products that you can approve per enterprise customer is 1,000.
-        ///
-        /// To learn how to use managed Google Play to design and create a store layout to display approved products to
-        /// your users, see Store Layout Design.</summary>
+        /// products that you can approve per enterprise customer is 1,000. To learn how to use managed Google Play to
+        /// design and create a store layout to display approved products to your users, see Store Layout
+        /// Design.</summary>
         public class ApproveRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Approve request.</summary>
@@ -4155,7 +4246,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/products/{productId}/approve"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/approve"; }
             }
 
             /// <summary>Initializes Approve parameter list.</summary>
@@ -4187,12 +4278,10 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Generates a URL that can be rendered in an iframe to display the permissions (if any) of a product.
         /// An enterprise admin must view these permissions and accept them on behalf of their organization in order to
-        /// approve that product.
-        ///
-        /// Admins should accept the displayed permissions by interacting with a separate UI element in the EMM console,
-        /// which in turn should trigger the use of this URL as the approvalUrlInfo.approvalUrl property in a
-        /// Products.approve call to approve the product. This URL can only be used to display permissions for up to 1
-        /// day.</summary>
+        /// approve that product. Admins should accept the displayed permissions by interacting with a separate UI
+        /// element in the EMM console, which in turn should trigger the use of this URL as the
+        /// approvalUrlInfo.approvalUrl property in a Products.approve call to approve the product. This URL can only be
+        /// used to display permissions for up to 1 day.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="productId">The ID of the
         /// product.</param>
@@ -4203,12 +4292,10 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Generates a URL that can be rendered in an iframe to display the permissions (if any) of a product.
         /// An enterprise admin must view these permissions and accept them on behalf of their organization in order to
-        /// approve that product.
-        ///
-        /// Admins should accept the displayed permissions by interacting with a separate UI element in the EMM console,
-        /// which in turn should trigger the use of this URL as the approvalUrlInfo.approvalUrl property in a
-        /// Products.approve call to approve the product. This URL can only be used to display permissions for up to 1
-        /// day.</summary>
+        /// approve that product. Admins should accept the displayed permissions by interacting with a separate UI
+        /// element in the EMM console, which in turn should trigger the use of this URL as the
+        /// approvalUrlInfo.approvalUrl property in a Products.approve call to approve the product. This URL can only be
+        /// used to display permissions for up to 1 day.</summary>
         public class GenerateApprovalUrlRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ProductsGenerateApprovalUrlResponse>
         {
             /// <summary>Constructs a new GenerateApprovalUrl request.</summary>
@@ -4250,7 +4337,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/products/{productId}/generateApprovalUrl"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/generateApprovalUrl"; }
             }
 
             /// <summary>Initializes GenerateApprovalUrl parameter list.</summary>
@@ -4339,7 +4426,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/products/{productId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -4434,7 +4521,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/products/{productId}/appRestrictionsSchema"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/appRestrictionsSchema"; }
             }
 
             /// <summary>Initializes GetAppRestrictionsSchema parameter list.</summary>
@@ -4519,7 +4606,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/products/{productId}/permissions"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/permissions"; }
             }
 
             /// <summary>Initializes GetPermissions parameter list.</summary>
@@ -4584,8 +4671,8 @@ namespace Google.Apis.AndroidEnterprise.v1
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
-            /// <summary>Specifies the maximum number of products that can be returned per request. If not specified,
-            /// uses a default value of 100, which is also the maximum retrievable within a single response.</summary>
+            /// <summary>Defines how many results the list operation should return. The default number depends on the
+            /// resource collection.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -4595,9 +4682,8 @@ namespace Google.Apis.AndroidEnterprise.v1
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
-            /// <summary>A pagination token is contained in a request's response when there are more products. The token
-            /// can be used in a subsequent request to obtain more products, and so forth. This parameter cannot be used
-            /// in the initial request.</summary>
+            /// <summary>Defines the token of the page to return, usually taken from TokenPagination. This can only be
+            /// used if token paging is enabled.</summary>
             [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Token { get; set; }
 
@@ -4617,7 +4703,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/products"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/products"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -4729,7 +4815,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/products/{productId}/unapprove"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/unapprove"; }
             }
 
             /// <summary>Initializes Unapprove parameter list.</summary>
@@ -4826,7 +4912,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/serviceAccountKeys/{keyId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccountKeys/{keyId}"; }
             }
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -4858,9 +4944,8 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Generates new credentials for the service account associated with this enterprise. The calling
         /// service account must have been retrieved by calling Enterprises.GetServiceAccount and must have been set as
-        /// the enterprise service account by calling Enterprises.SetAccount.
-        ///
-        /// Only the type of the key should be populated in the resource to be inserted.</summary>
+        /// the enterprise service account by calling Enterprises.SetAccount. Only the type of the key should be
+        /// populated in the resource to be inserted.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual InsertRequest Insert(Google.Apis.AndroidEnterprise.v1.Data.ServiceAccountKey body, string enterpriseId)
@@ -4870,9 +4955,8 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Generates new credentials for the service account associated with this enterprise. The calling
         /// service account must have been retrieved by calling Enterprises.GetServiceAccount and must have been set as
-        /// the enterprise service account by calling Enterprises.SetAccount.
-        ///
-        /// Only the type of the key should be populated in the resource to be inserted.</summary>
+        /// the enterprise service account by calling Enterprises.SetAccount. Only the type of the key should be
+        /// populated in the resource to be inserted.</summary>
         public class InsertRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ServiceAccountKey>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -4911,7 +4995,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/serviceAccountKeys"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccountKeys"; }
             }
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -4977,7 +5061,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/serviceAccountKeys"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccountKeys"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -5067,7 +5151,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}"; }
             }
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -5158,7 +5242,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -5251,7 +5335,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters"; }
             }
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -5327,7 +5411,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -5417,7 +5501,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}"; }
             }
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -5519,7 +5603,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/storeLayout/pages/{pageId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}"; }
             }
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -5595,7 +5679,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/storeLayout/pages/{pageId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -5672,7 +5756,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/storeLayout/pages"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages"; }
             }
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -5732,7 +5816,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/storeLayout/pages"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -5807,7 +5891,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/storeLayout/pages/{pageId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}"; }
             }
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -5900,7 +5984,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}"; }
             }
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -5986,7 +6070,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/authenticationToken"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/authenticationToken"; }
             }
 
             /// <summary>Initializes GenerateAuthenticationToken parameter list.</summary>
@@ -6062,7 +6146,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -6138,7 +6222,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/availableProductSet"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/availableProductSet"; }
             }
 
             /// <summary>Initializes GetAvailableProductSet parameter list.</summary>
@@ -6223,7 +6307,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users"; }
             }
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -6244,18 +6328,18 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Looks up a user by primary email address. This is only supported for Google-managed users. Lookup
+        /// <summary>Looks up a user by primary email address. This is only supported for Google-managed users.  Lookup
         /// of the id is not needed for EMM-managed users because the id is already returned in the result of the
         /// Users.insert call.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
-        /// <param name="email">The exact primary email
-        /// address of the user to look up.</param>
+        /// <param name="email">Required. The exact primary
+        /// email address of the user to look up.</param>
         public virtual ListRequest List(string enterpriseId, string email)
         {
             return new ListRequest(service, enterpriseId, email);
         }
 
-        /// <summary>Looks up a user by primary email address. This is only supported for Google-managed users. Lookup
+        /// <summary>Looks up a user by primary email address. This is only supported for Google-managed users.  Lookup
         /// of the id is not needed for EMM-managed users because the id is already returned in the result of the
         /// Users.insert call.</summary>
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.UsersListResponse>
@@ -6274,7 +6358,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string EnterpriseId { get; private set; }
 
-            /// <summary>The exact primary email address of the user to look up.</summary>
+            /// <summary>Required. The exact primary email address of the user to look up.</summary>
             [Google.Apis.Util.RequestParameterAttribute("email", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Email { get; private set; }
 
@@ -6294,7 +6378,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -6376,7 +6460,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/deviceAccess"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/deviceAccess"; }
             }
 
             /// <summary>Initializes RevokeDeviceAccess parameter list.</summary>
@@ -6464,7 +6548,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}/availableProductSet"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/availableProductSet"; }
             }
 
             /// <summary>Initializes SetAvailableProductSet parameter list.</summary>
@@ -6556,7 +6640,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/users/{userId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}"; }
             }
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -6649,7 +6733,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/webApps/{webAppId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/webApps/{webAppId}"; }
             }
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -6725,7 +6809,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/webApps/{webAppId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/webApps/{webAppId}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -6802,7 +6886,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/webApps"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/webApps"; }
             }
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -6862,7 +6946,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/webApps"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/webApps"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -6937,7 +7021,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "enterprises/{enterpriseId}/webApps/{webAppId}"; }
+                get { return "androidenterprise/v1/enterprises/{enterpriseId}/webApps/{webAppId}"; }
             }
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -6987,9 +7071,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// <summary>A token authorizing an admin to access an iframe.</summary>
     public class AdministratorWebToken : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>An opaque token to be passed to the Play front-end to generate an iframe.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; } 
@@ -7002,9 +7083,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// to modify and the URI the iframe is allowed to communiate with.</summary>
     public class AdministratorWebTokenSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>Options for displaying the Managed Configuration page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfigurations")]
         public virtual AdministratorWebTokenSpecManagedConfigurations ManagedConfigurations { get; set; } 
@@ -7261,9 +7339,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("approvalUrl")]
         public virtual string ApprovalUrl { get; set; } 
 
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -7272,9 +7347,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// EMM-managed user on that device.</summary>
     public class AuthenticationToken : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>The authentication token to be passed to the device policy client on the device where it can be
         /// used to provision the account for which this token was generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
@@ -7334,9 +7406,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// replace placeholders in the managed configuration settings.</summary>
     public class ConfigurationVariables : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>The ID of the managed configurations settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mcmId")]
         public virtual string McmId { get; set; } 
@@ -7354,22 +7423,17 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     public class Device : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The Google Play Services Android ID for the device encoded as a lowercase hex string. For example,
-        /// "123456789abcdef0".</summary>
+        /// 123456789abcdef0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidId")]
         public virtual string AndroidId { get; set; } 
 
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>Identifies the extent to which the device is controlled by a managed Google Play EMM in various
-        /// deployment configurations.
-        ///
-        /// Possible values include: - "managedDevice", a device that has the EMM's device policy controller (DPC) as
-        /// the device owner. - "managedProfile", a device that has a profile managed by the DPC (DPC is profile owner)
-        /// in addition to a separate, personal profile that is unavailable to the DPC. - "containerApp", no longer used
-        /// (deprecated). - "unmanagedProfile", a device that has been allowed (by the domain's admin, using the Admin
-        /// Console to enable the privilege) to use managed Google Play, but the profile is itself not owned by a
-        /// DPC.</summary>
+        /// deployment configurations. Possible values include: "managedDevice", a device that has the EMM's device
+        /// policy controller (DPC) as the device owner. "managedProfile", a device that has a profile managed by the
+        /// DPC (DPC is profile owner) in addition to a separate, personal profile that is unavailable to the DPC.
+        /// "containerApp", no longer used (deprecated). "unmanagedProfile", a device that has been allowed (by the
+        /// domain's admin, using the Admin Console to enable the privilege) to use managed Google Play, but the profile
+        /// is itself not owned by a DPC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 
 
@@ -7431,37 +7495,28 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountState")]
         public virtual string AccountState { get; set; } 
 
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The device resources for the user.</summary>
     public class DevicesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A managed device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
         public virtual System.Collections.Generic.IList<Device> Device { get; set; } 
 
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "androidenterprise#devicesListResponse".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>An Enterprises resource represents the binding between an EMM and a specific organization. That binding
-    /// can be instantiated in one of two different ways using this API as follows: - For Google managed domain
-    /// customers, the process involves using Enterprises.enroll and Enterprises.setAccount (in conjunction with
-    /// artifacts obtained from the Admin console and the Google API Console) and submitted to the EMM through a more-
-    /// or-less manual process. - For managed Google Play Accounts customers, the process involves using
-    /// Enterprises.generateSignupUrl and Enterprises.completeSignup in conjunction with the managed Google Play sign-up
-    /// UI (Google-provided mechanism) to create the binding without manual steps. As an EMM, you can support either or
-    /// both approaches in your EMM console. See Create an Enterprise for details.</summary>
+    /// can be instantiated in one of two different ways using this API as follows: For Google managed domain customers,
+    /// the process involves using Enterprises.enroll and Enterprises.setAccount (in conjunction with artifacts obtained
+    /// from the Admin console and the Google API Console) and submitted to the EMM through a more-or-less manual
+    /// process. For managed Google Play Accounts customers, the process involves using Enterprises.generateSignupUrl
+    /// and Enterprises.completeSignup in conjunction with the managed Google Play sign-up UI (Google-provided
+    /// mechanism) to create the binding without manual steps. As an EMM, you can support either or both approaches in
+    /// your EMM console. See Create an Enterprise for details.</summary>
     public class Enterprise : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Admins of the enterprise. This is only supported for enterprises created via the EMM-initiated
@@ -7472,9 +7527,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The unique ID for the enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
 
         /// <summary>The name of the enterprise, for example, "Example, Inc".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -7496,24 +7548,15 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountEmail")]
         public virtual string AccountEmail { get; set; } 
 
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The matching enterprise resources.</summary>
     public class EnterprisesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enterprise")]
         public virtual System.Collections.Generic.IList<Enterprise> Enterprise { get; set; } 
-
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "androidenterprise#enterprisesListResponse".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7548,17 +7591,16 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// entitlement is also not created for an app if the app requires permissions that the enterprise hasn't accepted.
     ///
     /// If an entitlement is deleted, the app may be uninstalled from a user's device. As a best practice, uninstall the
-    /// app by calling  Installs.delete() before deleting the entitlement.
+    /// app by calling
+    ///
+    /// Installs.delete() before deleting the entitlement.
     ///
     /// Entitlements for apps that a user pays for on an unmanaged profile have "userPurchase" as the entitlement
     /// reason. These entitlements cannot be removed via the API.</summary>
     public class Entitlement : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>The ID of the product that the entitlement is for. For example,
-        /// "app:com.google.android.gm".</summary>
+        /// app:com.google.android.gm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
@@ -7571,18 +7613,12 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The entitlement resources for the user.</summary>
     public class EntitlementsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An entitlement of a user to a product (e.g. an app). For example, a free app that they have
         /// installed, or a paid app that they have been allocated a license to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entitlement")]
         public virtual System.Collections.Generic.IList<Entitlement> Entitlement { get; set; } 
-
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "androidenterprise#entitlementsListResponse".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7602,8 +7638,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// entitlements for the product.</summary>
     public class GroupLicense : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>How this group license was acquired. "bulkPurchase" means that this Grouplicenses resource was
-        /// created because the enterprise purchased licenses for this product; otherwise, the value is "free" (for free
+        /// <summary>How this group license was acquired. bulkPurchase means that this Grouplicenses resource was
+        /// created because the enterprise purchased licenses for this product; otherwise, the value is free (for free
         /// products).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acquisitionKind")]
         public virtual string AcquisitionKind { get; set; } 
@@ -7615,9 +7651,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("approval")]
         public virtual string Approval { get; set; } 
 
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>The total number of provisioned licenses for this product. Returned by read operations, but ignored
         /// in write operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numProvisioned")]
@@ -7625,21 +7658,21 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
 
         /// <summary>The number of purchased licenses (possibly in multiple purchases). If this field is omitted, then
         /// there is no limit on the number of licenses that can be provisioned (for example, if the acquisition kind is
-        /// "free").</summary>
+        /// free).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numPurchased")]
         public virtual System.Nullable<int> NumPurchased { get; set; } 
 
         /// <summary>The permission approval status of the product. This field is only set if the product is approved.
-        /// Possible states are: - "currentApproved", the current set of permissions is approved, but additional
+        /// Possible states are: "currentApproved", the current set of permissions is approved, but additional
         /// permissions will require the administrator to reapprove the product (If the product was approved without
-        /// specifying the approved permissions setting, then this is the default behavior.), - "needsReapproval", the
+        /// specifying the approved permissions setting, then this is the default behavior.), "needsReapproval", the
         /// product has unapproved permissions. No additional product licenses can be assigned until the product is
-        /// reapproved, - "allCurrentAndFutureApproved", the current permissions are approved and any future permission
+        /// reapproved, "allCurrentAndFutureApproved", the current permissions are approved and any future permission
         /// updates will be automatically approved without administrator review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual string Permissions { get; set; } 
 
-        /// <summary>The ID of the product that the license is for. For example, "app:com.google.android.gm".</summary>
+        /// <summary>The ID of the product that the license is for. For example, app:com.google.android.gm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
@@ -7647,14 +7680,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The user resources for the group license.</summary>
     public class GroupLicenseUsersListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "androidenterprise#groupLicenseUsersListResponse".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>A user of an enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual System.Collections.Generic.IList<User> User { get; set; } 
@@ -7663,17 +7690,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The grouplicense resources for the enterprise.</summary>
     public class GroupLicensesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A group license for a product approved for use in the enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupLicense")]
         public virtual System.Collections.Generic.IList<GroupLicense> GroupLicense { get; set; } 
-
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "androidenterprise#groupLicensesListResponse".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7687,8 +7708,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// create one. If this fails (for example, because the app is not free and there is no available license), then the
     /// creation of the install fails.
     ///
-    /// The API can also be used to update an installed app. If the update method is used on an existing install, then
-    /// the app will be updated to the latest available version.
+    /// The API can also be used to update an installed app. If theupdatemethod is used on an existing install, then the
+    /// app will be updated to the latest available version.
     ///
     /// Note that it is not possible to force the installation of a specific version of an app: the version code is
     /// read-only.
@@ -7702,21 +7723,18 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// themselves.</summary>
     public class Install : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Install state. The state "installPending" means that an install request has recently been made and
-        /// download to the device is in progress. The state "installed" means that the app has been installed. This
-        /// field is read-only.</summary>
+        /// <summary>Install state. The state installPending means that an install request has recently been made and
+        /// download to the device is in progress. The state installed means that the app has been installed. This field
+        /// is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installState")]
         public virtual string InstallState { get; set; } 
 
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>The ID of the product that the install is for. For example, "app:com.google.android.gm".</summary>
+        /// <summary>The ID of the product that the install is for. For example, app:com.google.android.gm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
         /// <summary>The version of the installed product. Guaranteed to be set only if the install state is
-        /// "installed".</summary>
+        /// installed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
         public virtual System.Nullable<int> VersionCode { get; set; } 
 
@@ -7752,18 +7770,12 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The install resources for the device.</summary>
     public class InstallsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An installation of an app for a user on a specific device. The existence of an install implies that
         /// the user must have an entitlement to the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("install")]
         public virtual System.Collections.Generic.IList<Install> Install { get; set; } 
-
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "androidenterprise#installsListResponse".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7861,14 +7873,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The managed configuration resources for the device.</summary>
     public class ManagedConfigurationsForDeviceListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "androidenterprise#managedConfigurationsForDeviceListResponse".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>A managed configuration for an app on a specific device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfigurationForDevice")]
         public virtual System.Collections.Generic.IList<ManagedConfiguration> ManagedConfigurationForDevice { get; set; } 
@@ -7877,14 +7883,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The managed configuration resources for the user.</summary>
     public class ManagedConfigurationsForUserListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "androidenterprise#managedConfigurationsForUserListResponse".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>A managed configuration for an app for a specific user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfigurationForUser")]
         public virtual System.Collections.Generic.IList<ManagedConfiguration> ManagedConfigurationForUser { get; set; } 
@@ -7898,9 +7898,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// configurable properties in the managed configurations schema.</summary>
     public class ManagedConfigurationsSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>The last updated time of the managed configuration settings in milliseconds since
         /// 1970-01-01T00:00:00Z.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedTimestampMillis")]
@@ -7918,14 +7915,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The managed configurations settings for a product.</summary>
     public class ManagedConfigurationsSettingsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "androidenterprise#managedConfigurationsSettingsListResponse".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>A managed configurations settings for an app that may be assigned to a group of users in an
         /// enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfigurationsSettings")]
@@ -7999,9 +7990,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string DpcPackageName { get; set; } 
 
         /// <summary>Identifies the extent to which the device is controlled by an Android EMM in various deployment
-        /// configurations.
-        ///
-        /// Possible values include: - "managedDevice", a device where the DPC is set as device owner, -
+        /// configurations. Possible values include: "managedDevice", a device where the DPC is set as device owner,
         /// "managedProfile", a device where the DPC is set as profile owner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 
@@ -8092,9 +8081,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// enterprises associated with the service account authenticated for the request.</summary>
     public class NotificationSet : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>The notifications received, or empty if no notifications are present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notification")]
         public virtual System.Collections.Generic.IList<Notification> Notification { get; set; } 
@@ -8108,14 +8094,23 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Information about the current page.
+    ///
+    /// List operations that supports paging return only one "page" of results. This protocol buffer message describes
+    /// the page that has been returned.</summary>
     public class PageInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Maximum number of results returned in one page. ! The number of results included in the API
+        /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultPerPage")]
         public virtual System.Nullable<int> ResultPerPage { get; set; } 
 
+        /// <summary>Index of the first result returned in the current page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
         public virtual System.Nullable<int> StartIndex { get; set; } 
 
+        /// <summary>Total number of results available on the backend ! The total number of results in the result
+        /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
         public virtual System.Nullable<int> TotalResults { get; set; } 
 
@@ -8135,9 +8130,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>A longer description of the Permissions resource, giving more details of what it affects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
 
         /// <summary>The name of the permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -8248,9 +8240,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
         public virtual string IconUrl { get; set; } 
 
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>The approximate time (within 7 days) the app was last published, expressed in milliseconds since
         /// epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedTimestampMillis")]
@@ -8264,7 +8253,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<ProductPermission> Permissions { get; set; } 
 
-        /// <summary>A string of the form app:. For example, app:com.google.android.gm represents the Gmail
+        /// <summary>A string of the form app:package name. For example, app:com.google.android.gm represents the Gmail
         /// app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
@@ -8364,9 +8353,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// enterprise.</summary>
     public class ProductPermissions : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>The permissions required by the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
         public virtual System.Collections.Generic.IList<ProductPermission> Permission { get; set; } 
@@ -8390,7 +8376,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfiguration")]
         public virtual ManagedConfiguration ManagedConfiguration { get; set; } 
 
-        /// <summary>The ID of the product. For example, "app:com.google.android.gm".</summary>
+        /// <summary>The ID of the product. For example, app:com.google.android.gm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
@@ -8410,9 +8396,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// <summary>A set of products.</summary>
     public class ProductSet : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>The list of product IDs making up the set of products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual System.Collections.Generic.IList<string> ProductId { get; set; } 
@@ -8509,14 +8492,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The matching products.</summary>
     public class ProductsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "androidenterprise#productsListResponse".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>General pagination information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
         public virtual PageInfo PageInfo { get; set; } 
@@ -8542,9 +8519,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual ServiceAccountKey Key { get; set; } 
 
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>The account name of the service account, in the form of an email address. Assigned by the
         /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -8565,9 +8539,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>An opaque, unique identifier for this ServiceAccountKey. Assigned by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
 
         /// <summary>Public key data for the credentials file. This is an X.509 cert. If you are using the
         /// googleCredentials key type, this is identical to the cert that can be retrieved by using the X.509 cert url
@@ -8623,9 +8594,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>Ordered list of localized strings giving the name of this page. The text displayed is the one that
         /// best matches the user locale, or the first entry if there is no good match. There needs to be at least one
         /// entry.</summary>
@@ -8661,9 +8629,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("homepageId")]
         public virtual string HomepageId { get; set; } 
 
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>The store layout type. By default, this value is set to "basic" if the homepageId field is not set,
         /// and to "custom" otherwise. If set to "basic", the layout will consist of all approved apps that have been
         /// whitelisted for the user.</summary>
@@ -8674,30 +8639,18 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The store page resources for the enterprise.</summary>
     public class StoreLayoutClustersListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A store cluster of an enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual System.Collections.Generic.IList<StoreCluster> Cluster { get; set; } 
 
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "androidenterprise#storeLayoutClustersListResponse".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The store page resources for the enterprise.</summary>
     public class StoreLayoutPagesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "androidenterprise#storeLayoutPagesListResponse".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>A store page of an enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("page")]
         public virtual System.Collections.Generic.IList<StorePage> Page { get; set; } 
@@ -8713,9 +8666,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>Unique ID of this page. Assigned by the server. Immutable once assigned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
 
         /// <summary>Ordered list of pages a user should be able to reach from this page. The list can't include this
         /// page. It is recommended that the basic pages are created first, before adding the links between pages.
@@ -8734,8 +8684,19 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Pagination information returned by a List operation when token pagination is enabled.
+    ///
+    /// List operations that supports paging return only one "page" of results. This protocol buffer message describes
+    /// the page that has been returned.
+    ///
+    /// When using token pagination, clients should use the next/previous token to get another page of the result. The
+    /// presence or absence of next/previous token indicates whether a next/previous page is available and provides a
+    /// mean of accessing this page. ListRequest.page_token should be set to either next_page_token or
+    /// previous_page_token to access another page.</summary>
     public class TokenPagination : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Tokens to pass to the standard list field 'page_token'. Whenever available, tokens are preferred
+        /// over manipulating start_index.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -8764,10 +8725,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
 
     /// <summary>A Users resource represents an account associated with an enterprise. The account may be specific to a
     /// device or to an individual user (who can then use the account across multiple devices). The account may provide
-    /// access to managed Google Play only, or to other Google services, depending on the identity model: - The Google
-    /// managed domain identity model requires synchronization to Google account sources (via primaryEmail). - The
-    /// managed Google Play Accounts identity model provides a dynamic means for enterprises to create user or device
-    /// accounts as needed. These accounts provide access to managed Google Play.</summary>
+    /// access to managed Google Play only, or to other Google services, depending on the identity model: The Google
+    /// managed domain identity model requires synchronization to Google account sources (via primaryEmail). The managed
+    /// Google Play Accounts identity model provides a dynamic means for enterprises to create user or device accounts
+    /// as needed. These accounts provide access to managed Google Play. </summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A unique identifier you create for this user, such as "user342" or "asset#44418". Do not use
@@ -8784,7 +8745,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
 
         /// <summary>The name that will appear in user interfaces. Setting this property is optional when creating EMM-
         /// managed users. If you do set this property, use something generic about the organization (such as "Example,
-        /// Inc.") or your name (as EMM). Not used for Google-managed user accounts.</summary>
+        /// Inc.") or your name (as EMM). Not used for Google-managed user accounts. @mutable
+        /// androidenterprise.users.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
@@ -8792,11 +8754,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>The entity that manages the user. With googleManaged users, the source of truth is Google so EMMs
-        /// have to make sure a Google Account exists for the user. With emmManaged users, the EMM is in
+        /// <summary>The entity that manages the user.  With googleManaged users, the source of truth is Google so EMMs
+        /// have to make sure a Google Account exists for the user.  With emmManaged users, the EMM is in
         /// charge.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 
@@ -8810,14 +8769,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The matching user resources.</summary>
     public class UsersListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "androidenterprise#usersListResponse".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>A user of an enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual System.Collections.Generic.IList<User> User { get; set; } 
@@ -8831,9 +8784,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// should start with a '$' sign and should be alphanumeric only.</summary>
     public class VariableSet : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>The placeholder string; defined by EMM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placeholder")]
         public virtual string Placeholder { get; set; } 
@@ -8851,14 +8801,12 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// URL.</summary>
     public class WebApp : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The display mode of the web app.
-        ///
-        /// Possible values include: - "minimalUi", the device's status bar, navigation bar, the app's URL, and a
-        /// refresh button are visible when the app is open. For HTTP URLs, you can only select this option. -
-        /// "standalone", the device's status bar and navigation bar are visible when the app is open. - "fullScreen",
-        /// the app opens in full screen mode, hiding the device's status and navigation bars. All browser UI elements,
-        /// page URL, system status bar and back button are not visible, and the web app takes up the entirety of the
-        /// available display area.</summary>
+        /// <summary>The display mode of the web app. Possible values include: "minimalUi", the device's status bar,
+        /// navigation bar, the app's URL, and a refresh button are visible when the app is open. For HTTP URLs, you can
+        /// only select this option. "standalone", the device's status bar and navigation bar are visible when the app
+        /// is open. "fullScreen", the app opens in full screen mode, hiding the device's status and navigation bars.
+        /// All browser UI elements, page URL, system status bar and back button are not visible, and the web app takes
+        /// up the entirety of the available display area. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayMode")]
         public virtual string DisplayMode { get; set; } 
 
@@ -8887,8 +8835,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
         public virtual System.Nullable<long> VersionCode { get; set; } 
 
-        /// <summary>The ID of the application. A string of the form "app:" where the package name always starts with
-        /// the prefix "com.google.enterprise.webapp." followed by a random id.</summary>
+        /// <summary>The ID of the application.  A string of the form app:package name where the package name always
+        /// starts with the prefix com.google.enterprise.webapp. followed by a random id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webAppId")]
         public virtual string WebAppId { get; set; } 
 
@@ -8900,8 +8848,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     public class WebAppIcon : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The actual bytes of the image in a base64url encoded string (c.f. RFC4648, section 5 "Base 64
-        /// Encoding with URL and Filename Safe Alphabet"). - The image type can be png or jpg. - The image should
-        /// ideally be square. - The image should ideally have a size of 512x512.</summary>
+        /// Encoding with URL and Filename Safe Alphabet").
+        ///
+        /// The image type can be png or jpg. The image should ideally be square. The image should ideally have a size
+        /// of 512x512. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageData")]
         public virtual string ImageData { get; set; } 
 
@@ -8909,14 +8859,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The web app details for an enterprise.</summary>
     public class WebAppsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "androidenterprise#webAppsListResponse".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
         /// <summary>The manifest describing a web app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webApp")]
         public virtual System.Collections.Generic.IList<WebApp> WebApp { get; set; } 

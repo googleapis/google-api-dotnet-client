@@ -793,7 +793,7 @@
    }
   }
  }, 
- "revision": "20200513", 
+ "revision": "20200529", 
  "rootUrl": "https://cloudtasks.googleapis.com/", 
  "schemas": {
   "AcknowledgeTaskRequest": {

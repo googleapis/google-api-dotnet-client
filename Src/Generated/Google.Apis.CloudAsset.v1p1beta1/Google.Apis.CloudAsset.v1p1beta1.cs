@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20200515 (1961)
+ *      <tr><th>API Rev<td>20200605 (1982)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>
  *              https://cloud.google.com/asset-inventory/docs/quickstart</a>
@@ -350,23 +350,25 @@ namespace Google.Apis.CloudAsset.v1p1beta1
         }
 
 
-        /// <summary>Searches all the IAM policies under a given accessible CRM scope (project/folder/organization).
-        /// This RPC gives callers especially admins the ability to search all the IAM policies under a scope, even if
-        /// they don't have .getIamPolicy permission of all the IAM policies. Callers should have
-        /// cloud.assets.SearchAllIamPolicies permission on the requested scope, otherwise it will be
+        /// <summary>Searches all the IAM policies within a given accessible CRM scope (project/folder/organization).
+        /// This RPC gives callers especially administrators the ability to search all the IAM policies within a scope,
+        /// even if they don't have `.getIamPolicy` permission of all the IAM policies. Callers should have
+        /// `cloud.assets.SearchAllIamPolicies` permission on the requested scope, otherwise the request will be
         /// rejected.</summary>
         /// <param name="scope">Required. The relative name of an asset. The search is limited to the resources within the
-        /// `scope`. The allowed value must be: * Organization number (such as "organizations/123") * Folder number(such as
-        /// "folders/1234") * Project number (such as "projects/12345") * Project id (such as "projects/abc")</param>
+        /// `scope`. The allowed value must be:
+        ///
+        /// * Organization number (such as "organizations/123") * Folder number(such as "folders/1234") * Project number (such
+        /// as "projects/12345") * Project id (such as "projects/abc")</param>
         public virtual SearchAllRequest SearchAll(string scope)
         {
             return new SearchAllRequest(service, scope);
         }
 
-        /// <summary>Searches all the IAM policies under a given accessible CRM scope (project/folder/organization).
-        /// This RPC gives callers especially admins the ability to search all the IAM policies under a scope, even if
-        /// they don't have .getIamPolicy permission of all the IAM policies. Callers should have
-        /// cloud.assets.SearchAllIamPolicies permission on the requested scope, otherwise it will be
+        /// <summary>Searches all the IAM policies within a given accessible CRM scope (project/folder/organization).
+        /// This RPC gives callers especially administrators the ability to search all the IAM policies within a scope,
+        /// even if they don't have `.getIamPolicy` permission of all the IAM policies. Callers should have
+        /// `cloud.assets.SearchAllIamPolicies` permission on the requested scope, otherwise the request will be
         /// rejected.</summary>
         public class SearchAllRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1p1beta1.Data.SearchAllIamPoliciesResponse>
         {
@@ -380,9 +382,10 @@ namespace Google.Apis.CloudAsset.v1p1beta1
 
 
             /// <summary>Required. The relative name of an asset. The search is limited to the resources within the
-            /// `scope`. The allowed value must be: * Organization number (such as "organizations/123") * Folder
-            /// number(such as "folders/1234") * Project number (such as "projects/12345") * Project id (such as
-            /// "projects/abc")</summary>
+            /// `scope`. The allowed value must be:
+            ///
+            /// * Organization number (such as "organizations/123") * Folder number(such as "folders/1234") * Project
+            /// number (such as "projects/12345") * Project id (such as "projects/abc")</summary>
             [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Scope { get; private set; }
 
@@ -399,8 +402,9 @@ namespace Google.Apis.CloudAsset.v1p1beta1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Optional. The query statement. Examples: * "policy:myuser@mydomain.com" *
-            /// "policy:(myuser@mydomain.com viewer)"</summary>
+            /// <summary>Optional. The query statement. Examples:
+            ///
+            /// * "policy:myuser@mydomain.com" * "policy:(myuser@mydomain.com viewer)"</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
@@ -485,22 +489,26 @@ namespace Google.Apis.CloudAsset.v1p1beta1
         }
 
 
-        /// <summary>Searches all the resources under a given accessible CRM scope (project/folder/organization). This
-        /// RPC gives callers especially admins the ability to search all the resources under a scope, even if they
-        /// don't have .get permission of all the resources. Callers should have cloud.assets.SearchAllResources
-        /// permission on the requested scope, otherwise it will be rejected.</summary>
+        /// <summary>Searches all the resources within a given accessible CRM scope (project/folder/organization). This
+        /// RPC gives callers especially administrators the ability to search all the resources within a scope, even if
+        /// they don't have `.get` permission of all the resources. Callers should have
+        /// `cloud.assets.SearchAllResources` permission on the requested scope, otherwise the request will be
+        /// rejected.</summary>
         /// <param name="scope">Required. The relative name of an asset. The search is limited to the resources within the
-        /// `scope`. The allowed value must be: * Organization number (such as "organizations/123") * Folder number(such as
-        /// "folders/1234") * Project number (such as "projects/12345") * Project id (such as "projects/abc")</param>
+        /// `scope`. The allowed value must be:
+        ///
+        /// * Organization number (such as "organizations/123") * Folder number(such as "folders/1234") * Project number (such
+        /// as "projects/12345") * Project id (such as "projects/abc")</param>
         public virtual SearchAllRequest SearchAll(string scope)
         {
             return new SearchAllRequest(service, scope);
         }
 
-        /// <summary>Searches all the resources under a given accessible CRM scope (project/folder/organization). This
-        /// RPC gives callers especially admins the ability to search all the resources under a scope, even if they
-        /// don't have .get permission of all the resources. Callers should have cloud.assets.SearchAllResources
-        /// permission on the requested scope, otherwise it will be rejected.</summary>
+        /// <summary>Searches all the resources within a given accessible CRM scope (project/folder/organization). This
+        /// RPC gives callers especially administrators the ability to search all the resources within a scope, even if
+        /// they don't have `.get` permission of all the resources. Callers should have
+        /// `cloud.assets.SearchAllResources` permission on the requested scope, otherwise the request will be
+        /// rejected.</summary>
         public class SearchAllRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1p1beta1.Data.SearchAllResourcesResponse>
         {
             /// <summary>Constructs a new SearchAll request.</summary>
@@ -513,9 +521,10 @@ namespace Google.Apis.CloudAsset.v1p1beta1
 
 
             /// <summary>Required. The relative name of an asset. The search is limited to the resources within the
-            /// `scope`. The allowed value must be: * Organization number (such as "organizations/123") * Folder
-            /// number(such as "folders/1234") * Project number (such as "projects/12345") * Project id (such as
-            /// "projects/abc")</summary>
+            /// `scope`. The allowed value must be:
+            ///
+            /// * Organization number (such as "organizations/123") * Folder number(such as "folders/1234") * Project
+            /// number (such as "projects/12345") * Project id (such as "projects/abc")</summary>
             [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Scope { get; private set; }
 
@@ -525,8 +534,8 @@ namespace Google.Apis.CloudAsset.v1p1beta1
             public virtual Google.Apis.Util.Repeatable<string> AssetTypes { get; set; }
 
             /// <summary>Optional. A comma separated list of fields specifying the sorting order of the results. The
-            /// default order is ascending. Add " desc" after the field name to indicate descending order. Redundant
-            /// space characters are ignored. For example, "  foo ,  bar  desc  ".</summary>
+            /// default order is ascending. Add ` DESC` after the field name to indicate descending order. Redundant
+            /// space characters are ignored. For example, `  location DESC ,  name  `.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
@@ -644,9 +653,9 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
     ///
     /// Example Policy with multiple AuditConfigs:
     ///
-    /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
-    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", }
-    /// ] }, { "service": "sampleservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, {
+    /// { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ]
+    /// }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, {
     /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
     ///
     /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
@@ -669,7 +678,7 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
     /// <summary>Provides the configuration for logging a type of permissions. Example:
     ///
     /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
-    /// "log_type": "DATA_WRITE", } ] }
+    /// "log_type": "DATA_WRITE" } ] }
     ///
     /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>

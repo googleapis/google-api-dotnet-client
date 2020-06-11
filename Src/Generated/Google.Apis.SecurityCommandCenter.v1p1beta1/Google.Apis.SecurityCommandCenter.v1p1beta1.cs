@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>Security Command Center API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20200529 (1975)
+ *      <tr><th>API Rev<td>20200605 (1982)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview</a>
@@ -3021,9 +3021,9 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
     ///
     /// Example Policy with multiple AuditConfigs:
     ///
-    /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
-    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", }
-    /// ] }, { "service": "sampleservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, {
+    /// { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ]
+    /// }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, {
     /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
     ///
     /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
@@ -3046,7 +3046,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
     /// <summary>Provides the configuration for logging a type of permissions. Example:
     ///
     /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
-    /// "log_type": "DATA_WRITE", } ] }
+    /// "log_type": "DATA_WRITE" } ] }
     ///
     /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
@@ -3296,6 +3296,38 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfigName")]
         public virtual string NotificationConfigName { get; set; } 
 
+        /// <summary>The Cloud resource tied to this notification's Finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual GoogleCloudSecuritycenterV1Resource Resource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary> Information related to the Google Cloud resource.</summary>
+    public class GoogleCloudSecuritycenterV1Resource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The full resource name of the resource. See:
+        /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The full resource name of resource's parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; } 
+
+        /// <summary> The human readable name of resource's parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentDisplayName")]
+        public virtual string ParentDisplayName { get; set; } 
+
+        /// <summary>The full resource name of project that the resource belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual string Project { get; set; } 
+
+        /// <summary> The human readable name of project that the resource belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectDisplayName")]
+        public virtual string ProjectDisplayName { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3467,9 +3499,41 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfigName")]
         public virtual string NotificationConfigName { get; set; } 
 
+        /// <summary>The Cloud resource tied to the notification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual GoogleCloudSecuritycenterV1p1beta1Resource Resource { get; set; } 
+
         /// <summary>If it's an asset based notification config, this field will be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("temporalAsset")]
         public virtual GoogleCloudSecuritycenterV1p1beta1TemporalAsset TemporalAsset { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary> Information related to the Google Cloud resource.</summary>
+    public class GoogleCloudSecuritycenterV1p1beta1Resource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The full resource name of the resource. See:
+        /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The full resource name of resource's parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; } 
+
+        /// <summary> The human readable name of resource's parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentDisplayName")]
+        public virtual string ParentDisplayName { get; set; } 
+
+        /// <summary>The full resource name of project that the resource belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual string Project { get; set; } 
+
+        /// <summary> The human readable name of project that the resource belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectDisplayName")]
+        public virtual string ProjectDisplayName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
