@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Cloud Monitoring API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200601 (1978)
+ *      <tr><th>API Rev<td>20200612 (1989)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -1247,6 +1247,24 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A filter that ranks streams based on their statistical relation to other streams in a request. Note:
+    /// This field is deprecated and completely ignored by the API.</summary>
+    public class StatisticalTimeSeriesFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>How many time series to output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numTimeSeries")]
+        public virtual System.Nullable<int> NumTimeSeries { get; set; } 
+
+        /// <summary>rankingMethod is applied to a set of time series, and then the produced value for each individual
+        /// time series is used to compare a given time series to others. These are methods that cannot be applied
+        /// stream-by-stream, but rather require the full context of a request to evaluate time series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rankingMethod")]
+        public virtual string RankingMethod { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A widget that displays textual content.</summary>
     public class Text : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1309,6 +1327,11 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryAggregation")]
         public virtual Aggregation SecondaryAggregation { get; set; } 
 
+        /// <summary>Statistics based time series filter. Note: This field is deprecated and completely ignored by the
+        /// API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statisticalTimeSeriesFilter")]
+        public virtual StatisticalTimeSeriesFilter StatisticalTimeSeriesFilter { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1332,6 +1355,11 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>Apply a second aggregation after the ratio is computed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryAggregation")]
         public virtual Aggregation SecondaryAggregation { get; set; } 
+
+        /// <summary>Statistics based time series filter. Note: This field is deprecated and completely ignored by the
+        /// API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statisticalTimeSeriesFilter")]
+        public virtual StatisticalTimeSeriesFilter StatisticalTimeSeriesFilter { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Genomics.v1alpha2 Client Library</Title>
-    <Version>1.46.0.1965</Version>
+    <Version>1.46.0.1988</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

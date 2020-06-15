@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataflow'>Dataflow API</a>
  *      <tr><th>API Version<td>v1b3
- *      <tr><th>API Rev<td>20200507 (1953)
+ *      <tr><th>API Rev<td>20200602 (1979)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataflow'>
  *              https://cloud.google.com/dataflow</a>

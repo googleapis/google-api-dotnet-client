@@ -2233,7 +2233,7 @@
    }
   }
  }, 
- "revision": "20200507", 
+ "revision": "20200602", 
  "rootUrl": "https://dataflow.googleapis.com/", 
  "schemas": {
   "ApproximateProgress": {

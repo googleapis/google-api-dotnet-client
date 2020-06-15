@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com'>Firebase ML API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200609 (1986)
+ *      <tr><th>API Rev<td>20200611 (1988)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com'>
  *              https://firebase.google.com</a>

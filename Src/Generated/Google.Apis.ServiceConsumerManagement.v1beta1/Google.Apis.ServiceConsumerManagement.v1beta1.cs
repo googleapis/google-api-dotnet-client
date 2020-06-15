@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>Service Consumer Management API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200609 (1986)
+ *      <tr><th>API Rev<td>20200611 (1988)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>
  *              https://cloud.google.com/service-consumer-management/docs/overview</a>
@@ -2693,28 +2693,32 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
     ///
     /// The example below shows how to configure monitored resources and metrics for monitoring. In the example, a
     /// monitored resource and two metrics are defined. The `library.googleapis.com/book/returned_count` metric is sent
-    /// to both producer and consumer projects, whereas the `library.googleapis.com/book/overdue_count` metric is only
+    /// to both producer and consumer projects, whereas the `library.googleapis.com/book/num_overdue` metric is only
     /// sent to the consumer project.
     ///
-    /// monitored_resources: - type: library.googleapis.com/branch labels: - key: /city description: The city where the
-    /// library branch is located in. - key: /name description: The name of the branch. metrics: - name:
-    /// library.googleapis.com/book/returned_count metric_kind: DELTA value_type: INT64 labels: - key: /customer_id -
-    /// name: library.googleapis.com/book/overdue_count metric_kind: GAUGE value_type: INT64 labels: - key: /customer_id
-    /// monitoring: producer_destinations: - monitored_resource: library.googleapis.com/branch metrics: -
-    /// library.googleapis.com/book/returned_count consumer_destinations: - monitored_resource:
-    /// library.googleapis.com/branch metrics: - library.googleapis.com/book/returned_count -
-    /// library.googleapis.com/book/overdue_count</summary>
+    /// monitored_resources: - type: library.googleapis.com/Branch display_name: "Library Branch" description: "A branch
+    /// of a library." launch_stage: GA labels: - key: resource_container description: "The Cloud container (ie. project
+    /// id) for the Branch." - key: location description: "The location of the library branch." - key: branch_id
+    /// description: "The id of the branch." metrics: - name: library.googleapis.com/book/returned_count display_name:
+    /// "Books Returned" description: "The count of books that have been returned." launch_stage: GA metric_kind: DELTA
+    /// value_type: INT64 unit: "1" labels: - key: customer_id description: "The id of the customer." - name:
+    /// library.googleapis.com/book/num_overdue display_name: "Books Overdue" description: "The current number of
+    /// overdue books." launch_stage: GA metric_kind: GAUGE value_type: INT64 unit: "1" labels: - key: customer_id
+    /// description: "The id of the customer." monitoring: producer_destinations: - monitored_resource:
+    /// library.googleapis.com/Branch metrics: - library.googleapis.com/book/returned_count consumer_destinations: -
+    /// monitored_resource: library.googleapis.com/Branch metrics: - library.googleapis.com/book/returned_count -
+    /// library.googleapis.com/book/num_overdue</summary>
     public class Monitoring : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Monitoring configurations for sending metrics to the consumer project. There can be multiple
-        /// consumer destinations. A monitored resouce type may appear in multiple monitoring destinations if different
+        /// consumer destinations. A monitored resource type may appear in multiple monitoring destinations if different
         /// aggregations are needed for different sets of metrics associated with that monitored resource type. A
         /// monitored resource and metric pair may only be used once in the Monitoring configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerDestinations")]
         public virtual System.Collections.Generic.IList<MonitoringDestination> ConsumerDestinations { get; set; } 
 
         /// <summary>Monitoring configurations for sending metrics to the producer project. There can be multiple
-        /// producer destinations. A monitored resouce type may appear in multiple monitoring destinations if different
+        /// producer destinations. A monitored resource type may appear in multiple monitoring destinations if different
         /// aggregations are needed for different sets of metrics associated with that monitored resource type. A
         /// monitored resource and metric pair may only be used once in the Monitoring configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerDestinations")]

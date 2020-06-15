@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v2alpha1
- *      <tr><th>API Rev<td>20200519 (1965)
+ *      <tr><th>API Rev<td>20200611 (1988)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -784,7 +784,8 @@ namespace Google.Apis.Genomics.v2alpha1
             /// <summary>The worker uses this method to retrieve the assigned operation and provide periodic status
             /// updates.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="id">The worker id, assigned when it was created.</param>
+            /// <param name="id">The VM identity token for authenticating the VM instance.
+            /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity</param>
             public virtual CheckInRequest CheckIn(Google.Apis.Genomics.v2alpha1.Data.CheckInRequest body, string id)
             {
                 return new CheckInRequest(service, body, id);
@@ -804,7 +805,8 @@ namespace Google.Apis.Genomics.v2alpha1
                 }
 
 
-                /// <summary>The worker id, assigned when it was created.</summary>
+                /// <summary>The VM identity token for authenticating the VM instance.
+                /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity</summary>
                 [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Id { get; private set; }
 
@@ -865,14 +867,135 @@ namespace Google.Apis.Genomics.v2alpha1
         public WorkersResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            projects = new ProjectsResource(service);
 
         }
 
+        private readonly ProjectsResource projects;
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects
+        {
+            get { return projects; }
+        }
+
+        /// <summary>The "projects" collection of methods.</summary>
+        public class ProjectsResource
+        {
+            private const string Resource = "projects";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ProjectsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                workers = new WorkersResource(service);
+
+            }
+
+            private readonly WorkersResource workers;
+
+            /// <summary>Gets the Workers resource.</summary>
+            public virtual WorkersResource Workers
+            {
+                get { return workers; }
+            }
+
+            /// <summary>The "workers" collection of methods.</summary>
+            public class WorkersResource
+            {
+                private const string Resource = "workers";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public WorkersResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>The worker uses this method to upload SOS reports for unexpected errors.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="id">The VM identity token for authenticating the VM instance.
+                /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity</param>
+                public virtual UploadSosReportRequest UploadSosReport(Google.Apis.Genomics.v2alpha1.Data.HttpBody body, string id)
+                {
+                    return new UploadSosReportRequest(service, body, id);
+                }
+
+                /// <summary>The worker uses this method to upload SOS reports for unexpected errors.</summary>
+                public class UploadSosReportRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v2alpha1.Data.UploadSOSReportResponse>
+                {
+                    /// <summary>Constructs a new UploadSosReport request.</summary>
+                    public UploadSosReportRequest(Google.Apis.Services.IClientService service, Google.Apis.Genomics.v2alpha1.Data.HttpBody body, string id)
+                        : base(service)
+                    {
+                        Id = id;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The VM identity token for authenticating the VM instance.
+                    /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Id { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Genomics.v2alpha1.Data.HttpBody Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "uploadSosReport"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2alpha1/workers/{+id}:uploadSosReport"; }
+                    }
+
+                    /// <summary>Initializes UploadSosReport parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "id", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "id",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/workers/[^/]+$",
+                            });
+                    }
+
+                }
+            }
+        }
 
         /// <summary>The worker uses this method to retrieve the assigned operation and provide periodic status
         /// updates.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="id">The worker id, assigned when it was created.</param>
+        /// <param name="id">The VM identity token for authenticating the VM instance.
+        /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity</param>
         public virtual CheckInRequest CheckIn(Google.Apis.Genomics.v2alpha1.Data.CheckInRequest body, string id)
         {
             return new CheckInRequest(service, body, id);
@@ -892,7 +1015,8 @@ namespace Google.Apis.Genomics.v2alpha1
             }
 
 
-            /// <summary>The worker id, assigned when it was created.</summary>
+            /// <summary>The VM identity token for authenticating the VM instance.
+            /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Id { get; private set; }
 
@@ -1314,6 +1438,49 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't
+    /// be represented as JSON, such as raw binary or an HTML page.
+    ///
+    /// This message can be used both in streaming and non-streaming API methods in the request as well as the response.
+    ///
+    /// It can be used as a top-level request field, which is convenient if one wants to extract parameters from either
+    /// the URL or HTTP template into the request fields and also want access to the raw HTTP body.
+    ///
+    /// Example:
+    ///
+    /// message GetResourceRequest { // A unique request id. string request_id = 1;
+    ///
+    /// // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; }
+    ///
+    /// service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+    /// UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); }
+    ///
+    /// Example with streaming methods:
+    ///
+    /// service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc
+    /// UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); }
+    ///
+    /// Use of this type only changes how the request and response bodies are handled, all other features will continue
+    /// to work unchanged.</summary>
+    public class HttpBody : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The HTTP Content-Type header value specifying the content type of the body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
+        public virtual string ContentType { get; set; } 
+
+        /// <summary>The HTTP request/response body as raw binary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; } 
+
+        /// <summary>Application specific response metadata. Must be set in the first response for streaming
+        /// APIs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Extensions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1719,6 +1886,13 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response to the UploadSOSReport method.</summary>
+    public class UploadSOSReportResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Carries information about a Compute Engine VM resource.</summary>
     public class VirtualMachine : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1760,6 +1934,13 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         /// <summary>The list of disks to create and attach to the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<Disk> Disks { get; set; } 
+
+        /// <summary>The Compute Engine Disk Images to use as a Docker cache. The disks will be mounted into the Docker
+        /// folder in a way that the images present in the cache will not need to be pulled. The digests of the cached
+        /// images must match those of the tags used or the latest version will still be pulled. Only a single image is
+        /// supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockerCacheImages")]
+        public virtual System.Collections.Generic.IList<string> DockerCacheImages { get; set; } 
 
         /// <summary>Whether Stackdriver monitoring should be enabled on the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverMonitoring")]

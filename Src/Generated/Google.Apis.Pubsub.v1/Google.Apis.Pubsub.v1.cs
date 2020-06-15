@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200525 (1971)
+ *      <tr><th>API Rev<td>20200603 (1980)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -3349,6 +3349,7 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A policy constraining the storage of messages published to the topic.</summary>
     public class MessageStoragePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of IDs of GCP regions where messages that are published to the topic may be persisted in
@@ -3650,6 +3651,31 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A policy that specifies how Cloud Pub/Sub retries message delivery.
+    ///
+    /// Retry delay will be exponential based on provided minimum and maximum backoffs.
+    /// https://en.wikipedia.org/wiki/Exponential_backoff.
+    ///
+    /// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
+    ///
+    /// Retry Policy is implemented on a best effort basis. At times, the delay between consecutive deliveries may not
+    /// match the configuration. That is, delay can be more or less than configured backoff.</summary>
+    public class RetryPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum delay between consecutive deliveries of a given message. Value should be between 0 and
+        /// 600 seconds. Defaults to 600 seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximumBackoff")]
+        public virtual object MaximumBackoff { get; set; } 
+
+        /// <summary>The minimum delay between consecutive deliveries of a given message. Value should be between 0 and
+        /// 600 seconds. Defaults to 10 seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumBackoff")]
+        public virtual object MinimumBackoff { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request for the `Seek` method.</summary>
     public class SeekRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3763,9 +3789,7 @@ namespace Google.Apis.Pubsub.v1.Data
 
         /// <summary>An expression written in the Cloud Pub/Sub filter language. If non-empty, then only
         /// `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty,
-        /// then no messages are filtered out. EXPERIMENTAL: This feature is part of a closed alpha release. This API
-        /// might be changed in backward-incompatible ways and is not recommended for production use. It is not subject
-        /// to any SLA or deprecation policy.</summary>
+        /// then no messages are filtered out.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
@@ -3800,6 +3824,14 @@ namespace Google.Apis.Pubsub.v1.Data
         /// Seek to a timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retainAckedMessages")]
         public virtual System.Nullable<bool> RetainAckedMessages { get; set; } 
+
+        /// <summary>A policy that specifies how Pub/Sub retries message delivery for this subscription.
+        ///
+        /// If not set, the default retry policy is applied. This generally implies that messages will be retried as
+        /// soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline
+        /// exceeded events for a given message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retryPolicy")]
+        public virtual RetryPolicy RetryPolicy { get; set; } 
 
         /// <summary>Required. The name of the topic from which this subscription is receiving messages. Format is
         /// `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been

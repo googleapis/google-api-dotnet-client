@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/text-to-speech/'>Cloud Text-to-Speech API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200526 (1972)
+ *      <tr><th>API Rev<td>20200605 (1982)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/text-to-speech/'>
  *              https://cloud.google.com/text-to-speech/</a>
@@ -551,8 +551,8 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
     public class SynthesisInput : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The SSML document to be synthesized. The SSML document must be valid and well-formed. Otherwise the
-        /// RPC will fail and return google.rpc.Code.INVALID_ARGUMENT. For more information, see [SSML](/speech/text-to-
-        /// speech/docs/ssml).</summary>
+        /// RPC will fail and return google.rpc.Code.INVALID_ARGUMENT. For more information, see
+        /// [SSML](https://cloud.google.com/text-to-speech/docs/ssml).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ssml")]
         public virtual string Ssml { get; set; } 
 

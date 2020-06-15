@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/api/'>Gmail API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200504 (1950)
+ *      <tr><th>API Rev<td>20200608 (1985)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/api/'>
  *              https://developers.google.com/gmail/api/</a>
@@ -83,16 +83,16 @@ namespace Google.Apis.Gmail.v1
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://www.googleapis.com/gmail/v1/users/"; }
+            get { return BaseUriOverride ?? "https://www.googleapis.com/"; }
         #else
-            get { return "https://www.googleapis.com/gmail/v1/users/"; }
+            get { return "https://www.googleapis.com/"; }
         #endif
         }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath
         {
-            get { return "gmail/v1/users/"; }
+            get { return ""; }
         }
 
         #if !NET40
@@ -223,18 +223,47 @@ namespace Google.Apis.Gmail.v1
         {
         }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>V1 error format.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
+
+        /// <summary>OAuth access token.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>Data format for response.</summary>
         public enum AltEnum
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
         }
+
+        /// <summary>JSONP</summary>
+        [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string Callback { get; set; }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -254,14 +283,18 @@ namespace Google.Apis.Gmail.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-        /// characters.</summary>
+        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
+        /// assigned to a user, but should not exceed 40 characters.</summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
-        /// <summary>Deprecated. Please use quotaUser instead.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string UserIp { get; set; }
+        /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadType { get; set; }
+
+        /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadProtocol { get; set; }
 
         /// <summary>Initializes Gmail parameter list.</summary>
         protected override void InitParameters()
@@ -269,12 +302,39 @@ namespace Google.Apis.Gmail.v1
             base.InitParameters();
 
             RequestParameters.Add(
+                "$.xgafv", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "$.xgafv",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "access_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "access_token",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
                 "alt", new Google.Apis.Discovery.Parameter
                 {
                     Name = "alt",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "json",
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "callback", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "callback",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
             RequestParameters.Add(
@@ -323,9 +383,18 @@ namespace Google.Apis.Gmail.v1
                     Pattern = null,
                 });
             RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
+                "uploadType", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "userIp",
+                    Name = "uploadType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "upload_protocol", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "upload_protocol",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -429,7 +498,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/drafts"; }
+                    get { return "gmail/v1/users/{userId}/drafts"; }
                 }
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -482,18 +551,47 @@ namespace Google.Apis.Gmail.v1
             public class CreateMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.Gmail.v1.Data.Draft, Google.Apis.Gmail.v1.Data.Draft>
             {
 
-                /// <summary>Data format for the response.</summary>
+                /// <summary>V1 error format.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+                /// <summary>V1 error format.</summary>
+                public enum XgafvEnum
+                {
+                    /// <summary>v1 error format</summary>
+                    [Google.Apis.Util.StringValueAttribute("1")]
+                    Value1,
+                    /// <summary>v2 error format</summary>
+                    [Google.Apis.Util.StringValueAttribute("2")]
+                    Value2,
+                }
+
+                /// <summary>OAuth access token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string AccessToken { get; set; }
+
+                /// <summary>Data format for response.</summary>
                 /// [default: json]
                 [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-                /// <summary>Data format for the response.</summary>
+                /// <summary>Data format for response.</summary>
                 public enum AltEnum
                 {
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
                     Json,
+                    /// <summary>Media download with context-dependent Content-Type</summary>
+                    [Google.Apis.Util.StringValueAttribute("media")]
+                    Media,
+                    /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+                    [Google.Apis.Util.StringValueAttribute("proto")]
+                    Proto,
                 }
+
+                /// <summary>JSONP</summary>
+                [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Callback { get; set; }
 
                 /// <summary>Selector specifying which fields to include in a partial response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -513,14 +611,18 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-                /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-                /// characters.</summary>
+                /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary
+                /// string assigned to a user, but should not exceed 40 characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string QuotaUser { get; set; }
 
-                /// <summary>Deprecated. Please use quotaUser instead.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string UserIp { get; set; }
+                /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string UploadType { get; set; }
+
+                /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+                [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string UploadProtocol { get; set; }
 
 
                 /// <summary>The user's email address. The special value me can be used to indicate the authenticated
@@ -549,7 +651,7 @@ namespace Google.Apis.Gmail.v1
                 /// </remarks>
                 public CreateMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Draft body, string
                  userId, System.IO.Stream stream, string contentType)
-                    : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "{userId}/drafts"), "POST", stream, contentType)
+                    : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "gmail/v1/users/{userId}/drafts"), "POST", stream, contentType)
                 {
                     UserId = userId;
                     Body = body;
@@ -604,7 +706,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/drafts/{id}"; }
+                    get { return "gmail/v1/users/{userId}/drafts/{id}"; }
                 }
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -674,14 +776,14 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>The format to return the draft in.</summary>
                 public enum FormatEnum
                 {
-                    [Google.Apis.Util.StringValueAttribute("full")]
-                    Full,
-                    [Google.Apis.Util.StringValueAttribute("metadata")]
-                    Metadata,
                     [Google.Apis.Util.StringValueAttribute("minimal")]
                     Minimal,
+                    [Google.Apis.Util.StringValueAttribute("full")]
+                    Full,
                     [Google.Apis.Util.StringValueAttribute("raw")]
                     Raw,
+                    [Google.Apis.Util.StringValueAttribute("metadata")]
+                    Metadata,
                 }
 
 
@@ -700,7 +802,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/drafts/{id}"; }
+                    get { return "gmail/v1/users/{userId}/drafts/{id}"; }
                 }
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -800,7 +902,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/drafts"; }
+                    get { return "gmail/v1/users/{userId}/drafts"; }
                 }
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -907,7 +1009,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/drafts/send"; }
+                    get { return "gmail/v1/users/{userId}/drafts/send"; }
                 }
 
                 /// <summary>Initializes Send parameter list.</summary>
@@ -960,18 +1062,47 @@ namespace Google.Apis.Gmail.v1
             public class SendMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.Gmail.v1.Data.Draft, Google.Apis.Gmail.v1.Data.Message>
             {
 
-                /// <summary>Data format for the response.</summary>
+                /// <summary>V1 error format.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+                /// <summary>V1 error format.</summary>
+                public enum XgafvEnum
+                {
+                    /// <summary>v1 error format</summary>
+                    [Google.Apis.Util.StringValueAttribute("1")]
+                    Value1,
+                    /// <summary>v2 error format</summary>
+                    [Google.Apis.Util.StringValueAttribute("2")]
+                    Value2,
+                }
+
+                /// <summary>OAuth access token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string AccessToken { get; set; }
+
+                /// <summary>Data format for response.</summary>
                 /// [default: json]
                 [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-                /// <summary>Data format for the response.</summary>
+                /// <summary>Data format for response.</summary>
                 public enum AltEnum
                 {
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
                     Json,
+                    /// <summary>Media download with context-dependent Content-Type</summary>
+                    [Google.Apis.Util.StringValueAttribute("media")]
+                    Media,
+                    /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+                    [Google.Apis.Util.StringValueAttribute("proto")]
+                    Proto,
                 }
+
+                /// <summary>JSONP</summary>
+                [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Callback { get; set; }
 
                 /// <summary>Selector specifying which fields to include in a partial response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -991,14 +1122,18 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-                /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-                /// characters.</summary>
+                /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary
+                /// string assigned to a user, but should not exceed 40 characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string QuotaUser { get; set; }
 
-                /// <summary>Deprecated. Please use quotaUser instead.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string UserIp { get; set; }
+                /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string UploadType { get; set; }
+
+                /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+                [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string UploadProtocol { get; set; }
 
 
                 /// <summary>The user's email address. The special value me can be used to indicate the authenticated
@@ -1027,7 +1162,7 @@ namespace Google.Apis.Gmail.v1
                 /// </remarks>
                 public SendMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Draft body, string
                  userId, System.IO.Stream stream, string contentType)
-                    : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "{userId}/drafts/send"), "POST", stream, contentType)
+                    : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "gmail/v1/users/{userId}/drafts/send"), "POST", stream, contentType)
                 {
                     UserId = userId;
                     Body = body;
@@ -1090,7 +1225,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/drafts/{id}"; }
+                    get { return "gmail/v1/users/{userId}/drafts/{id}"; }
                 }
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -1153,18 +1288,47 @@ namespace Google.Apis.Gmail.v1
             public class UpdateMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.Gmail.v1.Data.Draft, Google.Apis.Gmail.v1.Data.Draft>
             {
 
-                /// <summary>Data format for the response.</summary>
+                /// <summary>V1 error format.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+                /// <summary>V1 error format.</summary>
+                public enum XgafvEnum
+                {
+                    /// <summary>v1 error format</summary>
+                    [Google.Apis.Util.StringValueAttribute("1")]
+                    Value1,
+                    /// <summary>v2 error format</summary>
+                    [Google.Apis.Util.StringValueAttribute("2")]
+                    Value2,
+                }
+
+                /// <summary>OAuth access token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string AccessToken { get; set; }
+
+                /// <summary>Data format for response.</summary>
                 /// [default: json]
                 [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-                /// <summary>Data format for the response.</summary>
+                /// <summary>Data format for response.</summary>
                 public enum AltEnum
                 {
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
                     Json,
+                    /// <summary>Media download with context-dependent Content-Type</summary>
+                    [Google.Apis.Util.StringValueAttribute("media")]
+                    Media,
+                    /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+                    [Google.Apis.Util.StringValueAttribute("proto")]
+                    Proto,
                 }
+
+                /// <summary>JSONP</summary>
+                [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Callback { get; set; }
 
                 /// <summary>Selector specifying which fields to include in a partial response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -1184,14 +1348,18 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-                /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-                /// characters.</summary>
+                /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary
+                /// string assigned to a user, but should not exceed 40 characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string QuotaUser { get; set; }
 
-                /// <summary>Deprecated. Please use quotaUser instead.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string UserIp { get; set; }
+                /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string UploadType { get; set; }
+
+                /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+                [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string UploadProtocol { get; set; }
 
 
                 /// <summary>The user's email address. The special value me can be used to indicate the authenticated
@@ -1225,7 +1393,7 @@ namespace Google.Apis.Gmail.v1
                 public UpdateMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Draft body, string
                  userId, string
                  id, System.IO.Stream stream, string contentType)
-                    : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "{userId}/drafts/{id}"), "PUT", stream, contentType)
+                    : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "gmail/v1/users/{userId}/drafts/{id}"), "PUT", stream, contentType)
                 {
                     UserId = userId;
                     Id = id;
@@ -1292,14 +1460,14 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>History types to be returned by the function</summary>
                 public enum HistoryTypesEnum
                 {
-                    [Google.Apis.Util.StringValueAttribute("labelAdded")]
-                    LabelAdded,
-                    [Google.Apis.Util.StringValueAttribute("labelRemoved")]
-                    LabelRemoved,
                     [Google.Apis.Util.StringValueAttribute("messageAdded")]
                     MessageAdded,
                     [Google.Apis.Util.StringValueAttribute("messageDeleted")]
                     MessageDeleted,
+                    [Google.Apis.Util.StringValueAttribute("labelAdded")]
+                    LabelAdded,
+                    [Google.Apis.Util.StringValueAttribute("labelRemoved")]
+                    LabelRemoved,
                 }
 
                 /// <summary>Only return messages with a label matching the ID.</summary>
@@ -1320,7 +1488,7 @@ namespace Google.Apis.Gmail.v1
                 /// response. History IDs increase chronologically but are not contiguous with random gaps in between
                 /// valid IDs. Supplying an invalid or out of date startHistoryId typically returns an HTTP 404 error
                 /// code. A historyId is typically valid for at least a week, but in some rare circumstances may be
-                /// valid for only a few hours. If you receive an HTTP 404 error response, your application should
+                /// valid for only a few hours. If you receive an HTTP 404 error response, your  application should
                 /// perform a full sync. If you receive no nextPageToken in the response, there are no updates to
                 /// retrieve and you can store the returned historyId for a future request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("startHistoryId", Google.Apis.Util.RequestParameterType.Query)]
@@ -1342,7 +1510,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/history"; }
+                    get { return "gmail/v1/users/{userId}/history"; }
                 }
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1482,7 +1650,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/labels"; }
+                    get { return "gmail/v1/users/{userId}/labels"; }
                 }
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -1553,7 +1721,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/labels/{id}"; }
+                    get { return "gmail/v1/users/{userId}/labels/{id}"; }
                 }
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -1631,7 +1799,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/labels/{id}"; }
+                    get { return "gmail/v1/users/{userId}/labels/{id}"; }
                 }
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1703,7 +1871,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/labels"; }
+                    get { return "gmail/v1/users/{userId}/labels"; }
                 }
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1724,7 +1892,7 @@ namespace Google.Apis.Gmail.v1
 
             }
 
-            /// <summary>Updates the specified label. This method supports patch semantics.</summary>
+            /// <summary>Patch the specified label.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
             /// user.</param>
@@ -1734,7 +1902,7 @@ namespace Google.Apis.Gmail.v1
                 return new PatchRequest(service, body, userId, id);
             }
 
-            /// <summary>Updates the specified label. This method supports patch semantics.</summary>
+            /// <summary>Patch the specified label.</summary>
             public class PatchRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Label>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -1780,7 +1948,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/labels/{id}"; }
+                    get { return "gmail/v1/users/{userId}/labels/{id}"; }
                 }
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -1866,7 +2034,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/labels/{id}"; }
+                    get { return "gmail/v1/users/{userId}/labels/{id}"; }
                 }
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -1999,7 +2167,7 @@ namespace Google.Apis.Gmail.v1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{userId}/messages/{messageId}/attachments/{id}"; }
+                        get { return "gmail/v1/users/{userId}/messages/{messageId}/attachments/{id}"; }
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -2039,7 +2207,7 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Deletes many messages by message ID. Provides no guarantees that messages were not already
+            /// <summary>Deletes many messages by message ID.  Provides no guarantees that messages were not already
             /// deleted or even existed at all.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
@@ -2049,7 +2217,7 @@ namespace Google.Apis.Gmail.v1
                 return new BatchDeleteRequest(service, body, userId);
             }
 
-            /// <summary>Deletes many messages by message ID. Provides no guarantees that messages were not already
+            /// <summary>Deletes many messages by message ID.  Provides no guarantees that messages were not already
             /// deleted or even existed at all.</summary>
             public class BatchDeleteRequest : GmailBaseServiceRequest<string>
             {
@@ -2091,7 +2259,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/messages/batchDelete"; }
+                    get { return "gmail/v1/users/{userId}/messages/batchDelete"; }
                 }
 
                 /// <summary>Initializes BatchDelete parameter list.</summary>
@@ -2162,7 +2330,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/messages/batchModify"; }
+                    get { return "gmail/v1/users/{userId}/messages/batchModify"; }
                 }
 
                 /// <summary>Initializes BatchModify parameter list.</summary>
@@ -2233,7 +2401,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/messages/{id}"; }
+                    get { return "gmail/v1/users/{userId}/messages/{id}"; }
                 }
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -2303,14 +2471,14 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>The format to return the message in.</summary>
                 public enum FormatEnum
                 {
-                    [Google.Apis.Util.StringValueAttribute("full")]
-                    Full,
-                    [Google.Apis.Util.StringValueAttribute("metadata")]
-                    Metadata,
                     [Google.Apis.Util.StringValueAttribute("minimal")]
                     Minimal,
+                    [Google.Apis.Util.StringValueAttribute("full")]
+                    Full,
                     [Google.Apis.Util.StringValueAttribute("raw")]
                     Raw,
+                    [Google.Apis.Util.StringValueAttribute("metadata")]
+                    Metadata,
                 }
 
                 /// <summary>When given and format is METADATA, only include headers specified.</summary>
@@ -2333,7 +2501,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/messages/{id}"; }
+                    get { return "gmail/v1/users/{userId}/messages/{id}"; }
                 }
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -2425,10 +2593,10 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Source for Gmail's internal date of the message.</summary>
                 public enum InternalDateSourceEnum
                 {
-                    [Google.Apis.Util.StringValueAttribute("dateHeader")]
-                    DateHeader,
                     [Google.Apis.Util.StringValueAttribute("receivedTime")]
                     ReceivedTime,
+                    [Google.Apis.Util.StringValueAttribute("dateHeader")]
+                    DateHeader,
                 }
 
                 /// <summary>Ignore the Gmail spam classifier decision and never mark this email as SPAM in the
@@ -2465,7 +2633,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/messages/import"; }
+                    get { return "gmail/v1/users/{userId}/messages/import"; }
                 }
 
                 /// <summary>Initializes Import parameter list.</summary>
@@ -2555,18 +2723,47 @@ namespace Google.Apis.Gmail.v1
             public class ImportMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.Gmail.v1.Data.Message, Google.Apis.Gmail.v1.Data.Message>
             {
 
-                /// <summary>Data format for the response.</summary>
+                /// <summary>V1 error format.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+                /// <summary>V1 error format.</summary>
+                public enum XgafvEnum
+                {
+                    /// <summary>v1 error format</summary>
+                    [Google.Apis.Util.StringValueAttribute("1")]
+                    Value1,
+                    /// <summary>v2 error format</summary>
+                    [Google.Apis.Util.StringValueAttribute("2")]
+                    Value2,
+                }
+
+                /// <summary>OAuth access token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string AccessToken { get; set; }
+
+                /// <summary>Data format for response.</summary>
                 /// [default: json]
                 [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-                /// <summary>Data format for the response.</summary>
+                /// <summary>Data format for response.</summary>
                 public enum AltEnum
                 {
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
                     Json,
+                    /// <summary>Media download with context-dependent Content-Type</summary>
+                    [Google.Apis.Util.StringValueAttribute("media")]
+                    Media,
+                    /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+                    [Google.Apis.Util.StringValueAttribute("proto")]
+                    Proto,
                 }
+
+                /// <summary>JSONP</summary>
+                [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Callback { get; set; }
 
                 /// <summary>Selector specifying which fields to include in a partial response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -2586,14 +2783,18 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-                /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-                /// characters.</summary>
+                /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary
+                /// string assigned to a user, but should not exceed 40 characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string QuotaUser { get; set; }
 
-                /// <summary>Deprecated. Please use quotaUser instead.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string UserIp { get; set; }
+                /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string UploadType { get; set; }
+
+                /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+                [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string UploadProtocol { get; set; }
 
 
                 /// <summary>The user's email address. The special value me can be used to indicate the authenticated
@@ -2616,10 +2817,10 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Source for Gmail's internal date of the message.</summary>
                 public enum InternalDateSourceEnum
                 {
-                    [Google.Apis.Util.StringValueAttribute("dateHeader")]
-                    DateHeader,
                     [Google.Apis.Util.StringValueAttribute("receivedTime")]
                     ReceivedTime,
+                    [Google.Apis.Util.StringValueAttribute("dateHeader")]
+                    DateHeader,
                 }
 
                 /// <summary>Ignore the Gmail spam classifier decision and never mark this email as SPAM in the
@@ -2654,7 +2855,7 @@ namespace Google.Apis.Gmail.v1
                 /// </remarks>
                 public ImportMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Message body, string
                  userId, System.IO.Stream stream, string contentType)
-                    : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "{userId}/messages/import"), "POST", stream, contentType)
+                    : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "gmail/v1/users/{userId}/messages/import"), "POST", stream, contentType)
                 {
                     UserId = userId;
                     Body = body;
@@ -2705,10 +2906,10 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Source for Gmail's internal date of the message.</summary>
                 public enum InternalDateSourceEnum
                 {
-                    [Google.Apis.Util.StringValueAttribute("dateHeader")]
-                    DateHeader,
                     [Google.Apis.Util.StringValueAttribute("receivedTime")]
                     ReceivedTime,
+                    [Google.Apis.Util.StringValueAttribute("dateHeader")]
+                    DateHeader,
                 }
 
 
@@ -2733,7 +2934,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/messages"; }
+                    get { return "gmail/v1/users/{userId}/messages"; }
                 }
 
                 /// <summary>Initializes Insert parameter list.</summary>
@@ -2805,18 +3006,47 @@ namespace Google.Apis.Gmail.v1
             public class InsertMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.Gmail.v1.Data.Message, Google.Apis.Gmail.v1.Data.Message>
             {
 
-                /// <summary>Data format for the response.</summary>
+                /// <summary>V1 error format.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+                /// <summary>V1 error format.</summary>
+                public enum XgafvEnum
+                {
+                    /// <summary>v1 error format</summary>
+                    [Google.Apis.Util.StringValueAttribute("1")]
+                    Value1,
+                    /// <summary>v2 error format</summary>
+                    [Google.Apis.Util.StringValueAttribute("2")]
+                    Value2,
+                }
+
+                /// <summary>OAuth access token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string AccessToken { get; set; }
+
+                /// <summary>Data format for response.</summary>
                 /// [default: json]
                 [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-                /// <summary>Data format for the response.</summary>
+                /// <summary>Data format for response.</summary>
                 public enum AltEnum
                 {
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
                     Json,
+                    /// <summary>Media download with context-dependent Content-Type</summary>
+                    [Google.Apis.Util.StringValueAttribute("media")]
+                    Media,
+                    /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+                    [Google.Apis.Util.StringValueAttribute("proto")]
+                    Proto,
                 }
+
+                /// <summary>JSONP</summary>
+                [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Callback { get; set; }
 
                 /// <summary>Selector specifying which fields to include in a partial response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -2836,14 +3066,18 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-                /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-                /// characters.</summary>
+                /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary
+                /// string assigned to a user, but should not exceed 40 characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string QuotaUser { get; set; }
 
-                /// <summary>Deprecated. Please use quotaUser instead.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string UserIp { get; set; }
+                /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string UploadType { get; set; }
+
+                /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+                [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string UploadProtocol { get; set; }
 
 
                 /// <summary>The user's email address. The special value me can be used to indicate the authenticated
@@ -2866,10 +3100,10 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Source for Gmail's internal date of the message.</summary>
                 public enum InternalDateSourceEnum
                 {
-                    [Google.Apis.Util.StringValueAttribute("dateHeader")]
-                    DateHeader,
                     [Google.Apis.Util.StringValueAttribute("receivedTime")]
                     ReceivedTime,
+                    [Google.Apis.Util.StringValueAttribute("dateHeader")]
+                    DateHeader,
                 }
 
                 /// <summary>Constructs a new Insert media upload instance.</summary>
@@ -2892,7 +3126,7 @@ namespace Google.Apis.Gmail.v1
                 /// </remarks>
                 public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Message body, string
                  userId, System.IO.Stream stream, string contentType)
-                    : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "{userId}/messages"), "POST", stream, contentType)
+                    : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "gmail/v1/users/{userId}/messages"), "POST", stream, contentType)
                 {
                     UserId = userId;
                     Body = body;
@@ -2944,8 +3178,9 @@ namespace Google.Apis.Gmail.v1
                 public virtual string PageToken { get; set; }
 
                 /// <summary>Only return messages matching the specified query. Supports the same query format as the
-                /// Gmail search box. For example, "from:someuser@example.com rfc822msgid: is:unread". Parameter cannot
-                /// be used when accessing the api using the gmail.metadata scope.</summary>
+                /// Gmail search box. For example, "from:someuser@example.com rfc822msgid:somemsgid@example.com
+                /// is:unread". Parameter cannot be used when accessing the api using the gmail.metadata
+                /// scope.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Q { get; set; }
 
@@ -2965,7 +3200,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/messages"; }
+                    get { return "gmail/v1/users/{userId}/messages"; }
                 }
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -3087,7 +3322,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/messages/{id}/modify"; }
+                    get { return "gmail/v1/users/{userId}/messages/{id}/modify"; }
                 }
 
                 /// <summary>Initializes Modify parameter list.</summary>
@@ -3167,7 +3402,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/messages/send"; }
+                    get { return "gmail/v1/users/{userId}/messages/send"; }
                 }
 
                 /// <summary>Initializes Send parameter list.</summary>
@@ -3220,18 +3455,47 @@ namespace Google.Apis.Gmail.v1
             public class SendMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.Gmail.v1.Data.Message, Google.Apis.Gmail.v1.Data.Message>
             {
 
-                /// <summary>Data format for the response.</summary>
+                /// <summary>V1 error format.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+                /// <summary>V1 error format.</summary>
+                public enum XgafvEnum
+                {
+                    /// <summary>v1 error format</summary>
+                    [Google.Apis.Util.StringValueAttribute("1")]
+                    Value1,
+                    /// <summary>v2 error format</summary>
+                    [Google.Apis.Util.StringValueAttribute("2")]
+                    Value2,
+                }
+
+                /// <summary>OAuth access token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string AccessToken { get; set; }
+
+                /// <summary>Data format for response.</summary>
                 /// [default: json]
                 [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-                /// <summary>Data format for the response.</summary>
+                /// <summary>Data format for response.</summary>
                 public enum AltEnum
                 {
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
                     Json,
+                    /// <summary>Media download with context-dependent Content-Type</summary>
+                    [Google.Apis.Util.StringValueAttribute("media")]
+                    Media,
+                    /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+                    [Google.Apis.Util.StringValueAttribute("proto")]
+                    Proto,
                 }
+
+                /// <summary>JSONP</summary>
+                [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Callback { get; set; }
 
                 /// <summary>Selector specifying which fields to include in a partial response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -3251,14 +3515,18 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-                /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-                /// characters.</summary>
+                /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary
+                /// string assigned to a user, but should not exceed 40 characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string QuotaUser { get; set; }
 
-                /// <summary>Deprecated. Please use quotaUser instead.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string UserIp { get; set; }
+                /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string UploadType { get; set; }
+
+                /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+                [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string UploadProtocol { get; set; }
 
 
                 /// <summary>The user's email address. The special value me can be used to indicate the authenticated
@@ -3287,7 +3555,7 @@ namespace Google.Apis.Gmail.v1
                 /// </remarks>
                 public SendMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Message body, string
                  userId, System.IO.Stream stream, string contentType)
-                    : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "{userId}/messages/send"), "POST", stream, contentType)
+                    : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "gmail/v1/users/{userId}/messages/send"), "POST", stream, contentType)
                 {
                     UserId = userId;
                     Body = body;
@@ -3342,7 +3610,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/messages/{id}/trash"; }
+                    get { return "gmail/v1/users/{userId}/messages/{id}/trash"; }
                 }
 
                 /// <summary>Initializes Trash parameter list.</summary>
@@ -3420,7 +3688,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/messages/{id}/untrash"; }
+                    get { return "gmail/v1/users/{userId}/messages/{id}/untrash"; }
                 }
 
                 /// <summary>Initializes Untrash parameter list.</summary>
@@ -3502,7 +3770,7 @@ namespace Google.Apis.Gmail.v1
 
 
                 /// <summary>Adds a delegate with its verification status set directly to accepted, without sending any
-                /// verification email. The delegate user must be a member of the same G Suite organization as the
+                /// verification email.  The delegate user must be a member of the same G Suite organization as the
                 /// delegator user.
                 ///
                 /// Gmail imposes limitations on the number of delegates and delegators each user in a G Suite
@@ -3518,7 +3786,7 @@ namespace Google.Apis.Gmail.v1
                 /// This method is only available to service account clients that have been delegated domain-wide
                 /// authority.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+                /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</param>
                 public virtual CreateRequest Create(Google.Apis.Gmail.v1.Data.Delegate body, string userId)
                 {
@@ -3526,7 +3794,7 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>Adds a delegate with its verification status set directly to accepted, without sending any
-                /// verification email. The delegate user must be a member of the same G Suite organization as the
+                /// verification email.  The delegate user must be a member of the same G Suite organization as the
                 /// delegator user.
                 ///
                 /// Gmail imposes limitations on the number of delegates and delegators each user in a G Suite
@@ -3553,7 +3821,7 @@ namespace Google.Apis.Gmail.v1
                     }
 
 
-                    /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                    /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
                     /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -3581,7 +3849,7 @@ namespace Google.Apis.Gmail.v1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{userId}/settings/delegates"; }
+                        get { return "gmail/v1/users/{userId}/settings/delegates"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -3610,7 +3878,7 @@ namespace Google.Apis.Gmail.v1
                 ///
                 /// This method is only available to service account clients that have been delegated domain-wide
                 /// authority.</summary>
-                /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+                /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</param>
                 /// <param name="delegateEmail">The email address of the user to be removed as a
                 /// delegate.</param>
@@ -3639,7 +3907,7 @@ namespace Google.Apis.Gmail.v1
                     }
 
 
-                    /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                    /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
                     /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -3665,7 +3933,7 @@ namespace Google.Apis.Gmail.v1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{userId}/settings/delegates/{delegateEmail}"; }
+                        get { return "gmail/v1/users/{userId}/settings/delegates/{delegateEmail}"; }
                     }
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -3702,7 +3970,7 @@ namespace Google.Apis.Gmail.v1
                 ///
                 /// This method is only available to service account clients that have been delegated domain-wide
                 /// authority.</summary>
-                /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+                /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</param>
                 /// <param name="delegateEmail">The email address of the user whose delegate relationship is to be
                 /// retrieved.</param>
@@ -3730,7 +3998,7 @@ namespace Google.Apis.Gmail.v1
                     }
 
 
-                    /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                    /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
                     /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -3756,7 +4024,7 @@ namespace Google.Apis.Gmail.v1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{userId}/settings/delegates/{delegateEmail}"; }
+                        get { return "gmail/v1/users/{userId}/settings/delegates/{delegateEmail}"; }
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -3790,7 +4058,7 @@ namespace Google.Apis.Gmail.v1
                 ///
                 /// This method is only available to service account clients that have been delegated domain-wide
                 /// authority.</summary>
-                /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+                /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</param>
                 public virtual ListRequest List(string userId)
                 {
@@ -3812,7 +4080,7 @@ namespace Google.Apis.Gmail.v1
                     }
 
 
-                    /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                    /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
                     /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -3834,7 +4102,7 @@ namespace Google.Apis.Gmail.v1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{userId}/settings/delegates"; }
+                        get { return "gmail/v1/users/{userId}/settings/delegates"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -3929,7 +4197,7 @@ namespace Google.Apis.Gmail.v1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{userId}/settings/filters"; }
+                        get { return "gmail/v1/users/{userId}/settings/filters"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -3998,7 +4266,7 @@ namespace Google.Apis.Gmail.v1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{userId}/settings/filters/{id}"; }
+                        get { return "gmail/v1/users/{userId}/settings/filters/{id}"; }
                     }
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -4076,7 +4344,7 @@ namespace Google.Apis.Gmail.v1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{userId}/settings/filters/{id}"; }
+                        get { return "gmail/v1/users/{userId}/settings/filters/{id}"; }
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -4148,7 +4416,7 @@ namespace Google.Apis.Gmail.v1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{userId}/settings/filters"; }
+                        get { return "gmail/v1/users/{userId}/settings/filters"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -4193,22 +4461,22 @@ namespace Google.Apis.Gmail.v1
                 }
 
 
-                /// <summary>Creates a forwarding address. If ownership verification is required, a message will be sent
-                /// to the recipient and the resource's verification status will be set to pending; otherwise, the
+                /// <summary>Creates a forwarding address.  If ownership verification is required, a message will be
+                /// sent to the recipient and the resource's verification status will be set to pending; otherwise, the
                 /// resource will be created with verification status set to accepted.
                 ///
                 /// This method is only available to service account clients that have been delegated domain-wide
                 /// authority.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+                /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</param>
                 public virtual CreateRequest Create(Google.Apis.Gmail.v1.Data.ForwardingAddress body, string userId)
                 {
                     return new CreateRequest(service, body, userId);
                 }
 
-                /// <summary>Creates a forwarding address. If ownership verification is required, a message will be sent
-                /// to the recipient and the resource's verification status will be set to pending; otherwise, the
+                /// <summary>Creates a forwarding address.  If ownership verification is required, a message will be
+                /// sent to the recipient and the resource's verification status will be set to pending; otherwise, the
                 /// resource will be created with verification status set to accepted.
                 ///
                 /// This method is only available to service account clients that have been delegated domain-wide
@@ -4225,7 +4493,7 @@ namespace Google.Apis.Gmail.v1
                     }
 
 
-                    /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                    /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
                     /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -4253,7 +4521,7 @@ namespace Google.Apis.Gmail.v1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{userId}/settings/forwardingAddresses"; }
+                        get { return "gmail/v1/users/{userId}/settings/forwardingAddresses"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -4279,7 +4547,7 @@ namespace Google.Apis.Gmail.v1
                 ///
                 /// This method is only available to service account clients that have been delegated domain-wide
                 /// authority.</summary>
-                /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+                /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</param>
                 /// <param name="forwardingEmail">The forwarding address to be deleted.</param>
                 public virtual DeleteRequest Delete(string userId, string forwardingEmail)
@@ -4304,7 +4572,7 @@ namespace Google.Apis.Gmail.v1
                     }
 
 
-                    /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                    /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
                     /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -4330,7 +4598,7 @@ namespace Google.Apis.Gmail.v1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{userId}/settings/forwardingAddresses/{forwardingEmail}"; }
+                        get { return "gmail/v1/users/{userId}/settings/forwardingAddresses/{forwardingEmail}"; }
                     }
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -4361,7 +4629,7 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>Gets the specified forwarding address.</summary>
-                /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+                /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</param>
                 /// <param name="forwardingEmail">The forwarding address to be retrieved.</param>
                 public virtual GetRequest Get(string userId, string forwardingEmail)
@@ -4382,7 +4650,7 @@ namespace Google.Apis.Gmail.v1
                     }
 
 
-                    /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                    /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
                     /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -4408,7 +4676,7 @@ namespace Google.Apis.Gmail.v1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{userId}/settings/forwardingAddresses/{forwardingEmail}"; }
+                        get { return "gmail/v1/users/{userId}/settings/forwardingAddresses/{forwardingEmail}"; }
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -4439,7 +4707,7 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>Lists the forwarding addresses for the specified account.</summary>
-                /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+                /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</param>
                 public virtual ListRequest List(string userId)
                 {
@@ -4458,7 +4726,7 @@ namespace Google.Apis.Gmail.v1
                     }
 
 
-                    /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                    /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
                     /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -4480,7 +4748,7 @@ namespace Google.Apis.Gmail.v1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{userId}/settings/forwardingAddresses"; }
+                        get { return "gmail/v1/users/{userId}/settings/forwardingAddresses"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -4605,7 +4873,7 @@ namespace Google.Apis.Gmail.v1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}"; }
+                            get { return "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}"; }
                         }
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -4700,7 +4968,7 @@ namespace Google.Apis.Gmail.v1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}"; }
+                            get { return "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}"; }
                         }
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -4799,7 +5067,7 @@ namespace Google.Apis.Gmail.v1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{userId}/settings/sendAs/{sendAsEmail}/smimeInfo"; }
+                            get { return "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo"; }
                         }
 
                         /// <summary>Initializes Insert parameter list.</summary>
@@ -4879,7 +5147,7 @@ namespace Google.Apis.Gmail.v1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{userId}/settings/sendAs/{sendAsEmail}/smimeInfo"; }
+                            get { return "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo"; }
                         }
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -4965,7 +5233,7 @@ namespace Google.Apis.Gmail.v1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}/setDefault"; }
+                            get { return "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}/setDefault"; }
                         }
 
                         /// <summary>Initializes SetDefault parameter list.</summary>
@@ -5005,29 +5273,29 @@ namespace Google.Apis.Gmail.v1
                     }
                 }
 
-                /// <summary>Creates a custom "from" send-as alias. If an SMTP MSA is specified, Gmail will attempt to
-                /// connect to the SMTP service to validate the configuration before creating the alias. If ownership
+                /// <summary>Creates a custom "from" send-as alias.  If an SMTP MSA is specified, Gmail will attempt to
+                /// connect to the SMTP service to validate the configuration before creating the alias.  If ownership
                 /// verification is required for the alias, a message will be sent to the email address and the
                 /// resource's verification status will be set to pending; otherwise, the resource will be created with
-                /// verification status set to accepted. If a signature is provided, Gmail will sanitize the HTML before
-                /// saving it with the alias.
+                /// verification status set to accepted.  If a signature is provided, Gmail will sanitize the HTML
+                /// before saving it with the alias.
                 ///
                 /// This method is only available to service account clients that have been delegated domain-wide
                 /// authority.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+                /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</param>
                 public virtual CreateRequest Create(Google.Apis.Gmail.v1.Data.SendAs body, string userId)
                 {
                     return new CreateRequest(service, body, userId);
                 }
 
-                /// <summary>Creates a custom "from" send-as alias. If an SMTP MSA is specified, Gmail will attempt to
-                /// connect to the SMTP service to validate the configuration before creating the alias. If ownership
+                /// <summary>Creates a custom "from" send-as alias.  If an SMTP MSA is specified, Gmail will attempt to
+                /// connect to the SMTP service to validate the configuration before creating the alias.  If ownership
                 /// verification is required for the alias, a message will be sent to the email address and the
                 /// resource's verification status will be set to pending; otherwise, the resource will be created with
-                /// verification status set to accepted. If a signature is provided, Gmail will sanitize the HTML before
-                /// saving it with the alias.
+                /// verification status set to accepted.  If a signature is provided, Gmail will sanitize the HTML
+                /// before saving it with the alias.
                 ///
                 /// This method is only available to service account clients that have been delegated domain-wide
                 /// authority.</summary>
@@ -5043,7 +5311,7 @@ namespace Google.Apis.Gmail.v1
                     }
 
 
-                    /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                    /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
                     /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -5071,7 +5339,7 @@ namespace Google.Apis.Gmail.v1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{userId}/settings/sendAs"; }
+                        get { return "gmail/v1/users/{userId}/settings/sendAs"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -5092,12 +5360,12 @@ namespace Google.Apis.Gmail.v1
 
                 }
 
-                /// <summary>Deletes the specified send-as alias. Revokes any verification that may have been required
+                /// <summary>Deletes the specified send-as alias.  Revokes any verification that may have been required
                 /// for using it.
                 ///
                 /// This method is only available to service account clients that have been delegated domain-wide
                 /// authority.</summary>
-                /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+                /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</param>
                 /// <param name="sendAsEmail">The send-as alias to be deleted.</param>
                 public virtual DeleteRequest Delete(string userId, string sendAsEmail)
@@ -5105,7 +5373,7 @@ namespace Google.Apis.Gmail.v1
                     return new DeleteRequest(service, userId, sendAsEmail);
                 }
 
-                /// <summary>Deletes the specified send-as alias. Revokes any verification that may have been required
+                /// <summary>Deletes the specified send-as alias.  Revokes any verification that may have been required
                 /// for using it.
                 ///
                 /// This method is only available to service account clients that have been delegated domain-wide
@@ -5122,7 +5390,7 @@ namespace Google.Apis.Gmail.v1
                     }
 
 
-                    /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                    /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
                     /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -5148,7 +5416,7 @@ namespace Google.Apis.Gmail.v1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{userId}/settings/sendAs/{sendAsEmail}"; }
+                        get { return "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}"; }
                     }
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -5178,9 +5446,9 @@ namespace Google.Apis.Gmail.v1
 
                 }
 
-                /// <summary>Gets the specified send-as alias. Fails with an HTTP 404 error if the specified address is
+                /// <summary>Gets the specified send-as alias.  Fails with an HTTP 404 error if the specified address is
                 /// not a member of the collection.</summary>
-                /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+                /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</param>
                 /// <param name="sendAsEmail">The send-as alias to be retrieved.</param>
                 public virtual GetRequest Get(string userId, string sendAsEmail)
@@ -5188,7 +5456,7 @@ namespace Google.Apis.Gmail.v1
                     return new GetRequest(service, userId, sendAsEmail);
                 }
 
-                /// <summary>Gets the specified send-as alias. Fails with an HTTP 404 error if the specified address is
+                /// <summary>Gets the specified send-as alias.  Fails with an HTTP 404 error if the specified address is
                 /// not a member of the collection.</summary>
                 public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.SendAs>
                 {
@@ -5202,7 +5470,7 @@ namespace Google.Apis.Gmail.v1
                     }
 
 
-                    /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                    /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
                     /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -5228,7 +5496,7 @@ namespace Google.Apis.Gmail.v1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{userId}/settings/sendAs/{sendAsEmail}"; }
+                        get { return "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}"; }
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -5258,16 +5526,16 @@ namespace Google.Apis.Gmail.v1
 
                 }
 
-                /// <summary>Lists the send-as aliases for the specified account. The result includes the primary send-
+                /// <summary>Lists the send-as aliases for the specified account.  The result includes the primary send-
                 /// as address associated with the account as well as any custom "from" aliases.</summary>
-                /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+                /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</param>
                 public virtual ListRequest List(string userId)
                 {
                     return new ListRequest(service, userId);
                 }
 
-                /// <summary>Lists the send-as aliases for the specified account. The result includes the primary send-
+                /// <summary>Lists the send-as aliases for the specified account.  The result includes the primary send-
                 /// as address associated with the account as well as any custom "from" aliases.</summary>
                 public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListSendAsResponse>
                 {
@@ -5280,7 +5548,7 @@ namespace Google.Apis.Gmail.v1
                     }
 
 
-                    /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                    /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
                     /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -5302,7 +5570,7 @@ namespace Google.Apis.Gmail.v1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{userId}/settings/sendAs"; }
+                        get { return "gmail/v1/users/{userId}/settings/sendAs"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -5323,14 +5591,9 @@ namespace Google.Apis.Gmail.v1
 
                 }
 
-                /// <summary>Updates a send-as alias. If a signature is provided, Gmail will sanitize the HTML before
-                /// saving it with the alias.
-                ///
-                /// Addresses other than the primary address for the account can only be updated by service account
-                /// clients that have been delegated domain-wide authority. This method supports patch
-                /// semantics.</summary>
+                /// <summary>Patch the specified send-as alias.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+                /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</param>
                 /// <param name="sendAsEmail">The send-as alias to be updated.</param>
                 public virtual PatchRequest Patch(Google.Apis.Gmail.v1.Data.SendAs body, string userId, string sendAsEmail)
@@ -5338,12 +5601,7 @@ namespace Google.Apis.Gmail.v1
                     return new PatchRequest(service, body, userId, sendAsEmail);
                 }
 
-                /// <summary>Updates a send-as alias. If a signature is provided, Gmail will sanitize the HTML before
-                /// saving it with the alias.
-                ///
-                /// Addresses other than the primary address for the account can only be updated by service account
-                /// clients that have been delegated domain-wide authority. This method supports patch
-                /// semantics.</summary>
+                /// <summary>Patch the specified send-as alias.</summary>
                 public class PatchRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.SendAs>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -5357,7 +5615,7 @@ namespace Google.Apis.Gmail.v1
                     }
 
 
-                    /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                    /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
                     /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -5389,7 +5647,7 @@ namespace Google.Apis.Gmail.v1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{userId}/settings/sendAs/{sendAsEmail}"; }
+                        get { return "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}"; }
                     }
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -5419,13 +5677,13 @@ namespace Google.Apis.Gmail.v1
 
                 }
 
-                /// <summary>Updates a send-as alias. If a signature is provided, Gmail will sanitize the HTML before
+                /// <summary>Updates a send-as alias.  If a signature is provided, Gmail will sanitize the HTML before
                 /// saving it with the alias.
                 ///
                 /// Addresses other than the primary address for the account can only be updated by service account
                 /// clients that have been delegated domain-wide authority.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+                /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</param>
                 /// <param name="sendAsEmail">The send-as alias to be updated.</param>
                 public virtual UpdateRequest Update(Google.Apis.Gmail.v1.Data.SendAs body, string userId, string sendAsEmail)
@@ -5433,7 +5691,7 @@ namespace Google.Apis.Gmail.v1
                     return new UpdateRequest(service, body, userId, sendAsEmail);
                 }
 
-                /// <summary>Updates a send-as alias. If a signature is provided, Gmail will sanitize the HTML before
+                /// <summary>Updates a send-as alias.  If a signature is provided, Gmail will sanitize the HTML before
                 /// saving it with the alias.
                 ///
                 /// Addresses other than the primary address for the account can only be updated by service account
@@ -5451,7 +5709,7 @@ namespace Google.Apis.Gmail.v1
                     }
 
 
-                    /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                    /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
                     /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -5483,7 +5741,7 @@ namespace Google.Apis.Gmail.v1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{userId}/settings/sendAs/{sendAsEmail}"; }
+                        get { return "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}"; }
                     }
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -5518,7 +5776,7 @@ namespace Google.Apis.Gmail.v1
                 ///
                 /// This method is only available to service account clients that have been delegated domain-wide
                 /// authority.</summary>
-                /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+                /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</param>
                 /// <param name="sendAsEmail">The send-as alias to be verified.</param>
                 public virtual VerifyRequest Verify(string userId, string sendAsEmail)
@@ -5543,7 +5801,7 @@ namespace Google.Apis.Gmail.v1
                     }
 
 
-                    /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                    /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
                     /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -5569,7 +5827,7 @@ namespace Google.Apis.Gmail.v1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{userId}/settings/sendAs/{sendAsEmail}/verify"; }
+                        get { return "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/verify"; }
                     }
 
                     /// <summary>Initializes Verify parameter list.</summary>
@@ -5601,7 +5859,7 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>Gets the auto-forwarding setting for the specified account.</summary>
-            /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+            /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
             /// user.</param>
             public virtual GetAutoForwardingRequest GetAutoForwarding(string userId)
             {
@@ -5620,7 +5878,7 @@ namespace Google.Apis.Gmail.v1
                 }
 
 
-                /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</summary>
                 /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -5642,7 +5900,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/settings/autoForwarding"; }
+                    get { return "gmail/v1/users/{userId}/settings/autoForwarding"; }
                 }
 
                 /// <summary>Initializes GetAutoForwarding parameter list.</summary>
@@ -5664,7 +5922,7 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>Gets IMAP settings.</summary>
-            /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+            /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
             /// user.</param>
             public virtual GetImapRequest GetImap(string userId)
             {
@@ -5683,7 +5941,7 @@ namespace Google.Apis.Gmail.v1
                 }
 
 
-                /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</summary>
                 /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -5705,7 +5963,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/settings/imap"; }
+                    get { return "gmail/v1/users/{userId}/settings/imap"; }
                 }
 
                 /// <summary>Initializes GetImap parameter list.</summary>
@@ -5727,7 +5985,7 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>Gets language settings.</summary>
-            /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+            /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
             /// user.</param>
             public virtual GetLanguageRequest GetLanguage(string userId)
             {
@@ -5746,7 +6004,7 @@ namespace Google.Apis.Gmail.v1
                 }
 
 
-                /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</summary>
                 /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -5768,7 +6026,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/settings/language"; }
+                    get { return "gmail/v1/users/{userId}/settings/language"; }
                 }
 
                 /// <summary>Initializes GetLanguage parameter list.</summary>
@@ -5790,7 +6048,7 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>Gets POP settings.</summary>
-            /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+            /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
             /// user.</param>
             public virtual GetPopRequest GetPop(string userId)
             {
@@ -5809,7 +6067,7 @@ namespace Google.Apis.Gmail.v1
                 }
 
 
-                /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</summary>
                 /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -5831,7 +6089,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/settings/pop"; }
+                    get { return "gmail/v1/users/{userId}/settings/pop"; }
                 }
 
                 /// <summary>Initializes GetPop parameter list.</summary>
@@ -5853,7 +6111,7 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>Gets vacation responder settings.</summary>
-            /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+            /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
             /// user.</param>
             public virtual GetVacationRequest GetVacation(string userId)
             {
@@ -5872,7 +6130,7 @@ namespace Google.Apis.Gmail.v1
                 }
 
 
-                /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</summary>
                 /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -5894,7 +6152,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/settings/vacation"; }
+                    get { return "gmail/v1/users/{userId}/settings/vacation"; }
                 }
 
                 /// <summary>Initializes GetVacation parameter list.</summary>
@@ -5915,20 +6173,20 @@ namespace Google.Apis.Gmail.v1
 
             }
 
-            /// <summary>Updates the auto-forwarding setting for the specified account. A verified forwarding address
+            /// <summary>Updates the auto-forwarding setting for the specified account.  A verified forwarding address
             /// must be specified when auto-forwarding is enabled.
             ///
             /// This method is only available to service account clients that have been delegated domain-wide
             /// authority.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+            /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
             /// user.</param>
             public virtual UpdateAutoForwardingRequest UpdateAutoForwarding(Google.Apis.Gmail.v1.Data.AutoForwarding body, string userId)
             {
                 return new UpdateAutoForwardingRequest(service, body, userId);
             }
 
-            /// <summary>Updates the auto-forwarding setting for the specified account. A verified forwarding address
+            /// <summary>Updates the auto-forwarding setting for the specified account.  A verified forwarding address
             /// must be specified when auto-forwarding is enabled.
             ///
             /// This method is only available to service account clients that have been delegated domain-wide
@@ -5945,7 +6203,7 @@ namespace Google.Apis.Gmail.v1
                 }
 
 
-                /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</summary>
                 /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -5973,7 +6231,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/settings/autoForwarding"; }
+                    get { return "gmail/v1/users/{userId}/settings/autoForwarding"; }
                 }
 
                 /// <summary>Initializes UpdateAutoForwarding parameter list.</summary>
@@ -5996,7 +6254,7 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>Updates IMAP settings.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+            /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
             /// user.</param>
             public virtual UpdateImapRequest UpdateImap(Google.Apis.Gmail.v1.Data.ImapSettings body, string userId)
             {
@@ -6016,7 +6274,7 @@ namespace Google.Apis.Gmail.v1
                 }
 
 
-                /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</summary>
                 /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -6044,7 +6302,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/settings/imap"; }
+                    get { return "gmail/v1/users/{userId}/settings/imap"; }
                 }
 
                 /// <summary>Initializes UpdateImap parameter list.</summary>
@@ -6072,7 +6330,7 @@ namespace Google.Apis.Gmail.v1
             /// directly supported by Gmail but have a close variant that is, and so the variant may be chosen and saved
             /// instead.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+            /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
             /// user.</param>
             public virtual UpdateLanguageRequest UpdateLanguage(Google.Apis.Gmail.v1.Data.LanguageSettings body, string userId)
             {
@@ -6097,7 +6355,7 @@ namespace Google.Apis.Gmail.v1
                 }
 
 
-                /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</summary>
                 /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -6125,7 +6383,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/settings/language"; }
+                    get { return "gmail/v1/users/{userId}/settings/language"; }
                 }
 
                 /// <summary>Initializes UpdateLanguage parameter list.</summary>
@@ -6148,7 +6406,7 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>Updates POP settings.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+            /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
             /// user.</param>
             public virtual UpdatePopRequest UpdatePop(Google.Apis.Gmail.v1.Data.PopSettings body, string userId)
             {
@@ -6168,7 +6426,7 @@ namespace Google.Apis.Gmail.v1
                 }
 
 
-                /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</summary>
                 /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -6196,7 +6454,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/settings/pop"; }
+                    get { return "gmail/v1/users/{userId}/settings/pop"; }
                 }
 
                 /// <summary>Initializes UpdatePop parameter list.</summary>
@@ -6219,7 +6477,7 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>Updates vacation responder settings.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+            /// <param name="userId">User's email address.  The special value "me" can be used to indicate the authenticated
             /// user.</param>
             public virtual UpdateVacationRequest UpdateVacation(Google.Apis.Gmail.v1.Data.VacationSettings body, string userId)
             {
@@ -6239,7 +6497,7 @@ namespace Google.Apis.Gmail.v1
                 }
 
 
-                /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                /// <summary>User's email address.  The special value "me" can be used to indicate the authenticated
                 /// user.</summary>
                 /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
@@ -6267,7 +6525,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/settings/vacation"; }
+                    get { return "gmail/v1/users/{userId}/settings/vacation"; }
                 }
 
                 /// <summary>Initializes UpdateVacation parameter list.</summary>
@@ -6362,7 +6620,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/threads/{id}"; }
+                    get { return "gmail/v1/users/{userId}/threads/{id}"; }
                 }
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -6460,7 +6718,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/threads/{id}"; }
+                    get { return "gmail/v1/users/{userId}/threads/{id}"; }
                 }
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -6574,7 +6832,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/threads"; }
+                    get { return "gmail/v1/users/{userId}/threads"; }
                 }
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -6698,7 +6956,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/threads/{id}/modify"; }
+                    get { return "gmail/v1/users/{userId}/threads/{id}/modify"; }
                 }
 
                 /// <summary>Initializes Modify parameter list.</summary>
@@ -6776,7 +7034,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/threads/{id}/trash"; }
+                    get { return "gmail/v1/users/{userId}/threads/{id}/trash"; }
                 }
 
                 /// <summary>Initializes Trash parameter list.</summary>
@@ -6854,7 +7112,7 @@ namespace Google.Apis.Gmail.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{userId}/threads/{id}/untrash"; }
+                    get { return "gmail/v1/users/{userId}/threads/{id}/untrash"; }
                 }
 
                 /// <summary>Initializes Untrash parameter list.</summary>
@@ -6927,7 +7185,7 @@ namespace Google.Apis.Gmail.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "{userId}/profile"; }
+                get { return "gmail/v1/users/{userId}/profile"; }
             }
 
             /// <summary>Initializes GetProfile parameter list.</summary>
@@ -6990,7 +7248,7 @@ namespace Google.Apis.Gmail.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "{userId}/stop"; }
+                get { return "gmail/v1/users/{userId}/stop"; }
             }
 
             /// <summary>Initializes Stop parameter list.</summary>
@@ -7061,7 +7319,7 @@ namespace Google.Apis.Gmail.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "{userId}/watch"; }
+                get { return "gmail/v1/users/{userId}/watch"; }
             }
 
             /// <summary>Initializes Watch parameter list.</summary>
@@ -7094,7 +7352,7 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disposition")]
         public virtual string Disposition { get; set; } 
 
-        /// <summary>Email address to which all incoming messages are forwarded. This email address must be a verified
+        /// <summary>Email address to which all incoming messages are forwarded.  This email address must be a verified
         /// member of the forwarding addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddress { get; set; } 
@@ -7144,7 +7402,7 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("delegateEmail")]
         public virtual string DelegateEmail { get; set; } 
 
-        /// <summary>Indicates whether this address has been verified and can act as a delegate for the account. Read-
+        /// <summary>Indicates whether this address has been verified and can act as a delegate for the account.  Read-
         /// only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verificationStatus")]
         public virtual string VerificationStatus { get; set; } 
@@ -7262,7 +7520,8 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingEmail")]
         public virtual string ForwardingEmail { get; set; } 
 
-        /// <summary>Indicates whether this address has been verified and is usable for forwarding. Read-only.</summary>
+        /// <summary>Indicates whether this address has been verified and is usable for forwarding.  Read-
+        /// only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verificationStatus")]
         public virtual string VerificationStatus { get; set; } 
 
@@ -7286,8 +7545,8 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelsRemoved")]
         public virtual System.Collections.Generic.IList<HistoryLabelRemoved> LabelsRemoved { get; set; } 
 
-        /// <summary>List of messages changed in this history record. The fields for specific change types, such as
-        /// messagesAdded may duplicate messages in this field. We recommend using the specific change-type fields
+        /// <summary>List of messages changed in this history record.  The fields for specific change types, such as
+        /// messagesAdded may duplicate messages in this field.  We recommend using the specific change-type fields
         /// instead of this.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<Message> Messages { get; set; } 
@@ -7352,7 +7611,7 @@ namespace Google.Apis.Gmail.v1.Data
     public class ImapSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If this value is true, Gmail will immediately expunge a message when it is marked as deleted in
-        /// IMAP. Otherwise, Gmail will wait for an update from the client before expunging messages marked as
+        /// IMAP.  Otherwise, Gmail will wait for an update from the client before expunging messages marked as
         /// deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoExpunge")]
         public virtual System.Nullable<bool> AutoExpunge { get; set; } 
@@ -7366,8 +7625,8 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expungeBehavior")]
         public virtual string ExpungeBehavior { get; set; } 
 
-        /// <summary>An optional limit on the number of messages that an IMAP folder may contain. Legal values are 0,
-        /// 1000, 2000, 5000 or 10000. A value of zero is interpreted to mean that there is no limit.</summary>
+        /// <summary>An optional limit on the number of messages that an IMAP folder may contain.  Legal values are 0,
+        /// 1000, 2000, 5000 or 10000.  A value of zero is interpreted to mean that there is no limit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxFolderSize")]
         public virtual System.Nullable<int> MaxFolderSize { get; set; } 
 
@@ -7379,7 +7638,7 @@ namespace Google.Apis.Gmail.v1.Data
     public class Label : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The color to assign to the label. Color is only available for labels that have their type set to
-        /// user.</summary>
+        /// user. @mutable gmail.users.labels.create gmail.users.labels.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual LabelColor Color { get; set; } 
 
@@ -7387,11 +7646,13 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>The visibility of the label in the label list in the Gmail web interface.</summary>
+        /// <summary>The visibility of the label in the label list in the Gmail web interface. @mutable
+        /// gmail.users.labels.create gmail.users.labels.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelListVisibility")]
         public virtual string LabelListVisibility { get; set; } 
 
-        /// <summary>The visibility of the label in the message list in the Gmail web interface.</summary>
+        /// <summary>The visibility of the label in the message list in the Gmail web interface. @mutable
+        /// gmail.users.labels.create gmail.users.labels.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageListVisibility")]
         public virtual string MessageListVisibility { get; set; } 
 
@@ -7403,7 +7664,8 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("messagesUnread")]
         public virtual System.Nullable<int> MessagesUnread { get; set; } 
 
-        /// <summary>The display name of the label.</summary>
+        /// <summary>The display name of the label. @mutable gmail.users.labels.create
+        /// gmail.users.labels.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -7431,30 +7693,68 @@ namespace Google.Apis.Gmail.v1.Data
     public class LabelColor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The background color represented as hex string #RRGGBB (ex #000000). This field is required in
-        /// order to set the color of a label. Only the following predefined set of color values are allowed: #000000,
-        /// #434343, #666666, #999999, #cccccc, #efefef, #f3f3f3, #ffffff, #fb4c2f, #ffad47, #fad165, #16a766, #43d692,
-        /// #4a86e8, #a479e2, #f691b3, #f6c5be, #ffe6c7, #fef1d1, #b9e4d0, #c6f3de, #c9daf8, #e4d7f5, #fcdee8, #efa093,
-        /// #ffd6a2, #fce8b3, #89d3b2, #a0eac9, #a4c2f4, #d0bcf1, #fbc8d9, #e66550, #ffbc6b, #fcda83, #44b984, #68dfa9,
-        /// #6d9eeb, #b694e8, #f7a7c0, #cc3a21, #eaa041, #f2c960, #149e60, #3dc789, #3c78d8, #8e63ce, #e07798, #ac2b16,
-        /// #cf8933, #d5ae49, #0b804b, #2a9c68, #285bac, #653e9b, #b65775, #822111, #a46a21, #aa8831, #076239, #1a764d,
-        /// #1c4587, #41236d, #83334c #464646, #e7e7e7, #0d3472, #b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff, #711a36,
-        /// #fbd3e0, #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, #594c05, #fbe983, #684e07, #fdedc1, #0b4f30,
-        /// #b3efd3, #04502e, #a2dcc1, #c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46, #662e37,
-        /// #ebdbde, #cca6ac, #094228, #42d692, #16a765</summary>
+        /// order to set the color of a label. Only the following predefined set of color values are allowed:
+        ///
+        /// # 000000, #434343, #666666, #999999, #cccccc, #efefef, #f3f3f3, #ffffff,
+        ///
+        /// # fb4c2f, #ffad47, #fad165, #16a766, #43d692, #4a86e8, #a479e2, #f691b3,
+        ///
+        /// # f6c5be, #ffe6c7, #fef1d1, #b9e4d0, #c6f3de, #c9daf8, #e4d7f5, #fcdee8,
+        ///
+        /// # efa093, #ffd6a2, #fce8b3, #89d3b2, #a0eac9, #a4c2f4, #d0bcf1, #fbc8d9,
+        ///
+        /// # e66550, #ffbc6b, #fcda83, #44b984, #68dfa9, #6d9eeb, #b694e8, #f7a7c0,
+        ///
+        /// # cc3a21, #eaa041, #f2c960, #149e60, #3dc789, #3c78d8, #8e63ce, #e07798,
+        ///
+        /// # ac2b16, #cf8933, #d5ae49, #0b804b, #2a9c68, #285bac, #653e9b, #b65775,
+        ///
+        /// # 822111, #a46a21, #aa8831, #076239, #1a764d, #1c4587, #41236d, #83334c
+        ///
+        /// # 464646, #e7e7e7, #0d3472, #b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff,
+        ///
+        /// # 711a36, #fbd3e0, #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5,
+        ///
+        /// # 594c05, #fbe983, #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1,
+        ///
+        /// # c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46,
+        ///
+        /// # 662e37, #ebdbde, #cca6ac, #094228, #42d692, #16a765
+        ///
+        /// @mutable gmail.users.labels.create gmail.users.labels.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
         public virtual string BackgroundColor { get; set; } 
 
         /// <summary>The text color of the label, represented as hex string. This field is required in order to set the
-        /// color of a label. Only the following predefined set of color values are allowed: #000000, #434343, #666666,
-        /// #999999, #cccccc, #efefef, #f3f3f3, #ffffff, #fb4c2f, #ffad47, #fad165, #16a766, #43d692, #4a86e8, #a479e2,
-        /// #f691b3, #f6c5be, #ffe6c7, #fef1d1, #b9e4d0, #c6f3de, #c9daf8, #e4d7f5, #fcdee8, #efa093, #ffd6a2, #fce8b3,
-        /// #89d3b2, #a0eac9, #a4c2f4, #d0bcf1, #fbc8d9, #e66550, #ffbc6b, #fcda83, #44b984, #68dfa9, #6d9eeb, #b694e8,
-        /// #f7a7c0, #cc3a21, #eaa041, #f2c960, #149e60, #3dc789, #3c78d8, #8e63ce, #e07798, #ac2b16, #cf8933, #d5ae49,
-        /// #0b804b, #2a9c68, #285bac, #653e9b, #b65775, #822111, #a46a21, #aa8831, #076239, #1a764d, #1c4587, #41236d,
-        /// #83334c #464646, #e7e7e7, #0d3472, #b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff, #711a36, #fbd3e0, #8a1c0a,
-        /// #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, #594c05, #fbe983, #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e,
-        /// #a2dcc1, #c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46, #662e37, #ebdbde, #cca6ac,
-        /// #094228, #42d692, #16a765</summary>
+        /// color of a label. Only the following predefined set of color values are allowed:
+        ///
+        /// # 000000, #434343, #666666, #999999, #cccccc, #efefef, #f3f3f3, #ffffff,
+        ///
+        /// # fb4c2f, #ffad47, #fad165, #16a766, #43d692, #4a86e8, #a479e2, #f691b3,
+        ///
+        /// # f6c5be, #ffe6c7, #fef1d1, #b9e4d0, #c6f3de, #c9daf8, #e4d7f5, #fcdee8,
+        ///
+        /// # efa093, #ffd6a2, #fce8b3, #89d3b2, #a0eac9, #a4c2f4, #d0bcf1, #fbc8d9,
+        ///
+        /// # e66550, #ffbc6b, #fcda83, #44b984, #68dfa9, #6d9eeb, #b694e8, #f7a7c0,
+        ///
+        /// # cc3a21, #eaa041, #f2c960, #149e60, #3dc789, #3c78d8, #8e63ce, #e07798,
+        ///
+        /// # ac2b16, #cf8933, #d5ae49, #0b804b, #2a9c68, #285bac, #653e9b, #b65775,
+        ///
+        /// # 822111, #a46a21, #aa8831, #076239, #1a764d, #1c4587, #41236d, #83334c
+        ///
+        /// # 464646, #e7e7e7, #0d3472, #b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff,
+        ///
+        /// # 711a36, #fbd3e0, #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5,
+        ///
+        /// # 594c05, #fbe983, #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1,
+        ///
+        /// # c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46,
+        ///
+        /// # 662e37, #ebdbde, #cca6ac, #094228, #42d692, #16a765
+        ///
+        /// @mutable gmail.users.labels.create gmail.users.labels.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textColor")]
         public virtual string TextColor { get; set; } 
 
@@ -7470,7 +7770,7 @@ namespace Google.Apis.Gmail.v1.Data
         /// ja for British English, French, or Japanese respectively).
         ///
         /// The set of languages supported by Gmail evolves over time, so please refer to the "Language" dropdown in the
-        /// Gmail settings  for all available options, as described in the language settings help article. A table of
+        /// Gmail settings for all available options, as described in the language settings help article. A table of
         /// sample values is also provided in the Managing Language Settings guide
         ///
         /// Not all Gmail clients can display the same set of languages. In the case that a user's display language is
@@ -7537,7 +7837,7 @@ namespace Google.Apis.Gmail.v1.Data
 
     public class ListHistoryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of history records. Any messages contained in the response will typically only have id and
+        /// <summary>List of history records.  Any messages contained in the response will typically only have id and
         /// threadId fields populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("history")]
         public virtual System.Collections.Generic.IList<History> History { get; set; } 
@@ -7635,14 +7935,15 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>The internal message creation timestamp (epoch ms), which determines ordering in the inbox. For
+        /// <summary>The internal message creation timestamp (epoch ms), which determines ordering in the inbox.  For
         /// normal SMTP-received email, this represents the time the message was originally accepted by Google, which is
         /// more reliable than the Date header. However, for API-migrated mail, it can be configured by client to be
         /// based on the Date header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalDate")]
         public virtual System.Nullable<long> InternalDate { get; set; } 
 
-        /// <summary>List of IDs of labels applied to this message.</summary>
+        /// <summary>List of IDs of labels applied to this message. @mutable gmail.users.messages.insert
+        /// gmail.users.messages.modify</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelIds")]
         public virtual System.Collections.Generic.IList<string> LabelIds { get; set; } 
 
@@ -7651,7 +7952,9 @@ namespace Google.Apis.Gmail.v1.Data
         public virtual MessagePart Payload { get; set; } 
 
         /// <summary>The entire email message in an RFC 2822 formatted and base64url encoded string. Returned in
-        /// messages.get and drafts.get responses when the format=RAW parameter is supplied.</summary>
+        /// messages.get and drafts.get responses when the format=RAW parameter is supplied. @mutable
+        /// gmail.users.messages.insert gmail.users.messages.send @mutable gmail.users.drafts.create
+        /// gmail.users.drafts.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("raw")]
         public virtual string Raw { get; set; } 
 
@@ -7664,9 +7967,10 @@ namespace Google.Apis.Gmail.v1.Data
         public virtual string Snippet { get; set; } 
 
         /// <summary>The ID of the thread the message belongs to. To add a message or draft to a thread, the following
-        /// criteria must be met: - The requested threadId must be specified on the Message or Draft.Message you supply
-        /// with your request. - The References and In-Reply-To headers must be set in compliance with the RFC 2822
-        /// standard. - The Subject headers must match.</summary>
+        /// criteria must be met: The requested threadId must be specified on the Message or Draft.Message you supply
+        /// with your request. The References and In-Reply-To headers must be set in compliance with the RFC 2822
+        /// standard. The Subject headers must match. @mutable gmail.users.messages.insert gmail.users.messages.send
+        /// @mutable gmail.users.drafts.create gmail.users.drafts.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threadId")]
         public virtual string ThreadId { get; set; } 
 
@@ -7826,14 +8130,14 @@ namespace Google.Apis.Gmail.v1.Data
         public virtual string DisplayName { get; set; } 
 
         /// <summary>Whether this address is selected as the default "From:" address in situations such as composing a
-        /// new message or sending a vacation auto-reply. Every Gmail account has exactly one default send-as address,
-        /// so the only legal value that clients may write to this field is true. Changing this from false to true for
+        /// new message or sending a vacation auto-reply.  Every Gmail account has exactly one default send-as address,
+        /// so the only legal value that clients may write to this field is true.  Changing this from false to true for
         /// an address will result in this field becoming false for the other previous default address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
         public virtual System.Nullable<bool> IsDefault { get; set; } 
 
         /// <summary>Whether this address is the primary address used to login to the account. Every Gmail account has
-        /// exactly one primary address, and it cannot be deleted from the collection of send-as aliases. This field is
+        /// exactly one primary address, and it cannot be deleted from the collection of send-as aliases.  This field is
         /// read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isPrimary")]
         public virtual System.Nullable<bool> IsPrimary { get; set; } 
@@ -7843,7 +8147,7 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("replyToAddress")]
         public virtual string ReplyToAddress { get; set; } 
 
-        /// <summary>The email address that appears in the "From:" header for mail sent using this alias. This is read-
+        /// <summary>The email address that appears in the "From:" header for mail sent using this alias.  This is read-
         /// only for all operations except create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendAsEmail")]
         public virtual string SendAsEmail { get; set; } 
@@ -7853,18 +8157,18 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
         public virtual string Signature { get; set; } 
 
-        /// <summary>An optional SMTP service that will be used as an outbound relay for mail sent using this alias. If
+        /// <summary>An optional SMTP service that will be used as an outbound relay for mail sent using this alias.  If
         /// this is empty, outbound mail will be sent directly from Gmail's servers to the destination SMTP service.
         /// This setting only applies to custom "from" aliases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smtpMsa")]
         public virtual SmtpMsa SmtpMsa { get; set; } 
 
-        /// <summary>Whether Gmail should  treat this address as an alias for the user's primary email address. This
+        /// <summary>Whether Gmail should treat this address as an alias for the user's primary email address. This
         /// setting only applies to custom "from" aliases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("treatAsAlias")]
         public virtual System.Nullable<bool> TreatAsAlias { get; set; } 
 
-        /// <summary>Indicates whether this address has been verified for use as a send-as alias. Read-only. This
+        /// <summary>Indicates whether this address has been verified for use as a send-as alias.  Read-only.  This
         /// setting only applies to custom "from" aliases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verificationStatus")]
         public virtual string VerificationStatus { get; set; } 
@@ -7896,14 +8200,14 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("issuerCn")]
         public virtual string IssuerCn { get; set; } 
 
-        /// <summary>PEM formatted X509 concatenated certificate string (standard base64 encoding). Format used for
+        /// <summary>PEM formatted X509 concatenated certificate string (standard base64 encoding).  Format used for
         /// returning key, which includes public key as well as certificate chain (not private key).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pem")]
         public virtual string Pem { get; set; } 
 
-        /// <summary>PKCS#12 format containing a single private/public key pair and certificate chain. This format is
+        /// <summary>PKCS#12 format containing a single private/public key pair and certificate chain.  This format is
         /// only accepted from client for creating a new SmimeInfo and is never returned, because the private key is not
-        /// intended to be exported. PKCS#12 may be encrypted, in which case encryptedKeyPassword should be set
+        /// intended to be exported.  PKCS#12 may be encrypted, in which case encryptedKeyPassword should be set
         /// appropriately.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pkcs12")]
         public virtual string Pkcs12 { get; set; } 
@@ -7915,7 +8219,7 @@ namespace Google.Apis.Gmail.v1.Data
     /// <summary>Configuration for communication with an SMTP service.</summary>
     public class SmtpMsa : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The hostname of the SMTP service. Required.</summary>
+        /// <summary>The hostname of the SMTP service.  Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; } 
 
@@ -7925,11 +8229,11 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; } 
 
-        /// <summary>The port of the SMTP service. Required.</summary>
+        /// <summary>The port of the SMTP service.  Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; } 
 
-        /// <summary>The protocol that will be used to secure communication with the SMTP service. Required.</summary>
+        /// <summary>The protocol that will be used to secure communication with the SMTP service.  Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityMode")]
         public virtual string SecurityMode { get; set; } 
 
@@ -7966,7 +8270,7 @@ namespace Google.Apis.Gmail.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Vacation auto-reply settings for an account. These settings correspond to the "Vacation responder"
+    /// <summary>Vacation auto-reply settings for an account.  These settings correspond to the "Vacation responder"
     /// feature in the web interface.</summary>
     public class VacationSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7975,20 +8279,22 @@ namespace Google.Apis.Gmail.v1.Data
         public virtual System.Nullable<bool> EnableAutoReply { get; set; } 
 
         /// <summary>An optional end time for sending auto-replies (epoch ms). When this is specified, Gmail will
-        /// automatically reply only to messages that it receives before the end time. If both startTime and endTime are
-        /// specified, startTime must precede endTime.</summary>
+        /// automatically reply only to messages that it receives before the end time.  If both startTime and endTime
+        /// are specified, startTime must precede endTime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual System.Nullable<long> EndTime { get; set; } 
 
-        /// <summary>Response body in HTML format. Gmail will sanitize the HTML before storing it.</summary>
+        /// <summary>Response body in HTML format.  Gmail will sanitize the HTML before storing it. If both
+        /// response_body_plain_text and response_body_html are specified, response_body_html will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseBodyHtml")]
         public virtual string ResponseBodyHtml { get; set; } 
 
-        /// <summary>Response body in plain text format.</summary>
+        /// <summary>Response body in plain text format. If both response_body_plain_text and response_body_html are
+        /// specified, response_body_html will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseBodyPlainText")]
         public virtual string ResponseBodyPlainText { get; set; } 
 
-        /// <summary>Optional text to prepend to the subject line in vacation responses. In order to enable auto-
+        /// <summary>Optional text to prepend to the subject line in vacation responses.  In order to enable auto-
         /// replies, either the response subject or the response body must be nonempty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseSubject")]
         public virtual string ResponseSubject { get; set; } 
@@ -8004,7 +8310,7 @@ namespace Google.Apis.Gmail.v1.Data
         public virtual System.Nullable<bool> RestrictToDomain { get; set; } 
 
         /// <summary>An optional start time for sending auto-replies (epoch ms). When this is specified, Gmail will
-        /// automatically reply only to messages that it receives after the start time. If both startTime and endTime
+        /// automatically reply only to messages that it receives after the start time.  If both startTime and endTime
         /// are specified, startTime must precede endTime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual System.Nullable<long> StartTime { get; set; } 
@@ -8020,8 +8326,8 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelFilterAction")]
         public virtual string LabelFilterAction { get; set; } 
 
-        /// <summary>List of label_ids to restrict notifications about. By default, if unspecified, all changes are
-        /// pushed out. If specified then dictates which labels are required for a push notification to be
+        /// <summary>List of label_ids to restrict notifications about.  By default, if unspecified, all changes are
+        /// pushed out.  If specified then dictates which labels are required for a push notification to be
         /// generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelIds")]
         public virtual System.Collections.Generic.IList<string> LabelIds { get; set; } 

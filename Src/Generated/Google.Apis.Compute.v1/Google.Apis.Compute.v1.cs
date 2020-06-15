@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200511 (1957)
+ *      <tr><th>API Rev<td>20200515 (1961)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -64613,9 +64613,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Options { get; set; } 
 
         /// <summary>Physical block size of the persistent disk, in bytes. If not present in a request, a default value
-        /// is used. Currently supported sizes are 4096 and 16384, other sizes may be added in the future. If an
-        /// unsupported value is requested, the error message will list the supported values for the caller's
-        /// project.</summary>
+        /// is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported
+        /// value is requested, the error message will list the supported values for the caller's project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("physicalBlockSizeBytes")]
         public virtual System.Nullable<long> PhysicalBlockSizeBytes { get; set; } 
 

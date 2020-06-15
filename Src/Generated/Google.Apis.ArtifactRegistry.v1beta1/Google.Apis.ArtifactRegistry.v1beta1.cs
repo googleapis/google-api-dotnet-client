@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/artifacts/docs/'>Artifact Registry API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200525 (1971)
+ *      <tr><th>API Rev<td>20200605 (1982)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/artifacts/docs/'>
  *              https://cloud.google.com/artifacts/docs/</a>
@@ -2654,6 +2654,72 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         public virtual System.Nullable<long> SizeBytes { get; set; } 
 
         /// <summary>The time when the File was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Error information explaining why a package was not imported.</summary>
+    public class GoogleDevtoolsArtifactregistryV1alpha1ErrorInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The detailed error status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; } 
+
+        /// <summary>Google Cloud Storage location requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GoogleDevtoolsArtifactregistryV1alpha1GcsSource GcsSource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Google Cloud Storage location for the input content.</summary>
+    public class GoogleDevtoolsArtifactregistryV1alpha1GcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud Storage paths URI (e.g., gs://my_bucket//my_object).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uris")]
+        public virtual System.Collections.Generic.IList<string> Uris { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message from importing artifacts.</summary>
+    public class GoogleDevtoolsArtifactregistryV1alpha1ImportArtifactsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Detailed error info for packages that were not imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsArtifactregistryV1alpha1ErrorInfo> Errors { get; set; } 
+
+        /// <summary>The packages updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packages")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsArtifactregistryV1alpha1Package> Packages { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Packages are named collections of versions.</summary>
+    public class GoogleDevtoolsArtifactregistryV1alpha1Package : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time when the package was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>The display name of the package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The name of the package, for example: "projects/p1/locations/us-
+        /// central1/repositories/repo1/packages/pkg1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The time when the package was last updated. This includes publishing a new version of the
+        /// package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 

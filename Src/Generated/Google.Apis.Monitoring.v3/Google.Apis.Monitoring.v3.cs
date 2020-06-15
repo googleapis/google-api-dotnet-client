@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Cloud Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200601 (1978)
+ *      <tr><th>API Rev<td>20200612 (1989)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -6111,6 +6111,13 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>One or more time series that match the filter included in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeries")]
         public virtual System.Collections.Generic.IList<TimeSeries> TimeSeries { get; set; } 
+
+        /// <summary>The unit in which all time_series point values are reported. unit follows the UCUM format for units
+        /// as seen in https://unitsofmeasure.org/ucum.html. If different time_series have different units (for example,
+        /// because they come from different metric types, or a unit is absent), then unit will be
+        /// "{not_a_unit}".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
