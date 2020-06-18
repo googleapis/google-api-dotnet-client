@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200604 (1981)
+ *      <tr><th>API Rev<td>20200611 (1988)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -2212,7 +2212,9 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>A visual element rendered on a page.</summary>
     public class PageElement : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The description of the page element. Combined with title to display alt text.</summary>
+        /// <summary>The description of the page element. Combined with title to display alt text.
+        ///
+        /// The field is not supported for Group elements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -2249,7 +2251,9 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual Table Table { get; set; } 
 
-        /// <summary>The title of the page element. Combined with description to display alt text.</summary>
+        /// <summary>The title of the page element. Combined with description to display alt text.
+        ///
+        /// The field is not supported for Group elements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 

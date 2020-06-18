@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-usage/'>Service Usage API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200611 (1988)
+ *      <tr><th>API Rev<td>20200615 (1992)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-usage/'>
  *              https://cloud.google.com/service-usage/</a>
@@ -1586,6 +1586,80 @@ namespace Google.Apis.ServiceUsage.v1beta1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Create or update multiple consumer overrides atomically, all on the same consumer, but on many
+            /// different metrics or limits. The name field in the quota override message should not be set.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">The resource name of the consumer.
+            ///
+            /// An example name would be: `projects/123/services/compute.googleapis.com`</param>
+            public virtual ImportConsumerOverridesRequest ImportConsumerOverrides(Google.Apis.ServiceUsage.v1beta1.Data.ImportConsumerOverridesRequest body, string parent)
+            {
+                return new ImportConsumerOverridesRequest(service, body, parent);
+            }
+
+            /// <summary>Create or update multiple consumer overrides atomically, all on the same consumer, but on many
+            /// different metrics or limits. The name field in the quota override message should not be set.</summary>
+            public class ImportConsumerOverridesRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new ImportConsumerOverrides request.</summary>
+                public ImportConsumerOverridesRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceUsage.v1beta1.Data.ImportConsumerOverridesRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The resource name of the consumer.
+                ///
+                /// An example name would be: `projects/123/services/compute.googleapis.com`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ServiceUsage.v1beta1.Data.ImportConsumerOverridesRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "importConsumerOverrides"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta1/{+parent}/consumerQuotaMetrics:importConsumerOverrides"; }
+                }
+
+                /// <summary>Initializes ImportConsumerOverrides parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+/[^/]+/services/[^/]+$",
                         });
                 }
 
@@ -3751,6 +3825,24 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request message for ImportConsumerOverrides</summary>
+    public class ImportConsumerOverridesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to force the creation of the quota overrides. If creating an override would cause the
+        /// effective quota for the consumer to decrease by more than 10 percent, the call is rejected, as a safety
+        /// measure to avoid accidentally decreasing quota too quickly. Setting the force parameter to true ignores this
+        /// restriction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; } 
+
+        /// <summary>The import data is specified in the request message itself</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineSource")]
+        public virtual OverrideInlineSource InlineSource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response message for ImportConsumerOverrides</summary>
     public class ImportConsumerOverridesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4092,7 +4184,8 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         ///
         /// **Basic units (UNIT)**
         ///
-        /// * `bit`   bit * `By`    byte * `s`     second * `min`   minute * `h`     hour * `d`     day
+        /// * `bit`   bit * `By`    byte * `s`     second * `min`   minute * `h`     hour * `d`     day * `1`
+        /// dimensionless
         ///
         /// **Prefixes (PREFIX)**
         ///
@@ -4264,7 +4357,7 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     /// defined monitored resource descriptors is allowed per service. * Maximum of default 10 labels per monitored
     /// resource is allowed.
     ///
-    /// The default maximum limit can be overridden. Please follow https://cloud.google.com/monitoring/quotas</summary>
+    /// The default maximum limit can be overridden. Please follow https://cloud.google.com/monitoring/quotas </summary>
     public class MonitoredResourceDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. A detailed description of the monitored resource type that might be used in
@@ -4301,7 +4394,17 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Note there are legacy service monitored resources not following this rule.</summary>
+        /// <summary>Required. The monitored resource type. For example, the type `cloudsql_database` represents
+        /// databases in Google Cloud SQL.
+        ///
+        /// All service defined monitored resource types must be prefixed with the service name, in the format of
+        /// `{service name}/{relative resource name}`. The relative resource name must follow:
+        ///
+        /// * Only upper and lower-case letters and digits are allowed. * It must start with upper case character and is
+        /// recommended to use Upper Camel Case style. * The maximum number of characters allowed for the
+        /// relative_resource_name is 100.
+        ///
+        /// Note there are legacy service monitored resources not following this rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -4458,6 +4561,18 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         /// as an int32 value using the google.protobuf.Int32Value type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Collections.Generic.IDictionary<string,object> Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Import data embedded in the request message</summary>
+    public class OverrideInlineSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The overrides to create. Each override must have a value for 'metric' and 'unit', to specify which
+        /// metric and which limit the override should be applied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrides")]
+        public virtual System.Collections.Generic.IList<QuotaOverride> Overrides { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

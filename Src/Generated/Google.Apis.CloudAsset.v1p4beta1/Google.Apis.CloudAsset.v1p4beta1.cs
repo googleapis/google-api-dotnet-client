@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1p4beta1
- *      <tr><th>API Rev<td>20200605 (1982)
+ *      <tr><th>API Rev<td>20200613 (1990)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>
  *              https://cloud.google.com/asset-inventory/docs/quickstart</a>
@@ -341,8 +341,7 @@ namespace Google.Apis.CloudAsset.v1p4beta1
         }
 
 
-        /// <summary>Analyzes IAM policies based on the specified request. Returns a list of IamPolicyAnalysisResult
-        /// matching the request.</summary>
+        /// <summary>Analyzes IAM policies to answer which identities have what accesses on which resources.</summary>
         /// <param name="parent">Required. The relative name of the root asset. Only resources and IAM policies within the
         /// parent will be analyzed. This can only be an organization number (such as "organizations/123") or a folder number
         /// (such as "folders/123").
@@ -357,8 +356,7 @@ namespace Google.Apis.CloudAsset.v1p4beta1
             return new AnalyzeIamPolicyRequest(service, parent);
         }
 
-        /// <summary>Analyzes IAM policies based on the specified request. Returns a list of IamPolicyAnalysisResult
-        /// matching the request.</summary>
+        /// <summary>Analyzes IAM policies to answer which identities have what accesses on which resources.</summary>
         public class AnalyzeIamPolicyRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1p4beta1.Data.AnalyzeIamPolicyResponse>
         {
             /// <summary>Constructs a new AnalyzeIamPolicy request.</summary>
@@ -617,9 +615,11 @@ namespace Google.Apis.CloudAsset.v1p4beta1
 
         }
 
-        /// <summary>Exports IAM policy analysis based on the specified request. This API implements the
-        /// google.longrunning.Operation API allowing you to keep track of the export. The metadata contains the request
-        /// to help callers to map responses to requests.</summary>
+        /// <summary>Exports the answers of which identities have what accesses on which resources to a Google Cloud
+        /// Storage destination. The output format is the JSON format that represents a AnalyzeIamPolicyResponse in the
+        /// JSON format. This method implements the google.longrunning.Operation, which allows you to keep track of the
+        /// export. We recommend intervals of at least 2 seconds with exponential retry to poll the export operation
+        /// result. The metadata contains the request to help callers to map responses to requests.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">Required. The relative name of the root asset. Only resources and IAM policies within the
         /// parent will be analyzed. This can only be an organization number (such as "organizations/123") or a folder number
@@ -635,9 +635,11 @@ namespace Google.Apis.CloudAsset.v1p4beta1
             return new ExportIamPolicyAnalysisRequest(service, body, parent);
         }
 
-        /// <summary>Exports IAM policy analysis based on the specified request. This API implements the
-        /// google.longrunning.Operation API allowing you to keep track of the export. The metadata contains the request
-        /// to help callers to map responses to requests.</summary>
+        /// <summary>Exports the answers of which identities have what accesses on which resources to a Google Cloud
+        /// Storage destination. The output format is the JSON format that represents a AnalyzeIamPolicyResponse in the
+        /// JSON format. This method implements the google.longrunning.Operation, which allows you to keep track of the
+        /// export. We recommend intervals of at least 2 seconds with exponential retry to poll the export operation
+        /// result. The metadata contains the request to help callers to map responses to requests.</summary>
         public class ExportIamPolicyAnalysisRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1p4beta1.Data.Operation>
         {
             /// <summary>Constructs a new ExportIamPolicyAnalysis request.</summary>
@@ -897,10 +899,10 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A role or permission that appears in an access control list.</summary>
+    /// <summary>An IAM role or permission under analysis.</summary>
     public class GoogleCloudAssetV1p4beta1Access : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The analysis state of this access node.</summary>
+        /// <summary>The analysis state of this access.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisState")]
         public virtual GoogleCloudAssetV1p4beta1AnalysisState AnalysisState { get; set; } 
 
@@ -950,17 +952,17 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents analysis state of each node in the result graph or non-critical errors in the
-    /// response.</summary>
+    /// <summary>Represents the detailed state of an entity under analysis, such as a resource, an identity or an
+    /// access.</summary>
     public class GoogleCloudAssetV1p4beta1AnalysisState : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The human-readable description of the cause of failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cause")]
         public virtual string Cause { get; set; } 
 
-        /// <summary>The Google standard error code that best describes the state. For example: - OK means the node has
-        /// been successfully explored; - PERMISSION_DENIED means an access denied error is encountered; -
-        /// DEADLINE_EXCEEDED means the node hasn't been explored in time;</summary>
+        /// <summary>The Google standard error code that best describes the state. For example: - OK means the analysis
+        /// on this entity has been successfully finished; - PERMISSION_DENIED means an access denied error is
+        /// encountered; - DEADLINE_EXCEEDED means the analysis on this entity hasn't been started in time;</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; } 
 
@@ -983,10 +985,10 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An identity that appears in an access control list.</summary>
+    /// <summary>An identity under analysis.</summary>
     public class GoogleCloudAssetV1p4beta1Identity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The analysis state of this identity node.</summary>
+        /// <summary>The analysis state of this identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisState")]
         public virtual GoogleCloudAssetV1p4beta1AnalysisState AnalysisState { get; set; } 
 
@@ -1020,10 +1022,10 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A GCP resource that appears in an access control list.</summary>
+    /// <summary>A Google Cloud resource under analysis.</summary>
     public class GoogleCloudAssetV1p4beta1Resource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The analysis state of this resource node.</summary>
+        /// <summary>The analysis state of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisState")]
         public virtual GoogleCloudAssetV1p4beta1AnalysisState AnalysisState { get; set; } 
 
@@ -1071,11 +1073,12 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
     /// <summary>IAM policy analysis query message.</summary>
     public class IamPolicyAnalysisQuery : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Specifies roles or permissions for analysis. Leaving it empty means ANY.</summary>
+        /// <summary>Optional. Specifies roles or permissions for analysis. This is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessSelector")]
         public virtual AccessSelector AccessSelector { get; set; } 
 
-        /// <summary>Optional. Specifies an identity for analysis. Leaving it empty means ANY.</summary>
+        /// <summary>Optional. Specifies an identity for analysis. Either ResourceSelector or IdentitySelector must be
+        /// specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identitySelector")]
         public virtual IdentitySelector IdentitySelector { get; set; } 
 
@@ -1091,7 +1094,8 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 
-        /// <summary>Optional. Specifies a resource for analysis. Leaving it empty means ANY.</summary>
+        /// <summary>Optional. Specifies a resource for analysis. Either ResourceSelector or IdentitySelector must be
+        /// specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceSelector")]
         public virtual ResourceSelector ResourceSelector { get; set; } 
 
@@ -1113,8 +1117,7 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attachedResourceFullName")]
         public virtual string AttachedResourceFullName { get; set; } 
 
-        /// <summary>Represents whether all nodes in the transitive closure of the iam_binding node have been
-        /// explored.</summary>
+        /// <summary>Represents whether all analyses on the iam_binding have successfully finished.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullyExplored")]
         public virtual System.Nullable<bool> FullyExplored { get; set; } 
 
@@ -1255,8 +1258,7 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
     }    
 
     /// <summary>Specifies the resource to analyze for access policies, which may be set directly on the resource, or on
-    /// ancestors such as organizations, folders or projects. Either ResourceSelector or IdentitySelector must be
-    /// specified in a request.</summary>
+    /// ancestors such as organizations, folders or projects.</summary>
     public class ResourceSelector : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-

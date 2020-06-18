@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/healthcare'>Cloud Healthcare API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200525 (1971)
+ *      <tr><th>API Rev<td>20200605 (1982)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/healthcare'>
  *              https://cloud.google.com/healthcare</a>
@@ -689,7 +689,8 @@ namespace Google.Apis.CloudHealthcare.v1
 
                                 /// <summary>DeleteInstance deletes an instance associated with the given study, series,
                                 /// and SOP Instance UID. Delete requests are equivalent to the GET requests specified
-                                /// in the Retrieve transaction.</summary>
+                                /// in the Retrieve transaction. Study and series search results can take a few seconds
+                                /// to be updated after an instance is deleted using DeleteInstance.</summary>
                                 /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                                 /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                                 ///
@@ -702,7 +703,8 @@ namespace Google.Apis.CloudHealthcare.v1
 
                                 /// <summary>DeleteInstance deletes an instance associated with the given study, series,
                                 /// and SOP Instance UID. Delete requests are equivalent to the GET requests specified
-                                /// in the Retrieve transaction.</summary>
+                                /// in the Retrieve transaction. Study and series search results can take a few seconds
+                                /// to be updated after an instance is deleted using DeleteInstance.</summary>
                                 public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Empty>
                                 {
                                     /// <summary>Constructs a new Delete request.</summary>

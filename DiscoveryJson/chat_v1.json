@@ -317,7 +317,7 @@
    }
   }
  }, 
- "revision": "20200607", 
+ "revision": "20200610", 
  "rootUrl": "https://chat.googleapis.com/", 
  "schemas": {
   "ActionParameter": {

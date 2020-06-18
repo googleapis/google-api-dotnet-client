@@ -224,7 +224,7 @@
    }
   }
  }, 
- "revision": "20200609", 
+ "revision": "20200616", 
  "rootUrl": "https://firebasedynamiclinks.googleapis.com/", 
  "schemas": {
   "AnalyticsInfo": {

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/healthcare'>Cloud Healthcare API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200525 (1971)
+ *      <tr><th>API Rev<td>20200605 (1982)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/healthcare'>
  *              https://cloud.google.com/healthcare</a>
@@ -413,9 +413,817 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     public AnnotationStoresResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        annotations = new AnnotationsResource(service);
 
                     }
 
+                    private readonly AnnotationsResource annotations;
+
+                    /// <summary>Gets the Annotations resource.</summary>
+                    public virtual AnnotationsResource Annotations
+                    {
+                        get { return annotations; }
+                    }
+
+                    /// <summary>The "annotations" collection of methods.</summary>
+                    public class AnnotationsResource
+                    {
+                        private const string Resource = "annotations";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public AnnotationsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+
+                        }
+
+
+                        /// <summary>Creates a new Annotation record. It is valid to create Annotation objects for the
+                        /// same source more than once since a unique ID is assigned to each record by this
+                        /// service.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">The name of the Annotation store this annotation belongs to. For example, `projects/my-
+                        /// project/locations/us-central1/datasets/mydataset/annotationStores/myannotationstore`.</param>
+                        public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.Annotation body, string parent)
+                        {
+                            return new CreateRequest(service, body, parent);
+                        }
+
+                        /// <summary>Creates a new Annotation record. It is valid to create Annotation objects for the
+                        /// same source more than once since a unique ID is assigned to each record by this
+                        /// service.</summary>
+                        public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Annotation>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.Annotation body, string parent)
+                                : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>The name of the Annotation store this annotation belongs to. For example,
+                            /// `projects/my-project/locations/us-
+                            /// central1/datasets/mydataset/annotationStores/myannotationstore`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1beta1.Data.Annotation Body { get; set; }
+
+                            ///<summary>Returns the body of the request.</summary>
+                            protected override object GetBody() { return Body; }
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName
+                            {
+                                get { return "create"; }
+                            }
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod
+                            {
+                                get { return "POST"; }
+                            }
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath
+                            {
+                                get { return "v1beta1/{+parent}/annotations"; }
+                            }
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+$",
+                                    });
+                            }
+
+                        }
+
+                        /// <summary>Deletes an Annotation or returns NOT_FOUND if it does not exist.</summary>
+                        /// <param name="name">The resource name of the Annotation to delete.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(service, name);
+                        }
+
+                        /// <summary>Deletes an Annotation or returns NOT_FOUND if it does not exist.</summary>
+                        public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Empty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                                : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>The resource name of the Annotation to delete.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName
+                            {
+                                get { return "delete"; }
+                            }
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod
+                            {
+                                get { return "DELETE"; }
+                            }
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath
+                            {
+                                get { return "v1beta1/{+name}"; }
+                            }
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+/annotations/[^/]+$",
+                                    });
+                            }
+
+                        }
+
+                        /// <summary>Gets an Annotation.</summary>
+                        /// <param name="name">The resource name of the Annotation to retrieve.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Gets an Annotation.</summary>
+                        public class GetRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Annotation>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name)
+                                : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>The resource name of the Annotation to retrieve.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName
+                            {
+                                get { return "get"; }
+                            }
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod
+                            {
+                                get { return "GET"; }
+                            }
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath
+                            {
+                                get { return "v1beta1/{+name}"; }
+                            }
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+/annotations/[^/]+$",
+                                    });
+                            }
+
+                        }
+
+                        /// <summary>Lists the Annotations in the given Annotation store for a source
+                        /// resource.</summary>
+                        /// <param name="parent">Name of the Annotation store to retrieve Annotations from.</param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Lists the Annotations in the given Annotation store for a source
+                        /// resource.</summary>
+                        public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ListAnnotationsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                                : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Name of the Annotation store to retrieve Annotations from.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Restricts Annotations returned to those matching a filter. Functions available
+                            /// for filtering are:
+                            ///
+                            /// - `matches("annotation_source.cloud_healthcare_source.name", substring)`. Filter on
+                            /// `cloud_healthcare_source.name`. For example:
+                            /// `matches("annotation_source.cloud_healthcare_source.name", "some source")`.
+                            ///
+                            /// - `matches("annotation", substring)`. Filter on all fields of annotation. For example:
+                            /// `matches("annotation", "some-content")`.
+                            ///
+                            /// - `type("text")`, `type("image")`, `type("resource")`. Filter on the type of annotation
+                            /// `data`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>Limit on the number of Annotations to return in a single response. If zero the
+                            /// default page size of 100 is used.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>The next_page_token value returned from the previous List request, if
+                            /// any.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Controls which fields are populated in the response.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                            /// <summary>Controls which fields are populated in the response.</summary>
+                            public enum ViewEnum
+                            {
+                                [Google.Apis.Util.StringValueAttribute("ANNOTATION_VIEW_UNSPECIFIED")]
+                                ANNOTATIONVIEWUNSPECIFIED,
+                                [Google.Apis.Util.StringValueAttribute("ANNOTATION_VIEW_BASIC")]
+                                ANNOTATIONVIEWBASIC,
+                                [Google.Apis.Util.StringValueAttribute("ANNOTATION_VIEW_FULL")]
+                                ANNOTATIONVIEWFULL,
+                            }
+
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName
+                            {
+                                get { return "list"; }
+                            }
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod
+                            {
+                                get { return "GET"; }
+                            }
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath
+                            {
+                                get { return "v1beta1/{+parent}/annotations"; }
+                            }
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+$",
+                                    });
+                                RequestParameters.Add(
+                                    "filter", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "filter",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "pageSize", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageSize",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "pageToken", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "view", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "view",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                            }
+
+                        }
+
+                        /// <summary>Updates the Annotation.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datas
+                        /// ets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.</param>
+                        public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.Annotation body, string name)
+                        {
+                            return new PatchRequest(service, body, name);
+                        }
+
+                        /// <summary>Updates the Annotation.</summary>
+                        public class PatchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Annotation>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.Annotation body, string name)
+                                : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Resource name of the Annotation, of the form `projects/{project_id}/locations/{
+                            /// location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{a
+                            /// nnotation_id}`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>The update mask applies to the resource. For the `FieldMask` definition, see
+                            /// https://developers.google.com/protocol-
+                            /// buffers/docs/reference/google.protobuf#fieldmask</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1beta1.Data.Annotation Body { get; set; }
+
+                            ///<summary>Returns the body of the request.</summary>
+                            protected override object GetBody() { return Body; }
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName
+                            {
+                                get { return "patch"; }
+                            }
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod
+                            {
+                                get { return "PATCH"; }
+                            }
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath
+                            {
+                                get { return "v1beta1/{+name}"; }
+                            }
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+/annotations/[^/]+$",
+                                    });
+                                RequestParameters.Add(
+                                    "updateMask", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "updateMask",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                            }
+
+                        }
+                    }
+
+                    /// <summary>Creates a new Annotation store within the parent dataset.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">The name of the dataset this Annotation store belongs to.</param>
+                    public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a new Annotation store within the parent dataset.</summary>
+                    public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore body, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The name of the dataset this Annotation store belongs to.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>The ID of the Annotation store that is being created. The string must match the
+                        /// following regex: `[\p{L}\p{N}_\-\.]{1,256}`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("annotationStoreId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string AnnotationStoreId { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "create"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta1/{+parent}/annotationStores"; }
+                        }
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "annotationStoreId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "annotationStoreId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Deletes the specified Annotation store and removes all annotations that are contained
+                    /// within it.</summary>
+                    /// <param name="name">The resource name of the Annotation store to delete.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes the specified Annotation store and removes all annotations that are contained
+                    /// within it.</summary>
+                    public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The resource name of the Annotation store to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "delete"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "DELETE"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Evaluate an Annotation store against a ground truth Annotation store. When the
+                    /// operation finishes successfully, a detailed response is returned of type
+                    /// EvaluateAnnotationStoreResponse, contained in the response. The metadata field type is
+                    /// OperationMetadata. Errors are logged to Cloud Logging (see [Viewing logs](/healthcare/docs/how-
+                    /// tos/logging)).</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="evalStore">The Annotation store to compare against `golden_store`, in the format of `projects/{project_
+                    /// id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</param>
+                    public virtual EvaluateRequest Evaluate(Google.Apis.CloudHealthcare.v1beta1.Data.EvaluateAnnotationStoreRequest body, string evalStore)
+                    {
+                        return new EvaluateRequest(service, body, evalStore);
+                    }
+
+                    /// <summary>Evaluate an Annotation store against a ground truth Annotation store. When the
+                    /// operation finishes successfully, a detailed response is returned of type
+                    /// EvaluateAnnotationStoreResponse, contained in the response. The metadata field type is
+                    /// OperationMetadata. Errors are logged to Cloud Logging (see [Viewing logs](/healthcare/docs/how-
+                    /// tos/logging)).</summary>
+                    public class EvaluateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Evaluate request.</summary>
+                        public EvaluateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.EvaluateAnnotationStoreRequest body, string evalStore)
+                            : base(service)
+                        {
+                            EvalStore = evalStore;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The Annotation store to compare against `golden_store`, in the format of `projects/
+                        /// {project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_stor
+                        /// e_id}`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("evalStore", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string EvalStore { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1beta1.Data.EvaluateAnnotationStoreRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "evaluate"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta1/{+evalStore}:evaluate"; }
+                        }
+
+                        /// <summary>Initializes Evaluate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "evalStore", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "evalStore",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Export Annotations from the Annotation store. If the request is successful, a detailed
+                    /// response is returned of type ExportAnnotationsResponse, contained in the response field when the
+                    /// operation finishes. The metadata field type is OperationMetadata. If errors occur, the error
+                    /// field type is ImportAnnotationsErrorDetails. Errors are also logged to Cloud Logging (see
+                    /// [Viewing logs](/healthcare/docs/how-tos/logging)).</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="annotationStore">The name of the Annotation store to export annotations to, in the format of `projects/
+                    /// {project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</param>
+                    public virtual ExportRequest Export(Google.Apis.CloudHealthcare.v1beta1.Data.ExportAnnotationsRequest body, string annotationStore)
+                    {
+                        return new ExportRequest(service, body, annotationStore);
+                    }
+
+                    /// <summary>Export Annotations from the Annotation store. If the request is successful, a detailed
+                    /// response is returned of type ExportAnnotationsResponse, contained in the response field when the
+                    /// operation finishes. The metadata field type is OperationMetadata. If errors occur, the error
+                    /// field type is ImportAnnotationsErrorDetails. Errors are also logged to Cloud Logging (see
+                    /// [Viewing logs](/healthcare/docs/how-tos/logging)).</summary>
+                    public class ExportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Export request.</summary>
+                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.ExportAnnotationsRequest body, string annotationStore)
+                            : base(service)
+                        {
+                            AnnotationStore = annotationStore;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The name of the Annotation store to export annotations to, in the format of `projec
+                        /// ts/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_s
+                        /// tore_id}`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("annotationStore", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AnnotationStore { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1beta1.Data.ExportAnnotationsRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "export"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta1/{+annotationStore}:export"; }
+                        }
+
+                        /// <summary>Initializes Export parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "annotationStore", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "annotationStore",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Gets the specified Annotation store or returns NOT_FOUND if it does not
+                    /// exist.</summary>
+                    /// <param name="name">The resource name of the Annotation store to get.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets the specified Annotation store or returns NOT_FOUND if it does not
+                    /// exist.</summary>
+                    public class GetRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The resource name of the Annotation store to get.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "get"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+$",
+                                });
+                        }
+
+                    }
 
                     /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
                     /// exists and does not have a policy set.</summary>
@@ -493,6 +1301,276 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "options.requestedPolicyVersion",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Import Annotations to the Annotation store by loading data from the specified sources.
+                    /// If the request is successful, a detailed response is returned as of type
+                    /// ImportAnnotationsResponse, contained in the response field when the operation finishes. The
+                    /// metadata field type is OperationMetadata. If errors occur, the error field type is
+                    /// ImportAnnotationsErrorDetails. Errors are also logged to Cloud Logging (see [Viewing
+                    /// logs](/healthcare/docs/how-tos/logging)).</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="annotationStore">The name of the Annotation store to which the server imports annotations, in the
+                    /// format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
+                    /// </param>
+                    public virtual ImportRequest Import(Google.Apis.CloudHealthcare.v1beta1.Data.ImportAnnotationsRequest body, string annotationStore)
+                    {
+                        return new ImportRequest(service, body, annotationStore);
+                    }
+
+                    /// <summary>Import Annotations to the Annotation store by loading data from the specified sources.
+                    /// If the request is successful, a detailed response is returned as of type
+                    /// ImportAnnotationsResponse, contained in the response field when the operation finishes. The
+                    /// metadata field type is OperationMetadata. If errors occur, the error field type is
+                    /// ImportAnnotationsErrorDetails. Errors are also logged to Cloud Logging (see [Viewing
+                    /// logs](/healthcare/docs/how-tos/logging)).</summary>
+                    public class ImportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Import request.</summary>
+                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.ImportAnnotationsRequest body, string annotationStore)
+                            : base(service)
+                        {
+                            AnnotationStore = annotationStore;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The name of the Annotation store to which the server imports annotations, in the
+                        /// format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores
+                        /// /{annotation_store_id}`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("annotationStore", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AnnotationStore { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1beta1.Data.ImportAnnotationsRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "import"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta1/{+annotationStore}:import"; }
+                        }
+
+                        /// <summary>Initializes Import parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "annotationStore", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "annotationStore",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Lists the Annotation stores in the given dataset for a source store.</summary>
+                    /// <param name="parent">Name of the dataset.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists the Annotation stores in the given dataset for a source store.</summary>
+                    public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ListAnnotationStoresResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Name of the dataset.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Restricts stores returned to those matching a filter. Syntax:
+                        /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings Only filtering
+                        /// on labels is supported, for example `labels.key=value`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Limit on the number of Annotation stores to return in a single response. If zero
+                        /// the default page size of 100 is used.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The next_page_token value returned from the previous List request, if
+                        /// any.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta1/{+parent}/annotationStores"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Updates the specified Annotation store.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}
+                    /// /datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</param>
+                    public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates the specified Annotation store.</summary>
+                    public class PatchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore body, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Resource name of the Annotation store, of the form `projects/{project_id}/locations
+                        /// /{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>The update mask applies to the resource. For the `FieldMask` definition, see
+                        /// https://developers.google.com/protocol-
+                        /// buffers/docs/reference/google.protobuf#fieldmask</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "patch"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "PATCH"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -951,7 +2029,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                                 /// <summary>DeleteInstance deletes an instance associated with the given study, series,
                                 /// and SOP Instance UID. Delete requests are equivalent to the GET requests specified
-                                /// in the Retrieve transaction.</summary>
+                                /// in the Retrieve transaction. Study and series search results can take a few seconds
+                                /// to be updated after an instance is deleted using DeleteInstance.</summary>
                                 /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                                 /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                                 ///
@@ -964,7 +2043,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                                 /// <summary>DeleteInstance deletes an instance associated with the given study, series,
                                 /// and SOP Instance UID. Delete requests are equivalent to the GET requests specified
-                                /// in the Retrieve transaction.</summary>
+                                /// in the Retrieve transaction. Study and series search results can take a few seconds
+                                /// to be updated after an instance is deleted using DeleteInstance.</summary>
                                 public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Empty>
                                 {
                                     /// <summary>Constructs a new Delete request.</summary>
@@ -8957,6 +10037,98 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 namespace Google.Apis.CloudHealthcare.v1beta1.Data
 {    
 
+    /// <summary>An annotation record.</summary>
+    public class Annotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details of the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationSource")]
+        public virtual AnnotationSource AnnotationSource { get; set; } 
+
+        /// <summary>Additional information for this annotation record, such as annotator and verifier information or
+        /// study campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customData")]
+        public virtual System.Collections.Generic.IDictionary<string,string> CustomData { get; set; } 
+
+        /// <summary>Annotations for images. For example, bounding polygons.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageAnnotation")]
+        public virtual ImageAnnotation ImageAnnotation { get; set; } 
+
+        /// <summary>Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/dataset
+        /// s/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Annotations for resource. For example, classification tags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceAnnotation")]
+        public virtual ResourceAnnotation ResourceAnnotation { get; set; } 
+
+        /// <summary>Annotations for sensitive texts. For example, a range that describes the location of sensitive
+        /// text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textAnnotation")]
+        public virtual SensitiveTextAnnotation TextAnnotation { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies how to store annotations during de-identification operation.</summary>
+    public class AnnotationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the annotation store, in the form `projects/{project_id}/locations/{location_id}/datase
+        /// ts/{dataset_id}/annotationStores/{annotation_store_id}`).
+        ///
+        /// * The destination annotation store must be in the same project as the source data. De-identifying data
+        /// across multiple projects is not supported. * The destination annotation store must exist when using
+        /// DeidentifyDicomStore or DeidentifyFhirStore. DeidentifyDataset automatically creates the destination
+        /// annotation store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationStoreName")]
+        public virtual string AnnotationStoreName { get; set; } 
+
+        /// <summary>If set to true, the sensitive texts are included in SensitiveTextAnnotation of
+        /// Annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeQuote")]
+        public virtual System.Nullable<bool> StoreQuote { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>AnnotationSource holds the source information of the annotation.</summary>
+    public class AnnotationSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud Healthcare API resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudHealthcareSource")]
+        public virtual CloudHealthcareSource CloudHealthcareSource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An Annotation store that can store annotation resources such as labels and tags for text, image and
+    /// audio.</summary>
+    public class AnnotationStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. User-supplied key-value pairs used to organize Annotation stores.
+        ///
+        /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+        /// conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}
+        ///
+        /// Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+        /// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+        ///
+        /// No more than 64 labels can be associated with a given store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/d
+        /// atasets/{dataset_id}/annotationStores/{annotation_store_id}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
     /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
     /// AuditLogConfigs.
@@ -9073,6 +10245,21 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A bounding polygon for the detected image annotation.</summary>
+    public class BoundingPoly : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A description of this polygon.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; } 
+
+        /// <summary>List of the vertices of this polygon.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertices")]
+        public virtual System.Collections.Generic.IList<Vertex> Vertices { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9086,6 +10273,17 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>Character to mask the sensitive values. If not supplied, defaults to "*".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maskingCharacter")]
         public virtual string MaskingCharacter { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Cloud Healthcare API resource.</summary>
+    public class CloudHealthcareSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Full path of a Cloud Healthcare API resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9156,6 +10354,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// at runtime.</summary>
     public class DeidentifyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Configures how annotations, meaning that the location and infoType of sensitive information
+        /// findings, are created during de-identification. If unspecified, no annotations are created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotation")]
+        public virtual AnnotationConfig Annotation { get; set; } 
+
         /// <summary>Configures de-id of application/DICOM content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dicom")]
         public virtual DicomConfig Dicom { get; set; } 
@@ -9290,6 +10493,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Contains multiple sensitive information findings for each resource slice.</summary>
+    public class Detail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("findings")]
+        public virtual System.Collections.Generic.IList<Finding> Findings { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Specifies the parameters needed for de-identification of DICOM stores.</summary>
     public class DicomConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9386,6 +10599,123 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>The identifier of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to evaluate an Annotation store against a ground truth [Annotation store].</summary>
+    public class EvaluateAnnotationStoreRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The BigQuery table where the server writes the output. BigQueryDestination requires the
+        /// `roles/bigquery.dataEditor` and `roles/bigquery.jobUser` Cloud IAM roles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
+        public virtual GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination BigqueryDestination { get; set; } 
+
+        /// <summary>Optional. InfoType mapping for `eval_store`. Different resources can map to the same infoType. For
+        /// example, `PERSON_NAME`, `PERSON`, `NAME`, and `HUMAN` are different. To map all of these into a single
+        /// infoType (such as `PERSON_NAME`), specify the following mapping: ``` info_type_mapping["PERSON"] =
+        /// "PERSON_NAME" info_type_mapping["NAME"] = "PERSON_NAME" info_type_mapping["HUMAN"] = "PERSON_NAME" ```
+        /// Unmentioned infoTypes, such as `DATE`, are treated as identity mapping. For example: ```
+        /// info_type_mapping["DATE"] = "DATE" ``` InfoTypes are case-insensitive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evalInfoTypeMapping")]
+        public virtual System.Collections.Generic.IDictionary<string,string> EvalInfoTypeMapping { get; set; } 
+
+        /// <summary>Optional. Similar to `eval_info_type_mapping`, infoType mapping for `golden_store`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goldenInfoTypeMapping")]
+        public virtual System.Collections.Generic.IDictionary<string,string> GoldenInfoTypeMapping { get; set; } 
+
+        /// <summary>The Annotation store to use as ground truth, in the format of `projects/{project_id}/locations/{loc
+        /// ation_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goldenStore")]
+        public virtual string GoldenStore { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("infoTypeConfig")]
+        public virtual InfoTypeConfig InfoTypeConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response for successful Annotation store evaluation operations. This structure is included in the
+    /// response upon operation completion.</summary>
+    public class EvaluateAnnotationStoreResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The evaluated Annotation store, in the format of `projects/{project_id}/locations/{location_id}/dat
+        /// asets/{dataset_id}/annotationStores/{annotation_store_id}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evalStore")]
+        public virtual string EvalStore { get; set; } 
+
+        /// <summary>The number of Annotations in the ground truth Annotation store successfully processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goldenCount")]
+        public virtual System.Nullable<long> GoldenCount { get; set; } 
+
+        /// <summary>The ground truth Annotation store, in the format of `projects/{project_id}/locations/{location_id}/
+        /// datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goldenStore")]
+        public virtual string GoldenStore { get; set; } 
+
+        /// <summary>The number of Annotations in the eval store that match with corresponding annotations in the ground
+        /// truth Annotation store. Two matched annotations both annotate the same resource defined in
+        /// AnnotationSource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchedCount")]
+        public virtual System.Nullable<long> MatchedCount { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response for failed annotation export operations. This structure is included in error details upon
+    /// operation completion.</summary>
+    public class ExportAnnotationsErrorDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The annotation_store used for the export operation, in the format of `projects/{project_id}/locatio
+        /// ns/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationStore")]
+        public virtual string AnnotationStore { get; set; } 
+
+        /// <summary>The number of annotations that had error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCount")]
+        public virtual System.Nullable<long> ErrorCount { get; set; } 
+
+        /// <summary>The number of annotations successfully exported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to export Annotations. The export operation is not atomic. If a failure occurs, any annotations
+    /// already exported are not removed.</summary>
+    public class ExportAnnotationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The BigQuery output destination, which requires two IAM roles: `roles/bigquery.dataEditor` and
+        /// `roles/bigquery.jobUser`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
+        public virtual GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination BigqueryDestination { get; set; } 
+
+        /// <summary>The Cloud Storage destination, which requires the `roles/storage.objectAdmin` Cloud IAM
+        /// role.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GoogleCloudHealthcareV1beta1AnnotationGcsDestination GcsDestination { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response for successful annotation export operations. This structure is included in response upon
+    /// operation completion.</summary>
+    public class ExportAnnotationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The annotation_store used for the export operation, in the format of `projects/{project_id}/locatio
+        /// ns/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationStore")]
+        public virtual string AnnotationStore { get; set; } 
+
+        /// <summary>The total number of annotations successfully exported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9651,6 +10981,97 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// HumanName.family, can be omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paths")]
         public virtual System.Collections.Generic.IList<string> Paths { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>List of infoTypes to be filtered.</summary>
+    public class FilterList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>These infoTypes are based on after the `eval_info_type_mapping` and
+        /// `golden_info_type_mapping`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
+        public virtual System.Collections.Generic.IList<string> InfoTypes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class Finding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Zero-based ending index of the found text, exclusively.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual System.Nullable<long> End { get; set; } 
+
+        /// <summary>The type of information stored in this text range. For example, HumanName, BirthDate, or
+        /// Address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
+        public virtual string InfoType { get; set; } 
+
+        /// <summary>The snippet of the sensitive text. This field is only populated during deidentification if
+        /// `store_quote` is set to true in DeidentifyConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quote")]
+        public virtual string Quote { get; set; } 
+
+        /// <summary>Zero-based starting index of the found text, inclusively.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual System.Nullable<long> Start { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The BigQuery table for export.</summary>
+    public class GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If the destination table already exists and this flag is `TRUE`, the table is overwritten by the
+        /// contents of the input store. If the flag is not set and the destination table already exists, the export
+        /// call returns an error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; } 
+
+        /// <summary>Specifies the schema format to export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaType")]
+        public virtual string SchemaType { get; set; } 
+
+        /// <summary>BigQuery URI to a table, up to 2000 characters long, must be of the form
+        /// bq://projectId.bqDatasetId.tableId.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableUri")]
+        public virtual string TableUri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The Cloud Storage location for export.</summary>
+    public class GoogleCloudHealthcareV1beta1AnnotationGcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Cloud Storage destination to export to. URI for a Cloud Storage directory where the server
+        /// writes result files, in the format `gs://{bucket-id}/{path/to/destination/dir}`. If there is no trailing
+        /// slash, the service appends one when composing the object path. The user is responsible for creating the
+        /// Cloud Storage bucket referenced in `uri_prefix`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uriPrefix")]
+        public virtual string UriPrefix { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies the configuration for importing data from Cloud Storage.</summary>
+    public class GoogleCloudHealthcareV1beta1AnnotationGcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Points to a Cloud Storage URI containing file(s) with content only. The URI must be in the
+        /// following format: `gs://{bucket_id}/{object_id}`. The URI can include wildcards in `object_id` and thus
+        /// identify multiple files. Supported wildcards: '*' to match 0 or more non-separator characters '**' to match
+        /// 0 or more characters (including separators). Must be used at the end of a path and with no other wildcards
+        /// in the path. Can also be used with a file extension (such as .dcm), which imports all files with the
+        /// extension in the specified directory and its sub-directories. For example, `gs://my-bucket/my-
+        /// directory*.json` imports all files with .json extensions in `my-directory/` and its sub-directories. '?' to
+        /// match 1 character All other URI formats are invalid. Files matching the wildcard are expected to contain
+        /// content only, no metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10085,12 +11506,77 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Image annotation.</summary>
+    public class ImageAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of polygons outlining the sensitive regions in the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPolys")]
+        public virtual System.Collections.Generic.IList<BoundingPoly> BoundingPolys { get; set; } 
+
+        /// <summary>0-based index of the image frame. For example, an image frame in a DICOM instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frameIndex")]
+        public virtual System.Nullable<int> FrameIndex { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Specifies how to handle de-identification of image pixels.</summary>
     public class ImageConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Determines how to redact text from image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textRedactionMode")]
         public virtual string TextRedactionMode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Final response of importing Annotations in partial or total failure case. This structure is included in
+    /// the error details. It is only included when the operation finishes.</summary>
+    public class ImportAnnotationsErrorDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The annotation_store that the annotations were imported to. The name is in the format `projects/{pr
+        /// oject_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationStore")]
+        public virtual string AnnotationStore { get; set; } 
+
+        /// <summary>The number of annotations that had errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCount")]
+        public virtual System.Nullable<long> ErrorCount { get; set; } 
+
+        /// <summary>The number of annotations that have been imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to import Annotations. The Annotations to be imported must have client-supplied resource names
+    /// which indicate the annotation resource. The import operation is not atomic. If a failure occurs, any annotations
+    /// already imported are not removed.</summary>
+    public class ImportAnnotationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GoogleCloudHealthcareV1beta1AnnotationGcsSource GcsSource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Final response of importing Annotations in successful case. This structure is included in the response.
+    /// It is only included when the operation finishes.</summary>
+    public class ImportAnnotationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The annotation_store that the annotations were imported to. The name is in the format `projects/{pr
+        /// oject_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationStore")]
+        public virtual string AnnotationStore { get; set; } 
+
+        /// <summary>The number of the input annotations. All input have been imported successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10153,6 +11639,37 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Specifies how to use infoTypes for evaluation. For example, a user might only want to evaluate
+    /// `PERSON`, `LOCATION`, and `AGE`.</summary>
+    public class InfoTypeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluateList")]
+        public virtual FilterList EvaluateList { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreList")]
+        public virtual FilterList IgnoreList { get; set; } 
+
+        /// <summary>If `TRUE`, infoTypes described by `filter` are used for evaluation. Otherwise, infoTypes are not
+        /// considered for evaluation. For example:
+        ///
+        /// * Annotated text: "Toronto is a location" * Finding 1: `{"infoType": "PERSON", "quote": "Toronto", "start":
+        /// 0, "end": 7}` * Finding 2: `{"infoType": "CITY", "quote": "Toronto", "start": 0, "end": 7}` * Finding 3:
+        /// `{}` * Ground truth: `{"infoType": "LOCATION", "quote": "Toronto", "start": 0, "end": 7}`
+        ///
+        /// When `strict_matching` is `TRUE`:
+        ///
+        /// * Finding 1: 1 false positive * Finding 2: 1 false positive * Finding 3: 1 false negative
+        ///
+        /// When `strict_matching` is `FALSE`:
+        ///
+        /// * Finding 1: 1 true positive * Finding 2: 1 true positive * Finding 3: 1 false negative</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("strictMatching")]
+        public virtual System.Nullable<bool> StrictMatching { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A transformation to apply to text that is identified as a specific info_type.</summary>
     public class InfoTypeTransformation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10207,6 +11724,40 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>Created message resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual Message Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Lists the Annotation stores in the given dataset.</summary>
+    public class ListAnnotationStoresResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The returned Annotation stores. Won't be more Annotation stores than the value of page_size in the
+        /// request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationStores")]
+        public virtual System.Collections.Generic.IList<AnnotationStore> AnnotationStores { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Lists the Annotations in the specified Annotation store.</summary>
+    public class ListAnnotationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The returned Annotations. Won't be more values than the value of page_size in the request. See
+        /// `AnnotationView` in the request for populated fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IList<Annotation> Annotations { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10664,6 +12215,17 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Resource level annotation.</summary>
+    public class ResourceAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A description of the annotation record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A list of FHIR resources.</summary>
     public class Resources : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10825,6 +12387,18 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setId")]
         public virtual string SetId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A TextAnnotation specifies a text range that includes sensitive information.</summary>
+    public class SensitiveTextAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text
+        /// findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IDictionary<string,Detail> Details { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11001,6 +12575,21 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>The value to match with the field. For example, "My Application Name" or "2.3".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A 2D coordinate in an image. The origin is the top-left.</summary>
+    public class Vertex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>X coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("x")]
+        public virtual System.Nullable<float> X { get; set; } 
+
+        /// <summary>Y coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("y")]
+        public virtual System.Nullable<float> Y { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

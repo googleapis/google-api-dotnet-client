@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/error-reporting/'>Error Reporting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200602 (1979)
+ *      <tr><th>API Rev<td>20200610 (1987)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/error-reporting/'>
  *              https://cloud.google.com/error-reporting/</a>
@@ -949,11 +949,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
 
 
             /// <summary>Get the specified group.</summary>
-            /// <param name="groupName">Required. The group resource name. Written as projects/projectID/groups/group_name. Call
+            /// <param name="groupName">Required. The group resource name. Written as `projects/{projectID}/groups/{group_name}`.
+            /// Call [`groupStats.list`](https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.groupStats/list)
+            /// to return a list of groups belonging to this project.
             ///
-            /// groupStats.list to return a list of groups belonging to this project.
-            ///
-            /// Example: projects/my-project-123/groups/my-group</param>
+            /// Example: `projects/my-project-123/groups/my-group`</param>
             public virtual GetRequest Get(string groupName)
             {
                 return new GetRequest(service, groupName);
@@ -971,11 +971,12 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 }
 
 
-                /// <summary>Required. The group resource name. Written as projects/projectID/groups/group_name. Call
+                /// <summary>Required. The group resource name. Written as `projects/{projectID}/groups/{group_name}`.
+                /// Call [`groupStats.list`](https://cloud.google.com/error-
+                /// reporting/reference/rest/v1beta1/projects.groupStats/list) to return a list of groups belonging to
+                /// this project.
                 ///
-                /// groupStats.list to return a list of groups belonging to this project.
-                ///
-                /// Example: projects/my-project-123/groups/my-group</summary>
+                /// Example: `projects/my-project-123/groups/my-group`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("groupName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string GroupName { get; private set; }
 
@@ -1515,7 +1516,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
     public class TrackingIssue : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A URL pointing to a related entry in an issue tracking system. Example:
-        /// https://github.com/user/project/issues/4</summary>
+        /// `https://github.com/user/project/issues/4`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 

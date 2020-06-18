@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/artifacts/docs/'>Artifact Registry API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200605 (1982)
+ *      <tr><th>API Rev<td>20200612 (1989)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/artifacts/docs/'>
  *              https://cloud.google.com/artifacts/docs/</a>
@@ -3032,6 +3032,12 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         /// <summary>The format of packages that are stored in the repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; } 
+
+        /// <summary>The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the
+        /// contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys
+        /// /my-key`. This value may not be changed after the Repository has been created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; } 
 
         /// <summary>Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values
         /// may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain

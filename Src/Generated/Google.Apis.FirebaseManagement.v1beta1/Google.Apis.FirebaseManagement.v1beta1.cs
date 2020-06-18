@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com'>Firebase Management API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200610 (1987)
+ *      <tr><th>API Rev<td>20200616 (1993)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com'>
  *              https://firebase.google.com</a>
@@ -619,8 +619,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 /// <summary>Adds a SHA certificate to the specified AndroidApp.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">The parent App to which a SHA certificate will be added, in the format:
-                /// projects/projectId/androidApps/appId As an appId is a unique identifier, the Unique Resource from Sub-Collection
-                /// access pattern may be used here, in the format: projects/-/androidApps/appId</param>
+                /// projects/PROJECT_NUMBER/androidApps/APP_ID As an APP_ID is a unique identifier, the Unique Resource from Sub-
+                /// Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID</param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseManagement.v1beta1.Data.ShaCertificate body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -640,9 +640,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
                     /// <summary>The parent App to which a SHA certificate will be added, in the format:
-                    /// projects/projectId/androidApps/appId As an appId is a unique identifier, the Unique Resource
-                    /// from Sub-Collection access pattern may be used here, in the format:
-                    /// projects/-/androidApps/appId</summary>
+                    /// projects/PROJECT_NUMBER/androidApps/APP_ID As an APP_ID is a unique identifier, the Unique
+                    /// Resource from Sub-Collection access pattern may be used here, in the format:
+                    /// projects/-/androidApps/APP_ID</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -691,7 +691,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
                 /// <summary>Removes a SHA certificate from the specified AndroidApp.</summary>
                 /// <param name="name">The fully qualified resource name of the `sha-key`, in the format:
-                /// projects/projectId/androidApps/appId/sha/shaId You can obtain the full name from the response of
+                /// projects/PROJECT_NUMBER/androidApps/APP_ID/sha/SHA_ID You can obtain the full name from the response of
                 /// [`ListShaCertificates`](../projects.androidApps.sha/list) or the original
                 /// [`CreateShaCertificate`](../projects.androidApps.sha/create).</param>
                 public virtual DeleteRequest Delete(string name)
@@ -712,8 +712,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
                     /// <summary>The fully qualified resource name of the `sha-key`, in the format:
-                    /// projects/projectId/androidApps/appId/sha/shaId You can obtain the full name from the response of
-                    /// [`ListShaCertificates`](../projects.androidApps.sha/list) or the original
+                    /// projects/PROJECT_NUMBER/androidApps/APP_ID/sha/SHA_ID You can obtain the full name from the
+                    /// response of [`ListShaCertificates`](../projects.androidApps.sha/list) or the original
                     /// [`CreateShaCertificate`](../projects.androidApps.sha/create).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -757,8 +757,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
                 /// <summary>Returns the list of SHA-1 and SHA-256 certificates for the specified AndroidApp.</summary>
                 /// <param name="parent">The parent App for which to list SHA certificates, in the format:
-                /// projects/projectId/androidApps/appId As an appId is a unique identifier, the Unique Resource from Sub-Collection
-                /// access pattern may be used here, in the format: projects/-/androidApps/appId</param>
+                /// projects/PROJECT_NUMBER/androidApps/APP_ID As an APP_ID is a unique identifier, the Unique Resource from Sub-
+                /// Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -777,9 +777,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
                     /// <summary>The parent App for which to list SHA certificates, in the format:
-                    /// projects/projectId/androidApps/appId As an appId is a unique identifier, the Unique Resource
-                    /// from Sub-Collection access pattern may be used here, in the format:
-                    /// projects/-/androidApps/appId</summary>
+                    /// projects/PROJECT_NUMBER/androidApps/APP_ID As an APP_ID is a unique identifier, the Unique
+                    /// Resource from Sub-Collection access pattern may be used here, in the format:
+                    /// projects/-/androidApps/APP_ID</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -827,7 +827,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// `Operation` is automatically deleted after completion, so there is no need to call
             /// `DeleteOperation`.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The parent Project in which to create an App, in the format: projects/projectId</param>
+            /// <param name="parent">The parent Project in which to create an App, in the format:
+            /// projects/PROJECT_NUMBER</param>
             public virtual CreateRequest Create(Google.Apis.FirebaseManagement.v1beta1.Data.AndroidApp body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -850,7 +851,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
 
 
-                /// <summary>The parent Project in which to create an App, in the format: projects/projectId</summary>
+                /// <summary>The parent Project in which to create an App, in the format:
+                /// projects/PROJECT_NUMBER</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -898,9 +900,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
             /// <summary>Gets the AndroidApp identified by the specified resource name.</summary>
-            /// <param name="name">The fully qualified resource name of the App, in the format: projects/projectId/androidApps/appId
-            /// As an appId is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the
-            /// format: projects/-/androidApps/appId</param>
+            /// <param name="name">The fully qualified resource name of the App, in the format:
+            /// projects/PROJECT_NUMBER/androidApps/APP_ID As an APP_ID is a unique identifier, the Unique Resource from Sub-
+            /// Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -919,9 +921,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
                 /// <summary>The fully qualified resource name of the App, in the format:
-                /// projects/projectId/androidApps/appId As an appId is a unique identifier, the Unique Resource from
-                /// Sub-Collection access pattern may be used here, in the format:
-                /// projects/-/androidApps/appId</summary>
+                /// projects/PROJECT_NUMBER/androidApps/APP_ID As an APP_ID is a unique identifier, the Unique Resource
+                /// from Sub-Collection access pattern may be used here, in the format:
+                /// projects/-/androidApps/APP_ID</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -964,8 +966,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
             /// <summary>Gets the configuration artifact associated with the specified AndroidApp.</summary>
             /// <param name="name">The resource name of the App configuration to download, in the format:
-            /// projects/projectId/androidApps/appId/config As an appId is a unique identifier, the Unique Resource from Sub-
-            /// Collection access pattern may be used here, in the format: projects/-/androidApps/appId</param>
+            /// projects/PROJECT_NUMBER/androidApps/APP_ID/config As an APP_ID is a unique identifier, the Unique Resource from Sub-
+            /// Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID</param>
             public virtual GetConfigRequest GetConfig(string name)
             {
                 return new GetConfigRequest(service, name);
@@ -984,9 +986,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
                 /// <summary>The resource name of the App configuration to download, in the format:
-                /// projects/projectId/androidApps/appId/config As an appId is a unique identifier, the Unique Resource
-                /// from Sub-Collection access pattern may be used here, in the format:
-                /// projects/-/androidApps/appId</summary>
+                /// projects/PROJECT_NUMBER/androidApps/APP_ID/config As an APP_ID is a unique identifier, the Unique
+                /// Resource from Sub-Collection access pattern may be used here, in the format:
+                /// projects/-/androidApps/APP_ID</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1031,7 +1033,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             ///
             /// The elements are returned in no particular order, but will be a consistent view of the Apps when
             /// additional requests are made with a `pageToken`.</summary>
-            /// <param name="parent">The parent Project for which to list Apps, in the format: projects/projectId</param>
+            /// <param name="parent">The parent Project for which to list Apps, in the format: projects/PROJECT_NUMBER</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -1052,7 +1054,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
 
 
-                /// <summary>The parent Project for which to list Apps, in the format: projects/projectId</summary>
+                /// <summary>The parent Project for which to list Apps, in the format: projects/PROJECT_NUMBER</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1150,8 +1152,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Specifies which fields to update. Note that the fields `name`, `appId`, `projectId`, and
-                /// `packageName` are all immutable.</summary>
+                /// <summary>Specifies which fields to update. Note that the fields `name`, `app_id`, `project_id`, and
+                /// `package_name` are all immutable.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -1242,14 +1244,13 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// This call checks for any possible [location restrictions](https://cloud.google.com/resource-manager/docs
             /// /organization-policy/defining-locations) for the specified Project and, thus, might return a subset of
             /// all possible GCP resource locations. To list all GCP resource locations (regardless of any
-            /// restrictions), call the endpoint without specifying a `projectId` (that is,
-            /// `/v1beta1/{parent=projects/-}/listAvailableLocations`).
-            ///
-            /// To call `ListAvailableLocations` with a specified project, a member must be at minimum a Viewer of the
-            /// project. Calls without a specified project do not require any specific project permissions.</summary>
-            /// <param name="parent">The Project for which to list GCP resource locations, in the format: projects/projectId If no
-            /// project is specified (that is, `projects/-`), the returned list does not take into account org-specific or project-
-            /// specific location restrictions.</param>
+            /// restrictions), call the endpoint without specifying a `PROJECT_NUMBER` (that is,
+            /// `/v1beta1/{parent=projects/-}/listAvailableLocations`). To call `ListAvailableLocations` with a
+            /// specified project, a member must be at minimum a Viewer of the project. Calls without a specified
+            /// project do not require any specific project permissions.</summary>
+            /// <param name="parent">The Project for which to list GCP resource locations, in the format: projects/PROJECT_NUMBER If
+            /// no project is specified (that is, `projects/-`), the returned list does not take into account org-specific or
+            /// project-specific location restrictions.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -1266,11 +1267,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// This call checks for any possible [location restrictions](https://cloud.google.com/resource-manager/docs
             /// /organization-policy/defining-locations) for the specified Project and, thus, might return a subset of
             /// all possible GCP resource locations. To list all GCP resource locations (regardless of any
-            /// restrictions), call the endpoint without specifying a `projectId` (that is,
-            /// `/v1beta1/{parent=projects/-}/listAvailableLocations`).
-            ///
-            /// To call `ListAvailableLocations` with a specified project, a member must be at minimum a Viewer of the
-            /// project. Calls without a specified project do not require any specific project permissions.</summary>
+            /// restrictions), call the endpoint without specifying a `PROJECT_NUMBER` (that is,
+            /// `/v1beta1/{parent=projects/-}/listAvailableLocations`). To call `ListAvailableLocations` with a
+            /// specified project, a member must be at minimum a Viewer of the project. Calls without a specified
+            /// project do not require any specific project permissions.</summary>
             public class ListRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.ListAvailableLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1282,9 +1282,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
 
 
-                /// <summary>The Project for which to list GCP resource locations, in the format: projects/projectId If
-                /// no project is specified (that is, `projects/-`), the returned list does not take into account org-
-                /// specific or project-specific location restrictions.</summary>
+                /// <summary>The Project for which to list GCP resource locations, in the format:
+                /// projects/PROJECT_NUMBER If no project is specified (that is, `projects/-`), the returned list does
+                /// not take into account org-specific or project-specific location restrictions.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1410,7 +1410,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// To call `FinalizeDefaultLocation`, a member must be an Owner of the project.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">The resource name of the Project for which the default GCP resource location will be set, in
-            /// the format: projects/projectId</param>
+            /// the format: projects/PROJECT_NUMBER</param>
             public virtual FinalizeRequest Finalize(Google.Apis.FirebaseManagement.v1beta1.Data.FinalizeDefaultLocationRequest body, string parent)
             {
                 return new FinalizeRequest(service, body, parent);
@@ -1456,7 +1456,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
                 /// <summary>The resource name of the Project for which the default GCP resource location will be set,
-                /// in the format: projects/projectId</summary>
+                /// in the format: projects/PROJECT_NUMBER</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1533,7 +1533,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// `Operation` is automatically deleted after completion, so there is no need to call
             /// `DeleteOperation`.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The parent Project in which to create an App, in the format: projects/projectId</param>
+            /// <param name="parent">The parent Project in which to create an App, in the format:
+            /// projects/PROJECT_NUMBER</param>
             public virtual CreateRequest Create(Google.Apis.FirebaseManagement.v1beta1.Data.IosApp body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -1556,7 +1557,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
 
 
-                /// <summary>The parent Project in which to create an App, in the format: projects/projectId</summary>
+                /// <summary>The parent Project in which to create an App, in the format:
+                /// projects/PROJECT_NUMBER</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1604,9 +1606,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
             /// <summary>Gets the IosApp identified by the specified resource name.</summary>
-            /// <param name="name">The fully qualified resource name of the App, in the format: projects/projectId/iosApps/appId As
-            /// an appId is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the
-            /// format: projects/-/iosApps/appId</param>
+            /// <param name="name">The fully qualified resource name of the App, in the format:
+            /// projects/PROJECT_NUMBER/iosApps/APP_ID As an APP_ID is a unique identifier, the Unique Resource from Sub-Collection
+            /// access pattern may be used here, in the format: projects/-/iosApps/APP_ID</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -1625,8 +1627,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
                 /// <summary>The fully qualified resource name of the App, in the format:
-                /// projects/projectId/iosApps/appId As an appId is a unique identifier, the Unique Resource from Sub-
-                /// Collection access pattern may be used here, in the format: projects/-/iosApps/appId</summary>
+                /// projects/PROJECT_NUMBER/iosApps/APP_ID As an APP_ID is a unique identifier, the Unique Resource from
+                /// Sub-Collection access pattern may be used here, in the format: projects/-/iosApps/APP_ID</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1669,8 +1671,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
             /// <summary>Gets the configuration artifact associated with the specified IosApp.</summary>
             /// <param name="name">The resource name of the App configuration to download, in the format:
-            /// projects/projectId/iosApps/appId/config As an appId is a unique identifier, the Unique Resource from Sub-Collection
-            /// access pattern may be used here, in the format: projects/-/iosApps/appId</param>
+            /// projects/PROJECT_NUMBER/iosApps/APP_ID/config As an APP_ID is a unique identifier, the Unique Resource from Sub-
+            /// Collection access pattern may be used here, in the format: projects/-/iosApps/APP_ID</param>
             public virtual GetConfigRequest GetConfig(string name)
             {
                 return new GetConfigRequest(service, name);
@@ -1689,8 +1691,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
                 /// <summary>The resource name of the App configuration to download, in the format:
-                /// projects/projectId/iosApps/appId/config As an appId is a unique identifier, the Unique Resource from
-                /// Sub-Collection access pattern may be used here, in the format: projects/-/iosApps/appId</summary>
+                /// projects/PROJECT_NUMBER/iosApps/APP_ID/config As an APP_ID is a unique identifier, the Unique
+                /// Resource from Sub-Collection access pattern may be used here, in the format:
+                /// projects/-/iosApps/APP_ID</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1735,7 +1738,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             ///
             /// The elements are returned in no particular order, but will be a consistent view of the Apps when
             /// additional requests are made with a `pageToken`.</summary>
-            /// <param name="parent">The parent Project for which to list Apps, in the format: projects/projectId</param>
+            /// <param name="parent">The parent Project for which to list Apps, in the format: projects/PROJECT_NUMBER</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -1756,7 +1759,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
 
 
-                /// <summary>The parent Project for which to list Apps, in the format: projects/projectId</summary>
+                /// <summary>The parent Project for which to list Apps, in the format: projects/PROJECT_NUMBER</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1941,7 +1944,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// `Operation` is automatically deleted after completion, so there is no need to call
             /// `DeleteOperation`.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The parent Project in which to create an App, in the format: projects/projectId</param>
+            /// <param name="parent">The parent Project in which to create an App, in the format:
+            /// projects/PROJECT_NUMBER</param>
             public virtual CreateRequest Create(Google.Apis.FirebaseManagement.v1beta1.Data.WebApp body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -1964,7 +1968,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
 
 
-                /// <summary>The parent Project in which to create an App, in the format: projects/projectId</summary>
+                /// <summary>The parent Project in which to create an App, in the format:
+                /// projects/PROJECT_NUMBER</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -2012,9 +2017,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
             /// <summary>Gets the WebApp identified by the specified resource name.</summary>
-            /// <param name="name">The fully qualified resource name of the App, in the format: projects/projectId/webApps/appId As
-            /// an appId is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the
-            /// format: projects/-/webApps/appId</param>
+            /// <param name="name">The fully qualified resource name of the App, in the format:
+            /// projects/PROJECT_NUMBER/webApps/APP_ID As an APP_ID is a unique identifier, the Unique Resource from Sub-Collection
+            /// access pattern may be used here, in the format: projects/-/webApps/APP_ID</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -2033,8 +2038,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
                 /// <summary>The fully qualified resource name of the App, in the format:
-                /// projects/projectId/webApps/appId As an appId is a unique identifier, the Unique Resource from Sub-
-                /// Collection access pattern may be used here, in the format: projects/-/webApps/appId</summary>
+                /// projects/PROJECT_NUMBER/webApps/APP_ID As an APP_ID is a unique identifier, the Unique Resource from
+                /// Sub-Collection access pattern may be used here, in the format: projects/-/webApps/APP_ID</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2077,8 +2082,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
             /// <summary>Gets the configuration artifact associated with the specified WebApp.</summary>
             /// <param name="name">The resource name of the App configuration to download, in the format:
-            /// projects/projectId/webApps/appId/config As an appId is a unique identifier, the Unique Resource from Sub-Collection
-            /// access pattern may be used here, in the format: projects/-/webApps/appId</param>
+            /// projects/PROJECT_NUMBER/webApps/APP_ID/config As an APP_ID is a unique identifier, the Unique Resource from Sub-
+            /// Collection access pattern may be used here, in the format: projects/-/webApps/APP_ID</param>
             public virtual GetConfigRequest GetConfig(string name)
             {
                 return new GetConfigRequest(service, name);
@@ -2097,8 +2102,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
                 /// <summary>The resource name of the App configuration to download, in the format:
-                /// projects/projectId/webApps/appId/config As an appId is a unique identifier, the Unique Resource from
-                /// Sub-Collection access pattern may be used here, in the format: projects/-/webApps/appId</summary>
+                /// projects/PROJECT_NUMBER/webApps/APP_ID/config As an APP_ID is a unique identifier, the Unique
+                /// Resource from Sub-Collection access pattern may be used here, in the format:
+                /// projects/-/webApps/APP_ID</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2143,7 +2149,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             ///
             /// The elements are returned in no particular order, but will be a consistent view of the Apps when
             /// additional requests are made with a `pageToken`.</summary>
-            /// <param name="parent">The parent Project for which to list Apps, in the format: projects/projectId</param>
+            /// <param name="parent">The parent Project for which to list Apps, in the format: projects/PROJECT_NUMBER</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -2164,7 +2170,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
 
 
-                /// <summary>The parent Project for which to list Apps, in the format: projects/projectId</summary>
+                /// <summary>The parent Project for which to list Apps, in the format: projects/PROJECT_NUMBER</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -2324,7 +2330,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         /// (https://cloud.google.com/resource-manager/reference/rest/v1/projects).
         ///
         /// Since a FirebaseProject is actually also a GCP `Project`, a `FirebaseProject` uses underlying GCP
-        /// identifiers (most importantly, the `projectId`) as its own for easy interop with GCP APIs.
+        /// identifiers (most importantly, the `PROJECT_NUMBER`) as its own for easy interop with GCP APIs.
         ///
         /// The result of this call is an [`Operation`](../../v1beta1/operations). Poll the `Operation` to track the
         /// provisioning process by calling GetOperation until [`done`](../../v1beta1/operations#Operation.FIELDS.done)
@@ -2341,8 +2347,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         /// `resourcemanager.projects.get`, `serviceusage.services.enable`, and `serviceusage.services.get`.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">The resource name of the GCP `Project` to which Firebase resources will be added, in the
-        /// format: projects/projectId After calling `AddFirebase`, the [`projectId`](https://cloud.google.com/resource-
-        /// manager/reference/rest/v1/projects#Project.FIELDS.project_id) of the GCP `Project` is also the `projectId` of the
+        /// format: projects/PROJECT_NUMBER After calling `AddFirebase`, the [`project_id`](https://cloud.google.com/resource-
+        /// manager/reference/rest/v1/projects#Project.FIELDS.project_id) of the GCP `Project` is also the `project_id` of the
         /// FirebaseProject.</param>
         public virtual AddFirebaseRequest AddFirebase(Google.Apis.FirebaseManagement.v1beta1.Data.AddFirebaseRequest body, string project)
         {
@@ -2353,7 +2359,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         /// (https://cloud.google.com/resource-manager/reference/rest/v1/projects).
         ///
         /// Since a FirebaseProject is actually also a GCP `Project`, a `FirebaseProject` uses underlying GCP
-        /// identifiers (most importantly, the `projectId`) as its own for easy interop with GCP APIs.
+        /// identifiers (most importantly, the `PROJECT_NUMBER`) as its own for easy interop with GCP APIs.
         ///
         /// The result of this call is an [`Operation`](../../v1beta1/operations). Poll the `Operation` to track the
         /// provisioning process by calling GetOperation until [`done`](../../v1beta1/operations#Operation.FIELDS.done)
@@ -2381,9 +2387,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
             /// <summary>The resource name of the GCP `Project` to which Firebase resources will be added, in the
-            /// format: projects/projectId After calling `AddFirebase`, the [`projectId`](https://cloud.google.com
+            /// format: projects/PROJECT_NUMBER After calling `AddFirebase`, the [`project_id`](https://cloud.google.com
             /// /resource-manager/reference/rest/v1/projects#Project.FIELDS.project_id) of the GCP `Project` is also the
-            /// `projectId` of the FirebaseProject.</summary>
+            /// `project_id` of the FirebaseProject.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
@@ -2468,7 +2474,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         /// in the call to [`AddFirebase`](../../v1beta1/projects/addFirebase).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">The parent `FirebaseProject` to link to an existing Google Analytics account, in the format:
-        /// projects/projectId</param>
+        /// projects/PROJECT_NUMBER</param>
         public virtual AddGoogleAnalyticsRequest AddGoogleAnalytics(Google.Apis.FirebaseManagement.v1beta1.Data.AddGoogleAnalyticsRequest body, string parent)
         {
             return new AddGoogleAnalyticsRequest(service, body, parent);
@@ -2523,7 +2529,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
             /// <summary>The parent `FirebaseProject` to link to an existing Google Analytics account, in the format:
-            /// projects/projectId</summary>
+            /// projects/PROJECT_NUMBER</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -2571,7 +2577,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         }
 
         /// <summary>Gets the FirebaseProject identified by the specified resource name.</summary>
-        /// <param name="name">The fully qualified resource name of the Project, in the format: projects/projectId</param>
+        /// <param name="name">The fully qualified resource name of the Project, in the format:
+        /// projects/PROJECT_NUMBER</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
@@ -2589,7 +2596,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
 
-            /// <summary>The fully qualified resource name of the Project, in the format: projects/projectId</summary>
+            /// <summary>The fully qualified resource name of the Project, in the format:
+            /// projects/PROJECT_NUMBER</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -2635,7 +2643,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         /// Typically, this configuration is used with the Firebase Admin SDK
         /// [initializeApp](https://firebase.google.com/docs/admin/setup#initialize_the_sdk) command.</summary>
         /// <param name="name">The fully qualified resource name of the Project, in the format:
-        /// projects/projectId/adminSdkConfig</param>
+        /// projects/PROJECT_NUMBER/adminSdkConfig</param>
         public virtual GetAdminSdkConfigRequest GetAdminSdkConfig(string name)
         {
             return new GetAdminSdkConfigRequest(service, name);
@@ -2657,7 +2665,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
             /// <summary>The fully qualified resource name of the Project, in the format:
-            /// projects/projectId/adminSdkConfig</summary>
+            /// projects/PROJECT_NUMBER/adminSdkConfig</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -2703,7 +2711,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         /// If the `FirebaseProject` is not yet linked to Google Analytics, then the response to `GetAnalyticsDetails`
         /// is NOT_FOUND.</summary>
         /// <param name="name">The fully qualified resource name, in the format:
-        /// projects/projectId/analyticsDetails</param>
+        /// projects/PROJECT_NUMBER/analyticsDetails</param>
         public virtual GetAnalyticsDetailsRequest GetAnalyticsDetails(string name)
         {
             return new GetAnalyticsDetailsRequest(service, name);
@@ -2724,7 +2732,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
 
-            /// <summary>The fully qualified resource name, in the format: projects/projectId/analyticsDetails</summary>
+            /// <summary>The fully qualified resource name, in the format:
+            /// projects/PROJECT_NUMBER/analyticsDetails</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -2962,7 +2971,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         /// To call `RemoveAnalytics`, a member must be an Owner for the `FirebaseProject`.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">The parent `FirebaseProject` to unlink from its Google Analytics account, in the format:
-        /// projects/projectId</param>
+        /// projects/PROJECT_NUMBER</param>
         public virtual RemoveAnalyticsRequest RemoveAnalytics(Google.Apis.FirebaseManagement.v1beta1.Data.RemoveAnalyticsRequest body, string parent)
         {
             return new RemoveAnalyticsRequest(service, body, parent);
@@ -2993,7 +3002,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
             /// <summary>The parent `FirebaseProject` to unlink from its Google Analytics account, in the format:
-            /// projects/projectId</summary>
+            /// projects/PROJECT_NUMBER</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -3044,7 +3053,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         ///
         /// Typically, interaction with an App should be done using the platform-specific service, but some tool use-
         /// cases require a summary of all known Apps (such as for App selector interfaces).</summary>
-        /// <param name="parent">The parent Project for which to list Apps, in the format: projects/projectId</param>
+        /// <param name="parent">The parent Project for which to list Apps, in the format: projects/PROJECT_NUMBER</param>
         public virtual SearchAppsRequest SearchApps(string parent)
         {
             return new SearchAppsRequest(service, parent);
@@ -3065,7 +3074,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
 
-            /// <summary>The parent Project for which to list Apps, in the format: projects/projectId</summary>
+            /// <summary>The parent Project for which to list Apps, in the format: projects/PROJECT_NUMBER</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -3692,7 +3701,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string LocationId { get; set; } 
 
         /// <summary>The resource name of the GCP `Project` to which Firebase resources can be added, in the format:
-        /// projects/projectId</summary>
+        /// projects/PROJECT_NUMBER</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; } 
 
@@ -3740,7 +3749,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string CertType { get; set; } 
 
         /// <summary>The fully qualified resource name of the `sha-key`, in the format:
-        /// projects/projectId/androidApps/appId/sha/shaId</summary>
+        /// projects/PROJECT_NUMBER/androidApps/APP_ID/sha/SHA_ID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -3830,8 +3839,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     public class StreamMapping : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The fully qualified resource name of the Firebase App associated with the Google Analytics data
-        /// stream, in the format: projects/projectId/androidApps/appId or projects/projectId/iosApps/appId or
-        /// projects/projectId/webApps/appId</summary>
+        /// stream, in the format: projects/PROJECT_NUMBER/androidApps/APP_ID or projects/PROJECT_NUMBER/iosApps/APP_ID
+        /// or projects/PROJECT_NUMBER/webApps/APP_ID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("app")]
         public virtual string App { get; set; } 
 

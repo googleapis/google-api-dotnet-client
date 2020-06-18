@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200609 (1986)
+ *      <tr><th>API Rev<td>20200616 (1993)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -975,15 +975,15 @@ namespace Google.Apis.PeopleService.v1
         }
 
 
-        /// <summary>Copies an other contact to a new contact in the user's MY_CONTACTS group</summary>
+        /// <summary>Copies an "Other contact" to a new contact in the user's "myContacts" group</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="resourceName">Required. The resource name of the other contact to copy.</param>
+        /// <param name="resourceName">Required. The resource name of the "Other contact" to copy.</param>
         public virtual CopyOtherContactToMyContactsGroupRequest CopyOtherContactToMyContactsGroup(Google.Apis.PeopleService.v1.Data.CopyOtherContactToMyContactsGroupRequest body, string resourceName)
         {
             return new CopyOtherContactToMyContactsGroupRequest(service, body, resourceName);
         }
 
-        /// <summary>Copies an other contact to a new contact in the user's MY_CONTACTS group</summary>
+        /// <summary>Copies an "Other contact" to a new contact in the user's "myContacts" group</summary>
         public class CopyOtherContactToMyContactsGroupRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Person>
         {
             /// <summary>Constructs a new CopyOtherContactToMyContactsGroup request.</summary>
@@ -996,7 +996,7 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>Required. The resource name of the other contact to copy.</summary>
+            /// <summary>Required. The resource name of the "Other contact" to copy.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
@@ -1043,14 +1043,14 @@ namespace Google.Apis.PeopleService.v1
 
         }
 
-        /// <summary>List all other contacts, that is contacts that are not in a contact group. Other contacts are
+        /// <summary>List all "Other contacts", that is contacts that are not in a contact group. "Other contacts" are
         /// typically auto created contacts from interactions.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>List all other contacts, that is contacts that are not in a contact group. Other contacts are
+        /// <summary>List all "Other contacts", that is contacts that are not in a contact group. "Other contacts" are
         /// typically auto created contacts from interactions.</summary>
         public class ListRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ListOtherContactsResponse>
         {
@@ -1062,7 +1062,7 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>Optional. The number of other contacts to include in the response. Valid values are between 1
+            /// <summary>Optional. The number of "Other contacts" to include in the response. Valid values are between 1
             /// and 1000, inclusive. Defaults to 100 if not set or set to 0.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -2766,7 +2766,7 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A request to copy an other contact to my contacts group.</summary>
+    /// <summary>A request to copy an "Other contact" to my contacts group.</summary>
     public class CopyOtherContactToMyContactsGroupRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. A field mask to restrict which fields are copied into the new contact. Valid values are:
@@ -3147,7 +3147,7 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response to a request for the authenticated user's other contacts.</summary>
+    /// <summary>The response to a request for the authenticated user's "Other contacts".</summary>
     public class ListOtherContactsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
@@ -3160,8 +3160,8 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextSyncToken")]
         public virtual string NextSyncToken { get; set; } 
 
-        /// <summary>The list of other contacts returned as Person resources. Other contacts support a limited subset of
-        /// supported fields. See ListOtherContactsRequest.request_mask for more detailed information.</summary>
+        /// <summary>The list of "Other contacts" returned as Person resources. "Other contacts" support a limited
+        /// subset of fields. See ListOtherContactsRequest.request_mask for more detailed information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("otherContacts")]
         public virtual System.Collections.Generic.IList<Person> OtherContacts { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/life-sciences'>Cloud Life Sciences API</a>
  *      <tr><th>API Version<td>v2beta
- *      <tr><th>API Rev<td>20200526 (1972)
+ *      <tr><th>API Rev<td>20200603 (1980)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/life-sciences'>
  *              https://cloud.google.com/life-sciences</a>
@@ -1686,6 +1686,13 @@ namespace Google.Apis.CloudLifeSciences.v2beta.Data
         /// <summary>The list of disks to create and attach to the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<Disk> Disks { get; set; } 
+
+        /// <summary>The Compute Engine Disk Images to use as a Docker cache. The disks will be mounted into the Docker
+        /// folder in a way that the images present in the cache will not need to be pulled. The digests of the cached
+        /// images must match those of the tags used or the latest version will still be pulled. Only a single image is
+        /// supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockerCacheImages")]
+        public virtual System.Collections.Generic.IList<string> DockerCacheImages { get; set; } 
 
         /// <summary>Whether Stackdriver monitoring should be enabled on the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverMonitoring")]

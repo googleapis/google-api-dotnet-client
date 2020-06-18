@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20200611 (1988)
+ *      <tr><th>API Rev<td>20200615 (1992)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
  *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
@@ -2290,7 +2290,8 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         ///
         /// **Basic units (UNIT)**
         ///
-        /// * `bit`   bit * `By`    byte * `s`     second * `min`   minute * `h`     hour * `d`     day
+        /// * `bit`   bit * `By`    byte * `s`     second * `min`   minute * `h`     hour * `d`     day * `1`
+        /// dimensionless
         ///
         /// **Prefixes (PREFIX)**
         ///
@@ -2462,7 +2463,7 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
     /// defined monitored resource descriptors is allowed per service. * Maximum of default 10 labels per monitored
     /// resource is allowed.
     ///
-    /// The default maximum limit can be overridden. Please follow https://cloud.google.com/monitoring/quotas</summary>
+    /// The default maximum limit can be overridden. Please follow https://cloud.google.com/monitoring/quotas </summary>
     public class MonitoredResourceDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. A detailed description of the monitored resource type that might be used in
@@ -2499,7 +2500,17 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Note there are legacy service monitored resources not following this rule.</summary>
+        /// <summary>Required. The monitored resource type. For example, the type `cloudsql_database` represents
+        /// databases in Google Cloud SQL.
+        ///
+        /// All service defined monitored resource types must be prefixed with the service name, in the format of
+        /// `{service name}/{relative resource name}`. The relative resource name must follow:
+        ///
+        /// * Only upper and lower-case letters and digits are allowed. * It must start with upper case character and is
+        /// recommended to use Upper Camel Case style. * The maximum number of characters allowed for the
+        /// relative_resource_name is 100.
+        ///
+        /// Note there are legacy service monitored resources not following this rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

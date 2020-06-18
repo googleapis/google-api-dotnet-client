@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>Security Command Center API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20200605 (1982)
+ *      <tr><th>API Rev<td>20200612 (1989)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview</a>
@@ -513,13 +513,13 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 ///
                 /// * name: `=` * update_time: `=`, `>`, `<`, `>=`, `<=`
                 ///
-                /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: "update_time =
-                /// \"2019-06-10T16:07:18-07:00\"" "update_time = 1560208038000"
+                /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `update_time =
+                /// "2019-06-10T16:07:18-07:00"` `update_time = 1560208038000`
                 ///
                 /// * create_time: `=`, `>`, `<`, `>=`, `<=`
                 ///
-                /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: "create_time =
-                /// \"2019-06-10T16:07:18-07:00\"" "create_time = 1560208038000"
+                /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `create_time =
+                /// "2019-06-10T16:07:18-07:00"` `create_time = 1560208038000`
                 ///
                 /// * iam_policy.policy_blob: `=`, `:` * resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=` *
                 /// security_marks.marks: `=`, `:` * security_center_properties.resource_name: `=`, `:` *
@@ -533,10 +533,10 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 /// For example, `resource_properties.size = 100` is a valid filter string.
                 ///
                 /// Use a partial match on the empty string to filter based on a property existing:
-                /// "resource_properties.my_property : \"\""
+                /// `resource_properties.my_property : ""`
                 ///
                 /// Use a negated partial match on the empty string to filter based on a property not existing:
-                /// "-resource_properties.my_property : \"\""</summary>
+                /// `-resource_properties.my_property : ""`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -1903,18 +1903,18 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                     /// name: `=` parent: `=`, `:` resource_name: `=`, `:` state: `=`, `:` category: `=`, `:`
                     /// external_uri: `=`, `:` event_time: `=`, `>`, `<`, `>=`, `<=`
                     ///
-                    /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: "event_time =
-                    /// \"2019-06-10T16:07:18-07:00\"" "event_time = 1560208038000"
+                    /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time =
+                    /// "2019-06-10T16:07:18-07:00"` `event_time = 1560208038000`
                     ///
                     /// security_marks.marks: `=`, `:` source_properties: `=`, `:`, `>`, `<`, `>=`, `<=`
                     ///
                     /// For example, `source_properties.size = 100` is a valid filter string.
                     ///
                     /// Use a partial match on the empty string to filter based on a property existing:
-                    /// "source_properties.my_property : \"\""
+                    /// `source_properties.my_property : ""`
                     ///
                     /// Use a negated partial match on the empty string to filter based on a property not existing:
-                    /// "-source_properties.my_property : \"\""</summary>
+                    /// `-source_properties.my_property : ""`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -3688,13 +3688,13 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
         ///
         /// * name: `=` * update_time: `=`, `>`, `<`, `>=`, `<=`
         ///
-        /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: "update_time =
-        /// \"2019-06-10T16:07:18-07:00\"" "update_time = 1560208038000"
+        /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `update_time =
+        /// "2019-06-10T16:07:18-07:00"` `update_time = 1560208038000`
         ///
         /// * create_time: `=`, `>`, `<`, `>=`, `<=`
         ///
-        /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: "create_time =
-        /// \"2019-06-10T16:07:18-07:00\"" "create_time = 1560208038000"
+        /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `create_time =
+        /// "2019-06-10T16:07:18-07:00"` `create_time = 1560208038000`
         ///
         /// * iam_policy.policy_blob: `=`, `:` * resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=` *
         /// security_marks.marks: `=`, `:` * security_center_properties.resource_name: `=`, `:` *
@@ -3708,10 +3708,10 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
         /// For example, `resource_properties.size = 100` is a valid filter string.
         ///
         /// Use a partial match on the empty string to filter based on a property existing:
-        /// "resource_properties.my_property : \"\""
+        /// `resource_properties.my_property : ""`
         ///
         /// Use a negated partial match on the empty string to filter based on a property not existing:
-        /// "-resource_properties.my_property : \"\""</summary>
+        /// `-resource_properties.my_property : ""`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
@@ -3828,18 +3828,18 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
         /// * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category: `=`, `:` *
         /// external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=`
         ///
-        /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: "event_time =
-        /// \"2019-06-10T16:07:18-07:00\"" "event_time = 1560208038000"
+        /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time =
+        /// "2019-06-10T16:07:18-07:00"` `event_time = 1560208038000`
         ///
         /// * security_marks.marks: `=`, `:` * source_properties: `=`, `:`, `>`, `<`, `>=`, `<=`
         ///
         /// For example, `source_properties.size = 100` is a valid filter string.
         ///
         /// Use a partial match on the empty string to filter based on a property existing:
-        /// "source_properties.my_property : \"\""
+        /// `source_properties.my_property : ""`
         ///
         /// Use a negated partial match on the empty string to filter based on a property not existing:
-        /// "-source_properties.my_property : \"\""</summary>
+        /// `-source_properties.my_property : ""`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 

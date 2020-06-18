@@ -471,7 +471,7 @@
    }
   }
  }, 
- "revision": "20200609", 
+ "revision": "20200616", 
  "rootUrl": "https://www.googleapis.com/", 
  "schemas": {
   "AchievementResetAllResponse": {

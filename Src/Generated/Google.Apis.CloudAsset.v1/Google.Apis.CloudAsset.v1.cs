@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200605 (1982)
+ *      <tr><th>API Rev<td>20200613 (1990)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>
  *              https://cloud.google.com/asset-inventory/docs/quickstart</a>
@@ -1032,13 +1032,18 @@ namespace Google.Apis.CloudAsset.v1.Data
 
     /// <summary>An asset in Google Cloud. An asset can be any resource in the Google Cloud [resource
     /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), a resource outside
-    /// the Google Cloud resource hierarchy (such as Google Kubernetes Engine clusters and objects), or a Cloud IAM
-    /// policy.</summary>
+    /// the Google Cloud resource hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy (e.g.
+    /// Cloud IAM policy). See [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-
+    /// types) for more information.</summary>
     public class Asset : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Please also refer to the [access level user guide](https://cloud.google.com/access-context-
+        /// manager/docs/overview#access-levels).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevel")]
         public virtual GoogleIdentityAccesscontextmanagerV1AccessLevel AccessLevel { get; set; } 
 
+        /// <summary>Please also refer to the [access policy user guide](https://cloud.google.com/access-context-
+        /// manager/docs/overview#access-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessPolicy")]
         public virtual GoogleIdentityAccesscontextmanagerV1AccessPolicy AccessPolicy { get; set; } 
 
@@ -1085,6 +1090,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual Resource Resource { get; set; } 
 
+        /// <summary>Please also refer to the [service perimeter user guide](https://cloud.google.com/vpc-service-
+        /// controls/docs/overview).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicePerimeter")]
         public virtual GoogleIdentityAccesscontextmanagerV1ServicePerimeter ServicePerimeter { get; set; } 
 
@@ -1497,7 +1504,7 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>Determines the inheritance behavior for this `Policy`.
         ///
-        /// By default, a `ListPolicy` set at a resource supercedes any `Policy` set anywhere up the resource hierarchy.
+        /// By default, a `ListPolicy` set at a resource supersedes any `Policy` set anywhere up the resource hierarchy.
         /// However, if `inherit_from_parent` is set to `true`, then the values from the effective `Policy` of the
         /// parent resource are inherited, meaning the values set in this `Policy` are added to the values inherited up
         /// the hierarchy.
@@ -1576,6 +1583,9 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>The name of the `Constraint` the `Policy` is configuring, for example,
         /// `constraints/serviceuser.services`.
+        ///
+        /// A [list of available constraints](/resource-manager/docs/organization-policy/org-policy-constraints) is
+        /// available.
         ///
         /// Immutable after creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("constraint")]

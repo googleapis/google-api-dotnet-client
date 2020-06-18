@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/cloud-messaging'>Firebase Cloud Messaging API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200608 (1985)
+ *      <tr><th>API Rev<td>20200615 (1992)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/cloud-messaging'>
  *              https://firebase.google.com/docs/cloud-messaging</a>
@@ -691,6 +691,9 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
     /// Note: this proto does not carry information about the absolute color space that should be used to interpret the
     /// RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
     /// space.
+    ///
+    /// Note: when color equality needs to be decided, implementations, unless documented otherwise, will treat two
+    /// colors to be equal if all their red, green, blue and alpha values each differ by at most 1e-5.
     ///
     /// Example (Java):
     ///

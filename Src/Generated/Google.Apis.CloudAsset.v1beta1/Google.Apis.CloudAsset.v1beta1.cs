@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200605 (1982)
+ *      <tr><th>API Rev<td>20200613 (1990)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>
  *              https://cloud.google.com/asset-inventory/docs/quickstart</a>
@@ -687,7 +687,8 @@ namespace Google.Apis.CloudAsset.v1beta1
                 IAMPOLICY,
             }
 
-            /// <summary>End time of the time window (inclusive). Current timestamp if not specified.</summary>
+            /// <summary>End time of the time window (inclusive). If not specified, the current timestamp is used
+            /// instead.</summary>
             [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.endTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadTimeWindowEndTime { get; set; }
 
@@ -1009,7 +1010,8 @@ namespace Google.Apis.CloudAsset.v1beta1
                 IAMPOLICY,
             }
 
-            /// <summary>End time of the time window (inclusive). Current timestamp if not specified.</summary>
+            /// <summary>End time of the time window (inclusive). If not specified, the current timestamp is used
+            /// instead.</summary>
             [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.endTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadTimeWindowEndTime { get; set; }
 
@@ -1175,29 +1177,61 @@ namespace Google.Apis.CloudAsset.v1beta1
 namespace Google.Apis.CloudAsset.v1beta1.Data
 {    
 
-    /// <summary>Cloud asset. This includes all Google Cloud Platform resources, Cloud IAM policies, and other non-GCP
-    /// assets.</summary>
+    /// <summary>An asset in Google Cloud. An asset can be any resource in the Google Cloud [resource
+    /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), a resource outside
+    /// the Google Cloud resource hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy (e.g.
+    /// Cloud IAM policy). See [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-
+    /// types) for more information.</summary>
     public class Asset : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Type of the asset. Example: "google.compute.Disk".</summary>
+        /// <summary>Please also refer to the [access level user guide](https://cloud.google.com/access-context-
+        /// manager/docs/overview#access-levels).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessLevel")]
+        public virtual GoogleIdentityAccesscontextmanagerV1AccessLevel AccessLevel { get; set; } 
+
+        /// <summary>Please also refer to the [access policy user guide](https://cloud.google.com/access-context-
+        /// manager/docs/overview#access-policies).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessPolicy")]
+        public virtual GoogleIdentityAccesscontextmanagerV1AccessPolicy AccessPolicy { get; set; } 
+
+        /// <summary>The type of the asset. Example: `compute.googleapis.com/Disk`
+        ///
+        /// See [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more
+        /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
         public virtual string AssetType { get; set; } 
 
-        /// <summary>Representation of the actual Cloud IAM policy set on a cloud resource. For each resource, there
-        /// must be at most one Cloud IAM policy set on it.</summary>
+        /// <summary>A representation of the Cloud IAM policy set on a Google Cloud resource. There can be a maximum of
+        /// one Cloud IAM policy set on any given resource. In addition, Cloud IAM policies inherit their granted access
+        /// scope from any policies set on parent resources in the resource hierarchy. Therefore, the effectively policy
+        /// is the union of both the policy set on this resource and each policy set on all of the resource's ancestry
+        /// resource levels in the hierarchy. See [this topic](https://cloud.google.com/iam/docs/policies#inheritance)
+        /// for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iamPolicy")]
         public virtual Policy IamPolicy { get; set; } 
 
-        /// <summary>The full name of the asset. For example:
-        /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource
-        /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more
+        /// <summary>The full name of the asset. Example:
+        /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`
+        ///
+        /// See [Resource names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more
         /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Representation of the resource.</summary>
+        /// <summary>A representation of an [organization policy](https://cloud.google.com/resource-manager/docs
+        /// /organization-policy/overview#organization_policy). There can be more than one organization policy with
+        /// different constraints set on a given resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgPolicy")]
+        public virtual System.Collections.Generic.IList<GoogleCloudOrgpolicyV1Policy> OrgPolicy { get; set; } 
+
+        /// <summary>A representation of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual Resource Resource { get; set; } 
+
+        /// <summary>Please also refer to the [service perimeter user guide](https://cloud.google.com/vpc-service-
+        /// controls/docs/overview).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servicePerimeter")]
+        public virtual GoogleIdentityAccesscontextmanagerV1ServicePerimeter ServicePerimeter { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1432,6 +1466,501 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Used in `policy_type` to specify how `boolean_policy` will behave at this resource.</summary>
+    public class GoogleCloudOrgpolicyV1BooleanPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable.
+        ///
+        /// Suppose you have a `Constraint` `constraints/compute.disableSerialPortAccess` with `constraint_default` set
+        /// to `ALLOW`. A `Policy` for that `Constraint` exhibits the following behavior: - If the `Policy` at this
+        /// resource has enforced set to `false`, serial port connection attempts will be allowed. - If the `Policy` at
+        /// this resource has enforced set to `true`, serial port connection attempts will be refused. - If the `Policy`
+        /// at this resource is `RestoreDefault`, serial port connection attempts will be allowed. - If no `Policy` is
+        /// set at this resource or anywhere higher in the resource hierarchy, serial port connection attempts will be
+        /// allowed. - If no `Policy` is set at this resource, but one exists higher in the resource hierarchy, the
+        /// behavior is as if the`Policy` were set at this resource.
+        ///
+        /// The following examples demonstrate the different possible layerings:
+        ///
+        /// Example 1 (nearest `Constraint` wins): `organizations/foo` has a `Policy` with: {enforced: false}
+        /// `projects/bar` has no `Policy` set. The constraint at `projects/bar` and `organizations/foo` will not be
+        /// enforced.
+        ///
+        /// Example 2 (enforcement gets replaced): `organizations/foo` has a `Policy` with: {enforced: false}
+        /// `projects/bar` has a `Policy` with: {enforced: true} The constraint at `organizations/foo` is not enforced.
+        /// The constraint at `projects/bar` is enforced.
+        ///
+        /// Example 3 (RestoreDefault): `organizations/foo` has a `Policy` with: {enforced: true} `projects/bar` has a
+        /// `Policy` with: {RestoreDefault: {}} The constraint at `organizations/foo` is enforced. The constraint at
+        /// `projects/bar` is not enforced, because `constraint_default` for the `Constraint` is `ALLOW`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforced")]
+        public virtual System.Nullable<bool> Enforced { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Used in `policy_type` to specify how `list_policy` behaves at this resource.
+    ///
+    /// `ListPolicy` can define specific values and subtrees of Cloud Resource Manager resource hierarchy
+    /// (`Organizations`, `Folders`, `Projects`) that are allowed or denied by setting the `allowed_values` and
+    /// `denied_values` fields. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix
+    /// is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required
+    /// only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix.
+    /// Ancestry subtrees must be in one of the following formats: - "projects/", e.g. "projects/tokyo-rain-123" -
+    /// "folders/", e.g. "folders/1234" - "organizations/", e.g. "organizations/1234" The `supports_under` field of the
+    /// associated `Constraint`  defines whether ancestry prefixes can be used. You can set `allowed_values` and
+    /// `denied_values` in the same `Policy` if `all_values` is `ALL_VALUES_UNSPECIFIED`. `ALLOW` or `DENY` are used to
+    /// allow or deny all values. If `all_values` is set to either `ALLOW` or `DENY`, `allowed_values` and
+    /// `denied_values` must be unset.</summary>
+    public class GoogleCloudOrgpolicyV1ListPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The policy all_values state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allValues")]
+        public virtual string AllValues { get; set; } 
+
+        /// <summary>List of values allowed  at this resource. Can only be set if `all_values` is set to
+        /// `ALL_VALUES_UNSPECIFIED`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedValues")]
+        public virtual System.Collections.Generic.IList<string> AllowedValues { get; set; } 
+
+        /// <summary>List of values denied at this resource. Can only be set if `all_values` is set to
+        /// `ALL_VALUES_UNSPECIFIED`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deniedValues")]
+        public virtual System.Collections.Generic.IList<string> DeniedValues { get; set; } 
+
+        /// <summary>Determines the inheritance behavior for this `Policy`.
+        ///
+        /// By default, a `ListPolicy` set at a resource supersedes any `Policy` set anywhere up the resource hierarchy.
+        /// However, if `inherit_from_parent` is set to `true`, then the values from the effective `Policy` of the
+        /// parent resource are inherited, meaning the values set in this `Policy` are added to the values inherited up
+        /// the hierarchy.
+        ///
+        /// Setting `Policy` hierarchies that inherit both allowed values and denied values isn't recommended in most
+        /// circumstances to keep the configuration simple and understandable. However, it is possible to set a `Policy`
+        /// with `allowed_values` set that inherits a `Policy` with `denied_values` set. In this case, the values that
+        /// are allowed must be in `allowed_values` and not present in `denied_values`.
+        ///
+        /// For example, suppose you have a `Constraint` `constraints/serviceuser.services`, which has a
+        /// `constraint_type` of `list_constraint`, and with `constraint_default` set to `ALLOW`. Suppose that at the
+        /// Organization level, a `Policy` is applied that restricts the allowed API activations to {`E1`, `E2`}. Then,
+        /// if a `Policy` is applied to a project below the Organization that has `inherit_from_parent` set to `false`
+        /// and field all_values set to DENY, then an attempt to activate any API will be denied.
+        ///
+        /// The following examples demonstrate different possible layerings for `projects/bar` parented by
+        /// `organizations/foo`:
+        ///
+        /// Example 1 (no inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
+        /// allowed_values:"E2"} `projects/bar` has `inherit_from_parent` `false` and values: {allowed_values: "E3"
+        /// allowed_values: "E4"} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at
+        /// `projects/bar` are `E3`, and `E4`.
+        ///
+        /// Example 2 (inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
+        /// allowed_values:"E2"} `projects/bar` has a `Policy` with values: {value: "E3" value: "E4"
+        /// inherit_from_parent: true} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at
+        /// `projects/bar` are `E1`, `E2`, `E3`, and `E4`.
+        ///
+        /// Example 3 (inheriting both allowed and denied values): `organizations/foo` has a `Policy` with values:
+        /// {allowed_values: "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {denied_values: "E1"} The
+        /// accepted values at `organizations/foo` are `E1`, `E2`. The value accepted at `projects/bar` is `E2`.
+        ///
+        /// Example 4 (RestoreDefault): `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
+        /// allowed_values:"E2"} `projects/bar` has a `Policy` with values: {RestoreDefault: {}} The accepted values at
+        /// `organizations/foo` are `E1`, `E2`. The accepted values at `projects/bar` are either all or none depending
+        /// on the value of `constraint_default` (if `ALLOW`, all; if `DENY`, none).
+        ///
+        /// Example 5 (no policy inherits parent policy): `organizations/foo` has no `Policy` set. `projects/bar` has no
+        /// `Policy` set. The accepted values at both levels are either all or none depending on the value of
+        /// `constraint_default` (if `ALLOW`, all; if `DENY`, none).
+        ///
+        /// Example 6 (ListConstraint allowing all): `organizations/foo` has a `Policy` with values: {allowed_values:
+        /// "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: ALLOW} The accepted values at
+        /// `organizations/foo` are `E1`, E2`. Any value is accepted at `projects/bar`.
+        ///
+        /// Example 7 (ListConstraint allowing none): `organizations/foo` has a `Policy` with values: {allowed_values:
+        /// "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: DENY} The accepted values at
+        /// `organizations/foo` are `E1`, E2`. No value is accepted at `projects/bar`.
+        ///
+        /// Example 10 (allowed and denied subtrees of Resource Manager hierarchy): Given the following resource
+        /// hierarchy O1->{F1, F2}; F1->{P1}; F2->{P2, P3}, `organizations/foo` has a `Policy` with values:
+        /// {allowed_values: "under:organizations/O1"} `projects/bar` has a `Policy` with: {allowed_values:
+        /// "under:projects/P3"} {denied_values: "under:folders/F2"} The accepted values at `organizations/foo` are
+        /// `organizations/O1`, `folders/F1`, `folders/F2`, `projects/P1`, `projects/P2`, `projects/P3`. The accepted
+        /// values at `projects/bar` are `organizations/O1`, `folders/F1`, `projects/P1`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inheritFromParent")]
+        public virtual System.Nullable<bool> InheritFromParent { get; set; } 
+
+        /// <summary>Optional. The Google Cloud Console will try to default to a configuration that matches the value
+        /// specified in this `Policy`. If `suggested_value` is not set, it will inherit the value specified higher in
+        /// the hierarchy, unless `inherit_from_parent` is `false`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedValue")]
+        public virtual string SuggestedValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines a Cloud Organization `Policy` which is used to specify `Constraints` for configurations of
+    /// Cloud Platform resources.</summary>
+    public class GoogleCloudOrgpolicyV1Policy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>For boolean `Constraints`, whether to enforce the `Constraint` or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("booleanPolicy")]
+        public virtual GoogleCloudOrgpolicyV1BooleanPolicy BooleanPolicy { get; set; } 
+
+        /// <summary>The name of the `Constraint` the `Policy` is configuring, for example,
+        /// `constraints/serviceuser.services`.
+        ///
+        /// A [list of available constraints](/resource-manager/docs/organization-policy/org-policy-constraints) is
+        /// available.
+        ///
+        /// Immutable after creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraint")]
+        public virtual string Constraint { get; set; } 
+
+        /// <summary>An opaque tag indicating the current version of the `Policy`, used for concurrency control.
+        ///
+        /// When the `Policy` is returned from either a `GetPolicy` or a `ListOrgPolicy` request, this `etag` indicates
+        /// the version of the current `Policy` to use when executing a read-modify-write loop.
+        ///
+        /// When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+        ///
+        /// When the `Policy` is used in a `SetOrgPolicy` method, use the `etag` value that was returned from a
+        /// `GetOrgPolicy` request as part of a read-modify-write loop for concurrency control. Not setting the `etag`in
+        /// a `SetOrgPolicy` request will result in an unconditional write of the `Policy`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>List of values either allowed or disallowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listPolicy")]
+        public virtual GoogleCloudOrgpolicyV1ListPolicy ListPolicy { get; set; } 
+
+        /// <summary>Restores the default behavior of the constraint; independent of `Constraint` type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restoreDefault")]
+        public virtual GoogleCloudOrgpolicyV1RestoreDefault RestoreDefault { get; set; } 
+
+        /// <summary>The time stamp the `Policy` was previously updated. This is set by the server, not specified by the
+        /// caller, and represents the last time a call to `SetOrgPolicy` was made for that `Policy`. Any value set by
+        /// the client will be ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>Version of the `Policy`. Default version is 0;</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; } 
+
+    }    
+
+    /// <summary>Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of
+    /// the specific `Constraint` at this resource.
+    ///
+    /// Suppose that `constraint_default` is set to `ALLOW` for the `Constraint` `constraints/serviceuser.services`.
+    /// Suppose that organization foo.com sets a `Policy` at their Organization resource node that restricts the allowed
+    /// service activations to deny all service activations. They could then set a `Policy` with the `policy_type`
+    /// `restore_default` on several experimental projects, restoring the `constraint_default` enforcement of the
+    /// `Constraint` for only those projects, allowing those projects to have all services activated.</summary>
+    public class GoogleCloudOrgpolicyV1RestoreDefault : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An `AccessLevel` is a label that can be applied to requests to Google Cloud services, along with a list
+    /// of requirements necessary for the label to be applied.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1AccessLevel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A `BasicLevel` composed of `Conditions`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basic")]
+        public virtual GoogleIdentityAccesscontextmanagerV1BasicLevel Basic { get; set; } 
+
+        /// <summary>A `CustomLevel` written in the Common Expression Language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("custom")]
+        public virtual GoogleIdentityAccesscontextmanagerV1CustomLevel Custom { get; set; } 
+
+        /// <summary>Description of the `AccessLevel` and its use. Does not affect behavior.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Required. Resource name for the Access Level. The `short_name` component must begin with a letter
+        /// and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The
+        /// maximum length of the `short_name` component is 50 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Human readable title. Must be unique within the Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>`AccessPolicy` is a container for `AccessLevels` (which define the necessary attributes to use Google
+    /// Cloud services) and `ServicePerimeters` (which define regions of services able to freely pass data within a
+    /// perimeter). An access policy is globally visible within an organization, and the restrictions it specifies apply
+    /// to all projects within an organization.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1AccessPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. An opaque identifier for the current version of the `AccessPolicy`. This will always
+        /// be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags
+        /// are identical. Clients should not expect this to be in any specific format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable
+        /// once created. Format: `organizations/{organization_id}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; } 
+
+        /// <summary>Required. Human readable title. Does not affect behavior.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+    }    
+
+    /// <summary>`BasicLevel` is an `AccessLevel` using a set of recommended features.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1BasicLevel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>How the `conditions` list should be combined to determine if a request is granted this
+        /// `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to
+        /// be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel`
+        /// to be applied. Default behavior is AND.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("combiningFunction")]
+        public virtual string CombiningFunction { get; set; } 
+
+        /// <summary>Required. A list of requirements for the `AccessLevel` to be granted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1Condition> Conditions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A condition necessary for an `AccessLevel` to be granted. The Condition is an AND over its fields. So a
+    /// Condition is true if: 1) the request IP is from one of the listed subnetworks AND 2) the originating device
+    /// complies with the listed device policy AND 3) all listed access levels are granted AND 4) the request was sent
+    /// at a time allowed by the DateTimeRestriction.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1Condition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Device specific restrictions, all restrictions must hold for the Condition to be true. If not
+        /// specified, all devices are allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("devicePolicy")]
+        public virtual GoogleIdentityAccesscontextmanagerV1DevicePolicy DevicePolicy { get; set; } 
+
+        /// <summary>CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for a CIDR IP address block,
+        /// the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the
+        /// input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly,
+        /// for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32" is not. The originating IP of a request must
+        /// be in one of the listed subnets in order for this Condition to be true. If empty, all IP addresses are
+        /// allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipSubnetworks")]
+        public virtual System.Collections.Generic.IList<string> IpSubnetworks { get; set; } 
+
+        /// <summary>The request must be made by one of the provided user or service accounts. Groups are not supported.
+        /// Syntax: `user:{emailid}` `serviceAccount:{emailid}` If not specified, a request may come from any
+        /// user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("members")]
+        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+
+        /// <summary>Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields,
+        /// each field must be false for the Condition overall to be satisfied. Defaults to false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("negate")]
+        public virtual System.Nullable<bool> Negate { get; set; } 
+
+        /// <summary>The request must originate from one of the provided countries/regions. Must be valid ISO 3166-1
+        /// alpha-2 codes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regions")]
+        public virtual System.Collections.Generic.IList<string> Regions { get; set; } 
+
+        /// <summary>A list of other access levels defined in the same `Policy`, referenced by resource name.
+        /// Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for
+        /// the Condition to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredAccessLevels")]
+        public virtual System.Collections.Generic.IList<string> RequiredAccessLevels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>`CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language to represent the necessary
+    /// conditions for the level to apply to a request. See CEL spec at: https://github.com/google/cel-spec</summary>
+    public class GoogleIdentityAccesscontextmanagerV1CustomLevel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A Cloud CEL expression evaluating to a boolean.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expr")]
+        public virtual Expr Expr { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>`DevicePolicy` specifies device specific restrictions necessary to acquire a given access level. A
+    /// `DevicePolicy` specifies requirements for requests from devices to be granted access levels, it does not do any
+    /// enforcement on the device. `DevicePolicy` acts as an AND over all specified fields, and each repeated field is
+    /// an OR over its elements. Any unset fields are ignored. For example, if the proto is { os_type : DESKTOP_WINDOWS,
+    /// os_type : DESKTOP_LINUX, encryption_status: ENCRYPTED}, then the DevicePolicy will be true for requests
+    /// originating from encrypted Linux desktops and encrypted Windows desktops.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1DevicePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Allowed device management levels, an empty list allows all management levels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedDeviceManagementLevels")]
+        public virtual System.Collections.Generic.IList<string> AllowedDeviceManagementLevels { get; set; } 
+
+        /// <summary>Allowed encryptions statuses, an empty list allows all statuses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedEncryptionStatuses")]
+        public virtual System.Collections.Generic.IList<string> AllowedEncryptionStatuses { get; set; } 
+
+        /// <summary>Allowed OS versions, an empty list allows all types and all versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osConstraints")]
+        public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1OsConstraint> OsConstraints { get; set; } 
+
+        /// <summary>Whether the device needs to be approved by the customer admin.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requireAdminApproval")]
+        public virtual System.Nullable<bool> RequireAdminApproval { get; set; } 
+
+        /// <summary>Whether the device needs to be corp owned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requireCorpOwned")]
+        public virtual System.Nullable<bool> RequireCorpOwned { get; set; } 
+
+        /// <summary>Whether or not screenlock is required for the DevicePolicy to be true. Defaults to
+        /// `false`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requireScreenlock")]
+        public virtual System.Nullable<bool> RequireScreenlock { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A restriction on the OS type and version of devices making requests.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1OsConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The minimum allowed OS version. If not set, any version of this OS satisfies the constraint.
+        /// Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumVersion")]
+        public virtual string MinimumVersion { get; set; } 
+
+        /// <summary>Required. The allowed OS type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osType")]
+        public virtual string OsType { get; set; } 
+
+        /// <summary>Only allows requests from devices with a verified Chrome OS. Verifications includes requirements
+        /// that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call
+        /// the API targeted by the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requireVerifiedChromeOs")]
+        public virtual System.Nullable<bool> RequireVerifiedChromeOs { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>`ServicePerimeter` describes a set of Google Cloud resources which can freely import and export data
+    /// amongst themselves, but not export outside of the `ServicePerimeter`. If a request with a source within this
+    /// `ServicePerimeter` has a target outside of the `ServicePerimeter`, the request will be blocked. Otherwise the
+    /// request is allowed. There are two types of Service Perimeter - Regular and Bridge. Regular Service Perimeters
+    /// cannot overlap, a single Google Cloud project can only belong to a single regular Service Perimeter. Service
+    /// Perimeter Bridges can contain only Google Cloud projects as members, a single Google Cloud project may belong to
+    /// multiple Service Perimeter Bridges.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1ServicePerimeter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of the `ServicePerimeter` and its use. Does not affect behavior.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Required. Resource name for the ServicePerimeter.  The `short_name` component must begin with a
+        /// letter and only include alphanumeric and '_'. Format:
+        /// `accessPolicies/{policy_id}/servicePerimeters/{short_name}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Perimeter type indicator. A single project is allowed to be a member of single regular perimeter,
+        /// but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being
+        /// included in regular perimeter. For perimeter bridges, the restricted service list as well as access level
+        /// lists must be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perimeterType")]
+        public virtual string PerimeterType { get; set; } 
+
+        /// <summary>Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test
+        /// ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the
+        /// "use_explicit_dry_run_spec" flag is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig Spec { get; set; } 
+
+        /// <summary>Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access
+        /// levels that determine perimeter content and boundaries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig Status { get; set; } 
+
+        /// <summary>Human readable title. Must be unique within the Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists  for all Service
+        /// Perimeters, and that spec is identical to the status for those Service Perimeters. When this flag is set, it
+        /// inhibits the generation of the implicit spec, thereby allowing the user to explicitly provide a
+        /// configuration ("spec") to use in a dry-run version of the Service Perimeter. This allows the user to test
+        /// changes to the enforced config ("status") without actually enforcing them. This testing is done through
+        /// analyzing the differences between currently enforced and suggested restrictions. use_explicit_dry_run_spec
+        /// must bet set to True if any of the fields in the spec are set to non-default values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useExplicitDryRunSpec")]
+        public virtual System.Nullable<bool> UseExplicitDryRunSpec { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>`ServicePerimeterConfig` specifies a set of Google Cloud resources that describe specific Service
+    /// Perimeter configuration.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of `AccessLevel` resource names that allow resources within the `ServicePerimeter` to be
+        /// accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`.
+        /// Referencing a nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are listed, resources
+        /// within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter.
+        /// Example: `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be
+        /// empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
+        public virtual System.Collections.Generic.IList<string> AccessLevels { get; set; } 
+
+        /// <summary>A list of Google Cloud resources that are inside of the service perimeter. Currently only projects
+        /// are allowed. Format: `projects/{project_number}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<string> Resources { get; set; } 
+
+        /// <summary>Google Cloud services that are subject to the Service Perimeter restrictions. For example, if
+        /// `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the
+        /// perimeter's access restrictions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedServices")]
+        public virtual System.Collections.Generic.IList<string> RestrictedServices { get; set; } 
+
+        /// <summary>Configuration for APIs allowed within Perimeter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcAccessibleServices")]
+        public virtual GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices VpcAccessibleServices { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies how APIs are allowed to communicate within the Service Perimeter.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is
+        /// True.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedServices")]
+        public virtual System.Collections.Generic.IList<string> AllowedServices { get; set; } 
+
+        /// <summary>Whether to restrict API calls within the Service Perimeter to the list of APIs specified in
+        /// 'allowed_services'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableRestriction")]
+        public virtual System.Nullable<bool> EnableRestriction { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1558,43 +2087,48 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
 
     }    
 
-    /// <summary>Representation of a cloud resource.</summary>
+    /// <summary>A representation of a Google Cloud resource.</summary>
     public class Resource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The content of the resource, in which some sensitive fields are scrubbed away and may not be
+        /// <summary>The content of the resource, in which some sensitive fields are removed and may not be
         /// present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual System.Collections.Generic.IDictionary<string,object> Data { get; set; } 
 
-        /// <summary>The URL of the discovery document containing the resource's JSON schema. For example:
-        /// `"https://www.googleapis.com/discovery/v1/apis/compute/v1/rest"`. It will be left unspecified for resources
-        /// without a discovery-based API, such as Cloud Bigtable.</summary>
+        /// <summary>The URL of the discovery document containing the resource's JSON schema. Example:
+        /// `https://www.googleapis.com/discovery/v1/apis/compute/v1/rest`
+        ///
+        /// This value is unspecified for resources that do not have an API based on a discovery document, such as Cloud
+        /// Bigtable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveryDocumentUri")]
         public virtual string DiscoveryDocumentUri { get; set; } 
 
-        /// <summary>The JSON schema name listed in the discovery document. Example: "Project". It will be left
-        /// unspecified for resources (such as Cloud Bigtable) without a discovery-based API.</summary>
+        /// <summary>The JSON schema name listed in the discovery document. Example: `Project`
+        ///
+        /// This value is unspecified for resources that do not have an API based on a discovery document, such as Cloud
+        /// Bigtable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveryName")]
         public virtual string DiscoveryName { get; set; } 
 
         /// <summary>The full name of the immediate parent of this resource. See [Resource
         /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.
         ///
-        /// For GCP assets, it is the parent resource defined in the [Cloud IAM policy
-        /// hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy). For example:
-        /// `"//cloudresourcemanager.googleapis.com/projects/my_project_123"`.
+        /// For Google Cloud assets, this value is the parent resource defined in the [Cloud IAM policy
+        /// hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy). Example:
+        /// `//cloudresourcemanager.googleapis.com/projects/my_project_123`
         ///
-        /// For third-party assets, it is up to the users to define.</summary>
+        /// For third-party assets, this field may be set differently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 
-        /// <summary>The REST URL for accessing the resource. An HTTP GET operation using this URL returns the resource
-        /// itself. Example: `https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123`. It will be left
-        /// unspecified for resources without a REST API.</summary>
+        /// <summary>The REST URL for accessing the resource. An HTTP `GET` request using this URL returns the resource
+        /// itself. Example: `https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123`
+        ///
+        /// This value is unspecified for resources without a REST API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
         public virtual string ResourceUrl { get; set; } 
 
-        /// <summary>The API version. Example: "v1".</summary>
+        /// <summary>The API version. Example: `v1`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; } 
 
@@ -1628,15 +2162,15 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Temporal asset. In addition to the asset, the temporal asset includes the status of the asset and valid
-    /// from and to time of it.</summary>
+    /// <summary>An asset in Google Cloud and its temporal metadata, including the time window when it was observed and
+    /// its status during that window.</summary>
     public class TemporalAsset : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Asset.</summary>
+        /// <summary>An asset in Google Cloud.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("asset")]
         public virtual Asset Asset { get; set; } 
 
-        /// <summary>If the asset is deleted or not.</summary>
+        /// <summary>Whether the asset has been deleted or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
         public virtual System.Nullable<bool> Deleted { get; set; } 
 
@@ -1648,10 +2182,11 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A time window of (start_time, end_time].</summary>
+    /// <summary>A time window specified by its `start_time` and `end_time`.</summary>
     public class TimeWindow : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>End time of the time window (inclusive). Current timestamp if not specified.</summary>
+        /// <summary>End time of the time window (inclusive). If not specified, the current timestamp is used
+        /// instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1p2beta1
- *      <tr><th>API Rev<td>20200529 (1975)
+ *      <tr><th>API Rev<td>20200612 (1989)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -1745,6 +1745,9 @@ namespace Google.Apis.Vision.v1p2beta1.Data
     /// Note: this proto does not carry information about the absolute color space that should be used to interpret the
     /// RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
     /// space.
+    ///
+    /// Note: when color equality needs to be decided, implementations, unless documented otherwise, will treat two
+    /// colors to be equal if all their red, green, blue and alpha values each differ by at most 1e-5.
     ///
     /// Example (Java):
     ///

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200603 (1980)
+ *      <tr><th>API Rev<td>20200612 (1989)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -2757,6 +2757,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("blockAfterDays")]
         public virtual System.Nullable<int> BlockAfterDays { get; set; } 
 
+        /// <summary>Specifies the scope of this BlockAction. Only applicable to devices that are company-
+        /// owned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockScope")]
+        public virtual string BlockScope { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2984,6 +2989,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nonComplianceDetails")]
         public virtual System.Collections.Generic.IList<NonComplianceDetail> NonComplianceDetails { get; set; } 
 
+        /// <summary>Ownership of the managed device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownership")]
+        public virtual string Ownership { get; set; } 
+
         /// <summary>Whether the device is compliant with its policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyCompliant")]
         public virtual System.Nullable<bool> PolicyCompliant { get; set; } 
@@ -3131,6 +3140,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// characters or less; otherwise, the creation request will fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalData")]
         public virtual string AdditionalData { get; set; } 
+
+        /// <summary>Controls personal usage on devices provisioned using this enrollment token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowPersonalUsage")]
+        public virtual string AllowPersonalUsage { get; set; } 
 
         /// <summary>The length of time the enrollment token is valid, ranging from 1 minute to 30 days. If not
         /// specified, the default duration is 1 hour.</summary>
@@ -3866,6 +3879,52 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Policies for apps on the personal profile of a Corporate Owned Personally Enabled device.</summary>
+    public class PersonalApplicationPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of installation to perform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installType")]
+        public virtual string InstallType { get; set; } 
+
+        /// <summary>The package name of the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Policies controlling personal usage on a Corporate Owned Personally Enabled device.</summary>
+    public class PersonalUsagePolicies : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Account types that can't be managed by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountTypesWithManagementDisabled")]
+        public virtual System.Collections.Generic.IList<string> AccountTypesWithManagementDisabled { get; set; } 
+
+        /// <summary>Whether camera is disabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cameraDisabled")]
+        public virtual System.Nullable<bool> CameraDisabled { get; set; } 
+
+        /// <summary>Controls how long the work profile can stay off.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDaysWithWorkOff")]
+        public virtual System.Nullable<int> MaxDaysWithWorkOff { get; set; } 
+
+        /// <summary>Policy applied to applications on the personal profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personalApplications")]
+        public virtual System.Collections.Generic.IList<PersonalApplicationPolicy> PersonalApplications { get; set; } 
+
+        /// <summary>Controls how apps on the personal profile are allowed or blocked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personalPlayStoreMode")]
+        public virtual string PersonalPlayStoreMode { get; set; } 
+
+        /// <summary>Whether screen capture is disabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenCaptureDisabled")]
+        public virtual System.Nullable<bool> ScreenCaptureDisabled { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A policy resource represents a group of settings that govern the behavior of a managed device and the
     /// apps installed on it.</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
@@ -4115,6 +4174,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("persistentPreferredActivities")]
         public virtual System.Collections.Generic.IList<PersistentPreferredActivity> PersistentPreferredActivities { get; set; } 
 
+        /// <summary>Policies managing personal usage on a company-owned device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personalUsagePolicies")]
+        public virtual PersonalUsagePolicies PersonalUsagePolicies { get; set; } 
+
         /// <summary>This mode controls which apps are available to the user in the Play Store and the behavior on the
         /// device when apps are removed from the policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playStoreMode")]
@@ -4362,6 +4425,15 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>A resource containing sign in details for an enterprise.</summary>
     public class SigninDetail : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Controls whether personal usage is allowed on a device provisioned with this enrollment token.For
+        /// company-owned devices: Enabling personal usage allows the user to set up a work profile on the device.
+        /// Disabling personal usage requires the user provision the device as a fully managed device.For personally-
+        /// owned devices: Enabling personal usage allows the user to set up a work profile on the device. Disabling
+        /// personal usage will prevent the device from provisioning. Personal usage cannot be disabled on personally-
+        /// owned device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowPersonalUsage")]
+        public virtual string AllowPersonalUsage { get; set; } 
+
         /// <summary>A JSON string whose UTF-8 representation can be used to generate a QR code to enroll a device with
         /// this enrollment token. To enroll a device using NFC, the NFC record must contain a serialized
         /// java.util.Properties representation of the properties in the JSON. This is a read-only field generated by
