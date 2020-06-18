@@ -168,6 +168,14 @@ namespace Google.Apis.Auth.Tests
         }
 
         [Fact]
+        public async Task ValidAudience()
+        {
+            var options = BuildOptions(trustedAudiences: new string[] { "233772281425-ab2mcbiqmv8kh0mdnqsrkrod97qk37h0.apps.googleusercontent.com" });
+            var payload = await JsonWebSignature.VerifySignedTokenAsync(FakeCertificateCache.JwtGoogleSigned, options);
+            Assert.NotNull(payload);
+        }
+
+        [Fact]
         public async Task Validate_Signature_Time()
         {
             var clockInvalid1 = new MockClock(FakeCertificateCache.BeforeValidJwtGoogleSigned);

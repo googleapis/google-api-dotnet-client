@@ -45,7 +45,7 @@ namespace IntegrationTests
             var verificationOptions = new SignedTokenVerificationOptions();
             verificationOptions.TrustedAudiences.Add("https://this.is.a.test");
 
-            var payload = await JsonWebSignature.VerifySignedTokenAsync(await token.GetAccessTokenAsync());
+            var payload = await JsonWebSignature.VerifySignedTokenAsync(await token.GetAccessTokenAsync(), verificationOptions);
             Assert.NotNull(payload);
             Assert.Contains("https://this.is.a.test", payload.AudienceAsList);
         }
@@ -71,7 +71,7 @@ namespace IntegrationTests
             var verificationOptions = new SignedTokenVerificationOptions();
             verificationOptions.TrustedAudiences.Add("https://this.is.a.test");
 
-            var payload = await JsonWebSignature.VerifySignedTokenAsync(await token.GetAccessTokenAsync());
+            var payload = await JsonWebSignature.VerifySignedTokenAsync(await token.GetAccessTokenAsync(), verificationOptions);
             Assert.NotNull(payload);
             Assert.Contains("https://this.is.a.test", payload.AudienceAsList);
         }
