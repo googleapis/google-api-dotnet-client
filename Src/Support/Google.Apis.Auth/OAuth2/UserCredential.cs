@@ -30,7 +30,7 @@ namespace Google.Apis.Auth.OAuth2
     /// OAuth 2.0 credential for accessing protected resources using an access token, as well as optionally refreshing 
     /// the access token when it expires using a refresh token.
     /// </summary>
-    public class UserCredential : ICredential, IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler, ITokenAccessWithHeaders
+    public class UserCredential : IGoogleCredential, IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler
     {
         /// <summary>Logger for this class.</summary>
         protected static readonly ILogger Logger = ApplicationContext.Logger.ForType<UserCredential>();
@@ -48,10 +48,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>Gets the user identity.</summary>
         public string UserId { get; }
 
-        /// <summary>
-        /// The ID of the project associated to this credential for the purposes of
-        /// quota calculation and billing.
-        /// </summary>
+        /// <inheritdoc/>
         public string QuotaProject { get; }
 
         private readonly TokenRefreshManager _refreshManager;
@@ -79,6 +76,10 @@ namespace Google.Apis.Auth.OAuth2
             QuotaProject = quotaProjectId;
         }
 
+        /// <inheritdoc/>
+        IGoogleCredential IGoogleCredential.WithQuotaProject(string quotaProject) =>
+            new UserCredential(Flow, UserId, Token, quotaProject);
+
         #region IHttpExecuteInterceptor
 
         /// <summary>
@@ -89,7 +90,7 @@ namespace Google.Apis.Auth.OAuth2
         public async Task InterceptAsync(HttpRequestMessage request, CancellationToken taskCancellationToken)
         {
             var accessToken = await GetAccessTokenWithHeadersForRequestAsync(request.RequestUri.AbsoluteUri, taskCancellationToken).ConfigureAwait(false);
-            Flow.AccessMethod.Intercept(request, Token.AccessToken);
+            Flow.AccessMethod.Intercept(request, accessToken.AccessToken);
 
             foreach (var header in accessToken.Headers)
             {
@@ -133,7 +134,7 @@ namespace Google.Apis.Auth.OAuth2
 
         #region ITokenAccessWithHeaders implementation
         /// <inheritdoc />
-        public async Task<AccessTokenWithHeaders> GetAccessTokenWithHeadersForRequestAsync(string authUri = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AccessTokenWithHeaders> GetAccessTokenWithHeadersForRequestAsync(string authUri = null, CancellationToken cancellationToken = default)
         {
             string token = await GetAccessTokenForRequestAsync(authUri, cancellationToken).ConfigureAwait(false);
             return new AccessTokenWithHeaders(token, QuotaProject);

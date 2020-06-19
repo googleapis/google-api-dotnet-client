@@ -36,13 +36,13 @@ namespace Google.Apis.Auth.OAuth2
     public class GoogleCredential : ICredential, ITokenAccessWithHeaders, IOidcTokenProvider
     {
         /// <summary>Provider implements the logic for creating the application default credential.</summary>
-        private static DefaultCredentialProvider defaultCredentialProvider = new DefaultCredentialProvider();
+        private static readonly DefaultCredentialProvider defaultCredentialProvider = new DefaultCredentialProvider();
 
         /// <summary>The underlying credential being wrapped by this object.</summary>
-        protected readonly ICredential credential;
+        private protected readonly IGoogleCredential credential;
 
         /// <summary>Creates a new <c>GoogleCredential</c>.</summary>
-        internal GoogleCredential(ICredential credential) => this.credential = credential;
+        internal GoogleCredential(IGoogleCredential credential) => this.credential = credential;
 
         /// <summary>
         /// Returns the Application Default Credentials which are ambient credentials that identify and authorize
@@ -179,20 +179,28 @@ namespace Google.Apis.Auth.OAuth2
         /// <returns>A credential based on the provided access token.</returns>
         public static GoogleCredential FromAccessToken(string accessToken, IAccessMethod accessMethod = null)
         {
-            accessMethod = accessMethod ?? new BearerToken.AuthorizationHeaderAccessMethod();
+            accessMethod ??= new BearerToken.AuthorizationHeaderAccessMethod();
             return new GoogleCredential(new AccessTokenCredential(accessToken, accessMethod));
         }
 
-        internal class AccessTokenCredential : ICredential, IHttpExecuteInterceptor
+        internal class AccessTokenCredential : IGoogleCredential, IHttpExecuteInterceptor
         {
-            public AccessTokenCredential(string accessToken, IAccessMethod accessMethod)
+            private readonly string _accessToken;
+            private readonly IAccessMethod _accessMethod;
+
+            /// <inheritdoc/>
+            public string QuotaProject { get; }
+
+            public AccessTokenCredential(string accessToken, IAccessMethod accessMethod, string quotaProject = null)
             {
                 _accessToken = accessToken;
                 _accessMethod = accessMethod;
+                QuotaProject = quotaProject;
             }
 
-            private readonly string _accessToken;
-            private readonly IAccessMethod _accessMethod;
+            /// <inheritdoc/>
+            IGoogleCredential IGoogleCredential.WithQuotaProject(string quotaProject) =>
+                new AccessTokenCredential(_accessToken, _accessMethod, quotaProject);
 
             public void Initialize(ConfigurableHttpClient httpClient) =>
                 httpClient.MessageHandler.Credential = this;
@@ -200,11 +208,22 @@ namespace Google.Apis.Auth.OAuth2
             public Task<string> GetAccessTokenForRequestAsync(string authUri = null, CancellationToken cancellationToken = default(CancellationToken)) =>
                 Task.FromResult(_accessToken);
 
+            /// <inheritdoc />
+            public Task<AccessTokenWithHeaders> GetAccessTokenWithHeadersForRequestAsync(string authUri = null, CancellationToken cancellationToken = default) =>
+                Task.FromResult(new AccessTokenWithHeaders(_accessToken, QuotaProject));
+
             // Only method in IHttpExecuteInterceptor
             public Task InterceptAsync(HttpRequestMessage request, CancellationToken taskCancellationToken)
             {
-                _accessMethod.Intercept(request, _accessToken);
-                return Task.FromResult(0);
+                var accessToken = new AccessTokenWithHeaders(_accessToken, QuotaProject);
+                _accessMethod.Intercept(request, accessToken.AccessToken);
+
+                foreach (var header in accessToken.Headers)
+                {
+                    request.Headers.Add(header.Key, header.Value);
+                }
+
+                return Task.FromResult(true);
             }
         }
 
@@ -251,10 +270,22 @@ namespace Google.Apis.Auth.OAuth2
         public virtual bool IsCreateScopedRequired => false;
 
         /// <summary>
+        /// The ID of the project associated to this credential for the purposes of
+        /// quota calculation and billing. May be null.
+        /// </summary>
+        public string QuotaProject => credential.QuotaProject;
+
+        /// <summary>
         /// If the credential supports scopes, creates a copy with the specified scopes. Otherwise, it returns the same
         /// instance.
         /// </summary>
         public virtual GoogleCredential CreateScoped(IEnumerable<string> scopes) => this;
+
+        /// <summary>
+        /// If the credential supports scopes, creates a copy with the specified scopes. Otherwise, it returns the same
+        /// instance.
+        /// </summary>
+        public GoogleCredential CreateScoped(params string[] scopes) => CreateScoped((IEnumerable<string>)scopes);
 
         /// <summary>
         /// If the credential supports setting the user, creates a copy with the specified user.
@@ -267,32 +298,29 @@ namespace Google.Apis.Auth.OAuth2
         public virtual GoogleCredential CreateWithUser(string user) => throw new InvalidOperationException();
 
         /// <summary>
-        /// If the credential supports scopes, creates a copy with the specified scopes. Otherwise, it returns the same
-        /// instance.
+        /// Creates a copy of this credential with the specified quota project.
         /// </summary>
-        public GoogleCredential CreateScoped(params string[] scopes) => CreateScoped((IEnumerable<string>)scopes);
+        /// <param name="quotaProject">The quota project to use for the copy. May be null.</param>
+        /// <returns>A copy of this credential with <see cref="QuotaProject"/> set to <paramref name="quotaProject"/>.</returns>
+        public virtual GoogleCredential CreateWithQuotaProject(string quotaProject) =>
+            new GoogleCredential(credential.WithQuotaProject(quotaProject));
 
         void IConfigurableHttpClientInitializer.Initialize(ConfigurableHttpClient httpClient)
         {
             credential.Initialize(httpClient);
         }
 
-        Task<string> ITokenAccess.GetAccessTokenForRequestAsync(string authUri, CancellationToken cancellationToken)
-        {
-            return credential.GetAccessTokenForRequestAsync(authUri, cancellationToken);
-        }
+        Task<string> ITokenAccess.GetAccessTokenForRequestAsync(string authUri, CancellationToken cancellationToken) =>
+            credential.GetAccessTokenForRequestAsync(authUri, cancellationToken);
 
-        async Task<AccessTokenWithHeaders> ITokenAccessWithHeaders.GetAccessTokenWithHeadersForRequestAsync(
-            string authUri, CancellationToken cancellationToken)
-        {
-            return (credential is ITokenAccessWithHeaders credentialWithHeaders) ?
-                await credentialWithHeaders.GetAccessTokenWithHeadersForRequestAsync(authUri, cancellationToken).ConfigureAwait(false) :
-                new AccessTokenWithHeaders(await credential.GetAccessTokenForRequestAsync(authUri, cancellationToken).ConfigureAwait(false));
-        }
+        Task<AccessTokenWithHeaders> ITokenAccessWithHeaders.GetAccessTokenWithHeadersForRequestAsync(
+            string authUri, CancellationToken cancellationToken) =>
+            credential.GetAccessTokenWithHeadersForRequestAsync(authUri, cancellationToken);
+
 
         /// <inheritdoc/>
         public Task<OidcToken> GetOidcTokenAsync(OidcTokenOptions options, CancellationToken cancellationToken = default) =>
-            (UnderlyingCredential is IOidcTokenProvider provider) ?
+            (credential is IOidcTokenProvider provider) ?
             provider.GetOidcTokenAsync(options, cancellationToken) :
             throw new InvalidOperationException(
                 $"{nameof(UnderlyingCredential)} is not an OIDC token provider. Only {nameof(ServiceAccountCredential)}, {nameof(ComputeCredential)} are supported OIDC token providers.");
@@ -339,6 +367,9 @@ namespace Google.Apis.Auth.OAuth2
                 };
                 return new ServiceAccountGoogleCredential(new ServiceAccountCredential(initializer));
             }
+
+            public override GoogleCredential CreateWithQuotaProject(string quotaProject) =>
+                new ServiceAccountGoogleCredential(credential.WithQuotaProject(quotaProject) as ServiceAccountCredential);
         }
     }
 }

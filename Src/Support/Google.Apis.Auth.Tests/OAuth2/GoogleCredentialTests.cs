@@ -17,10 +17,12 @@ limitations under the License.
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Auth.OAuth2.Responses;
+using Google.Apis.Http;
 using Google.Apis.Json;
 using Google.Apis.Tests.Mocks;
 using Moq;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -37,6 +39,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
     /// <summary>Tests for <see cref="Google.Apis.Auth.OAuth2.GoogleCredential"/>.</summary>
     public class GoogleCredentialTests
     {
+        private const string QuotaProjectHeaderKey = "x-goog-user-project";
         private const string DummyAuthUri = "https://www.googleapis.com/google.some_google_api";
         private const string DummyUserCredentialFileContents = @"{
 ""client_id"": ""CLIENT_ID"",
@@ -331,39 +334,147 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
             Assert.Equal(fakeAccessToken, httpHandler.RequestHeaders.Authorization.Parameter);
         }
 
-        [Fact]
-        public async Task AccessTokenWithHeadersCredential()
+        /// <summary>
+        /// Returns an access token, we don't care about the token in the following tests,
+        /// but we need token fetching to work because that's a prerequisite for being
+        /// able to perform authenticated requests.
+        /// </summary>
+        private class FetchesTokenMessageHandler : CountableMessageHandler
         {
-            var mockClock = new MockClock(DateTime.UtcNow);
-            var tokenResponse = new TokenResponse
+            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request, CancellationToken taskCancellationToken) =>
+                Task.FromResult(new HttpResponseMessage()
+                {
+                    Content = new StringContent(
+                        NewtonsoftJsonSerializer.Instance.Serialize(new TokenResponse
+                        {
+                            AccessToken = "a",
+                            RefreshToken = "r",
+                            ExpiresInSeconds = 100,
+                            Scope = "b"
+                        }),
+                        Encoding.UTF8)
+                });
+        }
+
+        public static IEnumerable<object[]> CredentialsForTesting
+        {
+            get
             {
-                AccessToken = "ACCESS_TOKEN",
-                ExpiresInSeconds = 60 * 10,
-                IssuedUtc = DateTime.Now,
-                RefreshToken = "REFRESH_TOKEN",
-            };
-            var flowMock = new Mock<IAuthorizationCodeFlow>(MockBehavior.Strict);
-            flowMock
-                .Setup(flow => flow.Clock)
-                .Returns(mockClock);
-            flowMock
-                .Setup(flow => flow.AccessMethod)
-                .Returns(new AuthorizationHeaderAccessMethod());
+                var clock = new MockClock(DateTime.UtcNow);
+                var httpClientFactory = new MockHttpClientFactory(new FetchesTokenMessageHandler());
 
-            var userCred = new UserCredential(flowMock.Object, "USER_ID", tokenResponse, "QUOTA_PROJECT");
-            ICredential cred = new GoogleCredential(userCred);
+                var cInitializer = new ComputeCredential.Initializer
+                {
+                    Clock = clock,
+                    HttpClientFactory = httpClientFactory
+                };
+                yield return new object[] { GoogleCredential.FromComputeCredential(new ComputeCredential(cInitializer)) };
 
-            var httpHandler = new FakeHandler();
-            var httpClient = new Http.ConfigurableHttpClient(new Http.ConfigurableMessageHandler(httpHandler));
-            cred.Initialize(httpClient);
-            await httpClient.GetAsync("http://localhost/TestRequest");
+                var saInitiliazer = new ServiceAccountCredential.Initializer("my.service.account.id")
+                {
+                    Clock = clock,
+                    HttpClientFactory = httpClientFactory
+                }.FromPrivateKey(ServiceAccountCredentialTests.PrivateKey);
+                yield return new object[] { GoogleCredential.FromServiceAccountCredential(new ServiceAccountCredential(saInitiliazer)) };
 
-            Assert.Equal("Bearer", httpHandler.RequestHeaders.Authorization.Scheme);
-            Assert.Equal("ACCESS_TOKEN", httpHandler.RequestHeaders.Authorization.Parameter);
+                var tokenResponse = new TokenResponse
+                {
+                    AccessToken = "ACCESS_TOKEN",
+                    ExpiresInSeconds = 60 * 10,
+                    IssuedUtc = clock.UtcNow,
+                    RefreshToken = "REFRESH_TOKEN",
+                };
+                var flowMock = new Mock<IAuthorizationCodeFlow>(MockBehavior.Strict);
+                flowMock
+                    .Setup(flow => flow.Clock)
+                    .Returns(clock);
+                flowMock
+                    .Setup(flow => flow.AccessMethod)
+                    .Returns(new AuthorizationHeaderAccessMethod());
+                yield return new object[] { new GoogleCredential(new UserCredential(flowMock.Object, "my.user.id", tokenResponse)) };
 
-            Assert.True(httpHandler.RequestHeaders.TryGetValues("x-goog-user-project", out var values));
-            Assert.Single(values);
-            Assert.Equal("QUOTA_PROJECT", values.First());
+                yield return new object[] { GoogleCredential.FromAccessToken("my.access.token") };
+            }
+        }
+
+        [Theory]
+        [MemberData(nameof(CredentialsForTesting))]
+        public async Task Intercepts_WithQuotaProject(GoogleCredential credential)
+        {
+            credential = credential.CreateWithQuotaProject("my-billing-project");
+
+            HttpRequestHeaders headers;
+            using (var interceptor = new FakeHandler())
+            using (var httpClient = new ConfigurableHttpClient( new ConfigurableMessageHandler(interceptor)))
+            {
+                ((IConfigurableHttpClientInitializer)credential).Initialize(httpClient);
+                await httpClient.GetAsync("http://will.be.ignored");
+                headers = interceptor.RequestHeaders;
+            }
+
+            AssertContainsQuotaProject(headers, "my-billing-project");
+        }
+
+        [Theory]
+        [MemberData(nameof(CredentialsForTesting))]
+        public async Task AccessToken_WithQuotaProjectHeader(GoogleCredential credential)
+        {
+            credential = credential.CreateWithQuotaProject("my-billing-project");
+            var accessToken = await ((ITokenAccessWithHeaders)credential.UnderlyingCredential).GetAccessTokenWithHeadersForRequestAsync();
+
+            AssertContainsQuotaProject(
+                accessToken.Headers.Select(pair => new KeyValuePair<string, IEnumerable<string>>(pair.Key, pair.Value)),
+                "my-billing-project");
+        }
+
+        [Theory]
+        [MemberData(nameof(CredentialsForTesting))]
+        public async Task Intercepts_NoQuotaProject(GoogleCredential credential)
+        {
+            HttpRequestHeaders headers;
+            using (var interceptor = new FakeHandler())
+            using (var httpClient = new ConfigurableHttpClient( new ConfigurableMessageHandler(interceptor)))
+            {
+                ((IConfigurableHttpClientInitializer)credential).Initialize(httpClient);
+                await httpClient.GetAsync("http://will.be.ignored");
+                headers = interceptor.RequestHeaders;
+            }
+
+            Assert.DoesNotContain(headers, h => h.Key == QuotaProjectHeaderKey);
+        }
+
+        [Theory]
+        [MemberData(nameof(CredentialsForTesting))]
+        public async Task AccessToken_NoQuotaProjectHeader(GoogleCredential credential)
+        {
+            var accessToken = await ((ITokenAccessWithHeaders)credential.UnderlyingCredential).GetAccessTokenWithHeadersForRequestAsync();
+
+            Assert.DoesNotContain(accessToken.Headers, h => h.Key == QuotaProjectHeaderKey);
+        }
+
+        [Theory]
+        [MemberData(nameof(CredentialsForTesting))]
+        public void CreateWithQuotaProject(GoogleCredential credential)
+        {
+            var newCredetial = credential.CreateWithQuotaProject("my-quota-project");
+
+            Assert.Equal("my-quota-project", newCredetial.QuotaProject);
+        }
+
+        [Theory]
+        [MemberData(nameof(CredentialsForTesting))]
+        public void CreateWithQuotaProject_NotSame(GoogleCredential credential)
+        {
+            var newCredetial = credential.CreateWithQuotaProject("my-quota-project");
+
+            Assert.NotSame(credential, newCredetial);
+        }
+
+        private void AssertContainsQuotaProject(IEnumerable<KeyValuePair<string, IEnumerable<string>>> headers, string expectedValue)
+        {
+            KeyValuePair<string, IEnumerable<string>> headerValues = Assert.Single(headers, h => h.Key == QuotaProjectHeaderKey);
+            string quotaProject = Assert.Single(headerValues.Value);
+            Assert.Equal(expectedValue, quotaProject);
         }
     }
 }

@@ -54,7 +54,7 @@ namespace Google.Apis.Auth.OAuth2
     /// is used and when regular OAuth2 token is used.
     /// </para>
     /// </summary>
-    public class ServiceAccountCredential : ServiceCredential, IOidcTokenProvider
+    public class ServiceAccountCredential : ServiceCredential, IOidcTokenProvider, IGoogleCredential
     {
         private const string Sha256Oid = "2.16.840.1.101.3.4.2.1";
         /// <summary>An initializer class for the service account credential. </summary>
@@ -192,6 +192,10 @@ namespace Google.Apis.Auth.OAuth2
             }
             return result;
         }
+
+        /// <inheritdoc/>
+        IGoogleCredential IGoogleCredential.WithQuotaProject(string quotaProject) =>
+            new ServiceAccountCredential(new Initializer(this) { QuotaProject = quotaProject });
 
         /// <summary>
         /// Requests a new token as specified in 
