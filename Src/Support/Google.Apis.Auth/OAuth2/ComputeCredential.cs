@@ -20,7 +20,6 @@ using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -36,7 +35,7 @@ namespace Google.Apis.Auth.OAuth2
     /// https://cloud.google.com/compute/docs/authentication.
     /// </para>
     /// </summary>
-    public class ComputeCredential : ServiceCredential, IOidcTokenProvider
+    public class ComputeCredential : ServiceCredential, IOidcTokenProvider, IGoogleCredential
     {
         /// <summary>The metadata server url.</summary>
         public const string MetadataServerUrl = "http://169.254.169.254"; // IP address instead of name to avoid DNS resolution
@@ -90,6 +89,9 @@ namespace Google.Apis.Auth.OAuth2
             /// and OIDC token URL.</summary>
             public Initializer(string tokenUrl, string oidcTokenUrl)
                 : base(tokenUrl) => OidcTokenUrl = oidcTokenUrl;
+
+            internal Initializer(ComputeCredential other)
+                : base(other) => OidcTokenUrl = other.OidcTokenUrl;
         }
 
         /// <summary>Constructs a new Compute credential instance.</summary>
@@ -97,6 +99,10 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>Constructs a new Compute credential instance.</summary>
         public ComputeCredential(Initializer initializer) : base(initializer) => OidcTokenUrl = initializer.OidcTokenUrl;
+
+        /// <inheritdoc/>
+        IGoogleCredential IGoogleCredential.WithQuotaProject(string quotaProject) =>
+            new ComputeCredential(new Initializer(this) { QuotaProject = quotaProject });
 
         #region ServiceCredential overrides
 

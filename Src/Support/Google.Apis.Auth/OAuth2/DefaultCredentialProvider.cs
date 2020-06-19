@@ -261,8 +261,11 @@ namespace Google.Apis.Auth.OAuth2
             {
                 throw new InvalidOperationException("JSON data does not represent a valid service account credential.");
             }
-            var initializer = new ServiceAccountCredential.Initializer(credentialParameters.ClientEmail);
-            initializer.ProjectId = credentialParameters.ProjectId;
+            var initializer = new ServiceAccountCredential.Initializer(credentialParameters.ClientEmail)
+            {
+                ProjectId = credentialParameters.ProjectId,
+                QuotaProject = credentialParameters.QuotaProject
+            };
             return new ServiceAccountCredential(initializer.FromPrivateKey(credentialParameters.PrivateKey));
         }
 

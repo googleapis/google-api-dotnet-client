@@ -39,7 +39,8 @@ namespace Google.Apis.Auth.OAuth2
     /// https://cloud.google.com/compute/docs/authentication.
     /// </para>
     /// </summary>
-    public abstract class ServiceCredential : ICredential, IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler
+    public abstract class ServiceCredential : ICredential, ITokenAccessWithHeaders,
+        IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler
     {
         /// <summary>Logger for this class</summary>
         protected static readonly ILogger Logger = ApplicationContext.Logger.ForType<ServiceCredential>();
@@ -77,6 +78,12 @@ namespace Google.Apis.Auth.OAuth2
             /// </summary>
             public ExponentialBackOffPolicy DefaultExponentialBackOffPolicy { get; set; }
 
+            /// <summary>
+            /// The ID of the project associated to this credential for the purposes of
+            /// quota calculation and billing. May be null.
+            /// </summary>
+            public string QuotaProject { get; set; }
+
             /// <summary>Constructs a new initializer using the given token server URL.</summary>
             public Initializer(string tokenServerUrl)
             {
@@ -94,6 +101,7 @@ namespace Google.Apis.Auth.OAuth2
                 AccessMethod = other.AccessMethod;
                 HttpClientFactory = other.HttpClientFactory;
                 DefaultExponentialBackOffPolicy = other.DefaultExponentialBackOffPolicy;
+                QuotaProject = other.QuotaProject;
             }
         }
 
@@ -122,6 +130,12 @@ namespace Google.Apis.Auth.OAuth2
             set => _refreshManager.Token = value;
         }
 
+        /// <summary>
+        /// The ID of the project associated to this credential for the purposes of
+        /// quota calculation and billing. May be null.
+        /// </summary>
+        public string QuotaProject { get; }
+
         /// <summary>Constructs a new service account credential using the given initializer.</summary>
         public ServiceCredential(Initializer initializer)
         {
@@ -142,6 +156,8 @@ namespace Google.Apis.Auth.OAuth2
             HttpClientFactory = initializer.HttpClientFactory;
             HttpClient = (initializer.HttpClientFactory ?? new HttpClientFactory()).CreateHttpClient(httpArgs);
             _refreshManager = new TokenRefreshManager(RequestAccessTokenAsync, Clock, Logger);
+
+            QuotaProject = initializer.QuotaProject;
         }
 
         #region IConfigurableHttpClientInitializer
@@ -157,9 +173,13 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         public async Task InterceptAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            var accessToken = await GetAccessTokenForRequestAsync(request.RequestUri.AbsoluteUri, cancellationToken)
-                .ConfigureAwait(false);
-            AccessMethod.Intercept(request, accessToken);
+            var accessToken = await GetAccessTokenWithHeadersForRequestAsync(request.RequestUri.AbsoluteUri, cancellationToken).ConfigureAwait(false);
+            AccessMethod.Intercept(request, accessToken.AccessToken);
+
+            foreach (var header in accessToken.Headers)
+            {
+                request.Headers.Add(header.Key, header.Value);
+            }
         }
 
         #endregion
@@ -192,7 +212,6 @@ namespace Google.Apis.Auth.OAuth2
 
         #endregion
 
-
         #region ITokenAccess implementation
 
         /// <summary>
@@ -203,6 +222,15 @@ namespace Google.Apis.Auth.OAuth2
             CancellationToken cancellationToken = default(CancellationToken)) =>
             _refreshManager.GetAccessTokenForRequestAsync(cancellationToken);
 
+        #endregion
+
+        #region ITokenAccessWithHeaders implementation
+        /// <inheritdoc />
+        public async Task<AccessTokenWithHeaders> GetAccessTokenWithHeadersForRequestAsync(string authUri = null, CancellationToken cancellationToken = default)
+        {
+            string token = await GetAccessTokenForRequestAsync(authUri, cancellationToken).ConfigureAwait(false);
+            return new AccessTokenWithHeaders(token, QuotaProject);
+        }
         #endregion
 
         /// <summary>Requests a new token.</summary>
