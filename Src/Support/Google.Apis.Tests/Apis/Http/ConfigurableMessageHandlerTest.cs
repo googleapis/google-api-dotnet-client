@@ -1164,5 +1164,57 @@ namespace Google.Apis.Tests.Apis.Http
             Assert.Equal(1, logEntries.Count);
             Assert.Equal("D2017-01-02 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] Body: 'ABC...DE'", logEntries[0]);
         }
+
+        private class AddsQuotaProject : IHttpExecuteInterceptor
+        {
+            public Task InterceptAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                request.Headers.Add("x-goog-user-project", "my-project");
+                return Task.FromResult(true);
+            }
+        }
+
+        [Fact]
+        public async Task FailsIfQuotaProjectSetWithInterceptors()
+        {
+            var configurableHandler = new ConfigurableMessageHandler(new HttpClientHandler());
+            configurableHandler.AddExecuteInterceptor(new AddsQuotaProject());
+
+            using (var client = new HttpClient(configurableHandler))
+            {
+               await Assert.ThrowsAsync<InvalidOperationException>(() => client.GetAsync("http://will.be.ignored"));
+            }
+        }
+
+        [Fact]
+        public async Task AcceptsQuotaProjectFromCredential()
+        {
+            var fakeHandler = new FakeHandler();
+            var configurableHandler = new ConfigurableMessageHandler(fakeHandler)
+            {
+                Credential = new AddsQuotaProject()
+            };
+
+            using (var client = new HttpClient(configurableHandler))
+            {
+                await client.GetAsync("http://will.be.ignored");
+            }
+
+            Assert.Single(fakeHandler.LatestRequestHeaders, h => h.Key == "x-goog-user-project");
+        }
+
+        /// <summary>
+        /// Handler for intercepting all authenticated requests.
+        /// </summary>
+        private class FakeHandler : HttpMessageHandler
+        {
+            public HttpRequestHeaders LatestRequestHeaders { get; private set; }
+
+            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                LatestRequestHeaders = request.Headers;
+                return Task.FromResult(new HttpResponseMessage());
+            }
+        }
     }
 }
