@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200608 (1985)
+ *      <tr><th>API Rev<td>20200617 (1994)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -202,6 +202,10 @@ namespace Google.Apis.CloudResourceManager.v1
             Value2,
         }
 
+        /// <summary>OAuth access token.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string AccessToken { get; set; }
+
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
@@ -234,6 +238,10 @@ namespace Google.Apis.CloudResourceManager.v1
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
+        /// <summary>OAuth 2.0 token for the current user.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string OauthToken { get; set; }
+
         /// <summary>Returns response with indentations and line breaks.</summary>
         /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
@@ -261,6 +269,15 @@ namespace Google.Apis.CloudResourceManager.v1
                 "$.xgafv", new Google.Apis.Discovery.Parameter
                 {
                     Name = "$.xgafv",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "access_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "access_token",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -297,6 +314,15 @@ namespace Google.Apis.CloudResourceManager.v1
                 "key", new Google.Apis.Discovery.Parameter
                 {
                     Name = "key",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "oauth_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "oauth_token",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -2442,7 +2468,7 @@ namespace Google.Apis.CloudResourceManager.v1
         ///
         /// Authorization requires the Google IAM permission `resourcemanager.projects.getIamPolicy` on the project.
         ///
-        /// For additional information about resource structure and identification, see [Resource
+        /// For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource
         /// Names](/apis/design/resource_names).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
@@ -2457,7 +2483,7 @@ namespace Google.Apis.CloudResourceManager.v1
         ///
         /// Authorization requires the Google IAM permission `resourcemanager.projects.getIamPolicy` on the project.
         ///
-        /// For additional information about resource structure and identification, see [Resource
+        /// For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource
         /// Names](/apis/design/resource_names).</summary>
         public class GetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Policy>
         {
@@ -2634,12 +2660,13 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>An expression for filtering the results of the request.  Filter rules are case insensitive. The
-            /// fields eligible for filtering are:
+            /// <summary>An expression for filtering the results of the request.  Filter rules are case insensitive.
+            /// Some eligible fields for filtering are:
             ///
-            /// + `name` + `id` + `labels.` (where *key* is the name of a label) + `parent.type` + `parent.id`
+            /// + `name` + `id` + `labels.` (where *key* is the name of a label) + `parent.type` + `parent.id` +
+            /// `lifecycleState`
             ///
-            /// Some examples of using labels as filters:
+            /// Some examples of filter strings:
             ///
             /// | Filter           | Description                                         |
             /// |------------------|-----------------------------------------------------| | name:how*        | The
@@ -2647,8 +2674,11 @@ namespace Google.Apis.CloudResourceManager.v1
             /// `howl`.             | | name:HOWL        | Equivalent to above.                                | |
             /// NAME:howl        | Equivalent to above.                                | | labels.color:*   | The
             /// project has the label `color`.                  | | labels.color:red | The project's label `color` has
-            /// the value `red`.    | | labels.color:redlabels.size:big |The project's label `color` has the value `red`
-            /// and its label `size` has the value `big`.              |
+            /// the value `red`.    | | labels.color:redlabels.size:big | The project's label `color`    | :
+            /// : has the value `red` and its    : :                                       : label`size` has the value
+            /// : :                                       : `big`.                         : |
+            /// lifecycleState:DELETE_REQUESTED       | Only show projects that are    | :
+            /// : pending deletion.              :
             ///
             /// If no filter is specified, the call will return projects for which the user has the
             /// `resourcemanager.projects.get` permission.
@@ -2875,6 +2905,9 @@ namespace Google.Apis.CloudResourceManager.v1
         /// inoperable. It is important to understand how the service account is being used before removing or updating
         /// its roles.
         ///
+        /// For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource
+        /// Names](/apis/design/resource_names).
+        ///
         /// The following constraints apply when using `setIamPolicy()`:
         ///
         /// + Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`.
@@ -2920,6 +2953,9 @@ namespace Google.Apis.CloudResourceManager.v1
         /// NOTE: Removing service accounts from policies or changing their roles can render services completely
         /// inoperable. It is important to understand how the service account is being used before removing or updating
         /// its roles.
+        ///
+        /// For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource
+        /// Names](/apis/design/resource_names).
         ///
         /// The following constraints apply when using `setIamPolicy()`:
         ///
@@ -3087,6 +3123,9 @@ namespace Google.Apis.CloudResourceManager.v1
 
         /// <summary>Returns permissions that a caller has on the specified Project.
         ///
+        /// For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource
+        /// Names](/apis/design/resource_names).
+        ///
         /// There are no permissions required for making this API call.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
@@ -3097,6 +3136,9 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Returns permissions that a caller has on the specified Project.
+        ///
+        /// For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource
+        /// Names](/apis/design/resource_names).
         ///
         /// There are no permissions required for making this API call.</summary>
         public class TestIamPermissionsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.TestIamPermissionsResponse>
@@ -3510,9 +3552,10 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     /// <summary>A `Constraint` describes a way in which a resource's configuration can be restricted. For example, it
     /// controls which cloud services can be activated across an organization, or whether a Compute Engine instance can
     /// have serial port connections established. `Constraints` can be configured by the organization's policy
-    /// adminstrator to fit the needs of the organzation by setting Policies for `Constraints` at different locations in
-    /// the organization's resource hierarchy. Policies are inherited down the resource hierarchy from higher levels,
-    /// but can also be overridden. For details about the inheritance rules please read about Policies.
+    /// administrator to fit the needs of the organzation by setting Policies for `Constraints` at different locations
+    /// in the organization's resource hierarchy. Policies are inherited down the resource hierarchy from higher levels,
+    /// but can also be overridden. For details about the inheritance rules please read about [Policies](/resource-
+    /// manager/reference/rest/v1/Policy).
     ///
     /// `Constraints` have a default behavior determined by the `constraint_default` field, which is the enforcement
     /// behavior that is used in the absence of a `Policy` being defined or inherited for the resource in
@@ -3523,7 +3566,7 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("booleanConstraint")]
         public virtual BooleanConstraint BooleanConstraint { get; set; } 
 
-        /// <summary>The evaluation behavior of this constraint in the absense of 'Policy'.</summary>
+        /// <summary>The evaluation behavior of this constraint in the absence of 'Policy'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("constraintDefault")]
         public virtual string ConstraintDefault { get; set; } 
 
@@ -3661,7 +3704,7 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response from the GetAncestry method.</summary>
+    /// <summary>Response from the projects.getAncestry method.</summary>
     public class GetAncestryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Ancestors are ordered from bottom to top of the resource hierarchy. The first ancestor is the
@@ -3773,8 +3816,8 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The request sent to the [ListAvailableOrgPolicyConstraints]
-    /// google.cloud.OrgPolicy.v1.ListAvailableOrgPolicyConstraints] method.</summary>
+    /// <summary>The request sent to the `ListAvailableOrgPolicyConstraints` method on the project, folder, or
+    /// organization.</summary>
     public class ListAvailableOrgPolicyConstraintsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Size of the pages to be returned. This is currently unsupported and will be ignored. The server may
@@ -3791,9 +3834,9 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response returned from the ListAvailableOrgPolicyConstraints method. Returns all `Constraints` that
-    /// could be set at this level of the hierarchy (contrast with the response from `ListPolicies`, which returns all
-    /// policies which are set).</summary>
+    /// <summary>The response returned from the `ListAvailableOrgPolicyConstraints` method. Returns all `Constraints`
+    /// that could be set at this level of the hierarchy (contrast with the response from `ListPolicies`, which returns
+    /// all policies which are set).</summary>
     public class ListAvailableOrgPolicyConstraintsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The collection of constraints that are settable on the request resource.</summary>
@@ -3860,8 +3903,8 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response returned from the ListOrgPolicies method. It will be empty if no `Policies` are set on the
-    /// resource.</summary>
+    /// <summary>The response returned from the `ListOrgPolicies` method. It will be empty if no `Policies` are set on
+    /// the resource.</summary>
     public class ListOrgPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Page token used to retrieve the next page. This is currently not used, but the server may at any
@@ -3908,7 +3951,7 @@ namespace Google.Apis.CloudResourceManager.v1.Data
 
         /// <summary>Determines the inheritance behavior for this `Policy`.
         ///
-        /// By default, a `ListPolicy` set at a resource supercedes any `Policy` set anywhere up the resource hierarchy.
+        /// By default, a `ListPolicy` set at a resource supersedes any `Policy` set anywhere up the resource hierarchy.
         /// However, if `inherit_from_parent` is set to `true`, then the values from the effective `Policy` of the
         /// parent resource are inherited, meaning the values set in this `Policy` are added to the values inherited up
         /// the hierarchy.
@@ -4050,6 +4093,9 @@ namespace Google.Apis.CloudResourceManager.v1.Data
 
         /// <summary>The name of the `Constraint` the `Policy` is configuring, for example,
         /// `constraints/serviceuser.services`.
+        ///
+        /// A [list of available constraints](/resource-manager/docs/organization-policy/org-policy-constraints) is
+        /// available.
         ///
         /// Immutable after creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("constraint")]

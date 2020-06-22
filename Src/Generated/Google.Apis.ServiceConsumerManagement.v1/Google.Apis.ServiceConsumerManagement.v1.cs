@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>Service Consumer Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200615 (1992)
+ *      <tr><th>API Rev<td>20200617 (1994)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>
  *              https://cloud.google.com/service-consumer-management/docs/overview</a>
@@ -4123,6 +4123,11 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     /// <summary>A quota override</summary>
     public class V1Beta1QuotaOverride : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The resource name of the ancestor that requested the override. For example: "organizations/12345"
+        /// or "folders/67890". Used by admin overrides only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminOverrideAncestor")]
+        public virtual string AdminOverrideAncestor { get; set; } 
+
         /// <summary> If this map is nonempty, then this override applies only to specific values for dimensions defined
         /// in the limit unit.
         ///

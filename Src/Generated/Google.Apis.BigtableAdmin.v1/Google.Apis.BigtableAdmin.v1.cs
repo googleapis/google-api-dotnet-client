@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigtable/'>Cloud Bigtable Admin API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200415 (1931)
+ *      <tr><th>API Rev<td>20200512 (1958)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigtable/'>
  *              https://cloud.google.com/bigtable/</a>
@@ -311,18 +311,18 @@ namespace Google.Apis.BigtableAdmin.v1.Data
     /// Instance.</summary>
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(`CreationOnly`) The type of storage used by this cluster to serve its parent instance's tables,
-        /// unless explicitly overridden.</summary>
+        /// <summary>Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless
+        /// explicitly overridden.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultStorageType")]
         public virtual string DefaultStorageType { get; set; } 
 
-        /// <summary>(`CreationOnly`) The location where this cluster's nodes and storage reside. For best performance,
+        /// <summary>Immutable. The location where this cluster's nodes and storage reside. For best performance,
         /// clients should be located as close as possible to this cluster. Currently only zones are supported, so
         /// values should be of the form `projects/{project}/locations/{zone}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
-        /// <summary>Required. (`OutputOnly`) The unique name of the cluster. Values are of the form
+        /// <summary>The unique name of the cluster. Values are of the form
         /// `projects/{project}/instances/{instance}/clusters/a-z*`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -332,7 +332,7 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serveNodes")]
         public virtual System.Nullable<int> ServeNodes { get; set; } 
 
-        /// <summary>(`OutputOnly`) The current state of the cluster.</summary>
+        /// <summary>Output only. The current state of the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
@@ -455,12 +455,12 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Required. (`OutputOnly`) The unique name of the instance. Values are of the form
+        /// <summary>The unique name of the instance. Values are of the form
         /// `projects/{project}/instances/a-z+[a-z0-9]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>(`OutputOnly`) The current state of the instance.</summary>
+        /// <summary>Output only. The current state of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 

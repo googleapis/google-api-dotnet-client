@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigtable/'>Cloud Bigtable Admin API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200415 (1931)
+ *      <tr><th>API Rev<td>20200512 (1958)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigtable/'>
  *              https://cloud.google.com/bigtable/</a>
@@ -1160,8 +1160,8 @@ namespace Google.Apis.BigtableAdmin.v2
 
                 /// <summary>Updates an app profile within an instance.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">(`OutputOnly`) The unique name of the app profile. Values are of the form
-                /// `projects//instances//appProfiles/_a-zA-Z0-9*`.</param>
+                /// <param name="name">The unique name of the app profile. Values are of the form
+                /// `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.</param>
                 public virtual PatchRequest Patch(Google.Apis.BigtableAdmin.v2.Data.AppProfile body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -1180,8 +1180,8 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
 
 
-                    /// <summary>(`OutputOnly`) The unique name of the app profile. Values are of the form
-                    /// `projects//instances//appProfiles/_a-zA-Z0-9*`.</summary>
+                    /// <summary>The unique name of the app profile. Values are of the form
+                    /// `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1806,7 +1806,7 @@ namespace Google.Apis.BigtableAdmin.v2
 
                 /// <summary>Updates a cluster within an instance.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. (`OutputOnly`) The unique name of the cluster. Values are of the form
+                /// <param name="name">The unique name of the cluster. Values are of the form
                 /// `projects/{project}/instances/{instance}/clusters/a-z*`.</param>
                 public virtual UpdateRequest Update(Google.Apis.BigtableAdmin.v2.Data.Cluster body, string name)
                 {
@@ -1826,7 +1826,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
 
 
-                    /// <summary>Required. (`OutputOnly`) The unique name of the cluster. Values are of the form
+                    /// <summary>The unique name of the cluster. Values are of the form
                     /// `projects/{project}/instances/{instance}/clusters/a-z*`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3098,7 +3098,7 @@ namespace Google.Apis.BigtableAdmin.v2
             /// <summary>Partially updates an instance within a project. This method can modify all fields of an
             /// Instance and is the preferred way to update an Instance.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. (`OutputOnly`) The unique name of the instance. Values are of the form
+            /// <param name="name">The unique name of the instance. Values are of the form
             /// `projects/{project}/instances/a-z+[a-z0-9]`.</param>
             public virtual PartialUpdateInstanceRequest PartialUpdateInstance(Google.Apis.BigtableAdmin.v2.Data.Instance body, string name)
             {
@@ -3119,7 +3119,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 }
 
 
-                /// <summary>Required. (`OutputOnly`) The unique name of the instance. Values are of the form
+                /// <summary>The unique name of the instance. Values are of the form
                 /// `projects/{project}/instances/a-z+[a-z0-9]`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3324,7 +3324,7 @@ namespace Google.Apis.BigtableAdmin.v2
             /// <summary>Updates an instance within a project. This method updates only the display name and type for an
             /// Instance. To update other Instance properties, such as labels, use PartialUpdateInstance.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. (`OutputOnly`) The unique name of the instance. Values are of the form
+            /// <param name="name">The unique name of the instance. Values are of the form
             /// `projects/{project}/instances/a-z+[a-z0-9]`.</param>
             public virtual UpdateRequest Update(Google.Apis.BigtableAdmin.v2.Data.Instance body, string name)
             {
@@ -3345,7 +3345,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 }
 
 
-                /// <summary>Required. (`OutputOnly`) The unique name of the instance. Values are of the form
+                /// <summary>The unique name of the instance. Values are of the form
                 /// `projects/{project}/instances/a-z+[a-z0-9]`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3586,7 +3586,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// application.</summary>
     public class AppProfile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional long form description of the use case for this AppProfile.</summary>
+        /// <summary>Long form description of the use case for this AppProfile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -3602,8 +3602,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("multiClusterRoutingUseAny")]
         public virtual MultiClusterRoutingUseAny MultiClusterRoutingUseAny { get; set; } 
 
-        /// <summary>(`OutputOnly`) The unique name of the app profile. Values are of the form
-        /// `projects//instances//appProfiles/_a-zA-Z0-9*`.</summary>
+        /// <summary>The unique name of the app profile. Values are of the form
+        /// `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -3670,9 +3670,15 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. NOTE: An unsatisfied condition will not allow
-        /// user access via current binding. Different bindings, including their conditions, are examined
-        /// independently.</summary>
+        /// <summary>The condition that is associated with this binding.
+        ///
+        /// If the condition evaluates to `true`, then this binding applies to the current request.
+        ///
+        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
+        /// different role binding might grant the same role to one or more of the members in this binding.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
@@ -3750,18 +3756,18 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// Instance.</summary>
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(`CreationOnly`) The type of storage used by this cluster to serve its parent instance's tables,
-        /// unless explicitly overridden.</summary>
+        /// <summary>Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless
+        /// explicitly overridden.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultStorageType")]
         public virtual string DefaultStorageType { get; set; } 
 
-        /// <summary>(`CreationOnly`) The location where this cluster's nodes and storage reside. For best performance,
+        /// <summary>Immutable. The location where this cluster's nodes and storage reside. For best performance,
         /// clients should be located as close as possible to this cluster. Currently only zones are supported, so
         /// values should be of the form `projects/{project}/locations/{zone}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
-        /// <summary>Required. (`OutputOnly`) The unique name of the cluster. Values are of the form
+        /// <summary>The unique name of the cluster. Values are of the form
         /// `projects/{project}/instances/{instance}/clusters/a-z*`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -3771,7 +3777,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serveNodes")]
         public virtual System.Nullable<int> ServeNodes { get; set; } 
 
-        /// <summary>(`OutputOnly`) The current state of the cluster.</summary>
+        /// <summary>Output only. The current state of the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
@@ -4067,7 +4073,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
         ///
         /// Requests for policies with any conditional bindings must specify version 3. Policies without any conditional
-        /// bindings may specify any valid value or leave the field unset.</summary>
+        /// bindings may specify any valid value or leave the field unset.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
 
@@ -4095,12 +4104,12 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Required. (`OutputOnly`) The unique name of the instance. Values are of the form
+        /// <summary>The unique name of the instance. Values are of the form
         /// `projects/{project}/instances/a-z+[a-z0-9]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>(`OutputOnly`) The current state of the instance.</summary>
+        /// <summary>Output only. The current state of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
@@ -4370,15 +4379,17 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
     /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
     ///
-    /// Optionally, a `binding` can specify a `condition`, which is a logical expression that allows access to a
-    /// resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the
-    /// request, the resource, or both.
+    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
+    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
+    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
+    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
+    /// /resource-policies).
     ///
     /// **JSON example:**
     ///
     /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
     /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
     ///
@@ -4431,7 +4442,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// `1` policy, and all of the conditions in the version `3` policy are lost.
         ///
         /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.</summary>
+        /// leave the field unset.
+        ///
+        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -4521,19 +4535,20 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterStates")]
         public virtual System.Collections.Generic.IDictionary<string,ClusterState> ClusterStates { get; set; } 
 
-        /// <summary>(`CreationOnly`) The column families configured for this table, mapped by column family ID. Views:
-        /// `SCHEMA_VIEW`, `FULL`</summary>
+        /// <summary>The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`,
+        /// `FULL`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnFamilies")]
         public virtual System.Collections.Generic.IDictionary<string,ColumnFamily> ColumnFamilies { get; set; } 
 
-        /// <summary>(`CreationOnly`) The granularity (i.e. `MILLIS`) at which timestamps are stored in this table.
-        /// Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be
-        /// set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.</summary>
+        /// <summary>Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps
+        /// not matching the granularity will be rejected. If unspecified at creation time, the value will be set to
+        /// `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("granularity")]
         public virtual string Granularity { get; set; } 
 
-        /// <summary>Output only. The unique name of the table. Values are of the form `projects//instances//tables/_a-
-        /// zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`</summary>
+        /// <summary>The unique name of the table. Values are of the form
+        /// `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`,
+        /// `REPLICATION_VIEW`, `FULL`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

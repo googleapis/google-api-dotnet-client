@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://code.google.com/apis/books/docs/v1/getting_started.html'>Books API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200615 (1992)
+ *      <tr><th>API Rev<td>20200617 (1994)
  *      <tr><th>API Docs
  *          <td><a href='https://code.google.com/apis/books/docs/v1/getting_started.html'>
  *              https://code.google.com/apis/books/docs/v1/getting_started.html</a>
@@ -268,6 +268,10 @@ namespace Google.Apis.Books.v1
             Value2,
         }
 
+        /// <summary>OAuth access token.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string AccessToken { get; set; }
+
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
@@ -300,6 +304,10 @@ namespace Google.Apis.Books.v1
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
+        /// <summary>OAuth 2.0 token for the current user.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string OauthToken { get; set; }
+
         /// <summary>Returns response with indentations and line breaks.</summary>
         /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
@@ -327,6 +335,15 @@ namespace Google.Apis.Books.v1
                 "$.xgafv", new Google.Apis.Discovery.Parameter
                 {
                     Name = "$.xgafv",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "access_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "access_token",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -363,6 +380,15 @@ namespace Google.Apis.Books.v1
                 "key", new Google.Apis.Discovery.Parameter
                 {
                     Name = "key",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "oauth_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "oauth_token",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2.1
- *      <tr><th>API Rev<td>20200529 (1975)
+ *      <tr><th>API Rev<td>20200615 (1992)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -1163,7 +1163,8 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         }
 
-        /// <summary>Updates a Merchant Center account.</summary>
+        /// <summary>Updates a Merchant Center account. Any fields that are not provided are deleted from the
+        /// resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
         /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
@@ -1174,7 +1175,8 @@ namespace Google.Apis.ShoppingContent.v2_1
             return new UpdateRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates a Merchant Center account.</summary>
+        /// <summary>Updates a Merchant Center account. Any fields that are not provided are deleted from the
+        /// resource.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Account>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -1751,7 +1753,8 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         }
 
-        /// <summary>Updates the tax settings of the account.</summary>
+        /// <summary>Updates the tax settings of the account. Any fields that are not provided are deleted from the
+        /// resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
         /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
@@ -1763,7 +1766,8 @@ namespace Google.Apis.ShoppingContent.v2_1
             return new UpdateRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates the tax settings of the account.</summary>
+        /// <summary>Updates the tax settings of the account. Any fields that are not provided are deleted from the
+        /// resource.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountTax>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -2298,7 +2302,8 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         }
 
-        /// <summary>Updates a datafeed configuration of your Merchant Center account.</summary>
+        /// <summary>Updates a datafeed configuration of your Merchant Center account. Any fields that are not provided
+        /// are deleted from the resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the account that manages the datafeed. This account cannot be a multi-client
         /// account.</param>
@@ -2308,7 +2313,8 @@ namespace Google.Apis.ShoppingContent.v2_1
             return new UpdateRequest(service, body, merchantId, datafeedId);
         }
 
-        /// <summary>Updates a datafeed configuration of your Merchant Center account.</summary>
+        /// <summary>Updates a datafeed configuration of your Merchant Center account. Any fields that are not provided
+        /// are deleted from the resource.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Datafeed>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -3467,7 +3473,8 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         }
 
-        /// <summary>Updates the LIA settings of the account.</summary>
+        /// <summary>Updates the LIA settings of the account. Any fields that are not provided are deleted from the
+        /// resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
         /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
@@ -3479,7 +3486,8 @@ namespace Google.Apis.ShoppingContent.v2_1
             return new UpdateRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates the LIA settings of the account.</summary>
+        /// <summary>Updates the LIA settings of the account. Any fields that are not provided are deleted from the
+        /// resource.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LiaSettings>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -9658,7 +9666,8 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         }
 
-        /// <summary>Updates the shipping settings of the account.</summary>
+        /// <summary>Updates the shipping settings of the account. Any fields that are not provided are deleted from the
+        /// resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
         /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
@@ -9670,7 +9679,8 @@ namespace Google.Apis.ShoppingContent.v2_1
             return new UpdateRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates the shipping settings of the account.</summary>
+        /// <summary>Updates the shipping settings of the account. Any fields that are not provided are deleted from the
+        /// resource.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ShippingSettings>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -13646,9 +13656,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class OrdersCustomBatchRequestEntryRefundItemItem : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The amount that is refunded. In case of multiple refunds, - If the quantity of refunded items
-        /// changed, this should contain the total refund per item. - If the quantity of the refunded items remained the
-        /// same, this should be the newly refunded amount.</summary>
+        /// <summary>The total amount that is refunded. (e.g. refunding $5 each for 2 products should be done by setting
+        /// quantity to 2 and amount to 10$) In case of multiple refunds, this should be the amount you currently want
+        /// to refund to the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual MonetaryAmount Amount { get; set; } 
 
@@ -14812,6 +14822,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual string Brand { get; set; } 
 
+        /// <summary>Link to the canonical version of the landing page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalLink")]
+        public virtual string CanonicalLink { get; set; } 
+
         /// <summary>Required. The item's channel (online or local).
         ///
         /// Acceptable values are: - "`local`" - "`online`"</summary>
@@ -14933,7 +14947,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includedDestinations")]
         public virtual System.Collections.Generic.IList<string> IncludedDestinations { get; set; } 
 
-        /// <summary>Number and amount of installments to pay for an item. Brazil only.</summary>
+        /// <summary>Number and amount of installments to pay for an item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installment")]
         public virtual Installment Installment { get; set; } 
 
@@ -15005,6 +15019,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
         public virtual Price Price { get; set; } 
 
+        /// <summary>Technical specification or additional product details</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productDetails")]
+        public virtual System.Collections.Generic.IList<ProductProductDetail> ProductDetails { get; set; } 
+
+        /// <summary>List of important bullet points describing the product</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productHighlights")]
+        public virtual System.Collections.Generic.IList<string> ProductHighlights { get; set; } 
+
         /// <summary>Categories of the item (formatted as in products data specification).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productTypes")]
         public virtual System.Collections.Generic.IList<string> ProductTypes { get; set; } 
@@ -15069,6 +15091,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; } 
 
+        /// <summary>Number of periods (months or years) and amount of payment per period for an item with an associated
+        /// subscription contract.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionCost")]
+        public virtual ProductSubscriptionCost SubscriptionCost { get; set; } 
+
         /// <summary>Required. The CLDR territory code for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
         public virtual string TargetCountry { get; set; } 
@@ -15116,6 +15143,24 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Tax value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxAmount")]
         public virtual Price TaxAmount { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ProductProductDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the product detail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeName")]
+        public virtual string AttributeName { get; set; } 
+
+        /// <summary>The value of the product detail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeValue")]
+        public virtual string AttributeValue { get; set; } 
+
+        /// <summary>The section header used to group a set of product details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sectionName")]
+        public virtual string SectionName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15236,7 +15281,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; } 
 
-        /// <summary>Destination approval status in targetCountry of the offer.</summary>
+        /// <summary>Destination approval status in `targetCountry` of the offer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -15277,6 +15322,24 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>How this issue affects serving of the offer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servability")]
         public virtual string Servability { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ProductSubscriptionCost : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The amount the buyer has to pay per subscription period.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        public virtual Price Amount { get; set; } 
+
+        /// <summary>The type of subscription period.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("period")]
+        public virtual string Period { get; set; } 
+
+        /// <summary>The number of subscription periods the buyer has to pay.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("periodLength")]
+        public virtual System.Nullable<long> PeriodLength { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

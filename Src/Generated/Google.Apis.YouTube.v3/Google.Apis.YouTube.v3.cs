@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/'>YouTube Data API v3</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200617 (1994)
+ *      <tr><th>API Rev<td>20200618 (1995)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/'>
  *              https://developers.google.com/youtube/</a>
@@ -92,6 +92,7 @@ namespace Google.Apis.YouTube.v3
             videoCategories = new VideoCategoriesResource(this);
             videos = new VideosResource(this);
             watermarks = new WatermarksResource(this);
+            youtube = new YoutubeResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -416,6 +417,14 @@ namespace Google.Apis.YouTube.v3
         public virtual WatermarksResource Watermarks
         {
             get { return watermarks; }
+        }
+
+        private readonly YoutubeResource youtube;
+
+        /// <summary>Gets the Youtube resource.</summary>
+        public virtual YoutubeResource Youtube
+        {
+            get { return youtube; }
         }
     }
 
@@ -10573,6 +10582,139 @@ namespace Google.Apis.YouTube.v3
 
         }
     }
+
+    /// <summary>The "youtube" collection of methods.</summary>
+    public class YoutubeResource
+    {
+        private const string Resource = "youtube";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public YoutubeResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            v3 = new V3Resource(service);
+
+        }
+
+        private readonly V3Resource v3;
+
+        /// <summary>Gets the V3 resource.</summary>
+        public virtual V3Resource V3
+        {
+            get { return v3; }
+        }
+
+        /// <summary>The "v3" collection of methods.</summary>
+        public class V3Resource
+        {
+            private const string Resource = "v3";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public V3Resource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                tests = new TestsResource(service);
+
+            }
+
+            private readonly TestsResource tests;
+
+            /// <summary>Gets the Tests resource.</summary>
+            public virtual TestsResource Tests
+            {
+                get { return tests; }
+            }
+
+            /// <summary>The "tests" collection of methods.</summary>
+            public class TestsResource
+            {
+                private const string Resource = "tests";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public TestsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>POST method.</summary>
+                /// <param name="body">The body of the request.</param>
+                public virtual CreateRequest Create(Google.Apis.YouTube.v3.Data.TestItem body)
+                {
+                    return new CreateRequest(service, body);
+                }
+
+                /// <summary>POST method.</summary>
+                public class CreateRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.TestItem>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.TestItem body)
+                        : base(service)
+                    {
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+
+                    [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> Part { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.YouTube.v3.Data.TestItem Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "youtube/v3/tests"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "part", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "part",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+        }
+    }
 }
 
 namespace Google.Apis.YouTube.v3.Data
@@ -14862,6 +15004,24 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stickerId")]
         public virtual string StickerId { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TestItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
+        public virtual TestItemTestItemSnippet Snippet { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TestItemTestItemSnippet : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

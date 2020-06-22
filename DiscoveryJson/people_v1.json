@@ -930,7 +930,7 @@
    }
   }
  }, 
- "revision": "20200616", 
+ "revision": "20200617", 
  "rootUrl": "https://people.googleapis.com/", 
  "schemas": {
   "Address": {

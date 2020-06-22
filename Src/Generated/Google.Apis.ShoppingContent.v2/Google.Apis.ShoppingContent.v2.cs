@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200529 (1975)
+ *      <tr><th>API Rev<td>20200615 (1992)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -1046,7 +1046,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates a Merchant Center account.</summary>
+        /// <summary>Updates a Merchant Center account. Any fields that are not provided are deleted from the
+        /// resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
         /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
@@ -1057,7 +1058,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new UpdateRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates a Merchant Center account.</summary>
+        /// <summary>Updates a Merchant Center account. Any fields that are not provided are deleted from the
+        /// resource.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Account>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -1662,7 +1664,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates the tax settings of the account.</summary>
+        /// <summary>Updates the tax settings of the account. Any fields that are not provided are deleted from the
+        /// resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
         /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
@@ -1674,7 +1677,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new UpdateRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates the tax settings of the account.</summary>
+        /// <summary>Updates the tax settings of the account. Any fields that are not provided are deleted from the
+        /// resource.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountTax>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -2279,7 +2283,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates a datafeed configuration of your Merchant Center account.</summary>
+        /// <summary>Updates a datafeed configuration of your Merchant Center account. Any fields that are not provided
+        /// are deleted from the resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the account that manages the datafeed. This account cannot be a multi-client
         /// account.</param>
@@ -2289,7 +2294,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new UpdateRequest(service, body, merchantId, datafeedId);
         }
 
-        /// <summary>Updates a datafeed configuration of your Merchant Center account.</summary>
+        /// <summary>Updates a datafeed configuration of your Merchant Center account. Any fields that are not provided
+        /// are deleted from the resource.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Datafeed>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -3679,7 +3685,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates the LIA settings of the account.</summary>
+        /// <summary>Updates the LIA settings of the account. Any fields that are not provided are deleted from the
+        /// resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
         /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
@@ -3691,7 +3698,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new UpdateRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates the LIA settings of the account.</summary>
+        /// <summary>Updates the LIA settings of the account. Any fields that are not provided are deleted from the
+        /// resource.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiaSettings>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -8263,7 +8271,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates the shipping settings of the account.</summary>
+        /// <summary>Updates the shipping settings of the account. Any fields that are not provided are deleted from the
+        /// resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
         /// account must be a multi-client account and `accountId` must be the ID of a sub-account of this
@@ -8275,7 +8284,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new UpdateRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates the shipping settings of the account.</summary>
+        /// <summary>Updates the shipping settings of the account. Any fields that are not provided are deleted from the
+        /// resource.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ShippingSettings>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -13876,6 +13886,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual string Brand { get; set; } 
 
+        /// <summary>Link to the canonical version of the landing page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalLink")]
+        public virtual string CanonicalLink { get; set; } 
+
         /// <summary>Required. The item's channel (online or local).
         ///
         /// Acceptable values are: - "`local`" - "`online`"</summary>
@@ -14002,7 +14016,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageLink")]
         public virtual string ImageLink { get; set; } 
 
-        /// <summary>Number and amount of installments to pay for an item. Brazil only.</summary>
+        /// <summary>Number and amount of installments to pay for an item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installment")]
         public virtual Installment Installment { get; set; } 
 

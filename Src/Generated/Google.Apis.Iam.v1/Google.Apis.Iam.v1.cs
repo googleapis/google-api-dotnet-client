@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/'>Identity and Access Management (IAM) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200605 (1982)
+ *      <tr><th>API Rev<td>20200611 (1988)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/'>
  *              https://cloud.google.com/iam/</a>
@@ -923,7 +923,9 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional limit on the number of roles to include in the response.</summary>
+                /// <summary>Optional limit on the number of roles to include in the response.
+                ///
+                /// The default is 300, and the maximum is 1,000.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1738,7 +1740,9 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional limit on the number of roles to include in the response.</summary>
+                /// <summary>Optional limit on the number of roles to include in the response.
+                ///
+                /// The default is 300, and the maximum is 1,000.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -3034,7 +3038,9 @@ namespace Google.Apis.Iam.v1
 
                 /// <summary>Optional limit on the number of service accounts to include in the response. Further
                 /// accounts can subsequently be obtained by including the ListServiceAccountsResponse.next_page_token
-                /// in a subsequent request.</summary>
+                /// in a subsequent request.
+                ///
+                /// The default is 20, and the maximum is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -3846,7 +3852,9 @@ namespace Google.Apis.Iam.v1
             }
 
 
-            /// <summary>Optional limit on the number of roles to include in the response.</summary>
+            /// <summary>Optional limit on the number of roles to include in the response.
+            ///
+            /// The default is 300, and the maximum is 1,000.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -4216,7 +4224,10 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual Role Role { get; set; } 
 
-        /// <summary>The role ID to use for this role.</summary>
+        /// <summary>The role ID to use for this role.
+        ///
+        /// A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a
+        /// minimum of 3 characters and a maximum of 64 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roleId")]
         public virtual string RoleId { get; set; } 
 
@@ -4647,7 +4658,9 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
         public virtual string FullResourceName { get; set; } 
 
-        /// <summary>Optional limit on the number of roles to include in the response.</summary>
+        /// <summary>Optional limit on the number of roles to include in the response.
+        ///
+        /// The default is 300, and the maximum is 1,000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; } 
 
@@ -4688,7 +4701,9 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
         public virtual string FullResourceName { get; set; } 
 
-        /// <summary>Optional limit on the number of permissions to include in the response.</summary>
+        /// <summary>Optional limit on the number of permissions to include in the response.
+        ///
+        /// The default is 100, and the maximum is 1,000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; } 
 

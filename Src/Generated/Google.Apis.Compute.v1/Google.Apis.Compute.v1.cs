@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200515 (1961)
+ *      <tr><th>API Rev<td>20200526 (1972)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -62318,7 +62318,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Properties of the SKU instances being reserved.</summary>
+    /// <summary>Properties of the SKU instances being reserved. Next ID: 9</summary>
     public class AllocationSpecificSKUAllocationReservedInstanceProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies accelerator type and count.</summary>
@@ -62335,6 +62335,13 @@ namespace Google.Apis.Compute.v1.Data
         /// pattern.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; } 
+
+        /// <summary>Specifies whether this VM may be a stable fleet VM. Setting this to "Periodic" designates this VM
+        /// as a Stable Fleet VM.
+        ///
+        /// See go/stable-fleet-ug for more details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceInterval")]
+        public virtual string MaintenanceInterval { get; set; } 
 
         /// <summary>Minimum cpu platform the reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
@@ -63360,7 +63367,11 @@ namespace Google.Apis.Compute.v1.Data
 
     /// <summary>Represents a Backend Service resource.
     ///
-    /// A backend service contains configuration values for Google Cloud Platform load balancing services.
+    /// A backend service defines how Google Cloud load balancers distribute traffic. The backend service configuration
+    /// contains a set of values, such as the protocol used to connect to backends, various distribution and session
+    /// settings, health checks, and timeouts. These settings provide fine-grained control over how your load balancer
+    /// behaves. Most of the settings have default values that allow for easy configuration if you need to get started
+    /// quickly.
     ///
     /// Backend services in Google Compute Engine can be either regionally or globally scoped.
     ///
@@ -77144,7 +77155,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Sets the scheduling options for an Instance. NextID: 11</summary>
+    /// <summary>Sets the scheduling options for an Instance. NextID: 12</summary>
     public class Scheduling : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies whether the instance should be automatically restarted if it is terminated by Compute
@@ -77786,9 +77797,9 @@ namespace Google.Apis.Compute.v1.Data
     ///
     /// Optionally, certificate file contents that you upload can contain a set of up to five PEM-encoded certificates.
     /// The API call creates an object (sslCertificate) that holds this data. You can use SSL keys and certificates to
-    /// secure connections to a load balancer. For more information, read  Creating and using SSL certificates and SSL
-    /// certificates quotas and limits. (== resource_for {$api_version}.sslCertificates ==) (== resource_for
-    /// {$api_version}.regionSslCertificates ==)</summary>
+    /// secure connections to a load balancer. For more information, read  Creating and using SSL certificates, SSL
+    /// certificates quotas and limits, and  Troubleshooting SSL certificates. (== resource_for
+    /// {$api_version}.sslCertificates ==) (== resource_for {$api_version}.regionSslCertificates ==)</summary>
     public class SslCertificate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A local certificate file. The certificate must be in PEM format. The certificate chain must be no

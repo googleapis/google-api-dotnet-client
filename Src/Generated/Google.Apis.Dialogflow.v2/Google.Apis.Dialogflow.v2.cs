@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200609 (1986)
+ *      <tr><th>API Rev<td>20200615 (1992)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow/'>
  *              https://cloud.google.com/dialogflow/</a>
@@ -4363,9 +4363,13 @@ namespace Google.Apis.Dialogflow.v2
             /// <summary>Imports the specified agent from a ZIP file.
             ///
             /// Uploads new intents and entity types without deleting the existing ones. Intents and entity types with
-            /// the same name are replaced with the new versions from ImportAgentRequest.
+            /// the same name are replaced with the new versions from ImportAgentRequest. After the import, the imported
+            /// draft agent will be trained automatically (unless disabled in agent settings). However, once the import
+            /// is done, training may not be completed yet. Please call TrainAgent and wait for the operation it returns
+            /// in order to train explicitly.
             ///
-            /// Operation </summary>
+            /// Operation An operation which tracks when importing is complete. It only tracks when the draft agent is
+            /// updated not when it is done training.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The project that the agent to import is associated with. Format:
             /// `projects/`.</param>
@@ -4377,9 +4381,13 @@ namespace Google.Apis.Dialogflow.v2
             /// <summary>Imports the specified agent from a ZIP file.
             ///
             /// Uploads new intents and entity types without deleting the existing ones. Intents and entity types with
-            /// the same name are replaced with the new versions from ImportAgentRequest.
+            /// the same name are replaced with the new versions from ImportAgentRequest. After the import, the imported
+            /// draft agent will be trained automatically (unless disabled in agent settings). However, once the import
+            /// is done, training may not be completed yet. Please call TrainAgent and wait for the operation it returns
+            /// in order to train explicitly.
             ///
-            /// Operation </summary>
+            /// Operation An operation which tracks when importing is complete. It only tracks when the draft agent is
+            /// updated not when it is done training.</summary>
             public class ImportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Import request.</summary>
@@ -4443,9 +4451,12 @@ namespace Google.Apis.Dialogflow.v2
             /// <summary>Restores the specified agent from a ZIP file.
             ///
             /// Replaces the current agent version with a new one. All the intents and entity types in the older version
-            /// are deleted.
+            /// are deleted. After the restore, the restored draft agent will be trained automatically (unless disabled
+            /// in agent settings). However, once the restore is done, training may not be completed yet. Please call
+            /// TrainAgent and wait for the operation it returns in order to train explicitly.
             ///
-            /// Operation </summary>
+            /// Operation An operation which tracks when restoring is complete. It only tracks when the draft agent is
+            /// updated not when it is done training.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The project that the agent to restore is associated with. Format:
             /// `projects/`.</param>
@@ -4457,9 +4468,12 @@ namespace Google.Apis.Dialogflow.v2
             /// <summary>Restores the specified agent from a ZIP file.
             ///
             /// Replaces the current agent version with a new one. All the intents and entity types in the older version
-            /// are deleted.
+            /// are deleted. After the restore, the restored draft agent will be trained automatically (unless disabled
+            /// in agent settings). However, once the restore is done, training may not be completed yet. Please call
+            /// TrainAgent and wait for the operation it returns in order to train explicitly.
             ///
-            /// Operation </summary>
+            /// Operation An operation which tracks when restoring is complete. It only tracks when the draft agent is
+            /// updated not when it is done training.</summary>
             public class RestoreRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Restore request.</summary>

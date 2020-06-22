@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/hangouts/chat'>Hangouts Chat API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200610 (1987)
+ *      <tr><th>API Rev<td>20200617 (1994)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/hangouts/chat'>
  *              https://developers.google.com/hangouts/chat</a>
@@ -1444,7 +1444,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>A room or DM in Hangouts Chat.</summary>
     public class Space : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The display name (only if the space is a room).</summary>
+        /// <summary>Output only. The display name (only if the space is a room). Please note that this field might not
+        /// be populated in direct messages between humans.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
