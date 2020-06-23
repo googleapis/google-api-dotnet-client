@@ -91,7 +91,7 @@ namespace Google.Apis.Auth.OAuth2
         {
             var accessToken = await GetAccessTokenWithHeadersForRequestAsync(request.RequestUri.AbsoluteUri, taskCancellationToken).ConfigureAwait(false);
             Flow.AccessMethod.Intercept(request, accessToken.AccessToken);
-            accessToken.AddHeaders(request.Headers);
+            accessToken.AddHeaders(request);
         }
 
         #endregion
@@ -133,7 +133,7 @@ namespace Google.Apis.Auth.OAuth2
         public async Task<AccessTokenWithHeaders> GetAccessTokenWithHeadersForRequestAsync(string authUri = null, CancellationToken cancellationToken = default)
         {
             string token = await GetAccessTokenForRequestAsync(authUri, cancellationToken).ConfigureAwait(false);
-            return new AccessTokenWithHeaders(token, QuotaProject);
+            return new AccessTokenWithHeaders.Builder { QuotaProject = QuotaProject }.Build(token);
         }
         #endregion
 

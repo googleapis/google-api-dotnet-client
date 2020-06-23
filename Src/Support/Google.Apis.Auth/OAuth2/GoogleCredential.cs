@@ -210,14 +210,14 @@ namespace Google.Apis.Auth.OAuth2
 
             /// <inheritdoc />
             public Task<AccessTokenWithHeaders> GetAccessTokenWithHeadersForRequestAsync(string authUri = null, CancellationToken cancellationToken = default) =>
-                Task.FromResult(new AccessTokenWithHeaders(_accessToken, QuotaProject));
+                Task.FromResult(new AccessTokenWithHeaders.Builder { QuotaProject = QuotaProject }.Build(_accessToken));
 
             // Only method in IHttpExecuteInterceptor
             public Task InterceptAsync(HttpRequestMessage request, CancellationToken taskCancellationToken)
             {
-                var accessToken = new AccessTokenWithHeaders(_accessToken, QuotaProject);
+                var accessToken = new AccessTokenWithHeaders.Builder { QuotaProject = QuotaProject }.Build(_accessToken);
                 _accessMethod.Intercept(request, accessToken.AccessToken);
-                accessToken.AddHeaders(request.Headers);
+                accessToken.AddHeaders(request);
 
                 return Task.FromResult(true);
             }

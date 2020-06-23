@@ -22,9 +22,20 @@ namespace Google.Apis.Auth.Tests.OAuth2
     public class AccessTokenWithHeadersTests
     {
         [Fact]
+        public void AccessTokenWithHeaders_NullToken()
+        {
+            // This class is being used in GAX in cases where there are no
+            // tokens but there are headers.
+            var token = new AccessTokenWithHeaders.Builder().Build(null);
+
+            Assert.Null(token.AccessToken);
+            Assert.Empty(token.Headers);
+        }
+
+        [Fact]
         public void AccessTokenWithHeaders_NoQuotaProject()
         {
-            var token = new AccessTokenWithHeaders("FAKE_TOKEN");
+            var token = new AccessTokenWithHeaders.Builder().Build("FAKE_TOKEN");
 
             Assert.Equal("FAKE_TOKEN", token.AccessToken);
             Assert.Empty(token.Headers);
@@ -33,7 +44,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public void AccessTokenWithHeaders_WithQuotaProject()
         {
-            var token = new AccessTokenWithHeaders("FAKE_TOKEN", "FAKE_QUOTA_PROJECT");
+            var token = new AccessTokenWithHeaders.Builder { QuotaProject = "FAKE_QUOTA_PROJECT" }.Build("FAKE_TOKEN");
 
             Assert.Equal("FAKE_TOKEN", token.AccessToken);
             Assert.Single(token.Headers);
