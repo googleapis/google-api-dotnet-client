@@ -14,8 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Util;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Net.Http;
 using System.Net.Http.Headers;
 
 namespace Google.Apis.Auth.OAuth2
@@ -42,7 +44,7 @@ namespace Google.Apis.Auth.OAuth2
             Headers = headers ?? s_emptyHeaders;
         }
 
-        internal AccessTokenWithHeaders(string token, string quotaProject = null)
+        private AccessTokenWithHeaders(string token, string quotaProject = null)
             : this (token,
                   quotaProject == null ?
                   null :
@@ -66,12 +68,45 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         public IReadOnlyDictionary<string, IReadOnlyList<string>> Headers { get; }
 
-        internal void AddHeaders(HttpRequestHeaders requestHeaders)
+        /// <summary>
+        ///  Adds the headers in this object to the given header collection.
+        /// </summary>
+        /// <param name="requestHeaders">The header collection to add the headers to.</param>
+        public void AddHeaders(HttpRequestHeaders requestHeaders)
         {
+            requestHeaders.ThrowIfNull(nameof(requestHeaders));
+
             foreach (var header in Headers)
             {
                 requestHeaders.Add(header.Key, header.Value);
             }
+        }
+
+        /// <summary>
+        ///  Adds the headers in this object to the given request.
+        /// </summary>
+        /// <param name="request">The request to add the headers to.</param>
+        public void AddHeaders(HttpRequestMessage request) => 
+            AddHeaders(request.ThrowIfNull(nameof(request)).Headers);
+
+        /// <summary>
+        /// Builder class for <see cref="AccessTokenWithHeaders"/> to simplify common scenarios.
+        /// </summary>
+        public class Builder
+        {
+            /// <summary>
+            /// The GCP project ID used for quota and billing purposes. May be null.
+            /// </summary>
+            public string QuotaProject { get; set; }
+
+            /// <summary>
+            /// Builds and instance of <see cref="AccessTokenWithHeaders"/> with the given
+            /// token and the value set on this builder.
+            /// </summary>
+            /// <param name="token">The token to build the <see cref="AccessTokenWithHeaders"/> for.</param>
+            /// <returns>An <see cref="AccessTokenWithHeaders"/>.</returns>
+            public AccessTokenWithHeaders Build(string token) =>
+                new AccessTokenWithHeaders(token, QuotaProject);
         }
     }
 }
