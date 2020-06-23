@@ -175,11 +175,7 @@ namespace Google.Apis.Auth.OAuth2
         {
             var accessToken = await GetAccessTokenWithHeadersForRequestAsync(request.RequestUri.AbsoluteUri, cancellationToken).ConfigureAwait(false);
             AccessMethod.Intercept(request, accessToken.AccessToken);
-
-            foreach (var header in accessToken.Headers)
-            {
-                request.Headers.Add(header.Key, header.Value);
-            }
+            accessToken.AddHeaders(request.Headers);
         }
 
         #endregion

@@ -16,6 +16,7 @@ limitations under the License.
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Net.Http.Headers;
 
 namespace Google.Apis.Auth.OAuth2
 {
@@ -64,5 +65,13 @@ namespace Google.Apis.Auth.OAuth2
         /// Extra headers, if any, that should be included in the request.
         /// </summary>
         public IReadOnlyDictionary<string, IReadOnlyList<string>> Headers { get; }
+
+        internal void AddHeaders(HttpRequestHeaders requestHeaders)
+        {
+            foreach (var header in Headers)
+            {
+                requestHeaders.Add(header.Key, header.Value);
+            }
+        }
     }
 }

@@ -217,11 +217,7 @@ namespace Google.Apis.Auth.OAuth2
             {
                 var accessToken = new AccessTokenWithHeaders(_accessToken, QuotaProject);
                 _accessMethod.Intercept(request, accessToken.AccessToken);
-
-                foreach (var header in accessToken.Headers)
-                {
-                    request.Headers.Add(header.Key, header.Value);
-                }
+                accessToken.AddHeaders(request.Headers);
 
                 return Task.FromResult(true);
             }
