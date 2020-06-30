@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200608 (1985)
+ *      <tr><th>API Rev<td>20200616 (1993)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -3524,8 +3524,8 @@ namespace Google.Apis.Pubsub.v1.Data
     /// and limits for more information about message limits.</summary>
     public class PubsubMessage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Attributes for this message. If this field is empty, the message must contain non-empty
-        /// data.</summary>
+        /// <summary>Attributes for this message. If this field is empty, the message must contain non-empty data. This
+        /// can be used to filter messages on the subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string,string> Attributes { get; set; } 
 
@@ -3787,9 +3787,10 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expirationPolicy")]
         public virtual ExpirationPolicy ExpirationPolicy { get; set; } 
 
-        /// <summary>An expression written in the Cloud Pub/Sub filter language. If non-empty, then only
-        /// `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty,
-        /// then no messages are filtered out.</summary>
+        /// <summary>An expression written in the Pub/Sub [filter
+        /// language](https://cloud.google.com/pubsub/docs/filtering). If non-empty, then only `PubsubMessage`s whose
+        /// `attributes` field matches the filter are delivered on this subscription. If empty, then no messages are
+        /// filtered out.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 

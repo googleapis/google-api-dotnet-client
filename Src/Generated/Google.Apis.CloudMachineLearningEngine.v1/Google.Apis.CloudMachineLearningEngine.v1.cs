@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>AI Platform Training & Prediction API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200531 (1977)
+ *      <tr><th>API Rev<td>20200624 (2001)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -5502,6 +5502,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Optional. Scheduling options for a training job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
         public virtual GoogleCloudMlV1Scheduling Scheduling { get; set; } 
+
+        /// <summary>Optional. Specifies the service account for workload run-as account. Users submitting jobs must
+        /// have act-as permission on this run-as account. If not specified, then CMLE P4SA will be used by
+        /// default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; } 
 
         /// <summary>Optional. Use `chief` instead of `master` in the `TF_CONFIG` environment variable when training
         /// with a custom container. Defaults to `false`. [Learn more about this field.](/ai-platform/training/docs

@@ -1206,7 +1206,7 @@
    }
   }
  }, 
- "revision": "20200512", 
+ "revision": "20200619", 
  "rootUrl": "https://containeranalysis.googleapis.com/", 
  "schemas": {
   "Artifact": {

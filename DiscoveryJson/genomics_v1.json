@@ -209,7 +209,7 @@
    }
   }
  }, 
- "revision": "20200617", 
+ "revision": "20200623", 
  "rootUrl": "https://genomics.googleapis.com/", 
  "schemas": {
   "CancelOperationRequest": {

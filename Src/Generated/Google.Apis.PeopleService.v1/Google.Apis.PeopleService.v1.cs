@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200617 (1994)
+ *      <tr><th>API Rev<td>20200625 (2002)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -117,6 +117,9 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>See, edit, download, and permanently delete your contacts</summary>
             public static string Contacts = "https://www.googleapis.com/auth/contacts";
 
+            /// <summary>See and download contact info automatically saved in your "Other contacts"</summary>
+            public static string ContactsOtherReadonly = "https://www.googleapis.com/auth/contacts.other.readonly";
+
             /// <summary>See and download your contacts</summary>
             public static string ContactsReadonly = "https://www.googleapis.com/auth/contacts.readonly";
 
@@ -154,6 +157,9 @@ namespace Google.Apis.PeopleService.v1
         {
             /// <summary>See, edit, download, and permanently delete your contacts</summary>
             public const string Contacts = "https://www.googleapis.com/auth/contacts";
+
+            /// <summary>See and download contact info automatically saved in your "Other contacts"</summary>
+            public const string ContactsOtherReadonly = "https://www.googleapis.com/auth/contacts.other.readonly";
 
             /// <summary>See and download your contacts</summary>
             public const string ContactsReadonly = "https://www.googleapis.com/auth/contacts.readonly";

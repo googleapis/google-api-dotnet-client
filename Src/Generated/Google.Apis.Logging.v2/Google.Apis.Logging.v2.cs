@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Cloud Logging API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200605 (1982)
+ *      <tr><th>API Rev<td>20200619 (1996)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -9256,9 +9256,9 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual string OrderBy { get; set; } 
 
-        /// <summary>Optional. The maximum number of results to return from this request. Non-positive values are
-        /// ignored. The presence of next_page_token in the response indicates that more results might be
-        /// available.</summary>
+        /// <summary>Optional. The maximum number of results to return from this request. Default is 50. If the value is
+        /// negative or exceeds 1000, the request is rejected. The presence of next_page_token in the response indicates
+        /// that more results might be available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; } 
 
@@ -9812,7 +9812,12 @@ namespace Google.Apis.Logging.v2.Data
     }    
 
     /// <summary>Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it
-    /// stops data collection and makes the metric type's existing data unusable.</summary>
+    /// stops data collection and makes the metric type's existing data unusable.The following are specific rules for
+    /// service defined Monitoring metric descriptors: type, metric_kind, value_type, description, display_name,
+    /// launch_stage fields are all required. The unit field must be specified  if the value_type is any of DOUBLE,
+    /// INT64, DISTRIBUTION. Maximum of default 500 metric descriptors per service is allowed. Maximum of default 10
+    /// labels per metric descriptor is allowed.The default maximum limit can be overridden. Please follow
+    /// https://cloud.google.com/monitoring/quotas</summary>
     public class MetricDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A detailed description of the metric, which can be used in documentation.</summary>
@@ -9825,10 +9830,12 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>The set of labels that can be used to describe a specific instance of this metric type. For
-        /// example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP
-        /// response code, response_code, so you can look at latencies for successful responses or just for responses
-        /// that failed.</summary>
+        /// <summary>The set of labels that can be used to describe a specific instance of this metric type.The label
+        /// key name must follow: Only upper and lower-case letters, digits and underscores (_) are  allowed. Label name
+        /// must start with a letter or digit. The maximum length of a label name is 100 characters.For example, the
+        /// appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code,
+        /// response_code, so you can look at latencies for successful responses or just for responses that
+        /// failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
 
@@ -9855,10 +9862,14 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined
-        /// metric types have the DNS name custom.googleapis.com or external.googleapis.com. Metric types should use a
-        /// natural hierarchical grouping. For example: "custom.googleapis.com/invoice/paid/amount"
-        /// "external.googleapis.com/prometheus/up" "appengine.googleapis.com/http/server/response_latencies" </summary>
+        /// <summary>The metric type, including its DNS name prefix. The type is not URL-encoded.All service defined
+        /// metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such
+        /// as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must follow: Only upper and
+        /// lower-case letters, digits, '/' and underscores '_' are  allowed. The maximum number of characters allowed
+        /// for the relative_metric_name is  100.All user-defined metric types have the DNS name custom.googleapis.com,
+        /// external.googleapis.com, or logging.googleapis.com/user/.Metric types should use a natural hierarchical
+        /// grouping. For example: "custom.googleapis.com/invoice/paid/amount" "external.googleapis.com/prometheus/up"
+        /// "appengine.googleapis.com/http/server/response_latencies" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -9873,14 +9884,14 @@ namespace Google.Apis.Logging.v2.Data
         /// DOUBLE CUMULATIVE metric whose unit is ks{CPU}, and then write the value 12.005 (which is 12005/1000), or
         /// use Kis{CPU} and write 11.723 (which is 12005/1024).The supported units are a subset of The Unified Code for
         /// Units of Measure (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT) bit bit By byte s second
-        /// min minute h hour d dayPrefixes (PREFIX) k kilo (10^3) M mega (10^6) G giga (10^9) T tera (10^12) P peta
-        /// (10^15) E exa (10^18) Z zetta (10^21) Y yotta (10^24) m milli (10^-3) u micro (10^-6) n nano (10^-9) p pico
-        /// (10^-12) f femto (10^-15) a atto (10^-18) z zepto (10^-21) y yocto (10^-24) Ki kibi (2^10) Mi mebi (2^20) Gi
-        /// gibi (2^30) Ti tebi (2^40) Pi pebi (2^50)GrammarThe grammar also includes these connectors: / division or
-        /// ratio (as an infix operator). For examples,  kBy/{email} or MiBy/10ms (although you should almost never
-        /// have /s in a metric unit; rates should always be computed at  query time from the underlying cumulative or
-        /// delta value). . multiplication or composition (as an infix operator). For  examples, GBy.d or k{watt}.h.The
-        /// grammar for a unit is as follows: Expression = Component { "." Component } { "/" Component } ;
+        /// min minute h hour d day 1 dimensionlessPrefixes (PREFIX) k kilo (10^3) M mega (10^6) G giga (10^9) T tera
+        /// (10^12) P peta (10^15) E exa (10^18) Z zetta (10^21) Y yotta (10^24) m milli (10^-3) u micro (10^-6) n nano
+        /// (10^-9) p pico (10^-12) f femto (10^-15) a atto (10^-18) z zepto (10^-21) y yocto (10^-24) Ki kibi (2^10) Mi
+        /// mebi (2^20) Gi gibi (2^30) Ti tebi (2^40) Pi pebi (2^50)GrammarThe grammar also includes these connectors: /
+        /// division or ratio (as an infix operator). For examples,  kBy/{email} or MiBy/10ms (although you should
+        /// almost never  have /s in a metric unit; rates should always be computed at  query time from the underlying
+        /// cumulative or delta value). . multiplication or composition (as an infix operator). For  examples, GBy.d or
+        /// k{watt}.h.The grammar for a unit is as follows: Expression = Component { "." Component } { "/" Component } ;
         ///
         /// Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] | Annotation | "1" ;
         ///
@@ -9956,8 +9967,13 @@ namespace Google.Apis.Logging.v2.Data
     /// <summary>An object that describes the schema of a MonitoredResource object using a type name and a set of
     /// labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of
     /// "gce_instance" and specifies the use of the labels "instance_id" and "zone" to identify particular VM
-    /// instances.Different APIs can support different monitored resource types. APIs generally provide a list method
-    /// that returns the monitored resource descriptors used by the API.</summary>
+    /// instances.Different services can support different monitored resource types.The following are specific rules to
+    /// service defined monitored resources for Monitoring and Logging: The type, display_name, description, labels and
+    /// launch_stage  fields are all required. The first label of the monitored resource descriptor must be
+    /// resource_container. There are legacy monitored resource descritptors  start with project_id. It must include a
+    /// location label. Maximum of default 5 service defined monitored resource descriptors  is allowed per service.
+    /// Maximum of default 10 labels per monitored resource is allowed.The default maximum limit can be overridden.
+    /// Please follow https://cloud.google.com/monitoring/quotas</summary>
     public class MonitoredResourceDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. A detailed description of the monitored resource type that might be used in
@@ -9971,9 +9987,11 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Required. A set of labels used to describe instances of this monitored resource type. For example,
-        /// an individual Google Cloud SQL database is identified by values for the labels "database_id" and
-        /// "zone".</summary>
+        /// <summary>Required. A set of labels used to describe instances of this monitored resource type. The label key
+        /// name must follow: Only upper and lower-case letters, digits and underscores (_) are  allowed. Label name
+        /// must start with a letter or digit. The maximum length of a label name is 100 characters.For example, an
+        /// individual Google Cloud SQL database is identified by values for the labels database_id and
+        /// location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
 
@@ -9989,8 +10007,12 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Required. The monitored resource type. For example, the type "cloudsql_database" represents
-        /// databases in Google Cloud SQL. The maximum length of this value is 256 characters.</summary>
+        /// <summary>Required. The monitored resource type. For example, the type cloudsql_database represents databases
+        /// in Google Cloud SQL.All service defined monitored resource types must be prefixed with the service name, in
+        /// the format of {service name}/{relative resource name}. The relative resource name must follow: Only upper
+        /// and lower-case letters and digits are allowed. It must start with upper case character and is recommended to
+        /// use Upper  Camel Case style. The maximum number of characters allowed for the relative_resource_name  is
+        /// 100.Note there are legacy service monitored resources not following this rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

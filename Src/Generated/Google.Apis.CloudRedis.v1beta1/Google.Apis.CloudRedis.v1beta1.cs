@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>Google Cloud Memorystore for Redis API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200529 (1975)
+ *      <tr><th>API Rev<td>20200623 (2000)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>
  *              https://cloud.google.com/memorystore/docs/redis/</a>
@@ -160,10 +160,6 @@ namespace Google.Apis.CloudRedis.v1beta1
             Value2,
         }
 
-        /// <summary>OAuth access token.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string AccessToken { get; set; }
-
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
@@ -196,10 +192,6 @@ namespace Google.Apis.CloudRedis.v1beta1
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
-        /// <summary>OAuth 2.0 token for the current user.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string OauthToken { get; set; }
-
         /// <summary>Returns response with indentations and line breaks.</summary>
         /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
@@ -227,15 +219,6 @@ namespace Google.Apis.CloudRedis.v1beta1
                 "$.xgafv", new Google.Apis.Discovery.Parameter
                 {
                     Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -272,15 +255,6 @@ namespace Google.Apis.CloudRedis.v1beta1
                 "key", new Google.Apis.Discovery.Parameter
                 {
                     Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -392,8 +366,8 @@ namespace Google.Apis.CloudRedis.v1beta1
 
                 /// <summary>Creates a Redis instance based on the specified tier and memory size.
                 ///
-                /// By default, the instance is accessible from the project's [default network](/compute/docs/networks-
-                /// and-firewalls#networks).
+                /// By default, the instance is accessible from the project's [default
+                /// network](https://cloud.google.com/vpc/docs/vpc).
                 ///
                 /// The creation is executed asynchronously and callers may check the returned operation to track its
                 /// progress. Once the operation is completed the Redis instance will be fully functional. Completed
@@ -411,8 +385,8 @@ namespace Google.Apis.CloudRedis.v1beta1
 
                 /// <summary>Creates a Redis instance based on the specified tier and memory size.
                 ///
-                /// By default, the instance is accessible from the project's [default network](/compute/docs/networks-
-                /// and-firewalls#networks).
+                /// By default, the instance is accessible from the project's [default
+                /// network](https://cloud.google.com/vpc/docs/vpc).
                 ///
                 /// The creation is executed asynchronously and callers may check the returned operation to track its
                 /// progress. Once the operation is completed the Redis instance will be fully functional. Completed
@@ -1803,9 +1777,9 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("alternativeLocationId")]
         public virtual string AlternativeLocationId { get; set; } 
 
-        /// <summary>Optional. The full name of the Google Compute Engine [network](/compute/docs/networks-and-
-        /// firewalls#networks) to which the instance is connected. If left unspecified, the `default` network will be
-        /// used.</summary>
+        /// <summary>Optional. The full name of the Google Compute Engine
+        /// [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified,
+        /// the `default` network will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedNetwork")]
         public virtual string AuthorizedNetwork { get; set; } 
 

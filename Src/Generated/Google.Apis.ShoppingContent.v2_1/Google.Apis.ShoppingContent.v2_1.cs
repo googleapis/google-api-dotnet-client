@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2.1
- *      <tr><th>API Rev<td>20200615 (1992)
+ *      <tr><th>API Rev<td>20200617 (1994)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -16758,6 +16758,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class TestOrder : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Overrides the predefined delivery details if provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryDetails")]
+        public virtual TestOrderDeliveryDetails DeliveryDetails { get; set; } 
+
         /// <summary>Whether the orderinvoices service should support this order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableOrderinvoices")]
         public virtual System.Nullable<bool> EnableOrderinvoices { get; set; } 
@@ -16773,6 +16777,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Restricted. Do not use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationMode")]
         public virtual string NotificationMode { get; set; } 
+
+        /// <summary>Overrides the predefined pickup details if provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupDetails")]
+        public virtual TestOrderPickupDetails PickupDetails { get; set; } 
 
         /// <summary>Required. The billing address.
         ///
@@ -16816,6 +16824,61 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`twoDay`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingOption")]
         public virtual string ShippingOption { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TestOrderAddress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>CLDR country code (e.g. "US").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; } 
+
+        /// <summary>Strings representing the lines of the printed label for mailing the order, for example: John Smith
+        /// 1600 Amphitheatre Parkway Mountain View, CA, 94043 United States</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullAddress")]
+        public virtual System.Collections.Generic.IList<string> FullAddress { get; set; } 
+
+        /// <summary>Whether the address is a post office box.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isPostOfficeBox")]
+        public virtual System.Nullable<bool> IsPostOfficeBox { get; set; } 
+
+        /// <summary>City, town or commune. May also include dependent localities or sublocalities (e.g. neighborhoods
+        /// or suburbs).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locality")]
+        public virtual string Locality { get; set; } 
+
+        /// <summary>Postal Code or ZIP (e.g. "94043").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
+        public virtual string PostalCode { get; set; } 
+
+        /// <summary>Name of the recipient.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recipientName")]
+        public virtual string RecipientName { get; set; } 
+
+        /// <summary>Top-level administrative subdivision of the country. For example, a state like California ("CA") or
+        /// a province like Quebec ("QC").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; } 
+
+        /// <summary>Street-level part of the address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
+        public virtual System.Collections.Generic.IList<string> StreetAddress { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TestOrderDeliveryDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The delivery address</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("address")]
+        public virtual TestOrderAddress Address { get; set; } 
+
+        /// <summary>The phone number of the person receiving the delivery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16901,6 +16964,44 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Variant attributes for the item. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variantAttributes")]
         public virtual System.Collections.Generic.IList<OrderLineItemProductVariantAttribute> VariantAttributes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TestOrderPickupDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Code of the location defined by provider or merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationCode")]
+        public virtual string LocationCode { get; set; } 
+
+        /// <summary>Required. Pickup location address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupLocationAddress")]
+        public virtual TestOrderAddress PickupLocationAddress { get; set; } 
+
+        /// <summary>Pickup location type.
+        ///
+        /// Acceptable values are: - "`locker`" - "`store`" - "`curbside`"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupLocationType")]
+        public virtual string PickupLocationType { get; set; } 
+
+        /// <summary>Required. all pickup persons set by users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupPersons")]
+        public virtual System.Collections.Generic.IList<TestOrderPickupDetailsPickupPerson> PickupPersons { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TestOrderPickupDetailsPickupPerson : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Full name of the pickup person.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Required. The phone number of the person picking up the items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200529 (1975)
+ *      <tr><th>API Rev<td>20200611 (1988)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -4489,9 +4489,8 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfMetagenerationMatch { get; set; }
 
-            /// <summary>Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings
-            /// /my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's
-            /// kms_key_name value, if any.</summary>
+            /// <summary>Not currently supported. Specifying the parameter causes the request to fail with status code
+            /// 400 - Bad Request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("kmsKeyName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string KmsKeyName { get; set; }
 

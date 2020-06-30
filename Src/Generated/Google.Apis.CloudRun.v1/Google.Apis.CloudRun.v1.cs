@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Cloud Run API Version v1
+ *   Cloud Run Admin API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/run/'>Cloud Run API</a>
+ *          <td><a href='https://cloud.google.com/run/'>Cloud Run Admin API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200609 (1986)
+ *      <tr><th>API Rev<td>20200622 (1999)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/run/'>
  *              https://cloud.google.com/run/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Cloud Run API can be found at
+ * The complete API documentation for using Cloud Run Admin API can be found at
  * <a href='https://cloud.google.com/run/'>https://cloud.google.com/run/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -111,7 +111,7 @@ namespace Google.Apis.CloudRun.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Run API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Run Admin API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -119,7 +119,7 @@ namespace Google.Apis.CloudRun.v1
 
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Run API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Run Admin API.</summary>
         public static class ScopeConstants
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -178,6 +178,10 @@ namespace Google.Apis.CloudRun.v1
             Value2,
         }
 
+        /// <summary>OAuth access token.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string AccessToken { get; set; }
+
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
@@ -210,6 +214,10 @@ namespace Google.Apis.CloudRun.v1
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
+        /// <summary>OAuth 2.0 token for the current user.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string OauthToken { get; set; }
+
         /// <summary>Returns response with indentations and line breaks.</summary>
         /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
@@ -237,6 +245,15 @@ namespace Google.Apis.CloudRun.v1
                 "$.xgafv", new Google.Apis.Discovery.Parameter
                 {
                     Name = "$.xgafv",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "access_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "access_token",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -273,6 +290,15 @@ namespace Google.Apis.CloudRun.v1
                 "key", new Google.Apis.Discovery.Parameter
                 {
                     Name = "key",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "oauth_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "oauth_token",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -7090,8 +7116,13 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountName")]
         public virtual string ServiceAccountName { get; set; } 
 
-        /// <summary>TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Not
-        /// currently used by Cloud Run.</summary>
+        /// <summary>TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+        ///
+        /// Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 900 seconds (15
+        /// minutes).
+        ///
+        /// Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the
+        /// cluster operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutSeconds")]
         public virtual System.Nullable<int> TimeoutSeconds { get; set; } 
 

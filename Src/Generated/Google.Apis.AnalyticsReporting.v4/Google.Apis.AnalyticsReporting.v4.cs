@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>Analytics Reporting API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20200528 (1974)
+ *      <tr><th>API Rev<td>20200624 (2001)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>
  *              https://developers.google.com/analytics/devguides/reporting/core/v4/</a>

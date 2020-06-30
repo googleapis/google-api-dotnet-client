@@ -542,7 +542,7 @@
    }
   }
  }, 
- "revision": "20200617", 
+ "revision": "20200624", 
  "rootUrl": "https://serviceconsumermanagement.googleapis.com/", 
  "schemas": {
   "AddTenantProjectRequest": {

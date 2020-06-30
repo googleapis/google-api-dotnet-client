@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/scheduler/'>Cloud Scheduler API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200608 (1985)
+ *      <tr><th>API Rev<td>20200618 (1995)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/scheduler/'>
  *              https://cloud.google.com/scheduler/</a>
@@ -1618,8 +1618,8 @@ namespace Google.Apis.CloudScheduler.v1.Data
     /// and limits for more information about message limits.</summary>
     public class PubsubMessage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Attributes for this message. If this field is empty, the message must contain non-empty
-        /// data.</summary>
+        /// <summary>Attributes for this message. If this field is empty, the message must contain non-empty data. This
+        /// can be used to filter messages on the subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string,string> Attributes { get; set; } 
 

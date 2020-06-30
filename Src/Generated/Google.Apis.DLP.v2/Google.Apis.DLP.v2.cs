@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200614 (1991)
+ *      <tr><th>API Rev<td>20200624 (2001)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -9160,8 +9160,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("min")]
         public virtual GooglePrivacyDlpV2Value Min { get; set; } 
 
-        /// <summary>Replacement value for this bucket. If not provided the default behavior will be to hyphenate the
-        /// min-max range.</summary>
+        /// <summary>Required. Replacement value for this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replacementValue")]
         public virtual GooglePrivacyDlpV2Value ReplacementValue { get; set; } 
 

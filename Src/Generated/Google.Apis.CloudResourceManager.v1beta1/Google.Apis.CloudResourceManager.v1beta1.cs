@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200617 (1994)
+ *      <tr><th>API Rev<td>20200624 (2001)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -2206,10 +2206,10 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// <summary>The labels associated with this Project.
         ///
         /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression:
-        /// \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        /// a-z{0,62}.
         ///
         /// Label values must be between 0 and 63 characters long and must conform to the regular expression
-        /// (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. A label value can be empty.
+        /// [a-z0-9_-]{0,63}. A label value can be empty.
         ///
         /// No more than 256 labels can be associated with a given resource.
         ///

@@ -1051,7 +1051,7 @@
    }
   }
  }, 
- "revision": "20200526", 
+ "revision": "20200623", 
  "rootUrl": "https://vault.googleapis.com/", 
  "schemas": {
   "AccountInfo": {

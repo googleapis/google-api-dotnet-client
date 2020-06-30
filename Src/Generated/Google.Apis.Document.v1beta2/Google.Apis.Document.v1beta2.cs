@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/document-ai/docs/'>Cloud Document AI API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20200612 (1989)
+ *      <tr><th>API Rev<td>20200619 (1996)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/document-ai/docs/'>
  *              https://cloud.google.com/document-ai/docs/</a>
@@ -2405,8 +2405,7 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ocrParams")]
         public virtual GoogleCloudDocumentaiV1beta2OcrParams OcrParams { get; set; } 
 
-        /// <summary>Optional. The desired output location. This field is only needed in
-        /// BatchProcessDocumentsRequest.</summary>
+        /// <summary>The desired output location. This field is only needed in BatchProcessDocumentsRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
         public virtual GoogleCloudDocumentaiV1beta2OutputConfig OutputConfig { get; set; } 
 

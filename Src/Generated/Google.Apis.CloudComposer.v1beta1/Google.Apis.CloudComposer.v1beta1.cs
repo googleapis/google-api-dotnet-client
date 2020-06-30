@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/composer/'>Cloud Composer API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200517 (1963)
+ *      <tr><th>API Rev<td>20200616 (1993)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/composer/'>
  *              https://cloud.google.com/composer/</a>
@@ -782,6 +782,12 @@ namespace Google.Apis.CloudComposer.v1beta1
                     /// image version's Composer major version and Airflow major and minor versions. Consult the Cloud
                     /// Composer Version List for valid values.
                     ///
+                    /// config.databaseConfig.machineType Cloud SQL machine type used by Airflow database. It has to be
+                    /// one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16.
+                    ///
+                    /// config.webServerConfig.machineType Machine type on which Airflow web server is running. It has
+                    /// to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8.
+                    ///
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1242,7 +1248,8 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     /// <summary>The configuration of Cloud SQL instance that is used by the Apache Airflow software.</summary>
     public class DatabaseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Cloud SQL tier used by Airflow database. If not specified, db-n1-standard-2 will be
+        /// <summary>Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2,
+        /// db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be
         /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; } 
@@ -1782,8 +1789,8 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     /// <summary>The configuration settings for the Airflow web server App Engine instance.</summary>
     public class WebServerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Machine type on which Airflow web server is running. For example:
-        /// composer-n1-webserver-2, composer-n1-webserver-4, composer-n1-webserver-8. If not specified,
+        /// <summary>Optional. Machine type on which Airflow web server is running. It has to be one of:
+        /// composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified,
         /// composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server
         /// parameters were manually changed to a non-standard values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]

@@ -401,7 +401,7 @@
    }
   }
  }, 
- "revision": "20200517", 
+ "revision": "20200616", 
  "rootUrl": "https://composer.googleapis.com/", 
  "schemas": {
   "Empty": {

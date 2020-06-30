@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200613 (1990)
+ *      <tr><th>API Rev<td>20200619 (1996)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -4131,7 +4131,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         ///
         /// **Basic units (UNIT)**
         ///
-        /// * `bit`   bit * `By`    byte * `s`     second * `min`   minute * `h`     hour * `d`     day
+        /// * `bit`   bit * `By`    byte * `s`     second * `min`   minute * `h`     hour * `d`     day * `1`
+        /// dimensionless
         ///
         /// **Prefixes (PREFIX)**
         ///

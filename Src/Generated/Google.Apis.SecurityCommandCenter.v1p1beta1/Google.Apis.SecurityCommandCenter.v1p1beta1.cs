@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>Security Command Center API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20200612 (1989)
+ *      <tr><th>API Rev<td>20200629 (2006)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview</a>
@@ -484,8 +484,8 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 [Google.Apis.Util.RequestParameterAttribute("compareDuration", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object CompareDuration { get; set; }
 
-                /// <summary>Optional. A field mask to specify the ListAssetsResult fields to be listed in the response.
-                /// An empty field mask will list all fields.</summary>
+                /// <summary> A field mask to specify the ListAssetsResult fields to be listed in the response. An empty
+                /// field mask will list all fields.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object FieldMask { get; set; }
 
@@ -1181,7 +1181,8 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
 
             }
 
-            /// <summary> Updates a notification config.</summary>
+            /// <summary> Updates a notification config. The following update fields are allowed: description,
+            /// pubsub_topic, streaming_config.filter</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The relative resource name of this notification config. See:
             /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
@@ -1191,7 +1192,8 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary> Updates a notification config.</summary>
+            /// <summary> Updates a notification config. The following update fields are allowed: description,
+            /// pubsub_topic, streaming_config.filter</summary>
             public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.NotificationConfig>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -1678,9 +1680,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Required. Unique identifier provided by the client within the parent scope. It must be
-                    /// alphanumeric and less than or equal to 32 characters and greater than 0 characters in
-                    /// length.</summary>
+                    /// <summary>Required. Unique identifier provided by the client within the parent scope.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("findingId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string FindingId { get; set; }
 
@@ -1874,8 +1874,8 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                     [Google.Apis.Util.RequestParameterAttribute("compareDuration", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object CompareDuration { get; set; }
 
-                    /// <summary>Optional. A field mask to specify the Finding fields to be listed in the response. An
-                    /// empty field mask will list all fields.</summary>
+                    /// <summary> A field mask to specify the Finding fields to be listed in the response. An empty
+                    /// field mask will list all fields.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object FieldMask { get; set; }
 

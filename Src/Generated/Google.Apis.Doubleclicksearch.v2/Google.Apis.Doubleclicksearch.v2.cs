@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/doubleclick-search/'>Search Ads 360 API</a>
+ *          <td><a href='https://developers.google.com/search-ads'>Search Ads 360 API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200609 (1986)
+ *      <tr><th>API Rev<td>20200623 (2000)
  *      <tr><th>API Docs
- *          <td><a href='https://developers.google.com/doubleclick-search/'>
- *              https://developers.google.com/doubleclick-search/</a>
+ *          <td><a href='https://developers.google.com/search-ads'>
+ *              https://developers.google.com/search-ads</a>
  *      <tr><th>Discovery Name<td>doubleclicksearch
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Search Ads 360 API can be found at
- * <a href='https://developers.google.com/doubleclick-search/'>https://developers.google.com/doubleclick-search/</a>.
+ * <a href='https://developers.google.com/search-ads'>https://developers.google.com/search-ads</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -85,16 +85,16 @@ namespace Google.Apis.Doubleclicksearch.v2
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://www.googleapis.com/doubleclicksearch/v2/"; }
+            get { return BaseUriOverride ?? "https://www.googleapis.com/"; }
         #else
-            get { return "https://www.googleapis.com/doubleclicksearch/v2/"; }
+            get { return "https://www.googleapis.com/"; }
         #endif
         }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath
         {
-            get { return "doubleclicksearch/v2/"; }
+            get { return ""; }
         }
 
         #if !NET40
@@ -163,18 +163,47 @@ namespace Google.Apis.Doubleclicksearch.v2
         {
         }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>V1 error format.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
+
+        /// <summary>OAuth access token.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>Data format for response.</summary>
         public enum AltEnum
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
         }
+
+        /// <summary>JSONP</summary>
+        [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string Callback { get; set; }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -194,14 +223,18 @@ namespace Google.Apis.Doubleclicksearch.v2
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-        /// characters.</summary>
+        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
+        /// assigned to a user, but should not exceed 40 characters.</summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
-        /// <summary>Deprecated. Please use quotaUser instead.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string UserIp { get; set; }
+        /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadType { get; set; }
+
+        /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadProtocol { get; set; }
 
         /// <summary>Initializes Doubleclicksearch parameter list.</summary>
         protected override void InitParameters()
@@ -209,12 +242,39 @@ namespace Google.Apis.Doubleclicksearch.v2
             base.InitParameters();
 
             RequestParameters.Add(
+                "$.xgafv", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "$.xgafv",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "access_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "access_token",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
                 "alt", new Google.Apis.Discovery.Parameter
                 {
                     Name = "alt",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "json",
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "callback", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "callback",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
             RequestParameters.Add(
@@ -263,9 +323,18 @@ namespace Google.Apis.Doubleclicksearch.v2
                     Pattern = null,
                 });
             RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
+                "uploadType", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "userIp",
+                    Name = "uploadType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "upload_protocol", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "upload_protocol",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -392,7 +461,7 @@ namespace Google.Apis.Doubleclicksearch.v2
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion"; }
+                get { return "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -544,7 +613,7 @@ namespace Google.Apis.Doubleclicksearch.v2
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "conversion"; }
+                get { return "doubleclicksearch/v2/conversion"; }
             }
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -597,7 +666,7 @@ namespace Google.Apis.Doubleclicksearch.v2
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "conversion"; }
+                get { return "doubleclicksearch/v2/conversion"; }
             }
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -650,7 +719,7 @@ namespace Google.Apis.Doubleclicksearch.v2
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "conversion/updateAvailability"; }
+                get { return "doubleclicksearch/v2/conversion/updateAvailability"; }
             }
 
             /// <summary>Initializes UpdateAvailability parameter list.</summary>
@@ -720,7 +789,7 @@ namespace Google.Apis.Doubleclicksearch.v2
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "reports/generate"; }
+                get { return "doubleclicksearch/v2/reports/generate"; }
             }
 
             /// <summary>Initializes Generate parameter list.</summary>
@@ -771,7 +840,7 @@ namespace Google.Apis.Doubleclicksearch.v2
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "reports/{reportId}"; }
+                get { return "doubleclicksearch/v2/reports/{reportId}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -840,7 +909,7 @@ namespace Google.Apis.Doubleclicksearch.v2
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "reports/{reportId}/files/{reportFragment}"; }
+                get { return "doubleclicksearch/v2/reports/{reportId}/files/{reportFragment}"; }
             }
 
             /// <summary>Initializes GetFile parameter list.</summary>
@@ -963,7 +1032,7 @@ namespace Google.Apis.Doubleclicksearch.v2
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "reports"; }
+                get { return "doubleclicksearch/v2/reports"; }
             }
 
             /// <summary>Initializes Request parameter list.</summary>
@@ -1038,7 +1107,7 @@ namespace Google.Apis.Doubleclicksearch.v2
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "agency/{agencyId}/advertiser/{advertiserId}/savedcolumns"; }
+                get { return "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/savedcolumns"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1086,7 +1155,7 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
 
         /// <summary>The time by which all conversions have been uploaded, in epoch millis UTC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availabilityTimestamp")]
-        public virtual System.Nullable<ulong> AvailabilityTimestamp { get; set; } 
+        public virtual System.Nullable<long> AvailabilityTimestamp { get; set; } 
 
         /// <summary>The numeric segmentation identifier (for example, DoubleClick Search Floodlight activity
         /// ID).</summary>
@@ -1098,7 +1167,7 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("segmentationName")]
         public virtual string SegmentationName { get; set; } 
 
-        /// <summary>The segmentation type that this availability is for (its default value is FLOODLIGHT).</summary>
+        /// <summary>The segmentation type that this availability is for (its default value is `FLOODLIGHT`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentationType")]
         public virtual string SegmentationType { get; set; } 
 
@@ -1133,8 +1202,8 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
         public virtual System.Nullable<long> CampaignId { get; set; } 
 
-        /// <summary>Sales channel for the product. Acceptable values are: - "local": a physical store - "online": an
-        /// online store</summary>
+        /// <summary>Sales channel for the product. Acceptable values are: "`local`": a physical store "`online`": an
+        /// online store </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channel")]
         public virtual string Channel { get; set; } 
 
@@ -1145,18 +1214,18 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         /// <summary>For offline conversions, advertisers provide this ID. Advertisers can specify any ID that is
         /// meaningful to them. Each conversion in a request must specify a unique ID, and the combination of ID and
         /// timestamp must be unique amongst all conversions within the advertiser. For online conversions, DS copies
-        /// the dsConversionId or floodlightOrderId into this property depending on the advertiser's Floodlight
+        /// the `dsConversionId` or `floodlightOrderId` into this property depending on the advertiser's Floodlight
         /// instructions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionId")]
         public virtual string ConversionId { get; set; } 
 
         /// <summary>The time at which the conversion was last modified, in epoch millis UTC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionModifiedTimestamp")]
-        public virtual System.Nullable<ulong> ConversionModifiedTimestamp { get; set; } 
+        public virtual System.Nullable<long> ConversionModifiedTimestamp { get; set; } 
 
         /// <summary>The time at which the conversion took place, in epoch millis UTC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionTimestamp")]
-        public virtual System.Nullable<ulong> ConversionTimestamp { get; set; } 
+        public virtual string ConversionTimestamp { get; set; } 
 
         /// <summary>Available to advertisers only after contacting DoubleClick Search customer support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countMillis")]
@@ -1222,11 +1291,11 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quantityMillis")]
         public virtual System.Nullable<long> QuantityMillis { get; set; } 
 
-        /// <summary>The revenue amount of this TRANSACTION conversion, in micros (value multiplied by 1000000, no
-        /// decimal). For example, to specify a revenue value of "10" enter "10000000" (10 million) in your
+        /// <summary>The revenue amount of this `TRANSACTION` conversion, in micros (value multiplied by 1000000, no
+        /// decimal). For example, to specify a revenue value of "10"  enter "10000000" (10 million) in your
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revenueMicros")]
-        public virtual System.Nullable<long> RevenueMicros { get; set; } 
+        public virtual string RevenueMicros { get; set; } 
 
         /// <summary>The numeric segmentation identifier (for example, DoubleClick Search Floodlight activity
         /// ID).</summary>
@@ -1238,24 +1307,24 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("segmentationName")]
         public virtual string SegmentationName { get; set; } 
 
-        /// <summary>The segmentation type of this conversion (for example, FLOODLIGHT).</summary>
+        /// <summary>The segmentation type of this conversion (for example, `FLOODLIGHT`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentationType")]
         public virtual string SegmentationType { get; set; } 
 
-        /// <summary>The state of the conversion, that is, either ACTIVE or REMOVED. Note: state DELETED is
+        /// <summary>The state of the conversion, that is, either `ACTIVE` or `REMOVED`. Note: state DELETED is
         /// deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
         /// <summary>The ID of the local store for which the product was advertised. Applicable only when the channel is
-        /// "local".</summary>
+        /// "`local`".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeId")]
         public virtual string StoreId { get; set; } 
 
-        /// <summary>The type of the conversion, that is, either ACTION or TRANSACTION. An ACTION conversion is an
-        /// action by the user that has no monetarily quantifiable value, while a TRANSACTION conversion is an action
-        /// that does have a monetarily quantifiable value. Examples are email list signups (ACTION) versus ecommerce
-        /// purchases (TRANSACTION).</summary>
+        /// <summary>The type of the conversion, that is, either `ACTION` or `TRANSACTION`. An `ACTION` conversion is an
+        /// action by the user that has no monetarily quantifiable value, while a `TRANSACTION` conversion is an action
+        /// that does have a monetarily quantifiable value. Examples are email list signups (`ACTION`) versus ecommerce
+        /// purchases (`TRANSACTION`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -1279,7 +1348,7 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A message containing the custome dimension.</summary>
+    /// <summary>A message containing the custom dimension.</summary>
     public class CustomDimension : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Custom dimension name.</summary>
@@ -1294,7 +1363,7 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A message containing the custome metric.</summary>
+    /// <summary>A message containing the custom metric.</summary>
     public class CustomMetric : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Custom metric name.</summary>
@@ -1327,7 +1396,7 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isReportReady")]
         public virtual System.Nullable<bool> IsReportReady { get; set; } 
 
-        /// <summary>Identifies this as a Report resource. Value: the fixed string doubleclicksearch#report.</summary>
+        /// <summary>Identifies this as a Report resource. Value: the fixed string `doubleclicksearch#report`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -1346,7 +1415,7 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
 
         /// <summary>The currency code of all monetary values produced in the report, including values that are set by
         /// users (e.g., keyword bid settings) and metrics (e.g., cost and revenue). The currency code of a report is
-        /// determined by the statisticsCurrency field of the report request.</summary>
+        /// determined by the `statisticsCurrency` field of the report request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statisticsCurrencyCode")]
         public virtual string StatisticsCurrencyCode { get; set; } 
 
@@ -1381,8 +1450,8 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
 
         /// <summary>Segments a report by a custom dimension. The report must be scoped to an advertiser or lower, and
         /// the custom dimension must already be set up in DoubleClick Search. The custom dimension name, which appears
-        /// in DoubleClick Search, is case sensitive. If used in a conversion report, returns the value of the specified
-        /// custom dimension for the given conversion, if set. This column does not segment the conversion
+        /// in DoubleClick Search, is case sensitive.\ If used in a conversion report, returns the value of the
+        /// specified custom dimension for the given conversion, if set. This column does not segment the conversion
         /// report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customDimensionName")]
         public virtual string CustomDimensionName { get; set; } 
@@ -1394,17 +1463,17 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         public virtual string CustomMetricName { get; set; } 
 
         /// <summary>Inclusive day in YYYY-MM-DD format. When provided, this overrides the overall time range of the
-        /// report for this column only. Must be provided together with startDate.</summary>
+        /// report for this column only. Must be provided together with `startDate`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual string EndDate { get; set; } 
 
-        /// <summary>Synchronous report only. Set to true to group by this column. Defaults to false.</summary>
+        /// <summary>Synchronous report only. Set to `true` to group by this column. Defaults to `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupByColumn")]
         public virtual System.Nullable<bool> GroupByColumn { get; set; } 
 
-        /// <summary>Text used to identify this column in the report output; defaults to columnName or savedColumnName
-        /// when not specified. This can be used to prevent collisions between DoubleClick Search columns and saved
-        /// columns with the same name.</summary>
+        /// <summary>Text used to identify this column in the report output; defaults to `columnName` or
+        /// `savedColumnName` when not specified. This can be used to prevent collisions between DoubleClick Search
+        /// columns and saved columns with the same name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headerText")]
         public virtual string HeaderText { get; set; } 
 
@@ -1413,9 +1482,9 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("platformSource")]
         public virtual string PlatformSource { get; set; } 
 
-        /// <summary>Returns metrics only for a specific type of product activity. Accepted values are: - "sold":
-        /// returns metrics only for products that were sold - "advertised": returns metrics only for products that were
-        /// advertised in a Shopping campaign, and that might or might not have been sold</summary>
+        /// <summary>Returns metrics only for a specific type of product activity. Accepted values are:  "`sold`":
+        /// returns metrics only for products that were sold "`advertised`": returns metrics only for products that were
+        /// advertised in a Shopping campaign, and that might or might not have been sold </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productReportPerspective")]
         public virtual string ProductReportPerspective { get; set; } 
 
@@ -1425,7 +1494,7 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         public virtual string SavedColumnName { get; set; } 
 
         /// <summary>Inclusive date in YYYY-MM-DD format. When provided, this overrides the overall time range of the
-        /// report for this column only. Must be provided together with endDate.</summary>
+        /// report for this column only. Must be provided together with `endDate`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual string StartDate { get; set; } 
 
@@ -1437,37 +1506,37 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
     public class ReportRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The columns to include in the report. This includes both DoubleClick Search columns and saved
-        /// columns. For DoubleClick Search columns, only the columnName parameter is required. For saved columns only
-        /// the savedColumnName parameter is required. Both columnName and savedColumnName cannot be set in the same
-        /// stanza. The maximum number of columns per request is 300.</summary>
+        /// columns. For DoubleClick Search columns, only the `columnName` parameter is required. For saved columns only
+        /// the `savedColumnName` parameter is required. Both `columnName` and `savedColumnName` cannot be set in the
+        /// same stanza.\ The maximum number of columns per request is 300.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual System.Collections.Generic.IList<ReportApiColumnSpec> Columns { get; set; } 
 
-        /// <summary>Format that the report should be returned in. Currently csv or tsv is supported.</summary>
+        /// <summary>Format that the report should be returned in. Currently `csv` or `tsv` is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadFormat")]
         public virtual string DownloadFormat { get; set; } 
 
-        /// <summary>A list of filters to be applied to the report. The maximum number of filters per request is
+        /// <summary>A list of filters to be applied to the report.\ The maximum number of filters per request is
         /// 300.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filters")]
         public virtual System.Collections.Generic.IList<ReportRequest.FiltersData> Filters { get; set; } 
 
-        /// <summary>Determines if removed entities should be included in the report. Defaults to false. Deprecated,
-        /// please use includeRemovedEntities instead.</summary>
+        /// <summary>Determines if removed entities should be included in the report. Defaults to `false`. Deprecated,
+        /// please use `includeRemovedEntities` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeDeletedEntities")]
         public virtual System.Nullable<bool> IncludeDeletedEntities { get; set; } 
 
-        /// <summary>Determines if removed entities should be included in the report. Defaults to false.</summary>
+        /// <summary>Determines if removed entities should be included in the report. Defaults to `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeRemovedEntities")]
         public virtual System.Nullable<bool> IncludeRemovedEntities { get; set; } 
 
         /// <summary>Asynchronous report only. The maximum number of rows per report file. A large report is split into
-        /// many files based on this field. Acceptable values are 1000000 to 100000000, inclusive.</summary>
+        /// many files based on this field. Acceptable values are `1000000` to `100000000`, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRowsPerFile")]
         public virtual System.Nullable<int> MaxRowsPerFile { get; set; } 
 
         /// <summary>Synchronous report only. A list of columns and directions defining sorting to be performed on the
-        /// report rows. The maximum number of orderings per request is 300.</summary>
+        /// report rows.\ The maximum number of orderings per request is 300.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual System.Collections.Generic.IList<ReportRequest.OrderByData> OrderBy { get; set; } 
 
@@ -1478,24 +1547,24 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         public virtual ReportRequest.ReportScopeData ReportScope { get; set; } 
 
         /// <summary>Determines the type of rows that are returned in the report. For example, if you specify
-        /// reportType: keyword, each row in the report will contain data about a keyword. See the Types of Reports
-        /// reference for the columns that are available for each type.</summary>
+        /// `reportType: keyword`, each row in the report will contain data about a keyword. See the [Types of Reports
+        /// ](/search-ads/v2/report-types/) reference for the columns that are available for each type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportType")]
         public virtual string ReportType { get; set; } 
 
         /// <summary>Synchronous report only. The maximum number of rows to return; additional rows are dropped.
-        /// Acceptable values are 0 to 10000, inclusive. Defaults to 10000.</summary>
+        /// Acceptable values are `0` to `10000`, inclusive. Defaults to `10000`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
         public virtual System.Nullable<int> RowCount { get; set; } 
 
-        /// <summary>Synchronous report only. Zero-based index of the first row to return. Acceptable values are 0 to
-        /// 50000, inclusive. Defaults to 0.</summary>
+        /// <summary>Synchronous report only. Zero-based index of the first row to return. Acceptable values are `0` to
+        /// `50000`, inclusive. Defaults to `0`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startRow")]
         public virtual System.Nullable<int> StartRow { get; set; } 
 
-        /// <summary>Specifies the currency in which monetary will be returned. Possible values are: usd, agency (valid
-        /// if the report is scoped to agency or lower), advertiser (valid if the report is scoped to * advertiser or
-        /// lower), or account (valid if the report is scoped to engine account or lower).</summary>
+        /// <summary>Specifies the currency in which monetary will be returned. Possible values are: `usd`, `agency`
+        /// (valid if the report is scoped to agency or lower), `advertiser` (valid if the report is scoped to *
+        /// advertiser or lower), or `account` (valid if the report is scoped to engine account or lower).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statisticsCurrency")]
         public virtual string StatisticsCurrency { get; set; } 
 
@@ -1504,8 +1573,8 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeRange")]
         public virtual ReportRequest.TimeRangeData TimeRange { get; set; } 
 
-        /// <summary>If true, the report would only be created if all the requested stat data are sourced from a single
-        /// timezone. Defaults to false.</summary>
+        /// <summary>If `true`, the report would only be created if all the requested stat data are sourced from a
+        /// single timezone. Defaults to `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifySingleTimeZone")]
         public virtual System.Nullable<bool> VerifySingleTimeZone { get; set; } 
 
@@ -1525,7 +1594,7 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("operator")]
             public virtual string Operator__ { get; set; } 
 
-            /// <summary>A list of values to filter the column value against. The maximum number of filter values per
+            /// <summary>A list of values to filter the column value against.\ The maximum number of filter values per
             /// request is 300.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("values")]
             public virtual System.Collections.Generic.IList<object> Values { get; set; } 
@@ -1539,7 +1608,7 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("column")]
             public virtual ReportApiColumnSpec Column { get; set; } 
 
-            /// <summary>The sort direction, which is either ascending or descending.</summary>
+            /// <summary>The sort direction, which is either `ascending` or `descending`.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("sortOrder")]
             public virtual string SortOrder { get; set; } 
 
@@ -1584,43 +1653,15 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         /// specific time range.</summary>
         public class TimeRangeData
         {
-            /// <summary>Inclusive UTC timestamp in RFC format, e.g., 2013-07-16T10:16:23.555Z. See additional
+            /// <summary>Inclusive UTC timestamp in RFC format, e.g., `2013-07-16T10:16:23.555Z`. See additional
             /// references on how changed attribute reports work.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("changedAttributesSinceTimestamp")]
-            public virtual string ChangedAttributesSinceTimestampRaw { get; set; }
+            public virtual string ChangedAttributesSinceTimestamp { get; set; } 
 
-            /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ChangedAttributesSinceTimestampRaw"/>.</summary>
-            [Newtonsoft.Json.JsonIgnore]
-            public virtual System.Nullable<System.DateTime> ChangedAttributesSinceTimestamp
-            {
-                get
-                {
-                    return Google.Apis.Util.Utilities.GetDateTimeFromString(ChangedAttributesSinceTimestampRaw);
-                }
-                set
-                {
-                    ChangedAttributesSinceTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-                }
-            }
-
-            /// <summary>Inclusive UTC timestamp in RFC format, e.g., 2013-07-16T10:16:23.555Z. See additional
+            /// <summary>Inclusive UTC timestamp in RFC format, e.g., `2013-07-16T10:16:23.555Z`. See additional
             /// references on how changed metrics reports work.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("changedMetricsSinceTimestamp")]
-            public virtual string ChangedMetricsSinceTimestampRaw { get; set; }
-
-            /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ChangedMetricsSinceTimestampRaw"/>.</summary>
-            [Newtonsoft.Json.JsonIgnore]
-            public virtual System.Nullable<System.DateTime> ChangedMetricsSinceTimestamp
-            {
-                get
-                {
-                    return Google.Apis.Util.Utilities.GetDateTimeFromString(ChangedMetricsSinceTimestampRaw);
-                }
-                set
-                {
-                    ChangedMetricsSinceTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-                }
-            }
+            public virtual string ChangedMetricsSinceTimestamp { get; set; } 
 
             /// <summary>Inclusive date in YYYY-MM-DD format.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("endDate")]

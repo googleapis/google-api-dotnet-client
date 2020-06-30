@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/spanner/'>Cloud Spanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200611 (1988)
+ *      <tr><th>API Rev<td>20200616 (1993)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/spanner/'>
  *              https://cloud.google.com/spanner/</a>
@@ -3733,7 +3733,8 @@ namespace Google.Apis.Spanner.v1
                 /// <summary>Returns the schema of a Cloud Spanner database as a list of formatted DDL statements. This
                 /// method does not show pending schema updates, those may be queried using the Operations
                 /// API.</summary>
-                /// <param name="database">Required. The database whose schema we wish to get.</param>
+                /// <param name="database">Required. The database whose schema we wish to get. Values are of the form
+                /// `projects//instances//databases/`</param>
                 public virtual GetDdlRequest GetDdl(string database)
                 {
                     return new GetDdlRequest(service, database);
@@ -3753,7 +3754,8 @@ namespace Google.Apis.Spanner.v1
                     }
 
 
-                    /// <summary>Required. The database whose schema we wish to get.</summary>
+                    /// <summary>Required. The database whose schema we wish to get. Values are of the form
+                    /// `projects//instances//databases/`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Database { get; private set; }
 
@@ -7333,9 +7335,10 @@ namespace Google.Apis.Spanner.v1.Data
 
     /// <summary># Transactions
     ///
-    /// Each session can have at most one active transaction at a time. After the active transaction is completed, the
-    /// session can immediately be re-used for the next transaction. It is not necessary to create a new session for
-    /// each transaction.
+    /// Each session can have at most one active transaction at a time (note that standalone reads and queries use a
+    /// transaction internally and do count towards the one transaction limit). After the active transaction is
+    /// completed, the session can immediately be re-used for the next transaction. It is not necessary to create a new
+    /// session for each transaction.
     ///
     /// # Transaction Modes
     ///

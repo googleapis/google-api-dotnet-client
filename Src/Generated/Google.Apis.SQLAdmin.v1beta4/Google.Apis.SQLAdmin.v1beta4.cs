@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-sql/'>Cloud SQL Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20200518 (1964)
+ *      <tr><th>API Rev<td>20200610 (1987)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-sql/'>
  *              https://developers.google.com/cloud-sql/</a>

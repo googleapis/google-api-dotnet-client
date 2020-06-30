@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Cloud Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200619 (1996)
+ *      <tr><th>API Rev<td>20200622 (1999)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -7075,9 +7075,9 @@ namespace Google.Apis.Monitoring.v3.Data
     /// used for both listing and creating time series.</summary>
     public class TimeSeries : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The associated monitored resource metadata. When reading a timeseries, this field will
-        /// include metadata labels that are explicitly named in the reduction. When creating a timeseries, this field
-        /// is ignored.</summary>
+        /// <summary>Output only. The associated monitored resource metadata. When reading a time series, this field
+        /// will include metadata labels that are explicitly named in the reduction. When creating a time series, this
+        /// field is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual MonitoredResourceMetadata Metadata { get; set; } 
 
@@ -7135,7 +7135,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A descriptor for the labels and points in a timeseries.</summary>
+    /// <summary>A descriptor for the labels and points in a time series.</summary>
     public class TimeSeriesDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Descriptors for the labels.</summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200603 (1980)
+ *      <tr><th>API Rev<td>20200617 (1994)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -4047,9 +4047,9 @@ namespace Google.Apis.Bigquery.v2.Data
     ///
     /// Example Policy with multiple AuditConfigs:
     ///
-    /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
-    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", }
-    /// ] }, { "service": "sampleservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, {
+    /// { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ]
+    /// }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, {
     /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
     ///
     /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
@@ -4072,7 +4072,7 @@ namespace Google.Apis.Bigquery.v2.Data
     /// <summary>Provides the configuration for logging a type of permissions. Example:
     ///
     /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
-    /// "log_type": "DATA_WRITE", } ] }
+    /// "log_type": "DATA_WRITE" } ] }
     ///
     /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
@@ -5898,9 +5898,18 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationEncryptionConfiguration")]
         public virtual EncryptionConfiguration DestinationEncryptionConfiguration { get; set; } 
 
+        /// <summary>[Optional] The time when the destination table expires. Expired tables will be deleted and their
+        /// storage reclaimed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationExpirationTime")]
+        public virtual object DestinationExpirationTime { get; set; } 
+
         /// <summary>[Required] The destination table</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationTable")]
         public virtual TableReference DestinationTable { get; set; } 
+
+        /// <summary>[Optional] Supported operation types in table copy job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
+        public virtual string OperationType { get; set; } 
 
         /// <summary>[Pick one] Source table to copy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTable")]
@@ -7049,6 +7058,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
+        /// <summary>Optional. [Experimental] The determinism level of the JavaScript UDF if defined.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("determinismLevel")]
+        public virtual string DeterminismLevel { get; set; } 
+
         /// <summary>Output only. A hash of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
@@ -7910,6 +7923,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Optimization strategy for training linear regression models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optimizationStrategy")]
         public virtual string OptimizationStrategy { get; set; } 
+
+        /// <summary>Whether to preserve the input structs in output feature names. Suppose there is a struct A with
+        /// field b. When false (default), the output feature name is A_b. When true, the output feature name is
+        /// A.b.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preserveInputStructs")]
+        public virtual System.Nullable<bool> PreserveInputStructs { get; set; } 
 
         /// <summary>Subsample fraction of the training data to grow tree to prevent overfitting for boosted tree
         /// models.</summary>

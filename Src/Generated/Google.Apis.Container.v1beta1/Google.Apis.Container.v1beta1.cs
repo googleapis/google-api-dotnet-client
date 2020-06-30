@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200529 (1975)
+ *      <tr><th>API Rev<td>20200603 (1980)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -6864,27 +6864,39 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.</summary>
     public class AutoprovisioningNodePoolDefaults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies the node management options for NAP created node-pools.</summary>
+        /// <summary>NodeManagement configuration for this NodePool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
         public virtual NodeManagement Management { get; set; } 
 
-        /// <summary>Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
-        /// specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as
-        /// minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to
-        /// specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset
-        /// the min cpu platform field pass "automatic" as field value.</summary>
+        /// <summary>Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or
+        /// newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel
+        /// Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU
+        /// platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu
+        /// platform field pass "automatic" as field value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; } 
 
-        /// <summary>Scopes that are used by NAP when creating node pools.</summary>
+        /// <summary>The set of Google API scopes to be made available on all of the node VMs under the "default"
+        /// service account.
+        ///
+        /// The following scopes are recommended, but not required, and by default are not included:
+        ///
+        /// * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. *
+        /// `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the
+        /// [Google Container Registry](https://cloud.google.com/container-registry/)).
+        ///
+        /// If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case
+        /// their required scopes will be added.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthScopes")]
         public virtual System.Collections.Generic.IList<string> OauthScopes { get; set; } 
 
-        /// <summary>The Google Cloud Platform Service Account to be used by the node VMs.</summary>
+        /// <summary>The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of
+        /// the Service Account; otherwise, if no Service Account is specified, the "default" service account is
+        /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; } 
 
-        /// <summary>Specifies the upgrade settings for NAP created node pools</summary>
+        /// <summary>Upgrade settings control disruption and speed of the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeSettings")]
         public virtual UpgradeSettings UpgradeSettings { get; set; } 
 
@@ -7555,7 +7567,7 @@ namespace Google.Apis.Container.v1beta1.Data
     public class CreateClusterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. A [cluster resource](https://cloud.google.com/container-
-        /// engine/reference/rest/v1beta1/projects.zones.clusters)</summary>
+        /// engine/reference/rest/v1beta1/projects.locations.clusters)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual Cluster Cluster { get; set; } 
 
@@ -8956,11 +8968,11 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("validImageTypes")]
         public virtual System.Collections.Generic.IList<string> ValidImageTypes { get; set; } 
 
-        /// <summary>List of valid master versions.</summary>
+        /// <summary>List of valid master versions, in descending order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validMasterVersions")]
         public virtual System.Collections.Generic.IList<string> ValidMasterVersions { get; set; } 
 
-        /// <summary>List of valid node upgrade target versions.</summary>
+        /// <summary>List of valid node upgrade target versions, in descending order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validNodeVersions")]
         public virtual System.Collections.Generic.IList<string> ValidNodeVersions { get; set; } 
 

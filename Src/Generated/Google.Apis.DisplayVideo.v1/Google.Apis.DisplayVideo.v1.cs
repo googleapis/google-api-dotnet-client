@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/display-video/'>Display & Video 360 API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200611 (1988)
+ *      <tr><th>API Rev<td>20200623 (2000)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/display-video/'>
  *              https://developers.google.com/display-video/</a>
@@ -267,6 +267,10 @@ namespace Google.Apis.DisplayVideo.v1
             Value2,
         }
 
+        /// <summary>OAuth access token.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string AccessToken { get; set; }
+
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
@@ -299,6 +303,10 @@ namespace Google.Apis.DisplayVideo.v1
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
+        /// <summary>OAuth 2.0 token for the current user.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string OauthToken { get; set; }
+
         /// <summary>Returns response with indentations and line breaks.</summary>
         /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
@@ -326,6 +334,15 @@ namespace Google.Apis.DisplayVideo.v1
                 "$.xgafv", new Google.Apis.Discovery.Parameter
                 {
                     Name = "$.xgafv",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "access_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "access_token",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -362,6 +379,15 @@ namespace Google.Apis.DisplayVideo.v1
                 "key", new Google.Apis.Discovery.Parameter
                 {
                     Name = "key",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "oauth_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "oauth_token",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -571,6 +597,10 @@ namespace Google.Apis.DisplayVideo.v1
                     Value2,
                 }
 
+                /// <summary>OAuth access token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string AccessToken { get; set; }
+
                 /// <summary>Data format for response.</summary>
                 /// [default: json]
                 [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
@@ -602,6 +632,10 @@ namespace Google.Apis.DisplayVideo.v1
                 /// reports. Required unless you provide an OAuth 2.0 token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Key { get; set; }
+
+                /// <summary>OAuth 2.0 token for the current user.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OauthToken { get; set; }
 
                 /// <summary>Returns response with indentations and line breaks.</summary>
                 /// [default: true]
@@ -1637,6 +1671,87 @@ namespace Google.Apis.DisplayVideo.v1
                 }
             }
 
+            /// <summary>Creates a new channel. Returns the newly created channel if successful.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">The ID of the advertiser that owns the created channel.</param>
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.Channel body, long advertiserId)
+            {
+                return new CreateRequest(service, body, advertiserId);
+            }
+
+            /// <summary>Creates a new channel. Returns the newly created channel if successful.</summary>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Channel>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Channel body, long advertiserId)
+                    : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The ID of the advertiser that owns the created channel.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>The ID of the partner that owns the created channel.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> PartnerId { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v1.Data.Channel Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/advertisers/{+advertiserId}/channels"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "partnerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "partnerId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
             /// <summary>Updates an existing inventory source. Returns the updated inventory source if successful. Gets
             /// a channel for a partner or advertiser.</summary>
             /// <param name="advertiserId">The ID of the advertiser that owns the fetched channel.</param>
@@ -2269,13 +2384,14 @@ namespace Google.Apis.DisplayVideo.v1
                 /// `)` there can only be restrictions combined by `OR` for the same field. * A restriction has the form
                 /// of `{field} {operator} {value}`. * The operator must be `EQUALS (=)` for the following fields: -
                 /// `entityStatus` - `creativeType`. - `dimensions` - `minDuration` - `maxDuration` - `approvalStatus` -
-                /// `exchangeReviewStatus` - `dynamic` * The operator must be `HAS (:)` for the following fields: -
-                /// `lineItemIds` * For `entityStatus`, `minDuration`, `maxDuration`, and `dynamic` there may be at most
-                /// one restriction. * For `dimensions`, the value is in the form of `"{width}x{height}"`. * For
-                /// `exchangeReviewStatus`, the value is in the form of `{exchange}-{reviewStatus}`. * For `minDuration`
-                /// and `maxDuration`, the value is in the form of `"{duration}s"`. Only seconds are supported with
-                /// millisecond granularity. * There may be multiple `lineItemIds` restrictions in order to search
-                /// against multiple possible line item IDs.
+                /// `exchangeReviewStatus` - `dynamic` - `creativeId` * The operator must be `HAS (:)` for the following
+                /// fields: - `lineItemIds` * For `entityStatus`, `minDuration`, `maxDuration`, and `dynamic` there may
+                /// be at most one restriction. * For `dimensions`, the value is in the form of `"{width}x{height}"`. *
+                /// For `exchangeReviewStatus`, the value is in the form of `{exchange}-{reviewStatus}`. * For
+                /// `minDuration` and `maxDuration`, the value is in the form of `"{duration}s"`. Only seconds are
+                /// supported with millisecond granularity. * There may be multiple `lineItemIds` restrictions in order
+                /// to search against multiple possible line item IDs. * There may be multiple `creativeId` restrictions
+                /// in order to search against multiple possible creative IDs.
                 ///
                 /// Examples:
                 ///
@@ -2285,7 +2401,8 @@ namespace Google.Apis.DisplayVideo.v1
                 /// duration of 5 seconds and 200ms. `dynamic="true" AND minDuration="5.2s" AND (exchangeReviewStatus
                 /// ="EXCHANGE_GOOGLE_AD_MANAGER-REVIEW_STATUS_APPROVED" OR exchangeReviewStatus="EXCHANGE_APPNEXUS-
                 /// REVIEW_STATUS_APPROVED")` * All video creatives that are associated with line item ID 1 or 2:
-                /// creativeType="CREATIVE_TYPE_VIDEO" AND (lineItemIds:1 OR lineItemIds:2)
+                /// `creativeType="CREATIVE_TYPE_VIDEO" AND (lineItemIds:1 OR lineItemIds:2)` * Find creatives by
+                /// multiple creative IDs: `creativeId=1 OR creativeId=2`
                 ///
                 /// The length of this field should be no more than 500 characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -10804,6 +10921,87 @@ namespace Google.Apis.DisplayVideo.v1
                 }
             }
 
+            /// <summary>Creates a new channel. Returns the newly created channel if successful.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="partnerId">The ID of the partner that owns the created channel.</param>
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.Channel body, long partnerId)
+            {
+                return new CreateRequest(service, body, partnerId);
+            }
+
+            /// <summary>Creates a new channel. Returns the newly created channel if successful.</summary>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Channel>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Channel body, long partnerId)
+                    : base(service)
+                {
+                    PartnerId = partnerId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The ID of the partner that owns the created channel.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long PartnerId { get; private set; }
+
+                /// <summary>The ID of the advertiser that owns the created channel.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v1.Data.Channel Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/partners/{+partnerId}/channels"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "partnerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "partnerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
             /// <summary>Updates an existing inventory source. Returns the updated inventory source if successful. Gets
             /// a channel for a partner or advertiser.</summary>
             /// <param name="partnerId">The ID of the partner that owns the fetched channel.</param>
@@ -12169,7 +12367,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     }    
 
     /// <summary>A single assigned targeting option, which defines the state of a targeting option for an entity with
-    /// targeting settings, such as a Line Item or Insertion Order.</summary>
+    /// targeting settings.</summary>
     public class AssignedTargetingOption : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Age range details. This field will be populated when the TargetingType is
@@ -14170,6 +14368,71 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// licensed to customers.</summary>
     public class FirstAndThirdPartyAudience : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The estimated audience size for the Display network in the past month.
+        ///
+        /// If the size is less than 1000, the number will be hidden and 0 will be returned due to privacy reasons.
+        /// Otherwise, the number will be rounded off to two significant digits.
+        ///
+        /// Only returned in GET request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeDisplayAudienceSize")]
+        public virtual System.Nullable<long> ActiveDisplayAudienceSize { get; set; } 
+
+        /// <summary>Output only. The source of the audience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audienceSource")]
+        public virtual string AudienceSource { get; set; } 
+
+        /// <summary>Output only. The type of the audience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audienceType")]
+        public virtual string AudienceType { get; set; } 
+
+        /// <summary>Output only. The description of the first and third party audience.
+        ///
+        /// Only applicable to first party audiences.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Output only. The estimated audience size for the Display network.
+        ///
+        /// If the size is less than 1000, the number will be hidden and 0 will be returned due to privacy reasons.
+        /// Otherwise, the number will be rounded off to two significant digits.
+        ///
+        /// Only returned in GET request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayAudienceSize")]
+        public virtual System.Nullable<long> DisplayAudienceSize { get; set; } 
+
+        /// <summary>Output only. The estimated desktop audience size in Display network.
+        ///
+        /// If the size is less than 1000, the number will be hidden and 0 will be returned due to privacy reasons.
+        /// Otherwise, the number will be rounded off to two significant digits.
+        ///
+        /// Only applicable to first party audiences.
+        ///
+        /// Only returned in GET request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayDesktopAudienceSize")]
+        public virtual System.Nullable<long> DisplayDesktopAudienceSize { get; set; } 
+
+        /// <summary>Output only. The estimated mobile app audience size in Display network.
+        ///
+        /// If the size is less than 1000, the number will be hidden and 0 will be returned due to privacy reasons.
+        /// Otherwise, the number will be rounded off to two significant digits.
+        ///
+        /// Only applicable to first party audiences.
+        ///
+        /// Only returned in GET request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayMobileAppAudienceSize")]
+        public virtual System.Nullable<long> DisplayMobileAppAudienceSize { get; set; } 
+
+        /// <summary>Output only. The estimated mobile web audience size in Display network.
+        ///
+        /// If the size is less than 1000, the number will be hidden and 0 will be returned due to privacy reasons.
+        /// Otherwise, the number will be rounded off to two significant digits.
+        ///
+        /// Only applicable to first party audiences.
+        ///
+        /// Only returned in GET request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayMobileWebAudienceSize")]
+        public virtual System.Nullable<long> DisplayMobileWebAudienceSize { get; set; } 
+
         /// <summary>Output only. The display name of the first and third party audience. .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
@@ -14182,9 +14445,37 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("firstAndThirdPartyAudienceType")]
         public virtual string FirstAndThirdPartyAudienceType { get; set; } 
 
+        /// <summary>Output only. The estimated audience size for Gmail network.
+        ///
+        /// If the size is less than 1000, the number will be hidden and 0 will be returned due to privacy reasons.
+        /// Otherwise, the number will be rounded off to two significant digits.
+        ///
+        /// Only applicable to first party audiences.
+        ///
+        /// Only returned in GET request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gmailAudienceSize")]
+        public virtual System.Nullable<long> GmailAudienceSize { get; set; } 
+
+        /// <summary>Output only. The duration in days that an entry remains in the audience after the qualifying event.
+        ///
+        /// Only applicable to first party audiences.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipDurationDays")]
+        public virtual System.Nullable<long> MembershipDurationDays { get; set; } 
+
         /// <summary>Output only. The resource name of the first and third party audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Output only. The estimated audience size for YouTube network.
+        ///
+        /// If the size is less than 1000, the number will be hidden and 0 will be returned due to privacy reasons.
+        /// Otherwise, the number will be rounded off to two significant digits.
+        ///
+        /// Only applicable to first party audiences.
+        ///
+        /// Only returned in GET request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeAudienceSize")]
+        public virtual System.Nullable<long> YoutubeAudienceSize { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

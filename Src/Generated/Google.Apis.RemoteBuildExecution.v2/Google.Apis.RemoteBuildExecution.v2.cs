@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200617 (1994)
+ *      <tr><th>API Rev<td>20200623 (2000)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -3048,7 +3048,7 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reserved")]
         public virtual System.Nullable<bool> Reserved { get; set; } 
 
-        /// <summary>Output only. The name of the image used by each VM.</summary>
+        /// <summary>The name of the image used by each VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmImage")]
         public virtual string VmImage { get; set; } 
 

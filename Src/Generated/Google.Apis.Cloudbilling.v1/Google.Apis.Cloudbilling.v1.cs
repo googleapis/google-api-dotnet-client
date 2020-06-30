@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/billing/'>Cloud Billing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200526 (1972)
+ *      <tr><th>API Rev<td>20200623 (2000)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/billing/'>
  *              https://cloud.google.com/billing/</a>
@@ -1495,9 +1495,9 @@ namespace Google.Apis.Cloudbilling.v1.Data
     ///
     /// Example Policy with multiple AuditConfigs:
     ///
-    /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
-    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", }
-    /// ] }, { "service": "sampleservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, {
+    /// { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ]
+    /// }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, {
     /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
     ///
     /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
@@ -1520,7 +1520,7 @@ namespace Google.Apis.Cloudbilling.v1.Data
     /// <summary>Provides the configuration for logging a type of permissions. Example:
     ///
     /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
-    /// "log_type": "DATA_WRITE", } ] }
+    /// "log_type": "DATA_WRITE" } ] }
     ///
     /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
@@ -1703,6 +1703,22 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Encapsulates the geographic taxonomy data for a sku.</summary>
+    public class GeoTaxonomy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of regions associated with a sku. Empty for Global skus, which are associated with all GCP
+        /// regions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regions")]
+        public virtual System.Collections.Generic.IList<string> Regions { get; set; } 
+
+        /// <summary>The type of Geo Taxonomy: GLOBAL, REGIONAL, or MULTI_REGIONAL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2047,6 +2063,10 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// <summary>A human readable description of the SKU, has a maximum length of 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
+
+        /// <summary>The geographic taxonomy for this sku.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoTaxonomy")]
+        public virtual GeoTaxonomy GeoTaxonomy { get; set; } 
 
         /// <summary>The resource name for the SKU. Example: "services/DA34-426B-A397/skus/AA95-CD31-42FE"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

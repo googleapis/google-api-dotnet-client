@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20200611 (1988)
+ *      <tr><th>API Rev<td>20200619 (1996)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -160,6 +160,10 @@ namespace Google.Apis.Dataproc.v1beta2
             Value2,
         }
 
+        /// <summary>OAuth access token.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string AccessToken { get; set; }
+
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
@@ -192,6 +196,10 @@ namespace Google.Apis.Dataproc.v1beta2
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
+        /// <summary>OAuth 2.0 token for the current user.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string OauthToken { get; set; }
+
         /// <summary>Returns response with indentations and line breaks.</summary>
         /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
@@ -219,6 +227,15 @@ namespace Google.Apis.Dataproc.v1beta2
                 "$.xgafv", new Google.Apis.Discovery.Parameter
                 {
                     Name = "$.xgafv",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "access_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "access_token",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -255,6 +272,15 @@ namespace Google.Apis.Dataproc.v1beta2
                 "key", new Google.Apis.Discovery.Parameter
                 {
                     Name = "key",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "oauth_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "oauth_token",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -6513,7 +6539,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         public virtual SoftwareConfig SoftwareConfig { get; set; } 
 
         /// <summary>Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and
-        /// MapReduce history files. If you do not specify a temp bucket, Cloud Dataproc will determine a Cloud Storage
+        /// MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage
         /// location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your
         /// cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket
         /// has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.</summary>
@@ -7254,7 +7280,8 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
         public virtual string JobId { get; set; } 
 
-        /// <summary>Required. The ID of the Google Cloud Platform project that the job belongs to.</summary>
+        /// <summary>Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must
+        /// match the request project ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
@@ -8272,6 +8299,20 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createCluster")]
         public virtual ClusterOperation CreateCluster { get; set; } 
 
+        /// <summary>Output only. DAG end time, only set for workflows with dag_timeout when DAG ends.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dagEndTime")]
+        public virtual object DagEndTime { get; set; } 
+
+        /// <summary>Output only. DAG start time, only set for workflows with dag_timeout when DAG begins.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dagStartTime")]
+        public virtual object DagStartTime { get; set; } 
+
+        /// <summary>Output only. The timeout duration for the DAG of jobs. Minimum timeout duration is 10 minutes and
+        /// maximum is 24 hours, expressed as a google.protobuf.Duration. For example, "1800" = 1800 seconds/30 minutes
+        /// duration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dagTimeout")]
+        public virtual object DagTimeout { get; set; } 
+
         /// <summary>Output only. The delete cluster operation metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteCluster")]
         public virtual ClusterOperation DeleteCluster { get; set; } 
@@ -8340,12 +8381,17 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Dataproc workflow template resource. Next ID: 11</summary>
+    /// <summary>A Dataproc workflow template resource.</summary>
     public class WorkflowTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The time template was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
+
+        /// <summary>Optional. Timeout for DAG of jobs. The timer begins when the first job is submitted. Minimum
+        /// duration of 10 minutes, max of 24 hours.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dagTimeout")]
+        public virtual object DagTimeout { get; set; } 
 
         /// <summary>Required. The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores
         /// (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50

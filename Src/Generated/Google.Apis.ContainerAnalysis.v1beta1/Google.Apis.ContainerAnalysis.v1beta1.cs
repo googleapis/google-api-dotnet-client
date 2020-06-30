@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-analysis/api/reference/rest/'>Container Analysis API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200512 (1958)
+ *      <tr><th>API Rev<td>20200619 (1996)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-analysis/api/reference/rest/'>
  *              https://cloud.google.com/container-analysis/api/reference/rest/</a>
@@ -3997,7 +3997,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
     public class Signature : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The identifier for the public key that verifies this signature. * The `public_key_id` is required.
-        /// * The `public_key_id` MUST be an RFC3986 conformant URI. * When possible, the `public_key_id` SHOULD be an
+        /// * The `public_key_id` SHOULD be an RFC3986 conformant URI. * When possible, the `public_key_id` SHOULD be an
         /// immutable reference, such as a cryptographic digest.
         ///
         /// Examples of valid `public_key_id`s:

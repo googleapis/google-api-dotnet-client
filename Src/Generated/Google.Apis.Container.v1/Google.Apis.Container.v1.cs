@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200529 (1975)
+ *      <tr><th>API Rev<td>20200603 (1980)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -6718,6 +6718,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRunConfig")]
         public virtual CloudRunConfig CloudRunConfig { get; set; } 
 
+        /// <summary>Configuration for NodeLocalDNS, a dns cache running on cluster nodes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsCacheConfig")]
+        public virtual DnsCacheConfig DnsCacheConfig { get; set; } 
+
         /// <summary>Configuration for the horizontal pod autoscaling feature, which increases or decreases the number
         /// of replica pods a replication controller has based on the resource usage of the existing pods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalPodAutoscaling")]
@@ -6934,8 +6938,8 @@ namespace Google.Apis.Container.v1.Data
         public virtual System.Nullable<int> CurrentNodeCount { get; set; } 
 
         /// <summary>[Output only] Deprecated, use [NodePools.version](https://cloud.google.com/kubernetes-
-        /// engine/docs/reference/rest/v1/projects.zones.clusters.nodePools) instead. The current version of the node
-        /// software components. If they are currently at multiple versions because they're in the process of being
+        /// engine/docs/reference/rest/v1/projects.locations.clusters.nodePools) instead. The current version of the
+        /// node software components. If they are currently at multiple versions because they're in the process of being
         /// upgraded, this reflects the minimum version of all nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentNodeVersion")]
         public virtual string CurrentNodeVersion { get; set; } 
@@ -7359,7 +7363,7 @@ namespace Google.Apis.Container.v1.Data
     public class CreateClusterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. A [cluster resource](https://cloud.google.com/container-
-        /// engine/reference/rest/v1/projects.zones.clusters)</summary>
+        /// engine/reference/rest/v1/projects.locations.clusters)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual Cluster Cluster { get; set; } 
 
@@ -7447,6 +7451,17 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Denotes the state of etcd encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration for NodeLocal DNSCache</summary>
+    public class DnsCacheConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether NodeLocal DNSCache is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8559,11 +8574,11 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("validImageTypes")]
         public virtual System.Collections.Generic.IList<string> ValidImageTypes { get; set; } 
 
-        /// <summary>List of valid master versions.</summary>
+        /// <summary>List of valid master versions, in descending order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validMasterVersions")]
         public virtual System.Collections.Generic.IList<string> ValidMasterVersions { get; set; } 
 
-        /// <summary>List of valid node upgrade target versions.</summary>
+        /// <summary>List of valid node upgrade target versions, in descending order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validNodeVersions")]
         public virtual System.Collections.Generic.IList<string> ValidNodeVersions { get; set; } 
 
