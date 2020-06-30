@@ -15,10 +15,17 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2;
+using Google.Apis.BigtableAdmin.v2;
+using Google.Apis.BigtableAdmin.v2.Data;
 using Google.Apis.Services;
 using Google.Apis.Storage.v1;
 using Google.Apis.Storage.v1.Data;
 using IntegrationTests.Utils;
+using System;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace IntegrationTests
@@ -48,6 +55,39 @@ namespace IntegrationTests
 
             // A final sanity-check.
             Assert.NotNull(buckets.Items);
+        }
+
+        [Fact]
+        public async Task JwtAccessToken_Http()
+        {
+            // See: https://developers.google.com/identity/protocols/oauth2/service-account#jwt-auth
+
+            ServiceAccountCredential credential = Helper.GetServiceCredential().UnderlyingCredential as ServiceAccountCredential;
+            string token = await credential.GetAccessTokenForRequestAsync("https://bigtableadmin.googleapis.com/");
+
+            using HttpClient client = new HttpClient();
+            HttpRequestMessage request = new HttpRequestMessage();
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            //request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            request.RequestUri = new Uri($"https://bigtableadmin.googleapis.com/v2/projects/{Helper.GetProjectId()}/instances");
+
+            HttpResponseMessage response = await client.SendAsync(request);
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [Fact]
+        public void JwtAccessToken_RestClient()
+        {
+            // See: https://developers.google.com/identity/protocols/oauth2/service-account#jwt-auth
+
+            BigtableAdminService service = new BigtableAdminService(new BaseClientService.Initializer
+            {
+                HttpClientInitializer = Helper.GetServiceCredential()
+            });
+            
+            ListInstancesResponse response = service.Projects.Instances.List($"projects/{Helper.GetProjectId()}").Execute();
+
+            Assert.NotNull(response);
         }
     }
 }

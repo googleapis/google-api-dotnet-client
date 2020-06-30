@@ -83,6 +83,11 @@ namespace Google.Apis.Auth.OAuth2
             /// </summary>
             public RsaKey Key { get; set; }
 
+            /// <summary>
+            /// Gets or sets the service account key ID.
+            /// </summary>
+            public string KeyId { get; set; }
+
             /// <summary>Constructs a new initializer using the given id.</summary>
             public Initializer(string id)
                 : this(id, GoogleAuthConsts.OidcTokenUrl) { }
@@ -101,6 +106,7 @@ namespace Google.Apis.Auth.OAuth2
                 User = other.User;
                 Scopes = other.Scopes;
                 Key = other.Key;
+                KeyId = other.KeyId;
             }
 
             /// <summary>Extracts the <see cref="Key"/> from the given PKCS8 private key.</summary>
@@ -133,13 +139,8 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>Unix epoch as a <c>DateTime</c></summary>
         protected static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
-        private readonly string id;
-        private readonly string user;
-        private readonly IEnumerable<string> scopes;
-        private readonly RsaKey key;
-
         /// <summary>Gets the service account ID (typically an e-mail address).</summary>
-        public string Id { get { return id; } }
+        public string Id { get; private set; }
 
         /// <summary>
         /// The project ID associated with this credential.
@@ -150,28 +151,34 @@ namespace Google.Apis.Auth.OAuth2
         /// Gets the email address of the user the application is trying to impersonate in the service account flow 
         /// or <c>null</c>.
         /// </summary>
-        public string User { get { return user; } }
+        public string User { get; private set; }
 
         /// <summary>Gets the service account scopes.</summary>
-        public IEnumerable<string> Scopes { get { return scopes; } }
+        public IEnumerable<string> Scopes { get; private set; }
 
         /// <summary>
         /// Gets the key which is used to sign the request, as specified in
         /// https://developers.google.com/accounts/docs/OAuth2ServiceAccount#computingsignature.
         /// </summary>
-        public RsaKey Key { get { return key; } }
+        public RsaKey Key { get; private set; }
+
+        /// <summary>
+        /// Gets the key id of the key which is used to sign the request.
+        /// </summary>
+        public string KeyId { get; }
 
         /// <summary><c>true</c> if this credential has any scopes associated with it.</summary>
-        internal bool HasScopes { get { return scopes != null && scopes.Any(); } }
+        internal bool HasScopes { get { return Scopes != null && Scopes.Any(); } }
 
         /// <summary>Constructs a new service account credential using the given initializer.</summary>
         public ServiceAccountCredential(Initializer initializer) : base(initializer)
         {
-            id = initializer.Id.ThrowIfNullOrEmpty("initializer.Id");
+            Id = initializer.Id.ThrowIfNullOrEmpty("initializer.Id");
             ProjectId = initializer.ProjectId;
-            user = initializer.User;
-            scopes = initializer.Scopes;
-            key = initializer.Key.ThrowIfNull("initializer.Key");
+            User = initializer.User;
+            Scopes = initializer.Scopes;
+            Key = initializer.Key.ThrowIfNull("initializer.Key");
+            KeyId = initializer.KeyId;
         }
 
         /// <summary>
@@ -230,9 +237,9 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="authUri">The URI the returned token will grant access to.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The access token.</returns>
-        public override async Task<string> GetAccessTokenForRequestAsync(string authUri = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+        public override async Task<string> GetAccessTokenForRequestAsync(string authUri = null, CancellationToken cancellationToken = default)
         {
+            // See: https://developers.google.com/identity/protocols/oauth2/service-account#jwt-auth
             if (!HasScopes && authUri != null)
             {
                 return await GetOrCreateJwtAccessTokenAsync(authUri).ConfigureAwait(false);
@@ -396,9 +403,9 @@ namespace Google.Apis.Auth.OAuth2
             {
                 byte[] assertionHash = hashAlg.ComputeHash(data);
 #if NETSTANDARD1_3 || NETSTANDARD2_0
-                var sigBytes = key.SignHash(assertionHash, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+                var sigBytes = Key.SignHash(assertionHash, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
 #elif NET45
-                var sigBytes = key.SignHash(assertionHash, Sha256Oid);
+                var sigBytes = Key.SignHash(assertionHash, Sha256Oid);
 #else
 #error Unsupported target
 #endif
@@ -410,12 +417,13 @@ namespace Google.Apis.Auth.OAuth2
         /// Creates a serialized header as specified in 
         /// https://developers.google.com/accounts/docs/OAuth2ServiceAccount#formingheader.
         /// </summary>
-        private static string CreateSerializedHeader()
+        private string CreateSerializedHeader()
         {
             var header = new GoogleJsonWebSignature.Header()
             {
                 Algorithm = "RS256",
-                Type = "JWT"
+                Type = "JWT",
+                KeyId = KeyId
             };
 
             return NewtonsoftJsonSerializer.Instance.Serialize(header);
