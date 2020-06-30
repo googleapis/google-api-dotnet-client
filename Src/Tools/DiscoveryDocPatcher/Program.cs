@@ -40,7 +40,11 @@ namespace DiscoveryDocPatcher
 
         static void PatchGames(string rootPath)
         {
-            var patcher = Patcher.Load(Path.Combine(rootPath, "games_v1.json"));
+            var patcher = IfFileExists(() => Patcher.Load(Path.Combine(rootPath, "games_v1.json")));
+            if (patcher is null)
+            {
+                return;
+            }
             // Remove deprecated enum value that causes duplicate C# enum value.
             patcher.Remove("resources.players.methods.list.parameters.collection.enum[2]", "'playedWith'", "'played_with'");
             // There are now two descriptions that look the same. We just want to remove the first of them.
@@ -52,7 +56,11 @@ namespace DiscoveryDocPatcher
 
         static void PatchDirectory(string rootPath)
         {
-            var patcher = Patcher.Load(Path.Combine(rootPath, "admin_directory_v1.json"));
+            var patcher = IfFileExists(() => Patcher.Load(Path.Combine(rootPath, "admin_directory_v1.json")));
+            if (patcher is null)
+            {
+                return;
+            }
             // Strongly-type properties that are defined without typing.
             patcher.Replace("schemas.User.properties.addresses", "{ 'type': 'any' }", "{ 'type': 'array', 'items': { '$ref': 'UserAddress' } }");
             patcher.Replace("schemas.User.properties.emails", "{ 'type': 'any' }", "{ 'type': 'array', 'items': { '$ref': 'UserEmail' } }");
@@ -65,6 +73,18 @@ namespace DiscoveryDocPatcher
             patcher.Replace("schemas.Aliases.properties.aliases.items", "{ 'type': 'any' }", "{ '$ref': 'Alias' }");
             patcher.SaveWithBackup();
 
+        }
+
+        static T IfFileExists<T>(Func<T> fn)
+        {
+            try
+            {
+                return fn();
+            }
+            catch (FileNotFoundException)
+            {
+                return default;
+            }
         }
     }
 }

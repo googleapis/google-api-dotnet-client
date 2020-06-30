@@ -39,7 +39,13 @@ namespace DiscoveryDocPatcher
         {
             if (changed)
             {
-                File.Move(_path, _path + ".original");
+                var destFilename = _path + ".original";
+                try
+                {
+                    File.Delete(destFilename);
+                }
+                catch (FileNotFoundException) { }
+                File.Move(_path, destFilename);
                 string json = _json.ToString();
                 File.WriteAllText(_path, json);
             }
