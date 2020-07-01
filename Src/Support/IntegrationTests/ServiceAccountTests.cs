@@ -62,13 +62,12 @@ namespace IntegrationTests
         {
             // See: https://developers.google.com/identity/protocols/oauth2/service-account#jwt-auth
 
-            ServiceAccountCredential credential = Helper.GetServiceCredential().UnderlyingCredential as ServiceAccountCredential;
+            ServiceAccountCredential credential = Helper.GetServiceCredential().CreateScoped().UnderlyingCredential as ServiceAccountCredential;
             string token = await credential.GetAccessTokenForRequestAsync("https://bigtableadmin.googleapis.com/");
 
             using HttpClient client = new HttpClient();
             HttpRequestMessage request = new HttpRequestMessage();
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            //request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             request.RequestUri = new Uri($"https://bigtableadmin.googleapis.com/v2/projects/{Helper.GetProjectId()}/instances");
 
             HttpResponseMessage response = await client.SendAsync(request);
@@ -82,7 +81,7 @@ namespace IntegrationTests
 
             BigtableAdminService service = new BigtableAdminService(new BaseClientService.Initializer
             {
-                HttpClientInitializer = Helper.GetServiceCredential()
+                HttpClientInitializer = Helper.GetServiceCredential().CreateScoped()
             });
             
             ListInstancesResponse response = service.Projects.Instances.List($"projects/{Helper.GetProjectId()}").Execute();

@@ -140,27 +140,27 @@ namespace Google.Apis.Auth.OAuth2
         protected static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         /// <summary>Gets the service account ID (typically an e-mail address).</summary>
-        public string Id { get; private set; }
+        public string Id { get; }
 
         /// <summary>
         /// The project ID associated with this credential.
         /// </summary>
-        public string ProjectId { get; private set; }
+        public string ProjectId { get; }
 
         /// <summary>
         /// Gets the email address of the user the application is trying to impersonate in the service account flow 
         /// or <c>null</c>.
         /// </summary>
-        public string User { get; private set; }
+        public string User { get; }
 
         /// <summary>Gets the service account scopes.</summary>
-        public IEnumerable<string> Scopes { get; private set; }
+        public IEnumerable<string> Scopes { get; }
 
         /// <summary>
         /// Gets the key which is used to sign the request, as specified in
         /// https://developers.google.com/accounts/docs/OAuth2ServiceAccount#computingsignature.
         /// </summary>
-        public RsaKey Key { get; private set; }
+        public RsaKey Key { get; }
 
         /// <summary>
         /// Gets the key id of the key which is used to sign the request.
@@ -168,7 +168,7 @@ namespace Google.Apis.Auth.OAuth2
         public string KeyId { get; }
 
         /// <summary><c>true</c> if this credential has any scopes associated with it.</summary>
-        internal bool HasScopes { get { return Scopes != null && Scopes.Any(); } }
+        internal bool HasScopes => Scopes?.Any() == true;
 
         /// <summary>Constructs a new service account credential using the given initializer.</summary>
         public ServiceAccountCredential(Initializer initializer) : base(initializer)
