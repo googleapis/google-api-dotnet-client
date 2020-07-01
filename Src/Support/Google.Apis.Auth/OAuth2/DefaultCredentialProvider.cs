@@ -264,7 +264,8 @@ namespace Google.Apis.Auth.OAuth2
             var initializer = new ServiceAccountCredential.Initializer(credentialParameters.ClientEmail)
             {
                 ProjectId = credentialParameters.ProjectId,
-                QuotaProject = credentialParameters.QuotaProject
+                QuotaProject = credentialParameters.QuotaProject,
+                KeyId = credentialParameters.PrivateKeyId
             };
             return new ServiceAccountCredential(initializer.FromPrivateKey(credentialParameters.PrivateKey));
         }

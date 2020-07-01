@@ -173,7 +173,8 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         public async Task InterceptAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            var accessToken = await GetAccessTokenWithHeadersForRequestAsync(request.RequestUri.AbsoluteUri, cancellationToken).ConfigureAwait(false);
+            var audience = new UriBuilder(request.RequestUri) { Query = string.Empty, Path = string.Empty }.Uri.ToString();
+            var accessToken = await GetAccessTokenWithHeadersForRequestAsync(audience, cancellationToken).ConfigureAwait(false);
             AccessMethod.Intercept(request, accessToken.AccessToken);
             accessToken.AddHeaders(request);
         }

@@ -89,6 +89,13 @@ namespace Google.Apis.Auth.OAuth2
         public string PrivateKey { get; set; }
 
         /// <summary>
+        /// Private Key ID associated with ServiceAccountCredential obtained from
+        /// <a href="https://console.developers.google.com">Google Developers Console</a>.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("private_key_id")]
+        public string PrivateKeyId { get; set; }
+
+        /// <summary>
         /// Refresh Token associated with UserCredential created by
         /// <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">GCloud Auth Login</a>.
         /// </summary>
