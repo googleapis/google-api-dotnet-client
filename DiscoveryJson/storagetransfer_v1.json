@@ -396,7 +396,7 @@
    }
   }
  }, 
- "revision": "20200619", 
+ "revision": "20200629", 
  "rootUrl": "https://storagetransfer.googleapis.com/", 
  "schemas": {
   "AwsAccessKey": {
