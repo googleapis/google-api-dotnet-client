@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataflow'>Dataflow API</a>
  *      <tr><th>API Version<td>v1b3
- *      <tr><th>API Rev<td>20200619 (1996)
+ *      <tr><th>API Rev<td>20200602 (1979)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataflow'>
  *              https://cloud.google.com/dataflow</a>
@@ -7219,11 +7219,6 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobName")]
         public virtual string JobName { get; set; } 
 
-        /// <summary>Launch options for this flex template job. This is a common set of options across languages and
-        /// templates. This should not be used to pass job parameters.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("launchOptions")]
-        public virtual System.Collections.Generic.IDictionary<string,string> LaunchOptions { get; set; } 
-
         /// <summary>The parameters for FlexTemplate. Ex. {"num_workers":"5"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string,string> Parameters { get; set; } 
@@ -9378,12 +9373,6 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>The Dataflow service's idea of the current state of a WorkItem being processed by a worker.</summary>
     public class WorkItemServiceState : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set, a request to complete the work item with the given status. This will not be set to OK,
-        /// unless supported by the specific kind of WorkItem. It can be used for the backend to indicate a WorkItem
-        /// must terminate, e.g., for aborting work.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("completeWorkStatus")]
-        public virtual Status CompleteWorkStatus { get; set; } 
-
         /// <summary>Other data returned by the service, specific to the particular worker harness.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("harnessData")]
         public virtual System.Collections.Generic.IDictionary<string,object> HarnessData { get; set; } 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200615 (1992)
+ *      <tr><th>API Rev<td>20200618 (1995)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -10548,6 +10548,12 @@ namespace Google.Apis.Drive.v2.Data
             /// not a folder.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canAddChildren")]
             public virtual System.Nullable<bool> CanAddChildren { get; set; } 
+
+            /// <summary>Whether the current user can add a folder from another drive (different shared drive or My
+            /// Drive) to this folder. This is false when the item is not a folder. Only populated for items in shared
+            /// drives.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canAddFolderFromAnotherDrive")]
+            public virtual System.Nullable<bool> CanAddFolderFromAnotherDrive { get; set; } 
 
             /// <summary>Whether the current user can add a parent for the item without removing an existing parent in
             /// the same request. Not populated for shared drive files.</summary>

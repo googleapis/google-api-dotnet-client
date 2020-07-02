@@ -19,12 +19,12 @@
 
 /**
  * \brief
- *   Cloud Run Admin API Version v1
+ *   Cloud Run API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/run/'>Cloud Run Admin API</a>
+ *          <td><a href='https://cloud.google.com/run/'>Cloud Run API</a>
  *      <tr><th>API Version<td>v1
  *      <tr><th>API Rev<td>20200622 (1999)
  *      <tr><th>API Docs
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Cloud Run Admin API can be found at
+ * The complete API documentation for using Cloud Run API can be found at
  * <a href='https://cloud.google.com/run/'>https://cloud.google.com/run/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -111,7 +111,7 @@ namespace Google.Apis.CloudRun.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Run Admin API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Run API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -119,7 +119,7 @@ namespace Google.Apis.CloudRun.v1
 
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Run Admin API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Run API.</summary>
         public static class ScopeConstants
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -7116,13 +7116,6 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountName")]
         public virtual string ServiceAccountName { get; set; } 
 
-        /// <summary>TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
-        ///
-        /// Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 900 seconds (15
-        /// minutes).
-        ///
-        /// Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the
-        /// cluster operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutSeconds")]
         public virtual System.Nullable<int> TimeoutSeconds { get; set; } 
 

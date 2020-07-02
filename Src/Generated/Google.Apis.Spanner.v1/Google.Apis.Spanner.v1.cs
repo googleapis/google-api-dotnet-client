@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/spanner/'>Cloud Spanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200616 (1993)
+ *      <tr><th>API Rev<td>20200623 (2000)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/spanner/'>
  *              https://cloud.google.com/spanner/</a>
@@ -2475,7 +2475,12 @@ namespace Google.Apis.Spanner.v1
                     /// `Commit` might return an `ABORTED` error. This can occur at any time; commonly, the cause is
                     /// conflicts with concurrent transactions. However, it can also happen for a variety of other
                     /// reasons. If `Commit` returns `ABORTED`, the caller should re-attempt the transaction from the
-                    /// beginning, re-using the same session.</summary>
+                    /// beginning, re-using the same session.
+                    ///
+                    /// On very rare occasions, `Commit` might return `UNKNOWN`. This can happen, for example, if the
+                    /// client job experiences a 1+ hour networking failure. At that point, Cloud Spanner has lost track
+                    /// of the transaction outcome and we recommend that you perform another read from the database to
+                    /// see the state of things as they are now.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="session">Required. The session in which the transaction to be committed is running.</param>
                     public virtual CommitRequest Commit(Google.Apis.Spanner.v1.Data.CommitRequest body, string session)
@@ -2489,7 +2494,12 @@ namespace Google.Apis.Spanner.v1
                     /// `Commit` might return an `ABORTED` error. This can occur at any time; commonly, the cause is
                     /// conflicts with concurrent transactions. However, it can also happen for a variety of other
                     /// reasons. If `Commit` returns `ABORTED`, the caller should re-attempt the transaction from the
-                    /// beginning, re-using the same session.</summary>
+                    /// beginning, re-using the same session.
+                    ///
+                    /// On very rare occasions, `Commit` might return `UNKNOWN`. This can happen, for example, if the
+                    /// client job experiences a 1+ hour networking failure. At that point, Cloud Spanner has lost track
+                    /// of the transaction outcome and we recommend that you perform another read from the database to
+                    /// see the state of things as they are now.</summary>
                     public class CommitRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.CommitResponse>
                     {
                         /// <summary>Constructs a new Commit request.</summary>

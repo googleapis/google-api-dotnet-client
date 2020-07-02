@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/billing/docs/how-to/budget-api-overview'>Cloud Billing Budget API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200626 (2003)
+ *      <tr><th>API Rev<td>20200619 (1996)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/billing/docs/how-to/budget-api-overview'>
  *              https://cloud.google.com/billing/docs/how-to/budget-api-overview</a>
@@ -870,8 +870,8 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
 
         /// <summary>Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying that usage
         /// from only this set of subaccounts should be included in the budget. If a subaccount is set to the name of
-        /// the resller account, usage from the reseller account will be included. If omitted, the report will include
-        /// usage from the reseller account and all subaccounts, if they exist.</summary>
+        /// the master account, usage from the master account will be included. If omitted, the report will include
+        /// usage from the master account and all subaccounts, if they exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccounts")]
         public virtual System.Collections.Generic.IList<string> Subaccounts { get; set; } 
 

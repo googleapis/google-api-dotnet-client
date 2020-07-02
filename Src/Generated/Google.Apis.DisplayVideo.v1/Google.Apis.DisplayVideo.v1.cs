@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/display-video/'>Display & Video 360 API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200623 (2000)
+ *      <tr><th>API Rev<td>20200630 (2007)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/display-video/'>
  *              https://developers.google.com/display-video/</a>
@@ -1752,8 +1752,7 @@ namespace Google.Apis.DisplayVideo.v1
 
             }
 
-            /// <summary>Updates an existing inventory source. Returns the updated inventory source if successful. Gets
-            /// a channel for a partner or advertiser.</summary>
+            /// <summary>Gets a channel for a partner or advertiser.</summary>
             /// <param name="advertiserId">The ID of the advertiser that owns the fetched channel.</param>
             /// <param
             /// name="channelId">Required. The ID of the channel to fetch.</param>
@@ -1762,8 +1761,7 @@ namespace Google.Apis.DisplayVideo.v1
                 return new GetRequest(service, advertiserId, channelId);
             }
 
-            /// <summary>Updates an existing inventory source. Returns the updated inventory source if successful. Gets
-            /// a channel for a partner or advertiser.</summary>
+            /// <summary>Gets a channel for a partner or advertiser.</summary>
             public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Channel>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -11002,8 +11000,7 @@ namespace Google.Apis.DisplayVideo.v1
 
             }
 
-            /// <summary>Updates an existing inventory source. Returns the updated inventory source if successful. Gets
-            /// a channel for a partner or advertiser.</summary>
+            /// <summary>Gets a channel for a partner or advertiser.</summary>
             /// <param name="partnerId">The ID of the partner that owns the fetched channel.</param>
             /// <param
             /// name="channelId">Required. The ID of the channel to fetch.</param>
@@ -11012,8 +11009,7 @@ namespace Google.Apis.DisplayVideo.v1
                 return new GetRequest(service, partnerId, channelId);
             }
 
-            /// <summary>Updates an existing inventory source. Returns the updated inventory source if successful. Gets
-            /// a channel for a partner or advertiser.</summary>
+            /// <summary>Gets a channel for a partner or advertiser.</summary>
             public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Channel>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -14385,7 +14381,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audienceType")]
         public virtual string AudienceType { get; set; } 
 
-        /// <summary>Output only. The description of the first and third party audience.
+        /// <summary>The user-provided description of the audience.
         ///
         /// Only applicable to first party audiences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -14433,7 +14429,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayMobileWebAudienceSize")]
         public virtual System.Nullable<long> DisplayMobileWebAudienceSize { get; set; } 
 
-        /// <summary>Output only. The display name of the first and third party audience. .</summary>
+        /// <summary>The display name of the first and third party audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
@@ -14441,7 +14437,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("firstAndThirdPartyAudienceId")]
         public virtual System.Nullable<long> FirstAndThirdPartyAudienceId { get; set; } 
 
-        /// <summary>Output only. Whether the audience is a first or third party audience. .</summary>
+        /// <summary>Output only. Whether the audience is a first or third party audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstAndThirdPartyAudienceType")]
         public virtual string FirstAndThirdPartyAudienceType { get; set; } 
 
@@ -14456,7 +14452,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gmailAudienceSize")]
         public virtual System.Nullable<long> GmailAudienceSize { get; set; } 
 
-        /// <summary>Output only. The duration in days that an entry remains in the audience after the qualifying event.
+        /// <summary>The duration in days that an entry remains in the audience after the qualifying event.
         ///
         /// Only applicable to first party audiences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipDurationDays")]

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/'>YouTube Data API v3</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200628 (2005)
+ *      <tr><th>API Rev<td>20200701 (2008)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/'>
  *              https://developers.google.com/youtube/</a>

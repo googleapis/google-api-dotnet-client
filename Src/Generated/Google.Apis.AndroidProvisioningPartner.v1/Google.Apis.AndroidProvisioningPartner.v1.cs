@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/zero-touch/'>Android Device Provisioning Partner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200624 (2001)
+ *      <tr><th>API Rev<td>20200701 (2008)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/zero-touch/'>
  *              https://developers.google.com/zero-touch/</a>
@@ -2461,7 +2461,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual System.Nullable<long> CustomerId { get; set; } 
 
-        /// <summary>Required. The device identifier of the device to claim.</summary>
+        /// <summary>Required. Required. The device identifier of the device to claim.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
         public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
 
@@ -2508,8 +2508,8 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>A reseller, vendor, or customer in the zero-touch reseller and customer APIs.</summary>
     public class Company : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Input only. Email address of customer's users in the admin role. Each email address must
-        /// be associated with a Google Account.</summary>
+        /// <summary>Optional. Email address of customer's users in the admin role. Each email address must be
+        /// associated with a Google Account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminEmails")]
         public virtual System.Collections.Generic.IList<string> AdminEmails { get; set; } 
 
@@ -2532,9 +2532,9 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Input only. Email address of customer's users in the owner role. At least one `owner_email` is
-        /// required. Each email address must be associated with a Google Account. Owners share the same access as
-        /// admins but can also add, delete, and edit your organization's portal users.</summary>
+        /// <summary>Required. Input only. Email address of customer's users in the owner role. At least one
+        /// `owner_email` is required. Each email address must be associated with a Google Account. Owners share the
+        /// same access as admins but can also add, delete, and edit your organization's portal users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerEmails")]
         public virtual System.Collections.Generic.IList<string> OwnerEmails { get; set; } 
 
@@ -2735,13 +2735,13 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual System.Nullable<long> DeviceId { get; set; } 
 
-        /// <summary>The hardware IDs that identify a manufactured device. To learn more, read [Identifiers](/zero-
-        /// touch/guides/identifiers).</summary>
+        /// <summary>The hardware IDs that identify a manufactured device. To learn more, read
+        /// [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
         public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
 
         /// <summary>The metadata attached to the device. Structured as key-value pairs. To learn more, read [Device
-        /// metadata](/zero-touch/guides/metadata).</summary>
+        /// metadata](https://developers.google.com/zero-touch/guides/metadata).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceMetadata")]
         public virtual DeviceMetadata DeviceMetadata { get; set; } 
 
@@ -2786,7 +2786,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     }    
 
     /// <summary>Encapsulates hardware and product IDs to identify a manufactured device. To understand requirements on
-    /// identifier sets, read [Identifiers](/zero-touch/guides/identifiers).</summary>
+    /// identifier sets, read [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).</summary>
     public class DeviceIdentifier : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The device’s IMEI number. Validated on input.</summary>
@@ -2818,8 +2818,8 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Metadata entries that can be attached to a `Device`. To learn more, read [Device metadata](/zero-
-    /// touch/guides/metadata).</summary>
+    /// <summary>Metadata entries that can be attached to a `Device`. To learn more, read [Device
+    /// metadata](https://developers.google.com/zero-touch/guides/metadata).</summary>
     public class DeviceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Metadata entries recorded as key-value pairs.</summary>
@@ -2837,7 +2837,8 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// device.
     ///
     /// Methods that operate on devices take a `DeviceReference` as a parameter type because it's more flexible for the
-    /// caller. To learn more about device identifiers, read [Identifiers](/zero-touch/guides/identifiers).</summary>
+    /// caller. To learn more about device identifiers, read [Identifiers](https://developers.google.com/zero-
+    /// touch/guides/identifiers).</summary>
     public class DeviceReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the device.</summary>
@@ -2934,7 +2935,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Request to find devices.</summary>
     public class FindDevicesByDeviceIdentifierRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The device identifier to search for.</summary>
+        /// <summary>Required. Required. The device identifier to search for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
         public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
 
@@ -3140,7 +3141,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual System.Nullable<long> CustomerId { get; set; } 
 
-        /// <summary>Required. Device identifier of the device.</summary>
+        /// <summary>Required. Required. Device identifier of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
         public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
 
@@ -3159,11 +3160,11 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Identifies one unclaim request.</summary>
     public class PartnerUnclaim : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Device ID of the device.</summary>
+        /// <summary>Required. Device ID of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual System.Nullable<long> DeviceId { get; set; } 
 
-        /// <summary>Device identifier of the device.</summary>
+        /// <summary>Required. Device identifier of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
         public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
 
@@ -3171,12 +3172,12 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
         public virtual string SectionType { get; set; } 
 
-        /// <summary>The duration of the vacation unlock starting from when the request is processed. (1 day is treated
-        /// as 24 hours)</summary>
+        /// <summary>Optional. The duration of the vacation unlock starting from when the request is processed. (1 day
+        /// is treated as 24 hours)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vacationModeDays")]
         public virtual System.Nullable<int> VacationModeDays { get; set; } 
 
-        /// <summary>The expiration time of the vacation unlock.</summary>
+        /// <summary>Optional. The expiration time of the vacation unlock.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vacationModeExpireTime")]
         public virtual object VacationModeExpireTime { get; set; } 
 
@@ -3236,11 +3237,11 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Request message to unclaim a device.</summary>
     public class UnclaimDeviceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The device ID returned by `ClaimDevice`.</summary>
+        /// <summary>Required. The device ID returned by `ClaimDevice`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual System.Nullable<long> DeviceId { get; set; } 
 
-        /// <summary>The device identifier you used when you claimed this device.</summary>
+        /// <summary>Required. The device identifier you used when you claimed this device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
         public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
 
@@ -3297,11 +3298,11 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Identifies metadata updates to one device.</summary>
     public class UpdateMetadataArguments : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Device ID of the device.</summary>
+        /// <summary>Required. Device ID of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual System.Nullable<long> DeviceId { get; set; } 
 
-        /// <summary>Device identifier.</summary>
+        /// <summary>Required. Device identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
         public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
 
