@@ -17,6 +17,7 @@ limitations under the License.
 using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Logging;
+using Google.Apis.Util;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -38,15 +39,33 @@ namespace Google.Apis.Auth.OAuth2
     /// </summary>
     public class LocalServerCodeReceiver : ICodeReceiver
     {
+        /// <summary>
+        /// Describes the different strategies for the selection of the callback URI.
+        /// 127.0.0.1 is recommended, but can't be done in non-admin Windows 7 and 8 at least.
+        /// </summary>
+        public enum CallbackUriChooserStrategy
+        {
+            /// <summary>
+            /// Use heuristics to attempt to connect to the recommended URI 127.0.0.1
+            /// but use localhost if that fails.
+            /// </summary>
+            Default,
+
+            /// <summary>
+            /// Force 127.0.0.1 as the callback URI. No checks are performed.
+            /// </summary>
+            ForceLoopbackIp,
+
+            /// <summary>
+            /// Force localhost as the callback URI. No checks are performed.
+            /// </summary>
+            ForceLocalhost
+        }
+
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<LocalServerCodeReceiver>();
 
         /// <summary>The call back request path.</summary>
         internal const string LoopbackCallbackPath = "/authorize/";
-
-        /// <summary>Localhost callback URI, expects a port parameter.</summary>
-        internal static readonly string CallbackUriTemplateLocalhost = $"http://localhost:{{0}}{LoopbackCallbackPath}";
-        /// <summary>127.0.0.1 callback URI, expects a port parameter.</summary>
-        internal static readonly string CallbackUriTemplate127001 = $"http://127.0.0.1:{{0}}{LoopbackCallbackPath}";
 
         /// <summary>Close HTML tag to return the browser so it will close itself.</summary>
         internal const string DefaultClosePageResponse =
@@ -67,79 +86,35 @@ namespace Google.Apis.Auth.OAuth2
   </body>
 </html>";
 
-        private static object s_lock = new object();
-        // Current best-guess as to most suitable callback URI.
-        private static string s_callbackUriTemplate;
-        // Has a successful callback been received?
-        private static bool s_receivedCallback;
-        
         /// <summary>
         /// Create an instance of <see cref="LocalServerCodeReceiver"/>.
         /// </summary>
-        public LocalServerCodeReceiver() : this(DefaultClosePageResponse) { }
+        public LocalServerCodeReceiver() : this(DefaultClosePageResponse, CallbackUriChooserStrategy.Default) { }
 
         /// <summary>
         /// Create an instance of <see cref="LocalServerCodeReceiver"/>.
         /// </summary>
         /// <param name="closePageResponse">Custom close page response for this instance</param>
-        public LocalServerCodeReceiver(string closePageResponse)
+        public LocalServerCodeReceiver(string closePageResponse) : 
+            this(closePageResponse, CallbackUriChooserStrategy.Default) { }
+
+        /// <summary>
+        /// Create an instance of <see cref="LocalServerCodeReceiver"/>.
+        /// </summary>
+        /// <param name="closePageResponse">Custom close page response for this instance</param>
+        /// <param name="strategy">The strategy to use to determine the callback URI</param>
+        public LocalServerCodeReceiver(string closePageResponse, CallbackUriChooserStrategy strategy)
         {
             _closePageResponse = closePageResponse;
-            
-            lock (s_lock)
-            {
-                // Listening on 127.0.0.1 is recommended, but can't be done in non-admin Windows 7 & 8.
-                // So use some tests/heuristics so maybe listen on localhost instead.
-                if (s_callbackUriTemplate != null && !s_receivedCallback)
-                {
-                    // On non-first runs, if a successful callback has not been received
-                    // then force callback to use localhost rather than 127.0.0.1
-                    // This is to heuristically avoid errors on browsers that can't connect to 127.0.0.1
-                    // E.g. IE11 in enhanced protection mode.
-                    s_callbackUriTemplate = CallbackUriTemplateLocalhost;
-                }
-                if (s_callbackUriTemplate == null)
-                {
-                    s_callbackUriTemplate = CallbackUriTemplate127001;
-#if NETSTANDARD1_3 || NETSTANDARD2_0
-                    // No check required on NETStandard, it uses TcpListener which can only use IP adddresses, not DNS names.
-#elif NET45
-                    // On first run, check whether it's possible to start a listener on 127.0.0.1
-                    // This fails on Windows 7 and 8, for non-admin users.
-                    try
-                    {
-                        // This listener isn't used for anything except to check if it can listen on 127.0.0.1
-                        // Hence it is disposed immediately.
-                        using (var listener = new HttpListener())
-                        {
-                            listener.Prefixes.Add(string.Format(CallbackUriTemplate127001, GetRandomUnusedPort()));
-                            listener.Start();
-                        }
-                    }
-                    catch (HttpListenerException e) when (e.ErrorCode == 5) // 5: Access denied
-                    {
-                        // Access denied for 127.0.0.1, so use localhost
-                        s_callbackUriTemplate = CallbackUriTemplateLocalhost;
-                    }
-                    catch
-                    {
-                        // Ignore any errors in the constructor, they will re-occur later.
-                    }
-#else
-#error Unsupported target
-#endif
-
-                }
-                // Set the instance field of which callback URI to use.
-                // An instance field is used to ensure any one instance of this class
-                // uses a consistent callback URI.
-                _callbackUriTemplate = s_callbackUriTemplate;
-            }
+            // Set the instance field of which callback URI to use.
+            // An instance field is used to ensure any one instance of this class
+            // uses a consistent callback URI.
+            _callbackUriTemplate = CallbackUriChooser.Default.GetUriTemplate(strategy);
         }
 
         // Callback URI used for this instance.
         private string _callbackUriTemplate;
-        
+
         // Close page response for this instance.
         private readonly string _closePageResponse;
 
@@ -187,7 +162,7 @@ namespace Google.Apis.Auth.OAuth2
 
             private readonly TcpListener _listener;
             private readonly CancellationTokenSource _cts;
-            
+
             // Close page response for this instance.
             private readonly string _closePageResponse;
 
@@ -408,34 +383,29 @@ namespace Google.Apis.Auth.OAuth2
             // The listener type depends on platform:
             // * .NET desktop: System.Net.HttpListener
             // * .NET Core: LimitedLocalhostHttpServer (above, HttpListener is not available in any version of netstandard)
-            using (var listener = StartListener())
+            using var listener = StartListener();
+            Logger.Debug("Open a browser with \"{0}\" URL", authorizationUrl);
+            bool browserOpenedOk;
+            try
             {
-                Logger.Debug("Open a browser with \"{0}\" URL", authorizationUrl);
-                bool browserOpenedOk;
-                try
-                {
-                    browserOpenedOk = OpenBrowser(authorizationUrl);
-                }
-                catch (Exception e)
-                {
-                    Logger.Error(e, "Failed to launch browser with \"{0}\" for authorization", authorizationUrl);
-                    throw new NotSupportedException(
-                        $"Failed to launch browser with \"{authorizationUrl}\" for authorization. See inner exception for details.", e);
-                }
-                if (!browserOpenedOk)
-                {
-                    Logger.Error("Failed to launch browser with \"{0}\" for authorization; platform not supported.", authorizationUrl);
-                    throw new NotSupportedException(
-                        $"Failed to launch browser with \"{authorizationUrl}\" for authorization; platform not supported.");
-                }
-
-                var ret = await GetResponseFromListener(listener, taskCancellationToken).ConfigureAwait(false);
-
-                // Note that a successful callback has been received.
-                s_receivedCallback = true;
-
-                return ret;
+                browserOpenedOk = OpenBrowser(authorizationUrl);
             }
+            catch (Exception e)
+            {
+                Logger.Error(e, "Failed to launch browser with \"{0}\" for authorization", authorizationUrl);
+                throw new NotSupportedException(
+                    $"Failed to launch browser with \"{authorizationUrl}\" for authorization. See inner exception for details.", e);
+            }
+            if (!browserOpenedOk)
+            {
+                Logger.Error("Failed to launch browser with \"{0}\" for authorization; platform not supported.", authorizationUrl);
+                throw new NotSupportedException(
+                    $"Failed to launch browser with \"{authorizationUrl}\" for authorization; platform not supported.");
+            }
+
+            var ret = await GetResponseFromListener(listener, taskCancellationToken).ConfigureAwait(false);
+
+            return ret;
         }
 
         /// <summary>Returns a random, unused port.</summary>
@@ -454,11 +424,33 @@ namespace Google.Apis.Auth.OAuth2
         }
 
 #if NETSTANDARD1_3 || NETSTANDARD2_0
-        internal LimitedLocalhostHttpServer StartListener() => LimitedLocalhostHttpServer.Start(RedirectUri, _closePageResponse);
+        internal LimitedLocalhostHttpServer StartListener()
+        {
+            try
+            {
+                return LimitedLocalhostHttpServer.Start(RedirectUri, _closePageResponse);
+            }
+            catch
+            {
+                CallbackUriChooser.Default.ReportFailure(_callbackUriTemplate);
+                throw;
+            }
+        }
+        
 
         private async Task<AuthorizationCodeResponseUrl> GetResponseFromListener(LimitedLocalhostHttpServer server, CancellationToken ct)
         {
-            var queryParams = await server.GetQueryParamsAsync(ct).ConfigureAwait(false);
+            Dictionary<string, string> queryParams;
+            try
+            {
+                queryParams = await server.GetQueryParamsAsync(ct).ConfigureAwait(false);
+                CallbackUriChooser.Default.ReportSuccess(_callbackUriTemplate);
+            }
+            catch
+            {
+                CallbackUriChooser.Default.ReportFailure(_callbackUriTemplate);
+                throw;
+            }
 
             // Create a new response URL with a dictionary that contains all the response query parameters.
             return new AuthorizationCodeResponseUrl(queryParams);
@@ -491,10 +483,18 @@ namespace Google.Apis.Auth.OAuth2
 #elif NET45
         private HttpListener StartListener()
         {
-            var listener = new HttpListener();
-            listener.Prefixes.Add(RedirectUri);
-            listener.Start();
-            return listener;
+            try
+            {
+                var listener = new HttpListener();
+                listener.Prefixes.Add(RedirectUri);
+                listener.Start();
+                return listener;
+            }
+            catch
+            {
+                CallbackUriChooser.Default.ReportFailure(_callbackUriTemplate);
+                throw;
+            }
         }
 
         private async Task<AuthorizationCodeResponseUrl> GetResponseFromListener(HttpListener listener, CancellationToken ct)
@@ -516,6 +516,12 @@ namespace Google.Apis.Auth.OAuth2
                     // But it's required to satisfy compiler.
                     throw new InvalidOperationException();
                 }
+                catch
+                {
+                    CallbackUriChooser.Default.ReportFailure(_callbackUriTemplate);
+                    throw;
+                }
+                CallbackUriChooser.Default.ReportSuccess(_callbackUriTemplate);
             }
             NameValueCollection coll = context.Request.QueryString;
 
@@ -542,5 +548,204 @@ namespace Google.Apis.Auth.OAuth2
 #else
 #error Unsupported target
 #endif
+    
+        internal class CallbackUriChooser
+        {
+            /// <summary>Localhost callback URI, expects a port parameter.</summary>
+            internal static readonly string CallbackUriTemplateLocalhost = $"http://localhost:{{0}}{LoopbackCallbackPath}";
+            /// <summary>127.0.0.1 callback URI, expects a port parameter.</summary>
+            internal static readonly string CallbackUriTemplate127001 = $"http://127.0.0.1:{{0}}{LoopbackCallbackPath}";
+
+            private readonly IClock _clock;
+            // TODO: Consider allowing user code to configure this timeout value.
+            private readonly TimeSpan _timeout;
+            private readonly Func<string, bool> _listenerFailsFor;
+
+            private readonly object _lock = new object();
+            // TODO: Consider using a dictionary here. But we only have two templates.
+            private UriStatistics _loopbackIp;
+            private UriStatistics _localhost;
+
+            public static CallbackUriChooser Default { get; } = new CallbackUriChooser();
+
+            public CallbackUriChooser():
+                this(SystemClock.Default, TimeSpan.FromMinutes(1), FailsHttpListener)
+            { }
+
+            internal CallbackUriChooser(IClock clock, TimeSpan timeout, Func<string, bool> listenerFailsFor)
+            {
+                _clock = clock;
+                _timeout = timeout;
+                _listenerFailsFor = listenerFailsFor;
+            }
+
+            public string GetUriTemplate(CallbackUriChooserStrategy strategy)
+            {
+                lock (_lock)
+                {
+                    if (strategy == CallbackUriChooserStrategy.ForceLoopbackIp)
+                    {
+                        // We still want to know what happens, we just won't do the initial check.
+                        InitUriStatisticsIfNeeded(ref _loopbackIp, CallbackUriTemplate127001, false);
+                        return _loopbackIp.Uri;
+                    }
+
+                    if (strategy == CallbackUriChooserStrategy.ForceLocalhost)
+                    {
+                        // We still want to know what happens, we just won't do the initial check.
+                        InitUriStatisticsIfNeeded(ref _localhost, CallbackUriTemplateLocalhost, false);
+                        return _localhost.Uri;
+                    }
+
+                    // Listening on 127.0.0.1 is recommended, but can't be done in non-admin Windows 7 & 8 at least.
+                    // So use some tests/heuristics to maybe listen on localhost instead.
+
+                    // If this is the first time that we are called, try with the recommended IP.
+                    InitUriStatisticsIfNeeded(ref _loopbackIp, CallbackUriTemplate127001, true);
+                    // We now know something about the loopback IP for sure. Let's see if we can use it. If so,
+                    // let's return it.
+                    if (_loopbackIp.CanBeUsed)
+                    {
+                        return _loopbackIp.Uri;
+                    }
+
+                    // If we are here, we know we can't use the loopback IP, either because it failed or because it
+                    // timed out.
+
+                    // Let's try with localhost.
+                    InitUriStatisticsIfNeeded(ref _localhost, CallbackUriTemplateLocalhost, true);
+                    // We now know something about localhost for sure. Let's see if we can use it. If so,
+                    // let's return it.
+                    if (_localhost.CanBeUsed)
+                    {
+                        return _localhost.Uri;
+                    }
+
+                    // If we are here then we haven't been able to use loopback IP or localhost, either
+                    // because of failure, or timeout.
+                    // This is probably bad, but we can still recover if
+                    // a) Timeouts were because of user innaction.
+                    // b) Failures were transient.
+                    // Let's try our best.
+
+                    UriStatistics retriable = _loopbackIp.TotalResets switch
+                    {
+                        // We always prefer the one with less resets.
+                        var loopbackResets when loopbackResets < _localhost.TotalResets => _loopbackIp,
+                        var loopbackResets when loopbackResets > _localhost.TotalResets => _localhost,
+                        // If they have the same amount of resets, then we prefer the one that has timed out
+                        // and we prefer loopback if both have timed out.
+                        _ when _loopbackIp.IsTimedOut => _loopbackIp,
+                        _ when _localhost.IsTimedOut => _localhost,
+                        // If they have the same amount of resets and none has timed out (they have failed), then we prefer loopback.
+                        _ => _loopbackIp
+                    };
+
+                    retriable.Reset();
+                    return retriable.Uri;
+                }
+
+                void InitUriStatisticsIfNeeded(ref UriStatistics statistics, string uri, bool checkListener)
+                {
+                    if (statistics == null)
+                    {
+                        statistics = new UriStatistics(uri, _timeout, _clock);
+
+                        // If possible, preemtively check that the uri works on this environment.
+                        // For instance, the loopback IP fails at least on Windows 7 and 8, for non-admin users.
+                        if (checkListener && _listenerFailsFor(statistics.Uri))
+                        {
+                            statistics.Failed();
+                        }
+                    }
+                }
+            }
+
+            public void ReportSuccess(string uri) => GetStatisticsFor(uri).Succeeded();
+
+            public void ReportFailure(string uri) => GetStatisticsFor(uri).Failed();
+
+            private UriStatistics GetStatisticsFor(string uri) =>
+                uri == CallbackUriTemplate127001 ? _loopbackIp :
+                uri == CallbackUriTemplateLocalhost ? _localhost :
+                throw new ArgumentOutOfRangeException(nameof(uri));
+
+            private static bool FailsHttpListener(string uri)
+            {
+#if NETSTANDARD1_3 || NETSTANDARD2_0
+                // No check required on NETStandard, it uses TcpListener which can only use IP adddresses, not DNS names.
+                return false;
+#elif NET45
+                try
+                {
+                    // This listener isn't used for anything except to check if it can listen on the given URI.
+                    // Hence it is disposed immediately.
+                    using var listener = new HttpListener();
+                    listener.Prefixes.Add(string.Format(uri, GetRandomUnusedPort()));
+                    listener.Start();
+                }
+                catch (HttpListenerException e) when (e.ErrorCode == 5) // 5: Access denied
+                {
+                    // Access denied for the given URI, report failure.
+                    return true;
+                }
+                catch
+                {
+                    // Ignore any errors in the constructor, they will re-occur later.
+                }
+                return false;
+#else
+#error Unsupported target
+#endif
+            }
+
+            private class UriStatistics
+            {
+                private readonly TimeSpan _timeouts;
+                private readonly IClock _clock;
+
+                public string Uri { get; }
+
+                public DateTimeOffset FirstServedAt { get; private set; }
+
+                public bool IsKnownToSucceed { get; private set; }
+
+                public bool IsKnownToFail { get; private set; }
+
+                public int TotalResets { get; private set; }
+
+                public bool IsTimedOut =>
+                    // If we know of success or failure it is not timed out.
+                    !IsKnownToSucceed && !IsKnownToFail &&
+                    FirstServedAt.Add(_timeouts) <= _clock.UtcNow;
+
+                public bool CanBeUsed =>
+                    // If it's known to succeed, even if it has failed, it can be used.
+                    IsKnownToSucceed ||
+                    (!IsKnownToFail && !IsTimedOut);
+
+                public UriStatistics(string uri, TimeSpan timeoutsAfter, IClock clock)
+                {
+                    _timeouts = timeoutsAfter;
+                    _clock = clock;
+                    Uri = uri;
+                    FirstServedAt = new DateTimeOffset(_clock.UtcNow);
+                    IsKnownToSucceed = false;
+                    IsKnownToFail = false;
+                    TotalResets = 0;
+                }
+
+                public void Succeeded() => IsKnownToSucceed = true;
+
+                public void Failed() => IsKnownToFail = true;
+
+                public void Reset()
+                {
+                    TotalResets++;
+                    FirstServedAt = new DateTimeOffset(_clock.UtcNow);
+                    IsKnownToFail = false;
+                }
+            }
+        }
     }
 }
