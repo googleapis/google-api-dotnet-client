@@ -58,7 +58,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             using (var client = new HttpClient())
             {
                 var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
-                var url = string.Format(LocalServerCodeReceiver.CallbackUriTemplate127001, server.Port) + "?a=b&c=d";
+                var url = string.Format(LocalServerCodeReceiver.CallbackUriChooser.CallbackUriTemplate127001, server.Port) + "?a=b&c=d";
                 var responseMsgTask = client.GetAsync(url, cts.Token);
 
                 var queryParams = await server.GetQueryParamsAsync(cts.Token);
@@ -79,7 +79,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             using (var client = new HttpClient())
             {
                 var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
-                var url = string.Format(LocalServerCodeReceiver.CallbackUriTemplate127001, server.Port);
+                var url = string.Format(LocalServerCodeReceiver.CallbackUriChooser.CallbackUriTemplate127001, server.Port);
                 var responseMsgTask = client.GetAsync(url, cts.Token);
 
                 var queryParams = await server.GetQueryParamsAsync(cts.Token);
@@ -148,7 +148,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             using (var client = new HttpClient())
             {
                 var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
-                var url = string.Format(LocalServerCodeReceiver.CallbackUriTemplate127001, server.Port);
+                var url = string.Format(LocalServerCodeReceiver.CallbackUriChooser.CallbackUriTemplate127001, server.Port);
                 var request = new HttpRequestMessage(HttpMethod.Get, url);
                 // Adding a single header >64k causes the test to hang.
                 request.Headers.Add("X-Test1", new string('X', 35_000));
