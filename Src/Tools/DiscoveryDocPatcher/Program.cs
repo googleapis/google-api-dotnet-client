@@ -27,7 +27,8 @@ namespace DiscoveryDocPatcher
             try
             {
                 string discoveryDocPath = args[0];
-                PatchGames(discoveryDocPath);
+                // No longer required as on 2020-07-09. The offending resource is no longer present at all.
+                // PatchGames(discoveryDocPath);
                 PatchDirectory(discoveryDocPath);
                 return 0;
             }
