@@ -423,7 +423,7 @@ namespace Google.Apis.Auth.OAuth2
             }
         }
 
-#if NETSTANDARD1_3 || NETSTANDARD2_0
+#if NETSTANDARD1_3
         internal LimitedLocalhostHttpServer StartListener()
         {
             try
@@ -436,7 +436,7 @@ namespace Google.Apis.Auth.OAuth2
                 throw;
             }
         }
-        
+
 
         private async Task<AuthorizationCodeResponseUrl> GetResponseFromListener(LimitedLocalhostHttpServer server, CancellationToken ct)
         {
@@ -455,32 +455,7 @@ namespace Google.Apis.Auth.OAuth2
             // Create a new response URL with a dictionary that contains all the response query parameters.
             return new AuthorizationCodeResponseUrl(queryParams);
         }
-
-        private bool OpenBrowser(string url)
-        {
-            // See https://github.com/dotnet/corefx/issues/10361
-            // This is best-effort only, but should work most of the time.
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                // See https://stackoverflow.com/a/6040946/44360 for why this is required
-                url = System.Text.RegularExpressions.Regex.Replace(url, @"(\\*)" + "\"", @"$1$1\" + "\"");
-                url = System.Text.RegularExpressions.Regex.Replace(url, @"(\\+)$", @"$1$1");
-                Process.Start(new ProcessStartInfo("cmd", $"/c start \"\" \"{url}\"") { CreateNoWindow = true });
-                return true;
-            }
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                Process.Start("xdg-open", url);
-                return true;
-            }
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                Process.Start("open", url);
-                return true;
-            }
-            return false;
-        }
-#elif NET45
+#elif NET45 || NETSTANDARD2_0
         private HttpListener StartListener()
         {
             try
@@ -539,7 +514,36 @@ namespace Google.Apis.Auth.OAuth2
             // Create a new response URL with a dictionary that contains all the response query parameters.
             return new AuthorizationCodeResponseUrl(coll.AllKeys.ToDictionary(k => k, k => coll[k]));
         }
+#else
+#error Unsupported target
+#endif
 
+#if NETSTANDARD1_3 || NETSTANDARD2_0
+        private bool OpenBrowser(string url)
+        {
+            // See https://github.com/dotnet/corefx/issues/10361
+            // This is best-effort only, but should work most of the time.
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                // See https://stackoverflow.com/a/6040946/44360 for why this is required
+                url = System.Text.RegularExpressions.Regex.Replace(url, @"(\\*)" + "\"", @"$1$1\" + "\"");
+                url = System.Text.RegularExpressions.Regex.Replace(url, @"(\\+)$", @"$1$1");
+                Process.Start(new ProcessStartInfo("cmd", $"/c start \"\" \"{url}\"") { CreateNoWindow = true });
+                return true;
+            }
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                Process.Start("xdg-open", url);
+                return true;
+            }
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                Process.Start("open", url);
+                return true;
+            }
+            return false;
+        }
+#elif NET45
         private bool OpenBrowser(string url)
         {
             Process.Start(url);
@@ -579,7 +583,7 @@ namespace Google.Apis.Auth.OAuth2
                 _listenerFailsFor = listenerFailsFor;
             }
 
-            public string GetUriTemplate(CallbackUriChooserStrategy strategy)
+            internal string GetUriTemplate(CallbackUriChooserStrategy strategy)
             {
                 lock (_lock)
                 {
@@ -624,7 +628,7 @@ namespace Google.Apis.Auth.OAuth2
                     // If we are here then we haven't been able to use loopback IP or localhost, either
                     // because of failure, or timeout.
                     // This is probably bad, but we can still recover if
-                    // a) Timeouts were because of user innaction.
+                    // a) Timeouts were because of user inaction.
                     // b) Failures were transient.
                     // Let's try our best.
 
@@ -651,7 +655,7 @@ namespace Google.Apis.Auth.OAuth2
                     {
                         statistics = new UriStatistics(uri, _timeout, _clock);
 
-                        // If possible, preemtively check that the uri works on this environment.
+                        // If possible, preemptively check that the uri works on this environment.
                         // For instance, the loopback IP fails at least on Windows 7 and 8, for non-admin users.
                         if (checkListener && _listenerFailsFor(statistics.Uri))
                         {
@@ -672,10 +676,10 @@ namespace Google.Apis.Auth.OAuth2
 
             private static bool FailsHttpListener(string uri)
             {
-#if NETSTANDARD1_3 || NETSTANDARD2_0
-                // No check required on NETStandard, it uses TcpListener which can only use IP adddresses, not DNS names.
+#if NETSTANDARD1_3
+                // No check required on NETStandard 1.3, it uses TcpListener which can only use IP adddresses, not DNS names.
                 return false;
-#elif NET45
+#elif NET45 || NETSTANDARD2_0
                 try
                 {
                     // This listener isn't used for anything except to check if it can listen on the given URI.
@@ -691,7 +695,7 @@ namespace Google.Apis.Auth.OAuth2
                 }
                 catch
                 {
-                    // Ignore any errors in the constructor, they will re-occur later.
+                    // Ignore any errors here, they will re-occur later.
                 }
                 return false;
 #else
