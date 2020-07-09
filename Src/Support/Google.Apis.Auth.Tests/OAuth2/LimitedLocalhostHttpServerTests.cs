@@ -14,8 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// LimitedLocalhostHttpServer only used in .NET Core.
-#if NETCOREAPP1_0 || NETCOREAPP1_1 || NETCOREAPP2_0
+// LimitedLocalhostHttpServer only used in .NET Core 1*
+#if NETCOREAPP1_0 || NETCOREAPP1_1
 
 using Google.Apis.Auth.OAuth2;
 using System;
