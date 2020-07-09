@@ -2129,7 +2129,7 @@
    }
   }
  }, 
- "revision": "20200619", 
+ "revision": "20200703", 
  "rootUrl": "https://dataproc.googleapis.com/", 
  "schemas": {
   "AcceleratorConfig": {

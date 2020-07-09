@@ -708,7 +708,7 @@
    }
   }
  }, 
- "revision": "20200622", 
+ "revision": "20200707", 
  "rootUrl": "https://managedidentities.googleapis.com/", 
  "schemas": {
   "AttachTrustRequest": {
