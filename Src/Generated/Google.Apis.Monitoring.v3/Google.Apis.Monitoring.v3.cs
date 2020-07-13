@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Cloud Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200701 (2008)
+ *      <tr><th>API Rev<td>20200708 (2015)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -4635,12 +4635,13 @@ namespace Google.Apis.Monitoring.v3
             public virtual string Parent { get; private set; }
 
             /// <summary>A filter specifying what Services to return. The filter currently supports the following
-            /// fields: - `identifier_case` - `app_engine.module_id` - `cloud_endpoints.service` -
-            /// `cluster_istio.location` - `cluster_istio.cluster_name` - `cluster_istio.service_namespace` -
-            /// `cluster_istio.service_name` identifier_case refers to which option in the identifier oneof is
-            /// populated. For example, the filter identifier_case = "CUSTOM" would match all services with a value for
-            /// the custom field. Valid options are "CUSTOM", "APP_ENGINE", "CLOUD_ENDPOINTS", and
-            /// "CLUSTER_ISTIO".</summary>
+            /// fields: - `identifier_case` - `app_engine.module_id` - `cloud_endpoints.service` - `mesh_istio.mesh_uid`
+            /// - `mesh_istio.service_namespace` - `mesh_istio.service_name` - `cluster_istio.location` (deprecated) -
+            /// `cluster_istio.cluster_name` (deprecated) - `cluster_istio.service_namespace` (deprecated) -
+            /// `cluster_istio.service_name` (deprecated) identifier_case refers to which option in the identifier oneof
+            /// is populated. For example, the filter identifier_case = "CUSTOM" would match all services with a value
+            /// for the custom field. Valid options are "CUSTOM", "APP_ENGINE", "CLOUD_ENDPOINTS", "MESH_ISTIO", and
+            /// "CLUSTER_ISTIO" (deprecated),</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -6059,6 +6060,11 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notificationChannels")]
         public virtual System.Collections.Generic.IList<NotificationChannel> NotificationChannels { get; set; } 
 
+        /// <summary>The total number of notification channels in all pages. This number is only an estimate, and may
+        /// change in subsequent pages. https://aip.dev/158</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -6671,8 +6677,9 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The type of notification channel, such as "email", "sms", etc. Notification channel types are
-        /// globally unique.</summary>
+        /// <summary>The type of notification channel, such as "email" and "sms". To view the full list of channels, see
+        /// Channel descriptors (https://cloud.google.com/monitoring/alerts/using-channels-api#ncd). Notification
+        /// channel types are globally unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

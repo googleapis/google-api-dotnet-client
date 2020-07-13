@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/display-video/'>Display & Video 360 API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200707 (2014)
+ *      <tr><th>API Rev<td>20200709 (2016)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/display-video/'>
  *              https://developers.google.com/display-video/</a>
@@ -16302,19 +16302,21 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual System.Nullable<long> MaxAverageCpmBidAmountMicros { get; set; } 
 
         /// <summary>Required. The performance goal the bidding strategy will attempt to meet or beat, in micros of the
+        /// advertiser's currency or in micro of the ROAS (Return On Advertising Spend) value which is also based on
         /// advertiser's currency. Must be greater than or equal to a billable unit of the given currency and smaller or
         /// equal to upper bounds. Each performance_goal_type has its upper bound:
         ///
         /// * when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`, upper bound is 10000.00 USD. *
         /// when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC`, upper bound is 1000.00 USD. *
         /// when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, upper bound is 1000.00
-        /// USD.
+        /// USD. * when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`, upper bound is
+        /// 1000.00 and lower bound is 0.01.
         ///
         /// Example: If set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, the bid price will be based on the
         /// probability that each available impression will be viewable. For example, if viewable CPM target is $2 and
         /// an impression is 40% likely to be viewable, the bid price will be $0.80 CPM (40% of $2).
         ///
-        /// For example, 1500000 represents 1.5 standard units of the currency.</summary>
+        /// For example, 1500000 represents 1.5 standard units of the currency or ROAS value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoalAmountMicros")]
         public virtual System.Nullable<long> PerformanceGoalAmountMicros { get; set; } 
 
@@ -16323,7 +16325,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// For line item level usage, the value must be one of:
         ///
         /// * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC` *
-        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`.</summary>
+        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` *
+        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoalType")]
         public virtual string PerformanceGoalType { get; set; } 
 

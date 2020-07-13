@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/hosting/'>Firebase Hosting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200629 (2006)
+ *      <tr><th>API Rev<td>20200709 (2016)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/hosting/'>
  *              https://firebase.google.com/docs/hosting/</a>
@@ -1797,7 +1797,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                 }
 
-                /// <summary>Adds content files to a version.</summary>
+                /// <summary>Adds content files to a version. Each file must be under 2 GB.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The version to add files to, in the format: sites/site-
                 /// name/versions/versionID</param>
@@ -1806,7 +1806,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     return new PopulateFilesRequest(service, body, parent);
                 }
 
-                /// <summary>Adds content files to a version.</summary>
+                /// <summary>Adds content files to a version. Each file must be under 2 GB.</summary>
                 public class PopulateFilesRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.PopulateVersionFilesResponse>
                 {
                     /// <summary>Constructs a new PopulateFiles request.</summary>
@@ -3345,7 +3345,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
             }
 
-            /// <summary>Adds content files to a version.</summary>
+            /// <summary>Adds content files to a version. Each file must be under 2 GB.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The version to add files to, in the format: sites/site-
             /// name/versions/versionID</param>
@@ -3354,7 +3354,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 return new PopulateFilesRequest(service, body, parent);
             }
 
-            /// <summary>Adds content files to a version.</summary>
+            /// <summary>Adds content files to a version. Each file must be under 2 GB.</summary>
             public class PopulateFilesRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.PopulateVersionFilesResponse>
             {
                 /// <summary>Constructs a new PopulateFiles request.</summary>

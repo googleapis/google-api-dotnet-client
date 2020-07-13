@@ -659,7 +659,7 @@
    }
   }
  }, 
- "revision": "20200630", 
+ "revision": "20200707", 
  "rootUrl": "https://tpu.googleapis.com/", 
  "schemas": {
   "AcceleratorType": {

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/blogger/docs/3.0/getting_started'>Blogger API v3</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200707 (2014)
+ *      <tr><th>API Rev<td>20200711 (2018)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/blogger/docs/3.0/getting_started'>
  *              https://developers.google.com/blogger/docs/3.0/getting_started</a>
@@ -745,7 +745,6 @@ namespace Google.Apis.Blogger.v3
             }
 
             /// <summary>Default value of status is LIVE.</summary>
-            /// [default: LIVE]
             [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StatusEnum> Status { get; set; }
 
@@ -832,7 +831,7 @@ namespace Google.Apis.Blogger.v3
                         Name = "status",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = "LIVE",
+                        DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(

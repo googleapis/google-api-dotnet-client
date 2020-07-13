@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/functions'>Cloud Functions API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20200618 (1995)
+ *      <tr><th>API Rev<td>20200629 (2006)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/functions'>
  *              https://cloud.google.com/functions</a>
@@ -1688,6 +1688,11 @@ namespace Google.Apis.CloudFunctions.v1beta2.Data
     /// <summary>Metadata describing an Operation</summary>
     public class OperationMetadataV1 : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The Cloud Build ID of the function created or updated by an API call. This field is only populated
+        /// for Create and Update operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildId")]
+        public virtual string BuildId { get; set; } 
+
         /// <summary>The original request that started the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("request")]
         public virtual System.Collections.Generic.IDictionary<string,object> Request { get; set; } 

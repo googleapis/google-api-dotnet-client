@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/scheduler/'>Cloud Scheduler API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200618 (1995)
+ *      <tr><th>API Rev<td>20200703 (2010)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/scheduler/'>
  *              https://cloud.google.com/scheduler/</a>
@@ -1616,8 +1616,9 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
 
     /// <summary>A message that is published by publishers and consumed by subscribers. The message must contain either
     /// a non-empty data field or at least one attribute. Note that client libraries represent this object differently
-    /// depending on the language. See the corresponding client library documentation for more information. See Quotas
-    /// and limits for more information about message limits.</summary>
+    /// depending on the language. See the corresponding [client library
+    /// documentation](https://cloud.google.com/pubsub/docs/reference/libraries) for more information. See [quotas and
+    /// limits] (https://cloud.google.com/pubsub/quotas) for more information about message limits.</summary>
     public class PubsubMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Attributes for this message. If this field is empty, the message must contain non-empty data. This

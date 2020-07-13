@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-approval/docs'>Access Approval API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200629 (2006)
+ *      <tr><th>API Rev<td>20200708 (2015)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-approval/docs'>
  *              https://cloud.google.com/access-approval/docs</a>
@@ -630,7 +630,7 @@ namespace Google.Apis.AccessApproval.v1
                 ///
                 /// [not set]: Requests that are pending or have active approvals. ALL: All requests. PENDING: Only
                 /// pending requests. ACTIVE: Only active (i.e. currently approved) requests. DISMISSED: Only dismissed
-                /// (including expired) requests. </summary>
+                /// (including expired) requests. HISTORY: Active and dismissed (including expired) requests. </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -1216,7 +1216,7 @@ namespace Google.Apis.AccessApproval.v1
                 ///
                 /// [not set]: Requests that are pending or have active approvals. ALL: All requests. PENDING: Only
                 /// pending requests. ACTIVE: Only active (i.e. currently approved) requests. DISMISSED: Only dismissed
-                /// (including expired) requests. </summary>
+                /// (including expired) requests. HISTORY: Active and dismissed (including expired) requests. </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -1802,7 +1802,7 @@ namespace Google.Apis.AccessApproval.v1
                 ///
                 /// [not set]: Requests that are pending or have active approvals. ALL: All requests. PENDING: Only
                 /// pending requests. ACTIVE: Only active (i.e. currently approved) requests. DISMISSED: Only dismissed
-                /// (including expired) requests. </summary>
+                /// (including expired) requests. HISTORY: Active and dismissed (including expired) requests. </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 

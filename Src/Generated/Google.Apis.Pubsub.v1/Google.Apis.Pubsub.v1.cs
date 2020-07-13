@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200623 (2000)
+ *      <tr><th>API Rev<td>20200627 (2004)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -373,16 +373,17 @@ namespace Google.Apis.Pubsub.v1
             }
 
 
-            /// <summary>Creates a snapshot from the requested subscription. Snapshots are used in Seek operations,
-            /// which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state
-            /// of messages in an existing subscription to the state captured by a snapshot. If the snapshot already
-            /// exists, returns `ALREADY_EXISTS`. If the requested subscription doesn't exist, returns `NOT_FOUND`. If
-            /// the backlog in the subscription is too old -- and the resulting snapshot would expire in less than 1
-            /// hour -- then `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field. If the name
-            /// is not provided in the request, the server will assign a random name for this snapshot on the same
-            /// project as the subscription, conforming to the [resource name
-            /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in
-            /// the returned Snapshot object. Note that for REST API requests, you must specify a name in the
+            /// <summary>Creates a snapshot from the requested subscription. Snapshots are used in
+            /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage
+            /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
+            /// existing subscription to the state captured by a snapshot. If the snapshot already exists, returns
+            /// `ALREADY_EXISTS`. If the requested subscription doesn't exist, returns `NOT_FOUND`. If the backlog in
+            /// the subscription is too old -- and the resulting snapshot would expire in less than 1 hour -- then
+            /// `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field. If the name is not
+            /// provided in the request, the server will assign a random name for this snapshot on the same project as
+            /// the subscription, conforming to the [resource name format]
+            /// (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in the
+            /// returned Snapshot object. Note that for REST API requests, you must specify a name in the
             /// request.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Required. User-provided name for this snapshot. If the name is not provided in the request, the
@@ -394,16 +395,17 @@ namespace Google.Apis.Pubsub.v1
                 return new CreateRequest(service, body, name);
             }
 
-            /// <summary>Creates a snapshot from the requested subscription. Snapshots are used in Seek operations,
-            /// which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state
-            /// of messages in an existing subscription to the state captured by a snapshot. If the snapshot already
-            /// exists, returns `ALREADY_EXISTS`. If the requested subscription doesn't exist, returns `NOT_FOUND`. If
-            /// the backlog in the subscription is too old -- and the resulting snapshot would expire in less than 1
-            /// hour -- then `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field. If the name
-            /// is not provided in the request, the server will assign a random name for this snapshot on the same
-            /// project as the subscription, conforming to the [resource name
-            /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in
-            /// the returned Snapshot object. Note that for REST API requests, you must specify a name in the
+            /// <summary>Creates a snapshot from the requested subscription. Snapshots are used in
+            /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage
+            /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
+            /// existing subscription to the state captured by a snapshot. If the snapshot already exists, returns
+            /// `ALREADY_EXISTS`. If the requested subscription doesn't exist, returns `NOT_FOUND`. If the backlog in
+            /// the subscription is too old -- and the resulting snapshot would expire in less than 1 hour -- then
+            /// `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field. If the name is not
+            /// provided in the request, the server will assign a random name for this snapshot on the same project as
+            /// the subscription, conforming to the [resource name format]
+            /// (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in the
+            /// returned Snapshot object. Note that for REST API requests, you must specify a name in the
             /// request.</summary>
             public class CreateRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Snapshot>
             {
@@ -467,12 +469,13 @@ namespace Google.Apis.Pubsub.v1
 
             }
 
-            /// <summary>Removes an existing snapshot. Snapshots are used in Seek operations, which allow you to manage
-            /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
-            /// existing subscription to the state captured by a snapshot. When the snapshot is deleted, all messages
-            /// retained in the snapshot are immediately dropped. After a snapshot is deleted, a new one may be created
-            /// with the same name, but the new one has no association with the old snapshot or its subscription, unless
-            /// the same subscription is specified.</summary>
+            /// <summary>Removes an existing snapshot. Snapshots are used in [Seek]
+            /// (https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message
+            /// acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing
+            /// subscription to the state captured by a snapshot. When the snapshot is deleted, all messages retained in
+            /// the snapshot are immediately dropped. After a snapshot is deleted, a new one may be created with the
+            /// same name, but the new one has no association with the old snapshot or its subscription, unless the same
+            /// subscription is specified.</summary>
             /// <param name="snapshot">Required. The name of the snapshot to delete. Format is
             /// `projects/{project}/snapshots/{snap}`.</param>
             public virtual DeleteRequest Delete(string snapshot)
@@ -480,12 +483,13 @@ namespace Google.Apis.Pubsub.v1
                 return new DeleteRequest(service, snapshot);
             }
 
-            /// <summary>Removes an existing snapshot. Snapshots are used in Seek operations, which allow you to manage
-            /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
-            /// existing subscription to the state captured by a snapshot. When the snapshot is deleted, all messages
-            /// retained in the snapshot are immediately dropped. After a snapshot is deleted, a new one may be created
-            /// with the same name, but the new one has no association with the old snapshot or its subscription, unless
-            /// the same subscription is specified.</summary>
+            /// <summary>Removes an existing snapshot. Snapshots are used in [Seek]
+            /// (https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message
+            /// acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing
+            /// subscription to the state captured by a snapshot. When the snapshot is deleted, all messages retained in
+            /// the snapshot are immediately dropped. After a snapshot is deleted, a new one may be created with the
+            /// same name, but the new one has no association with the old snapshot or its subscription, unless the same
+            /// subscription is specified.</summary>
             public class DeleteRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -690,9 +694,10 @@ namespace Google.Apis.Pubsub.v1
 
             }
 
-            /// <summary>Lists the existing snapshots. Snapshots are used in Seek operations, which allow you to manage
-            /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
-            /// existing subscription to the state captured by a snapshot.</summary>
+            /// <summary>Lists the existing snapshots. Snapshots are used in [Seek](
+            /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message
+            /// acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing
+            /// subscription to the state captured by a snapshot.</summary>
             /// <param name="project">Required. The name of the project in which to list snapshots. Format is `projects/{project-
             /// id}`.</param>
             public virtual ListRequest List(string project)
@@ -700,9 +705,10 @@ namespace Google.Apis.Pubsub.v1
                 return new ListRequest(service, project);
             }
 
-            /// <summary>Lists the existing snapshots. Snapshots are used in Seek operations, which allow you to manage
-            /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
-            /// existing subscription to the state captured by a snapshot.</summary>
+            /// <summary>Lists the existing snapshots. Snapshots are used in [Seek](
+            /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message
+            /// acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing
+            /// subscription to the state captured by a snapshot.</summary>
             public class ListRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.ListSnapshotsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1110,15 +1116,14 @@ namespace Google.Apis.Pubsub.v1
 
             }
 
-            /// <summary>Creates a subscription to a given topic. See the
-            ///
-            /// resource name rules. If the subscription already exists, returns `ALREADY_EXISTS`. If the corresponding
-            /// topic doesn't exist, returns `NOT_FOUND`.
+            /// <summary>Creates a subscription to a given topic. See the [resource name rules]
+            /// (https://cloud.google.com/pubsub/docs/admin#resource_names). If the subscription already exists, returns
+            /// `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`.
             ///
             /// If the name is not provided in the request, the server will assign a random name for this subscription
-            /// on the same project as the topic, conforming to the [resource name
-            /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in
-            /// the returned Subscription object. Note that for REST API requests, you must specify a name in the
+            /// on the same project as the topic, conforming to the [resource name format]
+            /// (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in the
+            /// returned Subscription object. Note that for REST API requests, you must specify a name in the
             /// request.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Required. The name of the subscription. It must have the format
@@ -1131,15 +1136,14 @@ namespace Google.Apis.Pubsub.v1
                 return new CreateRequest(service, body, name);
             }
 
-            /// <summary>Creates a subscription to a given topic. See the
-            ///
-            /// resource name rules. If the subscription already exists, returns `ALREADY_EXISTS`. If the corresponding
-            /// topic doesn't exist, returns `NOT_FOUND`.
+            /// <summary>Creates a subscription to a given topic. See the [resource name rules]
+            /// (https://cloud.google.com/pubsub/docs/admin#resource_names). If the subscription already exists, returns
+            /// `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`.
             ///
             /// If the name is not provided in the request, the server will assign a random name for this subscription
-            /// on the same project as the topic, conforming to the [resource name
-            /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in
-            /// the returned Subscription object. Note that for REST API requests, you must specify a name in the
+            /// on the same project as the topic, conforming to the [resource name format]
+            /// (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in the
+            /// returned Subscription object. Note that for REST API requests, you must specify a name in the
             /// request.</summary>
             public class CreateRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Subscription>
             {
@@ -1882,10 +1886,10 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Seeks an existing subscription to a point in time or to a given snapshot, whichever is provided
-            /// in the request. Snapshots are used in Seek operations, which allow you to manage message acknowledgments
-            /// in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the
-            /// state captured by a snapshot. Note that both the subscription and the snapshot must be on the same
-            /// topic.</summary>
+            /// in the request. Snapshots are used in [Seek]( https://cloud.google.com/pubsub/docs/replay-overview)
+            /// operations, which allow you to manage message acknowledgments in bulk. That is, you can set the
+            /// acknowledgment state of messages in an existing subscription to the state captured by a snapshot. Note
+            /// that both the subscription and the snapshot must be on the same topic.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="subscription">Required. The subscription to affect.</param>
             public virtual SeekRequest Seek(Google.Apis.Pubsub.v1.Data.SeekRequest body, string subscription)
@@ -1894,10 +1898,10 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Seeks an existing subscription to a point in time or to a given snapshot, whichever is provided
-            /// in the request. Snapshots are used in Seek operations, which allow you to manage message acknowledgments
-            /// in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the
-            /// state captured by a snapshot. Note that both the subscription and the snapshot must be on the same
-            /// topic.</summary>
+            /// in the request. Snapshots are used in [Seek]( https://cloud.google.com/pubsub/docs/replay-overview)
+            /// operations, which allow you to manage message acknowledgments in bulk. That is, you can set the
+            /// acknowledgment state of messages in an existing subscription to the state captured by a snapshot. Note
+            /// that both the subscription and the snapshot must be on the same topic.</summary>
             public class SeekRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.SeekResponse>
             {
                 /// <summary>Constructs a new Seek request.</summary>
@@ -2158,9 +2162,10 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>Lists the names of the snapshots on this topic. Snapshots are used in Seek operations,
-                /// which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment
-                /// state of messages in an existing subscription to the state captured by a snapshot.</summary>
+                /// <summary>Lists the names of the snapshots on this topic. Snapshots are used in
+                /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage
+                /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
+                /// existing subscription to the state captured by a snapshot.</summary>
                 /// <param name="topic">Required. The name of the topic that snapshots are attached to. Format is
                 /// `projects/{project}/topics/{topic}`.</param>
                 public virtual ListRequest List(string topic)
@@ -2168,9 +2173,10 @@ namespace Google.Apis.Pubsub.v1
                     return new ListRequest(service, topic);
                 }
 
-                /// <summary>Lists the names of the snapshots on this topic. Snapshots are used in Seek operations,
-                /// which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment
-                /// state of messages in an existing subscription to the state captured by a snapshot.</summary>
+                /// <summary>Lists the names of the snapshots on this topic. Snapshots are used in
+                /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage
+                /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
+                /// existing subscription to the state captured by a snapshot.</summary>
                 public class ListRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.ListTopicSnapshotsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -2367,9 +2373,8 @@ namespace Google.Apis.Pubsub.v1
                 }
             }
 
-            /// <summary>Creates the given topic with the given name. See the
-            ///
-            /// resource name rules.</summary>
+            /// <summary>Creates the given topic with the given name. See the [resource name rules](
+            /// https://cloud.google.com/pubsub/docs/admin#resource_names).</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Required. The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`.
             /// `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
@@ -2380,9 +2385,8 @@ namespace Google.Apis.Pubsub.v1
                 return new CreateRequest(service, body, name);
             }
 
-            /// <summary>Creates the given topic with the given name. See the
-            ///
-            /// resource name rules.</summary>
+            /// <summary>Creates the given topic with the given name. See the [resource name rules](
+            /// https://cloud.google.com/pubsub/docs/admin#resource_names).</summary>
             public class CreateRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Topic>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -3520,8 +3524,9 @@ namespace Google.Apis.Pubsub.v1.Data
 
     /// <summary>A message that is published by publishers and consumed by subscribers. The message must contain either
     /// a non-empty data field or at least one attribute. Note that client libraries represent this object differently
-    /// depending on the language. See the corresponding client library documentation for more information. See Quotas
-    /// and limits for more information about message limits.</summary>
+    /// depending on the language. See the corresponding [client library
+    /// documentation](https://cloud.google.com/pubsub/docs/reference/libraries) for more information. See [quotas and
+    /// limits] (https://cloud.google.com/pubsub/quotas) for more information about message limits.</summary>
     public class PubsubMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Attributes for this message. If this field is empty, the message must contain non-empty data. This
@@ -3718,9 +3723,9 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A snapshot resource. Snapshots are used in Seek operations, which allow you to manage message
-    /// acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription
-    /// to the state captured by a snapshot.</summary>
+    /// <summary>A snapshot resource. Snapshots are used in [Seek](https://cloud.google.com/pubsub/docs/replay-overview)
+    /// operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment
+    /// state of messages in an existing subscription to the state captured by a snapshot.</summary>
     public class Snapshot : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The snapshot is guaranteed to exist up until this time. A newly-created snapshot expires no later
@@ -3733,7 +3738,7 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual object ExpireTime { get; set; } 
 
-        /// <summary>See  Creating and managing labels.</summary>
+        /// <summary>See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -3820,9 +3825,8 @@ namespace Google.Apis.Pubsub.v1.Data
 
         /// <summary>Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the
         /// subscription's backlog, even if they are acknowledged, until they fall out of the
-        /// `message_retention_duration` window. This must be true if you would like to
-        ///
-        /// Seek to a timestamp.</summary>
+        /// `message_retention_duration` window. This must be true if you would like to [Seek to a timestamp]
+        /// (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retainAckedMessages")]
         public virtual System.Nullable<bool> RetainAckedMessages { get; set; } 
 
@@ -3878,7 +3882,7 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; } 
 
-        /// <summary>See  Creating and managing labels.</summary>
+        /// <summary>See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
