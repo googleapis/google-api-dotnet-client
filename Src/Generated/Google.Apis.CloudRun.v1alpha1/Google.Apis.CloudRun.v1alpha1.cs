@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Cloud Run API Version v1alpha1
+ *   Cloud Run Admin API Version v1alpha1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/run/'>Cloud Run API</a>
+ *          <td><a href='https://cloud.google.com/run/'>Cloud Run Admin API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20200622 (1999)
+ *      <tr><th>API Rev<td>20200706 (2013)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/run/'>
  *              https://cloud.google.com/run/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Cloud Run API can be found at
+ * The complete API documentation for using Cloud Run Admin API can be found at
  * <a href='https://cloud.google.com/run/'>https://cloud.google.com/run/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -110,7 +110,7 @@ namespace Google.Apis.CloudRun.v1alpha1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Run API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Run Admin API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -118,7 +118,7 @@ namespace Google.Apis.CloudRun.v1alpha1
 
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Run API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Run Admin API.</summary>
         public static class ScopeConstants
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>

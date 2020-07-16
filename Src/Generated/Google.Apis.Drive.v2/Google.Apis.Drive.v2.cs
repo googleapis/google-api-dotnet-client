@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200618 (1995)
+ *      <tr><th>API Rev<td>20200706 (2013)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -2968,7 +2968,7 @@ namespace Google.Apis.Drive.v2
         }
 
 
-        /// <summary>Creates a copy of the specified file.</summary>
+        /// <summary>Creates a copy of the specified file. Folders cannot be copied.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file to copy.</param>
         public virtual CopyRequest Copy(Google.Apis.Drive.v2.Data.File body, string fileId)
@@ -2976,7 +2976,7 @@ namespace Google.Apis.Drive.v2
             return new CopyRequest(service, body, fileId);
         }
 
-        /// <summary>Creates a copy of the specified file.</summary>
+        /// <summary>Creates a copy of the specified file. Folders cannot be copied.</summary>
         public class CopyRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.File>
         {
             /// <summary>Constructs a new Copy request.</summary>
@@ -4140,8 +4140,11 @@ namespace Google.Apis.Drive.v2
             }
 
 
-            /// <summary>Bodies of items (files/documents) to which the query applies. Supported bodies are 'default',
-            /// 'domain', 'drive' and 'allDrives'. Prefer 'default' or 'drive' to 'allDrives' for efficiency.</summary>
+            /// <summary>Groupings of files to which the query applies. Supported groupings are: 'user' (files created
+            /// by, opened by, or shared directly with the user), 'drive' (files in the specified shared drive as
+            /// indicated by the 'driveId'), 'domain' (files shared to the user's domain), and 'allDrives' (A
+            /// combination of 'user' and 'drive' for all drives where the user is a member). When able, use 'user' or
+            /// 'drive', instead of 'allDrives', for efficiency.</summary>
             [Google.Apis.Util.RequestParameterAttribute("corpora", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Corpora { get; set; }
 
@@ -4467,7 +4470,8 @@ namespace Google.Apis.Drive.v2
             /// revision is replaced. If true or not set, a new blob is created as head revision, and previous unpinned
             /// revisions are preserved for a short period of time. Pinned revisions are stored indefinitely, using
             /// additional storage quota, up to a maximum of 200 revisions. For details on how revisions are retained,
-            /// see the Drive Help Center.</summary>
+            /// see the Drive Help Center. Note that this field is ignored if there is no payload in the
+            /// request.</summary>
             /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("newRevision", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> NewRevision { get; set; }
@@ -4481,7 +4485,8 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("ocrLanguage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OcrLanguage { get; set; }
 
-            /// <summary>Whether to pin the new revision. A file can have a maximum of 200 pinned revisions.</summary>
+            /// <summary>Whether to pin the new revision. A file can have a maximum of 200 pinned revisions. Note that
+            /// this field is ignored if there is no payload in the request.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("pinned", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Pinned { get; set; }
@@ -4802,7 +4807,10 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>Moves a file to the trash. The currently authenticated user must own the file or be at least a
-        /// fileOrganizer on the parent for shared drive files.</summary>
+        /// fileOrganizer on the parent for shared drive files. Only the owner may trash a file. The trashed item is
+        /// excluded from all files.list responses returned for any user who does not own the file. However, all users
+        /// with access to the file can see the trashed item metadata in an API response. All users with access can
+        /// copy, download, export, and share the file.</summary>
         /// <param name="fileId">The ID of the file to trash.</param>
         public virtual TrashRequest Trash(string fileId)
         {
@@ -4810,7 +4818,10 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>Moves a file to the trash. The currently authenticated user must own the file or be at least a
-        /// fileOrganizer on the parent for shared drive files.</summary>
+        /// fileOrganizer on the parent for shared drive files. Only the owner may trash a file. The trashed item is
+        /// excluded from all files.list responses returned for any user who does not own the file. However, all users
+        /// with access to the file can see the trashed item metadata in an API response. All users with access can
+        /// copy, download, export, and share the file.</summary>
         public class TrashRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.File>
         {
             /// <summary>Constructs a new Trash request.</summary>
@@ -4891,14 +4902,16 @@ namespace Google.Apis.Drive.v2
 
         }
 
-        /// <summary>Restores a file from the trash.</summary>
+        /// <summary>Restores a file from the trash. The currently authenticated user must own the file or be at least a
+        /// fileOrganizer on the parent for shared drive files. Only the owner may untrash a file.</summary>
         /// <param name="fileId">The ID of the file to untrash.</param>
         public virtual UntrashRequest Untrash(string fileId)
         {
             return new UntrashRequest(service, fileId);
         }
 
-        /// <summary>Restores a file from the trash.</summary>
+        /// <summary>Restores a file from the trash. The currently authenticated user must own the file or be at least a
+        /// fileOrganizer on the parent for shared drive files. Only the owner may untrash a file.</summary>
         public class UntrashRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.File>
         {
             /// <summary>Constructs a new Untrash request.</summary>
@@ -5058,7 +5071,8 @@ namespace Google.Apis.Drive.v2
             /// revision is replaced. If true or not set, a new blob is created as head revision, and previous unpinned
             /// revisions are preserved for a short period of time. Pinned revisions are stored indefinitely, using
             /// additional storage quota, up to a maximum of 200 revisions. For details on how revisions are retained,
-            /// see the Drive Help Center.</summary>
+            /// see the Drive Help Center. Note that this field is ignored if there is no payload in the
+            /// request.</summary>
             /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("newRevision", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> NewRevision { get; set; }
@@ -5072,7 +5086,8 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("ocrLanguage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OcrLanguage { get; set; }
 
-            /// <summary>Whether to pin the new revision. A file can have a maximum of 200 pinned revisions.</summary>
+            /// <summary>Whether to pin the new revision. A file can have a maximum of 200 pinned revisions. Note that
+            /// this field is ignored if there is no payload in the request.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("pinned", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Pinned { get; set; }
@@ -5434,7 +5449,8 @@ namespace Google.Apis.Drive.v2
             /// revision is replaced. If true or not set, a new blob is created as head revision, and previous unpinned
             /// revisions are preserved for a short period of time. Pinned revisions are stored indefinitely, using
             /// additional storage quota, up to a maximum of 200 revisions. For details on how revisions are retained,
-            /// see the Drive Help Center.</summary>
+            /// see the Drive Help Center. Note that this field is ignored if there is no payload in the
+            /// request.</summary>
             /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("newRevision", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> NewRevision { get; set; }
@@ -5448,7 +5464,8 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("ocrLanguage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OcrLanguage { get; set; }
 
-            /// <summary>Whether to pin the new revision. A file can have a maximum of 200 pinned revisions.</summary>
+            /// <summary>Whether to pin the new revision. A file can have a maximum of 200 pinned revisions. Note that
+            /// this field is ignored if there is no payload in the request.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("pinned", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Pinned { get; set; }
@@ -9888,6 +9905,50 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A restriction for accessing the content of the file.</summary>
+    public class ContentRestriction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the content of the file is read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
+        public virtual System.Nullable<bool> ReadOnly__ { get; set; } 
+
+        /// <summary>Reason for why the content of the file is restricted. This is only mutable on requests that also
+        /// set readOnly=true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; } 
+
+        /// <summary>The user who set the content restriction. Only populated if readOnly is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictingUser")]
+        public virtual User RestrictingUser { get; set; } 
+
+        /// <summary>The time at which the content restriction was set (formatted RFC 3339 timestamp). Only populated if
+        /// readOnly is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictionDate")]
+        public virtual string RestrictionDateRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="RestrictionDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnore]
+        public virtual System.Nullable<System.DateTime> RestrictionDate
+        {
+            get
+            {
+                return Google.Apis.Util.Utilities.GetDateTimeFromString(RestrictionDateRaw);
+            }
+            set
+            {
+                RestrictionDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+        }
+
+        /// <summary>The type of the content restriction. Currently the only possible value is
+        /// globalContentRestriction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Representation of a shared drive.</summary>
     public class Drive : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10147,6 +10208,11 @@ namespace Google.Apis.Drive.v2.Data
         /// action that a user may take.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
         public virtual File.CapabilitiesData Capabilities { get; set; } 
+
+        /// <summary>Restrictions for accessing the content of the file. Only populated if such a restriction
+        /// exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentRestrictions")]
+        public virtual System.Collections.Generic.IList<ContentRestriction> ContentRestrictions { get; set; } 
 
         /// <summary>Whether the options to copy, print, or download this file, should be disabled for readers and
         /// commenters.</summary>
@@ -10606,6 +10672,10 @@ namespace Google.Apis.Drive.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canModifyContent")]
             public virtual System.Nullable<bool> CanModifyContent { get; set; } 
 
+            /// <summary>Whether the current user can modify restrictions on content of this file.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canModifyContentRestriction")]
+            public virtual System.Nullable<bool> CanModifyContentRestriction { get; set; } 
+
             /// <summary>Whether the current user can move children of this folder outside of the shared drive. This is
             /// false when the item is not a folder. Only populated for items in shared drives.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveChildrenOutOfDrive")]
@@ -10839,8 +10909,10 @@ namespace Google.Apis.Drive.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("starred")]
             public virtual System.Nullable<bool> Starred { get; set; } 
 
-            /// <summary>Whether this file has been trashed. This label applies to all users accessing the file;
-            /// however, only owners are allowed to see and untrash files.</summary>
+            /// <summary>Whether the file has been trashed, either explicitly or from a trashed parent folder. Only the
+            /// owner may trash a file. The trashed item is excluded from all files.list responses returned for any user
+            /// who does not own the file. However, all users with access to the file can see the trashed item metadata
+            /// in an API response. All users with access can copy, download, export, and share the file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("trashed")]
             public virtual System.Nullable<bool> Trashed { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admob/api/'>AdMob API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200709 (2016)
+ *      <tr><th>API Rev<td>20200716 (2023)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admob/api/'>
  *              https://developers.google.com/admob/api/</a>
@@ -518,7 +518,7 @@ namespace Google.Apis.AdMob.v1
         }
 
         /// <summary>Gets information about the specified AdMob publisher account.</summary>
-        /// <param name="name">Required. Resource name of the publisher account to retrieve. Example:
+        /// <param name="name">Resource name of the publisher account to retrieve. Example:
         /// accounts/pub-9876543210987654</param>
         public virtual GetRequest Get(string name)
         {
@@ -537,7 +537,7 @@ namespace Google.Apis.AdMob.v1
             }
 
 
-            /// <summary>Required. Resource name of the publisher account to retrieve. Example:
+            /// <summary>Resource name of the publisher account to retrieve. Example:
             /// accounts/pub-9876543210987654</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }

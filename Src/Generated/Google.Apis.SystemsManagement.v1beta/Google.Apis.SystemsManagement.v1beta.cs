@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/'>Cloud OS Config API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20200615 (1992)
+ *      <tr><th>API Rev<td>20200706 (2013)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/'>
  *              https://cloud.google.com/</a>
@@ -2298,7 +2298,7 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
         public virtual RecurringSchedule RecurringSchedule { get; set; } 
 
         /// <summary>Output only. Time the patch deployment was last updated. Timestamp is in
-        /// [RFC3339]("https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
+        /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -2326,7 +2326,7 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
         public virtual System.Collections.Generic.IList<string> InstanceNamePrefixes { get; set; } 
 
         /// <summary>Targets any of the VM instances specified. Instances are specified by their URI in the form
-        /// `zones/[ZONE]/instances/[INSTANCE_NAME], `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or
+        /// `zones/[ZONE]/instances/[INSTANCE_NAME]`, `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or
         /// `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`</summar
         /// y>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]

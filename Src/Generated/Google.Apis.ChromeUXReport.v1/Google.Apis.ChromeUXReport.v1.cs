@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/web/tools/chrome-user-experience-report/api/reference'>Chrome UX Report API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200709 (2016)
+ *      <tr><th>API Rev<td>20200714 (2021)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/web/tools/chrome-user-experience-report/api/reference'>
  *              https://developers.google.com/web/tools/chrome-user-experience-report/api/reference</a>

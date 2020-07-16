@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20200630 (2007)
+ *      <tr><th>API Rev<td>20200707 (2014)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -4769,9 +4769,9 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A range on a sheet. All indexes are zero-based. Indexes are half open, e.g the start index is inclusive
-    /// and the end index is exclusive -- [start_index, end_index). Missing indexes indicate the range is unbounded on
-    /// that side.
+    /// <summary>A range on a sheet. All indexes are zero-based. Indexes are half open, i.e. the start index is
+    /// inclusive and the end index is exclusive -- [start_index, end_index). Missing indexes indicate the range is
+    /// unbounded on that side.
     ///
     /// For example, if `"Sheet1"` is sheet ID 0, then:
     ///

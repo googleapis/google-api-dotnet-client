@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200706 (2013)
+ *      <tr><th>API Rev<td>20200713 (2020)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -9838,7 +9838,8 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>This is supported by mapping these to the alphanumeric characters that the FFX mode natively
         /// supports. This happens before/after encryption/decryption. Each character listed must appear only once.
         /// Number of characters must be in the range [2, 95]. This must be encoded as ASCII. The order of characters
-        /// does not matter.</summary>
+        /// does not matter. The full list of allowed characters is:
+        /// 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|\:;"'<,>.?/</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customAlphabet")]
         public virtual string CustomAlphabet { get; set; } 
 
@@ -10798,7 +10799,8 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one
         /// of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in
-        /// type. InfoType names should conform to the pattern `[a-zA-Z0-9_]{1,64}`.</summary>
+        /// type.  When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern
+        /// `[A-Za-z0-9$-_]{1,64}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

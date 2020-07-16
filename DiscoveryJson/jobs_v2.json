@@ -615,7 +615,7 @@
    }
   }
  }, 
- "revision": "20200604", 
+ "revision": "20200715", 
  "rootUrl": "https://jobs.googleapis.com/", 
  "schemas": {
   "BatchDeleteJobsRequest": {

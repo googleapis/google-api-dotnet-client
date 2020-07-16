@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/identity/'>Cloud Identity API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200707 (2014)
+ *      <tr><th>API Rev<td>20200714 (2021)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/identity/'>
  *              https://cloud.google.com/identity/</a>
@@ -1913,6 +1913,17 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The `MembershipRole` expiry details.</summary>
+    public class ExpiryDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time at which the `MembershipRole` will expire.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response message for MembershipsService.GetMembershipGraph.</summary>
     public class GetMembershipGraphResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2200,6 +2211,14 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// A `MembershipRole` defines the privileges granted to a `Membership`.</summary>
     public class MembershipRole : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The expiry details of the `MembershipRole`.
+        ///
+        /// Expiry details are only supported for `MEMBER` `MembershipRoles`.
+        ///
+        /// May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiryDetail")]
+        public virtual ExpiryDetail ExpiryDetail { get; set; } 
+
         /// <summary>The name of the `MembershipRole`.
         ///
         /// Must be one of `OWNER`, `MANAGER`, `MEMBER`.</summary>

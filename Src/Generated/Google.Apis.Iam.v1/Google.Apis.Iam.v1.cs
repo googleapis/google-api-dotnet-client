@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/'>Identity and Access Management (IAM) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200617 (1994)
+ *      <tr><th>API Rev<td>20200709 (2016)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/'>
  *              https://cloud.google.com/iam/</a>
@@ -3296,24 +3296,28 @@ namespace Google.Apis.Iam.v1
 
             }
 
-            /// <summary>**Note:** We are in the process of deprecating this method. Use the
+            /// <summary>**Note:** This method is deprecated and will stop working on July 1, 2021. Use the
             /// [`signBlob`](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signBlob)
-            /// method in the IAM Service Account Credentials API instead.
+            /// method in the IAM Service Account Credentials API instead. If you currently use this method, see the
+            /// [migration guide](https://cloud.google.com/iam/help/credentials/migrate-api) for instructions.
             ///
             /// Signs a blob using the system-managed private key for a ServiceAccount.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The resource name of the service account in the following format:
-            /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard for the `PROJECT_ID` will infer the
-            /// project from the account. The `ACCOUNT` value can be the `email` address or the `unique_id` of the service
-            /// account.</param>
+            /// <param name="name">Required. Deprecated. [Migrate to Service Account Credentials
+            /// API](https://cloud.google.com/iam/help/credentials/migrate-api).
+            ///
+            /// The resource name of the service account in the following format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
+            /// Using `-` as a wildcard for the `PROJECT_ID` will infer the project from the account. The `ACCOUNT` value can be the
+            /// `email` address or the `unique_id` of the service account.</param>
             public virtual SignBlobRequest SignBlob(Google.Apis.Iam.v1.Data.SignBlobRequest body, string name)
             {
                 return new SignBlobRequest(service, body, name);
             }
 
-            /// <summary>**Note:** We are in the process of deprecating this method. Use the
+            /// <summary>**Note:** This method is deprecated and will stop working on July 1, 2021. Use the
             /// [`signBlob`](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signBlob)
-            /// method in the IAM Service Account Credentials API instead.
+            /// method in the IAM Service Account Credentials API instead. If you currently use this method, see the
+            /// [migration guide](https://cloud.google.com/iam/help/credentials/migrate-api) for instructions.
             ///
             /// Signs a blob using the system-managed private key for a ServiceAccount.</summary>
             public class SignBlobRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.SignBlobResponse>
@@ -3328,7 +3332,10 @@ namespace Google.Apis.Iam.v1
                 }
 
 
-                /// <summary>Required. The resource name of the service account in the following format:
+                /// <summary>Required. Deprecated. [Migrate to Service Account Credentials
+                /// API](https://cloud.google.com/iam/help/credentials/migrate-api).
+                ///
+                /// The resource name of the service account in the following format:
                 /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard for the `PROJECT_ID` will
                 /// infer the project from the account. The `ACCOUNT` value can be the `email` address or the
                 /// `unique_id` of the service account.</summary>
@@ -3378,24 +3385,28 @@ namespace Google.Apis.Iam.v1
 
             }
 
-            /// <summary>**Note:** We are in the process of deprecating this method. Use the
+            /// <summary>**Note:** This method is deprecated and will stop working on July 1, 2021. Use the
             /// [`signJwt`](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signJwt)
-            /// method in the IAM Service Account Credentials API instead.
+            /// method in the IAM Service Account Credentials API instead. If you currently use this method, see the
+            /// [migration guide](https://cloud.google.com/iam/help/credentials/migrate-api) for instructions.
             ///
             /// Signs a JSON Web Token (JWT) using the system-managed private key for a ServiceAccount.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The resource name of the service account in the following format:
-            /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard for the `PROJECT_ID` will infer the
-            /// project from the account. The `ACCOUNT` value can be the `email` address or the `unique_id` of the service
-            /// account.</param>
+            /// <param name="name">Required. Deprecated. [Migrate to Service Account Credentials
+            /// API](https://cloud.google.com/iam/help/credentials/migrate-api).
+            ///
+            /// The resource name of the service account in the following format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
+            /// Using `-` as a wildcard for the `PROJECT_ID` will infer the project from the account. The `ACCOUNT` value can be the
+            /// `email` address or the `unique_id` of the service account.</param>
             public virtual SignJwtRequest SignJwt(Google.Apis.Iam.v1.Data.SignJwtRequest body, string name)
             {
                 return new SignJwtRequest(service, body, name);
             }
 
-            /// <summary>**Note:** We are in the process of deprecating this method. Use the
+            /// <summary>**Note:** This method is deprecated and will stop working on July 1, 2021. Use the
             /// [`signJwt`](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signJwt)
-            /// method in the IAM Service Account Credentials API instead.
+            /// method in the IAM Service Account Credentials API instead. If you currently use this method, see the
+            /// [migration guide](https://cloud.google.com/iam/help/credentials/migrate-api) for instructions.
             ///
             /// Signs a JSON Web Token (JWT) using the system-managed private key for a ServiceAccount.</summary>
             public class SignJwtRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.SignJwtResponse>
@@ -3410,7 +3421,10 @@ namespace Google.Apis.Iam.v1
                 }
 
 
-                /// <summary>Required. The resource name of the service account in the following format:
+                /// <summary>Required. Deprecated. [Migrate to Service Account Credentials
+                /// API](https://cloud.google.com/iam/help/credentials/migrate-api).
+                ///
+                /// The resource name of the service account in the following format:
                 /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard for the `PROJECT_ID` will
                 /// infer the project from the account. The `ACCOUNT` value can be the `email` address or the
                 /// `unique_id` of the service account.</summary>
@@ -4927,10 +4941,16 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The service account sign blob request.</summary>
+    /// <summary>Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials
+    /// /migrate-api).
+    ///
+    /// The service account sign blob request.</summary>
     public class SignBlobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The bytes to sign.</summary>
+        /// <summary>Required. Deprecated. [Migrate to Service Account Credentials
+        /// API](https://cloud.google.com/iam/help/credentials/migrate-api).
+        ///
+        /// The bytes to sign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesToSign")]
         public virtual string BytesToSign { get; set; } 
 
@@ -4938,14 +4958,23 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The service account sign blob response.</summary>
+    /// <summary>Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials
+    /// /migrate-api).
+    ///
+    /// The service account sign blob response.</summary>
     public class SignBlobResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The id of the key used to sign the blob.</summary>
+        /// <summary>Deprecated. [Migrate to Service Account Credentials
+        /// API](https://cloud.google.com/iam/help/credentials/migrate-api).
+        ///
+        /// The id of the key used to sign the blob.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyId")]
         public virtual string KeyId { get; set; } 
 
-        /// <summary>The signed blob.</summary>
+        /// <summary>Deprecated. [Migrate to Service Account Credentials
+        /// API](https://cloud.google.com/iam/help/credentials/migrate-api).
+        ///
+        /// The signed blob.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
         public virtual string Signature { get; set; } 
 
@@ -4953,11 +4982,17 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The service account sign JWT request.</summary>
+    /// <summary>Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials
+    /// /migrate-api).
+    ///
+    /// The service account sign JWT request.</summary>
     public class SignJwtRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The JWT payload to sign. Must be a serialized JSON object that contains a JWT Claims Set.
-        /// For example: `{"sub": "user@example.com", "iat": 313435}`
+        /// <summary>Required. Deprecated. [Migrate to Service Account Credentials
+        /// API](https://cloud.google.com/iam/help/credentials/migrate-api).
+        ///
+        /// The JWT payload to sign. Must be a serialized JSON object that contains a JWT Claims Set. For example:
+        /// `{"sub": "user@example.com", "iat": 313435}`
         ///
         /// If the JWT Claims Set contains an expiration time (`exp`) claim, it must be an integer timestamp that is not
         /// in the past and no more than 1 hour in the future.
@@ -4971,14 +5006,23 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The service account sign JWT response.</summary>
+    /// <summary>Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials
+    /// /migrate-api).
+    ///
+    /// The service account sign JWT response.</summary>
     public class SignJwtResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The id of the key used to sign the JWT.</summary>
+        /// <summary>Deprecated. [Migrate to Service Account Credentials
+        /// API](https://cloud.google.com/iam/help/credentials/migrate-api).
+        ///
+        /// The id of the key used to sign the JWT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyId")]
         public virtual string KeyId { get; set; } 
 
-        /// <summary>The signed JWT.</summary>
+        /// <summary>Deprecated. [Migrate to Service Account Credentials
+        /// API](https://cloud.google.com/iam/help/credentials/migrate-api).
+        ///
+        /// The signed JWT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signedJwt")]
         public virtual string SignedJwt { get; set; } 
 

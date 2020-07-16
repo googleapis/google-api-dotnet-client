@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/hangouts/chat'>Hangouts Chat API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200701 (2008)
+ *      <tr><th>API Rev<td>20200708 (2015)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/hangouts/chat'>
  *              https://developers.google.com/hangouts/chat</a>
@@ -529,9 +529,96 @@ namespace Google.Apis.HangoutsChat.v1
             public MessagesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                attachments = new AttachmentsResource(service);
 
             }
 
+            private readonly AttachmentsResource attachments;
+
+            /// <summary>Gets the Attachments resource.</summary>
+            public virtual AttachmentsResource Attachments
+            {
+                get { return attachments; }
+            }
+
+            /// <summary>The "attachments" collection of methods.</summary>
+            public class AttachmentsResource
+            {
+                private const string Resource = "attachments";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AttachmentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Gets the metadata of a message attachment. The attachment data is fetched using the media
+                /// API.</summary>
+                /// <param name="name">Resource name of the attachment, in the form "spaces/messages/attachments".</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets the metadata of a message attachment. The attachment data is fetched using the media
+                /// API.</summary>
+                public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Attachment>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Resource name of the attachment, in the form "spaces/messages/attachments".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^spaces/[^/]+/messages/[^/]+/attachments/[^/]+$",
+                            });
+                    }
+
+                }
+            }
 
             /// <summary>Creates a message.</summary>
             /// <param name="body">The body of the request.</param>
@@ -1039,6 +1126,60 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>An attachment in Hangouts Chat.</summary>
+    public class Attachment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A reference to the attachment data. This is used with the media API to download the attachment
+        /// data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachmentDataRef")]
+        public virtual AttachmentDataRef AttachmentDataRef { get; set; } 
+
+        /// <summary>The original file name for the content, not the full path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentName")]
+        public virtual string ContentName { get; set; } 
+
+        /// <summary>The content type (MIME type) of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
+        public virtual string ContentType { get; set; } 
+
+        /// <summary>Output only. The download URL which should be used to allow a human user to download the
+        /// attachment. Bots should not use this URL to download attachment content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadUri")]
+        public virtual string DownloadUri { get; set; } 
+
+        /// <summary>A reference to the drive attachment. This is used with the Drive API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveDataRef")]
+        public virtual DriveDataRef DriveDataRef { get; set; } 
+
+        /// <summary>Resource name of the attachment, in the form "spaces/messages/attachments".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The source of the attachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; } 
+
+        /// <summary>Output only. The thumbnail URL which should be used to preview the attachment to a human user. Bots
+        /// should not use this URL to download attachment content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUri")]
+        public virtual string ThumbnailUri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A reference to the data of an attachment.</summary>
+    public class AttachmentDataRef : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the attachment data. This is used with the media API to download the
+        /// attachment data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A button. Can be a text button or an image button.</summary>
     public class Button : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1161,6 +1302,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The user that triggered the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual User User { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A reference to the data of a drive attachment.</summary>
+    public class DriveDataRef : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The id for the drive file, for use with the Drive API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveFileId")]
+        public virtual string DriveFileId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1351,6 +1503,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>Plain-text body of the message with all bot mentions stripped out.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("argumentText")]
         public virtual string ArgumentText { get; set; } 
+
+        /// <summary>User uploaded attachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachment")]
+        public virtual System.Collections.Generic.IList<Attachment> Attachment { get; set; } 
 
         /// <summary>Rich, formatted and interactive cards that can be used to display UI elements such as: formatted
         /// texts, buttons, clickable images. Cards are normally displayed below the plain-text body of the

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/apps-script/api/'>Apps Script API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200630 (2007)
+ *      <tr><th>API Rev<td>20200704 (2011)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/apps-script/api/'>
  *              https://developers.google.com/apps-script/api/</a>

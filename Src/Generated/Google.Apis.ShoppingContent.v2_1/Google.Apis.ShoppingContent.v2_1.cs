@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2.1
- *      <tr><th>API Rev<td>20200617 (1994)
+ *      <tr><th>API Rev<td>20200709 (2016)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -14822,7 +14822,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual string Brand { get; set; } 
 
-        /// <summary>Link to the canonical version of the landing page.</summary>
+        /// <summary>URL for the canonical version of your item's landing page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalLink")]
         public virtual string CanonicalLink { get; set; } 
 
@@ -14992,7 +14992,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minHandlingTime")]
         public virtual System.Nullable<long> MinHandlingTime { get; set; } 
 
-        /// <summary>Link to a mobile-optimized version of the landing page.</summary>
+        /// <summary>URL for the mobile-optimized version of your item's landing page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileLink")]
         public virtual string MobileLink { get; set; } 
 
@@ -15019,11 +15019,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
         public virtual Price Price { get; set; } 
 
-        /// <summary>Technical specification or additional product details</summary>
+        /// <summary>Technical specification or additional product details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productDetails")]
         public virtual System.Collections.Generic.IList<ProductProductDetail> ProductDetails { get; set; } 
 
-        /// <summary>List of important bullet points describing the product</summary>
+        /// <summary>Bullet points describing the most relevant highlights of a product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productHighlights")]
         public virtual System.Collections.Generic.IList<string> ProductHighlights { get; set; } 
 

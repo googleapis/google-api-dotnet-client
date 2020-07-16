@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/billing/docs/how-to/budget-api-overview'>Cloud Billing Budget API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200704 (2011)
+ *      <tr><th>API Rev<td>20200711 (2018)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/billing/docs/how-to/budget-api-overview'>
  *              https://cloud.google.com/billing/docs/how-to/budget-api-overview</a>
@@ -750,22 +750,30 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
 namespace Google.Apis.CloudBillingBudget.v1beta1.Data
 {    
 
-    /// <summary>AllUpdatesRule defines notifications that are sent on every update to the billing account's spend,
-    /// regardless of the thresholds defined using threshold rules.</summary>
+    /// <summary>AllUpdatesRule defines notifications that are sent based on budget spend and thresholds.</summary>
     public class GoogleCloudBillingBudgetsV1beta1AllUpdatesRule : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Targets to send notifications to when a threshold is exceeded. This is in addition to
+        /// default recipients who have billing account roles. The value is the full REST resource name of a monitoring
+        /// notification channel with the form `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5
+        /// channels are allowed. See https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients for
+        /// more details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoringNotificationChannels")]
+        public virtual System.Collections.Generic.IList<string> MonitoringNotificationChannels { get; set; } 
+
         /// <summary>Required. The name of the Cloud Pub/Sub topic where budget related messages will be published, in
         /// the form `projects/{project_id}/topics/{topic_id}`. Updates are sent at regular intervals to the topic. The
         /// topic needs to be created before the budget is created; see https://cloud.google.com/billing/docs/how-
         /// to/budgets#manage-notifications for more details. Caller is expected to have `pubsub.topics.setIamPolicy`
         /// permission on the topic when it's set for a budget, otherwise, the API call will fail with
-        /// PERMISSION_DENIED. See https://cloud.google.com/pubsub/docs/access-control for more details on Pub/Sub roles
-        /// and permissions.</summary>
+        /// PERMISSION_DENIED. See https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications for
+        /// more details on Pub/Sub roles and permissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; } 
 
-        /// <summary>Required. The schema version of the notification. Only "1.0" is accepted. It represents the JSON
-        /// schema as defined in https://cloud.google.com/billing/docs/how-to/budgets#notification_format</summary>
+        /// <summary>Required. The schema version of the notification sent to `pubsub_topic`. Only "1.0" is accepted. It
+        /// represents the JSON schema as defined in https://cloud.google.com/billing/docs/how-to/budgets-programmatic-
+        /// notifications#notification_format</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaVersion")]
         public virtual string SchemaVersion { get; set; } 
 
@@ -779,8 +787,7 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
     /// back-to-back).</summary>
     public class GoogleCloudBillingBudgetsV1beta1Budget : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Rules to apply to all updates to the actual spend, regardless of the thresholds set in
-        /// `threshold_rules`.</summary>
+        /// <summary>Optional. Rules to apply to notifications sent based on budget spend and thresholds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allUpdatesRule")]
         public virtual GoogleCloudBillingBudgetsV1beta1AllUpdatesRule AllUpdatesRule { get; set; } 
 
@@ -870,8 +877,8 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
 
         /// <summary>Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying that usage
         /// from only this set of subaccounts should be included in the budget. If a subaccount is set to the name of
-        /// the resller account, usage from the reseller account will be included. If omitted, the report will include
-        /// usage from the reseller account and all subaccounts, if they exist.</summary>
+        /// the parent account, usage from the parent account will be included. If omitted, the report will include
+        /// usage from the parent account and all subaccounts, if they exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccounts")]
         public virtual System.Collections.Generic.IList<string> Subaccounts { get; set; } 
 

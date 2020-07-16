@@ -29,7 +29,7 @@
  "description": "Creates and runs virtual machines on Google Cloud Platform.", 
  "discoveryVersion": "v1", 
  "documentationLink": "https://developers.google.com/compute/docs/reference/latest/", 
- "etag": "\"-2NioU2H8y8siEzrBOV_qzRI6kQ/liQbcVTpB1Gc6xUtyZYdRVYCMco\"", 
+ "etag": "\"-2NioU2H8y8siEzrBOV_qzRI6kQ/0wVwY997rbpeMBG7fCKgViWX-Cs\"", 
  "icons": {
   "x16": "https://www.google.com/images/icons/product/compute_engine-16.png", 
   "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -32361,7 +32361,7 @@
    }
   }
  }, 
- "revision": "20200612", 
+ "revision": "20200629", 
  "rootUrl": "https://compute.googleapis.com/", 
  "schemas": {
   "AcceleratorConfig": {

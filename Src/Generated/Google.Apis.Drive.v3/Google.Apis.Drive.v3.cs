@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200618 (1995)
+ *      <tr><th>API Rev<td>20200706 (2013)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -2088,7 +2088,8 @@ namespace Google.Apis.Drive.v3
         }
 
 
-        /// <summary>Creates a copy of a file and applies any requested updates with patch semantics.</summary>
+        /// <summary>Creates a copy of a file and applies any requested updates with patch semantics. Folders cannot be
+        /// copied.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         public virtual CopyRequest Copy(Google.Apis.Drive.v3.Data.File body, string fileId)
@@ -2096,7 +2097,8 @@ namespace Google.Apis.Drive.v3
             return new CopyRequest(service, body, fileId);
         }
 
-        /// <summary>Creates a copy of a file and applies any requested updates with patch semantics.</summary>
+        /// <summary>Creates a copy of a file and applies any requested updates with patch semantics. Folders cannot be
+        /// copied.</summary>
         public class CopyRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.File>
         {
             /// <summary>Constructs a new Copy request.</summary>
@@ -3054,8 +3056,11 @@ namespace Google.Apis.Drive.v3
             }
 
 
-            /// <summary>Bodies of items (files/documents) to which the query applies. Supported bodies are 'user',
-            /// 'domain', 'drive' and 'allDrives'. Prefer 'user' or 'drive' to 'allDrives' for efficiency.</summary>
+            /// <summary>Groupings of files to which the query applies. Supported groupings are: 'user' (files created
+            /// by, opened by, or shared directly with the user), 'drive' (files in the specified shared drive as
+            /// indicated by the 'driveId'), 'domain' (files shared to the user's domain), and 'allDrives' (A
+            /// combination of 'user' and 'drive' for all drives where the user is a member). When able, use 'user' or
+            /// 'drive', instead of 'allDrives', for efficiency.</summary>
             [Google.Apis.Util.RequestParameterAttribute("corpora", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Corpora { get; set; }
 
@@ -3069,7 +3074,9 @@ namespace Google.Apis.Drive.v3
                 /// <summary>Files shared to the user's domain.</summary>
                 [Google.Apis.Util.StringValueAttribute("domain")]
                 Domain,
-                /// <summary>Files owned by or shared to the user.</summary>
+                /// <summary>Files owned by or shared to the user. If a user has permissions on a Shared Drive, the
+                /// files inside it won't be retrieved unless the user has created, opened, or shared the
+                /// file.</summary>
                 [Google.Apis.Util.StringValueAttribute("user")]
                 User,
             }
@@ -3280,7 +3287,7 @@ namespace Google.Apis.Drive.v3
 
         }
 
-        /// <summary>Updates a file's metadata and/or content with patch semantics.</summary>
+        /// <summary>Updates a file's metadata and/or content. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         public virtual UpdateRequest Update(Google.Apis.Drive.v3.Data.File body, string fileId)
@@ -3288,7 +3295,7 @@ namespace Google.Apis.Drive.v3
             return new UpdateRequest(service, body, fileId);
         }
 
-        /// <summary>Updates a file's metadata and/or content with patch semantics.</summary>
+        /// <summary>Updates a file's metadata and/or content. This method supports patch semantics.</summary>
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.File>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -3463,7 +3470,7 @@ namespace Google.Apis.Drive.v3
 
         }
 
-        /// <summary>Updates a file's metadata and/or content with patch semantics.</summary>
+        /// <summary>Updates a file's metadata and/or content. This method supports patch semantics.</summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
         /// <list type="bullet">
@@ -6243,6 +6250,50 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A restriction for accessing the content of the file.</summary>
+    public class ContentRestriction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the content of the file is read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
+        public virtual System.Nullable<bool> ReadOnly__ { get; set; } 
+
+        /// <summary>Reason for why the content of the file is restricted. This is only mutable on requests that also
+        /// set readOnly=true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; } 
+
+        /// <summary>The user who set the content restriction. Only populated if readOnly is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictingUser")]
+        public virtual User RestrictingUser { get; set; } 
+
+        /// <summary>The time at which the content restriction was set (formatted RFC 3339 timestamp). Only populated if
+        /// readOnly is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictionTime")]
+        public virtual string RestrictionTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="RestrictionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnore]
+        public virtual System.Nullable<System.DateTime> RestrictionTime
+        {
+            get
+            {
+                return Google.Apis.Util.Utilities.GetDateTimeFromString(RestrictionTimeRaw);
+            }
+            set
+            {
+                RestrictionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+        }
+
+        /// <summary>The type of the content restriction. Currently the only possible value is
+        /// globalContentRestriction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Representation of a shared drive.</summary>
     public class Drive : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6496,6 +6547,11 @@ namespace Google.Apis.Drive.v3.Data
         /// responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentHints")]
         public virtual File.ContentHintsData ContentHints { get; set; } 
+
+        /// <summary>Restrictions for accessing the content of the file. Only populated if such a restriction
+        /// exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentRestrictions")]
+        public virtual System.Collections.Generic.IList<ContentRestriction> ContentRestrictions { get; set; } 
 
         /// <summary>Whether the options to copy, print, or download this file, should be disabled for readers and
         /// commenters.</summary>
@@ -6752,7 +6808,9 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Nullable<long> ThumbnailVersion { get; set; } 
 
         /// <summary>Whether the file has been trashed, either explicitly or from a trashed parent folder. Only the
-        /// owner may trash a file, and other users cannot see files in the owner's trash.</summary>
+        /// owner may trash a file. The trashed item is excluded from all files.list responses returned for any user who
+        /// does not own the file. However, all users with access to the file can see the trashed item metadata in an
+        /// API response. All users with access can copy, download, export, and share the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trashed")]
         public virtual System.Nullable<bool> Trashed { get; set; } 
 
@@ -6898,6 +6956,10 @@ namespace Google.Apis.Drive.v3.Data
             /// <summary>Whether the current user can modify the content of this file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canModifyContent")]
             public virtual System.Nullable<bool> CanModifyContent { get; set; } 
+
+            /// <summary>Whether the current user can modify restrictions on content of this file.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canModifyContentRestriction")]
+            public virtual System.Nullable<bool> CanModifyContentRestriction { get; set; } 
 
             /// <summary>Whether the current user can move children of this folder outside of the shared drive. This is
             /// false when the item is not a folder. Only populated for items in shared drives.</summary>

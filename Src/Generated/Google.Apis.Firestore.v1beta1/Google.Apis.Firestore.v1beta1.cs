@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/firestore'>Cloud Firestore API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200522 (1968)
+ *      <tr><th>API Rev<td>20200709 (2016)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/firestore'>
  *              https://cloud.google.com/firestore</a>
@@ -455,6 +455,88 @@ namespace Google.Apis.Firestore.v1beta1
                     }
 
                     /// <summary>Initializes BatchGet parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "database", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "database",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Applies a batch of write operations.
+                ///
+                /// The BatchWrite method does not apply the write operations atomically and can apply them out of
+                /// order. Method does not allow more than one write per document. Each write succeeds or fails
+                /// independently. See the BatchWriteResponse for the success status of each write.
+                ///
+                /// If you require an atomically applied set of writes, use Commit instead.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="database">Required. The database name. In the format:
+                /// `projects/{project_id}/databases/{database_id}`.</param>
+                public virtual BatchWriteRequest BatchWrite(Google.Apis.Firestore.v1beta1.Data.BatchWriteRequest body, string database)
+                {
+                    return new BatchWriteRequest(service, body, database);
+                }
+
+                /// <summary>Applies a batch of write operations.
+                ///
+                /// The BatchWrite method does not apply the write operations atomically and can apply them out of
+                /// order. Method does not allow more than one write per document. Each write succeeds or fails
+                /// independently. See the BatchWriteResponse for the success status of each write.
+                ///
+                /// If you require an atomically applied set of writes, use Commit instead.</summary>
+                public class BatchWriteRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1beta1.Data.BatchWriteResponse>
+                {
+                    /// <summary>Constructs a new BatchWrite request.</summary>
+                    public BatchWriteRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1beta1.Data.BatchWriteRequest body, string database)
+                        : base(service)
+                    {
+                        Database = database;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The database name. In the format:
+                    /// `projects/{project_id}/databases/{database_id}`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Database { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1beta1.Data.BatchWriteRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "batchWrite"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+database}/documents:batchWrite"; }
+                    }
+
+                    /// <summary>Initializes BatchWrite parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -1243,6 +1325,82 @@ namespace Google.Apis.Firestore.v1beta1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Partitions a query by returning partition cursors that can be used to run the query in
+                /// parallel. The returned partition cursors are split points that can be used by RunQuery as
+                /// starting/end points for the query results.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent resource name. In the format:
+                /// `projects/{project_id}/databases/{database_id}/documents`. Document resource names are not supported; only database
+                /// resource names can be specified.</param>
+                public virtual PartitionQueryRequest PartitionQuery(Google.Apis.Firestore.v1beta1.Data.PartitionQueryRequest body, string parent)
+                {
+                    return new PartitionQueryRequest(service, body, parent);
+                }
+
+                /// <summary>Partitions a query by returning partition cursors that can be used to run the query in
+                /// parallel. The returned partition cursors are split points that can be used by RunQuery as
+                /// starting/end points for the query results.</summary>
+                public class PartitionQueryRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1beta1.Data.PartitionQueryResponse>
+                {
+                    /// <summary>Constructs a new PartitionQuery request.</summary>
+                    public PartitionQueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1beta1.Data.PartitionQueryRequest body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The parent resource name. In the format:
+                    /// `projects/{project_id}/databases/{database_id}/documents`. Document resource names are not
+                    /// supported; only database resource names can be specified.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1beta1.Data.PartitionQueryRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "partitionQuery"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+parent}:partitionQuery"; }
+                    }
+
+                    /// <summary>Initializes PartitionQuery parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
                             });
                     }
 
@@ -2159,6 +2317,43 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The request for Firestore.BatchWrite.</summary>
+    public class BatchWriteRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Labels associated with this batch write.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The writes to apply.
+        ///
+        /// Method does not apply writes atomically and does not guarantee ordering. Each write succeeds or fails
+        /// independently. You cannot write to the same document more than once per request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writes")]
+        public virtual System.Collections.Generic.IList<Write> Writes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response from Firestore.BatchWrite.</summary>
+    public class BatchWriteResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status of applying the writes.
+        ///
+        /// This i-th write status corresponds to the i-th write in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual System.Collections.Generic.IList<Status> Status { get; set; } 
+
+        /// <summary>The result of applying the writes.
+        ///
+        /// This i-th write result corresponds to the i-th write in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeResults")]
+        public virtual System.Collections.Generic.IList<WriteResult> WriteResults { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The request for Firestore.BeginTransaction.</summary>
     public class BeginTransactionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2992,6 +3187,72 @@ namespace Google.Apis.Firestore.v1beta1.Data
         /// <summary>The field to order by.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual FieldReference Field { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request for Firestore.PartitionQuery.</summary>
+    public class PartitionQueryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum number of partitions to return in this call, subject to `partition_count`.
+        ///
+        /// For example, if `partition_count` = 10 and `page_size` = 8, the first call to PartitionQuery will return up
+        /// to 8 partitions and a `next_page_token` if more results exist. A second call to PartitionQuery will return
+        /// up to 2 partitions, to complete the total of 10 specified in `partition_count`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; } 
+
+        /// <summary>The `next_page_token` value returned from a previous call to PartitionQuery that may be used to get
+        /// an additional set of results. There are no ordering guarantees between sets of results. Thus, using multiple
+        /// sets of results will require merging the different result sets.
+        ///
+        /// For example, two subsequent calls using a page_token may return:
+        ///
+        /// * cursor B, cursor M, cursor Q * cursor A, cursor U, cursor W
+        ///
+        /// To obtain a complete result set ordered with respect to the results of the query supplied to PartitionQuery,
+        /// the results sets should be merged: cursor A, cursor B, cursor M, cursor Q, cursor U, cursor W</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; } 
+
+        /// <summary>The desired maximum number of partition points. The partitions may be returned across multiple
+        /// pages of results. The number must be strictly positive. The actual number of partitions returned may be
+        /// fewer.
+        ///
+        /// For example, this may be set to one fewer than the number of parallel queries to be run, or in running a
+        /// data pipeline job, one fewer than the number of workers or compute instances available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionCount")]
+        public virtual System.Nullable<long> PartitionCount { get; set; } 
+
+        /// <summary>A structured query. Filters, order bys, limits, offsets, and start/end cursors are not
+        /// supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredQuery")]
+        public virtual StructuredQuery StructuredQuery { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for Firestore.PartitionQuery.</summary>
+    public class PartitionQueryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A page token that may be used to request an additional set of results, up to the number specified
+        /// by `partition_count` in the PartitionQuery request. If blank, there are no more results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>Partition results. Each partition is a split point that can be used by RunQuery as a starting or
+        /// end point for the query results. The RunQuery requests must be made with the same query supplied to this
+        /// PartitionQuery request. The partition cursors will be ordered according to same ordering as the results of
+        /// the query supplied to PartitionQuery.
+        ///
+        /// For example, if a PartitionQuery request returns partition cursors A and B, running the following three
+        /// queries will return the entire result set of the original query:
+        ///
+        /// * query, end_at A * query, start_at A, end_at B * query, start_at B</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitions")]
+        public virtual System.Collections.Generic.IList<Cursor> Partitions { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

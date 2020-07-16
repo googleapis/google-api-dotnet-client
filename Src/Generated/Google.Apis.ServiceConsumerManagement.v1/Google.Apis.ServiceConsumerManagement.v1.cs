@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>Service Consumer Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200708 (2015)
+ *      <tr><th>API Rev<td>20200713 (2020)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>
  *              https://cloud.google.com/service-consumer-management/docs/overview</a>
@@ -2800,10 +2800,9 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     ///
     /// The following are specific rules for service defined Monitoring metric descriptors:
     ///
-    /// * `type`, `metric_kind`, `value_type`, `description`, `display_name`, `launch_stage` fields are all required.
-    /// The `unit` field must be specified if the `value_type` is any of DOUBLE, INT64, DISTRIBUTION. * Maximum of
-    /// default 500 metric descriptors per service is allowed. * Maximum of default 10 labels per metric descriptor is
-    /// allowed.
+    /// * `type`, `metric_kind`, `value_type`, `description`, and `display_name` fields are all required. The `unit`
+    /// field must be specified if the `value_type` is any of DOUBLE, INT64, DISTRIBUTION. * Maximum of default 500
+    /// metric descriptors per service is allowed. * Maximum of default 10 labels per metric descriptor is allowed.
     ///
     /// The default maximum limit can be overridden. Please follow https://cloud.google.com/monitoring/quotas</summary>
     public class MetricDescriptor : Google.Apis.Requests.IDirectResponseSchema

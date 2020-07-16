@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Cloud Trace API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200622 (1999)
+ *      <tr><th>API Rev<td>20200707 (2014)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -395,10 +395,9 @@ namespace Google.Apis.CloudTrace.v2
                 }
 
 
-                /// <summary>Creates a new span. In this case, writing traces is not considered an active developer
-                /// method since traces are machine generated.</summary>
+                /// <summary>Creates a new span.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The resource name of the span in the following format:
+                /// <param name="name">Required. The resource name of the span in the following format:
                 ///
                 ///     projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project; it is
                 /// a 32-character hexadecimal encoding of a 16-byte array.
@@ -410,8 +409,7 @@ namespace Google.Apis.CloudTrace.v2
                     return new CreateSpanRequest(service, body, name);
                 }
 
-                /// <summary>Creates a new span. In this case, writing traces is not considered an active developer
-                /// method since traces are machine generated.</summary>
+                /// <summary>Creates a new span.</summary>
                 public class CreateSpanRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v2.Data.Span>
                 {
                     /// <summary>Constructs a new CreateSpan request.</summary>
@@ -424,7 +422,7 @@ namespace Google.Apis.CloudTrace.v2
                     }
 
 
-                    /// <summary>The resource name of the span in the following format:
+                    /// <summary>Required. The resource name of the span in the following format:
                     ///
                     /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within
                     /// a project; it is a 32-character hexadecimal encoding of a 16-byte array.
@@ -478,9 +476,7 @@ namespace Google.Apis.CloudTrace.v2
                 }
             }
 
-            /// <summary>Sends new spans to new or existing traces. You cannot update existing spans. In this case,
-            /// writing traces is not considered an active developer method since traces are machine
-            /// generated.</summary>
+            /// <summary>Sends new spans to new or existing traces. You cannot update existing spans.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Required. The name of the project where the spans belong. The format is
             /// `projects/[PROJECT_ID]`.</param>
@@ -489,9 +485,7 @@ namespace Google.Apis.CloudTrace.v2
                 return new BatchWriteRequest(service, body, name);
             }
 
-            /// <summary>Sends new spans to new or existing traces. You cannot update existing spans. In this case,
-            /// writing traces is not considered an active developer method since traces are machine
-            /// generated.</summary>
+            /// <summary>Sends new spans to new or existing traces. You cannot update existing spans.</summary>
             public class BatchWriteRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v2.Data.Empty>
             {
                 /// <summary>Constructs a new BatchWrite request.</summary>
@@ -754,7 +748,7 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("links")]
         public virtual Links Links { get; set; } 
 
-        /// <summary>The resource name of the span in the following format:
+        /// <summary>Required. The resource name of the span in the following format:
         ///
         /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project;
         /// it is a 32-character hexadecimal encoding of a 16-byte array.
@@ -779,8 +773,9 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spanId")]
         public virtual string SpanId { get; set; } 
 
-        /// <summary>Distinguishes between spans generated in a particular context. For example, two spans with the same
-        /// name may be distinguished using `CLIENT` (caller) and `SERVER` (callee) to identify an RPC call.</summary>
+        /// <summary>Optional. Distinguishes between spans generated in a particular context. For example, two spans
+        /// with the same name may be distinguished using `CLIENT` (caller) and `SERVER` (callee) to identify an RPC
+        /// call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanKind")]
         public virtual string SpanKind { get; set; } 
 

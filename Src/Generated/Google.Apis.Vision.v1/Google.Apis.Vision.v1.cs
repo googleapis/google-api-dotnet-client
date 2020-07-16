@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200706 (2013)
+ *      <tr><th>API Rev<td>20200710 (2017)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -9363,7 +9363,10 @@ namespace Google.Apis.Vision.v1.Data
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Image content, represented as a stream of bytes. Note: As with all `bytes` fields, protobuffers use
-        /// a pure binary representation, whereas JSON representations use base64.</summary>
+        /// a pure binary representation, whereas JSON representations use base64.
+        ///
+        /// Currently, this field only works for BatchAnnotateImages requests. It does not work for
+        /// AsyncBatchAnnotateImages requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; } 
 

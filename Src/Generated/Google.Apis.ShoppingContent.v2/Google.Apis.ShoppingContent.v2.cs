@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200617 (1994)
+ *      <tr><th>API Rev<td>20200709 (2016)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -13886,7 +13886,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual string Brand { get; set; } 
 
-        /// <summary>Link to the canonical version of the landing page.</summary>
+        /// <summary>URL for the canonical version of your item's landing page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalLink")]
         public virtual string CanonicalLink { get; set; } 
 
@@ -14067,7 +14067,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minHandlingTime")]
         public virtual System.Nullable<long> MinHandlingTime { get; set; } 
 
-        /// <summary>Link to a mobile-optimized version of the landing page.</summary>
+        /// <summary>URL for the mobile-optimized version of your item's landing page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileLink")]
         public virtual string MobileLink { get; set; } 
 

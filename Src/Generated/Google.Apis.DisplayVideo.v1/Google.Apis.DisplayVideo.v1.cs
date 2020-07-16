@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/display-video/'>Display & Video 360 API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200709 (2016)
+ *      <tr><th>API Rev<td>20200714 (2021)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/display-video/'>
  *              https://developers.google.com/display-video/</a>
@@ -4482,7 +4482,7 @@ namespace Google.Apis.DisplayVideo.v1
                 /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
                 /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
                 /// has the form of `{field} {operator} {value}`. * The operator must be `EQUALS (=)`. * Supported
-                /// fields: - `campaignId` - `insertionOrderId` - `entityStatus` - `lineItemType`.
+                /// fields: - `campaignId` - `insertionOrderId` - `entityStatus` - `lineItemType`
                 ///
                 /// Examples:
                 ///
@@ -4497,7 +4497,7 @@ namespace Google.Apis.DisplayVideo.v1
 
                 /// <summary>Field by which to sort the list. Acceptable values are:
                 ///
-                /// * "displayName" (default) * "entityStatus"
+                /// * "displayName" (default) * "entityStatus" * “flight.dateRange.endDate”
                 ///
                 /// The default sorting order is ascending. To specify descending order for a field, a suffix "desc"
                 /// should be added to the field name. Example: `displayName desc`.</summary>

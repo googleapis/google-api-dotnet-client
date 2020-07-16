@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Search Console URL Testing Tools API Version v1
+ *   Google Search Console API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/webmaster-tools/search-console-api/'>Google Search Console URL Testing Tools API</a>
+ *          <td><a href='https://developers.google.com/webmaster-tools/search-console-api/'>Google Search Console API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200711 (2018)
+ *      <tr><th>API Rev<td>20200714 (2021)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/webmaster-tools/search-console-api/'>
  *              https://developers.google.com/webmaster-tools/search-console-api/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Search Console URL Testing Tools API can be found at
+ * The complete API documentation for using Google Search Console API can be found at
  * <a href='https://developers.google.com/webmaster-tools/search-console-api/'>https://developers.google.com/webmaster-tools/search-console-api/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see

@@ -1056,7 +1056,7 @@
    }
   }
  }, 
- "revision": "20200703", 
+ "revision": "20200709", 
  "rootUrl": "https://securitycenter.googleapis.com/", 
  "schemas": {
   "AssetDiscoveryConfig": {
