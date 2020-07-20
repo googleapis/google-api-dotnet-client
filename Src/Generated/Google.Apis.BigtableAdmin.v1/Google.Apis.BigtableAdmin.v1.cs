@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigtable/'>Cloud Bigtable Admin API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200609 (1986)
+ *      <tr><th>API Rev<td>20200629 (2006)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigtable/'>
  *              https://cloud.google.com/bigtable/</a>
@@ -307,6 +307,78 @@ namespace Google.Apis.BigtableAdmin.v1
 namespace Google.Apis.BigtableAdmin.v1.Data
 {    
 
+    /// <summary>A backup of a Cloud Bigtable table.</summary>
+    public class Backup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. `end_time` is the time that the backup was finished. The row data in the backup will
+        /// be no newer than this timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>Required. The expiration time of the backup, with microseconds granularity that must be at least 6
+        /// hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud
+        /// Bigtable will delete the backup and free the resources used by the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; } 
+
+        /// <summary>A globally unique identifier for the backup which cannot be changed. Values are of the form
+        /// `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the
+        /// name must be between 1 and 50 characters in length.
+        ///
+        /// The backup is stored in the cluster identified by the prefix of the backup name of the form
+        /// `projects/{project}/instances/{instance}/clusters/{cluster}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Output only. Size of the backup in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
+        public virtual System.Nullable<long> SizeBytes { get; set; } 
+
+        /// <summary>Required. Immutable. Name of the table from which this backup was created. This needs to be in the
+        /// same instance as the backup. Values are of the form
+        /// `projects/{project}/instances/{instance}/tables/{source_table}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceTable")]
+        public virtual string SourceTable { get; set; } 
+
+        /// <summary>Output only. `start_time` is the time that the backup was started (i.e. approximately the time the
+        /// CreateBackup request is received).  The row data in this backup will be no older than this
+        /// timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>Output only. The current state of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about a backup.</summary>
+    public class BackupInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Name of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
+        public virtual string Backup { get; set; } 
+
+        /// <summary>Output only. This time that the backup was finished. Row data in the backup will be no newer than
+        /// this timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>Output only. Name of the table the backup was created from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceTable")]
+        public virtual string SourceTable { get; set; } 
+
+        /// <summary>Output only. The time that the backup was started. Row data in the backup will be no older than
+        /// this timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A resizable group of nodes in a particular cloud location, capable of serving all Tables in the parent
     /// Instance.</summary>
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
@@ -335,6 +407,29 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         /// <summary>Output only. The current state of the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata type for the operation returned by CreateBackup.</summary>
+    public class CreateBackupMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, the time at which this operation finished or was cancelled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>The name of the backup being created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The name of the table the backup is created from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceTable")]
+        public virtual string SourceTable { get; set; } 
+
+        /// <summary>The time at which this operation started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -472,6 +567,42 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Encapsulates progress related information for a Cloud Bigtable long running operation.</summary>
+    public class OperationProgress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, the time at which this operation failed or was completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>Percent completion of the operation. Values are between 0 and 100 inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
+        public virtual System.Nullable<int> ProgressPercent { get; set; } 
+
+        /// <summary>Time the request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata type for the long-running operation used to track the progress of optimizations performed on a
+    /// newly restored table. This long-running operation is automatically created by the system after the successful
+    /// completion of a table restore, and cannot be cancelled.</summary>
+    public class OptimizeRestoredTableMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the restored table being optimized.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The progress of the post-restore optimizations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
+        public virtual OperationProgress Progress { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request message for BigtableInstanceAdmin.PartialUpdateInstance.</summary>
     public class PartialUpdateInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -482,6 +613,37 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         /// <summary>Required. The subset of Instance fields which should be replaced. Must be explicitly set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata type for the long-running operation returned by RestoreTable.</summary>
+    public class RestoreTableMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("backupInfo")]
+        public virtual BackupInfo BackupInfo { get; set; } 
+
+        /// <summary>Name of the table being created and restored to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>If exists, the name of the long-running operation that will be used to track the post-restore
+        /// optimization process to optimize the performance of the restored table. The metadata type of the long-
+        /// running operation is OptimizeRestoreTableMetadata. The response type is Empty. This long-running operation
+        /// may be automatically created by the system if applicable after the RestoreTable long-running operation
+        /// completes successfully. This operation may not be created if the table is already optimized or the restore
+        /// was not successful.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizeTableOperationName")]
+        public virtual string OptimizeTableOperationName { get; set; } 
+
+        /// <summary>The progress of the RestoreTable operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
+        public virtual OperationProgress Progress { get; set; } 
+
+        /// <summary>The type of the restore source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
+        public virtual string SourceType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

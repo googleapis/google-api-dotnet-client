@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Cloud Trace API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200707 (2014)
+ *      <tr><th>API Rev<td>20200713 (2020)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -403,7 +403,7 @@ namespace Google.Apis.CloudTrace.v2
                 /// a 32-character hexadecimal encoding of a 16-byte array.
                 ///
                 /// [SPAN_ID] is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte
-                /// array.</param>
+                /// array. It should not be zero.</param>
                 public virtual CreateSpanRequest CreateSpan(Google.Apis.CloudTrace.v2.Data.Span body, string name)
                 {
                     return new CreateSpanRequest(service, body, name);
@@ -428,7 +428,7 @@ namespace Google.Apis.CloudTrace.v2
                     /// a project; it is a 32-character hexadecimal encoding of a 16-byte array.
                     ///
                     /// [SPAN_ID] is a unique identifier for a span within a trace; it is a 16-character hexadecimal
-                    /// encoding of an 8-byte array.</summary>
+                    /// encoding of an 8-byte array. It should not be zero.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -730,11 +730,11 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("childSpanCount")]
         public virtual System.Nullable<int> ChildSpanCount { get; set; } 
 
-        /// <summary>Required. A description of the span's operation (up to 128 bytes). Stackdriver Trace displays the
-        /// description in the Google Cloud Platform Console. For example, the display name can be a qualified method
-        /// name or a file name and a line number where the operation is called. A best practice is to use the same
-        /// display name within an application and at the same call point. This makes it easier to correlate spans in
-        /// different traces.</summary>
+        /// <summary>Required. A description of the span's operation (up to 128 bytes). Trace displays the description
+        /// in the Google Cloud Platform Console. For example, the display name can be a qualified method name or a file
+        /// name and a line number where the operation is called. A best practice is to use the same display name within
+        /// an application and at the same call point. This makes it easier to correlate spans in different
+        /// traces.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual TruncatableString DisplayName { get; set; } 
 
@@ -754,7 +754,7 @@ namespace Google.Apis.CloudTrace.v2.Data
         /// it is a 32-character hexadecimal encoding of a 16-byte array.
         ///
         /// [SPAN_ID] is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an
-        /// 8-byte array.</summary>
+        /// 8-byte array. It should not be zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -764,8 +764,7 @@ namespace Google.Apis.CloudTrace.v2.Data
         public virtual string ParentSpanId { get; set; } 
 
         /// <summary>Optional. Set this parameter to indicate whether this span is in the same process as its parent. If
-        /// you do not set this parameter, Stackdriver Trace is unable to take advantage of this helpful
-        /// information.</summary>
+        /// you do not set this parameter, Trace is unable to take advantage of this helpful information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sameProcessAsParentSpan")]
         public virtual System.Nullable<bool> SameProcessAsParentSpan { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigtable/'>Cloud Bigtable Admin API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200609 (1986)
+ *      <tr><th>API Rev<td>20200629 (2006)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigtable/'>
  *              https://cloud.google.com/bigtable/</a>
@@ -1303,6 +1303,225 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
 
 
+                    /// <summary>Starts creating a new Cloud Bigtable Backup.  The returned backup long-running
+                    /// operation can be used to track creation of the backup. The metadata field type is
+                    /// CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned
+                    /// operation will stop the creation and delete the backup.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. This must be one of the clusters in the instance in which this table is located. The
+                    /// backup will be stored in this cluster. Values are of the form
+                    /// `projects/{project}/instances/{instance}/clusters/{cluster}`.</param>
+                    public virtual CreateRequest Create(Google.Apis.BigtableAdmin.v2.Data.Backup body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Starts creating a new Cloud Bigtable Backup.  The returned backup long-running
+                    /// operation can be used to track creation of the backup. The metadata field type is
+                    /// CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned
+                    /// operation will stop the creation and delete the backup.</summary>
+                    public class CreateRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.Backup body, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. This must be one of the clusters in the instance in which this table is
+                        /// located. The backup will be stored in this cluster. Values are of the form
+                        /// `projects/{project}/instances/{instance}/clusters/{cluster}`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Required. The id of the backup to be created. The `backup_id` along with the parent
+                        /// `parent` are combined as {parent}/backups/{backup_id} to create the full backup name, of the
+                        /// form: `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`. This
+                        /// string must be between 1 and 50 characters in length and match the regex _a-
+                        /// zA-Z0-9*.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("backupId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string BackupId { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.BigtableAdmin.v2.Data.Backup Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "create"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v2/{+parent}/backups"; }
+                        }
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/instances/[^/]+/clusters/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "backupId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "backupId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Deletes a pending or completed Cloud Bigtable backup.</summary>
+                    /// <param name="name">Required. Name of the backup to delete. Values are of the form
+                    /// `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup}`.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a pending or completed Cloud Bigtable backup.</summary>
+                    public class DeleteRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. Name of the backup to delete. Values are of the form
+                        /// `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup}`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "delete"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "DELETE"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v2/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Gets metadata on a pending or completed Cloud Bigtable Backup.</summary>
+                    /// <param name="name">Required. Name of the backup. Values are of the form
+                    /// `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup}`.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets metadata on a pending or completed Cloud Bigtable Backup.</summary>
+                    public class GetRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Backup>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. Name of the backup. Values are of the form
+                        /// `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup}`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "get"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v2/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$",
+                                });
+                        }
+
+                    }
+
                     /// <summary>Gets the access control policy for a Table resource. Returns an empty policy if the
                     /// resource exists but does not have a policy set.</summary>
                     /// <param name="body">The body of the request.</param>
@@ -1370,6 +1589,254 @@ namespace Google.Apis.BigtableAdmin.v2
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Lists Cloud Bigtable backups. Returns both completed and pending backups.</summary>
+                    /// <param name="parent">Required. The cluster to list backups from.  Values are of the form
+                    /// `projects/{project}/instances/{instance}/clusters/{cluster}`. Use `{cluster} = '-'` to list backups for all clusters
+                    /// in an instance, e.g., `projects/{project}/instances/{instance}/clusters/-`.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists Cloud Bigtable backups. Returns both completed and pending backups.</summary>
+                    public class ListRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.ListBackupsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The cluster to list backups from.  Values are of the form
+                        /// `projects/{project}/instances/{instance}/clusters/{cluster}`. Use `{cluster} = '-'` to list
+                        /// backups for all clusters in an instance, e.g.,
+                        /// `projects/{project}/instances/{instance}/clusters/-`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>A filter expression that filters backups listed in the response. The expression
+                        /// must specify the field name, a comparison operator, and the value that you want to use for
+                        /// filtering. The value must be a string, a number, or a boolean. The comparison operator must
+                        /// be <, >, <=, >=, !=, =, or :. Colon ‘:’ represents a HAS operator which is roughly
+                        /// synonymous with equality. Filter rules are case insensitive.
+                        ///
+                        /// The fields eligible for filtering are: * `name` * `source_table` * `state` * `start_time`
+                        /// (and values are of the format YYYY-MM-DDTHH:MM:SSZ) * `end_time` (and values are of the
+                        /// format YYYY-MM-DDTHH:MM:SSZ) * `expire_time` (and values are of the format YYYY-MM-
+                        /// DDTHH:MM:SSZ) * `size_bytes`
+                        ///
+                        /// To filter on multiple expressions, provide each separate expression within parentheses. By
+                        /// default, each expression is an AND expression. However, you can include AND, OR, and NOT
+                        /// expressions explicitly.
+                        ///
+                        /// Some examples of using filters are:
+                        ///
+                        /// * `name:"exact"` --> The backup's name is the string "exact". * `name:howl` --> The backup's
+                        /// name contains the string "howl". * `source_table:prod` --> The source_table's name contains
+                        /// the string "prod". * `state:CREATING` --> The backup is pending creation. * `state:READY`
+                        /// --> The backup is fully created and ready for use. * `(name:howl) AND (start_time <
+                        /// \"2018-03-28T14:50:00Z\")` --> The backup name contains the string "howl" and start_time of
+                        /// the backup is before 2018-03-28T14:50:00Z. * `size_bytes > 10000000000` --> The backup's
+                        /// size is greater than 10GB</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>An expression for specifying the sort order of the results of the request. The
+                        /// string value should specify one or more fields in Backup. The full syntax is described at
+                        /// https://aip.dev/132#ordering.
+                        ///
+                        /// Fields supported are: * name * source_table * expire_time * start_time * end_time *
+                        /// size_bytes * state
+                        ///
+                        /// For example, "start_time". The default sorting order is ascending. To specify descending
+                        /// order for the field, a suffix " desc" should be appended to the field name. For example,
+                        /// "start_time desc". Redundant space characters in the syntax are insigificant.
+                        ///
+                        /// If order_by is empty, results will be sorted by `start_time` in descending order starting
+                        /// from the most recently created backup.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>Number of backups to be returned in the response. If 0 or less, defaults to the
+                        /// server's maximum allowed page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
+                        /// ListBackupsResponse to the same `parent` and with the same `filter`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v2/{+parent}/backups"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/instances/[^/]+/clusters/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Updates a pending or completed Cloud Bigtable Backup.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">A globally unique identifier for the backup which cannot be changed. Values are of the form
+                    /// `projects/{project}/instances/{instance}/clusters/{cluster}/    backups/_a-zA-Z0-9*` The final segment of the name
+                    /// must be between 1 and 50 characters in length.
+                    ///
+                    /// The backup is stored in the cluster identified by the prefix of the backup name of the form
+                    /// `projects/{project}/instances/{instance}/clusters/{cluster}`.</param>
+                    public virtual PatchRequest Patch(Google.Apis.BigtableAdmin.v2.Data.Backup body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates a pending or completed Cloud Bigtable Backup.</summary>
+                    public class PatchRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Backup>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.Backup body, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>A globally unique identifier for the backup which cannot be changed. Values are of
+                        /// the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*`
+                        /// The final segment of the name must be between 1 and 50 characters in length.
+                        ///
+                        /// The backup is stored in the cluster identified by the prefix of the backup name of the form
+                        /// `projects/{project}/instances/{instance}/clusters/{cluster}`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. A mask specifying which fields (e.g. `expire_time`) in the Backup
+                        /// resource should be updated. This mask is relative to the Backup resource, not to the request
+                        /// message. The field mask must always be specified; this prevents any future fields from being
+                        /// erased accidentally by clients that do not know about them.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.BigtableAdmin.v2.Data.Backup Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "patch"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "PATCH"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v2/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                         }
 
@@ -2613,6 +3080,83 @@ namespace Google.Apis.BigtableAdmin.v2
 
                 }
 
+                /// <summary>Create a new table by restoring from a completed backup. The new table must be in the same
+                /// instance as the instance containing the backup.  The returned table long-running operation can be
+                /// used to track the progress of the operation, and to cancel it.  The metadata field type is
+                /// RestoreTableMetadata.  The response type is Table, if successful.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The name of the instance in which to create the restored table. This instance must be
+                /// the parent of the source backup. Values are of the form `projects//instances/`.</param>
+                public virtual RestoreRequest Restore(Google.Apis.BigtableAdmin.v2.Data.RestoreTableRequest body, string parent)
+                {
+                    return new RestoreRequest(service, body, parent);
+                }
+
+                /// <summary>Create a new table by restoring from a completed backup. The new table must be in the same
+                /// instance as the instance containing the backup.  The returned table long-running operation can be
+                /// used to track the progress of the operation, and to cancel it.  The metadata field type is
+                /// RestoreTableMetadata.  The response type is Table, if successful.</summary>
+                public class RestoreRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Restore request.</summary>
+                    public RestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.RestoreTableRequest body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The name of the instance in which to create the restored table. This instance
+                    /// must be the parent of the source backup. Values are of the form
+                    /// `projects//instances/`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BigtableAdmin.v2.Data.RestoreTableRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "restore"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+parent}/tables:restore"; }
+                    }
+
+                    /// <summary>Initializes Restore parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+$",
+                            });
+                    }
+
+                }
+
                 /// <summary>Sets the access control policy on a Table resource. Replaces any existing policy.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
@@ -3667,6 +4211,78 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A backup of a Cloud Bigtable table.</summary>
+    public class Backup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. `end_time` is the time that the backup was finished. The row data in the backup will
+        /// be no newer than this timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>Required. The expiration time of the backup, with microseconds granularity that must be at least 6
+        /// hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud
+        /// Bigtable will delete the backup and free the resources used by the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; } 
+
+        /// <summary>A globally unique identifier for the backup which cannot be changed. Values are of the form
+        /// `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the
+        /// name must be between 1 and 50 characters in length.
+        ///
+        /// The backup is stored in the cluster identified by the prefix of the backup name of the form
+        /// `projects/{project}/instances/{instance}/clusters/{cluster}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Output only. Size of the backup in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
+        public virtual System.Nullable<long> SizeBytes { get; set; } 
+
+        /// <summary>Required. Immutable. Name of the table from which this backup was created. This needs to be in the
+        /// same instance as the backup. Values are of the form
+        /// `projects/{project}/instances/{instance}/tables/{source_table}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceTable")]
+        public virtual string SourceTable { get; set; } 
+
+        /// <summary>Output only. `start_time` is the time that the backup was started (i.e. approximately the time the
+        /// CreateBackup request is received).  The row data in this backup will be no older than this
+        /// timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>Output only. The current state of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about a backup.</summary>
+    public class BackupInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Name of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
+        public virtual string Backup { get; set; } 
+
+        /// <summary>Output only. This time that the backup was finished. Row data in the backup will be no newer than
+        /// this timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>Output only. Name of the table the backup was created from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceTable")]
+        public virtual string SourceTable { get; set; } 
+
+        /// <summary>Output only. The time that the backup was started. Row data in the backup will be no older than
+        /// this timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3805,6 +4421,29 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// return a cell even if it matches the active GC expression for its family.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcRule")]
         public virtual GcRule GcRule { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata type for the operation returned by CreateBackup.</summary>
+    public class CreateBackupMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, the time at which this operation finished or was cancelled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>The name of the backup being created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The name of the table the backup is created from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceTable")]
+        public virtual string SourceTable { get; set; } 
+
+        /// <summary>The time at which this operation started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4154,6 +4793,22 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response for ListBackups.</summary>
+    public class ListBackupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of matching backups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backups")]
+        public virtual System.Collections.Generic.IList<Backup> Backups { get; set; } 
+
+        /// <summary>`next_page_token` can be sent in a subsequent ListBackups call to fetch more of the matching
+        /// backups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response message for BigtableInstanceAdmin.ListClusters.</summary>
     public class ListClustersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4357,6 +5012,42 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Encapsulates progress related information for a Cloud Bigtable long running operation.</summary>
+    public class OperationProgress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, the time at which this operation failed or was completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>Percent completion of the operation. Values are between 0 and 100 inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
+        public virtual System.Nullable<int> ProgressPercent { get; set; } 
+
+        /// <summary>Time the request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata type for the long-running operation used to track the progress of optimizations performed on a
+    /// newly restored table. This long-running operation is automatically created by the system after the successful
+    /// completion of a table restore, and cannot be cancelled.</summary>
+    public class OptimizeRestoredTableMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the restored table being optimized.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The progress of the post-restore optimizations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
+        public virtual OperationProgress Progress { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request message for BigtableInstanceAdmin.PartialUpdateInstance.</summary>
     public class PartialUpdateInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4449,6 +5140,70 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
+    }    
+
+    /// <summary>Information about a table restore.</summary>
+    public class RestoreInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information about the backup used to restore the table. The backup may no longer exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupInfo")]
+        public virtual BackupInfo BackupInfo { get; set; } 
+
+        /// <summary>The type of the restore source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
+        public virtual string SourceType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata type for the long-running operation returned by RestoreTable.</summary>
+    public class RestoreTableMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("backupInfo")]
+        public virtual BackupInfo BackupInfo { get; set; } 
+
+        /// <summary>Name of the table being created and restored to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>If exists, the name of the long-running operation that will be used to track the post-restore
+        /// optimization process to optimize the performance of the restored table. The metadata type of the long-
+        /// running operation is OptimizeRestoreTableMetadata. The response type is Empty. This long-running operation
+        /// may be automatically created by the system if applicable after the RestoreTable long-running operation
+        /// completes successfully. This operation may not be created if the table is already optimized or the restore
+        /// was not successful.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizeTableOperationName")]
+        public virtual string OptimizeTableOperationName { get; set; } 
+
+        /// <summary>The progress of the RestoreTable operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
+        public virtual OperationProgress Progress { get; set; } 
+
+        /// <summary>The type of the restore source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
+        public virtual string SourceType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request for RestoreTable.</summary>
+    public class RestoreTableRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the backup from which to restore.  Values are of the form
+        /// `projects//instances//clusters//backups/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
+        public virtual string Backup { get; set; } 
+
+        /// <summary>Required. The id of the table to create and restore to. This table must not already exist. The
+        /// `table_id` appended to `parent` forms the full table name of the form
+        /// `projects//instances//tables/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Request message for `SetIamPolicy` method.</summary>
@@ -4551,6 +5306,11 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// `REPLICATION_VIEW`, `FULL`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Output only. If this table was restored from another data source (e.g. a backup), this field will
+        /// be populated with information about the restore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restoreInfo")]
+        public virtual RestoreInfo RestoreInfo { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200703 (2010)
+ *      <tr><th>API Rev<td>20200715 (2022)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -762,7 +762,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>The name of the service method or operation. For API calls, this should be the name of the API
         /// method. For example,
         ///
-        /// "google.datastore.v1.Datastore.RunQuery" "google.logging.v1.LoggingService.DeleteLog"</summary>
+        /// "google.cloud.bigquery.v2.TableService.InsertTable" "google.logging.v2.ConfigServiceV2.CreateSink"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("methodName")]
         public virtual string MethodName { get; set; } 
 
@@ -788,7 +788,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>The resource or collection that is the target of the operation. The name is a scheme-less URI, not
         /// including the API service name. For example:
         ///
-        /// "shelves/SHELF_ID/books" "shelves/SHELF_ID/books/BOOK_ID"</summary>
+        /// "projects/PROJECT_ID/zones/us-central1-a/instances" "projects/PROJECT_ID/datasets/DATASET_ID"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; } 
 
@@ -807,13 +807,13 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
-        /// <summary>Deprecated, use `metadata` field instead. Other service-specific data about the request, response,
-        /// and other activities.</summary>
+        /// <summary>Deprecated. Use the `metadata` field instead. Other service-specific data about the request,
+        /// response, and other activities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceData")]
         public virtual System.Collections.Generic.IDictionary<string,object> ServiceData { get; set; } 
 
         /// <summary>The name of the API service performing the operation. For example,
-        /// `"datastore.googleapis.com"`.</summary>
+        /// `"compute.googleapis.com"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
         public virtual string ServiceName { get; set; } 
 

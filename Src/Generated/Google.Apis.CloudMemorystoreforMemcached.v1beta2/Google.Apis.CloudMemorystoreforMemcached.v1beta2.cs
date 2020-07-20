@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/memorystore/'>Cloud Memorystore for Memcached API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20200608 (1985)
+ *      <tr><th>API Rev<td>20200714 (2021)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/memorystore/'>
  *              https://cloud.google.com/memorystore/</a>
@@ -2214,8 +2214,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
 
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The full name of the Google Compute Engine [network](/compute/docs/networks-and-firewalls#networks)
-        /// to which the instance is connected. If left unspecified, the `default` network will be used.</summary>
+        /// <summary>The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to
+        /// which the instance is connected. If left unspecified, the `default` network will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedNetwork")]
         public virtual string AuthorizedNetwork { get; set; } 
 

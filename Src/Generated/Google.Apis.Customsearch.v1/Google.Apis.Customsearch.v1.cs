@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/custom-search/v1/introduction'>Custom Search API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200714 (2021)
+ *      <tr><th>API Rev<td>20200715 (2022)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/custom-search/v1/introduction'>
  *              https://developers.google.com/custom-search/v1/introduction</a>
@@ -901,7 +901,10 @@ namespace Google.Apis.Customsearch.v1
                     I,
                 }
 
-                /// <summary>The sort expression to apply to the results.</summary>
+                /// <summary>The sort expression to apply to the results. The sort parameter specifies that the results
+                /// be sorted according to the specified expression i.e. sort by date. [Example:
+                /// sort=date](https://developers.google.com/custom-search/docs/structured_search#sort-by-
+                /// attribute).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sort", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Sort { get; set; }
 
@@ -1769,7 +1772,10 @@ namespace Google.Apis.Customsearch.v1
                 I,
             }
 
-            /// <summary>The sort expression to apply to the results.</summary>
+            /// <summary>The sort expression to apply to the results. The sort parameter specifies that the results be
+            /// sorted according to the specified expression i.e. sort by date. [Example:
+            /// sort=date](https://developers.google.com/custom-search/docs/structured_search#sort-by-
+            /// attribute).</summary>
             [Google.Apis.Util.RequestParameterAttribute("sort", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Sort { get; set; }
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/classroom/'>Google Classroom API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200713 (2020)
+ *      <tr><th>API Rev<td>20200714 (2021)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/classroom/'>
  *              https://developers.google.com/classroom/</a>
@@ -5528,12 +5528,14 @@ namespace Google.Apis.Classroom.v1
         /// This method may return the following error codes:
         ///
         /// * `PERMISSION_DENIED` if: * the authenticated user does not have permission to receive notifications from
-        /// the requested field; or * the credential provided does not include the appropriate scope for the requested
-        /// feed. * another access error is encountered. * `INVALID_ARGUMENT` if: * no `cloudPubsubTopic` is specified,
-        /// or the specified `cloudPubsubTopic` is not valid; or * no `feed` is specified, or the specified `feed` is
-        /// not valid. * `NOT_FOUND` if: * the specified `feed` cannot be located, or the requesting user does not have
-        /// permission to determine whether or not it exists; or * the specified `cloudPubsubTopic` cannot be located,
-        /// or Classroom has not been granted permission to publish to it.</summary>
+        /// the requested field; or * the current user has not granted access to the current Cloud project with the
+        /// appropriate scope for the requested feed. Note that domain-wide delegation of authority is not currently
+        /// supported for this purpose. If the request has the appropriate scope, but no grant exists, a Request Errors
+        /// is returned. * another access error is encountered. * `INVALID_ARGUMENT` if: * no `cloudPubsubTopic` is
+        /// specified, or the specified `cloudPubsubTopic` is not valid; or * no `feed` is specified, or the specified
+        /// `feed` is not valid. * `NOT_FOUND` if: * the specified `feed` cannot be located, or the requesting user does
+        /// not have permission to determine whether or not it exists; or * the specified `cloudPubsubTopic` cannot be
+        /// located, or Classroom has not been granted permission to publish to it.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.Registration body)
         {
@@ -5554,12 +5556,14 @@ namespace Google.Apis.Classroom.v1
         /// This method may return the following error codes:
         ///
         /// * `PERMISSION_DENIED` if: * the authenticated user does not have permission to receive notifications from
-        /// the requested field; or * the credential provided does not include the appropriate scope for the requested
-        /// feed. * another access error is encountered. * `INVALID_ARGUMENT` if: * no `cloudPubsubTopic` is specified,
-        /// or the specified `cloudPubsubTopic` is not valid; or * no `feed` is specified, or the specified `feed` is
-        /// not valid. * `NOT_FOUND` if: * the specified `feed` cannot be located, or the requesting user does not have
-        /// permission to determine whether or not it exists; or * the specified `cloudPubsubTopic` cannot be located,
-        /// or Classroom has not been granted permission to publish to it.</summary>
+        /// the requested field; or * the current user has not granted access to the current Cloud project with the
+        /// appropriate scope for the requested feed. Note that domain-wide delegation of authority is not currently
+        /// supported for this purpose. If the request has the appropriate scope, but no grant exists, a Request Errors
+        /// is returned. * another access error is encountered. * `INVALID_ARGUMENT` if: * no `cloudPubsubTopic` is
+        /// specified, or the specified `cloudPubsubTopic` is not valid; or * no `feed` is specified, or the specified
+        /// `feed` is not valid. * `NOT_FOUND` if: * the specified `feed` cannot be located, or the requesting user does
+        /// not have permission to determine whether or not it exists; or * the specified `cloudPubsubTopic` cannot be
+        /// located, or Classroom has not been granted permission to publish to it.</summary>
         public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Registration>
         {
             /// <summary>Constructs a new Create request.</summary>

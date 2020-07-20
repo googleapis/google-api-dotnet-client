@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/artifacts/docs/'>Artifact Registry API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200703 (2010)
+ *      <tr><th>API Rev<td>20200710 (2017)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/artifacts/docs/'>
  *              https://cloud.google.com/artifacts/docs/</a>

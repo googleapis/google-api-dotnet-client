@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200703 (2010)
+ *      <tr><th>API Rev<td>20200709 (2016)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -6531,7 +6531,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual ReservationAffinity ReservationAffinity { get; set; } 
 
         /// <summary>Optional. The Dataproc service account (https://cloud.google.com/dataproc/docs/concepts
-        /// /configuring-clusters/service-accounts#service_accounts_in_cloud_dataproc) (also see VM Data Plane identity
+        /// /configuring-clusters/service-accounts#service_accounts_in_dataproc) (also see VM Data Plane identity
         /// (https://cloud.google.com/dataproc/docs/concepts/iam/dataproc-
         /// principals#vm_service_account_data_plane_identity)) used by Dataproc cluster VM instances to access Google
         /// Cloud Platform services.If not specified, the Compute Engine default service account
@@ -7625,8 +7625,8 @@ namespace Google.Apis.Dataproc.v1.Data
     {
         /// <summary>Optional. The version of software inside the cluster. It must be one of the supported Dataproc
         /// Versions (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
-        /// versions#supported_cloud_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"),
-        /// or the "preview" version (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
+        /// versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or
+        /// the "preview" version (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
         /// versions#other_versions). If unspecified, it defaults to the latest Debian version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageVersion")]
         public virtual string ImageVersion { get; set; } 

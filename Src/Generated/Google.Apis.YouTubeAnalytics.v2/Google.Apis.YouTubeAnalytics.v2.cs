@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/analytics'>YouTube Analytics API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200714 (2021)
+ *      <tr><th>API Rev<td>20200715 (2022)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/analytics'>
  *              https://developers.google.com/youtube/analytics</a>

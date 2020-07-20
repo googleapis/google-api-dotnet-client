@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200626 (2003)
+ *      <tr><th>API Rev<td>20200709 (2016)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -8096,6 +8096,12 @@ namespace Google.Apis.Container.v1.Data
         /// platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; } 
+
+        /// <summary>Setting this field will assign instances of this pool to run on the specified node group. This is
+        /// useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-
+        /// nodes).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeGroup")]
+        public virtual string NodeGroup { get; set; } 
 
         /// <summary>The set of Google API scopes to be made available on all of the node VMs under the "default"
         /// service account.

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/healthcare'>Cloud Healthcare API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200612 (1989)
+ *      <tr><th>API Rev<td>20200713 (2020)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/healthcare'>
  *              https://cloud.google.com/healthcare</a>
@@ -4905,7 +4905,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// compartment definition ([DSTU2](https://hl7.org/fhir/DSTU2/compartment-patient.html),
                         /// [STU3](http://www.hl7.org/fhir/stu3/compartmentdefinition-patient.html),
                         /// [R4](https://hl7.org/fhir/R4/compartmentdefinition-patient.html)), which details the
-                        /// eligible resource types and referencing search parameters.</summary>
+                        /// eligible resource types and referencing search parameters.
+                        ///
+                        /// For samples that show how to call `Patient-everything`, see [Getting all patient compartment
+                        /// resources](/healthcare/docs/how-tos/fhir-
+                        /// resources#getting_all_patient_compartment_resources).</summary>
                         /// <param name="name">Name of the `Patient` resource for which the information is required.</param>
                         public virtual PatientEverythingRequest PatientEverything(string name)
                         {
@@ -4933,7 +4937,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// compartment definition ([DSTU2](https://hl7.org/fhir/DSTU2/compartment-patient.html),
                         /// [STU3](http://www.hl7.org/fhir/stu3/compartmentdefinition-patient.html),
                         /// [R4](https://hl7.org/fhir/R4/compartmentdefinition-patient.html)), which details the
-                        /// eligible resource types and referencing search parameters.</summary>
+                        /// eligible resource types and referencing search parameters.
+                        ///
+                        /// For samples that show how to call `Patient-everything`, see [Getting all patient compartment
+                        /// resources](/healthcare/docs/how-tos/fhir-
+                        /// resources#getting_all_patient_compartment_resources).</summary>
                         public class PatientEverythingRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new PatientEverything request.</summary>
@@ -4961,6 +4969,18 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// Omit `page_token` if no previous request has been made.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("_page_token", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
+
+                            /// <summary>If provided, only resources updated after this time are exported. The time uses
+                            /// the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `2015-02-07T13:28:17.239+02:00`
+                            /// or `2017-01-01T00:00:00Z`. The time must be specified to the second and include a time
+                            /// zone.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("_since", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Since { get; set; }
+
+                            /// <summary>String of comma-delimited FHIR resource types. If provided, only resources of
+                            /// the specified resource type(s) are returned.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("_type", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Type { get; set; }
 
                             /// <summary>The response includes records prior to the end date. If no end date is
                             /// provided, all records subsequent to the start date are in scope.</summary>
@@ -5024,6 +5044,24 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                         Pattern = null,
                                     });
                                 RequestParameters.Add(
+                                    "_since", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "_since",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "_type", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "_type",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
                                     "end", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "end",
@@ -5049,7 +5087,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// from the FHIR store. To remove all versions of a resource, first delete the current version
                         /// and then call this method.
                         ///
-                        /// This is not a FHIR standard operation.</summary>
+                        /// This is not a FHIR standard operation.
+                        ///
+                        /// For samples that show how to call `Resource-purge`, see [Deleting historical versions of a
+                        /// FHIR resource](/healthcare/docs/how-tos/fhir-
+                        /// resources#deleting_historical_versions_of_a_fhir_resource).</summary>
                         /// <param name="name">The name of the resource to purge.</param>
                         public virtual ResourcePurgeRequest ResourcePurge(string name)
                         {
@@ -5060,7 +5102,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// from the FHIR store. To remove all versions of a resource, first delete the current version
                         /// and then call this method.
                         ///
-                        /// This is not a FHIR standard operation.</summary>
+                        /// This is not a FHIR standard operation.
+                        ///
+                        /// For samples that show how to call `Resource-purge`, see [Deleting historical versions of a
+                        /// FHIR resource](/healthcare/docs/how-tos/fhir-
+                        /// resources#deleting_historical_versions_of_a_fhir_resource).</summary>
                         public class ResourcePurgeRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Empty>
                         {
                             /// <summary>Constructs a new ResourcePurge request.</summary>
@@ -5219,7 +5265,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// retrieved through vread and related methods, unless they are removed by the purge method.
                         ///
                         /// This method requires the`healthcare.fhirStores.searchResources` and
-                        /// `healthcare.fhirResources.delete` permissions on the parent FHIR store.</summary>
+                        /// `healthcare.fhirResources.delete` permissions on the parent FHIR store.
+                        ///
+                        /// For samples that show how to call `conditionalDelete`, see [Conditionally deleting a FHIR
+                        /// resource](/healthcare/docs/how-tos/fhir-
+                        /// resources#conditionally_deleting_a_fhir_resource).</summary>
                         /// <param name="parent">The name of the FHIR store this resource belongs to.</param>
                         /// <param name="type">The
                         /// FHIR resource type to delete, such as Patient or Observation. For a complete list, see the FHIR Resource Index
@@ -5247,7 +5297,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// retrieved through vread and related methods, unless they are removed by the purge method.
                         ///
                         /// This method requires the`healthcare.fhirStores.searchResources` and
-                        /// `healthcare.fhirResources.delete` permissions on the parent FHIR store.</summary>
+                        /// `healthcare.fhirResources.delete` permissions on the parent FHIR store.
+                        ///
+                        /// For samples that show how to call `conditionalDelete`, see [Conditionally deleting a FHIR
+                        /// resource](/healthcare/docs/how-tos/fhir-
+                        /// resources#conditionally_deleting_a_fhir_resource).</summary>
                         public class ConditionalDeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Empty>
                         {
                             /// <summary>Constructs a new ConditionalDelete request.</summary>
@@ -5346,7 +5400,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         ///
                         /// This method requires the`healthcare.fhirStores.searchResources` permission on the parent
                         /// FHIR store and the `healthcare.fhirResources.patch` permission on the requested FHIR store
-                        /// resource.</summary>
+                        /// resource.
+                        ///
+                        /// For samples that show how to call `conditionalPatch`, see [Conditionally patching a FHIR
+                        /// resource](/healthcare/docs/how-tos/fhir-
+                        /// resources#conditionally_patching_a_fhir_resource).</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">The name of the FHIR store this resource belongs to.</param>
                         /// <param name="type">The
@@ -5387,7 +5445,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         ///
                         /// This method requires the`healthcare.fhirStores.searchResources` permission on the parent
                         /// FHIR store and the `healthcare.fhirResources.patch` permission on the requested FHIR store
-                        /// resource.</summary>
+                        /// resource.
+                        ///
+                        /// For samples that show how to call `conditionalPatch`, see [Conditionally patching a FHIR
+                        /// resource](/healthcare/docs/how-tos/fhir-
+                        /// resources#conditionally_patching_a_fhir_resource).</summary>
                         public class ConditionalPatchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new ConditionalPatch request.</summary>
@@ -5493,7 +5555,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// might be returned instead.
                         ///
                         /// This method requires the`healthcare.fhirStores.searchResources` and
-                        /// `healthcare.fhirResources.update` permissions on the parent FHIR store.</summary>
+                        /// `healthcare.fhirResources.update` permissions on the parent FHIR store.
+                        ///
+                        /// For samples that show how to call `conditionalUpdate`, see [Conditionally updating a FHIR
+                        /// resource](/healthcare/docs/how-tos/fhir-
+                        /// resources#conditionally_updating_a_fhir_resource).</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">The name of the FHIR store this resource belongs to.</param>
                         /// <param name="type">The
@@ -5535,7 +5601,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// might be returned instead.
                         ///
                         /// This method requires the`healthcare.fhirStores.searchResources` and
-                        /// `healthcare.fhirResources.update` permissions on the parent FHIR store.</summary>
+                        /// `healthcare.fhirResources.update` permissions on the parent FHIR store.
+                        ///
+                        /// For samples that show how to call `conditionalUpdate`, see [Conditionally updating a FHIR
+                        /// resource](/healthcare/docs/how-tos/fhir-
+                        /// resources#conditionally_updating_a_fhir_resource).</summary>
                         public class ConditionalUpdateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new ConditionalUpdate request.</summary>
@@ -5636,7 +5706,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// was created on the server, including the server-assigned resource ID and version ID. Errors
                         /// generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing
                         /// the reason for the error. If the request cannot be mapped to a valid API method on a FHIR
-                        /// store, a generic GCP error might be returned instead.</summary>
+                        /// store, a generic GCP error might be returned instead.
+                        ///
+                        /// For samples that show how to call `create`, see [Creating a FHIR resource](/healthcare/docs
+                        /// /how-tos/fhir-resources#creating_a_fhir_resource).</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">The name of the FHIR store this resource belongs to.</param>
                         /// <param name="type">The
@@ -5672,7 +5745,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// was created on the server, including the server-assigned resource ID and version ID. Errors
                         /// generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing
                         /// the reason for the error. If the request cannot be mapped to a valid API method on a FHIR
-                        /// store, a generic GCP error might be returned instead.</summary>
+                        /// store, a generic GCP error might be returned instead.
+                        ///
+                        /// For samples that show how to call `create`, see [Creating a FHIR resource](/healthcare/docs
+                        /// /how-tos/fhir-resources#creating_a_fhir_resource).</summary>
                         public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new Create request.</summary>
@@ -5760,8 +5836,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         ///
                         /// Note: Unless resource versioning is disabled by setting the disable_resource_versioning flag
                         /// on the FHIR store, the deleted resources are moved to a history repository that can still be
-                        /// retrieved through vread and related methods, unless they are removed by the purge
-                        /// method.</summary>
+                        /// retrieved through vread and related methods, unless they are removed by the purge method.
+                        ///
+                        /// For samples that show how to call `delete`, see [Deleting a FHIR resource](/healthcare/docs
+                        /// /how-tos/fhir-resources#deleting_a_fhir_resource).</summary>
                         /// <param name="name">The name of the resource to delete.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
@@ -5777,8 +5855,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         ///
                         /// Note: Unless resource versioning is disabled by setting the disable_resource_versioning flag
                         /// on the FHIR store, the deleted resources are moved to a history repository that can still be
-                        /// retrieved through vread and related methods, unless they are removed by the purge
-                        /// method.</summary>
+                        /// retrieved through vread and related methods, unless they are removed by the purge method.
+                        ///
+                        /// For samples that show how to call `delete`, see [Deleting a FHIR resource](/healthcare/docs
+                        /// /how-tos/fhir-resources#deleting_a_fhir_resource).</summary>
                         public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new Delete request.</summary>
@@ -5865,7 +5945,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// example, if the bundle contains a `create` request, you must have permission to execute the
                         /// `create` request.
                         ///
-                        /// Logging is available for the `executeBundle` permission.</summary>
+                        /// Logging is available for the `executeBundle` permission.
+                        ///
+                        /// For samples that show how to call `executeBundle`, see [Managing FHIR resources using FHIR
+                        /// bundles](/healthcare/docs/how-tos/fhir-bundles).</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">Name of the FHIR store in which this bundle will be executed.</param>
                         public virtual ExecuteBundleRequest ExecuteBundle(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent)
@@ -5907,7 +5990,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// example, if the bundle contains a `create` request, you must have permission to execute the
                         /// `create` request.
                         ///
-                        /// Logging is available for the `executeBundle` permission.</summary>
+                        /// Logging is available for the `executeBundle` permission.
+                        ///
+                        /// For samples that show how to call `executeBundle`, see [Managing FHIR resources using FHIR
+                        /// bundles](/healthcare/docs/how-tos/fhir-bundles).</summary>
                         public class ExecuteBundleRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new ExecuteBundle request.</summary>
@@ -5979,7 +6065,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// of type `history`, containing the version history sorted from most recent to oldest
                         /// versions. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome`
                         /// resource describing the reason for the error. If the request cannot be mapped to a valid API
-                        /// method on a FHIR store, a generic GCP error might be returned instead.</summary>
+                        /// method on a FHIR store, a generic GCP error might be returned instead.
+                        ///
+                        /// For samples that show how to call `history`, see [Listing FHIR resource
+                        /// versions](/healthcare/docs/how-tos/fhir-resources#listing_fhir_resource_versions).</summary>
                         /// <param name="name">The name of the resource to retrieve.</param>
                         public virtual HistoryRequest History(string name)
                         {
@@ -5998,7 +6087,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// of type `history`, containing the version history sorted from most recent to oldest
                         /// versions. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome`
                         /// resource describing the reason for the error. If the request cannot be mapped to a valid API
-                        /// method on a FHIR store, a generic GCP error might be returned instead.</summary>
+                        /// method on a FHIR store, a generic GCP error might be returned instead.
+                        ///
+                        /// For samples that show how to call `history`, see [Listing FHIR resource
+                        /// versions](/healthcare/docs/how-tos/fhir-resources#listing_fhir_resource_versions).</summary>
                         public class HistoryRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new History request.</summary>
@@ -6135,7 +6227,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// resource, including the server-assigned version ID. Errors generated by the FHIR store
                         /// contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If
                         /// the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error
-                        /// might be returned instead.</summary>
+                        /// might be returned instead.
+                        ///
+                        /// For samples that show how to call `patch`, see [Patching a FHIR resource](/healthcare/docs
+                        /// /how-tos/fhir-resources#patching_a_fhir_resource).</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">The name of the resource to update.</param>
                         public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string name)
@@ -6160,7 +6255,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// resource, including the server-assigned version ID. Errors generated by the FHIR store
                         /// contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If
                         /// the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error
-                        /// might be returned instead.</summary>
+                        /// might be returned instead.
+                        ///
+                        /// For samples that show how to call `patch`, see [Patching a FHIR resource](/healthcare/docs
+                        /// /how-tos/fhir-resources#patching_a_fhir_resource).</summary>
                         public class PatchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new Patch request.</summary>
@@ -6237,7 +6335,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// On success, the response body contains a JSON-encoded representation of the resource. Errors
                         /// generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing
                         /// the reason for the error. If the request cannot be mapped to a valid API method on a FHIR
-                        /// store, a generic GCP error might be returned instead.</summary>
+                        /// store, a generic GCP error might be returned instead.
+                        ///
+                        /// For samples that show how to call `read`, see [Getting a FHIR resource](/healthcare/docs
+                        /// /how-tos/fhir-resources#getting_a_fhir_resource).</summary>
                         /// <param name="name">The name of the resource to retrieve.</param>
                         public virtual ReadRequest Read(string name)
                         {
@@ -6261,7 +6362,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// On success, the response body contains a JSON-encoded representation of the resource. Errors
                         /// generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing
                         /// the reason for the error. If the request cannot be mapped to a valid API method on a FHIR
-                        /// store, a generic GCP error might be returned instead.</summary>
+                        /// store, a generic GCP error might be returned instead.
+                        ///
+                        /// For samples that show how to call `read`, see [Getting a FHIR resource](/healthcare/docs
+                        /// /how-tos/fhir-resources#getting_a_fhir_resource).</summary>
                         public class ReadRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new Read request.</summary>
@@ -6364,7 +6468,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         ///
                         /// Note: FHIR resources are indexed asynchronously, so there might be a slight delay between
                         /// the time a resource is created or changes and when the change is reflected in search
-                        /// results.</summary>
+                        /// results.
+                        ///
+                        /// For samples and detailed information, see [Searching for FHIR resources](/healthcare/docs
+                        /// /how-tos/fhir-search) and [Advanced FHIR search features](/healthcare/docs/how-tos/fhir-
+                        /// advanced-search).</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">Name of the FHIR store to retrieve resources from.</param>
                         public virtual SearchRequest Search(Google.Apis.CloudHealthcare.v1beta1.Data.SearchResourcesRequest body, string parent)
@@ -6422,7 +6530,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         ///
                         /// Note: FHIR resources are indexed asynchronously, so there might be a slight delay between
                         /// the time a resource is created or changes and when the change is reflected in search
-                        /// results.</summary>
+                        /// results.
+                        ///
+                        /// For samples and detailed information, see [Searching for FHIR resources](/healthcare/docs
+                        /// /how-tos/fhir-search) and [Advanced FHIR search features](/healthcare/docs/how-tos/fhir-
+                        /// advanced-search).</summary>
                         public class SearchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new Search request.</summary>
@@ -6500,7 +6612,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// resource, including the server-assigned version ID. Errors generated by the FHIR store
                         /// contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If
                         /// the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error
-                        /// might be returned instead.</summary>
+                        /// might be returned instead.
+                        ///
+                        /// For samples that show how to call `update`, see [Updating a FHIR resource](/healthcare/docs
+                        /// /how-tos/fhir-resources#updating_a_fhir_resource).</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">The name of the resource to update.</param>
                         public virtual UpdateRequest Update(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string name)
@@ -6526,7 +6641,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// resource, including the server-assigned version ID. Errors generated by the FHIR store
                         /// contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If
                         /// the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error
-                        /// might be returned instead.</summary>
+                        /// might be returned instead.
+                        ///
+                        /// For samples that show how to call `update`, see [Updating a FHIR resource](/healthcare/docs
+                        /// /how-tos/fhir-resources#updating_a_fhir_resource).</summary>
                         public class UpdateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new Update request.</summary>
@@ -6597,7 +6715,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// On success, the response body contains a JSON-encoded representation of the resource. Errors
                         /// generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing
                         /// the reason for the error. If the request cannot be mapped to a valid API method on a FHIR
-                        /// store, a generic GCP error might be returned instead.</summary>
+                        /// store, a generic GCP error might be returned instead.
+                        ///
+                        /// For samples that show how to call `vread`, see [Retrieving a FHIR resource
+                        /// version](/healthcare/docs/how-tos/fhir-
+                        /// resources#retrieving_a_fhir_resource_version).</summary>
                         /// <param name="name">The name of the resource version to retrieve.</param>
                         public virtual VreadRequest Vread(string name)
                         {
@@ -6615,7 +6737,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// On success, the response body contains a JSON-encoded representation of the resource. Errors
                         /// generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing
                         /// the reason for the error. If the request cannot be mapped to a valid API method on a FHIR
-                        /// store, a generic GCP error might be returned instead.</summary>
+                        /// store, a generic GCP error might be returned instead.
+                        ///
+                        /// For samples that show how to call `vread`, see [Retrieving a FHIR resource
+                        /// version](/healthcare/docs/how-tos/fhir-
+                        /// resources#retrieving_a_fhir_resource_version).</summary>
                         public class VreadRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new Vread request.</summary>
@@ -7858,6 +7984,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 PARSEDONLY,
                                 [Google.Apis.Util.StringValueAttribute("FULL")]
                                 FULL,
+                                [Google.Apis.Util.StringValueAttribute("SCHEMATIZED_ONLY")]
+                                SCHEMATIZEDONLY,
                                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                                 BASIC,
                             }
@@ -8069,6 +8197,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 PARSEDONLY,
                                 [Google.Apis.Util.StringValueAttribute("FULL")]
                                 FULL,
+                                [Google.Apis.Util.StringValueAttribute("SCHEMATIZED_ONLY")]
+                                SCHEMATIZEDONLY,
                                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                                 BASIC,
                             }

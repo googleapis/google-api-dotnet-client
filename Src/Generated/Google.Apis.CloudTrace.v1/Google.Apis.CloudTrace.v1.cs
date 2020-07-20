@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Cloud Trace API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200707 (2014)
+ *      <tr><th>API Rev<td>20200713 (2020)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -649,9 +649,9 @@ namespace Google.Apis.CloudTrace.v1
             }
         }
 
-        /// <summary>Sends new traces to Stackdriver Trace or updates existing traces. If the ID of a trace that you
-        /// send matches that of an existing trace, any fields in the existing trace and its spans are overwritten by
-        /// the provided values, and any new fields provided are merged with the existing trace data. If the ID does not
+        /// <summary>Sends new traces to Cloud Trace or updates existing traces. If the ID of a trace that you send
+        /// matches that of an existing trace, any fields in the existing trace and its spans are overwritten by the
+        /// provided values, and any new fields provided are merged with the existing trace data. If the ID does not
         /// match, a new trace is created.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. ID of the Cloud project where the trace data is stored.</param>
@@ -660,9 +660,9 @@ namespace Google.Apis.CloudTrace.v1
             return new PatchTracesRequest(service, body, projectId);
         }
 
-        /// <summary>Sends new traces to Stackdriver Trace or updates existing traces. If the ID of a trace that you
-        /// send matches that of an existing trace, any fields in the existing trace and its spans are overwritten by
-        /// the provided values, and any new fields provided are merged with the existing trace data. If the ID does not
+        /// <summary>Sends new traces to Cloud Trace or updates existing traces. If the ID of a trace that you send
+        /// matches that of an existing trace, any fields in the existing trace and its spans are overwritten by the
+        /// provided values, and any new fields provided are merged with the existing trace data. If the ID does not
         /// match, a new trace is created.</summary>
         public class PatchTracesRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v1.Data.Empty>
         {
@@ -769,7 +769,8 @@ namespace Google.Apis.CloudTrace.v1.Data
         public virtual System.Collections.Generic.IList<TraceSpan> Spans { get; set; } 
 
         /// <summary>Globally unique identifier for the trace. This identifier is a 128-bit numeric value formatted as a
-        /// 32-byte hex string. For example, `382d4f4c6b7bb2f4a972559d9085001d`.</summary>
+        /// 32-byte hex string. For example, `382d4f4c6b7bb2f4a972559d9085001d`. The numeric value should not be
+        /// zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traceId")]
         public virtual string TraceId { get; set; } 
 
@@ -813,9 +814,9 @@ namespace Google.Apis.CloudTrace.v1.Data
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Name of the span. Must be less than 128 bytes. The span name is sanitized and displayed in the
-        /// Stackdriver Trace tool in the Google Cloud Platform Console. The name may be a method name or some other
-        /// per-call site name. For the same executable and the same call point, a best practice is to use a consistent
-        /// name, which makes it easier to correlate cross-trace spans.</summary>
+        /// Trace tool in the Google Cloud Platform Console. The name may be a method name or some other per-call site
+        /// name. For the same executable and the same call point, a best practice is to use a consistent name, which
+        /// makes it easier to correlate cross-trace spans.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

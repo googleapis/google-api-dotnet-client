@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/'>Cloud OS Config API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20200706 (2013)
+ *      <tr><th>API Rev<td>20200714 (2021)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/'>
  *              https://cloud.google.com/</a>
@@ -1935,6 +1935,27 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("patchConfig")]
         public virtual PatchConfig PatchConfig { get; set; } 
 
+        /// <summary>Rollout strategy of the patch job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
+        public virtual PatchRollout Rollout { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a
+    /// value.</summary>
+    public class FixedOrPercent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies a fixed value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixed")]
+        public virtual System.Nullable<int> Fixed__ { get; set; } 
+
+        /// <summary>Specifies the relative value defined as a percentage, which will be multiplied by a reference
+        /// value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percent")]
+        public virtual System.Nullable<int> Percent { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2297,6 +2318,10 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("recurringSchedule")]
         public virtual RecurringSchedule RecurringSchedule { get; set; } 
 
+        /// <summary>Optional. Rollout strategy of the patch job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
+        public virtual PatchRollout Rollout { get; set; } 
+
         /// <summary>Output only. Time the patch deployment was last updated. Timestamp is in
         /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
@@ -2413,6 +2438,10 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("percentComplete")]
         public virtual System.Nullable<double> PercentComplete { get; set; } 
 
+        /// <summary>Rollout strategy being applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
+        public virtual PatchRollout Rollout { get; set; } 
+
         /// <summary>The current state of the PatchJob.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
@@ -2519,6 +2548,38 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
         /// <summary>Number of instances that exceeded the time out while applying the patch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timedOutInstanceCount")]
         public virtual System.Nullable<long> TimedOutInstanceCount { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Patch rollout configuration specifications. Contains details on the concurrency control when applying
+    /// patch(es) to all targeted VMs.</summary>
+    public class PatchRollout : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of
+        /// VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
+        ///
+        /// During patching, a VM is considered disrupted from the time the agent is notified to begin until patching
+        /// has completed. This disruption time includes the time to complete reboot and any post-patch steps.
+        ///
+        /// A VM contributes to the disruption budget if its patching operation fails either when applying the patches,
+        /// running pre or post patch steps, or if it fails to respond with a success notification before timing out.
+        /// VMs that are not running or do not have an active agent do not count toward this disruption budget.
+        ///
+        /// For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because
+        /// continuing to the next zone requires completion of the patch process in the previous zone.
+        ///
+        /// For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current
+        /// zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is
+        /// completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone
+        /// fail to patch, the patch job stops.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disruptionBudget")]
+        public virtual FixedOrPercent DisruptionBudget { get; set; } 
+
+        /// <summary>Mode of the patch rollout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
