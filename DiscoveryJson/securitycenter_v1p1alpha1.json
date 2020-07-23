@@ -230,7 +230,7 @@
    }
   }
  }, 
- "revision": "20200709", 
+ "revision": "20200717", 
  "rootUrl": "https://securitycenter.googleapis.com/", 
  "schemas": {
   "Empty": {

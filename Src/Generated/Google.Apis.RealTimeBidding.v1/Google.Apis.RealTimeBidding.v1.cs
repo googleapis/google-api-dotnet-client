@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/authorized-buyers/apis/realtimebidding/reference/rest/'>Real-time Bidding API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200716 (2023)
+ *      <tr><th>API Rev<td>20200722 (2029)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/authorized-buyers/apis/realtimebidding/reference/rest/'>
  *              https://developers.google.com/authorized-buyers/apis/realtimebidding/reference/rest/</a>

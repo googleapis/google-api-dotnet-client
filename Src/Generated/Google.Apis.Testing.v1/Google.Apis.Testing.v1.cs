@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200708 (2015)
+ *      <tr><th>API Rev<td>20200722 (2029)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -795,6 +795,8 @@ namespace Google.Apis.Testing.v1
                 NETWORKCONFIGURATION,
                 [Google.Apis.Util.StringValueAttribute("PROVIDED_SOFTWARE")]
                 PROVIDEDSOFTWARE,
+                [Google.Apis.Util.StringValueAttribute("DEVICE_IP_BLOCKS")]
+                DEVICEIPBLOCKS,
             }
 
             /// <summary>For authorization, the cloud project requesting the TestEnvironmentCatalog.</summary>
@@ -1373,6 +1375,36 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>A reference to a regular file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regularFile")]
         public virtual RegularFile RegularFile { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A single device IP block</summary>
+    public class DeviceIpBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The date this block was added to Firebase Test Lab</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addedDate")]
+        public virtual Date AddedDate { get; set; } 
+
+        /// <summary>An IP address block in CIDR notation eg: 34.68.194.64/29</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("block")]
+        public virtual string Block { get; set; } 
+
+        /// <summary>Whether this block is used by physical or virtual devices</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("form")]
+        public virtual string Form { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>List of IP blocks used by the Firebase Test Lab</summary>
+    public class DeviceIpBlockCatalog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The device IP blocks used by Firebase Test Lab</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipBlocks")]
+        public virtual System.Collections.Generic.IList<DeviceIpBlock> IpBlocks { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2030,6 +2062,10 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>Supported Android devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidDeviceCatalog")]
         public virtual AndroidDeviceCatalog AndroidDeviceCatalog { get; set; } 
+
+        /// <summary>The IP blocks used by devices in the test environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceIpBlockCatalog")]
+        public virtual DeviceIpBlockCatalog DeviceIpBlockCatalog { get; set; } 
 
         /// <summary>Supported iOS devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosDeviceCatalog")]

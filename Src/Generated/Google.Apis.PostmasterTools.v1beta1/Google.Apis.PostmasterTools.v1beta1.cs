@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/postmaster'>Gmail Postmaster Tools API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200715 (2022)
+ *      <tr><th>API Rev<td>20200721 (2028)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/postmaster'>
  *              https://developers.google.com/gmail/postmaster</a>
@@ -109,7 +109,23 @@ namespace Google.Apis.PostmasterTools.v1beta1
         }
         #endif
 
+        /// <summary>Available OAuth 2.0 scopes for use with the Gmail Postmaster Tools API.</summary>
+        public class Scope
+        {
+            /// <summary>See email traffic metrics for the domains you have registered in Gmail Postmaster
+            /// Tools</summary>
+            public static string PostmasterReadonly = "https://www.googleapis.com/auth/postmaster.readonly";
 
+        }
+
+        /// <summary>Available OAuth 2.0 scope constants for use with the Gmail Postmaster Tools API.</summary>
+        public static class ScopeConstants
+        {
+            /// <summary>See email traffic metrics for the domains you have registered in Gmail Postmaster
+            /// Tools</summary>
+            public const string PostmasterReadonly = "https://www.googleapis.com/auth/postmaster.readonly";
+
+        }
 
 
 

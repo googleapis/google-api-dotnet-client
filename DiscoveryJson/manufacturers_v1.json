@@ -275,7 +275,7 @@
    }
   }
  }, 
- "revision": "20200702", 
+ "revision": "20200713", 
  "rootUrl": "https://manufacturers.googleapis.com/", 
  "schemas": {
   "Attributes": {

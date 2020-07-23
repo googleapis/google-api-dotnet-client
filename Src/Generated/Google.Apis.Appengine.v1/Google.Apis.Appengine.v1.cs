@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>App Engine Admin API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200629 (2006)
+ *      <tr><th>API Rev<td>20200720 (2027)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -3377,8 +3377,10 @@ namespace Google.Apis.Appengine.v1
                 /// (https://cloud.google.com/appengine/docs/admin-
                 /// api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)basic scaling or manual
                 /// scaling in the standard environment: serving_status (https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)Flexible environment
-                /// serving_status (https://cloud.google.com/appengine/docs/admin-
+                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status) manual_scaling.instances
+                /// (https://cloud.google.com/appengine/docs/admin-
+                /// api/reference/rest/v1/apps.services.versions#manualscaling)Flexible environment serving_status
+                /// (https://cloud.google.com/appengine/docs/admin-
                 /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)automatic scaling in the
                 /// flexible environment: automatic_scaling.min_total_instances (https://cloud.google.com/appengine/docs
                 /// /admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
@@ -3387,7 +3389,9 @@ namespace Google.Apis.Appengine.v1
                 /// automatic_scaling.cool_down_period_sec (https://cloud.google.com/appengine/docs/admin-
                 /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
                 /// automatic_scaling.cpu_utilization.target_utilization (https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)</summary>
+                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)manual scaling in the
+                /// flexible environment: manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-
+                /// api/reference/rest/v1/apps.services.versions#manualscaling)</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="appsId">Part of `name`. Name of the resource to update. Example:
                 /// apps/myapp/services/default/versions/1.</param>
@@ -3418,8 +3422,10 @@ namespace Google.Apis.Appengine.v1
                 /// (https://cloud.google.com/appengine/docs/admin-
                 /// api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)basic scaling or manual
                 /// scaling in the standard environment: serving_status (https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)Flexible environment
-                /// serving_status (https://cloud.google.com/appengine/docs/admin-
+                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status) manual_scaling.instances
+                /// (https://cloud.google.com/appengine/docs/admin-
+                /// api/reference/rest/v1/apps.services.versions#manualscaling)Flexible environment serving_status
+                /// (https://cloud.google.com/appengine/docs/admin-
                 /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)automatic scaling in the
                 /// flexible environment: automatic_scaling.min_total_instances (https://cloud.google.com/appengine/docs
                 /// /admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
@@ -3428,7 +3434,9 @@ namespace Google.Apis.Appengine.v1
                 /// automatic_scaling.cool_down_period_sec (https://cloud.google.com/appengine/docs/admin-
                 /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
                 /// automatic_scaling.cpu_utilization.target_utilization (https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)</summary>
+                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)manual scaling in the
+                /// flexible environment: manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-
+                /// api/reference/rest/v1/apps.services.versions#manualscaling)</summary>
                 public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>

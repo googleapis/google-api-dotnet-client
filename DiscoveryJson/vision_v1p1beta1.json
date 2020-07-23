@@ -449,7 +449,7 @@
    }
   }
  }, 
- "revision": "20200710", 
+ "revision": "20200717", 
  "rootUrl": "https://vision.googleapis.com/", 
  "schemas": {
   "AnnotateFileResponse": {

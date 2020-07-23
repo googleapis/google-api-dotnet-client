@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>Service Consumer Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200715 (2022)
+ *      <tr><th>API Rev<td>20200721 (2028)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>
  *              https://cloud.google.com/service-consumer-management/docs/overview</a>
@@ -1467,23 +1467,20 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
-            /// <summary>The maximum number of results returned by this request. Currently, the default maximum is set
-            /// to 1000. If `page_size` isn't provided or the size provided is a number larger than 1000, it's
-            /// automatically set to 1000.
-            ///
-            /// Optional.</summary>
+            /// <summary>Optional. The maximum number of results returned by this request. Currently, the default
+            /// maximum is set to 1000. If `page_size` isn't provided or the size provided is a number larger than 1000,
+            /// it's automatically set to 1000.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>The continuation token, which is used to page through large result sets. To get the next page
-            /// of results, set this parameter to the value of `nextPageToken` from the previous response.
-            ///
-            /// Optional.</summary>
+            /// <summary>Optional. The continuation token, which is used to page through large result sets. To get the
+            /// next page of results, set this parameter to the value of `nextPageToken` from the previous
+            /// response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Set a query `{expression}` for querying tenancy units. Your `{expression}` must be in the
-            /// format: `field_name=literal_string`. The `field_name` is the name of the field you want to compare.
+            /// <summary>Optional. Set a query `{expression}` for querying tenancy units. Your `{expression}` must be in
+            /// the format: `field_name=literal_string`. The `field_name` is the name of the field you want to compare.
             /// Supported fields are `tenant_resources.tag` and `tenant_resources.resource`.
             ///
             /// For example, to search tenancy units that contain at least one tenant resource with a given tag 'xyz',
@@ -1492,9 +1489,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// `tenant_resources.resource=projects/123456`.
             ///
             /// Multiple expressions can be joined with `AND`s. Tenancy units must match all expressions to be included
-            /// in the result set. For example, `tenant_resources.tag=xyz AND tenant_resources.resource=projects/123456`
-            ///
-            /// Optional.</summary>
+            /// in the result set. For example, `tenant_resources.tag=xyz AND
+            /// tenant_resources.resource=projects/123456`</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
@@ -2049,8 +2045,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     /// <summary>Request to create a tenancy unit for a service consumer of a managed service.</summary>
     public class CreateTenancyUnitRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional service producer-provided identifier of the tenancy unit. Must be no longer than 40
-        /// characters and preferably URI friendly. If it isn't provided, a UID for the tenancy unit is automatically
+        /// <summary>Optional. Optional service producer-provided identifier of the tenancy unit. Must be no longer than
+        /// 40 characters and preferably URI friendly. If it isn't provided, a UID for the tenancy unit is automatically
         /// generated. The identifier must be unique across a managed service. If the tenancy unit already exists for
         /// the managed service and service consumer pair, calling `CreateTenancyUnit` returns the existing tenancy unit
         /// if the provided identifier is identical or empty, otherwise the call fails.</summary>
@@ -2800,9 +2796,9 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     ///
     /// The following are specific rules for service defined Monitoring metric descriptors:
     ///
-    /// * `type`, `metric_kind`, `value_type`, `description`, and `display_name` fields are all required. The `unit`
-    /// field must be specified if the `value_type` is any of DOUBLE, INT64, DISTRIBUTION. * Maximum of default 500
-    /// metric descriptors per service is allowed. * Maximum of default 10 labels per metric descriptor is allowed.
+    /// * `type`, `metric_kind`, `value_type` and `description` fields are all required. The `unit` field must be
+    /// specified if the `value_type` is any of DOUBLE, INT64, DISTRIBUTION. * Maximum of default 500 metric descriptors
+    /// per service is allowed. * Maximum of default 10 labels per metric descriptor is allowed.
     ///
     /// The default maximum limit can be overridden. Please follow https://cloud.google.com/monitoring/quotas</summary>
     public class MetricDescriptor : Google.Apis.Requests.IDirectResponseSchema

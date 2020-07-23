@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200716 (2023)
+ *      <tr><th>API Rev<td>20200720 (2027)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -449,11 +449,9 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>Modify the members of a contact group owned by the authenticated user.
-            ///
-            /// The only system contact groups that can have members added are `contactGroups/myContacts` and
-            /// `contactGroups/starred`. Other system contact groups are deprecated and can only have contacts
-            /// removed.</summary>
+            /// <summary>Modify the members of a contact group owned by the authenticated user. The only system contact
+            /// groups that can have members added are `contactGroups/myContacts` and `contactGroups/starred`. Other
+            /// system contact groups are deprecated and can only have contacts removed.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resourceName">Required. The resource name of the contact group to modify.</param>
             public virtual ModifyRequest Modify(Google.Apis.PeopleService.v1.Data.ModifyContactGroupMembersRequest body, string resourceName)
@@ -461,11 +459,9 @@ namespace Google.Apis.PeopleService.v1
                 return new ModifyRequest(service, body, resourceName);
             }
 
-            /// <summary>Modify the members of a contact group owned by the authenticated user.
-            ///
-            /// The only system contact groups that can have members added are `contactGroups/myContacts` and
-            /// `contactGroups/starred`. Other system contact groups are deprecated and can only have contacts
-            /// removed.</summary>
+            /// <summary>Modify the members of a contact group owned by the authenticated user. The only system contact
+            /// groups that can have members added are `contactGroups/myContacts` and `contactGroups/starred`. Other
+            /// system contact groups are deprecated and can only have contacts removed.</summary>
             public class ModifyRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ModifyContactGroupMembersResponse>
             {
                 /// <summary>Constructs a new Modify request.</summary>
@@ -1074,17 +1070,14 @@ namespace Google.Apis.PeopleService.v1
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>Optional. A page token, received from a previous `ListOtherContacts` call. Provide this to
-            /// retrieve the subsequent page.
-            ///
-            /// When paginating, all other parameters provided to `ListOtherContacts` must match the call that provided
-            /// the page token.</summary>
+            /// retrieve the subsequent page. When paginating, all other parameters provided to `ListOtherContacts` must
+            /// match the call that provided the page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
             /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple fields
-            /// can be specified by separating them with commas. Valid values are:
-            ///
-            /// * emailAddresses * names * phoneNumbers</summary>
+            /// can be specified by separating them with commas. Valid values are: * emailAddresses * names *
+            /// phoneNumbers</summary>
             [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadMask { get; set; }
 
@@ -1096,10 +1089,8 @@ namespace Google.Apis.PeopleService.v1
 
             /// <summary>Optional. A sync token, received from a previous `ListOtherContacts` call. Provide this to
             /// retrieve only the resources changed since the last request. Sync requests that specify `sync_token` have
-            /// an additional rate limit.
-            ///
-            /// When syncing, all other parameters provided to `ListOtherContacts` must match the call that provided the
-            /// sync token.</summary>
+            /// an additional rate limit. When syncing, all other parameters provided to `ListOtherContacts` must match
+            /// the call that provided the sync token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SyncToken { get; set; }
 
@@ -1217,9 +1208,8 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>Provides a list of the authenticated user's contacts.
-            ///
-            /// The request throws a 400 error if 'personFields' is not specified.</summary>
+            /// <summary>Provides a list of the authenticated user's contacts. The request throws a 400 error if
+            /// 'personFields' is not specified.</summary>
             /// <param name="resourceName">Required. The resource name to return connections for. Only `people/me` is
             /// valid.</param>
             public virtual ListRequest List(string resourceName)
@@ -1227,9 +1217,8 @@ namespace Google.Apis.PeopleService.v1
                 return new ListRequest(service, resourceName);
             }
 
-            /// <summary>Provides a list of the authenticated user's contacts.
-            ///
-            /// The request throws a 400 error if 'personFields' is not specified.</summary>
+            /// <summary>Provides a list of the authenticated user's contacts. The request throws a 400 error if
+            /// 'personFields' is not specified.</summary>
             public class ListRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ListConnectionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1251,20 +1240,16 @@ namespace Google.Apis.PeopleService.v1
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>Optional. A page token, received from a previous `ListConnections` call. Provide this to
-                /// retrieve the subsequent page.
-                ///
-                /// When paginating, all other parameters provided to `ListConnections` must match the call that
-                /// provided the page token.</summary>
+                /// retrieve the subsequent page. When paginating, all other parameters provided to `ListConnections`
+                /// must match the call that provided the page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
                 /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple
-                /// fields can be specified by separating them with commas. Valid values are:
-                ///
-                /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders
-                /// * imClients * interests * locales * memberships * metadata * names * nicknames * occupations *
-                /// organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
-                /// userDefined</summary>
+                /// fields can be specified by separating them with commas. Valid values are: * addresses * ageRanges *
+                /// biographies * birthdays * coverPhotos * emailAddresses * events * genders * imClients * interests *
+                /// locales * memberships * metadata * names * nicknames * occupations * organizations * phoneNumbers *
+                /// photos * relations * residences * sipAddresses * skills * urls * userDefined</summary>
                 [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object PersonFields { get; set; }
 
@@ -1288,12 +1273,16 @@ namespace Google.Apis.PeopleService.v1
                 /// `LAST_MODIFIED_ASCENDING`.</summary>
                 public enum SortOrderEnum
                 {
+                    /// <summary>Sort people by when they were changed; older entries first.</summary>
                     [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_ASCENDING")]
                     LASTMODIFIEDASCENDING,
+                    /// <summary>Sort people by when they were changed; newer entries first.</summary>
                     [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_DESCENDING")]
                     LASTMODIFIEDDESCENDING,
+                    /// <summary>Sort people by first name.</summary>
                     [Google.Apis.Util.StringValueAttribute("FIRST_NAME_ASCENDING")]
                     FIRSTNAMEASCENDING,
+                    /// <summary>Sort people by last name.</summary>
                     [Google.Apis.Util.StringValueAttribute("LAST_NAME_ASCENDING")]
                     LASTNAMEASCENDING,
                 }
@@ -1307,22 +1296,25 @@ namespace Google.Apis.PeopleService.v1
                 /// ReadSourceType.PROFILE if not set.</summary>
                 public enum SourcesEnum
                 {
+                    /// <summary>Unspecified.</summary>
                     [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_UNSPECIFIED")]
                     READSOURCETYPEUNSPECIFIED,
+                    /// <summary>Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and
+                    /// SourceType.PROFILE.</summary>
                     [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_PROFILE")]
                     READSOURCETYPEPROFILE,
+                    /// <summary>Returns SourceType.CONTACT.</summary>
                     [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_CONTACT")]
                     READSOURCETYPECONTACT,
+                    /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
                     [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
                     READSOURCETYPEDOMAINCONTACT,
                 }
 
                 /// <summary>Optional. A sync token, received from a previous `ListConnections` call. Provide this to
                 /// retrieve only the resources changed since the last request. Sync requests that specify `sync_token`
-                /// have an additional rate limit.
-                ///
-                /// When syncing, all other parameters provided to `ListConnections` must match the call that provided
-                /// the sync token.</summary>
+                /// have an additional rate limit. When syncing, all other parameters provided to `ListConnections` must
+                /// match the call that provided the sync token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string SyncToken { get; set; }
 
@@ -1456,9 +1448,8 @@ namespace Google.Apis.PeopleService.v1
 
 
             /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple fields
-            /// can be specified by separating them with commas. Defaults to all fields if not set. Valid values are:
-            ///
-            /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
+            /// can be specified by separating them with commas. Defaults to all fields if not set. Valid values are: *
+            /// addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
             /// imClients * interests * locales * memberships * metadata * names * nicknames * occupations *
             /// organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
             /// userDefined</summary>
@@ -1474,12 +1465,16 @@ namespace Google.Apis.PeopleService.v1
             /// ReadSourceType.PROFILE if not set.</summary>
             public enum SourcesEnum
             {
+                /// <summary>Unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_UNSPECIFIED")]
                 READSOURCETYPEUNSPECIFIED,
+                /// <summary>Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_PROFILE")]
                 READSOURCETYPEPROFILE,
+                /// <summary>Returns SourceType.CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_CONTACT")]
                 READSOURCETYPECONTACT,
+                /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
                 READSOURCETYPEDOMAINCONTACT,
             }
@@ -1621,12 +1616,10 @@ namespace Google.Apis.PeopleService.v1
 
             /// <summary>Optional. A field mask to restrict which fields on the person are returned. Multiple fields can
             /// be specified by separating them with commas. Defaults to empty if not set, which will skip the post
-            /// mutate get. Valid values are:
-            ///
-            /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
-            /// imClients * interests * locales * memberships * metadata * names * nicknames * occupations *
-            /// organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
-            /// userDefined</summary>
+            /// mutate get. Valid values are: * addresses * ageRanges * biographies * birthdays * coverPhotos *
+            /// emailAddresses * events * genders * imClients * interests * locales * memberships * metadata * names *
+            /// nicknames * occupations * organizations * phoneNumbers * photos * relations * residences * sipAddresses
+            /// * skills * urls * userDefined</summary>
             [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object PersonFields { get; set; }
 
@@ -1639,12 +1632,16 @@ namespace Google.Apis.PeopleService.v1
             /// ReadSourceType.PROFILE if not set.</summary>
             public enum SourcesEnum
             {
+                /// <summary>Unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_UNSPECIFIED")]
                 READSOURCETYPEUNSPECIFIED,
+                /// <summary>Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_PROFILE")]
                 READSOURCETYPEPROFILE,
+                /// <summary>Returns SourceType.CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_CONTACT")]
                 READSOURCETYPECONTACT,
+                /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
                 READSOURCETYPEDOMAINCONTACT,
             }
@@ -1705,23 +1702,18 @@ namespace Google.Apis.PeopleService.v1
         }
 
         /// <summary>Provides information about a person by specifying a resource name. Use `people/me` to indicate the
-        /// authenticated user.
-        ///
-        /// The request throws a 400 error if 'personFields' is not specified.</summary>
-        /// <param name="resourceName">Required. The resource name of the person to provide information about.
-        ///
-        /// - To get information about the authenticated user, specify `people/me`. - To get information about a google account,
-        /// specify  `people/{account_id}`. - To get information about a contact, specify the resource name that   identifies
-        /// the contact as returned by [`people.connections.list`](/people/api/rest/v1/people.connections/list).</param>
+        /// authenticated user. The request throws a 400 error if 'personFields' is not specified.</summary>
+        /// <param name="resourceName">Required. The resource name of the person to provide information about. - To get
+        /// information about the authenticated user, specify `people/me`. - To get information about a google account, specify
+        /// `people/{account_id}`. - To get information about a contact, specify the resource name that identifies the contact
+        /// as returned by [`people.connections.list`](/people/api/rest/v1/people.connections/list).</param>
         public virtual GetRequest Get(string resourceName)
         {
             return new GetRequest(service, resourceName);
         }
 
         /// <summary>Provides information about a person by specifying a resource name. Use `people/me` to indicate the
-        /// authenticated user.
-        ///
-        /// The request throws a 400 error if 'personFields' is not specified.</summary>
+        /// authenticated user. The request throws a 400 error if 'personFields' is not specified.</summary>
         public class GetRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Person>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1733,22 +1725,19 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>Required. The resource name of the person to provide information about.
-            ///
-            /// - To get information about the authenticated user, specify `people/me`. - To get information about a
-            /// google account, specify `people/{account_id}`. - To get information about a contact, specify the
-            /// resource name that identifies the contact as returned by
+            /// <summary>Required. The resource name of the person to provide information about. - To get information
+            /// about the authenticated user, specify `people/me`. - To get information about a google account, specify
+            /// `people/{account_id}`. - To get information about a contact, specify the resource name that identifies
+            /// the contact as returned by
             /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
             /// <summary>Required. A field mask to restrict which fields on the person are returned. Multiple fields can
-            /// be specified by separating them with commas. Valid values are:
-            ///
-            /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
-            /// imClients * interests * locales * memberships * metadata * names * nicknames * occupations *
-            /// organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
-            /// userDefined</summary>
+            /// be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies *
+            /// birthdays * coverPhotos * emailAddresses * events * genders * imClients * interests * locales *
+            /// memberships * metadata * names * nicknames * occupations * organizations * phoneNumbers * photos *
+            /// relations * residences * sipAddresses * skills * urls * userDefined</summary>
             [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object PersonFields { get; set; }
 
@@ -1766,12 +1755,16 @@ namespace Google.Apis.PeopleService.v1
             /// ReadSourceType.CONTACT if not set.</summary>
             public enum SourcesEnum
             {
+                /// <summary>Unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_UNSPECIFIED")]
                 READSOURCETYPEUNSPECIFIED,
+                /// <summary>Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_PROFILE")]
                 READSOURCETYPEPROFILE,
+                /// <summary>Returns SourceType.CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_CONTACT")]
                 READSOURCETYPECONTACT,
+                /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
                 READSOURCETYPEDOMAINCONTACT,
             }
@@ -1841,18 +1834,16 @@ namespace Google.Apis.PeopleService.v1
         }
 
         /// <summary>Provides information about a list of specific people by specifying a list of requested resource
-        /// names. Use `people/me` to indicate the authenticated user.
-        ///
-        /// The request throws a 400 error if 'personFields' is not specified.</summary>
+        /// names. Use `people/me` to indicate the authenticated user. The request throws a 400 error if 'personFields'
+        /// is not specified.</summary>
         public virtual GetBatchGetRequest GetBatchGet()
         {
             return new GetBatchGetRequest(service);
         }
 
         /// <summary>Provides information about a list of specific people by specifying a list of requested resource
-        /// names. Use `people/me` to indicate the authenticated user.
-        ///
-        /// The request throws a 400 error if 'personFields' is not specified.</summary>
+        /// names. Use `people/me` to indicate the authenticated user. The request throws a 400 error if 'personFields'
+        /// is not specified.</summary>
         public class GetBatchGetRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.GetPeopleResponse>
         {
             /// <summary>Constructs a new GetBatchGet request.</summary>
@@ -1864,12 +1855,10 @@ namespace Google.Apis.PeopleService.v1
 
 
             /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple fields
-            /// can be specified by separating them with commas. Valid values are:
-            ///
-            /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
-            /// imClients * interests * locales * memberships * metadata * names * nicknames * occupations *
-            /// organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
-            /// userDefined</summary>
+            /// can be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies
+            /// * birthdays * coverPhotos * emailAddresses * events * genders * imClients * interests * locales *
+            /// memberships * metadata * names * nicknames * occupations * organizations * phoneNumbers * photos *
+            /// relations * residences * sipAddresses * skills * urls * userDefined</summary>
             [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object PersonFields { get; set; }
 
@@ -1878,14 +1867,11 @@ namespace Google.Apis.PeopleService.v1
             [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object RequestMaskIncludeField { get; set; }
 
-            /// <summary>Required. The resource names of the people to provide information about.
-            ///
-            /// - To get information about the authenticated user, specify `people/me`. - To get information about a
-            /// google account, specify `people/{account_id}`. - To get information about a contact, specify the
-            /// resource name that identifies the contact as returned by
-            /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
-            ///
-            /// You can include up to 50 resource names in one request.</summary>
+            /// <summary>Required. The resource names of the people to provide information about. - To get information
+            /// about the authenticated user, specify `people/me`. - To get information about a google account, specify
+            /// `people/{account_id}`. - To get information about a contact, specify the resource name that identifies
+            /// the contact as returned by [`people.connections.list`](/people/api/rest/v1/people.connections/list). You
+            /// can include up to 50 resource names in one request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
@@ -1898,12 +1884,16 @@ namespace Google.Apis.PeopleService.v1
             /// ReadSourceType.PROFILE if not set.</summary>
             public enum SourcesEnum
             {
+                /// <summary>Unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_UNSPECIFIED")]
                 READSOURCETYPEUNSPECIFIED,
+                /// <summary>Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_PROFILE")]
                 READSOURCETYPEPROFILE,
+                /// <summary>Returns SourceType.CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_CONTACT")]
                 READSOURCETYPECONTACT,
+                /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
                 READSOURCETYPEDOMAINCONTACT,
             }
@@ -2000,8 +1990,10 @@ namespace Google.Apis.PeopleService.v1
             /// verified join keys such as email addresses or phone numbers.</summary>
             public enum MergeSourcesEnum
             {
+                /// <summary>Unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED")]
                 DIRECTORYMERGESOURCETYPEUNSPECIFIED,
+                /// <summary>User owned contact.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_MERGE_SOURCE_TYPE_CONTACT")]
                 DIRECTORYMERGESOURCETYPECONTACT,
             }
@@ -2012,20 +2004,16 @@ namespace Google.Apis.PeopleService.v1
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>Optional. A page token, received from a previous `ListDirectoryPeople` call. Provide this to
-            /// retrieve the subsequent page.
-            ///
-            /// When paginating, all other parameters provided to `ListDirectoryPeople` must match the call that
-            /// provided the page token.</summary>
+            /// retrieve the subsequent page. When paginating, all other parameters provided to `ListDirectoryPeople`
+            /// must match the call that provided the page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
             /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple fields
-            /// can be specified by separating them with commas. Valid values are:
-            ///
-            /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
-            /// imClients * interests * locales * memberships * metadata * names * nicknames * occupations *
-            /// organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
-            /// userDefined</summary>
+            /// can be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies
+            /// * birthdays * coverPhotos * emailAddresses * events * genders * imClients * interests * locales *
+            /// memberships * metadata * names * nicknames * occupations * organizations * phoneNumbers * photos *
+            /// relations * residences * sipAddresses * skills * urls * userDefined</summary>
             [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadMask { get; set; }
 
@@ -2042,19 +2030,20 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>Required. Directory sources to return.</summary>
             public enum SourcesEnum
             {
+                /// <summary>Unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_UNSPECIFIED")]
                 DIRECTORYSOURCETYPEUNSPECIFIED,
+                /// <summary>G Suite domain shared contact.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT")]
                 DIRECTORYSOURCETYPEDOMAINCONTACT,
+                /// <summary>G Suite domain profile.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE")]
                 DIRECTORYSOURCETYPEDOMAINPROFILE,
             }
 
             /// <summary>Optional. A sync token, received from a previous `ListDirectoryPeople` call. Provide this to
-            /// retrieve only the resources changed since the last request.
-            ///
-            /// When syncing, all other parameters provided to `ListDirectoryPeople` must match the call that provided
-            /// the sync token.</summary>
+            /// retrieve only the resources changed since the last request. When syncing, all other parameters provided
+            /// to `ListDirectoryPeople` must match the call that provided the sync token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SyncToken { get; set; }
 
@@ -2177,8 +2166,10 @@ namespace Google.Apis.PeopleService.v1
             /// verified join keys such as email addresses or phone numbers.</summary>
             public enum MergeSourcesEnum
             {
+                /// <summary>Unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED")]
                 DIRECTORYMERGESOURCETYPEUNSPECIFIED,
+                /// <summary>User owned contact.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_MERGE_SOURCE_TYPE_CONTACT")]
                 DIRECTORYMERGESOURCETYPECONTACT,
             }
@@ -2189,10 +2180,8 @@ namespace Google.Apis.PeopleService.v1
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>Optional. A page token, received from a previous `SearchDirectoryPeople` call. Provide this to
-            /// retrieve the subsequent page.
-            ///
-            /// When paginating, all other parameters provided to `SearchDirectoryPeople` must match the call that
-            /// provided the page token.</summary>
+            /// retrieve the subsequent page. When paginating, all other parameters provided to `SearchDirectoryPeople`
+            /// must match the call that provided the page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -2202,12 +2191,10 @@ namespace Google.Apis.PeopleService.v1
             public virtual string Query { get; set; }
 
             /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple fields
-            /// can be specified by separating them with commas. Valid values are:
-            ///
-            /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
-            /// imClients * interests * locales * memberships * metadata * names * nicknames * occupations *
-            /// organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
-            /// userDefined</summary>
+            /// can be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies
+            /// * birthdays * coverPhotos * emailAddresses * events * genders * imClients * interests * locales *
+            /// memberships * metadata * names * nicknames * occupations * organizations * phoneNumbers * photos *
+            /// relations * residences * sipAddresses * skills * urls * userDefined</summary>
             [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadMask { get; set; }
 
@@ -2218,10 +2205,13 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>Required. Directory sources to return.</summary>
             public enum SourcesEnum
             {
+                /// <summary>Unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_UNSPECIFIED")]
                 DIRECTORYSOURCETYPEUNSPECIFIED,
+                /// <summary>G Suite domain shared contact.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT")]
                 DIRECTORYSOURCETYPEDOMAINCONTACT,
+                /// <summary>G Suite domain profile.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE")]
                 DIRECTORYSOURCETYPEDOMAINPROFILE,
             }
@@ -2308,16 +2298,12 @@ namespace Google.Apis.PeopleService.v1
 
         }
 
-        /// <summary>Update contact data for an existing contact person. Any non-contact data will not be modified.
-        ///
-        /// The request throws a 400 error if `updatePersonFields` is not specified.
-        ///
-        /// The request throws a 400 error if `person.metadata.sources` is not specified for the contact to be updated.
-        ///
-        /// The request throws a 400 error with an error with reason `"failedPrecondition"` if
-        /// `person.metadata.sources.etag` is different than the contact's etag, which indicates the contact has changed
-        /// since its data was read. Clients should get the latest person and re-apply their updates to the latest
-        /// person.</summary>
+        /// <summary>Update contact data for an existing contact person. Any non-contact data will not be modified. The
+        /// request throws a 400 error if `updatePersonFields` is not specified. The request throws a 400 error if
+        /// `person.metadata.sources` is not specified for the contact to be updated. The request throws a 400 error
+        /// with an error with reason `"failedPrecondition"` if `person.metadata.sources.etag` is different than the
+        /// contact's etag, which indicates the contact has changed since its data was read. Clients should get the
+        /// latest person and re-apply their updates to the latest person.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resourceName">The resource name for the person, assigned by the server. An ASCII string with a max
         /// length of 27 characters, in the form of `people/{person_id}`.</param>
@@ -2326,16 +2312,12 @@ namespace Google.Apis.PeopleService.v1
             return new UpdateContactRequest(service, body, resourceName);
         }
 
-        /// <summary>Update contact data for an existing contact person. Any non-contact data will not be modified.
-        ///
-        /// The request throws a 400 error if `updatePersonFields` is not specified.
-        ///
-        /// The request throws a 400 error if `person.metadata.sources` is not specified for the contact to be updated.
-        ///
-        /// The request throws a 400 error with an error with reason `"failedPrecondition"` if
-        /// `person.metadata.sources.etag` is different than the contact's etag, which indicates the contact has changed
-        /// since its data was read. Clients should get the latest person and re-apply their updates to the latest
-        /// person.</summary>
+        /// <summary>Update contact data for an existing contact person. Any non-contact data will not be modified. The
+        /// request throws a 400 error if `updatePersonFields` is not specified. The request throws a 400 error if
+        /// `person.metadata.sources` is not specified for the contact to be updated. The request throws a 400 error
+        /// with an error with reason `"failedPrecondition"` if `person.metadata.sources.etag` is different than the
+        /// contact's etag, which indicates the contact has changed since its data was read. Clients should get the
+        /// latest person and re-apply their updates to the latest person.</summary>
         public class UpdateContactRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Person>
         {
             /// <summary>Constructs a new UpdateContact request.</summary>
@@ -2354,9 +2336,8 @@ namespace Google.Apis.PeopleService.v1
             public virtual string ResourceName { get; private set; }
 
             /// <summary>Optional. A field mask to restrict which fields on each person are returned. Multiple fields
-            /// can be specified by separating them with commas. Defaults to all fields if not set. Valid values are:
-            ///
-            /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
+            /// can be specified by separating them with commas. Defaults to all fields if not set. Valid values are: *
+            /// addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
             /// imClients * interests * locales * memberships * metadata * names * nicknames * occupations *
             /// organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
             /// userDefined</summary>
@@ -2372,20 +2353,23 @@ namespace Google.Apis.PeopleService.v1
             /// ReadSourceType.PROFILE if not set.</summary>
             public enum SourcesEnum
             {
+                /// <summary>Unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_UNSPECIFIED")]
                 READSOURCETYPEUNSPECIFIED,
+                /// <summary>Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_PROFILE")]
                 READSOURCETYPEPROFILE,
+                /// <summary>Returns SourceType.CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_CONTACT")]
                 READSOURCETYPECONTACT,
+                /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
                 READSOURCETYPEDOMAINCONTACT,
             }
 
             /// <summary>Required. A field mask to restrict which fields on the person are updated. Multiple fields can
-            /// be specified by separating them with commas. All updated fields will be replaced. Valid values are:
-            ///
-            /// * addresses * biographies * birthdays * emailAddresses * events * genders * imClients * interests *
+            /// be specified by separating them with commas. All updated fields will be replaced. Valid values are: *
+            /// addresses * biographies * birthdays * emailAddresses * events * genders * imClients * interests *
             /// locales * memberships * names * nicknames * occupations * organizations * phoneNumbers * relations *
             /// residences * sipAddresses * urls * userDefined</summary>
             [Google.Apis.Util.RequestParameterAttribute("updatePersonFields", Google.Apis.Util.RequestParameterType.Query)]
@@ -2584,9 +2568,8 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
         public virtual string StreetAddress { get; set; } 
 
-        /// <summary>The type of the address. The type can be custom or one of these predefined values:
-        ///
-        /// * `home` * `work` * `other`</summary>
+        /// <summary>The type of the address. The type can be custom or one of these predefined values: * `home` *
+        /// `work` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -2776,18 +2759,16 @@ namespace Google.Apis.PeopleService.v1.Data
     public class CopyOtherContactToMyContactsGroupRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. A field mask to restrict which fields are copied into the new contact. Valid values are:
-        ///
         /// * emailAddresses * names * phoneNumbers</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("copyMask")]
         public virtual object CopyMask { get; set; } 
 
         /// <summary>Optional. A field mask to restrict which fields on the person are returned. Multiple fields can be
         /// specified by separating them with commas. Defaults to the copy mask with metadata and membership fields if
-        /// not set. Valid values are:
-        ///
-        /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
-        /// imClients * interests * locales * memberships * metadata * names * nicknames * occupations * organizations *
-        /// phoneNumbers * photos * relations * residences * sipAddresses * skills * urls * userDefined</summary>
+        /// not set. Valid values are: * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses
+        /// * events * genders * imClients * interests * locales * memberships * metadata * names * nicknames *
+        /// occupations * organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills * urls
+        /// * userDefined</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readMask")]
         public virtual object ReadMask { get; set; } 
 
@@ -2834,13 +2815,10 @@ namespace Google.Apis.PeopleService.v1.Data
 
     /// <summary>Represents a whole or partial calendar date, e.g. a birthday. The time of day and time zone are either
     /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. This can
-    /// represent:
-    ///
-    /// * A full date, with non-zero year, month and day values * A month and day value, with a zero year, e.g. an
-    /// anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, e.g.
-    /// a credit card expiration date
-    ///
-    /// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
+    /// represent: * A full date, with non-zero year, month and day values * A month and day value, with a zero year,
+    /// e.g. an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero
+    /// day, e.g. a credit card expiration date Related types are google.type.TimeOfDay and
+    /// `google.protobuf.Timestamp`.</summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by
@@ -2899,9 +2877,8 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadata Metadata { get; set; } 
 
-        /// <summary>The type of the email address. The type can be custom or one of these predefined values:
-        ///
-        /// * `home` * `work` * `other`</summary>
+        /// <summary>The type of the email address. The type can be custom or one of these predefined values: * `home` *
+        /// `work` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -2914,11 +2891,9 @@ namespace Google.Apis.PeopleService.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -2941,9 +2916,8 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadata Metadata { get; set; } 
 
-        /// <summary>The type of the event. The type can be custom or one of these predefined values:
-        ///
-        /// * `anniversary` * `other`</summary>
+        /// <summary>The type of the event. The type can be custom or one of these predefined values: * `anniversary` *
+        /// `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -2991,9 +2965,7 @@ namespace Google.Apis.PeopleService.v1.Data
     public class Gender : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The type of pronouns that should be used to address the person. The value can be custom or one of
-        /// these predefined values:
-        ///
-        /// * `male` * `female` * `other`</summary>
+        /// these predefined values: * `male` * `female` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addressMeAs")]
         public virtual string AddressMeAs { get; set; } 
 
@@ -3006,9 +2978,8 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadata Metadata { get; set; } 
 
-        /// <summary>The gender for the person. The gender can be custom or one of these predefined values:
-        ///
-        /// * `male` * `female` * `unspecified`</summary>
+        /// <summary>The gender for the person. The gender can be custom or one of these predefined values: * `male` *
+        /// `female` * `unspecified`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
@@ -3044,15 +3015,13 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadata Metadata { get; set; } 
 
-        /// <summary>The protocol of the IM client. The protocol can be custom or one of these predefined values:
-        ///
-        /// * `aim` * `msn` * `yahoo` * `skype` * `qq` * `googleTalk` * `icq` * `jabber` * `netMeeting`</summary>
+        /// <summary>The protocol of the IM client. The protocol can be custom or one of these predefined values: *
+        /// `aim` * `msn` * `yahoo` * `skype` * `qq` * `googleTalk` * `icq` * `jabber` * `netMeeting`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; } 
 
-        /// <summary>The type of the IM client. The type can be custom or one of these predefined values:
-        ///
-        /// * `home` * `work` * `other`</summary>
+        /// <summary>The type of the IM client. The type can be custom or one of these predefined values: * `home` *
+        /// `work` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -3404,9 +3373,8 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
-        /// <summary>The type of the organization. The type can be custom or  one of these predefined values:
-        ///
-        /// * `work` * `school`</summary>
+        /// <summary>The type of the organization. The type can be custom or one of these predefined values: * `work` *
+        /// `school`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -3415,19 +3383,16 @@ namespace Google.Apis.PeopleService.v1.Data
     }    
 
     /// <summary>Information about a person merged from various data sources such as the authenticated user's contacts
-    /// and profile data.
-    ///
-    /// Most fields can have multiple items. The items in a field have no guaranteed order, but each non-empty field is
-    /// guaranteed to have exactly one field with `metadata.primary` set to true.</summary>
+    /// and profile data. Most fields can have multiple items. The items in a field have no guaranteed order, but each
+    /// non-empty field is guaranteed to have exactly one field with `metadata.primary` set to true.</summary>
     public class Person : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The person's street addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addresses")]
         public virtual System.Collections.Generic.IList<Address> Addresses { get; set; } 
 
-        /// <summary>Output only. **DEPRECATED** (Please use `person.ageRanges` instead)
-        ///
-        /// The person's age range.</summary>
+        /// <summary>Output only. **DEPRECATED** (Please use `person.ageRanges` instead) The person's age
+        /// range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRange")]
         public virtual string AgeRange { get; set; } 
 
@@ -3574,17 +3539,14 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual System.Collections.Generic.IList<string> LinkedPeopleResourceNames { get; set; } 
 
         /// <summary>Output only. **DEPRECATED** (Please use `person.metadata.sources.profileMetadata.objectType`
-        /// instead)
-        ///
-        /// The type of the person object.</summary>
+        /// instead) The type of the person object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
         public virtual string ObjectType { get; set; } 
 
         /// <summary>Output only. Any former resource names this person has had. Populated only for
-        /// [`connections.list`](/people/api/rest/v1/people.connections/list) requests that include a sync token.
-        ///
-        /// The resource name may change when adding or removing fields that link a contact and profile such as a
-        /// verified email, verified phone number, or profile URL.</summary>
+        /// [`connections.list`](/people/api/rest/v1/people.connections/list) requests that include a sync token. The
+        /// resource name may change when adding or removing fields that link a contact and profile such as a verified
+        /// email, verified phone number, or profile URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousResourceNames")]
         public virtual System.Collections.Generic.IList<string> PreviousResourceNames { get; set; } 
 
@@ -3599,9 +3561,8 @@ namespace Google.Apis.PeopleService.v1.Data
     /// <summary>The response for a single person</summary>
     public class PersonResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>**DEPRECATED** (Please use status instead)
-        ///
-        /// [HTTP 1.1 status code] (http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).</summary>
+        /// <summary>**DEPRECATED** (Please use status instead) [HTTP 1.1 status code]
+        /// (http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpStatusCode")]
         public virtual System.Nullable<int> HttpStatusCode { get; set; } 
 
@@ -3610,10 +3571,8 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual Person Person { get; set; } 
 
         /// <summary>The original requested resource name. May be different than the resource name on the returned
-        /// person.
-        ///
-        /// The resource name can change when adding or removing fields that link a contact and profile such as a
-        /// verified email, verified phone number, or a profile URL.</summary>
+        /// person. The resource name can change when adding or removing fields that link a contact and profile such as
+        /// a verified email, verified phone number, or a profile URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedResourceName")]
         public virtual string RequestedResourceName { get; set; } 
 
@@ -3643,10 +3602,9 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadata Metadata { get; set; } 
 
-        /// <summary>The type of the phone number. The type can be custom or one of these predefined values:
-        ///
-        /// * `home` * `work` * `mobile` * `homeFax` * `workFax` * `otherFax` * `pager` * `workMobile` * `workPager` *
-        /// `main` * `googleVoice` * `other`</summary>
+        /// <summary>The type of the phone number. The type can be custom or one of these predefined values: * `home` *
+        /// `work` * `mobile` * `homeFax` * `workFax` * `otherFax` * `pager` * `workMobile` * `workPager` * `main` *
+        /// `googleVoice` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -3712,10 +3670,8 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string Person { get; set; } 
 
         /// <summary>The person's relation to the other person. The type can be custom or one of these predefined
-        /// values:
-        ///
-        /// * `spouse` * `child` * `mother` * `father` * `parent` * `brother` * `sister` * `friend` * `relative` *
-        /// `domesticPartner` * `manager` * `assistant` * `referredBy` * `partner`</summary>
+        /// values: * `spouse` * `child` * `mother` * `father` * `parent` * `brother` * `sister` * `friend` * `relative`
+        /// * `domesticPartner` * `manager` * `assistant` * `referredBy` * `partner`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -3736,9 +3692,7 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual FieldMetadata Metadata { get; set; } 
 
         /// <summary>The kind of relationship the person is looking for. The value can be custom or one of these
-        /// predefined values:
-        ///
-        /// * `friend` * `date` * `relationship` * `networking`</summary>
+        /// predefined values: * `friend` * `date` * `relationship` * `networking`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
@@ -3758,9 +3712,8 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadata Metadata { get; set; } 
 
-        /// <summary>The relationship status. The value can be custom or one of these predefined values:
-        ///
-        /// * `single` * `inARelationship` * `engaged` * `married` * `itsComplicated` * `openRelationship` * `widowed` *
+        /// <summary>The relationship status. The value can be custom or one of these predefined values: * `single` *
+        /// `inARelationship` * `engaged` * `married` * `itsComplicated` * `openRelationship` * `widowed` *
         /// `inDomesticPartnership` * `inCivilUnion`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
@@ -3823,9 +3776,8 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadata Metadata { get; set; } 
 
-        /// <summary>The type of the SIP address. The type can be custom or or one of these predefined values:
-        ///
-        /// * `home` * `work` * `mobile` * `other`</summary>
+        /// <summary>The type of the SIP address. The type can be custom or or one of these predefined values: * `home`
+        /// * `work` * `mobile` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -3856,10 +3808,8 @@ namespace Google.Apis.PeopleService.v1.Data
     /// <summary>The source of a field.</summary>
     public class Source : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>**Only populated in `person.metadata.sources`.**
-        ///
-        /// The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the source. Used for web cache
-        /// validation.</summary>
+        /// <summary>**Only populated in `person.metadata.sources`.** The [HTTP entity
+        /// tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the source. Used for web cache validation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -3867,9 +3817,8 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Output only. **Only populated in `person.metadata.sources`.**
-        ///
-        /// Metadata about a source of type PROFILE.</summary>
+        /// <summary>Output only. **Only populated in `person.metadata.sources`.** Metadata about a source of type
+        /// PROFILE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileMetadata")]
         public virtual ProfileMetadata ProfileMetadata { get; set; } 
 
@@ -3877,9 +3826,8 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>Output only. **Only populated in `person.metadata.sources`.**
-        ///
-        /// Last update timestamp of this source.</summary>
+        /// <summary>Output only. **Only populated in `person.metadata.sources`.** Last update timestamp of this
+        /// source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -3887,9 +3835,8 @@ namespace Google.Apis.PeopleService.v1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3897,8 +3844,8 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -3943,11 +3890,10 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>Optional. A field mask to restrict which fields on the person are returned. Multiple fields can be
         /// specified by separating them with commas. Defaults to empty if not set, which will skip the post mutate get.
-        /// Valid values are:
-        ///
-        /// * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events * genders *
-        /// imClients * interests * locales * memberships * metadata * names * nicknames * occupations * organizations *
-        /// phoneNumbers * photos * relations * residences * sipAddresses * skills * urls * userDefined</summary>
+        /// Valid values are: * addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses * events
+        /// * genders * imClients * interests * locales * memberships * metadata * names * nicknames * occupations *
+        /// organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
+        /// userDefined</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("personFields")]
         public virtual object PersonFields { get; set; } 
 
@@ -3988,10 +3934,9 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadata Metadata { get; set; } 
 
-        /// <summary>The type of the URL. The type can be custom or one of these predefined values:
-        ///
-        /// * `home` * `work` * `blog` * `profile` * `homePage` * `ftp` * `reservations` * `appInstallPage`: website for
-        /// a Google+ application. * `other`</summary>
+        /// <summary>The type of the URL. The type can be custom or one of these predefined values: * `home` * `work` *
+        /// `blog` * `profile` * `homePage` * `ftp` * `reservations` * `appInstallPage`: website for a Google+
+        /// application. * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com'>Firebase Management API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200715 (2022)
+ *      <tr><th>API Rev<td>20200721 (2028)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com'>
  *              https://firebase.google.com</a>
@@ -3868,11 +3868,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     /// <summary>Message that groups a protocol type_id (as defined by MessageSet), with an encoded message of that
     /// type.  Its use is similar to MessageSet, except it represents a single (type, encoded message) instead of a set.
     ///
-    /// To fill for known protocol type: MyProtocolMsg proto; TypedMessage typed_msg;
-    /// typed_msg.set_type_id(MyProtocolMsg::MESSAGE_TYPE_ID); proto.AppendToCord(typed_msg.mutable_message());
+    /// To embed "proto" inside "typed_msg": MyProtoMessage proto; TypedMessage typed_msg;
+    /// typed_msg.set_type_id(proto2::bridge::GetTypeId(proto)); proto.AppendToCord(typed_msg.mutable_message());
     ///
-    /// To fill for unknown protocol type: ProtocolMessage proto; TypedMessage typed_msg;
-    /// typed_msg.set_type_id(proto.GetMapper()->type_id()); proto.AppendToCord(typed_msg.mutable_message());</summary>
+    /// Error handling is omitted from the sample code above. GetTypeId() will return 0 for messages that don't have a
+    /// TypeId specified.</summary>
     public class TypedMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Message bytes.</summary>

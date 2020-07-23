@@ -805,7 +805,7 @@
    }
   }
  }, 
- "revision": "20200713", 
+ "revision": "20200720", 
  "rootUrl": "https://runtimeconfig.googleapis.com/", 
  "schemas": {
   "Binding": {

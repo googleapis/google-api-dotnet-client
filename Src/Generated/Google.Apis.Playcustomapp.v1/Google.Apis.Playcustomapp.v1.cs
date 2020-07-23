@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/custom-app-api/'>Google Play Custom App Publishing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200715 (2022)
+ *      <tr><th>API Rev<td>20200721 (2028)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/custom-app-api/'>
  *              https://developers.google.com/android/work/play/custom-app-api/</a>

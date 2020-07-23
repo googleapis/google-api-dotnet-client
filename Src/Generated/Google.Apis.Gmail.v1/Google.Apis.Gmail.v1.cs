@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/api/'>Gmail API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200713 (2020)
+ *      <tr><th>API Rev<td>20200720 (2027)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/api/'>
  *              https://developers.google.com/gmail/api/</a>
@@ -2484,7 +2484,7 @@ namespace Google.Apis.Gmail.v1
                     Metadata,
                 }
 
-                /// <summary>When given and format is METADATA, only include headers specified.</summary>
+                /// <summary>When given and format is `METADATA`, only include headers specified.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("metadataHeaders", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> MetadataHeaders { get; set; }
 
@@ -7653,7 +7653,7 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelListVisibility")]
         public virtual string LabelListVisibility { get; set; } 
 
-        /// <summary>The visibility of the label in the message list in the Gmail web interface. @mutable
+        /// <summary>The visibility of messages with this label in the message list in the Gmail web interface. @mutable
         /// gmail.users.labels.create gmail.users.labels.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageListVisibility")]
         public virtual string MessageListVisibility { get; set; } 

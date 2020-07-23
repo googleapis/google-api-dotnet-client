@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admob/api/'>AdMob API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200716 (2023)
+ *      <tr><th>API Rev<td>20200722 (2029)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admob/api/'>
  *              https://developers.google.com/admob/api/</a>
@@ -1038,7 +1038,10 @@ namespace Google.Apis.AdMob.v1.Data
     /// last message in the stream response.</summary>
     public class ReportFooter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Total number of rows that did match the request.</summary>
+        /// <summary>Total number of rows that matched the request.
+        ///
+        /// Warning: This count does NOT always match the number of rows in the response. Do not make that assumption
+        /// when processing the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchingRowCount")]
         public virtual System.Nullable<long> MatchingRowCount { get; set; } 
 

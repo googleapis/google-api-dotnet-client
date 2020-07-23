@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/run/'>Cloud Run Admin API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200706 (2013)
+ *      <tr><th>API Rev<td>20200720 (2027)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/run/'>
  *              https://cloud.google.com/run/</a>
@@ -942,7 +942,7 @@ namespace Google.Apis.CloudRun.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>CustomResourceDefinition represents a resource that should be exposed on the API server.  Its name MUST
+    /// <summary>CustomResourceDefinition represents a resource that should be exposed on the API server. Its name MUST
     /// be in the format <.spec.name>.<.spec.group>.</summary>
     public class CustomResourceDefinition : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -974,25 +974,25 @@ namespace Google.Apis.CloudRun.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
         public virtual System.Collections.Generic.IList<string> Categories { get; set; } 
 
-        /// <summary>Kind is the serialized kind of the resource.  It is normally CamelCase and singular.</summary>
+        /// <summary>Kind is the serialized kind of the resource. It is normally CamelCase and singular.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>ListKind is the serialized kind of the list for this resource.  Defaults to List.
+        /// <summary>ListKind is the serialized kind of the list for this resource. Defaults to List.
         /// +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listKind")]
         public virtual string ListKind { get; set; } 
 
-        /// <summary>Plural is the plural name of the resource to serve.  It must match the name of the
+        /// <summary>Plural is the plural name of the resource to serve. It must match the name of the
         /// CustomResourceDefinition-registration too: plural.group and it must be all lowercase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plural")]
         public virtual string Plural { get; set; } 
 
-        /// <summary>ShortNames are short names for the resource.  It must be all lowercase. +optional</summary>
+        /// <summary>ShortNames are short names for the resource. It must be all lowercase. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortNames")]
         public virtual System.Collections.Generic.IList<string> ShortNames { get; set; } 
 
-        /// <summary>Singular is the singular name of the resource.  It must be all lowercase Defaults to lowercased
+        /// <summary>Singular is the singular name of the resource. It must be all lowercase Defaults to lowercased
         /// +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singular")]
         public virtual string Singular { get; set; } 
@@ -1375,118 +1375,78 @@ namespace Google.Apis.CloudRun.v1beta1.Data
     /// which includes all objects users must create.</summary>
     public class ObjectMeta : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(Optional)
-        ///
-        /// Annotations is an unstructured key value map stored with a resource that may be set by external tools to
-        /// store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying
-        /// objects. More info: http://kubernetes.io/docs/user-guide/annotations</summary>
+        /// <summary>(Optional) Annotations is an unstructured key value map stored with a resource that may be set by
+        /// external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when
+        /// modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string,string> Annotations { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// The name of the cluster which the object belongs to. This is used to distinguish resources with same name
-        /// and namespace in different clusters. This field is not set anywhere right now and apiserver is going to
-        /// ignore it if set in create or update request.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the
+        /// cluster which the object belongs to. This is used to distinguish resources with same name and namespace in
+        /// different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in
+        /// create or update request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// CreationTimestamp is a timestamp representing the server time when this object was created. It is not
-        /// guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It
-        /// is represented in RFC3339 form and is in UTC.
-        ///
-        /// Populated by the system. Read-only. Null for lists. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</summary>
+        /// <summary>(Optional) CreationTimestamp is a timestamp representing the server time when this object was
+        /// created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not
+        /// set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null
+        /// for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual object CreationTimestamp { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Number of seconds allowed for this object to gracefully terminate before it will be removed from the system.
-        /// Only set when deletionTimestamp is also set. May only be shortened. Read-only.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds
+        /// allowed for this object to gracefully terminate before it will be removed from the system. Only set when
+        /// deletionTimestamp is also set. May only be shortened. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionGracePeriodSeconds")]
         public virtual System.Nullable<int> DeletionGracePeriodSeconds { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the
-        /// server when a graceful deletion is requested by the user, and is not directly settable by a client. The
-        /// resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after
-        /// the time in this field, once the finalizers list is empty. As long as the finalizers list contains items,
-        /// deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into
-        /// the future, although it may be shortened or the resource may be deleted prior to this time. For example, a
-        /// user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful
-        /// termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard
-        /// termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the
-        /// presence of network partitions, this object may still exist after this timestamp, until an administrator or
-        /// automated process can determine the resource is fully terminated. If not set, graceful deletion of the
-        /// object has not been requested.
-        ///
-        /// Populated by the system when a graceful deletion is requested. Read-only. More info:
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported DeletionTimestamp
+        /// is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a
+        /// graceful deletion is requested by the user, and is not directly settable by a client. The resource is
+        /// expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in
+        /// this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is
+        /// blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future,
+        /// although it may be shortened or the resource may be deleted prior to this time. For example, a user may
+        /// request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal
+        /// to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal
+        /// (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network
+        /// partitions, this object may still exist after this timestamp, until an administrator or automated process
+        /// can determine the resource is fully terminated. If not set, graceful deletion of the object has not been
+        /// requested. Populated by the system when a graceful deletion is requested. Read-only. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionTimestamp")]
         public virtual object DeletionTimestamp { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Must be empty before the object is deleted from the registry. Each entry is an identifier for the
-        /// responsible component that will remove the entry from the list. If the deletionTimestamp of the object is
-        /// non-nil, entries in this list can only be removed. +patchStrategy=merge</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Must be empty
+        /// before the object is deleted from the registry. Each entry is an identifier for the responsible component
+        /// that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this
+        /// list can only be removed. +patchStrategy=merge</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalizers")]
         public virtual System.Collections.Generic.IList<string> Finalizers { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has
-        /// not been provided. If this field is used, the name returned to the client will be different than the name
-        /// passed. This value will also be combined with a unique suffix. The provided value has the same validation
-        /// rules as the Name field, and may be truncated by the length of the suffix required to make the value unique
-        /// on the server.
-        ///
-        /// If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it
-        /// will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found
-        /// in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After
-        /// header).
-        ///
-        /// Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-
-        /// conventions.md#idempotency string generateName = 2;</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported GenerateName is
+        /// an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been
+        /// provided. If this field is used, the name returned to the client will be different than the name passed.
+        /// This value will also be combined with a unique suffix. The provided value has the same validation rules as
+        /// the Name field, and may be truncated by the length of the suffix required to make the value unique on the
+        /// server. If this field is specified and the generated name exists, the server will NOT return a 409 -
+        /// instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could
+        /// not be found in the time allotted, and the client should retry (optionally after the time indicated in the
+        /// Retry-After header). Applied only if Name is not specified. More info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName =
+        /// 2;</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generateName")]
         public virtual string GenerateName { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// A sequence number representing a specific generation of the desired state. Populated by the system. Read-
-        /// only.</summary>
+        /// <summary>(Optional) A sequence number representing a specific generation of the desired state. Populated by
+        /// the system. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<int> Generation { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May
-        /// match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-
-        /// guide/labels</summary>
+        /// <summary>(Optional) Map of string keys and values that can be used to organize and categorize (scope and
+        /// select) objects. May match selectors of replication controllers and routes. More info:
+        /// http://kubernetes.io/docs/user-guide/labels</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -1502,44 +1462,30 @@ namespace Google.Apis.CloudRun.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
         public virtual string Namespace__ { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// List of objects that own this object. If ALL objects in the list have been deleted, this object will be
-        /// garbage collected.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of objects
+        /// that own this object. If ALL objects in the list have been deleted, this object will be garbage
+        /// collected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerReferences")]
         public virtual System.Collections.Generic.IList<OwnerReference> OwnerReferences { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// An opaque value that represents the internal version of this object that can be used by clients to determine
-        /// when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation
-        /// on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to
-        /// the server. They may only be valid for a particular resource or set of resources.
-        ///
+        /// <summary>(Optional) An opaque value that represents the internal version of this object that can be used by
+        /// clients to determine when objects have changed. May be used for optimistic concurrency, change detection,
+        /// and the watch operation on a resource or set of resources. Clients must treat these values as opaque and
+        /// passed unmodified back to the server. They may only be valid for a particular resource or set of resources.
         /// Populated by the system. Read-only. Value must be treated as opaque by clients and . More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-
         /// consistency</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceVersion")]
         public virtual string ResourceVersion { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink =
-        /// 4;</summary>
+        /// <summary>(Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string
+        /// selfLink = 4;</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// UID is the unique in time and space value for this object. It is typically generated by the server on
-        /// successful creation of a resource and is not allowed to change on PUT operations.
-        ///
-        /// Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-
-        /// guide/identifiers#uids</summary>
+        /// <summary>(Optional) UID is the unique in time and space value for this object. It is typically generated by
+        /// the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by
+        /// the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; } 
 

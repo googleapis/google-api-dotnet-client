@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/'>Network Management API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200615 (1992)
+ *      <tr><th>API Rev<td>20200716 (2023)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/'>
  *              https://cloud.google.com/</a>

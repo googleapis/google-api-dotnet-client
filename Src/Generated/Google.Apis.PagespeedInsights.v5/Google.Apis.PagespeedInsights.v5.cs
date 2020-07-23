@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/speed/docs/insights/v5/about'>PageSpeed Insights API</a>
  *      <tr><th>API Version<td>v5
- *      <tr><th>API Rev<td>20200625 (2002)
+ *      <tr><th>API Rev<td>20200723 (2030)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/speed/docs/insights/v5/about'>
  *              https://developers.google.com/speed/docs/insights/v5/about</a>

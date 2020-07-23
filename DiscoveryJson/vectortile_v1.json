@@ -313,7 +313,7 @@
    }
   }
  }, 
- "revision": "20200719", 
+ "revision": "20200722", 
  "rootUrl": "https://vectortile.googleapis.com/", 
  "schemas": {
   "Area": {

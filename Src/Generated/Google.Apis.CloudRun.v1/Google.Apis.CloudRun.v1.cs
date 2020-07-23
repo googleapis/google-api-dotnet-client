@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/run/'>Cloud Run Admin API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200706 (2013)
+ *      <tr><th>API Rev<td>20200720 (2027)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/run/'>
  *              https://cloud.google.com/run/</a>
@@ -562,13 +562,10 @@ namespace Google.Apis.CloudRun.v1
 
                     }
 
-                    /// <summary>Rpc to replace a secret.
-                    ///
-                    /// Only the spec and metadata labels and annotations are modifiable. After the Update request,
-                    /// Cloud Run will work to make the 'status' match the requested 'spec'.
-                    ///
-                    /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
-                    /// control.</summary>
+                    /// <summary>Rpc to replace a secret. Only the spec and metadata labels and annotations are
+                    /// modifiable. After the Update request, Cloud Run will work to make the 'status' match the
+                    /// requested 'spec'. May provide metadata.resourceVersion to enforce update from last read for
+                    /// optimistic concurrency control.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. The name of the secret being retrieved. If needed, replace {namespace_id} with the
                     /// project ID.</param>
@@ -577,13 +574,10 @@ namespace Google.Apis.CloudRun.v1
                         return new ReplaceSecretRequest(service, body, name);
                     }
 
-                    /// <summary>Rpc to replace a secret.
-                    ///
-                    /// Only the spec and metadata labels and annotations are modifiable. After the Update request,
-                    /// Cloud Run will work to make the 'status' match the requested 'spec'.
-                    ///
-                    /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
-                    /// control.</summary>
+                    /// <summary>Rpc to replace a secret. Only the spec and metadata labels and annotations are
+                    /// modifiable. After the Update request, Cloud Run will work to make the 'status' match the
+                    /// requested 'spec'. May provide metadata.resourceVersion to enforce update from last read for
+                    /// optimistic concurrency control.</summary>
                     public class ReplaceSecretRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Secret>
                     {
                         /// <summary>Constructs a new ReplaceSecret request.</summary>
@@ -2591,13 +2585,9 @@ namespace Google.Apis.CloudRun.v1
 
             }
 
-            /// <summary>Replace a service.
-            ///
-            /// Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud Run
-            /// will work to make the 'status' match the requested 'spec'.
-            ///
-            /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
-            /// control.</summary>
+            /// <summary>Replace a service. Only the spec and metadata labels and annotations are modifiable. After the
+            /// Update request, Cloud Run will work to make the 'status' match the requested 'spec'. May provide
+            /// metadata.resourceVersion to enforce update from last read for optimistic concurrency control.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the service being replaced. For Cloud Run (fully managed), replace {namespace_id}
             /// with the project ID or number.</param>
@@ -2606,13 +2596,9 @@ namespace Google.Apis.CloudRun.v1
                 return new ReplaceServiceRequest(service, body, name);
             }
 
-            /// <summary>Replace a service.
-            ///
-            /// Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud Run
-            /// will work to make the 'status' match the requested 'spec'.
-            ///
-            /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
-            /// control.</summary>
+            /// <summary>Replace a service. Only the spec and metadata labels and annotations are modifiable. After the
+            /// Update request, Cloud Run will work to make the 'status' match the requested 'spec'. May provide
+            /// metadata.resourceVersion to enforce update from last read for optimistic concurrency control.</summary>
             public class ReplaceServiceRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Service>
             {
                 /// <summary>Constructs a new ReplaceService request.</summary>
@@ -4405,12 +4391,9 @@ namespace Google.Apis.CloudRun.v1
 
                 }
 
-                /// <summary>Rpc to replace a secret.
-                ///
-                /// Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud
-                /// Run will work to make the 'status' match the requested 'spec'.
-                ///
-                /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
+                /// <summary>Rpc to replace a secret. Only the spec and metadata labels and annotations are modifiable.
+                /// After the Update request, Cloud Run will work to make the 'status' match the requested 'spec'. May
+                /// provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
                 /// control.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The name of the secret being retrieved. If needed, replace {namespace_id} with the
@@ -4420,12 +4403,9 @@ namespace Google.Apis.CloudRun.v1
                     return new ReplaceSecretRequest(service, body, name);
                 }
 
-                /// <summary>Rpc to replace a secret.
-                ///
-                /// Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud
-                /// Run will work to make the 'status' match the requested 'spec'.
-                ///
-                /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
+                /// <summary>Rpc to replace a secret. Only the spec and metadata labels and annotations are modifiable.
+                /// After the Update request, Cloud Run will work to make the 'status' match the requested 'spec'. May
+                /// provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
                 /// control.</summary>
                 public class ReplaceSecretRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Secret>
                 {
@@ -4775,15 +4755,12 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
 
-                    /// <summary>Optional. The policy format version to be returned.
-                    ///
-                    /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
-                    ///
-                    /// Requests for policies with any conditional bindings must specify version 3. Policies without any
-                    /// conditional bindings may specify any valid value or leave the field unset.
-                    ///
-                    /// To learn which resources support conditions in their IAM policies, see the [IAM
-                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+                    /// <summary>Optional. The policy format version to be returned. Valid values are 0, 1, and 3.
+                    /// Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional bindings must specify version 3. Policies without any conditional bindings may
+                    /// specify any valid value or leave the field unset. To learn which resources support conditions in
+                    /// their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
+                    /// /resource-policies).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -4990,12 +4967,9 @@ namespace Google.Apis.CloudRun.v1
 
                 }
 
-                /// <summary>Replace a service.
-                ///
-                /// Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud
-                /// Run will work to make the 'status' match the requested 'spec'.
-                ///
-                /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
+                /// <summary>Replace a service. Only the spec and metadata labels and annotations are modifiable. After
+                /// the Update request, Cloud Run will work to make the 'status' match the requested 'spec'. May provide
+                /// metadata.resourceVersion to enforce update from last read for optimistic concurrency
                 /// control.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the service being replaced. For Cloud Run (fully managed), replace {namespace_id}
@@ -5005,12 +4979,9 @@ namespace Google.Apis.CloudRun.v1
                     return new ReplaceServiceRequest(service, body, name);
                 }
 
-                /// <summary>Replace a service.
-                ///
-                /// Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud
-                /// Run will work to make the 'status' match the requested 'spec'.
-                ///
-                /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
+                /// <summary>Replace a service. Only the spec and metadata labels and annotations are modifiable. After
+                /// the Update request, Cloud Run will work to make the 'status' match the requested 'spec'. May provide
+                /// metadata.resourceVersion to enforce update from last read for optimistic concurrency
                 /// control.</summary>
                 public class ReplaceServiceRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Service>
                 {
@@ -5144,9 +5115,8 @@ namespace Google.Apis.CloudRun.v1
 
                 }
 
-                /// <summary>Returns permissions that a caller has on the specified Project.
-                ///
-                /// There are no permissions required for making this API call.</summary>
+                /// <summary>Returns permissions that a caller has on the specified Project. There are no permissions
+                /// required for making this API call.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -5155,9 +5125,8 @@ namespace Google.Apis.CloudRun.v1
                     return new TestIamPermissionsRequest(service, body, resource);
                 }
 
-                /// <summary>Returns permissions that a caller has on the specified Project.
-                ///
-                /// There are no permissions required for making this API call.</summary>
+                /// <summary>Returns permissions that a caller has on the specified Project. There are no permissions
+                /// required for making this API call.</summary>
                 public class TestIamPermissionsRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -5336,21 +5305,15 @@ namespace Google.Apis.CloudRun.v1.Data
 
     /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
     /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
-    /// AuditLogConfigs.
-    ///
-    /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
-    /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
-    /// AuditLogConfig are exempted.
-    ///
-    /// Example Policy with multiple AuditConfigs:
-    ///
-    /// { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two
+    /// AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the
+    /// exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: {
+    /// "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
     /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ]
     /// }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, {
-    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
-    ///
-    /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
-    /// jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.</summary>
+    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this
+    /// policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ
+    /// logging, and aliya@example.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
@@ -5366,11 +5329,8 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Provides the configuration for logging a type of permissions. Example:
-    ///
-    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
-    /// "log_type": "DATA_WRITE" } ] }
-    ///
+    /// <summary>Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ {
+    /// "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] }
     /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -5408,53 +5368,33 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding.
-        ///
-        /// If the condition evaluates to `true`, then this binding applies to the current request.
-        ///
-        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
-        /// different role binding might grant the same role to one or more of the members in this binding.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
+        /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
+        /// apply to the current request. However, a different role binding might grant the same role to one or more of
+        /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values:
-        ///
-        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
-        /// account.
-        ///
-        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
-        /// account or a service account.
-        ///
-        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@example.com` .
-        ///
-        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
-        /// app@appspot.gserviceaccount.com`.
-        ///
-        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
-        ///
-        /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
-        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
-        ///
-        /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
-        /// a service account that has been recently deleted. For example, `my-other-
+        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
+        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
+        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
+        /// represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An
+        /// email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example, `my-other-
         /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
-        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
-        ///
-        /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
+        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. *
+        /// `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
         /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
         /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
-        /// binding.
-        ///
-        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
-        /// `google.com` or `example.com`.
-        ///
-        /// </summary>
+        /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
+        /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
 
@@ -5467,14 +5407,9 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// ConfigMapEnvSource selects a ConfigMap to populate the environment variables with.
-    ///
-    /// The contents of the target ConfigMap's Data field will represent the key-value pairs as environment
-    /// variables.</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported ConfigMapEnvSource selects a
+    /// ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will
+    /// represent the key-value pairs as environment variables.</summary>
     public class ConfigMapEnvSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This field should not be used directly as it is meant to be inlined directly into the message. Use
@@ -5482,21 +5417,13 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("localObjectReference")]
         public virtual LocalObjectReference LocalObjectReference { get; set; } 
 
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// The ConfigMap to select from.</summary>
+        /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select
+        /// from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Specify whether the ConfigMap must be defined</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether
+        /// the ConfigMap must be defined</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optional")]
         public virtual System.Nullable<bool> Optional { get; set; } 
 
@@ -5504,18 +5431,11 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// Selects a key from a ConfigMap.</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key from a
+    /// ConfigMap.</summary>
     public class ConfigMapKeySelector : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// The key to select.</summary>
+        /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to select.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; } 
 
@@ -5524,21 +5444,13 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("localObjectReference")]
         public virtual LocalObjectReference LocalObjectReference { get; set; } 
 
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// The ConfigMap to select from.</summary>
+        /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select
+        /// from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Specify whether the ConfigMap or its key must be defined</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether
+        /// the ConfigMap or its key must be defined</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optional")]
         public virtual System.Nullable<bool> Optional { get; set; } 
 
@@ -5546,55 +5458,34 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a
-    /// volume as files using the keys in the Data field as the file names, unless the items element is populated with
-    /// specific mappings of keys to paths.</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported Adapts a ConfigMap into a
+    /// volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys
+    /// in the Data field as the file names, unless the items element is populated with specific mappings of keys to
+    /// paths.</summary>
     public class ConfigMapVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644.
-        /// Directories within the path are not affected by this setting. This might be in conflict with other options
-        /// that affect the file mode, like fsGroup, and the result can be other mode bits set.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use
+        /// on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the
+        /// path are not affected by this setting. This might be in conflict with other options that affect the file
+        /// mode, like fsGroup, and the result can be other mode bits set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultMode")]
         public virtual System.Nullable<int> DefaultMode { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the
-        /// volume as a file whose name is the key and content is the value. If specified, the listed keys will be
-        /// projected into the specified paths, and unlisted keys will not be present. If a key is specified which is
-        /// not present in the Secret, the volume setup will error unless it is marked optional.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If unspecified,
+        /// each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file
+        /// whose name is the key and content is the value. If specified, the listed keys will be projected into the
+        /// specified paths, and unlisted keys will not be present. If a key is specified which is not present in the
+        /// Secret, the volume setup will error unless it is marked optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<KeyToPath> Items { get; set; } 
 
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Name of the config.</summary>
+        /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the
+        /// config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Specify whether the Secret or its keys must be defined.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether
+        /// the Secret or its keys must be defined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optional")]
         public virtual System.Nullable<bool> Optional { get; set; } 
 
@@ -5669,10 +5560,8 @@ namespace Google.Apis.CloudRun.v1.Data
 
         /// <summary>ObservedGeneration is the 'Generation' of the Configuration that was last processed by the
         /// controller. The observed generation is updated even if the controller failed to process the spec and create
-        /// the Revision.
-        ///
-        /// Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation, and
-        /// the Ready condition's status is True or False.</summary>
+        /// the Revision. Clients polling for completed reconciliation should poll until observedGeneration =
+        /// metadata.generation, and the Ready condition's status is True or False.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observedGeneration")]
         public virtual System.Nullable<int> ObservedGeneration { get; set; } 
 
@@ -5685,173 +5574,104 @@ namespace Google.Apis.CloudRun.v1.Data
     /// container at runtime.</summary>
     public class Container : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references
-        /// $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference
-        /// in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
-        /// $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
-        /// More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-
-        /// container/#running-a-command-in-a-shell</summary>
+        /// <summary>(Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Arguments to the
+        /// entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are
+        /// expanded using the container's environment. If a variable cannot be resolved, the reference in the input
+        /// string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
+        /// references will never be expanded, regardless of whether the variable exists or not. More info:
+        /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a
+        /// -command-in-a-shell</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual System.Collections.Generic.IList<string> Command { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// List of environment variables to set in the container.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported List of environment
+        /// variables to set in the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IList<EnvVar> Env { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// List of sources to populate environment variables in the container. The keys defined within a source must be
-        /// a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key
-        /// exists in multiple sources, the value associated with the last source will take precedence. Values defined
-        /// by an Env with a duplicate key will take precedence. Cannot be updated.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of sources
+        /// to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER.
+        /// All invalid keys will be reported as an event when the container is starting. When a key exists in multiple
+        /// sources, the value associated with the last source will take precedence. Values defined by an Env with a
+        /// duplicate key will take precedence. Cannot be updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("envFrom")]
         public virtual System.Collections.Generic.IList<EnvFromSource> EnvFrom { get; set; } 
 
-        /// <summary>Cloud Run fully managed: only supports containers from Google Container Registry
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images</summary>
+        /// <summary>Cloud Run fully managed: only supports containers from Google Container Registry Cloud Run for
+        /// Anthos: supported URL of the Container image. More info:
+        /// https://kubernetes.io/docs/concepts/containers/images</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or
-        /// IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-
-        /// images</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Image pull
+        /// policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent
+        /// otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imagePullPolicy")]
         public virtual string ImagePullPolicy { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of
+        /// container liveness. Container will be restarted if the probe fails. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("livenessProbe")]
         public virtual Probe LivenessProbe { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Name of the container specified as a DNS_LABEL.</summary>
+        /// <summary>(Optional) Name of the container specified as a DNS_LABEL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// List of ports to expose from the container. Only a single port can be specified. The specified ports must be
-        /// listening on all interfaces (0.0.0.0) within the container to be accessible.
-        ///
-        /// If omitted, a port number will be chosen and passed to the container through the PORT environment variable
-        /// for the container to listen on.</summary>
+        /// <summary>(Optional) List of ports to expose from the container. Only a single port can be specified. The
+        /// specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If
+        /// omitted, a port number will be chosen and passed to the container through the PORT environment variable for
+        /// the container to listen on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ports")]
         public virtual System.Collections.Generic.IList<ContainerPort> Ports { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Periodic probe of container service readiness. Container will be removed from service endpoints if the probe
-        /// fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-
-        /// probes</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of
+        /// container service readiness. Container will be removed from service endpoints if the probe fails. More info:
+        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readinessProbe")]
         public virtual Probe ReadinessProbe { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage
-        /// /persistent-volumes#resources</summary>
+        /// <summary>(Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Compute Resources
+        /// required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-
+        /// volumes#resources</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual ResourceRequirements Resources { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-
-        /// context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Security options
+        /// the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info:
+        /// https://kubernetes.io/docs/tasks/configure-pod-container/security-context/</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityContext")]
         public virtual SecurityContext SecurityContext { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Path at which the file to which the container's termination message will be written is mounted into the
-        /// container's filesystem. Message written is intended to be brief final status, such as an assertion failure
-        /// message. Will be truncated by the node if greater than 4096 bytes. The total message length across all
-        /// containers will be limited to 12kb. Defaults to /dev/termination-log.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path at which the
+        /// file to which the container's termination message will be written is mounted into the container's
+        /// filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will
+        /// be truncated by the node if greater than 4096 bytes. The total message length across all containers will be
+        /// limited to 12kb. Defaults to /dev/termination-log.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terminationMessagePath")]
         public virtual string TerminationMessagePath { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Indicate how the termination message should be populated. File will use the contents of
-        /// terminationMessagePath to populate the container status message on both success and failure.
-        /// FallbackToLogsOnError will use the last chunk of container log output if the termination message file is
-        /// empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever
-        /// is smaller. Defaults to File. Cannot be updated.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Indicate how the
+        /// termination message should be populated. File will use the contents of terminationMessagePath to populate
+        /// the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of
+        /// container log output if the termination message file is empty and the container exited with an error. The
+        /// log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be
+        /// updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terminationMessagePolicy")]
         public virtual string TerminationMessagePolicy { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Pod volumes to mount into the container's filesystem.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Pod volumes to
+        /// mount into the container's filesystem.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeMounts")]
         public virtual System.Collections.Generic.IList<VolumeMount> VolumeMounts { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Container's working directory. If not specified, the container runtime's default will be used, which might
-        /// be configured in the container image.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Container's
+        /// working directory. If not specified, the container runtime's default will be used, which might be configured
+        /// in the container image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workingDir")]
         public virtual string WorkingDir { get; set; } 
 
@@ -5862,29 +5682,18 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>ContainerPort represents a network port in a single container.</summary>
     public class ContainerPort : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(Optional)
-        ///
-        /// Port number the container listens on. This must be a valid port number, 0 < x < 65536.</summary>
+        /// <summary>(Optional) Port number the container listens on. This must be a valid port number, 0 < x <
+        /// 65536.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerPort")]
         public virtual System.Nullable<int> ContainerPortValue { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If specified,
+        /// used to specify which protocol to use. Allowed values are "http1" and "h2c".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Protocol for port. Must be "TCP". Defaults to "TCP".</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Protocol for
+        /// port. Must be "TCP". Defaults to "TCP".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; } 
 
@@ -5953,10 +5762,8 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string MappedRouteName { get; set; } 
 
         /// <summary>ObservedGeneration is the 'Generation' of the DomainMapping that was last processed by the
-        /// controller.
-        ///
-        /// Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and
-        /// the Ready condition's status is True or False.</summary>
+        /// controller. Clients polling for completed reconciliation should poll until observedGeneration =
+        /// metadata.generation and the Ready condition's status is True or False.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observedGeneration")]
         public virtual System.Nullable<int> ObservedGeneration { get; set; } 
 
@@ -5965,11 +5772,8 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceRecords")]
         public virtual System.Collections.Generic.IList<ResourceRecord> ResourceRecords { get; set; } 
 
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run on GKE: supported
-        ///
-        /// Holds the URL that will serve the traffic of the DomainMapping. +optional</summary>
+        /// <summary>Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve
+        /// the traffic of the DomainMapping. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 
@@ -5977,40 +5781,22 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// EnvFromSource represents the source of a set of ConfigMaps</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvFromSource represents the
+    /// source of a set of ConfigMaps</summary>
     public class EnvFromSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// The ConfigMap to select from</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to
+        /// select from</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configMapRef")]
         public virtual ConfigMapEnvSource ConfigMapRef { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported An optional
+        /// identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prefix")]
         public virtual string Prefix { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// The Secret to select from</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to
+        /// select from</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretRef")]
         public virtual SecretEnvSource SecretRef { get; set; } 
 
@@ -6025,23 +5811,16 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the
-        /// container and any route environment variables. If a variable cannot be resolved, the reference in the input
-        /// string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
-        /// references will never be expanded, regardless of whether the variable exists or not. Defaults to
-        /// "".</summary>
+        /// <summary>(Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment
+        /// variables in the container and any route environment variables. If a variable cannot be resolved, the
+        /// reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
+        /// $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
+        /// Defaults to "".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Source for the environment variable's value. Cannot be used if value is not empty.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Source for the
+        /// environment variable's value. Cannot be used if value is not empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueFrom")]
         public virtual EnvVarSource ValueFrom { get; set; } 
 
@@ -6049,30 +5828,17 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// EnvVarSource represents a source for the value of an EnvVar.</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvVarSource represents a source
+    /// for the value of an EnvVar.</summary>
     public class EnvVarSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Selects a key of a ConfigMap.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of
+        /// a ConfigMap.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configMapKeyRef")]
         public virtual ConfigMapKeySelector ConfigMapKeyRef { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Selects a key of a secret in the pod's namespace</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of
+        /// a secret in the pod's namespace</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretKeyRef")]
         public virtual SecretKeySelector SecretKeyRef { get; set; } 
 
@@ -6080,23 +5846,15 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// ExecAction describes a "run in container" action.</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported ExecAction describes a "run in
+    /// container" action.</summary>
     public class ExecAction : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Command is the command line to execute inside the container, the working directory for the command  is root
-        /// ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so
-        /// traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to
-        /// that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Command is the
+        /// command line to execute inside the container, the working directory for the command is root ('/') in the
+        /// container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell
+        /// instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit
+        /// status of 0 is treated as live/healthy and non-zero is unhealthy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual string Command { get; set; } 
 
@@ -6106,29 +5864,15 @@ namespace Google.Apis.CloudRun.v1.Data
 
     /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
     /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    ///
-    /// Example (Comparison):
-    ///
-    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
-    /// "document.summary.size() < 100"
-    ///
-    /// Example (Equality):
-    ///
-    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
-    /// "document.owner == request.auth.claims.email"
-    ///
-    /// Example (Logic):
-    ///
-    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
-    /// "document.type != 'private' && document.type != 'internal'"
-    ///
-    /// Example (Data Manipulation):
-    ///
+    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
     /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)"
-    ///
-    /// The exact variables and functions that may be referenced within an expression are determined by the service that
-    /// evaluates it. See the service documentation for additional information.</summary>
+    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
+    /// within an expression are determined by the service that evaluates it. See the service documentation for
+    /// additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
@@ -6187,51 +5931,27 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// HTTPGetAction describes an action based on HTTP Get requests.</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGetAction describes an
+    /// action based on HTTP Get requests.</summary>
     public class HTTPGetAction : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders
-        /// instead.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Host name to
+        /// connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Custom headers to set in the request. HTTP allows repeated headers.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Custom headers to
+        /// set in the request. HTTP allows repeated headers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpHeaders")]
         public virtual System.Collections.Generic.IList<HTTPHeader> HttpHeaders { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Path to access on the HTTP server.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path to access on
+        /// the HTTP server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Scheme to use for connecting to the host. Defaults to HTTP.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Scheme to use for
+        /// connecting to the host. Defaults to HTTP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheme")]
         public virtual string Scheme { get; set; } 
 
@@ -6239,26 +5959,17 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// HTTPHeader describes a custom header to be used in HTTP probes</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPHeader describes a custom
+    /// header to be used in HTTP probes</summary>
     public class HTTPHeader : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// The header field name</summary>
+        /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field
+        /// name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// The header field value</summary>
+        /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field
+        /// value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
@@ -6266,39 +5977,25 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// Maps a string key to a path within a volume.</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported Maps a string key to a path
+    /// within a volume.</summary>
     public class KeyToPath : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// The key to project.</summary>
+        /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to
+        /// project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode
-        /// will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the
-        /// result can be other mode bits set.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use
+        /// on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used.
+        /// This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be
+        /// other mode bits set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual System.Nullable<int> Mode { get; set; } 
 
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// The relative path of the file to map the key to. May not be an absolute path. May not contain the path
-        /// element '..'. May not start with the string '..'.</summary>
+        /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported The relative path of the
+        /// file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start
+        /// with the string '..'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; } 
 
@@ -6499,21 +6196,12 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// LocalObjectReference contains enough information to let you locate the referenced object inside the same
-    /// namespace.</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported LocalObjectReference contains
+    /// enough information to let you locate the referenced object inside the same namespace.</summary>
     public class LocalObjectReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the
+        /// referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-
         /// objects/names/#names</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -6529,9 +6217,8 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Cross-service attributes for the location. For example
-        ///
-        /// {"cloud.googleapis.com/region": "us-east1"}</summary>
+        /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
+        /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -6552,11 +6239,8 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run on GKE: supported
-    ///
-    /// Namespace provides a scope for Names. Use of multiple namespaces is optional.</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run on GKE: supported Namespace provides a scope for
+    /// Names. Use of multiple namespaces is optional.</summary>
     public class Namespace : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-
@@ -6580,11 +6264,8 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run on GKE: supported
-    ///
-    /// NamespaceSpec describes the attributes on a Namespace.</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run on GKE: supported NamespaceSpec describes the
+    /// attributes on a Namespace.</summary>
     public class NamespaceSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Finalizers is an opaque list of values that must be empty to permanently remove object from
@@ -6596,11 +6277,8 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run on GKE: supported
-    ///
-    /// NamespaceStatus is information about the current status of a Namespace.</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run on GKE: supported NamespaceStatus is information about
+    /// the current status of a Namespace.</summary>
     public class NamespaceStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Phase is the current lifecycle phase of the namespace. More info: https://kubernetes.io/docs/tasks
@@ -6616,118 +6294,78 @@ namespace Google.Apis.CloudRun.v1.Data
     /// which includes all objects users must create.</summary>
     public class ObjectMeta : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(Optional)
-        ///
-        /// Annotations is an unstructured key value map stored with a resource that may be set by external tools to
-        /// store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying
-        /// objects. More info: http://kubernetes.io/docs/user-guide/annotations</summary>
+        /// <summary>(Optional) Annotations is an unstructured key value map stored with a resource that may be set by
+        /// external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when
+        /// modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string,string> Annotations { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// The name of the cluster which the object belongs to. This is used to distinguish resources with same name
-        /// and namespace in different clusters. This field is not set anywhere right now and apiserver is going to
-        /// ignore it if set in create or update request.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the
+        /// cluster which the object belongs to. This is used to distinguish resources with same name and namespace in
+        /// different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in
+        /// create or update request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// CreationTimestamp is a timestamp representing the server time when this object was created. It is not
-        /// guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It
-        /// is represented in RFC3339 form and is in UTC.
-        ///
-        /// Populated by the system. Read-only. Null for lists. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</summary>
+        /// <summary>(Optional) CreationTimestamp is a timestamp representing the server time when this object was
+        /// created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not
+        /// set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null
+        /// for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual object CreationTimestamp { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Number of seconds allowed for this object to gracefully terminate before it will be removed from the system.
-        /// Only set when deletionTimestamp is also set. May only be shortened. Read-only.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds
+        /// allowed for this object to gracefully terminate before it will be removed from the system. Only set when
+        /// deletionTimestamp is also set. May only be shortened. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionGracePeriodSeconds")]
         public virtual System.Nullable<int> DeletionGracePeriodSeconds { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the
-        /// server when a graceful deletion is requested by the user, and is not directly settable by a client. The
-        /// resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after
-        /// the time in this field, once the finalizers list is empty. As long as the finalizers list contains items,
-        /// deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into
-        /// the future, although it may be shortened or the resource may be deleted prior to this time. For example, a
-        /// user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful
-        /// termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard
-        /// termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the
-        /// presence of network partitions, this object may still exist after this timestamp, until an administrator or
-        /// automated process can determine the resource is fully terminated. If not set, graceful deletion of the
-        /// object has not been requested.
-        ///
-        /// Populated by the system when a graceful deletion is requested. Read-only. More info:
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported DeletionTimestamp
+        /// is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a
+        /// graceful deletion is requested by the user, and is not directly settable by a client. The resource is
+        /// expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in
+        /// this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is
+        /// blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future,
+        /// although it may be shortened or the resource may be deleted prior to this time. For example, a user may
+        /// request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal
+        /// to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal
+        /// (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network
+        /// partitions, this object may still exist after this timestamp, until an administrator or automated process
+        /// can determine the resource is fully terminated. If not set, graceful deletion of the object has not been
+        /// requested. Populated by the system when a graceful deletion is requested. Read-only. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionTimestamp")]
         public virtual object DeletionTimestamp { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Must be empty before the object is deleted from the registry. Each entry is an identifier for the
-        /// responsible component that will remove the entry from the list. If the deletionTimestamp of the object is
-        /// non-nil, entries in this list can only be removed. +patchStrategy=merge</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Must be empty
+        /// before the object is deleted from the registry. Each entry is an identifier for the responsible component
+        /// that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this
+        /// list can only be removed. +patchStrategy=merge</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalizers")]
         public virtual System.Collections.Generic.IList<string> Finalizers { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has
-        /// not been provided. If this field is used, the name returned to the client will be different than the name
-        /// passed. This value will also be combined with a unique suffix. The provided value has the same validation
-        /// rules as the Name field, and may be truncated by the length of the suffix required to make the value unique
-        /// on the server.
-        ///
-        /// If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it
-        /// will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found
-        /// in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After
-        /// header).
-        ///
-        /// Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-
-        /// conventions.md#idempotency string generateName = 2;</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported GenerateName is
+        /// an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been
+        /// provided. If this field is used, the name returned to the client will be different than the name passed.
+        /// This value will also be combined with a unique suffix. The provided value has the same validation rules as
+        /// the Name field, and may be truncated by the length of the suffix required to make the value unique on the
+        /// server. If this field is specified and the generated name exists, the server will NOT return a 409 -
+        /// instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could
+        /// not be found in the time allotted, and the client should retry (optionally after the time indicated in the
+        /// Retry-After header). Applied only if Name is not specified. More info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName =
+        /// 2;</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generateName")]
         public virtual string GenerateName { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// A sequence number representing a specific generation of the desired state. Populated by the system. Read-
-        /// only.</summary>
+        /// <summary>(Optional) A sequence number representing a specific generation of the desired state. Populated by
+        /// the system. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<int> Generation { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May
-        /// match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-
-        /// guide/labels</summary>
+        /// <summary>(Optional) Map of string keys and values that can be used to organize and categorize (scope and
+        /// select) objects. May match selectors of replication controllers and routes. More info:
+        /// http://kubernetes.io/docs/user-guide/labels</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -6743,44 +6381,30 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
         public virtual string Namespace__ { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// List of objects that own this object. If ALL objects in the list have been deleted, this object will be
-        /// garbage collected.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of objects
+        /// that own this object. If ALL objects in the list have been deleted, this object will be garbage
+        /// collected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerReferences")]
         public virtual System.Collections.Generic.IList<OwnerReference> OwnerReferences { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// An opaque value that represents the internal version of this object that can be used by clients to determine
-        /// when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation
-        /// on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to
-        /// the server. They may only be valid for a particular resource or set of resources.
-        ///
+        /// <summary>(Optional) An opaque value that represents the internal version of this object that can be used by
+        /// clients to determine when objects have changed. May be used for optimistic concurrency, change detection,
+        /// and the watch operation on a resource or set of resources. Clients must treat these values as opaque and
+        /// passed unmodified back to the server. They may only be valid for a particular resource or set of resources.
         /// Populated by the system. Read-only. Value must be treated as opaque by clients and . More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-
         /// consistency</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceVersion")]
         public virtual string ResourceVersion { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink =
-        /// 4;</summary>
+        /// <summary>(Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string
+        /// selfLink = 4;</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// UID is the unique in time and space value for this object. It is typically generated by the server on
-        /// successful creation of a resource and is not allowed to change on PUT operations.
-        ///
-        /// Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-
-        /// guide/identifiers#uids</summary>
+        /// <summary>(Optional) UID is the unique in time and space value for this object. It is typically generated by
+        /// the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by
+        /// the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; } 
 
@@ -6824,35 +6448,24 @@ namespace Google.Apis.CloudRun.v1.Data
     }    
 
     /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
-    /// resources.
-    ///
-    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
-    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
-    /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
-    ///
-    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
-    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
-    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
-    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
-    /// /resource-policies).
-    ///
-    /// **JSON example:**
-    ///
-    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
-    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
-    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
-    ///
-    /// **YAML example:**
-    ///
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
-    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
-    /// description: Does not grant access after Sep 2020 expression: request.time <
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
-    ///
-    /// For a description of IAM and its features, see the [IAM
+    /// resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`.
+    /// Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a
+    /// named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some
+    /// types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that
+    /// allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on
+    /// attributes of the request, the resource, or both. To learn which resources support conditions in their IAM
+    /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON
+    /// example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [
+    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
+    /// id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [
+    /// "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access
+    /// after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+    /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com -
+    /// group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+    /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+    /// roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access
+    /// after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version:
+    /// 3 For a description of IAM and its features, see the [IAM
     /// documentation](https://cloud.google.com/iam/docs/).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6869,133 +6482,75 @@ namespace Google.Apis.CloudRun.v1.Data
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
-        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
-        ///
-        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
-        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
+        /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
+        /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Specifies the format of the policy.
-        ///
-        /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected.
-        ///
-        /// Any operation that affects conditional role bindings must specify version `3`. This requirement applies to
-        /// the following operations:
-        ///
-        /// * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy
-        /// * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition,
-        /// from a policy that includes conditions
-        ///
+        /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
+        /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
+        /// This requirement applies to the following operations: * Getting a policy that includes a conditional role
+        /// binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy *
+        /// Removing any role binding, with or without a condition, from a policy that includes conditions
         /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
         /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.
-        ///
-        /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any
+        /// conditions, operations on that policy may specify any valid version or leave the field unset. To learn which
+        /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// Probe describes a health check to be performed against a container to determine whether it is alive or ready to
-    /// receive traffic.</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported Probe describes a health check
+    /// to be performed against a container to determine whether it is alive or ready to receive traffic.</summary>
     public class Probe : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// One and only one of the following should be specified. Exec specifies the action to take.
-        ///
-        /// A field inlined from the Handler message.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported One and only one
+        /// of the following should be specified. Exec specifies the action to take. A field inlined from the Handler
+        /// message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exec")]
         public virtual ExecAction Exec { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3.
-        /// Minimum value is 1.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum
+        /// consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum
+        /// value is 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureThreshold")]
         public virtual System.Nullable<int> FailureThreshold { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// HTTPGet specifies the http request to perform.
-        ///
-        /// A field inlined from the Handler message.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGet specifies
+        /// the http request to perform. A field inlined from the Handler message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpGet")]
         public virtual HTTPGetAction HttpGet { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Number of seconds after the container has started before liveness probes are initiated. More info:
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds
+        /// after the container has started before liveness probes are initiated. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialDelaySeconds")]
         public virtual System.Nullable<int> InitialDelaySeconds { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported How often (in
+        /// seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("periodSeconds")]
         public virtual System.Nullable<int> PeriodSeconds { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1.
-        /// Must be 1 for liveness. Minimum value is 1.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum
+        /// consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be
+        /// 1 for liveness. Minimum value is 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successThreshold")]
         public virtual System.Nullable<int> SuccessThreshold { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-        ///
-        /// A field inlined from the Handler message.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocket
+        /// specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler
+        /// message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tcpSocket")]
         public virtual TCPSocketAction TcpSocket { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info:
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds
+        /// after which the probe times out. Defaults to 1 second. Minimum value is 1. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutSeconds")]
         public virtual System.Nullable<int> TimeoutSeconds { get; set; } 
@@ -7028,28 +6583,19 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>ResourceRequirements describes the compute resource requirements.</summary>
     public class ResourceRequirements : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported value for CPU is '1'.
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Limits describes the maximum amount of compute resources allowed. The values of the map is string form of
-        /// the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachiner
-        /// y/pkg/api/resource/quantity.go</summary>
+        /// <summary>(Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported
+        /// value for CPU is '1'. Cloud Run for Anthos: supported Limits describes the maximum amount of compute
+        /// resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kuber
+        /// netes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limits")]
         public virtual System.Collections.Generic.IDictionary<string,string> Limits { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported value for CPU is '1'.
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container,
-        /// it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The
-        /// values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/m
-        /// aster/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go</summary>
+        /// <summary>(Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported
+        /// value for CPU is '1'. Cloud Run for Anthos: supported Requests describes the minimum amount of compute
+        /// resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly
+        /// specified, otherwise to an implementation-defined value. The values of the map is string form of the
+        /// 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pk
+        /// g/api/resource/quantity.go</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IDictionary<string,string> Requests { get; set; } 
 
@@ -7057,10 +6603,9 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Revision is an immutable snapshot of code and configuration.  A revision references a container image.
-    /// Revisions are created by updates to a Configuration.
-    ///
-    /// See also: https://github.com/knative/serving/blob/master/docs/spec/overview.md#revision</summary>
+    /// <summary>Revision is an immutable snapshot of code and configuration. A revision references a container image.
+    /// Revisions are created by updates to a Configuration. See also:
+    /// https://github.com/knative/serving/blob/master/docs/spec/overview.md#revision</summary>
     public class Revision : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The API version for this call such as "serving.knative.dev/v1".</summary>
@@ -7091,15 +6636,10 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>RevisionSpec holds the desired state of the Revision (from the client).</summary>
     public class RevisionSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(Optional)
-        ///
-        /// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of
-        /// the Revision.
-        ///
-        /// Cloud Run fully managed: supported, defaults to 80
-        ///
-        /// Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited,
-        /// and the system decides the target concurrency for the autoscaler.</summary>
+        /// <summary>(Optional) ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per
+        /// container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos:
+        /// supported, defaults to 0, which means concurrency to the application is not limited, and the system decides
+        /// the target concurrency for the autoscaler.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerConcurrency")]
         public virtual System.Nullable<int> ContainerConcurrency { get; set; } 
 
@@ -7116,11 +6656,8 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountName")]
         public virtual string ServiceAccountName { get; set; } 
 
-        /// <summary>TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
-        ///
-        /// Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 900 seconds (15
-        /// minutes).
-        ///
+        /// <summary>TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud
+        /// Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 900 seconds (15 minutes).
         /// Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the
         /// cluster operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutSeconds")]
@@ -7137,12 +6674,10 @@ namespace Google.Apis.CloudRun.v1.Data
     public class RevisionStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Conditions communicates information about ongoing/complete reconciliation processes that bring the
-        /// "spec" inline with the observed state of the world.
-        ///
-        /// As a Revision is being prepared, it will incrementally update conditions. Revision-specific conditions
-        /// include: * "ResourcesAvailable": True when underlying resources have been provisioned. * "ContainerHealthy":
-        /// True when the Revision readiness check completes. * "Active": True when the Revision may receive
-        /// traffic.</summary>
+        /// "spec" inline with the observed state of the world. As a Revision is being prepared, it will incrementally
+        /// update conditions. Revision-specific conditions include: * "ResourcesAvailable": True when underlying
+        /// resources have been provisioned. * "ContainerHealthy": True when the Revision readiness check completes. *
+        /// "Active": True when the Revision may receive traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV1Condition> Conditions { get; set; } 
 
@@ -7158,7 +6693,6 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string LogUrl { get; set; } 
 
         /// <summary>ObservedGeneration is the 'Generation' of the Revision that was last processed by the controller.
-        ///
         /// Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation, and
         /// the Ready condition's status is True or False.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observedGeneration")]
@@ -7196,10 +6730,9 @@ namespace Google.Apis.CloudRun.v1.Data
     /// Route distributes traffic over may be specified by referencing the Configuration responsible for creating them;
     /// in these cases the Route is additionally responsible for monitoring the Configuration for "latest ready"
     /// revision changes, and smoothly rolling out latest revisions. See also:
-    /// https://github.com/knative/serving/blob/master/docs/spec/overview.md#route
-    ///
-    /// Cloud Run currently supports referencing a single Configuration to automatically deploy the "latest ready"
-    /// Revision from that Configuration.</summary>
+    /// https://github.com/knative/serving/blob/master/docs/spec/overview.md#route Cloud Run currently supports
+    /// referencing a single Configuration to automatically deploy the "latest ready" Revision from that
+    /// Configuration.</summary>
     public class Route : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The API version for this call such as "serving.knative.dev/v1".</summary>
@@ -7251,13 +6784,11 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudRunV1Condition> Conditions { get; set; } 
 
         /// <summary>ObservedGeneration is the 'Generation' of the Route that was last processed by the controller.
-        ///
         /// Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and
-        /// the Ready condition's status is True or False.
-        ///
-        /// Note that providing a trafficTarget that only has a configurationName will result in a Route that does not
-        /// increment either its metadata.generation or its observedGeneration, as new "latest ready" revisions from the
-        /// Configuration are processed without an update to the Route's spec.</summary>
+        /// the Ready condition's status is True or False. Note that providing a trafficTarget that only has a
+        /// configurationName will result in a Route that does not increment either its metadata.generation or its
+        /// observedGeneration, as new "latest ready" revisions from the Configuration are processed without an update
+        /// to the Route's spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observedGeneration")]
         public virtual System.Nullable<int> ObservedGeneration { get; set; } 
 
@@ -7276,12 +6807,8 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run on GKE: supported
-    ///
-    /// Secret holds secret data of a certain type. The total bytes of the values in the Data field must be less than
-    /// MaxSecretSize bytes.</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run on GKE: supported Secret holds secret data of a
+    /// certain type. The total bytes of the values in the Data field must be less than MaxSecretSize bytes.</summary>
     public class Secret : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Data contains the secret data. Each key must consist of alphanumeric characters, '-', '_' or '.'.
@@ -7309,14 +6836,9 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// SecretEnvSource selects a Secret to populate the environment variables with.
-    ///
-    /// The contents of the target Secret's Data field will represent the key-value pairs as environment
-    /// variables.</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretEnvSource selects a Secret
+    /// to populate the environment variables with. The contents of the target Secret's Data field will represent the
+    /// key-value pairs as environment variables.</summary>
     public class SecretEnvSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This field should not be used directly as it is meant to be inlined directly into the message. Use
@@ -7324,21 +6846,13 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("localObjectReference")]
         public virtual LocalObjectReference LocalObjectReference { get; set; } 
 
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// The Secret to select from.</summary>
+        /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select
+        /// from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Specify whether the Secret must be defined</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether
+        /// the Secret must be defined</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optional")]
         public virtual System.Nullable<bool> Optional { get; set; } 
 
@@ -7346,18 +6860,12 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// SecretKeySelector selects a key of a Secret.</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretKeySelector selects a key
+    /// of a Secret.</summary>
     public class SecretKeySelector : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// The key of the secret to select from.  Must be a valid secret key.</summary>
+        /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key of the secret to
+        /// select from. Must be a valid secret key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; } 
 
@@ -7366,21 +6874,13 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("localObjectReference")]
         public virtual LocalObjectReference LocalObjectReference { get; set; } 
 
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// The name of the secret in the pod's namespace to select from.</summary>
+        /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the secret in
+        /// the pod's namespace to select from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Specify whether the Secret or its key must be defined</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether
+        /// the Secret or its key must be defined</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optional")]
         public virtual System.Nullable<bool> Optional { get; set; } 
 
@@ -7388,54 +6888,33 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data
-    /// field as the file names.</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported The contents of the target
+    /// Secret's Data field will be presented in a volume as files using the keys in the Data field as the file
+    /// names.</summary>
     public class SecretVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644.
-        /// Directories within the path are not affected by this setting. This might be in conflict with other options
-        /// that affect the file mode, like fsGroup, and the result can be other mode bits set.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use
+        /// on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the
+        /// path are not affected by this setting. This might be in conflict with other options that affect the file
+        /// mode, like fsGroup, and the result can be other mode bits set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultMode")]
         public virtual System.Nullable<int> DefaultMode { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the
-        /// volume as a file whose name is the key and content is the value. If specified, the listed keys will be
-        /// projected into the specified paths, and unlisted keys will not be present. If a key is specified which is
-        /// not present in the Secret, the volume setup will error unless it is marked optional.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If unspecified,
+        /// each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file
+        /// whose name is the key and content is the value. If specified, the listed keys will be projected into the
+        /// specified paths, and unlisted keys will not be present. If a key is specified which is not present in the
+        /// Secret, the volume setup will error unless it is marked optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<KeyToPath> Items { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Specify whether the Secret or its keys must be defined.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether
+        /// the Secret or its keys must be defined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optional")]
         public virtual System.Nullable<bool> Optional { get; set; } 
 
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Name of the secret in the container's namespace to use.</summary>
+        /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the secret in the
+        /// container's namespace to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretName")]
         public virtual string SecretName { get; set; } 
 
@@ -7443,24 +6922,15 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// SecurityContext holds security configuration that will be applied to a container. Some fields are present in
-    /// both SecurityContext and PodSecurityContext.  When both are set, the values in SecurityContext take
-    /// precedence.</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecurityContext holds security
+    /// configuration that will be applied to a container. Some fields are present in both SecurityContext and
+    /// PodSecurityContext. When both are set, the values in SecurityContext take precedence.</summary>
     public class SecurityContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if
-        /// unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext,
-        /// the value specified in SecurityContext takes precedence.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The UID to run
+        /// the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May
+        /// also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value
+        /// specified in SecurityContext takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runAsUser")]
         public virtual System.Nullable<int> RunAsUser { get; set; } 
 
@@ -7472,12 +6942,9 @@ namespace Google.Apis.CloudRun.v1.Data
     /// network service. Service exists to provide a singular abstraction which can be access controlled, reasoned
     /// about, and which encapsulates software lifecycle decisions such as rollout policy and team resource ownership.
     /// Service acts only as an orchestrator of the underlying Routes and Configurations (much as a kubernetes
-    /// Deployment orchestrates ReplicaSets).
-    ///
-    /// The Service's controller will track the statuses of its owned Configuration and Route, reflecting their statuses
-    /// and conditions as its own.
-    ///
-    /// See also: https://github.com/knative/serving/blob/master/docs/spec/overview.md#service</summary>
+    /// Deployment orchestrates ReplicaSets). The Service's controller will track the statuses of its owned
+    /// Configuration and Route, reflecting their statuses and conditions as its own. See also:
+    /// https://github.com/knative/serving/blob/master/docs/spec/overview.md#service</summary>
     public class Service : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The API version for this call such as "serving.knative.dev/v1".</summary>
@@ -7548,7 +7015,6 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string LatestReadyRevisionName { get; set; } 
 
         /// <summary>ObservedGeneration is the 'Generation' of the Route that was last processed by the controller.
-        ///
         /// Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and
         /// the Ready condition's status is True or False.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observedGeneration")]
@@ -7579,9 +7045,8 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual Policy Policy { get; set; } 
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, the following default mask is used:
-        ///
-        /// `paths: "bindings, etag"`</summary>
+        /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
+        /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 
@@ -7596,7 +7061,7 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>Extended data associated with the reason.  Each reason may define its own extended details. This
+        /// <summary>Extended data associated with the reason. Each reason may define its own extended details. This
         /// field is optional and the data returned is not guaranteed to conform to any schema except that defined by
         /// the reason type. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
@@ -7631,15 +7096,14 @@ namespace Google.Apis.CloudRun.v1.Data
     public class StatusCause : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The field of the resource that has caused this error, as named by its JSON serialization. May
-        /// include dot and postfix notation for nested attributes. Arrays are zero-indexed.  Fields may appear more
-        /// than once in an array of causes due to fields having multiple errors. Optional.
-        ///
-        /// Examples: "name" - the field "name" on the current resource "items[0].name" - the field "name" on the first
-        /// array entry in "items" +optional</summary>
+        /// include dot and postfix notation for nested attributes. Arrays are zero-indexed. Fields may appear more than
+        /// once in an array of causes due to fields having multiple errors. Optional. Examples: "name" - the field
+        /// "name" on the current resource "items[0].name" - the field "name" on the first array entry in "items"
+        /// +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; } 
 
-        /// <summary>A human-readable description of the cause of the error.  This field may be presented as-is to a
+        /// <summary>A human-readable description of the cause of the error. This field may be presented as-is to a
         /// reader. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
@@ -7694,31 +7158,18 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// TCPSocketAction describes an action based on opening a socket</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocketAction describes an
+    /// action based on opening a socket</summary>
     public class TCPSocketAction : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Optional: Host name to connect to, defaults to the pod IP.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Optional: Host
+        /// name to connect to, defaults to the pod IP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; } 
 
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be
-        /// an IANA_SVC_NAME.
-        ///
-        /// This field is currently limited to integer types only because of proto's inability to properly support the
+        /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number or name of the port
+        /// to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This
+        /// field is currently limited to integer types only because of proto's inability to properly support the
         /// IntOrString golang type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; } 
@@ -7757,45 +7208,37 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>ConfigurationName of a configuration to whose latest revision we will send this portion of traffic.
         /// When the "status.latestReadyRevisionName" of the referenced configuration changes, we will automatically
         /// migrate traffic from the prior "latest ready" revision to the new one. This field is never set in Route's
-        /// status, only its spec. This is mutually exclusive with RevisionName.
-        ///
-        /// Cloud Run currently supports a single ConfigurationName.</summary>
+        /// status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single
+        /// ConfigurationName.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configurationName")]
         public virtual string ConfigurationName { get; set; } 
 
         /// <summary>LatestRevision may be optionally provided to indicate that the latest ready Revision of the
         /// Configuration should be used for this traffic target. When provided LatestRevision must be true if
-        /// RevisionName is empty; it must be false when RevisionName is non-empty.
-        ///
-        /// +optional</summary>
+        /// RevisionName is empty; it must be false when RevisionName is non-empty. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestRevision")]
         public virtual System.Nullable<bool> LatestRevision { get; set; } 
 
         /// <summary>Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero
-        /// if unspecified.
-        ///
-        /// Cloud Run currently requires 100 percent for a single ConfigurationName TrafficTarget entry.</summary>
+        /// if unspecified. Cloud Run currently requires 100 percent for a single ConfigurationName TrafficTarget
+        /// entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percent")]
         public virtual System.Nullable<int> Percent { get; set; } 
 
         /// <summary>RevisionName of a specific revision to which to send this portion of traffic. This is mutually
-        /// exclusive with ConfigurationName.
-        ///
-        /// Providing RevisionName in spec is not currently supported by Cloud Run.</summary>
+        /// exclusive with ConfigurationName. Providing RevisionName in spec is not currently supported by Cloud
+        /// Run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionName")]
         public virtual string RevisionName { get; set; } 
 
-        /// <summary>Tag is optionally used to expose a dedicated url for referencing this target exclusively.
-        ///
-        /// Not currently supported in Cloud Run. +optional</summary>
+        /// <summary>Tag is optionally used to expose a dedicated url for referencing this target exclusively. Not
+        /// currently supported in Cloud Run. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; } 
 
         /// <summary>Output only. URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
         /// and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname, but may not contain
-        /// anything else (e.g. basic auth, url path, etc.
-        ///
-        /// Not currently supported in Cloud Run.</summary>
+        /// anything else (e.g. basic auth, url path, etc. Not currently supported in Cloud Run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 
@@ -7803,30 +7246,19 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// Volume represents a named volume in a container.</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume represents a named volume
+    /// in a container.</summary>
     public class Volume : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported</summary>
+        /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configMap")]
         public virtual ConfigMapVolumeSource ConfigMap { get; set; } 
 
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Volume's name.</summary>
+        /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported</summary>
+        /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secret")]
         public virtual SecretVolumeSource Secret { get; set; } 
 
@@ -7834,47 +7266,27 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// VolumeMount describes a mounting of a Volume within a container.</summary>
+    /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported VolumeMount describes a mounting
+    /// of a Volume within a container.</summary>
     public class VolumeMount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Path within the container at which the volume should be mounted.  Must not contain ':'.</summary>
+        /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the container at
+        /// which the volume should be mounted. Must not contain ':'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mountPath")]
         public virtual string MountPath { get; set; } 
 
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// This must match the Name of a Volume.</summary>
+        /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported This must match the Name of
+        /// a Volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Only true is accepted. Defaults to true.</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Only true is
+        /// accepted. Defaults to true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
         public virtual System.Nullable<bool> ReadOnly__ { get; set; } 
 
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's
-        /// root).</summary>
+        /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the
+        /// volume from which the container's volume should be mounted. Defaults to "" (volume's root).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subPath")]
         public virtual string SubPath { get; set; } 
 

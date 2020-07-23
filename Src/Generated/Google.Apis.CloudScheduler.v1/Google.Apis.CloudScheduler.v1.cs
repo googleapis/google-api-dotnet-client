@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/scheduler/'>Cloud Scheduler API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200703 (2010)
+ *      <tr><th>API Rev<td>20200716 (2023)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/scheduler/'>
  *              https://cloud.google.com/scheduler/</a>
@@ -1634,6 +1634,14 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// or a push delivery. It must not be populated by the publisher in a `Publish` call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
         public virtual string MessageId { get; set; } 
+
+        /// <summary>If non-empty, identifies related messages for which publish order should be respected. If a
+        /// `Subscription` has `enable_message_ordering` set to `true`, messages published with the same non-empty
+        /// `ordering_key` value will be delivered to subscribers in the order in which they are received by the Pub/Sub
+        /// system. All `PubsubMessage`s published in a given `PublishRequest` must specify the same `ordering_key`
+        /// value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderingKey")]
+        public virtual string OrderingKey { get; set; } 
 
         /// <summary>The time at which the message was published, populated by the server when it receives the `Publish`
         /// call. It must not be populated by the publisher in a `Publish` call.</summary>

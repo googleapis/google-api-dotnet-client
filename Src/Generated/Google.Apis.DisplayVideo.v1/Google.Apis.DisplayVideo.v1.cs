@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/display-video/'>Display & Video 360 API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200714 (2021)
+ *      <tr><th>API Rev<td>20200720 (2027)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/display-video/'>
  *              https://developers.google.com/display-video/</a>
@@ -127,6 +127,9 @@ namespace Google.Apis.DisplayVideo.v1
             /// reports</summary>
             public static string DisplayVideo = "https://www.googleapis.com/auth/display-video";
 
+            /// <summary>Create, see, and edit Display & Video 360 Campaign entities and see billing invoices</summary>
+            public static string DisplayVideoMediaplanning = "https://www.googleapis.com/auth/display-video-mediaplanning";
+
             /// <summary>View and manage your reports in DoubleClick Bid Manager</summary>
             public static string Doubleclickbidmanager = "https://www.googleapis.com/auth/doubleclickbidmanager";
 
@@ -138,6 +141,9 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>Create, see, edit, and permanently delete your Display & Video 360 entities and
             /// reports</summary>
             public const string DisplayVideo = "https://www.googleapis.com/auth/display-video";
+
+            /// <summary>Create, see, and edit Display & Video 360 Campaign entities and see billing invoices</summary>
+            public const string DisplayVideoMediaplanning = "https://www.googleapis.com/auth/display-video-mediaplanning";
 
             /// <summary>View and manage your reports in DoubleClick Bid Manager</summary>
             public const string Doubleclickbidmanager = "https://www.googleapis.com/auth/doubleclickbidmanager";
@@ -933,20 +939,18 @@ namespace Google.Apis.DisplayVideo.v1
 
             }
 
-            /// <summary>Lists campaigns in an advertiser.
-            ///
-            /// The order is defined by the order_by parameter. If a filter by entity_status is not specified, campaigns
-            /// with `ENTITY_STATUS_ARCHIVED` will not be included in the results.</summary>
+            /// <summary>Lists campaigns in an advertiser. The order is defined by the order_by parameter. If a filter
+            /// by entity_status is not specified, campaigns with `ENTITY_STATUS_ARCHIVED` will not be included in the
+            /// results.</summary>
             /// <param name="advertiserId">The ID of the advertiser to list campaigns for.</param>
             public virtual ListRequest List(long advertiserId)
             {
                 return new ListRequest(service, advertiserId);
             }
 
-            /// <summary>Lists campaigns in an advertiser.
-            ///
-            /// The order is defined by the order_by parameter. If a filter by entity_status is not specified, campaigns
-            /// with `ENTITY_STATUS_ARCHIVED` will not be included in the results.</summary>
+            /// <summary>Lists campaigns in an advertiser. The order is defined by the order_by parameter. If a filter
+            /// by entity_status is not specified, campaigns with `ENTITY_STATUS_ARCHIVED` will not be included in the
+            /// results.</summary>
             public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListCampaignsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -962,30 +966,19 @@ namespace Google.Apis.DisplayVideo.v1
                 [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long AdvertiserId { get; private set; }
 
-                /// <summary>Allows filtering by campaign properties.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
-                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-                /// has the form of `{field} {operator} {value}`. * The operator must be `EQUALS (=)`. * Supported
-                /// fields: - `entityStatus`
-                ///
-                /// Examples:
-                ///
-                /// * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` campaigns under an advertiser:
-                /// `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED")`
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
+                /// <summary>Allows filtering by campaign properties. Supported syntax: * Filter expressions are made up
+                /// of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A
+                /// sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+                /// {value}`. * The operator must be `EQUALS (=)`. * Supported fields: - `entityStatus` Examples: * All
+                /// `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` campaigns under an advertiser:
+                /// `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED")` The length of this
+                /// field should be no more than 500 characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Field by which to sort the list. Acceptable values are:
-                ///
-                /// * `displayName` (default) * `entityStatus`
-                ///
-                /// The default sorting order is ascending. To specify descending order for a field, a suffix "desc"
-                /// should be added to the field name. Example: `displayName desc`.</summary>
+                /// <summary>Field by which to sort the list. Acceptable values are: * `displayName` (default) *
+                /// `entityStatus` The default sorting order is ascending. To specify descending order for a field, a
+                /// suffix "desc" should be added to the field name. Example: `displayName desc`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
@@ -1218,10 +1211,9 @@ namespace Google.Apis.DisplayVideo.v1
                 }
 
 
-                /// <summary>Bulk edits sites under a single channel.
-                ///
-                /// The operation will delete the sites provided in BulkEditSitesRequest.deleted_sites and then create
-                /// the sites provided in BulkEditSitesRequest.created_sites.</summary>
+                /// <summary>Bulk edits sites under a single channel. The operation will delete the sites provided in
+                /// BulkEditSitesRequest.deleted_sites and then create the sites provided in
+                /// BulkEditSitesRequest.created_sites.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="advertiserId">The ID of the advertiser that owns the parent channel.</param>
                 /// <param
@@ -1231,10 +1223,9 @@ namespace Google.Apis.DisplayVideo.v1
                     return new BulkEditRequest(service, body, advertiserId, channelId);
                 }
 
-                /// <summary>Bulk edits sites under a single channel.
-                ///
-                /// The operation will delete the sites provided in BulkEditSitesRequest.deleted_sites and then create
-                /// the sites provided in BulkEditSitesRequest.created_sites.</summary>
+                /// <summary>Bulk edits sites under a single channel. The operation will delete the sites provided in
+                /// BulkEditSitesRequest.deleted_sites and then create the sites provided in
+                /// BulkEditSitesRequest.created_sites.</summary>
                 public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditSitesResponse>
                 {
                     /// <summary>Constructs a new BulkEdit request.</summary>
@@ -1540,26 +1531,17 @@ namespace Google.Apis.DisplayVideo.v1
                     [Google.Apis.Util.RequestParameterAttribute("channelId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual long ChannelId { get; private set; }
 
-                    /// <summary>Allows filtering by site fields.
-                    ///
-                    /// Supported syntax:
-                    ///
-                    /// * Filter expressions for site currently can only contain at most one * restriction. * A
-                    /// restriction has the form of `{field} {operator} {value}`. * The operator must be `CONTAINS (:)`.
-                    /// * Supported fields: - `urlOrAppId`
-                    ///
-                    /// Examples:
-                    ///
-                    /// * All sites for which the URL or app ID contains "google": `urlOrAppId : "google"`</summary>
+                    /// <summary>Allows filtering by site fields. Supported syntax: * Filter expressions for site
+                    /// currently can only contain at most one * restriction. * A restriction has the form of `{field}
+                    /// {operator} {value}`. * The operator must be `CONTAINS (:)`. * Supported fields: - `urlOrAppId`
+                    /// Examples: * All sites for which the URL or app ID contains "google": `urlOrAppId :
+                    /// "google"`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Field by which to sort the list. Acceptable values are:
-                    ///
-                    /// * `urlOrAppId` (default)
-                    ///
-                    /// The default sorting order is ascending. To specify descending order for a field, a suffix "
-                    /// desc" should be added to the field name. Example: `urlOrAppId desc`.</summary>
+                    /// <summary>Field by which to sort the list. Acceptable values are: * `urlOrAppId` (default) The
+                    /// default sorting order is ascending. To specify descending order for a field, a suffix " desc"
+                    /// should be added to the field name. Example: `urlOrAppId desc`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -1568,10 +1550,9 @@ namespace Google.Apis.DisplayVideo.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>A token identifying a page of results the server should return.
-                    ///
-                    /// Typically, this is the value of next_page_token returned from the previous call to `ListSites`
-                    /// method. If not specified, the first page of results will be returned.</summary>
+                    /// <summary>A token identifying a page of results the server should return. Typically, this is the
+                    /// value of next_page_token returned from the previous call to `ListSites` method. If not
+                    /// specified, the first page of results will be returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -1864,28 +1845,17 @@ namespace Google.Apis.DisplayVideo.v1
                 [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long AdvertiserId { get; private set; }
 
-                /// <summary>Allows filtering by channel fields.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions for channel currently can only contain at most one * restriction. * A
-                /// restriction has the form of `{field} {operator} {value}`. * The operator must be `CONTAINS (:)`. *
-                /// Supported fields: - `displayName`
-                ///
-                /// Examples:
-                ///
-                /// * All channels for which the display name contains "google": `displayName : "google"`.
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
+                /// <summary>Allows filtering by channel fields. Supported syntax: * Filter expressions for channel
+                /// currently can only contain at most one * restriction. * A restriction has the form of `{field}
+                /// {operator} {value}`. * The operator must be `CONTAINS (:)`. * Supported fields: - `displayName`
+                /// Examples: * All channels for which the display name contains "google": `displayName : "google"`. The
+                /// length of this field should be no more than 500 characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Field by which to sort the list. Acceptable values are:
-                ///
-                /// * `displayName` (default) * `channelId`
-                ///
-                /// The default sorting order is ascending. To specify descending order for a field, a suffix " desc"
-                /// should be added to the field name. Example: `displayName desc`.</summary>
+                /// <summary>Field by which to sort the list. Acceptable values are: * `displayName` (default) *
+                /// `channelId` The default sorting order is ascending. To specify descending order for a field, a
+                /// suffix " desc" should be added to the field name. Example: `displayName desc`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
@@ -2344,20 +2314,18 @@ namespace Google.Apis.DisplayVideo.v1
 
             }
 
-            /// <summary>Lists creatives in an advertiser.
-            ///
-            /// The order is defined by the order_by parameter. If a filter by entity_status is not specified, creatives
-            /// with `ENTITY_STATUS_ARCHIVED` will not be included in the results.</summary>
+            /// <summary>Lists creatives in an advertiser. The order is defined by the order_by parameter. If a filter
+            /// by entity_status is not specified, creatives with `ENTITY_STATUS_ARCHIVED` will not be included in the
+            /// results.</summary>
             /// <param name="advertiserId">Required. The ID of the advertiser to list creatives for.</param>
             public virtual ListRequest List(long advertiserId)
             {
                 return new ListRequest(service, advertiserId);
             }
 
-            /// <summary>Lists creatives in an advertiser.
-            ///
-            /// The order is defined by the order_by parameter. If a filter by entity_status is not specified, creatives
-            /// with `ENTITY_STATUS_ARCHIVED` will not be included in the results.</summary>
+            /// <summary>Lists creatives in an advertiser. The order is defined by the order_by parameter. If a filter
+            /// by entity_status is not specified, creatives with `ENTITY_STATUS_ARCHIVED` will not be included in the
+            /// results.</summary>
             public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListCreativesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -2373,15 +2341,12 @@ namespace Google.Apis.DisplayVideo.v1
                 [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long AdvertiserId { get; private set; }
 
-                /// <summary>Allows filtering by creative properties.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions are made up of one or more restrictions. * Restriction for the same field must
-                /// be combined by `OR`. * Restriction for different fields must be combined by `AND`. * Between `(` and
-                /// `)` there can only be restrictions combined by `OR` for the same field. * A restriction has the form
-                /// of `{field} {operator} {value}`. * The operator must be `EQUALS (=)` for the following fields: -
-                /// `entityStatus` - `creativeType`. - `dimensions` - `minDuration` - `maxDuration` - `approvalStatus` -
+                /// <summary>Allows filtering by creative properties. Supported syntax: * Filter expressions are made up
+                /// of one or more restrictions. * Restriction for the same field must be combined by `OR`. *
+                /// Restriction for different fields must be combined by `AND`. * Between `(` and `)` there can only be
+                /// restrictions combined by `OR` for the same field. * A restriction has the form of `{field}
+                /// {operator} {value}`. * The operator must be `EQUALS (=)` for the following fields: - `entityStatus`
+                /// - `creativeType`. - `dimensions` - `minDuration` - `maxDuration` - `approvalStatus` -
                 /// `exchangeReviewStatus` - `dynamic` - `creativeId` * The operator must be `HAS (:)` for the following
                 /// fields: - `lineItemIds` * For `entityStatus`, `minDuration`, `maxDuration`, and `dynamic` there may
                 /// be at most one restriction. * For `dimensions`, the value is in the form of `"{width}x{height}"`. *
@@ -2389,30 +2354,22 @@ namespace Google.Apis.DisplayVideo.v1
                 /// `minDuration` and `maxDuration`, the value is in the form of `"{duration}s"`. Only seconds are
                 /// supported with millisecond granularity. * There may be multiple `lineItemIds` restrictions in order
                 /// to search against multiple possible line item IDs. * There may be multiple `creativeId` restrictions
-                /// in order to search against multiple possible creative IDs.
-                ///
-                /// Examples:
-                ///
-                /// * All native creatives: `creativeType="CREATIVE_TYPE_NATIVE"` * All active creatives with 300x400 or
-                /// 50x100 dimensions: `entityStatus="ENTITY_STATUS_ACTIVE" AND (dimensions="300x400" OR
-                /// dimensions="50x100")` * All dynamic creatives that are approved by AdX or AppNexus, with a minimum
-                /// duration of 5 seconds and 200ms. `dynamic="true" AND minDuration="5.2s" AND (exchangeReviewStatus
-                /// ="EXCHANGE_GOOGLE_AD_MANAGER-REVIEW_STATUS_APPROVED" OR exchangeReviewStatus="EXCHANGE_APPNEXUS-
-                /// REVIEW_STATUS_APPROVED")` * All video creatives that are associated with line item ID 1 or 2:
-                /// `creativeType="CREATIVE_TYPE_VIDEO" AND (lineItemIds:1 OR lineItemIds:2)` * Find creatives by
-                /// multiple creative IDs: `creativeId=1 OR creativeId=2`
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
+                /// in order to search against multiple possible creative IDs. Examples: * All native creatives:
+                /// `creativeType="CREATIVE_TYPE_NATIVE"` * All active creatives with 300x400 or 50x100 dimensions:
+                /// `entityStatus="ENTITY_STATUS_ACTIVE" AND (dimensions="300x400" OR dimensions="50x100")` * All
+                /// dynamic creatives that are approved by AdX or AppNexus, with a minimum duration of 5 seconds and
+                /// 200ms. `dynamic="true" AND minDuration="5.2s" AND (exchangeReviewStatus="EXCHANGE_GOOGLE_AD_MANAGER-
+                /// REVIEW_STATUS_APPROVED" OR exchangeReviewStatus="EXCHANGE_APPNEXUS-REVIEW_STATUS_APPROVED")` * All
+                /// video creatives that are associated with line item ID 1 or 2: `creativeType="CREATIVE_TYPE_VIDEO"
+                /// AND (lineItemIds:1 OR lineItemIds:2)` * Find creatives by multiple creative IDs: `creativeId=1 OR
+                /// creativeId=2` The length of this field should be no more than 500 characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Field by which to sort the list. Acceptable values are:
-                ///
-                /// * `creativeId` (default) * `createTime` * `mediaDuration` * `dimensions` (sorts by width first, then
-                /// by height)
-                ///
-                /// The default sorting order is ascending. To specify descending order for a field, a suffix "desc"
-                /// should be added to the field name. Example: `createTime desc`.</summary>
+                /// <summary>Field by which to sort the list. Acceptable values are: * `creativeId` (default) *
+                /// `createTime` * `mediaDuration` * `dimensions` (sorts by width first, then by height) The default
+                /// sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added
+                /// to the field name. Example: `createTime desc`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
@@ -2849,20 +2806,18 @@ namespace Google.Apis.DisplayVideo.v1
 
             }
 
-            /// <summary>Lists insertion orders in an advertiser.
-            ///
-            /// The order is defined by the order_by parameter. If a filter by entity_status is not specified, insertion
-            /// orders with `ENTITY_STATUS_ARCHIVED` will not be included in the results.</summary>
+            /// <summary>Lists insertion orders in an advertiser. The order is defined by the order_by parameter. If a
+            /// filter by entity_status is not specified, insertion orders with `ENTITY_STATUS_ARCHIVED` will not be
+            /// included in the results.</summary>
             /// <param name="advertiserId">Required. The ID of the advertiser to list insertion orders for.</param>
             public virtual ListRequest List(long advertiserId)
             {
                 return new ListRequest(service, advertiserId);
             }
 
-            /// <summary>Lists insertion orders in an advertiser.
-            ///
-            /// The order is defined by the order_by parameter. If a filter by entity_status is not specified, insertion
-            /// orders with `ENTITY_STATUS_ARCHIVED` will not be included in the results.</summary>
+            /// <summary>Lists insertion orders in an advertiser. The order is defined by the order_by parameter. If a
+            /// filter by entity_status is not specified, insertion orders with `ENTITY_STATUS_ARCHIVED` will not be
+            /// included in the results.</summary>
             public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListInsertionOrdersResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -2878,31 +2833,20 @@ namespace Google.Apis.DisplayVideo.v1
                 [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long AdvertiserId { get; private set; }
 
-                /// <summary>Allows filtering by insertion order properties.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
-                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-                /// has the form of `{field} {operator} {value}`. * The operator must be `EQUALS (=)`. * Supported
-                /// fields: - `campaignId` - `entityStatus`
-                ///
-                /// Examples:
-                ///
-                /// * All insertion orders under a campaign: `campaignId="1234"` * All `ENTITY_STATUS_ACTIVE` or
-                /// `ENTITY_STATUS_PAUSED` insertion orders under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE"
-                /// OR entityStatus="ENTITY_STATUS_PAUSED")`
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
+                /// <summary>Allows filtering by insertion order properties. Supported syntax: * Filter expressions are
+                /// made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical
+                /// operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of
+                /// `{field} {operator} {value}`. * The operator must be `EQUALS (=)`. * Supported fields: -
+                /// `campaignId` - `entityStatus` Examples: * All insertion orders under a campaign: `campaignId="1234"`
+                /// * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` insertion orders under an advertiser:
+                /// `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED")` The length of this
+                /// field should be no more than 500 characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Field by which to sort the list. Acceptable values are:
-                ///
-                /// * "displayName" (default) * "entityStatus"
-                ///
-                /// The default sorting order is ascending. To specify descending order for a field, a suffix "desc"
-                /// should be added to the field name. Example: `displayName desc`.</summary>
+                /// <summary>Field by which to sort the list. Acceptable values are: * "displayName" (default) *
+                /// "entityStatus" The default sorting order is ascending. To specify descending order for a field, a
+                /// suffix "desc" should be added to the field name. Example: `displayName desc`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
@@ -3207,80 +3151,131 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Required. Identifies the type of this assigned targeting option.</summary>
                         public enum TargetingTypeEnum
                         {
+                            /// <summary>Default value when type is not specified or is unknown in this
+                            /// version.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
                             TARGETINGTYPEUNSPECIFIED,
+                            /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
                             TARGETINGTYPECHANNEL,
+                            /// <summary>Target an app category (for example, education or puzzle games).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
                             TARGETINGTYPEAPPCATEGORY,
+                            /// <summary>Target a specific app (for example, Angry Birds).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
                             TARGETINGTYPEAPP,
+                            /// <summary>Target a specific url (for example, quora.com).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
                             TARGETINGTYPEURL,
+                            /// <summary>Target ads during a chosen time period on a specific day.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
                             TARGETINGTYPEDAYANDTIME,
+                            /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
                             TARGETINGTYPEAGERANGE,
+                            /// <summary>Target ads to the specified regions on a regional location list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
                             TARGETINGTYPEREGIONALLOCATIONLIST,
+                            /// <summary>Target ads to the specified points of interest on a proximity location
+                            /// list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
                             TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                            /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
                             TARGETINGTYPEGENDER,
+                            /// <summary>Target a specific video player size for video ads.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
                             TARGETINGTYPEVIDEOPLAYERSIZE,
+                            /// <summary>Target user rewarded content for video ads.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
                             TARGETINGTYPEUSERREWARDEDCONTENT,
+                            /// <summary>Target ads to a specific parental status (for example, parent or not a
+                            /// parent).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
                             TARGETINGTYPEPARENTALSTATUS,
+                            /// <summary>Target video or audio ads in a specific content instream position (for example,
+                            /// pre-roll, mid-roll, or post-roll).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
                             TARGETINGTYPECONTENTINSTREAMPOSITION,
+                            /// <summary>Target ads in a specific content outstream position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
                             TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                            /// <summary>Target ads to a specific device type (for example, tablet or connected
+                            /// TV).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
                             TARGETINGTYPEDEVICETYPE,
+                            /// <summary>Target ads to an audience or groups of audiences. Singleton field, at most one
+                            /// can exist on a single Lineitem at a time.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
                             TARGETINGTYPEAUDIENCEGROUP,
+                            /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
                             TARGETINGTYPEBROWSER,
+                            /// <summary>Target ads to a specific household income range (for example, top
+                            /// 10%).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
                             TARGETINGTYPEHOUSEHOLDINCOME,
+                            /// <summary>Target ads in a specific on screen position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
                             TARGETINGTYPEONSCREENPOSITION,
+                            /// <summary>Filter web sites through third party verification (for example, IAS or
+                            /// DoubleVerify).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
                             TARGETINGTYPETHIRDPARTYVERIFIER,
+                            /// <summary>Filter web sites by specific digital content label ratings (for example, DL-MA:
+                            /// suitable only for mature audiences).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                             TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                            /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
                             TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                            /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
                             TARGETINGTYPEENVIRONMENT,
+                            /// <summary>Target ads to a specific network carrier or internet service provider (ISP)
+                            /// (for example, Comcast or Orange).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
                             TARGETINGTYPECARRIERANDISP,
+                            /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
                             TARGETINGTYPEOPERATINGSYSTEM,
+                            /// <summary>Target ads to a specific device make or model (for example, Roku or
+                            /// Samsung).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
                             TARGETINGTYPEDEVICEMAKEMODEL,
+                            /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
                             TARGETINGTYPEKEYWORD,
+                            /// <summary>Target ads to a specific negative keyword list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
                             TARGETINGTYPENEGATIVEKEYWORDLIST,
+                            /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
                             TARGETINGTYPEVIEWABILITY,
+                            /// <summary>Target ads to a specific content category (for example, arts &
+                            /// entertainment).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                             TARGETINGTYPECATEGORY,
+                            /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
                             TARGETINGTYPEINVENTORYSOURCE,
+                            /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
                             TARGETINGTYPELANGUAGE,
+                            /// <summary>Target ads to ads.txt authorized sellers.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
                             TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                            /// <summary>Target ads to a specific regional location (for example, a city or
+                            /// state).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
                             TARGETINGTYPEGEOREGION,
+                            /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
                             TARGETINGTYPEINVENTORYSOURCEGROUP,
+                            /// <summary>Purchase impressions from specific exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
                             TARGETINGTYPEEXCHANGE,
+                            /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                             TARGETINGTYPESUBEXCHANGE,
                         }
@@ -3390,80 +3385,131 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Required. Identifies the type of this assigned targeting option.</summary>
                         public enum TargetingTypeEnum
                         {
+                            /// <summary>Default value when type is not specified or is unknown in this
+                            /// version.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
                             TARGETINGTYPEUNSPECIFIED,
+                            /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
                             TARGETINGTYPECHANNEL,
+                            /// <summary>Target an app category (for example, education or puzzle games).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
                             TARGETINGTYPEAPPCATEGORY,
+                            /// <summary>Target a specific app (for example, Angry Birds).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
                             TARGETINGTYPEAPP,
+                            /// <summary>Target a specific url (for example, quora.com).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
                             TARGETINGTYPEURL,
+                            /// <summary>Target ads during a chosen time period on a specific day.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
                             TARGETINGTYPEDAYANDTIME,
+                            /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
                             TARGETINGTYPEAGERANGE,
+                            /// <summary>Target ads to the specified regions on a regional location list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
                             TARGETINGTYPEREGIONALLOCATIONLIST,
+                            /// <summary>Target ads to the specified points of interest on a proximity location
+                            /// list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
                             TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                            /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
                             TARGETINGTYPEGENDER,
+                            /// <summary>Target a specific video player size for video ads.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
                             TARGETINGTYPEVIDEOPLAYERSIZE,
+                            /// <summary>Target user rewarded content for video ads.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
                             TARGETINGTYPEUSERREWARDEDCONTENT,
+                            /// <summary>Target ads to a specific parental status (for example, parent or not a
+                            /// parent).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
                             TARGETINGTYPEPARENTALSTATUS,
+                            /// <summary>Target video or audio ads in a specific content instream position (for example,
+                            /// pre-roll, mid-roll, or post-roll).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
                             TARGETINGTYPECONTENTINSTREAMPOSITION,
+                            /// <summary>Target ads in a specific content outstream position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
                             TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                            /// <summary>Target ads to a specific device type (for example, tablet or connected
+                            /// TV).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
                             TARGETINGTYPEDEVICETYPE,
+                            /// <summary>Target ads to an audience or groups of audiences. Singleton field, at most one
+                            /// can exist on a single Lineitem at a time.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
                             TARGETINGTYPEAUDIENCEGROUP,
+                            /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
                             TARGETINGTYPEBROWSER,
+                            /// <summary>Target ads to a specific household income range (for example, top
+                            /// 10%).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
                             TARGETINGTYPEHOUSEHOLDINCOME,
+                            /// <summary>Target ads in a specific on screen position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
                             TARGETINGTYPEONSCREENPOSITION,
+                            /// <summary>Filter web sites through third party verification (for example, IAS or
+                            /// DoubleVerify).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
                             TARGETINGTYPETHIRDPARTYVERIFIER,
+                            /// <summary>Filter web sites by specific digital content label ratings (for example, DL-MA:
+                            /// suitable only for mature audiences).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                             TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                            /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
                             TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                            /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
                             TARGETINGTYPEENVIRONMENT,
+                            /// <summary>Target ads to a specific network carrier or internet service provider (ISP)
+                            /// (for example, Comcast or Orange).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
                             TARGETINGTYPECARRIERANDISP,
+                            /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
                             TARGETINGTYPEOPERATINGSYSTEM,
+                            /// <summary>Target ads to a specific device make or model (for example, Roku or
+                            /// Samsung).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
                             TARGETINGTYPEDEVICEMAKEMODEL,
+                            /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
                             TARGETINGTYPEKEYWORD,
+                            /// <summary>Target ads to a specific negative keyword list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
                             TARGETINGTYPENEGATIVEKEYWORDLIST,
+                            /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
                             TARGETINGTYPEVIEWABILITY,
+                            /// <summary>Target ads to a specific content category (for example, arts &
+                            /// entertainment).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                             TARGETINGTYPECATEGORY,
+                            /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
                             TARGETINGTYPEINVENTORYSOURCE,
+                            /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
                             TARGETINGTYPELANGUAGE,
+                            /// <summary>Target ads to ads.txt authorized sellers.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
                             TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                            /// <summary>Target ads to a specific regional location (for example, a city or
+                            /// state).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
                             TARGETINGTYPEGEOREGION,
+                            /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
                             TARGETINGTYPEINVENTORYSOURCEGROUP,
+                            /// <summary>Purchase impressions from specific exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
                             TARGETINGTYPEEXCHANGE,
+                            /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                             TARGETINGTYPESUBEXCHANGE,
                         }
@@ -3581,80 +3627,131 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Required. Identifies the type of this assigned targeting option.</summary>
                         public enum TargetingTypeEnum
                         {
+                            /// <summary>Default value when type is not specified or is unknown in this
+                            /// version.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
                             TARGETINGTYPEUNSPECIFIED,
+                            /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
                             TARGETINGTYPECHANNEL,
+                            /// <summary>Target an app category (for example, education or puzzle games).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
                             TARGETINGTYPEAPPCATEGORY,
+                            /// <summary>Target a specific app (for example, Angry Birds).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
                             TARGETINGTYPEAPP,
+                            /// <summary>Target a specific url (for example, quora.com).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
                             TARGETINGTYPEURL,
+                            /// <summary>Target ads during a chosen time period on a specific day.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
                             TARGETINGTYPEDAYANDTIME,
+                            /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
                             TARGETINGTYPEAGERANGE,
+                            /// <summary>Target ads to the specified regions on a regional location list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
                             TARGETINGTYPEREGIONALLOCATIONLIST,
+                            /// <summary>Target ads to the specified points of interest on a proximity location
+                            /// list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
                             TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                            /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
                             TARGETINGTYPEGENDER,
+                            /// <summary>Target a specific video player size for video ads.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
                             TARGETINGTYPEVIDEOPLAYERSIZE,
+                            /// <summary>Target user rewarded content for video ads.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
                             TARGETINGTYPEUSERREWARDEDCONTENT,
+                            /// <summary>Target ads to a specific parental status (for example, parent or not a
+                            /// parent).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
                             TARGETINGTYPEPARENTALSTATUS,
+                            /// <summary>Target video or audio ads in a specific content instream position (for example,
+                            /// pre-roll, mid-roll, or post-roll).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
                             TARGETINGTYPECONTENTINSTREAMPOSITION,
+                            /// <summary>Target ads in a specific content outstream position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
                             TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                            /// <summary>Target ads to a specific device type (for example, tablet or connected
+                            /// TV).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
                             TARGETINGTYPEDEVICETYPE,
+                            /// <summary>Target ads to an audience or groups of audiences. Singleton field, at most one
+                            /// can exist on a single Lineitem at a time.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
                             TARGETINGTYPEAUDIENCEGROUP,
+                            /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
                             TARGETINGTYPEBROWSER,
+                            /// <summary>Target ads to a specific household income range (for example, top
+                            /// 10%).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
                             TARGETINGTYPEHOUSEHOLDINCOME,
+                            /// <summary>Target ads in a specific on screen position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
                             TARGETINGTYPEONSCREENPOSITION,
+                            /// <summary>Filter web sites through third party verification (for example, IAS or
+                            /// DoubleVerify).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
                             TARGETINGTYPETHIRDPARTYVERIFIER,
+                            /// <summary>Filter web sites by specific digital content label ratings (for example, DL-MA:
+                            /// suitable only for mature audiences).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                             TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                            /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
                             TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                            /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
                             TARGETINGTYPEENVIRONMENT,
+                            /// <summary>Target ads to a specific network carrier or internet service provider (ISP)
+                            /// (for example, Comcast or Orange).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
                             TARGETINGTYPECARRIERANDISP,
+                            /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
                             TARGETINGTYPEOPERATINGSYSTEM,
+                            /// <summary>Target ads to a specific device make or model (for example, Roku or
+                            /// Samsung).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
                             TARGETINGTYPEDEVICEMAKEMODEL,
+                            /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
                             TARGETINGTYPEKEYWORD,
+                            /// <summary>Target ads to a specific negative keyword list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
                             TARGETINGTYPENEGATIVEKEYWORDLIST,
+                            /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
                             TARGETINGTYPEVIEWABILITY,
+                            /// <summary>Target ads to a specific content category (for example, arts &
+                            /// entertainment).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                             TARGETINGTYPECATEGORY,
+                            /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
                             TARGETINGTYPEINVENTORYSOURCE,
+                            /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
                             TARGETINGTYPELANGUAGE,
+                            /// <summary>Target ads to ads.txt authorized sellers.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
                             TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                            /// <summary>Target ads to a specific regional location (for example, a city or
+                            /// state).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
                             TARGETINGTYPEGEOREGION,
+                            /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
                             TARGETINGTYPEINVENTORYSOURCEGROUP,
+                            /// <summary>Purchase impressions from specific exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
                             TARGETINGTYPEEXCHANGE,
+                            /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                             TARGETINGTYPESUBEXCHANGE,
                         }
@@ -3768,111 +3865,151 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Required. Identifies the type of assigned targeting options to list.</summary>
                         public enum TargetingTypeEnum
                         {
+                            /// <summary>Default value when type is not specified or is unknown in this
+                            /// version.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
                             TARGETINGTYPEUNSPECIFIED,
+                            /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
                             TARGETINGTYPECHANNEL,
+                            /// <summary>Target an app category (for example, education or puzzle games).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
                             TARGETINGTYPEAPPCATEGORY,
+                            /// <summary>Target a specific app (for example, Angry Birds).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
                             TARGETINGTYPEAPP,
+                            /// <summary>Target a specific url (for example, quora.com).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
                             TARGETINGTYPEURL,
+                            /// <summary>Target ads during a chosen time period on a specific day.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
                             TARGETINGTYPEDAYANDTIME,
+                            /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
                             TARGETINGTYPEAGERANGE,
+                            /// <summary>Target ads to the specified regions on a regional location list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
                             TARGETINGTYPEREGIONALLOCATIONLIST,
+                            /// <summary>Target ads to the specified points of interest on a proximity location
+                            /// list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
                             TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                            /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
                             TARGETINGTYPEGENDER,
+                            /// <summary>Target a specific video player size for video ads.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
                             TARGETINGTYPEVIDEOPLAYERSIZE,
+                            /// <summary>Target user rewarded content for video ads.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
                             TARGETINGTYPEUSERREWARDEDCONTENT,
+                            /// <summary>Target ads to a specific parental status (for example, parent or not a
+                            /// parent).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
                             TARGETINGTYPEPARENTALSTATUS,
+                            /// <summary>Target video or audio ads in a specific content instream position (for example,
+                            /// pre-roll, mid-roll, or post-roll).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
                             TARGETINGTYPECONTENTINSTREAMPOSITION,
+                            /// <summary>Target ads in a specific content outstream position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
                             TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                            /// <summary>Target ads to a specific device type (for example, tablet or connected
+                            /// TV).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
                             TARGETINGTYPEDEVICETYPE,
+                            /// <summary>Target ads to an audience or groups of audiences. Singleton field, at most one
+                            /// can exist on a single Lineitem at a time.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
                             TARGETINGTYPEAUDIENCEGROUP,
+                            /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
                             TARGETINGTYPEBROWSER,
+                            /// <summary>Target ads to a specific household income range (for example, top
+                            /// 10%).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
                             TARGETINGTYPEHOUSEHOLDINCOME,
+                            /// <summary>Target ads in a specific on screen position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
                             TARGETINGTYPEONSCREENPOSITION,
+                            /// <summary>Filter web sites through third party verification (for example, IAS or
+                            /// DoubleVerify).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
                             TARGETINGTYPETHIRDPARTYVERIFIER,
+                            /// <summary>Filter web sites by specific digital content label ratings (for example, DL-MA:
+                            /// suitable only for mature audiences).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                             TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                            /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
                             TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                            /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
                             TARGETINGTYPEENVIRONMENT,
+                            /// <summary>Target ads to a specific network carrier or internet service provider (ISP)
+                            /// (for example, Comcast or Orange).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
                             TARGETINGTYPECARRIERANDISP,
+                            /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
                             TARGETINGTYPEOPERATINGSYSTEM,
+                            /// <summary>Target ads to a specific device make or model (for example, Roku or
+                            /// Samsung).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
                             TARGETINGTYPEDEVICEMAKEMODEL,
+                            /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
                             TARGETINGTYPEKEYWORD,
+                            /// <summary>Target ads to a specific negative keyword list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
                             TARGETINGTYPENEGATIVEKEYWORDLIST,
+                            /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
                             TARGETINGTYPEVIEWABILITY,
+                            /// <summary>Target ads to a specific content category (for example, arts &
+                            /// entertainment).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                             TARGETINGTYPECATEGORY,
+                            /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
                             TARGETINGTYPEINVENTORYSOURCE,
+                            /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
                             TARGETINGTYPELANGUAGE,
+                            /// <summary>Target ads to ads.txt authorized sellers.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
                             TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                            /// <summary>Target ads to a specific regional location (for example, a city or
+                            /// state).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
                             TARGETINGTYPEGEOREGION,
+                            /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
                             TARGETINGTYPEINVENTORYSOURCEGROUP,
+                            /// <summary>Purchase impressions from specific exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
                             TARGETINGTYPEEXCHANGE,
+                            /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                             TARGETINGTYPESUBEXCHANGE,
                         }
 
-                        /// <summary>Allows filtering by assigned targeting option properties.
-                        ///
-                        /// Supported syntax:
-                        ///
-                        /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined
+                        /// <summary>Allows filtering by assigned targeting option properties. Supported syntax: *
+                        /// Filter expressions are made up of one or more restrictions. * Restrictions can be combined
                         /// by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`.
                         /// * The operator must be `EQUALS (=)`. * Supported fields: - `assignedTargetingOptionId` -
-                        /// `inheritance`
-                        ///
-                        /// Examples:
-                        ///
-                        /// * AssignedTargetingOptions with ID 1 or 2 `assignedTargetingOptionId="1" OR
-                        /// assignedTargetingOptionId="2"` * AssignedTargetingOptions with inheritance status of
-                        /// NOT_INHERITED or INHERITED_FROM_PARTNER `inheritance="NOT_INHERITED" OR
-                        /// inheritance="INHERITED_FROM_PARTNER"`
-                        ///
-                        /// The length of this field should be no more than 500 characters.</summary>
+                        /// `inheritance` Examples: * AssignedTargetingOptions with ID 1 or 2
+                        /// `assignedTargetingOptionId="1" OR assignedTargetingOptionId="2"` * AssignedTargetingOptions
+                        /// with inheritance status of NOT_INHERITED or INHERITED_FROM_PARTNER
+                        /// `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The length of this
+                        /// field should be no more than 500 characters.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Field by which to sort the list. Acceptable values are:
-                        ///
-                        /// * `assignedTargetingOptionId` (default)
-                        ///
-                        /// The default sorting order is ascending. To specify descending order for a field, a suffix
-                        /// "desc" should be added to the field name. Example: `assignedTargetingOptionId
-                        /// desc`.</summary>
+                        /// <summary>Field by which to sort the list. Acceptable values are: *
+                        /// `assignedTargetingOptionId` (default) The default sorting order is ascending. To specify
+                        /// descending order for a field, a suffix "desc" should be added to the field name. Example:
+                        /// `assignedTargetingOptionId desc`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
@@ -4101,30 +4238,22 @@ namespace Google.Apis.DisplayVideo.v1
                 [Google.Apis.Util.RequestParameterAttribute("lineItemId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long LineItemId { get; private set; }
 
-                /// <summary>Allows filtering by assigned targeting option properties. Supported syntax:
-                ///
-                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the
-                /// logical operator `OR` on the same field. * A restriction has the form of `{field} {operator}
-                /// {value}`. * The operator must be `EQUALS (=)`. * Supported fields: - `targetingType` - `inheritance`
-                ///
-                /// Examples:
-                ///
-                /// * AssignedTargetingOptions of targeting type TARGETING_TYPE_PROXIMITY_LOCATION_LIST or
+                /// <summary>Allows filtering by assigned targeting option properties. Supported syntax: * Filter
+                /// expressions are made up of one or more restrictions. * Restrictions can be combined by the logical
+                /// operator `OR` on the same field. * A restriction has the form of `{field} {operator} {value}`. * The
+                /// operator must be `EQUALS (=)`. * Supported fields: - `targetingType` - `inheritance` Examples: *
+                /// AssignedTargetingOptions of targeting type TARGETING_TYPE_PROXIMITY_LOCATION_LIST or
                 /// TARGETING_TYPE_CHANNEL `targetingType="TARGETING_TYPE_PROXIMITY_LOCATION_LIST" OR
                 /// targetingType="TARGETING_TYPE_CHANNEL"` * AssignedTargetingOptions with inheritance status of
                 /// NOT_INHERITED or INHERITED_FROM_PARTNER `inheritance="NOT_INHERITED" OR
-                /// inheritance="INHERITED_FROM_PARTNER"`
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
+                /// inheritance="INHERITED_FROM_PARTNER"` The length of this field should be no more than 500
+                /// characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Field by which to sort the list. Acceptable values are:
-                ///
-                /// * `targetingType` (default)
-                ///
-                /// The default sorting order is ascending. To specify descending order for a field, a suffix "desc"
-                /// should be added to the field name. Example: `targetingType desc`.</summary>
+                /// <summary>Field by which to sort the list. Acceptable values are: * `targetingType` (default) The
+                /// default sorting order is ascending. To specify descending order for a field, a suffix "desc" should
+                /// be added to the field name. Example: `targetingType desc`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
@@ -4446,20 +4575,18 @@ namespace Google.Apis.DisplayVideo.v1
 
             }
 
-            /// <summary>Lists line items in an advertiser.
-            ///
-            /// The order is defined by the order_by parameter. If a filter by entity_status is not specified, line
-            /// items with `ENTITY_STATUS_ARCHIVED` will not be included in the results.</summary>
+            /// <summary>Lists line items in an advertiser. The order is defined by the order_by parameter. If a filter
+            /// by entity_status is not specified, line items with `ENTITY_STATUS_ARCHIVED` will not be included in the
+            /// results.</summary>
             /// <param name="advertiserId">Required. The ID of the advertiser to list line items for.</param>
             public virtual ListRequest List(long advertiserId)
             {
                 return new ListRequest(service, advertiserId);
             }
 
-            /// <summary>Lists line items in an advertiser.
-            ///
-            /// The order is defined by the order_by parameter. If a filter by entity_status is not specified, line
-            /// items with `ENTITY_STATUS_ARCHIVED` will not be included in the results.</summary>
+            /// <summary>Lists line items in an advertiser. The order is defined by the order_by parameter. If a filter
+            /// by entity_status is not specified, line items with `ENTITY_STATUS_ARCHIVED` will not be included in the
+            /// results.</summary>
             public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListLineItemsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -4475,32 +4602,23 @@ namespace Google.Apis.DisplayVideo.v1
                 [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long AdvertiserId { get; private set; }
 
-                /// <summary>Allows filtering by line item properties.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
-                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-                /// has the form of `{field} {operator} {value}`. * The operator must be `EQUALS (=)`. * Supported
-                /// fields: - `campaignId` - `insertionOrderId` - `entityStatus` - `lineItemType`
-                ///
-                /// Examples:
-                ///
-                /// * All line items under an insertion order: `insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or
-                /// `ENTITY_STATUS_PAUSED` and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser:
+                /// <summary>Allows filtering by line item properties. Supported syntax: * Filter expressions are made
+                /// up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A
+                /// sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+                /// {value}`. * The operator must be `EQUALS (=)`. * Supported fields: - `campaignId` -
+                /// `insertionOrderId` - `entityStatus` - `lineItemType` Examples: * All line items under an insertion
+                /// order: `insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and
+                /// `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser:
                 /// `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND
-                /// lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"`
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
+                /// lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` The length of this field should be no more than 500
+                /// characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Field by which to sort the list. Acceptable values are:
-                ///
-                /// * "displayName" (default) * "entityStatus" * “flight.dateRange.endDate”
-                ///
-                /// The default sorting order is ascending. To specify descending order for a field, a suffix "desc"
-                /// should be added to the field name. Example: `displayName desc`.</summary>
+                /// <summary>Field by which to sort the list. Acceptable values are: * "displayName" (default) *
+                /// "entityStatus" * “flight.dateRange.endDate” The default sorting order is ascending. To specify
+                /// descending order for a field, a suffix "desc" should be added to the field name. Example:
+                /// `displayName desc`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
@@ -4733,9 +4851,8 @@ namespace Google.Apis.DisplayVideo.v1
                 }
 
 
-                /// <summary>Bulk edits multiple assignments between locations and a single location list.
-                ///
-                /// The operation will delete the assigned locations provided in
+                /// <summary>Bulk edits multiple assignments between locations and a single location list. The operation
+                /// will delete the assigned locations provided in
                 /// BulkEditAssignedLocationsRequest.deleted_assigned_locations and then create the assigned locations
                 /// provided in BulkEditAssignedLocationsRequest.created_assigned_locations.</summary>
                 /// <param name="body">The body of the request.</param>
@@ -4748,9 +4865,8 @@ namespace Google.Apis.DisplayVideo.v1
                     return new BulkEditRequest(service, body, advertiserId, locationListId);
                 }
 
-                /// <summary>Bulk edits multiple assignments between locations and a single location list.
-                ///
-                /// The operation will delete the assigned locations provided in
+                /// <summary>Bulk edits multiple assignments between locations and a single location list. The operation
+                /// will delete the assigned locations provided in
                 /// BulkEditAssignedLocationsRequest.deleted_assigned_locations and then create the assigned locations
                 /// provided in BulkEditAssignedLocationsRequest.created_assigned_locations.</summary>
                 public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedLocationsResponse>
@@ -5038,24 +5154,17 @@ namespace Google.Apis.DisplayVideo.v1
                     [Google.Apis.Util.RequestParameterAttribute("locationListId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual long LocationListId { get; private set; }
 
-                    /// <summary>Allows filtering by location list assignment fields.
-                    ///
-                    /// Supported syntax:
-                    ///
-                    /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
-                    /// the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * The
-                    /// operator must be `EQUALS (=)`. * Supported fields: - `assignedLocationId`
-                    ///
-                    /// The length of this field should be no more than 500 characters.</summary>
+                    /// <summary>Allows filtering by location list assignment fields. Supported syntax: * Filter
+                    /// expressions are made up of one or more restrictions. * Restrictions can be combined by the
+                    /// logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * The
+                    /// operator must be `EQUALS (=)`. * Supported fields: - `assignedLocationId` The length of this
+                    /// field should be no more than 500 characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Field by which to sort the list. Acceptable values are:
-                    ///
-                    /// * `assignedLocationId` (default)
-                    ///
-                    /// The default sorting order is ascending. To specify descending order for a field, a suffix "
-                    /// desc" should be added to the field name. Example: `assignedLocationId desc`.</summary>
+                    /// <summary>Field by which to sort the list. Acceptable values are: * `assignedLocationId`
+                    /// (default) The default sorting order is ascending. To specify descending order for a field, a
+                    /// suffix " desc" should be added to the field name. Example: `assignedLocationId desc`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -5064,11 +5173,9 @@ namespace Google.Apis.DisplayVideo.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>A token identifying a page of results the server should return.
-                    ///
-                    /// Typically, this is the value of next_page_token returned from the previous call to
-                    /// `ListAssignedLocations` method. If not specified, the first page of results will be
-                    /// returned.</summary>
+                    /// <summary>A token identifying a page of results the server should return. Typically, this is the
+                    /// value of next_page_token returned from the previous call to `ListAssignedLocations` method. If
+                    /// not specified, the first page of results will be returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -5325,28 +5432,18 @@ namespace Google.Apis.DisplayVideo.v1
                 [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long AdvertiserId { get; private set; }
 
-                /// <summary>Allows filtering by location list fields.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
-                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-                /// has the form of `{field} {operator} {value}`. * The operator must be `EQUALS (=)`. * Supported
-                /// fields: - `locationType`
-                ///
-                /// Examples:
-                ///
-                /// * All regional location list: `locationType="TARGETING_LOCATION_TYPE_REGIONAL"` * All proximity
-                /// location list: `locationType="TARGETING_LOCATION_TYPE_PROXIMITY"`</summary>
+                /// <summary>Allows filtering by location list fields. Supported syntax: * Filter expressions are made
+                /// up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A
+                /// sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+                /// {value}`. * The operator must be `EQUALS (=)`. * Supported fields: - `locationType` Examples: * All
+                /// regional location list: `locationType="TARGETING_LOCATION_TYPE_REGIONAL"` * All proximity location
+                /// list: `locationType="TARGETING_LOCATION_TYPE_PROXIMITY"`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Field by which to sort the list. Acceptable values are:
-                ///
-                /// * `locationListId` (default) * `displayName`
-                ///
-                /// The default sorting order is ascending. To specify descending order for a field, a suffix "desc"
-                /// should be added to the field name. Example: `displayName desc`.</summary>
+                /// <summary>Field by which to sort the list. Acceptable values are: * `locationListId` (default) *
+                /// `displayName` The default sorting order is ascending. To specify descending order for a field, a
+                /// suffix "desc" should be added to the field name. Example: `displayName desc`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
@@ -5355,10 +5452,9 @@ namespace Google.Apis.DisplayVideo.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>A token identifying a page of results the server should return.
-                ///
-                /// Typically, this is the value of next_page_token returned from the previous call to
-                /// `ListLocationLists` method. If not specified, the first page of results will be returned.</summary>
+                /// <summary>A token identifying a page of results the server should return. Typically, this is the
+                /// value of next_page_token returned from the previous call to `ListLocationLists` method. If not
+                /// specified, the first page of results will be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -5581,12 +5677,9 @@ namespace Google.Apis.DisplayVideo.v1
                 }
 
 
-                /// <summary>Bulk edits negative keywords in a single negative keyword list.
-                ///
-                /// The operation will delete the negative keywords provided in
-                /// BulkEditNegativeKeywordsRequest.deleted_negative_keywords and then create the negative keywords
-                /// provided in BulkEditNegativeKeywordsRequest.created_negative_keywords.
-                ///
+                /// <summary>Bulk edits negative keywords in a single negative keyword list. The operation will delete
+                /// the negative keywords provided in BulkEditNegativeKeywordsRequest.deleted_negative_keywords and then
+                /// create the negative keywords provided in BulkEditNegativeKeywordsRequest.created_negative_keywords.
                 /// This operation is guaranteed to be atomic and will never result in a partial success or partial
                 /// failure.</summary>
                 /// <param name="body">The body of the request.</param>
@@ -5599,12 +5692,9 @@ namespace Google.Apis.DisplayVideo.v1
                     return new BulkEditRequest(service, body, advertiserId, negativeKeywordListId);
                 }
 
-                /// <summary>Bulk edits negative keywords in a single negative keyword list.
-                ///
-                /// The operation will delete the negative keywords provided in
-                /// BulkEditNegativeKeywordsRequest.deleted_negative_keywords and then create the negative keywords
-                /// provided in BulkEditNegativeKeywordsRequest.created_negative_keywords.
-                ///
+                /// <summary>Bulk edits negative keywords in a single negative keyword list. The operation will delete
+                /// the negative keywords provided in BulkEditNegativeKeywordsRequest.deleted_negative_keywords and then
+                /// create the negative keywords provided in BulkEditNegativeKeywordsRequest.created_negative_keywords.
                 /// This operation is guaranteed to be atomic and will never result in a partial success or partial
                 /// failure.</summary>
                 public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditNegativeKeywordsResponse>
@@ -5897,27 +5987,17 @@ namespace Google.Apis.DisplayVideo.v1
                     [Google.Apis.Util.RequestParameterAttribute("negativeKeywordListId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual long NegativeKeywordListId { get; private set; }
 
-                    /// <summary>Allows filtering by negative keyword fields.
-                    ///
-                    /// Supported syntax:
-                    ///
-                    /// * Filter expressions for negative keyword currently can only contain at most one * restriction.
-                    /// * A restriction has the form of `{field} {operator} {value}`. * The operator must be `CONTAINS
-                    /// (:)`. * Supported fields: - `keywordValue`
-                    ///
-                    /// Examples:
-                    ///
-                    /// * All negative keywords for which the keyword value contains "google": `keywordValue :
-                    /// "google"`</summary>
+                    /// <summary>Allows filtering by negative keyword fields. Supported syntax: * Filter expressions for
+                    /// negative keyword currently can only contain at most one * restriction. * A restriction has the
+                    /// form of `{field} {operator} {value}`. * The operator must be `CONTAINS (:)`. * Supported fields:
+                    /// - `keywordValue` Examples: * All negative keywords for which the keyword value contains
+                    /// "google": `keywordValue : "google"`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Field by which to sort the list. Acceptable values are:
-                    ///
-                    /// * `keywordValue` (default)
-                    ///
-                    /// The default sorting order is ascending. To specify descending order for a field, a suffix "
-                    /// desc" should be added to the field name. Example: `keywordValue desc`.</summary>
+                    /// <summary>Field by which to sort the list. Acceptable values are: * `keywordValue` (default) The
+                    /// default sorting order is ascending. To specify descending order for a field, a suffix " desc"
+                    /// should be added to the field name. Example: `keywordValue desc`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -5926,11 +6006,9 @@ namespace Google.Apis.DisplayVideo.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>A token identifying a page of results the server should return.
-                    ///
-                    /// Typically, this is the value of next_page_token returned from the previous call to
-                    /// `ListNegativeKeywords` method. If not specified, the first page of results will be
-                    /// returned.</summary>
+                    /// <summary>A token identifying a page of results the server should return. Typically, this is the
+                    /// value of next_page_token returned from the previous call to `ListNegativeKeywords` method. If
+                    /// not specified, the first page of results will be returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -6277,11 +6355,9 @@ namespace Google.Apis.DisplayVideo.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>A token identifying a page of results the server should return.
-                ///
-                /// Typically, this is the value of next_page_token returned from the previous call to
-                /// `ListNegativeKeywordLists` method. If not specified, the first page of results will be
-                /// returned.</summary>
+                /// <summary>A token identifying a page of results the server should return. Typically, this is the
+                /// value of next_page_token returned from the previous call to `ListNegativeKeywordLists` method. If
+                /// not specified, the first page of results will be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -6526,80 +6602,129 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Required. Identifies the type of this assigned targeting option.</summary>
                     public enum TargetingTypeEnum
                     {
+                        /// <summary>Default value when type is not specified or is unknown in this version.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
                         TARGETINGTYPEUNSPECIFIED,
+                        /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
                         TARGETINGTYPECHANNEL,
+                        /// <summary>Target an app category (for example, education or puzzle games).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
                         TARGETINGTYPEAPPCATEGORY,
+                        /// <summary>Target a specific app (for example, Angry Birds).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
                         TARGETINGTYPEAPP,
+                        /// <summary>Target a specific url (for example, quora.com).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
                         TARGETINGTYPEURL,
+                        /// <summary>Target ads during a chosen time period on a specific day.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
                         TARGETINGTYPEDAYANDTIME,
+                        /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
                         TARGETINGTYPEAGERANGE,
+                        /// <summary>Target ads to the specified regions on a regional location list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
                         TARGETINGTYPEREGIONALLOCATIONLIST,
+                        /// <summary>Target ads to the specified points of interest on a proximity location
+                        /// list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
                         TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                        /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
                         TARGETINGTYPEGENDER,
+                        /// <summary>Target a specific video player size for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
                         TARGETINGTYPEVIDEOPLAYERSIZE,
+                        /// <summary>Target user rewarded content for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
                         TARGETINGTYPEUSERREWARDEDCONTENT,
+                        /// <summary>Target ads to a specific parental status (for example, parent or not a
+                        /// parent).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
                         TARGETINGTYPEPARENTALSTATUS,
+                        /// <summary>Target video or audio ads in a specific content instream position (for example,
+                        /// pre-roll, mid-roll, or post-roll).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
                         TARGETINGTYPECONTENTINSTREAMPOSITION,
+                        /// <summary>Target ads in a specific content outstream position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
                         TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                        /// <summary>Target ads to a specific device type (for example, tablet or connected
+                        /// TV).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
                         TARGETINGTYPEDEVICETYPE,
+                        /// <summary>Target ads to an audience or groups of audiences. Singleton field, at most one can
+                        /// exist on a single Lineitem at a time.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
                         TARGETINGTYPEAUDIENCEGROUP,
+                        /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
                         TARGETINGTYPEBROWSER,
+                        /// <summary>Target ads to a specific household income range (for example, top 10%).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
                         TARGETINGTYPEHOUSEHOLDINCOME,
+                        /// <summary>Target ads in a specific on screen position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
                         TARGETINGTYPEONSCREENPOSITION,
+                        /// <summary>Filter web sites through third party verification (for example, IAS or
+                        /// DoubleVerify).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
                         TARGETINGTYPETHIRDPARTYVERIFIER,
+                        /// <summary>Filter web sites by specific digital content label ratings (for example, DL-MA:
+                        /// suitable only for mature audiences).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                         TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                        /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
                         TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                        /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
                         TARGETINGTYPEENVIRONMENT,
+                        /// <summary>Target ads to a specific network carrier or internet service provider (ISP) (for
+                        /// example, Comcast or Orange).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
                         TARGETINGTYPECARRIERANDISP,
+                        /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
                         TARGETINGTYPEOPERATINGSYSTEM,
+                        /// <summary>Target ads to a specific device make or model (for example, Roku or
+                        /// Samsung).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
                         TARGETINGTYPEDEVICEMAKEMODEL,
+                        /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
                         TARGETINGTYPEKEYWORD,
+                        /// <summary>Target ads to a specific negative keyword list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
                         TARGETINGTYPENEGATIVEKEYWORDLIST,
+                        /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
                         TARGETINGTYPEVIEWABILITY,
+                        /// <summary>Target ads to a specific content category (for example, arts &
+                        /// entertainment).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                         TARGETINGTYPECATEGORY,
+                        /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
                         TARGETINGTYPEINVENTORYSOURCE,
+                        /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
                         TARGETINGTYPELANGUAGE,
+                        /// <summary>Target ads to ads.txt authorized sellers.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
                         TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                        /// <summary>Target ads to a specific regional location (for example, a city or
+                        /// state).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
                         TARGETINGTYPEGEOREGION,
+                        /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
                         TARGETINGTYPEINVENTORYSOURCEGROUP,
+                        /// <summary>Purchase impressions from specific exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
                         TARGETINGTYPEEXCHANGE,
+                        /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                         TARGETINGTYPESUBEXCHANGE,
                     }
@@ -6692,80 +6817,129 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Required. Identifies the type of this assigned targeting option.</summary>
                     public enum TargetingTypeEnum
                     {
+                        /// <summary>Default value when type is not specified or is unknown in this version.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
                         TARGETINGTYPEUNSPECIFIED,
+                        /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
                         TARGETINGTYPECHANNEL,
+                        /// <summary>Target an app category (for example, education or puzzle games).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
                         TARGETINGTYPEAPPCATEGORY,
+                        /// <summary>Target a specific app (for example, Angry Birds).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
                         TARGETINGTYPEAPP,
+                        /// <summary>Target a specific url (for example, quora.com).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
                         TARGETINGTYPEURL,
+                        /// <summary>Target ads during a chosen time period on a specific day.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
                         TARGETINGTYPEDAYANDTIME,
+                        /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
                         TARGETINGTYPEAGERANGE,
+                        /// <summary>Target ads to the specified regions on a regional location list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
                         TARGETINGTYPEREGIONALLOCATIONLIST,
+                        /// <summary>Target ads to the specified points of interest on a proximity location
+                        /// list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
                         TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                        /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
                         TARGETINGTYPEGENDER,
+                        /// <summary>Target a specific video player size for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
                         TARGETINGTYPEVIDEOPLAYERSIZE,
+                        /// <summary>Target user rewarded content for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
                         TARGETINGTYPEUSERREWARDEDCONTENT,
+                        /// <summary>Target ads to a specific parental status (for example, parent or not a
+                        /// parent).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
                         TARGETINGTYPEPARENTALSTATUS,
+                        /// <summary>Target video or audio ads in a specific content instream position (for example,
+                        /// pre-roll, mid-roll, or post-roll).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
                         TARGETINGTYPECONTENTINSTREAMPOSITION,
+                        /// <summary>Target ads in a specific content outstream position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
                         TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                        /// <summary>Target ads to a specific device type (for example, tablet or connected
+                        /// TV).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
                         TARGETINGTYPEDEVICETYPE,
+                        /// <summary>Target ads to an audience or groups of audiences. Singleton field, at most one can
+                        /// exist on a single Lineitem at a time.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
                         TARGETINGTYPEAUDIENCEGROUP,
+                        /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
                         TARGETINGTYPEBROWSER,
+                        /// <summary>Target ads to a specific household income range (for example, top 10%).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
                         TARGETINGTYPEHOUSEHOLDINCOME,
+                        /// <summary>Target ads in a specific on screen position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
                         TARGETINGTYPEONSCREENPOSITION,
+                        /// <summary>Filter web sites through third party verification (for example, IAS or
+                        /// DoubleVerify).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
                         TARGETINGTYPETHIRDPARTYVERIFIER,
+                        /// <summary>Filter web sites by specific digital content label ratings (for example, DL-MA:
+                        /// suitable only for mature audiences).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                         TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                        /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
                         TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                        /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
                         TARGETINGTYPEENVIRONMENT,
+                        /// <summary>Target ads to a specific network carrier or internet service provider (ISP) (for
+                        /// example, Comcast or Orange).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
                         TARGETINGTYPECARRIERANDISP,
+                        /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
                         TARGETINGTYPEOPERATINGSYSTEM,
+                        /// <summary>Target ads to a specific device make or model (for example, Roku or
+                        /// Samsung).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
                         TARGETINGTYPEDEVICEMAKEMODEL,
+                        /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
                         TARGETINGTYPEKEYWORD,
+                        /// <summary>Target ads to a specific negative keyword list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
                         TARGETINGTYPENEGATIVEKEYWORDLIST,
+                        /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
                         TARGETINGTYPEVIEWABILITY,
+                        /// <summary>Target ads to a specific content category (for example, arts &
+                        /// entertainment).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                         TARGETINGTYPECATEGORY,
+                        /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
                         TARGETINGTYPEINVENTORYSOURCE,
+                        /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
                         TARGETINGTYPELANGUAGE,
+                        /// <summary>Target ads to ads.txt authorized sellers.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
                         TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                        /// <summary>Target ads to a specific regional location (for example, a city or
+                        /// state).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
                         TARGETINGTYPEGEOREGION,
+                        /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
                         TARGETINGTYPEINVENTORYSOURCEGROUP,
+                        /// <summary>Purchase impressions from specific exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
                         TARGETINGTYPEEXCHANGE,
+                        /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                         TARGETINGTYPESUBEXCHANGE,
                     }
@@ -6866,80 +7040,129 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Required. Identifies the type of this assigned targeting option.</summary>
                     public enum TargetingTypeEnum
                     {
+                        /// <summary>Default value when type is not specified or is unknown in this version.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
                         TARGETINGTYPEUNSPECIFIED,
+                        /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
                         TARGETINGTYPECHANNEL,
+                        /// <summary>Target an app category (for example, education or puzzle games).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
                         TARGETINGTYPEAPPCATEGORY,
+                        /// <summary>Target a specific app (for example, Angry Birds).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
                         TARGETINGTYPEAPP,
+                        /// <summary>Target a specific url (for example, quora.com).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
                         TARGETINGTYPEURL,
+                        /// <summary>Target ads during a chosen time period on a specific day.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
                         TARGETINGTYPEDAYANDTIME,
+                        /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
                         TARGETINGTYPEAGERANGE,
+                        /// <summary>Target ads to the specified regions on a regional location list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
                         TARGETINGTYPEREGIONALLOCATIONLIST,
+                        /// <summary>Target ads to the specified points of interest on a proximity location
+                        /// list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
                         TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                        /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
                         TARGETINGTYPEGENDER,
+                        /// <summary>Target a specific video player size for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
                         TARGETINGTYPEVIDEOPLAYERSIZE,
+                        /// <summary>Target user rewarded content for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
                         TARGETINGTYPEUSERREWARDEDCONTENT,
+                        /// <summary>Target ads to a specific parental status (for example, parent or not a
+                        /// parent).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
                         TARGETINGTYPEPARENTALSTATUS,
+                        /// <summary>Target video or audio ads in a specific content instream position (for example,
+                        /// pre-roll, mid-roll, or post-roll).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
                         TARGETINGTYPECONTENTINSTREAMPOSITION,
+                        /// <summary>Target ads in a specific content outstream position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
                         TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                        /// <summary>Target ads to a specific device type (for example, tablet or connected
+                        /// TV).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
                         TARGETINGTYPEDEVICETYPE,
+                        /// <summary>Target ads to an audience or groups of audiences. Singleton field, at most one can
+                        /// exist on a single Lineitem at a time.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
                         TARGETINGTYPEAUDIENCEGROUP,
+                        /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
                         TARGETINGTYPEBROWSER,
+                        /// <summary>Target ads to a specific household income range (for example, top 10%).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
                         TARGETINGTYPEHOUSEHOLDINCOME,
+                        /// <summary>Target ads in a specific on screen position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
                         TARGETINGTYPEONSCREENPOSITION,
+                        /// <summary>Filter web sites through third party verification (for example, IAS or
+                        /// DoubleVerify).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
                         TARGETINGTYPETHIRDPARTYVERIFIER,
+                        /// <summary>Filter web sites by specific digital content label ratings (for example, DL-MA:
+                        /// suitable only for mature audiences).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                         TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                        /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
                         TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                        /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
                         TARGETINGTYPEENVIRONMENT,
+                        /// <summary>Target ads to a specific network carrier or internet service provider (ISP) (for
+                        /// example, Comcast or Orange).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
                         TARGETINGTYPECARRIERANDISP,
+                        /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
                         TARGETINGTYPEOPERATINGSYSTEM,
+                        /// <summary>Target ads to a specific device make or model (for example, Roku or
+                        /// Samsung).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
                         TARGETINGTYPEDEVICEMAKEMODEL,
+                        /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
                         TARGETINGTYPEKEYWORD,
+                        /// <summary>Target ads to a specific negative keyword list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
                         TARGETINGTYPENEGATIVEKEYWORDLIST,
+                        /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
                         TARGETINGTYPEVIEWABILITY,
+                        /// <summary>Target ads to a specific content category (for example, arts &
+                        /// entertainment).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                         TARGETINGTYPECATEGORY,
+                        /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
                         TARGETINGTYPEINVENTORYSOURCE,
+                        /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
                         TARGETINGTYPELANGUAGE,
+                        /// <summary>Target ads to ads.txt authorized sellers.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
                         TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                        /// <summary>Target ads to a specific regional location (for example, a city or
+                        /// state).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
                         TARGETINGTYPEGEOREGION,
+                        /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
                         TARGETINGTYPEINVENTORYSOURCEGROUP,
+                        /// <summary>Purchase impressions from specific exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
                         TARGETINGTYPEEXCHANGE,
+                        /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                         TARGETINGTYPESUBEXCHANGE,
                     }
@@ -7037,106 +7260,146 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Required. Identifies the type of assigned targeting options to list.</summary>
                     public enum TargetingTypeEnum
                     {
+                        /// <summary>Default value when type is not specified or is unknown in this version.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
                         TARGETINGTYPEUNSPECIFIED,
+                        /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
                         TARGETINGTYPECHANNEL,
+                        /// <summary>Target an app category (for example, education or puzzle games).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
                         TARGETINGTYPEAPPCATEGORY,
+                        /// <summary>Target a specific app (for example, Angry Birds).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
                         TARGETINGTYPEAPP,
+                        /// <summary>Target a specific url (for example, quora.com).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
                         TARGETINGTYPEURL,
+                        /// <summary>Target ads during a chosen time period on a specific day.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
                         TARGETINGTYPEDAYANDTIME,
+                        /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
                         TARGETINGTYPEAGERANGE,
+                        /// <summary>Target ads to the specified regions on a regional location list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
                         TARGETINGTYPEREGIONALLOCATIONLIST,
+                        /// <summary>Target ads to the specified points of interest on a proximity location
+                        /// list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
                         TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                        /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
                         TARGETINGTYPEGENDER,
+                        /// <summary>Target a specific video player size for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
                         TARGETINGTYPEVIDEOPLAYERSIZE,
+                        /// <summary>Target user rewarded content for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
                         TARGETINGTYPEUSERREWARDEDCONTENT,
+                        /// <summary>Target ads to a specific parental status (for example, parent or not a
+                        /// parent).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
                         TARGETINGTYPEPARENTALSTATUS,
+                        /// <summary>Target video or audio ads in a specific content instream position (for example,
+                        /// pre-roll, mid-roll, or post-roll).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
                         TARGETINGTYPECONTENTINSTREAMPOSITION,
+                        /// <summary>Target ads in a specific content outstream position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
                         TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                        /// <summary>Target ads to a specific device type (for example, tablet or connected
+                        /// TV).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
                         TARGETINGTYPEDEVICETYPE,
+                        /// <summary>Target ads to an audience or groups of audiences. Singleton field, at most one can
+                        /// exist on a single Lineitem at a time.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
                         TARGETINGTYPEAUDIENCEGROUP,
+                        /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
                         TARGETINGTYPEBROWSER,
+                        /// <summary>Target ads to a specific household income range (for example, top 10%).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
                         TARGETINGTYPEHOUSEHOLDINCOME,
+                        /// <summary>Target ads in a specific on screen position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
                         TARGETINGTYPEONSCREENPOSITION,
+                        /// <summary>Filter web sites through third party verification (for example, IAS or
+                        /// DoubleVerify).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
                         TARGETINGTYPETHIRDPARTYVERIFIER,
+                        /// <summary>Filter web sites by specific digital content label ratings (for example, DL-MA:
+                        /// suitable only for mature audiences).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                         TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                        /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
                         TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                        /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
                         TARGETINGTYPEENVIRONMENT,
+                        /// <summary>Target ads to a specific network carrier or internet service provider (ISP) (for
+                        /// example, Comcast or Orange).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
                         TARGETINGTYPECARRIERANDISP,
+                        /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
                         TARGETINGTYPEOPERATINGSYSTEM,
+                        /// <summary>Target ads to a specific device make or model (for example, Roku or
+                        /// Samsung).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
                         TARGETINGTYPEDEVICEMAKEMODEL,
+                        /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
                         TARGETINGTYPEKEYWORD,
+                        /// <summary>Target ads to a specific negative keyword list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
                         TARGETINGTYPENEGATIVEKEYWORDLIST,
+                        /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
                         TARGETINGTYPEVIEWABILITY,
+                        /// <summary>Target ads to a specific content category (for example, arts &
+                        /// entertainment).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                         TARGETINGTYPECATEGORY,
+                        /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
                         TARGETINGTYPEINVENTORYSOURCE,
+                        /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
                         TARGETINGTYPELANGUAGE,
+                        /// <summary>Target ads to ads.txt authorized sellers.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
                         TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                        /// <summary>Target ads to a specific regional location (for example, a city or
+                        /// state).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
                         TARGETINGTYPEGEOREGION,
+                        /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
                         TARGETINGTYPEINVENTORYSOURCEGROUP,
+                        /// <summary>Purchase impressions from specific exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
                         TARGETINGTYPEEXCHANGE,
+                        /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                         TARGETINGTYPESUBEXCHANGE,
                     }
 
-                    /// <summary>Allows filtering by assigned targeting option properties.
-                    ///
-                    /// Supported syntax:
-                    ///
-                    /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
-                    /// the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * The
-                    /// operator must be `EQUALS (=)`. * Supported fields: - `assignedTargetingOptionId`
-                    ///
-                    /// Examples:
-                    ///
-                    /// * AssignedTargetingOption with ID 123456 `assignedTargetingOptionId="123456"`
-                    ///
-                    /// The length of this field should be no more than 500 characters.</summary>
+                    /// <summary>Allows filtering by assigned targeting option properties. Supported syntax: * Filter
+                    /// expressions are made up of one or more restrictions. * Restrictions can be combined by the
+                    /// logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * The
+                    /// operator must be `EQUALS (=)`. * Supported fields: - `assignedTargetingOptionId` Examples: *
+                    /// AssignedTargetingOption with ID 123456 `assignedTargetingOptionId="123456"` The length of this
+                    /// field should be no more than 500 characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Field by which to sort the list. Acceptable values are:
-                    ///
-                    /// * `assignedTargetingOptionId` (default)
-                    ///
-                    /// The default sorting order is ascending. To specify descending order for a field, a suffix "desc"
-                    /// should be added to the field name. Example: `assignedTargetingOptionId desc`.</summary>
+                    /// <summary>Field by which to sort the list. Acceptable values are: * `assignedTargetingOptionId`
+                    /// (default) The default sorting order is ascending. To specify descending order for a field, a
+                    /// suffix "desc" should be added to the field name. Example: `assignedTargetingOptionId
+                    /// desc`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -7333,26 +7596,18 @@ namespace Google.Apis.DisplayVideo.v1
             [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long AdvertiserId { get; private set; }
 
-            /// <summary>Allows filtering by assigned targeting option properties. Supported syntax:
-            ///
-            /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the
-            /// logical operator `OR`.. * A restriction has the form of `{field} {operator} {value}`. * The operator
-            /// must be `EQUALS (=)`. * Supported fields: - `targetingType`
-            ///
-            /// Examples:
-            ///
-            /// * targetingType with value TARGETING_TYPE_CHANNEL `targetingType="TARGETING_TYPE_CHANNEL"`
-            ///
-            /// The length of this field should be no more than 500 characters.</summary>
+            /// <summary>Allows filtering by assigned targeting option properties. Supported syntax: * Filter
+            /// expressions are made up of one or more restrictions. * Restrictions can be combined by the logical
+            /// operator `OR`.. * A restriction has the form of `{field} {operator} {value}`. * The operator must be
+            /// `EQUALS (=)`. * Supported fields: - `targetingType` Examples: * targetingType with value
+            /// TARGETING_TYPE_CHANNEL `targetingType="TARGETING_TYPE_CHANNEL"` The length of this field should be no
+            /// more than 500 characters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>Field by which to sort the list. Acceptable values are:
-            ///
-            /// * `targetingType` (default)
-            ///
-            /// The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should
-            /// be added to the field name. Example: `targetingType desc`.</summary>
+            /// <summary>Field by which to sort the list. Acceptable values are: * `targetingType` (default) The default
+            /// sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to
+            /// the field name. Example: `targetingType desc`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
@@ -7617,21 +7872,15 @@ namespace Google.Apis.DisplayVideo.v1
 
         }
 
-        /// <summary>Lists advertisers that are accessible to the current user.
-        ///
-        /// The order is defined by the order_by parameter.
-        ///
-        /// A single partner_id is required. Cross-partner listing is not supported.</summary>
+        /// <summary>Lists advertisers that are accessible to the current user. The order is defined by the order_by
+        /// parameter. A single partner_id is required. Cross-partner listing is not supported.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists advertisers that are accessible to the current user.
-        ///
-        /// The order is defined by the order_by parameter.
-        ///
-        /// A single partner_id is required. Cross-partner listing is not supported.</summary>
+        /// <summary>Lists advertisers that are accessible to the current user. The order is defined by the order_by
+        /// parameter. A single partner_id is required. Cross-partner listing is not supported.</summary>
         public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListAdvertisersResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -7642,29 +7891,18 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
 
-            /// <summary>Allows filtering by advertiser properties.
-            ///
-            /// Supported syntax:
-            ///
-            /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or
-            /// `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form
-            /// of `{field} {operator} {value}`. * The operator must be `EQUALS (=)`. * Supported fields: -
-            /// `entityStatus`
-            ///
-            /// Examples:
-            ///
-            /// * All active advertisers under a partner: `entityStatus="ENTITY_STATUS_ACTIVE"`
-            ///
-            /// The length of this field should be no more than 500 characters.</summary>
+            /// <summary>Allows filtering by advertiser properties. Supported syntax: * Filter expressions are made up
+            /// of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A
+            /// sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+            /// {value}`. * The operator must be `EQUALS (=)`. * Supported fields: - `entityStatus` Examples: * All
+            /// active advertisers under a partner: `entityStatus="ENTITY_STATUS_ACTIVE"` The length of this field
+            /// should be no more than 500 characters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>Field by which to sort the list. Acceptable values are:
-            ///
-            /// * `displayName` (default) * `entityStatus`
-            ///
-            /// The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should
-            /// be added to the field name. For example, `displayName desc`.</summary>
+            /// <summary>Field by which to sort the list. Acceptable values are: * `displayName` (default) *
+            /// `entityStatus` The default sorting order is ascending. To specify descending order for a field, a suffix
+            /// "desc" should be added to the field name. For example, `displayName desc`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
@@ -7941,17 +8179,13 @@ namespace Google.Apis.DisplayVideo.v1
 
         }
 
-        /// <summary>Lists combined audiences.
-        ///
-        /// The order is defined by the order_by parameter.</summary>
+        /// <summary>Lists combined audiences. The order is defined by the order_by parameter.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists combined audiences.
-        ///
-        /// The order is defined by the order_by parameter.</summary>
+        /// <summary>Lists combined audiences. The order is defined by the order_by parameter.</summary>
         public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListCombinedAudiencesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -7966,28 +8200,17 @@ namespace Google.Apis.DisplayVideo.v1
             [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-            /// <summary>Allows filtering by combined audience fields.
-            ///
-            /// Supported syntax:
-            ///
-            /// * Filter expressions for combined audiences currently can only contain at most one restriction. * A
-            /// restriction has the form of `{field} {operator} {value}`. * The operator must be `CONTAINS (:)`. *
-            /// Supported fields: - `displayName`
-            ///
-            /// Examples:
-            ///
-            /// * All combined audiences for which the display name contains "Google": `displayName : "Google"`.
-            ///
-            /// The length of this field should be no more than 500 characters.</summary>
+            /// <summary>Allows filtering by combined audience fields. Supported syntax: * Filter expressions for
+            /// combined audiences currently can only contain at most one restriction. * A restriction has the form of
+            /// `{field} {operator} {value}`. * The operator must be `CONTAINS (:)`. * Supported fields: - `displayName`
+            /// Examples: * All combined audiences for which the display name contains "Google": `displayName :
+            /// "Google"`. The length of this field should be no more than 500 characters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>Field by which to sort the list. Acceptable values are:
-            ///
-            /// * `combinedAudienceId` (default) * `displayName`
-            ///
-            /// The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should
-            /// be added to the field name. Example: `displayName desc`.</summary>
+            /// <summary>Field by which to sort the list. Acceptable values are: * `combinedAudienceId` (default) *
+            /// `displayName` The default sorting order is ascending. To specify descending order for a field, a suffix
+            /// "desc" should be added to the field name. Example: `displayName desc`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
@@ -8178,17 +8401,13 @@ namespace Google.Apis.DisplayVideo.v1
 
         }
 
-        /// <summary>Lists custom lists.
-        ///
-        /// The order is defined by the order_by parameter.</summary>
+        /// <summary>Lists custom lists. The order is defined by the order_by parameter.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists custom lists.
-        ///
-        /// The order is defined by the order_by parameter.</summary>
+        /// <summary>Lists custom lists. The order is defined by the order_by parameter.</summary>
         public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListCustomListsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -8203,28 +8422,17 @@ namespace Google.Apis.DisplayVideo.v1
             [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-            /// <summary>Allows filtering by custom list fields.
-            ///
-            /// Supported syntax:
-            ///
-            /// * Filter expressions for custom lists currently can only contain at most one restriction. * A
-            /// restriction has the form of `{field} {operator} {value}`. * The operator must be `CONTAINS (:)`. *
-            /// Supported fields: - `displayName`
-            ///
-            /// Examples:
-            ///
-            /// * All custom lists for which the display name contains "Google": `displayName : "Google"`.
-            ///
-            /// The length of this field should be no more than 500 characters.</summary>
+            /// <summary>Allows filtering by custom list fields. Supported syntax: * Filter expressions for custom lists
+            /// currently can only contain at most one restriction. * A restriction has the form of `{field} {operator}
+            /// {value}`. * The operator must be `CONTAINS (:)`. * Supported fields: - `displayName` Examples: * All
+            /// custom lists for which the display name contains "Google": `displayName : "Google"`. The length of this
+            /// field should be no more than 500 characters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>Field by which to sort the list. Acceptable values are:
-            ///
-            /// * `customListId` (default) * `displayName`
-            ///
-            /// The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should
-            /// be added to the field name. Example: `displayName desc`.</summary>
+            /// <summary>Field by which to sort the list. Acceptable values are: * `customListId` (default) *
+            /// `displayName` The default sorting order is ascending. To specify descending order for a field, a suffix
+            /// "desc" should be added to the field name. Example: `displayName desc`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
@@ -8417,17 +8625,13 @@ namespace Google.Apis.DisplayVideo.v1
 
         }
 
-        /// <summary>Lists first and third party audiences.
-        ///
-        /// The order is defined by the order_by parameter.</summary>
+        /// <summary>Lists first and third party audiences. The order is defined by the order_by parameter.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists first and third party audiences.
-        ///
-        /// The order is defined by the order_by parameter.</summary>
+        /// <summary>Lists first and third party audiences. The order is defined by the order_by parameter.</summary>
         public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListFirstAndThirdPartyAudiencesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -8443,29 +8647,18 @@ namespace Google.Apis.DisplayVideo.v1
             [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-            /// <summary>Allows filtering by first and third party audience fields.
-            ///
-            /// Supported syntax:
-            ///
-            /// * Filter expressions for first and third party audiences currently can only contain at most one
-            /// restriction. * A restriction has the form of `{field} {operator} {value}`. * The operator must be
-            /// `CONTAINS (:)`. * Supported fields: - `displayName`
-            ///
-            /// Examples:
-            ///
-            /// * All first and third party audiences for which the display name contains "Google": `displayName :
-            /// "Google"`.
-            ///
-            /// The length of this field should be no more than 500 characters.</summary>
+            /// <summary>Allows filtering by first and third party audience fields. Supported syntax: * Filter
+            /// expressions for first and third party audiences currently can only contain at most one restriction. * A
+            /// restriction has the form of `{field} {operator} {value}`. * The operator must be `CONTAINS (:)`. *
+            /// Supported fields: - `displayName` Examples: * All first and third party audiences for which the display
+            /// name contains "Google": `displayName : "Google"`. The length of this field should be no more than 500
+            /// characters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>Field by which to sort the list. Acceptable values are:
-            ///
-            /// * `firstAndThirdPartyAudienceId` (default) * `displayName`
-            ///
-            /// The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should
-            /// be added to the field name. Example: `displayName desc`.</summary>
+            /// <summary>Field by which to sort the list. Acceptable values are: * `firstAndThirdPartyAudienceId`
+            /// (default) * `displayName` The default sorting order is ascending. To specify descending order for a
+            /// field, a suffix "desc" should be added to the field name. Example: `displayName desc`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
@@ -8854,17 +9047,13 @@ namespace Google.Apis.DisplayVideo.v1
 
         }
 
-        /// <summary>Lists Google audiences.
-        ///
-        /// The order is defined by the order_by parameter.</summary>
+        /// <summary>Lists Google audiences. The order is defined by the order_by parameter.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists Google audiences.
-        ///
-        /// The order is defined by the order_by parameter.</summary>
+        /// <summary>Lists Google audiences. The order is defined by the order_by parameter.</summary>
         public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListGoogleAudiencesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -8879,28 +9068,17 @@ namespace Google.Apis.DisplayVideo.v1
             [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-            /// <summary>Allows filtering by Google audience fields.
-            ///
-            /// Supported syntax:
-            ///
-            /// * Filter expressions for Google audiences currently can only contain at most one restriction. * A
-            /// restriction has the form of `{field} {operator} {value}`. * The operator must be `CONTAINS (:)`. *
-            /// Supported fields: - `displayName`
-            ///
-            /// Examples:
-            ///
-            /// * All Google audiences for which the display name contains "Google": `displayName : "Google"`.
-            ///
+            /// <summary>Allows filtering by Google audience fields. Supported syntax: * Filter expressions for Google
+            /// audiences currently can only contain at most one restriction. * A restriction has the form of `{field}
+            /// {operator} {value}`. * The operator must be `CONTAINS (:)`. * Supported fields: - `displayName`
+            /// Examples: * All Google audiences for which the display name contains "Google": `displayName : "Google"`.
             /// The length of this field should be no more than 500 characters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>Field by which to sort the list. Acceptable values are:
-            ///
-            /// * `googleAudienceId` (default) * `displayName`
-            ///
-            /// The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should
-            /// be added to the field name. Example: `displayName desc`.</summary>
+            /// <summary>Field by which to sort the list. Acceptable values are: * `googleAudienceId` (default) *
+            /// `displayName` The default sorting order is ascending. To specify descending order for a field, a suffix
+            /// "desc" should be added to the field name. Example: `displayName desc`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
@@ -9043,7 +9221,6 @@ namespace Google.Apis.DisplayVideo.v1
 
 
             /// <summary>Bulk edits multiple assignments between inventory sources and a single inventory source group.
-            ///
             /// The operation will delete the assigned inventory sources provided in
             /// BulkEditAssignedInventorySourcesRequest.deleted_assigned_inventory_sources and then create the assigned
             /// inventory sources provided in
@@ -9057,7 +9234,6 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>Bulk edits multiple assignments between inventory sources and a single inventory source group.
-            ///
             /// The operation will delete the assigned inventory sources provided in
             /// BulkEditAssignedInventorySourcesRequest.deleted_assigned_inventory_sources and then create the assigned
             /// inventory sources provided in
@@ -9149,15 +9325,13 @@ namespace Google.Apis.DisplayVideo.v1
                 [Google.Apis.Util.RequestParameterAttribute("inventorySourceGroupId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long InventorySourceGroupId { get; private set; }
 
-                /// <summary>The ID of the advertiser that owns the parent inventory source group.
-                ///
-                /// The parent partner will not have access to this assigned inventory source.</summary>
+                /// <summary>The ID of the advertiser that owns the parent inventory source group. The parent partner
+                /// will not have access to this assigned inventory source.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-                /// <summary>The ID of the partner that owns the parent inventory source group.
-                ///
-                /// Only this partner will have write access to this assigned inventory source.</summary>
+                /// <summary>The ID of the partner that owns the parent inventory source group. Only this partner will
+                /// have write access to this assigned inventory source.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> PartnerId { get; set; }
 
@@ -9254,15 +9428,13 @@ namespace Google.Apis.DisplayVideo.v1
                 [Google.Apis.Util.RequestParameterAttribute("assignedInventorySourceId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long AssignedInventorySourceId { get; private set; }
 
-                /// <summary>The ID of the advertiser that owns the parent inventory source group.
-                ///
-                /// The parent partner does not have access to this assigned inventory source.</summary>
+                /// <summary>The ID of the advertiser that owns the parent inventory source group. The parent partner
+                /// does not have access to this assigned inventory source.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-                /// <summary>The ID of the partner that owns the parent inventory source group.
-                ///
-                /// Only this partner has write access to this assigned inventory source.</summary>
+                /// <summary>The ID of the partner that owns the parent inventory source group. Only this partner has
+                /// write access to this assigned inventory source.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> PartnerId { get; set; }
 
@@ -9355,31 +9527,23 @@ namespace Google.Apis.DisplayVideo.v1
                 [Google.Apis.Util.RequestParameterAttribute("inventorySourceGroupId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long InventorySourceGroupId { get; private set; }
 
-                /// <summary>The ID of the advertiser that has access to the assignment.
-                ///
-                /// If the parent inventory source group is partner-owned, only advertisers to which the parent group is
-                /// explicitly shared can access the assigned inventory source.</summary>
+                /// <summary>The ID of the advertiser that has access to the assignment. If the parent inventory source
+                /// group is partner-owned, only advertisers to which the parent group is explicitly shared can access
+                /// the assigned inventory source.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-                /// <summary>Allows filtering by assigned inventory source fields.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the
-                /// logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * The operator
-                /// must be `EQUALS (=)`. * Supported fields: - `assignedInventorySourceId`
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
+                /// <summary>Allows filtering by assigned inventory source fields. Supported syntax: * Filter
+                /// expressions are made up of one or more restrictions. * Restrictions can be combined by the logical
+                /// operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * The operator must be
+                /// `EQUALS (=)`. * Supported fields: - `assignedInventorySourceId` The length of this field should be
+                /// no more than 500 characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Field by which to sort the list. Acceptable values are:
-                ///
-                /// * `assignedInventorySourceId` (default)
-                ///
-                /// The default sorting order is ascending. To specify descending order for a field, a suffix " desc"
-                /// should be added to the field name. Example: `assignedInventorySourceId desc`.</summary>
+                /// <summary>Field by which to sort the list. Acceptable values are: * `assignedInventorySourceId`
+                /// (default) The default sorting order is ascending. To specify descending order for a field, a suffix
+                /// " desc" should be added to the field name. Example: `assignedInventorySourceId desc`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
@@ -9388,18 +9552,14 @@ namespace Google.Apis.DisplayVideo.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>A token identifying a page of results the server should return.
-                ///
-                /// Typically, this is the value of next_page_token returned from the previous call to
-                /// `ListAssignedInventorySources` method. If not specified, the first page of results will be
-                /// returned.</summary>
+                /// <summary>A token identifying a page of results the server should return. Typically, this is the
+                /// value of next_page_token returned from the previous call to `ListAssignedInventorySources` method.
+                /// If not specified, the first page of results will be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>The ID of the partner that has access to the assignment.
-                ///
-                /// If the parent inventory source group is advertiser-owned, the assignment cannot be accessed via a
-                /// partner.</summary>
+                /// <summary>The ID of the partner that has access to the assignment. If the parent inventory source
+                /// group is advertiser-owned, the assignment cannot be accessed via a partner.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> PartnerId { get; set; }
 
@@ -9516,16 +9676,14 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
 
-            /// <summary>The ID of the advertiser that owns the inventory source group.
-            ///
-            /// The parent partner will not have access to this group.</summary>
+            /// <summary>The ID of the advertiser that owns the inventory source group. The parent partner will not have
+            /// access to this group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-            /// <summary>The ID of the partner that owns the inventory source group.
-            ///
-            /// Only this partner will have write access to this group. Only advertisers to which this group is
-            /// explicitly shared will have read access to this group.</summary>
+            /// <summary>The ID of the partner that owns the inventory source group. Only this partner will have write
+            /// access to this group. Only advertisers to which this group is explicitly shared will have read access to
+            /// this group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> PartnerId { get; set; }
 
@@ -9604,15 +9762,13 @@ namespace Google.Apis.DisplayVideo.v1
             [Google.Apis.Util.RequestParameterAttribute("inventorySourceGroupId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long InventorySourceGroupId { get; private set; }
 
-            /// <summary>The ID of the advertiser that owns the inventory source group.
-            ///
-            /// The parent partner does not have access to this group.</summary>
+            /// <summary>The ID of the advertiser that owns the inventory source group. The parent partner does not have
+            /// access to this group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-            /// <summary>The ID of the partner that owns the inventory source group.
-            ///
-            /// Only this partner has write access to this group.</summary>
+            /// <summary>The ID of the partner that owns the inventory source group. Only this partner has write access
+            /// to this group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> PartnerId { get; set; }
 
@@ -9694,16 +9850,14 @@ namespace Google.Apis.DisplayVideo.v1
             [Google.Apis.Util.RequestParameterAttribute("inventorySourceGroupId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long InventorySourceGroupId { get; private set; }
 
-            /// <summary>The ID of the advertiser that has access to the inventory source group.
-            ///
-            /// If an inventory source group is partner-owned, only advertisers to which the group is explicitly shared
-            /// can access the group.</summary>
+            /// <summary>The ID of the advertiser that has access to the inventory source group. If an inventory source
+            /// group is partner-owned, only advertisers to which the group is explicitly shared can access the
+            /// group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-            /// <summary>The ID of the partner that has access to the inventory source group.
-            ///
-            /// A partner cannot access an advertiser-owned inventory source group.</summary>
+            /// <summary>The ID of the partner that has access to the inventory source group. A partner cannot access an
+            /// advertiser-owned inventory source group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> PartnerId { get; set; }
 
@@ -9762,17 +9916,15 @@ namespace Google.Apis.DisplayVideo.v1
 
         }
 
-        /// <summary>Lists inventory source groups that are accessible to the current user.
-        ///
-        /// The order is defined by the order_by parameter.</summary>
+        /// <summary>Lists inventory source groups that are accessible to the current user. The order is defined by the
+        /// order_by parameter.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists inventory source groups that are accessible to the current user.
-        ///
-        /// The order is defined by the order_by parameter.</summary>
+        /// <summary>Lists inventory source groups that are accessible to the current user. The order is defined by the
+        /// order_by parameter.</summary>
         public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListInventorySourceGroupsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -9783,31 +9935,23 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
 
-            /// <summary>The ID of the advertiser that has access to the inventory source group.
-            ///
-            /// If an inventory source group is partner-owned, only advertisers to which the group is explicitly shared
-            /// can access the group.</summary>
+            /// <summary>The ID of the advertiser that has access to the inventory source group. If an inventory source
+            /// group is partner-owned, only advertisers to which the group is explicitly shared can access the
+            /// group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-            /// <summary>Allows filtering by inventory source group properties.
-            ///
-            /// Supported syntax:
-            ///
-            /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the
-            /// logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * The operator must
-            /// be `EQUALS (=)`. * Supported fields: - `inventorySourceGroupId`
-            ///
-            /// The length of this field should be no more than 500 characters.</summary>
+            /// <summary>Allows filtering by inventory source group properties. Supported syntax: * Filter expressions
+            /// are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. *
+            /// A restriction has the form of `{field} {operator} {value}`. * The operator must be `EQUALS (=)`. *
+            /// Supported fields: - `inventorySourceGroupId` The length of this field should be no more than 500
+            /// characters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>Field by which to sort the list. Acceptable values are:
-            ///
-            /// * `displayName` (default) * `inventorySourceGroupId`
-            ///
-            /// The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should
-            /// be added to the field name. For example, `displayName desc`.</summary>
+            /// <summary>Field by which to sort the list. Acceptable values are: * `displayName` (default) *
+            /// `inventorySourceGroupId` The default sorting order is ascending. To specify descending order for a
+            /// field, a suffix "desc" should be added to the field name. For example, `displayName desc`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
@@ -9822,9 +9966,8 @@ namespace Google.Apis.DisplayVideo.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>The ID of the partner that has access to the inventory source group.
-            ///
-            /// A partner cannot access advertiser-owned inventory source groups.</summary>
+            /// <summary>The ID of the partner that has access to the inventory source group. A partner cannot access
+            /// advertiser-owned inventory source groups.</summary>
             [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> PartnerId { get; set; }
 
@@ -9938,15 +10081,13 @@ namespace Google.Apis.DisplayVideo.v1
             [Google.Apis.Util.RequestParameterAttribute("inventorySourceGroupId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long InventorySourceGroupId { get; private set; }
 
-            /// <summary>The ID of the advertiser that owns the inventory source group.
-            ///
-            /// The parent partner does not have access to this group.</summary>
+            /// <summary>The ID of the advertiser that owns the inventory source group. The parent partner does not have
+            /// access to this group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-            /// <summary>The ID of the partner that owns the inventory source group.
-            ///
-            /// Only this partner has write access to this group.</summary>
+            /// <summary>The ID of the partner that owns the inventory source group. Only this partner has write access
+            /// to this group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> PartnerId { get; set; }
 
@@ -10115,19 +10256,17 @@ namespace Google.Apis.DisplayVideo.v1
 
         }
 
-        /// <summary>Lists inventory sources that are accessible to the current user.
-        ///
-        /// The order is defined by the order_by parameter. If a filter by entity_status is not specified, inventory
-        /// sources with entity status `ENTITY_STATUS_ARCHIVED` will not be included in the results.</summary>
+        /// <summary>Lists inventory sources that are accessible to the current user. The order is defined by the
+        /// order_by parameter. If a filter by entity_status is not specified, inventory sources with entity status
+        /// `ENTITY_STATUS_ARCHIVED` will not be included in the results.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists inventory sources that are accessible to the current user.
-        ///
-        /// The order is defined by the order_by parameter. If a filter by entity_status is not specified, inventory
-        /// sources with entity status `ENTITY_STATUS_ARCHIVED` will not be included in the results.</summary>
+        /// <summary>Lists inventory sources that are accessible to the current user. The order is defined by the
+        /// order_by parameter. If a filter by entity_status is not specified, inventory sources with entity status
+        /// `ENTITY_STATUS_ARCHIVED` will not be included in the results.</summary>
         public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListInventorySourcesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -10142,31 +10281,20 @@ namespace Google.Apis.DisplayVideo.v1
             [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-            /// <summary>Allows filtering by inventory source properties.
-            ///
-            /// Supported syntax:
-            ///
-            /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or
-            /// `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form
-            /// of `{field} {operator} {value}`. * The operator must be `EQUALS (=)`. * Supported fields: -
-            /// `status.entityStatus` - `commitment` - `deliveryMethod` - `rateDetails.rateType` - `exchange`
-            ///
-            /// Examples:
-            ///
-            /// * All active inventory sources: `status.entityStatus="ENTITY_STATUS_ACTIVE"` * Inventory sources
-            /// belonging to Google Ad Manager or Rubicon exchanges: `exchange="EXCHANGE_GOOGLE_AD_MANAGER" OR
-            /// exchange="EXCHANGE_RUBICON"`
-            ///
-            /// The length of this field should be no more than 500 characters.</summary>
+            /// <summary>Allows filtering by inventory source properties. Supported syntax: * Filter expressions are
+            /// made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators.
+            /// A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+            /// {value}`. * The operator must be `EQUALS (=)`. * Supported fields: - `status.entityStatus` -
+            /// `commitment` - `deliveryMethod` - `rateDetails.rateType` - `exchange` Examples: * All active inventory
+            /// sources: `status.entityStatus="ENTITY_STATUS_ACTIVE"` * Inventory sources belonging to Google Ad Manager
+            /// or Rubicon exchanges: `exchange="EXCHANGE_GOOGLE_AD_MANAGER" OR exchange="EXCHANGE_RUBICON"` The length
+            /// of this field should be no more than 500 characters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>Field by which to sort the list. Acceptable values are:
-            ///
-            /// * `displayName` (default)
-            ///
-            /// The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should
-            /// be added to the field name. For example, `displayName desc`.</summary>
+            /// <summary>Field by which to sort the list. Acceptable values are: * `displayName` (default) The default
+            /// sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to
+            /// the field name. For example, `displayName desc`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
@@ -10285,16 +10413,14 @@ namespace Google.Apis.DisplayVideo.v1
 
 
         /// <summary>Downloads media. Download is supported on the URI `/download/{resource_name=**}?alt=media.`
-        ///
         /// **Note**: Download requests will not be successful without including `alt=media` query string.</summary>
-        /// <param name="resourceName">Name of the media that is being downloaded.  See ReadRequest.resource_name.</param>
+        /// <param name="resourceName">Name of the media that is being downloaded. See ReadRequest.resource_name.</param>
         public virtual DownloadRequest Download(string resourceName)
         {
             return new DownloadRequest(service, resourceName);
         }
 
         /// <summary>Downloads media. Download is supported on the URI `/download/{resource_name=**}?alt=media.`
-        ///
         /// **Note**: Download requests will not be successful without including `alt=media` query string.</summary>
         public class DownloadRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia>
         {
@@ -10308,7 +10434,7 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
 
-            /// <summary>Name of the media that is being downloaded.  See ReadRequest.resource_name.</summary>
+            /// <summary>Name of the media that is being downloaded. See ReadRequest.resource_name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
@@ -10466,10 +10592,9 @@ namespace Google.Apis.DisplayVideo.v1
                 }
 
 
-                /// <summary>Bulk edits sites under a single channel.
-                ///
-                /// The operation will delete the sites provided in BulkEditSitesRequest.deleted_sites and then create
-                /// the sites provided in BulkEditSitesRequest.created_sites.</summary>
+                /// <summary>Bulk edits sites under a single channel. The operation will delete the sites provided in
+                /// BulkEditSitesRequest.deleted_sites and then create the sites provided in
+                /// BulkEditSitesRequest.created_sites.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="partnerId">The ID of the partner that owns the parent channel.</param>
                 /// <param
@@ -10479,10 +10604,9 @@ namespace Google.Apis.DisplayVideo.v1
                     return new BulkEditRequest(service, body, partnerId, channelId);
                 }
 
-                /// <summary>Bulk edits sites under a single channel.
-                ///
-                /// The operation will delete the sites provided in BulkEditSitesRequest.deleted_sites and then create
-                /// the sites provided in BulkEditSitesRequest.created_sites.</summary>
+                /// <summary>Bulk edits sites under a single channel. The operation will delete the sites provided in
+                /// BulkEditSitesRequest.deleted_sites and then create the sites provided in
+                /// BulkEditSitesRequest.created_sites.</summary>
                 public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditSitesResponse>
                 {
                     /// <summary>Constructs a new BulkEdit request.</summary>
@@ -10792,26 +10916,17 @@ namespace Google.Apis.DisplayVideo.v1
                     [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-                    /// <summary>Allows filtering by site fields.
-                    ///
-                    /// Supported syntax:
-                    ///
-                    /// * Filter expressions for site currently can only contain at most one * restriction. * A
-                    /// restriction has the form of `{field} {operator} {value}`. * The operator must be `CONTAINS (:)`.
-                    /// * Supported fields: - `urlOrAppId`
-                    ///
-                    /// Examples:
-                    ///
-                    /// * All sites for which the URL or app ID contains "google": `urlOrAppId : "google"`</summary>
+                    /// <summary>Allows filtering by site fields. Supported syntax: * Filter expressions for site
+                    /// currently can only contain at most one * restriction. * A restriction has the form of `{field}
+                    /// {operator} {value}`. * The operator must be `CONTAINS (:)`. * Supported fields: - `urlOrAppId`
+                    /// Examples: * All sites for which the URL or app ID contains "google": `urlOrAppId :
+                    /// "google"`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Field by which to sort the list. Acceptable values are:
-                    ///
-                    /// * `urlOrAppId` (default)
-                    ///
-                    /// The default sorting order is ascending. To specify descending order for a field, a suffix "
-                    /// desc" should be added to the field name. Example: `urlOrAppId desc`.</summary>
+                    /// <summary>Field by which to sort the list. Acceptable values are: * `urlOrAppId` (default) The
+                    /// default sorting order is ascending. To specify descending order for a field, a suffix " desc"
+                    /// should be added to the field name. Example: `urlOrAppId desc`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -10820,10 +10935,9 @@ namespace Google.Apis.DisplayVideo.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>A token identifying a page of results the server should return.
-                    ///
-                    /// Typically, this is the value of next_page_token returned from the previous call to `ListSites`
-                    /// method. If not specified, the first page of results will be returned.</summary>
+                    /// <summary>A token identifying a page of results the server should return. Typically, this is the
+                    /// value of next_page_token returned from the previous call to `ListSites` method. If not
+                    /// specified, the first page of results will be returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -11116,28 +11230,17 @@ namespace Google.Apis.DisplayVideo.v1
                 [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-                /// <summary>Allows filtering by channel fields.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions for channel currently can only contain at most one * restriction. * A
-                /// restriction has the form of `{field} {operator} {value}`. * The operator must be `CONTAINS (:)`. *
-                /// Supported fields: - `displayName`
-                ///
-                /// Examples:
-                ///
-                /// * All channels for which the display name contains "google": `displayName : "google"`.
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
+                /// <summary>Allows filtering by channel fields. Supported syntax: * Filter expressions for channel
+                /// currently can only contain at most one * restriction. * A restriction has the form of `{field}
+                /// {operator} {value}`. * The operator must be `CONTAINS (:)`. * Supported fields: - `displayName`
+                /// Examples: * All channels for which the display name contains "google": `displayName : "google"`. The
+                /// length of this field should be no more than 500 characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Field by which to sort the list. Acceptable values are:
-                ///
-                /// * `displayName` (default) * `channelId`
-                ///
-                /// The default sorting order is ascending. To specify descending order for a field, a suffix " desc"
-                /// should be added to the field name. Example: `displayName desc`.</summary>
+                /// <summary>Field by which to sort the list. Acceptable values are: * `displayName` (default) *
+                /// `channelId` The default sorting order is ascending. To specify descending order for a field, a
+                /// suffix " desc" should be added to the field name. Example: `displayName desc`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
@@ -11449,28 +11552,24 @@ namespace Google.Apis.DisplayVideo.v1
             }
         }
 
-        /// <summary>Creates an SDF Download Task. Returns an Operation.
-        ///
-        /// An SDF Download Task is a long-running, asynchronous operation. The metadata type of this operation is
-        /// SdfDownloadTaskMetadata. If the request is successful, the response type of the operation is
-        /// SdfDownloadTask. The response will not include the download files, which must be retrieved with
-        /// media.download. The state of operation can be retrieved with sdfdownloadtask.operations.get.
-        ///
-        /// Any errors can be found in the error.message. Note that error.details is expected to be empty.</summary>
+        /// <summary>Creates an SDF Download Task. Returns an Operation. An SDF Download Task is a long-running,
+        /// asynchronous operation. The metadata type of this operation is SdfDownloadTaskMetadata. If the request is
+        /// successful, the response type of the operation is SdfDownloadTask. The response will not include the
+        /// download files, which must be retrieved with media.download. The state of operation can be retrieved with
+        /// sdfdownloadtask.operations.get. Any errors can be found in the error.message. Note that error.details is
+        /// expected to be empty.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.CreateSdfDownloadTaskRequest body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Creates an SDF Download Task. Returns an Operation.
-        ///
-        /// An SDF Download Task is a long-running, asynchronous operation. The metadata type of this operation is
-        /// SdfDownloadTaskMetadata. If the request is successful, the response type of the operation is
-        /// SdfDownloadTask. The response will not include the download files, which must be retrieved with
-        /// media.download. The state of operation can be retrieved with sdfdownloadtask.operations.get.
-        ///
-        /// Any errors can be found in the error.message. Note that error.details is expected to be empty.</summary>
+        /// <summary>Creates an SDF Download Task. Returns an Operation. An SDF Download Task is a long-running,
+        /// asynchronous operation. The metadata type of this operation is SdfDownloadTaskMetadata. If the request is
+        /// successful, the response type of the operation is SdfDownloadTask. The response will not include the
+        /// download files, which must be retrieved with media.download. The state of operation can be retrieved with
+        /// sdfdownloadtask.operations.get. Any errors can be found in the error.message. Note that error.details is
+        /// expected to be empty.</summary>
         public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Operation>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -11586,80 +11685,125 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Required. The type of targeting option to retrieve.</summary>
                 public enum TargetingTypeEnum
                 {
+                    /// <summary>Default value when type is not specified or is unknown in this version.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
                     TARGETINGTYPEUNSPECIFIED,
+                    /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
                     TARGETINGTYPECHANNEL,
+                    /// <summary>Target an app category (for example, education or puzzle games).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
                     TARGETINGTYPEAPPCATEGORY,
+                    /// <summary>Target a specific app (for example, Angry Birds).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
                     TARGETINGTYPEAPP,
+                    /// <summary>Target a specific url (for example, quora.com).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
                     TARGETINGTYPEURL,
+                    /// <summary>Target ads during a chosen time period on a specific day.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
                     TARGETINGTYPEDAYANDTIME,
+                    /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
                     TARGETINGTYPEAGERANGE,
+                    /// <summary>Target ads to the specified regions on a regional location list.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
                     TARGETINGTYPEREGIONALLOCATIONLIST,
+                    /// <summary>Target ads to the specified points of interest on a proximity location list.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
                     TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                    /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
                     TARGETINGTYPEGENDER,
+                    /// <summary>Target a specific video player size for video ads.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
                     TARGETINGTYPEVIDEOPLAYERSIZE,
+                    /// <summary>Target user rewarded content for video ads.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
                     TARGETINGTYPEUSERREWARDEDCONTENT,
+                    /// <summary>Target ads to a specific parental status (for example, parent or not a
+                    /// parent).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
                     TARGETINGTYPEPARENTALSTATUS,
+                    /// <summary>Target video or audio ads in a specific content instream position (for example, pre-
+                    /// roll, mid-roll, or post-roll).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
                     TARGETINGTYPECONTENTINSTREAMPOSITION,
+                    /// <summary>Target ads in a specific content outstream position.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
                     TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                    /// <summary>Target ads to a specific device type (for example, tablet or connected TV).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
                     TARGETINGTYPEDEVICETYPE,
+                    /// <summary>Target ads to an audience or groups of audiences. Singleton field, at most one can
+                    /// exist on a single Lineitem at a time.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
                     TARGETINGTYPEAUDIENCEGROUP,
+                    /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
                     TARGETINGTYPEBROWSER,
+                    /// <summary>Target ads to a specific household income range (for example, top 10%).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
                     TARGETINGTYPEHOUSEHOLDINCOME,
+                    /// <summary>Target ads in a specific on screen position.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
                     TARGETINGTYPEONSCREENPOSITION,
+                    /// <summary>Filter web sites through third party verification (for example, IAS or
+                    /// DoubleVerify).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
                     TARGETINGTYPETHIRDPARTYVERIFIER,
+                    /// <summary>Filter web sites by specific digital content label ratings (for example, DL-MA:
+                    /// suitable only for mature audiences).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                     TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                    /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
                     TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                    /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
                     TARGETINGTYPEENVIRONMENT,
+                    /// <summary>Target ads to a specific network carrier or internet service provider (ISP) (for
+                    /// example, Comcast or Orange).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
                     TARGETINGTYPECARRIERANDISP,
+                    /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
                     TARGETINGTYPEOPERATINGSYSTEM,
+                    /// <summary>Target ads to a specific device make or model (for example, Roku or Samsung).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
                     TARGETINGTYPEDEVICEMAKEMODEL,
+                    /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
                     TARGETINGTYPEKEYWORD,
+                    /// <summary>Target ads to a specific negative keyword list.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
                     TARGETINGTYPENEGATIVEKEYWORDLIST,
+                    /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
                     TARGETINGTYPEVIEWABILITY,
+                    /// <summary>Target ads to a specific content category (for example, arts &
+                    /// entertainment).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                     TARGETINGTYPECATEGORY,
+                    /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
                     TARGETINGTYPEINVENTORYSOURCE,
+                    /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
                     TARGETINGTYPELANGUAGE,
+                    /// <summary>Target ads to ads.txt authorized sellers.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
                     TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                    /// <summary>Target ads to a specific regional location (for example, a city or state).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
                     TARGETINGTYPEGEOREGION,
+                    /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
                     TARGETINGTYPEINVENTORYSOURCEGROUP,
+                    /// <summary>Purchase impressions from specific exchanges.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
                     TARGETINGTYPEEXCHANGE,
+                    /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                     TARGETINGTYPESUBEXCHANGE,
                 }
@@ -11753,80 +11897,125 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Required. The type of targeting option to be listed.</summary>
                 public enum TargetingTypeEnum
                 {
+                    /// <summary>Default value when type is not specified or is unknown in this version.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
                     TARGETINGTYPEUNSPECIFIED,
+                    /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
                     TARGETINGTYPECHANNEL,
+                    /// <summary>Target an app category (for example, education or puzzle games).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
                     TARGETINGTYPEAPPCATEGORY,
+                    /// <summary>Target a specific app (for example, Angry Birds).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
                     TARGETINGTYPEAPP,
+                    /// <summary>Target a specific url (for example, quora.com).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
                     TARGETINGTYPEURL,
+                    /// <summary>Target ads during a chosen time period on a specific day.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
                     TARGETINGTYPEDAYANDTIME,
+                    /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
                     TARGETINGTYPEAGERANGE,
+                    /// <summary>Target ads to the specified regions on a regional location list.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
                     TARGETINGTYPEREGIONALLOCATIONLIST,
+                    /// <summary>Target ads to the specified points of interest on a proximity location list.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
                     TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                    /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
                     TARGETINGTYPEGENDER,
+                    /// <summary>Target a specific video player size for video ads.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
                     TARGETINGTYPEVIDEOPLAYERSIZE,
+                    /// <summary>Target user rewarded content for video ads.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
                     TARGETINGTYPEUSERREWARDEDCONTENT,
+                    /// <summary>Target ads to a specific parental status (for example, parent or not a
+                    /// parent).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
                     TARGETINGTYPEPARENTALSTATUS,
+                    /// <summary>Target video or audio ads in a specific content instream position (for example, pre-
+                    /// roll, mid-roll, or post-roll).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
                     TARGETINGTYPECONTENTINSTREAMPOSITION,
+                    /// <summary>Target ads in a specific content outstream position.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
                     TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                    /// <summary>Target ads to a specific device type (for example, tablet or connected TV).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
                     TARGETINGTYPEDEVICETYPE,
+                    /// <summary>Target ads to an audience or groups of audiences. Singleton field, at most one can
+                    /// exist on a single Lineitem at a time.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
                     TARGETINGTYPEAUDIENCEGROUP,
+                    /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
                     TARGETINGTYPEBROWSER,
+                    /// <summary>Target ads to a specific household income range (for example, top 10%).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
                     TARGETINGTYPEHOUSEHOLDINCOME,
+                    /// <summary>Target ads in a specific on screen position.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
                     TARGETINGTYPEONSCREENPOSITION,
+                    /// <summary>Filter web sites through third party verification (for example, IAS or
+                    /// DoubleVerify).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
                     TARGETINGTYPETHIRDPARTYVERIFIER,
+                    /// <summary>Filter web sites by specific digital content label ratings (for example, DL-MA:
+                    /// suitable only for mature audiences).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                     TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                    /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
                     TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                    /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
                     TARGETINGTYPEENVIRONMENT,
+                    /// <summary>Target ads to a specific network carrier or internet service provider (ISP) (for
+                    /// example, Comcast or Orange).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
                     TARGETINGTYPECARRIERANDISP,
+                    /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
                     TARGETINGTYPEOPERATINGSYSTEM,
+                    /// <summary>Target ads to a specific device make or model (for example, Roku or Samsung).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
                     TARGETINGTYPEDEVICEMAKEMODEL,
+                    /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
                     TARGETINGTYPEKEYWORD,
+                    /// <summary>Target ads to a specific negative keyword list.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
                     TARGETINGTYPENEGATIVEKEYWORDLIST,
+                    /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
                     TARGETINGTYPEVIEWABILITY,
+                    /// <summary>Target ads to a specific content category (for example, arts &
+                    /// entertainment).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                     TARGETINGTYPECATEGORY,
+                    /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
                     TARGETINGTYPEINVENTORYSOURCE,
+                    /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
                     TARGETINGTYPELANGUAGE,
+                    /// <summary>Target ads to ads.txt authorized sellers.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
                     TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                    /// <summary>Target ads to a specific regional location (for example, a city or state).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
                     TARGETINGTYPEGEOREGION,
+                    /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
                     TARGETINGTYPEINVENTORYSOURCEGROUP,
+                    /// <summary>Purchase impressions from specific exchanges.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
                     TARGETINGTYPEEXCHANGE,
+                    /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                     TARGETINGTYPESUBEXCHANGE,
                 }
@@ -11835,24 +12024,17 @@ namespace Google.Apis.DisplayVideo.v1
                 [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-                /// <summary>Allows filtering by targeting option properties.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `OR`
-                /// logical operators. * A restriction has the form of `{field} {operator} {value}`. * The operator must
-                /// be "=" (equal sign). * Supported fields: - `targetingOptionId`
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
+                /// <summary>Allows filtering by targeting option properties. Supported syntax: * Filter expressions are
+                /// made up of one or more restrictions. * Restrictions can be combined by `OR` logical operators. * A
+                /// restriction has the form of `{field} {operator} {value}`. * The operator must be "=" (equal sign). *
+                /// Supported fields: - `targetingOptionId` The length of this field should be no more than 500
+                /// characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Field by which to sort the list. Acceptable values are:
-                ///
-                /// * `targetingOptionId` (default)
-                ///
-                /// The default sorting order is ascending. To specify descending order for a field, a suffix "desc"
-                /// should be added to the field name. Example: `targetingOptionId desc`.</summary>
+                /// <summary>Field by which to sort the list. Acceptable values are: * `targetingOptionId` (default) The
+                /// default sorting order is ascending. To specify descending order for a field, a suffix "desc" should
+                /// be added to the field name. Example: `targetingOptionId desc`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
@@ -11963,17 +12145,15 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string DisplayName { get; set; } 
 
         /// <summary>The minimum visible video duration required (in seconds) in order for an impression to be recorded.
-        ///
         /// You must specify minimum_duration, minimum_quartile or both. If both are specified, an impression meets the
         /// metric criteria if either requirement is met (whichever happens first).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumDuration")]
         public virtual string MinimumDuration { get; set; } 
 
         /// <summary>The minimum visible video duration required, based on the video quartiles, in order for an
-        /// impression to be recorded.
-        ///
-        /// You must specify minimum_duration, minimum_quartile or both. If both are specified, an impression meets the
-        /// metric criteria if either requirement is met (whichever happens first).</summary>
+        /// impression to be recorded. You must specify minimum_duration, minimum_quartile or both. If both are
+        /// specified, an impression meets the metric criteria if either requirement is met (whichever happens
+        /// first).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumQuartile")]
         public virtual string MinimumQuartile { get; set; } 
 
@@ -12021,18 +12201,15 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataAccessConfig")]
         public virtual AdvertiserDataAccessConfig DataAccessConfig { get; set; } 
 
-        /// <summary>Required. The display name of the advertiser.
-        ///
-        /// Must be UTF-8 encoded with a maximum size of 240 bytes.</summary>
+        /// <summary>Required. The display name of the advertiser. Must be UTF-8 encoded with a maximum size of 240
+        /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
         /// <summary>Required. Controls whether or not insertion orders and line items of the advertiser can spend their
-        /// budgets and bid on inventory.
-        ///
-        /// * Accepted values are `ENTITY_STATUS_ACTIVE` and `ENTITY_STATUS_SCHEDULED_FOR_DELETION`. * If set to
-        /// `ENTITY_STATUS_SCHEDULED_FOR_DELETION`, the advertiser will be deleted 30 days from when it was first
-        /// scheduled for deletion.</summary>
+        /// budgets and bid on inventory. * Accepted values are `ENTITY_STATUS_ACTIVE` and
+        /// `ENTITY_STATUS_SCHEDULED_FOR_DELETION`. * If set to `ENTITY_STATUS_SCHEDULED_FOR_DELETION`, the advertiser
+        /// will be deleted 30 days from when it was first scheduled for deletion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
         public virtual string EntityStatus { get; set; } 
 
@@ -12093,18 +12270,16 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("iasClientId")]
         public virtual System.Nullable<long> IasClientId { get; set; } 
 
-        /// <summary>Whether or not to use DV360's Online Behavioral Advertising (OBA) compliance.
-        ///
-        /// Warning: Changing OBA settings may cause the audit status of your creatives to be reset by some ad
-        /// exchanges, making them ineligible to serve until they are re-approved.</summary>
+        /// <summary>Whether or not to use DV360's Online Behavioral Advertising (OBA) compliance. Warning: Changing OBA
+        /// settings may cause the audit status of your creatives to be reset by some ad exchanges, making them
+        /// ineligible to serve until they are re-approved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obaComplianceDisabled")]
         public virtual System.Nullable<bool> ObaComplianceDisabled { get; set; } 
 
         /// <summary>By setting this field to `true`, you, on behalf of your company, authorize Google to use video
         /// creatives associated with this Display & Video 360 advertiser to provide reporting and features related to
-        /// the advertiser's television campaigns.
-        ///
-        /// Applicable only when the advertiser has a CM hybrid ad server configuration.</summary>
+        /// the advertiser's television campaigns. Applicable only when the advertiser has a CM hybrid ad server
+        /// configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoCreativeDataSharingAuthorized")]
         public virtual System.Nullable<bool> VideoCreativeDataSharingAuthorized { get; set; } 
 
@@ -12115,9 +12290,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Settings that control how advertiser related data may be accessed.</summary>
     public class AdvertiserDataAccessConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Structured Data Files (SDF) settings for the advertiser.
-        ///
-        /// If not specified, the SDF settings of the parent partner are used.</summary>
+        /// <summary>Structured Data Files (SDF) settings for the advertiser. If not specified, the SDF settings of the
+        /// parent partner are used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sdfConfig")]
         public virtual AdvertiserSdfConfig SdfConfig { get; set; } 
 
@@ -12128,38 +12302,29 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>General settings of an advertiser.</summary>
     public class AdvertiserGeneralConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Immutable. Advertiser's currency in ISO 4217 format.
-        ///
-        /// Accepted codes and the currencies they represent are:
-        ///
-        /// Currency Code : Currency Name
-        ///
-        /// * `ARS` : Argentine Peso * `AUD` : Australian Dollar * `BRL` : Brazilian Real * `CAD` : Canadian Dollar *
-        /// `CHF` : Swiss Franc * `CLP` : Chilean Peso * `CNY` : Chinese Yuan * `COP` : Colombian Peso * `CZK` : Czech
-        /// Koruna * `DKK` : Danish Krone * `EGP` : Egyption Pound * `EUR` : Euro * `GBP` : British Pound * `HKD` : Hong
-        /// Kong Dollar * `HUF` : Hungarian Forint * `IDR` : Indonesian Rupiah * `ILS` : Israeli Shekel * `INR` : Indian
-        /// Rupee * `JPY` : Japanese Yen * `KRW` : South Korean Won * `MXN` : Mexican Pesos * `MYR` : Malaysian Ringgit
-        /// * `NGN` : Nigerian Naira * `NOK` : Norwegian Krone * `NZD` : New Zealand Dollar * `PEN` : Peruvian Nuevo Sol
-        /// * `PLN` : Polish Zloty * `RON` : New Romanian Leu * `RUB` : Russian Ruble * `SEK` : Swedish Krona * `TRY` :
-        /// Turkish Lira * `TWD` : New Taiwan Dollar * `USD` : US Dollar * `ZAR` : South African Rand</summary>
+        /// <summary>Required. Immutable. Advertiser's currency in ISO 4217 format. Accepted codes and the currencies
+        /// they represent are: Currency Code : Currency Name * `ARS` : Argentine Peso * `AUD` : Australian Dollar *
+        /// `BRL` : Brazilian Real * `CAD` : Canadian Dollar * `CHF` : Swiss Franc * `CLP` : Chilean Peso * `CNY` :
+        /// Chinese Yuan * `COP` : Colombian Peso * `CZK` : Czech Koruna * `DKK` : Danish Krone * `EGP` : Egyption Pound
+        /// * `EUR` : Euro * `GBP` : British Pound * `HKD` : Hong Kong Dollar * `HUF` : Hungarian Forint * `IDR` :
+        /// Indonesian Rupiah * `ILS` : Israeli Shekel * `INR` : Indian Rupee * `JPY` : Japanese Yen * `KRW` : South
+        /// Korean Won * `MXN` : Mexican Pesos * `MYR` : Malaysian Ringgit * `NGN` : Nigerian Naira * `NOK` : Norwegian
+        /// Krone * `NZD` : New Zealand Dollar * `PEN` : Peruvian Nuevo Sol * `PLN` : Polish Zloty * `RON` : New
+        /// Romanian Leu * `RUB` : Russian Ruble * `SEK` : Swedish Krona * `TRY` : Turkish Lira * `TWD` : New Taiwan
+        /// Dollar * `USD` : US Dollar * `ZAR` : South African Rand</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
         public virtual string CurrencyCode { get; set; } 
 
         /// <summary>Required. The domain URL of the advertiser's primary website. The system will send this information
-        /// to publishers that require website URL to associate a campaign with an advertiser.
-        ///
-        /// Provide a URL with no path or query string, beginning with `http:` or `https:`. For example,
-        /// http://www.example.com</summary>
+        /// to publishers that require website URL to associate a campaign with an advertiser. Provide a URL with no
+        /// path or query string, beginning with `http:` or `https:`. For example, http://www.example.com</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainUrl")]
         public virtual string DomainUrl { get; set; } 
 
         /// <summary>Output only. The standard TZ database name of the advertiser's time zone. For example,
-        /// `America/New_York`.
-        ///
-        /// See more at: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-        ///
-        /// For CM hybrid advertisers, the time zone is the same as that of the associated CM account; for third-party
-        /// only advertisers, the time zone is the same as that of the parent partner.</summary>
+        /// `America/New_York`. See more at: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones For CM hybrid
+        /// advertisers, the time zone is the same as that of the associated CM account; for third-party only
+        /// advertisers, the time zone is the same as that of the parent partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; } 
 
@@ -12170,17 +12335,14 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Structured Data Files (SDF) settings of an advertiser.</summary>
     public class AdvertiserSdfConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether or not this advertiser overrides the SDF configuration of its parent partner.
-        ///
-        /// By default, an advertiser inherits the SDF configuration from the parent partner. To override the partner
-        /// configuration, set this field to `true` and provide the new configuration in sdfConfig.</summary>
+        /// <summary>Whether or not this advertiser overrides the SDF configuration of its parent partner. By default,
+        /// an advertiser inherits the SDF configuration from the parent partner. To override the partner configuration,
+        /// set this field to `true` and provide the new configuration in sdfConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overridePartnerSdfConfig")]
         public virtual System.Nullable<bool> OverridePartnerSdfConfig { get; set; } 
 
-        /// <summary>The SDF configuration for the advertiser.
-        ///
-        /// * Required when overridePartnerSdfConfig is `true`. * Output only when overridePartnerSdfConfig is
-        /// `false`.</summary>
+        /// <summary>The SDF configuration for the advertiser. * Required when overridePartnerSdfConfig is `true`. *
+        /// Output only when overridePartnerSdfConfig is `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sdfConfig")]
         public virtual SdfConfig SdfConfig { get; set; } 
 
@@ -12236,10 +12398,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_APP`.</summary>
     public class AppAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The ID of the app.
-        ///
-        /// Android's Play store app uses bundle ID, for example `com.google.android.gm`. Apple's App store app ID uses
-        /// 9 digit string, for example `422689480`.</summary>
+        /// <summary>Required. The ID of the app. Android's Play store app uses bundle ID, for example
+        /// `com.google.android.gm`. Apple's App store app ID uses 9 digit string, for example `422689480`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
         public virtual string AppId { get; set; } 
 
@@ -12391,12 +12551,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual AudienceGroupAssignedTargetingOptionDetails AudienceGroupDetails { get; set; } 
 
         /// <summary>Authorized seller status details. This field will be populated when the TargetingType is
-        /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
-        ///
-        /// You can only target one authorized seller status option per line item.
-        ///
-        /// If a line item doesn't have an authorized seller status option, all authorized sellers indicated as DIRECT
-        /// or RESELLER in the ads.txt file are targeted by default.</summary>
+        /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`. You can only target one authorized seller status option per line
+        /// item. If a line item doesn't have an authorized seller status option, all authorized sellers indicated as
+        /// DIRECT or RESELLER in the ads.txt file are targeted by default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedSellerStatusDetails")]
         public virtual AuthorizedSellerStatusAssignedTargetingOptionDetails AuthorizedSellerStatusDetails { get; set; } 
 
@@ -12411,7 +12568,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual CarrierAndIspAssignedTargetingOptionDetails CarrierAndIspDetails { get; set; } 
 
         /// <summary>Category details. This field will be populated when the TargetingType is `TARGETING_TYPE_CATEGORY`.
-        ///
         /// Targeting a category will also target its subcategories. If a category is excluded from targeting and a
         /// subcategory is included, the exclusion will take precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryDetails")]
@@ -12448,12 +12604,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual DeviceTypeAssignedTargetingOptionDetails DeviceTypeDetails { get; set; } 
 
         /// <summary>Digital content label details. This field will be populated when the TargetingType is
-        /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`.
-        ///
-        /// Digital content labels are targeting exclusions. Advertiser level digital content label exclusions, if set,
-        /// are always applied in serving (even though they aren't visible in line item settings). Line item settings
-        /// can exclude content labels in addition to advertiser exclusions, but can't override them. A line item won't
-        /// serve if all the digital content labels are excluded.</summary>
+        /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`. Digital content labels are targeting exclusions.
+        /// Advertiser level digital content label exclusions, if set, are always applied in serving (even though they
+        /// aren't visible in line item settings). Line item settings can exclude content labels in addition to
+        /// advertiser exclusions, but can't override them. A line item won't serve if all the digital content labels
+        /// are excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digitalContentLabelExclusionDetails")]
         public virtual DigitalContentLabelAssignedTargetingOptionDetails DigitalContentLabelExclusionDetails { get; set; } 
 
@@ -12496,9 +12651,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceGroupDetails")]
         public virtual InventorySourceGroupAssignedTargetingOptionDetails InventorySourceGroupDetails { get; set; } 
 
-        /// <summary>Keyword details. This field will be populated when the TargetingType is `TARGETING_TYPE_KEYWORD`.
-        ///
-        /// A maximum of 5000 direct negative keywords can be assigned to a line item. No limit on number of positive
+        /// <summary>Keyword details. This field will be populated when the TargetingType is `TARGETING_TYPE_KEYWORD`. A
+        /// maximum of 5000 direct negative keywords can be assigned to a line item. No limit on number of positive
         /// keywords that can be assigned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keywordDetails")]
         public virtual KeywordAssignedTargetingOptionDetails KeywordDetails { get; set; } 
@@ -12513,9 +12667,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string Name { get; set; } 
 
         /// <summary>Keyword details. This field will be populated when the TargetingType is
-        /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST`.
-        ///
-        /// A maximum of 4 negative keyword lists can be assigned to a line item.</summary>
+        /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST`. A maximum of 4 negative keyword lists can be assigned to a line
+        /// item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeKeywordListDetails")]
         public virtual NegativeKeywordListAssignedTargetingOptionDetails NegativeKeywordListDetails { get; set; } 
 
@@ -12545,11 +12698,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual RegionalLocationListAssignedTargetingOptionDetails RegionalLocationListDetails { get; set; } 
 
         /// <summary>Sensitive category details. This field will be populated when the TargetingType is
-        /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`.
-        ///
-        /// Sensitive categories are targeting exclusions. Advertiser level sensitive category exclusions, if set, are
-        /// always applied in serving (even though they aren't visible in line item settings). Line item settings can
-        /// exclude sensitive categories in addition to advertiser exclusions, but can't override them.</summary>
+        /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`. Sensitive categories are targeting exclusions. Advertiser
+        /// level sensitive category exclusions, if set, are always applied in serving (even though they aren't visible
+        /// in line item settings). Line item settings can exclude sensitive categories in addition to advertiser
+        /// exclusions, but can't override them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveCategoryExclusionDetails")]
         public virtual SensitiveCategoryAssignedTargetingOptionDetails SensitiveCategoryExclusionDetails { get; set; } 
 
@@ -12582,9 +12734,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual VideoPlayerSizeAssignedTargetingOptionDetails VideoPlayerSizeDetails { get; set; } 
 
         /// <summary>Viewability details. This field will be populated when the TargetingType is
-        /// `TARGETING_TYPE_VIEWABILITY`.
-        ///
-        /// You can only target one viewability option per line item.</summary>
+        /// `TARGETING_TYPE_VIEWABILITY`. You can only target one viewability option per line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewabilityDetails")]
         public virtual ViewabilityAssignedTargetingOptionDetails ViewabilityDetails { get; set; } 
 
@@ -12687,23 +12837,14 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual FixedBidStrategy FixedBid { get; set; } 
 
         /// <summary>A strategy that automatically adjusts the bid to optimize to your performance goal while spending
-        /// the full budget.
-        ///
-        /// At insertion order level, the markup_type of line items cannot be set to
-        /// `PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM`. In addition, when performance_goal_type is one of:
-        ///
-        /// * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC` *
-        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED` ,
-        ///
-        /// the line_item_type of the insertion order line items must be either:
-        ///
-        /// * `LINE_ITEM_TYPE_DISPLAY_DEFAULT` * `LINE_ITEM_TYPE_VIDEO_DEFAULT` ,
-        ///
-        /// and when performance_goal_type is either:
-        ///
-        /// * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN`
-        ///
-        /// the line_item_type of the insertion order line items must be `LINE_ITEM_TYPE_VIDEO_DEFAULT`.</summary>
+        /// the full budget. At insertion order level, the markup_type of line items cannot be set to
+        /// `PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM`. In addition, when performance_goal_type is one of: *
+        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC` *
+        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED` , the line_item_type of the insertion order line items
+        /// must be either: * `LINE_ITEM_TYPE_DISPLAY_DEFAULT` * `LINE_ITEM_TYPE_VIDEO_DEFAULT` , and when
+        /// performance_goal_type is either: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` *
+        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN` the line_item_type of the insertion order line items must
+        /// be `LINE_ITEM_TYPE_VIDEO_DEFAULT`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximizeSpendAutoBid")]
         public virtual MaximizeSpendBidStrategy MaximizeSpendAutoBid { get; set; } 
 
@@ -12768,9 +12909,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class BulkEditAdvertiserAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of assigned targeting options that have been successfully created.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of assigned targeting options that have been successfully created. This list will be
+        /// absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdAssignedTargetingOptions")]
         public virtual System.Collections.Generic.IList<AssignedTargetingOption> CreatedAssignedTargetingOptions { get; set; } 
 
@@ -12781,9 +12921,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Request message for AssignedInventorySourceService.BulkEdit.</summary>
     public class BulkEditAssignedInventorySourcesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the advertiser that owns the parent inventory source group.
-        ///
-        /// The parent partner does not have access to these assigned inventory sources.</summary>
+        /// <summary>The ID of the advertiser that owns the parent inventory source group. The parent partner does not
+        /// have access to these assigned inventory sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; } 
 
@@ -12797,9 +12936,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deletedAssignedInventorySources")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> DeletedAssignedInventorySources { get; set; } 
 
-        /// <summary>The ID of the partner that owns the inventory source group.
-        ///
-        /// Only this partner has write access to these assigned inventory sources.</summary>
+        /// <summary>The ID of the partner that owns the inventory source group. Only this partner has write access to
+        /// these assigned inventory sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
         public virtual System.Nullable<long> PartnerId { get; set; } 
 
@@ -12810,9 +12948,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Response message for AssignedInventorySourceService.BulkEdit.</summary>
     public class BulkEditAssignedInventorySourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of assigned inventory sources that have been successfully created.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of assigned inventory sources that have been successfully created. This list will be
+        /// absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedInventorySources")]
         public virtual System.Collections.Generic.IList<AssignedInventorySource> AssignedInventorySources { get; set; } 
 
@@ -12839,9 +12976,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Response message for AssignedLocationService.BulkEditAssignedLocations.</summary>
     public class BulkEditAssignedLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of assigned locations that have been successfully created.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of assigned locations that have been successfully created. This list will be absent if
+        /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedLocations")]
         public virtual System.Collections.Generic.IList<AssignedLocation> AssignedLocations { get; set; } 
 
@@ -12868,9 +13004,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class BulkEditLineItemAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of assigned targeting options that have been successfully created.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of assigned targeting options that have been successfully created. This list will be
+        /// absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdAssignedTargetingOptions")]
         public virtual System.Collections.Generic.IList<AssignedTargetingOption> CreatedAssignedTargetingOptions { get; set; } 
 
@@ -12896,9 +13031,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Response message for NegativeKeywordService.BulkEditNegativeKeywords.</summary>
     public class BulkEditNegativeKeywordsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of negative keywords that have been successfully created.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of negative keywords that have been successfully created. This list will be absent if
+        /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeKeywords")]
         public virtual System.Collections.Generic.IList<NegativeKeyword> NegativeKeywords { get; set; } 
 
@@ -12932,9 +13066,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Response message for SiteService.BulkEditSites.</summary>
     public class BulkEditSitesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of sites that have been successfully created.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of sites that have been successfully created. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sites")]
         public virtual System.Collections.Generic.IList<Site> Sites { get; set; } 
 
@@ -12944,9 +13076,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class BulkListAdvertiserAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of assigned targeting options.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of assigned targeting options. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptions")]
         public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; } 
 
@@ -12962,9 +13092,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class BulkListLineItemAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of assigned targeting options.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of assigned targeting options. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptions")]
         public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; } 
 
@@ -12997,17 +13125,14 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
         public virtual System.Nullable<long> CampaignId { get; set; } 
 
-        /// <summary>Required. The display name of the campaign.
-        ///
-        /// Must be UTF-8 encoded with a maximum size of 240 bytes.</summary>
+        /// <summary>Required. The display name of the campaign. Must be UTF-8 encoded with a maximum size of 240
+        /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
         /// <summary>Required. Controls whether or not the insertion orders under this campaign can spend their budgets
-        /// and bid on inventory.
-        ///
-        /// * Accepted values are `ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_ARCHIVED`, and `ENTITY_STATUS_PAUSED`. * For
-        /// CreateCampaign method, `ENTITY_STATUS_ARCHIVED` is not allowed.</summary>
+        /// and bid on inventory. * Accepted values are `ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_ARCHIVED`, and
+        /// `ENTITY_STATUS_PAUSED`. * For CreateCampaign method, `ENTITY_STATUS_ARCHIVED` is not allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
         public virtual string EntityStatus { get; set; } 
 
@@ -13031,21 +13156,17 @@ namespace Google.Apis.DisplayVideo.v1.Data
     public class CampaignFlight : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The dates that the campaign is expected to run. They are resolved relative to the parent
-        /// advertiser's time zone.
-        ///
-        /// * The dates specified here will not affect serving. They are used to generate alerts and warnings. For
-        /// example, if the flight date of any child insertion order is outside the range of these dates, the user
-        /// interface will show a warning. * `start_date` is required and must be the current date or later. *
-        /// `end_date` is optional. If specified, it must be the `start_date` or later. * Any specified date must be
-        /// before the year 2037.</summary>
+        /// advertiser's time zone. * The dates specified here will not affect serving. They are used to generate alerts
+        /// and warnings. For example, if the flight date of any child insertion order is outside the range of these
+        /// dates, the user interface will show a warning. * `start_date` is required and must be the current date or
+        /// later. * `end_date` is optional. If specified, it must be the `start_date` or later. * Any specified date
+        /// must be before the year 2037.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plannedDates")]
         public virtual DateRange PlannedDates { get; set; } 
 
         /// <summary>The amount the campaign is expected to spend for its given planned_dates. This will not limit
-        /// serving, but will be used for tracking spend in the DV360 UI.
-        ///
-        /// The amount is in micros. Must be greater than or equal to 0. For example, 500000000 represents 500 standard
-        /// units of the currency.</summary>
+        /// serving, but will be used for tracking spend in the DV360 UI. The amount is in micros. Must be greater than
+        /// or equal to 0. For example, 500000000 represents 500 standard units of the currency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plannedSpendAmountMicros")]
         public virtual System.Nullable<long> PlannedSpendAmountMicros { get; set; } 
 
@@ -13060,11 +13181,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("campaignGoalType")]
         public virtual string CampaignGoalType { get; set; } 
 
-        /// <summary>Required. The performance goal of the campaign.
-        ///
-        /// Acceptable values for performance_goal_type are:
-        ///
-        /// * `PERFORMANCE_GOAL_TYPE_CPM` * `PERFORMANCE_GOAL_TYPE_CPC` * `PERFORMANCE_GOAL_TYPE_CPA` *
+        /// <summary>Required. The performance goal of the campaign. Acceptable values for performance_goal_type are: *
+        /// `PERFORMANCE_GOAL_TYPE_CPM` * `PERFORMANCE_GOAL_TYPE_CPC` * `PERFORMANCE_GOAL_TYPE_CPA` *
         /// `PERFORMANCE_GOAL_TYPE_CPIAVC` * `PERFORMANCE_GOAL_TYPE_CTR` * `PERFORMANCE_GOAL_TYPE_VIEWABILITY` *
         /// `PERFORMANCE_GOAL_TYPE_OTHER`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoal")]
@@ -13210,12 +13328,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cmFloodlightLinkingAuthorized")]
         public virtual System.Nullable<bool> CmFloodlightLinkingAuthorized { get; set; } 
 
-        /// <summary>A list of CM sites whose placements will be synced to DV360 as creatives.
-        ///
-        /// If absent or empty in CreateAdvertiser method, the system will automatically create a CM site.
-        ///
-        /// Removing sites from this list may cause DV360 creatives synced from CM to be deleted. At least one site must
-        /// be specified.</summary>
+        /// <summary>A list of CM sites whose placements will be synced to DV360 as creatives. If absent or empty in
+        /// CreateAdvertiser method, the system will automatically create a CM site. Removing sites from this list may
+        /// cause DV360 creatives synced from CM to be deleted. At least one site must be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmSyncableSiteIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> CmSyncableSiteIds { get; set; } 
 
@@ -13357,23 +13472,19 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Settings that control how conversions are counted.
-    ///
-    /// All post-click conversions will be counted. A percentage value can be set for post-view conversions
-    /// counting.</summary>
+    /// <summary>Settings that control how conversions are counted. All post-click conversions will be counted. A
+    /// percentage value can be set for post-view conversions counting.</summary>
     public class ConversionCountingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Floodlight activity configs used to track conversions.
-        ///
-        /// The number of conversions counted is the sum of all of the conversions counted by all of the Floodlight
-        /// activity IDs specified in this field.</summary>
+        /// <summary>The Floodlight activity configs used to track conversions. The number of conversions counted is the
+        /// sum of all of the conversions counted by all of the Floodlight activity IDs specified in this
+        /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityConfigs")]
         public virtual System.Collections.Generic.IList<TrackingFloodlightActivityConfig> FloodlightActivityConfigs { get; set; } 
 
         /// <summary>The percentage of post-view conversions to count, in millis (1/1000 of a percent). Must be between
-        /// 0 and 100000 inclusive.
-        ///
-        /// For example, to track 50% of the post-click conversions, set a value of 50000.</summary>
+        /// 0 and 100000 inclusive. For example, to track 50% of the post-click conversions, set a value of
+        /// 50000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postViewCountPercentageMillis")]
         public virtual System.Nullable<long> PostViewCountPercentageMillis { get; set; } 
 
@@ -13399,9 +13510,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>A request message for CreateAsset.</summary>
     public class CreateAssetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The filename of the asset, including the file extension.
-        ///
-        /// The filename must be UTF-8 encoded with a maximum size of 240 bytes.</summary>
+        /// <summary>Required. The filename of the asset, including the file extension. The filename must be UTF-8
+        /// encoded with a maximum size of 240 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filename")]
         public virtual string Filename { get; set; } 
 
@@ -13474,15 +13584,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>A single Creative.</summary>
     public class Creative : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Additional dimensions. Applicable when creative_type is one of:
-        ///
-        /// * `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE` * `CREATIVE_TYPE_NATIVE` *
-        /// `CREATIVE_TYPE_TEMPLATED_APP_INSTALL` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_LIGHTBOX` *
-        /// `CREATIVE_TYPE_NATIVE_APP_INSTALL` * `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` *
-        /// `CREATIVE_TYPE_PUBLISHER_HOSTED`
-        ///
-        /// If this field is specified, width_pixels and height_pixels are both required and must be greater than or
-        /// equal to 0.</summary>
+        /// <summary>Additional dimensions. Applicable when creative_type is one of: * `CREATIVE_TYPE_STANDARD` *
+        /// `CREATIVE_TYPE_EXPANDABLE` * `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_TEMPLATED_APP_INSTALL` *
+        /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_LIGHTBOX` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
+        /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_PUBLISHER_HOSTED` If this field is specified,
+        /// width_pixels and height_pixels are both required and must be greater than or equal to 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalDimensions")]
         public virtual System.Collections.Generic.IList<Dimensions> AdditionalDimensions { get; set; } 
 
@@ -13495,9 +13601,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string AppendedTag { get; set; } 
 
         /// <summary>Required. Assets associated to this creative. Assets can be associated to the creative in one of
-        /// following roles:
-        ///
-        /// * `ASSET_ROLE_UNSPECIFIED` * `ASSET_ROLE_MAIN` * `ASSET_ROLE_BACKUP` * `ASSET_ROLE_POLITE_LOAD`</summary>
+        /// following roles: * `ASSET_ROLE_UNSPECIFIED` * `ASSET_ROLE_MAIN` * `ASSET_ROLE_BACKUP` *
+        /// `ASSET_ROLE_POLITE_LOAD`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assets")]
         public virtual System.Collections.Generic.IList<AssetAssociation> Assets { get; set; } 
 
@@ -13506,29 +13611,18 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cmPlacementId")]
         public virtual System.Nullable<long> CmPlacementId { get; set; } 
 
-        /// <summary>The Campaign Manager tracking ad associated with the creative.
-        ///
-        /// Optional for the following creative_type when created by an advertiser that uses both Campaign Manager and
-        /// third-party ad serving:
-        ///
-        /// * `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
-        /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE`
-        ///
-        /// Output only for other cases.</summary>
+        /// <summary>The Campaign Manager tracking ad associated with the creative. Optional for the following
+        /// creative_type when created by an advertiser that uses both Campaign Manager and third-party ad serving: *
+        /// `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
+        /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` Output only for other cases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmTrackingAd")]
         public virtual CmTrackingAd CmTrackingAd { get; set; } 
 
-        /// <summary>The IDs of companion creatives for a video creative.
-        ///
-        /// You can assign existing display creatives (with image or HTML5 assets) to serve surrounding the publisher's
-        /// video player. Companions display around the video player while the video is playing and remain after the
-        /// video has completed.
-        ///
-        /// Creatives contain additional dimensions can not be companion creatives.
-        ///
-        /// This field is only supported for following creative_type:
-        ///
-        /// * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO`</summary>
+        /// <summary>The IDs of companion creatives for a video creative. You can assign existing display creatives
+        /// (with image or HTML5 assets) to serve surrounding the publisher's video player. Companions display around
+        /// the video player while the video is playing and remain after the video has completed. Creatives contain
+        /// additional dimensions can not be companion creatives. This field is only supported for following
+        /// creative_type: * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companionCreativeIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> CompanionCreativeIds { get; set; } 
 
@@ -13556,16 +13650,14 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string CreativeType { get; set; } 
 
         /// <summary>Required. Primary dimensions of the creative. Applicable to all creative types. The value of
-        /// width_pixels and height_pixels defaults to `0` when creative_type is one of:
-        ///
-        /// * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_TEMPLATED_APP_INSTALL_INTERSTITIAL` * `CREATIVE_TYPE_AUDIO` *
-        /// `CREATIVE_TYPE_NATIVE_VIDEO` * `CREATIVE_TYPE_TEMPLATED_APP_INSTALL_VIDEO`</summary>
+        /// width_pixels and height_pixels defaults to `0` when creative_type is one of: * `CREATIVE_TYPE_VIDEO` *
+        /// `CREATIVE_TYPE_TEMPLATED_APP_INSTALL_INTERSTITIAL` * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_NATIVE_VIDEO` *
+        /// `CREATIVE_TYPE_TEMPLATED_APP_INSTALL_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual Dimensions Dimensions { get; set; } 
 
-        /// <summary>Required. The display name of the creative.
-        ///
-        /// Must be UTF-8 encoded with a maximum size of 240 bytes.</summary>
+        /// <summary>Required. The display name of the creative. Must be UTF-8 encoded with a maximum size of 240
+        /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
@@ -13573,47 +13665,29 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dynamic")]
         public virtual System.Nullable<bool> Dynamic { get; set; } 
 
-        /// <summary>Required. Controls whether or not the creative can serve.
-        ///
-        /// Accepted values are:
-        ///
-        /// * `ENTITY_STATUS_ACTIVE` * `ENTITY_STATUS_ARCHIVED` * `ENTITY_STATUS_PAUSED`</summary>
+        /// <summary>Required. Controls whether or not the creative can serve. Accepted values are: *
+        /// `ENTITY_STATUS_ACTIVE` * `ENTITY_STATUS_ARCHIVED` * `ENTITY_STATUS_PAUSED`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
         public virtual string EntityStatus { get; set; } 
 
         /// <summary>Required. Exit events for this creative. An exit (also known as a click tag) is any area in your
         /// creative that someone can click or tap to open an advertiser's landing page. Every creative must include at
-        /// least one exit. You can add an exit to your creative in any of the following ways:
-        ///
-        /// * Use Google Web Designer's tap area. * Define a JavaScript variable called "clickTag". * Use the Enabler
-        /// (Enabler.exit()) to track exits in rich media formats.</summary>
+        /// least one exit. You can add an exit to your creative in any of the following ways: * Use Google Web
+        /// Designer's tap area. * Define a JavaScript variable called "clickTag". * Use the Enabler (Enabler.exit()) to
+        /// track exits in rich media formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exitEvents")]
         public virtual System.Collections.Generic.IList<ExitEvent> ExitEvents { get; set; } 
 
-        /// <summary>Optional. Indicates the creative will automatically expand on hover.
-        ///
-        /// Optional and only valid for third-party expandable creatives. Third-party expandable creatives are creatives
-        /// with following hosting source:
-        ///
-        /// * `HOSTING_SOURCE_THIRD_PARTY`
-        ///
-        /// combined with following creative_type:
-        ///
-        /// * `CREATIVE_TYPE_EXPANDABLE`</summary>
+        /// <summary>Optional. Indicates the creative will automatically expand on hover. Optional and only valid for
+        /// third-party expandable creatives. Third-party expandable creatives are creatives with following hosting
+        /// source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: *
+        /// `CREATIVE_TYPE_EXPANDABLE`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandOnHover")]
         public virtual System.Nullable<bool> ExpandOnHover { get; set; } 
 
-        /// <summary>Optional. Specifies the expanding direction of the creative.
-        ///
-        /// Required and only valid for third-party expandable creatives.
-        ///
-        /// Third-party expandable creatives are creatives with following hosting source:
-        ///
-        /// * `HOSTING_SOURCE_THIRD_PARTY`
-        ///
-        /// combined with following creative_type:
-        ///
-        /// * `CREATIVE_TYPE_EXPANDABLE`</summary>
+        /// <summary>Optional. Specifies the expanding direction of the creative. Required and only valid for third-
+        /// party expandable creatives. Third-party expandable creatives are creatives with following hosting source: *
+        /// `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_EXPANDABLE`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandingDirection")]
         public virtual string ExpandingDirection { get; set; } 
 
@@ -13621,17 +13695,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hostingSource")]
         public virtual string HostingSource { get; set; } 
 
-        /// <summary>Output only. Indicates the third-party VAST tag creative requires HTML5 Video support.
-        ///
-        /// Output only and only valid for third-party VAST tag creatives.
-        ///
-        /// Third-party VAST tag creatives are creatives with following hosting_source:
-        ///
-        /// * `HOSTING_SOURCE_THIRD_PARTY`
-        ///
-        /// combined with following creative_type:
-        ///
-        /// * `CREATIVE_TYPE_VIDEO`</summary>
+        /// <summary>Output only. Indicates the third-party VAST tag creative requires HTML5 Video support. Output only
+        /// and only valid for third-party VAST tag creatives. Third-party VAST tag creatives are creatives with
+        /// following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: *
+        /// `CREATIVE_TYPE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("html5Video")]
         public virtual System.Nullable<bool> Html5Video { get; set; } 
 
@@ -13647,24 +13714,20 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string IntegrationCode { get; set; } 
 
         /// <summary>JavaScript measurement URL from supported third-party verification providers (ComScore,
-        /// DoubleVerify, IAS, Moat). HTML script tags are not supported.
-        ///
-        /// This field is only supported in following creative_type:
-        ///
-        /// * `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
-        /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`</summary>
+        /// DoubleVerify, IAS, Moat). HTML script tags are not supported. This field is only supported in following
+        /// creative_type: * `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` *
+        /// `CREATIVE_TYPE_NATIVE_APP_INSTALL` * `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` *
+        /// `CREATIVE_TYPE_NATIVE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jsTrackerUrl")]
         public virtual string JsTrackerUrl { get; set; } 
 
-        /// <summary>Output only. The IDs of the line items this creative is associated with.
-        ///
-        /// To associate a creative to a line item, use LineItem.creative_ids instead.</summary>
+        /// <summary>Output only. The IDs of the line items this creative is associated with. To associate a creative to
+        /// a line item, use LineItem.creative_ids instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> LineItemIds { get; set; } 
 
-        /// <summary>Output only. Media duration of the creative. Applicable when creative_type is one of:
-        ///
-        /// * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_NATIVE_VIDEO` *
+        /// <summary>Output only. Media duration of the creative. Applicable when creative_type is one of: *
+        /// `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_NATIVE_VIDEO` *
         /// `CREATIVE_TYPE_PUBLISHER_HOSTED`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaDuration")]
         public virtual object MediaDuration { get; set; } 
@@ -13678,76 +13741,38 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; } 
 
-        /// <summary>Specifies the OBA icon for a video creative.
-        ///
-        /// This field is only supported in following creative_type:
-        ///
-        /// * `CREATIVE_TYPE_VIDEO`</summary>
+        /// <summary>Specifies the OBA icon for a video creative. This field is only supported in following
+        /// creative_type: * `CREATIVE_TYPE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obaIcon")]
         public virtual ObaIcon ObaIcon { get; set; } 
 
-        /// <summary>Amount of time to play the video before counting a view.
-        ///
-        /// This field is required when skippable is true.
-        ///
-        /// This field is only supported for the following creative_type:
-        ///
-        /// * `CREATIVE_TYPE_VIDEO`</summary>
+        /// <summary>Amount of time to play the video before counting a view. This field is required when skippable is
+        /// true. This field is only supported for the following creative_type: * `CREATIVE_TYPE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressOffset")]
         public virtual AudioVideoOffset ProgressOffset { get; set; } 
 
-        /// <summary>Optional. Indicates that the creative relies on HTML5 to render properly.
-        ///
-        /// Optional and only valid for third-party tag creatives. Third-party tag creatives are creatives with
-        /// following hosting_source:
-        ///
-        /// * `HOSTING_SOURCE_THIRD_PARTY`
-        ///
-        /// combined with following creative_type:
-        ///
-        /// * `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE`</summary>
+        /// <summary>Optional. Indicates that the creative relies on HTML5 to render properly. Optional and only valid
+        /// for third-party tag creatives. Third-party tag creatives are creatives with following hosting_source: *
+        /// `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_STANDARD` *
+        /// `CREATIVE_TYPE_EXPANDABLE`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireHtml5")]
         public virtual System.Nullable<bool> RequireHtml5 { get; set; } 
 
         /// <summary>Optional. Indicates that the creative requires MRAID (Mobile Rich Media Ad Interface Definitions
-        /// system).
-        ///
-        /// Set this if the creative relies on mobile gestures for interactivity, such as swiping or tapping.
-        ///
-        /// Optional and only valid for third-party tag creatives.
-        ///
-        /// Third-party tag creatives are creatives with following hosting_source:
-        ///
-        /// * `HOSTING_SOURCE_THIRD_PARTY`
-        ///
-        /// combined with following creative_type:
-        ///
-        /// * `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE`</summary>
+        /// system). Set this if the creative relies on mobile gestures for interactivity, such as swiping or tapping.
+        /// Optional and only valid for third-party tag creatives. Third-party tag creatives are creatives with
+        /// following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: *
+        /// `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireMraid")]
         public virtual System.Nullable<bool> RequireMraid { get; set; } 
 
-        /// <summary>Optional. Indicates that the creative will wait for a return ping for attribution.
-        ///
-        /// Only valid when using a Campaign Manager tracking ad with a third-party ad server parameter and the
-        /// ${DC_DBM_TOKEN} macro.
-        ///
-        /// Optional and only valid for third-party tag creatives or third-party VAST tag creatives.
-        ///
-        /// Third-party tag creatives are creatives with following hosting_source:
-        ///
-        /// * `HOSTING_SOURCE_THIRD_PARTY`
-        ///
-        /// combined with following creative_type:
-        ///
-        /// * `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE`
-        ///
-        /// Third-party VAST tag creatives are creatives with following hosting_source:
-        ///
-        /// * `HOSTING_SOURCE_THIRD_PARTY`
-        ///
-        /// combined with following creative_type:
-        ///
-        /// * `CREATIVE_TYPE_VIDEO`</summary>
+        /// <summary>Optional. Indicates that the creative will wait for a return ping for attribution. Only valid when
+        /// using a Campaign Manager tracking ad with a third-party ad server parameter and the ${DC_DBM_TOKEN} macro.
+        /// Optional and only valid for third-party tag creatives or third-party VAST tag creatives. Third-party tag
+        /// creatives are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with
+        /// following creative_type: * `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE` Third-party VAST tag
+        /// creatives are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with
+        /// following creative_type: * `CREATIVE_TYPE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requirePingForAttribution")]
         public virtual System.Nullable<bool> RequirePingForAttribution { get; set; } 
 
@@ -13755,43 +13780,27 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reviewStatus")]
         public virtual ReviewStatusInfo ReviewStatus { get; set; } 
 
-        /// <summary>Amount of time to play the video before the skip button appears.
-        ///
-        /// This field is required when skippable is true.
-        ///
-        /// This field is only supported for the following creative_type:
-        ///
-        /// * `CREATIVE_TYPE_VIDEO`</summary>
+        /// <summary>Amount of time to play the video before the skip button appears. This field is required when
+        /// skippable is true. This field is only supported for the following creative_type: *
+        /// `CREATIVE_TYPE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipOffset")]
         public virtual AudioVideoOffset SkipOffset { get; set; } 
 
-        /// <summary>Whether the user can choose to skip a video creative.
-        ///
-        /// This field is only supported for the following creative_type:
-        ///
-        /// * `CREATIVE_TYPE_VIDEO`</summary>
+        /// <summary>Whether the user can choose to skip a video creative. This field is only supported for the
+        /// following creative_type: * `CREATIVE_TYPE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippable")]
         public virtual System.Nullable<bool> Skippable { get; set; } 
 
-        /// <summary>Optional. The original third-party tag used for the creative.
-        ///
-        /// Required and only valid for third-party tag creatives.
-        ///
-        /// Third-party tag creatives are creatives with following hosting_source:
-        ///
-        /// * `HOSTING_SOURCE_THIRD_PARTY`
-        ///
-        /// combined with following creative_type:
-        ///
-        /// * `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE`</summary>
+        /// <summary>Optional. The original third-party tag used for the creative. Required and only valid for third-
+        /// party tag creatives. Third-party tag creatives are creatives with following hosting_source: *
+        /// `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_STANDARD` *
+        /// `CREATIVE_TYPE_EXPANDABLE`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyTag")]
         public virtual string ThirdPartyTag { get; set; } 
 
-        /// <summary>Tracking URLs from third parties to track interactions with a video creative.
-        ///
-        /// This field is only supported for the following creative_type:
-        ///
-        /// * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_NATIVE_VIDEO`</summary>
+        /// <summary>Tracking URLs from third parties to track interactions with a video creative. This field is only
+        /// supported for the following creative_type: * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO` *
+        /// `CREATIVE_TYPE_NATIVE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyUrls")]
         public virtual System.Collections.Generic.IList<ThirdPartyUrl> ThirdPartyUrls { get; set; } 
 
@@ -13801,43 +13810,28 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timerEvents")]
         public virtual System.Collections.Generic.IList<TimerEvent> TimerEvents { get; set; } 
 
-        /// <summary>Tracking URLs for analytics providers or third-party ad technology vendors.
-        ///
-        /// The URLs must start with https (except on inventory that doesn't require SSL compliance). If using macros in
-        /// your URL, use only macros supported by Display & Video 360.
-        ///
-        /// Standard URLs only, no IMG or SCRIPT tags.
-        ///
-        /// This field is only supported in following creative_type:
-        ///
-        /// * `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
-        /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`</summary>
+        /// <summary>Tracking URLs for analytics providers or third-party ad technology vendors. The URLs must start
+        /// with https (except on inventory that doesn't require SSL compliance). If using macros in your URL, use only
+        /// macros supported by Display & Video 360. Standard URLs only, no IMG or SCRIPT tags. This field is only
+        /// supported in following creative_type: * `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` *
+        /// `CREATIVE_TYPE_NATIVE_APP_INSTALL` * `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` *
+        /// `CREATIVE_TYPE_NATIVE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackerUrls")]
         public virtual System.Collections.Generic.IList<string> TrackerUrls { get; set; } 
 
-        /// <summary>Output only. Audio/Video transcodes.
-        ///
-        /// Display & Video 360 transcodes the main asset into a number of alternative versions that use different file
-        /// formats or have different properties (resolution, audio bit rate, and video bit rate), each designed for
-        /// specific video players or bandwidths.
-        ///
-        /// These transcodes give a publisher's system more options to choose from for each impression on your video and
-        /// ensures that the appropriate file serves based on the viewer’s connection and screen size.
-        ///
-        /// This field is only supported in following creative_type:
-        ///
-        /// * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_NATIVE_VIDEO` * `CREATIVE_TYPE_AUDIO`</summary>
+        /// <summary>Output only. Audio/Video transcodes. Display & Video 360 transcodes the main asset into a number of
+        /// alternative versions that use different file formats or have different properties (resolution, audio bit
+        /// rate, and video bit rate), each designed for specific video players or bandwidths. These transcodes give a
+        /// publisher's system more options to choose from for each impression on your video and ensures that the
+        /// appropriate file serves based on the viewer’s connection and screen size. This field is only supported in
+        /// following creative_type: * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_NATIVE_VIDEO` *
+        /// `CREATIVE_TYPE_AUDIO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcodes")]
         public virtual System.Collections.Generic.IList<Transcode> Transcodes { get; set; } 
 
         /// <summary>Optional. An optional creative identifier provided by a registry that is unique across all
-        /// platforms.
-        ///
-        /// Universal Ad ID is part of the VAST 4.0 standard. It can be modified after the creative is created.
-        ///
-        /// This field is only supported for the following creative_type:
-        ///
-        /// * `CREATIVE_TYPE_VIDEO`</summary>
+        /// platforms. Universal Ad ID is part of the VAST 4.0 standard. It can be modified after the creative is
+        /// created. This field is only supported for the following creative_type: * `CREATIVE_TYPE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("universalAdId")]
         public virtual UniversalAdId UniversalAdId { get; set; } 
 
@@ -13845,32 +13839,16 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
-        /// <summary>Optional. The URL of the VAST tag for a third-party VAST tag creative.
-        ///
-        /// Required and only valid for third-party VAST tag creatives.
-        ///
-        /// Third-party VAST tag creatives are creatives with following hosting_source:
-        ///
-        /// * `HOSTING_SOURCE_THIRD_PARTY`
-        ///
-        /// combined with following creative_type:
-        ///
-        /// * `CREATIVE_TYPE_VIDEO`</summary>
+        /// <summary>Optional. The URL of the VAST tag for a third-party VAST tag creative. Required and only valid for
+        /// third-party VAST tag creatives. Third-party VAST tag creatives are creatives with following hosting_source:
+        /// * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vastTagUrl")]
         public virtual string VastTagUrl { get; set; } 
 
         /// <summary>Output only. Indicates the third-party VAST tag creative requires VPAID (Digital Video Player-Ad
-        /// Interface).
-        ///
-        /// Output only and only valid for third-party VAST tag creatives.
-        ///
-        /// Third-party VAST tag creatives are creatives with following hosting_source:
-        ///
-        /// * `HOSTING_SOURCE_THIRD_PARTY`
-        ///
-        /// combined with following creative_type:
-        ///
-        /// * `CREATIVE_TYPE_VIDEO`</summary>
+        /// Interface). Output only and only valid for third-party VAST tag creatives. Third-party VAST tag creatives
+        /// are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following
+        /// creative_type: * `CREATIVE_TYPE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpaid")]
         public virtual System.Nullable<bool> Vpaid { get; set; } 
 
@@ -13944,13 +13922,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     /// <summary>Represents a whole or partial calendar date, e.g. a birthday. The time of day and time zone are either
     /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. This can
-    /// represent:
-    ///
-    /// * A full date, with non-zero year, month and day values * A month and day value, with a zero year, e.g. an
-    /// anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, e.g.
-    /// a credit card expiration date
-    ///
-    /// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
+    /// represent: * A full date, with non-zero year, month and day values * A month and day value, with a zero year,
+    /// e.g. an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero
+    /// day, e.g. a credit card expiration date Related types are google.type.TimeOfDay and
+    /// `google.protobuf.Timestamp`.</summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by
@@ -14250,11 +14225,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -14332,11 +14305,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Exit event of the creative.</summary>
     public class ExitEvent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the click tag of the exit event.
-        ///
-        /// The name must be unique within one creative.
-        ///
-        /// Leave it empty or unset for creatives containing image assets only.</summary>
+        /// <summary>The name of the click tag of the exit event. The name must be unique within one creative. Leave it
+        /// empty or unset for creatives containing image assets only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -14349,9 +14319,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>Required. The click through URL of the exit event. This is required when type is:
-        ///
-        /// * `EXIT_EVENT_TYPE_DEFAULT` * `EXIT_EVENT_TYPE_BACKUP`</summary>
+        /// <summary>Required. The click through URL of the exit event. This is required when type is: *
+        /// `EXIT_EVENT_TYPE_DEFAULT` * `EXIT_EVENT_TYPE_BACKUP`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 
@@ -14364,12 +14333,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// licensed to customers.</summary>
     public class FirstAndThirdPartyAudience : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The estimated audience size for the Display network in the past month.
-        ///
-        /// If the size is less than 1000, the number will be hidden and 0 will be returned due to privacy reasons.
-        /// Otherwise, the number will be rounded off to two significant digits.
-        ///
-        /// Only returned in GET request.</summary>
+        /// <summary>Output only. The estimated audience size for the Display network in the past month. If the size is
+        /// less than 1000, the number will be hidden and 0 will be returned due to privacy reasons. Otherwise, the
+        /// number will be rounded off to two significant digits. Only returned in GET request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeDisplayAudienceSize")]
         public virtual System.Nullable<long> ActiveDisplayAudienceSize { get; set; } 
 
@@ -14381,51 +14347,34 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audienceType")]
         public virtual string AudienceType { get; set; } 
 
-        /// <summary>The user-provided description of the audience.
-        ///
-        /// Only applicable to first party audiences.</summary>
+        /// <summary>The user-provided description of the audience. Only applicable to first party audiences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Output only. The estimated audience size for the Display network.
-        ///
-        /// If the size is less than 1000, the number will be hidden and 0 will be returned due to privacy reasons.
-        /// Otherwise, the number will be rounded off to two significant digits.
-        ///
-        /// Only returned in GET request.</summary>
+        /// <summary>Output only. The estimated audience size for the Display network. If the size is less than 1000,
+        /// the number will be hidden and 0 will be returned due to privacy reasons. Otherwise, the number will be
+        /// rounded off to two significant digits. Only returned in GET request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayAudienceSize")]
         public virtual System.Nullable<long> DisplayAudienceSize { get; set; } 
 
-        /// <summary>Output only. The estimated desktop audience size in Display network.
-        ///
-        /// If the size is less than 1000, the number will be hidden and 0 will be returned due to privacy reasons.
-        /// Otherwise, the number will be rounded off to two significant digits.
-        ///
-        /// Only applicable to first party audiences.
-        ///
-        /// Only returned in GET request.</summary>
+        /// <summary>Output only. The estimated desktop audience size in Display network. If the size is less than 1000,
+        /// the number will be hidden and 0 will be returned due to privacy reasons. Otherwise, the number will be
+        /// rounded off to two significant digits. Only applicable to first party audiences. Only returned in GET
+        /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayDesktopAudienceSize")]
         public virtual System.Nullable<long> DisplayDesktopAudienceSize { get; set; } 
 
-        /// <summary>Output only. The estimated mobile app audience size in Display network.
-        ///
-        /// If the size is less than 1000, the number will be hidden and 0 will be returned due to privacy reasons.
-        /// Otherwise, the number will be rounded off to two significant digits.
-        ///
-        /// Only applicable to first party audiences.
-        ///
-        /// Only returned in GET request.</summary>
+        /// <summary>Output only. The estimated mobile app audience size in Display network. If the size is less than
+        /// 1000, the number will be hidden and 0 will be returned due to privacy reasons. Otherwise, the number will be
+        /// rounded off to two significant digits. Only applicable to first party audiences. Only returned in GET
+        /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayMobileAppAudienceSize")]
         public virtual System.Nullable<long> DisplayMobileAppAudienceSize { get; set; } 
 
-        /// <summary>Output only. The estimated mobile web audience size in Display network.
-        ///
-        /// If the size is less than 1000, the number will be hidden and 0 will be returned due to privacy reasons.
-        /// Otherwise, the number will be rounded off to two significant digits.
-        ///
-        /// Only applicable to first party audiences.
-        ///
-        /// Only returned in GET request.</summary>
+        /// <summary>Output only. The estimated mobile web audience size in Display network. If the size is less than
+        /// 1000, the number will be hidden and 0 will be returned due to privacy reasons. Otherwise, the number will be
+        /// rounded off to two significant digits. Only applicable to first party audiences. Only returned in GET
+        /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayMobileWebAudienceSize")]
         public virtual System.Nullable<long> DisplayMobileWebAudienceSize { get; set; } 
 
@@ -14441,20 +14390,15 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("firstAndThirdPartyAudienceType")]
         public virtual string FirstAndThirdPartyAudienceType { get; set; } 
 
-        /// <summary>Output only. The estimated audience size for Gmail network.
-        ///
-        /// If the size is less than 1000, the number will be hidden and 0 will be returned due to privacy reasons.
-        /// Otherwise, the number will be rounded off to two significant digits.
-        ///
-        /// Only applicable to first party audiences.
-        ///
-        /// Only returned in GET request.</summary>
+        /// <summary>Output only. The estimated audience size for Gmail network. If the size is less than 1000, the
+        /// number will be hidden and 0 will be returned due to privacy reasons. Otherwise, the number will be rounded
+        /// off to two significant digits. Only applicable to first party audiences. Only returned in GET
+        /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gmailAudienceSize")]
         public virtual System.Nullable<long> GmailAudienceSize { get; set; } 
 
-        /// <summary>The duration in days that an entry remains in the audience after the qualifying event.
-        ///
-        /// Only applicable to first party audiences.</summary>
+        /// <summary>The duration in days that an entry remains in the audience after the qualifying event. Only
+        /// applicable to first party audiences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipDurationDays")]
         public virtual System.Nullable<long> MembershipDurationDays { get; set; } 
 
@@ -14462,14 +14406,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Output only. The estimated audience size for YouTube network.
-        ///
-        /// If the size is less than 1000, the number will be hidden and 0 will be returned due to privacy reasons.
-        /// Otherwise, the number will be rounded off to two significant digits.
-        ///
-        /// Only applicable to first party audiences.
-        ///
-        /// Only returned in GET request.</summary>
+        /// <summary>Output only. The estimated audience size for YouTube network. If the size is less than 1000, the
+        /// number will be hidden and 0 will be returned due to privacy reasons. Otherwise, the number will be rounded
+        /// off to two significant digits. Only applicable to first party audiences. Only returned in GET
+        /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("youtubeAudienceSize")]
         public virtual System.Nullable<long> YoutubeAudienceSize { get; set; } 
 
@@ -14514,9 +14454,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The fixed bid amount, in micros of the advertiser's currency. For insertion order entity,
         /// bid_amount_micros should be set as 0. For line item entity, bid_amount_micros must be greater than or equal
-        /// to billable unit of the given currency and smaller than or equal to the upper limit 1000000000.
-        ///
-        /// For example, 1500000 represents 1.5 standard units of the currency.</summary>
+        /// to billable unit of the given currency and smaller than or equal to the upper limit 1000000000. For example,
+        /// 1500000 represents 1.5 standard units of the currency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidAmountMicros")]
         public virtual System.Nullable<long> BidAmountMicros { get; set; } 
 
@@ -14535,16 +14474,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// create reporting data that is tailored to your unique business needs. Custom Floodlight variables use the
         /// keys `U1=`, `U2=`, and so on, and can take any values that you choose to pass to them. You can use them to
         /// track virtually any type of data that you collect about your customers, such as the genre of movie that a
-        /// customer purchases, the country to which the item is shipped, and so on.
-        ///
-        /// Custom Floodlight variables may not be used to pass any data that could be used or recognized as personally
-        /// identifiable information (PII).
-        ///
+        /// customer purchases, the country to which the item is shipped, and so on. Custom Floodlight variables may not
+        /// be used to pass any data that could be used or recognized as personally identifiable information (PII).
         /// Example: `custom_variables { fields { "U1": value { number_value: 123.4 }, "U2": value { string_value:
-        /// "MyVariable2" }, "U3": value { string_value: "MyVariable3" } } }`
-        ///
-        /// Acceptable values for keys are "U1" through "U100", inclusive. String values must be less than 64 characters
-        /// long, and cannot contain the following characters: `"<>`.</summary>
+        /// "MyVariable2" }, "U3": value { string_value: "MyVariable3" } } }` Acceptable values for keys are "U1"
+        /// through "U100", inclusive. String values must be less than 64 characters long, and cannot contain the
+        /// following characters: `"<>`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customVariables")]
         public virtual System.Collections.Generic.IDictionary<string,object> CustomVariables { get; set; } 
 
@@ -14578,25 +14513,20 @@ namespace Google.Apis.DisplayVideo.v1.Data
     public class FrequencyCap : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The maximum number of times a user may be shown with the same ad during this period. Must be
-        /// greater than 0.
-        ///
-        /// Applicable when unlimited is `false`.</summary>
+        /// greater than 0. Applicable when unlimited is `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxImpressions")]
         public virtual System.Nullable<int> MaxImpressions { get; set; } 
 
-        /// <summary>The time unit in which the frequency cap will be applied.
-        ///
-        /// Applicable when unlimited is `false`.</summary>
+        /// <summary>The time unit in which the frequency cap will be applied. Applicable when unlimited is
+        /// `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeUnit")]
         public virtual string TimeUnit { get; set; } 
 
-        /// <summary>The number of time_unit the frequency cap will last.
-        ///
-        /// Applicable when unlimited is `false`. The following restrictions apply based on the value of time_unit:
-        ///
-        /// * `TIME_UNIT_LIFETIME` - this field is output only and will default to 1 * `TIME_UNIT_MONTHS` - must be
-        /// between 1 and 2 * `TIME_UNIT_WEEKS` - must be between 1 and 4 * `TIME_UNIT_DAYS` - must be between 1 and 6 *
-        /// `TIME_UNIT_HOURS` - must be between 1 and 23 * `TIME_UNIT_MINUTES` - must be between 1 and 59</summary>
+        /// <summary>The number of time_unit the frequency cap will last. Applicable when unlimited is `false`. The
+        /// following restrictions apply based on the value of time_unit: * `TIME_UNIT_LIFETIME` - this field is output
+        /// only and will default to 1 * `TIME_UNIT_MONTHS` - must be between 1 and 2 * `TIME_UNIT_WEEKS` - must be
+        /// between 1 and 4 * `TIME_UNIT_DAYS` - must be between 1 and 6 * `TIME_UNIT_HOURS` - must be between 1 and 23
+        /// * `TIME_UNIT_MINUTES` - must be between 1 and 59</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeUnitCount")]
         public virtual System.Nullable<int> TimeUnitCount { get; set; } 
 
@@ -14769,12 +14699,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>A filtering option that filters entities by their entity IDs.</summary>
     public class IdFilter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>TrueView Ads to download by ID. All IDs must belong to the same Advertiser or Partner specified in
+        /// <summary>YouTube Ads to download by ID. All IDs must belong to the same Advertiser or Partner specified in
         /// CreateSdfDownloadTaskRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupAdIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> AdGroupAdIds { get; set; } 
 
-        /// <summary>TrueView Ad Groups to download by ID. All IDs must belong to the same Advertiser or Partner
+        /// <summary>YouTube Ad Groups to download by ID. All IDs must belong to the same Advertiser or Partner
         /// specified in CreateSdfDownloadTaskRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> AdGroupIds { get; set; } 
@@ -14822,18 +14752,16 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
         public virtual System.Nullable<long> CampaignId { get; set; } 
 
-        /// <summary>Required. The display name of the insertion order.
-        ///
-        /// Must be UTF-8 encoded with a maximum size of 240 bytes.</summary>
+        /// <summary>Required. The display name of the insertion order. Must be UTF-8 encoded with a maximum size of 240
+        /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Required. Controls whether or not the insertion order can spend its budget and bid on inventory.
-        ///
-        /// * For CreateInsertionOrder method, only `ENTITY_STATUS_DRAFT` is allowed. To activate an insertion order,
-        /// use UpdateInsertionOrder method and update the status to `ENTITY_STATUS_ACTIVE` after creation. * An
-        /// insertion order cannot be changed back to `ENTITY_STATUS_DRAFT` status from any other status. * An insertion
-        /// order cannot be set to `ENTITY_STATUS_ACTIVE` if its parent campaign is not active.</summary>
+        /// <summary>Required. Controls whether or not the insertion order can spend its budget and bid on inventory. *
+        /// For CreateInsertionOrder method, only `ENTITY_STATUS_DRAFT` is allowed. To activate an insertion order, use
+        /// UpdateInsertionOrder method and update the status to `ENTITY_STATUS_ACTIVE` after creation. * An insertion
+        /// order cannot be changed back to `ENTITY_STATUS_DRAFT` status from any other status. * An insertion order
+        /// cannot be set to `ENTITY_STATUS_ACTIVE` if its parent campaign is not active.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
         public virtual string EntityStatus { get; set; } 
 
@@ -14857,10 +14785,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pacing")]
         public virtual Pacing Pacing { get; set; } 
 
-        /// <summary>The partner costs associated with the insertion order.
-        ///
-        /// If absent or empty in CreateInsertionOrder method, the newly created insertion order will inherit partner
-        /// costs from the partner settings.</summary>
+        /// <summary>The partner costs associated with the insertion order. If absent or empty in CreateInsertionOrder
+        /// method, the newly created insertion order will inherit partner costs from the partner settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerCosts")]
         public virtual System.Collections.Generic.IList<PartnerCost> PartnerCosts { get; set; } 
 
@@ -14880,10 +14806,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Settings that control how insertion order budget is allocated.</summary>
     public class InsertionOrderBudget : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The type of automation used to manage bid and budget for the insertion order.
-        ///
-        /// If this field is unspecified in creation, the value defaults to
-        /// `INSERTION_ORDER_AUTOMATION_TYPE_NONE`.</summary>
+        /// <summary>The type of automation used to manage bid and budget for the insertion order. If this field is
+        /// unspecified in creation, the value defaults to `INSERTION_ORDER_AUTOMATION_TYPE_NONE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("automationType")]
         public virtual string AutomationType { get; set; } 
 
@@ -14915,18 +14839,16 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual System.Nullable<long> CampaignBudgetId { get; set; } 
 
         /// <summary>Required. The start and end date settings of the budget segment. They are resolved relative to the
-        /// parent advertiser's time zone.
-        ///
-        /// * When creating a new budget segment, both `start_date` and `end_date` must be in the future. * An existing
-        /// budget segment with a `start_date` in the past has a mutable `end_date` but an immutable `start_date`. *
-        /// `end_date` must be the `start_date` or later, both before the year 2037.</summary>
+        /// parent advertiser's time zone. * When creating a new budget segment, both `start_date` and `end_date` must
+        /// be in the future. * An existing budget segment with a `start_date` in the past has a mutable `end_date` but
+        /// an immutable `start_date`. * `end_date` must be the `start_date` or later, both before the year
+        /// 2037.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
         public virtual DateRange DateRange { get; set; } 
 
         /// <summary>The budget segment description. It can be used to enter Purchase Order information for each budget
-        /// segment and have that information printed on the invoices.
-        ///
-        /// Must be UTF-8 encoded with a length of no more than 80 characters.</summary>
+        /// segment and have that information printed on the invoices. Must be UTF-8 encoded with a length of no more
+        /// than 80 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -14996,16 +14918,14 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Integration details of an entry.</summary>
     public class IntegrationDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Additional details of the entry in string format.
-        ///
-        /// Must be UTF-8 encoded with a length of no more than 1000 characters.</summary>
+        /// <summary>Additional details of the entry in string format. Must be UTF-8 encoded with a length of no more
+        /// than 1000 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual string Details { get; set; } 
 
         /// <summary>An external identifier to be associated with the entry. The integration code will show up together
-        /// with the entry in many places in the system, for example, reporting.
-        ///
-        /// Must be UTF-8 encoded with a length of no more than 500 characters.</summary>
+        /// with the entry in many places in the system, for example, reporting. Must be UTF-8 encoded with a length of
+        /// no more than 500 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrationCode")]
         public virtual string IntegrationCode { get; set; } 
 
@@ -15020,29 +14940,24 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commitment")]
         public virtual string Commitment { get; set; } 
 
-        /// <summary>The creative requirements of the inventory source.
-        ///
-        /// Not applicable for auction packages.</summary>
+        /// <summary>The creative requirements of the inventory source. Not applicable for auction packages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeConfigs")]
         public virtual System.Collections.Generic.IList<CreativeConfig> CreativeConfigs { get; set; } 
 
-        /// <summary>The ID in the exchange space that uniquely identifies the inventory source.
-        ///
-        /// Must be unique across buyers within each exchange but not necessarily unique across exchanges.</summary>
+        /// <summary>The ID in the exchange space that uniquely identifies the inventory source. Must be unique across
+        /// buyers within each exchange but not necessarily unique across exchanges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealId")]
         public virtual string DealId { get; set; } 
 
-        /// <summary>The delivery method of the inventory source.
-        ///
-        /// * For non-guaranteed inventory sources, the only acceptable value is
-        /// `INVENTORY_SOURCE_DELIVERY_METHOD_PROGRAMMATIC`. * For guaranteed inventory sources, acceptable values are
-        /// `INVENTORY_SOURCE_DELIVERY_METHOD_TAG` and `INVENTORY_SOURCE_DELIVERY_METHOD_PROGRAMMATIC`.</summary>
+        /// <summary>The delivery method of the inventory source. * For non-guaranteed inventory sources, the only
+        /// acceptable value is `INVENTORY_SOURCE_DELIVERY_METHOD_PROGRAMMATIC`. * For guaranteed inventory sources,
+        /// acceptable values are `INVENTORY_SOURCE_DELIVERY_METHOD_TAG` and
+        /// `INVENTORY_SOURCE_DELIVERY_METHOD_PROGRAMMATIC`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryMethod")]
         public virtual string DeliveryMethod { get; set; } 
 
-        /// <summary>The display name of the inventory source.
-        ///
-        /// Must be UTF-8 encoded with a maximum size of 240 bytes.</summary>
+        /// <summary>The display name of the inventory source. Must be UTF-8 encoded with a maximum size of 240
+        /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
@@ -15127,9 +15042,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>A collection of targetable inventory sources.</summary>
     public class InventorySourceGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The display name of the inventory source group.
-        ///
-        /// Must be UTF-8 encoded with a maximum size of 240 bytes.</summary>
+        /// <summary>Required. The display name of the inventory source group. Must be UTF-8 encoded with a maximum size
+        /// of 240 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
@@ -15161,42 +15075,32 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>The status related settings of the inventory source.</summary>
     public class InventorySourceStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The configuration status of the inventory source.
-        ///
-        /// Only applicable for guaranteed inventory sources. Acceptable values are
-        /// `INVENTORY_SOURCE_CONFIG_STATUS_PENDING` and `INVENTORY_SOURCE_CONFIG_STATUS_COMPLETED`.
-        ///
-        /// An inventory source must be configured (fill in the required fields, choose creatives, and select a default
-        /// campaign) before it can serve.</summary>
+        /// <summary>Output only. The configuration status of the inventory source. Only applicable for guaranteed
+        /// inventory sources. Acceptable values are `INVENTORY_SOURCE_CONFIG_STATUS_PENDING` and
+        /// `INVENTORY_SOURCE_CONFIG_STATUS_COMPLETED`. An inventory source must be configured (fill in the required
+        /// fields, choose creatives, and select a default campaign) before it can serve.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configStatus")]
         public virtual string ConfigStatus { get; set; } 
 
-        /// <summary>The user-provided reason for pausing this inventory source.
-        ///
-        /// Must not exceed 100 characters.
-        ///
-        /// Only applicable when entity_status is set to `ENTITY_STATUS_PAUSED`.</summary>
+        /// <summary>The user-provided reason for pausing this inventory source. Must not exceed 100 characters. Only
+        /// applicable when entity_status is set to `ENTITY_STATUS_PAUSED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityPauseReason")]
         public virtual string EntityPauseReason { get; set; } 
 
-        /// <summary>Whether or not the inventory source is servable.
-        ///
-        /// Acceptable values are `ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_ARCHIVED`, and `ENTITY_STATUS_PAUSED`. Default
-        /// value is `ENTITY_STATUS_ACTIVE`.</summary>
+        /// <summary>Whether or not the inventory source is servable. Acceptable values are `ENTITY_STATUS_ACTIVE`,
+        /// `ENTITY_STATUS_ARCHIVED`, and `ENTITY_STATUS_PAUSED`. Default value is `ENTITY_STATUS_ACTIVE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
         public virtual string EntityStatus { get; set; } 
 
-        /// <summary>Output only. The seller-provided reason for pausing this inventory source.
-        ///
-        /// Only applicable for inventory sources synced directly from the publishers and when seller_status is set to
+        /// <summary>Output only. The seller-provided reason for pausing this inventory source. Only applicable for
+        /// inventory sources synced directly from the publishers and when seller_status is set to
         /// `ENTITY_STATUS_PAUSED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sellerPauseReason")]
         public virtual string SellerPauseReason { get; set; } 
 
-        /// <summary>Output only. The status set by the seller for the inventory source.
-        ///
-        /// Only applicable for inventory sources synced directly from the publishers. Acceptable values are
-        /// `ENTITY_STATUS_ACTIVE` and `ENTITY_STATUS_PAUSED`.</summary>
+        /// <summary>Output only. The status set by the seller for the inventory source. Only applicable for inventory
+        /// sources synced directly from the publishers. Acceptable values are `ENTITY_STATUS_ACTIVE` and
+        /// `ENTITY_STATUS_PAUSED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sellerStatus")]
         public virtual string SellerStatus { get; set; } 
 
@@ -15220,10 +15124,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_KEYWORD`.</summary>
     public class KeywordAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The keyword, for example `car insurance`.
-        ///
-        /// Positive keyword cannot be offensive word. Must be UTF-8 encoded with a maximum size of 255 bytes. Maximum
-        /// number of characters is 80. Maximum number of words is 10.</summary>
+        /// <summary>Required. The keyword, for example `car insurance`. Positive keyword cannot be offensive word. Must
+        /// be UTF-8 encoded with a maximum size of 255 bytes. Maximum number of characters is 80. Maximum number of
+        /// words is 10.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyword")]
         public virtual string Keyword { get; set; } 
 
@@ -15295,19 +15198,16 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creativeIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> CreativeIds { get; set; } 
 
-        /// <summary>Required. The display name of the line item.
-        ///
-        /// Must be UTF-8 encoded with a maximum size of 240 bytes.</summary>
+        /// <summary>Required. The display name of the line item. Must be UTF-8 encoded with a maximum size of 240
+        /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Required. Controls whether or not the line item can spend its budget and bid on inventory.
-        ///
-        /// * For CreateLineItem method, only `ENTITY_STATUS_DRAFT` is allowed. To activate a line item, use
-        /// UpdateLineItem method and update the status to `ENTITY_STATUS_ACTIVE` after creation. * A line item cannot
-        /// be changed back to `ENTITY_STATUS_DRAFT` status from any other status. * If the line item's parent insertion
-        /// order is not active, the line item can't spend its budget even if its own status is
-        /// `ENTITY_STATUS_ACTIVE`.</summary>
+        /// <summary>Required. Controls whether or not the line item can spend its budget and bid on inventory. * For
+        /// CreateLineItem method, only `ENTITY_STATUS_DRAFT` is allowed. To activate a line item, use UpdateLineItem
+        /// method and update the status to `ENTITY_STATUS_ACTIVE` after creation. * A line item cannot be changed back
+        /// to `ENTITY_STATUS_DRAFT` status from any other status. * If the line item's parent insertion order is not
+        /// active, the line item can't spend its budget even if its own status is `ENTITY_STATUS_ACTIVE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
         public virtual string EntityStatus { get; set; } 
 
@@ -15347,10 +15247,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pacing")]
         public virtual Pacing Pacing { get; set; } 
 
-        /// <summary>The partner costs associated with the line item.
-        ///
-        /// If absent or empty in CreateLineItem method, the newly created line item will inherit partner costs from its
-        /// parent insertion order.</summary>
+        /// <summary>The partner costs associated with the line item. If absent or empty in CreateLineItem method, the
+        /// newly created line item will inherit partner costs from its parent insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerCosts")]
         public virtual System.Collections.Generic.IList<PartnerCost> PartnerCosts { get; set; } 
 
@@ -15369,10 +15267,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Settings that control how budget is allocated.</summary>
     public class LineItemBudget : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The type of the budget allocation.
-        ///
-        /// `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC` is only applicable when automatic budget allocation is enabled
-        /// for the parent insertion order.</summary>
+        /// <summary>Required. The type of the budget allocation. `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC` is only
+        /// applicable when automatic budget allocation is enabled for the parent insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("budgetAllocationType")]
         public virtual string BudgetAllocationType { get; set; } 
 
@@ -15381,16 +15277,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("budgetUnit")]
         public virtual string BudgetUnit { get; set; } 
 
-        /// <summary>The maximum budget amount the line item will spend. Must be greater than 0.
-        ///
-        /// When budget_allocation_type is:
-        ///
-        /// * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC`, this field is immutable and is set by the system. *
-        /// `LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED`, if budget_unit is: - `BUDGET_UNIT_CURRENCY`, this field represents
-        /// maximum budget amount to spend, in micros of the advertiser's currency. For example, 1500000 represents 1.5
-        /// standard units of the currency. - `BUDGET_UNIT_IMPRESSIONS`, this field represents the maximum number of
-        /// impressions to serve. * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNLIMITED`, this field is not applicable and will
-        /// be ignored by the system.</summary>
+        /// <summary>The maximum budget amount the line item will spend. Must be greater than 0. When
+        /// budget_allocation_type is: * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC`, this field is immutable and is
+        /// set by the system. * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED`, if budget_unit is: - `BUDGET_UNIT_CURRENCY`,
+        /// this field represents maximum budget amount to spend, in micros of the advertiser's currency. For example,
+        /// 1500000 represents 1.5 standard units of the currency. - `BUDGET_UNIT_IMPRESSIONS`, this field represents
+        /// the maximum number of impressions to serve. * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNLIMITED`, this field is
+        /// not applicable and will be ignored by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAmount")]
         public virtual System.Nullable<long> MaxAmount { get; set; } 
 
@@ -15402,12 +15295,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
     public class LineItemFlight : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The flight start and end dates of the line item. They are resolved relative to the parent
-        /// advertiser's time zone.
-        ///
-        /// * Required when flight_date_type is `LINE_ITEM_FLIGHT_DATE_TYPE_CUSTOM`. Output only otherwise. * When
-        /// creating a new flight, both `start_date` and `end_date` must be in the future. * An existing flight with a
-        /// `start_date` in the past has a mutable `end_date` but an immutable `start_date`. * `end_date` must be the
-        /// `start_date` or later, both before the year 2037.</summary>
+        /// advertiser's time zone. * Required when flight_date_type is `LINE_ITEM_FLIGHT_DATE_TYPE_CUSTOM`. Output only
+        /// otherwise. * When creating a new flight, both `start_date` and `end_date` must be in the future. * An
+        /// existing flight with a `start_date` in the past has a mutable `end_date` but an immutable `start_date`. *
+        /// `end_date` must be the `start_date` or later, both before the year 2037.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
         public virtual DateRange DateRange { get; set; } 
 
@@ -15422,9 +15313,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Response message for ListAdvertiserAssignedTargetingOptions.</summary>
     public class ListAdvertiserAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of assigned targeting options.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of assigned targeting options. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptions")]
         public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; } 
 
@@ -15440,9 +15329,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListAdvertisersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of advertisers.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of advertisers. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertisers")]
         public virtual System.Collections.Generic.IList<Advertiser> Advertisers { get; set; } 
 
@@ -15458,16 +15345,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Response message for AssignedInventorySourceService.ListAssignedInventorySources.</summary>
     public class ListAssignedInventorySourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of assigned inventory sources.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of assigned inventory sources. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedInventorySources")]
         public virtual System.Collections.Generic.IList<AssignedInventorySource> AssignedInventorySources { get; set; } 
 
-        /// <summary>A token to retrieve the next page of results.
-        ///
-        /// Pass this value in the page_token field in the subsequent call to `ListAssignedInventorySources` method to
-        /// retrieve the next page of results.</summary>
+        /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
+        /// subsequent call to `ListAssignedInventorySources` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -15478,16 +15361,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Response message for AssignedLocationService.ListAssignedLocations.</summary>
     public class ListAssignedLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of assigned locations.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of assigned locations. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedLocations")]
         public virtual System.Collections.Generic.IList<AssignedLocation> AssignedLocations { get; set; } 
 
-        /// <summary>A token to retrieve the next page of results.
-        ///
-        /// Pass this value in the page_token field in the subsequent call to `ListAssignedLocations` method to retrieve
-        /// the next page of results.</summary>
+        /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
+        /// subsequent call to `ListAssignedLocations` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -15497,9 +15376,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListCampaignsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of campaigns.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of campaigns. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaigns")]
         public virtual System.Collections.Generic.IList<Campaign> Campaigns { get; set; } 
 
@@ -15514,9 +15391,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListChannelsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of channels.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of channels. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channels")]
         public virtual System.Collections.Generic.IList<Channel> Channels { get; set; } 
 
@@ -15531,9 +15406,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListCombinedAudiencesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of combined audiences.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of combined audiences. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("combinedAudiences")]
         public virtual System.Collections.Generic.IList<CombinedAudience> CombinedAudiences { get; set; } 
 
@@ -15548,9 +15421,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListCreativesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of creatives.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of creatives. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatives")]
         public virtual System.Collections.Generic.IList<Creative> Creatives { get; set; } 
 
@@ -15566,9 +15437,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListCustomListsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of custom lists.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of custom lists. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customLists")]
         public virtual System.Collections.Generic.IList<CustomList> CustomLists { get; set; } 
 
@@ -15583,9 +15452,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListFirstAndThirdPartyAudiencesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of first and third party audiences. Audience size properties will not be included.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of first and third party audiences. Audience size properties will not be included. This
+        /// list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstAndThirdPartyAudiences")]
         public virtual System.Collections.Generic.IList<FirstAndThirdPartyAudience> FirstAndThirdPartyAudiences { get; set; } 
 
@@ -15600,9 +15468,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListGoogleAudiencesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of Google audiences.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of Google audiences. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleAudiences")]
         public virtual System.Collections.Generic.IList<GoogleAudience> GoogleAudiences { get; set; } 
 
@@ -15617,9 +15483,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListInsertionOrdersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of insertion orders.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of insertion orders. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertionOrders")]
         public virtual System.Collections.Generic.IList<InsertionOrder> InsertionOrders { get; set; } 
 
@@ -15635,9 +15499,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Response message for InventorySourceGroupService.ListInventorySourceGroups.</summary>
     public class ListInventorySourceGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of inventory source groups.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of inventory source groups. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceGroups")]
         public virtual System.Collections.Generic.IList<InventorySourceGroup> InventorySourceGroups { get; set; } 
 
@@ -15652,9 +15514,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListInventorySourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of inventory sources.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of inventory sources. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySources")]
         public virtual System.Collections.Generic.IList<InventorySource> InventorySources { get; set; } 
 
@@ -15670,9 +15530,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Response message for ListLineItemAssignedTargetingOptions.</summary>
     public class ListLineItemAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of assigned targeting options.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of assigned targeting options. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptions")]
         public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; } 
 
@@ -15688,9 +15546,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListLineItemsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of line items.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of line items. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
         public virtual System.Collections.Generic.IList<LineItem> LineItems { get; set; } 
 
@@ -15705,16 +15561,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     public class ListLocationListsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of location lists.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of location lists. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationLists")]
         public virtual System.Collections.Generic.IList<LocationList> LocationLists { get; set; } 
 
-        /// <summary>A token to retrieve the next page of results.
-        ///
-        /// Pass this value in the page_token field in the subsequent call to `ListLocationLists` method to retrieve the
-        /// next page of results.</summary>
+        /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
+        /// subsequent call to `ListLocationLists` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -15725,16 +15577,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Response message for NegativeKeywordListService.ListNegativeKeywordLists.</summary>
     public class ListNegativeKeywordListsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of negative keyword lists.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of negative keyword lists. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeKeywordLists")]
         public virtual System.Collections.Generic.IList<NegativeKeywordList> NegativeKeywordLists { get; set; } 
 
-        /// <summary>A token to retrieve the next page of results.
-        ///
-        /// Pass this value in the page_token field in the subsequent call to `ListNegativeKeywordLists` method to
-        /// retrieve the next page of results.</summary>
+        /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
+        /// subsequent call to `ListNegativeKeywordLists` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -15745,16 +15593,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Response message for NegativeKeywordService.ListNegativeKeywords.</summary>
     public class ListNegativeKeywordsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of negative keywords.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of negative keywords. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeKeywords")]
         public virtual System.Collections.Generic.IList<NegativeKeyword> NegativeKeywords { get; set; } 
 
-        /// <summary>A token to retrieve the next page of results.
-        ///
-        /// Pass this value in the page_token field in the subsequent call to `ListNegativeKeywords` method to retrieve
-        /// the next page of results.</summary>
+        /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
+        /// subsequent call to `ListNegativeKeywords` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -15765,16 +15609,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Response message for SiteService.ListSites.</summary>
     public class ListSitesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A token to retrieve the next page of results.
-        ///
-        /// Pass this value in the page_token field in the subsequent call to `ListSites` method to retrieve the next
-        /// page of results.</summary>
+        /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
+        /// subsequent call to `ListSites` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>The list of sites.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of sites. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sites")]
         public virtual System.Collections.Generic.IList<Site> Sites { get; set; } 
 
@@ -15790,9 +15630,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>The list of targeting options.
-        ///
-        /// This list will be absent if empty.</summary>
+        /// <summary>The list of targeting options. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptions")]
         public virtual System.Collections.Generic.IList<TargetingOption> TargetingOptions { get; set; } 
 
@@ -15850,9 +15688,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
     public class MaximizeSpendBidStrategy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The maximum average CPM that may be bid, in micros of the advertiser's currency. Must be greater
-        /// than or equal to a billable unit of the given currency.
-        ///
-        /// For example, 1500000 represents 1.5 standard units of the currency.</summary>
+        /// than or equal to a billable unit of the given currency. For example, 1500000 represents 1.5 standard units
+        /// of the currency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAverageCpmBidAmountMicros")]
         public virtual System.Nullable<long> MaxAverageCpmBidAmountMicros { get; set; } 
 
@@ -15892,11 +15729,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>A negatively targeted keyword that belongs to a negative keyword list.</summary>
     public class NegativeKeyword : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Immutable. The negatively targeted keyword, for example `car insurance`.
-        ///
-        /// Must be UTF-8 encoded with a maximum size of 255 bytes. Maximum number of characters is 80. Maximum number
-        /// of words is 10.
-        ///
+        /// <summary>Required. Immutable. The negatively targeted keyword, for example `car insurance`. Must be UTF-8
+        /// encoded with a maximum size of 255 bytes. Maximum number of characters is 80. Maximum number of words is 10.
         /// Valid characters are restricted to ASCII characters only. The only URL-escaping permitted is for
         /// representing whitespace between words. Leading or trailing whitespace is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keywordValue")]
@@ -15950,11 +15784,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>OBA Icon for a Creative</summary>
     public class ObaIcon : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The click tracking URL of the OBA icon.
-        ///
-        /// Only URLs of the following domains are allowed:
-        ///
-        /// * https://info.evidon.com * https://l.betrad.com</summary>
+        /// <summary>Required. The click tracking URL of the OBA icon. Only URLs of the following domains are allowed: *
+        /// https://info.evidon.com * https://l.betrad.com</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickTrackingUrl")]
         public virtual string ClickTrackingUrl { get; set; } 
 
@@ -15962,11 +15793,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual Dimensions Dimensions { get; set; } 
 
-        /// <summary>Required. The landing page URL of the OBA icon.
-        ///
-        /// Only URLs of the following domains are allowed:
-        ///
-        /// * https://info.evidon.com * https://l.betrad.com</summary>
+        /// <summary>Required. The landing page URL of the OBA icon. Only URLs of the following domains are allowed: *
+        /// https://info.evidon.com * https://l.betrad.com</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("landingPageUrl")]
         public virtual string LandingPageUrl { get; set; } 
 
@@ -15986,11 +15814,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
         public virtual string ResourceUrl { get; set; } 
 
-        /// <summary>Required. The view tracking URL of the OBA icon.
-        ///
-        /// Only URLs of the following domains are allowed:
-        ///
-        /// * https://info.evidon.com * https://l.betrad.com</summary>
+        /// <summary>Required. The view tracking URL of the OBA icon. Only URLs of the following domains are allowed: *
+        /// https://info.evidon.com * https://l.betrad.com</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewTrackingUrl")]
         public virtual string ViewTrackingUrl { get; set; } 
 
@@ -16073,9 +15898,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -16085,11 +15910,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -16100,29 +15925,25 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Settings that control the rate at which a budget is spent.</summary>
     public class Pacing : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Maximum number of impressions to serve every day.
-        ///
-        /// Applicable when the budget is impression based. Must be greater than 0.</summary>
+        /// <summary>Maximum number of impressions to serve every day. Applicable when the budget is impression based.
+        /// Must be greater than 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dailyMaxImpressions")]
         public virtual System.Nullable<long> DailyMaxImpressions { get; set; } 
 
-        /// <summary>Maximum currency amount to spend every day in micros of advertiser's currency.
-        ///
-        /// Applicable when the budget is currency based. Must be greater than 0. For example, for 1.5 standard unit of
-        /// the currency, set this field to 1500000.
-        ///
-        /// The value assigned will be rounded to whole billable units for the relevant currency by the following rules:
-        /// any positive value less than a single billable unit will be rounded up to one billable unit and any value
-        /// larger than a single billable unit will be rounded down to the nearest billable value. For example, if the
-        /// currency's billable unit is 0.01, and this field is set to 10257770, it will round down to 10250000, a value
-        /// of 10.25. If set to 505, it will round up to 10000, a value of 0.01.</summary>
+        /// <summary>Maximum currency amount to spend every day in micros of advertiser's currency. Applicable when the
+        /// budget is currency based. Must be greater than 0. For example, for 1.5 standard unit of the currency, set
+        /// this field to 1500000. The value assigned will be rounded to whole billable units for the relevant currency
+        /// by the following rules: any positive value less than a single billable unit will be rounded up to one
+        /// billable unit and any value larger than a single billable unit will be rounded down to the nearest billable
+        /// value. For example, if the currency's billable unit is 0.01, and this field is set to 10257770, it will
+        /// round down to 10250000, a value of 10.25. If set to 505, it will round up to 10000, a value of
+        /// 0.01.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dailyMaxMicros")]
         public virtual System.Nullable<long> DailyMaxMicros { get; set; } 
 
-        /// <summary>Required. The time period in which the pacing budget will be spent.
-        ///
-        /// When automatic budget allocation is enabled at the insertion order via auto_budget_allocation, this field is
-        /// output only and defaults to `PACING_PERIOD_FLIGHT`.</summary>
+        /// <summary>Required. The time period in which the pacing budget will be spent. When automatic budget
+        /// allocation is enabled at the insertion order via auto_budget_allocation, this field is output only and
+        /// defaults to `PACING_PERIOD_FLIGHT`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pacingPeriod")]
         public virtual string PacingPeriod { get; set; } 
 
@@ -16185,31 +16006,25 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Settings that control a partner cost.
-    ///
-    /// A partner cost is any type of expense involved in running a campaign, other than the costs of purchasing
-    /// impressions (which is called the media cost) and using third-party audience segment data (data fee). Some
-    /// examples of partner costs include the fees for using DV360, a third-party ad server, or a third-party ad serving
-    /// verification service.</summary>
+    /// <summary>Settings that control a partner cost. A partner cost is any type of expense involved in running a
+    /// campaign, other than the costs of purchasing impressions (which is called the media cost) and using third-party
+    /// audience segment data (data fee). Some examples of partner costs include the fees for using DV360, a third-party
+    /// ad server, or a third-party ad serving verification service.</summary>
     public class PartnerCost : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The type of the partner cost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costType")]
         public virtual string CostType { get; set; } 
 
-        /// <summary>The CPM fee amount in micros of advertiser's currency.
-        ///
-        /// Applicable when the fee_type is `PARTNER_FEE_TYPE_CPM_FEE`. Must be greater than or equal to 0.
-        ///
-        /// For example, for 1.5 standard unit of the advertiser's currency, set this field to 1500000.</summary>
+        /// <summary>The CPM fee amount in micros of advertiser's currency. Applicable when the fee_type is
+        /// `PARTNER_FEE_TYPE_CPM_FEE`. Must be greater than or equal to 0. For example, for 1.5 standard unit of the
+        /// advertiser's currency, set this field to 1500000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feeAmount")]
         public virtual System.Nullable<long> FeeAmount { get; set; } 
 
-        /// <summary>The media fee percentage in millis (1/1000 of a percent).
-        ///
-        /// Applicable when the fee_type is `PARTNER_FEE_TYPE_MEDIA_FEE`. Must be greater than or equal to 0.
-        ///
-        /// For example: 100 represents 0.1%.</summary>
+        /// <summary>The media fee percentage in millis (1/1000 of a percent). Applicable when the fee_type is
+        /// `PARTNER_FEE_TYPE_MEDIA_FEE`. Must be greater than or equal to 0. For example: 100 represents
+        /// 0.1%.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feePercentageMillis")]
         public virtual System.Nullable<long> FeePercentageMillis { get; set; } 
 
@@ -16217,10 +16032,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("feeType")]
         public virtual string FeeType { get; set; } 
 
-        /// <summary>The invoice type for this partner cost.
-        ///
-        /// * Required when cost_type is one of: - `PARTNER_COST_TYPE_ADLOOX` - `PARTNER_COST_TYPE_DOUBLE_VERIFY` -
-        /// `PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE`. * Output only for other types.</summary>
+        /// <summary>The invoice type for this partner cost. * Required when cost_type is one of: -
+        /// `PARTNER_COST_TYPE_ADLOOX` - `PARTNER_COST_TYPE_DOUBLE_VERIFY` - `PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE`. *
+        /// Output only for other types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invoiceType")]
         public virtual string InvoiceType { get; set; } 
 
@@ -16231,9 +16045,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Settings that control how partner revenue is calculated.</summary>
     public class PartnerRevenueModel : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The markup amount of the partner revenue model. Must be greater than or equal to 0.
-        ///
-        /// * When the markup_type is set to be `PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM`, this field represents the CPM
+        /// <summary>Required. The markup amount of the partner revenue model. Must be greater than or equal to 0. *
+        /// When the markup_type is set to be `PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM`, this field represents the CPM
         /// markup in micros of advertiser's currency. For example, 1500000 represents 1.5 standard units of the
         /// currency. * When the markup_type is set to be `PARTNER_REVENUE_MODEL_MARKUP_TYPE_MEDIA_COST_MARKUP`, this
         /// field represents the media cost percent markup in millis. For example, 100 represents 0.1% (decimal 0.001).
@@ -16254,31 +16067,21 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Settings that control the performance goal of a campaign or insertion order.</summary>
     public class PerformanceGoal : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The goal amount, in micros of the advertiser's currency.
-        ///
-        /// Applicable when performance_goal_type is one of:
-        ///
-        /// * `PERFORMANCE_GOAL_TYPE_CPM` * `PERFORMANCE_GOAL_TYPE_CPC` * `PERFORMANCE_GOAL_TYPE_CPA` *
-        /// `PERFORMANCE_GOAL_TYPE_CPIAVC`
-        ///
-        /// For example 1500000 represents 1.5 standard units of the currency.</summary>
+        /// <summary>The goal amount, in micros of the advertiser's currency. Applicable when performance_goal_type is
+        /// one of: * `PERFORMANCE_GOAL_TYPE_CPM` * `PERFORMANCE_GOAL_TYPE_CPC` * `PERFORMANCE_GOAL_TYPE_CPA` *
+        /// `PERFORMANCE_GOAL_TYPE_CPIAVC` For example 1500000 represents 1.5 standard units of the currency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoalAmountMicros")]
         public virtual System.Nullable<long> PerformanceGoalAmountMicros { get; set; } 
 
-        /// <summary>The decimal representation of the goal percentage in micros.
-        ///
-        /// Applicable when performance_goal_type is one of:
-        ///
-        /// * `PERFORMANCE_GOAL_TYPE_CTR` * `PERFORMANCE_GOAL_TYPE_VIEWABILITY`
-        ///
-        /// For example, 70000 represents 7% (decimal 0.07).</summary>
+        /// <summary>The decimal representation of the goal percentage in micros. Applicable when performance_goal_type
+        /// is one of: * `PERFORMANCE_GOAL_TYPE_CTR` * `PERFORMANCE_GOAL_TYPE_VIEWABILITY` For example, 70000 represents
+        /// 7% (decimal 0.07).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoalPercentageMicros")]
         public virtual System.Nullable<long> PerformanceGoalPercentageMicros { get; set; } 
 
         /// <summary>A key performance indicator (KPI) string, which can be empty. Must be UTF-8 encoded with a length
-        /// of no more than 100 characters.
-        ///
-        /// Applicable when performance_goal_type is set to `PERFORMANCE_GOAL_TYPE_OTHER`.</summary>
+        /// of no more than 100 characters. Applicable when performance_goal_type is set to
+        /// `PERFORMANCE_GOAL_TYPE_OTHER`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoalString")]
         public virtual string PerformanceGoalString { get; set; } 
 
@@ -16295,37 +16098,29 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The maximum average CPM that may be bid, in micros of the advertiser's currency. Must be greater
         /// than or equal to a billable unit of the given currency. Not applicable when performance_goal_type is set to
-        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`.
-        ///
-        /// For example, 1500000 represents 1.5 standard units of the currency.</summary>
+        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`. For example, 1500000 represents 1.5 standard units of
+        /// the currency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAverageCpmBidAmountMicros")]
         public virtual System.Nullable<long> MaxAverageCpmBidAmountMicros { get; set; } 
 
         /// <summary>Required. The performance goal the bidding strategy will attempt to meet or beat, in micros of the
         /// advertiser's currency or in micro of the ROAS (Return On Advertising Spend) value which is also based on
         /// advertiser's currency. Must be greater than or equal to a billable unit of the given currency and smaller or
-        /// equal to upper bounds. Each performance_goal_type has its upper bound:
-        ///
-        /// * when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`, upper bound is 10000.00 USD. *
-        /// when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC`, upper bound is 1000.00 USD. *
-        /// when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, upper bound is 1000.00
-        /// USD. * when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`, upper bound is
-        /// 1000.00 and lower bound is 0.01.
-        ///
-        /// Example: If set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, the bid price will be based on the
-        /// probability that each available impression will be viewable. For example, if viewable CPM target is $2 and
-        /// an impression is 40% likely to be viewable, the bid price will be $0.80 CPM (40% of $2).
-        ///
-        /// For example, 1500000 represents 1.5 standard units of the currency or ROAS value.</summary>
+        /// equal to upper bounds. Each performance_goal_type has its upper bound: * when performance_goal_type is
+        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`, upper bound is 10000.00 USD. * when performance_goal_type is
+        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC`, upper bound is 1000.00 USD. * when performance_goal_type is
+        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, upper bound is 1000.00 USD. * when
+        /// performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`, upper bound is 1000.00 and
+        /// lower bound is 0.01. Example: If set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, the bid price
+        /// will be based on the probability that each available impression will be viewable. For example, if viewable
+        /// CPM target is $2 and an impression is 40% likely to be viewable, the bid price will be $0.80 CPM (40% of
+        /// $2). For example, 1500000 represents 1.5 standard units of the currency or ROAS value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoalAmountMicros")]
         public virtual System.Nullable<long> PerformanceGoalAmountMicros { get; set; } 
 
-        /// <summary>Required. The type of the performance goal that the bidding strategy will try to meet or beat.
-        ///
-        /// For line item level usage, the value must be one of:
-        ///
-        /// * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC` *
-        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` *
+        /// <summary>Required. The type of the performance goal that the bidding strategy will try to meet or beat. For
+        /// line item level usage, the value must be one of: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA` *
+        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` *
         /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoalType")]
         public virtual string PerformanceGoalType { get; set; } 
@@ -16344,11 +16139,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual System.Nullable<long> ProximityLocationListId { get; set; } 
 
         /// <summary>Required. Radius range for proximity location list. This represents the size of the area around a
-        /// chosen location that will be targeted.
-        ///
-        /// `All` proximity location targeting under a single line item must have the same radius range value. Set this
-        /// value to match any existing targeting. If updated, this field will change the radius range for all proximity
-        /// targeting under the line item.</summary>
+        /// chosen location that will be targeted. `All` proximity location targeting under a single line item must have
+        /// the same radius range value. Set this value to match any existing targeting. If updated, this field will
+        /// change the radius range for all proximity targeting under the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proximityRadiusRange")]
         public virtual string ProximityRadiusRange { get; set; } 
 
@@ -16374,15 +16167,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>The rate related settings of the inventory source.</summary>
     public class RateDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The rate type.
-        ///
-        /// Acceptable values are `INVENTORY_SOURCE_RATE_TYPE_CPM_FIXED`, `INVENTORY_SOURCE_RATE_TYPE_CPM_FLOOR`, and
-        /// `INVENTORY_SOURCE_RATE_TYPE_CPD`.</summary>
+        /// <summary>The rate type. Acceptable values are `INVENTORY_SOURCE_RATE_TYPE_CPM_FIXED`,
+        /// `INVENTORY_SOURCE_RATE_TYPE_CPM_FLOOR`, and `INVENTORY_SOURCE_RATE_TYPE_CPD`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceRateType")]
         public virtual string InventorySourceRateType { get; set; } 
 
         /// <summary>Output only. The amount that the buyer has committed to spending on the inventory source up front.
-        ///
         /// Only applicable for guaranteed inventory sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumSpend")]
         public virtual Money MinimumSpend { get; set; } 
@@ -16538,9 +16328,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16548,8 +16337,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -16726,10 +16515,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>Tracking URL used to track the interaction.
-        ///
-        /// Provide a URL with optional path or query string, beginning with `https:`. For example,
-        /// https://www.example.com/path</summary>
+        /// <summary>Tracking URL used to track the interaction. Provide a URL with optional path or query string,
+        /// beginning with `https:`. For example, https://www.example.com/path</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 
@@ -16877,11 +16664,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
         public virtual System.Nullable<bool> Negative { get; set; } 
 
-        /// <summary>Required. The URL, for example `example.com`.
-        ///
-        /// DV360 supports two levels of subdirectory targeting, for example `www.example.com/one-subdirectory-level
-        /// /second-level`, and five levels of subdomain targeting, for example
-        /// `five.four.three.two.one.example.com`.</summary>
+        /// <summary>Required. The URL, for example `example.com`. DV360 supports two levels of subdirectory targeting,
+        /// for example `www.example.com/one-subdirectory-level/second-level`, and five levels of subdomain targeting,
+        /// for example `five.four.three.two.one.example.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 

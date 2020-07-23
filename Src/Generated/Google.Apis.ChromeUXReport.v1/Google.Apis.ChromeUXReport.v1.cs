@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/web/tools/chrome-user-experience-report/api/reference'>Chrome UX Report API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200715 (2022)
+ *      <tr><th>API Rev<td>20200721 (2028)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/web/tools/chrome-user-experience-report/api/reference'>
  *              https://developers.google.com/web/tools/chrome-user-experience-report/api/reference</a>
@@ -420,6 +420,15 @@ namespace Google.Apis.ChromeUXReport.v1.Data
     /// <summary>Key defines all the dimensions that identify this record as unique.</summary>
     public class Key : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The effective connection type is the general connection class that all users experienced for this
+        /// record. This field uses the values ["offline", "slow-2G", "2G", "3G", "4G"] as specified in:
+        /// https://wicg.github.io/netinfo/#effective-connection-types
+        ///
+        /// If the effective connection type is unspecified, then aggregated data over all effective connection types
+        /// will be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveConnectionType")]
+        public virtual string EffectiveConnectionType { get; set; } 
+
         /// <summary>The form factor is the device class that all users used to access the site for this record.
         ///
         /// If the form factor is unspecified, then aggregated data over all form factors will be returned.</summary>
@@ -478,6 +487,15 @@ namespace Google.Apis.ChromeUXReport.v1.Data
     /// This request includes all necessary context to load a particular user experience record.</summary>
     public class QueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The effective connection type is a query dimension that specifies the effective network class that
+        /// the record's data should belong to. This field uses the values ["offline", "slow-2G", "2G", "3G", "4G"] as
+        /// specified in: https://wicg.github.io/netinfo/#effective-connection-types
+        ///
+        /// Note: If no effective connection type is specified, then a special record with aggregated data over all
+        /// effective connection types will be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveConnectionType")]
+        public virtual string EffectiveConnectionType { get; set; } 
+
         /// <summary>The form factor is a query dimension that specifies the device class that the record's data should
         /// belong to.
         ///
