@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com'>Firebase ML API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20200720 (2027)
+ *      <tr><th>API Rev<td>20200723 (2030)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com'>
  *              https://firebase.google.com</a>
@@ -1016,6 +1016,11 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
         /// necessary to call UpdateModel for ML to pick up and validate the updated file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsTfliteUri")]
         public virtual string GcsTfliteUri { get; set; } 
+
+        /// <summary>Output only. A boolean indicating that this model was uploaded from the console. Read
+        /// only</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedUpload")]
+        public virtual System.Nullable<bool> ManagedUpload { get; set; } 
 
         /// <summary>Output only. The size of the TFLite model</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]

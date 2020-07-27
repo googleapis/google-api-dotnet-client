@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/search-ads'>Search Ads 360 API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200715 (2022)
+ *      <tr><th>API Rev<td>20200723 (2030)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/search-ads'>
  *              https://developers.google.com/search-ads</a>
@@ -1202,8 +1202,8 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
         public virtual System.Nullable<long> CampaignId { get; set; } 
 
-        /// <summary>Sales channel for the product. Acceptable values are: "`local`": a physical store "`online`": an
-        /// online store </summary>
+        /// <summary>Sales channel for the product. Acceptable values are: - "`local`": a physical store - "`online`":
+        /// an online store </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channel")]
         public virtual string Channel { get; set; } 
 
@@ -1292,7 +1292,7 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         public virtual System.Nullable<long> QuantityMillis { get; set; } 
 
         /// <summary>The revenue amount of this `TRANSACTION` conversion, in micros (value multiplied by 1000000, no
-        /// decimal). For example, to specify a revenue value of "10"  enter "10000000" (10 million) in your
+        /// decimal). For example, to specify a revenue value of "10" enter "10000000" (10 million) in your
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revenueMicros")]
         public virtual string RevenueMicros { get; set; } 
@@ -1482,9 +1482,9 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("platformSource")]
         public virtual string PlatformSource { get; set; } 
 
-        /// <summary>Returns metrics only for a specific type of product activity. Accepted values are:  "`sold`":
-        /// returns metrics only for products that were sold "`advertised`": returns metrics only for products that were
-        /// advertised in a Shopping campaign, and that might or might not have been sold </summary>
+        /// <summary>Returns metrics only for a specific type of product activity. Accepted values are: - "`sold`":
+        /// returns metrics only for products that were sold - "`advertised`": returns metrics only for products that
+        /// were advertised in a Shopping campaign, and that might or might not have been sold </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productReportPerspective")]
         public virtual string ProductReportPerspective { get; set; } 
 

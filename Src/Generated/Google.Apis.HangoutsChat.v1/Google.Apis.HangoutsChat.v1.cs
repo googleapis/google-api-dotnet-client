@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/hangouts/chat'>Hangouts Chat API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200711 (2018)
+ *      <tr><th>API Rev<td>20200722 (2029)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/hangouts/chat'>
  *              https://developers.google.com/hangouts/chat</a>
@@ -64,6 +64,7 @@ namespace Google.Apis.HangoutsChat.v1
         public HangoutsChatService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
+            media = new MediaResource(this);
             spaces = new SpacesResource(this);
         }
 
@@ -112,6 +113,14 @@ namespace Google.Apis.HangoutsChat.v1
 
 
 
+
+        private readonly MediaResource media;
+
+        /// <summary>Gets the Media resource.</summary>
+        public virtual MediaResource Media
+        {
+            get { return media; }
+        }
 
         private readonly SpacesResource spaces;
 
@@ -308,6 +317,136 @@ namespace Google.Apis.HangoutsChat.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
+        }
+    }
+
+    /// <summary>The "media" collection of methods.</summary>
+    public class MediaResource
+    {
+        private const string Resource = "media";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public MediaResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Downloads media. Download is supported on the URI `/v1/media/{+name}?alt=media`.</summary>
+        /// <param name="resourceName">Name of the media that is being downloaded.  See ReadRequest.resource_name.</param>
+        public virtual DownloadRequest Download(string resourceName)
+        {
+            return new DownloadRequest(service, resourceName);
+        }
+
+        /// <summary>Downloads media. Download is supported on the URI `/v1/media/{+name}?alt=media`.</summary>
+        public class DownloadRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Media>
+        {
+            /// <summary>Constructs a new Download request.</summary>
+            public DownloadRequest(Google.Apis.Services.IClientService service, string resourceName)
+                : base(service)
+            {
+                ResourceName = resourceName;
+                MediaDownloader = new Google.Apis.Download.MediaDownloader(service);
+                InitParameters();
+            }
+
+
+            /// <summary>Name of the media that is being downloaded.  See ReadRequest.resource_name.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResourceName { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "download"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/media/{+resourceName}"; }
+            }
+
+            /// <summary>Initializes Download parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "resourceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^.*$",
+                    });
+            }
+
+            /// <summary>Gets the media downloader.</summary>
+            public Google.Apis.Download.IMediaDownloader MediaDownloader { get; private set; }
+
+            /// <summary>
+            /// <para>Synchronously download the media into the given stream.</para>
+            /// <para>Warning: This method hides download errors; use <see cref="DownloadWithStatus"/> instead.</para>
+            /// </summary>
+            public virtual void Download(System.IO.Stream stream)
+            {
+                MediaDownloader.Download(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Synchronously download the media into the given stream.</summary>
+            /// <returns>The final status of the download; including whether the download succeeded or failed.</returns>
+            public virtual Google.Apis.Download.IDownloadProgress DownloadWithStatus(System.IO.Stream stream)
+            {
+                return MediaDownloader.Download(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Asynchronously download the media into the given stream.</summary>
+            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream)
+            {
+                return MediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Asynchronously download the media into the given stream.</summary>
+            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream,
+                System.Threading.CancellationToken cancellationToken)
+            {
+                return MediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
+            }
+
+            #if !NET40
+            /// <summary>Synchronously download a range of the media into the given stream.</summary>
+            public virtual Google.Apis.Download.IDownloadProgress DownloadRange(System.IO.Stream stream, System.Net.Http.Headers.RangeHeaderValue range)
+            {
+                var mediaDownloader = new Google.Apis.Download.MediaDownloader(Service);
+                mediaDownloader.Range = range;
+                return mediaDownloader.Download(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Asynchronously download a range of the media into the given stream.</summary>
+            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadRangeAsync(System.IO.Stream stream,
+                System.Net.Http.Headers.RangeHeaderValue range,
+                System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+            {
+                var mediaDownloader = new Google.Apis.Download.MediaDownloader(Service);
+                mediaDownloader.Range = range;
+                return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
+            }
+            #endif
+
         }
     }
 
@@ -1458,6 +1597,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>List of spaces in the requested (or first) page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spaces")]
         public virtual System.Collections.Generic.IList<Space> Spaces { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Media resource.</summary>
+    public class Media : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the media resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

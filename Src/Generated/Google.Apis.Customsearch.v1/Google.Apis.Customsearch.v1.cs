@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/custom-search/v1/introduction'>Custom Search API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200721 (2028)
+ *      <tr><th>API Rev<td>20200723 (2030)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/custom-search/v1/introduction'>
  *              https://developers.google.com/custom-search/v1/introduction</a>
@@ -351,15 +351,15 @@ namespace Google.Apis.Customsearch.v1
             }
 
 
-            /// <summary>Returns metadata about the search performed, metadata about the custom search engine used for
-            /// the search, and the search results. Uses a small set of url patterns.</summary>
+            /// <summary>Returns metadata about the search performed, metadata about the engine used for the search, and
+            /// the search results. Uses a small set of url patterns.</summary>
             public virtual ListRequest List()
             {
                 return new ListRequest(service);
             }
 
-            /// <summary>Returns metadata about the search performed, metadata about the custom search engine used for
-            /// the search, and the search results. Uses a small set of url patterns.</summary>
+            /// <summary>Returns metadata about the search performed, metadata about the engine used for the search, and
+            /// the search results. Uses a small set of url patterns.</summary>
             public class ListRequest : CustomsearchBaseServiceRequest<Google.Apis.Customsearch.v1.Data.Search>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -398,7 +398,7 @@ namespace Google.Apis.Customsearch.v1
                 [Google.Apis.Util.RequestParameterAttribute("cr", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Cr { get; set; }
 
-                /// <summary>The custom search engine ID to use for this request.</summary>
+                /// <summary>The Programmable Search Engine ID to use for this request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("cx", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Cx { get; set; }
 
@@ -1224,15 +1224,15 @@ namespace Google.Apis.Customsearch.v1
             }
         }
 
-        /// <summary>Returns metadata about the search performed, metadata about the custom search engine used for the
-        /// search, and the search results.</summary>
+        /// <summary>Returns metadata about the search performed, metadata about the engine used for the search, and the
+        /// search results.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Returns metadata about the search performed, metadata about the custom search engine used for the
-        /// search, and the search results.</summary>
+        /// <summary>Returns metadata about the search performed, metadata about the engine used for the search, and the
+        /// search results.</summary>
         public class ListRequest : CustomsearchBaseServiceRequest<Google.Apis.Customsearch.v1.Data.Search>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1271,7 +1271,7 @@ namespace Google.Apis.Customsearch.v1
             [Google.Apis.Util.RequestParameterAttribute("cr", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Cr { get; set; }
 
-            /// <summary>The custom search engine ID to use for this request.</summary>
+            /// <summary>The Programmable Search Engine ID to use for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("cx", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Cx { get; set; }
 
@@ -2378,9 +2378,9 @@ namespace Google.Apis.Customsearch.v1.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("cr")]
                 public virtual string Cr { get; set; } 
 
-                /// <summary>The identifier of a custom search engine created using the Custom Search [Control
-                /// Panel](https://cse.google.com/). This is a custom property not defined in the OpenSearch spec. This
-                /// parameter is **required**.</summary>
+                /// <summary>The identifier of an engine created using the Programmable Search Engine [Control
+                /// Panel](https://programmablesearchengine.google.com/). This is a custom property not defined in the
+                /// OpenSearch spec. This parameter is **required**.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("cx")]
                 public virtual string Cx { get; set; } 
 
@@ -2690,9 +2690,9 @@ namespace Google.Apis.Customsearch.v1.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("cr")]
                 public virtual string Cr { get; set; } 
 
-                /// <summary>The identifier of a custom search engine created using the Custom Search [Control
-                /// Panel](https://cse.google.com/). This is a custom property not defined in the OpenSearch spec. This
-                /// parameter is **required**.</summary>
+                /// <summary>The identifier of an engine created using the Programmable Search Engine [Control
+                /// Panel](https://programmablesearchengine.google.com/). This is a custom property not defined in the
+                /// OpenSearch spec. This parameter is **required**.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("cx")]
                 public virtual string Cx { get; set; } 
 
@@ -3002,9 +3002,9 @@ namespace Google.Apis.Customsearch.v1.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("cr")]
                 public virtual string Cr { get; set; } 
 
-                /// <summary>The identifier of a custom search engine created using the Custom Search [Control
-                /// Panel](https://cse.google.com/). This is a custom property not defined in the OpenSearch spec. This
-                /// parameter is **required**.</summary>
+                /// <summary>The identifier of an engine created using the Programmable Search Engine [Control
+                /// Panel](https://programmablesearchengine.google.com/). This is a custom property not defined in the
+                /// OpenSearch spec. This parameter is **required**.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("cx")]
                 public virtual string Cx { get; set; } 
 
@@ -3337,7 +3337,7 @@ namespace Google.Apis.Customsearch.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("template")]
             public virtual string Template { get; set; } 
 
-            /// <summary>The MIME type of the OpenSearch URL template for the Custom Search API.</summary>
+            /// <summary>The MIME type of the OpenSearch URL template for the Custom Search JSON API.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
             public virtual string Type { get; set; } 
 

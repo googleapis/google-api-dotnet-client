@@ -120,7 +120,7 @@
    }
   }
  }, 
- "revision": "20200721", 
+ "revision": "20200725", 
  "rootUrl": "https://searchconsole.googleapis.com/", 
  "schemas": {
   "BlockedResource": {

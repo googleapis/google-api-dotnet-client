@@ -2153,7 +2153,7 @@
    }
   }
  }, 
- "revision": "20200714", 
+ "revision": "20200721", 
  "rootUrl": "https://classroom.googleapis.com/", 
  "schemas": {
   "Announcement": {

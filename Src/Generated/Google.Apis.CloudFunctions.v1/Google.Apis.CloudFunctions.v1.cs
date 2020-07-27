@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/functions'>Cloud Functions API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200629 (2006)
+ *      <tr><th>API Rev<td>20200717 (2024)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/functions'>
  *              https://cloud.google.com/functions</a>
@@ -2116,35 +2116,6 @@ namespace Google.Apis.CloudFunctions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("buildId")]
         public virtual string BuildId { get; set; } 
 
-        /// <summary>The original request that started the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("request")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Request { get; set; } 
-
-        /// <summary>Target of the operation - for example
-        /// projects/project-1/locations/region-1/functions/function-1</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
-
-        /// <summary>Type of operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
-
-        /// <summary>The last update timestamp of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
-
-        /// <summary>Version id of the function created or updated by an API call. This field is only populated for
-        /// Create and Update operations.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
-        public virtual System.Nullable<long> VersionId { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Metadata describing an Operation</summary>
-    public class OperationMetadataV1Beta2 : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The original request that started the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("request")]
         public virtual System.Collections.Generic.IDictionary<string,object> Request { get; set; } 

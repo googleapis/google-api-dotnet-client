@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>Google Cloud Memorystore for Redis API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200706 (2013)
+ *      <tr><th>API Rev<td>20200722 (2029)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>
  *              https://cloud.google.com/memorystore/docs/redis/</a>
@@ -1768,6 +1768,255 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
     /// only.</summary>
     public class GoogleCloudRedisV1beta1ZoneMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class GoogleCloudSaasacceleratorManagementProvidersV1Instance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>consumer_defined_name is the name that is set by the consumer. On the other hand Name field
+        /// represents system-assigned id of an instance so consumers are not necessarily aware of it.
+        /// consumer_defined_name is used for notification/UI purposes for consumer to recognize their
+        /// instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerDefinedName")]
+        public virtual string ConsumerDefinedName { get; set; } 
+
+        /// <summary>Output only. Timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Optional. Resource labels to represent user provided metadata. Each label is a key-value pair,
+        /// where both the key and the value are arbitrary strings provided by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The MaintenancePolicies that have been attached to the instance. The key must be of the type name
+        /// of the oneof policy name defined in MaintenancePolicy, and the referenced policy must define the same policy
+        /// type. For complete details of MaintenancePolicy, please refer to go/cloud-saas-mw-ug.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicyNames")]
+        public virtual System.Collections.Generic.IDictionary<string,string> MaintenancePolicyNames { get; set; } 
+
+        /// <summary>The MaintenanceSchedule contains the scheduling information of published maintenance
+        /// schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedules")]
+        public virtual System.Collections.Generic.IDictionary<string,GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule> MaintenanceSchedules { get; set; } 
+
+        /// <summary>Optional. The MaintenanceSettings associated with instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSettings")]
+        public virtual GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings MaintenanceSettings { get; set; } 
+
+        /// <summary>Unique name of the resource. It uses the form:
+        /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Output only. Custom string attributes used primarily to expose producer-specific information in
+        /// monitoring dashboards. See go/get-instance-metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string,string> ProducerMetadata { get; set; } 
+
+        /// <summary>Output only. The list of data plane resources provisioned for this instance, e.g. compute VMs. See
+        /// go/get-instance-metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedResources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource> ProvisionedResources { get; set; } 
+
+        /// <summary>Link to the SLM instance template. Only populated when updating SLM instances via SSA's Actuation
+        /// service adaptor. Service producers with custom control plane (e.g. Cloud SQL) doesn't need to populate this
+        /// field. Instead they should use software_versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slmInstanceTemplate")]
+        public virtual string SlmInstanceTemplate { get; set; } 
+
+        /// <summary>Output only. SLO metadata for instance classification in the Standardized dataplane SLO platform.
+        /// See go/cloud-ssa-standard-slo for feature description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sloMetadata")]
+        public virtual GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata SloMetadata { get; set; } 
+
+        /// <summary>Software versions that are used to deploy this instance. This can be mutated by rollout
+        /// services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("softwareVersions")]
+        public virtual System.Collections.Generic.IDictionary<string,string> SoftwareVersions { get; set; } 
+
+        /// <summary>Output only. Current lifecycle state of the resource (e.g. if it's being created or ready to
+        /// use).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>Output only. ID of the associated GCP tenant project. See go/get-instance-metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenantProjectId")]
+        public virtual string TenantProjectId { get; set; } 
+
+        /// <summary>Output only. Timestamp when the resource was last modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Maintenance schedule which is exposed to customer and potentially end user, indicating published
+    /// upcoming future maintenance schedule</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Can this scheduled update be rescheduled? By default, it's true and API needs to do explicitly
+        /// check whether it's set, if it's set as false explicitly, it's false</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canReschedule")]
+        public virtual System.Nullable<bool> CanReschedule { get; set; } 
+
+        /// <summary>The scheduled end time for the maintenance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>The rollout management policy this maintenance schedule is associated with. When doing reschedule
+        /// update request, the reschedule should be against this given policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutManagementPolicy")]
+        public virtual string RolloutManagementPolicy { get; set; } 
+
+        /// <summary>The scheduled start time for the maintenance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Maintenance settings associated with instance. Allows service producers and end users to assign
+    /// settings that controls maintenance on this instance.</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Exclude instance from maintenance. When true, rollout service will not attempt
+        /// maintenance on the instance. Rollout service will include the instance in reported rollout progress as not
+        /// attempted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclude")]
+        public virtual System.Nullable<bool> Exclude { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Node information for custom per-node SLO implementations. SSA does not support per-node SLO, but
+    /// producers can populate per-node information in SloMetadata for custom precomputations. SSA Eligibility Exporter
+    /// will emit per-node metric based on this information.</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>By default node is eligible if instance is eligible. But individual node might be excluded from SLO
+        /// by adding entry here. For semantic see SloMetadata.exclusions. If both instance and node level exclusions
+        /// are present for time period, the node level's reason will be reported by Eligibility Exporter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion> Exclusions { get; set; } 
+
+        /// <summary>The location of the node, if different from instance location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
+
+        /// <summary>The id of the node. This should be equal to SaasInstanceNode.node_id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeId")]
+        public virtual string NodeId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Describes provisioned dataplane resources.</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type of the resource. This can be either a GCP resource or a custom one (e.g. another cloud
+        /// provider's VM). For GCP compute resources use singular form of the names listed in GCP compute API
+        /// documentation (https://cloud.google.com/compute/docs/reference/rest/v1/), prefixed with 'compute-', for
+        /// example: 'compute-instance', 'compute-disk', 'compute-autoscaler'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; } 
+
+        /// <summary>URL identifying the resource, e.g. "https://www.googleapis.com/compute/v1/projects/...)".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
+        public virtual string ResourceUrl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>SloEligibility is a tuple containing eligibility value: true if an instance is eligible for SLO
+    /// calculation or false if it should be excluded from all SLO-related calculations along with a user-defined
+    /// reason.</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether an instance is eligible or ineligible.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eligible")]
+        public virtual System.Nullable<bool> Eligible { get; set; } 
+
+        /// <summary>User-defined reason for the current value of instance eligibility. Usually, this can be directly
+        /// mapped to the internal state. An empty reason is allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>SloExclusion represents an exclusion in SLI calculation applies to all SLOs.</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Exclusion duration. No restrictions on the possible values.
+        ///
+        /// When an ongoing operation is taking longer than initially expected, an existing entry in the exclusion list
+        /// can be updated by extending the duration. This is supported by the subsystem exporting eligibility data as
+        /// long as such extension is committed at least 10 minutes before the original exclusion expiration - otherwise
+        /// it is possible that there will be "gaps" in the exclusion application in the exported timeseries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; } 
+
+        /// <summary>Human-readable reason for the exclusion. This should be a static string (e.g. "Disruptive update in
+        /// progress") and should not contain dynamically generated data (e.g. instance name). Can be left
+        /// empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; } 
+
+        /// <summary>Name of an SLI that this exclusion applies to. Can be left empty, signaling that the instance
+        /// should be excluded from all SLIs defined in the service SLO configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sliName")]
+        public virtual string SliName { get; set; } 
+
+        /// <summary>Start time of the exclusion. No alignment (e.g. to a full minute) needed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>SloMetadata contains resources required for proper SLO classification of the instance.</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. User-defined instance eligibility.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eligibility")]
+        public virtual GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility Eligibility { get; set; } 
+
+        /// <summary>List of SLO exclusion windows. When multiple entries in the list match (matching the exclusion
+        /// time-window against current time point) the exclusion reason used in the first matching entry will be
+        /// published.
+        ///
+        /// It is not needed to include expired exclusion in this list, as only the currently applicable exclusions are
+        /// taken into account by the eligibility exporting subsystem (the historical state of exclusions will be
+        /// reflected in the historically produced timeseries regardless of the current state).
+        ///
+        /// This field can be used to mark the instance as temporary ineligible for the purpose of SLO calculation. For
+        /// permanent instance SLO exclusion, use of custom instance eligibility is recommended. See 'eligibility' field
+        /// below.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion> Exclusions { get; set; } 
+
+        /// <summary>Optional. List of nodes. Some producers need to use per-node metadata to calculate SLO. This field
+        /// allows such producers to publish per-node SLO meta data, which will be consumed by SSA Eligibility Exporter
+        /// and published in the form of per node metric to Monarch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata> Nodes { get; set; } 
+
+        /// <summary>Name of the SLO tier the Instance belongs to. This name will be expected to match the tiers
+        /// specified in the service SLO configuration.
+        ///
+        /// Field is mandatory and must not be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tier")]
+        public virtual string Tier { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

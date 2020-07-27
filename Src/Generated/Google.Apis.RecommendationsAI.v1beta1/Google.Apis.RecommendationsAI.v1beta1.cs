@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/recommendations/docs/'>Recommendations AI</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200706 (2013)
+ *      <tr><th>API Rev<td>20200724 (2031)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/recommendations/docs/'>
  *              https://cloud.google.com/recommendations/docs/</a>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2.1
- *      <tr><th>API Rev<td>20200709 (2016)
+ *      <tr><th>API Rev<td>20200716 (2023)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -10250,6 +10250,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// `delete`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("force")]
         public virtual System.Nullable<bool> Force { get; set; } 
+
+        /// <summary>Label IDs for the 'updatelabels' request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<ulong>> LabelIds { get; set; } 
 
         /// <summary>Details about the `link` request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkRequest")]

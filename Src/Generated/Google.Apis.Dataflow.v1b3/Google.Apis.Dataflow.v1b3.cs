@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataflow'>Dataflow API</a>
  *      <tr><th>API Version<td>v1b3
- *      <tr><th>API Rev<td>20200703 (2010)
+ *      <tr><th>API Rev<td>20200713 (2020)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataflow'>
  *              https://cloud.google.com/dataflow</a>
@@ -7016,7 +7016,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>Exactly one of step or steps_location should be specified.
         ///
-        /// The top-level steps that constitute the entire job.</summary>
+        /// The top-level steps that constitute the entire job. Only retrieved with JOB_VIEW_ALL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
         public virtual System.Collections.Generic.IList<Step> Steps { get; set; } 
 

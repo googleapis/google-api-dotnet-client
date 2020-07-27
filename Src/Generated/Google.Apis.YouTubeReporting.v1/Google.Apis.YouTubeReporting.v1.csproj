@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.YouTubeReporting.v1 Client Library</Title>
-    <Version>1.48.0.2028</Version>
+    <Version>1.48.0.2029</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

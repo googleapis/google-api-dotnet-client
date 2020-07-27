@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20200713 (2020)
+ *      <tr><th>API Rev<td>20200720 (2027)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -358,22 +358,15 @@ namespace Google.Apis.CloudResourceManager.v2beta1
 
         /// <summary>Creates a Folder in the resource hierarchy. Returns an Operation which can be used to track the
         /// progress of the folder creation workflow. Upon success the Operation.response field will be populated with
-        /// the created Folder.
-        ///
-        /// In order to succeed, the addition of this new Folder must not violate the Folder naming, height or fanout
-        /// constraints.
-        ///
-        /// + The Folder's display_name must be distinct from all other Folder's that share its parent. + The addition
-        /// of the Folder must not cause the active Folder hierarchy to exceed a height of 4. Note, the full active +
-        /// deleted Folder hierarchy is allowed to reach a height of 8; this provides additional headroom when moving
-        /// folders that contain deleted folders. + The addition of the Folder must not cause the total number of
-        /// Folders under its parent to exceed 100.
-        ///
-        /// If the operation fails due to a folder constraint violation, some errors may be returned by the CreateFolder
-        /// request, with status code FAILED_PRECONDITION and an error description. Other folder constraint violations
-        /// will be communicated in the Operation, with the specific PreconditionFailure returned via the details list
-        /// in the Operation.error field.
-        ///
+        /// the created Folder. In order to succeed, the addition of this new Folder must not violate the Folder naming,
+        /// height or fanout constraints. + The Folder's display_name must be distinct from all other Folder's that
+        /// share its parent. + The addition of the Folder must not cause the active Folder hierarchy to exceed a height
+        /// of 4. Note, the full active + deleted Folder hierarchy is allowed to reach a height of 8; this provides
+        /// additional headroom when moving folders that contain deleted folders. + The addition of the Folder must not
+        /// cause the total number of Folders under its parent to exceed 100. If the operation fails due to a folder
+        /// constraint violation, some errors may be returned by the CreateFolder request, with status code
+        /// FAILED_PRECONDITION and an error description. Other folder constraint violations will be communicated in the
+        /// Operation, with the specific PreconditionFailure returned via the details list in the Operation.error field.
         /// The caller must have `resourcemanager.folders.create` permission on the identified parent.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v2beta1.Data.Folder body)
@@ -383,22 +376,15 @@ namespace Google.Apis.CloudResourceManager.v2beta1
 
         /// <summary>Creates a Folder in the resource hierarchy. Returns an Operation which can be used to track the
         /// progress of the folder creation workflow. Upon success the Operation.response field will be populated with
-        /// the created Folder.
-        ///
-        /// In order to succeed, the addition of this new Folder must not violate the Folder naming, height or fanout
-        /// constraints.
-        ///
-        /// + The Folder's display_name must be distinct from all other Folder's that share its parent. + The addition
-        /// of the Folder must not cause the active Folder hierarchy to exceed a height of 4. Note, the full active +
-        /// deleted Folder hierarchy is allowed to reach a height of 8; this provides additional headroom when moving
-        /// folders that contain deleted folders. + The addition of the Folder must not cause the total number of
-        /// Folders under its parent to exceed 100.
-        ///
-        /// If the operation fails due to a folder constraint violation, some errors may be returned by the CreateFolder
-        /// request, with status code FAILED_PRECONDITION and an error description. Other folder constraint violations
-        /// will be communicated in the Operation, with the specific PreconditionFailure returned via the details list
-        /// in the Operation.error field.
-        ///
+        /// the created Folder. In order to succeed, the addition of this new Folder must not violate the Folder naming,
+        /// height or fanout constraints. + The Folder's display_name must be distinct from all other Folder's that
+        /// share its parent. + The addition of the Folder must not cause the active Folder hierarchy to exceed a height
+        /// of 4. Note, the full active + deleted Folder hierarchy is allowed to reach a height of 8; this provides
+        /// additional headroom when moving folders that contain deleted folders. + The addition of the Folder must not
+        /// cause the total number of Folders under its parent to exceed 100. If the operation fails due to a folder
+        /// constraint violation, some errors may be returned by the CreateFolder request, with status code
+        /// FAILED_PRECONDITION and an error description. Other folder constraint violations will be communicated in the
+        /// Operation, with the specific PreconditionFailure returned via the details list in the Operation.error field.
         /// The caller must have `resourcemanager.folders.create` permission on the identified parent.</summary>
         public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v2beta1.Data.Operation>
         {
@@ -862,15 +848,12 @@ namespace Google.Apis.CloudResourceManager.v2beta1
 
         /// <summary>Updates a Folder, changing its display_name. Changes to the folder display_name will be rejected if
         /// they violate either the display_name formatting rules or naming constraints described in the CreateFolder
-        /// documentation.
-        ///
-        /// The Folder's display name must start and end with a letter or digit, may contain letters, digits, spaces,
-        /// hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression:
-        /// [\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?. The caller must have `resourcemanager.folders.update`
-        /// permission on the identified folder.
-        ///
-        /// If the update fails due to the unique name constraint then a PreconditionFailure explaining this violation
-        /// will be returned in the Status.details field.</summary>
+        /// documentation. The Folder's display name must start and end with a letter or digit, may contain letters,
+        /// digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the
+        /// regular expression: [\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?. The caller must have
+        /// `resourcemanager.folders.update` permission on the identified folder. If the update fails due to the unique
+        /// name constraint then a PreconditionFailure explaining this violation will be returned in the Status.details
+        /// field.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example:
         /// "folders/1234".</param>
@@ -881,15 +864,12 @@ namespace Google.Apis.CloudResourceManager.v2beta1
 
         /// <summary>Updates a Folder, changing its display_name. Changes to the folder display_name will be rejected if
         /// they violate either the display_name formatting rules or naming constraints described in the CreateFolder
-        /// documentation.
-        ///
-        /// The Folder's display name must start and end with a letter or digit, may contain letters, digits, spaces,
-        /// hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression:
-        /// [\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?. The caller must have `resourcemanager.folders.update`
-        /// permission on the identified folder.
-        ///
-        /// If the update fails due to the unique name constraint then a PreconditionFailure explaining this violation
-        /// will be returned in the Status.details field.</summary>
+        /// documentation. The Folder's display name must start and end with a letter or digit, may contain letters,
+        /// digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the
+        /// regular expression: [\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?. The caller must have
+        /// `resourcemanager.folders.update` permission on the identified folder. If the update fails due to the unique
+        /// name constraint then a PreconditionFailure explaining this violation will be returned in the Status.details
+        /// field.</summary>
         public class PatchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v2beta1.Data.Folder>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -964,10 +944,8 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         }
 
         /// <summary>Search for folders that match specific filter criteria. Search provides an eventually consistent
-        /// view of the folders a user has access to which meet the specified filter criteria.
-        ///
-        /// This will only return folders on which the caller has the permission
-        /// `resourcemanager.folders.get`.</summary>
+        /// view of the folders a user has access to which meet the specified filter criteria. This will only return
+        /// folders on which the caller has the permission `resourcemanager.folders.get`.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual SearchRequest Search(Google.Apis.CloudResourceManager.v2beta1.Data.SearchFoldersRequest body)
         {
@@ -975,10 +953,8 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         }
 
         /// <summary>Search for folders that match specific filter criteria. Search provides an eventually consistent
-        /// view of the folders a user has access to which meet the specified filter criteria.
-        ///
-        /// This will only return folders on which the caller has the permission
-        /// `resourcemanager.folders.get`.</summary>
+        /// view of the folders a user has access to which meet the specified filter criteria. This will only return
+        /// folders on which the caller has the permission `resourcemanager.folders.get`.</summary>
         public class SearchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v2beta1.Data.SearchFoldersResponse>
         {
             /// <summary>Constructs a new Search request.</summary>
@@ -1099,9 +1075,8 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         }
 
         /// <summary>Returns permissions that a caller has on the specified Folder. The `resource` field should be the
-        /// Folder's resource name, e.g. "folders/1234".
-        ///
-        /// There are no permissions required for making this API call.</summary>
+        /// Folder's resource name, e.g. "folders/1234". There are no permissions required for making this API
+        /// call.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
         /// documentation for the appropriate value for this field.</param>
@@ -1111,9 +1086,8 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         }
 
         /// <summary>Returns permissions that a caller has on the specified Folder. The `resource` field should be the
-        /// Folder's resource name, e.g. "folders/1234".
-        ///
-        /// There are no permissions required for making this API call.</summary>
+        /// Folder's resource name, e.g. "folders/1234". There are no permissions required for making this API
+        /// call.</summary>
         public class TestIamPermissionsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v2beta1.Data.TestIamPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -1269,7 +1243,7 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         }
 
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
@@ -1277,7 +1251,7 @@ namespace Google.Apis.CloudResourceManager.v2beta1
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v2beta1.Data.Operation>
         {
@@ -1338,21 +1312,15 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
 
     /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
     /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
-    /// AuditLogConfigs.
-    ///
-    /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
-    /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
-    /// AuditLogConfig are exempted.
-    ///
-    /// Example Policy with multiple AuditConfigs:
-    ///
-    /// { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two
+    /// AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the
+    /// exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: {
+    /// "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
     /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ]
     /// }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, {
-    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
-    ///
-    /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
-    /// jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.</summary>
+    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this
+    /// policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ
+    /// logging, and aliya@example.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
@@ -1368,11 +1336,8 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Provides the configuration for logging a type of permissions. Example:
-    ///
-    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
-    /// "log_type": "DATA_WRITE" } ] }
-    ///
+    /// <summary>Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ {
+    /// "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] }
     /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -1393,53 +1358,33 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding.
-        ///
-        /// If the condition evaluates to `true`, then this binding applies to the current request.
-        ///
-        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
-        /// different role binding might grant the same role to one or more of the members in this binding.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
+        /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
+        /// apply to the current request. However, a different role binding might grant the same role to one or more of
+        /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values:
-        ///
-        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
-        /// account.
-        ///
-        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
-        /// account or a service account.
-        ///
-        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@example.com` .
-        ///
-        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
-        /// app@appspot.gserviceaccount.com`.
-        ///
-        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
-        ///
-        /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
-        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
-        ///
-        /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
-        /// a service account that has been recently deleted. For example, `my-other-
+        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
+        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
+        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
+        /// represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An
+        /// email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example, `my-other-
         /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
-        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
-        ///
-        /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
+        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. *
+        /// `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
         /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
         /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
-        /// binding.
-        ///
-        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
-        /// `google.com` or `example.com`.
-        ///
-        /// </summary>
+        /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
+        /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
 
@@ -1454,29 +1399,15 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
 
     /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
     /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    ///
-    /// Example (Comparison):
-    ///
-    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
-    /// "document.summary.size() < 100"
-    ///
-    /// Example (Equality):
-    ///
-    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
-    /// "document.owner == request.auth.claims.email"
-    ///
-    /// Example (Logic):
-    ///
-    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
-    /// "document.type != 'private' && document.type != 'internal'"
-    ///
-    /// Example (Data Manipulation):
-    ///
+    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
     /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)"
-    ///
-    /// The exact variables and functions that may be referenced within an expression are determined by the service that
-    /// evaluates it. See the service documentation for additional information.</summary>
+    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
+    /// within an expression are determined by the service that evaluates it. See the service documentation for
+    /// additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
@@ -1587,14 +1518,10 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
     /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The policy format version to be returned.
-        ///
-        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
-        ///
-        /// Requests for policies with any conditional bindings must specify version 3. Policies without any conditional
-        /// bindings may specify any valid value or leave the field unset.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// <summary>Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
+        /// specifying an invalid value will be rejected. Requests for policies with any conditional bindings must
+        /// specify version 3. Policies without any conditional bindings may specify any valid value or leave the field
+        /// unset. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
@@ -1644,9 +1571,9 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -1656,11 +1583,11 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -1669,35 +1596,24 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
     }    
 
     /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
-    /// resources.
-    ///
-    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
-    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
-    /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
-    ///
-    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
-    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
-    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
-    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
-    /// /resource-policies).
-    ///
-    /// **JSON example:**
-    ///
-    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
-    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
-    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
-    ///
-    /// **YAML example:**
-    ///
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
-    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
-    /// description: Does not grant access after Sep 2020 expression: request.time <
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
-    ///
-    /// For a description of IAM and its features, see the [IAM
+    /// resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`.
+    /// Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a
+    /// named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some
+    /// types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that
+    /// allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on
+    /// attributes of the request, the resource, or both. To learn which resources support conditions in their IAM
+    /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON
+    /// example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [
+    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
+    /// id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [
+    /// "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access
+    /// after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+    /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com -
+    /// group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+    /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+    /// roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access
+    /// after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version:
+    /// 3 For a description of IAM and its features, see the [IAM
     /// documentation](https://cloud.google.com/iam/docs/).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1714,33 +1630,23 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
-        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
-        ///
-        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
-        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
+        /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
+        /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Specifies the format of the policy.
-        ///
-        /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected.
-        ///
-        /// Any operation that affects conditional role bindings must specify version `3`. This requirement applies to
-        /// the following operations:
-        ///
-        /// * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy
-        /// * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition,
-        /// from a policy that includes conditions
-        ///
+        /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
+        /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
+        /// This requirement applies to the following operations: * Getting a policy that includes a conditional role
+        /// binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy *
+        /// Removing any role binding, with or without a condition, from a policy that includes conditions
         /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
         /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.
-        ///
-        /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any
+        /// conditions, operations on that policy may specify any valid version or leave the field unset. To learn which
+        /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
@@ -1781,17 +1687,11 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
         public virtual string PageToken { get; set; } 
 
         /// <summary>Search criteria used to select the Folders to return. If no search criteria is specified then all
-        /// accessible folders will be returned.
-        ///
-        /// Query expressions can be used to restrict results based upon displayName, lifecycleState and parent, where
-        /// the operators `=`, `NOT`, `AND` and `OR` can be used along with the suffix wildcard symbol `*`.
-        ///
-        /// The displayName field in a query expression should use escaped quotes for values that include whitespace to
-        /// prevent unexpected behavior.
-        ///
-        /// Some example queries are:
-        ///
-        /// * Query `displayName=Test*` returns Folder resources whose display name starts with "Test". * Query
+        /// accessible folders will be returned. Query expressions can be used to restrict results based upon
+        /// displayName, lifecycleState and parent, where the operators `=`, `NOT`, `AND` and `OR` can be used along
+        /// with the suffix wildcard symbol `*`. The displayName field in a query expression should use escaped quotes
+        /// for values that include whitespace to prevent unexpected behavior. Some example queries are: * Query
+        /// `displayName=Test*` returns Folder resources whose display name starts with "Test". * Query
         /// `lifecycleState=ACTIVE` returns Folder resources with `lifecycleState` set to `ACTIVE`. * Query
         /// `parent=folders/123` returns Folder resources that have `folders/123` as a parent resource. * Query
         /// `parent=folders/123 AND lifecycleState=ACTIVE` returns active Folder resources that have `folders/123` as a
@@ -1830,9 +1730,8 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
         public virtual Policy Policy { get; set; } 
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, the following default mask is used:
-        ///
-        /// `paths: "bindings, etag"`</summary>
+        /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
+        /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 
@@ -1842,9 +1741,8 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1852,8 +1750,8 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

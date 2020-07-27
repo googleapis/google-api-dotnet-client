@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200713 (2020)
+ *      <tr><th>API Rev<td>20200720 (2027)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -525,11 +525,9 @@ namespace Google.Apis.CloudResourceManager.v1
 
         }
 
-        /// <summary>Gets a `Policy` on a resource.
-        ///
-        /// If no `Policy` is set on the resource, a `Policy` is returned with default values including
-        /// `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to
-        /// create or update a `Policy` during read-modify-write.</summary>
+        /// <summary>Gets a `Policy` on a resource. If no `Policy` is set on the resource, a `Policy` is returned with
+        /// default values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used
+        /// with `SetOrgPolicy()` to create or update a `Policy` during read-modify-write.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">Name of the resource the `Policy` is set on.</param>
         public virtual GetOrgPolicyRequest GetOrgPolicy(Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest body, string resource)
@@ -537,11 +535,9 @@ namespace Google.Apis.CloudResourceManager.v1
             return new GetOrgPolicyRequest(service, body, resource);
         }
 
-        /// <summary>Gets a `Policy` on a resource.
-        ///
-        /// If no `Policy` is set on the resource, a `Policy` is returned with default values including
-        /// `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to
-        /// create or update a `Policy` during read-modify-write.</summary>
+        /// <summary>Gets a `Policy` on a resource. If no `Policy` is set on the resource, a `Policy` is returned with
+        /// default values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used
+        /// with `SetOrgPolicy()` to create or update a `Policy` during read-modify-write.</summary>
         public class GetOrgPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
         {
             /// <summary>Constructs a new GetOrgPolicy request.</summary>
@@ -738,9 +734,8 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the
-        /// resource if one does not exist.
-        ///
-        /// Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`.</summary>
+        /// resource if one does not exist. Not supplying an `etag` on the request `Policy` results in an unconditional
+        /// write of the `Policy`.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">Resource name of the resource to attach the `Policy`.</param>
         public virtual SetOrgPolicyRequest SetOrgPolicy(Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest body, string resource)
@@ -749,9 +744,8 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the
-        /// resource if one does not exist.
-        ///
-        /// Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`.</summary>
+        /// resource if one does not exist. Not supplying an `etag` on the request `Policy` results in an unconditional
+        /// write of the `Policy`.</summary>
         public class SetOrgPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
         {
             /// <summary>Constructs a new SetOrgPolicy request.</summary>
@@ -828,24 +822,20 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
 
-        /// <summary>Create a Lien which applies to the resource denoted by the `parent` field.
-        ///
-        /// Callers of this method will require permission on the `parent` resource. For example, applying to
-        /// `projects/1234` requires permission `resourcemanager.projects.updateLiens`.
-        ///
-        /// NOTE: Some resources may limit the number of Liens which may be applied.</summary>
+        /// <summary>Create a Lien which applies to the resource denoted by the `parent` field. Callers of this method
+        /// will require permission on the `parent` resource. For example, applying to `projects/1234` requires
+        /// permission `resourcemanager.projects.updateLiens`. NOTE: Some resources may limit the number of Liens which
+        /// may be applied.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v1.Data.Lien body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Create a Lien which applies to the resource denoted by the `parent` field.
-        ///
-        /// Callers of this method will require permission on the `parent` resource. For example, applying to
-        /// `projects/1234` requires permission `resourcemanager.projects.updateLiens`.
-        ///
-        /// NOTE: Some resources may limit the number of Liens which may be applied.</summary>
+        /// <summary>Create a Lien which applies to the resource denoted by the `parent` field. Callers of this method
+        /// will require permission on the `parent` resource. For example, applying to `projects/1234` requires
+        /// permission `resourcemanager.projects.updateLiens`. NOTE: Some resources may limit the number of Liens which
+        /// may be applied.</summary>
         public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Lien>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -891,20 +881,18 @@ namespace Google.Apis.CloudResourceManager.v1
 
         }
 
-        /// <summary>Delete a Lien by `name`.
-        ///
-        /// Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent`
-        /// of `projects/1234` requires permission `resourcemanager.projects.updateLiens`.</summary>
+        /// <summary>Delete a Lien by `name`. Callers of this method will require permission on the `parent` resource.
+        /// For example, a Lien with a `parent` of `projects/1234` requires permission
+        /// `resourcemanager.projects.updateLiens`.</summary>
         /// <param name="name">Required. The name/identifier of the Lien to delete.</param>
         public virtual DeleteRequest Delete(string name)
         {
             return new DeleteRequest(service, name);
         }
 
-        /// <summary>Delete a Lien by `name`.
-        ///
-        /// Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent`
-        /// of `projects/1234` requires permission `resourcemanager.projects.updateLiens`.</summary>
+        /// <summary>Delete a Lien by `name`. Callers of this method will require permission on the `parent` resource.
+        /// For example, a Lien with a `parent` of `projects/1234` requires permission
+        /// `resourcemanager.projects.updateLiens`.</summary>
         public class DeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -957,22 +945,18 @@ namespace Google.Apis.CloudResourceManager.v1
 
         }
 
-        /// <summary>Retrieve a Lien by `name`.
-        ///
-        /// Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent`
-        /// of `projects/1234` requires permission requires permission `resourcemanager.projects.get` or
-        /// `resourcemanager.projects.updateLiens`.</summary>
+        /// <summary>Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource.
+        /// For example, a Lien with a `parent` of `projects/1234` requires permission requires permission
+        /// `resourcemanager.projects.get` or `resourcemanager.projects.updateLiens`.</summary>
         /// <param name="name">Required. The name/identifier of the Lien.</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
         }
 
-        /// <summary>Retrieve a Lien by `name`.
-        ///
-        /// Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent`
-        /// of `projects/1234` requires permission requires permission `resourcemanager.projects.get` or
-        /// `resourcemanager.projects.updateLiens`.</summary>
+        /// <summary>Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource.
+        /// For example, a Lien with a `parent` of `projects/1234` requires permission requires permission
+        /// `resourcemanager.projects.get` or `resourcemanager.projects.updateLiens`.</summary>
         public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Lien>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1025,19 +1009,17 @@ namespace Google.Apis.CloudResourceManager.v1
 
         }
 
-        /// <summary>List all Liens applied to the `parent` resource.
-        ///
-        /// Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent`
-        /// of `projects/1234` requires permission `resourcemanager.projects.get`.</summary>
+        /// <summary>List all Liens applied to the `parent` resource. Callers of this method will require permission on
+        /// the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission
+        /// `resourcemanager.projects.get`.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>List all Liens applied to the `parent` resource.
-        ///
-        /// Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent`
-        /// of `projects/1234` requires permission `resourcemanager.projects.get`.</summary>
+        /// <summary>List all Liens applied to the `parent` resource. Callers of this method will require permission on
+        /// the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission
+        /// `resourcemanager.projects.get`.</summary>
         public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.ListLiensResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1057,7 +1039,6 @@ namespace Google.Apis.CloudResourceManager.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>Required. The name of the resource to list all attached Liens. For example, `projects/1234`.
-            ///
             /// (google.api.field_policy).resource_type annotation is not set since the parent depends on the meta api
             /// implementation. This field could be a project or other sub project resources.</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
@@ -1135,7 +1116,7 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
@@ -1143,7 +1124,7 @@ namespace Google.Apis.CloudResourceManager.v1
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Operation>
         {
@@ -1420,7 +1401,6 @@ namespace Google.Apis.CloudResourceManager.v1
 
         /// <summary>Gets the access control policy for an Organization resource. May be empty if no such policy or
         /// resource exists. The `resource` field should be the organization's resource name, e.g. "organizations/123".
-        ///
         /// Authorization requires the Google IAM permission `resourcemanager.organizations.getIamPolicy` on the
         /// specified organization</summary>
         /// <param name="body">The body of the request.</param>
@@ -1433,7 +1413,6 @@ namespace Google.Apis.CloudResourceManager.v1
 
         /// <summary>Gets the access control policy for an Organization resource. May be empty if no such policy or
         /// resource exists. The `resource` field should be the organization's resource name, e.g. "organizations/123".
-        ///
         /// Authorization requires the Google IAM permission `resourcemanager.organizations.getIamPolicy` on the
         /// specified organization</summary>
         public class GetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Policy>
@@ -1496,11 +1475,9 @@ namespace Google.Apis.CloudResourceManager.v1
 
         }
 
-        /// <summary>Gets a `Policy` on a resource.
-        ///
-        /// If no `Policy` is set on the resource, a `Policy` is returned with default values including
-        /// `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to
-        /// create or update a `Policy` during read-modify-write.</summary>
+        /// <summary>Gets a `Policy` on a resource. If no `Policy` is set on the resource, a `Policy` is returned with
+        /// default values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used
+        /// with `SetOrgPolicy()` to create or update a `Policy` during read-modify-write.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">Name of the resource the `Policy` is set on.</param>
         public virtual GetOrgPolicyRequest GetOrgPolicy(Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest body, string resource)
@@ -1508,11 +1485,9 @@ namespace Google.Apis.CloudResourceManager.v1
             return new GetOrgPolicyRequest(service, body, resource);
         }
 
-        /// <summary>Gets a `Policy` on a resource.
-        ///
-        /// If no `Policy` is set on the resource, a `Policy` is returned with default values including
-        /// `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to
-        /// create or update a `Policy` during read-modify-write.</summary>
+        /// <summary>Gets a `Policy` on a resource. If no `Policy` is set on the resource, a `Policy` is returned with
+        /// default values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used
+        /// with `SetOrgPolicy()` to create or update a `Policy` during read-modify-write.</summary>
         public class GetOrgPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
         {
             /// <summary>Constructs a new GetOrgPolicy request.</summary>
@@ -1710,9 +1685,7 @@ namespace Google.Apis.CloudResourceManager.v1
 
         /// <summary>Searches Organization resources that are visible to the user and satisfy the specified filter. This
         /// method returns Organizations in an unspecified order. New Organizations do not necessarily appear at the end
-        /// of the results.
-        ///
-        /// Search will only return organizations on which the user has the permission
+        /// of the results. Search will only return organizations on which the user has the permission
         /// `resourcemanager.organizations.get`</summary>
         /// <param name="body">The body of the request.</param>
         public virtual SearchRequest Search(Google.Apis.CloudResourceManager.v1.Data.SearchOrganizationsRequest body)
@@ -1722,9 +1695,7 @@ namespace Google.Apis.CloudResourceManager.v1
 
         /// <summary>Searches Organization resources that are visible to the user and satisfy the specified filter. This
         /// method returns Organizations in an unspecified order. New Organizations do not necessarily appear at the end
-        /// of the results.
-        ///
-        /// Search will only return organizations on which the user has the permission
+        /// of the results. Search will only return organizations on which the user has the permission
         /// `resourcemanager.organizations.get`</summary>
         public class SearchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.SearchOrganizationsResponse>
         {
@@ -1772,10 +1743,9 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Sets the access control policy on an Organization resource. Replaces any existing policy. The
-        /// `resource` field should be the organization's resource name, e.g. "organizations/123".
-        ///
-        /// Authorization requires the Google IAM permission `resourcemanager.organizations.setIamPolicy` on the
-        /// specified organization</summary>
+        /// `resource` field should be the organization's resource name, e.g. "organizations/123". Authorization
+        /// requires the Google IAM permission `resourcemanager.organizations.setIamPolicy` on the specified
+        /// organization</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
         /// documentation for the appropriate value for this field.</param>
@@ -1785,10 +1755,9 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Sets the access control policy on an Organization resource. Replaces any existing policy. The
-        /// `resource` field should be the organization's resource name, e.g. "organizations/123".
-        ///
-        /// Authorization requires the Google IAM permission `resourcemanager.organizations.setIamPolicy` on the
-        /// specified organization</summary>
+        /// `resource` field should be the organization's resource name, e.g. "organizations/123". Authorization
+        /// requires the Google IAM permission `resourcemanager.organizations.setIamPolicy` on the specified
+        /// organization</summary>
         public class SetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1850,9 +1819,8 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the
-        /// resource if one does not exist.
-        ///
-        /// Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`.</summary>
+        /// resource if one does not exist. Not supplying an `etag` on the request `Policy` results in an unconditional
+        /// write of the `Policy`.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">Resource name of the resource to attach the `Policy`.</param>
         public virtual SetOrgPolicyRequest SetOrgPolicy(Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest body, string resource)
@@ -1861,9 +1829,8 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the
-        /// resource if one does not exist.
-        ///
-        /// Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`.</summary>
+        /// resource if one does not exist. Not supplying an `etag` on the request `Policy` results in an unconditional
+        /// write of the `Policy`.</summary>
         public class SetOrgPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
         {
             /// <summary>Constructs a new SetOrgPolicy request.</summary>
@@ -1924,9 +1891,8 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Returns permissions that a caller has on the specified Organization. The `resource` field should be
-        /// the organization's resource name, e.g. "organizations/123".
-        ///
-        /// There are no permissions required for making this API call.</summary>
+        /// the organization's resource name, e.g. "organizations/123". There are no permissions required for making
+        /// this API call.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
         /// documentation for the appropriate value for this field.</param>
@@ -1936,9 +1902,8 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Returns permissions that a caller has on the specified Organization. The `resource` field should be
-        /// the organization's resource name, e.g. "organizations/123".
-        ///
-        /// There are no permissions required for making this API call.</summary>
+        /// the organization's resource name, e.g. "organizations/123". There are no permissions required for making
+        /// this API call.</summary>
         public class TestIamPermissionsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.TestIamPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -2087,13 +2052,10 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <summary>Request that a new Project be created. The result is an Operation which can be used to track the
         /// creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking
         /// Operation is automatically deleted after a few hours, so there is no need to call DeleteOperation.
-        ///
         /// Authorization requires the Google IAM permission `resourcemanager.projects.create` on the specified parent
         /// for the new project. The parent is identified by a specified ResourceId, which must include both an ID and a
-        /// type, such as organization.
-        ///
-        /// This method does not associate the new project with a billing account. You can set or update the billing
-        /// account associated with a project using the [`projects.updateBillingInfo`]
+        /// type, such as organization. This method does not associate the new project with a billing account. You can
+        /// set or update the billing account associated with a project using the [`projects.updateBillingInfo`]
         /// (/billing/reference/rest/v1/projects/updateBillingInfo) method.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v1.Data.Project body)
@@ -2104,13 +2066,10 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <summary>Request that a new Project be created. The result is an Operation which can be used to track the
         /// creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking
         /// Operation is automatically deleted after a few hours, so there is no need to call DeleteOperation.
-        ///
         /// Authorization requires the Google IAM permission `resourcemanager.projects.create` on the specified parent
         /// for the new project. The parent is identified by a specified ResourceId, which must include both an ID and a
-        /// type, such as organization.
-        ///
-        /// This method does not associate the new project with a billing account. You can set or update the billing
-        /// account associated with a project using the [`projects.updateBillingInfo`]
+        /// type, such as organization. This method does not associate the new project with a billing account. You can
+        /// set or update the billing account associated with a project using the [`projects.updateBillingInfo`]
         /// (/billing/reference/rest/v1/projects/updateBillingInfo) method.</summary>
         public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Operation>
         {
@@ -2158,37 +2117,27 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Marks the Project identified by the specified `project_id` (for example, `my-project-123`) for
-        /// deletion. This method will only affect the Project if it has a lifecycle state of ACTIVE.
-        ///
-        /// This method changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an
-        /// unspecified time, at which point the Project is no longer accessible.
-        ///
-        /// Until the deletion completes, you can check the lifecycle state checked by retrieving the Project with
-        /// GetProject, and the Project remains visible to ListProjects. However, you cannot update the project.
-        ///
-        /// After the deletion completes, the Project is not retrievable by the  GetProject and ListProjects methods.
-        ///
-        /// The caller must have modify permissions for this Project.</summary>
-        /// <param name="projectId">The Project ID (for example, `foo-bar-123`).
-        ///
-        /// Required.</param>
+        /// deletion. This method will only affect the Project if it has a lifecycle state of ACTIVE. This method
+        /// changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an unspecified
+        /// time, at which point the Project is no longer accessible. Until the deletion completes, you can check the
+        /// lifecycle state checked by retrieving the Project with GetProject, and the Project remains visible to
+        /// ListProjects. However, you cannot update the project. After the deletion completes, the Project is not
+        /// retrievable by the GetProject and ListProjects methods. The caller must have modify permissions for this
+        /// Project.</summary>
+        /// <param name="projectId">The Project ID (for example, `foo-bar-123`). Required.</param>
         public virtual DeleteRequest Delete(string projectId)
         {
             return new DeleteRequest(service, projectId);
         }
 
         /// <summary>Marks the Project identified by the specified `project_id` (for example, `my-project-123`) for
-        /// deletion. This method will only affect the Project if it has a lifecycle state of ACTIVE.
-        ///
-        /// This method changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an
-        /// unspecified time, at which point the Project is no longer accessible.
-        ///
-        /// Until the deletion completes, you can check the lifecycle state checked by retrieving the Project with
-        /// GetProject, and the Project remains visible to ListProjects. However, you cannot update the project.
-        ///
-        /// After the deletion completes, the Project is not retrievable by the  GetProject and ListProjects methods.
-        ///
-        /// The caller must have modify permissions for this Project.</summary>
+        /// deletion. This method will only affect the Project if it has a lifecycle state of ACTIVE. This method
+        /// changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an unspecified
+        /// time, at which point the Project is no longer accessible. Until the deletion completes, you can check the
+        /// lifecycle state checked by retrieving the Project with GetProject, and the Project remains visible to
+        /// ListProjects. However, you cannot update the project. After the deletion completes, the Project is not
+        /// retrievable by the GetProject and ListProjects methods. The caller must have modify permissions for this
+        /// Project.</summary>
         public class DeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -2200,9 +2149,7 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>The Project ID (for example, `foo-bar-123`).
-            ///
-            /// Required.</summary>
+            /// <summary>The Project ID (for example, `foo-bar-123`). Required.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -2243,20 +2190,16 @@ namespace Google.Apis.CloudResourceManager.v1
 
         }
 
-        /// <summary>Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`).
-        ///
-        /// The caller must have read permissions for this Project.</summary>
-        /// <param name="projectId">The Project ID (for example, `my-project-123`).
-        ///
-        /// Required.</param>
+        /// <summary>Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`). The
+        /// caller must have read permissions for this Project.</summary>
+        /// <param name="projectId">The Project ID (for example, `my-project-123`). Required.</param>
         public virtual GetRequest Get(string projectId)
         {
             return new GetRequest(service, projectId);
         }
 
-        /// <summary>Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`).
-        ///
-        /// The caller must have read permissions for this Project.</summary>
+        /// <summary>Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`). The
+        /// caller must have read permissions for this Project.</summary>
         public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Project>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -2268,9 +2211,7 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>The Project ID (for example, `my-project-123`).
-            ///
-            /// Required.</summary>
+            /// <summary>The Project ID (for example, `my-project-123`). Required.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -2312,22 +2253,18 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Gets a list of ancestors in the resource hierarchy for the Project identified by the specified
-        /// `project_id` (for example, `my-project-123`).
-        ///
-        /// The caller must have read permissions for this Project.</summary>
+        /// `project_id` (for example, `my-project-123`). The caller must have read permissions for this
+        /// Project.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="projectId">The Project ID (for example, `my-project-123`).
-        ///
-        /// Required.</param>
+        /// <param name="projectId">The Project ID (for example, `my-project-123`). Required.</param>
         public virtual GetAncestryRequest GetAncestry(Google.Apis.CloudResourceManager.v1.Data.GetAncestryRequest body, string projectId)
         {
             return new GetAncestryRequest(service, body, projectId);
         }
 
         /// <summary>Gets a list of ancestors in the resource hierarchy for the Project identified by the specified
-        /// `project_id` (for example, `my-project-123`).
-        ///
-        /// The caller must have read permissions for this Project.</summary>
+        /// `project_id` (for example, `my-project-123`). The caller must have read permissions for this
+        /// Project.</summary>
         public class GetAncestryRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.GetAncestryResponse>
         {
             /// <summary>Constructs a new GetAncestry request.</summary>
@@ -2340,9 +2277,7 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>The Project ID (for example, `my-project-123`).
-            ///
-            /// Required.</summary>
+            /// <summary>The Project ID (for example, `my-project-123`). Required.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -2464,12 +2399,9 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Returns the IAM access control policy for the specified Project. Permission is denied if the policy
-        /// or the resource does not exist.
-        ///
-        /// Authorization requires the Google IAM permission `resourcemanager.projects.getIamPolicy` on the project.
-        ///
-        /// For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource
-        /// Names](/apis/design/resource_names).</summary>
+        /// or the resource does not exist. Authorization requires the Google IAM permission
+        /// `resourcemanager.projects.getIamPolicy` on the project. For additional information about `resource` (e.g.
+        /// my-project-id) structure and identification, see [Resource Names](/apis/design/resource_names).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
         /// documentation for the appropriate value for this field.</param>
@@ -2479,12 +2411,9 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Returns the IAM access control policy for the specified Project. Permission is denied if the policy
-        /// or the resource does not exist.
-        ///
-        /// Authorization requires the Google IAM permission `resourcemanager.projects.getIamPolicy` on the project.
-        ///
-        /// For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource
-        /// Names](/apis/design/resource_names).</summary>
+        /// or the resource does not exist. Authorization requires the Google IAM permission
+        /// `resourcemanager.projects.getIamPolicy` on the project. For additional information about `resource` (e.g.
+        /// my-project-id) structure and identification, see [Resource Names](/apis/design/resource_names).</summary>
         public class GetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -2545,11 +2474,9 @@ namespace Google.Apis.CloudResourceManager.v1
 
         }
 
-        /// <summary>Gets a `Policy` on a resource.
-        ///
-        /// If no `Policy` is set on the resource, a `Policy` is returned with default values including
-        /// `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to
-        /// create or update a `Policy` during read-modify-write.</summary>
+        /// <summary>Gets a `Policy` on a resource. If no `Policy` is set on the resource, a `Policy` is returned with
+        /// default values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used
+        /// with `SetOrgPolicy()` to create or update a `Policy` during read-modify-write.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">Name of the resource the `Policy` is set on.</param>
         public virtual GetOrgPolicyRequest GetOrgPolicy(Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest body, string resource)
@@ -2557,11 +2484,9 @@ namespace Google.Apis.CloudResourceManager.v1
             return new GetOrgPolicyRequest(service, body, resource);
         }
 
-        /// <summary>Gets a `Policy` on a resource.
-        ///
-        /// If no `Policy` is set on the resource, a `Policy` is returned with default values including
-        /// `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to
-        /// create or update a `Policy` during read-modify-write.</summary>
+        /// <summary>Gets a `Policy` on a resource. If no `Policy` is set on the resource, a `Policy` is returned with
+        /// default values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used
+        /// with `SetOrgPolicy()` to create or update a `Policy` during read-modify-write.</summary>
         public class GetOrgPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
         {
             /// <summary>Constructs a new GetOrgPolicy request.</summary>
@@ -2622,34 +2547,26 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Lists Projects that the caller has the `resourcemanager.projects.get` permission on and satisfy the
-        /// specified filter.
-        ///
-        /// This method returns Projects in an unspecified order. This method is eventually consistent with project
-        /// mutations; this means that a newly created project may not appear in the results or recent updates to an
-        /// existing project may not be reflected in the results. To retrieve the latest state of a project, use the
-        /// GetProject method.
-        ///
-        /// NOTE: If the request filter contains a `parent.type` and `parent.id` and the caller has the
-        /// `resourcemanager.projects.list` permission on the parent, the results will be drawn from an alternate index
-        /// which provides more consistent results. In future versions of this API, this List method will be split into
-        /// List and Search to properly capture the behavorial difference.</summary>
+        /// specified filter. This method returns Projects in an unspecified order. This method is eventually consistent
+        /// with project mutations; this means that a newly created project may not appear in the results or recent
+        /// updates to an existing project may not be reflected in the results. To retrieve the latest state of a
+        /// project, use the GetProject method. NOTE: If the request filter contains a `parent.type` and `parent.id` and
+        /// the caller has the `resourcemanager.projects.list` permission on the parent, the results will be drawn from
+        /// an alternate index which provides more consistent results. In future versions of this API, this List method
+        /// will be split into List and Search to properly capture the behavorial difference.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
         /// <summary>Lists Projects that the caller has the `resourcemanager.projects.get` permission on and satisfy the
-        /// specified filter.
-        ///
-        /// This method returns Projects in an unspecified order. This method is eventually consistent with project
-        /// mutations; this means that a newly created project may not appear in the results or recent updates to an
-        /// existing project may not be reflected in the results. To retrieve the latest state of a project, use the
-        /// GetProject method.
-        ///
-        /// NOTE: If the request filter contains a `parent.type` and `parent.id` and the caller has the
-        /// `resourcemanager.projects.list` permission on the parent, the results will be drawn from an alternate index
-        /// which provides more consistent results. In future versions of this API, this List method will be split into
-        /// List and Search to properly capture the behavorial difference.</summary>
+        /// specified filter. This method returns Projects in an unspecified order. This method is eventually consistent
+        /// with project mutations; this means that a newly created project may not appear in the results or recent
+        /// updates to an existing project may not be reflected in the results. To retrieve the latest state of a
+        /// project, use the GetProject method. NOTE: If the request filter contains a `parent.type` and `parent.id` and
+        /// the caller has the `resourcemanager.projects.list` permission on the parent, the results will be drawn from
+        /// an alternate index which provides more consistent results. In future versions of this API, this List method
+        /// will be split into List and Search to properly capture the behavorial difference.</summary>
         public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.ListProjectsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2660,49 +2577,31 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>An expression for filtering the results of the request.  Filter rules are case insensitive.
-            /// Some eligible fields for filtering are:
-            ///
-            /// + `name` + `id` + `labels.` (where *key* is the name of a label) + `parent.type` + `parent.id` +
-            /// `lifecycleState`
-            ///
-            /// Some examples of filter strings:
-            ///
-            /// | Filter           | Description                                         |
-            /// |------------------|-----------------------------------------------------| | name:how*        | The
-            /// project's name starts with "how".               | | name:Howl        | The project's name is `Howl` or
-            /// `howl`.             | | name:HOWL        | Equivalent to above.                                | |
-            /// NAME:howl        | Equivalent to above.                                | | labels.color:*   | The
-            /// project has the label `color`.                  | | labels.color:red | The project's label `color` has
-            /// the value `red`.    | | labels.color:redlabels.size:big | The project's label `color`    | :
-            /// : has the value `red` and its    : :                                       : label`size` has the value
-            /// : :                                       : `big`.                         : |
-            /// lifecycleState:DELETE_REQUESTED       | Only show projects that are    | :
-            /// : pending deletion.              :
-            ///
-            /// If no filter is specified, the call will return projects for which the user has the
-            /// `resourcemanager.projects.get` permission.
-            ///
-            /// NOTE: To perform a by-parent query (eg., what projects are directly in a Folder), the caller must have
-            /// the `resourcemanager.projects.list` permission on the parent and the filter must contain both a
-            /// `parent.type` and a `parent.id` restriction (example: "parent.type:folder parent.id:123"). In this case
-            /// an alternate search index is used which provides more consistent results.
-            ///
-            /// Optional.</summary>
+            /// <summary>An expression for filtering the results of the request. Filter rules are case insensitive. Some
+            /// eligible fields for filtering are: + `name` + `id` + `labels.` (where *key* is the name of a label) +
+            /// `parent.type` + `parent.id` + `lifecycleState` Some examples of filter strings: | Filter | Description |
+            /// |------------------|-----------------------------------------------------| | name:how* | The project's
+            /// name starts with "how". | | name:Howl | The project's name is `Howl` or `howl`. | | name:HOWL |
+            /// Equivalent to above. | | NAME:howl | Equivalent to above. | | labels.color:* | The project has the label
+            /// `color`. | | labels.color:red | The project's label `color` has the value `red`. | | labels.color:red
+            /// labels.size:big | The project's label `color` | : : has the value `red` and its : : : label`size` has
+            /// the value : : : `big`. : | lifecycleState:DELETE_REQUESTED | Only show projects that are | : : pending
+            /// deletion. : If no filter is specified, the call will return projects for which the user has the
+            /// `resourcemanager.projects.get` permission. NOTE: To perform a by-parent query (eg., what projects are
+            /// directly in a Folder), the caller must have the `resourcemanager.projects.list` permission on the parent
+            /// and the filter must contain both a `parent.type` and a `parent.id` restriction (example:
+            /// "parent.type:folder parent.id:123"). In this case an alternate search index is used which provides more
+            /// consistent results. Optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>The maximum number of Projects to return in the response. The server can return fewer Projects
-            /// than requested. If unspecified, server picks an appropriate default.
-            ///
-            /// Optional.</summary>
+            /// than requested. If unspecified, server picks an appropriate default. Optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>A pagination token returned from a previous call to ListProjects that indicates from where
-            /// listing should continue.
-            ///
-            /// Optional.</summary>
+            /// listing should continue. Optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -2897,47 +2796,29 @@ namespace Google.Apis.CloudResourceManager.v1
 
         }
 
-        /// <summary>Sets the IAM access control policy for the specified Project.
-        ///
-        /// CAUTION: This method will replace the existing policy, and cannot be used to append additional IAM settings.
-        ///
-        /// NOTE: Removing service accounts from policies or changing their roles can render services completely
-        /// inoperable. It is important to understand how the service account is being used before removing or updating
-        /// its roles.
-        ///
-        /// For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource
-        /// Names](/apis/design/resource_names).
-        ///
-        /// The following constraints apply when using `setIamPolicy()`:
-        ///
-        /// + Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`.
-        ///
-        /// + The owner role can be granted to a `user`, `serviceAccount`, or a group that is part of an organization.
-        /// For example, group@myownpersonaldomain.com could be added as an owner to a project in the
-        /// myownpersonaldomain.com organization, but not the examplepetstore.com organization.
-        ///
-        /// + Service accounts can be made owners of a project directly without any restrictions. However, to be added
-        /// as an owner, a user must be invited via Cloud Platform console and must accept the invitation.
-        ///
-        /// + A user cannot be granted the owner role using `setIamPolicy()`. The user must be granted the owner role
-        /// using the Cloud Platform Console and must explicitly accept the invitation.
-        ///
-        /// + You can only grant ownership of a project to a member by using the GCP Console. Inviting a member will
-        /// deliver an invitation email that they must accept. An invitation email is not generated if you are granting
-        /// a role other than owner, or if both the member you are inviting and the project are part of your
-        /// organization.
-        ///
-        /// + Membership changes that leave the project without any owners that have accepted the Terms of Service (ToS)
-        /// will be rejected.
-        ///
-        /// + If the project is not part of an organization, there must be at least one owner who has accepted the Terms
-        /// of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner
-        /// from the policy will fail. This restriction also applies to legacy projects that no longer have owners who
-        /// have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is
-        /// rectified.
-        ///
-        /// Authorization requires the Google IAM permission `resourcemanager.projects.setIamPolicy` on the
-        /// project</summary>
+        /// <summary>Sets the IAM access control policy for the specified Project. CAUTION: This method will replace the
+        /// existing policy, and cannot be used to append additional IAM settings. NOTE: Removing service accounts from
+        /// policies or changing their roles can render services completely inoperable. It is important to understand
+        /// how the service account is being used before removing or updating its roles. For additional information
+        /// about `resource` (e.g. my-project-id) structure and identification, see [Resource
+        /// Names](/apis/design/resource_names). The following constraints apply when using `setIamPolicy()`: + Project
+        /// does not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. + The
+        /// owner role can be granted to a `user`, `serviceAccount`, or a group that is part of an organization. For
+        /// example, group@myownpersonaldomain.com could be added as an owner to a project in the
+        /// myownpersonaldomain.com organization, but not the examplepetstore.com organization. + Service accounts can
+        /// be made owners of a project directly without any restrictions. However, to be added as an owner, a user must
+        /// be invited via Cloud Platform console and must accept the invitation. + A user cannot be granted the owner
+        /// role using `setIamPolicy()`. The user must be granted the owner role using the Cloud Platform Console and
+        /// must explicitly accept the invitation. + You can only grant ownership of a project to a member by using the
+        /// GCP Console. Inviting a member will deliver an invitation email that they must accept. An invitation email
+        /// is not generated if you are granting a role other than owner, or if both the member you are inviting and the
+        /// project are part of your organization. + Membership changes that leave the project without any owners that
+        /// have accepted the Terms of Service (ToS) will be rejected. + If the project is not part of an organization,
+        /// there must be at least one owner who has accepted the Terms of Service (ToS) agreement in the policy.
+        /// Calling `setIamPolicy()` to remove the last ToS-accepted owner from the policy will fail. This restriction
+        /// also applies to legacy projects that no longer have owners who have accepted the ToS. Edits to IAM policies
+        /// will be rejected until the lack of a ToS-accepting owner is rectified. Authorization requires the Google IAM
+        /// permission `resourcemanager.projects.setIamPolicy` on the project</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
         /// documentation for the appropriate value for this field.</param>
@@ -2946,47 +2827,29 @@ namespace Google.Apis.CloudResourceManager.v1
             return new SetIamPolicyRequest(service, body, resource);
         }
 
-        /// <summary>Sets the IAM access control policy for the specified Project.
-        ///
-        /// CAUTION: This method will replace the existing policy, and cannot be used to append additional IAM settings.
-        ///
-        /// NOTE: Removing service accounts from policies or changing their roles can render services completely
-        /// inoperable. It is important to understand how the service account is being used before removing or updating
-        /// its roles.
-        ///
-        /// For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource
-        /// Names](/apis/design/resource_names).
-        ///
-        /// The following constraints apply when using `setIamPolicy()`:
-        ///
-        /// + Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`.
-        ///
-        /// + The owner role can be granted to a `user`, `serviceAccount`, or a group that is part of an organization.
-        /// For example, group@myownpersonaldomain.com could be added as an owner to a project in the
-        /// myownpersonaldomain.com organization, but not the examplepetstore.com organization.
-        ///
-        /// + Service accounts can be made owners of a project directly without any restrictions. However, to be added
-        /// as an owner, a user must be invited via Cloud Platform console and must accept the invitation.
-        ///
-        /// + A user cannot be granted the owner role using `setIamPolicy()`. The user must be granted the owner role
-        /// using the Cloud Platform Console and must explicitly accept the invitation.
-        ///
-        /// + You can only grant ownership of a project to a member by using the GCP Console. Inviting a member will
-        /// deliver an invitation email that they must accept. An invitation email is not generated if you are granting
-        /// a role other than owner, or if both the member you are inviting and the project are part of your
-        /// organization.
-        ///
-        /// + Membership changes that leave the project without any owners that have accepted the Terms of Service (ToS)
-        /// will be rejected.
-        ///
-        /// + If the project is not part of an organization, there must be at least one owner who has accepted the Terms
-        /// of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner
-        /// from the policy will fail. This restriction also applies to legacy projects that no longer have owners who
-        /// have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is
-        /// rectified.
-        ///
-        /// Authorization requires the Google IAM permission `resourcemanager.projects.setIamPolicy` on the
-        /// project</summary>
+        /// <summary>Sets the IAM access control policy for the specified Project. CAUTION: This method will replace the
+        /// existing policy, and cannot be used to append additional IAM settings. NOTE: Removing service accounts from
+        /// policies or changing their roles can render services completely inoperable. It is important to understand
+        /// how the service account is being used before removing or updating its roles. For additional information
+        /// about `resource` (e.g. my-project-id) structure and identification, see [Resource
+        /// Names](/apis/design/resource_names). The following constraints apply when using `setIamPolicy()`: + Project
+        /// does not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. + The
+        /// owner role can be granted to a `user`, `serviceAccount`, or a group that is part of an organization. For
+        /// example, group@myownpersonaldomain.com could be added as an owner to a project in the
+        /// myownpersonaldomain.com organization, but not the examplepetstore.com organization. + Service accounts can
+        /// be made owners of a project directly without any restrictions. However, to be added as an owner, a user must
+        /// be invited via Cloud Platform console and must accept the invitation. + A user cannot be granted the owner
+        /// role using `setIamPolicy()`. The user must be granted the owner role using the Cloud Platform Console and
+        /// must explicitly accept the invitation. + You can only grant ownership of a project to a member by using the
+        /// GCP Console. Inviting a member will deliver an invitation email that they must accept. An invitation email
+        /// is not generated if you are granting a role other than owner, or if both the member you are inviting and the
+        /// project are part of your organization. + Membership changes that leave the project without any owners that
+        /// have accepted the Terms of Service (ToS) will be rejected. + If the project is not part of an organization,
+        /// there must be at least one owner who has accepted the Terms of Service (ToS) agreement in the policy.
+        /// Calling `setIamPolicy()` to remove the last ToS-accepted owner from the policy will fail. This restriction
+        /// also applies to legacy projects that no longer have owners who have accepted the ToS. Edits to IAM policies
+        /// will be rejected until the lack of a ToS-accepting owner is rectified. Authorization requires the Google IAM
+        /// permission `resourcemanager.projects.setIamPolicy` on the project</summary>
         public class SetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -3048,9 +2911,8 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the
-        /// resource if one does not exist.
-        ///
-        /// Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`.</summary>
+        /// resource if one does not exist. Not supplying an `etag` on the request `Policy` results in an unconditional
+        /// write of the `Policy`.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">Resource name of the resource to attach the `Policy`.</param>
         public virtual SetOrgPolicyRequest SetOrgPolicy(Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest body, string resource)
@@ -3059,9 +2921,8 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the
-        /// resource if one does not exist.
-        ///
-        /// Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`.</summary>
+        /// resource if one does not exist. Not supplying an `etag` on the request `Policy` results in an unconditional
+        /// write of the `Policy`.</summary>
         public class SetOrgPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
         {
             /// <summary>Constructs a new SetOrgPolicy request.</summary>
@@ -3121,12 +2982,9 @@ namespace Google.Apis.CloudResourceManager.v1
 
         }
 
-        /// <summary>Returns permissions that a caller has on the specified Project.
-        ///
-        /// For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource
-        /// Names](/apis/design/resource_names).
-        ///
-        /// There are no permissions required for making this API call.</summary>
+        /// <summary>Returns permissions that a caller has on the specified Project. For additional information about
+        /// `resource` (e.g. my-project-id) structure and identification, see [Resource
+        /// Names](/apis/design/resource_names). There are no permissions required for making this API call.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
         /// documentation for the appropriate value for this field.</param>
@@ -3135,12 +2993,9 @@ namespace Google.Apis.CloudResourceManager.v1
             return new TestIamPermissionsRequest(service, body, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified Project.
-        ///
-        /// For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource
-        /// Names](/apis/design/resource_names).
-        ///
-        /// There are no permissions required for making this API call.</summary>
+        /// <summary>Returns permissions that a caller has on the specified Project. For additional information about
+        /// `resource` (e.g. my-project-id) structure and identification, see [Resource
+        /// Names](/apis/design/resource_names). There are no permissions required for making this API call.</summary>
         public class TestIamPermissionsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.TestIamPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -3203,13 +3058,9 @@ namespace Google.Apis.CloudResourceManager.v1
 
         /// <summary>Restores the Project identified by the specified `project_id` (for example, `my-project-123`). You
         /// can only use this method for a Project that has a lifecycle state of DELETE_REQUESTED. After deletion
-        /// starts, the Project cannot be restored.
-        ///
-        /// The caller must have modify permissions for this Project.</summary>
+        /// starts, the Project cannot be restored. The caller must have modify permissions for this Project.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="projectId">The project ID (for example, `foo-bar-123`).
-        ///
-        /// Required.</param>
+        /// <param name="projectId">The project ID (for example, `foo-bar-123`). Required.</param>
         public virtual UndeleteRequest Undelete(Google.Apis.CloudResourceManager.v1.Data.UndeleteProjectRequest body, string projectId)
         {
             return new UndeleteRequest(service, body, projectId);
@@ -3217,9 +3068,7 @@ namespace Google.Apis.CloudResourceManager.v1
 
         /// <summary>Restores the Project identified by the specified `project_id` (for example, `my-project-123`). You
         /// can only use this method for a Project that has a lifecycle state of DELETE_REQUESTED. After deletion
-        /// starts, the Project cannot be restored.
-        ///
-        /// The caller must have modify permissions for this Project.</summary>
+        /// starts, the Project cannot be restored. The caller must have modify permissions for this Project.</summary>
         public class UndeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Empty>
         {
             /// <summary>Constructs a new Undelete request.</summary>
@@ -3232,9 +3081,7 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>The project ID (for example, `foo-bar-123`).
-            ///
-            /// Required.</summary>
+            /// <summary>The project ID (for example, `foo-bar-123`). Required.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -3282,22 +3129,16 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Updates the attributes of the Project identified by the specified `project_id` (for example, `my-
-        /// project-123`).
-        ///
-        /// The caller must have modify permissions for this Project.</summary>
+        /// project-123`). The caller must have modify permissions for this Project.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="projectId">The project ID (for example, `my-project-123`).
-        ///
-        /// Required.</param>
+        /// <param name="projectId">The project ID (for example, `my-project-123`). Required.</param>
         public virtual UpdateRequest Update(Google.Apis.CloudResourceManager.v1.Data.Project body, string projectId)
         {
             return new UpdateRequest(service, body, projectId);
         }
 
         /// <summary>Updates the attributes of the Project identified by the specified `project_id` (for example, `my-
-        /// project-123`).
-        ///
-        /// The caller must have modify permissions for this Project.</summary>
+        /// project-123`). The caller must have modify permissions for this Project.</summary>
         public class UpdateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Project>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -3310,9 +3151,7 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>The project ID (for example, `my-project-123`).
-            ///
-            /// Required.</summary>
+            /// <summary>The project ID (for example, `my-project-123`). Required.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -3377,21 +3216,15 @@ namespace Google.Apis.CloudResourceManager.v1.Data
 
     /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
     /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
-    /// AuditLogConfigs.
-    ///
-    /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
-    /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
-    /// AuditLogConfig are exempted.
-    ///
-    /// Example Policy with multiple AuditConfigs:
-    ///
-    /// { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two
+    /// AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the
+    /// exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: {
+    /// "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
     /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ]
     /// }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, {
-    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
-    ///
-    /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
-    /// jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.</summary>
+    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this
+    /// policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ
+    /// logging, and aliya@example.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
@@ -3407,11 +3240,8 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Provides the configuration for logging a type of permissions. Example:
-    ///
-    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
-    /// "log_type": "DATA_WRITE" } ] }
-    ///
+    /// <summary>Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ {
+    /// "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] }
     /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -3432,53 +3262,33 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding.
-        ///
-        /// If the condition evaluates to `true`, then this binding applies to the current request.
-        ///
-        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
-        /// different role binding might grant the same role to one or more of the members in this binding.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
+        /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
+        /// apply to the current request. However, a different role binding might grant the same role to one or more of
+        /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values:
-        ///
-        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
-        /// account.
-        ///
-        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
-        /// account or a service account.
-        ///
-        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@example.com` .
-        ///
-        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
-        /// app@appspot.gserviceaccount.com`.
-        ///
-        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
-        ///
-        /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
-        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
-        ///
-        /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
-        /// a service account that has been recently deleted. For example, `my-other-
+        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
+        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
+        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
+        /// represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An
+        /// email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example, `my-other-
         /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
-        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
-        ///
-        /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
+        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. *
+        /// `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
         /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
         /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
-        /// binding.
-        ///
-        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
-        /// `google.com` or `example.com`.
-        ///
-        /// </summary>
+        /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
+        /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
 
@@ -3491,10 +3301,9 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A `Constraint` that is either enforced or not.
-    ///
-    /// For example a constraint `constraints/compute.disableSerialPortAccess`. If it is enforced on a VM instance,
-    /// serial port connections will not be opened to that instance.</summary>
+    /// <summary>A `Constraint` that is either enforced or not. For example a constraint
+    /// `constraints/compute.disableSerialPortAccess`. If it is enforced on a VM instance, serial port connections will
+    /// not be opened to that instance.</summary>
     public class BooleanConstraint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -3504,29 +3313,22 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     /// <summary>Used in `policy_type` to specify how `boolean_policy` will behave at this resource.</summary>
     public class BooleanPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable.
-        ///
-        /// Suppose you have a `Constraint` `constraints/compute.disableSerialPortAccess` with `constraint_default` set
-        /// to `ALLOW`. A `Policy` for that `Constraint` exhibits the following behavior: - If the `Policy` at this
+        /// <summary>If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. Suppose
+        /// you have a `Constraint` `constraints/compute.disableSerialPortAccess` with `constraint_default` set to
+        /// `ALLOW`. A `Policy` for that `Constraint` exhibits the following behavior: - If the `Policy` at this
         /// resource has enforced set to `false`, serial port connection attempts will be allowed. - If the `Policy` at
         /// this resource has enforced set to `true`, serial port connection attempts will be refused. - If the `Policy`
         /// at this resource is `RestoreDefault`, serial port connection attempts will be allowed. - If no `Policy` is
         /// set at this resource or anywhere higher in the resource hierarchy, serial port connection attempts will be
         /// allowed. - If no `Policy` is set at this resource, but one exists higher in the resource hierarchy, the
-        /// behavior is as if the`Policy` were set at this resource.
-        ///
-        /// The following examples demonstrate the different possible layerings:
-        ///
-        /// Example 1 (nearest `Constraint` wins): `organizations/foo` has a `Policy` with: {enforced: false}
-        /// `projects/bar` has no `Policy` set. The constraint at `projects/bar` and `organizations/foo` will not be
-        /// enforced.
-        ///
-        /// Example 2 (enforcement gets replaced): `organizations/foo` has a `Policy` with: {enforced: false}
-        /// `projects/bar` has a `Policy` with: {enforced: true} The constraint at `organizations/foo` is not enforced.
-        /// The constraint at `projects/bar` is enforced.
-        ///
-        /// Example 3 (RestoreDefault): `organizations/foo` has a `Policy` with: {enforced: true} `projects/bar` has a
-        /// `Policy` with: {RestoreDefault: {}} The constraint at `organizations/foo` is enforced. The constraint at
+        /// behavior is as if the`Policy` were set at this resource. The following examples demonstrate the different
+        /// possible layerings: Example 1 (nearest `Constraint` wins): `organizations/foo` has a `Policy` with:
+        /// {enforced: false} `projects/bar` has no `Policy` set. The constraint at `projects/bar` and
+        /// `organizations/foo` will not be enforced. Example 2 (enforcement gets replaced): `organizations/foo` has a
+        /// `Policy` with: {enforced: false} `projects/bar` has a `Policy` with: {enforced: true} The constraint at
+        /// `organizations/foo` is not enforced. The constraint at `projects/bar` is enforced. Example 3
+        /// (RestoreDefault): `organizations/foo` has a `Policy` with: {enforced: true} `projects/bar` has a `Policy`
+        /// with: {RestoreDefault: {}} The constraint at `organizations/foo` is enforced. The constraint at
         /// `projects/bar` is not enforced, because `constraint_default` for the `Constraint` is `ALLOW`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforced")]
         public virtual System.Nullable<bool> Enforced { get; set; } 
@@ -3555,11 +3357,9 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     /// administrator to fit the needs of the organzation by setting Policies for `Constraints` at different locations
     /// in the organization's resource hierarchy. Policies are inherited down the resource hierarchy from higher levels,
     /// but can also be overridden. For details about the inheritance rules please read about [Policies](/resource-
-    /// manager/reference/rest/v1/Policy).
-    ///
-    /// `Constraints` have a default behavior determined by the `constraint_default` field, which is the enforcement
-    /// behavior that is used in the absence of a `Policy` being defined or inherited for the resource in
-    /// question.</summary>
+    /// manager/reference/rest/v1/Policy). `Constraints` have a default behavior determined by the `constraint_default`
+    /// field, which is the enforcement behavior that is used in the absence of a `Policy` being defined or inherited
+    /// for the resource in question.</summary>
     public class Constraint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Defines this constraint as being a BooleanConstraint.</summary>
@@ -3571,14 +3371,11 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         public virtual string ConstraintDefault { get; set; } 
 
         /// <summary>Detailed description of what this `Constraint` controls as well as how and where it is enforced.
-        ///
         /// Mutable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>The human readable name.
-        ///
-        /// Mutable.</summary>
+        /// <summary>The human readable name. Mutable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
@@ -3600,11 +3397,9 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -3613,29 +3408,15 @@ namespace Google.Apis.CloudResourceManager.v1.Data
 
     /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
     /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    ///
-    /// Example (Comparison):
-    ///
-    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
-    /// "document.summary.size() < 100"
-    ///
-    /// Example (Equality):
-    ///
-    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
-    /// "document.owner == request.auth.claims.email"
-    ///
-    /// Example (Logic):
-    ///
-    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
-    /// "document.type != 'private' && document.type != 'internal'"
-    ///
-    /// Example (Data Manipulation):
-    ///
+    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
     /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)"
-    ///
-    /// The exact variables and functions that may be referenced within an expression are determined by the service that
-    /// evaluates it. See the service documentation for additional information.</summary>
+    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
+    /// within an expression are determined by the service that evaluates it. See the service documentation for
+    /// additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
@@ -3752,14 +3533,10 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The policy format version to be returned.
-        ///
-        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
-        ///
-        /// Requests for policies with any conditional bindings must specify version 3. Policies without any conditional
-        /// bindings may specify any valid value or leave the field unset.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// <summary>Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
+        /// specifying an invalid value will be rejected. Requests for policies with any conditional bindings must
+        /// specify version 3. Policies without any conditional bindings may specify any valid value or leave the field
+        /// unset. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
@@ -3775,40 +3552,29 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>A system-generated unique identifier for this Lien.
-        ///
-        /// Example: `liens/1234abcd`</summary>
+        /// <summary>A system-generated unique identifier for this Lien. Example: `liens/1234abcd`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>A stable, user-visible/meaningful string identifying the origin of the Lien, intended to be
-        /// inspected programmatically. Maximum length of 200 characters.
-        ///
-        /// Example: 'compute.googleapis.com'</summary>
+        /// inspected programmatically. Maximum length of 200 characters. Example: 'compute.googleapis.com'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("origin")]
         public virtual string Origin { get; set; } 
 
         /// <summary>A reference to the resource this Lien is attached to. The server will validate the parent against
-        /// those for which Liens are supported.
-        ///
-        /// Example: `projects/1234`</summary>
+        /// those for which Liens are supported. Example: `projects/1234`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 
         /// <summary>Concise user-visible strings indicating why an action cannot be performed on a resource. Maximum
-        /// length of 200 characters.
-        ///
-        /// Example: 'Holds production API key'</summary>
+        /// length of 200 characters. Example: 'Holds production API key'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
         /// <summary>The types of operations which should be blocked as a result of this Lien. Each value should
         /// correspond to an IAM permission. The server will validate the permissions against those for which Liens are
-        /// supported.
-        ///
-        /// An empty list is meaningless and will be rejected.
-        ///
-        /// Example: ['resourcemanager.projects.delete']</summary>
+        /// supported. An empty list is meaningless and will be rejected. Example:
+        /// ['resourcemanager.projects.delete']</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictions")]
         public virtual System.Collections.Generic.IList<string> Restrictions { get; set; } 
 
@@ -3920,26 +3686,24 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Used in `policy_type` to specify how `list_policy` behaves at this resource.
-    ///
-    /// `ListPolicy` can define specific values and subtrees of Cloud Resource Manager resource hierarchy
-    /// (`Organizations`, `Folders`, `Projects`) that are allowed or denied by setting the `allowed_values` and
-    /// `denied_values` fields. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix
-    /// is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required
-    /// only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix.
-    /// Ancestry subtrees must be in one of the following formats: - "projects/", e.g. "projects/tokyo-rain-123" -
-    /// "folders/", e.g. "folders/1234" - "organizations/", e.g. "organizations/1234" The `supports_under` field of the
-    /// associated `Constraint`  defines whether ancestry prefixes can be used. You can set `allowed_values` and
-    /// `denied_values` in the same `Policy` if `all_values` is `ALL_VALUES_UNSPECIFIED`. `ALLOW` or `DENY` are used to
-    /// allow or deny all values. If `all_values` is set to either `ALLOW` or `DENY`, `allowed_values` and
-    /// `denied_values` must be unset.</summary>
+    /// <summary>Used in `policy_type` to specify how `list_policy` behaves at this resource. `ListPolicy` can define
+    /// specific values and subtrees of Cloud Resource Manager resource hierarchy (`Organizations`, `Folders`,
+    /// `Projects`) that are allowed or denied by setting the `allowed_values` and `denied_values` fields. This is
+    /// achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource
+    /// subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a
+    /// ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one
+    /// of the following formats: - "projects/", e.g. "projects/tokyo-rain-123" - "folders/", e.g. "folders/1234" -
+    /// "organizations/", e.g. "organizations/1234" The `supports_under` field of the associated `Constraint` defines
+    /// whether ancestry prefixes can be used. You can set `allowed_values` and `denied_values` in the same `Policy` if
+    /// `all_values` is `ALL_VALUES_UNSPECIFIED`. `ALLOW` or `DENY` are used to allow or deny all values. If
+    /// `all_values` is set to either `ALLOW` or `DENY`, `allowed_values` and `denied_values` must be unset.</summary>
     public class ListPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The policy all_values state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allValues")]
         public virtual string AllValues { get; set; } 
 
-        /// <summary>List of values allowed  at this resource. Can only be set if `all_values` is set to
+        /// <summary>List of values allowed at this resource. Can only be set if `all_values` is set to
         /// `ALL_VALUES_UNSPECIFIED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedValues")]
         public virtual System.Collections.Generic.IList<string> AllowedValues { get; set; } 
@@ -3949,64 +3713,47 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deniedValues")]
         public virtual System.Collections.Generic.IList<string> DeniedValues { get; set; } 
 
-        /// <summary>Determines the inheritance behavior for this `Policy`.
-        ///
-        /// By default, a `ListPolicy` set at a resource supersedes any `Policy` set anywhere up the resource hierarchy.
-        /// However, if `inherit_from_parent` is set to `true`, then the values from the effective `Policy` of the
-        /// parent resource are inherited, meaning the values set in this `Policy` are added to the values inherited up
-        /// the hierarchy.
-        ///
-        /// Setting `Policy` hierarchies that inherit both allowed values and denied values isn't recommended in most
-        /// circumstances to keep the configuration simple and understandable. However, it is possible to set a `Policy`
-        /// with `allowed_values` set that inherits a `Policy` with `denied_values` set. In this case, the values that
-        /// are allowed must be in `allowed_values` and not present in `denied_values`.
-        ///
-        /// For example, suppose you have a `Constraint` `constraints/serviceuser.services`, which has a
-        /// `constraint_type` of `list_constraint`, and with `constraint_default` set to `ALLOW`. Suppose that at the
-        /// Organization level, a `Policy` is applied that restricts the allowed API activations to {`E1`, `E2`}. Then,
-        /// if a `Policy` is applied to a project below the Organization that has `inherit_from_parent` set to `false`
-        /// and field all_values set to DENY, then an attempt to activate any API will be denied.
-        ///
-        /// The following examples demonstrate different possible layerings for `projects/bar` parented by
-        /// `organizations/foo`:
-        ///
-        /// Example 1 (no inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
-        /// allowed_values:"E2"} `projects/bar` has `inherit_from_parent` `false` and values: {allowed_values: "E3"
-        /// allowed_values: "E4"} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at
-        /// `projects/bar` are `E3`, and `E4`.
-        ///
-        /// Example 2 (inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
-        /// allowed_values:"E2"} `projects/bar` has a `Policy` with values: {value: "E3" value: "E4"
-        /// inherit_from_parent: true} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at
-        /// `projects/bar` are `E1`, `E2`, `E3`, and `E4`.
-        ///
+        /// <summary>Determines the inheritance behavior for this `Policy`. By default, a `ListPolicy` set at a resource
+        /// supersedes any `Policy` set anywhere up the resource hierarchy. However, if `inherit_from_parent` is set to
+        /// `true`, then the values from the effective `Policy` of the parent resource are inherited, meaning the values
+        /// set in this `Policy` are added to the values inherited up the hierarchy. Setting `Policy` hierarchies that
+        /// inherit both allowed values and denied values isn't recommended in most circumstances to keep the
+        /// configuration simple and understandable. However, it is possible to set a `Policy` with `allowed_values` set
+        /// that inherits a `Policy` with `denied_values` set. In this case, the values that are allowed must be in
+        /// `allowed_values` and not present in `denied_values`. For example, suppose you have a `Constraint`
+        /// `constraints/serviceuser.services`, which has a `constraint_type` of `list_constraint`, and with
+        /// `constraint_default` set to `ALLOW`. Suppose that at the Organization level, a `Policy` is applied that
+        /// restricts the allowed API activations to {`E1`, `E2`}. Then, if a `Policy` is applied to a project below the
+        /// Organization that has `inherit_from_parent` set to `false` and field all_values set to DENY, then an attempt
+        /// to activate any API will be denied. The following examples demonstrate different possible layerings for
+        /// `projects/bar` parented by `organizations/foo`: Example 1 (no inherited values): `organizations/foo` has a
+        /// `Policy` with values: {allowed_values: "E1" allowed_values:"E2"} `projects/bar` has `inherit_from_parent`
+        /// `false` and values: {allowed_values: "E3" allowed_values: "E4"} The accepted values at `organizations/foo`
+        /// are `E1`, `E2`. The accepted values at `projects/bar` are `E3`, and `E4`. Example 2 (inherited values):
+        /// `organizations/foo` has a `Policy` with values: {allowed_values: "E1" allowed_values:"E2"} `projects/bar`
+        /// has a `Policy` with values: {value: "E3" value: "E4" inherit_from_parent: true} The accepted values at
+        /// `organizations/foo` are `E1`, `E2`. The accepted values at `projects/bar` are `E1`, `E2`, `E3`, and `E4`.
         /// Example 3 (inheriting both allowed and denied values): `organizations/foo` has a `Policy` with values:
         /// {allowed_values: "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {denied_values: "E1"} The
-        /// accepted values at `organizations/foo` are `E1`, `E2`. The value accepted at `projects/bar` is `E2`.
-        ///
-        /// Example 4 (RestoreDefault): `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
+        /// accepted values at `organizations/foo` are `E1`, `E2`. The value accepted at `projects/bar` is `E2`. Example
+        /// 4 (RestoreDefault): `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
         /// allowed_values:"E2"} `projects/bar` has a `Policy` with values: {RestoreDefault: {}} The accepted values at
         /// `organizations/foo` are `E1`, `E2`. The accepted values at `projects/bar` are either all or none depending
-        /// on the value of `constraint_default` (if `ALLOW`, all; if `DENY`, none).
-        ///
-        /// Example 5 (no policy inherits parent policy): `organizations/foo` has no `Policy` set. `projects/bar` has no
-        /// `Policy` set. The accepted values at both levels are either all or none depending on the value of
-        /// `constraint_default` (if `ALLOW`, all; if `DENY`, none).
-        ///
-        /// Example 6 (ListConstraint allowing all): `organizations/foo` has a `Policy` with values: {allowed_values:
-        /// "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: ALLOW} The accepted values at
-        /// `organizations/foo` are `E1`, E2`. Any value is accepted at `projects/bar`.
-        ///
-        /// Example 7 (ListConstraint allowing none): `organizations/foo` has a `Policy` with values: {allowed_values:
-        /// "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: DENY} The accepted values at
-        /// `organizations/foo` are `E1`, E2`. No value is accepted at `projects/bar`.
-        ///
-        /// Example 10 (allowed and denied subtrees of Resource Manager hierarchy): Given the following resource
-        /// hierarchy O1->{F1, F2}; F1->{P1}; F2->{P2, P3}, `organizations/foo` has a `Policy` with values:
-        /// {allowed_values: "under:organizations/O1"} `projects/bar` has a `Policy` with: {allowed_values:
-        /// "under:projects/P3"} {denied_values: "under:folders/F2"} The accepted values at `organizations/foo` are
-        /// `organizations/O1`, `folders/F1`, `folders/F2`, `projects/P1`, `projects/P2`, `projects/P3`. The accepted
-        /// values at `projects/bar` are `organizations/O1`, `folders/F1`, `projects/P1`.</summary>
+        /// on the value of `constraint_default` (if `ALLOW`, all; if `DENY`, none). Example 5 (no policy inherits
+        /// parent policy): `organizations/foo` has no `Policy` set. `projects/bar` has no `Policy` set. The accepted
+        /// values at both levels are either all or none depending on the value of `constraint_default` (if `ALLOW`,
+        /// all; if `DENY`, none). Example 6 (ListConstraint allowing all): `organizations/foo` has a `Policy` with
+        /// values: {allowed_values: "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: ALLOW} The
+        /// accepted values at `organizations/foo` are `E1`, E2`. Any value is accepted at `projects/bar`. Example 7
+        /// (ListConstraint allowing none): `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
+        /// allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: DENY} The accepted values at
+        /// `organizations/foo` are `E1`, E2`. No value is accepted at `projects/bar`. Example 10 (allowed and denied
+        /// subtrees of Resource Manager hierarchy): Given the following resource hierarchy O1->{F1, F2}; F1->{P1};
+        /// F2->{P2, P3}, `organizations/foo` has a `Policy` with values: {allowed_values: "under:organizations/O1"}
+        /// `projects/bar` has a `Policy` with: {allowed_values: "under:projects/P3"} {denied_values:
+        /// "under:folders/F2"} The accepted values at `organizations/foo` are `organizations/O1`, `folders/F1`,
+        /// `folders/F2`, `projects/P1`, `projects/P2`, `projects/P3`. The accepted values at `projects/bar` are
+        /// `organizations/O1`, `folders/F1`, `projects/P1`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inheritFromParent")]
         public virtual System.Nullable<bool> InheritFromParent { get; set; } 
 
@@ -4020,22 +3767,16 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A page of the response received from the ListProjects method.
-    ///
-    /// A paginated response where more pages are available has `next_page_token` set. This token can be used in a
-    /// subsequent request to retrieve the next request page.</summary>
+    /// <summary>A page of the response received from the ListProjects method. A paginated response where more pages are
+    /// available has `next_page_token` set. This token can be used in a subsequent request to retrieve the next request
+    /// page.</summary>
     public class ListProjectsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Pagination token.
-        ///
-        /// If the result set is too large to fit in a single response, this token is returned. It encodes the position
-        /// of the current result cursor. Feeding this value into a new list request with the `page_token` parameter
-        /// gives the next page of the results.
-        ///
-        /// When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the
-        /// result set.
-        ///
-        /// Pagination tokens have a limited lifetime.</summary>
+        /// <summary>Pagination token. If the result set is too large to fit in a single response, this token is
+        /// returned. It encodes the position of the current result cursor. Feeding this value into a new list request
+        /// with the `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in,
+        /// there is no next page and the list returned is the last page in the result set. Pagination tokens have a
+        /// limited lifetime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -4059,9 +3800,9 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -4071,11 +3812,11 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -4092,25 +3833,18 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         public virtual BooleanPolicy BooleanPolicy { get; set; } 
 
         /// <summary>The name of the `Constraint` the `Policy` is configuring, for example,
-        /// `constraints/serviceuser.services`.
-        ///
-        /// A [list of available constraints](/resource-manager/docs/organization-policy/org-policy-constraints) is
-        /// available.
-        ///
-        /// Immutable after creation.</summary>
+        /// `constraints/serviceuser.services`. A [list of available constraints](/resource-manager/docs/organization-
+        /// policy/org-policy-constraints) is available. Immutable after creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("constraint")]
         public virtual string Constraint { get; set; } 
 
-        /// <summary>An opaque tag indicating the current version of the `Policy`, used for concurrency control.
-        ///
-        /// When the `Policy` is returned from either a `GetPolicy` or a `ListOrgPolicy` request, this `etag` indicates
-        /// the version of the current `Policy` to use when executing a read-modify-write loop.
-        ///
-        /// When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
-        ///
-        /// When the `Policy` is used in a `SetOrgPolicy` method, use the `etag` value that was returned from a
-        /// `GetOrgPolicy` request as part of a read-modify-write loop for concurrency control. Not setting the `etag`in
-        /// a `SetOrgPolicy` request will result in an unconditional write of the `Policy`.</summary>
+        /// <summary>An opaque tag indicating the current version of the `Policy`, used for concurrency control. When
+        /// the `Policy` is returned from either a `GetPolicy` or a `ListOrgPolicy` request, this `etag` indicates the
+        /// version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is
+        /// returned from a `GetEffectivePolicy` request, the `etag` will be unset. When the `Policy` is used in a
+        /// `SetOrgPolicy` method, use the `etag` value that was returned from a `GetOrgPolicy` request as part of a
+        /// read-modify-write loop for concurrency control. Not setting the `etag`in a `SetOrgPolicy` request will
+        /// result in an unconditional write of the `Policy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -4180,35 +3914,24 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     }    
 
     /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
-    /// resources.
-    ///
-    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
-    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
-    /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
-    ///
-    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
-    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
-    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
-    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
-    /// /resource-policies).
-    ///
-    /// **JSON example:**
-    ///
-    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
-    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
-    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
-    ///
-    /// **YAML example:**
-    ///
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
-    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
-    /// description: Does not grant access after Sep 2020 expression: request.time <
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
-    ///
-    /// For a description of IAM and its features, see the [IAM
+    /// resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`.
+    /// Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a
+    /// named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some
+    /// types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that
+    /// allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on
+    /// attributes of the request, the resource, or both. To learn which resources support conditions in their IAM
+    /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON
+    /// example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [
+    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
+    /// id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [
+    /// "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access
+    /// after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+    /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com -
+    /// group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+    /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+    /// roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access
+    /// after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version:
+    /// 3 For a description of IAM and its features, see the [IAM
     /// documentation](https://cloud.google.com/iam/docs/).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4225,100 +3948,70 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
-        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
-        ///
-        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
-        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
+        /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
+        /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Specifies the format of the policy.
-        ///
-        /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected.
-        ///
-        /// Any operation that affects conditional role bindings must specify version `3`. This requirement applies to
-        /// the following operations:
-        ///
-        /// * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy
-        /// * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition,
-        /// from a policy that includes conditions
-        ///
+        /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
+        /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
+        /// This requirement applies to the following operations: * Getting a policy that includes a conditional role
+        /// binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy *
+        /// Removing any role binding, with or without a condition, from a policy that includes conditions
         /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
         /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.
-        ///
-        /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any
+        /// conditions, operations on that policy may specify any valid version or leave the field unset. To learn which
+        /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
     }    
 
-    /// <summary>A Project is a high-level Google Cloud Platform entity.  It is a container for ACLs, APIs, App Engine
+    /// <summary>A Project is a high-level Google Cloud Platform entity. It is a container for ACLs, APIs, App Engine
     /// Apps, VMs, and other Google Cloud Platform resources.</summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Creation time.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Creation time. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>The labels associated with this Project.
-        ///
-        /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression:
-        /// a-z{0,62}.
-        ///
-        /// Label values must be between 0 and 63 characters long and must conform to the regular expression
-        /// [a-z0-9_-]{0,63}. A label value can be empty.
-        ///
-        /// No more than 256 labels can be associated with a given resource.
-        ///
-        /// Clients should store labels in a representation such as JSON that does not depend on specific characters
-        /// being disallowed.
-        ///
-        /// Example: "environment" : "dev" Read-write.</summary>
+        /// <summary>The labels associated with this Project. Label keys must be between 1 and 63 characters long and
+        /// must conform to the following regular expression: a-z{0,62}. Label values must be between 0 and 63
+        /// characters long and must conform to the regular expression [a-z0-9_-]{0,63}. A label value can be empty. No
+        /// more than 256 labels can be associated with a given resource. Clients should store labels in a
+        /// representation such as JSON that does not depend on specific characters being disallowed. Example:
+        /// "environment" : "dev" Read-write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>The Project lifecycle state.
-        ///
-        /// Read-only.</summary>
+        /// <summary>The Project lifecycle state. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
         public virtual string LifecycleState { get; set; } 
 
         /// <summary>The optional user-assigned display name of the Project. When present it must be between 4 to 30
         /// characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-
-        /// quote, space, and exclamation point.
-        ///
-        /// Example: My Project Read-write.</summary>
+        /// quote, space, and exclamation point. Example: My Project Read-write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>An optional reference to a parent Resource.
-        ///
-        /// Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The
-        /// `parent` can be set on creation or using the `UpdateProject` method; the end user must have the
-        /// `resourcemanager.projects.create` permission on the parent.
-        ///
-        /// Read-write.</summary>
+        /// <summary>An optional reference to a parent Resource. Supported parent types include "organization" and
+        /// "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the
+        /// `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the
+        /// parent. Read-write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual ResourceId Parent { get; set; } 
 
         /// <summary>The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or
-        /// hyphens. It must start with a letter. Trailing hyphens are prohibited.
-        ///
-        /// Example: tokyo-rain-123 Read-only after creation.</summary>
+        /// hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: tokyo-rain-123 Read-only
+        /// after creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>The number uniquely identifying the project.
-        ///
-        /// Example: 415104041262 Read-only.</summary>
+        /// <summary>The number uniquely identifying the project. Example: 415104041262 Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
         public virtual System.Nullable<long> ProjectNumber { get; set; } 
 
@@ -4367,13 +4060,12 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     }    
 
     /// <summary>Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of
-    /// the specific `Constraint` at this resource.
-    ///
-    /// Suppose that `constraint_default` is set to `ALLOW` for the `Constraint` `constraints/serviceuser.services`.
-    /// Suppose that organization foo.com sets a `Policy` at their Organization resource node that restricts the allowed
-    /// service activations to deny all service activations. They could then set a `Policy` with the `policy_type`
-    /// `restore_default` on several experimental projects, restoring the `constraint_default` enforcement of the
-    /// `Constraint` for only those projects, allowing those projects to have all services activated.</summary>
+    /// the specific `Constraint` at this resource. Suppose that `constraint_default` is set to `ALLOW` for the
+    /// `Constraint` `constraints/serviceuser.services`. Suppose that organization foo.com sets a `Policy` at their
+    /// Organization resource node that restricts the allowed service activations to deny all service activations. They
+    /// could then set a `Policy` with the `policy_type` `restore_default` on several experimental projects, restoring
+    /// the `constraint_default` enforcement of the `Constraint` for only those projects, allowing those projects to
+    /// have all services activated.</summary>
     public class RestoreDefault : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -4384,16 +4076,10 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     public class SearchOrganizationsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An optional query string used to filter the Organizations to return in the response. Filter rules
-        /// are case-insensitive.
-        ///
-        /// Organizations may be filtered by `owner.directoryCustomerId` or by `domain`, where the domain is a G Suite
-        /// domain, for example:
-        ///
-        /// * Filter `owner.directorycustomerid:123456789` returns Organization resources with
-        /// `owner.directory_customer_id` equal to `123456789`. * Filter `domain:google.com` returns Organization
-        /// resources corresponding to the domain `google.com`.
-        ///
-        /// This field is optional.</summary>
+        /// are case-insensitive. Organizations may be filtered by `owner.directoryCustomerId` or by `domain`, where the
+        /// domain is a G Suite domain, for example: * Filter `owner.directorycustomerid:123456789` returns Organization
+        /// resources with `owner.directory_customer_id` equal to `123456789`. * Filter `domain:google.com` returns
+        /// Organization resources corresponding to the domain `google.com`. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
@@ -4438,9 +4124,8 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         public virtual Policy Policy { get; set; } 
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, the following default mask is used:
-        ///
-        /// `paths: "bindings, etag"`</summary>
+        /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
+        /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 
@@ -4461,9 +4146,8 @@ namespace Google.Apis.CloudResourceManager.v1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4471,8 +4155,8 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

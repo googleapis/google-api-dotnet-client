@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/memorystore/'>Cloud Memorystore for Memcached API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20200714 (2021)
+ *      <tr><th>API Rev<td>20200721 (2028)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/memorystore/'>
  *              https://cloud.google.com/memorystore/</a>

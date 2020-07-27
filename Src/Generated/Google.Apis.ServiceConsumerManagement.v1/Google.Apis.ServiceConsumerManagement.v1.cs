@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>Service Consumer Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200721 (2028)
+ *      <tr><th>API Rev<td>20200722 (2029)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>
  *              https://cloud.google.com/service-consumer-management/docs/overview</a>
@@ -956,7 +956,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
 
             /// <summary>Creates a tenancy unit with no tenant resources. If tenancy unit already exists, it will be
             /// returned, however, in this case, returned TenancyUnit does not have tenant_resources field set and
-            /// ListTenancyUnit has to be used to get a complete TenancyUnit with all fields populated.</summary>
+            /// ListTenancyUnits has to be used to get a complete TenancyUnit with all fields populated.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">services/{service}/{collection id}/{resource id} {collection id} is the cloud resource
             /// collection type representing the service consumer, for example 'projects', or 'organizations'. {resource id} is the
@@ -969,7 +969,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
 
             /// <summary>Creates a tenancy unit with no tenant resources. If tenancy unit already exists, it will be
             /// returned, however, in this case, returned TenancyUnit does not have tenant_resources field set and
-            /// ListTenancyUnit has to be used to get a complete TenancyUnit with all fields populated.</summary>
+            /// ListTenancyUnits has to be used to get a complete TenancyUnit with all fields populated.</summary>
             public class CreateRequest : ServiceConsumerManagementBaseServiceRequest<Google.Apis.ServiceConsumerManagement.v1.Data.TenancyUnit>
             {
                 /// <summary>Constructs a new Create request.</summary>

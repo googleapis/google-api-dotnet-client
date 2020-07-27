@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/'>Google Play Game Management</a>
  *      <tr><th>API Version<td>v1management
- *      <tr><th>API Rev<td>20200714 (2021)
+ *      <tr><th>API Rev<td>20200720 (2027)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/'>
  *              https://developers.google.com/games/</a>
@@ -87,9 +87,9 @@ namespace Google.Apis.GamesManagement.v1management
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://www.googleapis.com/"; }
+            get { return BaseUriOverride ?? "https://gamesmanagement.googleapis.com/"; }
         #else
-            get { return "https://www.googleapis.com/"; }
+            get { return "https://gamesmanagement.googleapis.com/"; }
         #endif
         }
 
@@ -103,13 +103,13 @@ namespace Google.Apis.GamesManagement.v1management
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch/games/v1management"; }
+            get { return "https://gamesmanagement.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch/games/v1management"; }
+            get { return "batch"; }
         }
         #endif
 
