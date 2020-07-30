@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/solutions/gaming/'>Game Services API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200630 (2007)
+ *      <tr><th>API Rev<td>20200721 (2028)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/solutions/gaming/'>
  *              https://cloud.google.com/solutions/gaming/</a>
@@ -420,7 +420,6 @@ namespace Google.Apis.GameServices.v1
                     /// server deployment rollout resource.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The parent resource name. Uses the form:
-                    ///
                     /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/`.</param>
                     public virtual CreateRequest Create(Google.Apis.GameServices.v1.Data.GameServerConfig body, string parent)
                     {
@@ -443,7 +442,6 @@ namespace Google.Apis.GameServices.v1
 
 
                         /// <summary>Required. The parent resource name. Uses the form:
-                        ///
                         /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -507,7 +505,6 @@ namespace Google.Apis.GameServices.v1
                     /// <summary>Deletes a single game server config. The deletion will fail if the game server config
                     /// is referenced in a game server deployment rollout.</summary>
                     /// <param name="name">Required. The name of the game server config to delete. Uses the form:
-                    ///
                     /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -527,10 +524,8 @@ namespace Google.Apis.GameServices.v1
                         }
 
 
-                        /// <summary>Required. The name of the game server config to delete. Uses the form:
-                        ///
-                        /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}
-                        /// `.</summary>
+                        /// <summary>Required. The name of the game server config to delete. Uses the form: `projects/{p
+                        /// roject}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -573,7 +568,6 @@ namespace Google.Apis.GameServices.v1
 
                     /// <summary>Gets details of a single game server config.</summary>
                     /// <param name="name">Required. The name of the game server config to retrieve. Uses the form:
-                    ///
                     /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.</param>
                     public virtual GetRequest Get(string name)
                     {
@@ -592,10 +586,9 @@ namespace Google.Apis.GameServices.v1
                         }
 
 
-                        /// <summary>Required. The name of the game server config to retrieve. Uses the form:
-                        ///
-                        /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}
-                        /// `.</summary>
+                        /// <summary>Required. The name of the game server config to retrieve. Uses the form: `projects/
+                        /// {project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.</summar
+                        /// y>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -639,7 +632,6 @@ namespace Google.Apis.GameServices.v1
                     /// <summary>Lists game server configs in a given project, location, and game server
                     /// deployment.</summary>
                     /// <param name="parent">Required. The parent resource name. Uses the form:
-                    ///
                     /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs`.</param>
                     public virtual ListRequest List(string parent)
                     {
@@ -659,10 +651,8 @@ namespace Google.Apis.GameServices.v1
                         }
 
 
-                        /// <summary>Required. The parent resource name. Uses the form:
-                        ///
-                        /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs`.</summa
-                        /// ry>
+                        /// <summary>Required. The parent resource name. Uses the form: `projects/{project}/locations/{l
+                        /// ocation}/gameServerDeployments/{deployment}/configs`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -675,7 +665,7 @@ namespace Google.Apis.GameServices.v1
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
-                        /// <summary>Optional. The maximum number of items to return.  If unspecified, server will pick
+                        /// <summary>Optional. The maximum number of items to return. If unspecified, server will pick
                         /// an appropriate default. Server may return fewer items than requested. A caller should only
                         /// rely on response's next_page_token to determine if there are more GameServerConfigs left to
                         /// be queried.</summary>
@@ -846,7 +836,6 @@ namespace Google.Apis.GameServices.v1
 
                 /// <summary>Deletes a single game server deployment.</summary>
                 /// <param name="name">Required. The name of the game server delpoyment to delete. Uses the form:
-                ///
                 /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -866,7 +855,6 @@ namespace Google.Apis.GameServices.v1
 
 
                     /// <summary>Required. The name of the game server delpoyment to delete. Uses the form:
-                    ///
                     /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -913,7 +901,6 @@ namespace Google.Apis.GameServices.v1
                 /// server deployment.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The name of the game server delpoyment. Uses the form:
-                ///
                 /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.</param>
                 public virtual FetchDeploymentStateRequest FetchDeploymentState(Google.Apis.GameServices.v1.Data.FetchDeploymentStateRequest body, string name)
                 {
@@ -936,7 +923,6 @@ namespace Google.Apis.GameServices.v1
 
 
                     /// <summary>Required. The name of the game server delpoyment. Uses the form:
-                    ///
                     /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -986,7 +972,6 @@ namespace Google.Apis.GameServices.v1
 
                 /// <summary>Gets details of a single game server deployment.</summary>
                 /// <param name="name">Required. The name of the game server delpoyment to retrieve. Uses the form:
-                ///
                 /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.</param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1006,7 +991,6 @@ namespace Google.Apis.GameServices.v1
 
 
                     /// <summary>Required. The name of the game server delpoyment to retrieve. Uses the form:
-                    ///
                     /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1075,15 +1059,12 @@ namespace Google.Apis.GameServices.v1
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
 
-                    /// <summary>Optional. The policy format version to be returned.
-                    ///
-                    /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
-                    ///
-                    /// Requests for policies with any conditional bindings must specify version 3. Policies without any
-                    /// conditional bindings may specify any valid value or leave the field unset.
-                    ///
-                    /// To learn which resources support conditions in their IAM policies, see the [IAM
-                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+                    /// <summary>Optional. The policy format version to be returned. Valid values are 0, 1, and 3.
+                    /// Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional bindings must specify version 3. Policies without any conditional bindings may
+                    /// specify any valid value or leave the field unset. To learn which resources support conditions in
+                    /// their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
+                    /// /resource-policies).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -1135,7 +1116,6 @@ namespace Google.Apis.GameServices.v1
 
                 /// <summary>Gets details a single game server deployment rollout.</summary>
                 /// <param name="name">Required. The name of the game server delpoyment to retrieve. Uses the form:
-                ///
                 /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.</param>
                 public virtual GetRolloutRequest GetRollout(string name)
                 {
@@ -1155,7 +1135,6 @@ namespace Google.Apis.GameServices.v1
 
 
                     /// <summary>Required. The name of the game server delpoyment to retrieve. Uses the form:
-                    ///
                     /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1231,7 +1210,7 @@ namespace Google.Apis.GameServices.v1
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Optional. The maximum number of items to return.  If unspecified, the server will pick
+                    /// <summary>Optional. The maximum number of items to return. If unspecified, the server will pick
                     /// an appropriate default. The server may return fewer items than requested. A caller should only
                     /// rely on response's next_page_token to determine if there are more GameServerDeployments left to
                     /// be queried.</summary>
@@ -1319,10 +1298,8 @@ namespace Google.Apis.GameServices.v1
                 /// <summary>Patches a game server deployment.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The resource name of the game server deployment. Uses the form:
-                ///
-                /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example,
-                ///
-                /// `projects/my-project/locations/{location}/gameServerDeployments/my-deployment`.</param>
+                /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-
+                /// project/locations/global/gameServerDeployments/my-deployment`.</param>
                 public virtual PatchRequest Patch(Google.Apis.GameServices.v1.Data.GameServerDeployment body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -1342,17 +1319,13 @@ namespace Google.Apis.GameServices.v1
 
 
                     /// <summary>The resource name of the game server deployment. Uses the form:
-                    ///
                     /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example,
-                    ///
-                    /// `projects/my-project/locations/{location}/gameServerDeployments/my-deployment`.</summary>
+                    /// `projects/my-project/locations/global/gameServerDeployments/my-deployment`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>Required. Mask of fields to update. At least one path must be supplied in this field.
-                    /// For the `FieldMask` definition, see
-                    ///
-                    /// https: //developers.google.com/protocol-buffers //
+                    /// For the `FieldMask` definition, see https: //developers.google.com/protocol-buffers //
                     /// /docs/reference/google.protobuf#fieldmask</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1413,10 +1386,8 @@ namespace Google.Apis.GameServices.v1
                 /// resource.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The resource name of the game server deployment rollout. Uses the form:
-                ///
-                /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`. For example,
-                ///
-                /// `projects/my-project/locations/{location}/gameServerDeployments/my-deployment/rollout`.</param>
+                /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`. For example, `projects/my-
+                /// project/locations/global/gameServerDeployments/my-deployment/rollout`.</param>
                 public virtual PreviewRolloutRequest PreviewRollout(Google.Apis.GameServices.v1.Data.GameServerDeploymentRollout body, string name)
                 {
                     return new PreviewRolloutRequest(service, body, name);
@@ -1437,11 +1408,8 @@ namespace Google.Apis.GameServices.v1
 
 
                     /// <summary>The resource name of the game server deployment rollout. Uses the form:
-                    ///
                     /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`. For
-                    /// example,
-                    ///
-                    /// `projects/my-project/locations/{location}/gameServerDeployments/my-
+                    /// example, `projects/my-project/locations/global/gameServerDeployments/my-
                     /// deployment/rollout`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1452,9 +1420,7 @@ namespace Google.Apis.GameServices.v1
                     public virtual object PreviewTime { get; set; }
 
                     /// <summary>Optional. Mask of fields to update. At least one path must be supplied in this field.
-                    /// For the `FieldMask` definition, see
-                    ///
-                    /// https: //developers.google.com/protocol-buffers //
+                    /// For the `FieldMask` definition, see https: //developers.google.com/protocol-buffers //
                     /// /docs/reference/google.protobuf#fieldmask</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1520,9 +1486,8 @@ namespace Google.Apis.GameServices.v1
 
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-                ///
-                /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -1531,9 +1496,8 @@ namespace Google.Apis.GameServices.v1
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-                ///
-                /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
                 public class SetIamPolicyRequest : GameServicesBaseServiceRequest<Google.Apis.GameServices.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1595,10 +1559,9 @@ namespace Google.Apis.GameServices.v1
                 }
 
                 /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-                /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
-                ///
-                /// Note: This operation is designed to be used for building permission-aware UIs and command-line
-                /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
+                /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation
+                /// is designed to be used for building permission-aware UIs and command-line tools, not for
+                /// authorization checking. This operation may "fail open" without warning.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -1608,10 +1571,9 @@ namespace Google.Apis.GameServices.v1
                 }
 
                 /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-                /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
-                ///
-                /// Note: This operation is designed to be used for building permission-aware UIs and command-line
-                /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
+                /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation
+                /// is designed to be used for building permission-aware UIs and command-line tools, not for
+                /// authorization checking. This operation may "fail open" without warning.</summary>
                 public class TestIamPermissionsRequest : GameServicesBaseServiceRequest<Google.Apis.GameServices.v1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -1679,10 +1641,8 @@ namespace Google.Apis.GameServices.v1
                 /// error.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The resource name of the game server deployment rollout. Uses the form:
-                ///
-                /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`. For example,
-                ///
-                /// `projects/my-project/locations/{location}/gameServerDeployments/my-deployment/rollout`.</param>
+                /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`. For example, `projects/my-
+                /// project/locations/global/gameServerDeployments/my-deployment/rollout`.</param>
                 public virtual UpdateRolloutRequest UpdateRollout(Google.Apis.GameServices.v1.Data.GameServerDeploymentRollout body, string name)
                 {
                     return new UpdateRolloutRequest(service, body, name);
@@ -1706,19 +1666,14 @@ namespace Google.Apis.GameServices.v1
 
 
                     /// <summary>The resource name of the game server deployment rollout. Uses the form:
-                    ///
                     /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`. For
-                    /// example,
-                    ///
-                    /// `projects/my-project/locations/{location}/gameServerDeployments/my-
+                    /// example, `projects/my-project/locations/global/gameServerDeployments/my-
                     /// deployment/rollout`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>Required. Mask of fields to update. At least one path must be supplied in this field.
-                    /// For the `FieldMask` definition, see
-                    ///
-                    /// https: //developers.google.com/protocol-buffers //
+                    /// For the `FieldMask` definition, see https: //developers.google.com/protocol-buffers //
                     /// /docs/reference/google.protobuf#fieldmask</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1799,10 +1754,10 @@ namespace Google.Apis.GameServices.v1
                 }
 
 
-                /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
-                /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support this
-                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or
-                /// other methods to check whether the cancellation succeeded or whether the operation completed despite
+                /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best
+                /// effort to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
+                /// methods to check whether the cancellation succeeded or whether the operation completed despite
                 /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
                 /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
                 /// `Code.CANCELLED`.</summary>
@@ -1813,10 +1768,10 @@ namespace Google.Apis.GameServices.v1
                     return new CancelRequest(service, body, name);
                 }
 
-                /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
-                /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support this
-                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or
-                /// other methods to check whether the cancellation succeeded or whether the operation completed despite
+                /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best
+                /// effort to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
+                /// methods to check whether the cancellation succeeded or whether the operation completed despite
                 /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
                 /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
                 /// `Code.CANCELLED`.</summary>
@@ -1943,7 +1898,7 @@ namespace Google.Apis.GameServices.v1
 
                 }
 
-                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
                 /// operation result at intervals as recommended by the API service.</summary>
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
@@ -1951,7 +1906,7 @@ namespace Google.Apis.GameServices.v1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
                 /// operation result at intervals as recommended by the API service.</summary>
                 public class GetRequest : GameServicesBaseServiceRequest<Google.Apis.GameServices.v1.Data.Operation>
                 {
@@ -2006,13 +1961,12 @@ namespace Google.Apis.GameServices.v1
                 }
 
                 /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                /// support this method, it returns `UNIMPLEMENTED`.
-                ///
-                /// NOTE: the `name` binding allows API services to override the binding to use different resource name
-                /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
-                /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the
-                /// default name includes the operations collection id, however overriding users must ensure the name
-                /// binding is the parent resource, without the operations collection id.</summary>
+                /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
+                /// override the binding to use different resource name schemes, such as `users/operations`. To override
+                /// the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to their service
+                /// configuration. For backwards compatibility, the default name includes the operations collection id,
+                /// however overriding users must ensure the name binding is the parent resource, without the operations
+                /// collection id.</summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
@@ -2020,13 +1974,12 @@ namespace Google.Apis.GameServices.v1
                 }
 
                 /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                /// support this method, it returns `UNIMPLEMENTED`.
-                ///
-                /// NOTE: the `name` binding allows API services to override the binding to use different resource name
-                /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
-                /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the
-                /// default name includes the operations collection id, however overriding users must ensure the name
-                /// binding is the parent resource, without the operations collection id.</summary>
+                /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
+                /// override the binding to use different resource name schemes, such as `users/operations`. To override
+                /// the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to their service
+                /// configuration. For backwards compatibility, the default name includes the operations collection id,
+                /// however overriding users must ensure the name binding is the parent resource, without the operations
+                /// collection id.</summary>
                 public class ListRequest : GameServicesBaseServiceRequest<Google.Apis.GameServices.v1.Data.ListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -2313,7 +2266,6 @@ namespace Google.Apis.GameServices.v1
 
                     /// <summary>Gets details of a single game server cluster.</summary>
                     /// <param name="name">Required. The name of the game server cluster to retrieve. Uses the form:
-                    ///
                     /// `projects/{project}/locations/{location}/realms/{realm-id}/gameServerClusters/{cluster}`.</param>
                     public virtual GetRequest Get(string name)
                     {
@@ -2333,7 +2285,6 @@ namespace Google.Apis.GameServices.v1
 
 
                         /// <summary>Required. The name of the game server cluster to retrieve. Uses the form:
-                        ///
                         /// `projects/{project}/locations/{location}/realms/{realm-
                         /// id}/gameServerClusters/{cluster}`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2410,7 +2361,7 @@ namespace Google.Apis.GameServices.v1
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
-                        /// <summary>Optional. The maximum number of items to return.  If unspecified, the server will
+                        /// <summary>Optional. The maximum number of items to return. If unspecified, the server will
                         /// pick an appropriate default. The server may return fewer items than requested. A caller
                         /// should only rely on response's next_page_token to determine if there are more
                         /// GameServerClusters left to be queried.</summary>
@@ -2498,10 +2449,8 @@ namespace Google.Apis.GameServices.v1
                     /// <summary>Patches a single game server cluster.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. The resource name of the game server cluster. Uses the form:
-                    ///
-                    /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example,
-                    ///
-                    /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.</param>
+                    /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-
+                    /// project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.</param>
                     public virtual PatchRequest Patch(Google.Apis.GameServices.v1.Data.GameServerCluster body, string name)
                     {
                         return new PatchRequest(service, body, name);
@@ -2521,20 +2470,15 @@ namespace Google.Apis.GameServices.v1
 
 
                         /// <summary>Required. The resource name of the game server cluster. Uses the form:
-                        ///
                         /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For
-                        /// example,
-                        ///
-                        /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-
-                        /// cluster`.</summary>
+                        /// example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-
+                        /// onprem-cluster`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
                         /// <summary>Required. Mask of fields to update. At least one path must be supplied in this
-                        /// field. For the `FieldMask` definition, see
-                        ///
-                        /// https: //developers.google.com/protocol-buffers //
-                        /// /docs/reference/google.protobuf#fieldmask</summary>
+                        /// field. For the `FieldMask` definition, see https: //developers.google.com/protocol-buffers
+                        /// // /docs/reference/google.protobuf#fieldmask</summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
 
@@ -2766,10 +2710,8 @@ namespace Google.Apis.GameServices.v1
                     /// <summary>Previews updating a GameServerCluster.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. The resource name of the game server cluster. Uses the form:
-                    ///
-                    /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example,
-                    ///
-                    /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.</param>
+                    /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-
+                    /// project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.</param>
                     public virtual PreviewUpdateRequest PreviewUpdate(Google.Apis.GameServices.v1.Data.GameServerCluster body, string name)
                     {
                         return new PreviewUpdateRequest(service, body, name);
@@ -2789,12 +2731,9 @@ namespace Google.Apis.GameServices.v1
 
 
                         /// <summary>Required. The resource name of the game server cluster. Uses the form:
-                        ///
                         /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For
-                        /// example,
-                        ///
-                        /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-
-                        /// cluster`.</summary>
+                        /// example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-
+                        /// onprem-cluster`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -2803,10 +2742,8 @@ namespace Google.Apis.GameServices.v1
                         public virtual object PreviewTime { get; set; }
 
                         /// <summary>Required. Mask of fields to update. At least one path must be supplied in this
-                        /// field. For the `FieldMask` definition, see
-                        ///
-                        /// https: //developers.google.com/protocol-buffers //
-                        /// /docs/reference/google.protobuf#fieldmask</summary>
+                        /// field. For the `FieldMask` definition, see https: //developers.google.com/protocol-buffers
+                        /// // /docs/reference/google.protobuf#fieldmask</summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
 
@@ -3113,7 +3050,7 @@ namespace Google.Apis.GameServices.v1
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Optional. The maximum number of items to return.  If unspecified, server will pick an
+                    /// <summary>Optional. The maximum number of items to return. If unspecified, server will pick an
                     /// appropriate default. Server may return fewer items than requested. A caller should only rely on
                     /// response's next_page_token to determine if there are more realms left to be queried.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -3227,7 +3164,6 @@ namespace Google.Apis.GameServices.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>Required. The update mask applies to the resource. For the `FieldMask` definition, see
-                    ///
                     /// https: //developers.google.com/protocol-buffers //
                     /// /docs/reference/google.protobuf#fieldmask</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -3319,7 +3255,6 @@ namespace Google.Apis.GameServices.v1
                     public virtual object PreviewTime { get; set; }
 
                     /// <summary>Required. The update mask applies to the resource. For the `FieldMask` definition, see
-                    ///
                     /// https: //developers.google.com/protocol-buffers //
                     /// /docs/reference/google.protobuf#fieldmask</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -3567,21 +3502,15 @@ namespace Google.Apis.GameServices.v1.Data
 
     /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
     /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
-    /// AuditLogConfigs.
-    ///
-    /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
-    /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
-    /// AuditLogConfig are exempted.
-    ///
-    /// Example Policy with multiple AuditConfigs:
-    ///
-    /// { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two
+    /// AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the
+    /// exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: {
+    /// "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
     /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ]
     /// }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, {
-    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
-    ///
-    /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
-    /// jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.</summary>
+    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this
+    /// policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ
+    /// logging, and aliya@example.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
@@ -3600,11 +3529,8 @@ namespace Google.Apis.GameServices.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Provides the configuration for logging a type of permissions. Example:
-    ///
-    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
-    /// "log_type": "DATA_WRITE" } ] }
-    ///
+    /// <summary>Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ {
+    /// "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] }
     /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -3639,53 +3565,33 @@ namespace Google.Apis.GameServices.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding.
-        ///
-        /// If the condition evaluates to `true`, then this binding applies to the current request.
-        ///
-        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
-        /// different role binding might grant the same role to one or more of the members in this binding.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
+        /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
+        /// apply to the current request. However, a different role binding might grant the same role to one or more of
+        /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values:
-        ///
-        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
-        /// account.
-        ///
-        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
-        /// account or a service account.
-        ///
-        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@example.com` .
-        ///
-        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
-        /// app@appspot.gserviceaccount.com`.
-        ///
-        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
-        ///
-        /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
-        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
-        ///
-        /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
-        /// a service account that has been recently deleted. For example, `my-other-
+        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
+        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
+        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
+        /// represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An
+        /// email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example, `my-other-
         /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
-        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
-        ///
-        /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
+        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. *
+        /// `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
         /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
         /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
-        /// binding.
-        ///
-        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
-        /// `google.com` or `example.com`.
-        ///
-        /// </summary>
+        /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
+        /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
 
@@ -3748,19 +3654,14 @@ namespace Google.Apis.GameServices.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Increment a streamz counter with the specified metric and field names.
-    ///
-    /// Metric names should start with a '/', generally be lowercase-only, and end in "_count". Field names should not
-    /// contain an initial slash. The actual exported metric names will have "/iam/policy" prepended.
-    ///
-    /// Field names correspond to IAM request parameters and field values are their respective values.
-    ///
-    /// Supported field names: - "authority", which is "[token]" if IAMContext.token is present, otherwise the value of
-    /// IAMContext.authority_selector if present, and otherwise a representation of IAMContext.principal; or -
-    /// "iam_principal", a representation of IAMContext.principal even if a token or authority selector is present; or -
-    /// "" (empty string), resulting in a counter with no fields.
-    ///
-    /// Examples: counter { metric: "/debug_access_count"  field: "iam_principal" } ==> increment counter
+    /// <summary>Increment a streamz counter with the specified metric and field names. Metric names should start with a
+    /// '/', generally be lowercase-only, and end in "_count". Field names should not contain an initial slash. The
+    /// actual exported metric names will have "/iam/policy" prepended. Field names correspond to IAM request parameters
+    /// and field values are their respective values. Supported field names: - "authority", which is "[token]" if
+    /// IAMContext.token is present, otherwise the value of IAMContext.authority_selector if present, and otherwise a
+    /// representation of IAMContext.principal; or - "iam_principal", a representation of IAMContext.principal even if a
+    /// token or authority selector is present; or - "" (empty string), resulting in a counter with no fields. Examples:
+    /// counter { metric: "/debug_access_count" field: "iam_principal" } ==> increment counter
     /// /iam/policy/debug_access_count {iam_principal=[value of IAMContext.principal]}</summary>
     public class CounterOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3907,11 +3808,9 @@ namespace Google.Apis.GameServices.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -3920,29 +3819,15 @@ namespace Google.Apis.GameServices.v1.Data
 
     /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
     /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    ///
-    /// Example (Comparison):
-    ///
-    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
-    /// "document.summary.size() < 100"
-    ///
-    /// Example (Equality):
-    ///
-    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
-    /// "document.owner == request.auth.claims.email"
-    ///
-    /// Example (Logic):
-    ///
-    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
-    /// "document.type != 'private' && document.type != 'internal'"
-    ///
-    /// Example (Data Manipulation):
-    ///
+    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
     /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)"
-    ///
-    /// The exact variables and functions that may be referenced within an expression are determined by the service that
-    /// evaluates it. See the service documentation for additional information.</summary>
+    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
+    /// within an expression are determined by the service that evaluates it. See the service documentation for
+    /// additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
@@ -4030,9 +3915,7 @@ namespace Google.Apis.GameServices.v1.Data
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Required. The resource name of the game server cluster. Uses the form:
-        ///
         /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example,
-        ///
         /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -4079,9 +3962,7 @@ namespace Google.Apis.GameServices.v1.Data
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>The resource name of the game server config. Uses the form:
-        ///
         /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example,
-        ///
         /// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -4133,10 +4014,8 @@ namespace Google.Apis.GameServices.v1.Data
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>The resource name of the game server deployment. Uses the form:
-        ///
-        /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example,
-        ///
-        /// `projects/my-project/locations/{location}/gameServerDeployments/my-deployment`.</summary>
+        /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-
+        /// project/locations/global/gameServerDeployments/my-deployment`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -4154,9 +4033,7 @@ namespace Google.Apis.GameServices.v1.Data
         public virtual object CreateTime { get; set; } 
 
         /// <summary>The default game server config is applied to all realms unless overridden in the rollout. For
-        /// example,
-        ///
-        /// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.</summary>
+        /// example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultGameServerConfig")]
         public virtual string DefaultGameServerConfig { get; set; } 
 
@@ -4170,10 +4047,8 @@ namespace Google.Apis.GameServices.v1.Data
         public virtual System.Collections.Generic.IList<GameServerConfigOverride> GameServerConfigOverrides { get; set; } 
 
         /// <summary>The resource name of the game server deployment rollout. Uses the form:
-        ///
-        /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`. For example,
-        ///
-        /// `projects/my-project/locations/{location}/gameServerDeployments/my-deployment/rollout`.</summary>
+        /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`. For example, `projects
+        /// /my-project/locations/global/gameServerDeployments/my-deployment/rollout`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -4325,9 +4200,8 @@ namespace Google.Apis.GameServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Cross-service attributes for the location. For example
-        ///
-        /// {"cloud.googleapis.com/region": "us-east1"}</summary>
+        /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
+        /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -4379,9 +4253,9 @@ namespace Google.Apis.GameServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -4391,11 +4265,11 @@ namespace Google.Apis.GameServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -4469,35 +4343,24 @@ namespace Google.Apis.GameServices.v1.Data
     }    
 
     /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
-    /// resources.
-    ///
-    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
-    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
-    /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
-    ///
-    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
-    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
-    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
-    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
-    /// /resource-policies).
-    ///
-    /// **JSON example:**
-    ///
-    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
-    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
-    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
-    ///
-    /// **YAML example:**
-    ///
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
-    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
-    /// description: Does not grant access after Sep 2020 expression: request.time <
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
-    ///
-    /// For a description of IAM and its features, see the [IAM
+    /// resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`.
+    /// Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a
+    /// named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some
+    /// types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that
+    /// allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on
+    /// attributes of the request, the resource, or both. To learn which resources support conditions in their IAM
+    /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON
+    /// example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [
+    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
+    /// id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [
+    /// "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access
+    /// after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+    /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com -
+    /// group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+    /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+    /// roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access
+    /// after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version:
+    /// 3 For a description of IAM and its features, see the [IAM
     /// documentation](https://cloud.google.com/iam/docs/).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4514,11 +4377,10 @@ namespace Google.Apis.GameServices.v1.Data
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
-        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
-        ///
-        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
-        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
+        /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
+        /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -4533,25 +4395,16 @@ namespace Google.Apis.GameServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<Rule> Rules { get; set; } 
 
-        /// <summary>Specifies the format of the policy.
-        ///
-        /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected.
-        ///
-        /// Any operation that affects conditional role bindings must specify version `3`. This requirement applies to
-        /// the following operations:
-        ///
-        /// * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy
-        /// * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition,
-        /// from a policy that includes conditions
-        ///
+        /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
+        /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
+        /// This requirement applies to the following operations: * Getting a policy that includes a conditional role
+        /// binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy *
+        /// Removing any role binding, with or without a condition, from a policy that includes conditions
         /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
         /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.
-        ///
-        /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any
+        /// conditions, operations on that policy may specify any valid version or leave the field unset. To learn which
+        /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
@@ -4744,10 +4597,8 @@ namespace Google.Apis.GameServices.v1.Data
     /// <summary>The schedule of a recurring or one time event. The event's time span is specified by start_time and
     /// end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be
     /// recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local
-    /// time specified by cron_spec, and is recurring.
-    ///
-    /// start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time +
-    /// duration</summary>
+    /// time specified by cron_spec, and is recurring. start_time|-------[cron job]-------[cron job]-------[cron
+    /// job]---|end_time cron job: cron spec start time + duration</summary>
     public class Schedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The duration for the cron job event. The duration of the event is effective after the cron job's
@@ -4782,9 +4633,8 @@ namespace Google.Apis.GameServices.v1.Data
         public virtual Policy Policy { get; set; } 
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, the following default mask is used:
-        ///
-        /// `paths: "bindings, etag"`</summary>
+        /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
+        /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 
@@ -4795,10 +4645,8 @@ namespace Google.Apis.GameServices.v1.Data
     /// <summary>Encapsulates Agones fleet spec and Agones autoscaler spec sources.</summary>
     public class SpecSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The game server config resource. Uses the form:
-        ///
-        /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment_id}/configs/{config_id}`.</summar
-        /// y>
+        /// <summary>The game server config resource. Uses the form: `projects/{project}/locations/{location}/gameServer
+        /// Deployments/{deployment_id}/configs/{config_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gameServerConfigName")]
         public virtual string GameServerConfigName { get; set; } 
 
@@ -4813,9 +4661,8 @@ namespace Google.Apis.GameServices.v1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4823,8 +4670,8 @@ namespace Google.Apis.GameServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -4845,13 +4692,11 @@ namespace Google.Apis.GameServices.v1.Data
         public virtual System.Collections.Generic.IList<TargetFleetDetails> FleetDetails { get; set; } 
 
         /// <summary>The game server cluster name. Uses the form:
-        ///
         /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gameServerClusterName")]
         public virtual string GameServerClusterName { get; set; } 
 
         /// <summary>The game server deployment name. Uses the form:
-        ///
         /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gameServerDeploymentName")]
         public virtual string GameServerDeploymentName { get; set; } 

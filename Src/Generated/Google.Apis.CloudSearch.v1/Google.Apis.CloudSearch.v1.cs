@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-search/docs/guides/'>Cloud Search API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200707 (2014)
+ *      <tr><th>API Rev<td>20200721 (2028)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-search/docs/guides/'>
  *              https://developers.google.com/cloud-search/docs/guides/</a>
@@ -7455,7 +7455,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual System.Nullable<int> PageSize { get; set; } 
 
         /// <summary>The raw query string. See supported search operators in the [Cloud search Cheat
-        /// Sheet](https://gsuite.google.com/learning-center/products/cloudsearch/cheat-sheet/)</summary>
+        /// Sheet](https://support.google.com/a/users/answer/9299929)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>Storage Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200709 (2016)
+ *      <tr><th>API Rev<td>20200724 (2031)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>
  *              https://cloud.google.com/storage-transfer/docs</a>
@@ -754,16 +754,50 @@ namespace Google.Apis.Storagetransfer.v1
         }
 
 
-        /// <summary>Cancels a transfer. Use the get method to check whether the cancellation succeeded or whether the
-        /// operation completed despite cancellation.</summary>
+        /// <summary>Cancels a transfer. Use the transferOperations.get method to check if the cancellation succeeded or
+        /// if the operation completed despite the `cancel` request.
+        ///
+        /// When you cancel an operation, the currently running transfer is interrupted.  For recurring transfer jobs,
+        /// the next instance of the transfer job will still run.  For example, if your job is configured to run every
+        /// day at 1pm and you cancel Monday's operation at 1:05pm, Monday's transfer will stop. However, a transfer job
+        /// will still be attempted on Tuesday.
+        ///
+        /// This applies only to currently running operations. If an operation is not currently running, `cancel` does
+        /// nothing.
+        ///
+        /// Caution: Canceling a transfer job can leave your data in an unknown state. We recommend that you restore the
+        /// state at both the destination and the source after the `cancel` request completes so that your data is in a
+        /// consistent state.
+        ///
+        /// When you cancel a job, the next job computes a delta of files and may repair any inconsistent state. For
+        /// instance, if you run a job every day, and today's job found 10 new files and transferred five files before
+        /// you canceled the job, tomorrow's transfer operation will compute a new delta with the five files that were
+        /// not copied today plus any new files discovered tomorrow.</summary>
         /// <param name="name">The name of the operation resource to be cancelled.</param>
         public virtual CancelRequest Cancel(string name)
         {
             return new CancelRequest(service, name);
         }
 
-        /// <summary>Cancels a transfer. Use the get method to check whether the cancellation succeeded or whether the
-        /// operation completed despite cancellation.</summary>
+        /// <summary>Cancels a transfer. Use the transferOperations.get method to check if the cancellation succeeded or
+        /// if the operation completed despite the `cancel` request.
+        ///
+        /// When you cancel an operation, the currently running transfer is interrupted.  For recurring transfer jobs,
+        /// the next instance of the transfer job will still run.  For example, if your job is configured to run every
+        /// day at 1pm and you cancel Monday's operation at 1:05pm, Monday's transfer will stop. However, a transfer job
+        /// will still be attempted on Tuesday.
+        ///
+        /// This applies only to currently running operations. If an operation is not currently running, `cancel` does
+        /// nothing.
+        ///
+        /// Caution: Canceling a transfer job can leave your data in an unknown state. We recommend that you restore the
+        /// state at both the destination and the source after the `cancel` request completes so that your data is in a
+        /// consistent state.
+        ///
+        /// When you cancel a job, the next job computes a delta of files and may repair any inconsistent state. For
+        /// instance, if you run a job every day, and today's job found 10 new files and transferred five files before
+        /// you canceled the job, tomorrow's transfer operation will compute a new delta with the five files that were
+        /// not copied today plus any new files discovered tomorrow.</summary>
         public class CancelRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.Empty>
         {
             /// <summary>Constructs a new Cancel request.</summary>

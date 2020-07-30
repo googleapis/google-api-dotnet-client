@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/display-video/'>Display & Video 360 API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200724 (2031)
+ *      <tr><th>API Rev<td>20200728 (2035)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/display-video/'>
  *              https://developers.google.com/display-video/</a>
@@ -66,6 +66,7 @@ namespace Google.Apis.DisplayVideo.v1
         {
             advertisers = new AdvertisersResource(this);
             combinedAudiences = new CombinedAudiencesResource(this);
+            customBiddingAlgorithms = new CustomBiddingAlgorithmsResource(this);
             customLists = new CustomListsResource(this);
             firstAndThirdPartyAudiences = new FirstAndThirdPartyAudiencesResource(this);
             floodlightGroups = new FloodlightGroupsResource(this);
@@ -173,6 +174,14 @@ namespace Google.Apis.DisplayVideo.v1
         public virtual CombinedAudiencesResource CombinedAudiences
         {
             get { return combinedAudiences; }
+        }
+
+        private readonly CustomBiddingAlgorithmsResource customBiddingAlgorithms;
+
+        /// <summary>Gets the CustomBiddingAlgorithms resource.</summary>
+        public virtual CustomBiddingAlgorithmsResource CustomBiddingAlgorithms
+        {
+            get { return customBiddingAlgorithms; }
         }
 
         private readonly CustomListsResource customLists;
@@ -8408,6 +8417,250 @@ namespace Google.Apis.DisplayVideo.v1
         }
     }
 
+    /// <summary>The "customBiddingAlgorithms" collection of methods.</summary>
+    public class CustomBiddingAlgorithmsResource
+    {
+        private const string Resource = "customBiddingAlgorithms";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public CustomBiddingAlgorithmsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Gets a custom bidding algorithm.</summary>
+        /// <param name="customBiddingAlgorithmId">Required. The ID of the custom bidding algorithm to fetch.</param>
+        public virtual GetRequest Get(long customBiddingAlgorithmId)
+        {
+            return new GetRequest(service, customBiddingAlgorithmId);
+        }
+
+        /// <summary>Gets a custom bidding algorithm.</summary>
+        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, long customBiddingAlgorithmId)
+                : base(service)
+            {
+                CustomBiddingAlgorithmId = customBiddingAlgorithmId;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The ID of the custom bidding algorithm to fetch.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customBiddingAlgorithmId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long CustomBiddingAlgorithmId { get; private set; }
+
+            /// <summary>The ID of the DV3 partner that has access to the custom bidding algorithm.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+            /// <summary>The ID of the DV3 partner that has access to the custom bidding algorithm.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> PartnerId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/customBiddingAlgorithms/{+customBiddingAlgorithmId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "customBiddingAlgorithmId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customBiddingAlgorithmId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists custom bidding algorithms that are accessible to the current user and can be used in bidding
+        /// stratgies. The order is defined by the order_by parameter.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>Lists custom bidding algorithms that are accessible to the current user and can be used in bidding
+        /// stratgies. The order is defined by the order_by parameter.</summary>
+        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListCustomBiddingAlgorithmsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the DV3 advertiser that has access to the custom bidding algorithm.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+            /// <summary>Allows filtering by custom bidding algorithm fields. Supported syntax: * Filter expressions are
+            /// made up of one or more restrictions. * Restrictions can be combined by `AND`. A sequence of restrictions
+            /// * implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The operator
+            /// must be `CONTAINS (:)` or `EQUALS (=)`. * The operator must be `CONTAINS (:)` for the following field: -
+            /// `displayName` * The operator must be `EQUALS (=)` for the following field: -
+            /// `customBiddingAlgorithmType` * For `displayName`, the value is a string. We return all custom bidding
+            /// algorithms whose display_name contains such string. * For `customBiddingAlgorithmType`, the value is a
+            /// string. We return all algorithms whose custom_bidding_algorithm_type is equal to the given type.
+            /// Examples: * All custom bidding algorithms for which the display name contains "politics":
+            /// `displayName:politics`. * All custom bidding algorithms for which the type is "SCRIPT_BASED":
+            /// `customBiddingAlgorithmType=SCRIPT_BASED` The length of this field should be no more than 500
+            /// characters.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>Field by which to sort the list. Acceptable values are: * `displayName` (default) The default
+            /// sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to
+            /// the field name. Example: `displayName desc`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Requested page size. Must be between `1` and `100`. If unspecified will default to `100`.
+            /// Returns error code `INVALID_ARGUMENT` if an invalid value is specified.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A token identifying a page of results the server should return. Typically, this is the value of
+            /// next_page_token returned from the previous call to `ListCustomBiddingAlgorithms` method. If not
+            /// specified, the first page of results will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The ID of the DV3 partner that has access to the custom bidding algorithm.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> PartnerId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/customBiddingAlgorithms"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "customLists" collection of methods.</summary>
     public class CustomListsResource
     {
@@ -15773,6 +16026,43 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A single custom bidding algorithm.</summary>
+    public class CustomBiddingAlgorithm : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The unique ID of the advertiser that owns the custom bidding algorithm.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
+        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+
+        /// <summary>Output only. The unique ID of the custom bidding algorithm. Assigned by the system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmId")]
+        public virtual System.Nullable<long> CustomBiddingAlgorithmId { get; set; } 
+
+        /// <summary>Required. Immutable. The type of custom bidding algorithm.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmType")]
+        public virtual string CustomBiddingAlgorithmType { get; set; } 
+
+        /// <summary>Required. The display name of the custom bidding algorithm. Must be UTF-8 encoded with a maximum
+        /// size of 240 bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>Controls whether or not the custom bidding algorithm can be used as a bidding strategy. Accepted
+        /// values are: * `ENTITY_STATUS_ACTIVE` * `ENTITY_STATUS_ARCHIVED`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
+        public virtual string EntityStatus { get; set; } 
+
+        /// <summary>Output only. The resource name of the custom bidding algorithm.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Immutable. The unique ID of the partner that owns the custom bidding algorithm.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
+        public virtual System.Nullable<long> PartnerId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Describes a custom list entity, such as a custom affinity or custom intent audience list.</summary>
     public class CustomList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17367,6 +17657,23 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message for CustomBiddingAlgorithmService.ListCustomBiddingAlgorithms.</summary>
+    public class ListCustomBiddingAlgorithmsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of custom bidding algorithms. This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithms")]
+        public virtual System.Collections.Generic.IList<CustomBiddingAlgorithm> CustomBiddingAlgorithms { get; set; } 
+
+        /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
+        /// subsequent call to `ListCustomBiddingAlgorithmsRequest` method to retrieve the next page of results. If this
+        /// field is null, it means this is the last page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class ListCustomListsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of custom lists. This list will be absent if empty.</summary>
@@ -17669,6 +17976,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// the full budget.</summary>
     public class MaximizeSpendBidStrategy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ID of the Custom Bidding Algorithm used by this strategy. Only applicable when
+        /// performance_goal_type is set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmId")]
+        public virtual System.Nullable<long> CustomBiddingAlgorithmId { get; set; } 
+
         /// <summary>The maximum average CPM that may be bid, in micros of the advertiser's currency. Must be greater
         /// than or equal to a billable unit of the given currency. For example, 1500000 represents 1.5 standard units
         /// of the currency.</summary>
@@ -18175,6 +18487,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>A strategy that automatically adjusts the bid to meet or beat a specified performance goal.</summary>
     public class PerformanceGoalBidStrategy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ID of the Custom Bidding Algorithm used by this strategy. Only applicable when
+        /// performance_goal_type is set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmId")]
+        public virtual System.Nullable<long> CustomBiddingAlgorithmId { get; set; } 
+
         /// <summary>The maximum average CPM that may be bid, in micros of the advertiser's currency. Must be greater
         /// than or equal to a billable unit of the given currency. Not applicable when performance_goal_type is set to
         /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`. For example, 1500000 represents 1.5 standard units of

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200722 (2029)
+ *      <tr><th>API Rev<td>20200725 (2032)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow/'>
  *              https://cloud.google.com/dialogflow/</a>

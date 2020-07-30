@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-analysis/api/reference/rest/'>Container Analysis API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200717 (2024)
+ *      <tr><th>API Rev<td>20200724 (2031)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-analysis/api/reference/rest/'>
  *              https://cloud.google.com/container-analysis/api/reference/rest/</a>

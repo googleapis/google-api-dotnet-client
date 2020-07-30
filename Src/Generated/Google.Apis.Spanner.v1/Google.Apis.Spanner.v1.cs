@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/spanner/'>Cloud Spanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200720 (2027)
+ *      <tr><th>API Rev<td>20200722 (2029)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/spanner/'>
  *              https://cloud.google.com/spanner/</a>
@@ -5870,7 +5870,8 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Parameter names and values that bind to placeholders in the SQL string.
         ///
         /// A parameter placeholder consists of the `@` character followed by the parameter name (for example,
-        /// `@firstName`). Parameter names can contain letters, numbers, and underscores.
+        /// `@firstName`). Parameter names must conform to the naming requirements of identifiers as specified at
+        /// https://cloud.google.com/spanner/docs/lexical#identifiers.
         ///
         /// Parameters can appear anywhere that a literal value is expected.  The same parameter name can be used more
         /// than once, for example:

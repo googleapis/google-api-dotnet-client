@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200722 (2029)
+ *      <tr><th>API Rev<td>20200726 (2033)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -12184,9 +12184,10 @@ namespace Google.Apis.DLP.v2.Data
         public virtual GooglePrivacyDlpV2DeidentifyConfig ReidentifyConfig { get; set; } 
 
         /// <summary>Template to use. References an instance of `DeidentifyTemplate`. Any configuration directly
-        /// specified in `reidentify_config` or `inspect_config` will override those set in the template. Singular
-        /// fields that are set in this request will replace their corresponding fields in the template. Repeated fields
-        /// are appended. Singular sub-messages and groups are recursively merged.</summary>
+        /// specified in `reidentify_config` or `inspect_config` will override those set in the template. The
+        /// `DeidentifyTemplate` used must include only reversible transformations. Singular fields that are set in this
+        /// request will replace their corresponding fields in the template. Repeated fields are appended. Singular sub-
+        /// messages and groups are recursively merged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reidentifyTemplateName")]
         public virtual string ReidentifyTemplateName { get; set; } 
 

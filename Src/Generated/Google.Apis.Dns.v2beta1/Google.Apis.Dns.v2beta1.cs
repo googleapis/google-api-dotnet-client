@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='http://developers.google.com/cloud-dns'>Cloud DNS API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20200714 (2021)
+ *      <tr><th>API Rev<td>20200721 (2028)
  *      <tr><th>API Docs
  *          <td><a href='http://developers.google.com/cloud-dns'>
  *              http://developers.google.com/cloud-dns</a>

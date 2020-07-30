@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1p4beta1
- *      <tr><th>API Rev<td>20200717 (2024)
+ *      <tr><th>API Rev<td>20200724 (2031)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>
  *              https://cloud.google.com/asset-inventory/docs/quickstart</a>
@@ -1077,8 +1077,7 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessSelector")]
         public virtual AccessSelector AccessSelector { get; set; } 
 
-        /// <summary>Optional. Specifies an identity for analysis. Either ResourceSelector or IdentitySelector must be
-        /// specified.</summary>
+        /// <summary>Optional. Specifies an identity for analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identitySelector")]
         public virtual IdentitySelector IdentitySelector { get; set; } 
 
@@ -1094,8 +1093,7 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 
-        /// <summary>Optional. Specifies a resource for analysis. Either ResourceSelector or IdentitySelector must be
-        /// specified.</summary>
+        /// <summary>Optional. Specifies a resource for analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceSelector")]
         public virtual ResourceSelector ResourceSelector { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200716 (2023)
+ *      <tr><th>API Rev<td>20200725 (2032)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -395,8 +395,8 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The "resource name" of the region or location, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.create, the resource
-                /// name  of the region has the following format:  projects/{project_id}/regions/{region} For
-                /// projects.locations.autoscalingPolicies.create, the resource name  of the location has the following format:
+                /// name of the region has the following format: projects/{project_id}/regions/{region} For
+                /// projects.locations.autoscalingPolicies.create, the resource name of the location has the following format:
                 /// projects/{project_id}/locations/{location}</param>
                 public virtual CreateRequest Create(Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string parent)
                 {
@@ -418,10 +418,10 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Required. The "resource name" of the region or location, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For
-                    /// projects.regions.autoscalingPolicies.create, the resource name  of the region has the following
-                    /// format:  projects/{project_id}/regions/{region} For
-                    /// projects.locations.autoscalingPolicies.create, the resource name  of the location has the
-                    /// following format:  projects/{project_id}/locations/{location}</summary>
+                    /// projects.regions.autoscalingPolicies.create, the resource name of the region has the following
+                    /// format: projects/{project_id}/regions/{region} For
+                    /// projects.locations.autoscalingPolicies.create, the resource name of the location has the
+                    /// following format: projects/{project_id}/locations/{location}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -472,9 +472,8 @@ namespace Google.Apis.Dataproc.v1
                 /// use by one or more clusters.</summary>
                 /// <param name="name">Required. The "resource name" of the autoscaling policy, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.delete, the resource
-                /// name  of the policy has the following format:
-                /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
-                /// projects.locations.autoscalingPolicies.delete, the resource name  of the policy has the following format:
+                /// name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id}
+                /// For projects.locations.autoscalingPolicies.delete, the resource name of the policy has the following format:
                 /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -496,11 +495,10 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Required. The "resource name" of the autoscaling policy, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For
-                    /// projects.regions.autoscalingPolicies.delete, the resource name  of the policy has the following
-                    /// format:  projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
-                    /// projects.locations.autoscalingPolicies.delete, the resource name  of the policy has the
-                    /// following format:
-                    /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
+                    /// projects.regions.autoscalingPolicies.delete, the resource name of the policy has the following
+                    /// format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+                    /// projects.locations.autoscalingPolicies.delete, the resource name of the policy has the following
+                    /// format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -544,8 +542,8 @@ namespace Google.Apis.Dataproc.v1
                 /// <summary>Retrieves autoscaling policy.</summary>
                 /// <param name="name">Required. The "resource name" of the autoscaling policy, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.get, the resource name
-                /// of the policy has the following format:  projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
-                /// projects.locations.autoscalingPolicies.get, the resource name  of the policy has the following format:
+                /// of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+                /// projects.locations.autoscalingPolicies.get, the resource name of the policy has the following format:
                 /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</param>
                 public virtual GetRequest Get(string name)
                 {
@@ -566,10 +564,10 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Required. The "resource name" of the autoscaling policy, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For
-                    /// projects.regions.autoscalingPolicies.get, the resource name  of the policy has the following
-                    /// format:  projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
-                    /// projects.locations.autoscalingPolicies.get, the resource name  of the policy has the following
-                    /// format:  projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
+                    /// projects.regions.autoscalingPolicies.get, the resource name of the policy has the following
+                    /// format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+                    /// projects.locations.autoscalingPolicies.get, the resource name of the policy has the following
+                    /// format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -685,8 +683,8 @@ namespace Google.Apis.Dataproc.v1
                 /// <summary>Lists autoscaling policies in the project.</summary>
                 /// <param name="parent">Required. The "resource name" of the region or location, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.list, the resource
-                /// name  of the region has the following format:  projects/{project_id}/regions/{region} For
-                /// projects.locations.autoscalingPolicies.list, the resource name  of the location has the following format:
+                /// name of the region has the following format: projects/{project_id}/regions/{region} For
+                /// projects.locations.autoscalingPolicies.list, the resource name of the location has the following format:
                 /// projects/{project_id}/locations/{location}</param>
                 public virtual ListRequest List(string parent)
                 {
@@ -707,9 +705,9 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Required. The "resource name" of the region or location, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For
-                    /// projects.regions.autoscalingPolicies.list, the resource name  of the region has the following
-                    /// format:  projects/{project_id}/regions/{region} For projects.locations.autoscalingPolicies.list,
-                    /// the resource name  of the location has the following format:
+                    /// projects.regions.autoscalingPolicies.list, the resource name of the region has the following
+                    /// format: projects/{project_id}/regions/{region} For projects.locations.autoscalingPolicies.list,
+                    /// the resource name of the location has the following format:
                     /// projects/{project_id}/locations/{location}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -932,8 +930,8 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Output only. The "resource name" of the autoscaling policy, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of
-                /// the  policy has the following format:  projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
-                /// projects.locations.autoscalingPolicies, the resource name of the  policy has the following format:
+                /// the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+                /// projects.locations.autoscalingPolicies, the resource name of the policy has the following format:
                 /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</param>
                 public virtual UpdateRequest Update(Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string name)
                 {
@@ -956,10 +954,10 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Output only. The "resource name" of the autoscaling policy, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies,
-                    /// the resource name of the  policy has the following format:
+                    /// the resource name of the policy has the following format:
                     /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
-                    /// projects.locations.autoscalingPolicies, the resource name of the  policy has the following
-                    /// format:  projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
+                    /// projects.locations.autoscalingPolicies, the resource name of the policy has the following
+                    /// format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1034,8 +1032,8 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The resource name of the region or location, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,create, the resource
-                /// name of the  region has the following format:  projects/{project_id}/regions/{region} For
-                /// projects.locations.workflowTemplates.create, the resource name of  the location has the following format:
+                /// name of the region has the following format: projects/{project_id}/regions/{region} For
+                /// projects.locations.workflowTemplates.create, the resource name of the location has the following format:
                 /// projects/{project_id}/locations/{location}</param>
                 public virtual CreateRequest Create(Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string parent)
                 {
@@ -1057,9 +1055,9 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Required. The resource name of the region or location, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For
-                    /// projects.regions.workflowTemplates,create, the resource name of the  region has the following
-                    /// format:  projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.create,
-                    /// the resource name of  the location has the following format:
+                    /// projects.regions.workflowTemplates,create, the resource name of the region has the following
+                    /// format: projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.create,
+                    /// the resource name of the location has the following format:
                     /// projects/{project_id}/locations/{location}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1112,7 +1110,7 @@ namespace Google.Apis.Dataproc.v1
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.delete, the resource
                 /// name of the template has the following format:
                 /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
-                /// projects.locations.workflowTemplates.instantiate, the resource name  of the template has the following format:
+                /// projects.locations.workflowTemplates.instantiate, the resource name of the template has the following format:
                 /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -1134,8 +1132,8 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Required. The resource name of the workflow template, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For
                     /// projects.regions.workflowTemplates.delete, the resource name of the template has the following
-                    /// format:  projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
-                    /// projects.locations.workflowTemplates.instantiate, the resource name  of the template has the
+                    /// format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                    /// projects.locations.workflowTemplates.instantiate, the resource name of the template has the
                     /// following format:
                     /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1196,8 +1194,8 @@ namespace Google.Apis.Dataproc.v1
                 /// specifying optional version parameter.</summary>
                 /// <param name="name">Required. The resource name of the workflow template, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.get, the resource name
-                /// of the  template has the following format:  projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
-                /// For projects.locations.workflowTemplates.get, the resource name of the  template has the following format:
+                /// of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                /// projects.locations.workflowTemplates.get, the resource name of the template has the following format:
                 /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1219,10 +1217,10 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Required. The resource name of the workflow template, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.get,
-                    /// the resource name of the  template has the following format:
+                    /// the resource name of the template has the following format:
                     /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
-                    /// projects.locations.workflowTemplates.get, the resource name of the  template has the following
-                    /// format:  projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
+                    /// projects.locations.workflowTemplates.get, the resource name of the template has the following
+                    /// format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1363,7 +1361,7 @@ namespace Google.Apis.Dataproc.v1
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.instantiate, the
                 /// resource name of the template has the following format:
                 /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
-                /// projects.locations.workflowTemplates.instantiate, the resource name  of the template has the following format:
+                /// projects.locations.workflowTemplates.instantiate, the resource name of the template has the following format:
                 /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</param>
                 public virtual InstantiateRequest Instantiate(Google.Apis.Dataproc.v1.Data.InstantiateWorkflowTemplateRequest body, string name)
                 {
@@ -1394,8 +1392,8 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Required. The resource name of the workflow template, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For
                     /// projects.regions.workflowTemplates.instantiate, the resource name of the template has the
-                    /// following format:  projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
-                    /// projects.locations.workflowTemplates.instantiate, the resource name  of the template has the
+                    /// following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                    /// projects.locations.workflowTemplates.instantiate, the resource name of the template has the
                     /// following format:
                     /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1457,8 +1455,8 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The resource name of the region or location, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,instantiateinline, the
-                /// resource  name of the region has the following format:  projects/{project_id}/regions/{region} For
-                /// projects.locations.workflowTemplates.instantiateinline, the  resource name of the location has the following format:
+                /// resource name of the region has the following format: projects/{project_id}/regions/{region} For
+                /// projects.locations.workflowTemplates.instantiateinline, the resource name of the location has the following format:
                 /// projects/{project_id}/locations/{location}</param>
                 public virtual InstantiateInlineRequest InstantiateInline(Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string parent)
                 {
@@ -1489,10 +1487,10 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Required. The resource name of the region or location, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For
-                    /// projects.regions.workflowTemplates,instantiateinline, the resource  name of the region has the
-                    /// following format:  projects/{project_id}/regions/{region} For
-                    /// projects.locations.workflowTemplates.instantiateinline, the  resource name of the location has
-                    /// the following format:  projects/{project_id}/locations/{location}</summary>
+                    /// projects.regions.workflowTemplates,instantiateinline, the resource name of the region has the
+                    /// following format: projects/{project_id}/regions/{region} For
+                    /// projects.locations.workflowTemplates.instantiateinline, the resource name of the location has
+                    /// the following format: projects/{project_id}/locations/{location}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1559,9 +1557,9 @@ namespace Google.Apis.Dataproc.v1
 
                 /// <summary>Lists workflows that match the specified filter in the request.</summary>
                 /// <param name="parent">Required. The resource name of the region or location, as described in
-                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,list, the resource  name
-                /// of the region has the following format:  projects/{project_id}/regions/{region} For
-                /// projects.locations.workflowTemplates.list, the  resource name of the location has the following format:
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,list, the resource name
+                /// of the region has the following format: projects/{project_id}/regions/{region} For
+                /// projects.locations.workflowTemplates.list, the resource name of the location has the following format:
                 /// projects/{project_id}/locations/{location}</param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1582,9 +1580,9 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Required. The resource name of the region or location, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For
-                    /// projects.regions.workflowTemplates,list, the resource  name of the region has the following
-                    /// format:  projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.list,
-                    /// the  resource name of the location has the following format:
+                    /// projects.regions.workflowTemplates,list, the resource name of the region has the following
+                    /// format: projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.list,
+                    /// the resource name of the location has the following format:
                     /// projects/{project_id}/locations/{location}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1806,8 +1804,8 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Output only. The resource name of the workflow template, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of
-                /// the  template has the following format:  projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
-                /// projects.locations.workflowTemplates, the resource name of the  template has the following format:
+                /// the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                /// projects.locations.workflowTemplates, the resource name of the template has the following format:
                 /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</param>
                 public virtual UpdateRequest Update(Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string name)
                 {
@@ -1830,10 +1828,10 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Output only. The resource name of the workflow template, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the
-                    /// resource name of the  template has the following format:
+                    /// resource name of the template has the following format:
                     /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
-                    /// projects.locations.workflowTemplates, the resource name of the  template has the following
-                    /// format:  projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
+                    /// projects.locations.workflowTemplates, the resource name of the template has the following
+                    /// format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1937,8 +1935,8 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The "resource name" of the region or location, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.create, the resource
-                /// name  of the region has the following format:  projects/{project_id}/regions/{region} For
-                /// projects.locations.autoscalingPolicies.create, the resource name  of the location has the following format:
+                /// name of the region has the following format: projects/{project_id}/regions/{region} For
+                /// projects.locations.autoscalingPolicies.create, the resource name of the location has the following format:
                 /// projects/{project_id}/locations/{location}</param>
                 public virtual CreateRequest Create(Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string parent)
                 {
@@ -1960,10 +1958,10 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Required. The "resource name" of the region or location, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For
-                    /// projects.regions.autoscalingPolicies.create, the resource name  of the region has the following
-                    /// format:  projects/{project_id}/regions/{region} For
-                    /// projects.locations.autoscalingPolicies.create, the resource name  of the location has the
-                    /// following format:  projects/{project_id}/locations/{location}</summary>
+                    /// projects.regions.autoscalingPolicies.create, the resource name of the region has the following
+                    /// format: projects/{project_id}/regions/{region} For
+                    /// projects.locations.autoscalingPolicies.create, the resource name of the location has the
+                    /// following format: projects/{project_id}/locations/{location}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -2014,9 +2012,8 @@ namespace Google.Apis.Dataproc.v1
                 /// use by one or more clusters.</summary>
                 /// <param name="name">Required. The "resource name" of the autoscaling policy, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.delete, the resource
-                /// name  of the policy has the following format:
-                /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
-                /// projects.locations.autoscalingPolicies.delete, the resource name  of the policy has the following format:
+                /// name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id}
+                /// For projects.locations.autoscalingPolicies.delete, the resource name of the policy has the following format:
                 /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -2038,11 +2035,10 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Required. The "resource name" of the autoscaling policy, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For
-                    /// projects.regions.autoscalingPolicies.delete, the resource name  of the policy has the following
-                    /// format:  projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
-                    /// projects.locations.autoscalingPolicies.delete, the resource name  of the policy has the
-                    /// following format:
-                    /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
+                    /// projects.regions.autoscalingPolicies.delete, the resource name of the policy has the following
+                    /// format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+                    /// projects.locations.autoscalingPolicies.delete, the resource name of the policy has the following
+                    /// format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2086,8 +2082,8 @@ namespace Google.Apis.Dataproc.v1
                 /// <summary>Retrieves autoscaling policy.</summary>
                 /// <param name="name">Required. The "resource name" of the autoscaling policy, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.get, the resource name
-                /// of the policy has the following format:  projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
-                /// projects.locations.autoscalingPolicies.get, the resource name  of the policy has the following format:
+                /// of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+                /// projects.locations.autoscalingPolicies.get, the resource name of the policy has the following format:
                 /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</param>
                 public virtual GetRequest Get(string name)
                 {
@@ -2108,10 +2104,10 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Required. The "resource name" of the autoscaling policy, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For
-                    /// projects.regions.autoscalingPolicies.get, the resource name  of the policy has the following
-                    /// format:  projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
-                    /// projects.locations.autoscalingPolicies.get, the resource name  of the policy has the following
-                    /// format:  projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
+                    /// projects.regions.autoscalingPolicies.get, the resource name of the policy has the following
+                    /// format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+                    /// projects.locations.autoscalingPolicies.get, the resource name of the policy has the following
+                    /// format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2227,8 +2223,8 @@ namespace Google.Apis.Dataproc.v1
                 /// <summary>Lists autoscaling policies in the project.</summary>
                 /// <param name="parent">Required. The "resource name" of the region or location, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.list, the resource
-                /// name  of the region has the following format:  projects/{project_id}/regions/{region} For
-                /// projects.locations.autoscalingPolicies.list, the resource name  of the location has the following format:
+                /// name of the region has the following format: projects/{project_id}/regions/{region} For
+                /// projects.locations.autoscalingPolicies.list, the resource name of the location has the following format:
                 /// projects/{project_id}/locations/{location}</param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2249,9 +2245,9 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Required. The "resource name" of the region or location, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For
-                    /// projects.regions.autoscalingPolicies.list, the resource name  of the region has the following
-                    /// format:  projects/{project_id}/regions/{region} For projects.locations.autoscalingPolicies.list,
-                    /// the resource name  of the location has the following format:
+                    /// projects.regions.autoscalingPolicies.list, the resource name of the region has the following
+                    /// format: projects/{project_id}/regions/{region} For projects.locations.autoscalingPolicies.list,
+                    /// the resource name of the location has the following format:
                     /// projects/{project_id}/locations/{location}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2474,8 +2470,8 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Output only. The "resource name" of the autoscaling policy, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of
-                /// the  policy has the following format:  projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
-                /// projects.locations.autoscalingPolicies, the resource name of the  policy has the following format:
+                /// the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+                /// projects.locations.autoscalingPolicies, the resource name of the policy has the following format:
                 /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</param>
                 public virtual UpdateRequest Update(Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string name)
                 {
@@ -2498,10 +2494,10 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Output only. The "resource name" of the autoscaling policy, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies,
-                    /// the resource name of the  policy has the following format:
+                    /// the resource name of the policy has the following format:
                     /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
-                    /// projects.locations.autoscalingPolicies, the resource name of the  policy has the following
-                    /// format:  projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
+                    /// projects.locations.autoscalingPolicies, the resource name of the policy has the following
+                    /// format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -3276,12 +3272,11 @@ namespace Google.Apis.Dataproc.v1
                     /// as follows: { "config":{ "workerConfig":{ "numInstances":"5" } } } Similarly, to change the
                     /// number of preemptible workers in a cluster to 5, the update_mask parameter would be
                     /// config.secondary_worker_config.num_instances, and the PATCH request body would be set as
-                    /// follows: { "config":{ "secondaryWorkerConfig":{ "numInstances":"5" } } } Note: Currently, only
-                    /// the following fields can be updated:      Mask  Purpose      labels  Update labels
-                    /// config.worker_config.num_instances  Resize primary worker group
-                    /// config.secondary_worker_config.num_instances  Resize secondary worker group
-                    /// config.autoscaling_config.policy_uriUse, stop using, or  change autoscaling policies
-                    /// </summary>
+                    /// follows: { "config":{ "secondaryWorkerConfig":{ "numInstances":"5" } } } *Note:* Currently, only
+                    /// the following fields can be updated: *Mask* *Purpose* *labels* Update labels
+                    /// *config.worker_config.num_instances* Resize primary worker group
+                    /// *config.secondary_worker_config.num_instances* Resize secondary worker group
+                    /// config.autoscaling_config.policy_uri Use, stop using, or change autoscaling policies </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -3968,10 +3963,14 @@ namespace Google.Apis.Dataproc.v1
                     /// jobs).If filter is provided, jobStateMatcher will be ignored.</summary>
                     public enum JobStateMatcherEnum
                     {
+                        /// <summary>Match all jobs, regardless of state.</summary>
                         [Google.Apis.Util.StringValueAttribute("ALL")]
                         ALL,
+                        /// <summary>Only match jobs in non-terminal states: PENDING, RUNNING, or
+                        /// CANCEL_PENDING.</summary>
                         [Google.Apis.Util.StringValueAttribute("ACTIVE")]
                         ACTIVE,
+                        /// <summary>Only match jobs in terminal states: CANCELLED, DONE, or ERROR.</summary>
                         [Google.Apis.Util.StringValueAttribute("NON_ACTIVE")]
                         NONACTIVE,
                     }
@@ -4118,8 +4117,8 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Required. Specifies the path, relative to Job, of the field to update. For example, to
                     /// update the labels of a Job the update_mask parameter would be specified as labels, and the PATCH
-                    /// request body would specify the new value. Note: Currently, labels is the only field that can be
-                    /// updated.</summary>
+                    /// request body would specify the new value. *Note:* Currently, labels is the only field that can
+                    /// be updated.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -5092,8 +5091,8 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The resource name of the region or location, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,create, the resource
-                /// name of the  region has the following format:  projects/{project_id}/regions/{region} For
-                /// projects.locations.workflowTemplates.create, the resource name of  the location has the following format:
+                /// name of the region has the following format: projects/{project_id}/regions/{region} For
+                /// projects.locations.workflowTemplates.create, the resource name of the location has the following format:
                 /// projects/{project_id}/locations/{location}</param>
                 public virtual CreateRequest Create(Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string parent)
                 {
@@ -5115,9 +5114,9 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Required. The resource name of the region or location, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For
-                    /// projects.regions.workflowTemplates,create, the resource name of the  region has the following
-                    /// format:  projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.create,
-                    /// the resource name of  the location has the following format:
+                    /// projects.regions.workflowTemplates,create, the resource name of the region has the following
+                    /// format: projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.create,
+                    /// the resource name of the location has the following format:
                     /// projects/{project_id}/locations/{location}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -5170,7 +5169,7 @@ namespace Google.Apis.Dataproc.v1
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.delete, the resource
                 /// name of the template has the following format:
                 /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
-                /// projects.locations.workflowTemplates.instantiate, the resource name  of the template has the following format:
+                /// projects.locations.workflowTemplates.instantiate, the resource name of the template has the following format:
                 /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -5192,8 +5191,8 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Required. The resource name of the workflow template, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For
                     /// projects.regions.workflowTemplates.delete, the resource name of the template has the following
-                    /// format:  projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
-                    /// projects.locations.workflowTemplates.instantiate, the resource name  of the template has the
+                    /// format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                    /// projects.locations.workflowTemplates.instantiate, the resource name of the template has the
                     /// following format:
                     /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -5254,8 +5253,8 @@ namespace Google.Apis.Dataproc.v1
                 /// specifying optional version parameter.</summary>
                 /// <param name="name">Required. The resource name of the workflow template, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.get, the resource name
-                /// of the  template has the following format:  projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
-                /// For projects.locations.workflowTemplates.get, the resource name of the  template has the following format:
+                /// of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                /// projects.locations.workflowTemplates.get, the resource name of the template has the following format:
                 /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</param>
                 public virtual GetRequest Get(string name)
                 {
@@ -5277,10 +5276,10 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Required. The resource name of the workflow template, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.get,
-                    /// the resource name of the  template has the following format:
+                    /// the resource name of the template has the following format:
                     /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
-                    /// projects.locations.workflowTemplates.get, the resource name of the  template has the following
-                    /// format:  projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
+                    /// projects.locations.workflowTemplates.get, the resource name of the template has the following
+                    /// format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -5421,7 +5420,7 @@ namespace Google.Apis.Dataproc.v1
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.instantiate, the
                 /// resource name of the template has the following format:
                 /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
-                /// projects.locations.workflowTemplates.instantiate, the resource name  of the template has the following format:
+                /// projects.locations.workflowTemplates.instantiate, the resource name of the template has the following format:
                 /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</param>
                 public virtual InstantiateRequest Instantiate(Google.Apis.Dataproc.v1.Data.InstantiateWorkflowTemplateRequest body, string name)
                 {
@@ -5452,8 +5451,8 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Required. The resource name of the workflow template, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For
                     /// projects.regions.workflowTemplates.instantiate, the resource name of the template has the
-                    /// following format:  projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
-                    /// projects.locations.workflowTemplates.instantiate, the resource name  of the template has the
+                    /// following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                    /// projects.locations.workflowTemplates.instantiate, the resource name of the template has the
                     /// following format:
                     /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -5515,8 +5514,8 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The resource name of the region or location, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,instantiateinline, the
-                /// resource  name of the region has the following format:  projects/{project_id}/regions/{region} For
-                /// projects.locations.workflowTemplates.instantiateinline, the  resource name of the location has the following format:
+                /// resource name of the region has the following format: projects/{project_id}/regions/{region} For
+                /// projects.locations.workflowTemplates.instantiateinline, the resource name of the location has the following format:
                 /// projects/{project_id}/locations/{location}</param>
                 public virtual InstantiateInlineRequest InstantiateInline(Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string parent)
                 {
@@ -5547,10 +5546,10 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Required. The resource name of the region or location, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For
-                    /// projects.regions.workflowTemplates,instantiateinline, the resource  name of the region has the
-                    /// following format:  projects/{project_id}/regions/{region} For
-                    /// projects.locations.workflowTemplates.instantiateinline, the  resource name of the location has
-                    /// the following format:  projects/{project_id}/locations/{location}</summary>
+                    /// projects.regions.workflowTemplates,instantiateinline, the resource name of the region has the
+                    /// following format: projects/{project_id}/regions/{region} For
+                    /// projects.locations.workflowTemplates.instantiateinline, the resource name of the location has
+                    /// the following format: projects/{project_id}/locations/{location}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -5617,9 +5616,9 @@ namespace Google.Apis.Dataproc.v1
 
                 /// <summary>Lists workflows that match the specified filter in the request.</summary>
                 /// <param name="parent">Required. The resource name of the region or location, as described in
-                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,list, the resource  name
-                /// of the region has the following format:  projects/{project_id}/regions/{region} For
-                /// projects.locations.workflowTemplates.list, the  resource name of the location has the following format:
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,list, the resource name
+                /// of the region has the following format: projects/{project_id}/regions/{region} For
+                /// projects.locations.workflowTemplates.list, the resource name of the location has the following format:
                 /// projects/{project_id}/locations/{location}</param>
                 public virtual ListRequest List(string parent)
                 {
@@ -5640,9 +5639,9 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Required. The resource name of the region or location, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For
-                    /// projects.regions.workflowTemplates,list, the resource  name of the region has the following
-                    /// format:  projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.list,
-                    /// the  resource name of the location has the following format:
+                    /// projects.regions.workflowTemplates,list, the resource name of the region has the following
+                    /// format: projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.list,
+                    /// the resource name of the location has the following format:
                     /// projects/{project_id}/locations/{location}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -5864,8 +5863,8 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Output only. The resource name of the workflow template, as described in
                 /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of
-                /// the  template has the following format:  projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
-                /// projects.locations.workflowTemplates, the resource name of the  template has the following format:
+                /// the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                /// projects.locations.workflowTemplates, the resource name of the template has the following format:
                 /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</param>
                 public virtual UpdateRequest Update(Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string name)
                 {
@@ -5888,10 +5887,10 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>Output only. The resource name of the workflow template, as described in
                     /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the
-                    /// resource name of the  template has the following format:
+                    /// resource name of the template has the following format:
                     /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
-                    /// projects.locations.workflowTemplates, the resource name of the  template has the following
-                    /// format:  projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
+                    /// projects.locations.workflowTemplates, the resource name of the template has the following
+                    /// format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -5998,9 +5997,9 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>Output only. The "resource name" of the autoscaling policy, as described in
         /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource
-        /// name of the  policy has the following format:
+        /// name of the policy has the following format:
         /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
-        /// projects.locations.autoscalingPolicies, the resource name of the  policy has the following format:
+        /// projects.locations.autoscalingPolicies, the resource name of the policy has the following format:
         /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -6088,23 +6087,23 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual Expr Condition { get; set; } 
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. members can have the
-        /// following values: allUsers: A special identifier that represents anyone who is  on the internet; with or
-        /// without a Google account. allAuthenticatedUsers: A special identifier that represents anyone  who is
+        /// following values: allUsers: A special identifier that represents anyone who is on the internet; with or
+        /// without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is
         /// authenticated with a Google account or a service account. user:{emailid}: An email address that represents a
-        /// specific Google  account. For example, alice@example.com . serviceAccount:{emailid}: An email address that
-        /// represents a service  account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An
-        /// email address that represents a Google group.  For example, admins@example.com.
-        /// deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique  identifier) representing a user that
-        /// has been recently deleted. For  example, alice@example.com?uid=123456789012345678901. If the user is
-        /// recovered, this value reverts to user:{emailid} and the recovered user  retains the role in the binding.
-        /// deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus  unique identifier) representing a
-        /// service account that has been recently  deleted. For example,  my-other-
-        /// app@appspot.gserviceaccount.com?uid=123456789012345678901.  If the service account is undeleted, this value
-        /// reverts to  serviceAccount:{emailid} and the undeleted service account retains the  role in the binding.
-        /// deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique  identifier) representing a Google
-        /// group that has been recently  deleted. For example, admins@example.com?uid=123456789012345678901. If  the
-        /// group is recovered, this value reverts to group:{emailid} and the  recovered group retains the role in the
-        /// binding. domain:{domain}: The G Suite domain (primary) that represents all the  users of that domain. For
+        /// specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that
+        /// represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An
+        /// email address that represents a Google group. For example, admins@example.com.
+        /// deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is
+        /// recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding.
+        /// deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example, my-other-
+        /// app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value
+        /// reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding.
+        /// deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google
+        /// group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the
+        /// group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the
+        /// binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, google.com or example.com.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
@@ -6633,8 +6632,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mainClass")]
         public virtual string MainClass { get; set; } 
 
-        /// <summary>The HCFS URI of the jar file containing the main class. Examples:  'gs://foo-bucket/analytics-
-        /// binaries/extract-useful-metrics-mr.jar'  'hdfs:/tmp/test-samples/custom-wordcount.jar'  'file:home/usr/lib
+        /// <summary>The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-
+        /// binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:home/usr/lib
         /// /hadoop-mapreduce/hadoop-mapreduce-examples.jar'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mainJarFileUri")]
         public virtual string MainJarFileUri { get; set; } 
@@ -6764,7 +6763,7 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managedGroupConfig")]
         public virtual ManagedGroupConfig ManagedGroupConfig { get; set; } 
 
-        /// <summary>Optional. Specifies the minimum cpu platform for the Instance Group. See Dataproc - Minimum CPU
+        /// <summary>Optional. Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU
         /// Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; } 
@@ -7193,7 +7192,7 @@ namespace Google.Apis.Dataproc.v1.Data
     public class LoggingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The per-package log levels for the driver. This may include "root" package name to configure
-        /// rootLogger. Examples:  'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'</summary>
+        /// rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driverLogLevels")]
         public virtual System.Collections.Generic.IDictionary<string,string> DriverLogLevels { get; set; } 
 
@@ -7453,7 +7452,7 @@ namespace Google.Apis.Dataproc.v1.Data
         /// value are rejected.Any operation that affects conditional role bindings must specify version 3. This
         /// requirement applies to the following operations: Getting a policy that includes a conditional role binding
         /// Adding a conditional role binding to a policy Changing a conditional role binding in a policy Removing any
-        /// role binding, with or without a condition, from a policy  that includes conditionsImportant: If you use IAM
+        /// role binding, with or without a condition, from a policy that includes conditionsImportant: If you use IAM
         /// Conditions, you must include the etag field whenever you call setIamPolicy. If you omit this field, then IAM
         /// allows you to overwrite a version 3 policy with a version 1 policy, and all of the conditions in the version
         /// 3 policy are lost.If a policy does not include any conditions, operations on that policy may specify any
@@ -7936,9 +7935,9 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>Output only. The resource name of the workflow template as described in
         /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource
-        /// name of the  template has the following format:
+        /// name of the template has the following format:
         /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
-        /// projects.locations.workflowTemplates, the resource name of the  template has the following format:
+        /// projects.locations.workflowTemplates, the resource name of the template has the following format:
         /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("template")]
         public virtual string Template { get; set; } 
@@ -8002,9 +8001,9 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>Output only. The resource name of the workflow template, as described in
         /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource
-        /// name of the  template has the following format:
+        /// name of the template has the following format:
         /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
-        /// projects.locations.workflowTemplates, the resource name of the  template has the following format:
+        /// projects.locations.workflowTemplates, the resource name of the template has the following format:
         /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 

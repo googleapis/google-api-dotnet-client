@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200625 (2002)
+ *      <tr><th>API Rev<td>20200719 (2026)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3970,6 +3970,38 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Model evaluation metrics for ARIMA forecasting models.</summary>
+    public class ArimaForecastingMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Arima model fitting metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arimaFittingMetrics")]
+        public virtual System.Collections.Generic.IList<ArimaFittingMetrics> ArimaFittingMetrics { get; set; } 
+
+        /// <summary>Repeated as there can be many metric sets (one for each model) in auto-arima and the large-scale
+        /// case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arimaSingleModelForecastingMetrics")]
+        public virtual System.Collections.Generic.IList<ArimaSingleModelForecastingMetrics> ArimaSingleModelForecastingMetrics { get; set; } 
+
+        /// <summary>Whether Arima model fitted with drift or not. It is always false when d is not 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasDrift")]
+        public virtual System.Collections.Generic.IList<System.Nullable<bool>> HasDrift { get; set; } 
+
+        /// <summary>Non-seasonal order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonSeasonalOrder")]
+        public virtual System.Collections.Generic.IList<ArimaOrder> NonSeasonalOrder { get; set; } 
+
+        /// <summary>Seasonal periods. Repeated because multiple periods are supported for one time series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seasonalPeriods")]
+        public virtual System.Collections.Generic.IList<string> SeasonalPeriods { get; set; } 
+
+        /// <summary>Id to differentiate different time series for the large-scale case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesId")]
+        public virtual System.Collections.Generic.IList<string> TimeSeriesId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Arima model information.</summary>
     public class ArimaModelInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4032,6 +4064,33 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Seasonal periods. Repeated because multiple periods are supported for one time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seasonalPeriods")]
         public virtual System.Collections.Generic.IList<string> SeasonalPeriods { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Model evaluation metrics for a single ARIMA forecasting model.</summary>
+    public class ArimaSingleModelForecastingMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Arima fitting metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arimaFittingMetrics")]
+        public virtual ArimaFittingMetrics ArimaFittingMetrics { get; set; } 
+
+        /// <summary>Is arima model fitted with drift or not. It is always false when d is not 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasDrift")]
+        public virtual System.Nullable<bool> HasDrift { get; set; } 
+
+        /// <summary>Non-seasonal order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonSeasonalOrder")]
+        public virtual ArimaOrder NonSeasonalOrder { get; set; } 
+
+        /// <summary>Seasonal periods. Repeated because multiple periods are supported for one time series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seasonalPeriods")]
+        public virtual System.Collections.Generic.IList<string> SeasonalPeriods { get; set; } 
+
+        /// <summary>The id to indicate different time series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesId")]
+        public virtual string TimeSeriesId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4928,6 +4987,10 @@ namespace Google.Apis.Bigquery.v2.Data
     /// based on whether eval data was used during training. These are not present for imported models.</summary>
     public class EvaluationMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Populated for ARIMA models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arimaForecastingMetrics")]
+        public virtual ArimaForecastingMetrics ArimaForecastingMetrics { get; set; } 
+
         /// <summary>Populated for binary classification/classifier models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryClassificationMetrics")]
         public virtual BinaryClassificationMetrics BinaryClassificationMetrics { get; set; } 
@@ -4940,7 +5003,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("multiClassClassificationMetrics")]
         public virtual MultiClassClassificationMetrics MultiClassClassificationMetrics { get; set; } 
 
-        /// <summary>[Alpha] Populated for implicit feedback type matrix factorization models.</summary>
+        /// <summary>Populated for implicit feedback type matrix factorization models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingMetrics")]
         public virtual RankingMetrics RankingMetrics { get; set; } 
 
@@ -7245,6 +7308,34 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class SnapshotDefinition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Required] Reference describing the ID of the table that is snapshotted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseTableReference")]
+        public virtual TableReference BaseTableReference { get; set; } 
+
+        /// <summary>[Required] The time at which the base table was snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotTime")]
+        public virtual string SnapshotTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnore]
+        public virtual System.Nullable<System.DateTime> SnapshotTime
+        {
+            get
+            {
+                return Google.Apis.Util.Utilities.GetDateTimeFromString(SnapshotTimeRaw);
+            }
+            set
+            {
+                SnapshotTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY:
     /// {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x",
     /// type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}</summary>
@@ -7427,6 +7518,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
+        /// <summary>[Output-only] Snapshot definition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotDefinition")]
+        public virtual SnapshotDefinition SnapshotDefinition { get; set; } 
+
         /// <summary>[Output-only] Contains information regarding this table's streaming buffer, if one is present. This
         /// field will be absent if the table is not being streamed to or if there is no data in the streaming
         /// buffer.</summary>
@@ -7443,9 +7538,10 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual TimePartitioning TimePartitioning { get; set; } 
 
         /// <summary>[Output-only] Describes the table type. The following values are supported: TABLE: A normal
-        /// BigQuery table. VIEW: A virtual table defined by a SQL query. [TrustedTester] MATERIALIZED_VIEW: SQL query
-        /// whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such
-        /// as Google Cloud Storage. The default value is TABLE.</summary>
+        /// BigQuery table. VIEW: A virtual table defined by a SQL query. [TrustedTester] SNAPSHOT: An immutable, read-
+        /// only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is
+        /// persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud
+        /// Storage. The default value is TABLE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -7800,9 +7896,17 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class TrainingOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether to enable auto ARIMA or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoArima")]
+        public virtual System.Nullable<bool> AutoArima { get; set; } 
+
         /// <summary>Batch size for dnn models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]
         public virtual System.Nullable<long> BatchSize { get; set; } 
+
+        /// <summary>The data frequency of a time series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataFrequency")]
+        public virtual string DataFrequency { get; set; } 
 
         /// <summary>The column to split data with. This column won't be used as a feature. 1. When data_split_method is
         /// CUSTOM, the corresponding column should be boolean. The rows with true value tag are eval data, and the
@@ -7842,6 +7946,19 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Hidden units for dnn models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiddenUnits")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> HiddenUnits { get; set; } 
+
+        /// <summary>The geographical region based on which the holidays are considered in time series modeling. If a
+        /// valid value is specified, then holiday effects modeling is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("holidayRegion")]
+        public virtual string HolidayRegion { get; set; } 
+
+        /// <summary>The number of periods ahead that need to be forecasted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("horizon")]
+        public virtual System.Nullable<long> Horizon { get; set; } 
+
+        /// <summary>Include drift when fitting an ARIMA model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeDrift")]
+        public virtual System.Nullable<bool> IncludeDrift { get; set; } 
 
         /// <summary>Specifies the initial learning rate for the line search learn rate strategy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialLearnRate")]
@@ -7912,6 +8029,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modelUri")]
         public virtual string ModelUri { get; set; } 
 
+        /// <summary>A specification of the non-seasonal part of the ARIMA model: the three components (p, d, q) are the
+        /// AR order, the degree of differencing, and the MA order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonSeasonalOrder")]
+        public virtual ArimaOrder NonSeasonalOrder { get; set; } 
+
         /// <summary>Number of clusters for clustering models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numClusters")]
         public virtual System.Nullable<long> NumClusters { get; set; } 
@@ -7934,6 +8056,19 @@ namespace Google.Apis.Bigquery.v2.Data
         /// models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subsample")]
         public virtual System.Nullable<double> Subsample { get; set; } 
+
+        /// <summary>Column to be designated as time series data for ARIMA model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesDataColumn")]
+        public virtual string TimeSeriesDataColumn { get; set; } 
+
+        /// <summary>The id column that will be used to indicate different time series to forecast in
+        /// parallel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesIdColumn")]
+        public virtual string TimeSeriesIdColumn { get; set; } 
+
+        /// <summary>Column to be designated as time series timestamp for ARIMA model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesTimestampColumn")]
+        public virtual string TimeSeriesTimestampColumn { get; set; } 
 
         /// <summary>User column specified for matrix factorization models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userColumn")]

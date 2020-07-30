@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200717 (2024)
+ *      <tr><th>API Rev<td>20200727 (2034)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -4038,9 +4038,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
     ///
     /// The following are specific rules for service defined Monitoring metric descriptors:
     ///
-    /// * `type`, `metric_kind`, `value_type`, `description`, and `display_name` fields are all required. The `unit`
-    /// field must be specified if the `value_type` is any of DOUBLE, INT64, DISTRIBUTION. * Maximum of default 500
-    /// metric descriptors per service is allowed. * Maximum of default 10 labels per metric descriptor is allowed.
+    /// * `type`, `metric_kind`, `value_type` and `description` fields are all required. The `unit` field must be
+    /// specified if the `value_type` is any of DOUBLE, INT64, DISTRIBUTION. * Maximum of default 500 metric descriptors
+    /// per service is allowed. * Maximum of default 10 labels per metric descriptor is allowed.
     ///
     /// The default maximum limit can be overridden. Please follow https://cloud.google.com/monitoring/quotas</summary>
     public class MetricDescriptor : Google.Apis.Requests.IDirectResponseSchema
@@ -4754,6 +4754,40 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// maximum number of requests allowed for the specified unit. Currently only STANDARD is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IDictionary<string,System.Nullable<long>> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines a proto annotation that describes a string field that refers to an API resource.</summary>
+    public class ResourceReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource type of a child collection that the annotated field references. This is useful for
+        /// annotating the `parent` field that doesn't have a fixed resource type.
+        ///
+        /// Example:
+        ///
+        /// message ListLogEntriesRequest { string parent = 1 [(google.api.resource_reference) = { child_type:
+        /// "logging.googleapis.com/LogEntry" }; }</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("childType")]
+        public virtual string ChildType { get; set; } 
+
+        /// <summary>The resource type that the annotated field references.
+        ///
+        /// Example:
+        ///
+        /// message Subscription { string topic = 2 [(google.api.resource_reference) = { type:
+        /// "pubsub.googleapis.com/Topic" }]; }
+        ///
+        /// Occasionally, a field may reference an arbitrary resource. In this case, APIs use the special value * in
+        /// their resource reference.
+        ///
+        /// Example:
+        ///
+        /// message GetIamPolicyRequest { string resource = 2 [(google.api.resource_reference) = { type: "*" }];
+        /// }</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

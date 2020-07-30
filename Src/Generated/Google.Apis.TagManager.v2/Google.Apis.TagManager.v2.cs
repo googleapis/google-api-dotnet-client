@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/tag-manager'>Tag Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200722 (2029)
+ *      <tr><th>API Rev<td>20200728 (2035)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/tag-manager'>
  *              https://developers.google.com/tag-manager</a>
@@ -7198,6 +7198,10 @@ namespace Google.Apis.TagManager.v2.Data
         /// tagmanager.accounts.containers.workspaces.clients.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; } 
+
+        /// <summary>Parent folder id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentFolderId")]
+        public virtual string ParentFolderId { get; set; } 
 
         /// <summary>GTM client's API relative path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]

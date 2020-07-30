@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/custom-search/v1/introduction'>Custom Search API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200723 (2030)
+ *      <tr><th>API Rev<td>20200728 (2035)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/custom-search/v1/introduction'>
  *              https://developers.google.com/custom-search/v1/introduction</a>
