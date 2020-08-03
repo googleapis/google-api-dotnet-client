@@ -1519,7 +1519,7 @@
    }
   }
  }, 
- "revision": "20200719", 
+ "revision": "20200721", 
  "rootUrl": "https://bigquery.googleapis.com/", 
  "schemas": {
   "AggregateClassificationMetrics": {

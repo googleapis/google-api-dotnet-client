@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='http://developers.google.com/cloud-dns'>Cloud DNS API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20200721 (2028)
+ *      <tr><th>API Rev<td>20200731 (2038)
  *      <tr><th>API Docs
  *          <td><a href='http://developers.google.com/cloud-dns'>
  *              http://developers.google.com/cloud-dns</a>
@@ -2697,7 +2697,7 @@ namespace Google.Apis.Dns.v1beta2.Data
         public virtual string StartTime { get; set; } 
 
         /// <summary>Status of the operation (output only). A status of "done" means that the request to update the
-        /// authoritative servers has been sent, but the servers might not be updated yet.</summary>
+        /// authoritative servers has been sent but the servers might not be updated yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -2988,10 +2988,10 @@ namespace Google.Apis.Dns.v1beta2.Data
 
     public class ManagedZoneForwardingConfigNameServerTarget : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Forwarding path for this NameServerTarget, if unset or set to DEFAULT, Cloud DNS will make
-        /// forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+        /// <summary>Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS will make
+        /// forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go
         /// to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this
-        /// target</summary>
+        /// target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingPath")]
         public virtual string ForwardingPath { get; set; } 
 
@@ -3348,10 +3348,10 @@ namespace Google.Apis.Dns.v1beta2.Data
 
     public class PolicyAlternativeNameServerConfigTargetNameServer : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Forwarding path for this TargetNameServer, if unset or set to DEFAULT, Cloud DNS will make
-        /// forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+        /// <summary>Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS will make
+        /// forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go
         /// to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this
-        /// target</summary>
+        /// target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingPath")]
         public virtual string ForwardingPath { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-approval/docs'>Access Approval API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200717 (2024)
+ *      <tr><th>API Rev<td>20200726 (2033)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-approval/docs'>
  *              https://cloud.google.com/access-approval/docs</a>
@@ -2269,6 +2269,12 @@ namespace Google.Apis.AccessApproval.v1.Data
         /// <summary>The time at which the approval request was dismissed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dismissTime")]
         public virtual object DismissTime { get; set; } 
+
+        /// <summary>This field will be true if the ApprovalRequest was implcitly dismissed due to inaction by the
+        /// access approval approvers (the request is not acted on by the approvers before the exiration
+        /// time).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("implicit")]
+        public virtual System.Nullable<bool> Implicit__ { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

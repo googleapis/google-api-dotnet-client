@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/authorized-buyers/apis/realtimebidding/reference/rest/'>Real-time Bidding API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200729 (2036)
+ *      <tr><th>API Rev<td>20200730 (2037)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/authorized-buyers/apis/realtimebidding/reference/rest/'>
  *              https://developers.google.com/authorized-buyers/apis/realtimebidding/reference/rest/</a>
@@ -113,9 +113,6 @@ namespace Google.Apis.RealTimeBidding.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Real-time Bidding API.</summary>
         public class Scope
         {
-            /// <summary>Manage your Ad Exchange buyer account configuration</summary>
-            public static string AdexchangeBuyer = "https://www.googleapis.com/auth/adexchange.buyer";
-
             /// <summary>See, create, edit, and delete your Authorized Buyers and Open Bidding account
             /// entities</summary>
             public static string RealtimeBidding = "https://www.googleapis.com/auth/realtime-bidding";
@@ -125,9 +122,6 @@ namespace Google.Apis.RealTimeBidding.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Real-time Bidding API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>Manage your Ad Exchange buyer account configuration</summary>
-            public const string AdexchangeBuyer = "https://www.googleapis.com/auth/adexchange.buyer";
-
             /// <summary>See, create, edit, and delete your Authorized Buyers and Open Bidding account
             /// entities</summary>
             public const string RealtimeBidding = "https://www.googleapis.com/auth/realtime-bidding";

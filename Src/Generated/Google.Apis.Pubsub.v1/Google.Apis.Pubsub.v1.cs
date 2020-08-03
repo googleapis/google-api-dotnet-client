@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200707 (2014)
+ *      <tr><th>API Rev<td>20200726 (2033)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -3545,6 +3545,14 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
         public virtual string MessageId { get; set; } 
 
+        /// <summary>If non-empty, identifies related messages for which publish order should be respected. If a
+        /// `Subscription` has `enable_message_ordering` set to `true`, messages published with the same non-empty
+        /// `ordering_key` value will be delivered to subscribers in the order in which they are received by the Pub/Sub
+        /// system. All `PubsubMessage`s published in a given `PublishRequest` must specify the same `ordering_key`
+        /// value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderingKey")]
+        public virtual string OrderingKey { get; set; } 
+
         /// <summary>The time at which the message was published, populated by the server when it receives the `Publish`
         /// call. It must not be populated by the publisher in a `Publish` call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishTime")]
@@ -3783,6 +3791,12 @@ namespace Google.Apis.Pubsub.v1.Data
         /// messages on this subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deadLetterPolicy")]
         public virtual DeadLetterPolicy DeadLetterPolicy { get; set; } 
+
+        /// <summary>If true, messages published with the same `ordering_key` in `PubsubMessage` will be delivered to
+        /// the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they may be
+        /// delivered in any order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableMessageOrdering")]
+        public virtual System.Nullable<bool> EnableMessageOrdering { get; set; } 
 
         /// <summary>A policy that specifies the conditions for this subscription's expiration. A subscription is
         /// considered active as long as any connected subscriber is successfully consuming messages from the

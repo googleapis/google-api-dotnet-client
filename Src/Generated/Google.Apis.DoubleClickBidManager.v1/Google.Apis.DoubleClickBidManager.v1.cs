@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/bid-manager/'>DoubleClick Bid Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200616 (1993)
+ *      <tr><th>API Rev<td>20200723 (2030)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/bid-manager/'>
  *              https://developers.google.com/bid-manager/</a>
@@ -299,14 +299,14 @@ namespace Google.Apis.DoubleClickBidManager.v1
         }
 
 
-        /// <summary>Retrieves line items in CSV format. TrueView line items are not supported.</summary>
+        /// <summary>Retrieves line items in CSV format. YouTube & partners line items are not supported.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual DownloadlineitemsRequest Downloadlineitems(Google.Apis.DoubleClickBidManager.v1.Data.DownloadLineItemsRequest body)
         {
             return new DownloadlineitemsRequest(service, body);
         }
 
-        /// <summary>Retrieves line items in CSV format. TrueView line items are not supported.</summary>
+        /// <summary>Retrieves line items in CSV format. YouTube & partners line items are not supported.</summary>
         public class DownloadlineitemsRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v1.Data.DownloadLineItemsResponse>
         {
             /// <summary>Constructs a new Downloadlineitems request.</summary>
@@ -352,14 +352,14 @@ namespace Google.Apis.DoubleClickBidManager.v1
 
         }
 
-        /// <summary>Uploads line items in CSV format. TrueView line items are not supported.</summary>
+        /// <summary>Uploads line items in CSV format. YouTube & partners line items are not supported.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual UploadlineitemsRequest Uploadlineitems(Google.Apis.DoubleClickBidManager.v1.Data.UploadLineItemsRequest body)
         {
             return new UploadlineitemsRequest(service, body);
         }
 
-        /// <summary>Uploads line items in CSV format. TrueView line items are not supported.</summary>
+        /// <summary>Uploads line items in CSV format. YouTube & partners line items are not supported.</summary>
         public class UploadlineitemsRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v1.Data.UploadLineItemsResponse>
         {
             /// <summary>Constructs a new Uploadlineitems request.</summary>
@@ -897,7 +897,7 @@ namespace Google.Apis.DoubleClickBidManager.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request to fetch stored inventory sources, campaigns, insertion orders, line items, TrueView ad groups
+    /// <summary>Request to fetch stored inventory sources, campaigns, insertion orders, line items, YouTube ad groups
     /// and ads.</summary>
     public class DownloadRequest : Google.Apis.Requests.IDirectResponseSchema
     {

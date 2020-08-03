@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/healthcare'>Cloud Healthcare API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200713 (2020)
+ *      <tr><th>API Rev<td>20200723 (2030)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/healthcare'>
  *              https://cloud.google.com/healthcare</a>
@@ -1039,7 +1039,11 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// <summary>DeleteSeries deletes all instances within the given study and series. Delete
                             /// requests are equivalent to the GET requests specified in the Retrieve transaction. The
                             /// method returns an Operation which will be marked successful when the deletion is
-                            /// complete.</summary>
+                            /// complete.
+                            ///
+                            /// Warning: Inserting instances into a series while a delete operation is running for that
+                            /// series could result in the new instances not appearing in search results until the
+                            /// deletion operation finishes.</summary>
                             /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                             ///
@@ -1053,7 +1057,11 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// <summary>DeleteSeries deletes all instances within the given study and series. Delete
                             /// requests are equivalent to the GET requests specified in the Retrieve transaction. The
                             /// method returns an Operation which will be marked successful when the deletion is
-                            /// complete.</summary>
+                            /// complete.
+                            ///
+                            /// Warning: Inserting instances into a series while a delete operation is running for that
+                            /// series could result in the new instances not appearing in search results until the
+                            /// deletion operation finishes.</summary>
                             public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
                             {
                                 /// <summary>Constructs a new Delete request.</summary>
@@ -1382,7 +1390,11 @@ namespace Google.Apis.CloudHealthcare.v1
 
                         /// <summary>DeleteStudy deletes all instances within the given study. Delete requests are
                         /// equivalent to the GET requests specified in the Retrieve transaction. The method returns an
-                        /// Operation which will be marked successful when the deletion is complete.</summary>
+                        /// Operation which will be marked successful when the deletion is complete.
+                        ///
+                        /// Warning: Inserting instances into a study while a delete operation is running for that study
+                        /// could result in the new instances not appearing in search results until the deletion
+                        /// operation finishes.</summary>
                         /// <param name="parent"></param>
                         /// <param name="dicomWebPath">The path of the DeleteStudy request. For example,
                         /// `studies/{study_uid}`.</param>
@@ -1393,7 +1405,11 @@ namespace Google.Apis.CloudHealthcare.v1
 
                         /// <summary>DeleteStudy deletes all instances within the given study. Delete requests are
                         /// equivalent to the GET requests specified in the Retrieve transaction. The method returns an
-                        /// Operation which will be marked successful when the deletion is complete.</summary>
+                        /// Operation which will be marked successful when the deletion is complete.
+                        ///
+                        /// Warning: Inserting instances into a study while a delete operation is running for that study
+                        /// could result in the new instances not appearing in search results until the deletion
+                        /// operation finishes.</summary>
                         public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
                         {
                             /// <summary>Constructs a new Delete request.</summary>
@@ -3216,15 +3232,15 @@ namespace Google.Apis.CloudHealthcare.v1
                             public virtual System.Nullable<int> Count { get; set; }
 
                             /// <summary>Used to retrieve the next or previous page of results when using pagination.
-                            /// Value should be set to the value of page_token set in next or previous page links' urls.
+                            /// Set `_page_token` to the value of _page_token set in next or previous page links' url.
                             /// Next and previous page are returned in the response bundle's links field, where
                             /// `link.relation` is "previous" or "next".
                             ///
-                            /// Omit `page_token` if no previous request has been made.</summary>
+                            /// Omit `_page_token` if no previous request has been made.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("_page_token", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
 
-                            /// <summary>If provided, only resources updated after this time are exported. The time uses
+                            /// <summary>If provided, only resources updated after this time are returned. The time uses
                             /// the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `2015-02-07T13:28:17.239+02:00`
                             /// or `2017-01-01T00:00:00Z`. The time must be specified to the second and include a time
                             /// zone.</summary>
@@ -3232,7 +3248,7 @@ namespace Google.Apis.CloudHealthcare.v1
                             public virtual string Since { get; set; }
 
                             /// <summary>String of comma-delimited FHIR resource types. If provided, only resources of
-                            /// the specified resource type(s) will be returned.</summary>
+                            /// the specified resource type(s) are returned.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("_type", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Type { get; set; }
 
@@ -5597,11 +5613,11 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
 
-                        /// <summary>Creates a message and sends a notification to the Cloud Pub/Sub topic. If
-                        /// configured, the MLLP adapter listens to messages created by this method and sends those back
-                        /// to the hospital. A successful response indicates the message has been persisted to storage
-                        /// and a Cloud Pub/Sub notification has been sent. Sending to the hospital by the MLLP adapter
-                        /// happens asynchronously.</summary>
+                        /// <summary>Parses and stores an HL7v2 message. This method triggers an asynchronous
+                        /// notification to any Cloud Pub/Sub topic configured in
+                        /// projects.locations.datasets.hl7V2Stores.Hl7V2NotificationConfig, if the filtering matches
+                        /// the message. If an MLLP adapter is configured to listen to a Cloud Pub/Sub topic, the
+                        /// adapter transmits the message when a notification is received.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">The name of the dataset this message belongs to.</param>
                         public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1.Data.CreateMessageRequest body, string parent)
@@ -5609,11 +5625,11 @@ namespace Google.Apis.CloudHealthcare.v1
                             return new CreateRequest(service, body, parent);
                         }
 
-                        /// <summary>Creates a message and sends a notification to the Cloud Pub/Sub topic. If
-                        /// configured, the MLLP adapter listens to messages created by this method and sends those back
-                        /// to the hospital. A successful response indicates the message has been persisted to storage
-                        /// and a Cloud Pub/Sub notification has been sent. Sending to the hospital by the MLLP adapter
-                        /// happens asynchronously.</summary>
+                        /// <summary>Parses and stores an HL7v2 message. This method triggers an asynchronous
+                        /// notification to any Cloud Pub/Sub topic configured in
+                        /// projects.locations.datasets.hl7V2Stores.Hl7V2NotificationConfig, if the filtering matches
+                        /// the message. If an MLLP adapter is configured to listen to a Cloud Pub/Sub topic, the
+                        /// adapter transmits the message when a notification is received.</summary>
                         public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Message>
                         {
                             /// <summary>Constructs a new Create request.</summary>
@@ -5823,9 +5839,14 @@ namespace Google.Apis.CloudHealthcare.v1
 
                         }
 
-                        /// <summary>Ingests a new HL7v2 message from the hospital and sends a notification to the Cloud
-                        /// Pub/Sub topic. Return is an HL7v2 ACK message if the message was successfully stored.
-                        /// Otherwise an error is returned.</summary>
+                        /// <summary>Parses and stores an HL7v2 message. This method triggers an asynchronous
+                        /// notification to any Cloud Pub/Sub topic configured in
+                        /// projects.locations.datasets.hl7V2Stores.Hl7V2NotificationConfig, if the filtering matches
+                        /// the message. If an MLLP adapter is configured to listen to a Cloud Pub/Sub topic, the
+                        /// adapter transmits the message when a notification is received. This method also generates a
+                        /// response containing an HL7v2 acknowledgement (`ACK`) message when successful or a negative
+                        /// acknowledgement (`NACK`) message in case of error, suitable for replying to HL7v2 interface
+                        /// systems that expect these acknowledgements.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">The name of the HL7v2 store this message belongs to.</param>
                         public virtual IngestRequest Ingest(Google.Apis.CloudHealthcare.v1.Data.IngestMessageRequest body, string parent)
@@ -5833,9 +5854,14 @@ namespace Google.Apis.CloudHealthcare.v1
                             return new IngestRequest(service, body, parent);
                         }
 
-                        /// <summary>Ingests a new HL7v2 message from the hospital and sends a notification to the Cloud
-                        /// Pub/Sub topic. Return is an HL7v2 ACK message if the message was successfully stored.
-                        /// Otherwise an error is returned.</summary>
+                        /// <summary>Parses and stores an HL7v2 message. This method triggers an asynchronous
+                        /// notification to any Cloud Pub/Sub topic configured in
+                        /// projects.locations.datasets.hl7V2Stores.Hl7V2NotificationConfig, if the filtering matches
+                        /// the message. If an MLLP adapter is configured to listen to a Cloud Pub/Sub topic, the
+                        /// adapter transmits the message when a notification is received. This method also generates a
+                        /// response containing an HL7v2 acknowledgement (`ACK`) message when successful or a negative
+                        /// acknowledgement (`NACK`) message in case of error, suitable for replying to HL7v2 interface
+                        /// systems that expect these acknowledgements.</summary>
                         public class IngestRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.IngestMessageResponse>
                         {
                             /// <summary>Constructs a new Ingest request.</summary>

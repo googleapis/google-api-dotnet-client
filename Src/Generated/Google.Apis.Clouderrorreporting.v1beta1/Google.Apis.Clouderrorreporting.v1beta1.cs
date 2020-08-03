@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/error-reporting/'>Error Reporting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200708 (2015)
+ *      <tr><th>API Rev<td>20200723 (2030)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/error-reporting/'>
  *              https://cloud.google.com/error-reporting/</a>
@@ -1232,6 +1232,12 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         /// <summary>The group resource name. Example: projects/my-project-123/groups/CNSgkpnppqKCUw</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Error group's resolution status.
+        ///
+        /// An unspecified resolution status will be interpreted as OPEN</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolutionStatus")]
+        public virtual string ResolutionStatus { get; set; } 
 
         /// <summary>Associated tracking issues.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingIssues")]

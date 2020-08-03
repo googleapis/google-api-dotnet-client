@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Cloud Logging API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200619 (1996)
+ *      <tr><th>API Rev<td>20200724 (2031)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -9813,10 +9813,10 @@ namespace Google.Apis.Logging.v2.Data
 
     /// <summary>Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it
     /// stops data collection and makes the metric type's existing data unusable.The following are specific rules for
-    /// service defined Monitoring metric descriptors: type, metric_kind, value_type, description, display_name,
-    /// launch_stage fields are all required. The unit field must be specified  if the value_type is any of DOUBLE,
-    /// INT64, DISTRIBUTION. Maximum of default 500 metric descriptors per service is allowed. Maximum of default 10
-    /// labels per metric descriptor is allowed.The default maximum limit can be overridden. Please follow
+    /// service defined Monitoring metric descriptors: type, metric_kind, value_type and description  fields are all
+    /// required. The unit field must be specified  if the value_type is any of DOUBLE, INT64, DISTRIBUTION. Maximum of
+    /// default 500 metric descriptors per service is allowed. Maximum of default 10 labels per metric descriptor is
+    /// allowed.The default maximum limit can be overridden. Please follow
     /// https://cloud.google.com/monitoring/quotas</summary>
     public class MetricDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {

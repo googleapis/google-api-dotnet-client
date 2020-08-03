@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/postmaster'>Gmail Postmaster Tools API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200728 (2035)
+ *      <tr><th>API Rev<td>20200801 (2039)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/postmaster'>
  *              https://developers.google.com/gmail/postmaster</a>

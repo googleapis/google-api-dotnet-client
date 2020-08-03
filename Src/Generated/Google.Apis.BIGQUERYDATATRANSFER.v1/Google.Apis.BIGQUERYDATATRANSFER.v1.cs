@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Data Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200502 (1948)
+ *      <tr><th>API Rev<td>20200726 (2033)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3759,14 +3759,14 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     public class TimeRange : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>End time of the range of transfer runs. For example, `"2017-05-30T00:00:00+00:00"`. The end_time
-        /// must not be in the future. Creates transfer runs where run_time is in the range betwen start_time
-        /// (inclusive) and end_time (exlusive).</summary>
+        /// must not be in the future. Creates transfer runs where run_time is in the range between start_time
+        /// (inclusive) and end_time (exclusive).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
         /// <summary>Start time of the range of transfer runs. For example, `"2017-05-25T00:00:00+00:00"`. The
         /// start_time must be strictly less than the end_time. Creates transfer runs where run_time is in the range
-        /// betwen start_time (inclusive) and end_time (exlusive).</summary>
+        /// between start_time (inclusive) and end_time (exclusive).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 

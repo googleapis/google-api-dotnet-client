@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200714 (2021)
+ *      <tr><th>API Rev<td>20200719 (2026)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -9908,7 +9908,9 @@ namespace Google.Apis.Drive.v2.Data
     /// <summary>A restriction for accessing the content of the file.</summary>
     public class ContentRestriction : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether the content of the file is read-only.</summary>
+        /// <summary>Whether the content of the file is read-only. If a file is read-only, a new revision of the file
+        /// may not be added, comments may not be added or modified, and the title of the file may not be
+        /// modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
         public virtual System.Nullable<bool> ReadOnly__ { get; set; } 
 

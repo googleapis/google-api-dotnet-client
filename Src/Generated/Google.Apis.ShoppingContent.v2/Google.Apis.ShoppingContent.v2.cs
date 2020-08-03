@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200716 (2023)
+ *      <tr><th>API Rev<td>20200721 (2028)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -11747,12 +11747,14 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// Delivery Service) - "`efw`" (Estes Forwarding Worldwide) - "`jd logistics`" (JD Logistics) - "`yunexpress`"
         /// (YunExpress) - "`china post`" (China Post) - "`china ems`" (China Post Express Mail Service) - "`singapore
         /// post`" (Singapore Post) - "`pos malaysia`" (Pos Malaysia) - "`postnl`" (PostNL) - "`ptt`" (PTT Turkish Post)
-        /// - "`eub`" (ePacket) - "`chukou1`" (Chukou1 Logistics) Supported carriers for FR are: - "`la poste`" (La
-        /// Poste) automatic status updates - "`colissimo`" (Colissimo by La Poste) automatic status updates - "`ups`"
-        /// (United Parcel Service) automatic status updates - "`chronopost`" (Chronopost by La Poste) - "`gls`"
-        /// (General Logistics Systems France) - "`dpd`" (DPD Group by GeoPost) - "`bpost`" (Belgian Post Group) -
-        /// "`colis prive`" (Colis Privé) - "`boxtal`" (Boxtal) - "`geodis`" (GEODIS) - "`tnt`" (TNT) - "`db schenker`"
-        /// (DB Schenker) - "`aramex`" (Aramex)</summary>
+        /// - "`eub`" (ePacket) - "`chukou1`" (Chukou1 Logistics) - "`bestex`" (Best Express) - "`canada post`" (Canada
+        /// Post) - "`purolator`" (Purolator) - "`canpar`" (Canpar) - "`india post`" (India Post) - "`blue dart`" (Blue
+        /// Dart) - "`delhivery`" (Delhivery) - "`dtdc`" (DTDC) - "`tpc india`" (TPC India) Supported carriers for FR
+        /// are: - "`la poste`" (La Poste) automatic status updates - "`colissimo`" (Colissimo by La Poste) automatic
+        /// status updates - "`ups`" (United Parcel Service) automatic status updates - "`chronopost`" (Chronopost by La
+        /// Poste) - "`gls`" (General Logistics Systems France) - "`dpd`" (DPD Group by GeoPost) - "`bpost`" (Belgian
+        /// Post Group) - "`colis prive`" (Colis Privé) - "`boxtal`" (Boxtal) - "`geodis`" (GEODIS) - "`tnt`" (TNT) -
+        /// "`db schenker`" (DB Schenker) - "`aramex`" (Aramex)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 

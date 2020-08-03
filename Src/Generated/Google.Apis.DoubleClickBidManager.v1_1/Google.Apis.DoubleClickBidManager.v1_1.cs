@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/bid-manager/'>DoubleClick Bid Manager API</a>
  *      <tr><th>API Version<td>v1.1
- *      <tr><th>API Rev<td>20200616 (1993)
+ *      <tr><th>API Rev<td>20200723 (2030)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/bid-manager/'>
  *              https://developers.google.com/bid-manager/</a>
@@ -299,14 +299,14 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
         }
 
 
-        /// <summary>Retrieves line items in CSV format. TrueView line items are not supported.</summary>
+        /// <summary>Retrieves line items in CSV format. YouTube & partners line items are not supported.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual DownloadlineitemsRequest Downloadlineitems(Google.Apis.DoubleClickBidManager.v1_1.Data.DownloadLineItemsRequest body)
         {
             return new DownloadlineitemsRequest(service, body);
         }
 
-        /// <summary>Retrieves line items in CSV format. TrueView line items are not supported.</summary>
+        /// <summary>Retrieves line items in CSV format. YouTube & partners line items are not supported.</summary>
         public class DownloadlineitemsRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v1_1.Data.DownloadLineItemsResponse>
         {
             /// <summary>Constructs a new Downloadlineitems request.</summary>
@@ -352,14 +352,14 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
 
         }
 
-        /// <summary>Uploads line items in CSV format. TrueView line items are not supported.</summary>
+        /// <summary>Uploads line items in CSV format. YouTube & partners line items are not supported.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual UploadlineitemsRequest Uploadlineitems(Google.Apis.DoubleClickBidManager.v1_1.Data.UploadLineItemsRequest body)
         {
             return new UploadlineitemsRequest(service, body);
         }
 
-        /// <summary>Uploads line items in CSV format. TrueView line items are not supported.</summary>
+        /// <summary>Uploads line items in CSV format. YouTube & partners line items are not supported.</summary>
         public class UploadlineitemsRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v1_1.Data.UploadLineItemsResponse>
         {
             /// <summary>Constructs a new Uploadlineitems request.</summary>
@@ -943,6 +943,39 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
 namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 {    
 
+    /// <summary>A channel grouping defines a set of rules that can be used to categorize events in a path
+    /// report.</summary>
+    public class ChannelGrouping : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name to apply to an event that does not match any of the rules in the channel
+        /// grouping.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fallbackName")]
+        public virtual string FallbackName { get; set; } 
+
+        /// <summary>Channel Grouping name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Rules within Channel Grouping. There is a limit of 100 rules that can be set per channel
+        /// grouping.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<Rule> Rules { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>DisjunctiveMatchStatement that OR's all contained filters.</summary>
+    public class DisjunctiveMatchStatement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Filters. There is a limit of 100 filters that can be set per disjunctive match statement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventFilters")]
+        public virtual System.Collections.Generic.IList<EventFilter> EventFilters { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request to fetch stored line items.</summary>
     public class DownloadLineItemsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -980,7 +1013,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request to fetch stored inventory sources, campaigns, insertion orders, line items, TrueView ad groups
+    /// <summary>Request to fetch stored inventory sources, campaigns, insertion orders, line items, YouTube ad groups
     /// and ads.</summary>
     public class DownloadRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1036,6 +1069,17 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         /// <summary>Retrieved line items in SDF format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
         public virtual string LineItems { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines the type of filter to be applied to the path, a DV360 event dimension filter.</summary>
+    public class EventFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Filter on a dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilter")]
+        public virtual PathQueryOptionsFilter DimensionFilter { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1104,6 +1148,10 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includeOnlyTargetedUserLists")]
         public virtual System.Nullable<bool> IncludeOnlyTargetedUserLists { get; set; } 
 
+        /// <summary>Options that contain Path Filters and Custom Channel Groupings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pathQueryOptions")]
+        public virtual PathQueryOptions PathQueryOptions { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1134,6 +1182,60 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         /// <summary>Report type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Path filters specify which paths to include in a report. A path is the result of combining DV360 events
+    /// based on User ID to create a workflow of users' actions.
+    ///
+    /// When a path filter is set, the resulting report will only include paths that match the specified event at the
+    /// specified position. All other paths will be excluded.</summary>
+    public class PathFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Filter on an event to be applied to some part of the path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventFilters")]
+        public virtual System.Collections.Generic.IList<EventFilter> EventFilters { get; set; } 
+
+        /// <summary>Indicates the position of the path the filter should match to (first, last, or any event in
+        /// path).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pathMatchPosition")]
+        public virtual string PathMatchPosition { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Path Query Options for Report Options.</summary>
+    public class PathQueryOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Custom Channel Groupings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelGrouping")]
+        public virtual ChannelGrouping ChannelGrouping { get; set; } 
+
+        /// <summary>Path Filters. There is a limit of 100 path filters that can be set per report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pathFilters")]
+        public virtual System.Collections.Generic.IList<PathFilter> PathFilters { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Dimension Filter for a Path Filter.</summary>
+    public class PathQueryOptionsFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Dimension the filter is applied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; } 
+
+        /// <summary>Indicates how the filter should be matched to the value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("match")]
+        public virtual string Match { get; set; } 
+
+        /// <summary>Value to filter on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1382,6 +1484,22 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         /// <summary>Row number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowNumber")]
         public virtual System.Nullable<int> RowNumber { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Rule defines a name, and a boolean expression in [conjunctive normal
+    /// form](http://mathworld.wolfram.com/ConjunctiveNormalForm.html){.external} that can be applied to a path event to
+    /// determine if that name should be applied.</summary>
+    public class Rule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("disjunctiveMatchStatements")]
+        public virtual System.Collections.Generic.IList<DisjunctiveMatchStatement> DisjunctiveMatchStatements { get; set; } 
+
+        /// <summary>Rule name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

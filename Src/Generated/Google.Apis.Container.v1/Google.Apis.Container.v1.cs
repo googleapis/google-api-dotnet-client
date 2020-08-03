@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200709 (2016)
+ *      <tr><th>API Rev<td>20200713 (2020)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -6718,6 +6718,11 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRunConfig")]
         public virtual CloudRunConfig CloudRunConfig { get; set; } 
 
+        /// <summary>Configuration for the ConfigConnector add-on, a Kubernetes extension to manage hosted GCP services
+        /// through the Kubernetes API</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configConnectorConfig")]
+        public virtual ConfigConnectorConfig ConfigConnectorConfig { get; set; } 
+
         /// <summary>Configuration for NodeLocalDNS, a dns cache running on cluster nodes</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsCacheConfig")]
         public virtual DnsCacheConfig DnsCacheConfig { get; set; } 
@@ -7350,6 +7355,17 @@ namespace Google.Apis.Container.v1.Data
         /// been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration options for the Config Connector add-on.</summary>
+    public class ConfigConnectorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether Cloud Connector is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/search-ads'>Search Ads 360 API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200723 (2030)
+ *      <tr><th>API Rev<td>20200728 (2035)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/search-ads'>
  *              https://developers.google.com/search-ads</a>

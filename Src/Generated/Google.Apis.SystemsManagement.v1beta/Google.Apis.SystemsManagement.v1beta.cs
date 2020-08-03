@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/'>Cloud OS Config API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20200714 (2021)
+ *      <tr><th>API Rev<td>20200727 (2034)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/'>
  *              https://cloud.google.com/</a>

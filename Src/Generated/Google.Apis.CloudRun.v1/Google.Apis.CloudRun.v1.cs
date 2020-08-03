@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/run/'>Cloud Run Admin API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200720 (2027)
+ *      <tr><th>API Rev<td>20200727 (2034)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/run/'>
  *              https://cloud.google.com/run/</a>
@@ -834,7 +834,7 @@ namespace Google.Apis.CloudRun.v1
 
 
             /// <summary>List authorized domains.</summary>
-            /// <param name="parent">Name of the parent Application resource. Example: `apps/myapp`.</param>
+            /// <param name="parent">Name of the parent Project resource. Example: `projects/myproject`.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -852,7 +852,7 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>Name of the parent Application resource. Example: `apps/myapp`.</summary>
+                /// <summary>Name of the parent Project resource. Example: `projects/myproject`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -2673,10 +2673,121 @@ namespace Google.Apis.CloudRun.v1
         public ProjectsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            authorizeddomains = new AuthorizeddomainsResource(service);
             locations = new LocationsResource(service);
 
         }
 
+        private readonly AuthorizeddomainsResource authorizeddomains;
+
+        /// <summary>Gets the Authorizeddomains resource.</summary>
+        public virtual AuthorizeddomainsResource Authorizeddomains
+        {
+            get { return authorizeddomains; }
+        }
+
+        /// <summary>The "authorizeddomains" collection of methods.</summary>
+        public class AuthorizeddomainsResource
+        {
+            private const string Resource = "authorizeddomains";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AuthorizeddomainsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>List authorized domains.</summary>
+            /// <param name="parent">Name of the parent Project resource. Example: `projects/myproject`.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>List authorized domains.</summary>
+            public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListAuthorizedDomainsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Name of the parent Project resource. Example: `projects/myproject`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Maximum results to return per page.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Continuation token for fetching the next page of results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/authorizeddomains"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
         private readonly LocationsResource locations;
 
         /// <summary>Gets the Locations resource.</summary>
@@ -2733,7 +2844,7 @@ namespace Google.Apis.CloudRun.v1
 
 
                 /// <summary>List authorized domains.</summary>
-                /// <param name="parent">Name of the parent Application resource. Example: `apps/myapp`.</param>
+                /// <param name="parent">Name of the parent Project resource. Example: `projects/myproject`.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -2751,7 +2862,7 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>Name of the parent Application resource. Example: `apps/myapp`.</summary>
+                    /// <summary>Name of the parent Project resource. Example: `projects/myproject`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -5356,8 +5467,8 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Read only. Full path to the `AuthorizedDomain` resource in the API. Example:
-        /// `apps/myapp/authorizedDomains/example.com`.</summary>
+        /// <summary>Deprecated Read only. Full path to the `AuthorizedDomain` resource in the API. Example:
+        /// `projects/myproject/authorizedDomains/example.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

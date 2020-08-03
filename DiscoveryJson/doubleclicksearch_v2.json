@@ -399,7 +399,7 @@
    }
   }
  }, 
- "revision": "20200723", 
+ "revision": "20200728", 
  "rootUrl": "https://www.googleapis.com/", 
  "schemas": {
   "Availability": {

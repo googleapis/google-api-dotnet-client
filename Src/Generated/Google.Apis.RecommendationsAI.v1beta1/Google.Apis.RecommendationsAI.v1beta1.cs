@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/recommendations/docs/'>Recommendations AI</a>
+ *          <td><a href='https://cloud.google.com/recommendations-ai/docs'>Recommendations AI</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200724 (2031)
+ *      <tr><th>API Rev<td>20200728 (2035)
  *      <tr><th>API Docs
- *          <td><a href='https://cloud.google.com/recommendations/docs/'>
- *              https://cloud.google.com/recommendations/docs/</a>
+ *          <td><a href='https://cloud.google.com/recommendations-ai/docs'>
+ *              https://cloud.google.com/recommendations-ai/docs</a>
  *      <tr><th>Discovery Name<td>recommendationengine
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Recommendations AI can be found at
- * <a href='https://cloud.google.com/recommendations/docs/'>https://cloud.google.com/recommendations/docs/</a>.
+ * <a href='https://cloud.google.com/recommendations-ai/docs'>https://cloud.google.com/recommendations-ai/docs</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -2634,7 +2634,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
         public virtual string DatasetId { get; set; } 
 
-        /// <summary>Required. Intermediate gcs dir used for the import. .</summary>
+        /// <summary>Optional. Intermediate Cloud Storage directory used for the import. Can be specified if one wants
+        /// to have the BigQuery export to a specific Cloud Storage directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsStagingDir")]
         public virtual string GcsStagingDir { get; set; } 
 
@@ -3200,8 +3201,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// * tag=("Red" OR "Blue") tag="New-Arrival" tag=(NOT "promotional") * filterOutOfStockItems
         /// tag=(-"promotional") * filterOutOfStockItems
         ///
-        /// If your filter blocks all prediction results, generic (unfiltered) popular items are returned. This behavior
-        /// can be overridden by setting `strictFiltering` to true in `PredictRequest.params`.</summary>
+        /// If your filter blocks all prediction results, nothing will be returned. If you want generic (unfiltered)
+        /// popular items to be returned instead, set `strictFiltering` to false in `PredictRequest.params`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
@@ -3233,9 +3234,9 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// `PredictResponse.PredictionResult.itemMetadata` object in the method response. * `returnItemScore`: Boolean.
         /// If set to true, the prediction 'score' corresponding to each returned item will be set in the `metadata`
         /// field in the prediction response. The given 'score' indicates the probability of an item being
-        /// clicked/purchased given the user's context and history. * `strictFiltering`: Boolean. If set to true, the
-        /// service will return empty instead of generic (unfiltered) popular items if your filter blocks all prediction
-        /// results.</summary>
+        /// clicked/purchased given the user's context and history. * `strictFiltering`: Boolean. True by default. If
+        /// set to false, the service will return generic (unfiltered) popular items instead of empty if your filter
+        /// blocks all prediction results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string,object> Params__ { get; set; } 
 

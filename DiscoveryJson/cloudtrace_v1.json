@@ -251,7 +251,7 @@
    }
   }
  }, 
- "revision": "20200720", 
+ "revision": "20200727", 
  "rootUrl": "https://cloudtrace.googleapis.com/", 
  "schemas": {
   "Empty": {
