@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>DCM/DFA Reporting And Trafficking API</a>
  *      <tr><th>API Version<td>v3.4
- *      <tr><th>API Rev<td>20200722 (2029)
+ *      <tr><th>API Rev<td>20200730 (2037)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>
  *              https://developers.google.com/doubleclick-advertisers/</a>
@@ -19199,6 +19199,90 @@ namespace Google.Apis.Dfareporting.v3_4
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "DESCENDING",
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates a report. This method supports patch semantics.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="profileId">The DFA user profile ID.</param>
+        /// <param name="reportId">The ID of the
+        /// report.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.Report body, long profileId, long reportId)
+        {
+            return new PatchRequest(service, body, profileId, reportId);
+        }
+
+        /// <summary>Updates a report. This method supports patch semantics.</summary>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.Report>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.Report body, long profileId, long reportId)
+                : base(service)
+            {
+                ProfileId = profileId;
+                ReportId = reportId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The DFA user profile ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long ProfileId { get; private set; }
+
+            /// <summary>The ID of the report.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("reportId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long ReportId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Dfareporting.v3_4.Data.Report Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "userprofiles/{profileId}/reports/{reportId}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "reportId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "reportId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
                         Pattern = null,
                     });
             }

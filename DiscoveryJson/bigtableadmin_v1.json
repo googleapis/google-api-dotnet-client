@@ -96,7 +96,7 @@
  }, 
  "protocol": "rest", 
  "resources": {}, 
- "revision": "20200629", 
+ "revision": "20200715", 
  "rootUrl": "https://bigtableadmin.googleapis.com/", 
  "schemas": {
   "Backup": {

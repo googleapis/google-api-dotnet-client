@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigtable/'>Cloud Bigtable Admin API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200629 (2006)
+ *      <tr><th>API Rev<td>20200715 (2022)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigtable/'>
  *              https://cloud.google.com/bigtable/</a>
@@ -1625,7 +1625,7 @@ namespace Google.Apis.BigtableAdmin.v2
                         /// <summary>A filter expression that filters backups listed in the response. The expression
                         /// must specify the field name, a comparison operator, and the value that you want to use for
                         /// filtering. The value must be a string, a number, or a boolean. The comparison operator must
-                        /// be <, >, <=, >=, !=, =, or :. Colon ‘:’ represents a HAS operator which is roughly
+                        /// be <, >, <=, >=, !=, =, or :. Colon ':' represents a HAS operator which is roughly
                         /// synonymous with equality. Filter rules are case insensitive.
                         ///
                         /// The fields eligible for filtering are: * `name` * `source_table` * `state` * `start_time`

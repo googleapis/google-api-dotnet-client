@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admob/api/'>AdMob API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200729 (2036)
+ *      <tr><th>API Rev<td>20200805 (2043)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admob/api/'>
  *              https://developers.google.com/admob/api/</a>
@@ -661,13 +661,10 @@ namespace Google.Apis.AdMob.v1.Data
 
     /// <summary>Represents a whole or partial calendar date, e.g. a birthday. The time of day and time zone are either
     /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. This can
-    /// represent:
-    ///
-    /// * A full date, with non-zero year, month and day values * A month and day value, with a zero year, e.g. an
-    /// anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, e.g.
-    /// a credit card expiration date
-    ///
-    /// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
+    /// represent: * A full date, with non-zero year, month and day values * A month and day value, with a zero year,
+    /// e.g. an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero
+    /// day, e.g. a credit card expiration date Related types are google.type.TimeOfDay and
+    /// `google.protobuf.Timestamp`.</summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by
@@ -714,11 +711,8 @@ namespace Google.Apis.AdMob.v1.Data
     }    
 
     /// <summary>The streaming response for the AdMob Mediation report where the first response contains the report
-    /// header, then a stream of row responses, and finally a footer as the last response message.
-    ///
-    /// For example:
-    ///
-    /// [{ "header": { "date_range": { "start_date": {"year": 2018, "month": 9, "day": 1}, "end_date": {"year": 2018,
+    /// header, then a stream of row responses, and finally a footer as the last response message. For example: [{
+    /// "header": { "date_range": { "start_date": {"year": 2018, "month": 9, "day": 1}, "end_date": {"year": 2018,
     /// "month": 9, "day": 1} }, "localization_settings": { "currency_code": "USD", "language_code": "en-US" } } }, {
     /// "row": { "dimension_values": { "DATE": {"value": "20180918"}, "APP": { "value": "ca-app-
     /// pub-8123415297019784~1001342552", "display_label": "My app name!" } }, "metric_values": { "ESTIMATED_EARNINGS":
@@ -754,15 +748,12 @@ namespace Google.Apis.AdMob.v1.Data
     }    
 
     /// <summary>The streaming response for the AdMob Network report where the first response contains the report
-    /// header, then a stream of row responses, and finally a footer as the last response message.
-    ///
-    /// For example:
-    ///
-    /// [{ "header": { "dateRange": { "startDate": {"year": 2018, "month": 9, "day": 1}, "endDate": {"year": 2018,
-    /// "month": 9, "day": 1} }, "localizationSettings": { "currencyCode": "USD", "languageCode": "en-US" } } }, {
-    /// "row": { "dimensionValues": { "DATE": {"value": "20180918"}, "APP": { "value": "ca-app-
-    /// pub-8123415297019784~1001342552", displayLabel: "My app name!" } }, "metricValues": { "ESTIMATED_EARNINGS":
-    /// {"microsValue": 6500000} } } }, { "footer": {"matchingRowCount": 1} }]</summary>
+    /// header, then a stream of row responses, and finally a footer as the last response message. For example: [{
+    /// "header": { "dateRange": { "startDate": {"year": 2018, "month": 9, "day": 1}, "endDate": {"year": 2018, "month":
+    /// 9, "day": 1} }, "localizationSettings": { "currencyCode": "USD", "languageCode": "en-US" } } }, { "row": {
+    /// "dimensionValues": { "DATE": {"value": "20180918"}, "APP": { "value": "ca-app-pub-8123415297019784~1001342552",
+    /// displayLabel: "My app name!" } }, "metricValues": { "ESTIMATED_EARNINGS": {"microsValue": 6500000} } } }, {
+    /// "footer": {"matchingRowCount": 1} }]</summary>
     public class GenerateNetworkReportResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Additional information about the generated report, such as warnings about the data.</summary>
@@ -818,16 +809,12 @@ namespace Google.Apis.AdMob.v1.Data
     }    
 
     /// <summary>The specification for generating an AdMob Mediation report. For example, the specification to get
-    /// observed ECPM sliced by ad source and app for the 'US' and 'CN' countries can look like the following example:
-    ///
-    /// { "date_range": { "start_date": {"year": 2018, "month": 9, "day": 1}, "end_date": {"year": 2018, "month": 9,
+    /// observed ECPM sliced by ad source and app for the 'US' and 'CN' countries can look like the following example: {
+    /// "date_range": { "start_date": {"year": 2018, "month": 9, "day": 1}, "end_date": {"year": 2018, "month": 9,
     /// "day": 30} }, "dimensions": ["AD_SOURCE", "APP", "COUNTRY"], "metrics": ["OBSERVED_ECPM"], "dimension_filters":
     /// [ { "dimension": "COUNTRY", "matches_any": {"values": [{"value": "US", "value": "CN"}]} } ], "sort_conditions":
     /// [ {"dimension":"APP", order: "ASCENDING"} ], "localization_settings": { "currency_code": "USD", "language_code":
-    /// "en-US" } }
-    ///
-    /// For a better understanding, you can treat the preceding specification like the following pseudo SQL:
-    ///
+    /// "en-US" } } For a better understanding, you can treat the preceding specification like the following pseudo SQL:
     /// SELECT AD_SOURCE, APP, COUNTRY, OBSERVED_ECPM FROM MEDIATION_REPORT WHERE DATE >= '2018-09-01' AND DATE <=
     /// '2018-09-30' AND COUNTRY IN ('US', 'CN') GROUP BY AD_SOURCE, APP, COUNTRY ORDER BY APP ASC;</summary>
     public class MediationReportSpec : Google.Apis.Requests.IDirectResponseSchema
@@ -866,10 +853,9 @@ namespace Google.Apis.AdMob.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sortConditions")]
         public virtual System.Collections.Generic.IList<MediationReportSpecSortCondition> SortConditions { get; set; } 
 
-        /// <summary>A report time zone. Accepts an IANA TZ name values, such as "America/Los_Angeles."  If no time zone
-        /// is defined, the account default takes effect. Check default value by the get account action.
-        ///
-        /// **Warning:** The "America/Los_Angeles" is the only supported value at the moment.</summary>
+        /// <summary>A report time zone. Accepts an IANA TZ name values, such as "America/Los_Angeles." If no time zone
+        /// is defined, the account default takes effect. Check default value by the get account action. **Warning:**
+        /// The "America/Los_Angeles" is the only supported value at the moment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; } 
 
@@ -913,18 +899,15 @@ namespace Google.Apis.AdMob.v1.Data
     }    
 
     /// <summary>The specification for generating an AdMob Network report. For example, the specification to get clicks
-    /// and estimated earnings for only the 'US' and 'CN' countries can look like the following example:
-    ///
-    /// { 'date_range': { 'start_date': {'year': 2018, 'month': 9, 'day': 1}, 'end_date': {'year': 2018, 'month': 9,
-    /// 'day': 30} }, 'dimensions': ['DATE', 'APP', 'COUNTRY'], 'metrics': ['CLICKS', 'ESTIMATED_EARNINGS'],
-    /// 'dimension_filters': [ { 'dimension': 'COUNTRY', 'matches_any': {'values': [{'value': 'US', 'value': 'CN'}]} }
-    /// ], 'sort_conditions': [ {'dimension':'APP', order: 'ASCENDING'}, {'metric':'CLICKS', order: 'DESCENDING'} ],
-    /// 'localization_settings': { 'currency_code': 'USD', 'language_code': 'en-US' } }
-    ///
-    /// For a better understanding, you can treat the preceding specification like the following pseudo SQL:
-    ///
-    /// SELECT DATE, APP, COUNTRY, CLICKS, ESTIMATED_EARNINGS FROM NETWORK_REPORT WHERE DATE >= '2018-09-01' AND DATE <=
-    /// '2018-09-30' AND COUNTRY IN ('US', 'CN') GROUP BY DATE, APP, COUNTRY ORDER BY APP ASC, CLICKS DESC;</summary>
+    /// and estimated earnings for only the 'US' and 'CN' countries can look like the following example: { 'date_range':
+    /// { 'start_date': {'year': 2018, 'month': 9, 'day': 1}, 'end_date': {'year': 2018, 'month': 9, 'day': 30} },
+    /// 'dimensions': ['DATE', 'APP', 'COUNTRY'], 'metrics': ['CLICKS', 'ESTIMATED_EARNINGS'], 'dimension_filters': [ {
+    /// 'dimension': 'COUNTRY', 'matches_any': {'values': [{'value': 'US', 'value': 'CN'}]} } ], 'sort_conditions': [
+    /// {'dimension':'APP', order: 'ASCENDING'}, {'metric':'CLICKS', order: 'DESCENDING'} ], 'localization_settings': {
+    /// 'currency_code': 'USD', 'language_code': 'en-US' } } For a better understanding, you can treat the preceding
+    /// specification like the following pseudo SQL: SELECT DATE, APP, COUNTRY, CLICKS, ESTIMATED_EARNINGS FROM
+    /// NETWORK_REPORT WHERE DATE >= '2018-09-01' AND DATE <= '2018-09-30' AND COUNTRY IN ('US', 'CN') GROUP BY DATE,
+    /// APP, COUNTRY ORDER BY APP ASC, CLICKS DESC;</summary>
     public class NetworkReportSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The date range for which the report is generated.</summary>
@@ -961,10 +944,9 @@ namespace Google.Apis.AdMob.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sortConditions")]
         public virtual System.Collections.Generic.IList<NetworkReportSpecSortCondition> SortConditions { get; set; } 
 
-        /// <summary>A report time zone. Accepts an IANA TZ name values, such as "America/Los_Angeles."  If no time zone
-        /// is defined, the account default takes effect. Check default value by the get account action.
-        ///
-        /// **Warning:** The "America/Los_Angeles" is the only supported value at the moment.</summary>
+        /// <summary>A report time zone. Accepts an IANA TZ name values, such as "America/Los_Angeles." If no time zone
+        /// is defined, the account default takes effect. Check default value by the get account action. **Warning:**
+        /// The "America/Los_Angeles" is the only supported value at the moment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; } 
 
@@ -1038,10 +1020,8 @@ namespace Google.Apis.AdMob.v1.Data
     /// last message in the stream response.</summary>
     public class ReportFooter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Total number of rows that matched the request.
-        ///
-        /// Warning: This count does NOT always match the number of rows in the response. Do not make that assumption
-        /// when processing the response.</summary>
+        /// <summary>Total number of rows that matched the request. Warning: This count does NOT always match the number
+        /// of rows in the response. Do not make that assumption when processing the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchingRowCount")]
         public virtual System.Nullable<long> MatchingRowCount { get; set; } 
 

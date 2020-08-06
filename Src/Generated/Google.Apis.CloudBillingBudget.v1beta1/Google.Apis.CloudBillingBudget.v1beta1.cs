@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/billing/docs/how-to/budget-api-overview'>Cloud Billing Budget API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200726 (2033)
+ *      <tr><th>API Rev<td>20200801 (2039)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/billing/docs/how-to/budget-api-overview'>
  *              https://cloud.google.com/billing/docs/how-to/budget-api-overview</a>
@@ -499,11 +499,9 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
 
             }
 
-            /// <summary>Returns a budget.
-            ///
-            /// WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API.
-            /// When reading from the API, you will not see these fields in the return value, though they may have been
-            /// set in the Cloud Console.</summary>
+            /// <summary>Returns a budget. WARNING: There are some fields exposed on the Google Cloud Console that
+            /// aren't available on this API. When reading from the API, you will not see these fields in the return
+            /// value, though they may have been set in the Cloud Console.</summary>
             /// <param name="name">Required. Name of budget to get. Values are of the form
             /// `billingAccounts/{billingAccountId}/budgets/{budgetId}`.</param>
             public virtual GetRequest Get(string name)
@@ -511,11 +509,9 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Returns a budget.
-            ///
-            /// WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API.
-            /// When reading from the API, you will not see these fields in the return value, though they may have been
-            /// set in the Cloud Console.</summary>
+            /// <summary>Returns a budget. WARNING: There are some fields exposed on the Google Cloud Console that
+            /// aren't available on this API. When reading from the API, you will not see these fields in the return
+            /// value, though they may have been set in the Cloud Console.</summary>
             public class GetRequest : CloudBillingBudgetBaseServiceRequest<Google.Apis.CloudBillingBudget.v1beta1.Data.GoogleCloudBillingBudgetsV1beta1Budget>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -569,11 +565,9 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
 
             }
 
-            /// <summary>Returns a list of budgets for a billing account.
-            ///
-            /// WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API.
-            /// When reading from the API, you will not see these fields in the return value, though they may have been
-            /// set in the Cloud Console.</summary>
+            /// <summary>Returns a list of budgets for a billing account. WARNING: There are some fields exposed on the
+            /// Google Cloud Console that aren't available on this API. When reading from the API, you will not see
+            /// these fields in the return value, though they may have been set in the Cloud Console.</summary>
             /// <param name="parent">Required. Name of billing account to list budgets under. Values are of the form
             /// `billingAccounts/{billingAccountId}`.</param>
             public virtual ListRequest List(string parent)
@@ -581,11 +575,9 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Returns a list of budgets for a billing account.
-            ///
-            /// WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API.
-            /// When reading from the API, you will not see these fields in the return value, though they may have been
-            /// set in the Cloud Console.</summary>
+            /// <summary>Returns a list of budgets for a billing account. WARNING: There are some fields exposed on the
+            /// Google Cloud Console that aren't available on this API. When reading from the API, you will not see
+            /// these fields in the return value, though they may have been set in the Cloud Console.</summary>
             public class ListRequest : CloudBillingBudgetBaseServiceRequest<Google.Apis.CloudBillingBudget.v1beta1.Data.GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -668,10 +660,9 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
 
             }
 
-            /// <summary>Updates a budget and returns the updated budget.
-            ///
-            /// WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API.
-            /// Budget fields that are not exposed in this API will not be changed by this method.</summary>
+            /// <summary>Updates a budget and returns the updated budget. WARNING: There are some fields exposed on the
+            /// Google Cloud Console that aren't available on this API. Budget fields that are not exposed in this API
+            /// will not be changed by this method.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Output only. Resource name of the budget. The resource name implies the scope of a budget. Values
             /// are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.</param>
@@ -680,10 +671,9 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Updates a budget and returns the updated budget.
-            ///
-            /// WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API.
-            /// Budget fields that are not exposed in this API will not be changed by this method.</summary>
+            /// <summary>Updates a budget and returns the updated budget. WARNING: There are some fields exposed on the
+            /// Google Cloud Console that aren't available on this API. Budget fields that are not exposed in this API
+            /// will not be changed by this method.</summary>
             public class PatchRequest : CloudBillingBudgetBaseServiceRequest<Google.Apis.CloudBillingBudget.v1beta1.Data.GoogleCloudBillingBudgetsV1beta1Budget>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -761,8 +751,8 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("monitoringNotificationChannels")]
         public virtual System.Collections.Generic.IList<string> MonitoringNotificationChannels { get; set; } 
 
-        /// <summary>Required. The name of the Cloud Pub/Sub topic where budget related messages will be published, in
-        /// the form `projects/{project_id}/topics/{topic_id}`. Updates are sent at regular intervals to the topic. The
+        /// <summary>Optional. The name of the Pub/Sub topic where budget related messages will be published, in the
+        /// form `projects/{project_id}/topics/{topic_id}`. Updates are sent at regular intervals to the topic. The
         /// topic needs to be created before the budget is created; see https://cloud.google.com/billing/docs/how-
         /// to/budgets#manage-notifications for more details. Caller is expected to have `pubsub.topics.setIamPolicy`
         /// permission on the topic when it's set for a budget, otherwise, the API call will fail with
@@ -771,7 +761,7 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; } 
 
-        /// <summary>Required. The schema version of the notification sent to `pubsub_topic`. Only "1.0" is accepted. It
+        /// <summary>Optional. The schema version of the notification sent to `pubsub_topic`. Only "1.0" is accepted. It
         /// represents the JSON schema as defined in https://cloud.google.com/billing/docs/how-to/budgets-programmatic-
         /// notifications#notification_format</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaVersion")]
@@ -951,11 +941,9 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>

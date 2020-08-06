@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/web/tools/chrome-user-experience-report/api/reference'>Chrome UX Report API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200730 (2037)
+ *      <tr><th>API Rev<td>20200803 (2041)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/web/tools/chrome-user-experience-report/api/reference'>
  *              https://developers.google.com/web/tools/chrome-user-experience-report/api/reference</a>
@@ -327,20 +327,16 @@ namespace Google.Apis.ChromeUXReport.v1
         }
 
 
-        /// <summary>Queries the Chrome User Experience for a single `record` for a given site.
-        ///
-        /// Returns a `record` that contains one or more `metrics` corresponding to performance data about the requested
-        /// site.</summary>
+        /// <summary>Queries the Chrome User Experience for a single `record` for a given site. Returns a `record` that
+        /// contains one or more `metrics` corresponding to performance data about the requested site.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual QueryRecordRequest QueryRecord(Google.Apis.ChromeUXReport.v1.Data.QueryRequest body)
         {
             return new QueryRecordRequest(service, body);
         }
 
-        /// <summary>Queries the Chrome User Experience for a single `record` for a given site.
-        ///
-        /// Returns a `record` that contains one or more `metrics` corresponding to performance data about the requested
-        /// site.</summary>
+        /// <summary>Queries the Chrome User Experience for a single `record` for a given site. Returns a `record` that
+        /// contains one or more `metrics` corresponding to performance data about the requested site.</summary>
         public class QueryRecordRequest : ChromeUXReportBaseServiceRequest<Google.Apis.ChromeUXReport.v1.Data.QueryResponse>
         {
             /// <summary>Constructs a new QueryRecord request.</summary>
@@ -392,12 +388,11 @@ namespace Google.Apis.ChromeUXReport.v1.Data
 {    
 
     /// <summary>A bin is a discrete portion of data spanning from start to end, or if no end is given, then from start
-    /// to +inf.
-    ///
-    /// A bin's start and end values are given in the value type of the metric it represents. For example, "first
-    /// contentful paint" is measured in milliseconds and exposed as ints, therefore its metric bins will use int32s for
-    /// its start and end types. However, "cumulative layout shift" is measured in unitless decimals and is exposed as a
-    /// decimal encoded as a string, therefore its metric bins will use strings for its value type.</summary>
+    /// to +inf. A bin's start and end values are given in the value type of the metric it represents. For example,
+    /// "first contentful paint" is measured in milliseconds and exposed as ints, therefore its metric bins will use
+    /// int32s for its start and end types. However, "cumulative layout shift" is measured in unitless decimals and is
+    /// exposed as a decimal encoded as a string, therefore its metric bins will use strings for its value
+    /// type.</summary>
     public class Bin : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The proportion of users that experienced this bin's value for the given metric.</summary>
@@ -422,29 +417,23 @@ namespace Google.Apis.ChromeUXReport.v1.Data
     {
         /// <summary>The effective connection type is the general connection class that all users experienced for this
         /// record. This field uses the values ["offline", "slow-2G", "2G", "3G", "4G"] as specified in:
-        /// https://wicg.github.io/netinfo/#effective-connection-types
-        ///
-        /// If the effective connection type is unspecified, then aggregated data over all effective connection types
-        /// will be returned.</summary>
+        /// https://wicg.github.io/netinfo/#effective-connection-types If the effective connection type is unspecified,
+        /// then aggregated data over all effective connection types will be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveConnectionType")]
         public virtual string EffectiveConnectionType { get; set; } 
 
-        /// <summary>The form factor is the device class that all users used to access the site for this record.
-        ///
-        /// If the form factor is unspecified, then aggregated data over all form factors will be returned.</summary>
+        /// <summary>The form factor is the device class that all users used to access the site for this record. If the
+        /// form factor is unspecified, then aggregated data over all form factors will be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formFactor")]
         public virtual string FormFactor { get; set; } 
 
-        /// <summary>Origin specifies the origin that this record is for.
-        ///
-        /// Note: When specifying an origin, data for loads under this origin over all pages are aggregated into origin
-        /// level user experience data.</summary>
+        /// <summary>Origin specifies the origin that this record is for. Note: When specifying an origin, data for
+        /// loads under this origin over all pages are aggregated into origin level user experience data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("origin")]
         public virtual string Origin { get; set; } 
 
-        /// <summary>Url specifies a specific url that this record is for.
-        ///
-        /// Note: When specifying a "url" only data for that specific url will be aggregated.</summary>
+        /// <summary>Url specifies a specific url that this record is for. Note: When specifying a "url" only data for
+        /// that specific url will be aggregated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 
@@ -482,45 +471,37 @@ namespace Google.Apis.ChromeUXReport.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request payload sent by a physical web client.
-    ///
-    /// This request includes all necessary context to load a particular user experience record.</summary>
+    /// <summary>Request payload sent by a physical web client. This request includes all necessary context to load a
+    /// particular user experience record.</summary>
     public class QueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The effective connection type is a query dimension that specifies the effective network class that
         /// the record's data should belong to. This field uses the values ["offline", "slow-2G", "2G", "3G", "4G"] as
-        /// specified in: https://wicg.github.io/netinfo/#effective-connection-types
-        ///
-        /// Note: If no effective connection type is specified, then a special record with aggregated data over all
-        /// effective connection types will be returned.</summary>
+        /// specified in: https://wicg.github.io/netinfo/#effective-connection-types Note: If no effective connection
+        /// type is specified, then a special record with aggregated data over all effective connection types will be
+        /// returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveConnectionType")]
         public virtual string EffectiveConnectionType { get; set; } 
 
         /// <summary>The form factor is a query dimension that specifies the device class that the record's data should
-        /// belong to.
-        ///
-        /// Note: If no form factor is specified, then a special record with aggregated data over all form factors will
-        /// be returned.</summary>
+        /// belong to. Note: If no form factor is specified, then a special record with aggregated data over all form
+        /// factors will be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formFactor")]
         public virtual string FormFactor { get; set; } 
 
         /// <summary>The metrics that should be included in the response. If none are specified then any metrics found
-        /// will be returned.
-        ///
-        /// Allowed values: ["first_contentful_paint", "first_input_delay", "largest_contentful_paint",
-        /// "cumulative_layout_shift"]</summary>
+        /// will be returned. Allowed values: ["first_contentful_paint", "first_input_delay",
+        /// "largest_contentful_paint", "cumulative_layout_shift"]</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; } 
 
-        /// <summary>The url pattern "origin" refers to a url pattern that is the origin of a website.
-        ///
-        /// Examples: "https://example.com", "https://cloud.google.com"</summary>
+        /// <summary>The url pattern "origin" refers to a url pattern that is the origin of a website. Examples:
+        /// "https://example.com", "https://cloud.google.com"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("origin")]
         public virtual string Origin { get; set; } 
 
-        /// <summary>The url pattern "url" refers to a url pattern that is any arbitrary url.
-        ///
-        /// Examples: "https://example.com/", "https://cloud.google.com/why-google-cloud/"</summary>
+        /// <summary>The url pattern "url" refers to a url pattern that is any arbitrary url. Examples:
+        /// "https://example.com/", "https://cloud.google.com/why-google-cloud/"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 
@@ -528,11 +509,9 @@ namespace Google.Apis.ChromeUXReport.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response payload sent back to a physical web client.
-    ///
-    /// This response contains the record found based on the identiers present in a `QueryRequest`.  The returned
-    /// response will have a record, and sometimes details on normalization actions taken on the request that were
-    /// necessary to make the request successful.</summary>
+    /// <summary>Response payload sent back to a physical web client. This response contains the record found based on
+    /// the identiers present in a `QueryRequest`. The returned response will have a record, and sometimes details on
+    /// normalization actions taken on the request that were necessary to make the request successful.</summary>
     public class QueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The record that was found.</summary>
@@ -558,10 +537,8 @@ namespace Google.Apis.ChromeUXReport.v1.Data
         public virtual Key Key { get; set; } 
 
         /// <summary>Metrics is the map of user experience data available for the record defined in the key field.
-        /// Metrics are keyed on the metric name.
-        ///
-        /// Allowed key values: ["first_contentful_paint", "first_input_delay", "largest_contentful_paint",
-        /// "cumulative_layout_shift"]</summary>
+        /// Metrics are keyed on the metric name. Allowed key values: ["first_contentful_paint", "first_input_delay",
+        /// "largest_contentful_paint", "cumulative_layout_shift"]</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IDictionary<string,Metric> Metrics { get; set; } 
 

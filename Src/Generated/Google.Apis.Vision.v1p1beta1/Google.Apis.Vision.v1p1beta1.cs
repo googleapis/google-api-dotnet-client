@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20200717 (2024)
+ *      <tr><th>API Rev<td>20200801 (2039)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -366,11 +366,9 @@ namespace Google.Apis.Vision.v1p1beta1
 
 
         /// <summary>Service that performs image detection and annotation for a batch of files. Now only
-        /// "application/pdf", "image/tiff" and "image/gif" are supported.
-        ///
-        /// This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages) frames
-        /// (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for each image
-        /// extracted.</summary>
+        /// "application/pdf", "image/tiff" and "image/gif" are supported. This service will extract at most 5
+        /// (customers can specify which 5 in AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from each
+        /// file provided and perform detection and annotation for each image extracted.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual AnnotateRequest Annotate(Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateFilesRequest body)
         {
@@ -378,11 +376,9 @@ namespace Google.Apis.Vision.v1p1beta1
         }
 
         /// <summary>Service that performs image detection and annotation for a batch of files. Now only
-        /// "application/pdf", "image/tiff" and "image/gif" are supported.
-        ///
-        /// This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages) frames
-        /// (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for each image
-        /// extracted.</summary>
+        /// "application/pdf", "image/tiff" and "image/gif" are supported. This service will extract at most 5
+        /// (customers can specify which 5 in AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from each
+        /// file provided and perform detection and annotation for each image extracted.</summary>
         public class AnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateFilesResponse>
         {
             /// <summary>Constructs a new Annotate request.</summary>
@@ -557,12 +553,9 @@ namespace Google.Apis.Vision.v1p1beta1
 
         }
 
-        /// <summary>Run asynchronous image detection and annotation for a list of images.
-        ///
-        /// Progress and results can be retrieved through the `google.longrunning.Operations` interface.
-        /// `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains
-        /// `AsyncBatchAnnotateImagesResponse` (results).
-        ///
+        /// <summary>Run asynchronous image detection and annotation for a list of images. Progress and results can be
+        /// retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains
+        /// `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results).
         /// This service will write image annotation outputs to json files in customer GCS bucket, each json file
         /// containing BatchAnnotateImagesResponse proto.</summary>
         /// <param name="body">The body of the request.</param>
@@ -571,12 +564,9 @@ namespace Google.Apis.Vision.v1p1beta1
             return new AsyncBatchAnnotateRequest(service, body);
         }
 
-        /// <summary>Run asynchronous image detection and annotation for a list of images.
-        ///
-        /// Progress and results can be retrieved through the `google.longrunning.Operations` interface.
-        /// `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains
-        /// `AsyncBatchAnnotateImagesResponse` (results).
-        ///
+        /// <summary>Run asynchronous image detection and annotation for a list of images. Progress and results can be
+        /// retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains
+        /// `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results).
         /// This service will write image annotation outputs to json files in customer GCS bucket, each json file
         /// containing BatchAnnotateImagesResponse proto.</summary>
         public class AsyncBatchAnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1p1beta1.Data.Operation>
@@ -668,33 +658,23 @@ namespace Google.Apis.Vision.v1p1beta1
 
 
             /// <summary>Service that performs image detection and annotation for a batch of files. Now only
-            /// "application/pdf", "image/tiff" and "image/gif" are supported.
-            ///
-            /// This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages) frames
-            /// (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for each image
-            /// extracted.</summary>
+            /// "application/pdf", "image/tiff" and "image/gif" are supported. This service will extract at most 5
+            /// (customers can specify which 5 in AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from
+            /// each file provided and perform detection and annotation for each image extracted.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Optional. Target project and location to make a call.
-            ///
-            /// Format: `projects/{project-id}/locations/{location-id}`.
-            ///
-            /// If no parent is specified, a region will be chosen automatically.
-            ///
-            /// Supported location-ids:     `us`: USA country only,     `asia`: East asia areas, like Japan, Taiwan,     `eu`: The
-            /// European Union.
-            ///
-            /// Example: `projects/project-A/locations/eu`.</param>
+            /// <param name="parent">Optional. Target project and location to make a call. Format: `projects/{project-id}/locations
+            /// /{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA
+            /// country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example:
+            /// `projects/project-A/locations/eu`.</param>
             public virtual AnnotateRequest Annotate(Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateFilesRequest body, string parent)
             {
                 return new AnnotateRequest(service, body, parent);
             }
 
             /// <summary>Service that performs image detection and annotation for a batch of files. Now only
-            /// "application/pdf", "image/tiff" and "image/gif" are supported.
-            ///
-            /// This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages) frames
-            /// (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for each image
-            /// extracted.</summary>
+            /// "application/pdf", "image/tiff" and "image/gif" are supported. This service will extract at most 5
+            /// (customers can specify which 5 in AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from
+            /// each file provided and perform detection and annotation for each image extracted.</summary>
             public class AnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateFilesResponse>
             {
                 /// <summary>Constructs a new Annotate request.</summary>
@@ -707,16 +687,10 @@ namespace Google.Apis.Vision.v1p1beta1
                 }
 
 
-                /// <summary>Optional. Target project and location to make a call.
-                ///
-                /// Format: `projects/{project-id}/locations/{location-id}`.
-                ///
-                /// If no parent is specified, a region will be chosen automatically.
-                ///
+                /// <summary>Optional. Target project and location to make a call. Format: `projects/{project-
+                /// id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically.
                 /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
-                /// The European Union.
-                ///
-                /// Example: `projects/project-A/locations/eu`.</summary>
+                /// The European Union. Example: `projects/project-A/locations/eu`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -768,16 +742,10 @@ namespace Google.Apis.Vision.v1p1beta1
             /// through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata`
             /// (metadata). `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results).</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Optional. Target project and location to make a call.
-            ///
-            /// Format: `projects/{project-id}/locations/{location-id}`.
-            ///
-            /// If no parent is specified, a region will be chosen automatically.
-            ///
-            /// Supported location-ids:     `us`: USA country only,     `asia`: East asia areas, like Japan, Taiwan,     `eu`: The
-            /// European Union.
-            ///
-            /// Example: `projects/project-A/locations/eu`.</param>
+            /// <param name="parent">Optional. Target project and location to make a call. Format: `projects/{project-id}/locations
+            /// /{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA
+            /// country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example:
+            /// `projects/project-A/locations/eu`.</param>
             public virtual AsyncBatchAnnotateRequest AsyncBatchAnnotate(Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesRequest body, string parent)
             {
                 return new AsyncBatchAnnotateRequest(service, body, parent);
@@ -799,16 +767,10 @@ namespace Google.Apis.Vision.v1p1beta1
                 }
 
 
-                /// <summary>Optional. Target project and location to make a call.
-                ///
-                /// Format: `projects/{project-id}/locations/{location-id}`.
-                ///
-                /// If no parent is specified, a region will be chosen automatically.
-                ///
+                /// <summary>Optional. Target project and location to make a call. Format: `projects/{project-
+                /// id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically.
                 /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
-                /// The European Union.
-                ///
-                /// Example: `projects/project-A/locations/eu`.</summary>
+                /// The European Union. Example: `projects/project-A/locations/eu`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -881,16 +843,10 @@ namespace Google.Apis.Vision.v1p1beta1
 
             /// <summary>Run image detection and annotation for a batch of images.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Optional. Target project and location to make a call.
-            ///
-            /// Format: `projects/{project-id}/locations/{location-id}`.
-            ///
-            /// If no parent is specified, a region will be chosen automatically.
-            ///
-            /// Supported location-ids:     `us`: USA country only,     `asia`: East asia areas, like Japan, Taiwan,     `eu`: The
-            /// European Union.
-            ///
-            /// Example: `projects/project-A/locations/eu`.</param>
+            /// <param name="parent">Optional. Target project and location to make a call. Format: `projects/{project-id}/locations
+            /// /{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA
+            /// country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example:
+            /// `projects/project-A/locations/eu`.</param>
             public virtual AnnotateRequest Annotate(Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateImagesRequest body, string parent)
             {
                 return new AnnotateRequest(service, body, parent);
@@ -909,16 +865,10 @@ namespace Google.Apis.Vision.v1p1beta1
                 }
 
 
-                /// <summary>Optional. Target project and location to make a call.
-                ///
-                /// Format: `projects/{project-id}/locations/{location-id}`.
-                ///
-                /// If no parent is specified, a region will be chosen automatically.
-                ///
+                /// <summary>Optional. Target project and location to make a call. Format: `projects/{project-
+                /// id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically.
                 /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
-                /// The European Union.
-                ///
-                /// Example: `projects/project-A/locations/eu`.</summary>
+                /// The European Union. Example: `projects/project-A/locations/eu`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -965,38 +915,26 @@ namespace Google.Apis.Vision.v1p1beta1
 
             }
 
-            /// <summary>Run asynchronous image detection and annotation for a list of images.
-            ///
-            /// Progress and results can be retrieved through the `google.longrunning.Operations` interface.
-            /// `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains
-            /// `AsyncBatchAnnotateImagesResponse` (results).
-            ///
-            /// This service will write image annotation outputs to json files in customer GCS bucket, each json file
-            /// containing BatchAnnotateImagesResponse proto.</summary>
+            /// <summary>Run asynchronous image detection and annotation for a list of images. Progress and results can
+            /// be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains
+            /// `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse`
+            /// (results). This service will write image annotation outputs to json files in customer GCS bucket, each
+            /// json file containing BatchAnnotateImagesResponse proto.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Optional. Target project and location to make a call.
-            ///
-            /// Format: `projects/{project-id}/locations/{location-id}`.
-            ///
-            /// If no parent is specified, a region will be chosen automatically.
-            ///
-            /// Supported location-ids:     `us`: USA country only,     `asia`: East asia areas, like Japan, Taiwan,     `eu`: The
-            /// European Union.
-            ///
-            /// Example: `projects/project-A/locations/eu`.</param>
+            /// <param name="parent">Optional. Target project and location to make a call. Format: `projects/{project-id}/locations
+            /// /{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA
+            /// country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example:
+            /// `projects/project-A/locations/eu`.</param>
             public virtual AsyncBatchAnnotateRequest AsyncBatchAnnotate(Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateImagesRequest body, string parent)
             {
                 return new AsyncBatchAnnotateRequest(service, body, parent);
             }
 
-            /// <summary>Run asynchronous image detection and annotation for a list of images.
-            ///
-            /// Progress and results can be retrieved through the `google.longrunning.Operations` interface.
-            /// `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains
-            /// `AsyncBatchAnnotateImagesResponse` (results).
-            ///
-            /// This service will write image annotation outputs to json files in customer GCS bucket, each json file
-            /// containing BatchAnnotateImagesResponse proto.</summary>
+            /// <summary>Run asynchronous image detection and annotation for a list of images. Progress and results can
+            /// be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains
+            /// `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse`
+            /// (results). This service will write image annotation outputs to json files in customer GCS bucket, each
+            /// json file containing BatchAnnotateImagesResponse proto.</summary>
             public class AsyncBatchAnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1p1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new AsyncBatchAnnotate request.</summary>
@@ -1009,16 +947,10 @@ namespace Google.Apis.Vision.v1p1beta1
                 }
 
 
-                /// <summary>Optional. Target project and location to make a call.
-                ///
-                /// Format: `projects/{project-id}/locations/{location-id}`.
-                ///
-                /// If no parent is specified, a region will be chosen automatically.
-                ///
+                /// <summary>Optional. Target project and location to make a call. Format: `projects/{project-
+                /// id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically.
                 /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
-                /// The European Union.
-                ///
-                /// Example: `projects/project-A/locations/eu`.</summary>
+                /// The European Union. Example: `projects/project-A/locations/eu`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1115,33 +1047,23 @@ namespace Google.Apis.Vision.v1p1beta1
 
 
                 /// <summary>Service that performs image detection and annotation for a batch of files. Now only
-                /// "application/pdf", "image/tiff" and "image/gif" are supported.
-                ///
-                /// This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages)
-                /// frames (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for
-                /// each image extracted.</summary>
+                /// "application/pdf", "image/tiff" and "image/gif" are supported. This service will extract at most 5
+                /// (customers can specify which 5 in AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff)
+                /// from each file provided and perform detection and annotation for each image extracted.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Optional. Target project and location to make a call.
-                ///
-                /// Format: `projects/{project-id}/locations/{location-id}`.
-                ///
-                /// If no parent is specified, a region will be chosen automatically.
-                ///
-                /// Supported location-ids:     `us`: USA country only,     `asia`: East asia areas, like Japan, Taiwan,     `eu`: The
-                /// European Union.
-                ///
-                /// Example: `projects/project-A/locations/eu`.</param>
+                /// <param name="parent">Optional. Target project and location to make a call. Format: `projects/{project-id}/locations
+                /// /{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA
+                /// country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example:
+                /// `projects/project-A/locations/eu`.</param>
                 public virtual AnnotateRequest Annotate(Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateFilesRequest body, string parent)
                 {
                     return new AnnotateRequest(service, body, parent);
                 }
 
                 /// <summary>Service that performs image detection and annotation for a batch of files. Now only
-                /// "application/pdf", "image/tiff" and "image/gif" are supported.
-                ///
-                /// This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages)
-                /// frames (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for
-                /// each image extracted.</summary>
+                /// "application/pdf", "image/tiff" and "image/gif" are supported. This service will extract at most 5
+                /// (customers can specify which 5 in AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff)
+                /// from each file provided and perform detection and annotation for each image extracted.</summary>
                 public class AnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateFilesResponse>
                 {
                     /// <summary>Constructs a new Annotate request.</summary>
@@ -1154,16 +1076,10 @@ namespace Google.Apis.Vision.v1p1beta1
                     }
 
 
-                    /// <summary>Optional. Target project and location to make a call.
-                    ///
-                    /// Format: `projects/{project-id}/locations/{location-id}`.
-                    ///
-                    /// If no parent is specified, a region will be chosen automatically.
-                    ///
+                    /// <summary>Optional. Target project and location to make a call. Format: `projects/{project-
+                    /// id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically.
                     /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan,
-                    /// `eu`: The European Union.
-                    ///
-                    /// Example: `projects/project-A/locations/eu`.</summary>
+                    /// `eu`: The European Union. Example: `projects/project-A/locations/eu`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1216,16 +1132,10 @@ namespace Google.Apis.Vision.v1p1beta1
                 /// `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateFilesResponse`
                 /// (results).</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Optional. Target project and location to make a call.
-                ///
-                /// Format: `projects/{project-id}/locations/{location-id}`.
-                ///
-                /// If no parent is specified, a region will be chosen automatically.
-                ///
-                /// Supported location-ids:     `us`: USA country only,     `asia`: East asia areas, like Japan, Taiwan,     `eu`: The
-                /// European Union.
-                ///
-                /// Example: `projects/project-A/locations/eu`.</param>
+                /// <param name="parent">Optional. Target project and location to make a call. Format: `projects/{project-id}/locations
+                /// /{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA
+                /// country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example:
+                /// `projects/project-A/locations/eu`.</param>
                 public virtual AsyncBatchAnnotateRequest AsyncBatchAnnotate(Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesRequest body, string parent)
                 {
                     return new AsyncBatchAnnotateRequest(service, body, parent);
@@ -1248,16 +1158,10 @@ namespace Google.Apis.Vision.v1p1beta1
                     }
 
 
-                    /// <summary>Optional. Target project and location to make a call.
-                    ///
-                    /// Format: `projects/{project-id}/locations/{location-id}`.
-                    ///
-                    /// If no parent is specified, a region will be chosen automatically.
-                    ///
+                    /// <summary>Optional. Target project and location to make a call. Format: `projects/{project-
+                    /// id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically.
                     /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan,
-                    /// `eu`: The European Union.
-                    ///
-                    /// Example: `projects/project-A/locations/eu`.</summary>
+                    /// `eu`: The European Union. Example: `projects/project-A/locations/eu`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1330,16 +1234,10 @@ namespace Google.Apis.Vision.v1p1beta1
 
                 /// <summary>Run image detection and annotation for a batch of images.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Optional. Target project and location to make a call.
-                ///
-                /// Format: `projects/{project-id}/locations/{location-id}`.
-                ///
-                /// If no parent is specified, a region will be chosen automatically.
-                ///
-                /// Supported location-ids:     `us`: USA country only,     `asia`: East asia areas, like Japan, Taiwan,     `eu`: The
-                /// European Union.
-                ///
-                /// Example: `projects/project-A/locations/eu`.</param>
+                /// <param name="parent">Optional. Target project and location to make a call. Format: `projects/{project-id}/locations
+                /// /{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA
+                /// country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example:
+                /// `projects/project-A/locations/eu`.</param>
                 public virtual AnnotateRequest Annotate(Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateImagesRequest body, string parent)
                 {
                     return new AnnotateRequest(service, body, parent);
@@ -1358,16 +1256,10 @@ namespace Google.Apis.Vision.v1p1beta1
                     }
 
 
-                    /// <summary>Optional. Target project and location to make a call.
-                    ///
-                    /// Format: `projects/{project-id}/locations/{location-id}`.
-                    ///
-                    /// If no parent is specified, a region will be chosen automatically.
-                    ///
+                    /// <summary>Optional. Target project and location to make a call. Format: `projects/{project-
+                    /// id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically.
                     /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan,
-                    /// `eu`: The European Union.
-                    ///
-                    /// Example: `projects/project-A/locations/eu`.</summary>
+                    /// `eu`: The European Union. Example: `projects/project-A/locations/eu`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1414,38 +1306,28 @@ namespace Google.Apis.Vision.v1p1beta1
 
                 }
 
-                /// <summary>Run asynchronous image detection and annotation for a list of images.
-                ///
-                /// Progress and results can be retrieved through the `google.longrunning.Operations` interface.
-                /// `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains
-                /// `AsyncBatchAnnotateImagesResponse` (results).
-                ///
-                /// This service will write image annotation outputs to json files in customer GCS bucket, each json
-                /// file containing BatchAnnotateImagesResponse proto.</summary>
+                /// <summary>Run asynchronous image detection and annotation for a list of images. Progress and results
+                /// can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata`
+                /// contains `OperationMetadata` (metadata). `Operation.response` contains
+                /// `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to
+                /// json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse
+                /// proto.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Optional. Target project and location to make a call.
-                ///
-                /// Format: `projects/{project-id}/locations/{location-id}`.
-                ///
-                /// If no parent is specified, a region will be chosen automatically.
-                ///
-                /// Supported location-ids:     `us`: USA country only,     `asia`: East asia areas, like Japan, Taiwan,     `eu`: The
-                /// European Union.
-                ///
-                /// Example: `projects/project-A/locations/eu`.</param>
+                /// <param name="parent">Optional. Target project and location to make a call. Format: `projects/{project-id}/locations
+                /// /{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA
+                /// country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example:
+                /// `projects/project-A/locations/eu`.</param>
                 public virtual AsyncBatchAnnotateRequest AsyncBatchAnnotate(Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateImagesRequest body, string parent)
                 {
                     return new AsyncBatchAnnotateRequest(service, body, parent);
                 }
 
-                /// <summary>Run asynchronous image detection and annotation for a list of images.
-                ///
-                /// Progress and results can be retrieved through the `google.longrunning.Operations` interface.
-                /// `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains
-                /// `AsyncBatchAnnotateImagesResponse` (results).
-                ///
-                /// This service will write image annotation outputs to json files in customer GCS bucket, each json
-                /// file containing BatchAnnotateImagesResponse proto.</summary>
+                /// <summary>Run asynchronous image detection and annotation for a list of images. Progress and results
+                /// can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata`
+                /// contains `OperationMetadata` (metadata). `Operation.response` contains
+                /// `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to
+                /// json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse
+                /// proto.</summary>
                 public class AsyncBatchAnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1p1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new AsyncBatchAnnotate request.</summary>
@@ -1458,16 +1340,10 @@ namespace Google.Apis.Vision.v1p1beta1
                     }
 
 
-                    /// <summary>Optional. Target project and location to make a call.
-                    ///
-                    /// Format: `projects/{project-id}/locations/{location-id}`.
-                    ///
-                    /// If no parent is specified, a region will be chosen automatically.
-                    ///
+                    /// <summary>Optional. Target project and location to make a call. Format: `projects/{project-
+                    /// id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically.
                     /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan,
-                    /// `eu`: The European Union.
-                    ///
-                    /// Example: `projects/project-A/locations/eu`.</summary>
+                    /// `eu`: The European Union. Example: `projects/project-A/locations/eu`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1659,10 +1535,9 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Metadata for the batch operations such as the current state.
-    ///
-    /// This is included in the `metadata` field of the `Operation` returned by the `GetOperation` call of the
-    /// `google::longrunning::Operations` service.</summary>
+    /// <summary>Metadata for the batch operations such as the current state. This is included in the `metadata` field
+    /// of the `Operation` returned by the `GetOperation` call of the `google::longrunning::Operations`
+    /// service.</summary>
     public class BatchOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The time when the batch request is finished and google.longrunning.Operation.done is set to
@@ -1691,17 +1566,9 @@ namespace Google.Apis.Vision.v1p1beta1.Data
 
         /// <summary>The bounding box for the block. The vertices are in the order of top-left, top-right, bottom-right,
         /// bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-
-        /// left corner as defined when the text is read in the 'natural' orientation. For example:
-        ///
-        /// * when the text is horizontal it might look like:
-        ///
-        /// 0----1 |    | 3----2
-        ///
-        /// * when it's rotated 180 degrees around the top-left corner it becomes:
-        ///
-        /// 2----3 |    | 1----0
-        ///
-        /// and the vertex order will still be (0, 1, 2, 3).</summary>
+        /// left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is
+        /// horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner
+        /// it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual BoundingPoly BoundingBox { get; set; } 
 
@@ -1740,73 +1607,42 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     /// conversion to/from color representations in various languages over compactness; for example, the fields of this
     /// representation can be trivially provided to the constructor of "java.awt.Color" in Java; it can also be
     /// trivially provided to UIColor's "+colorWithRed:green:blue:alpha" method in iOS; and, with just a little work, it
-    /// can be easily formatted into a CSS "rgba()" string in JavaScript, as well.
-    ///
-    /// Note: this proto does not carry information about the absolute color space that should be used to interpret the
-    /// RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-    /// space.
-    ///
-    /// Note: when color equality needs to be decided, implementations, unless documented otherwise, will treat two
-    /// colors to be equal if all their red, green, blue and alpha values each differ by at most 1e-5.
-    ///
-    /// Example (Java):
-    ///
-    /// import com.google.type.Color;
-    ///
-    /// // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
-    /// protocolor.getAlpha().getValue() : 1.0;
-    ///
-    /// return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); }
-    ///
-    /// public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float)
-    /// color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder =
-    /// Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int
-    /// alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float)
-    /// alpha) / denominator) .build()); } return resultBuilder.build(); } // ...
-    ///
-    /// Example (iOS / Obj-C):
-    ///
-    /// // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor
-    /// green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if
-    /// (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue
-    /// alpha:alpha]; }
-    ///
-    /// static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed: green: blue:
-    /// alpha:]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green];
-    /// [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result
-    /// autorelease]; return result; } // ...
-    ///
-    /// Example (JavaScript):
-    ///
-    /// // ...
-    ///
-    /// var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green
-    /// || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green =
-    /// Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255);
-    ///
-    /// if (!('alpha' in rgb_color)) { return rgbToCssColor_(red, green, blue); }
-    ///
-    /// var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(',
-    /// rgbParams, ',', alphaFrac, ')'].join(''); };
-    ///
-    /// var rgbToCssColor_ = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-    /// var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for
-    /// (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return
-    /// resultBuilder.join(''); };
-    ///
+    /// can be easily formatted into a CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+    /// information about the absolute color space that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+    /// DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color space. Note: when color equality
+    /// needs to be decided, implementations, unless documented otherwise, will treat two colors to be equal if all
+    /// their red, green, blue and alpha values each differ by at most 1e-5. Example (Java): import
+    /// com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha =
+    /// protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(),
+    /// protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float
+    /// red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue();
+    /// float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator)
+    /// .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) {
+    /// result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return
+    /// resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) {
+    /// float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue*
+    /// alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper
+    /// value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor*
+    /// color) { CGFloat red, green, blue, alpha; if (![color getRed: green: blue: alpha:]) { return nil; } Color*
+    /// result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <=
+    /// 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ...
+    /// Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var
+    /// greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255);
+    /// var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) {
+    /// return rgbToCssColor_(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red,
+    /// green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor_ =
+    /// function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString =
+    /// rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i <
+    /// missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(''); };
     /// // ...</summary>
     public class Color : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The fraction of this color that should be applied to the pixel. That is, the final pixel color is
-        /// defined by the equation:
-        ///
-        /// pixel color = alpha * (this color) + (1.0 - alpha) * (background color)
-        ///
-        /// This means that a value of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a
-        /// completely transparent color. This uses a wrapper message rather than a simple float scalar so that it is
-        /// possible to distinguish between a default value and the value being unset. If omitted, this color object is
-        /// to be rendered as a solid color (as if the alpha value had been explicitly given with a value of
-        /// 1.0).</summary>
+        /// defined by the equation: pixel color = alpha * (this color) + (1.0 - alpha) * (background color) This means
+        /// that a value of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a completely
+        /// transparent color. This uses a wrapper message rather than a simple float scalar so that it is possible to
+        /// distinguish between a default value and the value being unset. If omitted, this color object is to be
+        /// rendered as a solid color (as if the alpha value had been explicitly given with a value of 1.0).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alpha")]
         public virtual System.Nullable<float> Alpha { get; set; } 
 
@@ -1854,7 +1690,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual BoundingPoly BoundingPoly { get; set; } 
 
-        /// <summary>Confidence of this being a salient region.  Range [0, 1].</summary>
+        /// <summary>Confidence of this being a salient region. Range [0, 1].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
@@ -2055,20 +1891,14 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>Google Cloud Storage URI prefix where the results will be stored. Results will be in JSON format
         /// and preceded by its corresponding input URI prefix. This field can either represent a gcs file prefix or gcs
         /// directory. In either case, the uri should be unique because in order to get all of the output files, you
-        /// will need to do a wildcard gcs search on the uri prefix you provide.
-        ///
-        /// Examples:
-        ///
-        /// *    File Prefix: gs://bucket-name/here/filenameprefix   The output files will be created in gs://bucket-
-        /// name/here/ and the names of the output files will begin with "filenameprefix".
-        ///
-        /// *    Directory Prefix: gs://bucket-name/some/location/   The output files will be created in gs://bucket-
-        /// name/some/location/ and the names of the output files could be anything because there was no filename prefix
-        /// specified.
-        ///
-        /// If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the
-        /// full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too
-        /// large and overflows into multiple sharded files.</summary>
+        /// will need to do a wildcard gcs search on the uri prefix you provide. Examples: * File Prefix: gs://bucket-
+        /// name/here/filenameprefix The output files will be created in gs://bucket-name/here/ and the names of the
+        /// output files will begin with "filenameprefix". * Directory Prefix: gs://bucket-name/some/location/ The
+        /// output files will be created in gs://bucket-name/some/location/ and the names of the output files could be
+        /// anything because there was no filename prefix specified. If multiple outputs, each response is still
+        /// AnnotateFileResponse, each of which contains some subset of the full list of AnnotateImageResponse. Multiple
+        /// outputs can happen if, for example, the output JSON is too large and overflows into multiple sharded
+        /// files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
 
@@ -2103,18 +1933,11 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputConfig")]
         public virtual GoogleCloudVisionV1p1beta1InputConfig InputConfig { get; set; } 
 
-        /// <summary>Pages of the file to perform image annotation.
-        ///
-        /// Pages starts from 1, we assume the first page of the file is page 1. At most 5 pages are supported per
-        /// request. Pages can be negative.
-        ///
-        /// Page 1 means the first page. Page 2 means the second page. Page -1 means the last page. Page -2 means the
-        /// second to the last page.
-        ///
-        /// If the file is GIF instead of PDF or TIFF, page refers to GIF frames.
-        ///
-        /// If this field is empty, by default the service performs image annotation for the first 5 pages of the
-        /// file.</summary>
+        /// <summary>Pages of the file to perform image annotation. Pages starts from 1, we assume the first page of the
+        /// file is page 1. At most 5 pages are supported per request. Pages can be negative. Page 1 means the first
+        /// page. Page 2 means the second page. Page -1 means the last page. Page -2 means the second to the last page.
+        /// If the file is GIF instead of PDF or TIFF, page refers to GIF frames. If this field is empty, by default the
+        /// service performs image annotation for the first 5 pages of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pages")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> Pages { get; set; } 
 
@@ -2271,16 +2094,10 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     /// <summary>Multiple async file annotation requests are batched into a single service call.</summary>
     public class GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Target project and location to make a call.
-        ///
-        /// Format: `projects/{project-id}/locations/{location-id}`.
-        ///
-        /// If no parent is specified, a region will be chosen automatically.
-        ///
-        /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The
-        /// European Union.
-        ///
-        /// Example: `projects/project-A/locations/eu`.</summary>
+        /// <summary>Optional. Target project and location to make a call. Format: `projects/{project-id}/locations
+        /// /{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids:
+        /// `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example:
+        /// `projects/project-A/locations/eu`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 
@@ -2311,16 +2128,10 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
         public virtual GoogleCloudVisionV1p1beta1OutputConfig OutputConfig { get; set; } 
 
-        /// <summary>Optional. Target project and location to make a call.
-        ///
-        /// Format: `projects/{project-id}/locations/{location-id}`.
-        ///
-        /// If no parent is specified, a region will be chosen automatically.
-        ///
-        /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The
-        /// European Union.
-        ///
-        /// Example: `projects/project-A/locations/eu`.</summary>
+        /// <summary>Optional. Target project and location to make a call. Format: `projects/{project-id}/locations
+        /// /{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids:
+        /// `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example:
+        /// `projects/project-A/locations/eu`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 
@@ -2335,16 +2146,10 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     /// <summary>A list of requests to annotate files using the BatchAnnotateFiles API.</summary>
     public class GoogleCloudVisionV1p1beta1BatchAnnotateFilesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Target project and location to make a call.
-        ///
-        /// Format: `projects/{project-id}/locations/{location-id}`.
-        ///
-        /// If no parent is specified, a region will be chosen automatically.
-        ///
-        /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The
-        /// European Union.
-        ///
-        /// Example: `projects/project-A/locations/eu`.</summary>
+        /// <summary>Optional. Target project and location to make a call. Format: `projects/{project-id}/locations
+        /// /{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids:
+        /// `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example:
+        /// `projects/project-A/locations/eu`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 
@@ -2372,16 +2177,10 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     /// <summary>Multiple image annotation requests are batched into a single service call.</summary>
     public class GoogleCloudVisionV1p1beta1BatchAnnotateImagesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Target project and location to make a call.
-        ///
-        /// Format: `projects/{project-id}/locations/{location-id}`.
-        ///
-        /// If no parent is specified, a region will be chosen automatically.
-        ///
-        /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The
-        /// European Union.
-        ///
-        /// Example: `projects/project-A/locations/eu`.</summary>
+        /// <summary>Optional. Target project and location to make a call. Format: `projects/{project-id}/locations
+        /// /{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids:
+        /// `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example:
+        /// `projects/project-A/locations/eu`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 
@@ -2413,17 +2212,9 @@ namespace Google.Apis.Vision.v1p1beta1.Data
 
         /// <summary>The bounding box for the block. The vertices are in the order of top-left, top-right, bottom-right,
         /// bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-
-        /// left corner as defined when the text is read in the 'natural' orientation. For example:
-        ///
-        /// * when the text is horizontal it might look like:
-        ///
-        /// 0----1 |    | 3----2
-        ///
-        /// * when it's rotated 180 degrees around the top-left corner it becomes:
-        ///
-        /// 2----3 |    | 1----0
-        ///
-        /// and the vertex order will still be (0, 1, 2, 3).</summary>
+        /// left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is
+        /// horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner
+        /// it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p1beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -2486,7 +2277,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudVisionV1p1beta1BoundingPoly BoundingPoly { get; set; } 
 
-        /// <summary>Confidence of this being a salient region.  Range [0, 1].</summary>
+        /// <summary>Confidence of this being a salient region. Range [0, 1].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
@@ -2513,7 +2304,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     public class GoogleCloudVisionV1p1beta1CropHintsParams : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Aspect ratios in floats, representing the ratio of the width to the height of the image. For
-        /// example, if the desired aspect ratio is 4/3, the corresponding float value should be 1.33333.  If not
+        /// example, if the desired aspect ratio is 4/3, the corresponding float value should be 1.33333. If not
         /// specified, the best possible crop is returned. The number of provided aspect ratios is limited to a maximum
         /// of 16; any aspect ratios provided after the 16th are ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aspectRatios")]
@@ -2707,20 +2498,14 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>Google Cloud Storage URI prefix where the results will be stored. Results will be in JSON format
         /// and preceded by its corresponding input URI prefix. This field can either represent a gcs file prefix or gcs
         /// directory. In either case, the uri should be unique because in order to get all of the output files, you
-        /// will need to do a wildcard gcs search on the uri prefix you provide.
-        ///
-        /// Examples:
-        ///
-        /// *    File Prefix: gs://bucket-name/here/filenameprefix   The output files will be created in gs://bucket-
-        /// name/here/ and the names of the output files will begin with "filenameprefix".
-        ///
-        /// *    Directory Prefix: gs://bucket-name/some/location/   The output files will be created in gs://bucket-
-        /// name/some/location/ and the names of the output files could be anything because there was no filename prefix
-        /// specified.
-        ///
-        /// If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the
-        /// full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too
-        /// large and overflows into multiple sharded files.</summary>
+        /// will need to do a wildcard gcs search on the uri prefix you provide. Examples: * File Prefix: gs://bucket-
+        /// name/here/filenameprefix The output files will be created in gs://bucket-name/here/ and the names of the
+        /// output files will begin with "filenameprefix". * Directory Prefix: gs://bucket-name/some/location/ The
+        /// output files will be created in gs://bucket-name/some/location/ and the names of the output files could be
+        /// anything because there was no filename prefix specified. If multiple outputs, each response is still
+        /// AnnotateFileResponse, each of which contains some subset of the full list of AnnotateImageResponse. Multiple
+        /// outputs can happen if, for example, the output JSON is too large and overflows into multiple sharded
+        /// files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
 
@@ -2744,10 +2529,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     public class GoogleCloudVisionV1p1beta1Image : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Image content, represented as a stream of bytes. Note: As with all `bytes` fields, protobuffers use
-        /// a pure binary representation, whereas JSON representations use base64.
-        ///
-        /// Currently, this field only works for BatchAnnotateImages requests. It does not work for
-        /// AsyncBatchAnnotateImages requests.</summary>
+        /// a pure binary representation, whereas JSON representations use base64. Currently, this field only works for
+        /// BatchAnnotateImages requests. It does not work for AsyncBatchAnnotateImages requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; } 
 
@@ -2824,26 +2607,20 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     /// <summary>External image source (Google Cloud Storage or web URL image location).</summary>
     public class GoogleCloudVisionV1p1beta1ImageSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>**Use `image_uri` instead.**
-        ///
-        /// The Google Cloud Storage  URI of the form `gs://bucket_name/object_name`. Object versioning is not
-        /// supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris) for
-        /// more info.</summary>
+        /// <summary>**Use `image_uri` instead.** The Google Cloud Storage URI of the form
+        /// `gs://bucket_name/object_name`. Object versioning is not supported. See [Google Cloud Storage Request
+        /// URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsImageUri")]
         public virtual string GcsImageUri { get; set; } 
 
-        /// <summary>The URI of the source image. Can be either:
-        ///
-        /// 1. A Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not
-        /// supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris) for
-        /// more info.
-        ///
-        /// 2. A publicly-accessible image HTTP/HTTPS URL. When fetching images from HTTP/HTTPS URLs, Google cannot
-        /// guarantee that the request will be completed. Your request may fail if the specified host denies the request
-        /// (e.g. due to request throttling or DOS prevention), or if Google throttles requests to the site for abuse
-        /// prevention. You should not depend on externally-hosted images for production applications.
-        ///
-        /// When both `gcs_image_uri` and `image_uri` are specified, `image_uri` takes precedence.</summary>
+        /// <summary>The URI of the source image. Can be either: 1. A Google Cloud Storage URI of the form
+        /// `gs://bucket_name/object_name`. Object versioning is not supported. See [Google Cloud Storage Request
+        /// URIs](https://cloud.google.com/storage/docs/reference-uris) for more info. 2. A publicly-accessible image
+        /// HTTP/HTTPS URL. When fetching images from HTTP/HTTPS URLs, Google cannot guarantee that the request will be
+        /// completed. Your request may fail if the specified host denies the request (e.g. due to request throttling or
+        /// DOS prevention), or if Google throttles requests to the site for abuse prevention. You should not depend on
+        /// externally-hosted images for production applications. When both `gcs_image_uri` and `image_uri` are
+        /// specified, `image_uri` takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
         public virtual string ImageUri { get; set; } 
 
@@ -2855,10 +2632,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     public class GoogleCloudVisionV1p1beta1InputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>File content, represented as a stream of bytes. Note: As with all `bytes` fields, protobuffers use
-        /// a pure binary representation, whereas JSON representations use base64.
-        ///
-        /// Currently, this field only works for BatchAnnotateFiles requests. It does not work for
-        /// AsyncBatchAnnotateFiles requests.</summary>
+        /// a pure binary representation, whereas JSON representations use base64. Currently, this field only works for
+        /// BatchAnnotateFiles requests. It does not work for AsyncBatchAnnotateFiles requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; } 
 
@@ -2968,14 +2743,10 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     public class GoogleCloudVisionV1p1beta1OutputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The max number of response protos to put into each output JSON file on Google Cloud Storage. The
-        /// valid range is [1, 100]. If not specified, the default value is 20.
-        ///
-        /// For example, for one pdf file with 100 pages, 100 response protos will be generated. If `batch_size` = 20,
-        /// then 5 json files each containing 20 response protos will be written under the prefix
-        /// `gcs_destination`.`uri`.
-        ///
-        /// Currently, batch_size only applies to GcsDestination, with potential future support for other output
-        /// configurations.</summary>
+        /// valid range is [1, 100]. If not specified, the default value is 20. For example, for one pdf file with 100
+        /// pages, 100 response protos will be generated. If `batch_size` = 20, then 5 json files each containing 20
+        /// response protos will be written under the prefix `gcs_destination`.`uri`. Currently, batch_size only applies
+        /// to GcsDestination, with potential future support for other output configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]
         public virtual System.Nullable<int> BatchSize { get; set; } 
 
@@ -3021,8 +2792,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>The bounding box for the paragraph. The vertices are in the order of top-left, top-right, bottom-
         /// right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around
         /// the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the
-        /// text is horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-
-        /// left corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
+        /// text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left
+        /// corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p1beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -3075,30 +2846,25 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>The resource name of the product.
-        ///
-        /// Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
-        ///
-        /// This field is ignored when creating a product.</summary>
+        /// <summary>The resource name of the product. Format is:
+        /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a
+        /// product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Immutable. The category for the product identified by the reference image. This should be either
-        /// "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories "homegoods", "apparel", and "toys" are
-        /// still supported, but these should not be used for new products.</summary>
+        /// <summary>Immutable. The category for the product identified by the reference image. This should be one of
+        /// "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1" or "general-v1". The legacy categories
+        /// "homegoods", "apparel", and "toys" are still supported, but these should not be used for new
+        /// products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCategory")]
         public virtual string ProductCategory { get; set; } 
 
         /// <summary>Key-value pairs that can be attached to a product. At query time, constraints can be specified
-        /// based on the product_labels.
-        ///
-        /// Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match
-        /// a range-based restriction which is to be supported soon.
-        ///
-        /// Multiple values can be assigned to the same key. One product may have up to 500 product_labels.
-        ///
-        /// Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed
-        /// 1M, otherwise the product search pipeline will refuse to work for that ProductSet.</summary>
+        /// based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings
+        /// with integer values can match a range-based restriction which is to be supported soon. Multiple values can
+        /// be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of
+        /// distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search
+        /// pipeline will refuse to work for that ProductSet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productLabels")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1ProductKeyValue> ProductLabels { get; set; } 
 
@@ -3133,11 +2899,9 @@ namespace Google.Apis.Vision.v1p1beta1.Data
 
         /// <summary>The filtering expression. This can be used to restrict search results based on Product labels. We
         /// currently support an AND of OR of key-value expressions, where each expression within an OR must have the
-        /// same key. An '=' should be used to connect the key and value.
-        ///
-        /// For example, "(color = red OR color = blue) AND brand = Google" is acceptable, but "(color = red OR brand =
-        /// Google)" is not acceptable. "color: red" is not acceptable because it uses a ':' instead of an
-        /// '='.</summary>
+        /// same key. An '=' should be used to connect the key and value. For example, "(color = red OR color = blue)
+        /// AND brand = Google" is acceptable, but "(color = red OR brand = Google)" is not acceptable. "color: red" is
+        /// not acceptable because it uses a ':' instead of an '='.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
@@ -3149,9 +2913,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productCategories")]
         public virtual System.Collections.Generic.IList<string> ProductCategories { get; set; } 
 
-        /// <summary>The resource name of a ProductSet to be searched for similar images.
-        ///
-        /// Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.</summary>
+        /// <summary>The resource name of a ProductSet to be searched for similar images. Format is:
+        /// `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productSet")]
         public virtual string ProductSet { get; set; } 
 
@@ -3300,8 +3063,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>The bounding box for the symbol. The vertices are in the order of top-left, top-right, bottom-
         /// right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around
         /// the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the
-        /// text is horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-
-        /// left corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
+        /// text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left
+        /// corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p1beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -3531,8 +3294,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>The bounding box for the word. The vertices are in the order of top-left, top-right, bottom-right,
         /// bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-
         /// left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is
-        /// horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-left
-        /// corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
+        /// horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner
+        /// it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p1beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -3676,17 +3439,9 @@ namespace Google.Apis.Vision.v1p1beta1.Data
 
         /// <summary>The bounding box for the block. The vertices are in the order of top-left, top-right, bottom-right,
         /// bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-
-        /// left corner as defined when the text is read in the 'natural' orientation. For example:
-        ///
-        /// * when the text is horizontal it might look like:
-        ///
-        /// 0----1 |    | 3----2
-        ///
-        /// * when it's rotated 180 degrees around the top-left corner it becomes:
-        ///
-        /// 2----3 |    | 1----0
-        ///
-        /// and the vertex order will still be (0, 1, 2, 3).</summary>
+        /// left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is
+        /// horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner
+        /// it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p2beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -3749,7 +3504,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudVisionV1p2beta1BoundingPoly BoundingPoly { get; set; } 
 
-        /// <summary>Confidence of this being a salient region.  Range [0, 1].</summary>
+        /// <summary>Confidence of this being a salient region. Range [0, 1].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
@@ -3934,20 +3689,14 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>Google Cloud Storage URI prefix where the results will be stored. Results will be in JSON format
         /// and preceded by its corresponding input URI prefix. This field can either represent a gcs file prefix or gcs
         /// directory. In either case, the uri should be unique because in order to get all of the output files, you
-        /// will need to do a wildcard gcs search on the uri prefix you provide.
-        ///
-        /// Examples:
-        ///
-        /// *    File Prefix: gs://bucket-name/here/filenameprefix   The output files will be created in gs://bucket-
-        /// name/here/ and the names of the output files will begin with "filenameprefix".
-        ///
-        /// *    Directory Prefix: gs://bucket-name/some/location/   The output files will be created in gs://bucket-
-        /// name/some/location/ and the names of the output files could be anything because there was no filename prefix
-        /// specified.
-        ///
-        /// If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the
-        /// full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too
-        /// large and overflows into multiple sharded files.</summary>
+        /// will need to do a wildcard gcs search on the uri prefix you provide. Examples: * File Prefix: gs://bucket-
+        /// name/here/filenameprefix The output files will be created in gs://bucket-name/here/ and the names of the
+        /// output files will begin with "filenameprefix". * Directory Prefix: gs://bucket-name/some/location/ The
+        /// output files will be created in gs://bucket-name/some/location/ and the names of the output files could be
+        /// anything because there was no filename prefix specified. If multiple outputs, each response is still
+        /// AnnotateFileResponse, each of which contains some subset of the full list of AnnotateImageResponse. Multiple
+        /// outputs can happen if, for example, the output JSON is too large and overflows into multiple sharded
+        /// files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
 
@@ -3999,10 +3748,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     public class GoogleCloudVisionV1p2beta1InputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>File content, represented as a stream of bytes. Note: As with all `bytes` fields, protobuffers use
-        /// a pure binary representation, whereas JSON representations use base64.
-        ///
-        /// Currently, this field only works for BatchAnnotateFiles requests. It does not work for
-        /// AsyncBatchAnnotateFiles requests.</summary>
+        /// a pure binary representation, whereas JSON representations use base64. Currently, this field only works for
+        /// BatchAnnotateFiles requests. It does not work for AsyncBatchAnnotateFiles requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; } 
 
@@ -4097,14 +3844,10 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     public class GoogleCloudVisionV1p2beta1OutputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The max number of response protos to put into each output JSON file on Google Cloud Storage. The
-        /// valid range is [1, 100]. If not specified, the default value is 20.
-        ///
-        /// For example, for one pdf file with 100 pages, 100 response protos will be generated. If `batch_size` = 20,
-        /// then 5 json files each containing 20 response protos will be written under the prefix
-        /// `gcs_destination`.`uri`.
-        ///
-        /// Currently, batch_size only applies to GcsDestination, with potential future support for other output
-        /// configurations.</summary>
+        /// valid range is [1, 100]. If not specified, the default value is 20. For example, for one pdf file with 100
+        /// pages, 100 response protos will be generated. If `batch_size` = 20, then 5 json files each containing 20
+        /// response protos will be written under the prefix `gcs_destination`.`uri`. Currently, batch_size only applies
+        /// to GcsDestination, with potential future support for other output configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]
         public virtual System.Nullable<int> BatchSize { get; set; } 
 
@@ -4150,8 +3893,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>The bounding box for the paragraph. The vertices are in the order of top-left, top-right, bottom-
         /// right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around
         /// the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the
-        /// text is horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-
-        /// left corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
+        /// text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left
+        /// corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p2beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -4204,30 +3947,25 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>The resource name of the product.
-        ///
-        /// Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
-        ///
-        /// This field is ignored when creating a product.</summary>
+        /// <summary>The resource name of the product. Format is:
+        /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a
+        /// product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Immutable. The category for the product identified by the reference image. This should be either
-        /// "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories "homegoods", "apparel", and "toys" are
-        /// still supported, but these should not be used for new products.</summary>
+        /// <summary>Immutable. The category for the product identified by the reference image. This should be one of
+        /// "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1" or "general-v1". The legacy categories
+        /// "homegoods", "apparel", and "toys" are still supported, but these should not be used for new
+        /// products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCategory")]
         public virtual string ProductCategory { get; set; } 
 
         /// <summary>Key-value pairs that can be attached to a product. At query time, constraints can be specified
-        /// based on the product_labels.
-        ///
-        /// Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match
-        /// a range-based restriction which is to be supported soon.
-        ///
-        /// Multiple values can be assigned to the same key. One product may have up to 500 product_labels.
-        ///
-        /// Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed
-        /// 1M, otherwise the product search pipeline will refuse to work for that ProductSet.</summary>
+        /// based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings
+        /// with integer values can match a range-based restriction which is to be supported soon. Multiple values can
+        /// be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of
+        /// distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search
+        /// pipeline will refuse to work for that ProductSet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productLabels")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p2beta1ProductKeyValue> ProductLabels { get; set; } 
 
@@ -4393,8 +4131,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>The bounding box for the symbol. The vertices are in the order of top-left, top-right, bottom-
         /// right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around
         /// the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the
-        /// text is horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-
-        /// left corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
+        /// text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left
+        /// corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p2beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -4613,8 +4351,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>The bounding box for the word. The vertices are in the order of top-left, top-right, bottom-right,
         /// bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-
         /// left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is
-        /// horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-left
-        /// corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
+        /// horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner
+        /// it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p2beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -4749,10 +4487,9 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Metadata for the batch operations such as the current state.
-    ///
-    /// This is included in the `metadata` field of the `Operation` returned by the `GetOperation` call of the
-    /// `google::longrunning::Operations` service.</summary>
+    /// <summary>Metadata for the batch operations such as the current state. This is included in the `metadata` field
+    /// of the `Operation` returned by the `GetOperation` call of the `google::longrunning::Operations`
+    /// service.</summary>
     public class GoogleCloudVisionV1p3beta1BatchOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The time when the batch request is finished and google.longrunning.Operation.done is set to
@@ -4781,17 +4518,9 @@ namespace Google.Apis.Vision.v1p1beta1.Data
 
         /// <summary>The bounding box for the block. The vertices are in the order of top-left, top-right, bottom-right,
         /// bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-
-        /// left corner as defined when the text is read in the 'natural' orientation. For example:
-        ///
-        /// * when the text is horizontal it might look like:
-        ///
-        /// 0----1 |    | 3----2
-        ///
-        /// * when it's rotated 180 degrees around the top-left corner it becomes:
-        ///
-        /// 2----3 |    | 1----0
-        ///
-        /// and the vertex order will still be (0, 1, 2, 3).</summary>
+        /// left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is
+        /// horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner
+        /// it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p3beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -4854,7 +4583,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudVisionV1p3beta1BoundingPoly BoundingPoly { get; set; } 
 
-        /// <summary>Confidence of this being a salient region.  Range [0, 1].</summary>
+        /// <summary>Confidence of this being a salient region. Range [0, 1].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
@@ -5039,20 +4768,14 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>Google Cloud Storage URI prefix where the results will be stored. Results will be in JSON format
         /// and preceded by its corresponding input URI prefix. This field can either represent a gcs file prefix or gcs
         /// directory. In either case, the uri should be unique because in order to get all of the output files, you
-        /// will need to do a wildcard gcs search on the uri prefix you provide.
-        ///
-        /// Examples:
-        ///
-        /// *    File Prefix: gs://bucket-name/here/filenameprefix   The output files will be created in gs://bucket-
-        /// name/here/ and the names of the output files will begin with "filenameprefix".
-        ///
-        /// *    Directory Prefix: gs://bucket-name/some/location/   The output files will be created in gs://bucket-
-        /// name/some/location/ and the names of the output files could be anything because there was no filename prefix
-        /// specified.
-        ///
-        /// If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the
-        /// full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too
-        /// large and overflows into multiple sharded files.</summary>
+        /// will need to do a wildcard gcs search on the uri prefix you provide. Examples: * File Prefix: gs://bucket-
+        /// name/here/filenameprefix The output files will be created in gs://bucket-name/here/ and the names of the
+        /// output files will begin with "filenameprefix". * Directory Prefix: gs://bucket-name/some/location/ The
+        /// output files will be created in gs://bucket-name/some/location/ and the names of the output files could be
+        /// anything because there was no filename prefix specified. If multiple outputs, each response is still
+        /// AnnotateFileResponse, each of which contains some subset of the full list of AnnotateImageResponse. Multiple
+        /// outputs can happen if, for example, the output JSON is too large and overflows into multiple sharded
+        /// files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
 
@@ -5100,20 +4823,18 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message for the `ImportProductSets` method.
-    ///
-    /// This message is returned by the google.longrunning.Operations.GetOperation method in the returned
-    /// google.longrunning.Operation.response field.</summary>
+    /// <summary>Response message for the `ImportProductSets` method. This message is returned by the
+    /// google.longrunning.Operations.GetOperation method in the returned google.longrunning.Operation.response
+    /// field.</summary>
     public class GoogleCloudVisionV1p3beta1ImportProductSetsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of reference_images that are imported successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referenceImages")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p3beta1ReferenceImage> ReferenceImages { get; set; } 
 
-        /// <summary>The rpc status for each ImportProductSet request, including both successes and errors.
-        ///
-        /// The number of statuses here matches the number of lines in the csv file, and statuses[i] stores the success
-        /// or failure status of processing the i-th line of the csv, starting from line 0.</summary>
+        /// <summary>The rpc status for each ImportProductSet request, including both successes and errors. The number
+        /// of statuses here matches the number of lines in the csv file, and statuses[i] stores the success or failure
+        /// status of processing the i-th line of the csv, starting from line 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statuses")]
         public virtual System.Collections.Generic.IList<Status> Statuses { get; set; } 
 
@@ -5125,10 +4846,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     public class GoogleCloudVisionV1p3beta1InputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>File content, represented as a stream of bytes. Note: As with all `bytes` fields, protobuffers use
-        /// a pure binary representation, whereas JSON representations use base64.
-        ///
-        /// Currently, this field only works for BatchAnnotateFiles requests. It does not work for
-        /// AsyncBatchAnnotateFiles requests.</summary>
+        /// a pure binary representation, whereas JSON representations use base64. Currently, this field only works for
+        /// BatchAnnotateFiles requests. It does not work for AsyncBatchAnnotateFiles requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; } 
 
@@ -5223,14 +4942,10 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     public class GoogleCloudVisionV1p3beta1OutputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The max number of response protos to put into each output JSON file on Google Cloud Storage. The
-        /// valid range is [1, 100]. If not specified, the default value is 20.
-        ///
-        /// For example, for one pdf file with 100 pages, 100 response protos will be generated. If `batch_size` = 20,
-        /// then 5 json files each containing 20 response protos will be written under the prefix
-        /// `gcs_destination`.`uri`.
-        ///
-        /// Currently, batch_size only applies to GcsDestination, with potential future support for other output
-        /// configurations.</summary>
+        /// valid range is [1, 100]. If not specified, the default value is 20. For example, for one pdf file with 100
+        /// pages, 100 response protos will be generated. If `batch_size` = 20, then 5 json files each containing 20
+        /// response protos will be written under the prefix `gcs_destination`.`uri`. Currently, batch_size only applies
+        /// to GcsDestination, with potential future support for other output configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]
         public virtual System.Nullable<int> BatchSize { get; set; } 
 
@@ -5276,8 +4991,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>The bounding box for the paragraph. The vertices are in the order of top-left, top-right, bottom-
         /// right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around
         /// the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the
-        /// text is horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-
-        /// left corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
+        /// text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left
+        /// corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p3beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -5330,30 +5045,25 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>The resource name of the product.
-        ///
-        /// Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
-        ///
-        /// This field is ignored when creating a product.</summary>
+        /// <summary>The resource name of the product. Format is:
+        /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a
+        /// product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Immutable. The category for the product identified by the reference image. This should be either
-        /// "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories "homegoods", "apparel", and "toys" are
-        /// still supported, but these should not be used for new products.</summary>
+        /// <summary>Immutable. The category for the product identified by the reference image. This should be one of
+        /// "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1" or "general-v1". The legacy categories
+        /// "homegoods", "apparel", and "toys" are still supported, but these should not be used for new
+        /// products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCategory")]
         public virtual string ProductCategory { get; set; } 
 
         /// <summary>Key-value pairs that can be attached to a product. At query time, constraints can be specified
-        /// based on the product_labels.
-        ///
-        /// Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match
-        /// a range-based restriction which is to be supported soon.
-        ///
-        /// Multiple values can be assigned to the same key. One product may have up to 500 product_labels.
-        ///
-        /// Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed
-        /// 1M, otherwise the product search pipeline will refuse to work for that ProductSet.</summary>
+        /// based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings
+        /// with integer values can match a range-based restriction which is to be supported soon. Multiple values can
+        /// be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of
+        /// distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search
+        /// pipeline will refuse to work for that ProductSet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productLabels")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p3beta1ProductKeyValue> ProductLabels { get; set; } 
 
@@ -5486,27 +5196,21 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     public class GoogleCloudVisionV1p3beta1ReferenceImage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Bounding polygons around the areas of interest in the reference image. If this field is
-        /// empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used.
-        ///
-        /// The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the
-        /// rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok;
-        /// 1:5 is not).</summary>
+        /// empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The
+        /// provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle
+        /// must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is
+        /// not).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPolys")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p3beta1BoundingPoly> BoundingPolys { get; set; } 
 
-        /// <summary>The resource name of the reference image.
-        ///
-        /// Format is:
-        ///
-        /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`.
-        ///
-        /// This field is ignored when creating a reference image.</summary>
+        /// <summary>The resource name of the reference image. Format is:
+        /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored
+        /// when creating a reference image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Required. The Google Cloud Storage URI of the reference image.
-        ///
-        /// The URI must start with `gs://`.</summary>
+        /// <summary>Required. The Google Cloud Storage URI of the reference image. The URI must start with
+        /// `gs://`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
 
@@ -5552,8 +5256,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>The bounding box for the symbol. The vertices are in the order of top-left, top-right, bottom-
         /// right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around
         /// the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the
-        /// text is horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-
-        /// left corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
+        /// text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left
+        /// corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p3beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -5772,8 +5476,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>The bounding box for the word. The vertices are in the order of top-left, top-right, bottom-right,
         /// bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-
         /// left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is
-        /// horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-left
-        /// corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
+        /// horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner
+        /// it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p3beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -5931,10 +5635,9 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Metadata for the batch operations such as the current state.
-    ///
-    /// This is included in the `metadata` field of the `Operation` returned by the `GetOperation` call of the
-    /// `google::longrunning::Operations` service.</summary>
+    /// <summary>Metadata for the batch operations such as the current state. This is included in the `metadata` field
+    /// of the `Operation` returned by the `GetOperation` call of the `google::longrunning::Operations`
+    /// service.</summary>
     public class GoogleCloudVisionV1p4beta1BatchOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The time when the batch request is finished and google.longrunning.Operation.done is set to
@@ -5963,17 +5666,9 @@ namespace Google.Apis.Vision.v1p1beta1.Data
 
         /// <summary>The bounding box for the block. The vertices are in the order of top-left, top-right, bottom-right,
         /// bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-
-        /// left corner as defined when the text is read in the 'natural' orientation. For example:
-        ///
-        /// * when the text is horizontal it might look like:
-        ///
-        /// 0----1 |    | 3----2
-        ///
-        /// * when it's rotated 180 degrees around the top-left corner it becomes:
-        ///
-        /// 2----3 |    | 1----0
-        ///
-        /// and the vertex order will still be (0, 1, 2, 3).</summary>
+        /// left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is
+        /// horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner
+        /// it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p4beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -6055,7 +5750,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudVisionV1p4beta1BoundingPoly BoundingPoly { get; set; } 
 
-        /// <summary>Confidence of this being a salient region.  Range [0, 1].</summary>
+        /// <summary>Confidence of this being a salient region. Range [0, 1].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
@@ -6261,20 +5956,14 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>Google Cloud Storage URI prefix where the results will be stored. Results will be in JSON format
         /// and preceded by its corresponding input URI prefix. This field can either represent a gcs file prefix or gcs
         /// directory. In either case, the uri should be unique because in order to get all of the output files, you
-        /// will need to do a wildcard gcs search on the uri prefix you provide.
-        ///
-        /// Examples:
-        ///
-        /// *    File Prefix: gs://bucket-name/here/filenameprefix   The output files will be created in gs://bucket-
-        /// name/here/ and the names of the output files will begin with "filenameprefix".
-        ///
-        /// *    Directory Prefix: gs://bucket-name/some/location/   The output files will be created in gs://bucket-
-        /// name/some/location/ and the names of the output files could be anything because there was no filename prefix
-        /// specified.
-        ///
-        /// If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the
-        /// full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too
-        /// large and overflows into multiple sharded files.</summary>
+        /// will need to do a wildcard gcs search on the uri prefix you provide. Examples: * File Prefix: gs://bucket-
+        /// name/here/filenameprefix The output files will be created in gs://bucket-name/here/ and the names of the
+        /// output files will begin with "filenameprefix". * Directory Prefix: gs://bucket-name/some/location/ The
+        /// output files will be created in gs://bucket-name/some/location/ and the names of the output files could be
+        /// anything because there was no filename prefix specified. If multiple outputs, each response is still
+        /// AnnotateFileResponse, each of which contains some subset of the full list of AnnotateImageResponse. Multiple
+        /// outputs can happen if, for example, the output JSON is too large and overflows into multiple sharded
+        /// files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
 
@@ -6322,20 +6011,18 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message for the `ImportProductSets` method.
-    ///
-    /// This message is returned by the google.longrunning.Operations.GetOperation method in the returned
-    /// google.longrunning.Operation.response field.</summary>
+    /// <summary>Response message for the `ImportProductSets` method. This message is returned by the
+    /// google.longrunning.Operations.GetOperation method in the returned google.longrunning.Operation.response
+    /// field.</summary>
     public class GoogleCloudVisionV1p4beta1ImportProductSetsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of reference_images that are imported successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referenceImages")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p4beta1ReferenceImage> ReferenceImages { get; set; } 
 
-        /// <summary>The rpc status for each ImportProductSet request, including both successes and errors.
-        ///
-        /// The number of statuses here matches the number of lines in the csv file, and statuses[i] stores the success
-        /// or failure status of processing the i-th line of the csv, starting from line 0.</summary>
+        /// <summary>The rpc status for each ImportProductSet request, including both successes and errors. The number
+        /// of statuses here matches the number of lines in the csv file, and statuses[i] stores the success or failure
+        /// status of processing the i-th line of the csv, starting from line 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statuses")]
         public virtual System.Collections.Generic.IList<Status> Statuses { get; set; } 
 
@@ -6347,10 +6034,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     public class GoogleCloudVisionV1p4beta1InputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>File content, represented as a stream of bytes. Note: As with all `bytes` fields, protobuffers use
-        /// a pure binary representation, whereas JSON representations use base64.
-        ///
-        /// Currently, this field only works for BatchAnnotateFiles requests. It does not work for
-        /// AsyncBatchAnnotateFiles requests.</summary>
+        /// a pure binary representation, whereas JSON representations use base64. Currently, this field only works for
+        /// BatchAnnotateFiles requests. It does not work for AsyncBatchAnnotateFiles requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; } 
 
@@ -6445,14 +6130,10 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     public class GoogleCloudVisionV1p4beta1OutputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The max number of response protos to put into each output JSON file on Google Cloud Storage. The
-        /// valid range is [1, 100]. If not specified, the default value is 20.
-        ///
-        /// For example, for one pdf file with 100 pages, 100 response protos will be generated. If `batch_size` = 20,
-        /// then 5 json files each containing 20 response protos will be written under the prefix
-        /// `gcs_destination`.`uri`.
-        ///
-        /// Currently, batch_size only applies to GcsDestination, with potential future support for other output
-        /// configurations.</summary>
+        /// valid range is [1, 100]. If not specified, the default value is 20. For example, for one pdf file with 100
+        /// pages, 100 response protos will be generated. If `batch_size` = 20, then 5 json files each containing 20
+        /// response protos will be written under the prefix `gcs_destination`.`uri`. Currently, batch_size only applies
+        /// to GcsDestination, with potential future support for other output configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]
         public virtual System.Nullable<int> BatchSize { get; set; } 
 
@@ -6498,8 +6179,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>The bounding box for the paragraph. The vertices are in the order of top-left, top-right, bottom-
         /// right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around
         /// the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the
-        /// text is horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-
-        /// left corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
+        /// text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left
+        /// corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p4beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -6552,30 +6233,25 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>The resource name of the product.
-        ///
-        /// Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
-        ///
-        /// This field is ignored when creating a product.</summary>
+        /// <summary>The resource name of the product. Format is:
+        /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a
+        /// product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Immutable. The category for the product identified by the reference image. This should be either
-        /// "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories "homegoods", "apparel", and "toys" are
-        /// still supported, but these should not be used for new products.</summary>
+        /// <summary>Immutable. The category for the product identified by the reference image. This should be one of
+        /// "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1" or "general-v1". The legacy categories
+        /// "homegoods", "apparel", and "toys" are still supported, but these should not be used for new
+        /// products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCategory")]
         public virtual string ProductCategory { get; set; } 
 
         /// <summary>Key-value pairs that can be attached to a product. At query time, constraints can be specified
-        /// based on the product_labels.
-        ///
-        /// Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match
-        /// a range-based restriction which is to be supported soon.
-        ///
-        /// Multiple values can be assigned to the same key. One product may have up to 500 product_labels.
-        ///
-        /// Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed
-        /// 1M, otherwise the product search pipeline will refuse to work for that ProductSet.</summary>
+        /// based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings
+        /// with integer values can match a range-based restriction which is to be supported soon. Multiple values can
+        /// be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of
+        /// distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search
+        /// pipeline will refuse to work for that ProductSet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productLabels")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p4beta1ProductKeyValue> ProductLabels { get; set; } 
 
@@ -6708,27 +6384,21 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     public class GoogleCloudVisionV1p4beta1ReferenceImage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Bounding polygons around the areas of interest in the reference image. If this field is
-        /// empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used.
-        ///
-        /// The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the
-        /// rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok;
-        /// 1:5 is not).</summary>
+        /// empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The
+        /// provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle
+        /// must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is
+        /// not).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPolys")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p4beta1BoundingPoly> BoundingPolys { get; set; } 
 
-        /// <summary>The resource name of the reference image.
-        ///
-        /// Format is:
-        ///
-        /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`.
-        ///
-        /// This field is ignored when creating a reference image.</summary>
+        /// <summary>The resource name of the reference image. Format is:
+        /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored
+        /// when creating a reference image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Required. The Google Cloud Storage URI of the reference image.
-        ///
-        /// The URI must start with `gs://`.</summary>
+        /// <summary>Required. The Google Cloud Storage URI of the reference image. The URI must start with
+        /// `gs://`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
 
@@ -6774,8 +6444,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>The bounding box for the symbol. The vertices are in the order of top-left, top-right, bottom-
         /// right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around
         /// the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the
-        /// text is horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-
-        /// left corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
+        /// text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left
+        /// corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p4beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -6994,8 +6664,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>The bounding box for the word. The vertices are in the order of top-left, top-right, bottom-right,
         /// bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-
         /// left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is
-        /// horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-left
-        /// corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
+        /// horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner
+        /// it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p4beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -7062,20 +6732,18 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message for the `ImportProductSets` method.
-    ///
-    /// This message is returned by the google.longrunning.Operations.GetOperation method in the returned
-    /// google.longrunning.Operation.response field.</summary>
+    /// <summary>Response message for the `ImportProductSets` method. This message is returned by the
+    /// google.longrunning.Operations.GetOperation method in the returned google.longrunning.Operation.response
+    /// field.</summary>
     public class ImportProductSetsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of reference_images that are imported successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referenceImages")]
         public virtual System.Collections.Generic.IList<ReferenceImage> ReferenceImages { get; set; } 
 
-        /// <summary>The rpc status for each ImportProductSet request, including both successes and errors.
-        ///
-        /// The number of statuses here matches the number of lines in the csv file, and statuses[i] stores the success
-        /// or failure status of processing the i-th line of the csv, starting from line 0.</summary>
+        /// <summary>The rpc status for each ImportProductSet request, including both successes and errors. The number
+        /// of statuses here matches the number of lines in the csv file, and statuses[i] stores the success or failure
+        /// status of processing the i-th line of the csv, starting from line 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statuses")]
         public virtual System.Collections.Generic.IList<Status> Statuses { get; set; } 
 
@@ -7087,10 +6755,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     public class InputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>File content, represented as a stream of bytes. Note: As with all `bytes` fields, protobuffers use
-        /// a pure binary representation, whereas JSON representations use base64.
-        ///
-        /// Currently, this field only works for BatchAnnotateFiles requests. It does not work for
-        /// AsyncBatchAnnotateFiles requests.</summary>
+        /// a pure binary representation, whereas JSON representations use base64. Currently, this field only works for
+        /// BatchAnnotateFiles requests. It does not work for AsyncBatchAnnotateFiles requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; } 
 
@@ -7247,9 +6913,9 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -7259,11 +6925,11 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -7294,14 +6960,10 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     public class OutputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The max number of response protos to put into each output JSON file on Google Cloud Storage. The
-        /// valid range is [1, 100]. If not specified, the default value is 20.
-        ///
-        /// For example, for one pdf file with 100 pages, 100 response protos will be generated. If `batch_size` = 20,
-        /// then 5 json files each containing 20 response protos will be written under the prefix
-        /// `gcs_destination`.`uri`.
-        ///
-        /// Currently, batch_size only applies to GcsDestination, with potential future support for other output
-        /// configurations.</summary>
+        /// valid range is [1, 100]. If not specified, the default value is 20. For example, for one pdf file with 100
+        /// pages, 100 response protos will be generated. If `batch_size` = 20, then 5 json files each containing 20
+        /// response protos will be written under the prefix `gcs_destination`.`uri`. Currently, batch_size only applies
+        /// to GcsDestination, with potential future support for other output configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]
         public virtual System.Nullable<int> BatchSize { get; set; } 
 
@@ -7347,8 +7009,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>The bounding box for the paragraph. The vertices are in the order of top-left, top-right, bottom-
         /// right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around
         /// the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the
-        /// text is horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-
-        /// left corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
+        /// text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left
+        /// corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual BoundingPoly BoundingBox { get; set; } 
 
@@ -7401,30 +7063,25 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>The resource name of the product.
-        ///
-        /// Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
-        ///
-        /// This field is ignored when creating a product.</summary>
+        /// <summary>The resource name of the product. Format is:
+        /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a
+        /// product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Immutable. The category for the product identified by the reference image. This should be either
-        /// "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories "homegoods", "apparel", and "toys" are
-        /// still supported, but these should not be used for new products.</summary>
+        /// <summary>Immutable. The category for the product identified by the reference image. This should be one of
+        /// "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1" or "general-v1". The legacy categories
+        /// "homegoods", "apparel", and "toys" are still supported, but these should not be used for new
+        /// products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCategory")]
         public virtual string ProductCategory { get; set; } 
 
         /// <summary>Key-value pairs that can be attached to a product. At query time, constraints can be specified
-        /// based on the product_labels.
-        ///
-        /// Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match
-        /// a range-based restriction which is to be supported soon.
-        ///
-        /// Multiple values can be assigned to the same key. One product may have up to 500 product_labels.
-        ///
-        /// Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed
-        /// 1M, otherwise the product search pipeline will refuse to work for that ProductSet.</summary>
+        /// based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings
+        /// with integer values can match a range-based restriction which is to be supported soon. Multiple values can
+        /// be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of
+        /// distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search
+        /// pipeline will refuse to work for that ProductSet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productLabels")]
         public virtual System.Collections.Generic.IList<KeyValue> ProductLabels { get; set; } 
 
@@ -7478,27 +7135,21 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     public class ReferenceImage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Bounding polygons around the areas of interest in the reference image. If this field is
-        /// empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used.
-        ///
-        /// The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the
-        /// rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok;
-        /// 1:5 is not).</summary>
+        /// empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The
+        /// provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle
+        /// must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is
+        /// not).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPolys")]
         public virtual System.Collections.Generic.IList<BoundingPoly> BoundingPolys { get; set; } 
 
-        /// <summary>The resource name of the reference image.
-        ///
-        /// Format is:
-        ///
-        /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`.
-        ///
-        /// This field is ignored when creating a reference image.</summary>
+        /// <summary>The resource name of the reference image. Format is:
+        /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored
+        /// when creating a reference image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Required. The Google Cloud Storage URI of the reference image.
-        ///
-        /// The URI must start with `gs://`.</summary>
+        /// <summary>Required. The Google Cloud Storage URI of the reference image. The URI must start with
+        /// `gs://`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
 
@@ -7559,9 +7210,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7569,8 +7219,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -7589,8 +7239,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>The bounding box for the symbol. The vertices are in the order of top-left, top-right, bottom-
         /// right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around
         /// the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the
-        /// text is horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-
-        /// left corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
+        /// text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left
+        /// corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual BoundingPoly BoundingBox { get; set; } 
 
@@ -7778,8 +7428,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>The bounding box for the word. The vertices are in the order of top-left, top-right, bottom-right,
         /// bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-
         /// left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is
-        /// horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-left
-        /// corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
+        /// horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner
+        /// it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual BoundingPoly BoundingBox { get; set; } 
 

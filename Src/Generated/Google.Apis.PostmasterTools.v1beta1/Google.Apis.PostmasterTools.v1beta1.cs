@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/postmaster'>Gmail Postmaster Tools API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200801 (2039)
+ *      <tr><th>API Rev<td>20200804 (2042)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/postmaster'>
  *              https://developers.google.com/gmail/postmaster</a>
@@ -780,7 +780,7 @@ namespace Google.Apis.PostmasterTools.v1beta1.Data
         public virtual object CreateTime { get; set; } 
 
         /// <summary>The resource name of the Domain. Domain names have the form `domains/{domain_name}`, where
-        /// domain_name is the fully qualified domain name (i.e.,  mymail.mydomain.com).</summary>
+        /// domain_name is the fully qualified domain name (i.e., mymail.mydomain.com).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

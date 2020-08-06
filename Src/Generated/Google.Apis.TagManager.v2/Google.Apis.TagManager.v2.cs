@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/tag-manager'>Tag Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200729 (2036)
+ *      <tr><th>API Rev<td>20200803 (2041)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/tag-manager'>
  *              https://developers.google.com/tag-manager</a>
@@ -1634,6 +1634,7 @@ namespace Google.Apis.TagManager.v2
                             PagePath,
                             [Google.Apis.Util.StringValueAttribute("referrer")]
                             Referrer,
+                            /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("event")]
                             Event__,
                             [Google.Apis.Util.StringValueAttribute("clickElement")]
@@ -1682,12 +1683,15 @@ namespace Google.Apis.TagManager.v2
                             OldHistoryState,
                             [Google.Apis.Util.StringValueAttribute("historySource")]
                             HistorySource,
+                            /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("containerVersion")]
                             ContainerVersion,
                             [Google.Apis.Util.StringValueAttribute("debugMode")]
                             DebugMode,
+                            /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("randomNumber")]
                             RandomNumber,
+                            /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("containerId")]
                             ContainerId,
                             [Google.Apis.Util.StringValueAttribute("appId")]
@@ -1934,6 +1938,7 @@ namespace Google.Apis.TagManager.v2
                             PagePath,
                             [Google.Apis.Util.StringValueAttribute("referrer")]
                             Referrer,
+                            /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("event")]
                             Event__,
                             [Google.Apis.Util.StringValueAttribute("clickElement")]
@@ -1982,12 +1987,15 @@ namespace Google.Apis.TagManager.v2
                             OldHistoryState,
                             [Google.Apis.Util.StringValueAttribute("historySource")]
                             HistorySource,
+                            /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("containerVersion")]
                             ContainerVersion,
                             [Google.Apis.Util.StringValueAttribute("debugMode")]
                             DebugMode,
+                            /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("randomNumber")]
                             RandomNumber,
+                            /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("containerId")]
                             ContainerId,
                             [Google.Apis.Util.StringValueAttribute("appId")]
@@ -2309,6 +2317,7 @@ namespace Google.Apis.TagManager.v2
                             PagePath,
                             [Google.Apis.Util.StringValueAttribute("referrer")]
                             Referrer,
+                            /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("event")]
                             Event__,
                             [Google.Apis.Util.StringValueAttribute("clickElement")]
@@ -2357,12 +2366,15 @@ namespace Google.Apis.TagManager.v2
                             OldHistoryState,
                             [Google.Apis.Util.StringValueAttribute("historySource")]
                             HistorySource,
+                            /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("containerVersion")]
                             ContainerVersion,
                             [Google.Apis.Util.StringValueAttribute("debugMode")]
                             DebugMode,
+                            /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("randomNumber")]
                             RandomNumber,
+                            /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("containerId")]
                             ContainerId,
                             [Google.Apis.Util.StringValueAttribute("appId")]
@@ -7233,14 +7245,13 @@ namespace Google.Apis.TagManager.v2.Data
     /// <summary>Represents a predicate.</summary>
     public class Condition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of named parameters (key/value), depending on the condition's type. Notes: For binary
+        /// <summary>A list of named parameters (key/value), depending on the condition's type. Notes: - For binary
         /// operators, include parameters named arg0 and arg1 for specifying the left and right operands, respectively.
-        /// At this time, the left operand (arg0) must be a reference to a variable. For case-insensitive Regex
+        /// - At this time, the left operand (arg0) must be a reference to a variable. - For case-insensitive Regex
         /// matching, include a boolean parameter named ignore_case that is set to true. If not specified or set to any
-        /// other value, the matching will be case sensitive. To negate an operator, include a boolean parameter named
-        /// negate boolean parameter that is set to true.
-        ///
-        /// @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// other value, the matching will be case sensitive. - To negate an operator, include a boolean parameter named
+        /// negate boolean parameter that is set to true. @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
         /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; } 
@@ -7272,8 +7283,8 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domainName")]
         public virtual System.Collections.Generic.IList<string> DomainName { get; set; } 
 
-        /// <summary>The fingerprint of the GTM Container as computed at storage time.  This value is recomputed
-        /// whenever the account is modified.</summary>
+        /// <summary>The fingerprint of the GTM Container as computed at storage time. This value is recomputed whenever
+        /// the account is modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
@@ -7746,7 +7757,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; } 
 
-        /// <summary>If a user has manually edited the community  gallery template.</summary>
+        /// <summary>If a user has manually edited the community gallery template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isModified")]
         public virtual System.Nullable<bool> IsModified { get; set; } 
 
@@ -8000,8 +8011,8 @@ namespace Google.Apis.TagManager.v2.Data
     /// <summary>Represents a Google Tag Manager Parameter.</summary>
     public class Parameter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The named key that uniquely identifies a parameter.  Required for top-level parameters, as well as
-        /// map values.  Ignored for list values. @mutable tagmanager.accounts.containers.workspaces.variables.create
+        /// <summary>The named key that uniquely identifies a parameter. Required for top-level parameters, as well as
+        /// map values. Ignored for list values. @mutable tagmanager.accounts.containers.workspaces.variables.create
         /// @mutable tagmanager.accounts.containers.workspaces.variables.update @mutable
         /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
         /// tagmanager.accounts.containers.workspaces.triggers.update @mutable
@@ -8030,14 +8041,13 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("map")]
         public virtual System.Collections.Generic.IList<Parameter> Map { get; set; } 
 
-        /// <summary>The parameter type.  Valid values are: boolean: The value represents a boolean, represented as
-        /// 'true' or 'false' integer: The value represents a 64-bit signed integer value, in base 10 list: A list of
-        /// parameters should be specified map: A map of parameters should be specified template: The value represents
-        /// any text; this can include variable references (even variable references that might return non-string types)
-        /// trigger_reference: The value represents a trigger, represented as the trigger id tag_reference: The value
-        /// represents a tag, represented as the tag name
-        ///
-        /// @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable
+        /// <summary>The parameter type. Valid values are: - boolean: The value represents a boolean, represented as
+        /// 'true' or 'false' - integer: The value represents a 64-bit signed integer value, in base 10 - list: A list
+        /// of parameters should be specified - map: A map of parameters should be specified - template: The value
+        /// represents any text; this can include variable references (even variable references that might return non-
+        /// string types) - trigger_reference: The value represents a trigger, represented as the trigger id -
+        /// tag_reference: The value represents a tag, represented as the tag name @mutable
+        /// tagmanager.accounts.containers.workspaces.variables.create @mutable
         /// tagmanager.accounts.containers.workspaces.variables.update @mutable
         /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
         /// tagmanager.accounts.containers.workspaces.triggers.update @mutable
@@ -8277,10 +8287,8 @@ namespace Google.Apis.TagManager.v2.Data
         public virtual System.Nullable<bool> LiveOnly { get; set; } 
 
         /// <summary>A map of key-value pairs of tag metadata to be included in the event data for tag monitoring.
-        /// Notes: This parameter must be type MAP. Each parameter in the map are type TEMPLATE, however cannot contain
-        /// variable references.
-        ///
-        /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// Notes: - This parameter must be type MAP. - Each parameter in the map are type TEMPLATE, however cannot
+        /// contain variable references. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
         /// tagmanager.accounts.containers.workspaces.tags.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoringMetadata")]
         public virtual Parameter MonitoringMetadata { get; set; } 

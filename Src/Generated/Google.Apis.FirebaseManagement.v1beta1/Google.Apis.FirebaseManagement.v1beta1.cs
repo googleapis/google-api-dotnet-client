@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com'>Firebase Management API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200730 (2037)
+ *      <tr><th>API Rev<td>20200804 (2042)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com'>
  *              https://firebase.google.com</a>
@@ -378,34 +378,20 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
         /// <summary>Lists each [Google Cloud Platform (GCP) `Project`] (https://cloud.google.com/resource-
-        /// manager/reference/rest/v1/projects) that can have Firebase resources added to it.
-        ///
-        /// A Project will only be listed if:
-        ///
-        /// The caller has sufficient [Google IAM](https://cloud.google.com/iam) permissions to call AddFirebase.
-        ///
-        /// The Project is not already a FirebaseProject.
-        ///
-        /// The Project is not in an Organization which has policies that prevent Firebase resources from being added.
-        ///
-        /// </summary>
+        /// manager/reference/rest/v1/projects) that can have Firebase resources added to it. A Project will only be
+        /// listed if: - The caller has sufficient [Google IAM](https://cloud.google.com/iam) permissions to call
+        /// AddFirebase. - The Project is not already a FirebaseProject. - The Project is not in an Organization which
+        /// has policies that prevent Firebase resources from being added. </summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
         /// <summary>Lists each [Google Cloud Platform (GCP) `Project`] (https://cloud.google.com/resource-
-        /// manager/reference/rest/v1/projects) that can have Firebase resources added to it.
-        ///
-        /// A Project will only be listed if:
-        ///
-        /// The caller has sufficient [Google IAM](https://cloud.google.com/iam) permissions to call AddFirebase.
-        ///
-        /// The Project is not already a FirebaseProject.
-        ///
-        /// The Project is not in an Organization which has policies that prevent Firebase resources from being added.
-        ///
-        /// </summary>
+        /// manager/reference/rest/v1/projects) that can have Firebase resources added to it. A Project will only be
+        /// listed if: - The caller has sufficient [Google IAM](https://cloud.google.com/iam) permissions to call
+        /// AddFirebase. - The Project is not already a FirebaseProject. - The Project is not in an Organization which
+        /// has policies that prevent Firebase resources from being added. </summary>
         public class ListRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.ListAvailableProjectsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -416,12 +402,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
 
-            /// <summary>The maximum number of Projects to return in the response.
-            ///
-            /// The server may return fewer than this value at its discretion. If no value is specified (or too large a
-            /// value is specified), the server will impose its own limit.
-            ///
-            /// This value cannot be negative.</summary>
+            /// <summary>The maximum number of Projects to return in the response. The server may return fewer than this
+            /// value at its discretion. If no value is specified (or too large a value is specified), the server will
+            /// impose its own limit. This value cannot be negative.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -493,7 +476,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         }
 
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
@@ -501,7 +484,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         public class GetRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
         {
@@ -627,13 +610,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 /// <summary>Adds a ShaCertificate to the specified AndroidApp.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">The resource name of the parent AndroidApp to which to add a ShaCertificate, in the format:
-                /// projects/PROJECT_IDENTIFIER/androidApps/APP_ID
-                ///
-                /// Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in
-                /// the format: projects/-/androidApps/APP_ID
-                ///
-                /// Refer to the `AndroidApp` [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details about
-                /// PROJECT_IDENTIFIER and APP_ID values.</param>
+                /// projects/PROJECT_IDENTIFIER/androidApps/ APP_ID Since an APP_ID is a unique identifier, the Unique Resource from
+                /// Sub-Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID Refer to the
+                /// `AndroidApp` [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and
+                /// APP_ID values.</param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseManagement.v1beta1.Data.ShaCertificate body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -653,13 +633,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
                     /// <summary>The resource name of the parent AndroidApp to which to add a ShaCertificate, in the
-                    /// format: projects/PROJECT_IDENTIFIER/androidApps/APP_ID
-                    ///
-                    /// Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern
-                    /// may be used here, in the format: projects/-/androidApps/APP_ID
-                    ///
-                    /// Refer to the `AndroidApp` [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for
-                    /// details about PROJECT_IDENTIFIER and APP_ID values.</summary>
+                    /// format: projects/PROJECT_IDENTIFIER/androidApps/ APP_ID Since an APP_ID is a unique identifier,
+                    /// the Unique Resource from Sub-Collection access pattern may be used here, in the format:
+                    /// projects/-/androidApps/APP_ID Refer to the `AndroidApp`
+                    /// [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details about
+                    /// PROJECT_IDENTIFIER and APP_ID values.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -708,11 +686,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
                 /// <summary>Removes a ShaCertificate from the specified AndroidApp.</summary>
                 /// <param name="name">The resource name of the ShaCertificate to remove from the parent AndroidApp, in the format:
-                /// projects/PROJECT_IDENTIFIER/androidApps/APP_ID/sha/SHA_HASH Refer to the `ShaCertificate`
+                /// projects/PROJECT_IDENTIFIER/androidApps/APP_ID /sha/SHA_HASH Refer to the `ShaCertificate`
                 /// [`name`](../projects.androidApps.sha#ShaCertificate.FIELDS.name) field for details about PROJECT_IDENTIFIER, APP_ID,
-                /// and SHA_HASH values.
-                ///
-                /// You can obtain the full resource name of the `ShaCertificate` from the response of
+                /// and SHA_HASH values. You can obtain the full resource name of the `ShaCertificate` from the response of
                 /// [`ListShaCertificates`](../projects.androidApps.sha/list) or the original
                 /// [`CreateShaCertificate`](../projects.androidApps.sha/create).</param>
                 public virtual DeleteRequest Delete(string name)
@@ -733,11 +709,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
                     /// <summary>The resource name of the ShaCertificate to remove from the parent AndroidApp, in the
-                    /// format: projects/PROJECT_IDENTIFIER/androidApps/APP_ID/sha/SHA_HASH Refer to the
+                    /// format: projects/PROJECT_IDENTIFIER/androidApps/APP_ID /sha/SHA_HASH Refer to the
                     /// `ShaCertificate` [`name`](../projects.androidApps.sha#ShaCertificate.FIELDS.name) field for
-                    /// details about PROJECT_IDENTIFIER, APP_ID, and SHA_HASH values.
-                    ///
-                    /// You can obtain the full resource name of the `ShaCertificate` from the response of
+                    /// details about PROJECT_IDENTIFIER, APP_ID, and SHA_HASH values. You can obtain the full resource
+                    /// name of the `ShaCertificate` from the response of
                     /// [`ListShaCertificates`](../projects.androidApps.sha/list) or the original
                     /// [`CreateShaCertificate`](../projects.androidApps.sha/create).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -782,13 +757,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
                 /// <summary>Lists the SHA-1 and SHA-256 certificates for the specified AndroidApp.</summary>
                 /// <param name="parent">The resource name of the parent AndroidApp for which to list each associated ShaCertificate, in
-                /// the format: projects/PROJECT_IDENTIFIER/androidApps/APP_ID
-                ///
-                /// Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in
-                /// the format: projects/-/androidApps/APP_ID
-                ///
-                /// Refer to the `AndroidApp` [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details about
-                /// PROJECT_IDENTIFIER and APP_ID values.</param>
+                /// the format: projects/PROJECT_IDENTIFIER /androidApps/APP_ID Since an APP_ID is a unique identifier, the Unique
+                /// Resource from Sub-Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID Refer to
+                /// the `AndroidApp` [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details about PROJECT_IDENTIFIER
+                /// and APP_ID values.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -807,13 +779,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
                     /// <summary>The resource name of the parent AndroidApp for which to list each associated
-                    /// ShaCertificate, in the format: projects/PROJECT_IDENTIFIER/androidApps/APP_ID
-                    ///
-                    /// Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern
-                    /// may be used here, in the format: projects/-/androidApps/APP_ID
-                    ///
-                    /// Refer to the `AndroidApp` [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for
-                    /// details about PROJECT_IDENTIFIER and APP_ID values.</summary>
+                    /// ShaCertificate, in the format: projects/PROJECT_IDENTIFIER /androidApps/APP_ID Since an APP_ID
+                    /// is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here,
+                    /// in the format: projects/-/androidApps/APP_ID Refer to the `AndroidApp`
+                    /// [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details about
+                    /// PROJECT_IDENTIFIER and APP_ID values.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -855,11 +825,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
             }
 
-            /// <summary>Requests the creation of a new AndroidApp in the specified FirebaseProject.
-            ///
-            /// The result of this call is an `Operation` which can be used to track the provisioning process. The
-            /// `Operation` is automatically deleted after completion, so there is no need to call
-            /// `DeleteOperation`.</summary>
+            /// <summary>Requests the creation of a new AndroidApp in the specified FirebaseProject. The result of this
+            /// call is an `Operation` which can be used to track the provisioning process. The `Operation` is
+            /// automatically deleted after completion, so there is no need to call `DeleteOperation`.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">The resource name of the parent FirebaseProject in which to create an AndroidApp, in the
             /// format: projects/PROJECT_IDENTIFIER/androidApps Refer to the `FirebaseProject`
@@ -869,11 +837,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Requests the creation of a new AndroidApp in the specified FirebaseProject.
-            ///
-            /// The result of this call is an `Operation` which can be used to track the provisioning process. The
-            /// `Operation` is automatically deleted after completion, so there is no need to call
-            /// `DeleteOperation`.</summary>
+            /// <summary>Requests the creation of a new AndroidApp in the specified FirebaseProject. The result of this
+            /// call is an `Operation` which can be used to track the provisioning process. The `Operation` is
+            /// automatically deleted after completion, so there is no need to call `DeleteOperation`.</summary>
             public class CreateRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -937,14 +903,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
             /// <summary>Gets the specified AndroidApp.</summary>
-            /// <param name="name">The resource name of the AndroidApp, in the format:
-            /// projects/PROJECT_IDENTIFIER/androidApps/APP_ID
-            ///
-            /// Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in
-            /// the format: projects/-/androidApps/APP_ID
-            ///
-            /// Refer to the `AndroidApp` [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details about
-            /// PROJECT_IDENTIFIER and APP_ID values.</param>
+            /// <param name="name">The resource name of the AndroidApp, in the format: projects/
+            /// PROJECT_IDENTIFIER/androidApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from Sub-
+            /// Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID Refer to the `AndroidApp`
+            /// [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID
+            /// values.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -962,12 +925,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
 
 
-                /// <summary>The resource name of the AndroidApp, in the format:
-                /// projects/PROJECT_IDENTIFIER/androidApps/APP_ID
-                ///
-                /// Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may
-                /// be used here, in the format: projects/-/androidApps/APP_ID
-                ///
+                /// <summary>The resource name of the AndroidApp, in the format: projects/
+                /// PROJECT_IDENTIFIER/androidApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource
+                /// from Sub-Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID
                 /// Refer to the `AndroidApp` [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details
                 /// about PROJECT_IDENTIFIER and APP_ID values.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1012,13 +972,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
             /// <summary>Gets the configuration artifact associated with the specified AndroidApp.</summary>
             /// <param name="name">The resource name of the AndroidApp configuration to download, in the format:
-            /// projects/PROJECT_IDENTIFIER/androidApps/APP_ID/config
-            ///
-            /// Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in
-            /// the format: projects/-/androidApps/APP_ID
-            ///
-            /// Refer to the `AndroidApp` [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details about
-            /// PROJECT_IDENTIFIER and APP_ID values.</param>
+            /// projects/PROJECT_IDENTIFIER/androidApps/APP_ID/config Since an APP_ID is a unique identifier, the Unique Resource
+            /// from Sub-Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID Refer to the
+            /// `AndroidApp` [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and
+            /// APP_ID values.</param>
             public virtual GetConfigRequest GetConfig(string name)
             {
                 return new GetConfigRequest(service, name);
@@ -1037,13 +994,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
                 /// <summary>The resource name of the AndroidApp configuration to download, in the format:
-                /// projects/PROJECT_IDENTIFIER/androidApps/APP_ID/config
-                ///
-                /// Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may
-                /// be used here, in the format: projects/-/androidApps/APP_ID
-                ///
-                /// Refer to the `AndroidApp` [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details
-                /// about PROJECT_IDENTIFIER and APP_ID values.</summary>
+                /// projects/PROJECT_IDENTIFIER/androidApps/APP_ID/config Since an APP_ID is a unique identifier, the
+                /// Unique Resource from Sub-Collection access pattern may be used here, in the format:
+                /// projects/-/androidApps/APP_ID Refer to the `AndroidApp`
+                /// [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details about PROJECT_IDENTIFIER
+                /// and APP_ID values.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1084,22 +1039,20 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
             }
 
-            /// <summary>Lists each AndroidApp associated with the specified FirebaseProject.
-            ///
-            /// The elements are returned in no particular order, but will be a consistent view of the Apps when
-            /// additional requests are made with a `pageToken`.</summary>
+            /// <summary>Lists each AndroidApp associated with the specified FirebaseProject. The elements are returned
+            /// in no particular order, but will be a consistent view of the Apps when additional requests are made with
+            /// a `pageToken`.</summary>
             /// <param name="parent">The resource name of the parent FirebaseProject for which to list each associated AndroidApp,
-            /// in the format: projects/PROJECT_IDENTIFIER/androidApps Refer to the `FirebaseProject`
+            /// in the format: projects/PROJECT_IDENTIFIER /androidApps Refer to the `FirebaseProject`
             /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists each AndroidApp associated with the specified FirebaseProject.
-            ///
-            /// The elements are returned in no particular order, but will be a consistent view of the Apps when
-            /// additional requests are made with a `pageToken`.</summary>
+            /// <summary>Lists each AndroidApp associated with the specified FirebaseProject. The elements are returned
+            /// in no particular order, but will be a consistent view of the Apps when additional requests are made with
+            /// a `pageToken`.</summary>
             public class ListRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.ListAndroidAppsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1112,16 +1065,15 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
                 /// <summary>The resource name of the parent FirebaseProject for which to list each associated
-                /// AndroidApp, in the format: projects/PROJECT_IDENTIFIER/androidApps Refer to the `FirebaseProject`
+                /// AndroidApp, in the format: projects/PROJECT_IDENTIFIER /androidApps Refer to the `FirebaseProject`
                 /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER
                 /// values.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The maximum number of Apps to return in the response.
-                ///
-                /// The server may return fewer than this at its discretion. If no value is specified (or too large a
-                /// value is specified), then the server will impose its own limit.</summary>
+                /// <summary>The maximum number of Apps to return in the response. The server may return fewer than this
+                /// at its discretion. If no value is specified (or too large a value is specified), then the server
+                /// will impose its own limit.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1187,13 +1139,13 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
             /// <summary>Updates the attributes of the specified AndroidApp.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The resource name of the AndroidApp, in the format:
-            /// projects/PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's
-            /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)   ***(recommended)***   or its
-            /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id).   Learn more about using project identifiers in
-            /// Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).   Note that the value for PROJECT_IDENTIFIER in any
-            /// response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier   for the App
-            /// (see [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)).</param>
+            /// <param name="name">The resource name of the AndroidApp, in the format: projects/
+            /// PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's
+            /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
+            /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's
+            /// [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response
+            /// body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see
+            /// [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)).</param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseManagement.v1beta1.Data.AndroidApp body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -1212,8 +1164,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
 
 
-                /// <summary>The resource name of the AndroidApp, in the format:
-                /// projects/PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's
+                /// <summary>The resource name of the AndroidApp, in the format: projects/
+                /// PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's
                 /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
                 /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project
                 /// identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value
@@ -1223,9 +1175,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Specifies which fields to update.
-                ///
-                /// Note that the fields `name`, `app_id`, `project_id`, and `package_name` are all immutable.</summary>
+                /// <summary>Specifies which fields to update. Note that the fields `name`, `app_id`, `project_id`, and
+                /// `package_name` are all immutable.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -1306,48 +1257,38 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
             /// <summary>Lists the valid Google Cloud Platform (GCP) resource locations for the specified Project
-            /// (including a FirebaseProject).
-            ///
-            /// One of these locations can be selected as the Project's [_default_ GCP resource
-            /// location](https://firebase.google.com/docs/projects/locations), which is the geographical location where
-            /// the Project's resources, such as Cloud Firestore, will be provisioned by default. However, if the
-            /// default GCP resource location has already been set for the Project, then this setting cannot be changed.
-            ///
-            /// This call checks for any possible [location restrictions](https://cloud.google.com/resource-manager/docs
-            /// /organization-policy/defining-locations) for the specified Project and, thus, might return a subset of
-            /// all possible GCP resource locations. To list all GCP resource locations (regardless of any
-            /// restrictions), call the endpoint without specifying a unique project identifier (that is,
-            /// `/v1beta1/{parent=projects/-}/listAvailableLocations`).
-            ///
-            /// To call `ListAvailableLocations` with a specified project, a member must be at minimum a Viewer of the
-            /// Project. Calls without a specified project do not require any specific project permissions.</summary>
+            /// (including a FirebaseProject). One of these locations can be selected as the Project's [_default_ GCP
+            /// resource location](https://firebase.google.com/docs/projects/locations), which is the geographical
+            /// location where the Project's resources, such as Cloud Firestore, will be provisioned by default.
+            /// However, if the default GCP resource location has already been set for the Project, then this setting
+            /// cannot be changed. This call checks for any possible [location restrictions](https://cloud.google.com
+            /// /resource-manager/docs/organization-policy/defining-locations) for the specified Project and, thus,
+            /// might return a subset of all possible GCP resource locations. To list all GCP resource locations
+            /// (regardless of any restrictions), call the endpoint without specifying a unique project identifier (that
+            /// is, `/v1beta1/{parent=projects/-}/listAvailableLocations`). To call `ListAvailableLocations` with a
+            /// specified project, a member must be at minimum a Viewer of the Project. Calls without a specified
+            /// project do not require any specific project permissions.</summary>
             /// <param name="parent">The FirebaseProject for which to list GCP resource locations, in the format:
             /// projects/PROJECT_IDENTIFIER Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field
-            /// for details about PROJECT_IDENTIFIER values.
-            ///
-            /// If no unique project identifier is specified (that is, `projects/-`), the returned list does not take into account
-            /// org-specific or project-specific location restrictions.</param>
+            /// for details about PROJECT_IDENTIFIER values. If no unique project identifier is specified (that is, `projects/-`),
+            /// the returned list does not take into account org-specific or project-specific location restrictions.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
             /// <summary>Lists the valid Google Cloud Platform (GCP) resource locations for the specified Project
-            /// (including a FirebaseProject).
-            ///
-            /// One of these locations can be selected as the Project's [_default_ GCP resource
-            /// location](https://firebase.google.com/docs/projects/locations), which is the geographical location where
-            /// the Project's resources, such as Cloud Firestore, will be provisioned by default. However, if the
-            /// default GCP resource location has already been set for the Project, then this setting cannot be changed.
-            ///
-            /// This call checks for any possible [location restrictions](https://cloud.google.com/resource-manager/docs
-            /// /organization-policy/defining-locations) for the specified Project and, thus, might return a subset of
-            /// all possible GCP resource locations. To list all GCP resource locations (regardless of any
-            /// restrictions), call the endpoint without specifying a unique project identifier (that is,
-            /// `/v1beta1/{parent=projects/-}/listAvailableLocations`).
-            ///
-            /// To call `ListAvailableLocations` with a specified project, a member must be at minimum a Viewer of the
-            /// Project. Calls without a specified project do not require any specific project permissions.</summary>
+            /// (including a FirebaseProject). One of these locations can be selected as the Project's [_default_ GCP
+            /// resource location](https://firebase.google.com/docs/projects/locations), which is the geographical
+            /// location where the Project's resources, such as Cloud Firestore, will be provisioned by default.
+            /// However, if the default GCP resource location has already been set for the Project, then this setting
+            /// cannot be changed. This call checks for any possible [location restrictions](https://cloud.google.com
+            /// /resource-manager/docs/organization-policy/defining-locations) for the specified Project and, thus,
+            /// might return a subset of all possible GCP resource locations. To list all GCP resource locations
+            /// (regardless of any restrictions), call the endpoint without specifying a unique project identifier (that
+            /// is, `/v1beta1/{parent=projects/-}/listAvailableLocations`). To call `ListAvailableLocations` with a
+            /// specified project, a member must be at minimum a Viewer of the Project. Calls without a specified
+            /// project do not require any specific project permissions.</summary>
             public class ListRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.ListAvailableLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1362,18 +1303,14 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 /// <summary>The FirebaseProject for which to list GCP resource locations, in the format:
                 /// projects/PROJECT_IDENTIFIER Refer to the `FirebaseProject`
                 /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values.
-                ///
                 /// If no unique project identifier is specified (that is, `projects/-`), the returned list does not
                 /// take into account org-specific or project-specific location restrictions.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The maximum number of locations to return in the response.
-                ///
-                /// The server may return fewer than this value at its discretion. If no value is specified (or too
-                /// large a value is specified), then the server will impose its own limit.
-                ///
-                /// This value cannot be negative.</summary>
+                /// <summary>The maximum number of locations to return in the response. The server may return fewer than
+                /// this value at its discretion. If no value is specified (or too large a value is specified), then the
+                /// server will impose its own limit. This value cannot be negative.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1462,33 +1399,25 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
             /// <summary>Sets the default Google Cloud Platform (GCP) resource location for the specified
-            /// FirebaseProject.
-            ///
-            /// This method creates an App Engine application with a [default Cloud Storage
+            /// FirebaseProject. This method creates an App Engine application with a [default Cloud Storage
             /// bucket](https://cloud.google.com/appengine/docs/standard/python/googlecloudstorageclient/setting-up-
             /// cloud-storage#activating_a_cloud_storage_bucket), located in the specified
             /// [`locationId`](#body.request_body.FIELDS.location_id). This location must be one of the available [GCP
-            /// resource locations](https://firebase.google.com/docs/projects/locations).
-            ///
-            /// After the default GCP resource location is finalized, or if it was already set, it cannot be changed.
-            /// The default GCP resource location for the specified `FirebaseProject` might already be set because
-            /// either the underlying GCP `Project` already has an App Engine application or `FinalizeDefaultLocation`
-            /// was previously called with a specified `locationId`. Any new calls to `FinalizeDefaultLocation` with a
-            /// *different* specified `locationId` will return a 409 error.
-            ///
-            /// The result of this call is an [`Operation`](../../v1beta1/operations), which can be used to track the
-            /// provisioning process. The [`response`](../../v1beta1/operations#Operation.FIELDS.response) type of the
-            /// `Operation` is google.protobuf.Empty.
-            ///
-            /// The `Operation` can be polled by its `name` using GetOperation until `done` is true. When `done` is
-            /// true, the `Operation` has either succeeded or failed. If the `Operation` has succeeded, its
-            /// [`response`](../../v1beta1/operations#Operation.FIELDS.response) will be set to a google.protobuf.Empty;
-            /// if the `Operation` has failed, its `error` will be set to a google.rpc.Status. The `Operation` is
-            /// automatically deleted after completion, so there is no need to call DeleteOperation.
-            ///
-            /// All fields listed in the [request body](#request-body) are required.
-            ///
-            /// To call `FinalizeDefaultLocation`, a member must be an Owner of the Project.</summary>
+            /// resource locations](https://firebase.google.com/docs/projects/locations). After the default GCP resource
+            /// location is finalized, or if it was already set, it cannot be changed. The default GCP resource location
+            /// for the specified `FirebaseProject` might already be set because either the underlying GCP `Project`
+            /// already has an App Engine application or `FinalizeDefaultLocation` was previously called with a
+            /// specified `locationId`. Any new calls to `FinalizeDefaultLocation` with a *different* specified
+            /// `locationId` will return a 409 error. The result of this call is an
+            /// [`Operation`](../../v1beta1/operations), which can be used to track the provisioning process. The
+            /// [`response`](../../v1beta1/operations#Operation.FIELDS.response) type of the `Operation` is
+            /// google.protobuf.Empty. The `Operation` can be polled by its `name` using GetOperation until `done` is
+            /// true. When `done` is true, the `Operation` has either succeeded or failed. If the `Operation` has
+            /// succeeded, its [`response`](../../v1beta1/operations#Operation.FIELDS.response) will be set to a
+            /// google.protobuf.Empty; if the `Operation` has failed, its `error` will be set to a google.rpc.Status.
+            /// The `Operation` is automatically deleted after completion, so there is no need to call DeleteOperation.
+            /// All fields listed in the [request body](#request-body) are required. To call `FinalizeDefaultLocation`,
+            /// a member must be an Owner of the Project.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">The resource name of the FirebaseProject for which the default GCP resource location will be
             /// set, in the format: projects/PROJECT_IDENTIFIER Refer to the `FirebaseProject`
@@ -1499,33 +1428,25 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
             /// <summary>Sets the default Google Cloud Platform (GCP) resource location for the specified
-            /// FirebaseProject.
-            ///
-            /// This method creates an App Engine application with a [default Cloud Storage
+            /// FirebaseProject. This method creates an App Engine application with a [default Cloud Storage
             /// bucket](https://cloud.google.com/appengine/docs/standard/python/googlecloudstorageclient/setting-up-
             /// cloud-storage#activating_a_cloud_storage_bucket), located in the specified
             /// [`locationId`](#body.request_body.FIELDS.location_id). This location must be one of the available [GCP
-            /// resource locations](https://firebase.google.com/docs/projects/locations).
-            ///
-            /// After the default GCP resource location is finalized, or if it was already set, it cannot be changed.
-            /// The default GCP resource location for the specified `FirebaseProject` might already be set because
-            /// either the underlying GCP `Project` already has an App Engine application or `FinalizeDefaultLocation`
-            /// was previously called with a specified `locationId`. Any new calls to `FinalizeDefaultLocation` with a
-            /// *different* specified `locationId` will return a 409 error.
-            ///
-            /// The result of this call is an [`Operation`](../../v1beta1/operations), which can be used to track the
-            /// provisioning process. The [`response`](../../v1beta1/operations#Operation.FIELDS.response) type of the
-            /// `Operation` is google.protobuf.Empty.
-            ///
-            /// The `Operation` can be polled by its `name` using GetOperation until `done` is true. When `done` is
-            /// true, the `Operation` has either succeeded or failed. If the `Operation` has succeeded, its
-            /// [`response`](../../v1beta1/operations#Operation.FIELDS.response) will be set to a google.protobuf.Empty;
-            /// if the `Operation` has failed, its `error` will be set to a google.rpc.Status. The `Operation` is
-            /// automatically deleted after completion, so there is no need to call DeleteOperation.
-            ///
-            /// All fields listed in the [request body](#request-body) are required.
-            ///
-            /// To call `FinalizeDefaultLocation`, a member must be an Owner of the Project.</summary>
+            /// resource locations](https://firebase.google.com/docs/projects/locations). After the default GCP resource
+            /// location is finalized, or if it was already set, it cannot be changed. The default GCP resource location
+            /// for the specified `FirebaseProject` might already be set because either the underlying GCP `Project`
+            /// already has an App Engine application or `FinalizeDefaultLocation` was previously called with a
+            /// specified `locationId`. Any new calls to `FinalizeDefaultLocation` with a *different* specified
+            /// `locationId` will return a 409 error. The result of this call is an
+            /// [`Operation`](../../v1beta1/operations), which can be used to track the provisioning process. The
+            /// [`response`](../../v1beta1/operations#Operation.FIELDS.response) type of the `Operation` is
+            /// google.protobuf.Empty. The `Operation` can be polled by its `name` using GetOperation until `done` is
+            /// true. When `done` is true, the `Operation` has either succeeded or failed. If the `Operation` has
+            /// succeeded, its [`response`](../../v1beta1/operations#Operation.FIELDS.response) will be set to a
+            /// google.protobuf.Empty; if the `Operation` has failed, its `error` will be set to a google.rpc.Status.
+            /// The `Operation` is automatically deleted after completion, so there is no need to call DeleteOperation.
+            /// All fields listed in the [request body](#request-body) are required. To call `FinalizeDefaultLocation`,
+            /// a member must be an Owner of the Project.</summary>
             public class FinalizeRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new Finalize request.</summary>
@@ -1612,11 +1533,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
 
-            /// <summary>Requests the creation of a new IosApp in the specified FirebaseProject.
-            ///
-            /// The result of this call is an `Operation` which can be used to track the provisioning process. The
-            /// `Operation` is automatically deleted after completion, so there is no need to call
-            /// `DeleteOperation`.</summary>
+            /// <summary>Requests the creation of a new IosApp in the specified FirebaseProject. The result of this call
+            /// is an `Operation` which can be used to track the provisioning process. The `Operation` is automatically
+            /// deleted after completion, so there is no need to call `DeleteOperation`.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">The resource name of the parent FirebaseProject in which to create an IosApp, in the format:
             /// projects/PROJECT_IDENTIFIER/iosApps Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name)
@@ -1626,11 +1545,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Requests the creation of a new IosApp in the specified FirebaseProject.
-            ///
-            /// The result of this call is an `Operation` which can be used to track the provisioning process. The
-            /// `Operation` is automatically deleted after completion, so there is no need to call
-            /// `DeleteOperation`.</summary>
+            /// <summary>Requests the creation of a new IosApp in the specified FirebaseProject. The result of this call
+            /// is an `Operation` which can be used to track the provisioning process. The `Operation` is automatically
+            /// deleted after completion, so there is no need to call `DeleteOperation`.</summary>
             public class CreateRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -1694,13 +1611,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
             /// <summary>Gets the specified IosApp.</summary>
-            /// <param name="name">The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER/iosApps/APP_ID
-            ///
-            /// Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in
-            /// the format: projects/-/iosApps/APP_ID
-            ///
-            /// Refer to the `IosApp` [`name`](../projects.iosApps#IosApp.FIELDS.name) field for details about PROJECT_IDENTIFIER
-            /// and APP_ID values.</param>
+            /// <param name="name">The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID Since
+            /// an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the
+            /// format: projects/-/iosApps/APP_ID Refer to the `IosApp` [`name`](../projects.iosApps#IosApp.FIELDS.name) field for
+            /// details about PROJECT_IDENTIFIER and APP_ID values.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -1718,13 +1632,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
 
 
-                /// <summary>The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER/iosApps/APP_ID
-                ///
+                /// <summary>The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID
                 /// Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may
-                /// be used here, in the format: projects/-/iosApps/APP_ID
-                ///
-                /// Refer to the `IosApp` [`name`](../projects.iosApps#IosApp.FIELDS.name) field for details about
-                /// PROJECT_IDENTIFIER and APP_ID values.</summary>
+                /// be used here, in the format: projects/-/iosApps/APP_ID Refer to the `IosApp`
+                /// [`name`](../projects.iosApps#IosApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and
+                /// APP_ID values.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1767,13 +1679,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
             /// <summary>Gets the configuration artifact associated with the specified IosApp.</summary>
             /// <param name="name">The resource name of the App configuration to download, in the format:
-            /// projects/PROJECT_IDENTIFIER/iosApps/APP_ID/config
-            ///
-            /// Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in
-            /// the format: projects/-/iosApps/APP_ID
-            ///
-            /// Refer to the `IosApp` [`name`](../projects.iosApps#IosApp.FIELDS.name) field for details about PROJECT_IDENTIFIER
-            /// and APP_ID values.</param>
+            /// projects/PROJECT_IDENTIFIER/iosApps/APP_ID/config Since an APP_ID is a unique identifier, the Unique Resource from
+            /// Sub-Collection access pattern may be used here, in the format: projects/-/iosApps/APP_ID Refer to the `IosApp`
+            /// [`name`](../projects.iosApps#IosApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID
+            /// values.</param>
             public virtual GetConfigRequest GetConfig(string name)
             {
                 return new GetConfigRequest(service, name);
@@ -1792,13 +1701,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
                 /// <summary>The resource name of the App configuration to download, in the format:
-                /// projects/PROJECT_IDENTIFIER/iosApps/APP_ID/config
-                ///
-                /// Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may
-                /// be used here, in the format: projects/-/iosApps/APP_ID
-                ///
-                /// Refer to the `IosApp` [`name`](../projects.iosApps#IosApp.FIELDS.name) field for details about
-                /// PROJECT_IDENTIFIER and APP_ID values.</summary>
+                /// projects/PROJECT_IDENTIFIER/iosApps/APP_ID/config Since an APP_ID is a unique identifier, the Unique
+                /// Resource from Sub-Collection access pattern may be used here, in the format:
+                /// projects/-/iosApps/APP_ID Refer to the `IosApp` [`name`](../projects.iosApps#IosApp.FIELDS.name)
+                /// field for details about PROJECT_IDENTIFIER and APP_ID values.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1839,10 +1745,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
             }
 
-            /// <summary>Lists each IosApp associated with the specified FirebaseProject.
-            ///
-            /// The elements are returned in no particular order, but will be a consistent view of the Apps when
-            /// additional requests are made with a `pageToken`.</summary>
+            /// <summary>Lists each IosApp associated with the specified FirebaseProject. The elements are returned in
+            /// no particular order, but will be a consistent view of the Apps when additional requests are made with a
+            /// `pageToken`.</summary>
             /// <param name="parent">The resource name of the parent FirebaseProject for which to list each associated IosApp, in
             /// the format: projects/PROJECT_IDENTIFIER/iosApps Refer to the `FirebaseProject`
             /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values.</param>
@@ -1851,10 +1756,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists each IosApp associated with the specified FirebaseProject.
-            ///
-            /// The elements are returned in no particular order, but will be a consistent view of the Apps when
-            /// additional requests are made with a `pageToken`.</summary>
+            /// <summary>Lists each IosApp associated with the specified FirebaseProject. The elements are returned in
+            /// no particular order, but will be a consistent view of the Apps when additional requests are made with a
+            /// `pageToken`.</summary>
             public class ListRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.ListIosAppsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1873,10 +1777,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The maximum number of Apps to return in the response.
-                ///
-                /// The server may return fewer than this at its discretion. If no value is specified (or too large a
-                /// value is specified), the server will impose its own limit.</summary>
+                /// <summary>The maximum number of Apps to return in the response. The server may return fewer than this
+                /// at its discretion. If no value is specified (or too large a value is specified), the server will
+                /// impose its own limit.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1942,12 +1845,12 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
             /// <summary>Updates the attributes of the specified IosApp.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER/iosApps/APP_ID *
-            /// PROJECT_IDENTIFIER: the parent Project's   [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
-            /// ***(recommended)***   or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id).   Learn more about using
-            /// project identifiers in   Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).   Note that the value for
-            /// PROJECT_IDENTIFIER in any   response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned
-            /// identifier   for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).</param>
+            /// <param name="name">The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID *
+            /// PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
+            /// ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using
+            /// project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for
+            /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned
+            /// identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).</param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseManagement.v1beta1.Data.IosApp body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -1966,7 +1869,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
 
 
-                /// <summary>The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER/iosApps/APP_ID
+                /// <summary>The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID
                 /// * PROJECT_IDENTIFIER: the parent Project's
                 /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
                 /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project
@@ -1977,9 +1880,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Specifies which fields to update.
-                ///
-                /// Note that the fields `name`, `appId`, `projectId`, and `bundleId` are all immutable.</summary>
+                /// <summary>Specifies which fields to update. Note that the fields `name`, `appId`, `projectId`, and
+                /// `bundleId` are all immutable.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -2059,11 +1961,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
 
-            /// <summary>Requests the creation of a new WebApp in the specified FirebaseProject.
-            ///
-            /// The result of this call is an `Operation` which can be used to track the provisioning process. The
-            /// `Operation` is automatically deleted after completion, so there is no need to call
-            /// `DeleteOperation`.</summary>
+            /// <summary>Requests the creation of a new WebApp in the specified FirebaseProject. The result of this call
+            /// is an `Operation` which can be used to track the provisioning process. The `Operation` is automatically
+            /// deleted after completion, so there is no need to call `DeleteOperation`.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">The resource name of the parent FirebaseProject in which to create a WebApp, in the format:
             /// projects/PROJECT_IDENTIFIER/webApps Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name)
@@ -2073,11 +1973,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Requests the creation of a new WebApp in the specified FirebaseProject.
-            ///
-            /// The result of this call is an `Operation` which can be used to track the provisioning process. The
-            /// `Operation` is automatically deleted after completion, so there is no need to call
-            /// `DeleteOperation`.</summary>
+            /// <summary>Requests the creation of a new WebApp in the specified FirebaseProject. The result of this call
+            /// is an `Operation` which can be used to track the provisioning process. The `Operation` is automatically
+            /// deleted after completion, so there is no need to call `DeleteOperation`.</summary>
             public class CreateRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -2141,13 +2039,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
             /// <summary>Gets the specified WebApp.</summary>
-            /// <param name="name">The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER/webApps/APP_ID
-            ///
-            /// Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in
-            /// the format: projects/-/webApps/APP_ID
-            ///
-            /// Refer to the `WebApp` [`name`](../projects.webApps#WebApp.FIELDS.name) field for details about PROJECT_IDENTIFIER
-            /// and APP_ID values.</param>
+            /// <param name="name">The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID Since
+            /// an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the
+            /// format: projects/-/webApps/APP_ID Refer to the `WebApp` [`name`](../projects.webApps#WebApp.FIELDS.name) field for
+            /// details about PROJECT_IDENTIFIER and APP_ID values.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -2165,13 +2060,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
 
 
-                /// <summary>The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER/webApps/APP_ID
-                ///
+                /// <summary>The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID
                 /// Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may
-                /// be used here, in the format: projects/-/webApps/APP_ID
-                ///
-                /// Refer to the `WebApp` [`name`](../projects.webApps#WebApp.FIELDS.name) field for details about
-                /// PROJECT_IDENTIFIER and APP_ID values.</summary>
+                /// be used here, in the format: projects/-/webApps/APP_ID Refer to the `WebApp`
+                /// [`name`](../projects.webApps#WebApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and
+                /// APP_ID values.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2214,13 +2107,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
             /// <summary>Gets the configuration artifact associated with the specified WebApp.</summary>
             /// <param name="name">The resource name of the WebApp configuration to download, in the format:
-            /// projects/PROJECT_IDENTIFIER/webApps/APP_ID/config
-            ///
-            /// Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in
-            /// the format: projects/-/webApps/APP_ID
-            ///
-            /// Refer to the `WebApp` [`name`](../projects.webApps#WebApp.FIELDS.name) field for details about PROJECT_IDENTIFIER
-            /// and APP_ID values.</param>
+            /// projects/PROJECT_IDENTIFIER/webApps/APP_ID/config Since an APP_ID is a unique identifier, the Unique Resource from
+            /// Sub-Collection access pattern may be used here, in the format: projects/-/webApps/APP_ID Refer to the `WebApp`
+            /// [`name`](../projects.webApps#WebApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID
+            /// values.</param>
             public virtual GetConfigRequest GetConfig(string name)
             {
                 return new GetConfigRequest(service, name);
@@ -2239,13 +2129,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
                 /// <summary>The resource name of the WebApp configuration to download, in the format:
-                /// projects/PROJECT_IDENTIFIER/webApps/APP_ID/config
-                ///
-                /// Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may
-                /// be used here, in the format: projects/-/webApps/APP_ID
-                ///
-                /// Refer to the `WebApp` [`name`](../projects.webApps#WebApp.FIELDS.name) field for details about
-                /// PROJECT_IDENTIFIER and APP_ID values.</summary>
+                /// projects/PROJECT_IDENTIFIER/webApps/APP_ID/config Since an APP_ID is a unique identifier, the Unique
+                /// Resource from Sub-Collection access pattern may be used here, in the format:
+                /// projects/-/webApps/APP_ID Refer to the `WebApp` [`name`](../projects.webApps#WebApp.FIELDS.name)
+                /// field for details about PROJECT_IDENTIFIER and APP_ID values.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2286,10 +2173,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
             }
 
-            /// <summary>Lists each WebApp associated with the specified FirebaseProject.
-            ///
-            /// The elements are returned in no particular order, but will be a consistent view of the Apps when
-            /// additional requests are made with a `pageToken`.</summary>
+            /// <summary>Lists each WebApp associated with the specified FirebaseProject. The elements are returned in
+            /// no particular order, but will be a consistent view of the Apps when additional requests are made with a
+            /// `pageToken`.</summary>
             /// <param name="parent">The resource name of the parent FirebaseProject for which to list each associated WebApp, in
             /// the format: projects/PROJECT_IDENTIFIER/webApps Refer to the `FirebaseProject`
             /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values.</param>
@@ -2298,10 +2184,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists each WebApp associated with the specified FirebaseProject.
-            ///
-            /// The elements are returned in no particular order, but will be a consistent view of the Apps when
-            /// additional requests are made with a `pageToken`.</summary>
+            /// <summary>Lists each WebApp associated with the specified FirebaseProject. The elements are returned in
+            /// no particular order, but will be a consistent view of the Apps when additional requests are made with a
+            /// `pageToken`.</summary>
             public class ListRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.ListWebAppsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -2320,10 +2205,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The maximum number of Apps to return in the response.
-                ///
-                /// The server may return fewer than this value at its discretion. If no value is specified (or too
-                /// large a value is specified), then the server will impose its own limit.</summary>
+                /// <summary>The maximum number of Apps to return in the response. The server may return fewer than this
+                /// value at its discretion. If no value is specified (or too large a value is specified), then the
+                /// server will impose its own limit.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2389,12 +2273,12 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
             /// <summary>Updates the attributes of the specified WebApp.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER/webApps/APP_ID *
-            /// PROJECT_IDENTIFIER: the parent Project's   [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
-            /// ***(recommended)***   or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id).   Learn more about using
-            /// project identifiers in   Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).   Note that the value for
-            /// PROJECT_IDENTIFIER in any   response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned
-            /// identifier   for the App (see [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).</param>
+            /// <param name="name">The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID *
+            /// PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
+            /// ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using
+            /// project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for
+            /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned
+            /// identifier for the App (see [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).</param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseManagement.v1beta1.Data.WebApp body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -2413,7 +2297,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
 
 
-                /// <summary>The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER/webApps/APP_ID
+                /// <summary>The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID
                 /// * PROJECT_IDENTIFIER: the parent Project's
                 /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
                 /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project
@@ -2424,9 +2308,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Specifies which fields to update.
-                ///
-                /// Note that the fields `name`, `appId`, and `projectId` are all immutable.</summary>
+                /// <summary>Specifies which fields to update. Note that the fields `name`, `appId`, and `projectId` are
+                /// all immutable.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -2484,30 +2367,24 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         }
 
         /// <summary>Adds Firebase resources to the specified existing [Google Cloud Platform (GCP) `Project`]
-        /// (https://cloud.google.com/resource-manager/reference/rest/v1/projects).
-        ///
-        /// Since a FirebaseProject is actually also a GCP `Project`, a `FirebaseProject` has the same underlying GCP
-        /// identifiers (`projectNumber` and `projectId`). This allows for easy interop with Google APIs.
-        ///
-        /// The result of this call is an [`Operation`](../../v1beta1/operations). Poll the `Operation` to track the
-        /// provisioning process by calling GetOperation until [`done`](../../v1beta1/operations#Operation.FIELDS.done)
-        /// is `true`. When `done` is `true`, the `Operation` has either succeeded or failed. If the `Operation`
-        /// succeeded, its [`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to a FirebaseProject;
-        /// if the `Operation` failed, its [`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a
+        /// (https://cloud.google.com/resource-manager/reference/rest/v1/projects). Since a FirebaseProject is actually
+        /// also a GCP `Project`, a `FirebaseProject` has the same underlying GCP identifiers (`projectNumber` and
+        /// `projectId`). This allows for easy interop with Google APIs. The result of this call is an
+        /// [`Operation`](../../v1beta1/operations). Poll the `Operation` to track the provisioning process by calling
+        /// GetOperation until [`done`](../../v1beta1/operations#Operation.FIELDS.done) is `true`. When `done` is
+        /// `true`, the `Operation` has either succeeded or failed. If the `Operation` succeeded, its
+        /// [`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to a FirebaseProject; if the
+        /// `Operation` failed, its [`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a
         /// google.rpc.Status. The `Operation` is automatically deleted after completion, so there is no need to call
-        /// DeleteOperation.
-        ///
-        /// This method does not modify any billing account information on the underlying GCP `Project`.
-        ///
-        /// To call `AddFirebase`, a project member or service account must have the following permissions (the IAM
-        /// roles of Editor and Owner contain these permissions): `firebase.projects.update`,
+        /// DeleteOperation. This method does not modify any billing account information on the underlying GCP
+        /// `Project`. To call `AddFirebase`, a project member or service account must have the following permissions
+        /// (the IAM roles of Editor and Owner contain these permissions): `firebase.projects.update`,
         /// `resourcemanager.projects.get`, `serviceusage.services.enable`, and `serviceusage.services.get`.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">The resource name of the GCP `Project` to which Firebase resources will be added, in the
         /// format: projects/PROJECT_IDENTIFIER Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name)
-        /// field for details about PROJECT_IDENTIFIER values.
-        ///
-        /// After calling `AddFirebase`, the unique Project identifiers ( [`projectNumber`](https://cloud.google.com/resource-
+        /// field for details about PROJECT_IDENTIFIER values. After calling `AddFirebase`, the unique Project identifiers (
+        /// [`projectNumber`](https://cloud.google.com/resource-
         /// manager/reference/rest/v1/projects#Project.FIELDS.project_number) and [`projectId`](https://cloud.google.com
         /// /resource-manager/reference/rest/v1/projects#Project.FIELDS.project_id)) of the underlying GCP `Project` are also
         /// the identifiers of the FirebaseProject.</param>
@@ -2517,23 +2394,18 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         }
 
         /// <summary>Adds Firebase resources to the specified existing [Google Cloud Platform (GCP) `Project`]
-        /// (https://cloud.google.com/resource-manager/reference/rest/v1/projects).
-        ///
-        /// Since a FirebaseProject is actually also a GCP `Project`, a `FirebaseProject` has the same underlying GCP
-        /// identifiers (`projectNumber` and `projectId`). This allows for easy interop with Google APIs.
-        ///
-        /// The result of this call is an [`Operation`](../../v1beta1/operations). Poll the `Operation` to track the
-        /// provisioning process by calling GetOperation until [`done`](../../v1beta1/operations#Operation.FIELDS.done)
-        /// is `true`. When `done` is `true`, the `Operation` has either succeeded or failed. If the `Operation`
-        /// succeeded, its [`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to a FirebaseProject;
-        /// if the `Operation` failed, its [`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a
+        /// (https://cloud.google.com/resource-manager/reference/rest/v1/projects). Since a FirebaseProject is actually
+        /// also a GCP `Project`, a `FirebaseProject` has the same underlying GCP identifiers (`projectNumber` and
+        /// `projectId`). This allows for easy interop with Google APIs. The result of this call is an
+        /// [`Operation`](../../v1beta1/operations). Poll the `Operation` to track the provisioning process by calling
+        /// GetOperation until [`done`](../../v1beta1/operations#Operation.FIELDS.done) is `true`. When `done` is
+        /// `true`, the `Operation` has either succeeded or failed. If the `Operation` succeeded, its
+        /// [`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to a FirebaseProject; if the
+        /// `Operation` failed, its [`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a
         /// google.rpc.Status. The `Operation` is automatically deleted after completion, so there is no need to call
-        /// DeleteOperation.
-        ///
-        /// This method does not modify any billing account information on the underlying GCP `Project`.
-        ///
-        /// To call `AddFirebase`, a project member or service account must have the following permissions (the IAM
-        /// roles of Editor and Owner contain these permissions): `firebase.projects.update`,
+        /// DeleteOperation. This method does not modify any billing account information on the underlying GCP
+        /// `Project`. To call `AddFirebase`, a project member or service account must have the following permissions
+        /// (the IAM roles of Editor and Owner contain these permissions): `firebase.projects.update`,
         /// `resourcemanager.projects.get`, `serviceusage.services.enable`, and `serviceusage.services.get`.</summary>
         public class AddFirebaseRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
         {
@@ -2550,7 +2422,6 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// <summary>The resource name of the GCP `Project` to which Firebase resources will be added, in the
             /// format: projects/PROJECT_IDENTIFIER Refer to the `FirebaseProject`
             /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values.
-            ///
             /// After calling `AddFirebase`, the unique Project identifiers ( [`projectNumber`](https://cloud.google.com
             /// /resource-manager/reference/rest/v1/projects#Project.FIELDS.project_number) and
             /// [`projectId`](https://cloud.google.com/resource-
@@ -2603,42 +2474,29 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         }
 
         /// <summary>Links the specified FirebaseProject with an existing [Google Analytics
-        /// account](http://www.google.com/analytics/).
-        ///
-        /// Using this call, you can either:
-        ///
-        /// Specify an `analyticsAccountId` to provision a new Google Analytics property within the specified account
-        /// and associate the new property with the `FirebaseProject`. Specify an existing `analyticsPropertyId` to
-        /// associate the property with the `FirebaseProject`.
-        ///
-        /// Note that when you call `AddGoogleAnalytics`:
-        ///
-        /// The first check determines if any existing data streams in the Google Analytics property correspond to any
-        /// existing Firebase Apps in the `FirebaseProject` (based on the `packageName` or `bundleId` associated with
-        /// the data stream). Then, as applicable, the data streams and apps are linked. Note that this auto-linking
-        /// only applies to `AndroidApps` and `IosApps`. If no corresponding data streams are found for the Firebase
-        /// Apps, new data streams are provisioned in the Google Analytics property for each of the Firebase Apps. Note
-        /// that a new data stream is always provisioned for a Web App even if it was previously associated with a data
-        /// stream in the Analytics property.
-        ///
-        /// Learn more about the hierarchy and structure of Google Analytics accounts in the [Analytics
-        /// documentation](https://support.google.com/analytics/answer/9303323).
-        ///
-        /// The result of this call is an [`Operation`](../../v1beta1/operations). Poll the `Operation` to track the
-        /// provisioning process by calling GetOperation until [`done`](../../v1beta1/operations#Operation.FIELDS.done)
-        /// is `true`. When `done` is `true`, the `Operation` has either succeeded or failed. If the `Operation`
-        /// succeeded, its [`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to an
-        /// AnalyticsDetails; if the `Operation` failed, its [`error`](../../v1beta1/operations#Operation.FIELDS.error)
-        /// is set to a google.rpc.Status.
-        ///
-        /// To call `AddGoogleAnalytics`, a project member must be an Owner for the existing `FirebaseProject` and have
-        /// the [`Edit` permission](https://support.google.com/analytics/answer/2884495) for the Google Analytics
-        /// account.
-        ///
-        /// If the `FirebaseProject` already has Google Analytics enabled, and you call `AddGoogleAnalytics` using an
-        /// `analyticsPropertyId` that's different from the currently associated property, then the call will fail.
-        /// Analytics may have already been enabled in the Firebase console or by specifying `timeZone` and `regionCode`
-        /// in the call to [`AddFirebase`](../../v1beta1/projects/addFirebase).</summary>
+        /// account](http://www.google.com/analytics/). Using this call, you can either: - Specify an
+        /// `analyticsAccountId` to provision a new Google Analytics property within the specified account and associate
+        /// the new property with the `FirebaseProject`. - Specify an existing `analyticsPropertyId` to associate the
+        /// property with the `FirebaseProject`. Note that when you call `AddGoogleAnalytics`: 1. The first check
+        /// determines if any existing data streams in the Google Analytics property correspond to any existing Firebase
+        /// Apps in the `FirebaseProject` (based on the `packageName` or `bundleId` associated with the data stream).
+        /// Then, as applicable, the data streams and apps are linked. Note that this auto-linking only applies to
+        /// `AndroidApps` and `IosApps`. 2. If no corresponding data streams are found for the Firebase Apps, new data
+        /// streams are provisioned in the Google Analytics property for each of the Firebase Apps. Note that a new data
+        /// stream is always provisioned for a Web App even if it was previously associated with a data stream in the
+        /// Analytics property. Learn more about the hierarchy and structure of Google Analytics accounts in the
+        /// [Analytics documentation](https://support.google.com/analytics/answer/9303323). The result of this call is
+        /// an [`Operation`](../../v1beta1/operations). Poll the `Operation` to track the provisioning process by
+        /// calling GetOperation until [`done`](../../v1beta1/operations#Operation.FIELDS.done) is `true`. When `done`
+        /// is `true`, the `Operation` has either succeeded or failed. If the `Operation` succeeded, its
+        /// [`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to an AnalyticsDetails; if the
+        /// `Operation` failed, its [`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a
+        /// google.rpc.Status. To call `AddGoogleAnalytics`, a project member must be an Owner for the existing
+        /// `FirebaseProject` and have the [`Edit` permission](https://support.google.com/analytics/answer/2884495) for
+        /// the Google Analytics account. If the `FirebaseProject` already has Google Analytics enabled, and you call
+        /// `AddGoogleAnalytics` using an `analyticsPropertyId` that's different from the currently associated property,
+        /// then the call will fail. Analytics may have already been enabled in the Firebase console or by specifying
+        /// `timeZone` and `regionCode` in the call to [`AddFirebase`](../../v1beta1/projects/addFirebase).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">The resource name of the FirebaseProject to link to an existing Google Analytics account, in
         /// the format: projects/PROJECT_IDENTIFIER Refer to the `FirebaseProject`
@@ -2649,42 +2507,29 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         }
 
         /// <summary>Links the specified FirebaseProject with an existing [Google Analytics
-        /// account](http://www.google.com/analytics/).
-        ///
-        /// Using this call, you can either:
-        ///
-        /// Specify an `analyticsAccountId` to provision a new Google Analytics property within the specified account
-        /// and associate the new property with the `FirebaseProject`. Specify an existing `analyticsPropertyId` to
-        /// associate the property with the `FirebaseProject`.
-        ///
-        /// Note that when you call `AddGoogleAnalytics`:
-        ///
-        /// The first check determines if any existing data streams in the Google Analytics property correspond to any
-        /// existing Firebase Apps in the `FirebaseProject` (based on the `packageName` or `bundleId` associated with
-        /// the data stream). Then, as applicable, the data streams and apps are linked. Note that this auto-linking
-        /// only applies to `AndroidApps` and `IosApps`. If no corresponding data streams are found for the Firebase
-        /// Apps, new data streams are provisioned in the Google Analytics property for each of the Firebase Apps. Note
-        /// that a new data stream is always provisioned for a Web App even if it was previously associated with a data
-        /// stream in the Analytics property.
-        ///
-        /// Learn more about the hierarchy and structure of Google Analytics accounts in the [Analytics
-        /// documentation](https://support.google.com/analytics/answer/9303323).
-        ///
-        /// The result of this call is an [`Operation`](../../v1beta1/operations). Poll the `Operation` to track the
-        /// provisioning process by calling GetOperation until [`done`](../../v1beta1/operations#Operation.FIELDS.done)
-        /// is `true`. When `done` is `true`, the `Operation` has either succeeded or failed. If the `Operation`
-        /// succeeded, its [`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to an
-        /// AnalyticsDetails; if the `Operation` failed, its [`error`](../../v1beta1/operations#Operation.FIELDS.error)
-        /// is set to a google.rpc.Status.
-        ///
-        /// To call `AddGoogleAnalytics`, a project member must be an Owner for the existing `FirebaseProject` and have
-        /// the [`Edit` permission](https://support.google.com/analytics/answer/2884495) for the Google Analytics
-        /// account.
-        ///
-        /// If the `FirebaseProject` already has Google Analytics enabled, and you call `AddGoogleAnalytics` using an
-        /// `analyticsPropertyId` that's different from the currently associated property, then the call will fail.
-        /// Analytics may have already been enabled in the Firebase console or by specifying `timeZone` and `regionCode`
-        /// in the call to [`AddFirebase`](../../v1beta1/projects/addFirebase).</summary>
+        /// account](http://www.google.com/analytics/). Using this call, you can either: - Specify an
+        /// `analyticsAccountId` to provision a new Google Analytics property within the specified account and associate
+        /// the new property with the `FirebaseProject`. - Specify an existing `analyticsPropertyId` to associate the
+        /// property with the `FirebaseProject`. Note that when you call `AddGoogleAnalytics`: 1. The first check
+        /// determines if any existing data streams in the Google Analytics property correspond to any existing Firebase
+        /// Apps in the `FirebaseProject` (based on the `packageName` or `bundleId` associated with the data stream).
+        /// Then, as applicable, the data streams and apps are linked. Note that this auto-linking only applies to
+        /// `AndroidApps` and `IosApps`. 2. If no corresponding data streams are found for the Firebase Apps, new data
+        /// streams are provisioned in the Google Analytics property for each of the Firebase Apps. Note that a new data
+        /// stream is always provisioned for a Web App even if it was previously associated with a data stream in the
+        /// Analytics property. Learn more about the hierarchy and structure of Google Analytics accounts in the
+        /// [Analytics documentation](https://support.google.com/analytics/answer/9303323). The result of this call is
+        /// an [`Operation`](../../v1beta1/operations). Poll the `Operation` to track the provisioning process by
+        /// calling GetOperation until [`done`](../../v1beta1/operations#Operation.FIELDS.done) is `true`. When `done`
+        /// is `true`, the `Operation` has either succeeded or failed. If the `Operation` succeeded, its
+        /// [`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to an AnalyticsDetails; if the
+        /// `Operation` failed, its [`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a
+        /// google.rpc.Status. To call `AddGoogleAnalytics`, a project member must be an Owner for the existing
+        /// `FirebaseProject` and have the [`Edit` permission](https://support.google.com/analytics/answer/2884495) for
+        /// the Google Analytics account. If the `FirebaseProject` already has Google Analytics enabled, and you call
+        /// `AddGoogleAnalytics` using an `analyticsPropertyId` that's different from the currently associated property,
+        /// then the call will fail. Analytics may have already been enabled in the Firebase console or by specifying
+        /// `timeZone` and `regionCode` in the call to [`AddFirebase`](../../v1beta1/projects/addFirebase).</summary>
         public class AddGoogleAnalyticsRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
         {
             /// <summary>Constructs a new AddGoogleAnalytics request.</summary>
@@ -2748,8 +2593,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         }
 
         /// <summary>Gets the specified FirebaseProject.</summary>
-        /// <param name="name">The resource name of the FirebaseProject, in the format: projects/PROJECT_IDENTIFIER Refer to the
-        /// `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER
+        /// <param name="name">The resource name of the FirebaseProject, in the format: projects/ PROJECT_IDENTIFIER Refer to
+        /// the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER
         /// values.</param>
         public virtual GetRequest Get(string name)
         {
@@ -2768,7 +2613,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
 
-            /// <summary>The resource name of the FirebaseProject, in the format: projects/PROJECT_IDENTIFIER Refer to
+            /// <summary>The resource name of the FirebaseProject, in the format: projects/ PROJECT_IDENTIFIER Refer to
             /// the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
             /// PROJECT_IDENTIFIER values.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2812,22 +2657,18 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         }
 
         /// <summary>Gets the configuration artifact associated with the specified FirebaseProject, which can be used by
-        /// servers to simplify initialization.
-        ///
-        /// Typically, this configuration is used with the Firebase Admin SDK
+        /// servers to simplify initialization. Typically, this configuration is used with the Firebase Admin SDK
         /// [initializeApp](https://firebase.google.com/docs/admin/setup#initialize_the_sdk) command.</summary>
-        /// <param name="name">The resource name of the FirebaseProject, in the format:
-        /// projects/PROJECT_IDENTIFIER/adminSdkConfig Refer to the `FirebaseProject`
-        /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values.</param>
+        /// <param name="name">The resource name of the FirebaseProject, in the format: projects/
+        /// PROJECT_IDENTIFIER/adminSdkConfig Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name)
+        /// field for details about PROJECT_IDENTIFIER values.</param>
         public virtual GetAdminSdkConfigRequest GetAdminSdkConfig(string name)
         {
             return new GetAdminSdkConfigRequest(service, name);
         }
 
         /// <summary>Gets the configuration artifact associated with the specified FirebaseProject, which can be used by
-        /// servers to simplify initialization.
-        ///
-        /// Typically, this configuration is used with the Firebase Admin SDK
+        /// servers to simplify initialization. Typically, this configuration is used with the Firebase Admin SDK
         /// [initializeApp](https://firebase.google.com/docs/admin/setup#initialize_the_sdk) command.</summary>
         public class GetAdminSdkConfigRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.AdminSdkConfig>
         {
@@ -2840,8 +2681,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
 
-            /// <summary>The resource name of the FirebaseProject, in the format:
-            /// projects/PROJECT_IDENTIFIER/adminSdkConfig Refer to the `FirebaseProject`
+            /// <summary>The resource name of the FirebaseProject, in the format: projects/
+            /// PROJECT_IDENTIFIER/adminSdkConfig Refer to the `FirebaseProject`
             /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER
             /// values.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2884,22 +2725,20 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
         }
 
-        /// <summary>Gets the Google Analytics details currently associated with the specified FirebaseProject.
-        ///
-        /// If the `FirebaseProject` is not yet linked to Google Analytics, then the response to `GetAnalyticsDetails`
-        /// is `NOT_FOUND`.</summary>
-        /// <param name="name">The resource name of the FirebaseProject, in the format:
-        /// projects/PROJECT_IDENTIFIER/analyticsDetails Refer to the `FirebaseProject`
-        /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values.</param>
+        /// <summary>Gets the Google Analytics details currently associated with the specified FirebaseProject. If the
+        /// `FirebaseProject` is not yet linked to Google Analytics, then the response to `GetAnalyticsDetails` is
+        /// `NOT_FOUND`.</summary>
+        /// <param name="name">The resource name of the FirebaseProject, in the format: projects/
+        /// PROJECT_IDENTIFIER/analyticsDetails Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name)
+        /// field for details about PROJECT_IDENTIFIER values.</param>
         public virtual GetAnalyticsDetailsRequest GetAnalyticsDetails(string name)
         {
             return new GetAnalyticsDetailsRequest(service, name);
         }
 
-        /// <summary>Gets the Google Analytics details currently associated with the specified FirebaseProject.
-        ///
-        /// If the `FirebaseProject` is not yet linked to Google Analytics, then the response to `GetAnalyticsDetails`
-        /// is `NOT_FOUND`.</summary>
+        /// <summary>Gets the Google Analytics details currently associated with the specified FirebaseProject. If the
+        /// `FirebaseProject` is not yet linked to Google Analytics, then the response to `GetAnalyticsDetails` is
+        /// `NOT_FOUND`.</summary>
         public class GetAnalyticsDetailsRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.AnalyticsDetails>
         {
             /// <summary>Constructs a new GetAnalyticsDetails request.</summary>
@@ -2911,8 +2750,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
 
-            /// <summary>The resource name of the FirebaseProject, in the format:
-            /// projects/PROJECT_IDENTIFIER/analyticsDetails Refer to the `FirebaseProject`
+            /// <summary>The resource name of the FirebaseProject, in the format: projects/
+            /// PROJECT_IDENTIFIER/analyticsDetails Refer to the `FirebaseProject`
             /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER
             /// values.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2955,31 +2794,23 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
         }
 
-        /// <summary>Lists each FirebaseProject accessible to the caller.
-        ///
-        /// The elements are returned in no particular order, but they will be a consistent view of the Projects when
-        /// additional requests are made with a `pageToken`.
-        ///
-        /// This method is eventually consistent with Project mutations, which means newly provisioned Projects and
-        /// recent modifications to existing Projects might not be reflected in the set of Projects. The list will
-        /// include only ACTIVE Projects.
-        ///
-        /// Use GetFirebaseProject for consistent reads as well as for additional Project details.</summary>
+        /// <summary>Lists each FirebaseProject accessible to the caller. The elements are returned in no particular
+        /// order, but they will be a consistent view of the Projects when additional requests are made with a
+        /// `pageToken`. This method is eventually consistent with Project mutations, which means newly provisioned
+        /// Projects and recent modifications to existing Projects might not be reflected in the set of Projects. The
+        /// list will include only ACTIVE Projects. Use GetFirebaseProject for consistent reads as well as for
+        /// additional Project details.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists each FirebaseProject accessible to the caller.
-        ///
-        /// The elements are returned in no particular order, but they will be a consistent view of the Projects when
-        /// additional requests are made with a `pageToken`.
-        ///
-        /// This method is eventually consistent with Project mutations, which means newly provisioned Projects and
-        /// recent modifications to existing Projects might not be reflected in the set of Projects. The list will
-        /// include only ACTIVE Projects.
-        ///
-        /// Use GetFirebaseProject for consistent reads as well as for additional Project details.</summary>
+        /// <summary>Lists each FirebaseProject accessible to the caller. The elements are returned in no particular
+        /// order, but they will be a consistent view of the Projects when additional requests are made with a
+        /// `pageToken`. This method is eventually consistent with Project mutations, which means newly provisioned
+        /// Projects and recent modifications to existing Projects might not be reflected in the set of Projects. The
+        /// list will include only ACTIVE Projects. Use GetFirebaseProject for consistent reads as well as for
+        /// additional Project details.</summary>
         public class ListRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.ListFirebaseProjectsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2990,12 +2821,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
 
-            /// <summary>The maximum number of Projects to return in the response.
-            ///
-            /// The server may return fewer than this at its discretion. If no value is specified (or too large a value
-            /// is specified), the server will impose its own limit.
-            ///
-            /// This value cannot be negative.</summary>
+            /// <summary>The maximum number of Projects to return in the response. The server may return fewer than this
+            /// at its discretion. If no value is specified (or too large a value is specified), the server will impose
+            /// its own limit. This value cannot be negative.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -3050,9 +2878,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
         }
 
-        /// <summary>Updates the attributes of the specified FirebaseProject.
-        ///
-        /// All [query parameters](#query-parameters) are required.</summary>
+        /// <summary>Updates the attributes of the specified FirebaseProject. All [query parameters](#query-parameters)
+        /// are required.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The resource name of the Project, in the format: projects/PROJECT_IDENTIFIER PROJECT_IDENTIFIER:
         /// the Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
@@ -3064,9 +2891,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             return new PatchRequest(service, body, name);
         }
 
-        /// <summary>Updates the attributes of the specified FirebaseProject.
-        ///
-        /// All [query parameters](#query-parameters) are required.</summary>
+        /// <summary>Updates the attributes of the specified FirebaseProject. All [query parameters](#query-parameters)
+        /// are required.</summary>
         public class PatchRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.FirebaseProject>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -3087,11 +2913,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>Specifies which fields to update.
-            ///
-            /// If this list is empty, then no state will be updated.
-            ///
-            /// Note that the fields `name`, `projectId`, and `projectNumber` are all immutable.</summary>
+            /// <summary>Specifies which fields to update. If this list is empty, then no state will be updated. Note
+            /// that the fields `name`, `projectId`, and `projectNumber` are all immutable.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -3147,18 +2970,14 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
         }
 
-        /// <summary>Unlinks the specified FirebaseProject from its Google Analytics account.
-        ///
-        /// This call removes the association of the specified `FirebaseProject` with its current Google Analytics
-        /// property. However, this call does not delete the Google Analytics resources, such as the Google Analytics
-        /// property or any data streams.
-        ///
-        /// These resources may be re-associated later to the `FirebaseProject` by calling
+        /// <summary>Unlinks the specified FirebaseProject from its Google Analytics account. This call removes the
+        /// association of the specified `FirebaseProject` with its current Google Analytics property. However, this
+        /// call does not delete the Google Analytics resources, such as the Google Analytics property or any data
+        /// streams. These resources may be re-associated later to the `FirebaseProject` by calling
         /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) and specifying the same
         /// `analyticsPropertyId`. For Android Apps and iOS Apps, this call re-links data streams with their
-        /// corresponding apps. However, for Web Apps, this call provisions a *new* data stream for each Web App.
-        ///
-        /// To call `RemoveAnalytics`, a project member must be an Owner for the `FirebaseProject`.</summary>
+        /// corresponding apps. However, for Web Apps, this call provisions a *new* data stream for each Web App. To
+        /// call `RemoveAnalytics`, a project member must be an Owner for the `FirebaseProject`.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">The resource name of the FirebaseProject to unlink from its Google Analytics account, in the
         /// format: projects/PROJECT_IDENTIFIER Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name)
@@ -3168,18 +2987,14 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             return new RemoveAnalyticsRequest(service, body, parent);
         }
 
-        /// <summary>Unlinks the specified FirebaseProject from its Google Analytics account.
-        ///
-        /// This call removes the association of the specified `FirebaseProject` with its current Google Analytics
-        /// property. However, this call does not delete the Google Analytics resources, such as the Google Analytics
-        /// property or any data streams.
-        ///
-        /// These resources may be re-associated later to the `FirebaseProject` by calling
+        /// <summary>Unlinks the specified FirebaseProject from its Google Analytics account. This call removes the
+        /// association of the specified `FirebaseProject` with its current Google Analytics property. However, this
+        /// call does not delete the Google Analytics resources, such as the Google Analytics property or any data
+        /// streams. These resources may be re-associated later to the `FirebaseProject` by calling
         /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) and specifying the same
         /// `analyticsPropertyId`. For Android Apps and iOS Apps, this call re-links data streams with their
-        /// corresponding apps. However, for Web Apps, this call provisions a *new* data stream for each Web App.
-        ///
-        /// To call `RemoveAnalytics`, a project member must be an Owner for the `FirebaseProject`.</summary>
+        /// corresponding apps. However, for Web Apps, this call provisions a *new* data stream for each Web App. To
+        /// call `RemoveAnalytics`, a project member must be an Owner for the `FirebaseProject`.</summary>
         public class RemoveAnalyticsRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Empty>
         {
             /// <summary>Constructs a new RemoveAnalytics request.</summary>
@@ -3242,12 +3057,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
         }
 
-        /// <summary>Lists all available Apps for the specified FirebaseProject.
-        ///
-        /// This is a convenience method. Typically, interaction with an App should be done using the platform-specific
-        /// service, but some tool use-cases require a summary of all known Apps (such as for App selector
-        /// interfaces).</summary>
-        /// <param name="parent">The parent FirebaseProject for which to list Apps, in the format: projects/PROJECT_IDENTIFIER
+        /// <summary>Lists all available Apps for the specified FirebaseProject. This is a convenience method.
+        /// Typically, interaction with an App should be done using the platform-specific service, but some tool use-
+        /// cases require a summary of all known Apps (such as for App selector interfaces).</summary>
+        /// <param name="parent">The parent FirebaseProject for which to list Apps, in the format: projects/ PROJECT_IDENTIFIER
         /// Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
         /// PROJECT_IDENTIFIER values.</param>
         public virtual SearchAppsRequest SearchApps(string parent)
@@ -3255,11 +3068,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             return new SearchAppsRequest(service, parent);
         }
 
-        /// <summary>Lists all available Apps for the specified FirebaseProject.
-        ///
-        /// This is a convenience method. Typically, interaction with an App should be done using the platform-specific
-        /// service, but some tool use-cases require a summary of all known Apps (such as for App selector
-        /// interfaces).</summary>
+        /// <summary>Lists all available Apps for the specified FirebaseProject. This is a convenience method.
+        /// Typically, interaction with an App should be done using the platform-specific service, but some tool use-
+        /// cases require a summary of all known Apps (such as for App selector interfaces).</summary>
         public class SearchAppsRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.SearchFirebaseAppsResponse>
         {
             /// <summary>Constructs a new SearchApps request.</summary>
@@ -3271,18 +3082,15 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
 
-            /// <summary>The parent FirebaseProject for which to list Apps, in the format: projects/PROJECT_IDENTIFIER
+            /// <summary>The parent FirebaseProject for which to list Apps, in the format: projects/ PROJECT_IDENTIFIER
             /// Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
             /// PROJECT_IDENTIFIER values.</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
-            /// <summary>The maximum number of Apps to return in the response.
-            ///
-            /// The server may return fewer than this value at its discretion. If no value is specified (or too large a
-            /// value is specified), then the server will impose its own limit.
-            ///
-            /// This value cannot be negative.</summary>
+            /// <summary>The maximum number of Apps to return in the response. The server may return fewer than this
+            /// value at its discretion. If no value is specified (or too large a value is specified), then the server
+            /// will impose its own limit. This value cannot be negative.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -3356,29 +3164,22 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     {
         /// <summary>Deprecated. Instead, to set a Project's default GCP resource location, call
         /// [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase resources to the
-        /// GCP `Project`.
-        ///
-        /// The ID of the Project's default GCP resource location. The location must be one of the available [GCP
-        /// resource locations](https://firebase.google.com/docs/projects/locations).</summary>
+        /// GCP `Project`. The ID of the Project's default GCP resource location. The location must be one of the
+        /// available [GCP resource locations](https://firebase.google.com/docs/projects/locations).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
         /// <summary>Deprecated. Instead, to link a Project with a Google Analytics account, call
         /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) after you add Firebase resources to the
-        /// GCP `Project`.
-        ///
-        /// The region code (CLDR) that the account will use for Google Analytics data For example: US, GB, or DE
-        ///
-        /// In Java, use `com.google.i18n.identifiers.RegionCode`.</summary>
+        /// GCP `Project`. The region code (CLDR) that the account will use for Google Analytics data For example: US,
+        /// GB, or DE In Java, use `com.google.i18n.identifiers.RegionCode`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; } 
 
         /// <summary>Deprecated. Instead, to link a Project with a Google Analytics account, call
         /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) after you add Firebase resources to the
-        /// GCP `Project`.
-        ///
-        /// The time zone that the account will use for Google Analytics data. For example: America/Los_Angeles or
-        /// Africa/Abidjan</summary>
+        /// GCP `Project`. The time zone that the account will use for Google Analytics data. For example:
+        /// America/Los_Angeles or Africa/Abidjan</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; } 
 
@@ -3389,10 +3190,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     public class AddGoogleAnalyticsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID for the existing [Google Analytics account](http://www.google.com/analytics/) that you want
-        /// to link with the `FirebaseProject`.
-        ///
-        /// Specifying this field will provision a new Google Analytics property in your Google Analytics account and
-        /// associate the new property with the `FirebaseProject`.</summary>
+        /// to link with the `FirebaseProject`. Specifying this field will provision a new Google Analytics property in
+        /// your Google Analytics account and associate the new property with the `FirebaseProject`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsAccountId")]
         public virtual string AnalyticsAccountId { get; set; } 
 
@@ -3412,11 +3211,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string DatabaseURL { get; set; } 
 
         /// <summary>The ID of the Project's default GCP resource location. The location is one of the available [GCP
-        /// resource locations](https://firebase.google.com/docs/projects/locations).
-        ///
-        /// This field is omitted if the default GCP resource location has not been finalized yet. To set a Project's
-        /// default GCP resource location, call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after
-        /// you add Firebase resources to the Project.</summary>
+        /// resource locations](https://firebase.google.com/docs/projects/locations). This field is omitted if the
+        /// default GCP resource location has not been finalized yet. To set a Project's default GCP resource location,
+        /// call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase resources to
+        /// the Project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
@@ -3436,14 +3234,13 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
 
     public class AnalyticsDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Analytics Property object associated with the specified `FirebaseProject`.
-        ///
-        /// This object contains the details of the Google Analytics property associated with the Project.</summary>
+        /// <summary>The Analytics Property object associated with the specified `FirebaseProject`. This object contains
+        /// the details of the Google Analytics property associated with the Project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsProperty")]
         public virtual AnalyticsProperty AnalyticsProperty { get; set; } 
 
-        /// <summary> For `AndroidApps` and `IosApps`: a map of `app` to `streamId` for each Firebase App in the
-        /// specified `FirebaseProject`. Each `app` and `streamId` appears only once. For `WebApps`: a map of `app` to
+        /// <summary> - For `AndroidApps` and `IosApps`: a map of `app` to `streamId` for each Firebase App in the
+        /// specified `FirebaseProject`. Each `app` and `streamId` appears only once. - For `WebApps`: a map of `app` to
         /// `streamId` and `measurementId` for each `WebApp` in the specified `FirebaseProject`. Each `app`, `streamId`,
         /// and `measurementId` appears only once.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamMappings")]
@@ -3462,11 +3259,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string DisplayName { get; set; } 
 
         /// <summary>The globally unique, Google-assigned identifier of the Google Analytics property associated with
-        /// the specified `FirebaseProject`.
-        ///
-        /// If you called [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) to link the
-        /// `FirebaseProject` with a Google Analytics account, the value in this `id` field is the same as the ID of the
-        /// property either specified or provisioned with that call to `AddGoogleAnalytics`.</summary>
+        /// the specified `FirebaseProject`. If you called
+        /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) to link the `FirebaseProject` with a
+        /// Google Analytics account, the value in this `id` field is the same as the ID of the property either
+        /// specified or provisioned with that call to `AddGoogleAnalytics`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -3477,9 +3273,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     /// <summary>Details of a Firebase App for Android.</summary>
     public class AndroidApp : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`.
-        ///
-        /// This identifier should be treated as an opaque token, as the data format is not specified.</summary>
+        /// <summary>Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier
+        /// should be treated as an opaque token, as the data format is not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
         public virtual string AppId { get; set; } 
 
@@ -3487,7 +3282,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>The resource name of the AndroidApp, in the format: projects/PROJECT_IDENTIFIER/androidApps/APP_ID
+        /// <summary>The resource name of the AndroidApp, in the format: projects/ PROJECT_IDENTIFIER/androidApps/APP_ID
         /// * PROJECT_IDENTIFIER: the parent Project's
         /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
         /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in
@@ -3540,11 +3335,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string HostingSite { get; set; } 
 
         /// <summary>The ID of the Project's default GCP resource location. The location is one of the available [GCP
-        /// resource locations](https://firebase.google.com/docs/projects/locations).
-        ///
-        /// This field is omitted if the default GCP resource location has not been finalized yet. To set a Project's
-        /// default GCP resource location, call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after
-        /// you add Firebase resources to the Project.</summary>
+        /// resource locations](https://firebase.google.com/docs/projects/locations). This field is omitted if the
+        /// default GCP resource location has not been finalized yet. To set a Project's default GCP resource location,
+        /// call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase resources to
+        /// the Project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
@@ -3567,11 +3361,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -3592,9 +3384,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     /// <summary>A high-level summary of an App.</summary>
     public class FirebaseAppInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`.
-        ///
-        /// This identifier should be treated as an opaque token, as the data format is not specified.</summary>
+        /// <summary>Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier
+        /// should be treated as an opaque token, as the data format is not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
         public virtual string AppId { get; set; } 
 
@@ -3602,8 +3393,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>The resource name of the Firebase App, in the format: projects/PROJECT_ID/iosApps/APP_ID or
-        /// projects/PROJECT_ID/androidApps/APP_ID or projects/PROJECT_ID/webApps/APP_ID</summary>
+        /// <summary>The resource name of the Firebase App, in the format: projects/PROJECT_ID /iosApps/APP_ID or
+        /// projects/PROJECT_ID/androidApps/APP_ID or projects/ PROJECT_ID/webApps/APP_ID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -3617,14 +3408,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
 
     /// <summary>A `FirebaseProject` is the top-level Firebase entity. It is the container for Firebase Apps, Firebase
     /// Hosting sites, storage systems (Firebase Realtime Database, Cloud Firestore, Cloud Storage buckets), and other
-    /// Firebase and Google Cloud Platform (GCP) resources.
-    ///
-    /// You create a `FirebaseProject` by calling AddFirebase and specifying an *existing* [GCP
-    /// `Project`](https://cloud.google.com/resource-manager/reference/rest/v1/projects). This adds Firebase resources
-    /// to the existing GCP `Project`.
-    ///
-    /// Since a FirebaseProject is actually also a GCP `Project`, a `FirebaseProject` has the same underlying GCP
-    /// identifiers (`projectNumber` and `projectId`). This allows for easy interop with Google APIs.</summary>
+    /// Firebase and Google Cloud Platform (GCP) resources. You create a `FirebaseProject` by calling AddFirebase and
+    /// specifying an *existing* [GCP `Project`](https://cloud.google.com/resource-manager/reference/rest/v1/projects).
+    /// This adds Firebase resources to the existing GCP `Project`. Since a FirebaseProject is actually also a GCP
+    /// `Project`, a `FirebaseProject` has the same underlying GCP identifiers (`projectNumber` and `projectId`). This
+    /// allows for easy interop with Google APIs.</summary>
     public class FirebaseProject : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The user-assigned display name of the Project.</summary>
@@ -3639,10 +3427,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Immutable. A user-assigned unique identifier for the Project.
-        ///
-        /// This identifier may appear in URLs or names for some Firebase resources associated with the Project, but it
-        /// should generally be treated as a convenience alias to reference the Project.</summary>
+        /// <summary>Immutable. A user-assigned unique identifier for the Project. This identifier may appear in URLs or
+        /// names for some Firebase resources associated with the Project, but it should generally be treated as a
+        /// convenience alias to reference the Project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
@@ -3669,9 +3456,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     /// <summary>Details of a Firebase App for iOS.</summary>
     public class IosApp : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`.
-        ///
-        /// This identifier should be treated as an opaque token, as the data format is not specified.</summary>
+        /// <summary>Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`. This identifier
+        /// should be treated as an opaque token, as the data format is not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
         public virtual string AppId { get; set; } 
 
@@ -3688,7 +3474,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER/iosApps/APP_ID *
+        /// <summary>The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID *
         /// PROJECT_IDENTIFIER: the parent Project's
         /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
         /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in
@@ -3730,11 +3516,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual System.Collections.Generic.IList<AndroidApp> Apps { get; set; } 
 
         /// <summary>If the result list is too large to fit in a single response, then a token is returned. If the
-        /// string is empty, then this response is the last page of results.
-        ///
-        /// This token can be used in a subsequent call to `ListAndroidApps` to find the next group of Apps.
-        ///
-        /// Page tokens are short-lived and should not be persisted.</summary>
+        /// string is empty, then this response is the last page of results. This token can be used in a subsequent call
+        /// to `ListAndroidApps` to find the next group of Apps. Page tokens are short-lived and should not be
+        /// persisted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -3750,11 +3534,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
 
         /// <summary>If the result list is too large to fit in a single response, then a token is returned. If the
         /// string is empty, then this response is the last page of results and all available locations have been
-        /// listed.
-        ///
-        /// This token can be used in a subsequent call to `ListAvailableLocations` to find more locations.
-        ///
-        /// Page tokens are short-lived and should not be persisted.</summary>
+        /// listed. This token can be used in a subsequent call to `ListAvailableLocations` to find more locations. Page
+        /// tokens are short-lived and should not be persisted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -3765,11 +3546,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     public class ListAvailableProjectsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If the result list is too large to fit in a single response, then a token is returned. If the
-        /// string is empty, then this response is the last page of results.
-        ///
-        /// This token can be used in a subsequent calls to `ListAvailableProjects` to find the next group of Projects.
-        ///
-        /// Page tokens are short-lived and should not be persisted.</summary>
+        /// string is empty, then this response is the last page of results. This token can be used in a subsequent
+        /// calls to `ListAvailableProjects` to find the next group of Projects. Page tokens are short-lived and should
+        /// not be persisted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -3784,11 +3563,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     public class ListFirebaseProjectsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If the result list is too large to fit in a single response, then a token is returned. If the
-        /// string is empty, then this response is the last page of results.
-        ///
-        /// This token can be used in a subsequent calls to `ListFirebaseProjects` to find the next group of Projects.
-        ///
-        /// Page tokens are short-lived and should not be persisted.</summary>
+        /// string is empty, then this response is the last page of results. This token can be used in a subsequent
+        /// calls to `ListFirebaseProjects` to find the next group of Projects. Page tokens are short-lived and should
+        /// not be persisted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -3807,11 +3584,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual System.Collections.Generic.IList<IosApp> Apps { get; set; } 
 
         /// <summary>If the result list is too large to fit in a single response, then a token is returned. If the
-        /// string is empty, then this response is the last page of results.
-        ///
-        /// This token can be used in a subsequent call to `ListIosApps` to find the next group of Apps.
-        ///
-        /// Page tokens are short-lived and should not be persisted.</summary>
+        /// string is empty, then this response is the last page of results. This token can be used in a subsequent call
+        /// to `ListIosApps` to find the next group of Apps. Page tokens are short-lived and should not be
+        /// persisted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -3836,11 +3611,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual System.Collections.Generic.IList<WebApp> Apps { get; set; } 
 
         /// <summary>If the result list is too large to fit in a single response, then a token is returned. If the
-        /// string is empty, then this response is the last page of results.
-        ///
-        /// This token can be used in a subsequent call to `ListWebApps` to find the next group of Apps.
-        ///
-        /// Page tokens are short-lived and should not be persisted.</summary>
+        /// string is empty, then this response is the last page of results. This token can be used in a subsequent call
+        /// to `ListWebApps` to find the next group of Apps. Page tokens are short-lived and should not be
+        /// persisted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -3888,9 +3661,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -3900,11 +3673,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -3920,10 +3693,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string DisplayName { get; set; } 
 
         /// <summary>The ID of the Project's default GCP resource location. The location is one of the available [GCP
-        /// resource locations](https://firebase.google.com/docs/projects/locations).
-        ///
-        /// Not all Projects will have this field populated. If it is not populated, it means that the Project does not
-        /// yet have a default GCP resource location. To set a Project's default GCP resource location, call
+        /// resource locations](https://firebase.google.com/docs/projects/locations). Not all Projects will have this
+        /// field populated. If it is not populated, it means that the Project does not yet have a default GCP resource
+        /// location. To set a Project's default GCP resource location, call
         /// [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase resources to the
         /// Project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
@@ -3942,14 +3714,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     public class RemoveAnalyticsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The ID of the Google Analytics property associated with the specified `FirebaseProject`.
-        ///
-        /// If not set, then the Google Analytics property that is currently associated with the specified
-        /// `FirebaseProject` is removed.
-        ///
-        /// If set, and the specified `FirebaseProject` is currently associated with a *different* Google Analytics
-        /// property, then the response is a `412 Precondition Failed` error.
-        ///
-        /// </summary>
+        /// - If not set, then the Google Analytics property that is currently associated with the specified
+        /// `FirebaseProject` is removed. - If set, and the specified `FirebaseProject` is currently associated with a
+        /// *different* Google Analytics property, then the response is a `412 Precondition Failed` error. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsPropertyId")]
         public virtual string AnalyticsPropertyId { get; set; } 
 
@@ -3963,11 +3730,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apps")]
         public virtual System.Collections.Generic.IList<FirebaseAppInfo> Apps { get; set; } 
 
-        /// <summary>If the result list is too large to fit in a single response, then a token is returned.
-        ///
-        /// This token can be used in a subsequent calls to `SearchFirebaseApps` to find the next group of Apps.
-        ///
-        /// Page tokens are short-lived and should not be persisted.</summary>
+        /// <summary>If the result list is too large to fit in a single response, then a token is returned. This token
+        /// can be used in a subsequent calls to `SearchFirebaseApps` to find the next group of Apps. Page tokens are
+        /// short-lived and should not be persisted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -4003,9 +3768,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4013,8 +3777,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -4048,22 +3812,16 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("messageSet")]
         public virtual MessageSet MessageSet { get; set; } 
 
-        /// <summary>DEPRECATED.
-        ///
-        /// This field was deprecated in 2011 with cl/20297133.  Java support for the field was moved to a proto1
-        /// backward compatibility class in April 2017 with cl/142615857 and cl/154123203.  There was never support for
-        /// this field in Go; if set Go will ignore it. C++ stopped setting StatusProto::payload in October 2015 with
-        /// cl/106347055, and stopped reading the field in October 2017 with cl/173324114.
-        ///
-        /// In general, newly written code should use only "message_set". If you need to maintain backward compatibility
-        /// with code written before 3/25/2011, do the following:
-        ///
-        /// - During the transition period, either (1) set both "payload" and "message_set", or (2) write the consumer
-        /// of StatusProto so that it can forge a MessageSet object from "payload" if "message_set" is missing. The C++
-        /// util::Status implementation does (2).
-        ///
-        /// - Once all the consumers are converted to accept "message_set", then remove the use of "payload" on the
-        /// producer side.</summary>
+        /// <summary>DEPRECATED. This field was deprecated in 2011 with cl/20297133. Java support for the field was
+        /// moved to a proto1 backward compatibility class in April 2017 with cl/142615857 and cl/154123203. There was
+        /// never support for this field in Go; if set Go will ignore it. C++ stopped setting StatusProto::payload in
+        /// October 2015 with cl/106347055, and stopped reading the field in October 2017 with cl/173324114. In general,
+        /// newly written code should use only "message_set". If you need to maintain backward compatibility with code
+        /// written before 3/25/2011, do the following: - During the transition period, either (1) set both "payload"
+        /// and "message_set", or (2) write the consumer of StatusProto so that it can forge a MessageSet object from
+        /// "payload" if "message_set" is missing. The C++ util::Status implementation does (2). - Once all the
+        /// consumers are converted to accept "message_set", then remove the use of "payload" on the producer
+        /// side.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual TypedMessage Payload { get; set; } 
 
@@ -4080,26 +3838,21 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     {
         /// <summary>The resource name of the Firebase App associated with the Google Analytics data stream, in the
         /// format: projects/PROJECT_IDENTIFIER/androidApps/APP_ID or projects/PROJECT_IDENTIFIER/iosApps/APP_ID or
-        /// projects/PROJECT_IDENTIFIER/webApps/APP_ID Refer to the `FirebaseProject`
+        /// projects/PROJECT_IDENTIFIER /webApps/APP_ID Refer to the `FirebaseProject`
         /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER
         /// values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("app")]
         public virtual string App { get; set; } 
 
-        /// <summary>Applicable for Firebase Web Apps only.
-        ///
-        /// The unique Google-assigned identifier of the Google Analytics web stream associated with the Firebase Web
-        /// App. Firebase SDKs use this ID to interact with Google Analytics APIs.
-        ///
-        /// Learn more about this ID and Google Analytics web streams in the [Analytics
+        /// <summary>Applicable for Firebase Web Apps only. The unique Google-assigned identifier of the Google
+        /// Analytics web stream associated with the Firebase Web App. Firebase SDKs use this ID to interact with Google
+        /// Analytics APIs. Learn more about this ID and Google Analytics web streams in the [Analytics
         /// documentation](https://support.google.com/analytics/topic/9303475).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("measurementId")]
         public virtual string MeasurementId { get; set; } 
 
         /// <summary>The unique Google-assigned identifier of the Google Analytics data stream associated with the
-        /// Firebase App.
-        ///
-        /// Learn more about Google Analytics data streams in the [Analytics
+        /// Firebase App. Learn more about Google Analytics data streams in the [Analytics
         /// documentation](https://support.google.com/analytics/answer/9303323).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamId")]
         public virtual System.Nullable<long> StreamId { get; set; } 
@@ -4109,13 +3862,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     }    
 
     /// <summary>Message that groups a protocol type_id (as defined by MessageSet), with an encoded message of that
-    /// type.  Its use is similar to MessageSet, except it represents a single (type, encoded message) instead of a set.
-    ///
+    /// type. Its use is similar to MessageSet, except it represents a single (type, encoded message) instead of a set.
     /// To embed "proto" inside "typed_msg": MyProtoMessage proto; TypedMessage typed_msg;
-    /// typed_msg.set_type_id(proto2::bridge::GetTypeId(proto)); proto.AppendToCord(typed_msg.mutable_message());
-    ///
-    /// Error handling is omitted from the sample code above. GetTypeId() will return 0 for messages that don't have a
-    /// TypeId specified.</summary>
+    /// typed_msg.set_type_id(proto2::bridge::GetTypeId(proto)); proto.AppendToCord(typed_msg.mutable_message()); Error
+    /// handling is omitted from the sample code above. GetTypeId() will return 0 for messages that don't have a TypeId
+    /// specified.</summary>
     public class TypedMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Message bytes.</summary>
@@ -4133,9 +3884,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     /// <summary>Details of a Firebase App for the web.</summary>
     public class WebApp : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`.
-        ///
-        /// This identifier should be treated as an opaque token, as the data format is not specified.</summary>
+        /// <summary>Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier
+        /// should be treated as an opaque token, as the data format is not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
         public virtual string AppId { get; set; } 
 
@@ -4147,7 +3897,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER/webApps/APP_ID *
+        /// <summary>The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID *
         /// PROJECT_IDENTIFIER: the parent Project's
         /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
         /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in
@@ -4187,15 +3937,20 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string DatabaseURL { get; set; } 
 
         /// <summary>The ID of the Project's default GCP resource location. The location is one of the available [GCP
-        /// resource locations](https://firebase.google.com/docs/projects/locations).
-        ///
-        /// This field is omitted if the default GCP resource location has not been finalized yet. To set a Project's
-        /// default GCP resource location, call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after
-        /// you add Firebase resources to the Project.</summary>
+        /// resource locations](https://firebase.google.com/docs/projects/locations). This field is omitted if the
+        /// default GCP resource location has not been finalized yet. To set a Project's default GCP resource location,
+        /// call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase resources to
+        /// the Project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
-        /// <summary>This field will no longer be provided here. Instead, use `GetAnalyticsDetails`</summary>
+        /// <summary>The unique Google-assigned identifier of the Google Analytics web stream associated with the
+        /// Firebase Web App. Firebase SDKs use this ID to interact with Google Analytics APIs. This field is only
+        /// present if the App is linked to a web stream in a Google Analytics App + Web property. Learn more about this
+        /// ID and Google Analytics web streams in the [Analytics
+        /// documentation](https://support.google.com/analytics/topic/9303475). To generate a `measurementId` and link
+        /// the Web App with a Google Analytics web stream, call
+        /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("measurementId")]
         public virtual string MeasurementId { get; set; } 
 

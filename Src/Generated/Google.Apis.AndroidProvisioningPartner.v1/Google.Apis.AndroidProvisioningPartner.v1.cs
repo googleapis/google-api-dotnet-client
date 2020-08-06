@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/zero-touch/'>Android Device Provisioning Partner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200801 (2039)
+ *      <tr><th>API Rev<td>20200804 (2042)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/zero-touch/'>
  *              https://developers.google.com/zero-touch/</a>
@@ -1037,10 +1037,9 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
 
             }
 
-            /// <summary>Unclaims a device from a customer and removes it from zero-touch enrollment.
-            ///
-            /// After removing a device, a customer must contact their reseller to register the device into zero-touch
-            /// enrollment again.</summary>
+            /// <summary>Unclaims a device from a customer and removes it from zero-touch enrollment. After removing a
+            /// device, a customer must contact their reseller to register the device into zero-touch enrollment
+            /// again.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The customer managing the device. An API resource name in the format
             /// `customers/[CUSTOMER_ID]`.</param>
@@ -1049,10 +1048,9 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 return new UnclaimRequest(service, body, parent);
             }
 
-            /// <summary>Unclaims a device from a customer and removes it from zero-touch enrollment.
-            ///
-            /// After removing a device, a customer must contact their reseller to register the device into zero-touch
-            /// enrollment again.</summary>
+            /// <summary>Unclaims a device from a customer and removes it from zero-touch enrollment. After removing a
+            /// device, a customer must contact their reseller to register the device into zero-touch enrollment
+            /// again.</summary>
             public class UnclaimRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Unclaim request.</summary>
@@ -1289,7 +1287,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
         }
 
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
@@ -1297,7 +1295,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         public class GetRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.Operation>
         {
@@ -2523,12 +2521,8 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string CompanyName { get; set; } 
 
         /// <summary>Output only. The API resource name of the company. The resource name is one of the following
-        /// formats:
-        ///
-        /// * `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]` * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]` *
-        /// `partners/[PARTNER_ID]/vendors/[VENDOR_ID]/customers/[CUSTOMER_ID]`
-        ///
-        /// Assigned by the server.</summary>
+        /// formats: * `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]` * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]` *
+        /// `partners/[PARTNER_ID]/vendors/[VENDOR_ID]/customers/[CUSTOMER_ID]` Assigned by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -2548,13 +2542,10 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     }    
 
     /// <summary>A configuration collects the provisioning options for Android devices. Each configuration combines the
-    /// following:
-    ///
-    /// * The EMM device policy controller (DPC) installed on the devices. * EMM policies enforced on the devices. *
-    /// Metadata displayed on the device to help users during setup.
-    ///
-    /// Customers can add as many configurations as they need. However, zero-touch enrollment works best when a customer
-    /// sets a default configuration that's applied to any new devices the organization purchases.</summary>
+    /// following: * The EMM device policy controller (DPC) installed on the devices. * EMM policies enforced on the
+    /// devices. * Metadata displayed on the device to help users during setup. Customers can add as many configurations
+    /// as they need. However, zero-touch enrollment works best when a customer sets a default configuration that's
+    /// applied to any new devices the organization purchases.</summary>
     public class Configuration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The name of the organization. Zero-touch enrollment shows this organization name to
@@ -2831,14 +2822,10 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     }    
 
     /// <summary>A `DeviceReference` is an API abstraction that lets you supply a _device_ argument to a method using
-    /// one of the following identifier types:
-    ///
-    /// * A numeric API resource ID. * Real-world hardware IDs, such as IMEI number, belonging to the manufactured
-    /// device.
-    ///
-    /// Methods that operate on devices take a `DeviceReference` as a parameter type because it's more flexible for the
-    /// caller. To learn more about device identifiers, read [Identifiers](https://developers.google.com/zero-
-    /// touch/guides/identifiers).</summary>
+    /// one of the following identifier types: * A numeric API resource ID. * Real-world hardware IDs, such as IMEI
+    /// number, belonging to the manufactured device. Methods that operate on devices take a `DeviceReference` as a
+    /// parameter type because it's more flexible for the caller. To learn more about device identifiers, read
+    /// [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).</summary>
     public class DeviceReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the device.</summary>
@@ -2921,11 +2908,9 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -3210,9 +3195,8 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3220,8 +3204,8 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

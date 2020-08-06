@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/translate/docs/quickstarts'>Cloud Translation API</a>
  *      <tr><th>API Version<td>v3beta1
- *      <tr><th>API Rev<td>20200728 (2035)
+ *      <tr><th>API Rev<td>20200730 (2037)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/translate/docs/quickstarts'>
  *              https://cloud.google.com/translate/docs/quickstarts</a>
@@ -611,8 +611,18 @@ namespace Google.Apis.Translate.v3beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filter specifying constraints of a list operation. Filtering is not supported
-                    /// yet, and the parameter currently has no effect. If missing, no filtering is performed.</summary>
+                    /// <summary>Optional. Filter specifying constraints of a list operation. Specify the constraint by
+                    /// the format of "key=value", where key must be "src" or "tgt", and the value must be a valid
+                    /// language code. For multiple restrictions, concatenate them by "AND" (uppercase only), such as:
+                    /// "src=en-US AND tgt=zh-CN". Notice that the exact match is used here, which means using 'en-US'
+                    /// and 'en' can lead to different results, which depends on the language code you used when you
+                    /// create the glossary. For the unidirectional glossaries, the "src" and "tgt" add restrictions on
+                    /// the source and target language code separately. For the equivalent term set glossaries, the
+                    /// "src" and/or "tgt" add restrictions on the term set. For example: "src=en-US AND tgt=zh-CN" will
+                    /// only pick the unidirectional glossaries which exactly match the source language code as "en-US"
+                    /// and the target language code "zh-CN", but all equivalent term set glossaries which contain "en-
+                    /// US" and "zh-CN" in their language set will be picked. If missing, no filtering is
+                    /// performed.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 

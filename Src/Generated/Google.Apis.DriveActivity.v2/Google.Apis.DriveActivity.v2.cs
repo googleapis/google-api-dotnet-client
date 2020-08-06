@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/activity/'>Drive Activity API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200728 (2035)
+ *      <tr><th>API Rev<td>20200801 (2039)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/activity/'>
  *              https://developers.google.com/drive/activity/</a>
@@ -770,7 +770,7 @@ namespace Google.Apis.DriveActivity.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("folder")]
         public virtual Folder Folder { get; set; } 
 
-        /// <summary>The MIME type of the Drive item.  See https://developers.google.com/drive/v3/web/mime-
+        /// <summary>The MIME type of the Drive item. See https://developers.google.com/drive/v3/web/mime-
         /// types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; } 
@@ -1069,17 +1069,12 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The filtering for items returned from this query request. The format of the filter string is a
         /// sequence of expressions, joined by an optional "AND", where each expression is of the form "field operator
-        /// value".
-        ///
-        /// Supported fields:
-        ///
-        /// - time: Uses numerical operators on date values either in terms of milliseconds since Jan 1, 1970 or in RFC
-        /// 3339 format. Examples: - time > 1452409200000 AND time <= 1492812924310 - time >=
-        /// "2016-01-10T01:02:03-05:00"
-        ///
-        /// - detail.action_detail_case: Uses the "has" operator (:) and either a singular value or a list of allowed
-        /// action types enclosed in parentheses. Examples: - detail.action_detail_case: RENAME -
-        /// detail.action_detail_case:(CREATE EDIT) - -detail.action_detail_case:MOVE</summary>
+        /// value". Supported fields: - time: Uses numerical operators on date values either in terms of milliseconds
+        /// since Jan 1, 1970 or in RFC 3339 format. Examples: - time > 1452409200000 AND time <= 1492812924310 - time
+        /// >= "2016-01-10T01:02:03-05:00" - detail.action_detail_case: Uses the "has" operator (:) and either a
+        /// singular value or a list of allowed action types enclosed in parentheses. Examples: -
+        /// detail.action_detail_case: RENAME - detail.action_detail_case:(CREATE EDIT) -
+        /// -detail.action_detail_case:MOVE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 

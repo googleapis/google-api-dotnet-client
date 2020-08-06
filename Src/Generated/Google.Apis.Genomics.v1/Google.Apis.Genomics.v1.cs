@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200727 (2034)
+ *      <tr><th>API Rev<td>20200804 (2042)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -350,9 +350,8 @@ namespace Google.Apis.Genomics.v1
         /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
         /// cancel the operation, but success is not guaranteed. Clients may use Operations.GetOperation or
         /// Operations.ListOperations to check whether the cancellation succeeded or the operation completed despite
-        /// cancellation. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission
-        ///
-        /// * `genomics.operations.cancel`</summary>
+        /// cancellation. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission: *
+        /// `genomics.operations.cancel`</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The name of the operation resource to be cancelled.</param>
         public virtual CancelRequest Cancel(Google.Apis.Genomics.v1.Data.CancelOperationRequest body, string name)
@@ -363,9 +362,8 @@ namespace Google.Apis.Genomics.v1
         /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
         /// cancel the operation, but success is not guaranteed. Clients may use Operations.GetOperation or
         /// Operations.ListOperations to check whether the cancellation succeeded or the operation completed despite
-        /// cancellation. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission
-        ///
-        /// * `genomics.operations.cancel`</summary>
+        /// cancellation. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission: *
+        /// `genomics.operations.cancel`</summary>
         public class CancelRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Empty>
         {
             /// <summary>Constructs a new Cancel request.</summary>
@@ -427,9 +425,7 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service. Authorization requires the following
-        /// [Google IAM](https://cloud.google.com/iam) permission
-        ///
-        /// * `genomics.operations.get`</summary>
+        /// [Google IAM](https://cloud.google.com/iam) permission: * `genomics.operations.get`</summary>
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
@@ -438,9 +434,7 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service. Authorization requires the following
-        /// [Google IAM](https://cloud.google.com/iam) permission
-        ///
-        /// * `genomics.operations.get`</summary>
+        /// [Google IAM](https://cloud.google.com/iam) permission: * `genomics.operations.get`</summary>
         public class GetRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Operation>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -494,9 +488,7 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Lists operations that match the specified filter in the request. Authorization requires the
-        /// following [Google IAM](https://cloud.google.com/iam) permission
-        ///
-        /// * `genomics.operations.list`</summary>
+        /// following [Google IAM](https://cloud.google.com/iam) permission: * `genomics.operations.list`</summary>
         /// <param name="name">The name of the operation's parent resource.</param>
         public virtual ListRequest List(string name)
         {
@@ -504,9 +496,7 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Lists operations that match the specified filter in the request. Authorization requires the
-        /// following [Google IAM](https://cloud.google.com/iam) permission
-        ///
-        /// * `genomics.operations.list`</summary>
+        /// following [Google IAM](https://cloud.google.com/iam) permission: * `genomics.operations.list`</summary>
         public class ListRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.ListOperationsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -522,26 +512,19 @@ namespace Google.Apis.Genomics.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>A string for filtering Operations. In v2alpha1, the following filter fields are supported
-            ///
-            /// * createTime The time this job was created * events The set of event (names) that have occurred while
-            /// running the pipeline.  The  operator can be used to determine if a particular event has occurred. *
-            /// error If the pipeline is running, this value is NULL.  Once the pipeline finishes, the value is the
-            /// standard Google error code. * labels.key or labels."key with space" where key is a label key. * done If
-            /// the pipeline is running, this value is false. Once the pipeline finishes, the value is true.
-            ///
-            /// In v1 and v1alpha2, the following filter fields are supported
-            ///
-            /// * projectId Required. Corresponds to OperationMetadata.projectId. * createTime The time this job was
-            /// created, in seconds from the [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `>=` and/or `<=`
-            /// operators. * status Can be `RUNNING`, `SUCCESS`, `FAILURE`, or `CANCELED`. Only one status may be
-            /// specified. * labels.key where key is a label key.
-            ///
-            /// Examples
-            ///
-            /// * `projectId = my-project AND createTime >= 1432140000` * `projectId = my-project AND createTime >=
-            /// 1432140000 AND createTime <= 1432150000 AND status = RUNNING` * `projectId = my-project AND labels.color
-            /// = *` * `projectId = my-project AND labels.color = red`</summary>
+            /// <summary>A string for filtering Operations. In v2alpha1, the following filter fields are supported: *
+            /// createTime: The time this job was created * events: The set of event (names) that have occurred while
+            /// running the pipeline. The : operator can be used to determine if a particular event has occurred. *
+            /// error: If the pipeline is running, this value is NULL. Once the pipeline finishes, the value is the
+            /// standard Google error code. * labels.key or labels."key with space" where key is a label key. * done: If
+            /// the pipeline is running, this value is false. Once the pipeline finishes, the value is true. In v1 and
+            /// v1alpha2, the following filter fields are supported: * projectId: Required. Corresponds to
+            /// OperationMetadata.projectId. * createTime: The time this job was created, in seconds from the
+            /// [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `>=` and/or `<=` operators. * status: Can be
+            /// `RUNNING`, `SUCCESS`, `FAILURE`, or `CANCELED`. Only one status may be specified. * labels.key where key
+            /// is a label key. Examples: * `projectId = my-project AND createTime >= 1432140000` * `projectId = my-
+            /// project AND createTime >= 1432140000 AND createTime <= 1432150000 AND status = RUNNING` * `projectId =
+            /// my-project AND labels.color = *` * `projectId = my-project AND labels.color = red`</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -700,11 +683,9 @@ namespace Google.Apis.Genomics.v1.Data
 
         /// <summary>The tail end of any content written to standard error by the container. If the content emits large
         /// amounts of debugging noise or contains sensitive information, you can prevent the content from being printed
-        /// by setting the `DISABLE_STANDARD_ERROR_CAPTURE` flag.
-        ///
-        /// Note that only a small amount of the end of the stream is captured here. The entire stream is stored in the
-        /// `/google/logs` directory mounted into each action, and can be copied off the machine as described
-        /// elsewhere.</summary>
+        /// by setting the `DISABLE_STANDARD_ERROR_CAPTURE` flag. Note that only a small amount of the end of the stream
+        /// is captured here. The entire stream is stored in the `/google/logs` directory mounted into each action, and
+        /// can be copied off the machine as described elsewhere.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stderr")]
         public virtual string Stderr { get; set; } 
 
@@ -732,11 +713,9 @@ namespace Google.Apis.Genomics.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -811,7 +790,7 @@ namespace Google.Apis.Genomics.v1.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// For example `operations/CJHU7Oi_ChDrveSpBRjfuL-qzoWAgEw`</summary>
+        /// For example: `operations/CJHU7Oi_ChDrveSpBRjfuL-qzoWAgEw`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -933,9 +912,8 @@ namespace Google.Apis.Genomics.v1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -943,8 +921,8 @@ namespace Google.Apis.Genomics.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>Analytics Reporting API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20200727 (2034)
+ *      <tr><th>API Rev<td>20200803 (2041)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>
  *              https://developers.google.com/analytics/devguides/reporting/core/v4/</a>
@@ -602,35 +602,28 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Defines a cohort group. For example:
-    ///
-    /// "cohortGroup": { "cohorts": [{ "name": "cohort 1", "type": "FIRST_VISIT_DATE", "dateRange": { "startDate":
-    /// "2015-08-01", "endDate": "2015-08-01" } },{ "name": "cohort 2" "type": "FIRST_VISIT_DATE" "dateRange": {
-    /// "startDate": "2015-07-01", "endDate": "2015-07-01" } }] }</summary>
+    /// <summary>Defines a cohort group. For example: "cohortGroup": { "cohorts": [{ "name": "cohort 1", "type":
+    /// "FIRST_VISIT_DATE", "dateRange": { "startDate": "2015-08-01", "endDate": "2015-08-01" } },{ "name": "cohort 2"
+    /// "type": "FIRST_VISIT_DATE" "dateRange": { "startDate": "2015-07-01", "endDate": "2015-07-01" } }] }</summary>
     public class CohortGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The definition for the cohort.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cohorts")]
         public virtual System.Collections.Generic.IList<Cohort> Cohorts { get; set; } 
 
-        /// <summary>Enable Life Time Value (LTV).  LTV measures lifetime value for users acquired through different
+        /// <summary>Enable Life Time Value (LTV). LTV measures lifetime value for users acquired through different
         /// channels. Please see: [Cohort Analysis](https://support.google.com/analytics/answer/6074676) and [Lifetime
-        /// Value](https://support.google.com/analytics/answer/6182550) If the value of lifetimeValue is false:
-        ///
-        /// - The metric values are similar to the values in the web interface cohort report. - The cohort definition
-        /// date ranges must be aligned to the calendar week and month. i.e. while requesting `ga:cohortNthWeek` the
+        /// Value](https://support.google.com/analytics/answer/6182550) If the value of lifetimeValue is false: - The
+        /// metric values are similar to the values in the web interface cohort report. - The cohort definition date
+        /// ranges must be aligned to the calendar week and month. i.e. while requesting `ga:cohortNthWeek` the
         /// `startDate` in the cohort definition should be a Sunday and the `endDate` should be the following Saturday,
         /// and for `ga:cohortNthMonth`, the `startDate` should be the 1st of the month and `endDate` should be the last
-        /// day of the month.
-        ///
-        /// When the lifetimeValue is true:
-        ///
-        /// - The metric values will correspond to the values in the web interface LifeTime value report. - The Lifetime
-        /// Value report shows you how user value (Revenue) and engagement (Appviews, Goal Completions, Sessions, and
-        /// Session Duration) grow during the 90 days after a user is acquired. - The metrics are calculated as a
-        /// cumulative average per user per the time increment. - The cohort definition date ranges need not be aligned
-        /// to the calendar week and month boundaries. - The `viewId` must be an [app view
-        /// ID](https://support.google.com/analytics/answer/2649553#WebVersusAppViews)</summary>
+        /// day of the month. When the lifetimeValue is true: - The metric values will correspond to the values in the
+        /// web interface LifeTime value report. - The Lifetime Value report shows you how user value (Revenue) and
+        /// engagement (Appviews, Goal Completions, Sessions, and Session Duration) grow during the 90 days after a user
+        /// is acquired. - The metrics are calculated as a cumulative average per user per the time increment. - The
+        /// cohort definition date ranges need not be aligned to the calendar week and month boundaries. - The `viewId`
+        /// must be an [app view ID](https://support.google.com/analytics/answer/2649553#WebVersusAppViews)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifetimeValue")]
         public virtual System.Nullable<bool> LifetimeValue { get; set; } 
 
@@ -706,28 +699,19 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
     public class Dimension : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If non-empty, we place dimension values into buckets after string to int64. Dimension values that
-        /// are not the string representation of an integral value will be converted to zero.  The bucket values have to
-        /// be in increasing order.  Each bucket is closed on the lower end, and open on the upper end. The "first"
+        /// are not the string representation of an integral value will be converted to zero. The bucket values have to
+        /// be in increasing order. Each bucket is closed on the lower end, and open on the upper end. The "first"
         /// bucket includes all values less than the first boundary, the "last" bucket includes all values up to
         /// infinity. Dimension values that fall in a bucket get transformed to a new dimension value. For example, if
-        /// one gives a list of "0, 1, 3, 4, 7", then we return the following buckets:
-        ///
-        /// - bucket #1: values < 0, dimension value "<0" - bucket #2: values in [0,1), dimension value "0" - bucket #3:
-        /// values in [1,3), dimension value "1-2" - bucket #4: values in [3,4), dimension value "3" - bucket #5: values
-        /// in [4,7), dimension value "4-6" - bucket #6: values >= 7, dimension value "7+"
-        ///
-        /// NOTE: If you are applying histogram mutation on any dimension, and using that dimension in sort, you will
-        /// want to use the sort type `HISTOGRAM_BUCKET` for that purpose. Without that the dimension values will be
-        /// sorted according to dictionary (lexicographic) order. For example the ascending dictionary order is:
-        ///
-        /// "<50", "1001+", "121-1000", "50-120"
-        ///
-        /// And the ascending `HISTOGRAM_BUCKET` order is:
-        ///
-        /// "<50", "50-120", "121-1000", "1001+"
-        ///
-        /// The client has to explicitly request `"orderType": "HISTOGRAM_BUCKET"` for a histogram-mutated
-        /// dimension.</summary>
+        /// one gives a list of "0, 1, 3, 4, 7", then we return the following buckets: - bucket #1: values < 0,
+        /// dimension value "<0" - bucket #2: values in [0,1), dimension value "0" - bucket #3: values in [1,3),
+        /// dimension value "1-2" - bucket #4: values in [3,4), dimension value "3" - bucket #5: values in [4,7),
+        /// dimension value "4-6" - bucket #6: values >= 7, dimension value "7+" NOTE: If you are applying histogram
+        /// mutation on any dimension, and using that dimension in sort, you will want to use the sort type
+        /// `HISTOGRAM_BUCKET` for that purpose. Without that the dimension values will be sorted according to
+        /// dictionary (lexicographic) order. For example the ascending dictionary order is: "<50", "1001+", "121-1000",
+        /// "50-120" And the ascending `HISTOGRAM_BUCKET` order is: "<50", "50-120", "121-1000", "1001+" The client has
+        /// to explicitly request `"orderType": "HISTOGRAM_BUCKET"` for a histogram-mutated dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("histogramBuckets")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> HistogramBuckets { get; set; } 
 
@@ -1124,14 +1108,13 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; } 
 
         /// <summary>If k metrics were requested, then the response will contain some data-dependent multiple of k
-        /// columns in the report.  E.g., if you pivoted on the dimension `ga:browser` then you'd get k columns for
+        /// columns in the report. E.g., if you pivoted on the dimension `ga:browser` then you'd get k columns for
         /// "Firefox", k columns for "IE", k columns for "Chrome", etc. The ordering of the groups of columns is
-        /// determined by descending order of "total" for the first of the k values.  Ties are broken by lexicographic
+        /// determined by descending order of "total" for the first of the k values. Ties are broken by lexicographic
         /// ordering of the first pivot dimension, then lexicographic ordering of the second pivot dimension, and so on.
         /// E.g., if the totals for the first value for Firefox, IE, and Chrome were 8, 2, 8, respectively, the order of
-        /// columns would be Chrome, Firefox, IE.
-        ///
-        /// The following let you choose which of the groups of k columns are included in the response.</summary>
+        /// columns would be Chrome, Firefox, IE. The following let you choose which of the groups of k columns are
+        /// included in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startGroup")]
         public virtual System.Nullable<int> StartGroup { get; set; } 
 
@@ -1275,7 +1258,7 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
 
         /// <summary>For each requested date range, for the set of all rows that match the query, every requested value
         /// format gets a total. The total for a value format is computed by first totaling the metrics mentioned in the
-        /// value format and then evaluating the value format as a scalar expression.  E.g., The "totals" for `3 /
+        /// value format and then evaluating the value format as a scalar expression. E.g., The "totals" for `3 /
         /// (ga:sessions + 2)` we compute `3 / ((sum of all relevant ga:sessions) + 2)`. Totals are computed before
         /// pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totals")]
@@ -1337,9 +1320,9 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includeEmptyRows")]
         public virtual System.Nullable<bool> IncludeEmptyRows { get; set; } 
 
-        /// <summary>The metric filter clauses. They are logically combined with the `AND` operator.  Metric filters
-        /// look at only the first date range and not the comparing date range. Note that filtering on metrics occurs
-        /// after the metrics are aggregated.</summary>
+        /// <summary>The metric filter clauses. They are logically combined with the `AND` operator. Metric filters look
+        /// at only the first date range and not the comparing date range. Note that filtering on metrics occurs after
+        /// the metrics are aggregated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricFilterClauses")]
         public virtual System.Collections.Generic.IList<MetricFilterClause> MetricFilterClauses { get; set; } 
 
@@ -1349,7 +1332,7 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; } 
 
         /// <summary>Sort order on output rows. To compare two rows, the elements of the following are applied in order
-        /// until a difference is found.  All date ranges in the output get the same row order.</summary>
+        /// until a difference is found. All date ranges in the output get the same row order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBys")]
         public virtual System.Collections.Generic.IList<OrderBy> OrderBys { get; set; } 
 
@@ -1581,11 +1564,9 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
     public class SegmentFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If true, match the complement of simple or sequence segment. For example, to match all visits not
-        /// from "New York", we can define the segment as follows:
-        ///
-        /// "sessionSegment": { "segmentFilters": [{ "simpleSegment" :{ "orFiltersForSegment": [{
-        /// "segmentFilterClauses":[{ "dimensionFilter": { "dimensionName": "ga:city", "expressions": ["New York"] } }]
-        /// }] }, "not": "True" }] },</summary>
+        /// from "New York", we can define the segment as follows: "sessionSegment": { "segmentFilters": [{
+        /// "simpleSegment" :{ "orFiltersForSegment": [{ "segmentFilterClauses":[{ "dimensionFilter": { "dimensionName":
+        /// "ga:city", "expressions": ["New York"] } }] }] }, "not": "True" }] },</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("not")]
         public virtual System.Nullable<bool> Not { get; set; } 
 
@@ -1643,7 +1624,7 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operator")]
         public virtual string Operator__ { get; set; } 
 
-        /// <summary>Scope for a metric defines the level at which that metric is defined.  The specified metric scope
+        /// <summary>Scope for a metric defines the level at which that metric is defined. The specified metric scope
         /// must be equal to or greater than its primary scope as defined in the data model. The primary scope is
         /// defined by if the segment is selecting users or sessions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]

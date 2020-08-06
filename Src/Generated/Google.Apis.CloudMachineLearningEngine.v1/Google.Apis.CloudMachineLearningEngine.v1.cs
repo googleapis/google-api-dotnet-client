@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>AI Platform Training & Prediction API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200703 (2010)
+ *      <tr><th>API Rev<td>20200714 (2021)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -4276,8 +4276,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     public class GoogleCloudMlV1ExplanationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Attributes credit by computing the Aumann-Shapley value taking advantage of the model's fully
-        /// differentiable structure. Refer to this paper for more details:
-        /// http://proceedings.mlr.press/v70/sundararajan17a.html</summary>
+        /// differentiable structure. Refer to this paper for more details: https://arxiv.org/abs/1703.01365</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integratedGradientsAttribution")]
         public virtual GoogleCloudMlV1IntegratedGradientsAttribution IntegratedGradientsAttribution { get; set; } 
 
@@ -5413,13 +5412,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("masterType")]
         public virtual string MasterType { get; set; } 
 
-        /// <summary>Optional. The full name of the Google Compute Engine [network](/compute/docs/networks-and-
-        /// firewalls#networks) to which the Job is peered. For example, projects/12345/global/networks/myVPC. Format is
-        /// of the form projects/{project}/global/networks/{network}. Where {project} is a project number, as in
-        /// '12345', and {network} is network name.".
+        /// <summary>Optional. The full name of the [Compute Engine network](/vpc/docs/vpc) to which the Job is peered.
+        /// For example, `projects/12345/global/networks/myVPC`. The format of this field is
+        /// `projects/{project}/global/networks/{network}`, where {project} is a project number (like `12345`) and
+        /// {network} is network name.
         ///
         /// Private services access must already be configured for the network. If left unspecified, the Job is not
-        /// peered with any network. Learn more - Connecting Job to user network over private IP.</summary>
+        /// peered with any network. [Learn about using VPC Network Peering.](/ai-platform/training/docs/vpc-
+        /// peering).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
@@ -5503,9 +5503,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
         public virtual GoogleCloudMlV1Scheduling Scheduling { get; set; } 
 
-        /// <summary>Optional. Specifies the service account for workload run-as account. Users submitting jobs must
-        /// have act-as permission on this run-as account. If not specified, then CMLE P4SA will be used by
-        /// default.</summary>
+        /// <summary>Optional. The email address of a service account to use when running the training appplication. You
+        /// must have the `iam.serviceAccounts.actAs` permission for the specified service account. In addition, the AI
+        /// Platform Training Google-managed service account must have the `roles/iam.serviceAccountAdmin` role for the
+        /// specified service account. [Learn more about configuring a service account.](/ai-platform/training/docs
+        /// /custom-service-account)
+        ///
+        /// If not specified, the AI Platform Training Google-managed service account is used by default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; } 
 

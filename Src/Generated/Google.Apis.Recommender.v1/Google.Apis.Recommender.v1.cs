@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/recommender/docs/'>Recommender API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200726 (2033)
+ *      <tr><th>API Rev<td>20200801 (2039)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/recommender/docs/'>
  *              https://cloud.google.com/recommender/docs/</a>
@@ -478,11 +478,9 @@ namespace Google.Apis.Recommender.v1
 
                     /// <summary>Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for
                     /// the specified insight type.</summary>
-                    /// <param name="parent">Required. The container resource on which to execute the request. Acceptable formats:
-                    ///
-                    /// 1. "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]",
-                    ///
-                    /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/</param>
+                    /// <param name="parent">Required. The container resource on which to execute the request. Acceptable formats: 1.
+                    /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]", LOCATION here refers to GCP
+                    /// Locations: https://cloud.google.com/about/locations/</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
@@ -502,10 +500,7 @@ namespace Google.Apis.Recommender.v1
 
 
                         /// <summary>Required. The container resource on which to execute the request. Acceptable
-                        /// formats:
-                        ///
-                        /// 1. "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]",
-                        ///
+                        /// formats: 1. "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]",
                         /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -515,7 +510,7 @@ namespace Google.Apis.Recommender.v1
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Optional. The maximum number of results to return from this request.  Non-positive
+                        /// <summary>Optional. The maximum number of results to return from this request. Non-positive
                         /// values are ignored. If not specified, the server will determine the number of results to
                         /// return.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -594,10 +589,8 @@ namespace Google.Apis.Recommender.v1
 
                     /// <summary>Marks the Insight State as Accepted. Users can use this method to indicate to the
                     /// Recommender API that they have applied some action based on the insight. This stops the insight
-                    /// content from being updated.
-                    ///
-                    /// MarkInsightAccepted can be applied to insights in ACTIVE state. Requires the
-                    /// recommender.*.update IAM permission for the specified insight.</summary>
+                    /// content from being updated. MarkInsightAccepted can be applied to insights in ACTIVE state.
+                    /// Requires the recommender.*.update IAM permission for the specified insight.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. Name of the insight.</param>
                     public virtual MarkAcceptedRequest MarkAccepted(Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1MarkInsightAcceptedRequest body, string name)
@@ -607,10 +600,8 @@ namespace Google.Apis.Recommender.v1
 
                     /// <summary>Marks the Insight State as Accepted. Users can use this method to indicate to the
                     /// Recommender API that they have applied some action based on the insight. This stops the insight
-                    /// content from being updated.
-                    ///
-                    /// MarkInsightAccepted can be applied to insights in ACTIVE state. Requires the
-                    /// recommender.*.update IAM permission for the specified insight.</summary>
+                    /// content from being updated. MarkInsightAccepted can be applied to insights in ACTIVE state.
+                    /// Requires the recommender.*.update IAM permission for the specified insight.</summary>
                     public class MarkAcceptedRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1Insight>
                     {
                         /// <summary>Constructs a new MarkAccepted request.</summary>
@@ -783,11 +774,9 @@ namespace Google.Apis.Recommender.v1
 
                     /// <summary>Lists recommendations for a Cloud project. Requires the recommender.*.list IAM
                     /// permission for the specified recommender.</summary>
-                    /// <param name="parent">Required. The container resource on which to execute the request. Acceptable formats:
-                    ///
-                    /// 1. "projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]",
-                    ///
-                    /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/</param>
+                    /// <param name="parent">Required. The container resource on which to execute the request. Acceptable formats: 1.
+                    /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]", LOCATION here refers to GCP
+                    /// Locations: https://cloud.google.com/about/locations/</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
@@ -807,10 +796,7 @@ namespace Google.Apis.Recommender.v1
 
 
                         /// <summary>Required. The container resource on which to execute the request. Acceptable
-                        /// formats:
-                        ///
-                        /// 1. "projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]",
-                        ///
+                        /// formats: 1. "projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]",
                         /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -821,7 +807,7 @@ namespace Google.Apis.Recommender.v1
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Optional. The maximum number of results to return from this request.  Non-positive
+                        /// <summary>Optional. The maximum number of results to return from this request. Non-positive
                         /// values are ignored. If not specified, the server will determine the number of results to
                         /// return.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -901,12 +887,9 @@ namespace Google.Apis.Recommender.v1
                     /// <summary>Marks the Recommendation State as Claimed. Users can use this method to indicate to the
                     /// Recommender API that they are starting to apply the recommendation themselves. This stops the
                     /// recommendation content from being updated. Associated insights are frozen and placed in the
-                    /// ACCEPTED state.
-                    ///
-                    /// MarkRecommendationClaimed can be applied to recommendations in CLAIMED, SUCCEEDED, FAILED, or
-                    /// ACTIVE state.
-                    ///
-                    /// Requires the recommender.*.update IAM permission for the specified recommender.</summary>
+                    /// ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED,
+                    /// SUCCEEDED, FAILED, or ACTIVE state. Requires the recommender.*.update IAM permission for the
+                    /// specified recommender.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkClaimedRequest MarkClaimed(Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1MarkRecommendationClaimedRequest body, string name)
@@ -917,12 +900,9 @@ namespace Google.Apis.Recommender.v1
                     /// <summary>Marks the Recommendation State as Claimed. Users can use this method to indicate to the
                     /// Recommender API that they are starting to apply the recommendation themselves. This stops the
                     /// recommendation content from being updated. Associated insights are frozen and placed in the
-                    /// ACCEPTED state.
-                    ///
-                    /// MarkRecommendationClaimed can be applied to recommendations in CLAIMED, SUCCEEDED, FAILED, or
-                    /// ACTIVE state.
-                    ///
-                    /// Requires the recommender.*.update IAM permission for the specified recommender.</summary>
+                    /// ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED,
+                    /// SUCCEEDED, FAILED, or ACTIVE state. Requires the recommender.*.update IAM permission for the
+                    /// specified recommender.</summary>
                     public class MarkClaimedRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1Recommendation>
                     {
                         /// <summary>Constructs a new MarkClaimed request.</summary>
@@ -985,12 +965,9 @@ namespace Google.Apis.Recommender.v1
                     /// <summary>Marks the Recommendation State as Failed. Users can use this method to indicate to the
                     /// Recommender API that they have applied the recommendation themselves, and the operation failed.
                     /// This stops the recommendation content from being updated. Associated insights are frozen and
-                    /// placed in the ACCEPTED state.
-                    ///
-                    /// MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or
-                    /// FAILED state.
-                    ///
-                    /// Requires the recommender.*.update IAM permission for the specified recommender.</summary>
+                    /// placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in
+                    /// ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission
+                    /// for the specified recommender.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkFailedRequest MarkFailed(Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1MarkRecommendationFailedRequest body, string name)
@@ -1001,12 +978,9 @@ namespace Google.Apis.Recommender.v1
                     /// <summary>Marks the Recommendation State as Failed. Users can use this method to indicate to the
                     /// Recommender API that they have applied the recommendation themselves, and the operation failed.
                     /// This stops the recommendation content from being updated. Associated insights are frozen and
-                    /// placed in the ACCEPTED state.
-                    ///
-                    /// MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or
-                    /// FAILED state.
-                    ///
-                    /// Requires the recommender.*.update IAM permission for the specified recommender.</summary>
+                    /// placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in
+                    /// ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission
+                    /// for the specified recommender.</summary>
                     public class MarkFailedRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1Recommendation>
                     {
                         /// <summary>Constructs a new MarkFailed request.</summary>
@@ -1069,12 +1043,9 @@ namespace Google.Apis.Recommender.v1
                     /// <summary>Marks the Recommendation State as Succeeded. Users can use this method to indicate to
                     /// the Recommender API that they have applied the recommendation themselves, and the operation was
                     /// successful. This stops the recommendation content from being updated. Associated insights are
-                    /// frozen and placed in the ACCEPTED state.
-                    ///
-                    /// MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or
-                    /// FAILED state.
-                    ///
-                    /// Requires the recommender.*.update IAM permission for the specified recommender.</summary>
+                    /// frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to
+                    /// recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the
+                    /// recommender.*.update IAM permission for the specified recommender.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkSucceededRequest MarkSucceeded(Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1MarkRecommendationSucceededRequest body, string name)
@@ -1085,12 +1056,9 @@ namespace Google.Apis.Recommender.v1
                     /// <summary>Marks the Recommendation State as Succeeded. Users can use this method to indicate to
                     /// the Recommender API that they have applied the recommendation themselves, and the operation was
                     /// successful. This stops the recommendation content from being updated. Associated insights are
-                    /// frozen and placed in the ACCEPTED state.
-                    ///
-                    /// MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or
-                    /// FAILED state.
-                    ///
-                    /// Requires the recommender.*.update IAM permission for the specified recommender.</summary>
+                    /// frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to
+                    /// recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the
+                    /// recommender.*.update IAM permission for the specified recommender.</summary>
                     public class MarkSucceededRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1Recommendation>
                     {
                         /// <summary>Constructs a new MarkSucceeded request.</summary>
@@ -1308,7 +1276,7 @@ namespace Google.Apis.Recommender.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Optional. State properties user wish to include with this state.  Full replace of the current
+        /// <summary>Optional. State properties user wish to include with this state. Full replace of the current
         /// state_metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateMetadata")]
         public virtual System.Collections.Generic.IDictionary<string,string> StateMetadata { get; set; } 
@@ -1357,12 +1325,11 @@ namespace Google.Apis.Recommender.v1.Data
 
     }    
 
-    /// <summary>Contains an operation for a resource loosely based on the JSON-PATCH format with support for:
-    ///
-    /// * Custom filters for describing partial array patch. * Extended path values for describing nested arrays. *
-    /// Custom fields for describing the resource for which the operation is being described. * Allows extension to
-    /// custom operations not natively supported by RFC6902. See https://tools.ietf.org/html/rfc6902 for details on the
-    /// original RFC.</summary>
+    /// <summary>Contains an operation for a resource loosely based on the JSON-PATCH format with support for: * Custom
+    /// filters for describing partial array patch. * Extended path values for describing nested arrays. * Custom fields
+    /// for describing the resource for which the operation is being described. * Allows extension to custom operations
+    /// not natively supported by RFC6902. See https://tools.ietf.org/html/rfc6902 for details on the original
+    /// RFC.</summary>
     public class GoogleCloudRecommenderV1Operation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Type of this operation. Contains one of 'and', 'remove', 'replace', 'move', 'copy', 'test' and
@@ -1377,12 +1344,10 @@ namespace Google.Apis.Recommender.v1.Data
 
         /// <summary>Set of filters to apply if `path` refers to array elements or nested array elements in order to
         /// narrow down to a single unique element that is being tested/modified. This is intended to be an exact match
-        /// per filter. To perform advanced matching, use path_value_matchers.
-        ///
-        /// * Example: { "/versions/name" : "it-123" "/versions/targetSize/percent": 20 } * Example: { "/bindings/role":
-        /// "roles/admin" "/bindings/condition" : null } * Example: { "/bindings/role": "roles/admin"
-        /// "/bindings/members" : ["x@google.com", "y@google.com"] } When both path_filters and path_value_matchers are
-        /// set, an implicit AND must be performed.</summary>
+        /// per filter. To perform advanced matching, use path_value_matchers. * Example: { "/versions/name" : "it-123"
+        /// "/versions/targetSize/percent": 20 } * Example: { "/bindings/role": "roles/admin" "/bindings/condition" :
+        /// null } * Example: { "/bindings/role": "roles/admin" "/bindings/members" : ["x@google.com", "y@google.com"] }
+        /// When both path_filters and path_value_matchers are set, an implicit AND must be performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathFilters")]
         public virtual System.Collections.Generic.IDictionary<string,object> PathFilters { get; set; } 
 
@@ -1482,10 +1447,8 @@ namespace Google.Apis.Recommender.v1.Data
         /// <summary>Contains an identifier for a subtype of recommendations produced for the same recommender. Subtype
         /// is a function of content and impact, meaning a new subtype might be added when significant changes to
         /// `content` or `primary_impact.category` are introduced. See the Recommenders section to see a list of
-        /// subtypes for a given Recommender.
-        ///
-        /// Examples: For recommender = "google.iam.policy.Recommender", recommender_subtype can be one of
-        /// "REMOVE_ROLE"/"REPLACE_ROLE"</summary>
+        /// subtypes for a given Recommender. Examples: For recommender = "google.iam.policy.Recommender",
+        /// recommender_subtype can be one of "REMOVE_ROLE"/"REPLACE_ROLE"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommenderSubtype")]
         public virtual string RecommenderSubtype { get; set; } 
 

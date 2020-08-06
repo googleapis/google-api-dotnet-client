@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/authorized-buyers/apis/realtimebidding/reference/rest/'>Real-time Bidding API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200730 (2037)
+ *      <tr><th>API Rev<td>20200805 (2043)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/authorized-buyers/apis/realtimebidding/reference/rest/'>
  *              https://developers.google.com/authorized-buyers/apis/realtimebidding/reference/rest/</a>
@@ -377,18 +377,14 @@ namespace Google.Apis.RealTimeBidding.v1
 
 
             /// <summary>Lists creatives.</summary>
-            /// <param name="parent">Required. Name of the parent buyer that owns the creatives.
-            ///
-            /// The pattern for this resource is either `buyers/{buyerAccountId}` or `bidders/{bidderAccountId}`.
-            ///
-            /// For `buyers/{buyerAccountId}`, the `buyerAccountId` can be one of the following: 1. The ID of the buyer that is
-            /// accessing their own creatives. 2. The ID of the child seat buyer under a bidder account.    So for listing creatives
-            /// pertaining to the child seat buyer (`456`)    under bidder account (`123`), you would use the pattern: `buyers/456`.
-            /// 3. The ID of the bidder itself.    So for listing creatives pertaining to bidder (`123`),    you would use
-            /// `buyers/123`.
-            ///
-            /// If you want to access all creatives pertaining to both the bidder and all of its child seat accounts, you would use
-            /// `bidders/{bidderAccountId}`, e.g., for all creatives pertaining to bidder (`123`), use `bidders/123`.</param>
+            /// <param name="parent">Required. Name of the parent buyer that owns the creatives. The pattern for this resource is
+            /// either `buyers/{buyerAccountId}` or `bidders/{bidderAccountId}`. For `buyers/{buyerAccountId}`, the `buyerAccountId`
+            /// can be one of the following: 1. The ID of the buyer that is accessing their own creatives. 2. The ID of the child
+            /// seat buyer under a bidder account. So for listing creatives pertaining to the child seat buyer (`456`) under bidder
+            /// account (`123`), you would use the pattern: `buyers/456`. 3. The ID of the bidder itself. So for listing creatives
+            /// pertaining to bidder (`123`), you would use `buyers/123`. If you want to access all creatives pertaining to both the
+            /// bidder and all of its child seat accounts, you would use `bidders/{bidderAccountId}`, e.g., for all creatives
+            /// pertaining to bidder (`123`), use `bidders/123`.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -406,27 +402,21 @@ namespace Google.Apis.RealTimeBidding.v1
                 }
 
 
-                /// <summary>Required. Name of the parent buyer that owns the creatives.
-                ///
-                /// The pattern for this resource is either `buyers/{buyerAccountId}` or `bidders/{bidderAccountId}`.
-                ///
-                /// For `buyers/{buyerAccountId}`, the `buyerAccountId` can be one of the following: 1. The ID of the
-                /// buyer that is accessing their own creatives. 2. The ID of the child seat buyer under a bidder
-                /// account. So for listing creatives pertaining to the child seat buyer (`456`) under bidder account
-                /// (`123`), you would use the pattern: `buyers/456`. 3. The ID of the bidder itself. So for listing
-                /// creatives pertaining to bidder (`123`), you would use `buyers/123`.
-                ///
-                /// If you want to access all creatives pertaining to both the bidder and all of its child seat
-                /// accounts, you would use `bidders/{bidderAccountId}`, e.g., for all creatives pertaining to bidder
-                /// (`123`), use `bidders/123`.</summary>
+                /// <summary>Required. Name of the parent buyer that owns the creatives. The pattern for this resource
+                /// is either `buyers/{buyerAccountId}` or `bidders/{bidderAccountId}`. For `buyers/{buyerAccountId}`,
+                /// the `buyerAccountId` can be one of the following: 1. The ID of the buyer that is accessing their own
+                /// creatives. 2. The ID of the child seat buyer under a bidder account. So for listing creatives
+                /// pertaining to the child seat buyer (`456`) under bidder account (`123`), you would use the pattern:
+                /// `buyers/456`. 3. The ID of the bidder itself. So for listing creatives pertaining to bidder (`123`),
+                /// you would use `buyers/123`. If you want to access all creatives pertaining to both the bidder and
+                /// all of its child seat accounts, you would use `bidders/{bidderAccountId}`, e.g., for all creatives
+                /// pertaining to bidder (`123`), use `bidders/123`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
                 /// <summary>Query string to filter creatives. If no filter is specified, all active creatives will be
-                /// returned.
-                ///
-                /// Example: 'accountId=12345 AND (dealsStatus:DISAPPROVED AND disapprovalReason:UNACCEPTABLE_CONTENT)
-                /// OR declaredAttributes:IS_COOKIE_TARGETED'</summary>
+                /// returned. Example: 'accountId=12345 AND (dealsStatus:DISAPPROVED AND
+                /// disapprovalReason:UNACCEPTABLE_CONTENT) OR declaredAttributes:IS_COOKIE_TARGETED'</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -453,10 +443,14 @@ namespace Google.Apis.RealTimeBidding.v1
                 /// declared fields and the creative content) specify the view as "FULL".</summary>
                 public enum ViewEnum
                 {
+                    /// <summary>Not specified, equivalent to SERVING_DECISION_ONLY.</summary>
                     [Google.Apis.Util.StringValueAttribute("CREATIVE_VIEW_UNSPECIFIED")]
                     CREATIVEVIEWUNSPECIFIED,
+                    /// <summary>Only creativeServingDecision is included in the response.</summary>
                     [Google.Apis.Util.StringValueAttribute("SERVING_DECISION_ONLY")]
                     SERVINGDECISIONONLY,
+                    /// <summary>The entire creative resource (including the declared fields and the creative content)
+                    /// is included in the response.</summary>
                     [Google.Apis.Util.StringValueAttribute("FULL")]
                     FULL,
                 }
@@ -761,10 +755,14 @@ namespace Google.Apis.RealTimeBidding.v1
                 /// declared fields and the creative content) specify the view as "FULL".</summary>
                 public enum ViewEnum
                 {
+                    /// <summary>Not specified, equivalent to SERVING_DECISION_ONLY.</summary>
                     [Google.Apis.Util.StringValueAttribute("CREATIVE_VIEW_UNSPECIFIED")]
                     CREATIVEVIEWUNSPECIFIED,
+                    /// <summary>Only creativeServingDecision is included in the response.</summary>
                     [Google.Apis.Util.StringValueAttribute("SERVING_DECISION_ONLY")]
                     SERVINGDECISIONONLY,
+                    /// <summary>The entire creative resource (including the declared fields and the creative content)
+                    /// is included in the response.</summary>
                     [Google.Apis.Util.StringValueAttribute("FULL")]
                     FULL,
                 }
@@ -816,18 +814,14 @@ namespace Google.Apis.RealTimeBidding.v1
             }
 
             /// <summary>Lists creatives.</summary>
-            /// <param name="parent">Required. Name of the parent buyer that owns the creatives.
-            ///
-            /// The pattern for this resource is either `buyers/{buyerAccountId}` or `bidders/{bidderAccountId}`.
-            ///
-            /// For `buyers/{buyerAccountId}`, the `buyerAccountId` can be one of the following: 1. The ID of the buyer that is
-            /// accessing their own creatives. 2. The ID of the child seat buyer under a bidder account.    So for listing creatives
-            /// pertaining to the child seat buyer (`456`)    under bidder account (`123`), you would use the pattern: `buyers/456`.
-            /// 3. The ID of the bidder itself.    So for listing creatives pertaining to bidder (`123`),    you would use
-            /// `buyers/123`.
-            ///
-            /// If you want to access all creatives pertaining to both the bidder and all of its child seat accounts, you would use
-            /// `bidders/{bidderAccountId}`, e.g., for all creatives pertaining to bidder (`123`), use `bidders/123`.</param>
+            /// <param name="parent">Required. Name of the parent buyer that owns the creatives. The pattern for this resource is
+            /// either `buyers/{buyerAccountId}` or `bidders/{bidderAccountId}`. For `buyers/{buyerAccountId}`, the `buyerAccountId`
+            /// can be one of the following: 1. The ID of the buyer that is accessing their own creatives. 2. The ID of the child
+            /// seat buyer under a bidder account. So for listing creatives pertaining to the child seat buyer (`456`) under bidder
+            /// account (`123`), you would use the pattern: `buyers/456`. 3. The ID of the bidder itself. So for listing creatives
+            /// pertaining to bidder (`123`), you would use `buyers/123`. If you want to access all creatives pertaining to both the
+            /// bidder and all of its child seat accounts, you would use `bidders/{bidderAccountId}`, e.g., for all creatives
+            /// pertaining to bidder (`123`), use `bidders/123`.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -845,27 +839,21 @@ namespace Google.Apis.RealTimeBidding.v1
                 }
 
 
-                /// <summary>Required. Name of the parent buyer that owns the creatives.
-                ///
-                /// The pattern for this resource is either `buyers/{buyerAccountId}` or `bidders/{bidderAccountId}`.
-                ///
-                /// For `buyers/{buyerAccountId}`, the `buyerAccountId` can be one of the following: 1. The ID of the
-                /// buyer that is accessing their own creatives. 2. The ID of the child seat buyer under a bidder
-                /// account. So for listing creatives pertaining to the child seat buyer (`456`) under bidder account
-                /// (`123`), you would use the pattern: `buyers/456`. 3. The ID of the bidder itself. So for listing
-                /// creatives pertaining to bidder (`123`), you would use `buyers/123`.
-                ///
-                /// If you want to access all creatives pertaining to both the bidder and all of its child seat
-                /// accounts, you would use `bidders/{bidderAccountId}`, e.g., for all creatives pertaining to bidder
-                /// (`123`), use `bidders/123`.</summary>
+                /// <summary>Required. Name of the parent buyer that owns the creatives. The pattern for this resource
+                /// is either `buyers/{buyerAccountId}` or `bidders/{bidderAccountId}`. For `buyers/{buyerAccountId}`,
+                /// the `buyerAccountId` can be one of the following: 1. The ID of the buyer that is accessing their own
+                /// creatives. 2. The ID of the child seat buyer under a bidder account. So for listing creatives
+                /// pertaining to the child seat buyer (`456`) under bidder account (`123`), you would use the pattern:
+                /// `buyers/456`. 3. The ID of the bidder itself. So for listing creatives pertaining to bidder (`123`),
+                /// you would use `buyers/123`. If you want to access all creatives pertaining to both the bidder and
+                /// all of its child seat accounts, you would use `bidders/{bidderAccountId}`, e.g., for all creatives
+                /// pertaining to bidder (`123`), use `bidders/123`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
                 /// <summary>Query string to filter creatives. If no filter is specified, all active creatives will be
-                /// returned.
-                ///
-                /// Example: 'accountId=12345 AND (dealsStatus:DISAPPROVED AND disapprovalReason:UNACCEPTABLE_CONTENT)
-                /// OR declaredAttributes:IS_COOKIE_TARGETED'</summary>
+                /// returned. Example: 'accountId=12345 AND (dealsStatus:DISAPPROVED AND
+                /// disapprovalReason:UNACCEPTABLE_CONTENT) OR declaredAttributes:IS_COOKIE_TARGETED'</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -892,10 +880,14 @@ namespace Google.Apis.RealTimeBidding.v1
                 /// declared fields and the creative content) specify the view as "FULL".</summary>
                 public enum ViewEnum
                 {
+                    /// <summary>Not specified, equivalent to SERVING_DECISION_ONLY.</summary>
                     [Google.Apis.Util.StringValueAttribute("CREATIVE_VIEW_UNSPECIFIED")]
                     CREATIVEVIEWUNSPECIFIED,
+                    /// <summary>Only creativeServingDecision is included in the response.</summary>
                     [Google.Apis.Util.StringValueAttribute("SERVING_DECISION_ONLY")]
                     SERVINGDECISIONONLY,
+                    /// <summary>The entire creative resource (including the declared fields and the creative content)
+                    /// is included in the response.</summary>
                     [Google.Apis.Util.StringValueAttribute("FULL")]
                     FULL,
                 }
@@ -1675,22 +1667,19 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     {
         /// <summary>The detected ad technology provider IDs for this creative. See https://storage.googleapis.com/adx-
         /// rtb-dictionaries/providers.csv for mapping of provider ID to provided name, a privacy policy URL, and a list
-        /// of domains which can be attributed to the provider.
-        ///
-        /// If the creative contains provider IDs that are outside of those listed in the
-        /// `BidRequest.adslot.consented_providers_settings.consented_providers` field on the [Google bid
-        /// protocol](https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto) and the
-        /// `BidRequest.user.ext.consented_providers_settings.consented_providers` field on the [OpenRTB
+        /// of domains which can be attributed to the provider. If the creative contains provider IDs that are outside
+        /// of those listed in the `BidRequest.adslot.consented_providers_settings.consented_providers` field on the
+        /// [Google bid protocol](https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto)
+        /// and the `BidRequest.user.ext.consented_providers_settings.consented_providers` field on the [OpenRTB
         /// protocol](https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto), and a bid is
         /// submitted with that creative for an impression that will serve to an EEA user, the bid will be filtered
         /// before the auction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedProviderIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> DetectedProviderIds { get; set; } 
 
-        /// <summary>Whether the creative contains an unidentified ad technology provider.
-        ///
-        /// If true for a given creative, any bid submitted with that creative for an impression that will serve to an
-        /// EEA user will be filtered before the auction.</summary>
+        /// <summary>Whether the creative contains an unidentified ad technology provider. If true for a given creative,
+        /// any bid submitted with that creative for an impression that will serve to an EEA user will be filtered
+        /// before the auction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasUnidentifiedProvider")]
         public virtual System.Nullable<bool> HasUnidentifiedProvider { get; set; } 
 
@@ -1779,12 +1768,10 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         public virtual System.Collections.Generic.IList<string> DealIds { get; set; } 
 
         /// <summary>All declared attributes for the ads that may be shown from this creative. Can be used to filter the
-        /// response of the creatives.list method.
-        ///
-        /// If the `excluded_attribute` field of a [bid request](https://developers.google.com/authorized-
-        /// buyers/rtb/downloads/realtime-bidding-proto") contains one of the attributes that were declared or detected
-        /// for a given creative, and a bid is submitted with that creative, the bid will be filtered before the
-        /// auction.</summary>
+        /// response of the creatives.list method. If the `excluded_attribute` field of a [bid
+        /// request](https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto") contains one
+        /// of the attributes that were declared or detected for a given creative, and a bid is submitted with that
+        /// creative, the bid will be filtered before the auction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("declaredAttributes")]
         public virtual System.Collections.Generic.IList<string> DeclaredAttributes { get; set; } 
 
@@ -1861,12 +1848,10 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         public virtual System.Collections.Generic.IList<AdvertiserAndBrand> DetectedAdvertisers { get; set; } 
 
         /// <summary>Publisher-excludable attributes that were detected for this creative. Can be used to filter the
-        /// response of the creatives.list method.
-        ///
-        /// If the `excluded_attribute` field of a [bid request](https://developers.google.com/authorized-
-        /// buyers/rtb/downloads/realtime-bidding-proto) contains one of the attributes that were declared or detected
-        /// for a given creative, and a bid is submitted with that creative, the bid will be filtered before the
-        /// auction.</summary>
+        /// response of the creatives.list method. If the `excluded_attribute` field of a [bid
+        /// request](https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto) contains one
+        /// of the attributes that were declared or detected for a given creative, and a bid is submitted with that
+        /// creative, the bid will be filtered before the auction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedAttributes")]
         public virtual System.Collections.Generic.IList<string> DetectedAttributes { get; set; } 
 
@@ -1891,21 +1876,18 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         public virtual System.Collections.Generic.IList<System.Nullable<int>> DetectedProductCategories { get; set; } 
 
         /// <summary>Detected sensitive categories, if any. Can be used to filter the response of the creatives.list
-        /// method.
-        ///
-        /// See the ad-sensitive-categories.txt file in the technical documentation for a list of IDs. You should use
-        /// these IDs along with the excluded-sensitive-category field in the bid request to filter your bids.</summary>
+        /// method. See the ad-sensitive-categories.txt file in the technical documentation for a list of IDs. You
+        /// should use these IDs along with the excluded-sensitive-category field in the bid request to filter your
+        /// bids.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedSensitiveCategories")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> DetectedSensitiveCategories { get; set; } 
 
         /// <summary>IDs of the ad technology vendors that were detected to be used by this creative. See
         /// https://storage.googleapis.com/adx-rtb-dictionaries/vendors.txt for possible values. Can be used to filter
-        /// the response of the creatives.list method.
-        ///
-        /// If the `allowed_vendor_type` field of a [bid request](https://developers.google.com/authorized-
-        /// buyers/rtb/downloads/realtime-bidding-proto) does not contain one of the vendor type IDs that were declared
-        /// or detected for a given creative, and a bid is submitted with that creative, the bid will be filtered before
-        /// the auction.</summary>
+        /// the response of the creatives.list method. If the `allowed_vendor_type` field of a [bid
+        /// request](https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto) does not
+        /// contain one of the vendor type IDs that were declared or detected for a given creative, and a bid is
+        /// submitted with that creative, the bid will be filtered before the auction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedVendorIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> DetectedVendorIds { get; set; } 
 
@@ -1931,13 +1913,10 @@ namespace Google.Apis.RealTimeBidding.v1.Data
 
     /// <summary>Represents a whole or partial calendar date, e.g. a birthday. The time of day and time zone are either
     /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. This can
-    /// represent:
-    ///
-    /// * A full date, with non-zero year, month and day values * A month and day value, with a zero year, e.g. an
-    /// anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, e.g.
-    /// a credit card expiration date
-    ///
-    /// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
+    /// represent: * A full date, with non-zero year, month and day values * A month and day value, with a zero year,
+    /// e.g. an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero
+    /// day, e.g. a credit card expiration date Related types are google.type.TimeOfDay and
+    /// `google.protobuf.Timestamp`.</summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by

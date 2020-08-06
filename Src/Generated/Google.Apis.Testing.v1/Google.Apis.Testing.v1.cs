@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200724 (2031)
+ *      <tr><th>API Rev<td>20200805 (2043)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -460,12 +460,10 @@ namespace Google.Apis.Testing.v1
 
 
             /// <summary>Cancels unfinished test executions in a test matrix. This call returns immediately and
-            /// cancellation proceeds asychronously. If the matrix is already final, this operation will have no effect.
-            ///
-            /// May return any of the following canonical error codes:
-            ///
-            /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request
-            /// is malformed - NOT_FOUND - if the Test Matrix does not exist</summary>
+            /// cancellation proceeds asynchronously. If the matrix is already final, this operation will have no
+            /// effect. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not
+            /// authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test
+            /// Matrix does not exist</summary>
             /// <param name="projectId">Cloud project that owns the test.</param>
             /// <param name="testMatrixId">Test matrix
             /// that will be canceled.</param>
@@ -475,12 +473,10 @@ namespace Google.Apis.Testing.v1
             }
 
             /// <summary>Cancels unfinished test executions in a test matrix. This call returns immediately and
-            /// cancellation proceeds asychronously. If the matrix is already final, this operation will have no effect.
-            ///
-            /// May return any of the following canonical error codes:
-            ///
-            /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request
-            /// is malformed - NOT_FOUND - if the Test Matrix does not exist</summary>
+            /// cancellation proceeds asynchronously. If the matrix is already final, this operation will have no
+            /// effect. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not
+            /// authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test
+            /// Matrix does not exist</summary>
             public class CancelRequest : TestingBaseServiceRequest<Google.Apis.Testing.v1.Data.CancelTestMatrixResponse>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
@@ -549,12 +545,9 @@ namespace Google.Apis.Testing.v1
 
             /// <summary>Creates and runs a matrix of tests according to the given specifications. Unsupported
             /// environments will be returned in the state UNSUPPORTED. Matrices are limited to at most 200 supported
-            /// executions.
-            ///
-            /// May return any of the following canonical error codes:
-            ///
-            /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the
-            /// request is malformed or if the matrix expands to more than 200 supported executions</summary>
+            /// executions. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is
+            /// not authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the matrix
+            /// expands to more than 200 supported executions</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">The GCE project under which this job will run.</param>
             public virtual CreateRequest Create(Google.Apis.Testing.v1.Data.TestMatrix body, string projectId)
@@ -564,12 +557,9 @@ namespace Google.Apis.Testing.v1
 
             /// <summary>Creates and runs a matrix of tests according to the given specifications. Unsupported
             /// environments will be returned in the state UNSUPPORTED. Matrices are limited to at most 200 supported
-            /// executions.
-            ///
-            /// May return any of the following canonical error codes:
-            ///
-            /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the
-            /// request is malformed or if the matrix expands to more than 200 supported executions</summary>
+            /// executions. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is
+            /// not authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the matrix
+            /// expands to more than 200 supported executions</summary>
             public class CreateRequest : TestingBaseServiceRequest<Google.Apis.Testing.v1.Data.TestMatrix>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -587,9 +577,8 @@ namespace Google.Apis.Testing.v1
                 public virtual string ProjectId { get; private set; }
 
                 /// <summary>A string id used to detect duplicated requests. Ids are automatically scoped to a project,
-                /// so users should ensure the ID is unique per-project. A UUID is recommended.
-                ///
-                /// Optional, but strongly recommended.</summary>
+                /// so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly
+                /// recommended.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RequestId { get; set; }
 
@@ -645,12 +634,9 @@ namespace Google.Apis.Testing.v1
 
             }
 
-            /// <summary>Checks the status of a test matrix.
-            ///
-            /// May return any of the following canonical error codes:
-            ///
-            /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request
-            /// is malformed - NOT_FOUND - if the Test Matrix does not exist</summary>
+            /// <summary>Checks the status of a test matrix. May return any of the following canonical error codes: -
+            /// PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is
+            /// malformed - NOT_FOUND - if the Test Matrix does not exist</summary>
             /// <param name="projectId">Cloud project that owns the test matrix.</param>
             /// <param name="testMatrixId">Unique
             /// test matrix id which was assigned by the service.</param>
@@ -659,12 +645,9 @@ namespace Google.Apis.Testing.v1
                 return new GetRequest(service, projectId, testMatrixId);
             }
 
-            /// <summary>Checks the status of a test matrix.
-            ///
-            /// May return any of the following canonical error codes:
-            ///
-            /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request
-            /// is malformed - NOT_FOUND - if the Test Matrix does not exist</summary>
+            /// <summary>Checks the status of a test matrix. May return any of the following canonical error codes: -
+            /// PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is
+            /// malformed - NOT_FOUND - if the Test Matrix does not exist</summary>
             public class GetRequest : TestingBaseServiceRequest<Google.Apis.Testing.v1.Data.TestMatrix>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -749,24 +732,18 @@ namespace Google.Apis.Testing.v1
         }
 
 
-        /// <summary>Gets the catalog of supported test environments.
-        ///
-        /// May return any of the following canonical error codes:
-        ///
-        /// - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the environment type does not exist -
-        /// INTERNAL - if an internal error occurred</summary>
+        /// <summary>Gets the catalog of supported test environments. May return any of the following canonical error
+        /// codes: - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the environment type does not exist
+        /// - INTERNAL - if an internal error occurred</summary>
         /// <param name="environmentType">Required. The type of environment that should be listed.</param>
         public virtual GetRequest Get(GetRequest.EnvironmentTypeEnum environmentType)
         {
             return new GetRequest(service, environmentType);
         }
 
-        /// <summary>Gets the catalog of supported test environments.
-        ///
-        /// May return any of the following canonical error codes:
-        ///
-        /// - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the environment type does not exist -
-        /// INTERNAL - if an internal error occurred</summary>
+        /// <summary>Gets the catalog of supported test environments. May return any of the following canonical error
+        /// codes: - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the environment type does not exist
+        /// - INTERNAL - if an internal error occurred</summary>
         public class GetRequest : TestingBaseServiceRequest<Google.Apis.Testing.v1.Data.TestEnvironmentCatalog>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -785,16 +762,22 @@ namespace Google.Apis.Testing.v1
             /// <summary>Required. The type of environment that should be listed.</summary>
             public enum EnvironmentTypeEnum
             {
+                /// <summary>Do not use. For proto versioning only.</summary>
                 [Google.Apis.Util.StringValueAttribute("ENVIRONMENT_TYPE_UNSPECIFIED")]
                 ENVIRONMENTTYPEUNSPECIFIED,
+                /// <summary>A device running a version of the Android OS.</summary>
                 [Google.Apis.Util.StringValueAttribute("ANDROID")]
                 ANDROID,
+                /// <summary>A device running a version of iOS.</summary>
                 [Google.Apis.Util.StringValueAttribute("IOS")]
                 IOS,
+                /// <summary>A network configuration to use when running a test.</summary>
                 [Google.Apis.Util.StringValueAttribute("NETWORK_CONFIGURATION")]
                 NETWORKCONFIGURATION,
+                /// <summary>The software environment provided by TestExecutionService.</summary>
                 [Google.Apis.Util.StringValueAttribute("PROVIDED_SOFTWARE")]
                 PROVIDEDSOFTWARE,
+                /// <summary>The IP blocks used by devices in the test environment.</summary>
                 [Google.Apis.Util.StringValueAttribute("DEVICE_IP_BLOCKS")]
                 DEVICEIPBLOCKS,
             }
@@ -924,10 +907,9 @@ namespace Google.Apis.Testing.v1.Data
 
     /// <summary>A test of an Android application that can control an Android component independently of its normal
     /// lifecycle. Android instrumentation tests run an application APK and test APK inside the same process on a
-    /// virtual or physical AndroidDevice.  They also specify a test runner class, such as com.google.GoogleTestRunner,
-    /// which can vary on the specific instrumentation framework chosen.
-    ///
-    /// See  for more information on types of Android tests.</summary>
+    /// virtual or physical AndroidDevice. They also specify a test runner class, such as com.google.GoogleTestRunner,
+    /// which can vary on the specific instrumentation framework chosen. See for more information on types of Android
+    /// tests.</summary>
     public class AndroidInstrumentationTest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The APK for the application under test.</summary>
@@ -946,13 +928,8 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>The option of whether running each test within its own invocation of instrumentation with Android
         /// Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher!
         /// ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped
-        /// per test
-        ///
-        /// See
-        ///
-        /// for more information about Android Test Orchestrator.
-        ///
-        /// If not set, the test will be run without the orchestrator.</summary>
+        /// per test See for more information about Android Test Orchestrator. If not set, the test will be run without
+        /// the orchestrator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orchestratorOption")]
         public virtual string OrchestratorOption { get; set; } 
 
@@ -975,9 +952,8 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string TestRunnerClass { get; set; } 
 
         /// <summary>Each target must be fully qualified with the package name or class name, in one of these formats: -
-        /// "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name"
-        ///
-        /// If empty, all targets in the module will be run.</summary>
+        /// "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If
+        /// empty, all targets in the module will be run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTargets")]
         public virtual System.Collections.Generic.IList<string> TestTargets { get; set; } 
 
@@ -986,9 +962,8 @@ namespace Google.Apis.Testing.v1.Data
     }    
 
     /// <summary>A set of Android device configuration permutations is defined by the the cross-product of the given
-    /// axes. Internally, the given AndroidMatrix will be expanded into a set of AndroidDevices.
-    ///
-    /// Only supported permutations will be instantiated.  Invalid permutations (e.g., incompatible models/versions) are
+    /// axes. Internally, the given AndroidMatrix will be expanded into a set of AndroidDevices. Only supported
+    /// permutations will be instantiated. Invalid permutations (e.g., incompatible models/versions) are
     /// ignored.</summary>
     public class AndroidMatrix : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1067,10 +1042,9 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The list of supported ABIs for this device. This corresponds to either
         /// android.os.Build.SUPPORTED_ABIS (for API level 21 and above) or android.os.Build.CPU_ABI/CPU_ABI2. The most
-        /// preferred ABI is the first element in the list.
-        ///
-        /// Elements are optionally prefixed by "version_id:" (where version_id is the id of an AndroidVersion),
-        /// denoting an ABI that is supported only on a particular version.</summary>
+        /// preferred ABI is the first element in the list. Elements are optionally prefixed by "version_id:" (where
+        /// version_id is the id of an AndroidVersion), denoting an ABI that is supported only on a particular
+        /// version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedAbis")]
         public virtual System.Collections.Generic.IList<string> SupportedAbis { get; set; } 
 
@@ -1339,13 +1313,10 @@ namespace Google.Apis.Testing.v1.Data
 
     /// <summary>Represents a whole or partial calendar date, e.g. a birthday. The time of day and time zone are either
     /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. This can
-    /// represent:
-    ///
-    /// * A full date, with non-zero year, month and day values * A month and day value, with a zero year, e.g. an
-    /// anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, e.g.
-    /// a credit card expiration date
-    ///
-    /// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
+    /// represent: * A full date, with non-zero year, month and day values * A month and day value, with a zero year,
+    /// e.g. an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero
+    /// day, e.g. a credit card expiration date Related types are google.type.TimeOfDay and
+    /// `google.protobuf.Timestamp`.</summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by
@@ -1520,19 +1491,19 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The  section of an  tag. https://developer.android.com/guide/topics/manifest/intent-filter-
+    /// <summary>The section of an tag. https://developer.android.com/guide/topics/manifest/intent-filter-
     /// element.html</summary>
     public class IntentFilter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The android:name value of the  tag.</summary>
+        /// <summary>The android:name value of the tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionNames")]
         public virtual System.Collections.Generic.IList<string> ActionNames { get; set; } 
 
-        /// <summary>The android:name value of the  tag.</summary>
+        /// <summary>The android:name value of the tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryNames")]
         public virtual System.Collections.Generic.IList<string> CategoryNames { get; set; } 
 
-        /// <summary>The android:mimeType value of the  tag.</summary>
+        /// <summary>The android:mimeType value of the tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; } 
 
@@ -1791,15 +1762,13 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Shards test cases into the specified groups of packages, classes, and/or methods.
-    ///
-    /// With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is
-    /// invalid.</summary>
+    /// <summary>Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding
+    /// enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.</summary>
     public class ManualSharding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Group of packages, classes, and/or test methods to be run for each shard. When any
-        /// physical devices are selected,  the number of test_targets_for_shard must be >= 1 and <= 50. When no
-        /// physical devices are selected, the number must be >= 1 and <= 250.</summary>
+        /// physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical
+        /// devices are selected, the number must be >= 1 and <= 250.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTargetsForShard")]
         public virtual System.Collections.Generic.IList<TestTargetsForShard> TestTargetsForShard { get; set; } 
 
@@ -1892,14 +1861,11 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>Required. Where to put the content on the device. Must be an absolute, allowlisted path. If the
         /// file exists, it will be replaced. The following device-side directories and any of their subdirectories are
         /// allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp
-        /// Specifying a path outside of these directory trees is invalid.
-        ///
-        /// The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if
-        /// /sdcard on a particular device does not map to external storage, the system will replace it with the
-        /// external storage path prefix for that device and copy the file there.
-        ///
-        /// It is strongly advised to use the Environment API in app and test code to access files on the device in a
-        /// portable way.</summary>
+        /// Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made
+        /// available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to
+        /// external storage, the system will replace it with the external storage path prefix for that device and copy
+        /// the file there. It is strongly advised to use the Environment API in app and test code to access files on
+        /// the device in a portable way.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devicePath")]
         public virtual string DevicePath { get; set; } 
 
@@ -1922,9 +1888,8 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("toolResultsExecution")]
         public virtual ToolResultsExecution ToolResultsExecution { get; set; } 
 
-        /// <summary>The tool results history that contains the tool results execution that results are written to.
-        ///
-        /// If not provided, the service will choose an appropriate value.</summary>
+        /// <summary>The tool results history that contains the tool results execution that results are written to. If
+        /// not provided, the service will choose an appropriate value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolResultsHistory")]
         public virtual ToolResultsHistory ToolResultsHistory { get; set; } 
 
@@ -2046,9 +2011,8 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ErrorMessage { get; set; } 
 
         /// <summary>Output only. Human-readable, detailed descriptions of the test's progress. For example:
-        /// "Provisioning a device", "Starting Test".
-        ///
-        /// During the course of execution new data may be appended to the end of progress_messages.</summary>
+        /// "Provisioning a device", "Starting Test". During the course of execution new data may be appended to the end
+        /// of progress_messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressMessages")]
         public virtual System.Collections.Generic.IList<string> ProgressMessages { get; set; } 
 
@@ -2143,9 +2107,7 @@ namespace Google.Apis.Testing.v1.Data
         public virtual EnvironmentMatrix EnvironmentMatrix { get; set; } 
 
         /// <summary>The number of times a TestExecution should be re-attempted if one or more of its test cases fail
-        /// for any reason. The maximum number of reruns allowed is 10.
-        ///
-        /// Default is 0, which implies no reruns.</summary>
+        /// for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flakyTestAttempts")]
         public virtual System.Nullable<int> FlakyTestAttempts { get; set; } 
 
@@ -2204,10 +2166,8 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>List of directories on the device to upload to GCS at the end of the test; they must be absolute
         /// paths under /sdcard, /storage or /data/local/tmp. Path names are restricted to characters a-z A-Z 0-9 _ - .
-        /// + and /
-        ///
-        /// Note: The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if
-        /// /sdcard on a particular device does not map to external storage, the system will replace it with the
+        /// + and / Note: The paths /sdcard and /data will be made available and treated as implicit path substitutions.
+        /// E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the
         /// external storage path prefix for that device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directoriesToPull")]
         public virtual System.Collections.Generic.IList<string> DirectoriesToPull { get; set; } 
@@ -2292,10 +2252,8 @@ namespace Google.Apis.Testing.v1.Data
     public class TestTargetsForShard : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Group of packages, classes, and/or test methods to be run for each shard. The targets need to be
-        /// specified in AndroidJUnitRunner argument format. For example, “package com.my.packages” “class
-        /// com.my.package.MyClass”.
-        ///
-        /// The number of shard_test_targets must be greater than 0.</summary>
+        /// specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class
+        /// com.my.package.MyClass". The number of shard_test_targets must be greater than 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTargets")]
         public virtual System.Collections.Generic.IList<string> TestTargets { get; set; } 
 
@@ -2303,9 +2261,7 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a tool results execution resource.
-    ///
-    /// This has the results of a TestMatrix.</summary>
+    /// <summary>Represents a tool results execution resource. This has the results of a TestMatrix.</summary>
     public class ToolResultsExecution : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. A tool results execution ID.</summary>
@@ -2339,9 +2295,7 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a tool results step resource.
-    ///
-    /// This has the results of a TestExecution.</summary>
+    /// <summary>Represents a tool results step resource. This has the results of a TestExecution.</summary>
     public class ToolResultsStep : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. A tool results execution ID.</summary>
@@ -2391,11 +2345,9 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Uniformly shards test cases given a total number of shards.
-    ///
-    /// For Instrumentation test, it will be translated to “-e numShard” “-e shardIndex” AndroidJUnitRunner arguments.
-    /// With uniform sharding enabled, specifying these sharding arguments via environment_variables is
-    /// invalid.</summary>
+    /// <summary>Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be
+    /// translated to "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled,
+    /// specifying these sharding arguments via environment_variables is invalid.</summary>
     public class UniformSharding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Total number of shards. When any physical devices are selected, the number must be >= 1

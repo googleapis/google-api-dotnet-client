@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/custom-search/v1/introduction'>Custom Search API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200730 (2037)
+ *      <tr><th>API Rev<td>20200804 (2042)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/custom-search/v1/introduction'>
  *              https://developers.google.com/custom-search/v1/introduction</a>
@@ -371,30 +371,19 @@ namespace Google.Apis.Customsearch.v1
 
 
                 /// <summary>Enables or disables [Simplified and Traditional Chinese
-                /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch).
-                ///
-                /// The default value for this parameter is 0 (zero), meaning that the feature is enabled. Supported
-                /// values are:
-                ///
-                /// * `1`: Disabled
-                ///
-                /// * `0`: Enabled (default)</summary>
+                /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch). The default
+                /// value for this parameter is 0 (zero), meaning that the feature is enabled. Supported values are: *
+                /// `1`: Disabled * `0`: Enabled (default)</summary>
                 [Google.Apis.Util.RequestParameterAttribute("c2coff", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string C2coff { get; set; }
 
                 /// <summary>Restricts search results to documents originating in a particular country. You may use
                 /// [Boolean operators](https://developers.google.com/custom-
-                /// search/docs/xml_results_appendices#booleanOperators) in the cr parameter's value.
-                ///
-                /// Google Search determines the country of a document by analyzing:
-                ///
-                /// * the top-level domain (TLD) of the document's URL
-                ///
-                /// * the geographic location of the Web server's IP address
-                ///
-                /// See the [Country Parameter Values](https://developers.google.com/custom-
-                /// search/docs/xml_results_appendices#countryCollections) page for a list of valid values for this
-                /// parameter.</summary>
+                /// search/docs/xml_results_appendices#booleanOperators) in the cr parameter's value. Google Search
+                /// determines the country of a document by analyzing: * the top-level domain (TLD) of the document's
+                /// URL * the geographic location of the Web server's IP address See the [Country Parameter
+                /// Values](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCollections)
+                /// page for a list of valid values for this parameter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("cr", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Cr { get; set; }
 
@@ -402,15 +391,10 @@ namespace Google.Apis.Customsearch.v1
                 [Google.Apis.Util.RequestParameterAttribute("cx", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Cx { get; set; }
 
-                /// <summary>Restricts results to URLs based on date. Supported values include:
-                ///
-                /// * `d[number]`: requests results from the specified number of past days.
-                ///
-                /// * `w[number]`: requests results from the specified number of past weeks.
-                ///
-                /// * `m[number]`: requests results from the specified number of past months.
-                ///
-                /// * `y[number]`: requests results from the specified number of past years.</summary>
+                /// <summary>Restricts results to URLs based on date. Supported values include: * `d[number]`: requests
+                /// results from the specified number of past days. * `w[number]`: requests results from the specified
+                /// number of past weeks. * `m[number]`: requests results from the specified number of past months. *
+                /// `y[number]`: requests results from the specified number of past years.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("dateRestrict", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DateRestrict { get; set; }
 
@@ -429,58 +413,41 @@ namespace Google.Apis.Customsearch.v1
                 [Google.Apis.Util.RequestParameterAttribute("fileType", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string FileType { get; set; }
 
-                /// <summary>Controls turning on or off the duplicate content filter.
-                ///
-                /// * See [Automatic Filtering](https://developers.google.com/custom-
-                /// search/docs/xml_results#automaticFiltering) for more information about Google's search results
-                /// filters. Note that host crowding filtering applies only to multi-site searches.
-                ///
-                /// * By default, Google applies filtering to all search results to improve the quality of those
-                /// results.
-                ///
-                /// Acceptable values are:
-                ///
-                /// * `0`: Turns off duplicate content filter.
-                ///
-                /// * `1`: Turns on duplicate content filter.</summary>
+                /// <summary>Controls turning on or off the duplicate content filter. * See [Automatic
+                /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering) for more
+                /// information about Google's search results filters. Note that host crowding filtering applies only to
+                /// multi-site searches. * By default, Google applies filtering to all search results to improve the
+                /// quality of those results. Acceptable values are: * `0`: Turns off duplicate content filter. * `1`:
+                /// Turns on duplicate content filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Geolocation of end user.
-                ///
-                /// * The `gl` parameter value is a two-letter country code. The `gl` parameter boosts search results
-                /// whose country of origin matches the parameter value. See the [Country
-                /// Codes](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCodes) page
-                /// for a list of valid values.
-                ///
-                /// * Specifying a `gl` parameter value should lead to more relevant results. This is particularly true
-                /// for international customers and, even more specifically, for customers in English- speaking
-                /// countries other than the United States.</summary>
+                /// <summary>Geolocation of end user. * The `gl` parameter value is a two-letter country code. The `gl`
+                /// parameter boosts search results whose country of origin matches the parameter value. See the
+                /// [Country Codes](https://developers.google.com/custom-
+                /// search/docs/xml_results_appendices#countryCodes) page for a list of valid values. * Specifying a
+                /// `gl` parameter value should lead to more relevant results. This is particularly true for
+                /// international customers and, even more specifically, for customers in English- speaking countries
+                /// other than the United States.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("gl", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Gl { get; set; }
 
-                /// <summary>**Deprecated**. Use the `gl` parameter for a similar effect.
-                ///
-                /// The local Google domain (for example, google.com, google.de, or google.fr) to use to perform the
-                /// search.</summary>
+                /// <summary>**Deprecated**. Use the `gl` parameter for a similar effect. The local Google domain (for
+                /// example, google.com, google.de, or google.fr) to use to perform the search.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("googlehost", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Googlehost { get; set; }
 
-                /// <summary>Specifies the ending value for a search range.
-                ///
-                /// * Use `lowRange` and `highRange` to append an inclusive search range of `lowRange...highRange` to
-                /// the query.</summary>
+                /// <summary>Specifies the ending value for a search range. * Use `lowRange` and `highRange` to append
+                /// an inclusive search range of `lowRange...highRange` to the query.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("highRange", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string HighRange { get; set; }
 
-                /// <summary>Sets the user interface language.
-                ///
-                /// * Explicitly setting this parameter improves the performance and the quality of your search results.
-                ///
-                /// * See the [Interface Languages](https://developers.google.com/custom-
-                /// search/docs/xml_results#wsInterfaceLanguages) section of [Internationalizing Queries and Results
-                /// Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing) for
-                /// more information, and (Supported Interface Languages)[https://developers.google.com/custom-
+                /// <summary>Sets the user interface language. * Explicitly setting this parameter improves the
+                /// performance and the quality of your search results. * See the [Interface
+                /// Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)
+                /// section of [Internationalizing Queries and Results Presentation](https://developers.google.com
+                /// /custom-search/docs/xml_results#wsInternationalizing) for more information, and (Supported Interface
+                /// Languages)[https://developers.google.com/custom-
                 /// search/docs/xml_results_appendices#interfaceLanguages] for a list of supported languages.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("hl", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Hl { get; set; }
@@ -490,220 +457,147 @@ namespace Google.Apis.Customsearch.v1
                 [Google.Apis.Util.RequestParameterAttribute("hq", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Hq { get; set; }
 
-                /// <summary>Returns black and white, grayscale, transparent, or color images. Acceptable values are:
-                ///
-                /// * `"color"`
-                ///
-                /// * `"gray"`
-                ///
-                /// * `"mono"`: black and white
-                ///
-                /// * `"trans"`: transparent background</summary>
+                /// <summary>Returns black and white, grayscale, transparent, or color images. Acceptable values are: *
+                /// `"color"` * `"gray"` * `"mono"`: black and white * `"trans"`: transparent background</summary>
                 [Google.Apis.Util.RequestParameterAttribute("imgColorType", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ImgColorTypeEnum> ImgColorType { get; set; }
 
-                /// <summary>Returns black and white, grayscale, transparent, or color images. Acceptable values are:
-                ///
-                /// * `"color"`
-                ///
-                /// * `"gray"`
-                ///
-                /// * `"mono"`: black and white
-                ///
-                /// * `"trans"`: transparent background</summary>
+                /// <summary>Returns black and white, grayscale, transparent, or color images. Acceptable values are: *
+                /// `"color"` * `"gray"` * `"mono"`: black and white * `"trans"`: transparent background</summary>
                 public enum ImgColorTypeEnum
                 {
+                    /// <summary>No image color type specified.</summary>
                     [Google.Apis.Util.StringValueAttribute("imgColorTypeUndefined")]
                     ImgColorTypeUndefined,
+                    /// <summary>Black and white images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("mono")]
                     Mono,
+                    /// <summary>Grayscale images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("gray")]
                     Gray,
+                    /// <summary>Color images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("color")]
                     Color,
+                    /// <summary>Images with transparent background</summary>
                     [Google.Apis.Util.StringValueAttribute("trans")]
                     Trans,
                 }
 
-                /// <summary>Returns images of a specific dominant color. Acceptable values are:
-                ///
-                /// * `"black"`
-                ///
-                /// * `"blue"`
-                ///
-                /// * `"brown"`
-                ///
-                /// * `"gray"`
-                ///
-                /// * `"green"`
-                ///
-                /// * `"orange"`
-                ///
-                /// * `"pink"`
-                ///
-                /// * `"purple"`
-                ///
-                /// * `"red"`
-                ///
-                /// * `"teal"`
-                ///
-                /// * `"white"`
-                ///
-                /// * `"yellow"`</summary>
+                /// <summary>Returns images of a specific dominant color. Acceptable values are: * `"black"` * `"blue"`
+                /// * `"brown"` * `"gray"` * `"green"` * `"orange"` * `"pink"` * `"purple"` * `"red"` * `"teal"` *
+                /// `"white"` * `"yellow"`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("imgDominantColor", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ImgDominantColorEnum> ImgDominantColor { get; set; }
 
-                /// <summary>Returns images of a specific dominant color. Acceptable values are:
-                ///
-                /// * `"black"`
-                ///
-                /// * `"blue"`
-                ///
-                /// * `"brown"`
-                ///
-                /// * `"gray"`
-                ///
-                /// * `"green"`
-                ///
-                /// * `"orange"`
-                ///
-                /// * `"pink"`
-                ///
-                /// * `"purple"`
-                ///
-                /// * `"red"`
-                ///
-                /// * `"teal"`
-                ///
-                /// * `"white"`
-                ///
-                /// * `"yellow"`</summary>
+                /// <summary>Returns images of a specific dominant color. Acceptable values are: * `"black"` * `"blue"`
+                /// * `"brown"` * `"gray"` * `"green"` * `"orange"` * `"pink"` * `"purple"` * `"red"` * `"teal"` *
+                /// `"white"` * `"yellow"`</summary>
                 public enum ImgDominantColorEnum
                 {
+                    /// <summary>No dominant color specified.</summary>
                     [Google.Apis.Util.StringValueAttribute("imgDominantColorUndefined")]
                     ImgDominantColorUndefined,
+                    /// <summary>Predominantly black images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("black")]
                     Black,
+                    /// <summary>Predominantly blue images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("blue")]
                     Blue,
+                    /// <summary>Predominantly brown images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("brown")]
                     Brown,
+                    /// <summary>Predominantly gray images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("gray")]
                     Gray,
+                    /// <summary>Predominantly green images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("green")]
                     Green,
+                    /// <summary>Predominantly orange images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("orange")]
                     Orange,
+                    /// <summary>Predominantly pink images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("pink")]
                     Pink,
+                    /// <summary>Predominantly purple images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("purple")]
                     Purple,
+                    /// <summary>Predominantly red images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("red")]
                     Red,
+                    /// <summary>Predominantly teal images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("teal")]
                     Teal,
+                    /// <summary>Predominantly white images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("white")]
                     White,
+                    /// <summary>Predominantly yellow images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("yellow")]
                     Yellow,
                 }
 
-                /// <summary>Returns images of a specified size. Acceptable values are:
-                ///
-                /// * `"huge"`
-                ///
-                /// * `"icon"`
-                ///
-                /// * `"large"`
-                ///
-                /// * `"medium"`
-                ///
-                /// * `"small"`
-                ///
-                /// * `"xlarge"`
-                ///
-                /// * `"xxlarge"`</summary>
+                /// <summary>Returns images of a specified size. Acceptable values are: * `"huge"` * `"icon"` *
+                /// `"large"` * `"medium"` * `"small"` * `"xlarge"` * `"xxlarge"`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("imgSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ImgSizeEnum> ImgSize { get; set; }
 
-                /// <summary>Returns images of a specified size. Acceptable values are:
-                ///
-                /// * `"huge"`
-                ///
-                /// * `"icon"`
-                ///
-                /// * `"large"`
-                ///
-                /// * `"medium"`
-                ///
-                /// * `"small"`
-                ///
-                /// * `"xlarge"`
-                ///
-                /// * `"xxlarge"`</summary>
+                /// <summary>Returns images of a specified size. Acceptable values are: * `"huge"` * `"icon"` *
+                /// `"large"` * `"medium"` * `"small"` * `"xlarge"` * `"xxlarge"`</summary>
                 public enum ImgSizeEnum
                 {
+                    /// <summary>No image size specified.</summary>
                     [Google.Apis.Util.StringValueAttribute("imgSizeUndefined")]
                     ImgSizeUndefined,
+                    /// <summary>Only the largest possible images.</summary>
                     [Google.Apis.Util.StringValueAttribute("HUGE")]
                     HUGE,
+                    /// <summary>Only very small icon-sized images.</summary>
                     [Google.Apis.Util.StringValueAttribute("ICON")]
                     ICON,
+                    /// <summary>Only large images.</summary>
                     [Google.Apis.Util.StringValueAttribute("LARGE")]
                     LARGE,
+                    /// <summary>Only medium images.</summary>
                     [Google.Apis.Util.StringValueAttribute("MEDIUM")]
                     MEDIUM,
+                    /// <summary>Only small images.</summary>
                     [Google.Apis.Util.StringValueAttribute("SMALL")]
                     SMALL,
+                    /// <summary>Only very large images.</summary>
                     [Google.Apis.Util.StringValueAttribute("XLARGE")]
                     XLARGE,
+                    /// <summary>Only extremely large images.</summary>
                     [Google.Apis.Util.StringValueAttribute("XXLARGE")]
                     XXLARGE,
                 }
 
-                /// <summary>Returns images of a type. Acceptable values are:
-                ///
-                /// * `"clipart"`
-                ///
-                /// * `"face"`
-                ///
-                /// * `"lineart"`
-                ///
-                /// * `"stock"`
-                ///
-                /// * `"photo"`
-                ///
-                /// * `"animated"`</summary>
+                /// <summary>Returns images of a type. Acceptable values are: * `"clipart"` * `"face"` * `"lineart"` *
+                /// `"stock"` * `"photo"` * `"animated"`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("imgType", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ImgTypeEnum> ImgType { get; set; }
 
-                /// <summary>Returns images of a type. Acceptable values are:
-                ///
-                /// * `"clipart"`
-                ///
-                /// * `"face"`
-                ///
-                /// * `"lineart"`
-                ///
-                /// * `"stock"`
-                ///
-                /// * `"photo"`
-                ///
-                /// * `"animated"`</summary>
+                /// <summary>Returns images of a type. Acceptable values are: * `"clipart"` * `"face"` * `"lineart"` *
+                /// `"stock"` * `"photo"` * `"animated"`</summary>
                 public enum ImgTypeEnum
                 {
+                    /// <summary>No image type specified.</summary>
                     [Google.Apis.Util.StringValueAttribute("imgTypeUndefined")]
                     ImgTypeUndefined,
+                    /// <summary>Clipart-style images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("clipart")]
                     Clipart,
+                    /// <summary>Images of faces only.</summary>
                     [Google.Apis.Util.StringValueAttribute("face")]
                     Face,
+                    /// <summary>Line art images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("lineart")]
                     Lineart,
+                    /// <summary>Stock images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("stock")]
                     Stock,
+                    /// <summary>Photo images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("photo")]
                     Photo,
+                    /// <summary>Animated images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("animated")]
                     Animated,
                 }
@@ -718,84 +612,21 @@ namespace Google.Apis.Customsearch.v1
                 public virtual string LowRange { get; set; }
 
                 /// <summary>Restricts the search to documents written in a particular language (e.g., `lr=lang_ja`).
-                ///
-                /// Acceptable values are:
-                ///
-                /// * `"lang_ar"`: Arabic
-                ///
-                /// * `"lang_bg"`: Bulgarian
-                ///
-                /// * `"lang_ca"`: Catalan
-                ///
-                /// * `"lang_cs"`: Czech
-                ///
-                /// * `"lang_da"`: Danish
-                ///
-                /// * `"lang_de"`: German
-                ///
-                /// * `"lang_el"`: Greek
-                ///
-                /// * `"lang_en"`: English
-                ///
-                /// * `"lang_es"`: Spanish
-                ///
-                /// * `"lang_et"`: Estonian
-                ///
-                /// * `"lang_fi"`: Finnish
-                ///
-                /// * `"lang_fr"`: French
-                ///
-                /// * `"lang_hr"`: Croatian
-                ///
-                /// * `"lang_hu"`: Hungarian
-                ///
-                /// * `"lang_id"`: Indonesian
-                ///
-                /// * `"lang_is"`: Icelandic
-                ///
-                /// * `"lang_it"`: Italian
-                ///
-                /// * `"lang_iw"`: Hebrew
-                ///
-                /// * `"lang_ja"`: Japanese
-                ///
-                /// * `"lang_ko"`: Korean
-                ///
-                /// * `"lang_lt"`: Lithuanian
-                ///
-                /// * `"lang_lv"`: Latvian
-                ///
-                /// * `"lang_nl"`: Dutch
-                ///
-                /// * `"lang_no"`: Norwegian
-                ///
-                /// * `"lang_pl"`: Polish
-                ///
-                /// * `"lang_pt"`: Portuguese
-                ///
-                /// * `"lang_ro"`: Romanian
-                ///
-                /// * `"lang_ru"`: Russian
-                ///
-                /// * `"lang_sk"`: Slovak
-                ///
-                /// * `"lang_sl"`: Slovenian
-                ///
-                /// * `"lang_sr"`: Serbian
-                ///
-                /// * `"lang_sv"`: Swedish
-                ///
-                /// * `"lang_tr"`: Turkish
-                ///
-                /// * `"lang_zh-CN"`: Chinese (Simplified)
-                ///
-                /// * `"lang_zh-TW"`: Chinese (Traditional)</summary>
+                /// Acceptable values are: * `"lang_ar"`: Arabic * `"lang_bg"`: Bulgarian * `"lang_ca"`: Catalan *
+                /// `"lang_cs"`: Czech * `"lang_da"`: Danish * `"lang_de"`: German * `"lang_el"`: Greek * `"lang_en"`:
+                /// English * `"lang_es"`: Spanish * `"lang_et"`: Estonian * `"lang_fi"`: Finnish * `"lang_fr"`: French
+                /// * `"lang_hr"`: Croatian * `"lang_hu"`: Hungarian * `"lang_id"`: Indonesian * `"lang_is"`: Icelandic
+                /// * `"lang_it"`: Italian * `"lang_iw"`: Hebrew * `"lang_ja"`: Japanese * `"lang_ko"`: Korean *
+                /// `"lang_lt"`: Lithuanian * `"lang_lv"`: Latvian * `"lang_nl"`: Dutch * `"lang_no"`: Norwegian *
+                /// `"lang_pl"`: Polish * `"lang_pt"`: Portuguese * `"lang_ro"`: Romanian * `"lang_ru"`: Russian *
+                /// `"lang_sk"`: Slovak * `"lang_sl"`: Slovenian * `"lang_sr"`: Serbian * `"lang_sv"`: Swedish *
+                /// `"lang_tr"`: Turkish * `"lang_zh-CN"`: Chinese (Simplified) * `"lang_zh-TW"`: Chinese
+                /// (Traditional)</summary>
                 [Google.Apis.Util.RequestParameterAttribute("lr", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Lr { get; set; }
 
-                /// <summary>Number of search results to return.
-                ///
-                /// * Valid values are integers between 1 and 10, inclusive.</summary>
+                /// <summary>Number of search results to return. * Valid values are integers between 1 and 10,
+                /// inclusive.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("num", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> Num { get; set; }
 
@@ -819,50 +650,45 @@ namespace Google.Apis.Customsearch.v1
                 [Google.Apis.Util.RequestParameterAttribute("rights", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Rights { get; set; }
 
-                /// <summary>Search safety level. Acceptable values are:
-                ///
-                /// * `"active"`: Enables SafeSearch filtering.
-                ///
-                /// * `"off"`: Disables SafeSearch filtering. (default)</summary>
+                /// <summary>Search safety level. Acceptable values are: * `"active"`: Enables SafeSearch filtering. *
+                /// `"off"`: Disables SafeSearch filtering. (default)</summary>
                 [Google.Apis.Util.RequestParameterAttribute("safe", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<SafeEnum> Safe { get; set; }
 
-                /// <summary>Search safety level. Acceptable values are:
-                ///
-                /// * `"active"`: Enables SafeSearch filtering.
-                ///
-                /// * `"off"`: Disables SafeSearch filtering. (default)</summary>
+                /// <summary>Search safety level. Acceptable values are: * `"active"`: Enables SafeSearch filtering. *
+                /// `"off"`: Disables SafeSearch filtering. (default)</summary>
                 public enum SafeEnum
                 {
+                    /// <summary>SafeSearch mode unspecified. (Falls back to engine's configuration.)</summary>
                     [Google.Apis.Util.StringValueAttribute("safeUndefined")]
                     SafeUndefined,
+                    /// <summary>Turn SafeSearch on.</summary>
                     [Google.Apis.Util.StringValueAttribute("active")]
                     Active,
+                    /// <summary>Deprecated, equivalent to "active".</summary>
                     [Google.Apis.Util.StringValueAttribute("high")]
                     High,
+                    /// <summary>Deprecated, equivalent to "active".</summary>
                     [Google.Apis.Util.StringValueAttribute("medium")]
                     Medium,
+                    /// <summary>Turn SafeSearch off.</summary>
                     [Google.Apis.Util.StringValueAttribute("off")]
                     Off,
                 }
 
                 /// <summary>Specifies the search type: `image`. If unspecified, results are limited to webpages.
-                ///
-                /// Acceptable values are:
-                ///
-                /// * `"image"`: custom image search.</summary>
+                /// Acceptable values are: * `"image"`: custom image search.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("searchType", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<SearchTypeEnum> SearchType { get; set; }
 
                 /// <summary>Specifies the search type: `image`. If unspecified, results are limited to webpages.
-                ///
-                /// Acceptable values are:
-                ///
-                /// * `"image"`: custom image search.</summary>
+                /// Acceptable values are: * `"image"`: custom image search.</summary>
                 public enum SearchTypeEnum
                 {
+                    /// <summary>Search type unspecified (defaults to web search).</summary>
                     [Google.Apis.Util.StringValueAttribute("searchTypeUndefined")]
                     SearchTypeUndefined,
+                    /// <summary>Image search.</summary>
                     [Google.Apis.Util.StringValueAttribute("image")]
                     Image,
                 }
@@ -873,30 +699,21 @@ namespace Google.Apis.Customsearch.v1
                 public virtual string SiteSearch { get; set; }
 
                 /// <summary>Controls whether to include or exclude results from the site named in the `siteSearch`
-                /// parameter.
-                ///
-                /// Acceptable values are:
-                ///
-                /// * `"e"`: exclude
-                ///
-                /// * `"i"`: include</summary>
+                /// parameter. Acceptable values are: * `"e"`: exclude * `"i"`: include</summary>
                 [Google.Apis.Util.RequestParameterAttribute("siteSearchFilter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<SiteSearchFilterEnum> SiteSearchFilter { get; set; }
 
                 /// <summary>Controls whether to include or exclude results from the site named in the `siteSearch`
-                /// parameter.
-                ///
-                /// Acceptable values are:
-                ///
-                /// * `"e"`: exclude
-                ///
-                /// * `"i"`: include</summary>
+                /// parameter. Acceptable values are: * `"e"`: exclude * `"i"`: include</summary>
                 public enum SiteSearchFilterEnum
                 {
+                    /// <summary>Filter mode unspecified.</summary>
                     [Google.Apis.Util.StringValueAttribute("siteSearchFilterUndefined")]
                     SiteSearchFilterUndefined,
+                    /// <summary>Exclude results from the listed sites.</summary>
                     [Google.Apis.Util.StringValueAttribute("e")]
                     E,
+                    /// <summary>Include only results from the listed sites.</summary>
                     [Google.Apis.Util.StringValueAttribute("i")]
                     I,
                 }
@@ -1244,28 +1061,17 @@ namespace Google.Apis.Customsearch.v1
 
 
             /// <summary>Enables or disables [Simplified and Traditional Chinese Search](https://developers.google.com
-            /// /custom-search/docs/xml_results#chineseSearch).
-            ///
-            /// The default value for this parameter is 0 (zero), meaning that the feature is enabled. Supported values
-            /// are:
-            ///
-            /// * `1`: Disabled
-            ///
-            /// * `0`: Enabled (default)</summary>
+            /// /custom-search/docs/xml_results#chineseSearch). The default value for this parameter is 0 (zero),
+            /// meaning that the feature is enabled. Supported values are: * `1`: Disabled * `0`: Enabled
+            /// (default)</summary>
             [Google.Apis.Util.RequestParameterAttribute("c2coff", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string C2coff { get; set; }
 
             /// <summary>Restricts search results to documents originating in a particular country. You may use [Boolean
             /// operators](https://developers.google.com/custom-search/docs/xml_results_appendices#booleanOperators) in
-            /// the cr parameter's value.
-            ///
-            /// Google Search determines the country of a document by analyzing:
-            ///
-            /// * the top-level domain (TLD) of the document's URL
-            ///
-            /// * the geographic location of the Web server's IP address
-            ///
-            /// See the [Country Parameter Values](https://developers.google.com/custom-
+            /// the cr parameter's value. Google Search determines the country of a document by analyzing: * the top-
+            /// level domain (TLD) of the document's URL * the geographic location of the Web server's IP address See
+            /// the [Country Parameter Values](https://developers.google.com/custom-
             /// search/docs/xml_results_appendices#countryCollections) page for a list of valid values for this
             /// parameter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("cr", Google.Apis.Util.RequestParameterType.Query)]
@@ -1275,15 +1081,10 @@ namespace Google.Apis.Customsearch.v1
             [Google.Apis.Util.RequestParameterAttribute("cx", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Cx { get; set; }
 
-            /// <summary>Restricts results to URLs based on date. Supported values include:
-            ///
-            /// * `d[number]`: requests results from the specified number of past days.
-            ///
-            /// * `w[number]`: requests results from the specified number of past weeks.
-            ///
-            /// * `m[number]`: requests results from the specified number of past months.
-            ///
-            /// * `y[number]`: requests results from the specified number of past years.</summary>
+            /// <summary>Restricts results to URLs based on date. Supported values include: * `d[number]`: requests
+            /// results from the specified number of past days. * `w[number]`: requests results from the specified
+            /// number of past weeks. * `m[number]`: requests results from the specified number of past months. *
+            /// `y[number]`: requests results from the specified number of past years.</summary>
             [Google.Apis.Util.RequestParameterAttribute("dateRestrict", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DateRestrict { get; set; }
 
@@ -1302,54 +1103,37 @@ namespace Google.Apis.Customsearch.v1
             [Google.Apis.Util.RequestParameterAttribute("fileType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string FileType { get; set; }
 
-            /// <summary>Controls turning on or off the duplicate content filter.
-            ///
-            /// * See [Automatic Filtering](https://developers.google.com/custom-
-            /// search/docs/xml_results#automaticFiltering) for more information about Google's search results filters.
-            /// Note that host crowding filtering applies only to multi-site searches.
-            ///
-            /// * By default, Google applies filtering to all search results to improve the quality of those results.
-            ///
-            /// Acceptable values are:
-            ///
-            /// * `0`: Turns off duplicate content filter.
-            ///
-            /// * `1`: Turns on duplicate content filter.</summary>
+            /// <summary>Controls turning on or off the duplicate content filter. * See [Automatic
+            /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering) for more
+            /// information about Google's search results filters. Note that host crowding filtering applies only to
+            /// multi-site searches. * By default, Google applies filtering to all search results to improve the quality
+            /// of those results. Acceptable values are: * `0`: Turns off duplicate content filter. * `1`: Turns on
+            /// duplicate content filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>Geolocation of end user.
-            ///
-            /// * The `gl` parameter value is a two-letter country code. The `gl` parameter boosts search results whose
-            /// country of origin matches the parameter value. See the [Country Codes](https://developers.google.com
-            /// /custom-search/docs/xml_results_appendices#countryCodes) page for a list of valid values.
-            ///
-            /// * Specifying a `gl` parameter value should lead to more relevant results. This is particularly true for
-            /// international customers and, even more specifically, for customers in English- speaking countries other
-            /// than the United States.</summary>
+            /// <summary>Geolocation of end user. * The `gl` parameter value is a two-letter country code. The `gl`
+            /// parameter boosts search results whose country of origin matches the parameter value. See the [Country
+            /// Codes](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCodes) page for a
+            /// list of valid values. * Specifying a `gl` parameter value should lead to more relevant results. This is
+            /// particularly true for international customers and, even more specifically, for customers in English-
+            /// speaking countries other than the United States.</summary>
             [Google.Apis.Util.RequestParameterAttribute("gl", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Gl { get; set; }
 
-            /// <summary>**Deprecated**. Use the `gl` parameter for a similar effect.
-            ///
-            /// The local Google domain (for example, google.com, google.de, or google.fr) to use to perform the
-            /// search.</summary>
+            /// <summary>**Deprecated**. Use the `gl` parameter for a similar effect. The local Google domain (for
+            /// example, google.com, google.de, or google.fr) to use to perform the search.</summary>
             [Google.Apis.Util.RequestParameterAttribute("googlehost", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Googlehost { get; set; }
 
-            /// <summary>Specifies the ending value for a search range.
-            ///
-            /// * Use `lowRange` and `highRange` to append an inclusive search range of `lowRange...highRange` to the
-            /// query.</summary>
+            /// <summary>Specifies the ending value for a search range. * Use `lowRange` and `highRange` to append an
+            /// inclusive search range of `lowRange...highRange` to the query.</summary>
             [Google.Apis.Util.RequestParameterAttribute("highRange", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string HighRange { get; set; }
 
-            /// <summary>Sets the user interface language.
-            ///
-            /// * Explicitly setting this parameter improves the performance and the quality of your search results.
-            ///
-            /// * See the [Interface Languages](https://developers.google.com/custom-
-            /// search/docs/xml_results#wsInterfaceLanguages) section of [Internationalizing Queries and Results
+            /// <summary>Sets the user interface language. * Explicitly setting this parameter improves the performance
+            /// and the quality of your search results. * See the [Interface Languages](https://developers.google.com
+            /// /custom-search/docs/xml_results#wsInterfaceLanguages) section of [Internationalizing Queries and Results
             /// Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing) for
             /// more information, and (Supported Interface Languages)[https://developers.google.com/custom-
             /// search/docs/xml_results_appendices#interfaceLanguages] for a list of supported languages.</summary>
@@ -1361,220 +1145,147 @@ namespace Google.Apis.Customsearch.v1
             [Google.Apis.Util.RequestParameterAttribute("hq", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Hq { get; set; }
 
-            /// <summary>Returns black and white, grayscale, transparent, or color images. Acceptable values are:
-            ///
-            /// * `"color"`
-            ///
-            /// * `"gray"`
-            ///
-            /// * `"mono"`: black and white
-            ///
-            /// * `"trans"`: transparent background</summary>
+            /// <summary>Returns black and white, grayscale, transparent, or color images. Acceptable values are: *
+            /// `"color"` * `"gray"` * `"mono"`: black and white * `"trans"`: transparent background</summary>
             [Google.Apis.Util.RequestParameterAttribute("imgColorType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ImgColorTypeEnum> ImgColorType { get; set; }
 
-            /// <summary>Returns black and white, grayscale, transparent, or color images. Acceptable values are:
-            ///
-            /// * `"color"`
-            ///
-            /// * `"gray"`
-            ///
-            /// * `"mono"`: black and white
-            ///
-            /// * `"trans"`: transparent background</summary>
+            /// <summary>Returns black and white, grayscale, transparent, or color images. Acceptable values are: *
+            /// `"color"` * `"gray"` * `"mono"`: black and white * `"trans"`: transparent background</summary>
             public enum ImgColorTypeEnum
             {
+                /// <summary>No image color type specified.</summary>
                 [Google.Apis.Util.StringValueAttribute("imgColorTypeUndefined")]
                 ImgColorTypeUndefined,
+                /// <summary>Black and white images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("mono")]
                 Mono,
+                /// <summary>Grayscale images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("gray")]
                 Gray,
+                /// <summary>Color images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("color")]
                 Color,
+                /// <summary>Images with transparent background</summary>
                 [Google.Apis.Util.StringValueAttribute("trans")]
                 Trans,
             }
 
-            /// <summary>Returns images of a specific dominant color. Acceptable values are:
-            ///
-            /// * `"black"`
-            ///
-            /// * `"blue"`
-            ///
-            /// * `"brown"`
-            ///
-            /// * `"gray"`
-            ///
-            /// * `"green"`
-            ///
-            /// * `"orange"`
-            ///
-            /// * `"pink"`
-            ///
-            /// * `"purple"`
-            ///
-            /// * `"red"`
-            ///
-            /// * `"teal"`
-            ///
-            /// * `"white"`
-            ///
-            /// * `"yellow"`</summary>
+            /// <summary>Returns images of a specific dominant color. Acceptable values are: * `"black"` * `"blue"` *
+            /// `"brown"` * `"gray"` * `"green"` * `"orange"` * `"pink"` * `"purple"` * `"red"` * `"teal"` * `"white"` *
+            /// `"yellow"`</summary>
             [Google.Apis.Util.RequestParameterAttribute("imgDominantColor", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ImgDominantColorEnum> ImgDominantColor { get; set; }
 
-            /// <summary>Returns images of a specific dominant color. Acceptable values are:
-            ///
-            /// * `"black"`
-            ///
-            /// * `"blue"`
-            ///
-            /// * `"brown"`
-            ///
-            /// * `"gray"`
-            ///
-            /// * `"green"`
-            ///
-            /// * `"orange"`
-            ///
-            /// * `"pink"`
-            ///
-            /// * `"purple"`
-            ///
-            /// * `"red"`
-            ///
-            /// * `"teal"`
-            ///
-            /// * `"white"`
-            ///
-            /// * `"yellow"`</summary>
+            /// <summary>Returns images of a specific dominant color. Acceptable values are: * `"black"` * `"blue"` *
+            /// `"brown"` * `"gray"` * `"green"` * `"orange"` * `"pink"` * `"purple"` * `"red"` * `"teal"` * `"white"` *
+            /// `"yellow"`</summary>
             public enum ImgDominantColorEnum
             {
+                /// <summary>No dominant color specified.</summary>
                 [Google.Apis.Util.StringValueAttribute("imgDominantColorUndefined")]
                 ImgDominantColorUndefined,
+                /// <summary>Predominantly black images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("black")]
                 Black,
+                /// <summary>Predominantly blue images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("blue")]
                 Blue,
+                /// <summary>Predominantly brown images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("brown")]
                 Brown,
+                /// <summary>Predominantly gray images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("gray")]
                 Gray,
+                /// <summary>Predominantly green images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("green")]
                 Green,
+                /// <summary>Predominantly orange images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("orange")]
                 Orange,
+                /// <summary>Predominantly pink images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("pink")]
                 Pink,
+                /// <summary>Predominantly purple images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("purple")]
                 Purple,
+                /// <summary>Predominantly red images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("red")]
                 Red,
+                /// <summary>Predominantly teal images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("teal")]
                 Teal,
+                /// <summary>Predominantly white images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("white")]
                 White,
+                /// <summary>Predominantly yellow images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("yellow")]
                 Yellow,
             }
 
-            /// <summary>Returns images of a specified size. Acceptable values are:
-            ///
-            /// * `"huge"`
-            ///
-            /// * `"icon"`
-            ///
-            /// * `"large"`
-            ///
-            /// * `"medium"`
-            ///
-            /// * `"small"`
-            ///
-            /// * `"xlarge"`
-            ///
-            /// * `"xxlarge"`</summary>
+            /// <summary>Returns images of a specified size. Acceptable values are: * `"huge"` * `"icon"` * `"large"` *
+            /// `"medium"` * `"small"` * `"xlarge"` * `"xxlarge"`</summary>
             [Google.Apis.Util.RequestParameterAttribute("imgSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ImgSizeEnum> ImgSize { get; set; }
 
-            /// <summary>Returns images of a specified size. Acceptable values are:
-            ///
-            /// * `"huge"`
-            ///
-            /// * `"icon"`
-            ///
-            /// * `"large"`
-            ///
-            /// * `"medium"`
-            ///
-            /// * `"small"`
-            ///
-            /// * `"xlarge"`
-            ///
-            /// * `"xxlarge"`</summary>
+            /// <summary>Returns images of a specified size. Acceptable values are: * `"huge"` * `"icon"` * `"large"` *
+            /// `"medium"` * `"small"` * `"xlarge"` * `"xxlarge"`</summary>
             public enum ImgSizeEnum
             {
+                /// <summary>No image size specified.</summary>
                 [Google.Apis.Util.StringValueAttribute("imgSizeUndefined")]
                 ImgSizeUndefined,
+                /// <summary>Only the largest possible images.</summary>
                 [Google.Apis.Util.StringValueAttribute("HUGE")]
                 HUGE,
+                /// <summary>Only very small icon-sized images.</summary>
                 [Google.Apis.Util.StringValueAttribute("ICON")]
                 ICON,
+                /// <summary>Only large images.</summary>
                 [Google.Apis.Util.StringValueAttribute("LARGE")]
                 LARGE,
+                /// <summary>Only medium images.</summary>
                 [Google.Apis.Util.StringValueAttribute("MEDIUM")]
                 MEDIUM,
+                /// <summary>Only small images.</summary>
                 [Google.Apis.Util.StringValueAttribute("SMALL")]
                 SMALL,
+                /// <summary>Only very large images.</summary>
                 [Google.Apis.Util.StringValueAttribute("XLARGE")]
                 XLARGE,
+                /// <summary>Only extremely large images.</summary>
                 [Google.Apis.Util.StringValueAttribute("XXLARGE")]
                 XXLARGE,
             }
 
-            /// <summary>Returns images of a type. Acceptable values are:
-            ///
-            /// * `"clipart"`
-            ///
-            /// * `"face"`
-            ///
-            /// * `"lineart"`
-            ///
-            /// * `"stock"`
-            ///
-            /// * `"photo"`
-            ///
-            /// * `"animated"`</summary>
+            /// <summary>Returns images of a type. Acceptable values are: * `"clipart"` * `"face"` * `"lineart"` *
+            /// `"stock"` * `"photo"` * `"animated"`</summary>
             [Google.Apis.Util.RequestParameterAttribute("imgType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ImgTypeEnum> ImgType { get; set; }
 
-            /// <summary>Returns images of a type. Acceptable values are:
-            ///
-            /// * `"clipart"`
-            ///
-            /// * `"face"`
-            ///
-            /// * `"lineart"`
-            ///
-            /// * `"stock"`
-            ///
-            /// * `"photo"`
-            ///
-            /// * `"animated"`</summary>
+            /// <summary>Returns images of a type. Acceptable values are: * `"clipart"` * `"face"` * `"lineart"` *
+            /// `"stock"` * `"photo"` * `"animated"`</summary>
             public enum ImgTypeEnum
             {
+                /// <summary>No image type specified.</summary>
                 [Google.Apis.Util.StringValueAttribute("imgTypeUndefined")]
                 ImgTypeUndefined,
+                /// <summary>Clipart-style images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("clipart")]
                 Clipart,
+                /// <summary>Images of faces only.</summary>
                 [Google.Apis.Util.StringValueAttribute("face")]
                 Face,
+                /// <summary>Line art images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("lineart")]
                 Lineart,
+                /// <summary>Stock images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("stock")]
                 Stock,
+                /// <summary>Photo images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("photo")]
                 Photo,
+                /// <summary>Animated images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("animated")]
                 Animated,
             }
@@ -1589,84 +1300,20 @@ namespace Google.Apis.Customsearch.v1
             public virtual string LowRange { get; set; }
 
             /// <summary>Restricts the search to documents written in a particular language (e.g., `lr=lang_ja`).
-            ///
-            /// Acceptable values are:
-            ///
-            /// * `"lang_ar"`: Arabic
-            ///
-            /// * `"lang_bg"`: Bulgarian
-            ///
-            /// * `"lang_ca"`: Catalan
-            ///
-            /// * `"lang_cs"`: Czech
-            ///
-            /// * `"lang_da"`: Danish
-            ///
-            /// * `"lang_de"`: German
-            ///
-            /// * `"lang_el"`: Greek
-            ///
-            /// * `"lang_en"`: English
-            ///
-            /// * `"lang_es"`: Spanish
-            ///
-            /// * `"lang_et"`: Estonian
-            ///
-            /// * `"lang_fi"`: Finnish
-            ///
-            /// * `"lang_fr"`: French
-            ///
-            /// * `"lang_hr"`: Croatian
-            ///
-            /// * `"lang_hu"`: Hungarian
-            ///
-            /// * `"lang_id"`: Indonesian
-            ///
-            /// * `"lang_is"`: Icelandic
-            ///
-            /// * `"lang_it"`: Italian
-            ///
-            /// * `"lang_iw"`: Hebrew
-            ///
-            /// * `"lang_ja"`: Japanese
-            ///
-            /// * `"lang_ko"`: Korean
-            ///
-            /// * `"lang_lt"`: Lithuanian
-            ///
-            /// * `"lang_lv"`: Latvian
-            ///
-            /// * `"lang_nl"`: Dutch
-            ///
-            /// * `"lang_no"`: Norwegian
-            ///
-            /// * `"lang_pl"`: Polish
-            ///
-            /// * `"lang_pt"`: Portuguese
-            ///
-            /// * `"lang_ro"`: Romanian
-            ///
-            /// * `"lang_ru"`: Russian
-            ///
-            /// * `"lang_sk"`: Slovak
-            ///
-            /// * `"lang_sl"`: Slovenian
-            ///
-            /// * `"lang_sr"`: Serbian
-            ///
-            /// * `"lang_sv"`: Swedish
-            ///
-            /// * `"lang_tr"`: Turkish
-            ///
-            /// * `"lang_zh-CN"`: Chinese (Simplified)
-            ///
-            /// * `"lang_zh-TW"`: Chinese (Traditional)</summary>
+            /// Acceptable values are: * `"lang_ar"`: Arabic * `"lang_bg"`: Bulgarian * `"lang_ca"`: Catalan *
+            /// `"lang_cs"`: Czech * `"lang_da"`: Danish * `"lang_de"`: German * `"lang_el"`: Greek * `"lang_en"`:
+            /// English * `"lang_es"`: Spanish * `"lang_et"`: Estonian * `"lang_fi"`: Finnish * `"lang_fr"`: French *
+            /// `"lang_hr"`: Croatian * `"lang_hu"`: Hungarian * `"lang_id"`: Indonesian * `"lang_is"`: Icelandic *
+            /// `"lang_it"`: Italian * `"lang_iw"`: Hebrew * `"lang_ja"`: Japanese * `"lang_ko"`: Korean * `"lang_lt"`:
+            /// Lithuanian * `"lang_lv"`: Latvian * `"lang_nl"`: Dutch * `"lang_no"`: Norwegian * `"lang_pl"`: Polish *
+            /// `"lang_pt"`: Portuguese * `"lang_ro"`: Romanian * `"lang_ru"`: Russian * `"lang_sk"`: Slovak *
+            /// `"lang_sl"`: Slovenian * `"lang_sr"`: Serbian * `"lang_sv"`: Swedish * `"lang_tr"`: Turkish * `"lang_zh-
+            /// CN"`: Chinese (Simplified) * `"lang_zh-TW"`: Chinese (Traditional)</summary>
             [Google.Apis.Util.RequestParameterAttribute("lr", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Lr { get; set; }
 
-            /// <summary>Number of search results to return.
-            ///
-            /// * Valid values are integers between 1 and 10, inclusive.</summary>
+            /// <summary>Number of search results to return. * Valid values are integers between 1 and 10,
+            /// inclusive.</summary>
             [Google.Apis.Util.RequestParameterAttribute("num", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> Num { get; set; }
 
@@ -1690,50 +1337,45 @@ namespace Google.Apis.Customsearch.v1
             [Google.Apis.Util.RequestParameterAttribute("rights", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Rights { get; set; }
 
-            /// <summary>Search safety level. Acceptable values are:
-            ///
-            /// * `"active"`: Enables SafeSearch filtering.
-            ///
-            /// * `"off"`: Disables SafeSearch filtering. (default)</summary>
+            /// <summary>Search safety level. Acceptable values are: * `"active"`: Enables SafeSearch filtering. *
+            /// `"off"`: Disables SafeSearch filtering. (default)</summary>
             [Google.Apis.Util.RequestParameterAttribute("safe", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SafeEnum> Safe { get; set; }
 
-            /// <summary>Search safety level. Acceptable values are:
-            ///
-            /// * `"active"`: Enables SafeSearch filtering.
-            ///
-            /// * `"off"`: Disables SafeSearch filtering. (default)</summary>
+            /// <summary>Search safety level. Acceptable values are: * `"active"`: Enables SafeSearch filtering. *
+            /// `"off"`: Disables SafeSearch filtering. (default)</summary>
             public enum SafeEnum
             {
+                /// <summary>SafeSearch mode unspecified. (Falls back to engine's configuration.)</summary>
                 [Google.Apis.Util.StringValueAttribute("safeUndefined")]
                 SafeUndefined,
+                /// <summary>Turn SafeSearch on.</summary>
                 [Google.Apis.Util.StringValueAttribute("active")]
                 Active,
+                /// <summary>Deprecated, equivalent to "active".</summary>
                 [Google.Apis.Util.StringValueAttribute("high")]
                 High,
+                /// <summary>Deprecated, equivalent to "active".</summary>
                 [Google.Apis.Util.StringValueAttribute("medium")]
                 Medium,
+                /// <summary>Turn SafeSearch off.</summary>
                 [Google.Apis.Util.StringValueAttribute("off")]
                 Off,
             }
 
-            /// <summary>Specifies the search type: `image`. If unspecified, results are limited to webpages.
-            ///
-            /// Acceptable values are:
-            ///
-            /// * `"image"`: custom image search.</summary>
+            /// <summary>Specifies the search type: `image`. If unspecified, results are limited to webpages. Acceptable
+            /// values are: * `"image"`: custom image search.</summary>
             [Google.Apis.Util.RequestParameterAttribute("searchType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SearchTypeEnum> SearchType { get; set; }
 
-            /// <summary>Specifies the search type: `image`. If unspecified, results are limited to webpages.
-            ///
-            /// Acceptable values are:
-            ///
-            /// * `"image"`: custom image search.</summary>
+            /// <summary>Specifies the search type: `image`. If unspecified, results are limited to webpages. Acceptable
+            /// values are: * `"image"`: custom image search.</summary>
             public enum SearchTypeEnum
             {
+                /// <summary>Search type unspecified (defaults to web search).</summary>
                 [Google.Apis.Util.StringValueAttribute("searchTypeUndefined")]
                 SearchTypeUndefined,
+                /// <summary>Image search.</summary>
                 [Google.Apis.Util.StringValueAttribute("image")]
                 Image,
             }
@@ -1744,30 +1386,21 @@ namespace Google.Apis.Customsearch.v1
             public virtual string SiteSearch { get; set; }
 
             /// <summary>Controls whether to include or exclude results from the site named in the `siteSearch`
-            /// parameter.
-            ///
-            /// Acceptable values are:
-            ///
-            /// * `"e"`: exclude
-            ///
-            /// * `"i"`: include</summary>
+            /// parameter. Acceptable values are: * `"e"`: exclude * `"i"`: include</summary>
             [Google.Apis.Util.RequestParameterAttribute("siteSearchFilter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SiteSearchFilterEnum> SiteSearchFilter { get; set; }
 
             /// <summary>Controls whether to include or exclude results from the site named in the `siteSearch`
-            /// parameter.
-            ///
-            /// Acceptable values are:
-            ///
-            /// * `"e"`: exclude
-            ///
-            /// * `"i"`: include</summary>
+            /// parameter. Acceptable values are: * `"e"`: exclude * `"i"`: include</summary>
             public enum SiteSearchFilterEnum
             {
+                /// <summary>Filter mode unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("siteSearchFilterUndefined")]
                 SiteSearchFilterUndefined,
+                /// <summary>Exclude results from the listed sites.</summary>
                 [Google.Apis.Util.StringValueAttribute("e")]
                 E,
+                /// <summary>Include only results from the listed sites.</summary>
                 [Google.Apis.Util.StringValueAttribute("i")]
                 I,
             }
@@ -2296,12 +1929,9 @@ namespace Google.Apis.Customsearch.v1.Data
     /// <summary>Response to a custom search request.</summary>
     public class Search : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Metadata and refinements associated with the given search engine, including:
-        ///
-        /// * The name of the search engine that was used for the query.
-        ///
-        /// *   A set of [facet objects](https://developers.google.com/custom-search/docs/refinements#create)
-        /// (refinements) you can use for refining a search.</summary>
+        /// <summary>Metadata and refinements associated with the given search engine, including: * The name of the
+        /// search engine that was used for the query. * A set of [facet objects](https://developers.google.com/custom-
+        /// search/docs/refinements#create) (refinements) you can use for refining a search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual System.Collections.Generic.IDictionary<string,object> Context { get; set; } 
 
@@ -2365,15 +1995,9 @@ namespace Google.Apis.Customsearch.v1.Data
 
                 /// <summary>Restricts search results to documents originating in a particular country. You may use
                 /// [Boolean operators](https://developers.google.com/custom-search/docs/xml_results#booleanOperators)
-                /// in the `cr` parameter's value.
-                ///
-                /// Google WebSearch determines the country of a document by analyzing the following:
-                ///
-                /// * The top-level domain (TLD) of the document's URL.
-                ///
-                /// * The geographic location of the web server's IP address.
-                ///
-                /// See [Country (cr) Parameter Values](https://developers.google.com/custom-
+                /// in the `cr` parameter's value. Google WebSearch determines the country of a document by analyzing
+                /// the following: * The top-level domain (TLD) of the document's URL. * The geographic location of the
+                /// web server's IP address. See [Country (cr) Parameter Values](https://developers.google.com/custom-
                 /// search/docs/xml_results#countryCollections) for a list of valid values for this parameter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("cr")]
                 public virtual string Cr { get; set; } 
@@ -2384,26 +2008,16 @@ namespace Google.Apis.Customsearch.v1.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("cx")]
                 public virtual string Cx { get; set; } 
 
-                /// <summary>Restricts results to URLs based on date. Supported values include:
-                ///
-                /// * `d[number]`: requests results from the specified number of past days.
-                ///
-                /// * `w[number]`: requests results from the specified number of past weeks.
-                ///
-                /// * `m[number]`: requests results from the specified number of past months.
-                ///
-                /// * `y[number]`: requests results from the specified number of past years.</summary>
+                /// <summary>Restricts results to URLs based on date. Supported values include: * `d[number]`: requests
+                /// results from the specified number of past days. * `w[number]`: requests results from the specified
+                /// number of past weeks. * `m[number]`: requests results from the specified number of past months. *
+                /// `y[number]`: requests results from the specified number of past years.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("dateRestrict")]
                 public virtual string DateRestrict { get; set; } 
 
                 /// <summary>Enables or disables the [Simplified and Traditional Chinese
                 /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch) feature.
-                ///
-                /// Supported values are:
-                ///
-                /// * `0`: enabled (default)
-                ///
-                /// * `1`: disabled</summary>
+                /// Supported values are: * `0`: enabled (default) * `1`: disabled</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("disableCnTwTranslation")]
                 public virtual string DisableCnTwTranslation { get; set; } 
 
@@ -2417,58 +2031,28 @@ namespace Google.Apis.Customsearch.v1.Data
                 public virtual string ExcludeTerms { get; set; } 
 
                 /// <summary>Restricts results to files of a specified extension. Filetypes supported by Google include:
-                ///
-                /// * Adobe Portable Document Format (`pdf`)
-                ///
-                /// * Adobe PostScript (`ps`)
-                ///
-                /// * Lotus 1-2-3 (`wk1`, `wk2`, `wk3`, `wk4`, `wk5`, `wki`, `wks`, `wku`)
-                ///
-                /// * Lotus WordPro (`lwp`)
-                ///
-                /// * Macwrite (`mw`)
-                ///
-                /// * Microsoft Excel (`xls`)
-                ///
-                /// * Microsoft PowerPoint (`ppt`)
-                ///
-                /// * Microsoft Word (`doc`)
-                ///
-                /// * Microsoft Works (`wks`, `wps`, `wdb`)
-                ///
-                /// * Microsoft Write (`wri`)
-                ///
-                /// * Rich Text Format (`rtf`)
-                ///
-                /// * Shockwave Flash (`swf`)
-                ///
-                /// * Text (`ans`, `txt`).
-                ///
-                /// Additional filetypes may be added in the future. An up-to-date list can always be found in Google's
-                /// [file type FAQ](https://support.google.com/webmasters/answer/35287).</summary>
+                /// * Adobe Portable Document Format (`pdf`) * Adobe PostScript (`ps`) * Lotus 1-2-3 (`wk1`, `wk2`,
+                /// `wk3`, `wk4`, `wk5`, `wki`, `wks`, `wku`) * Lotus WordPro (`lwp`) * Macwrite (`mw`) * Microsoft
+                /// Excel (`xls`) * Microsoft PowerPoint (`ppt`) * Microsoft Word (`doc`) * Microsoft Works (`wks`,
+                /// `wps`, `wdb`) * Microsoft Write (`wri`) * Rich Text Format (`rtf`) * Shockwave Flash (`swf`) * Text
+                /// (`ans`, `txt`). Additional filetypes may be added in the future. An up-to-date list can always be
+                /// found in Google's [file type FAQ](https://support.google.com/webmasters/answer/35287).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
                 public virtual string FileType { get; set; } 
 
                 /// <summary>Activates or deactivates the automatic filtering of Google search results. See [Automatic
                 /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering) for more
-                /// information about Google's search results filters. Valid values for this parameter are:
-                ///
-                /// * `0`: Disabled
-                ///
-                /// * `1`: Enabled (default)
-                ///
-                /// **Note**: By default, Google applies filtering to all search results to improve the quality of those
-                /// results.</summary>
+                /// information about Google's search results filters. Valid values for this parameter are: * `0`:
+                /// Disabled * `1`: Enabled (default) **Note**: By default, Google applies filtering to all search
+                /// results to improve the quality of those results.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("filter")]
                 public virtual string Filter { get; set; } 
 
                 /// <summary>Boosts search results whose country of origin matches the parameter value. See [Country
                 /// Codes](https://developers.google.com/custom-search/docs/xml_results#countryCodes) for a list of
-                /// valid values.
-                ///
-                /// Specifying a `gl` parameter value in WebSearch requests should improve the relevance of results.
-                /// This is particularly true for international customers and, even more specifically, for customers in
-                /// English-speaking countries other than the United States.</summary>
+                /// valid values. Specifying a `gl` parameter value in WebSearch requests should improve the relevance
+                /// of results. This is particularly true for international customers and, even more specifically, for
+                /// customers in English-speaking countries other than the United States.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("gl")]
                 public virtual string Gl { get; set; } 
 
@@ -2483,12 +2067,11 @@ namespace Google.Apis.Customsearch.v1.Data
                 public virtual string HighRange { get; set; } 
 
                 /// <summary>Specifies the interface language (host language) of your user interface. Explicitly setting
-                /// this parameter improves the performance and the quality of your search results.
-                ///
-                /// See the [Interface Languages](https://developers.google.com/custom-
-                /// search/docs/xml_results#wsInterfaceLanguages) section of [Internationalizing Queries and Results
-                /// Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing) for
-                /// more information, and [Supported Interface Languages](https://developers.google.com/custom-
+                /// this parameter improves the performance and the quality of your search results. See the [Interface
+                /// Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)
+                /// section of [Internationalizing Queries and Results Presentation](https://developers.google.com
+                /// /custom-search/docs/xml_results#wsInternationalizing) for more information, and [Supported Interface
+                /// Languages](https://developers.google.com/custom-
                 /// search/docs/xml_results_appendices#interfaceLanguages) for a list of supported languages.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("hl")]
                 public virtual string Hl { get; set; } 
@@ -2498,69 +2081,25 @@ namespace Google.Apis.Customsearch.v1.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("hq")]
                 public virtual string Hq { get; set; } 
 
-                /// <summary>Restricts results to images of a specified color type. Supported values are:
-                ///
-                /// * `mono` (black and white)
-                ///
-                /// * `gray` (grayscale)
-                ///
-                /// * `color` (color)</summary>
+                /// <summary>Restricts results to images of a specified color type. Supported values are: * `mono`
+                /// (black and white) * `gray` (grayscale) * `color` (color)</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgColorType")]
                 public virtual string ImgColorType { get; set; } 
 
-                /// <summary>Restricts results to images with a specific dominant color. Supported values are:
-                ///
-                /// * `red`
-                ///
-                /// * `orange`
-                ///
-                /// * `yellow`
-                ///
-                /// * `green`
-                ///
-                /// * `teal`
-                ///
-                /// * `blue`
-                ///
-                /// * `purple`
-                ///
-                /// * `pink`
-                ///
-                /// * `white`
-                ///
-                /// * `gray`
-                ///
-                /// * `black`
-                ///
-                /// * `brown`</summary>
+                /// <summary>Restricts results to images with a specific dominant color. Supported values are: * `red` *
+                /// `orange` * `yellow` * `green` * `teal` * `blue` * `purple` * `pink` * `white` * `gray` * `black` *
+                /// `brown`</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgDominantColor")]
                 public virtual string ImgDominantColor { get; set; } 
 
-                /// <summary>Restricts results to images of a specified size. Supported values are:
-                ///
-                /// * `icon` (small)
-                ///
-                /// * `small | medium | large | xlarge` (medium)
-                ///
-                /// * `xxlarge` (large)
-                ///
-                /// * `huge` (extra-large)</summary>
+                /// <summary>Restricts results to images of a specified size. Supported values are: * `icon` (small) *
+                /// `small | medium | large | xlarge` (medium) * `xxlarge` (large) * `huge` (extra-large)</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgSize")]
                 public virtual string ImgSize { get; set; } 
 
-                /// <summary>Restricts results to images of a specified type. Supported values are:
-                ///
-                /// * `clipart` (Clip art)
-                ///
-                /// * `face` (Face)
-                ///
-                /// * `lineart` (Line drawing)
-                ///
-                /// * `photo` (Photo)
-                ///
-                /// * `animated` (Animated)
-                ///
-                /// * `stock` (Stock)</summary>
+                /// <summary>Restricts results to images of a specified type. Supported values are: * `clipart` (Clip
+                /// art) * `face` (Face) * `lineart` (Line drawing) * `photo` (Photo) * `animated` (Animated) * `stock`
+                /// (Stock)</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgType")]
                 public virtual string ImgType { get; set; } 
 
@@ -2597,27 +2136,15 @@ namespace Google.Apis.Customsearch.v1.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("relatedSite")]
                 public virtual string RelatedSite { get; set; } 
 
-                /// <summary>Filters based on licensing. Supported values include:
-                ///
-                /// * `cc_publicdomain`
-                ///
-                /// * `cc_attribute`
-                ///
-                /// * `cc_sharealike`
-                ///
-                /// * `cc_noncommercial`
-                ///
-                /// * `cc_nonderived`</summary>
+                /// <summary>Filters based on licensing. Supported values include: * `cc_publicdomain` * `cc_attribute`
+                /// * `cc_sharealike` * `cc_noncommercial` * `cc_nonderived`</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("rights")]
                 public virtual string Rights { get; set; } 
 
                 /// <summary>Specifies the [SafeSearch level](https://developers.google.com/custom-
                 /// search/docs/xml_results#safeSearchLevels) used for filtering out adult results. This is a custom
-                /// property not defined in the OpenSearch spec. Valid parameter values are:
-                ///
-                /// * `"off"`: Disable SafeSearch
-                ///
-                /// * `"active"`: Enable SafeSearch</summary>
+                /// property not defined in the OpenSearch spec. Valid parameter values are: * `"off"`: Disable
+                /// SafeSearch * `"active"`: Enable SafeSearch</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("safe")]
                 public virtual string Safe { get; set; } 
 
@@ -2635,11 +2162,8 @@ namespace Google.Apis.Customsearch.v1.Data
                 public virtual string SiteSearch { get; set; } 
 
                 /// <summary>Specifies whether to include or exclude results from the site named in the `sitesearch`
-                /// parameter. Supported values are:
-                ///
-                /// * `i`: include content from site
-                ///
-                /// * `e`: exclude content from site</summary>
+                /// parameter. Supported values are: * `i`: include content from site * `e`: exclude content from
+                /// site</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("siteSearchFilter")]
                 public virtual string SiteSearchFilter { get; set; } 
 
@@ -2677,15 +2201,9 @@ namespace Google.Apis.Customsearch.v1.Data
 
                 /// <summary>Restricts search results to documents originating in a particular country. You may use
                 /// [Boolean operators](https://developers.google.com/custom-search/docs/xml_results#booleanOperators)
-                /// in the `cr` parameter's value.
-                ///
-                /// Google WebSearch determines the country of a document by analyzing the following:
-                ///
-                /// * The top-level domain (TLD) of the document's URL.
-                ///
-                /// * The geographic location of the web server's IP address.
-                ///
-                /// See [Country (cr) Parameter Values](https://developers.google.com/custom-
+                /// in the `cr` parameter's value. Google WebSearch determines the country of a document by analyzing
+                /// the following: * The top-level domain (TLD) of the document's URL. * The geographic location of the
+                /// web server's IP address. See [Country (cr) Parameter Values](https://developers.google.com/custom-
                 /// search/docs/xml_results#countryCollections) for a list of valid values for this parameter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("cr")]
                 public virtual string Cr { get; set; } 
@@ -2696,26 +2214,16 @@ namespace Google.Apis.Customsearch.v1.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("cx")]
                 public virtual string Cx { get; set; } 
 
-                /// <summary>Restricts results to URLs based on date. Supported values include:
-                ///
-                /// * `d[number]`: requests results from the specified number of past days.
-                ///
-                /// * `w[number]`: requests results from the specified number of past weeks.
-                ///
-                /// * `m[number]`: requests results from the specified number of past months.
-                ///
-                /// * `y[number]`: requests results from the specified number of past years.</summary>
+                /// <summary>Restricts results to URLs based on date. Supported values include: * `d[number]`: requests
+                /// results from the specified number of past days. * `w[number]`: requests results from the specified
+                /// number of past weeks. * `m[number]`: requests results from the specified number of past months. *
+                /// `y[number]`: requests results from the specified number of past years.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("dateRestrict")]
                 public virtual string DateRestrict { get; set; } 
 
                 /// <summary>Enables or disables the [Simplified and Traditional Chinese
                 /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch) feature.
-                ///
-                /// Supported values are:
-                ///
-                /// * `0`: enabled (default)
-                ///
-                /// * `1`: disabled</summary>
+                /// Supported values are: * `0`: enabled (default) * `1`: disabled</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("disableCnTwTranslation")]
                 public virtual string DisableCnTwTranslation { get; set; } 
 
@@ -2729,58 +2237,28 @@ namespace Google.Apis.Customsearch.v1.Data
                 public virtual string ExcludeTerms { get; set; } 
 
                 /// <summary>Restricts results to files of a specified extension. Filetypes supported by Google include:
-                ///
-                /// * Adobe Portable Document Format (`pdf`)
-                ///
-                /// * Adobe PostScript (`ps`)
-                ///
-                /// * Lotus 1-2-3 (`wk1`, `wk2`, `wk3`, `wk4`, `wk5`, `wki`, `wks`, `wku`)
-                ///
-                /// * Lotus WordPro (`lwp`)
-                ///
-                /// * Macwrite (`mw`)
-                ///
-                /// * Microsoft Excel (`xls`)
-                ///
-                /// * Microsoft PowerPoint (`ppt`)
-                ///
-                /// * Microsoft Word (`doc`)
-                ///
-                /// * Microsoft Works (`wks`, `wps`, `wdb`)
-                ///
-                /// * Microsoft Write (`wri`)
-                ///
-                /// * Rich Text Format (`rtf`)
-                ///
-                /// * Shockwave Flash (`swf`)
-                ///
-                /// * Text (`ans`, `txt`).
-                ///
-                /// Additional filetypes may be added in the future. An up-to-date list can always be found in Google's
-                /// [file type FAQ](https://support.google.com/webmasters/answer/35287).</summary>
+                /// * Adobe Portable Document Format (`pdf`) * Adobe PostScript (`ps`) * Lotus 1-2-3 (`wk1`, `wk2`,
+                /// `wk3`, `wk4`, `wk5`, `wki`, `wks`, `wku`) * Lotus WordPro (`lwp`) * Macwrite (`mw`) * Microsoft
+                /// Excel (`xls`) * Microsoft PowerPoint (`ppt`) * Microsoft Word (`doc`) * Microsoft Works (`wks`,
+                /// `wps`, `wdb`) * Microsoft Write (`wri`) * Rich Text Format (`rtf`) * Shockwave Flash (`swf`) * Text
+                /// (`ans`, `txt`). Additional filetypes may be added in the future. An up-to-date list can always be
+                /// found in Google's [file type FAQ](https://support.google.com/webmasters/answer/35287).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
                 public virtual string FileType { get; set; } 
 
                 /// <summary>Activates or deactivates the automatic filtering of Google search results. See [Automatic
                 /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering) for more
-                /// information about Google's search results filters. Valid values for this parameter are:
-                ///
-                /// * `0`: Disabled
-                ///
-                /// * `1`: Enabled (default)
-                ///
-                /// **Note**: By default, Google applies filtering to all search results to improve the quality of those
-                /// results.</summary>
+                /// information about Google's search results filters. Valid values for this parameter are: * `0`:
+                /// Disabled * `1`: Enabled (default) **Note**: By default, Google applies filtering to all search
+                /// results to improve the quality of those results.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("filter")]
                 public virtual string Filter { get; set; } 
 
                 /// <summary>Boosts search results whose country of origin matches the parameter value. See [Country
                 /// Codes](https://developers.google.com/custom-search/docs/xml_results#countryCodes) for a list of
-                /// valid values.
-                ///
-                /// Specifying a `gl` parameter value in WebSearch requests should improve the relevance of results.
-                /// This is particularly true for international customers and, even more specifically, for customers in
-                /// English-speaking countries other than the United States.</summary>
+                /// valid values. Specifying a `gl` parameter value in WebSearch requests should improve the relevance
+                /// of results. This is particularly true for international customers and, even more specifically, for
+                /// customers in English-speaking countries other than the United States.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("gl")]
                 public virtual string Gl { get; set; } 
 
@@ -2795,12 +2273,11 @@ namespace Google.Apis.Customsearch.v1.Data
                 public virtual string HighRange { get; set; } 
 
                 /// <summary>Specifies the interface language (host language) of your user interface. Explicitly setting
-                /// this parameter improves the performance and the quality of your search results.
-                ///
-                /// See the [Interface Languages](https://developers.google.com/custom-
-                /// search/docs/xml_results#wsInterfaceLanguages) section of [Internationalizing Queries and Results
-                /// Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing) for
-                /// more information, and [Supported Interface Languages](https://developers.google.com/custom-
+                /// this parameter improves the performance and the quality of your search results. See the [Interface
+                /// Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)
+                /// section of [Internationalizing Queries and Results Presentation](https://developers.google.com
+                /// /custom-search/docs/xml_results#wsInternationalizing) for more information, and [Supported Interface
+                /// Languages](https://developers.google.com/custom-
                 /// search/docs/xml_results_appendices#interfaceLanguages) for a list of supported languages.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("hl")]
                 public virtual string Hl { get; set; } 
@@ -2810,69 +2287,25 @@ namespace Google.Apis.Customsearch.v1.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("hq")]
                 public virtual string Hq { get; set; } 
 
-                /// <summary>Restricts results to images of a specified color type. Supported values are:
-                ///
-                /// * `mono` (black and white)
-                ///
-                /// * `gray` (grayscale)
-                ///
-                /// * `color` (color)</summary>
+                /// <summary>Restricts results to images of a specified color type. Supported values are: * `mono`
+                /// (black and white) * `gray` (grayscale) * `color` (color)</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgColorType")]
                 public virtual string ImgColorType { get; set; } 
 
-                /// <summary>Restricts results to images with a specific dominant color. Supported values are:
-                ///
-                /// * `red`
-                ///
-                /// * `orange`
-                ///
-                /// * `yellow`
-                ///
-                /// * `green`
-                ///
-                /// * `teal`
-                ///
-                /// * `blue`
-                ///
-                /// * `purple`
-                ///
-                /// * `pink`
-                ///
-                /// * `white`
-                ///
-                /// * `gray`
-                ///
-                /// * `black`
-                ///
-                /// * `brown`</summary>
+                /// <summary>Restricts results to images with a specific dominant color. Supported values are: * `red` *
+                /// `orange` * `yellow` * `green` * `teal` * `blue` * `purple` * `pink` * `white` * `gray` * `black` *
+                /// `brown`</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgDominantColor")]
                 public virtual string ImgDominantColor { get; set; } 
 
-                /// <summary>Restricts results to images of a specified size. Supported values are:
-                ///
-                /// * `icon` (small)
-                ///
-                /// * `small | medium | large | xlarge` (medium)
-                ///
-                /// * `xxlarge` (large)
-                ///
-                /// * `huge` (extra-large)</summary>
+                /// <summary>Restricts results to images of a specified size. Supported values are: * `icon` (small) *
+                /// `small | medium | large | xlarge` (medium) * `xxlarge` (large) * `huge` (extra-large)</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgSize")]
                 public virtual string ImgSize { get; set; } 
 
-                /// <summary>Restricts results to images of a specified type. Supported values are:
-                ///
-                /// * `clipart` (Clip art)
-                ///
-                /// * `face` (Face)
-                ///
-                /// * `lineart` (Line drawing)
-                ///
-                /// * `photo` (Photo)
-                ///
-                /// * `animated` (Animated)
-                ///
-                /// * `stock` (Stock)</summary>
+                /// <summary>Restricts results to images of a specified type. Supported values are: * `clipart` (Clip
+                /// art) * `face` (Face) * `lineart` (Line drawing) * `photo` (Photo) * `animated` (Animated) * `stock`
+                /// (Stock)</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgType")]
                 public virtual string ImgType { get; set; } 
 
@@ -2909,27 +2342,15 @@ namespace Google.Apis.Customsearch.v1.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("relatedSite")]
                 public virtual string RelatedSite { get; set; } 
 
-                /// <summary>Filters based on licensing. Supported values include:
-                ///
-                /// * `cc_publicdomain`
-                ///
-                /// * `cc_attribute`
-                ///
-                /// * `cc_sharealike`
-                ///
-                /// * `cc_noncommercial`
-                ///
-                /// * `cc_nonderived`</summary>
+                /// <summary>Filters based on licensing. Supported values include: * `cc_publicdomain` * `cc_attribute`
+                /// * `cc_sharealike` * `cc_noncommercial` * `cc_nonderived`</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("rights")]
                 public virtual string Rights { get; set; } 
 
                 /// <summary>Specifies the [SafeSearch level](https://developers.google.com/custom-
                 /// search/docs/xml_results#safeSearchLevels) used for filtering out adult results. This is a custom
-                /// property not defined in the OpenSearch spec. Valid parameter values are:
-                ///
-                /// * `"off"`: Disable SafeSearch
-                ///
-                /// * `"active"`: Enable SafeSearch</summary>
+                /// property not defined in the OpenSearch spec. Valid parameter values are: * `"off"`: Disable
+                /// SafeSearch * `"active"`: Enable SafeSearch</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("safe")]
                 public virtual string Safe { get; set; } 
 
@@ -2947,11 +2368,8 @@ namespace Google.Apis.Customsearch.v1.Data
                 public virtual string SiteSearch { get; set; } 
 
                 /// <summary>Specifies whether to include or exclude results from the site named in the `sitesearch`
-                /// parameter. Supported values are:
-                ///
-                /// * `i`: include content from site
-                ///
-                /// * `e`: exclude content from site</summary>
+                /// parameter. Supported values are: * `i`: include content from site * `e`: exclude content from
+                /// site</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("siteSearchFilter")]
                 public virtual string SiteSearchFilter { get; set; } 
 
@@ -2989,15 +2407,9 @@ namespace Google.Apis.Customsearch.v1.Data
 
                 /// <summary>Restricts search results to documents originating in a particular country. You may use
                 /// [Boolean operators](https://developers.google.com/custom-search/docs/xml_results#booleanOperators)
-                /// in the `cr` parameter's value.
-                ///
-                /// Google WebSearch determines the country of a document by analyzing the following:
-                ///
-                /// * The top-level domain (TLD) of the document's URL.
-                ///
-                /// * The geographic location of the web server's IP address.
-                ///
-                /// See [Country (cr) Parameter Values](https://developers.google.com/custom-
+                /// in the `cr` parameter's value. Google WebSearch determines the country of a document by analyzing
+                /// the following: * The top-level domain (TLD) of the document's URL. * The geographic location of the
+                /// web server's IP address. See [Country (cr) Parameter Values](https://developers.google.com/custom-
                 /// search/docs/xml_results#countryCollections) for a list of valid values for this parameter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("cr")]
                 public virtual string Cr { get; set; } 
@@ -3008,26 +2420,16 @@ namespace Google.Apis.Customsearch.v1.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("cx")]
                 public virtual string Cx { get; set; } 
 
-                /// <summary>Restricts results to URLs based on date. Supported values include:
-                ///
-                /// * `d[number]`: requests results from the specified number of past days.
-                ///
-                /// * `w[number]`: requests results from the specified number of past weeks.
-                ///
-                /// * `m[number]`: requests results from the specified number of past months.
-                ///
-                /// * `y[number]`: requests results from the specified number of past years.</summary>
+                /// <summary>Restricts results to URLs based on date. Supported values include: * `d[number]`: requests
+                /// results from the specified number of past days. * `w[number]`: requests results from the specified
+                /// number of past weeks. * `m[number]`: requests results from the specified number of past months. *
+                /// `y[number]`: requests results from the specified number of past years.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("dateRestrict")]
                 public virtual string DateRestrict { get; set; } 
 
                 /// <summary>Enables or disables the [Simplified and Traditional Chinese
                 /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch) feature.
-                ///
-                /// Supported values are:
-                ///
-                /// * `0`: enabled (default)
-                ///
-                /// * `1`: disabled</summary>
+                /// Supported values are: * `0`: enabled (default) * `1`: disabled</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("disableCnTwTranslation")]
                 public virtual string DisableCnTwTranslation { get; set; } 
 
@@ -3041,58 +2443,28 @@ namespace Google.Apis.Customsearch.v1.Data
                 public virtual string ExcludeTerms { get; set; } 
 
                 /// <summary>Restricts results to files of a specified extension. Filetypes supported by Google include:
-                ///
-                /// * Adobe Portable Document Format (`pdf`)
-                ///
-                /// * Adobe PostScript (`ps`)
-                ///
-                /// * Lotus 1-2-3 (`wk1`, `wk2`, `wk3`, `wk4`, `wk5`, `wki`, `wks`, `wku`)
-                ///
-                /// * Lotus WordPro (`lwp`)
-                ///
-                /// * Macwrite (`mw`)
-                ///
-                /// * Microsoft Excel (`xls`)
-                ///
-                /// * Microsoft PowerPoint (`ppt`)
-                ///
-                /// * Microsoft Word (`doc`)
-                ///
-                /// * Microsoft Works (`wks`, `wps`, `wdb`)
-                ///
-                /// * Microsoft Write (`wri`)
-                ///
-                /// * Rich Text Format (`rtf`)
-                ///
-                /// * Shockwave Flash (`swf`)
-                ///
-                /// * Text (`ans`, `txt`).
-                ///
-                /// Additional filetypes may be added in the future. An up-to-date list can always be found in Google's
-                /// [file type FAQ](https://support.google.com/webmasters/answer/35287).</summary>
+                /// * Adobe Portable Document Format (`pdf`) * Adobe PostScript (`ps`) * Lotus 1-2-3 (`wk1`, `wk2`,
+                /// `wk3`, `wk4`, `wk5`, `wki`, `wks`, `wku`) * Lotus WordPro (`lwp`) * Macwrite (`mw`) * Microsoft
+                /// Excel (`xls`) * Microsoft PowerPoint (`ppt`) * Microsoft Word (`doc`) * Microsoft Works (`wks`,
+                /// `wps`, `wdb`) * Microsoft Write (`wri`) * Rich Text Format (`rtf`) * Shockwave Flash (`swf`) * Text
+                /// (`ans`, `txt`). Additional filetypes may be added in the future. An up-to-date list can always be
+                /// found in Google's [file type FAQ](https://support.google.com/webmasters/answer/35287).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
                 public virtual string FileType { get; set; } 
 
                 /// <summary>Activates or deactivates the automatic filtering of Google search results. See [Automatic
                 /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering) for more
-                /// information about Google's search results filters. Valid values for this parameter are:
-                ///
-                /// * `0`: Disabled
-                ///
-                /// * `1`: Enabled (default)
-                ///
-                /// **Note**: By default, Google applies filtering to all search results to improve the quality of those
-                /// results.</summary>
+                /// information about Google's search results filters. Valid values for this parameter are: * `0`:
+                /// Disabled * `1`: Enabled (default) **Note**: By default, Google applies filtering to all search
+                /// results to improve the quality of those results.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("filter")]
                 public virtual string Filter { get; set; } 
 
                 /// <summary>Boosts search results whose country of origin matches the parameter value. See [Country
                 /// Codes](https://developers.google.com/custom-search/docs/xml_results#countryCodes) for a list of
-                /// valid values.
-                ///
-                /// Specifying a `gl` parameter value in WebSearch requests should improve the relevance of results.
-                /// This is particularly true for international customers and, even more specifically, for customers in
-                /// English-speaking countries other than the United States.</summary>
+                /// valid values. Specifying a `gl` parameter value in WebSearch requests should improve the relevance
+                /// of results. This is particularly true for international customers and, even more specifically, for
+                /// customers in English-speaking countries other than the United States.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("gl")]
                 public virtual string Gl { get; set; } 
 
@@ -3107,12 +2479,11 @@ namespace Google.Apis.Customsearch.v1.Data
                 public virtual string HighRange { get; set; } 
 
                 /// <summary>Specifies the interface language (host language) of your user interface. Explicitly setting
-                /// this parameter improves the performance and the quality of your search results.
-                ///
-                /// See the [Interface Languages](https://developers.google.com/custom-
-                /// search/docs/xml_results#wsInterfaceLanguages) section of [Internationalizing Queries and Results
-                /// Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing) for
-                /// more information, and [Supported Interface Languages](https://developers.google.com/custom-
+                /// this parameter improves the performance and the quality of your search results. See the [Interface
+                /// Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)
+                /// section of [Internationalizing Queries and Results Presentation](https://developers.google.com
+                /// /custom-search/docs/xml_results#wsInternationalizing) for more information, and [Supported Interface
+                /// Languages](https://developers.google.com/custom-
                 /// search/docs/xml_results_appendices#interfaceLanguages) for a list of supported languages.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("hl")]
                 public virtual string Hl { get; set; } 
@@ -3122,69 +2493,25 @@ namespace Google.Apis.Customsearch.v1.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("hq")]
                 public virtual string Hq { get; set; } 
 
-                /// <summary>Restricts results to images of a specified color type. Supported values are:
-                ///
-                /// * `mono` (black and white)
-                ///
-                /// * `gray` (grayscale)
-                ///
-                /// * `color` (color)</summary>
+                /// <summary>Restricts results to images of a specified color type. Supported values are: * `mono`
+                /// (black and white) * `gray` (grayscale) * `color` (color)</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgColorType")]
                 public virtual string ImgColorType { get; set; } 
 
-                /// <summary>Restricts results to images with a specific dominant color. Supported values are:
-                ///
-                /// * `red`
-                ///
-                /// * `orange`
-                ///
-                /// * `yellow`
-                ///
-                /// * `green`
-                ///
-                /// * `teal`
-                ///
-                /// * `blue`
-                ///
-                /// * `purple`
-                ///
-                /// * `pink`
-                ///
-                /// * `white`
-                ///
-                /// * `gray`
-                ///
-                /// * `black`
-                ///
-                /// * `brown`</summary>
+                /// <summary>Restricts results to images with a specific dominant color. Supported values are: * `red` *
+                /// `orange` * `yellow` * `green` * `teal` * `blue` * `purple` * `pink` * `white` * `gray` * `black` *
+                /// `brown`</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgDominantColor")]
                 public virtual string ImgDominantColor { get; set; } 
 
-                /// <summary>Restricts results to images of a specified size. Supported values are:
-                ///
-                /// * `icon` (small)
-                ///
-                /// * `small | medium | large | xlarge` (medium)
-                ///
-                /// * `xxlarge` (large)
-                ///
-                /// * `huge` (extra-large)</summary>
+                /// <summary>Restricts results to images of a specified size. Supported values are: * `icon` (small) *
+                /// `small | medium | large | xlarge` (medium) * `xxlarge` (large) * `huge` (extra-large)</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgSize")]
                 public virtual string ImgSize { get; set; } 
 
-                /// <summary>Restricts results to images of a specified type. Supported values are:
-                ///
-                /// * `clipart` (Clip art)
-                ///
-                /// * `face` (Face)
-                ///
-                /// * `lineart` (Line drawing)
-                ///
-                /// * `photo` (Photo)
-                ///
-                /// * `animated` (Animated)
-                ///
-                /// * `stock` (Stock)</summary>
+                /// <summary>Restricts results to images of a specified type. Supported values are: * `clipart` (Clip
+                /// art) * `face` (Face) * `lineart` (Line drawing) * `photo` (Photo) * `animated` (Animated) * `stock`
+                /// (Stock)</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgType")]
                 public virtual string ImgType { get; set; } 
 
@@ -3221,27 +2548,15 @@ namespace Google.Apis.Customsearch.v1.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("relatedSite")]
                 public virtual string RelatedSite { get; set; } 
 
-                /// <summary>Filters based on licensing. Supported values include:
-                ///
-                /// * `cc_publicdomain`
-                ///
-                /// * `cc_attribute`
-                ///
-                /// * `cc_sharealike`
-                ///
-                /// * `cc_noncommercial`
-                ///
-                /// * `cc_nonderived`</summary>
+                /// <summary>Filters based on licensing. Supported values include: * `cc_publicdomain` * `cc_attribute`
+                /// * `cc_sharealike` * `cc_noncommercial` * `cc_nonderived`</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("rights")]
                 public virtual string Rights { get; set; } 
 
                 /// <summary>Specifies the [SafeSearch level](https://developers.google.com/custom-
                 /// search/docs/xml_results#safeSearchLevels) used for filtering out adult results. This is a custom
-                /// property not defined in the OpenSearch spec. Valid parameter values are:
-                ///
-                /// * `"off"`: Disable SafeSearch
-                ///
-                /// * `"active"`: Enable SafeSearch</summary>
+                /// property not defined in the OpenSearch spec. Valid parameter values are: * `"off"`: Disable
+                /// SafeSearch * `"active"`: Enable SafeSearch</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("safe")]
                 public virtual string Safe { get; set; } 
 
@@ -3259,11 +2574,8 @@ namespace Google.Apis.Customsearch.v1.Data
                 public virtual string SiteSearch { get; set; } 
 
                 /// <summary>Specifies whether to include or exclude results from the site named in the `sitesearch`
-                /// parameter. Supported values are:
-                ///
-                /// * `i`: include content from site
-                ///
-                /// * `e`: exclude content from site</summary>
+                /// parameter. Supported values are: * `i`: include content from site * `e`: exclude content from
+                /// site</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("siteSearchFilter")]
                 public virtual string SiteSearchFilter { get; set; } 
 

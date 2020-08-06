@@ -9,21 +9,21 @@
   }
  }, 
  "basePath": "", 
- "baseUrl": "https://cloudfunctions.googleapis.com/", 
+ "baseUrl": "https://datafusion.googleapis.com/", 
  "batchPath": "batch", 
- "canonicalName": "Cloud Functions", 
- "description": "Manages lightweight user-provided functions executed in response to events.", 
+ "canonicalName": "Data Fusion", 
+ "description": "Cloud Data Fusion is a fully-managed, cloud native, enterprise data integration service for\n    quickly building and managing data pipelines. It provides a graphical interface to increase\n    time efficiency and reduce complexity, and allows business users, developers, and data\n    scientists to easily and reliably build scalable data integration solutions to cleanse,\n    prepare, blend, transfer and transform data without having to wrestle with infrastructure.", 
  "discoveryVersion": "v1", 
- "documentationLink": "https://cloud.google.com/functions", 
+ "documentationLink": "https://cloud.google.com/data-fusion/docs", 
  "fullyEncodeReservedExpansion": true, 
  "icons": {
   "x16": "http://www.google.com/images/icons/product/search-16.gif", 
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  }, 
- "id": "cloudfunctions:v1", 
+ "id": "datafusion:v1", 
  "kind": "discovery#restDescription", 
- "mtlsRootUrl": "https://cloudfunctions.mtls.googleapis.com/", 
- "name": "cloudfunctions", 
+ "mtlsRootUrl": "https://datafusion.mtls.googleapis.com/", 
+ "name": "datafusion", 
  "ownerDomain": "google.com", 
  "ownerName": "Google", 
  "parameters": {
@@ -37,11 +37,6 @@
     "v1 error format", 
     "v2 error format"
    ], 
-   "location": "query", 
-   "type": "string"
-  }, 
-  "access_token": {
-   "description": "OAuth access token.", 
    "location": "query", 
    "type": "string"
   }, 
@@ -76,11 +71,6 @@
    "location": "query", 
    "type": "string"
   }, 
-  "oauth_token": {
-   "description": "OAuth 2.0 token for the current user.", 
-   "location": "query", 
-   "type": "string"
-  }, 
   "prettyPrint": {
    "default": "true", 
    "description": "Returns response with indentations and line breaks.", 
@@ -105,81 +95,40 @@
  }, 
  "protocol": "rest", 
  "resources": {
-  "operations": {
-   "methods": {
-    "get": {
-     "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.", 
-     "flatPath": "v1/operations/{operationsId}", 
-     "httpMethod": "GET", 
-     "id": "cloudfunctions.operations.get", 
-     "parameterOrder": [
-      "name"
-     ], 
-     "parameters": {
-      "name": {
-       "description": "The name of the operation resource.", 
-       "location": "path", 
-       "pattern": "^operations/[^/]+$", 
-       "required": true, 
-       "type": "string"
-      }
-     }, 
-     "path": "v1/{+name}", 
-     "response": {
-      "$ref": "Operation"
-     }, 
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform"
-     ]
-    }, 
-    "list": {
-     "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.", 
-     "flatPath": "v1/operations", 
-     "httpMethod": "GET", 
-     "id": "cloudfunctions.operations.list", 
-     "parameterOrder": [], 
-     "parameters": {
-      "filter": {
-       "description": "Required. A filter for matching the requested operations.<br><br> The supported formats of <b>filter</b> are:<br> To query for a specific function: <code>project:*,location:*,function:*</code><br> To query for all of the latest operations for a project: <code>project:*,latest:true</code>", 
-       "location": "query", 
-       "type": "string"
-      }, 
-      "name": {
-       "description": "Must not be set.", 
-       "location": "query", 
-       "type": "string"
-      }, 
-      "pageSize": {
-       "description": "The maximum number of records that should be returned.<br> Requested page size cannot exceed 100. If not set, the default page size is 100.<br><br> Pagination is only supported when querying for a specific function.", 
-       "format": "int32", 
-       "location": "query", 
-       "type": "integer"
-      }, 
-      "pageToken": {
-       "description": "Token identifying which result to start with, which is returned by a previous list call.<br><br> Pagination is only supported when querying for a specific function.", 
-       "location": "query", 
-       "type": "string"
-      }
-     }, 
-     "path": "v1/operations", 
-     "response": {
-      "$ref": "ListOperationsResponse"
-     }, 
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform"
-     ]
-    }
-   }
-  }, 
   "projects": {
    "resources": {
     "locations": {
      "methods": {
+      "get": {
+       "description": "Gets information about a location.", 
+       "flatPath": "v1/projects/{projectsId}/locations/{locationsId}", 
+       "httpMethod": "GET", 
+       "id": "datafusion.projects.locations.get", 
+       "parameterOrder": [
+        "name"
+       ], 
+       "parameters": {
+        "name": {
+         "description": "Resource name for the location.", 
+         "location": "path", 
+         "pattern": "^projects/[^/]+/locations/[^/]+$", 
+         "required": true, 
+         "type": "string"
+        }
+       }, 
+       "path": "v1/{+name}", 
+       "response": {
+        "$ref": "Location"
+       }, 
+       "scopes": [
+        "https://www.googleapis.com/auth/cloud-platform"
+       ]
+      }, 
       "list": {
        "description": "Lists information about the supported locations for this service.", 
        "flatPath": "v1/projects/{projectsId}/locations", 
        "httpMethod": "GET", 
-       "id": "cloudfunctions.projects.locations.list", 
+       "id": "datafusion.projects.locations.list", 
        "parameterOrder": [
         "name"
        ], 
@@ -188,6 +137,11 @@
          "description": "The standard list filter.", 
          "location": "query", 
          "type": "string"
+        }, 
+        "includeUnrevealedLocations": {
+         "description": "If true, the returned list will include locations which are not yet\nrevealed.", 
+         "location": "query", 
+         "type": "boolean"
         }, 
         "name": {
          "description": "The resource that owns the locations collection, if applicable.", 
@@ -218,56 +172,33 @@
       }
      }, 
      "resources": {
-      "functions": {
+      "instances": {
        "methods": {
-        "call": {
-         "description": "Synchronously invokes a deployed Cloud Function. To be used for testing\npurposes as very limited traffic is allowed. For more information on\nthe actual limits, refer to\n[Rate Limits](https://cloud.google.com/functions/quotas#rate_limits).", 
-         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:call", 
-         "httpMethod": "POST", 
-         "id": "cloudfunctions.projects.locations.functions.call", 
-         "parameterOrder": [
-          "name"
-         ], 
-         "parameters": {
-          "name": {
-           "description": "Required. The name of the function to be called.", 
-           "location": "path", 
-           "pattern": "^projects/[^/]+/locations/[^/]+/functions/[^/]+$", 
-           "required": true, 
-           "type": "string"
-          }
-         }, 
-         "path": "v1/{+name}:call", 
-         "request": {
-          "$ref": "CallFunctionRequest"
-         }, 
-         "response": {
-          "$ref": "CallFunctionResponse"
-         }, 
-         "scopes": [
-          "https://www.googleapis.com/auth/cloud-platform"
-         ]
-        }, 
         "create": {
-         "description": "Creates a new function. If a function with the given name already exists in\nthe specified project, the long running operation will return\n`ALREADY_EXISTS` error.", 
-         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions", 
+         "description": "Creates a new Data Fusion instance in the specified project and location.", 
+         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances", 
          "httpMethod": "POST", 
-         "id": "cloudfunctions.projects.locations.functions.create", 
+         "id": "datafusion.projects.locations.instances.create", 
          "parameterOrder": [
-          "location"
+          "parent"
          ], 
          "parameters": {
-          "location": {
-           "description": "Required. The project and location in which the function should be created, specified\nin the format `projects/*/locations/*`", 
+          "instanceId": {
+           "description": "The name of the instance to create.", 
+           "location": "query", 
+           "type": "string"
+          }, 
+          "parent": {
+           "description": "The instance's project and location in the format\nprojects/{project}/locations/{location}.", 
            "location": "path", 
            "pattern": "^projects/[^/]+/locations/[^/]+$", 
            "required": true, 
            "type": "string"
           }
          }, 
-         "path": "v1/{+location}/functions", 
+         "path": "v1/{+parent}/instances", 
          "request": {
-          "$ref": "CloudFunction"
+          "$ref": "Instance"
          }, 
          "response": {
           "$ref": "Operation"
@@ -277,18 +208,18 @@
          ]
         }, 
         "delete": {
-         "description": "Deletes a function with the given name from the specified project. If the\ngiven function is used by some trigger, the trigger will be updated to\nremove this function.", 
-         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}", 
+         "description": "Deletes a single Date Fusion instance.", 
+         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}", 
          "httpMethod": "DELETE", 
-         "id": "cloudfunctions.projects.locations.functions.delete", 
+         "id": "datafusion.projects.locations.instances.delete", 
          "parameterOrder": [
           "name"
          ], 
          "parameters": {
           "name": {
-           "description": "Required. The name of the function which should be deleted.", 
+           "description": "The instance resource name in the format\nprojects/{project}/locations/{location}/instances/{instance}", 
            "location": "path", 
-           "pattern": "^projects/[^/]+/locations/[^/]+/functions/[^/]+$", 
+           "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$", 
            "required": true, 
            "type": "string"
           }
@@ -301,92 +232,36 @@
           "https://www.googleapis.com/auth/cloud-platform"
          ]
         }, 
-        "generateDownloadUrl": {
-         "description": "Returns a signed URL for downloading deployed function source code.\nThe URL is only valid for a limited period and should be used within\nminutes after generation.\nFor more information about the signed URL usage see:\nhttps://cloud.google.com/storage/docs/access-control/signed-urls", 
-         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:generateDownloadUrl", 
-         "httpMethod": "POST", 
-         "id": "cloudfunctions.projects.locations.functions.generateDownloadUrl", 
-         "parameterOrder": [
-          "name"
-         ], 
-         "parameters": {
-          "name": {
-           "description": "The name of function for which source code Google Cloud Storage signed\nURL should be generated.", 
-           "location": "path", 
-           "pattern": "^projects/[^/]+/locations/[^/]+/functions/[^/]+$", 
-           "required": true, 
-           "type": "string"
-          }
-         }, 
-         "path": "v1/{+name}:generateDownloadUrl", 
-         "request": {
-          "$ref": "GenerateDownloadUrlRequest"
-         }, 
-         "response": {
-          "$ref": "GenerateDownloadUrlResponse"
-         }, 
-         "scopes": [
-          "https://www.googleapis.com/auth/cloud-platform"
-         ]
-        }, 
-        "generateUploadUrl": {
-         "description": "Returns a signed URL for uploading a function source code.\nFor more information about the signed URL usage see:\nhttps://cloud.google.com/storage/docs/access-control/signed-urls.\nOnce the function source code upload is complete, the used signed\nURL should be provided in CreateFunction or UpdateFunction request\nas a reference to the function source code.\n\nWhen uploading source code to the generated signed URL, please follow\nthese restrictions:\n\n* Source file type should be a zip file.\n* Source file size should not exceed 100MB limit.\n* No credentials should be attached - the signed URLs provide access to the\n  target bucket using internal service identity; if credentials were\n  attached, the identity from the credentials would be used, but that\n  identity does not have permissions to upload files to the URL.\n\nWhen making a HTTP PUT request, these two headers need to be specified:\n\n* `content-type: application/zip`\n* `x-goog-content-length-range: 0,104857600`\n\nAnd this header SHOULD NOT be specified:\n\n* `Authorization: Bearer YOUR_TOKEN`", 
-         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions:generateUploadUrl", 
-         "httpMethod": "POST", 
-         "id": "cloudfunctions.projects.locations.functions.generateUploadUrl", 
-         "parameterOrder": [
-          "parent"
-         ], 
-         "parameters": {
-          "parent": {
-           "description": "The project and location in which the Google Cloud Storage signed URL\nshould be generated, specified in the format `projects/*/locations/*`.", 
-           "location": "path", 
-           "pattern": "^projects/[^/]+/locations/[^/]+$", 
-           "required": true, 
-           "type": "string"
-          }
-         }, 
-         "path": "v1/{+parent}/functions:generateUploadUrl", 
-         "request": {
-          "$ref": "GenerateUploadUrlRequest"
-         }, 
-         "response": {
-          "$ref": "GenerateUploadUrlResponse"
-         }, 
-         "scopes": [
-          "https://www.googleapis.com/auth/cloud-platform"
-         ]
-        }, 
         "get": {
-         "description": "Returns a function with the given name from the requested project.", 
-         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}", 
+         "description": "Gets details of a single Data Fusion instance.", 
+         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}", 
          "httpMethod": "GET", 
-         "id": "cloudfunctions.projects.locations.functions.get", 
+         "id": "datafusion.projects.locations.instances.get", 
          "parameterOrder": [
           "name"
          ], 
          "parameters": {
           "name": {
-           "description": "Required. The name of the function which details should be obtained.", 
+           "description": "The instance resource name in the format\nprojects/{project}/locations/{location}/instances/{instance}.", 
            "location": "path", 
-           "pattern": "^projects/[^/]+/locations/[^/]+/functions/[^/]+$", 
+           "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$", 
            "required": true, 
            "type": "string"
           }
          }, 
          "path": "v1/{+name}", 
          "response": {
-          "$ref": "CloudFunction"
+          "$ref": "Instance"
          }, 
          "scopes": [
           "https://www.googleapis.com/auth/cloud-platform"
          ]
         }, 
         "getIamPolicy": {
-         "description": "Gets the IAM access control policy for a function.\nReturns an empty policy if the function exists and does not have a policy\nset.", 
-         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:getIamPolicy", 
+         "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.", 
+         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:getIamPolicy", 
          "httpMethod": "GET", 
-         "id": "cloudfunctions.projects.locations.functions.getIamPolicy", 
+         "id": "datafusion.projects.locations.instances.getIamPolicy", 
          "parameterOrder": [
           "resource"
          ], 
@@ -400,7 +275,7 @@
           "resource": {
            "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.", 
            "location": "path", 
-           "pattern": "^projects/[^/]+/locations/[^/]+/functions/[^/]+$", 
+           "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$", 
            "required": true, 
            "type": "string"
           }
@@ -414,59 +289,69 @@
          ]
         }, 
         "list": {
-         "description": "Returns a list of functions that belong to the requested project.", 
-         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions", 
+         "description": "Lists Data Fusion instances in the specified project and location.", 
+         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances", 
          "httpMethod": "GET", 
-         "id": "cloudfunctions.projects.locations.functions.list", 
+         "id": "datafusion.projects.locations.instances.list", 
          "parameterOrder": [
           "parent"
          ], 
          "parameters": {
+          "filter": {
+           "description": "List filter.", 
+           "location": "query", 
+           "type": "string"
+          }, 
+          "orderBy": {
+           "description": "Sort results. Supported values are \"name\", \"name desc\",  or \"\" (unsorted).", 
+           "location": "query", 
+           "type": "string"
+          }, 
           "pageSize": {
-           "description": "Maximum number of functions to return per call.", 
+           "description": "The maximum number of items to return.", 
            "format": "int32", 
            "location": "query", 
            "type": "integer"
           }, 
           "pageToken": {
-           "description": "The value returned by the last\n`ListFunctionsResponse`; indicates that\nthis is a continuation of a prior `ListFunctions` call, and that the\nsystem should return the next page of data.", 
+           "description": "The next_page_token value to use if there are additional\nresults to retrieve for this list request.", 
            "location": "query", 
            "type": "string"
           }, 
           "parent": {
-           "description": "The project and location from which the function should be listed,\nspecified in the format `projects/*/locations/*`\nIf you want to list functions in all locations, use \"-\" in place of a\nlocation. When listing functions in all locations, if one or more\nlocation(s) are unreachable, the response will contain functions from all\nreachable locations along with the names of any unreachable locations.", 
+           "description": "The project and location for which to retrieve instance information\nin the format projects/{project}/locations/{location}. If the location is\nspecified as '-' (wildcard), then all regions available to the project\nare queried, and the results are aggregated.", 
            "location": "path", 
            "pattern": "^projects/[^/]+/locations/[^/]+$", 
            "required": true, 
            "type": "string"
           }
          }, 
-         "path": "v1/{+parent}/functions", 
+         "path": "v1/{+parent}/instances", 
          "response": {
-          "$ref": "ListFunctionsResponse"
+          "$ref": "ListInstancesResponse"
          }, 
          "scopes": [
           "https://www.googleapis.com/auth/cloud-platform"
          ]
         }, 
         "patch": {
-         "description": "Updates existing function.", 
-         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}", 
+         "description": "Updates a single Data Fusion instance.", 
+         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}", 
          "httpMethod": "PATCH", 
-         "id": "cloudfunctions.projects.locations.functions.patch", 
+         "id": "datafusion.projects.locations.instances.patch", 
          "parameterOrder": [
           "name"
          ], 
          "parameters": {
           "name": {
-           "description": "A user-defined name of the function. Function names must be unique\nglobally and match pattern `projects/*/locations/*/functions/*`", 
+           "description": "Output only. The name of this instance is in the form of\nprojects/{project}/locations/{location}/instances/{instance}.", 
            "location": "path", 
-           "pattern": "^projects/[^/]+/locations/[^/]+/functions/[^/]+$", 
+           "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$", 
            "required": true, 
            "type": "string"
           }, 
           "updateMask": {
-           "description": "Required list of fields to be updated in this request.", 
+           "description": "Field mask is used to specify the fields that the update will overwrite\nin an instance resource. The fields specified in the update_mask are\nrelative to the resource, not the full request.\nA field will be overwritten if it is in the mask.\nIf the user does not provide a mask, all the supported fields (labels,\noptions, and version currently) will be overwritten.", 
            "format": "google-fieldmask", 
            "location": "query", 
            "type": "string"
@@ -474,7 +359,35 @@
          }, 
          "path": "v1/{+name}", 
          "request": {
-          "$ref": "CloudFunction"
+          "$ref": "Instance"
+         }, 
+         "response": {
+          "$ref": "Operation"
+         }, 
+         "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+         ]
+        }, 
+        "restart": {
+         "description": "Restart a single Data Fusion instance.\nAt the end of an operation instance is fully restarted.", 
+         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:restart", 
+         "httpMethod": "POST", 
+         "id": "datafusion.projects.locations.instances.restart", 
+         "parameterOrder": [
+          "name"
+         ], 
+         "parameters": {
+          "name": {
+           "description": "Name of the Data Fusion instance which need to be restarted in the form of\nprojects/{project}/locations/{location}/instances/{instance}", 
+           "location": "path", 
+           "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$", 
+           "required": true, 
+           "type": "string"
+          }
+         }, 
+         "path": "v1/{+name}:restart", 
+         "request": {
+          "$ref": "RestartInstanceRequest"
          }, 
          "response": {
           "$ref": "Operation"
@@ -484,10 +397,10 @@
          ]
         }, 
         "setIamPolicy": {
-         "description": "Sets the IAM access control policy on the specified function.\nReplaces any existing policy.", 
-         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:setIamPolicy", 
+         "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.", 
+         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:setIamPolicy", 
          "httpMethod": "POST", 
-         "id": "cloudfunctions.projects.locations.functions.setIamPolicy", 
+         "id": "datafusion.projects.locations.instances.setIamPolicy", 
          "parameterOrder": [
           "resource"
          ], 
@@ -495,7 +408,7 @@
           "resource": {
            "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.", 
            "location": "path", 
-           "pattern": "^projects/[^/]+/locations/[^/]+/functions/[^/]+$", 
+           "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$", 
            "required": true, 
            "type": "string"
           }
@@ -512,10 +425,10 @@
          ]
         }, 
         "testIamPermissions": {
-         "description": "Tests the specified permissions against the IAM access control policy\nfor a function.\nIf the function does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.", 
-         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:testIamPermissions", 
+         "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a `NOT_FOUND` error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.", 
+         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:testIamPermissions", 
          "httpMethod": "POST", 
-         "id": "cloudfunctions.projects.locations.functions.testIamPermissions", 
+         "id": "datafusion.projects.locations.instances.testIamPermissions", 
          "parameterOrder": [
           "resource"
          ], 
@@ -523,7 +436,7 @@
           "resource": {
            "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.", 
            "location": "path", 
-           "pattern": "^projects/[^/]+/locations/[^/]+/functions/[^/]+$", 
+           "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$", 
            "required": true, 
            "type": "string"
           }
@@ -540,15 +453,204 @@
          ]
         }
        }
+      }, 
+      "operations": {
+       "methods": {
+        "cancel": {
+         "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.", 
+         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel", 
+         "httpMethod": "POST", 
+         "id": "datafusion.projects.locations.operations.cancel", 
+         "parameterOrder": [
+          "name"
+         ], 
+         "parameters": {
+          "name": {
+           "description": "The name of the operation resource to be cancelled.", 
+           "location": "path", 
+           "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$", 
+           "required": true, 
+           "type": "string"
+          }
+         }, 
+         "path": "v1/{+name}:cancel", 
+         "request": {
+          "$ref": "CancelOperationRequest"
+         }, 
+         "response": {
+          "$ref": "Empty"
+         }, 
+         "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+         ]
+        }, 
+        "delete": {
+         "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.", 
+         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}", 
+         "httpMethod": "DELETE", 
+         "id": "datafusion.projects.locations.operations.delete", 
+         "parameterOrder": [
+          "name"
+         ], 
+         "parameters": {
+          "name": {
+           "description": "The name of the operation resource to be deleted.", 
+           "location": "path", 
+           "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$", 
+           "required": true, 
+           "type": "string"
+          }
+         }, 
+         "path": "v1/{+name}", 
+         "response": {
+          "$ref": "Empty"
+         }, 
+         "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+         ]
+        }, 
+        "get": {
+         "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.", 
+         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}", 
+         "httpMethod": "GET", 
+         "id": "datafusion.projects.locations.operations.get", 
+         "parameterOrder": [
+          "name"
+         ], 
+         "parameters": {
+          "name": {
+           "description": "The name of the operation resource.", 
+           "location": "path", 
+           "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$", 
+           "required": true, 
+           "type": "string"
+          }
+         }, 
+         "path": "v1/{+name}", 
+         "response": {
+          "$ref": "Operation"
+         }, 
+         "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+         ]
+        }, 
+        "list": {
+         "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.", 
+         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations", 
+         "httpMethod": "GET", 
+         "id": "datafusion.projects.locations.operations.list", 
+         "parameterOrder": [
+          "name"
+         ], 
+         "parameters": {
+          "filter": {
+           "description": "The standard list filter.", 
+           "location": "query", 
+           "type": "string"
+          }, 
+          "name": {
+           "description": "The name of the operation's parent resource.", 
+           "location": "path", 
+           "pattern": "^projects/[^/]+/locations/[^/]+$", 
+           "required": true, 
+           "type": "string"
+          }, 
+          "pageSize": {
+           "description": "The standard list page size.", 
+           "format": "int32", 
+           "location": "query", 
+           "type": "integer"
+          }, 
+          "pageToken": {
+           "description": "The standard list page token.", 
+           "location": "query", 
+           "type": "string"
+          }
+         }, 
+         "path": "v1/{+name}/operations", 
+         "response": {
+          "$ref": "ListOperationsResponse"
+         }, 
+         "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+         ]
+        }
+       }
+      }, 
+      "versions": {
+       "methods": {
+        "list": {
+         "description": "Lists possible versions for Data Fusion instances in the specified project\nand location.", 
+         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/versions", 
+         "httpMethod": "GET", 
+         "id": "datafusion.projects.locations.versions.list", 
+         "parameterOrder": [
+          "parent"
+         ], 
+         "parameters": {
+          "latestPatchOnly": {
+           "description": "Whether or not to return the latest patch of every available minor version.\nIf true, only the latest patch will be returned. Ex. if allowed versions is\n[6.1.1, 6.1.2, 6.2.0] then response will be [6.1.2, 6.2.0]", 
+           "location": "query", 
+           "type": "boolean"
+          }, 
+          "pageSize": {
+           "description": "The maximum number of items to return.", 
+           "format": "int32", 
+           "location": "query", 
+           "type": "integer"
+          }, 
+          "pageToken": {
+           "description": "The next_page_token value to use if there are additional\nresults to retrieve for this list request.", 
+           "location": "query", 
+           "type": "string"
+          }, 
+          "parent": {
+           "description": "Required. The project and location for which to retrieve instance information\nin the format projects/{project}/locations/{location}.", 
+           "location": "path", 
+           "pattern": "^projects/[^/]+/locations/[^/]+$", 
+           "required": true, 
+           "type": "string"
+          }
+         }, 
+         "path": "v1/{+parent}/versions", 
+         "response": {
+          "$ref": "ListAvailableVersionsResponse"
+         }, 
+         "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+         ]
+        }
+       }
       }
      }
     }
    }
   }
  }, 
- "revision": "20200723", 
- "rootUrl": "https://cloudfunctions.googleapis.com/", 
+ "revision": "20200609", 
+ "rootUrl": "https://datafusion.googleapis.com/", 
  "schemas": {
+  "Accelerator": {
+   "description": "Identifies Data Fusion accelerators for an instance.", 
+   "id": "Accelerator", 
+   "properties": {
+    "acceleratorType": {
+     "description": "The type of an accelator for a CDF instance.", 
+     "enum": [
+      "ACCELERATOR_TYPE_UNSPECIFIED", 
+      "CDC", 
+      "HEALTHCARE"
+     ], 
+     "enumDescriptions": [
+      "Default value, if unspecified.", 
+      "Change Data Capture accelerator for CDF.", 
+      "Cloud Healthcare accelerator for CDF. This accelerator is to enable Cloud\nHealthcare specific CDF plugins developed by Healthcare team."
+     ], 
+     "type": "string"
+    }
+   }, 
+   "type": "object"
+  }, 
   "AuditConfig": {
    "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditLogConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\",\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:jose@example.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\"\n            },\n            {\n              \"log_type\": \"ADMIN_READ\"\n            }\n          ]\n        },\n        {\n          \"service\": \"sampleservice.googleapis.com\",\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\"\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:aliya@example.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts jose@example.com from DATA_READ logging, and\naliya@example.com from DATA_WRITE logging.", 
    "id": "AuditConfig", 
@@ -619,205 +721,16 @@
    }, 
    "type": "object"
   }, 
-  "CallFunctionRequest": {
-   "description": "Request for the `CallFunction` method.", 
-   "id": "CallFunctionRequest", 
-   "properties": {
-    "data": {
-     "description": "Required. Input to be passed to the function.", 
-     "type": "string"
-    }
-   }, 
+  "CancelOperationRequest": {
+   "description": "The request message for Operations.CancelOperation.", 
+   "id": "CancelOperationRequest", 
+   "properties": {}, 
    "type": "object"
   }, 
-  "CallFunctionResponse": {
-   "description": "Response of `CallFunction` method.", 
-   "id": "CallFunctionResponse", 
-   "properties": {
-    "error": {
-     "description": "Either system or user-function generated error. Set if execution\nwas not successful.", 
-     "type": "string"
-    }, 
-    "executionId": {
-     "description": "Execution id of function invocation.", 
-     "type": "string"
-    }, 
-    "result": {
-     "description": "Result populated for successful execution of synchronous function. Will\nnot be populated if function does not return a result through context.", 
-     "type": "string"
-    }
-   }, 
-   "type": "object"
-  }, 
-  "CloudFunction": {
-   "description": "Describes a Cloud Function that contains user computation executed in\nresponse to an event. It encapsulate function and triggers configurations.", 
-   "id": "CloudFunction", 
-   "properties": {
-    "availableMemoryMb": {
-     "description": "The amount of memory in MB available for a function.\nDefaults to 256MB.", 
-     "format": "int32", 
-     "type": "integer"
-    }, 
-    "buildId": {
-     "description": "Output only. The Cloud Build ID of the latest successful deployment of the\nfunction.", 
-     "type": "string"
-    }, 
-    "description": {
-     "description": "User-provided description of a function.", 
-     "type": "string"
-    }, 
-    "entryPoint": {
-     "description": "The name of the function (as defined in source code) that will be\nexecuted. Defaults to the resource name suffix, if not specified. For\nbackward compatibility, if function with given name is not found, then the\nsystem will try to use function named \"function\".\nFor Node.js this is name of a function exported by the module specified\nin `source_location`.", 
-     "type": "string"
-    }, 
-    "environmentVariables": {
-     "additionalProperties": {
-      "type": "string"
-     }, 
-     "description": "Environment variables that shall be available during function execution.", 
-     "type": "object"
-    }, 
-    "eventTrigger": {
-     "$ref": "EventTrigger", 
-     "description": "A source that fires events in response to a condition in another service."
-    }, 
-    "httpsTrigger": {
-     "$ref": "HttpsTrigger", 
-     "description": "An HTTPS endpoint type of source that can be triggered via URL."
-    }, 
-    "ingressSettings": {
-     "description": "The ingress settings for the function, controlling what traffic can reach\nit.", 
-     "enum": [
-      "INGRESS_SETTINGS_UNSPECIFIED", 
-      "ALLOW_ALL", 
-      "ALLOW_INTERNAL_ONLY", 
-      "ALLOW_INTERNAL_AND_GCLB"
-     ], 
-     "enumDescriptions": [
-      "Unspecified.", 
-      "Allow HTTP traffic from public and private sources.", 
-      "Allow HTTP traffic from only private VPC sources.", 
-      "Allow HTTP traffic from private VPC sources and through GCLB."
-     ], 
-     "type": "string"
-    }, 
-    "labels": {
-     "additionalProperties": {
-      "type": "string"
-     }, 
-     "description": "Labels associated with this Cloud Function.", 
-     "type": "object"
-    }, 
-    "maxInstances": {
-     "description": "The limit on the maximum number of function instances that may coexist at a\ngiven time.", 
-     "format": "int32", 
-     "type": "integer"
-    }, 
-    "name": {
-     "description": "A user-defined name of the function. Function names must be unique\nglobally and match pattern `projects/*/locations/*/functions/*`", 
-     "type": "string"
-    }, 
-    "network": {
-     "description": "The VPC Network that this cloud function can connect to. It can be\neither the fully-qualified URI, or the short name of the network resource.\nIf the short network name is used, the network must belong to the same\nproject. Otherwise, it must belong to a project within the same\norganization. The format of this field is either\n`projects/{project}/global/networks/{network}` or `{network}`, where\n{project} is a project id where the network is defined, and {network} is\nthe short name of the network.\n\nThis field is mutually exclusive with `vpc_connector` and will be replaced\nby it.\n\nSee [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for\nmore information on connecting Cloud projects.", 
-     "type": "string"
-    }, 
-    "runtime": {
-     "description": "The runtime in which to run the function. Required when deploying a new\nfunction, optional when updating an existing function. For a complete\nlist of possible choices, see the\n[`gcloud` command\nreference](/sdk/gcloud/reference/functions/deploy#--runtime).", 
-     "type": "string"
-    }, 
-    "serviceAccountEmail": {
-     "description": "The email of the function's service account. If empty, defaults to\n`{project_id}@appspot.gserviceaccount.com`.", 
-     "type": "string"
-    }, 
-    "sourceArchiveUrl": {
-     "description": "The Google Cloud Storage URL, starting with gs://, pointing to the zip\narchive which contains the function.", 
-     "type": "string"
-    }, 
-    "sourceRepository": {
-     "$ref": "SourceRepository", 
-     "description": "**Beta Feature**\n\nThe source repository where a function is hosted."
-    }, 
-    "sourceUploadUrl": {
-     "description": "The Google Cloud Storage signed URL used for source uploading, generated\nby google.cloud.functions.v1.GenerateUploadUrl", 
-     "type": "string"
-    }, 
-    "status": {
-     "description": "Output only. Status of the function deployment.", 
-     "enum": [
-      "CLOUD_FUNCTION_STATUS_UNSPECIFIED", 
-      "ACTIVE", 
-      "OFFLINE", 
-      "DEPLOY_IN_PROGRESS", 
-      "DELETE_IN_PROGRESS", 
-      "UNKNOWN"
-     ], 
-     "enumDescriptions": [
-      "Not specified. Invalid state.", 
-      "Function has been successfully deployed and is serving.", 
-      "Function deployment failed and the function isn\u2019t serving.", 
-      "Function is being created or updated.", 
-      "Function is being deleted.", 
-      "Function deployment failed and the function serving state is undefined.\nThe function should be updated or deleted to move it out of this state."
-     ], 
-     "type": "string"
-    }, 
-    "timeout": {
-     "description": "The function execution timeout. Execution is considered failed and\ncan be terminated if the function is not completed at the end of the\ntimeout period. Defaults to 60 seconds.", 
-     "format": "google-duration", 
-     "type": "string"
-    }, 
-    "updateTime": {
-     "description": "Output only. The last update timestamp of a Cloud Function.", 
-     "format": "google-datetime", 
-     "type": "string"
-    }, 
-    "versionId": {
-     "description": "Output only. The version identifier of the Cloud Function. Each deployment attempt\nresults in a new version of a function being created.", 
-     "format": "int64", 
-     "type": "string"
-    }, 
-    "vpcConnector": {
-     "description": "The VPC Network Connector that this cloud function can connect to. It can\nbe either the fully-qualified URI, or the short name of the network\nconnector resource. The format of this field is\n`projects/*/locations/*/connectors/*`\n\nThis field is mutually exclusive with `network` field and will eventually\nreplace it.\n\nSee [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for\nmore information on connecting Cloud projects.", 
-     "type": "string"
-    }, 
-    "vpcConnectorEgressSettings": {
-     "description": "The egress settings for the connector, controlling what traffic is diverted\nthrough it.", 
-     "enum": [
-      "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED", 
-      "PRIVATE_RANGES_ONLY", 
-      "ALL_TRAFFIC"
-     ], 
-     "enumDescriptions": [
-      "Unspecified.", 
-      "Use the VPC Access Connector only for private IP space from RFC1918.", 
-      "Force the use of VPC Access Connector for all egress traffic from the\nfunction."
-     ], 
-     "type": "string"
-    }
-   }, 
-   "type": "object"
-  }, 
-  "EventTrigger": {
-   "description": "Describes EventTrigger, used to request events be sent from another\nservice.", 
-   "id": "EventTrigger", 
-   "properties": {
-    "eventType": {
-     "description": "Required. The type of event to observe. For example:\n`providers/cloud.storage/eventTypes/object.change` and\n`providers/cloud.pubsub/eventTypes/topic.publish`.\n\nEvent types match pattern `providers/*/eventTypes/*.*`.\nThe pattern contains:\n\n1. namespace: For example, `cloud.storage` and\n   `google.firebase.analytics`.\n2. resource type: The type of resource on which event occurs. For\n   example, the Google Cloud Storage API includes the type `object`.\n3. action: The action that generates the event. For example, action for\n   a Google Cloud Storage Object is 'change'.\nThese parts are lower case.", 
-     "type": "string"
-    }, 
-    "failurePolicy": {
-     "$ref": "FailurePolicy", 
-     "description": "Specifies policy for failed executions."
-    }, 
-    "resource": {
-     "description": "Required. The resource(s) from which to observe events, for example,\n`projects/_/buckets/myBucket`.\n\nNot all syntactically correct values are accepted by all services. For\nexample:\n\n1. The authorization model must support it. Google Cloud Functions\n   only allows EventTriggers to be deployed that observe resources in the\n   same project as the `CloudFunction`.\n2. The resource type must match the pattern expected for an\n   `event_type`. For example, an `EventTrigger` that has an\n   `event_type` of \"google.pubsub.topic.publish\" should have a resource\n   that matches Google Cloud Pub/Sub topics.\n\nAdditionally, some services may support short names when creating an\n`EventTrigger`. These will always be returned in the normalized \"long\"\nformat.\n\nSee each *service's* documentation for supported formats.", 
-     "type": "string"
-    }, 
-    "service": {
-     "description": "The hostname of the service that should be observed.\n\nIf no string is provided, the default service implementing the API will\nbe used. For example, `storage.googleapis.com` is the default for all\nevent types in the `google.storage` namespace.", 
-     "type": "string"
-    }
-   }, 
+  "Empty": {
+   "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.", 
+   "id": "Empty", 
+   "properties": {}, 
    "type": "object"
   }, 
   "Expr": {
@@ -843,85 +756,188 @@
    }, 
    "type": "object"
   }, 
-  "FailurePolicy": {
-   "description": "Describes the policy in case of function's execution failure.\nIf empty, then defaults to ignoring failures (i.e. not retrying them).", 
-   "id": "FailurePolicy", 
+  "Instance": {
+   "description": "Represents a Data Fusion instance.\nNext available ID: 23", 
+   "id": "Instance", 
    "properties": {
-    "retry": {
-     "$ref": "Retry", 
-     "description": "If specified, then the function will be retried in case of a failure."
-    }
-   }, 
-   "type": "object"
-  }, 
-  "GenerateDownloadUrlRequest": {
-   "description": "Request of `GenerateDownloadUrl` method.", 
-   "id": "GenerateDownloadUrlRequest", 
-   "properties": {
-    "versionId": {
-     "description": "The optional version of function. If not set, default, current version\nis used.", 
-     "format": "uint64", 
-     "type": "string"
-    }
-   }, 
-   "type": "object"
-  }, 
-  "GenerateDownloadUrlResponse": {
-   "description": "Response of `GenerateDownloadUrl` method.", 
-   "id": "GenerateDownloadUrlResponse", 
-   "properties": {
-    "downloadUrl": {
-     "description": "The generated Google Cloud Storage signed URL that should be used for\nfunction source code download.", 
-     "type": "string"
-    }
-   }, 
-   "type": "object"
-  }, 
-  "GenerateUploadUrlRequest": {
-   "description": "Request of `GenerateSourceUploadUrl` method.", 
-   "id": "GenerateUploadUrlRequest", 
-   "properties": {}, 
-   "type": "object"
-  }, 
-  "GenerateUploadUrlResponse": {
-   "description": "Response of `GenerateSourceUploadUrl` method.", 
-   "id": "GenerateUploadUrlResponse", 
-   "properties": {
-    "uploadUrl": {
-     "description": "The generated Google Cloud Storage signed URL that should be used for a\nfunction source code upload. The uploaded file should be a zip archive\nwhich contains a function.", 
-     "type": "string"
-    }
-   }, 
-   "type": "object"
-  }, 
-  "HttpsTrigger": {
-   "description": "Describes HttpsTrigger, could be used to connect web hooks to function.", 
-   "id": "HttpsTrigger", 
-   "properties": {
-    "url": {
-     "description": "Output only. The deployed url for the function.", 
-     "type": "string"
-    }
-   }, 
-   "type": "object"
-  }, 
-  "ListFunctionsResponse": {
-   "description": "Response for the `ListFunctions` method.", 
-   "id": "ListFunctionsResponse", 
-   "properties": {
-    "functions": {
-     "description": "The functions that match the request.", 
+    "accelerators": {
+     "description": "List of accelerators enabled for this CDF instance.", 
      "items": {
-      "$ref": "CloudFunction"
+      "$ref": "Accelerator"
+     }, 
+     "type": "array"
+    }, 
+    "apiEndpoint": {
+     "description": "Output only. Endpoint on which the REST APIs is accessible.", 
+     "type": "string"
+    }, 
+    "availableVersion": {
+     "description": "Available versions that the instance can be upgraded to using\nUpdateInstanceRequest.", 
+     "items": {
+      "$ref": "Version"
+     }, 
+     "type": "array"
+    }, 
+    "createTime": {
+     "description": "Output only. The time the instance was created.", 
+     "format": "google-datetime", 
+     "type": "string"
+    }, 
+    "description": {
+     "description": "A description of this instance.", 
+     "type": "string"
+    }, 
+    "displayName": {
+     "description": "Display name for an instance.", 
+     "type": "string"
+    }, 
+    "enableStackdriverLogging": {
+     "description": "Option to enable Stackdriver Logging.", 
+     "type": "boolean"
+    }, 
+    "enableStackdriverMonitoring": {
+     "description": "Option to enable Stackdriver Monitoring.", 
+     "type": "boolean"
+    }, 
+    "gcsBucket": {
+     "description": "Output only. Cloud Storage bucket generated by Data Fusion in the customer project.", 
+     "type": "string"
+    }, 
+    "labels": {
+     "additionalProperties": {
+      "type": "string"
+     }, 
+     "description": "The resource labels for instance to use to annotate any related underlying\nresources such as GCE VMs. The character '=' is not allowed to be used\nwithin the labels.", 
+     "type": "object"
+    }, 
+    "name": {
+     "description": "Output only. The name of this instance is in the form of\nprojects/{project}/locations/{location}/instances/{instance}.", 
+     "type": "string"
+    }, 
+    "networkConfig": {
+     "$ref": "NetworkConfig", 
+     "description": "Network configuration options. These are required when a private Data\nFusion instance is to be created."
+    }, 
+    "options": {
+     "additionalProperties": {
+      "type": "string"
+     }, 
+     "description": "Map of additional options used to configure the behavior of\nData Fusion instance.", 
+     "type": "object"
+    }, 
+    "privateInstance": {
+     "description": "Specifies whether the Data Fusion instance should be private. If set to\ntrue, all Data Fusion nodes will have private IP addresses and will not be\nable to access the public internet.", 
+     "type": "boolean"
+    }, 
+    "serviceAccount": {
+     "description": "Output only. Service account which will be used to access resources in\nthe customer project.\"", 
+     "type": "string"
+    }, 
+    "serviceEndpoint": {
+     "description": "Output only. Endpoint on which the Data Fusion UI is accessible.", 
+     "type": "string"
+    }, 
+    "state": {
+     "description": "Output only. The current state of this Data Fusion instance.", 
+     "enum": [
+      "STATE_UNSPECIFIED", 
+      "CREATING", 
+      "ACTIVE", 
+      "RUNNING", 
+      "FAILED", 
+      "DELETING", 
+      "UPGRADING", 
+      "RESTARTING", 
+      "UPDATING", 
+      "AUTO_UPDATING", 
+      "AUTO_UPGRADING"
+     ], 
+     "enumDescriptions": [
+      "Instance does not have a state yet", 
+      "Instance is being created", 
+      "Instance is active and ready for requests", 
+      "RUNNING is an alias of ACTIVE for backward compatibility", 
+      "Instance creation failed", 
+      "Instance is being deleted", 
+      "Instance is being upgraded", 
+      "Instance is being restarted", 
+      "Instance is being updated on customer request", 
+      "Instance is being auto-updated", 
+      "Instance is being auto-upgraded"
+     ], 
+     "type": "string"
+    }, 
+    "stateMessage": {
+     "description": "Output only. Additional information about the current state of this Data\nFusion instance if available.", 
+     "type": "string"
+    }, 
+    "type": {
+     "description": "Required. Instance type.", 
+     "enum": [
+      "TYPE_UNSPECIFIED", 
+      "BASIC", 
+      "ENTERPRISE", 
+      "DEVELOPER"
+     ], 
+     "enumDescriptions": [
+      "No type specified. The instance creation will fail.", 
+      "Basic Data Fusion instance. In Basic type, the user will be able to\ncreate data pipelines using point and click UI. However, there are\ncertain limitations, such as fewer number of concurrent pipelines, no\nsupport for streaming pipelines, etc.", 
+      "Enterprise Data Fusion instance. In Enterprise type, the user will have\nall features available, such as support for streaming pipelines, higher\nnumber of concurrent pipelines, etc.", 
+      "Developer Data Fusion instance. In Developer type, the user will have all\nfeatures available but with restrictive capabilities. This is to help\nenterprises design and develop their data ingestion and integration\npipelines at low cost."
+     ], 
+     "type": "string"
+    }, 
+    "updateTime": {
+     "description": "Output only. The time the instance was last updated.", 
+     "format": "google-datetime", 
+     "type": "string"
+    }, 
+    "version": {
+     "description": "Current version of the Data Fusion. Only specifiable in Update.", 
+     "type": "string"
+    }, 
+    "zone": {
+     "description": "Name of the zone in which the Data Fusion instance will be created. Only\nDEVELOPER instances use this field.", 
+     "type": "string"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "ListAvailableVersionsResponse": {
+   "description": "Response message for the list available versions request.", 
+   "id": "ListAvailableVersionsResponse", 
+   "properties": {
+    "availableVersions": {
+     "description": "Represents a list of versions that are supported.", 
+     "items": {
+      "$ref": "Version"
      }, 
      "type": "array"
     }, 
     "nextPageToken": {
-     "description": "If not empty, indicates that there may be more functions that match\nthe request; this value should be passed in a new\ngoogle.cloud.functions.v1.ListFunctionsRequest\nto get more functions.", 
+     "description": "Token to retrieve the next page of results or empty if there are no more\nresults in the list.", 
+     "type": "string"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "ListInstancesResponse": {
+   "description": "Response message for the list instance request.", 
+   "id": "ListInstancesResponse", 
+   "properties": {
+    "instances": {
+     "description": "Represents a list of Data Fusion instances.", 
+     "items": {
+      "$ref": "Instance"
+     }, 
+     "type": "array"
+    }, 
+    "nextPageToken": {
+     "description": "Token to retrieve the next page of results or empty if there are no more\nresults in the list.", 
      "type": "string"
     }, 
     "unreachable": {
-     "description": "Locations that could not be reached. The response does not include any\nfunctions from these locations.", 
+     "description": "Locations that could not be reached.", 
      "items": {
       "type": "string"
      }, 
@@ -1000,6 +1016,21 @@
    }, 
    "type": "object"
   }, 
+  "NetworkConfig": {
+   "description": "Network configuration for a Data Fusion instance. These configurations\nare used for peering with the customer network. Configurations are optional\nwhen a public Data Fusion instance is to be created. However, providing\nthese configurations allows several benefits, such as reduced network latency\nwhile accessing the customer resources from managed Data Fusion instance\nnodes, as well as access to the customer on-prem resources.", 
+   "id": "NetworkConfig", 
+   "properties": {
+    "ipAllocation": {
+     "description": "The IP range in CIDR notation to use for the managed Data Fusion instance\nnodes. This range must not overlap with any other ranges used in the\ncustomer network.", 
+     "type": "string"
+    }, 
+    "network": {
+     "description": "Name of the network in the customer project with which the Tenant Project\nwill be peered for executing pipelines. In case of shared VPC where the\nnetwork resides in another host project the network should specified in\nthe form of projects/{host-project-id}/global/networks/{network}", 
+     "type": "string"
+    }
+   }, 
+   "type": "object"
+  }, 
   "Operation": {
    "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.", 
    "id": "Operation", 
@@ -1035,50 +1066,38 @@
    }, 
    "type": "object"
   }, 
-  "OperationMetadataV1": {
-   "description": "Metadata describing an Operation", 
-   "id": "OperationMetadataV1", 
+  "OperationMetadata": {
+   "description": "Represents the metadata of a long-running operation.", 
+   "id": "OperationMetadata", 
    "properties": {
-    "buildId": {
-     "description": "The Cloud Build ID of the function created or updated by an API call.\nThis field is only populated for Create and Update operations.", 
+    "apiVersion": {
+     "description": "API version used to start the operation.", 
      "type": "string"
     }, 
-    "request": {
-     "additionalProperties": {
-      "description": "Properties of the object. Contains field @type with type URL.", 
-      "type": "any"
-     }, 
-     "description": "The original request that started the operation.", 
-     "type": "object"
-    }, 
-    "target": {
-     "description": "Target of the operation - for example\nprojects/project-1/locations/region-1/functions/function-1", 
-     "type": "string"
-    }, 
-    "type": {
-     "description": "Type of operation.", 
-     "enum": [
-      "OPERATION_UNSPECIFIED", 
-      "CREATE_FUNCTION", 
-      "UPDATE_FUNCTION", 
-      "DELETE_FUNCTION"
-     ], 
-     "enumDescriptions": [
-      "Unknown operation type.", 
-      "Triggered by CreateFunction call", 
-      "Triggered by UpdateFunction call", 
-      "Triggered by DeleteFunction call."
-     ], 
-     "type": "string"
-    }, 
-    "updateTime": {
-     "description": "The last update timestamp of the operation.", 
+    "createTime": {
+     "description": "The time the operation was created.", 
      "format": "google-datetime", 
      "type": "string"
     }, 
-    "versionId": {
-     "description": "Version id of the function created or updated by an API call.\nThis field is only populated for Create and Update operations.", 
-     "format": "int64", 
+    "endTime": {
+     "description": "The time the operation finished running.", 
+     "format": "google-datetime", 
+     "type": "string"
+    }, 
+    "requestedCancellation": {
+     "description": "Identifies whether the user has requested cancellation\nof the operation. Operations that have successfully been cancelled\nhave Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.", 
+     "type": "boolean"
+    }, 
+    "statusDetail": {
+     "description": "Human-readable status of the operation if any.", 
+     "type": "string"
+    }, 
+    "target": {
+     "description": "Server-defined resource path for the target of the operation.", 
+     "type": "string"
+    }, 
+    "verb": {
+     "description": "Name of the verb executed by the operation.", 
      "type": "string"
     }
    }, 
@@ -1115,9 +1134,9 @@
    }, 
    "type": "object"
   }, 
-  "Retry": {
-   "description": "Describes the retry policy in case of function's execution failure.\nA function execution will be retried on any failure.\nA failed execution will be retried up to 7 days with an exponential backoff\n(capped at 10 seconds).\nRetried execution is charged as any other execution.", 
-   "id": "Retry", 
+  "RestartInstanceRequest": {
+   "description": "Request message for restarting a Data Fusion instance.", 
+   "id": "RestartInstanceRequest", 
    "properties": {}, 
    "type": "object"
   }, 
@@ -1132,21 +1151,6 @@
     "updateMask": {
      "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\n\n`paths: \"bindings, etag\"`", 
      "format": "google-fieldmask", 
-     "type": "string"
-    }
-   }, 
-   "type": "object"
-  }, 
-  "SourceRepository": {
-   "description": "Describes SourceRepository, used to represent parameters related to\nsource repository where a function is hosted.", 
-   "id": "SourceRepository", 
-   "properties": {
-    "deployedUrl": {
-     "description": "Output only. The URL pointing to the hosted repository where the function\nwere defined at the time of deployment. It always points to a specific\ncommit in the format described above.", 
-     "type": "string"
-    }, 
-    "url": {
-     "description": "The URL pointing to the hosted repository where the function is defined.\nThere are supported Cloud Source Repository URLs in the following\nformats:\n\nTo refer to a specific commit:\n`https://source.developers.google.com/projects/*/repos/*/revisions/*/paths/*`\nTo refer to a moveable alias (branch):\n`https://source.developers.google.com/projects/*/repos/*/moveable-aliases/*/paths/*`\nIn particular, to refer to HEAD use `master` moveable alias.\nTo refer to a specific fixed alias (tag):\n`https://source.developers.google.com/projects/*/repos/*/fixed-aliases/*/paths/*`\n\nYou may omit `paths/*` if you want to use the main directory.", 
      "type": "string"
     }
    }, 
@@ -1206,10 +1210,25 @@
     }
    }, 
    "type": "object"
+  }, 
+  "Version": {
+   "description": "The Data Fusion version. This proto message stores information about certain\nData Fusion version, which is used for Data Fusion version upgrade.", 
+   "id": "Version", 
+   "properties": {
+    "defaultVersion": {
+     "description": "Whether this is currently the default version for Cloud Data Fusion", 
+     "type": "boolean"
+    }, 
+    "versionNumber": {
+     "description": "The version number of the Data Fusion instance, such as '6.0.1.0'.", 
+     "type": "string"
+    }
+   }, 
+   "type": "object"
   }
  }, 
  "servicePath": "", 
- "title": "Cloud Functions API", 
+ "title": "Cloud Data Fusion API", 
  "version": "v1", 
  "version_module": true
 }

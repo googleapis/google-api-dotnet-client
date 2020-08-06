@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200725 (2032)
+ *      <tr><th>API Rev<td>20200805 (2043)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow/'>
  *              https://cloud.google.com/dialogflow/</a>
@@ -424,9 +424,7 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
 
-                    /// <summary>Creates multiple new entities in the specified entity type.
-                    ///
-                    /// Operation </summary>
+                    /// <summary>Creates multiple new entities in the specified entity type. Operation </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The name of the entity type to create entities in. Format:
                     /// `projects//agent/entityTypes/`.</param>
@@ -435,9 +433,7 @@ namespace Google.Apis.Dialogflow.v2
                         return new BatchCreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Creates multiple new entities in the specified entity type.
-                    ///
-                    /// Operation </summary>
+                    /// <summary>Creates multiple new entities in the specified entity type. Operation </summary>
                     public class BatchCreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new BatchCreate request.</summary>
@@ -498,9 +494,7 @@ namespace Google.Apis.Dialogflow.v2
 
                     }
 
-                    /// <summary>Deletes entities in the specified entity type.
-                    ///
-                    /// Operation </summary>
+                    /// <summary>Deletes entities in the specified entity type. Operation </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The name of the entity type to delete entries for. Format:
                     /// `projects//agent/entityTypes/`.</param>
@@ -509,9 +503,7 @@ namespace Google.Apis.Dialogflow.v2
                         return new BatchDeleteRequest(service, body, parent);
                     }
 
-                    /// <summary>Deletes entities in the specified entity type.
-                    ///
-                    /// Operation </summary>
+                    /// <summary>Deletes entities in the specified entity type. Operation </summary>
                     public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new BatchDelete request.</summary>
@@ -573,9 +565,8 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
                     /// <summary>Updates or creates multiple entities in the specified entity type. This method does not
-                    /// affect entities in the entity type that aren't explicitly specified in the request.
-                    ///
-                    /// Operation </summary>
+                    /// affect entities in the entity type that aren't explicitly specified in the request. Operation
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The name of the entity type to update or create entities in. Format:
                     /// `projects//agent/entityTypes/`.</param>
@@ -585,9 +576,8 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
                     /// <summary>Updates or creates multiple entities in the specified entity type. This method does not
-                    /// affect entities in the entity type that aren't explicitly specified in the request.
-                    ///
-                    /// Operation </summary>
+                    /// affect entities in the entity type that aren't explicitly specified in the request. Operation
+                    /// </summary>
                     public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new BatchUpdate request.</summary>
@@ -649,9 +639,7 @@ namespace Google.Apis.Dialogflow.v2
                     }
                 }
 
-                /// <summary>Deletes entity types in the specified agent.
-                ///
-                /// Operation </summary>
+                /// <summary>Deletes entity types in the specified agent. Operation </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The name of the agent to delete all entities types for. Format:
                 /// `projects//agent`.</param>
@@ -660,9 +648,7 @@ namespace Google.Apis.Dialogflow.v2
                     return new BatchDeleteRequest(service, body, parent);
                 }
 
-                /// <summary>Deletes entity types in the specified agent.
-                ///
-                /// Operation </summary>
+                /// <summary>Deletes entity types in the specified agent. Operation </summary>
                 public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new BatchDelete request.</summary>
@@ -723,9 +709,7 @@ namespace Google.Apis.Dialogflow.v2
 
                 }
 
-                /// <summary>Updates/Creates multiple entity types in the specified agent.
-                ///
-                /// Operation </summary>
+                /// <summary>Updates/Creates multiple entity types in the specified agent. Operation </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The name of the agent to update or create entity types in. Format:
                 /// `projects//agent`.</param>
@@ -734,9 +718,7 @@ namespace Google.Apis.Dialogflow.v2
                     return new BatchUpdateRequest(service, body, parent);
                 }
 
-                /// <summary>Updates/Creates multiple entity types in the specified agent.
-                ///
-                /// Operation </summary>
+                /// <summary>Updates/Creates multiple entity types in the specified agent. Operation </summary>
                 public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new BatchUpdate request.</summary>
@@ -1315,9 +1297,8 @@ namespace Google.Apis.Dialogflow.v2
                             }
 
 
-                            /// <summary>Creates a context.
-                            ///
-                            /// If the specified context already exists, overrides the context.</summary>
+                            /// <summary>Creates a context. If the specified context already exists, overrides the
+                            /// context.</summary>
                             /// <param name="body">The body of the request.</param>
                             /// <param name="parent">Required. The session to create a context for. Format: `projects//agent/sessions/` or
                             /// `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we assume default 'draft'
@@ -1327,9 +1308,8 @@ namespace Google.Apis.Dialogflow.v2
                                 return new CreateRequest(service, body, parent);
                             }
 
-                            /// <summary>Creates a context.
-                            ///
-                            /// If the specified context already exists, overrides the context.</summary>
+                            /// <summary>Creates a context. If the specified context already exists, overrides the
+                            /// context.</summary>
                             public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context>
                             {
                                 /// <summary>Constructs a new Create request.</summary>
@@ -1620,18 +1600,11 @@ namespace Google.Apis.Dialogflow.v2
                             /// <summary>Updates the specified context.</summary>
                             /// <param name="body">The body of the request.</param>
                             /// <param name="name">Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or
-                            /// `projects//agent/environments//users//sessions//contexts/`.
-                            ///
-                            /// The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most
-                            /// 250 bytes long.
-                            ///
-                            /// If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we
-                            /// assume default '-' user.
-                            ///
-                            /// The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create
-                            /// contexts with these names:
-                            ///
-                            /// * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`</param>
+                            /// `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may
+                            /// only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we
+                            /// assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context
+                            /// names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these
+                            /// names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`</param>
                             public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string name)
                             {
                                 return new PatchRequest(service, body, name);
@@ -1652,18 +1625,13 @@ namespace Google.Apis.Dialogflow.v2
 
                                 /// <summary>Required. The unique identifier of the context. Format:
                                 /// `projects//agent/sessions//contexts/`, or
-                                /// `projects//agent/environments//users//sessions//contexts/`.
-                                ///
-                                /// The `Context ID` is always converted to lowercase, may only contain characters in
-                                /// a-zA-Z0-9_-% and may be at most 250 bytes long.
-                                ///
-                                /// If `Environment ID` is not specified, we assume default 'draft' environment. If
-                                /// `User ID` is not specified, we assume default '-' user.
-                                ///
-                                /// The following context names are reserved for internal use by Dialogflow. You should
-                                /// not use these contexts or create contexts with these names:
-                                ///
-                                /// * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`</summary>
+                                /// `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is
+                                /// always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may
+                                /// be at most 250 bytes long. If `Environment ID` is not specified, we assume default
+                                /// 'draft' environment. If `User ID` is not specified, we assume default '-' user. The
+                                /// following context names are reserved for internal use by Dialogflow. You should not
+                                /// use these contexts or create contexts with these names: * `__system_counters__` *
+                                /// `*_id_dialog_context` * `*_dialog_params_size`</summary>
                                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Name { get; private set; }
 
@@ -1747,12 +1715,10 @@ namespace Google.Apis.Dialogflow.v2
                             }
 
 
-                            /// <summary>Creates a session entity type.
-                            ///
-                            /// If the specified session entity type already exists, overrides the session entity type.
-                            ///
-                            /// This method doesn't work with Google Assistant integration. Contact Dialogflow support
-                            /// if you need to use session entities with Google Assistant integration.</summary>
+                            /// <summary>Creates a session entity type. If the specified session entity type already
+                            /// exists, overrides the session entity type. This method doesn't work with Google
+                            /// Assistant integration. Contact Dialogflow support if you need to use session entities
+                            /// with Google Assistant integration.</summary>
                             /// <param name="body">The body of the request.</param>
                             /// <param name="parent">Required. The session to create a session entity type for. Format: `projects//agent/sessions/`
                             /// or `projects//agent/environments//users// sessions/`. If `Environment ID` is not specified, we assume default
@@ -1762,12 +1728,10 @@ namespace Google.Apis.Dialogflow.v2
                                 return new CreateRequest(service, body, parent);
                             }
 
-                            /// <summary>Creates a session entity type.
-                            ///
-                            /// If the specified session entity type already exists, overrides the session entity type.
-                            ///
-                            /// This method doesn't work with Google Assistant integration. Contact Dialogflow support
-                            /// if you need to use session entities with Google Assistant integration.</summary>
+                            /// <summary>Creates a session entity type. If the specified session entity type already
+                            /// exists, overrides the session entity type. This method doesn't work with Google
+                            /// Assistant integration. Contact Dialogflow support if you need to use session entities
+                            /// with Google Assistant integration.</summary>
                             public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
                             {
                                 /// <summary>Constructs a new Create request.</summary>
@@ -1830,10 +1794,9 @@ namespace Google.Apis.Dialogflow.v2
 
                             }
 
-                            /// <summary>Deletes the specified session entity type.
-                            ///
-                            /// This method doesn't work with Google Assistant integration. Contact Dialogflow support
-                            /// if you need to use session entities with Google Assistant integration.</summary>
+                            /// <summary>Deletes the specified session entity type. This method doesn't work with Google
+                            /// Assistant integration. Contact Dialogflow support if you need to use session entities
+                            /// with Google Assistant integration.</summary>
                             /// <param name="name">Required. The name of the entity type to delete. Format: `projects//agent/sessions//entityTypes/`
                             /// or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume
                             /// default 'draft' environment. If `User ID` is not specified, we assume default '-' user.</param>
@@ -1842,10 +1805,9 @@ namespace Google.Apis.Dialogflow.v2
                                 return new DeleteRequest(service, name);
                             }
 
-                            /// <summary>Deletes the specified session entity type.
-                            ///
-                            /// This method doesn't work with Google Assistant integration. Contact Dialogflow support
-                            /// if you need to use session entities with Google Assistant integration.</summary>
+                            /// <summary>Deletes the specified session entity type. This method doesn't work with Google
+                            /// Assistant integration. Contact Dialogflow support if you need to use session entities
+                            /// with Google Assistant integration.</summary>
                             public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
                             {
                                 /// <summary>Constructs a new Delete request.</summary>
@@ -1902,10 +1864,9 @@ namespace Google.Apis.Dialogflow.v2
 
                             }
 
-                            /// <summary>Retrieves the specified session entity type.
-                            ///
-                            /// This method doesn't work with Google Assistant integration. Contact Dialogflow support
-                            /// if you need to use session entities with Google Assistant integration.</summary>
+                            /// <summary>Retrieves the specified session entity type. This method doesn't work with
+                            /// Google Assistant integration. Contact Dialogflow support if you need to use session
+                            /// entities with Google Assistant integration.</summary>
                             /// <param name="name">Required. The name of the session entity type. Format: `projects//agent/sessions//entityTypes/`
                             /// or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume
                             /// default 'draft' environment. If `User ID` is not specified, we assume default '-' user.</param>
@@ -1914,10 +1875,9 @@ namespace Google.Apis.Dialogflow.v2
                                 return new GetRequest(service, name);
                             }
 
-                            /// <summary>Retrieves the specified session entity type.
-                            ///
-                            /// This method doesn't work with Google Assistant integration. Contact Dialogflow support
-                            /// if you need to use session entities with Google Assistant integration.</summary>
+                            /// <summary>Retrieves the specified session entity type. This method doesn't work with
+                            /// Google Assistant integration. Contact Dialogflow support if you need to use session
+                            /// entities with Google Assistant integration.</summary>
                             public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
                             {
                                 /// <summary>Constructs a new Get request.</summary>
@@ -1974,10 +1934,9 @@ namespace Google.Apis.Dialogflow.v2
 
                             }
 
-                            /// <summary>Returns the list of all session entity types in the specified session.
-                            ///
-                            /// This method doesn't work with Google Assistant integration. Contact Dialogflow support
-                            /// if you need to use session entities with Google Assistant integration.</summary>
+                            /// <summary>Returns the list of all session entity types in the specified session. This
+                            /// method doesn't work with Google Assistant integration. Contact Dialogflow support if you
+                            /// need to use session entities with Google Assistant integration.</summary>
                             /// <param name="parent">Required. The session to list all session entity types from. Format:
                             /// `projects//agent/sessions/` or `projects//agent/environments//users// sessions/`. If `Environment ID` is not
                             /// specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-'
@@ -1987,10 +1946,9 @@ namespace Google.Apis.Dialogflow.v2
                                 return new ListRequest(service, parent);
                             }
 
-                            /// <summary>Returns the list of all session entity types in the specified session.
-                            ///
-                            /// This method doesn't work with Google Assistant integration. Contact Dialogflow support
-                            /// if you need to use session entities with Google Assistant integration.</summary>
+                            /// <summary>Returns the list of all session entity types in the specified session. This
+                            /// method doesn't work with Google Assistant integration. Contact Dialogflow support if you
+                            /// need to use session entities with Google Assistant integration.</summary>
                             public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListSessionEntityTypesResponse>
                             {
                                 /// <summary>Constructs a new List request.</summary>
@@ -2074,27 +2032,23 @@ namespace Google.Apis.Dialogflow.v2
 
                             }
 
-                            /// <summary>Updates the specified session entity type.
-                            ///
-                            /// This method doesn't work with Google Assistant integration. Contact Dialogflow support
-                            /// if you need to use session entities with Google Assistant integration.</summary>
+                            /// <summary>Updates the specified session entity type. This method doesn't work with Google
+                            /// Assistant integration. Contact Dialogflow support if you need to use session entities
+                            /// with Google Assistant integration.</summary>
                             /// <param name="body">The body of the request.</param>
                             /// <param name="name">Required. The unique identifier of this session entity type. Format:
                             /// `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If
                             /// `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume
-                            /// default '-' user.
-                            ///
-                            /// `` must be the display name of an existing entity type in the same agent that will be overridden or
-                            /// supplemented.</param>
+                            /// default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden
+                            /// or supplemented.</param>
                             public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string name)
                             {
                                 return new PatchRequest(service, body, name);
                             }
 
-                            /// <summary>Updates the specified session entity type.
-                            ///
-                            /// This method doesn't work with Google Assistant integration. Contact Dialogflow support
-                            /// if you need to use session entities with Google Assistant integration.</summary>
+                            /// <summary>Updates the specified session entity type. This method doesn't work with Google
+                            /// Assistant integration. Contact Dialogflow support if you need to use session entities
+                            /// with Google Assistant integration.</summary>
                             public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
                             {
                                 /// <summary>Constructs a new Patch request.</summary>
@@ -2111,10 +2065,8 @@ namespace Google.Apis.Dialogflow.v2
                                 /// `projects//agent/sessions//entityTypes/`, or
                                 /// `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID`
                                 /// is not specified, we assume default 'draft' environment. If `User ID` is not
-                                /// specified, we assume default '-' user.
-                                ///
-                                /// `` must be the display name of an existing entity type in the same agent that will
-                                /// be overridden or supplemented.</summary>
+                                /// specified, we assume default '-' user. `` must be the display name of an existing
+                                /// entity type in the same agent that will be overridden or supplemented.</summary>
                                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Name { get; private set; }
 
@@ -2249,10 +2201,8 @@ namespace Google.Apis.Dialogflow.v2
                         /// or `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we assume default 'draft'
                         /// environment. If `User ID` is not specified, we are using "-". It's up to the API caller to choose an appropriate
                         /// `Session ID` and `User Id`. They can be a random number or some type of user and session identifiers (preferably
-                        /// hashed). The length of the `Session ID` and `User ID` must not exceed 36 characters.
-                        ///
-                        /// For more information, see the [API interactions guide](https://cloud.google.com/dialogflow/docs/api-
-                        /// overview).</param>
+                        /// hashed). The length of the `Session ID` and `User ID` must not exceed 36 characters. For more information, see the
+                        /// [API interactions guide](https://cloud.google.com/dialogflow/docs/api-overview).</param>
                         public virtual DetectIntentRequest DetectIntent(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest body, string session)
                         {
                             return new DetectIntentRequest(service, body, session);
@@ -2279,9 +2229,7 @@ namespace Google.Apis.Dialogflow.v2
                             /// is not specified, we are using "-". It's up to the API caller to choose an appropriate
                             /// `Session ID` and `User Id`. They can be a random number or some type of user and session
                             /// identifiers (preferably hashed). The length of the `Session ID` and `User ID` must not
-                            /// exceed 36 characters.
-                            ///
-                            /// For more information, see the [API interactions
+                            /// exceed 36 characters. For more information, see the [API interactions
                             /// guide](https://cloud.google.com/dialogflow/docs/api-overview).</summary>
                             [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Session { get; private set; }
@@ -2442,9 +2390,7 @@ namespace Google.Apis.Dialogflow.v2
                 }
 
 
-                /// <summary>Deletes intents in the specified agent.
-                ///
-                /// Operation </summary>
+                /// <summary>Deletes intents in the specified agent. Operation </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The name of the agent to delete all entities types for. Format:
                 /// `projects//agent`.</param>
@@ -2453,9 +2399,7 @@ namespace Google.Apis.Dialogflow.v2
                     return new BatchDeleteRequest(service, body, parent);
                 }
 
-                /// <summary>Deletes intents in the specified agent.
-                ///
-                /// Operation </summary>
+                /// <summary>Deletes intents in the specified agent. Operation </summary>
                 public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new BatchDelete request.</summary>
@@ -2516,9 +2460,7 @@ namespace Google.Apis.Dialogflow.v2
 
                 }
 
-                /// <summary>Updates/Creates multiple intents in the specified agent.
-                ///
-                /// Operation </summary>
+                /// <summary>Updates/Creates multiple intents in the specified agent. Operation </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The name of the agent to update or create intents in. Format:
                 /// `projects//agent`.</param>
@@ -2527,9 +2469,7 @@ namespace Google.Apis.Dialogflow.v2
                     return new BatchUpdateRequest(service, body, parent);
                 }
 
-                /// <summary>Updates/Creates multiple intents in the specified agent.
-                ///
-                /// Operation </summary>
+                /// <summary>Updates/Creates multiple intents in the specified agent. Operation </summary>
                 public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new BatchUpdate request.</summary>
@@ -2622,8 +2562,10 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     public enum IntentViewEnum
                     {
+                        /// <summary>Training phrases field is not populated in the response.</summary>
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_UNSPECIFIED")]
                         INTENTVIEWUNSPECIFIED,
+                        /// <summary>All fields are populated.</summary>
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
@@ -2787,8 +2729,10 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     public enum IntentViewEnum
                     {
+                        /// <summary>Training phrases field is not populated in the response.</summary>
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_UNSPECIFIED")]
                         INTENTVIEWUNSPECIFIED,
+                        /// <summary>All fields are populated.</summary>
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
@@ -2884,8 +2828,10 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     public enum IntentViewEnum
                     {
+                        /// <summary>Training phrases field is not populated in the response.</summary>
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_UNSPECIFIED")]
                         INTENTVIEWUNSPECIFIED,
+                        /// <summary>All fields are populated.</summary>
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
@@ -3012,8 +2958,10 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     public enum IntentViewEnum
                     {
+                        /// <summary>Training phrases field is not populated in the response.</summary>
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_UNSPECIFIED")]
                         INTENTVIEWUNSPECIFIED,
+                        /// <summary>All fields are populated.</summary>
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
@@ -3147,9 +3095,8 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
 
-                    /// <summary>Creates a context.
-                    ///
-                    /// If the specified context already exists, overrides the context.</summary>
+                    /// <summary>Creates a context. If the specified context already exists, overrides the
+                    /// context.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The session to create a context for. Format: `projects//agent/sessions/` or
                     /// `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we assume default 'draft'
@@ -3159,9 +3106,8 @@ namespace Google.Apis.Dialogflow.v2
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Creates a context.
-                    ///
-                    /// If the specified context already exists, overrides the context.</summary>
+                    /// <summary>Creates a context. If the specified context already exists, overrides the
+                    /// context.</summary>
                     public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -3451,18 +3397,11 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>Updates the specified context.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or
-                    /// `projects//agent/environments//users//sessions//contexts/`.
-                    ///
-                    /// The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most
-                    /// 250 bytes long.
-                    ///
-                    /// If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we
-                    /// assume default '-' user.
-                    ///
-                    /// The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create
-                    /// contexts with these names:
-                    ///
-                    /// * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`</param>
+                    /// `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may
+                    /// only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we
+                    /// assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context
+                    /// names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these
+                    /// names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`</param>
                     public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string name)
                     {
                         return new PatchRequest(service, body, name);
@@ -3483,18 +3422,13 @@ namespace Google.Apis.Dialogflow.v2
 
                         /// <summary>Required. The unique identifier of the context. Format:
                         /// `projects//agent/sessions//contexts/`, or
-                        /// `projects//agent/environments//users//sessions//contexts/`.
-                        ///
-                        /// The `Context ID` is always converted to lowercase, may only contain characters in
-                        /// a-zA-Z0-9_-% and may be at most 250 bytes long.
-                        ///
-                        /// If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is
-                        /// not specified, we assume default '-' user.
-                        ///
-                        /// The following context names are reserved for internal use by Dialogflow. You should not use
-                        /// these contexts or create contexts with these names:
-                        ///
-                        /// * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`</summary>
+                        /// `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always
+                        /// converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250
+                        /// bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If
+                        /// `User ID` is not specified, we assume default '-' user. The following context names are
+                        /// reserved for internal use by Dialogflow. You should not use these contexts or create
+                        /// contexts with these names: * `__system_counters__` * `*_id_dialog_context` *
+                        /// `*_dialog_params_size`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -3578,12 +3512,10 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
 
-                    /// <summary>Creates a session entity type.
-                    ///
-                    /// If the specified session entity type already exists, overrides the session entity type.
-                    ///
-                    /// This method doesn't work with Google Assistant integration. Contact Dialogflow support if you
-                    /// need to use session entities with Google Assistant integration.</summary>
+                    /// <summary>Creates a session entity type. If the specified session entity type already exists,
+                    /// overrides the session entity type. This method doesn't work with Google Assistant integration.
+                    /// Contact Dialogflow support if you need to use session entities with Google Assistant
+                    /// integration.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The session to create a session entity type for. Format: `projects//agent/sessions/`
                     /// or `projects//agent/environments//users// sessions/`. If `Environment ID` is not specified, we assume default
@@ -3593,12 +3525,10 @@ namespace Google.Apis.Dialogflow.v2
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Creates a session entity type.
-                    ///
-                    /// If the specified session entity type already exists, overrides the session entity type.
-                    ///
-                    /// This method doesn't work with Google Assistant integration. Contact Dialogflow support if you
-                    /// need to use session entities with Google Assistant integration.</summary>
+                    /// <summary>Creates a session entity type. If the specified session entity type already exists,
+                    /// overrides the session entity type. This method doesn't work with Google Assistant integration.
+                    /// Contact Dialogflow support if you need to use session entities with Google Assistant
+                    /// integration.</summary>
                     public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -3661,10 +3591,9 @@ namespace Google.Apis.Dialogflow.v2
 
                     }
 
-                    /// <summary>Deletes the specified session entity type.
-                    ///
-                    /// This method doesn't work with Google Assistant integration. Contact Dialogflow support if you
-                    /// need to use session entities with Google Assistant integration.</summary>
+                    /// <summary>Deletes the specified session entity type. This method doesn't work with Google
+                    /// Assistant integration. Contact Dialogflow support if you need to use session entities with
+                    /// Google Assistant integration.</summary>
                     /// <param name="name">Required. The name of the entity type to delete. Format: `projects//agent/sessions//entityTypes/`
                     /// or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume
                     /// default 'draft' environment. If `User ID` is not specified, we assume default '-' user.</param>
@@ -3673,10 +3602,9 @@ namespace Google.Apis.Dialogflow.v2
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes the specified session entity type.
-                    ///
-                    /// This method doesn't work with Google Assistant integration. Contact Dialogflow support if you
-                    /// need to use session entities with Google Assistant integration.</summary>
+                    /// <summary>Deletes the specified session entity type. This method doesn't work with Google
+                    /// Assistant integration. Contact Dialogflow support if you need to use session entities with
+                    /// Google Assistant integration.</summary>
                     public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -3733,10 +3661,9 @@ namespace Google.Apis.Dialogflow.v2
 
                     }
 
-                    /// <summary>Retrieves the specified session entity type.
-                    ///
-                    /// This method doesn't work with Google Assistant integration. Contact Dialogflow support if you
-                    /// need to use session entities with Google Assistant integration.</summary>
+                    /// <summary>Retrieves the specified session entity type. This method doesn't work with Google
+                    /// Assistant integration. Contact Dialogflow support if you need to use session entities with
+                    /// Google Assistant integration.</summary>
                     /// <param name="name">Required. The name of the session entity type. Format: `projects//agent/sessions//entityTypes/`
                     /// or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume
                     /// default 'draft' environment. If `User ID` is not specified, we assume default '-' user.</param>
@@ -3745,10 +3672,9 @@ namespace Google.Apis.Dialogflow.v2
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>Retrieves the specified session entity type.
-                    ///
-                    /// This method doesn't work with Google Assistant integration. Contact Dialogflow support if you
-                    /// need to use session entities with Google Assistant integration.</summary>
+                    /// <summary>Retrieves the specified session entity type. This method doesn't work with Google
+                    /// Assistant integration. Contact Dialogflow support if you need to use session entities with
+                    /// Google Assistant integration.</summary>
                     public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -3805,10 +3731,9 @@ namespace Google.Apis.Dialogflow.v2
 
                     }
 
-                    /// <summary>Returns the list of all session entity types in the specified session.
-                    ///
-                    /// This method doesn't work with Google Assistant integration. Contact Dialogflow support if you
-                    /// need to use session entities with Google Assistant integration.</summary>
+                    /// <summary>Returns the list of all session entity types in the specified session. This method
+                    /// doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use
+                    /// session entities with Google Assistant integration.</summary>
                     /// <param name="parent">Required. The session to list all session entity types from. Format:
                     /// `projects//agent/sessions/` or `projects//agent/environments//users// sessions/`. If `Environment ID` is not
                     /// specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-'
@@ -3818,10 +3743,9 @@ namespace Google.Apis.Dialogflow.v2
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Returns the list of all session entity types in the specified session.
-                    ///
-                    /// This method doesn't work with Google Assistant integration. Contact Dialogflow support if you
-                    /// need to use session entities with Google Assistant integration.</summary>
+                    /// <summary>Returns the list of all session entity types in the specified session. This method
+                    /// doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use
+                    /// session entities with Google Assistant integration.</summary>
                     public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListSessionEntityTypesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -3905,27 +3829,23 @@ namespace Google.Apis.Dialogflow.v2
 
                     }
 
-                    /// <summary>Updates the specified session entity type.
-                    ///
-                    /// This method doesn't work with Google Assistant integration. Contact Dialogflow support if you
-                    /// need to use session entities with Google Assistant integration.</summary>
+                    /// <summary>Updates the specified session entity type. This method doesn't work with Google
+                    /// Assistant integration. Contact Dialogflow support if you need to use session entities with
+                    /// Google Assistant integration.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. The unique identifier of this session entity type. Format:
                     /// `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If
                     /// `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume
-                    /// default '-' user.
-                    ///
-                    /// `` must be the display name of an existing entity type in the same agent that will be overridden or
-                    /// supplemented.</param>
+                    /// default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden
+                    /// or supplemented.</param>
                     public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string name)
                     {
                         return new PatchRequest(service, body, name);
                     }
 
-                    /// <summary>Updates the specified session entity type.
-                    ///
-                    /// This method doesn't work with Google Assistant integration. Contact Dialogflow support if you
-                    /// need to use session entities with Google Assistant integration.</summary>
+                    /// <summary>Updates the specified session entity type. This method doesn't work with Google
+                    /// Assistant integration. Contact Dialogflow support if you need to use session entities with
+                    /// Google Assistant integration.</summary>
                     public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
@@ -3942,10 +3862,8 @@ namespace Google.Apis.Dialogflow.v2
                         /// `projects//agent/sessions//entityTypes/`, or
                         /// `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not
                         /// specified, we assume default 'draft' environment. If `User ID` is not specified, we assume
-                        /// default '-' user.
-                        ///
-                        /// `` must be the display name of an existing entity type in the same agent that will be
-                        /// overridden or supplemented.</summary>
+                        /// default '-' user. `` must be the display name of an existing entity type in the same agent
+                        /// that will be overridden or supplemented.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -4080,10 +3998,8 @@ namespace Google.Apis.Dialogflow.v2
                 /// or `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we assume default 'draft'
                 /// environment. If `User ID` is not specified, we are using "-". It's up to the API caller to choose an appropriate
                 /// `Session ID` and `User Id`. They can be a random number or some type of user and session identifiers (preferably
-                /// hashed). The length of the `Session ID` and `User ID` must not exceed 36 characters.
-                ///
-                /// For more information, see the [API interactions guide](https://cloud.google.com/dialogflow/docs/api-
-                /// overview).</param>
+                /// hashed). The length of the `Session ID` and `User ID` must not exceed 36 characters. For more information, see the
+                /// [API interactions guide](https://cloud.google.com/dialogflow/docs/api-overview).</param>
                 public virtual DetectIntentRequest DetectIntent(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest body, string session)
                 {
                     return new DetectIntentRequest(service, body, session);
@@ -4109,10 +4025,9 @@ namespace Google.Apis.Dialogflow.v2
                     /// `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not
                     /// specified, we are using "-". It's up to the API caller to choose an appropriate `Session ID` and
                     /// `User Id`. They can be a random number or some type of user and session identifiers (preferably
-                    /// hashed). The length of the `Session ID` and `User ID` must not exceed 36 characters.
-                    ///
-                    /// For more information, see the [API interactions guide](https://cloud.google.com/dialogflow/docs
-                    /// /api-overview).</summary>
+                    /// hashed). The length of the `Session ID` and `User ID` must not exceed 36 characters. For more
+                    /// information, see the [API interactions guide](https://cloud.google.com/dialogflow/docs/api-
+                    /// overview).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Session { get; private set; }
 
@@ -4160,9 +4075,7 @@ namespace Google.Apis.Dialogflow.v2
                 }
             }
 
-            /// <summary>Exports the specified agent to a ZIP file.
-            ///
-            /// Operation </summary>
+            /// <summary>Exports the specified agent to a ZIP file. Operation </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The project that the agent to export is associated with. Format:
             /// `projects/`.</param>
@@ -4171,9 +4084,7 @@ namespace Google.Apis.Dialogflow.v2
                 return new ExportRequest(service, body, parent);
             }
 
-            /// <summary>Exports the specified agent to a ZIP file.
-            ///
-            /// Operation </summary>
+            /// <summary>Exports the specified agent to a ZIP file. Operation </summary>
             public class ExportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Export request.</summary>
@@ -4372,16 +4283,13 @@ namespace Google.Apis.Dialogflow.v2
 
             }
 
-            /// <summary>Imports the specified agent from a ZIP file.
-            ///
-            /// Uploads new intents and entity types without deleting the existing ones. Intents and entity types with
-            /// the same name are replaced with the new versions from ImportAgentRequest. After the import, the imported
-            /// draft agent will be trained automatically (unless disabled in agent settings). However, once the import
-            /// is done, training may not be completed yet. Please call TrainAgent and wait for the operation it returns
-            /// in order to train explicitly.
-            ///
-            /// Operation An operation which tracks when importing is complete. It only tracks when the draft agent is
-            /// updated not when it is done training.</summary>
+            /// <summary>Imports the specified agent from a ZIP file. Uploads new intents and entity types without
+            /// deleting the existing ones. Intents and entity types with the same name are replaced with the new
+            /// versions from ImportAgentRequest. After the import, the imported draft agent will be trained
+            /// automatically (unless disabled in agent settings). However, once the import is done, training may not be
+            /// completed yet. Please call TrainAgent and wait for the operation it returns in order to train
+            /// explicitly. Operation An operation which tracks when importing is complete. It only tracks when the
+            /// draft agent is updated not when it is done training.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The project that the agent to import is associated with. Format:
             /// `projects/`.</param>
@@ -4390,16 +4298,13 @@ namespace Google.Apis.Dialogflow.v2
                 return new ImportRequest(service, body, parent);
             }
 
-            /// <summary>Imports the specified agent from a ZIP file.
-            ///
-            /// Uploads new intents and entity types without deleting the existing ones. Intents and entity types with
-            /// the same name are replaced with the new versions from ImportAgentRequest. After the import, the imported
-            /// draft agent will be trained automatically (unless disabled in agent settings). However, once the import
-            /// is done, training may not be completed yet. Please call TrainAgent and wait for the operation it returns
-            /// in order to train explicitly.
-            ///
-            /// Operation An operation which tracks when importing is complete. It only tracks when the draft agent is
-            /// updated not when it is done training.</summary>
+            /// <summary>Imports the specified agent from a ZIP file. Uploads new intents and entity types without
+            /// deleting the existing ones. Intents and entity types with the same name are replaced with the new
+            /// versions from ImportAgentRequest. After the import, the imported draft agent will be trained
+            /// automatically (unless disabled in agent settings). However, once the import is done, training may not be
+            /// completed yet. Please call TrainAgent and wait for the operation it returns in order to train
+            /// explicitly. Operation An operation which tracks when importing is complete. It only tracks when the
+            /// draft agent is updated not when it is done training.</summary>
             public class ImportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Import request.</summary>
@@ -4460,15 +4365,12 @@ namespace Google.Apis.Dialogflow.v2
 
             }
 
-            /// <summary>Restores the specified agent from a ZIP file.
-            ///
-            /// Replaces the current agent version with a new one. All the intents and entity types in the older version
-            /// are deleted. After the restore, the restored draft agent will be trained automatically (unless disabled
-            /// in agent settings). However, once the restore is done, training may not be completed yet. Please call
-            /// TrainAgent and wait for the operation it returns in order to train explicitly.
-            ///
-            /// Operation An operation which tracks when restoring is complete. It only tracks when the draft agent is
-            /// updated not when it is done training.</summary>
+            /// <summary>Restores the specified agent from a ZIP file. Replaces the current agent version with a new
+            /// one. All the intents and entity types in the older version are deleted. After the restore, the restored
+            /// draft agent will be trained automatically (unless disabled in agent settings). However, once the restore
+            /// is done, training may not be completed yet. Please call TrainAgent and wait for the operation it returns
+            /// in order to train explicitly. Operation An operation which tracks when restoring is complete. It only
+            /// tracks when the draft agent is updated not when it is done training.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The project that the agent to restore is associated with. Format:
             /// `projects/`.</param>
@@ -4477,15 +4379,12 @@ namespace Google.Apis.Dialogflow.v2
                 return new RestoreRequest(service, body, parent);
             }
 
-            /// <summary>Restores the specified agent from a ZIP file.
-            ///
-            /// Replaces the current agent version with a new one. All the intents and entity types in the older version
-            /// are deleted. After the restore, the restored draft agent will be trained automatically (unless disabled
-            /// in agent settings). However, once the restore is done, training may not be completed yet. Please call
-            /// TrainAgent and wait for the operation it returns in order to train explicitly.
-            ///
-            /// Operation An operation which tracks when restoring is complete. It only tracks when the draft agent is
-            /// updated not when it is done training.</summary>
+            /// <summary>Restores the specified agent from a ZIP file. Replaces the current agent version with a new
+            /// one. All the intents and entity types in the older version are deleted. After the restore, the restored
+            /// draft agent will be trained automatically (unless disabled in agent settings). However, once the restore
+            /// is done, training may not be completed yet. Please call TrainAgent and wait for the operation it returns
+            /// in order to train explicitly. Operation An operation which tracks when restoring is complete. It only
+            /// tracks when the draft agent is updated not when it is done training.</summary>
             public class RestoreRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Restore request.</summary>
@@ -4546,24 +4445,20 @@ namespace Google.Apis.Dialogflow.v2
 
             }
 
-            /// <summary>Returns the list of agents.
-            ///
-            /// Since there is at most one conversational agent per project, this method is useful primarily for listing
-            /// all agents across projects the caller has access to. One can achieve that with a wildcard project
-            /// collection id "-". Refer to [List Sub-Collections](https://cloud.google.com/apis/design/design_patterns
-            /// #list_sub-collections).</summary>
+            /// <summary>Returns the list of agents. Since there is at most one conversational agent per project, this
+            /// method is useful primarily for listing all agents across projects the caller has access to. One can
+            /// achieve that with a wildcard project collection id "-". Refer to [List Sub-
+            /// Collections](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).</summary>
             /// <param name="parent">Required. The project to list agents from. Format: `projects/`.</param>
             public virtual SearchRequest Search(string parent)
             {
                 return new SearchRequest(service, parent);
             }
 
-            /// <summary>Returns the list of agents.
-            ///
-            /// Since there is at most one conversational agent per project, this method is useful primarily for listing
-            /// all agents across projects the caller has access to. One can achieve that with a wildcard project
-            /// collection id "-". Refer to [List Sub-Collections](https://cloud.google.com/apis/design/design_patterns
-            /// #list_sub-collections).</summary>
+            /// <summary>Returns the list of agents. Since there is at most one conversational agent per project, this
+            /// method is useful primarily for listing all agents across projects the caller has access to. One can
+            /// achieve that with a wildcard project collection id "-". Refer to [List Sub-
+            /// Collections](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).</summary>
             public class SearchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchAgentsResponse>
             {
                 /// <summary>Constructs a new Search request.</summary>
@@ -4643,9 +4538,7 @@ namespace Google.Apis.Dialogflow.v2
 
             }
 
-            /// <summary>Trains the specified agent.
-            ///
-            /// Operation </summary>
+            /// <summary>Trains the specified agent. Operation </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The project that the agent to train is associated with. Format:
             /// `projects/`.</param>
@@ -4654,9 +4547,7 @@ namespace Google.Apis.Dialogflow.v2
                 return new TrainRequest(service, body, parent);
             }
 
-            /// <summary>Trains the specified agent.
-            ///
-            /// Operation </summary>
+            /// <summary>Trains the specified agent. Operation </summary>
             public class TrainRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Train request.</summary>
@@ -4849,10 +4740,10 @@ namespace Google.Apis.Dialogflow.v2
                 }
 
 
-                /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
-                /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support this
-                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or
-                /// other methods to check whether the cancellation succeeded or whether the operation completed despite
+                /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best
+                /// effort to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
+                /// methods to check whether the cancellation succeeded or whether the operation completed despite
                 /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
                 /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
                 /// `Code.CANCELLED`.</summary>
@@ -4862,10 +4753,10 @@ namespace Google.Apis.Dialogflow.v2
                     return new CancelRequest(service, name);
                 }
 
-                /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
-                /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support this
-                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or
-                /// other methods to check whether the cancellation succeeded or whether the operation completed despite
+                /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best
+                /// effort to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
+                /// methods to check whether the cancellation succeeded or whether the operation completed despite
                 /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
                 /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
                 /// `Code.CANCELLED`.</summary>
@@ -4921,7 +4812,7 @@ namespace Google.Apis.Dialogflow.v2
 
                 }
 
-                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
                 /// operation result at intervals as recommended by the API service.</summary>
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
@@ -4929,7 +4820,7 @@ namespace Google.Apis.Dialogflow.v2
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
                 /// operation result at intervals as recommended by the API service.</summary>
                 public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
@@ -4984,13 +4875,12 @@ namespace Google.Apis.Dialogflow.v2
                 }
 
                 /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                /// support this method, it returns `UNIMPLEMENTED`.
-                ///
-                /// NOTE: the `name` binding allows API services to override the binding to use different resource name
-                /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
-                /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the
-                /// default name includes the operations collection id, however overriding users must ensure the name
-                /// binding is the parent resource, without the operations collection id.</summary>
+                /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
+                /// override the binding to use different resource name schemes, such as `users/operations`. To override
+                /// the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to their service
+                /// configuration. For backwards compatibility, the default name includes the operations collection id,
+                /// however overriding users must ensure the name binding is the parent resource, without the operations
+                /// collection id.</summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
@@ -4998,13 +4888,12 @@ namespace Google.Apis.Dialogflow.v2
                 }
 
                 /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                /// support this method, it returns `UNIMPLEMENTED`.
-                ///
-                /// NOTE: the `name` binding allows API services to override the binding to use different resource name
-                /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
-                /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the
-                /// default name includes the operations collection id, however overriding users must ensure the name
-                /// binding is the parent resource, without the operations collection id.</summary>
+                /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
+                /// override the binding to use different resource name schemes, such as `users/operations`. To override
+                /// the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to their service
+                /// configuration. For backwards compatibility, the default name includes the operations collection id,
+                /// however overriding users must ensure the name binding is the parent resource, without the operations
+                /// collection id.</summary>
                 public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -5121,9 +5010,9 @@ namespace Google.Apis.Dialogflow.v2
             }
 
 
-            /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort
-            /// to cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it
-            /// returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to
+            /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+            /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it
+            /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
             /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
             /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
             /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
@@ -5133,9 +5022,9 @@ namespace Google.Apis.Dialogflow.v2
                 return new CancelRequest(service, name);
             }
 
-            /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort
-            /// to cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it
-            /// returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to
+            /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+            /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it
+            /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
             /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
             /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
             /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
@@ -5191,7 +5080,7 @@ namespace Google.Apis.Dialogflow.v2
 
             }
 
-            /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+            /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
             /// operation result at intervals as recommended by the API service.</summary>
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
@@ -5199,7 +5088,7 @@ namespace Google.Apis.Dialogflow.v2
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+            /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
             /// operation result at intervals as recommended by the API service.</summary>
             public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
             {
@@ -5254,13 +5143,12 @@ namespace Google.Apis.Dialogflow.v2
             }
 
             /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support
-            /// this method, it returns `UNIMPLEMENTED`.
-            ///
-            /// NOTE: the `name` binding allows API services to override the binding to use different resource name
-            /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
-            /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
-            /// name includes the operations collection id, however overriding users must ensure the name binding is the
-            /// parent resource, without the operations collection id.</summary>
+            /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
+            /// binding to use different resource name schemes, such as `users/operations`. To override the binding, API
+            /// services can add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For
+            /// backwards compatibility, the default name includes the operations collection id, however overriding
+            /// users must ensure the name binding is the parent resource, without the operations collection
+            /// id.</summary>
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
@@ -5268,13 +5156,12 @@ namespace Google.Apis.Dialogflow.v2
             }
 
             /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support
-            /// this method, it returns `UNIMPLEMENTED`.
-            ///
-            /// NOTE: the `name` binding allows API services to override the binding to use different resource name
-            /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
-            /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
-            /// name includes the operations collection id, however overriding users must ensure the name binding is the
-            /// parent resource, without the operations collection id.</summary>
+            /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
+            /// binding to use different resource name schemes, such as `users/operations`. To override the binding, API
+            /// services can add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For
+            /// backwards compatibility, the default name includes the operations collection id, however overriding
+            /// users must ensure the name binding is the parent resource, without the operations collection
+            /// id.</summary>
             public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningListOperationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -5655,19 +5542,15 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a response message that can be returned by a conversational agent.
-    ///
-    /// Response messages are also used for output audio synthesis. The approach is as follows:
-    ///
-    /// * If at least one OutputAudioText response is present, then all OutputAudioText responses are linearly
-    /// concatenated, and the result is used for output audio synthesis. * If the OutputAudioText responses are a
-    /// mixture of text and SSML, then the concatenated result is treated as SSML; otherwise, the result is treated as
-    /// either text or SSML as appropriate. The agent designer should ideally use either text or SSML consistently
-    /// throughout the bot design. * Otherwise, all Text responses are linearly concatenated, and the result is used for
-    /// output audio synthesis.
-    ///
-    /// This approach allows for more sophisticated user experience scenarios, where the text displayed to the user may
-    /// differ from what is heard.</summary>
+    /// <summary>Represents a response message that can be returned by a conversational agent. Response messages are
+    /// also used for output audio synthesis. The approach is as follows: * If at least one OutputAudioText response is
+    /// present, then all OutputAudioText responses are linearly concatenated, and the result is used for output audio
+    /// synthesis. * If the OutputAudioText responses are a mixture of text and SSML, then the concatenated result is
+    /// treated as SSML; otherwise, the result is treated as either text or SSML as appropriate. The agent designer
+    /// should ideally use either text or SSML consistently throughout the bot design. * Otherwise, all Text responses
+    /// are linearly concatenated, and the result is used for output audio synthesis. This approach allows for more
+    /// sophisticated user experience scenarios, where the text displayed to the user may differ from what is
+    /// heard.</summary>
     public class GoogleCloudDialogflowCxV3beta1ResponseMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Indicates that the conversation succeeded.</summary>
@@ -5719,15 +5602,11 @@ namespace Google.Apis.Dialogflow.v2.Data
     }    
 
     /// <summary>Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to
-    /// it about.
-    ///
-    /// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process
-    /// the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the
-    /// conversation end page as successful even if they don't return ConversationSuccess.
-    ///
-    /// You may set this, for example: * In the entry_fulfillment of a Page if entering the page indicates that the
-    /// conversation succeeded. * In a webhook response when you determine that you handled the customer
-    /// issue.</summary>
+    /// it about. Dialogflow only uses this to determine which conversations should be counted as successful and doesn't
+    /// process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to
+    /// the conversation end page as successful even if they don't return ConversationSuccess. You may set this, for
+    /// example: * In the entry_fulfillment of a Page if entering the page indicates that the conversation succeeded. *
+    /// In a webhook response when you determine that you handled the customer issue.</summary>
     public class GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Custom metadata. Dialogflow doesn't impose any structure on this.</summary>
@@ -5746,14 +5625,11 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Indicates that the conversation should be handed off to a human agent.
-    ///
-    /// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement
-    /// purposes. What else to do with this signal is up to you and your handoff procedures.
-    ///
-    /// You may set this, for example: * In the entry_fulfillment of a Page if entering the page indicates something
-    /// went extremely wrong in the conversation. * In a webhook response when you determine that the customer issue can
-    /// only be handled by a human.</summary>
+    /// <summary>Indicates that the conversation should be handed off to a human agent. Dialogflow only uses this to
+    /// determine which conversations were handed off to a human agent for measurement purposes. What else to do with
+    /// this signal is up to you and your handoff procedures. You may set this, for example: * In the entry_fulfillment
+    /// of a Page if entering the page indicates something went extremely wrong in the conversation. * In a webhook
+    /// response when you determine that the customer issue can only be handled by a human.</summary>
     public class GoogleCloudDialogflowCxV3beta1ResponseMessageHumanAgentHandoff : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on
@@ -5765,14 +5641,11 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Indicates that the conversation should be handed off to a live agent.
-    ///
-    /// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement
-    /// purposes. What else to do with this signal is up to you and your handoff procedures.
-    ///
-    /// You may set this, for example: * In the entry_fulfillment of a Page if entering the page indicates something
-    /// went extremely wrong in the conversation. * In a webhook response when you determine that the customer issue can
-    /// only be handled by a human.</summary>
+    /// <summary>Indicates that the conversation should be handed off to a live agent. Dialogflow only uses this to
+    /// determine which conversations were handed off to a human agent for measurement purposes. What else to do with
+    /// this signal is up to you and your handoff procedures. You may set this, for example: * In the entry_fulfillment
+    /// of a Page if entering the page indicates something went extremely wrong in the conversation. * In a webhook
+    /// response when you determine that the customer issue can only be handled by a human.</summary>
     public class GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on
@@ -6022,10 +5895,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>A Dialogflow agent is a virtual agent that handles conversations with your end-users. It is a natural
     /// language understanding module that understands the nuances of human language. Dialogflow translates end-user
     /// text or audio during a conversation to structured data that your apps and services can understand. You design
-    /// and build a Dialogflow agent to handle the types of conversations required for your system.
-    ///
-    /// For more information about agents, see the [Agent guide](https://cloud.google.com/dialogflow/docs/agents-
-    /// overview).</summary>
+    /// and build a Dialogflow agent to handle the types of conversations required for your system. For more information
+    /// about agents, see the [Agent guide](https://cloud.google.com/dialogflow/docs/agents-overview).</summary>
     public class GoogleCloudDialogflowV2Agent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. API version displayed in Dialogflow console. If not specified, V2 API is assumed. Clients
@@ -6105,9 +5976,7 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         /// <summary>The [Dialogflow system entity formatted value ](https://cloud.google.com/dialogflow/docs/reference
         /// /system-entities) of this message part. For example for a system entity of type `@sys.unit-currency`, this
-        /// may contain:
-        ///
-        /// { "amount": 5, "currency": "USD" } </summary>
+        /// may contain: { "amount": 5, "currency": "USD" } </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedValue")]
         public virtual object FormattedValue { get; set; } 
 
@@ -6279,14 +6148,12 @@ namespace Google.Apis.Dialogflow.v2.Data
 
     /// <summary>Dialogflow contexts are similar to natural language context. If a person says to you "they are orange",
     /// you need context in order to understand what "they" is referring to. Similarly, for Dialogflow to handle an end-
-    /// user expression like that, it needs to be provided with context in order to correctly match an intent.
-    ///
-    /// Using contexts, you can control the flow of a conversation. You can configure contexts for an intent by setting
-    /// input and output contexts, which are identified by string names. When an intent is matched, any configured
-    /// output contexts for that intent become active. While any contexts are active, Dialogflow is more likely to match
-    /// intents that are configured with input contexts that correspond to the currently active contexts.
-    ///
-    /// For more information about context, see the [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-
+    /// user expression like that, it needs to be provided with context in order to correctly match an intent. Using
+    /// contexts, you can control the flow of a conversation. You can configure contexts for an intent by setting input
+    /// and output contexts, which are identified by string names. When an intent is matched, any configured output
+    /// contexts for that intent become active. While any contexts are active, Dialogflow is more likely to match
+    /// intents that are configured with input contexts that correspond to the currently active contexts. For more
+    /// information about context, see the [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-
     /// overview).</summary>
     public class GoogleCloudDialogflowV2Context : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6297,30 +6164,21 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual System.Nullable<int> LifespanCount { get; set; } 
 
         /// <summary>Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or
-        /// `projects//agent/environments//users//sessions//contexts/`.
-        ///
-        /// The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at
-        /// most 250 bytes long.
-        ///
-        /// If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified,
-        /// we assume default '-' user.
-        ///
-        /// The following context names are reserved for internal use by Dialogflow. You should not use these contexts
-        /// or create contexts with these names:
-        ///
-        /// * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`</summary>
+        /// `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to
+        /// lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment
+        /// ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume
+        /// default '-' user. The following context names are reserved for internal use by Dialogflow. You should not
+        /// use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` *
+        /// `*_dialog_params_size`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Optional. The collection of parameters associated with this context.
-        ///
-        /// Depending on your protocol or client library language, this is a map, associative array, symbol table,
-        /// dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs:
-        ///
-        /// -   MapKey type: string -   MapKey value: parameter name -   MapValue type: -   If parameter's entity type
-        /// is a composite entity: map -   Else: string or number, depending on parameter value type -   MapValue value:
-        /// -   If parameter's entity type is a composite entity: map from composite entity property names to property
-        /// values -   Else: parameter value</summary>
+        /// <summary>Optional. The collection of parameters associated with this context. Depending on your protocol or
+        /// client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed
+        /// of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue
+        /// type: - If parameter's entity type is a composite entity: map - Else: string or number, depending on
+        /// parameter value type - MapValue value: - If parameter's entity type is a composite entity: map from
+        /// composite entity property names to property values - Else: parameter value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string,object> Parameters { get; set; } 
 
@@ -6367,19 +6225,14 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual GoogleCloudDialogflowV2OutputAudioConfig OutputAudioConfig { get; set; } 
 
         /// <summary>Mask for output_audio_config indicating which settings in this request-level config should override
-        /// speech synthesizer settings defined at agent-level.
-        ///
-        /// If unspecified or empty, output_audio_config replaces the agent-level config in its entirety.</summary>
+        /// speech synthesizer settings defined at agent-level. If unspecified or empty, output_audio_config replaces
+        /// the agent-level config in its entirety.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputAudioConfigMask")]
         public virtual object OutputAudioConfigMask { get; set; } 
 
-        /// <summary>Required. The input specification. It can be set to:
-        ///
-        /// 1.  an audio config which instructs the speech recognizer how to process the speech audio,
-        ///
-        /// 2.  a conversational query in the form of text, or
-        ///
-        /// 3.  an event that specifies which intent to trigger.</summary>
+        /// <summary>Required. The input specification. It can be set to: 1. an audio config which instructs the speech
+        /// recognizer how to process the speech audio, 2. a conversational query in the form of text, or 3. an event
+        /// that specifies which intent to trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryInput")]
         public virtual GoogleCloudDialogflowV2QueryInput QueryInput { get; set; } 
 
@@ -6397,10 +6250,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>The audio data bytes encoded as specified in the request. Note: The output audio is generated based
         /// on the values of default platform text responses found in the `query_result.fulfillment_messages` field. If
         /// multiple default text responses exist, they will be concatenated when generating audio. If no default
-        /// platform text responses exist, the generated audio content will be empty.
-        ///
-        /// In some scenarios, multiple output audio fields may be present in the response structure. In these cases,
-        /// only the top-most-level audio output has content.</summary>
+        /// platform text responses exist, the generated audio content will be empty. In some scenarios, multiple output
+        /// audio fields may be present in the response structure. In these cases, only the top-most-level audio output
+        /// has content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputAudio")]
         public virtual string OutputAudio { get; set; } 
 
@@ -6427,15 +6279,11 @@ namespace Google.Apis.Dialogflow.v2.Data
     }    
 
     /// <summary>Each intent parameter has a type, called the entity type, which dictates exactly how data from an end-
-    /// user expression is extracted.
-    ///
-    /// Dialogflow provides predefined system entities that can match many common types of data. For example, there are
-    /// system entities for matching dates, times, colors, email addresses, and so on. You can also create your own
-    /// custom entities for matching custom data. For example, you could define a vegetable entity that can match the
-    /// types of vegetables available for purchase with a grocery store agent.
-    ///
-    /// For more information, see the [Entity guide](https://cloud.google.com/dialogflow/docs/entities-
-    /// overview).</summary>
+    /// user expression is extracted. Dialogflow provides predefined system entities that can match many common types of
+    /// data. For example, there are system entities for matching dates, times, colors, email addresses, and so on. You
+    /// can also create your own custom entities for matching custom data. For example, you could define a vegetable
+    /// entity that can match the types of vegetables available for purchase with a grocery store agent. For more
+    /// information, see the [Entity guide](https://cloud.google.com/dialogflow/docs/entities-overview).</summary>
     public class GoogleCloudDialogflowV2EntityType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Indicates whether the entity type can be automatically expanded.</summary>
@@ -6482,24 +6330,15 @@ namespace Google.Apis.Dialogflow.v2.Data
     public class GoogleCloudDialogflowV2EntityTypeEntity : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and
-        /// `value` is *scallions*, a synonym could be *green onions*.
-        ///
-        /// For `KIND_LIST` entity types:
-        ///
-        /// *   This collection must contain exactly one synonym equal to `value`.</summary>
+        /// `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection
+        /// must contain exactly one synonym equal to `value`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("synonyms")]
         public virtual System.Collections.Generic.IList<string> Synonyms { get; set; } 
 
         /// <summary>Required. The primary value associated with this entity entry. For example, if the entity type is
-        /// *vegetable*, the value could be *scallions*.
-        ///
-        /// For `KIND_MAP` entity types:
-        ///
-        /// *   A reference value to be used in place of synonyms.
-        ///
-        /// For `KIND_LIST` entity types:
-        ///
-        /// *   A string that can contain references to other entity types (with or without aliases).</summary>
+        /// *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in
+        /// place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity
+        /// types (with or without aliases).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
@@ -6507,18 +6346,12 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>You can create multiple versions of your agent and publish them to separate environments.
-    ///
-    /// When you edit an agent, you are editing the draft agent. At any point, you can save the draft agent as an agent
-    /// version, which is an immutable snapshot of your agent.
-    ///
-    /// When you save the draft agent, it is published to the default environment. When you create agent versions, you
-    /// can publish them to custom environments. You can create a variety of custom environments for:
-    ///
-    /// - testing - development - production - etc.
-    ///
-    /// For more information, see the [versions and environments guide](https://cloud.google.com/dialogflow/docs/agents-
-    /// versions).</summary>
+    /// <summary>You can create multiple versions of your agent and publish them to separate environments. When you edit
+    /// an agent, you are editing the draft agent. At any point, you can save the draft agent as an agent version, which
+    /// is an immutable snapshot of your agent. When you save the draft agent, it is published to the default
+    /// environment. When you create agent versions, you can publish them to custom environments. You can create a
+    /// variety of custom environments for: - testing - development - production - etc. For more information, see the
+    /// [versions and environments guide](https://cloud.google.com/dialogflow/docs/agents-versions).</summary>
     public class GoogleCloudDialogflowV2Environment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The agent version loaded into this environment. Format:
@@ -6566,15 +6399,12 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The collection of parameters associated with the event.
-        ///
-        /// Depending on your protocol or client library language, this is a map, associative array, symbol table,
-        /// dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs:
-        ///
-        /// -   MapKey type: string -   MapKey value: parameter name -   MapValue type: -   If parameter's entity type
-        /// is a composite entity: map -   Else: string or number, depending on parameter value type -   MapValue value:
-        /// -   If parameter's entity type is a composite entity: map from composite entity property names to property
-        /// values -   Else: parameter value</summary>
+        /// <summary>The collection of parameters associated with the event. Depending on your protocol or client
+        /// library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a
+        /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue
+        /// type: - If parameter's entity type is a composite entity: map - Else: string or number, depending on
+        /// parameter value type - MapValue value: - If parameter's entity type is a composite entity: map from
+        /// composite entity property names to property values - Else: parameter value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string,object> Parameters { get; set; } 
 
@@ -6615,10 +6445,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow
     /// responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a
     /// haircut on Friday, your service can check your database and respond to the end-user with availability
-    /// information for Friday.
-    ///
-    /// For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-
-    /// overview).</summary>
+    /// information for Friday. For more information, see the [fulfillment
+    /// guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).</summary>
     public class GoogleCloudDialogflowV2Fulfillment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The human-readable name of the fulfillment, unique within the agent.</summary>
@@ -6738,14 +6566,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ModelVariant { get; set; } 
 
         /// <summary>A list of strings containing words and phrases that the speech recognizer should recognize with
-        /// higher likelihood.
-        ///
-        /// See [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints) for
-        /// more details.
-        ///
-        /// This field is deprecated. Please use [speech_contexts]() instead. If you specify both [phrase_hints]() and
-        /// [speech_contexts](), Dialogflow will treat the [phrase_hints]() as a single additional
-        /// [SpeechContext]().</summary>
+        /// higher likelihood. See [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics
+        /// #phrase-hints) for more details. This field is deprecated. Please use [speech_contexts]() instead. If you
+        /// specify both [phrase_hints]() and [speech_contexts](), Dialogflow will treat the [phrase_hints]() as a
+        /// single additional [SpeechContext]().</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phraseHints")]
         public virtual System.Collections.Generic.IList<string> PhraseHints { get; set; } 
 
@@ -6763,10 +6587,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("singleUtterance")]
         public virtual System.Nullable<bool> SingleUtterance { get; set; } 
 
-        /// <summary>Context information to assist speech recognition.
-        ///
-        /// See [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints) for
-        /// more details.</summary>
+        /// <summary>Context information to assist speech recognition. See [the Cloud Speech
+        /// documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints) for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechContexts")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SpeechContext> SpeechContexts { get; set; } 
 
@@ -6777,10 +6599,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>An intent categorizes an end-user's intention for one conversation turn. For each agent, you define
     /// many intents, where your combined intents can handle a complete conversation. When an end-user writes or says
     /// something, referred to as an end-user expression or end-user input, Dialogflow matches the end-user input to the
-    /// best intent in your agent. Matching an intent is also known as intent classification.
-    ///
-    /// For more information, see the [intent guide](https://cloud.google.com/dialogflow/docs/intents-
-    /// overview).</summary>
+    /// best intent in your agent. Matching an intent is also known as intent classification. For more information, see
+    /// the [intent guide](https://cloud.google.com/dialogflow/docs/intents-overview).</summary>
     public class GoogleCloudDialogflowV2Intent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The name of the action associated with the intent. Note: The action name must not contain
@@ -6845,17 +6665,15 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         /// <summary>Read-only after creation. The unique identifier of the parent intent in the chain of followup
         /// intents. You can set this field when creating an intent, for example with CreateIntent or
-        /// BatchUpdateIntents, in order to make this intent a followup intent.
-        ///
-        /// It identifies the parent followup intent. Format: `projects//agent/intents/`.</summary>
+        /// BatchUpdateIntents, in order to make this intent a followup intent. It identifies the parent followup
+        /// intent. Format: `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentFollowupIntentName")]
         public virtual string ParentFollowupIntentName { get; set; } 
 
-        /// <summary>Optional. The priority of this intent. Higher numbers represent higher priorities.
-        ///
-        /// - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-        /// to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in
-        /// runtime detect intent requests.</summary>
+        /// <summary>Optional. The priority of this intent. Higher numbers represent higher priorities. - If the
+        /// supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the
+        /// `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime
+        /// detect intent requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual System.Nullable<int> Priority { get; set; } 
 
@@ -6865,9 +6683,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual System.Nullable<bool> ResetContexts { get; set; } 
 
         /// <summary>Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies
-        /// the correct followup intents chain for this intent. We populate this field only in the output.
-        ///
-        /// Format: `projects//agent/intents/`.</summary>
+        /// the correct followup intents chain for this intent. We populate this field only in the output. Format:
+        /// `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootFollowupIntentName")]
         public virtual string RootFollowupIntentName { get; set; } 
 
@@ -7485,11 +7302,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("prompts")]
         public virtual System.Collections.Generic.IList<string> Prompts { get; set; } 
 
-        /// <summary>Optional. The definition of the parameter value. It can be:
-        ///
-        /// - a constant string, - a parameter value defined as `$parameter_name`, - an original parameter value defined
-        /// as `$parameter_name.original`, - a parameter value from some context defined as
-        /// `#context_name.parameter_name`.</summary>
+        /// <summary>Optional. The definition of the parameter value. It can be: - a constant string, - a parameter
+        /// value defined as `$parameter_name`, - an original parameter value defined as `$parameter_name.original`, - a
+        /// parameter value from some context defined as `#context_name.parameter_name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
@@ -7505,20 +7320,12 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string Name { get; set; } 
 
         /// <summary>Required. The ordered list of training phrase parts. The parts are concatenated in order to form
-        /// the training phrase.
-        ///
-        /// Note: The API does not automatically annotate training phrases like the Dialogflow Console does.
-        ///
-        /// Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when
-        /// the parts are concatenated.
-        ///
-        /// If the training phrase does not need to be annotated with parameters, you just need a single part with only
-        /// the Part.text field set.
-        ///
-        /// If you want to annotate the training phrase, you must create multiple parts, where the fields of each part
-        /// are populated in one of two ways:
-        ///
-        /// -   `Part.text` is set to a part of the phrase that has no parameters. -   `Part.text` is set to a part of
+        /// the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow
+        /// Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well
+        /// formatted when the parts are concatenated. If the training phrase does not need to be annotated with
+        /// parameters, you just need a single part with only the Part.text field set. If you want to annotate the
+        /// training phrase, you must create multiple parts, where the fields of each part are populated in one of two
+        /// ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of
         /// the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all
         /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parts")]
@@ -7707,7 +7514,6 @@ namespace Google.Apis.Dialogflow.v2.Data
     {
         /// <summary>Optional. This field is set to the value of the `QueryParameters.payload` field passed in the
         /// request. Some integrations that query a Dialogflow agent may provide additional information in the payload.
-        ///
         /// In particular, for the Dialogflow Phone Gateway integration, this field has the form: { "telephony": {
         /// "caller_id": "+18558363987" } } Note: The caller ID field (`caller_id`) will be redacted for Standard
         /// Edition agents and populated with the caller ID in [E.164 format](https://en.wikipedia.org/wiki/E.164) for
@@ -7751,13 +7557,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents the query input. It can contain either:
-    ///
-    /// 1.  An audio config which instructs the speech recognizer how to process the speech audio.
-    ///
-    /// 2.  A conversational query in the form of text,.
-    ///
-    /// 3.  An event that specifies which intent to trigger.</summary>
+    /// <summary>Represents the query input. It can contain either: 1. An audio config which instructs the speech
+    /// recognizer how to process the speech audio. 2. A conversational query in the form of text,. 3. An event that
+    /// specifies which intent to trigger.</summary>
     public class GoogleCloudDialogflowV2QueryInput : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Instructs the speech recognizer how to process the speech audio.</summary>
@@ -7825,17 +7627,14 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
-        /// <summary>This field is set to:
-        ///
-        /// - `false` if the matched intent has required parameters and not all of the required parameter values have
-        /// been collected. - `true` if all required parameter values have been collected, or if the matched intent
-        /// doesn't contain any required parameters.</summary>
+        /// <summary>This field is set to: - `false` if the matched intent has required parameters and not all of the
+        /// required parameter values have been collected. - `true` if all required parameter values have been
+        /// collected, or if the matched intent doesn't contain any required parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allRequiredParamsPresent")]
         public virtual System.Nullable<bool> AllRequiredParamsPresent { get; set; } 
 
         /// <summary>Free-form diagnostic information for the associated detect intent request. The fields of this data
         /// can change without notice, so you should not write code that depends on its structure. The data may contain:
-        ///
         /// - webhook call latency - webhook errors</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diagnosticInfo")]
         public virtual System.Collections.Generic.IDictionary<string,object> DiagnosticInfo { get; set; } 
@@ -7873,24 +7672,20 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputContexts")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Context> OutputContexts { get; set; } 
 
-        /// <summary>The collection of extracted parameters.
-        ///
-        /// Depending on your protocol or client library language, this is a map, associative array, symbol table,
-        /// dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs:
-        ///
-        /// -   MapKey type: string -   MapKey value: parameter name -   MapValue type: -   If parameter's entity type
-        /// is a composite entity: map -   Else: string or number, depending on parameter value type -   MapValue value:
-        /// -   If parameter's entity type is a composite entity: map from composite entity property names to property
-        /// values -   Else: parameter value</summary>
+        /// <summary>The collection of extracted parameters. Depending on your protocol or client library language, this
+        /// is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey,
+        /// MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's
+        /// entity type is a composite entity: map - Else: string or number, depending on parameter value type -
+        /// MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names
+        /// to property values - Else: parameter value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string,object> Parameters { get; set; } 
 
-        /// <summary>The original conversational query text:
-        ///
-        /// - If natural language text was provided as input, `query_text` contains a copy of the input. - If natural
-        /// language speech audio was provided as input, `query_text` contains the speech recognition result. If speech
-        /// recognizer produced multiple alternatives, a particular one is picked. - If automatic spell correction is
-        /// enabled, `query_text` will contain the corrected user input.</summary>
+        /// <summary>The original conversational query text: - If natural language text was provided as input,
+        /// `query_text` contains a copy of the input. - If natural language speech audio was provided as input,
+        /// `query_text` contains the speech recognition result. If speech recognizer produced multiple alternatives, a
+        /// particular one is picked. - If automatic spell correction is enabled, `query_text` will contain the
+        /// corrected user input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryText")]
         public virtual string QueryText { get; set; } 
 
@@ -7901,11 +7696,9 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         /// <summary>The Speech recognition confidence between 0.0 and 1.0. A higher number indicates an estimated
         /// greater likelihood that the recognized words are correct. The default of 0.0 is a sentinel value indicating
-        /// that confidence was not set.
-        ///
-        /// This field is not guaranteed to be accurate or set. In particular this field isn't set for
-        /// StreamingDetectIntent since the streaming endpoint has separate confidence estimates per portion of the
-        /// audio in StreamingRecognitionResult.</summary>
+        /// that confidence was not set. This field is not guaranteed to be accurate or set. In particular this field
+        /// isn't set for StreamingDetectIntent since the streaming endpoint has separate confidence estimates per
+        /// portion of the audio in StreamingRecognitionResult.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechRecognitionConfidence")]
         public virtual System.Nullable<float> SpeechRecognitionConfidence { get; set; } 
 
@@ -8004,10 +7797,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>A session represents a conversation between a Dialogflow agent and an end-user. You can create special
     /// entities, called session entities, during a session. Session entities can extend or replace custom entity types
     /// and only exist during the session that they were created for. All session data, including session entities, is
-    /// stored by Dialogflow for 20 minutes.
-    ///
-    /// For more information, see the [session entity guide](https://cloud.google.com/dialogflow/docs/entities-
-    /// session).</summary>
+    /// stored by Dialogflow for 20 minutes. For more information, see the [session entity
+    /// guide](https://cloud.google.com/dialogflow/docs/entities-session).</summary>
     public class GoogleCloudDialogflowV2SessionEntityType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The collection of entities associated with this session entity type.</summary>
@@ -8022,10 +7813,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Required. The unique identifier of this session entity type. Format:
         /// `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`.
         /// If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified,
-        /// we assume default '-' user.
-        ///
-        /// `` must be the display name of an existing entity type in the same agent that will be overridden or
-        /// supplemented.</summary>
+        /// we assume default '-' user. `` must be the display name of an existing entity type in the same agent that
+        /// will be overridden or supplemented.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -8036,27 +7825,19 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Hints for the speech recognizer to help with recognition in a specific conversation state.</summary>
     public class GoogleCloudDialogflowV2SpeechContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Boost for this context compared to other contexts:
-        ///
-        /// * If the boost is positive, Dialogflow will increase the probability that the phrases in this context are
-        /// recognized over similar sounding phrases. * If the boost is unspecified or non-positive, Dialogflow will not
-        /// apply any boost.
-        ///
-        /// Dialogflow recommends that you use boosts in the range (0, 20] and that you find a value that fits your use
-        /// case with binary search.</summary>
+        /// <summary>Optional. Boost for this context compared to other contexts: * If the boost is positive, Dialogflow
+        /// will increase the probability that the phrases in this context are recognized over similar sounding phrases.
+        /// * If the boost is unspecified or non-positive, Dialogflow will not apply any boost. Dialogflow recommends
+        /// that you use boosts in the range (0, 20] and that you find a value that fits your use case with binary
+        /// search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boost")]
         public virtual System.Nullable<float> Boost { get; set; } 
 
         /// <summary>Optional. A list of strings containing words and phrases that the speech recognizer should
-        /// recognize with higher likelihood.
-        ///
-        /// This list can be used to:
-        ///
-        /// * improve accuracy for words and phrases you expect the user to say, e.g. typical commands for your
-        /// Dialogflow agent * add additional words to the speech recognizer vocabulary * ...
-        ///
-        /// See the [Cloud Speech documentation](https://cloud.google.com/speech-to-text/quotas) for usage
-        /// limits.</summary>
+        /// recognize with higher likelihood. This list can be used to: * improve accuracy for words and phrases you
+        /// expect the user to say, e.g. typical commands for your Dialogflow agent * add additional words to the speech
+        /// recognizer vocabulary * ... See the [Cloud Speech documentation](https://cloud.google.com/speech-to-
+        /// text/quotas) for usage limits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phrases")]
         public virtual System.Collections.Generic.IList<string> Phrases { get; set; } 
 
@@ -8129,13 +7910,12 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Represents a single validation error.</summary>
     public class GoogleCloudDialogflowV2ValidationError : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The names of the entries that the error is associated with. Format:
-        ///
-        /// - "projects//agent", if the error is associated with the entire agent. - "projects//agent/intents/", if the
-        /// error is associated with certain intents. - "projects//agent/intents//trainingPhrases/", if the error is
-        /// associated with certain intent training phrases. - "projects//agent/intents//parameters/", if the error is
-        /// associated with certain intent parameters. - "projects//agent/entities/", if the error is associated with
-        /// certain entities.</summary>
+        /// <summary>The names of the entries that the error is associated with. Format: - "projects//agent", if the
+        /// error is associated with the entire agent. - "projects//agent/intents/", if the error is associated with
+        /// certain intents. - "projects//agent/intents//trainingPhrases/", if the error is associated with certain
+        /// intent training phrases. - "projects//agent/intents//parameters/", if the error is associated with certain
+        /// intent parameters. - "projects//agent/entities/", if the error is associated with certain
+        /// entities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
         public virtual System.Collections.Generic.IList<string> Entries { get; set; } 
 
@@ -8209,16 +7989,11 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response message for a webhook call.
-    ///
-    /// This response is validated by the Dialogflow server. If validation fails, an error will be returned in the
-    /// QueryResult.diagnostic_info field. Setting JSON fields to an empty value with the wrong type is a common error.
-    /// To avoid this error:
-    ///
-    /// - Use `""` for empty strings - Use `{}` or `null` for empty objects - Use `[]` or `null` for empty arrays
-    ///
-    /// For more information, see the [Protocol Buffers Language Guide](https://developers.google.com/protocol-
-    /// buffers/docs/proto3#json).</summary>
+    /// <summary>The response message for a webhook call. This response is validated by the Dialogflow server. If
+    /// validation fails, an error will be returned in the QueryResult.diagnostic_info field. Setting JSON fields to an
+    /// empty value with the wrong type is a common error. To avoid this error: - Use `""` for empty strings - Use `{}`
+    /// or `null` for empty objects - Use `[]` or `null` for empty arrays For more information, see the [Protocol
+    /// Buffers Language Guide](https://developers.google.com/protocol-buffers/docs/proto3#json).</summary>
     public class GoogleCloudDialogflowV2WebhookResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Invokes the supplied events. When this field is set, Dialogflow ignores the
@@ -8355,14 +8130,12 @@ namespace Google.Apis.Dialogflow.v2.Data
 
     /// <summary>Dialogflow contexts are similar to natural language context. If a person says to you "they are orange",
     /// you need context in order to understand what "they" is referring to. Similarly, for Dialogflow to handle an end-
-    /// user expression like that, it needs to be provided with context in order to correctly match an intent.
-    ///
-    /// Using contexts, you can control the flow of a conversation. You can configure contexts for an intent by setting
-    /// input and output contexts, which are identified by string names. When an intent is matched, any configured
-    /// output contexts for that intent become active. While any contexts are active, Dialogflow is more likely to match
-    /// intents that are configured with input contexts that correspond to the currently active contexts.
-    ///
-    /// For more information about context, see the [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-
+    /// user expression like that, it needs to be provided with context in order to correctly match an intent. Using
+    /// contexts, you can control the flow of a conversation. You can configure contexts for an intent by setting input
+    /// and output contexts, which are identified by string names. When an intent is matched, any configured output
+    /// contexts for that intent become active. While any contexts are active, Dialogflow is more likely to match
+    /// intents that are configured with input contexts that correspond to the currently active contexts. For more
+    /// information about context, see the [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-
     /// overview).</summary>
     public class GoogleCloudDialogflowV2beta1Context : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8373,30 +8146,21 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual System.Nullable<int> LifespanCount { get; set; } 
 
         /// <summary>Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or
-        /// `projects//agent/environments//users//sessions//contexts/`.
-        ///
-        /// The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at
-        /// most 250 bytes long.
-        ///
-        /// If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified,
-        /// we assume default '-' user.
-        ///
-        /// The following context names are reserved for internal use by Dialogflow. You should not use these contexts
-        /// or create contexts with these names:
-        ///
-        /// * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`</summary>
+        /// `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to
+        /// lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment
+        /// ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume
+        /// default '-' user. The following context names are reserved for internal use by Dialogflow. You should not
+        /// use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` *
+        /// `*_dialog_params_size`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Optional. The collection of parameters associated with this context.
-        ///
-        /// Depending on your protocol or client library language, this is a map, associative array, symbol table,
-        /// dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs:
-        ///
-        /// -   MapKey type: string -   MapKey value: parameter name -   MapValue type: -   If parameter's entity type
-        /// is a composite entity: map -   Else: string or number, depending on parameter value type -   MapValue value:
-        /// -   If parameter's entity type is a composite entity: map from composite entity property names to property
-        /// values -   Else: parameter value</summary>
+        /// <summary>Optional. The collection of parameters associated with this context. Depending on your protocol or
+        /// client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed
+        /// of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue
+        /// type: - If parameter's entity type is a composite entity: map - Else: string or number, depending on
+        /// parameter value type - MapValue value: - If parameter's entity type is a composite entity: map from
+        /// composite entity property names to property values - Else: parameter value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string,object> Parameters { get; set; } 
 
@@ -8405,15 +8169,11 @@ namespace Google.Apis.Dialogflow.v2.Data
     }    
 
     /// <summary>Each intent parameter has a type, called the entity type, which dictates exactly how data from an end-
-    /// user expression is extracted.
-    ///
-    /// Dialogflow provides predefined system entities that can match many common types of data. For example, there are
-    /// system entities for matching dates, times, colors, email addresses, and so on. You can also create your own
-    /// custom entities for matching custom data. For example, you could define a vegetable entity that can match the
-    /// types of vegetables available for purchase with a grocery store agent.
-    ///
-    /// For more information, see the [Entity guide](https://cloud.google.com/dialogflow/docs/entities-
-    /// overview).</summary>
+    /// user expression is extracted. Dialogflow provides predefined system entities that can match many common types of
+    /// data. For example, there are system entities for matching dates, times, colors, email addresses, and so on. You
+    /// can also create your own custom entities for matching custom data. For example, you could define a vegetable
+    /// entity that can match the types of vegetables available for purchase with a grocery store agent. For more
+    /// information, see the [Entity guide](https://cloud.google.com/dialogflow/docs/entities-overview).</summary>
     public class GoogleCloudDialogflowV2beta1EntityType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Indicates whether the entity type can be automatically expanded.</summary>
@@ -8449,24 +8209,15 @@ namespace Google.Apis.Dialogflow.v2.Data
     public class GoogleCloudDialogflowV2beta1EntityTypeEntity : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and
-        /// `value` is *scallions*, a synonym could be *green onions*.
-        ///
-        /// For `KIND_LIST` entity types:
-        ///
-        /// *   This collection must contain exactly one synonym equal to `value`.</summary>
+        /// `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection
+        /// must contain exactly one synonym equal to `value`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("synonyms")]
         public virtual System.Collections.Generic.IList<string> Synonyms { get; set; } 
 
         /// <summary>Required. The primary value associated with this entity entry. For example, if the entity type is
-        /// *vegetable*, the value could be *scallions*.
-        ///
-        /// For `KIND_MAP` entity types:
-        ///
-        /// *   A reference value to be used in place of synonyms.
-        ///
-        /// For `KIND_LIST` entity types:
-        ///
-        /// *   A string that can contain references to other entity types (with or without aliases).</summary>
+        /// *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in
+        /// place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity
+        /// types (with or without aliases).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
@@ -8490,15 +8241,12 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The collection of parameters associated with the event.
-        ///
-        /// Depending on your protocol or client library language, this is a map, associative array, symbol table,
-        /// dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs:
-        ///
-        /// -   MapKey type: string -   MapKey value: parameter name -   MapValue type: -   If parameter's entity type
-        /// is a composite entity: map -   Else: string or number, depending on parameter value type -   MapValue value:
-        /// -   If parameter's entity type is a composite entity: map from composite entity property names to property
-        /// values -   Else: parameter value</summary>
+        /// <summary>The collection of parameters associated with the event. Depending on your protocol or client
+        /// library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a
+        /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue
+        /// type: - If parameter's entity type is a composite entity: map - Else: string or number, depending on
+        /// parameter value type - MapValue value: - If parameter's entity type is a composite entity: map from
+        /// composite entity property names to property values - Else: parameter value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string,object> Parameters { get; set; } 
 
@@ -8525,10 +8273,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>An intent categorizes an end-user's intention for one conversation turn. For each agent, you define
     /// many intents, where your combined intents can handle a complete conversation. When an end-user writes or says
     /// something, referred to as an end-user expression or end-user input, Dialogflow matches the end-user input to the
-    /// best intent in your agent. Matching an intent is also known as intent classification.
-    ///
-    /// For more information, see the [intent guide](https://cloud.google.com/dialogflow/docs/intents-
-    /// overview).</summary>
+    /// best intent in your agent. Matching an intent is also known as intent classification. For more information, see
+    /// the [intent guide](https://cloud.google.com/dialogflow/docs/intents-overview).</summary>
     public class GoogleCloudDialogflowV2beta1Intent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The name of the action associated with the intent. Note: The action name must not contain
@@ -8608,17 +8354,15 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         /// <summary>Optional. The unique identifier of the parent intent in the chain of followup intents. You can set
         /// this field when creating an intent, for example with CreateIntent or BatchUpdateIntents, in order to make
-        /// this intent a followup intent.
-        ///
-        /// It identifies the parent followup intent. Format: `projects//agent/intents/`.</summary>
+        /// this intent a followup intent. It identifies the parent followup intent. Format:
+        /// `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentFollowupIntentName")]
         public virtual string ParentFollowupIntentName { get; set; } 
 
-        /// <summary>Optional. The priority of this intent. Higher numbers represent higher priorities.
-        ///
-        /// - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-        /// to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in
-        /// runtime detect intent requests.</summary>
+        /// <summary>Optional. The priority of this intent. Higher numbers represent higher priorities. - If the
+        /// supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the
+        /// `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime
+        /// detect intent requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual System.Nullable<int> Priority { get; set; } 
 
@@ -8628,9 +8372,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual System.Nullable<bool> ResetContexts { get; set; } 
 
         /// <summary>Output only. The unique identifier of the root intent in the chain of followup intents. It
-        /// identifies the correct followup intents chain for this intent.
-        ///
-        /// Format: `projects//agent/intents/`.</summary>
+        /// identifies the correct followup intents chain for this intent. Format: `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootFollowupIntentName")]
         public virtual string RootFollowupIntentName { get; set; } 
 
@@ -8717,10 +8459,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rbmStandaloneRichCard")]
         public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard RbmStandaloneRichCard { get; set; } 
 
-        /// <summary>Rich Business Messaging (RBM) text response.
-        ///
-        /// RBM allows businesses to send enriched and branded versions of SMS. See https://jibe.google.com/business-
-        /// messaging.</summary>
+        /// <summary>Rich Business Messaging (RBM) text response. RBM allows businesses to send enriched and branded
+        /// versions of SMS. See https://jibe.google.com/business-messaging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rbmText")]
         public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmText RbmText { get; set; } 
 
@@ -9091,9 +8831,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Rich Business Messaging (RBM) Card content</summary>
     public class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Description of the card (at most 2000 bytes).
-        ///
-        /// At least one of the title, description or media must be set.</summary>
+        /// <summary>Optional. Description of the card (at most 2000 bytes). At least one of the title, description or
+        /// media must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -9106,9 +8845,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("suggestions")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion> Suggestions { get; set; } 
 
-        /// <summary>Optional. Title of the card (at most 200 bytes).
-        ///
-        /// At least one of the title, description or media must be set.</summary>
+        /// <summary>Optional. Title of the card (at most 200 bytes). At least one of the title, description or media
+        /// must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
@@ -9117,15 +8855,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     }    
 
     /// <summary>Rich Business Messaging (RBM) Media displayed in Cards The following media-types are currently
-    /// supported:
-    ///
-    /// Image Types
-    ///
-    /// * image/jpeg * image/jpg' * image/gif * image/png
-    ///
-    /// Video Types
-    ///
-    /// * video/h263 * video/m4v * video/mp4 * video/mpeg * video/mpeg4 * video/webm</summary>
+    /// supported: Image Types * image/jpeg * image/jpg' * image/gif * image/png Video Types * video/h263 * video/m4v *
+    /// video/mp4 * video/mpeg * video/mpeg4 * video/webm</summary>
     public class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Publicly reachable URI of the file. The RBM platform determines the MIME type of the file
@@ -9151,12 +8882,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Carousel Rich Business Messaging (RBM) rich card.
-    ///
-    /// Rich cards allow you to respond to users with more vivid content, e.g. with media and suggestions.
-    ///
-    /// If you want to show a single card with more control over the layout, please use RbmStandaloneCard
-    /// instead.</summary>
+    /// <summary>Carousel Rich Business Messaging (RBM) rich card. Rich cards allow you to respond to users with more
+    /// vivid content, e.g. with media and suggestions. If you want to show a single card with more control over the
+    /// layout, please use RbmStandaloneCard instead.</summary>
     public class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The cards in the carousel. A carousel must have at least 2 cards and at most
@@ -9172,12 +8900,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Standalone Rich Business Messaging (RBM) rich card.
-    ///
-    /// Rich cards allow you to respond to users with more vivid content, e.g. with media and suggestions.
-    ///
-    /// You can group multiple rich cards into one using RbmCarouselCard but carousel cards will give you less control
-    /// over the card layout.</summary>
+    /// <summary>Standalone Rich Business Messaging (RBM) rich card. Rich cards allow you to respond to users with more
+    /// vivid content, e.g. with media and suggestions. You can group multiple rich cards into one using RbmCarouselCard
+    /// but carousel cards will give you less control over the card layout.</summary>
     public class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Card content.</summary>
@@ -9442,14 +9167,11 @@ namespace Google.Apis.Dialogflow.v2.Data
     {
         /// <summary>Required. URI to a Google Cloud Storage object containing the audio to play, e.g.,
         /// "gs://bucket/object". The object must contain a single channel (mono) of linear PCM audio (2 bytes / sample)
-        /// at 8kHz.
-        ///
-        /// This object must be readable by the `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` service account
-        /// where  is the number of the Telephony Gateway project (usually the same as the Dialogflow agent project). If
-        /// the Google Cloud Storage bucket is in the Telephony Gateway project, this permission is added by default
-        /// when enabling the Dialogflow V2 API.
-        ///
-        /// For audio from other sources, consider using the `TelephonySynthesizeSpeech` message with SSML.</summary>
+        /// at 8kHz. This object must be readable by the `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` service
+        /// account where is the number of the Telephony Gateway project (usually the same as the Dialogflow agent
+        /// project). If the Google Cloud Storage bucket is in the Telephony Gateway project, this permission is added
+        /// by default when enabling the Dialogflow V2 API. For audio from other sources, consider using the
+        /// `TelephonySynthesizeSpeech` message with SSML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioUri")]
         public virtual string AudioUri { get; set; } 
 
@@ -9457,10 +9179,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Synthesizes speech and plays back the synthesized audio to the caller in Telephony Gateway.
-    ///
-    /// Telephony Gateway takes the synthesizer settings from `DetectIntentResponse.output_audio_config` which can
-    /// either be set at request-level or can come from the agent-level synthesizer config.</summary>
+    /// <summary>Synthesizes speech and plays back the synthesized audio to the caller in Telephony Gateway. Telephony
+    /// Gateway takes the synthesizer settings from `DetectIntentResponse.output_audio_config` which can either be set
+    /// at request-level or can come from the agent-level synthesizer config.</summary>
     public class GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The SSML to be synthesized. For more information, see
@@ -9480,9 +9201,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     public class GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The phone number to transfer the call to in [E.164
-        /// format](https://en.wikipedia.org/wiki/E.164).
-        ///
-        /// We currently only allow transferring to US numbers (+1xxxyyyzzzz).</summary>
+        /// format](https://en.wikipedia.org/wiki/E.164). We currently only allow transferring to US numbers
+        /// (+1xxxyyyzzzz).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual string PhoneNumber { get; set; } 
 
@@ -9536,11 +9256,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("prompts")]
         public virtual System.Collections.Generic.IList<string> Prompts { get; set; } 
 
-        /// <summary>Optional. The definition of the parameter value. It can be:
-        ///
-        /// - a constant string, - a parameter value defined as `$parameter_name`, - an original parameter value defined
-        /// as `$parameter_name.original`, - a parameter value from some context defined as
-        /// `#context_name.parameter_name`.</summary>
+        /// <summary>Optional. The definition of the parameter value. It can be: - a constant string, - a parameter
+        /// value defined as `$parameter_name`, - an original parameter value defined as `$parameter_name.original`, - a
+        /// parameter value from some context defined as `#context_name.parameter_name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
@@ -9556,20 +9274,12 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string Name { get; set; } 
 
         /// <summary>Required. The ordered list of training phrase parts. The parts are concatenated in order to form
-        /// the training phrase.
-        ///
-        /// Note: The API does not automatically annotate training phrases like the Dialogflow Console does.
-        ///
-        /// Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when
-        /// the parts are concatenated.
-        ///
-        /// If the training phrase does not need to be annotated with parameters, you just need a single part with only
-        /// the Part.text field set.
-        ///
-        /// If you want to annotate the training phrase, you must create multiple parts, where the fields of each part
-        /// are populated in one of two ways:
-        ///
-        /// -   `Part.text` is set to a part of the phrase that has no parameters. -   `Part.text` is set to a part of
+        /// the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow
+        /// Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well
+        /// formatted when the parts are concatenated. If the training phrase does not need to be annotated with
+        /// parameters, you just need a single part with only the Part.text field set. If you want to annotate the
+        /// training phrase, you must create multiple parts, where the fields of each part are populated in one of two
+        /// ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of
         /// the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all
         /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parts")]
@@ -9691,7 +9401,6 @@ namespace Google.Apis.Dialogflow.v2.Data
     {
         /// <summary>Optional. This field is set to the value of the `QueryParameters.payload` field passed in the
         /// request. Some integrations that query a Dialogflow agent may provide additional information in the payload.
-        ///
         /// In particular, for the Dialogflow Phone Gateway integration, this field has the form: { "telephony": {
         /// "caller_id": "+18558363987" } } Note: The caller ID field (`caller_id`) will be redacted for Standard
         /// Edition agents and populated with the caller ID in [E.164 format](https://en.wikipedia.org/wiki/E.164) for
@@ -9719,17 +9428,14 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
-        /// <summary>This field is set to:
-        ///
-        /// - `false` if the matched intent has required parameters and not all of the required parameter values have
-        /// been collected. - `true` if all required parameter values have been collected, or if the matched intent
-        /// doesn't contain any required parameters.</summary>
+        /// <summary>This field is set to: - `false` if the matched intent has required parameters and not all of the
+        /// required parameter values have been collected. - `true` if all required parameter values have been
+        /// collected, or if the matched intent doesn't contain any required parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allRequiredParamsPresent")]
         public virtual System.Nullable<bool> AllRequiredParamsPresent { get; set; } 
 
         /// <summary>Free-form diagnostic information for the associated detect intent request. The fields of this data
         /// can change without notice, so you should not write code that depends on its structure. The data may contain:
-        ///
         /// - webhook call latency - webhook errors</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diagnosticInfo")]
         public virtual System.Collections.Generic.IDictionary<string,object> DiagnosticInfo { get; set; } 
@@ -9772,24 +9478,20 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputContexts")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Context> OutputContexts { get; set; } 
 
-        /// <summary>The collection of extracted parameters.
-        ///
-        /// Depending on your protocol or client library language, this is a map, associative array, symbol table,
-        /// dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs:
-        ///
-        /// -   MapKey type: string -   MapKey value: parameter name -   MapValue type: -   If parameter's entity type
-        /// is a composite entity: map -   Else: string or number, depending on parameter value type -   MapValue value:
-        /// -   If parameter's entity type is a composite entity: map from composite entity property names to property
-        /// values -   Else: parameter value</summary>
+        /// <summary>The collection of extracted parameters. Depending on your protocol or client library language, this
+        /// is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey,
+        /// MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's
+        /// entity type is a composite entity: map - Else: string or number, depending on parameter value type -
+        /// MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names
+        /// to property values - Else: parameter value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string,object> Parameters { get; set; } 
 
-        /// <summary>The original conversational query text:
-        ///
-        /// - If natural language text was provided as input, `query_text` contains a copy of the input. - If natural
-        /// language speech audio was provided as input, `query_text` contains the speech recognition result. If speech
-        /// recognizer produced multiple alternatives, a particular one is picked. - If automatic spell correction is
-        /// enabled, `query_text` will contain the corrected user input.</summary>
+        /// <summary>The original conversational query text: - If natural language text was provided as input,
+        /// `query_text` contains a copy of the input. - If natural language speech audio was provided as input,
+        /// `query_text` contains the speech recognition result. If speech recognizer produced multiple alternatives, a
+        /// particular one is picked. - If automatic spell correction is enabled, `query_text` will contain the
+        /// corrected user input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryText")]
         public virtual string QueryText { get; set; } 
 
@@ -9800,11 +9502,9 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         /// <summary>The Speech recognition confidence between 0.0 and 1.0. A higher number indicates an estimated
         /// greater likelihood that the recognized words are correct. The default of 0.0 is a sentinel value indicating
-        /// that confidence was not set.
-        ///
-        /// This field is not guaranteed to be accurate or set. In particular this field isn't set for
-        /// StreamingDetectIntent since the streaming endpoint has separate confidence estimates per portion of the
-        /// audio in StreamingRecognitionResult.</summary>
+        /// that confidence was not set. This field is not guaranteed to be accurate or set. In particular this field
+        /// isn't set for StreamingDetectIntent since the streaming endpoint has separate confidence estimates per
+        /// portion of the audio in StreamingRecognitionResult.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechRecognitionConfidence")]
         public virtual System.Nullable<float> SpeechRecognitionConfidence { get; set; } 
 
@@ -9858,10 +9558,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>A session represents a conversation between a Dialogflow agent and an end-user. You can create special
     /// entities, called session entities, during a session. Session entities can extend or replace custom entity types
     /// and only exist during the session that they were created for. All session data, including session entities, is
-    /// stored by Dialogflow for 20 minutes.
-    ///
-    /// For more information, see the [session entity guide](https://cloud.google.com/dialogflow/docs/entities-
-    /// session).</summary>
+    /// stored by Dialogflow for 20 minutes. For more information, see the [session entity
+    /// guide](https://cloud.google.com/dialogflow/docs/entities-session).</summary>
     public class GoogleCloudDialogflowV2beta1SessionEntityType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The collection of entities associated with this session entity type.</summary>
@@ -9876,10 +9574,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Required. The unique identifier of this session entity type. Format:
         /// `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`.
         /// If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified,
-        /// we assume default '-' user.
-        ///
-        /// `` must be the display name of an existing entity type in the same agent that will be overridden or
-        /// supplemented.</summary>
+        /// we assume default '-' user. `` must be the display name of an existing entity type in the same agent that
+        /// will be overridden or supplemented.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -9919,16 +9615,11 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response message for a webhook call.
-    ///
-    /// This response is validated by the Dialogflow server. If validation fails, an error will be returned in the
-    /// QueryResult.diagnostic_info field. Setting JSON fields to an empty value with the wrong type is a common error.
-    /// To avoid this error:
-    ///
-    /// - Use `""` for empty strings - Use `{}` or `null` for empty objects - Use `[]` or `null` for empty arrays
-    ///
-    /// For more information, see the [Protocol Buffers Language Guide](https://developers.google.com/protocol-
-    /// buffers/docs/proto3#json).</summary>
+    /// <summary>The response message for a webhook call. This response is validated by the Dialogflow server. If
+    /// validation fails, an error will be returned in the QueryResult.diagnostic_info field. Setting JSON fields to an
+    /// empty value with the wrong type is a common error. To avoid this error: - Use `""` for empty strings - Use `{}`
+    /// or `null` for empty objects - Use `[]` or `null` for empty arrays For more information, see the [Protocol
+    /// Buffers Language Guide](https://developers.google.com/protocol-buffers/docs/proto3#json).</summary>
     public class GoogleCloudDialogflowV2beta1WebhookResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on
@@ -10028,9 +9719,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -10040,11 +9731,11 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -10053,11 +9744,9 @@ namespace Google.Apis.Dialogflow.v2.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -10066,9 +9755,8 @@ namespace Google.Apis.Dialogflow.v2.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class GoogleRpcStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10076,8 +9764,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

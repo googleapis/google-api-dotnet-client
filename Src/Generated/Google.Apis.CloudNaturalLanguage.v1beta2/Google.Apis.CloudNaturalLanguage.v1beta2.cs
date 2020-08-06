@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/natural-language/'>Cloud Natural Language API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20200725 (2032)
+ *      <tr><th>API Rev<td>20200801 (2039)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/natural-language/'>
  *              https://cloud.google.com/natural-language/</a>
@@ -923,9 +923,8 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>################################################################ #
-    ///
-    /// Represents the input to API methods.</summary>
+    /// <summary>################################################################ # Represents the input to API
+    /// methods.</summary>
     public class Document : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Indicates how detected boilerplate(e.g. advertisements, copyright declarations, banners) should be
@@ -975,10 +974,9 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mentions")]
         public virtual System.Collections.Generic.IList<EntityMention> Mentions { get; set; } 
 
-        /// <summary>Metadata associated with the entity.
-        ///
-        /// For most entity types, the metadata is a Wikipedia URL (`wikipedia_url`) and Knowledge Graph MID (`mid`), if
-        /// they are available. For the metadata associated with other entity types, see the Type table below.</summary>
+        /// <summary>Metadata associated with the entity. For most entity types, the metadata is a Wikipedia URL
+        /// (`wikipedia_url`) and Knowledge Graph MID (`mid`), if they are available. For the metadata associated with
+        /// other entity types, see the Type table below.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,string> Metadata { get; set; } 
 
@@ -986,11 +984,9 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The salience score associated with the entity in the [0, 1.0] range.
-        ///
-        /// The salience score for an entity provides information about the importance or centrality of that entity to
-        /// the entire document text. Scores closer to 0 are less salient, while scores closer to 1.0 are highly
-        /// salient.</summary>
+        /// <summary>The salience score associated with the entity in the [0, 1.0] range. The salience score for an
+        /// entity provides information about the importance or centrality of that entity to the entire document text.
+        /// Scores closer to 0 are less salient, while scores closer to 1.0 are highly salient.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salience")]
         public virtual System.Nullable<float> Salience { get; set; } 
 
@@ -1149,9 +1145,8 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1159,8 +1154,8 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

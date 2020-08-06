@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>Security Command Center API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20200727 (2034)
+ *      <tr><th>API Rev<td>20200731 (2038)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview</a>
@@ -368,7 +368,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
             }
 
 
-            /// <summary>Filters an organization's assets and  groups them by their specified properties.</summary>
+            /// <summary>Filters an organization's assets and groups them by their specified properties.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. Name of the organization to groupBy. Its format is
             /// "organizations/[organization_id]".</param>
@@ -377,7 +377,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 return new GroupRequest(service, body, parent);
             }
 
-            /// <summary>Filters an organization's assets and  groups them by their specified properties.</summary>
+            /// <summary>Filters an organization's assets and groups them by their specified properties.</summary>
             public class GroupRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.GroupAssetsResponse>
             {
                 /// <summary>Constructs a new Group request.</summary>
@@ -466,21 +466,16 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 /// <summary>When compare_duration is set, the ListAssetsResult's "state_change" attribute is updated to
                 /// indicate whether the asset was added, removed, or remained present during the compare_duration
                 /// period of time that precedes the read_time. This is the time between (read_time - compare_duration)
-                /// and read_time.
-                ///
-                /// The state_change value is derived based on the presence of the asset at the two points in time.
-                /// Intermediate state changes between the two times don't affect the result. For example, the results
-                /// aren't affected if the asset is removed and re-created again.
-                ///
-                /// Possible "state_change" values when compare_duration is specified:
-                ///
-                /// * "ADDED":   indicates that the asset was not present at the start of compare_duration, but present
-                /// at read_time. * "REMOVED": indicates that the asset was present at the start of compare_duration,
-                /// but not present at read_time. * "ACTIVE":  indicates that the asset was present at both the start
-                /// and the end of the time period defined by compare_duration and read_time.
-                ///
-                /// If compare_duration is not specified, then the only possible state_change is "UNUSED",  which will
-                /// be the state_change set for all assets present at read_time.</summary>
+                /// and read_time. The state_change value is derived based on the presence of the asset at the two
+                /// points in time. Intermediate state changes between the two times don't affect the result. For
+                /// example, the results aren't affected if the asset is removed and re-created again. Possible
+                /// "state_change" values when compare_duration is specified: * "ADDED": indicates that the asset was
+                /// not present at the start of compare_duration, but present at read_time. * "REMOVED": indicates that
+                /// the asset was present at the start of compare_duration, but not present at read_time. * "ACTIVE":
+                /// indicates that the asset was present at both the start and the end of the time period defined by
+                /// compare_duration and read_time. If compare_duration is not specified, then the only possible
+                /// state_change is "UNUSED", which will be the state_change set for all assets present at
+                /// read_time.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("compareDuration", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object CompareDuration { get; set; }
 
@@ -491,36 +486,17 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
 
                 /// <summary>Expression that defines the filter to apply across assets. The expression is a list of zero
                 /// or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and
-                /// `OR` has higher precedence than `AND`.
-                ///
-                /// Restrictions have the form `  ` and may have a `-` character in front of them to indicate negation.
-                /// The fields map to those defined in the Asset resource. Examples include:
-                ///
-                /// * name * security_center_properties.resource_name * resource_properties.a_property *
-                /// security_marks.marks.marka
-                ///
-                /// The supported operators are:
-                ///
-                /// * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring
-                /// matching, for strings.
-                ///
-                /// The supported value types are:
-                ///
-                /// * string literals in quotes. * integer literals without quotes. * boolean literals `true` and
-                /// `false` without quotes.
-                ///
-                /// The following are the allowed field and operator combinations:
-                ///
-                /// * name: `=` * update_time: `=`, `>`, `<`, `>=`, `<=`
-                ///
-                /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `update_time =
-                /// "2019-06-10T16:07:18-07:00"` `update_time = 1560208038000`
-                ///
-                /// * create_time: `=`, `>`, `<`, `>=`, `<=`
-                ///
-                /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `create_time =
-                /// "2019-06-10T16:07:18-07:00"` `create_time = 1560208038000`
-                ///
+                /// `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character
+                /// in front of them to indicate negation. The fields map to those defined in the Asset resource.
+                /// Examples include: * name * security_center_properties.resource_name * resource_properties.a_property
+                /// * security_marks.marks.marka The supported operators are: * `=` for all value types. * `>`, `<`,
+                /// `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value
+                /// types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true`
+                /// and `false` without quotes. The following are the allowed field and operator combinations: * name:
+                /// `=` * update_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should be milliseconds since epoch or an
+                /// RFC3339 string. Examples: `update_time = "2019-06-10T16:07:18-07:00"` `update_time = 1560208038000`
+                /// * create_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should be milliseconds since epoch or an
+                /// RFC3339 string. Examples: `create_time = "2019-06-10T16:07:18-07:00"` `create_time = 1560208038000`
                 /// * iam_policy.policy_blob: `=`, `:` * resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=` *
                 /// security_marks.marks: `=`, `:` * security_center_properties.resource_name: `=`, `:` *
                 /// security_center_properties.resource_display_name: `=`, `:` *
@@ -528,15 +504,10 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 /// `=`, `:` * security_center_properties.resource_parent_display_name: `=`, `:` *
                 /// security_center_properties.resource_project: `=`, `:` *
                 /// security_center_properties.resource_project_display_name: `=`, `:` *
-                /// security_center_properties.resource_owners: `=`, `:`
-                ///
-                /// For example, `resource_properties.size = 100` is a valid filter string.
-                ///
-                /// Use a partial match on the empty string to filter based on a property existing:
-                /// `resource_properties.my_property : ""`
-                ///
-                /// Use a negated partial match on the empty string to filter based on a property not existing:
-                /// `-resource_properties.my_property : ""`</summary>
+                /// security_center_properties.resource_owners: `=`, `:` For example, `resource_properties.size = 100`
+                /// is a valid filter string. Use a partial match on the empty string to filter based on a property
+                /// existing: `resource_properties.my_property : ""` Use a negated partial match on the empty string to
+                /// filter based on a property not existing: `-resource_properties.my_property : ""`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -545,13 +516,12 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 /// "name,resource_properties.a_property". The default sorting order is ascending. To specify descending
                 /// order for a field, a suffix " desc" should be appended to the field name. For example: "name
                 /// desc,resource_properties.a_property". Redundant space characters in the syntax are insignificant.
-                /// "name desc,resource_properties.a_property" and " name     desc  ,   resource_properties.a_property
-                /// " are equivalent.
-                ///
-                /// The following fields are supported: name update_time resource_properties security_marks.marks
-                /// security_center_properties.resource_name security_center_properties.resource_display_name
-                /// security_center_properties.resource_parent security_center_properties.resource_parent_display_name
-                /// security_center_properties.resource_project security_center_properties.resource_project_display_name
+                /// "name desc,resource_properties.a_property" and " name desc , resource_properties.a_property " are
+                /// equivalent. The following fields are supported: name update_time resource_properties
+                /// security_marks.marks security_center_properties.resource_name
+                /// security_center_properties.resource_display_name security_center_properties.resource_parent
+                /// security_center_properties.resource_parent_display_name security_center_properties.resource_project
+                /// security_center_properties.resource_project_display_name
                 /// security_center_properties.resource_type</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
@@ -672,10 +642,9 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
 
             }
 
-            /// <summary>Runs asset discovery. The discovery is tracked with a long-running operation.
-            ///
-            /// // This API can only be called with limited frequency for an organization. If it is called too
-            /// frequently the caller will receive a TOO_MANY_REQUESTS error.</summary>
+            /// <summary>Runs asset discovery. The discovery is tracked with a long-running operation. // This API can
+            /// only be called with limited frequency for an organization. If it is called too frequently the caller
+            /// will receive a TOO_MANY_REQUESTS error.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. Name of the organization to run asset discovery for. Its format is
             /// "organizations/[organization_id]".</param>
@@ -684,10 +653,9 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 return new RunDiscoveryRequest(service, body, parent);
             }
 
-            /// <summary>Runs asset discovery. The discovery is tracked with a long-running operation.
-            ///
-            /// // This API can only be called with limited frequency for an organization. If it is called too
-            /// frequently the caller will receive a TOO_MANY_REQUESTS error.</summary>
+            /// <summary>Runs asset discovery. The discovery is tracked with a long-running operation. // This API can
+            /// only be called with limited frequency for an organization. If it is called too frequently the caller
+            /// will receive a TOO_MANY_REQUESTS error.</summary>
             public class RunDiscoveryRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new RunDiscovery request.</summary>
@@ -748,9 +716,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
 
             }
 
-            /// <summary>
-            ///
-            /// Updates security marks.</summary>
+            /// <summary> Updates security marks.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The relative resource name of the SecurityMarks. See:
             /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples:
@@ -761,9 +727,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 return new UpdateSecurityMarksRequest(service, body, name);
             }
 
-            /// <summary>
-            ///
-            /// Updates security marks.</summary>
+            /// <summary> Updates security marks.</summary>
             public class UpdateSecurityMarksRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.GoogleCloudSecuritycenterV1p1beta1SecurityMarks>
             {
                 /// <summary>Constructs a new UpdateSecurityMarks request.</summary>
@@ -784,15 +748,14 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>The time at which the updated SecurityMarks take effect. If not set uses current server
-                /// time.  Updates will be applied to the SecurityMarks that are active immediately preceding this
+                /// time. Updates will be applied to the SecurityMarks that are active immediately preceding this
                 /// time.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object StartTime { get; set; }
 
-                /// <summary>The FieldMask to use when updating the security marks resource.
-                ///
-                /// The field mask must not contain duplicate fields. If empty or set to "marks", all marks will be
-                /// replaced.  Individual marks can be updated using "marks.".</summary>
+                /// <summary>The FieldMask to use when updating the security marks resource. The field mask must not
+                /// contain duplicate fields. If empty or set to "marks", all marks will be replaced. Individual marks
+                /// can be updated using "marks.".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -1212,9 +1175,8 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The FieldMask to use when updating the notification config.
-                ///
-                /// If empty all mutable fields will be updated.</summary>
+                /// <summary>The FieldMask to use when updating the notification config. If empty all mutable fields
+                /// will be updated.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -1294,9 +1256,9 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
             }
 
 
-            /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort
-            /// to cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it
-            /// returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to
+            /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+            /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it
+            /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
             /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
             /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
             /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
@@ -1306,9 +1268,9 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 return new CancelRequest(service, name);
             }
 
-            /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort
-            /// to cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it
-            /// returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to
+            /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+            /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it
+            /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
             /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
             /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
             /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
@@ -1428,7 +1390,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
 
             }
 
-            /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+            /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
             /// operation result at intervals as recommended by the API service.</summary>
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
@@ -1436,7 +1398,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+            /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
             /// operation result at intervals as recommended by the API service.</summary>
             public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.Operation>
             {
@@ -1491,13 +1453,12 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
             }
 
             /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support
-            /// this method, it returns `UNIMPLEMENTED`.
-            ///
-            /// NOTE: the `name` binding allows API services to override the binding to use different resource name
-            /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
-            /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
-            /// name includes the operations collection id, however overriding users must ensure the name binding is the
-            /// parent resource, without the operations collection id.</summary>
+            /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
+            /// binding to use different resource name schemes, such as `users/operations`. To override the binding, API
+            /// services can add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For
+            /// backwards compatibility, the default name includes the operations collection id, however overriding
+            /// users must ensure the name binding is the parent resource, without the operations collection
+            /// id.</summary>
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
@@ -1505,13 +1466,12 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
             }
 
             /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support
-            /// this method, it returns `UNIMPLEMENTED`.
-            ///
-            /// NOTE: the `name` binding allows API services to override the binding to use different resource name
-            /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
-            /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
-            /// name includes the operations collection id, however overriding users must ensure the name binding is the
-            /// parent resource, without the operations collection id.</summary>
+            /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
+            /// binding to use different resource name schemes, such as `users/operations`. To override the binding, API
+            /// services can add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For
+            /// backwards compatibility, the default name includes the operations collection id, however overriding
+            /// users must ensure the name binding is the parent resource, without the operations collection
+            /// id.</summary>
             public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.ListOperationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1736,9 +1696,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
 
                 }
 
-                /// <summary>Filters an organization or source's findings and  groups them by their specified
-                /// properties.
-                ///
+                /// <summary>Filters an organization or source's findings and groups them by their specified properties.
                 /// To group across all sources provide a `-` as the source id. Example:
                 /// /v1p1beta1/organizations/{organization_id}/sources/-/findings</summary>
                 /// <param name="body">The body of the request.</param>
@@ -1750,9 +1708,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                     return new GroupRequest(service, body, parent);
                 }
 
-                /// <summary>Filters an organization or source's findings and  groups them by their specified
-                /// properties.
-                ///
+                /// <summary>Filters an organization or source's findings and groups them by their specified properties.
                 /// To group across all sources provide a `-` as the source id. Example:
                 /// /v1p1beta1/organizations/{organization_id}/sources/-/findings</summary>
                 public class GroupRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.GroupFindingsResponse>
@@ -1816,10 +1772,8 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
 
                 }
 
-                /// <summary>Lists an organization or source's findings.
-                ///
-                /// To list across all sources provide a `-` as the source id. Example:
-                /// /v1p1beta1/organizations/{organization_id}/sources/-/findings</summary>
+                /// <summary>Lists an organization or source's findings. To list across all sources provide a `-` as the
+                /// source id. Example: /v1p1beta1/organizations/{organization_id}/sources/-/findings</summary>
                 /// <param name="parent">Required. Name of the source the findings belong to. Its format is
                 /// "organizations/[organization_id]/sources/[source_id]". To list across all sources provide a source_id of `-`. For
                 /// example: organizations/{organization_id}/sources/-</param>
@@ -1828,10 +1782,8 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists an organization or source's findings.
-                ///
-                /// To list across all sources provide a `-` as the source id. Example:
-                /// /v1p1beta1/organizations/{organization_id}/sources/-/findings</summary>
+                /// <summary>Lists an organization or source's findings. To list across all sources provide a `-` as the
+                /// source id. Example: /v1p1beta1/organizations/{organization_id}/sources/-/findings</summary>
                 public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.ListFindingsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1853,24 +1805,18 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                     /// updated to indicate whether the finding had its state changed, the finding's state remained
                     /// unchanged, or if the finding was added in any state during the compare_duration period of time
                     /// that precedes the read_time. This is the time between (read_time - compare_duration) and
-                    /// read_time.
-                    ///
-                    /// The state_change value is derived based on the presence and state of the finding at the two
-                    /// points in time. Intermediate state changes between the two times don't affect the result. For
-                    /// example, the results aren't affected if the finding is made inactive and then active again.
-                    ///
-                    /// Possible "state_change" values when compare_duration is specified:
-                    ///
-                    /// * "CHANGED":   indicates that the finding was present and matched the given filter at the start
-                    /// of compare_duration, but changed its state at read_time. * "UNCHANGED": indicates that the
-                    /// finding was present and matched the given filter at the start of compare_duration and did not
-                    /// change state at read_time. * "ADDED":     indicates that the finding did not match the given
-                    /// filter or was not present at the start of compare_duration, but was present at read_time. *
-                    /// "REMOVED":   indicates that the finding was present and matched the filter at the start of
-                    /// compare_duration, but did not match the filter at read_time.
-                    ///
-                    /// If compare_duration is not specified, then the only possible state_change is "UNUSED", which
-                    /// will be the state_change set for all findings present at read_time.</summary>
+                    /// read_time. The state_change value is derived based on the presence and state of the finding at
+                    /// the two points in time. Intermediate state changes between the two times don't affect the
+                    /// result. For example, the results aren't affected if the finding is made inactive and then active
+                    /// again. Possible "state_change" values when compare_duration is specified: * "CHANGED": indicates
+                    /// that the finding was present and matched the given filter at the start of compare_duration, but
+                    /// changed its state at read_time. * "UNCHANGED": indicates that the finding was present and
+                    /// matched the given filter at the start of compare_duration and did not change state at read_time.
+                    /// * "ADDED": indicates that the finding did not match the given filter or was not present at the
+                    /// start of compare_duration, but was present at read_time. * "REMOVED": indicates that the finding
+                    /// was present and matched the filter at the start of compare_duration, but did not match the
+                    /// filter at read_time. If compare_duration is not specified, then the only possible state_change
+                    /// is "UNUSED", which will be the state_change set for all findings present at read_time.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("compareDuration", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object CompareDuration { get; set; }
 
@@ -1881,40 +1827,20 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
 
                     /// <summary>Expression that defines the filter to apply across findings. The expression is a list
                     /// of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are
-                    /// supported, and `OR` has higher precedence than `AND`.
-                    ///
-                    /// Restrictions have the form `  ` and may have a `-` character in front of them to indicate
-                    /// negation. Examples include:
-                    ///
-                    /// * name * source_properties.a_property * security_marks.marks.marka
-                    ///
-                    /// The supported operators are:
-                    ///
-                    /// * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring
-                    /// matching, for strings.
-                    ///
-                    /// The supported value types are:
-                    ///
-                    /// * string literals in quotes. * integer literals without quotes. * boolean literals `true` and
-                    /// `false` without quotes.
-                    ///
-                    /// The following field and operator combinations are supported:
-                    ///
-                    /// name: `=` parent: `=`, `:` resource_name: `=`, `:` state: `=`, `:` category: `=`, `:`
-                    /// external_uri: `=`, `:` event_time: `=`, `>`, `<`, `>=`, `<=`
-                    ///
-                    /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time =
-                    /// "2019-06-10T16:07:18-07:00"` `event_time = 1560208038000`
-                    ///
-                    /// security_marks.marks: `=`, `:` source_properties: `=`, `:`, `>`, `<`, `>=`, `<=`
-                    ///
-                    /// For example, `source_properties.size = 100` is a valid filter string.
-                    ///
-                    /// Use a partial match on the empty string to filter based on a property existing:
-                    /// `source_properties.my_property : ""`
-                    ///
-                    /// Use a negated partial match on the empty string to filter based on a property not existing:
-                    /// `-source_properties.my_property : ""`</summary>
+                    /// supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may
+                    /// have a `-` character in front of them to indicate negation. Examples include: * name *
+                    /// source_properties.a_property * security_marks.marks.marka The supported operators are: * `=` for
+                    /// all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching,
+                    /// for strings. The supported value types are: * string literals in quotes. * integer literals
+                    /// without quotes. * boolean literals `true` and `false` without quotes. The following field and
+                    /// operator combinations are supported: name: `=` parent: `=`, `:` resource_name: `=`, `:` state:
+                    /// `=`, `:` category: `=`, `:` external_uri: `=`, `:` event_time: `=`, `>`, `<`, `>=`, `<=` Usage:
+                    /// This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time =
+                    /// "2019-06-10T16:07:18-07:00"` `event_time = 1560208038000` security_marks.marks: `=`, `:`
+                    /// source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `source_properties.size = 100` is
+                    /// a valid filter string. Use a partial match on the empty string to filter based on a property
+                    /// existing: `source_properties.my_property : ""` Use a negated partial match on the empty string
+                    /// to filter based on a property not existing: `-source_properties.my_property : ""`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -1923,11 +1849,9 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                     /// "name,resource_properties.a_property". The default sorting order is ascending. To specify
                     /// descending order for a field, a suffix " desc" should be appended to the field name. For
                     /// example: "name desc,source_properties.a_property". Redundant space characters in the syntax are
-                    /// insignificant. "name desc,source_properties.a_property" and " name     desc  ,
-                    /// source_properties.a_property  " are equivalent.
-                    ///
-                    /// The following fields are supported: name parent state category resource_name event_time
-                    /// source_properties security_marks.marks</summary>
+                    /// insignificant. "name desc,source_properties.a_property" and " name desc ,
+                    /// source_properties.a_property " are equivalent. The following fields are supported: name parent
+                    /// state category resource_name event_time source_properties security_marks.marks</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -2080,11 +2004,9 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>The FieldMask to use when updating the finding resource. This field should not be
-                    /// specified when creating a finding.
-                    ///
-                    /// When updating a finding, an empty mask is treated as updating all mutable fields and replacing
-                    /// source_properties.  Individual source_properties can be added/updated by using
-                    /// "source_properties." in the field mask.</summary>
+                    /// specified when creating a finding. When updating a finding, an empty mask is treated as updating
+                    /// all mutable fields and replacing source_properties. Individual source_properties can be
+                    /// added/updated by using "source_properties." in the field mask.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -2212,9 +2134,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
 
                 }
 
-                /// <summary>
-                ///
-                /// Updates security marks.</summary>
+                /// <summary> Updates security marks.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The relative resource name of the SecurityMarks. See:
                 /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples:
@@ -2225,9 +2145,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                     return new UpdateSecurityMarksRequest(service, body, name);
                 }
 
-                /// <summary>
-                ///
-                /// Updates security marks.</summary>
+                /// <summary> Updates security marks.</summary>
                 public class UpdateSecurityMarksRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.GoogleCloudSecuritycenterV1p1beta1SecurityMarks>
                 {
                     /// <summary>Constructs a new UpdateSecurityMarks request.</summary>
@@ -2248,15 +2166,14 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>The time at which the updated SecurityMarks take effect. If not set uses current server
-                    /// time.  Updates will be applied to the SecurityMarks that are active immediately preceding this
+                    /// time. Updates will be applied to the SecurityMarks that are active immediately preceding this
                     /// time.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object StartTime { get; set; }
 
-                    /// <summary>The FieldMask to use when updating the security marks resource.
-                    ///
-                    /// The field mask must not contain duplicate fields. If empty or set to "marks", all marks will be
-                    /// replaced.  Individual marks can be updated using "marks.".</summary>
+                    /// <summary>The FieldMask to use when updating the security marks resource. The field mask must not
+                    /// contain duplicate fields. If empty or set to "marks", all marks will be replaced. Individual
+                    /// marks can be updated using "marks.".</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -2643,9 +2560,8 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The FieldMask to use when updating the source resource.
-                ///
-                /// If empty all mutable fields will be updated.</summary>
+                /// <summary>The FieldMask to use when updating the source resource. If empty all mutable fields will be
+                /// updated.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -2933,9 +2849,8 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The FieldMask to use when updating the settings resource.
-            ///
-            /// If empty all mutable fields will be updated.</summary>
+            /// <summary>The FieldMask to use when updating the settings resource. If empty all mutable fields will be
+            /// updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -3013,21 +2928,15 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
 
     /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
     /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
-    /// AuditLogConfigs.
-    ///
-    /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
-    /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
-    /// AuditLogConfig are exempted.
-    ///
-    /// Example Policy with multiple AuditConfigs:
-    ///
-    /// { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two
+    /// AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the
+    /// exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: {
+    /// "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
     /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ]
     /// }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, {
-    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
-    ///
-    /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
-    /// jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.</summary>
+    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this
+    /// policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ
+    /// logging, and aliya@example.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
@@ -3043,11 +2952,8 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Provides the configuration for logging a type of permissions. Example:
-    ///
-    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
-    /// "log_type": "DATA_WRITE" } ] }
-    ///
+    /// <summary>Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ {
+    /// "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] }
     /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -3068,53 +2974,33 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding.
-        ///
-        /// If the condition evaluates to `true`, then this binding applies to the current request.
-        ///
-        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
-        /// different role binding might grant the same role to one or more of the members in this binding.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
+        /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
+        /// apply to the current request. However, a different role binding might grant the same role to one or more of
+        /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values:
-        ///
-        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
-        /// account.
-        ///
-        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
-        /// account or a service account.
-        ///
-        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@example.com` .
-        ///
-        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
-        /// app@appspot.gserviceaccount.com`.
-        ///
-        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
-        ///
-        /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
-        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
-        ///
-        /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
-        /// a service account that has been recently deleted. For example, `my-other-
+        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
+        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
+        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
+        /// represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An
+        /// email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example, `my-other-
         /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
-        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
-        ///
-        /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
+        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. *
+        /// `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
         /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
         /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
-        /// binding.
-        ///
-        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
-        /// `google.com` or `example.com`.
-        ///
-        /// </summary>
+        /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
+        /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
 
@@ -3128,11 +3014,9 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -3141,29 +3025,15 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
 
     /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
     /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    ///
-    /// Example (Comparison):
-    ///
-    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
-    /// "document.summary.size() < 100"
-    ///
-    /// Example (Equality):
-    ///
-    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
-    /// "document.owner == request.auth.claims.email"
-    ///
-    /// Example (Logic):
-    ///
-    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
-    /// "document.type != 'private' && document.type != 'internal'"
-    ///
-    /// Example (Data Manipulation):
-    ///
+    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
     /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)"
-    ///
-    /// The exact variables and functions that may be referenced within an expression are determined by the service that
-    /// evaluates it. See the service documentation for additional information.</summary>
+    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
+    /// within an expression are determined by the service that evaluates it. See the service documentation for
+    /// additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
@@ -3189,11 +3059,10 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Security Command Center finding.
-    ///
-    /// A finding is a record of assessment data like security, risk, health, or privacy, that is ingested into Security
-    /// Command Center for presentation, notification, analysis, policy testing, and enforcement. For example, a cross-
-    /// site scripting (XSS) vulnerability in an App Engine application is a finding.</summary>
+    /// <summary>Security Command Center finding. A finding is a record of assessment data like security, risk, health,
+    /// or privacy, that is ingested into Security Command Center for presentation, notification, analysis, policy
+    /// testing, and enforcement. For example, a cross-site scripting (XSS) vulnerability in an App Engine application
+    /// is a finding.</summary>
     public class Finding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The additional taxonomy group within findings from a given source. This field is immutable after
@@ -3269,14 +3138,10 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
     /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The policy format version to be returned.
-        ///
-        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
-        ///
-        /// Requests for policies with any conditional bindings must specify version 3. Policies without any conditional
-        /// bindings may specify any valid value or leave the field unset.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// <summary>Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
+        /// specifying an invalid value will be rejected. Requests for policies with any conditional bindings must
+        /// specify version 3. Policies without any conditional bindings may specify any valid value or leave the field
+        /// unset. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
@@ -3362,11 +3227,10 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Security Command Center representation of a Google Cloud resource.
-    ///
-    /// The Asset is a Security Command Center resource that captures information about a single Google Cloud resource.
-    /// All modifications to an Asset are only within the context of Security Command Center and don't affect the
-    /// referenced Google Cloud resource.</summary>
+    /// <summary>Security Command Center representation of a Google Cloud resource. The Asset is a Security Command
+    /// Center resource that captures information about a single Google Cloud resource. All modifications to an Asset
+    /// are only within the context of Security Command Center and don't affect the referenced Google Cloud
+    /// resource.</summary>
     public class GoogleCloudSecuritycenterV1p1beta1Asset : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The time at which the asset was created in Security Command Center.</summary>
@@ -3408,11 +3272,9 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Security Command Center finding.
-    ///
-    /// A finding is a record of assessment data (security, risk, health or privacy) ingested into Security Command
-    /// Center for presentation, notification, analysis, policy testing, and enforcement. For example, an XSS
-    /// vulnerability in an App Engine application is a finding.</summary>
+    /// <summary>Security Command Center finding. A finding is a record of assessment data (security, risk, health or
+    /// privacy) ingested into Security Command Center for presentation, notification, analysis, policy testing, and
+    /// enforcement. For example, an XSS vulnerability in an App Engine application is a finding.</summary>
     public class GoogleCloudSecuritycenterV1p1beta1Finding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The additional taxonomy group within findings from a given source. This field is immutable after
@@ -3605,7 +3467,6 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
     public class GoogleCloudSecuritycenterV1p1beta1SecurityMarks : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Mutable user specified security marks belonging to the parent resource. Constraints are as follows:
-        ///
         /// * Keys and values are treated as case insensitive * Keys must be between 1 - 256 characters (inclusive) *
         /// Keys must be letters, numbers, underscores, or dashes * Values have leading and trailing whitespace trimmed,
         /// remaining characters must be between 1 - 4096 characters (inclusive)</summary>
@@ -3644,90 +3505,53 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
     {
         /// <summary>When compare_duration is set, the GroupResult's "state_change" property is updated to indicate
         /// whether the asset was added, removed, or remained present during the compare_duration period of time that
-        /// precedes the read_time. This is the time between (read_time - compare_duration) and read_time.
-        ///
-        /// The state change value is derived based on the presence of the asset at the two points in time. Intermediate
-        /// state changes between the two times don't affect the result. For example, the results aren't affected if the
-        /// asset is removed and re-created again.
-        ///
-        /// Possible "state_change" values when compare_duration is specified:
-        ///
-        /// * "ADDED":   indicates that the asset was not present at the start of compare_duration, but present at
+        /// precedes the read_time. This is the time between (read_time - compare_duration) and read_time. The state
+        /// change value is derived based on the presence of the asset at the two points in time. Intermediate state
+        /// changes between the two times don't affect the result. For example, the results aren't affected if the asset
+        /// is removed and re-created again. Possible "state_change" values when compare_duration is specified: *
+        /// "ADDED": indicates that the asset was not present at the start of compare_duration, but present at
         /// reference_time. * "REMOVED": indicates that the asset was present at the start of compare_duration, but not
-        /// present at reference_time. * "ACTIVE":  indicates that the asset was present at both the start and the end
-        /// of the time period defined by compare_duration and reference_time.
-        ///
-        /// If compare_duration is not specified, then the only possible state_change is "UNUSED", which will be the
-        /// state_change set for all assets present at read_time.
-        ///
-        /// If this field is set then `state_change` must be a specified field in `group_by`.</summary>
+        /// present at reference_time. * "ACTIVE": indicates that the asset was present at both the start and the end of
+        /// the time period defined by compare_duration and reference_time. If compare_duration is not specified, then
+        /// the only possible state_change is "UNUSED", which will be the state_change set for all assets present at
+        /// read_time. If this field is set then `state_change` must be a specified field in `group_by`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compareDuration")]
         public virtual object CompareDuration { get; set; } 
 
         /// <summary>Expression that defines the filter to apply across assets. The expression is a list of zero or more
         /// restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
-        /// precedence than `AND`.
-        ///
-        /// Restrictions have the form `  ` and may have a `-` character in front of them to indicate negation. The
-        /// fields map to those defined in the Asset resource. Examples include:
-        ///
-        /// * name * security_center_properties.resource_name * resource_properties.a_property *
-        /// security_marks.marks.marka
-        ///
-        /// The supported operators are:
-        ///
-        /// * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for
-        /// strings.
-        ///
-        /// The supported value types are:
-        ///
-        /// * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false`
-        /// without quotes.
-        ///
-        /// The following field and operator combinations are supported:
-        ///
-        /// * name: `=` * update_time: `=`, `>`, `<`, `>=`, `<=`
-        ///
-        /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `update_time =
-        /// "2019-06-10T16:07:18-07:00"` `update_time = 1560208038000`
-        ///
-        /// * create_time: `=`, `>`, `<`, `>=`, `<=`
-        ///
-        /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `create_time =
-        /// "2019-06-10T16:07:18-07:00"` `create_time = 1560208038000`
-        ///
-        /// * iam_policy.policy_blob: `=`, `:` * resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=` *
-        /// security_marks.marks: `=`, `:` * security_center_properties.resource_name: `=`, `:` *
-        /// security_center_properties.resource_name_display_name: `=`, `:` * security_center_properties.resource_type:
-        /// `=`, `:` * security_center_properties.resource_parent: `=`, `:` *
-        /// security_center_properties.resource_parent_display_name: `=`, `:` *
+        /// precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to
+        /// indicate negation. The fields map to those defined in the Asset resource. Examples include: * name *
+        /// security_center_properties.resource_name * resource_properties.a_property * security_marks.marks.marka The
+        /// supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`,
+        /// meaning substring matching, for strings. The supported value types are: * string literals in quotes. *
+        /// integer literals without quotes. * boolean literals `true` and `false` without quotes. The following field
+        /// and operator combinations are supported: * name: `=` * update_time: `=`, `>`, `<`, `>=`, `<=` Usage: This
+        /// should be milliseconds since epoch or an RFC3339 string. Examples: `update_time =
+        /// "2019-06-10T16:07:18-07:00"` `update_time = 1560208038000` * create_time: `=`, `>`, `<`, `>=`, `<=` Usage:
+        /// This should be milliseconds since epoch or an RFC3339 string. Examples: `create_time =
+        /// "2019-06-10T16:07:18-07:00"` `create_time = 1560208038000` * iam_policy.policy_blob: `=`, `:` *
+        /// resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=` * security_marks.marks: `=`, `:` *
+        /// security_center_properties.resource_name: `=`, `:` * security_center_properties.resource_name_display_name:
+        /// `=`, `:` * security_center_properties.resource_type: `=`, `:` * security_center_properties.resource_parent:
+        /// `=`, `:` * security_center_properties.resource_parent_display_name: `=`, `:` *
         /// security_center_properties.resource_project: `=`, `:` *
         /// security_center_properties.resource_project_display_name: `=`, `:` *
-        /// security_center_properties.resource_owners: `=`, `:`
-        ///
-        /// For example, `resource_properties.size = 100` is a valid filter string.
-        ///
-        /// Use a partial match on the empty string to filter based on a property existing:
-        /// `resource_properties.my_property : ""`
-        ///
-        /// Use a negated partial match on the empty string to filter based on a property not existing:
-        /// `-resource_properties.my_property : ""`</summary>
+        /// security_center_properties.resource_owners: `=`, `:` For example, `resource_properties.size = 100` is a
+        /// valid filter string. Use a partial match on the empty string to filter based on a property existing:
+        /// `resource_properties.my_property : ""` Use a negated partial match on the empty string to filter based on a
+        /// property not existing: `-resource_properties.my_property : ""`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
         /// <summary>Required. Expression that defines what assets fields to use for grouping. The string value should
         /// follow SQL syntax: comma separated list of fields. For example:
-        /// "security_center_properties.resource_project,security_center_properties.project".
-        ///
-        /// The following fields are supported when compare_duration is not set:
-        ///
-        /// * security_center_properties.resource_project * security_center_properties.resource_project_display_name *
-        /// security_center_properties.resource_type * security_center_properties.resource_parent *
-        /// security_center_properties.resource_parent_display_name
-        ///
-        /// The following fields are supported when compare_duration is set:
-        ///
-        /// * security_center_properties.resource_type * security_center_properties.resource_project_display_name *
+        /// "security_center_properties.resource_project,security_center_properties.project". The following fields are
+        /// supported when compare_duration is not set: * security_center_properties.resource_project *
+        /// security_center_properties.resource_project_display_name * security_center_properties.resource_type *
+        /// security_center_properties.resource_parent * security_center_properties.resource_parent_display_name The
+        /// following fields are supported when compare_duration is set: * security_center_properties.resource_type *
+        /// security_center_properties.resource_project_display_name *
         /// security_center_properties.resource_parent_display_name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupBy")]
         public virtual string GroupBy { get; set; } 
@@ -3782,78 +3606,43 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
         /// <summary>When compare_duration is set, the GroupResult's "state_change" attribute is updated to indicate
         /// whether the finding had its state changed, the finding's state remained unchanged, or if the finding was
         /// added during the compare_duration period of time that precedes the read_time. This is the time between
-        /// (read_time - compare_duration) and read_time.
-        ///
-        /// The state_change value is derived based on the presence and state of the finding at the two points in time.
-        /// Intermediate state changes between the two times don't affect the result. For example, the results aren't
-        /// affected if the finding is made inactive and then active again.
-        ///
-        /// Possible "state_change" values when compare_duration is specified:
-        ///
-        /// * "CHANGED":   indicates that the finding was present and matched the given filter at the start of
-        /// compare_duration, but changed its state at read_time. * "UNCHANGED": indicates that the finding was present
-        /// and matched the given filter at the start of compare_duration and did not change state at read_time. *
-        /// "ADDED":     indicates that the finding did not match the given filter or was not present at the start of
-        /// compare_duration, but was present at read_time. * "REMOVED":   indicates that the finding was present and
-        /// matched the filter at the start of compare_duration, but did not match the filter at read_time.
-        ///
-        /// If compare_duration is not specified, then the only possible state_change is "UNUSED",  which will be the
-        /// state_change set for all findings present at read_time.
-        ///
-        /// If this field is set then `state_change` must be a specified field in `group_by`.</summary>
+        /// (read_time - compare_duration) and read_time. The state_change value is derived based on the presence and
+        /// state of the finding at the two points in time. Intermediate state changes between the two times don't
+        /// affect the result. For example, the results aren't affected if the finding is made inactive and then active
+        /// again. Possible "state_change" values when compare_duration is specified: * "CHANGED": indicates that the
+        /// finding was present and matched the given filter at the start of compare_duration, but changed its state at
+        /// read_time. * "UNCHANGED": indicates that the finding was present and matched the given filter at the start
+        /// of compare_duration and did not change state at read_time. * "ADDED": indicates that the finding did not
+        /// match the given filter or was not present at the start of compare_duration, but was present at read_time. *
+        /// "REMOVED": indicates that the finding was present and matched the filter at the start of compare_duration,
+        /// but did not match the filter at read_time. If compare_duration is not specified, then the only possible
+        /// state_change is "UNUSED", which will be the state_change set for all findings present at read_time. If this
+        /// field is set then `state_change` must be a specified field in `group_by`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compareDuration")]
         public virtual object CompareDuration { get; set; } 
 
         /// <summary>Expression that defines the filter to apply across findings. The expression is a list of one or
         /// more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has
-        /// higher precedence than `AND`.
-        ///
-        /// Restrictions have the form `  ` and may have a `-` character in front of them to indicate negation. Examples
-        /// include:
-        ///
-        /// * name * source_properties.a_property * security_marks.marks.marka
-        ///
-        /// The supported operators are:
-        ///
-        /// * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for
-        /// strings.
-        ///
-        /// The supported value types are:
-        ///
-        /// * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false`
-        /// without quotes.
-        ///
-        /// The following field and operator combinations are supported:
-        ///
-        /// * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category: `=`, `:` *
-        /// external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=`
-        ///
-        /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time =
-        /// "2019-06-10T16:07:18-07:00"` `event_time = 1560208038000`
-        ///
-        /// * security_marks.marks: `=`, `:` * source_properties: `=`, `:`, `>`, `<`, `>=`, `<=`
-        ///
-        /// For example, `source_properties.size = 100` is a valid filter string.
-        ///
-        /// Use a partial match on the empty string to filter based on a property existing:
-        /// `source_properties.my_property : ""`
-        ///
-        /// Use a negated partial match on the empty string to filter based on a property not existing:
-        /// `-source_properties.my_property : ""`</summary>
+        /// higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them
+        /// to indicate negation. Examples include: * name * source_properties.a_property * security_marks.marks.marka
+        /// The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`,
+        /// meaning substring matching, for strings. The supported value types are: * string literals in quotes. *
+        /// integer literals without quotes. * boolean literals `true` and `false` without quotes. The following field
+        /// and operator combinations are supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state:
+        /// `=`, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=` Usage: This
+        /// should be milliseconds since epoch or an RFC3339 string. Examples: `event_time =
+        /// "2019-06-10T16:07:18-07:00"` `event_time = 1560208038000` * security_marks.marks: `=`, `:` *
+        /// source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `source_properties.size = 100` is a valid
+        /// filter string. Use a partial match on the empty string to filter based on a property existing:
+        /// `source_properties.my_property : ""` Use a negated partial match on the empty string to filter based on a
+        /// property not existing: `-source_properties.my_property : ""`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
         /// <summary>Required. Expression that defines what assets fields to use for grouping (including
         /// `state_change`). The string value should follow SQL syntax: comma separated list of fields. For example:
-        /// "parent,resource_name".
-        ///
-        /// The following fields are supported:
-        ///
-        /// * resource_name * category * state * parent
-        ///
-        /// The following fields are supported when compare_duration is set:
-        ///
-        /// * state_change</summary>
+        /// "parent,resource_name". The following fields are supported: * resource_name * category * state * parent The
+        /// following fields are supported when compare_duration is set: * state_change</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupBy")]
         public virtual string GroupBy { get; set; } 
 
@@ -4041,10 +3830,9 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Security Command Center notification configs.
-    ///
-    /// A notification config is a Security Command Center resource that contains the configuration to send
-    /// notifications for create/update events of findings, assets and etc.</summary>
+    /// <summary>Security Command Center notification configs. A notification config is a Security Command Center
+    /// resource that contains the configuration to send notifications for create/update events of findings, assets and
+    /// etc.</summary>
     public class NotificationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The description of the notification config (max of 1024 characters).</summary>
@@ -4091,9 +3879,9 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -4103,11 +3891,11 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -4139,35 +3927,24 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
     }    
 
     /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
-    /// resources.
-    ///
-    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
-    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
-    /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
-    ///
-    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
-    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
-    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
-    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
-    /// /resource-policies).
-    ///
-    /// **JSON example:**
-    ///
-    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
-    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
-    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
-    ///
-    /// **YAML example:**
-    ///
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
-    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
-    /// description: Does not grant access after Sep 2020 expression: request.time <
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
-    ///
-    /// For a description of IAM and its features, see the [IAM
+    /// resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`.
+    /// Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a
+    /// named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some
+    /// types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that
+    /// allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on
+    /// attributes of the request, the resource, or both. To learn which resources support conditions in their IAM
+    /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON
+    /// example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [
+    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
+    /// id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [
+    /// "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access
+    /// after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+    /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com -
+    /// group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+    /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+    /// roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access
+    /// after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version:
+    /// 3 For a description of IAM and its features, see the [IAM
     /// documentation](https://cloud.google.com/iam/docs/).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4184,40 +3961,31 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
-        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
-        ///
-        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
-        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
+        /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
+        /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Specifies the format of the policy.
-        ///
-        /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected.
-        ///
-        /// Any operation that affects conditional role bindings must specify version `3`. This requirement applies to
-        /// the following operations:
-        ///
-        /// * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy
-        /// * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition,
-        /// from a policy that includes conditions
-        ///
+        /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
+        /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
+        /// This requirement applies to the following operations: * Getting a policy that includes a conditional role
+        /// binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy *
+        /// Removing any role binding, with or without a condition, from a policy that includes conditions
         /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
         /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.
-        ///
-        /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any
+        /// conditions, operations on that policy may specify any valid version or leave the field unset. To learn which
+        /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
     }    
 
-    /// <summary>Information related to the Google Cloud resource that is associated with this finding.</summary>
+    /// <summary>Information related to the Google Cloud resource that is associated with this finding.
+    /// LINT.IfChange</summary>
     public class Resource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The full resource name of the resource. See:
@@ -4258,7 +4026,6 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
     public class SecurityMarks : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Mutable user specified security marks belonging to the parent resource. Constraints are as follows:
-        ///
         /// * Keys and values are treated as case insensitive * Keys must be between 1 - 256 characters (inclusive) *
         /// Keys must be letters, numbers, underscores, or dashes * Values have leading and trailing whitespace trimmed,
         /// remaining characters must be between 1 - 4096 characters (inclusive)</summary>
@@ -4301,9 +4068,8 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
         public virtual Policy Policy { get; set; } 
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, the following default mask is used:
-        ///
-        /// `paths: "bindings, etag"`</summary>
+        /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
+        /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 
@@ -4341,9 +4107,8 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4351,8 +4116,8 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -4371,20 +4136,12 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
     {
         /// <summary>Expression that defines the filter to apply across create/update events of assets or findings as
         /// specified by the event type. The expression is a list of zero or more restrictions combined via logical
-        /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`.
-        ///
-        /// Restrictions have the form `  ` and may have a `-` character in front of them to indicate negation. The
-        /// fields map to those defined in the corresponding resource.
-        ///
-        /// The supported operators are:
-        ///
-        /// * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for
-        /// strings.
-        ///
-        /// The supported value types are:
-        ///
-        /// * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false`
-        /// without quotes.</summary>
+        /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions
+        /// have the form ` ` and may have a `-` character in front of them to indicate negation. The fields map to
+        /// those defined in the corresponding resource. The supported operators are: * `=` for all value types. * `>`,
+        /// `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value
+        /// types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and
+        /// `false` without quotes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 

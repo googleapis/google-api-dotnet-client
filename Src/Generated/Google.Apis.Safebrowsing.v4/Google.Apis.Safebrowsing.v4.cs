@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/safe-browsing/'>Safe Browsing API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20200728 (2035)
+ *      <tr><th>API Rev<td>20200801 (2039)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/safe-browsing/'>
  *              https://developers.google.com/safe-browsing/</a>
@@ -969,7 +969,7 @@ namespace Google.Apis.Safebrowsing.v4.Data
         public virtual System.Nullable<int> MaxDatabaseEntries { get; set; } 
 
         /// <summary>The maximum size in number of entries. The update will not contain more entries than this value.
-        /// This should be a power of 2 between 2**10 and 2**20.  If zero, no update size limit is set.</summary>
+        /// This should be a power of 2 between 2**10 and 2**20. If zero, no update size limit is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxUpdateEntries")]
         public virtual System.Nullable<int> MaxUpdateEntries { get; set; } 
 
@@ -987,11 +987,9 @@ namespace Google.Apis.Safebrowsing.v4.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1197,13 +1195,11 @@ namespace Google.Apis.Safebrowsing.v4.Data
 
     /// <summary>The uncompressed threat entries in hash format of a particular prefix length. Hashes can be anywhere
     /// from 4 to 32 bytes in size. A large majority are 4 bytes, but some hashes are lengthened if they collide with
-    /// the hash of a popular URL.
-    ///
-    /// Used for sending ThreatEntrySet to clients that do not support compression, or when sending non-4-byte hashes to
-    /// clients that do support compression.</summary>
+    /// the hash of a popular URL. Used for sending ThreatEntrySet to clients that do not support compression, or when
+    /// sending non-4-byte hashes to clients that do support compression.</summary>
     public class RawHashes : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of bytes for each prefix encoded below.  This field can be anywhere from 4 (shortest
+        /// <summary>The number of bytes for each prefix encoded below. This field can be anywhere from 4 (shortest
         /// prefix) to 32 (full SHA256 hash).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prefixSize")]
         public virtual System.Nullable<int> PrefixSize { get; set; } 

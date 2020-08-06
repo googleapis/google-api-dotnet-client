@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v2alpha1
- *      <tr><th>API Rev<td>20200727 (2034)
+ *      <tr><th>API Rev<td>20200804 (2042)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -365,40 +365,30 @@ namespace Google.Apis.Genomics.v2alpha1
         }
 
 
-        /// <summary>Runs a pipeline.  The returned Operation's metadata field will contain a
-        /// google.genomics.v2alpha1.Metadata object describing the status of the pipeline execution.  The [response]
+        /// <summary>Runs a pipeline. The returned Operation's metadata field will contain a
+        /// google.genomics.v2alpha1.Metadata object describing the status of the pipeline execution. The [response]
         /// field will contain a google.genomics.v2alpha1.RunPipelineResponse object if the pipeline completes
-        /// successfully.
-        ///
-        /// **Note:** Before you can use this method, the Genomics Service Agent must have access to your project. This
-        /// is done automatically when the Cloud Genomics API is first enabled, but if you delete this permission, or if
-        /// you enabled the Cloud Genomics API before the v2alpha1 API launch, you must disable and re-enable the API to
-        /// grant the Genomics Service Agent the required permissions. Authorization requires the following [Google
-        /// IAM](https://cloud.google.com/iam/) permission:
-        ///
-        /// * `genomics.operations.create`
-        ///
-        /// [1]: /genomics/gsa</summary>
+        /// successfully. **Note:** Before you can use this method, the Genomics Service Agent must have access to your
+        /// project. This is done automatically when the Cloud Genomics API is first enabled, but if you delete this
+        /// permission, or if you enabled the Cloud Genomics API before the v2alpha1 API launch, you must disable and
+        /// re-enable the API to grant the Genomics Service Agent the required permissions. Authorization requires the
+        /// following [Google IAM](https://cloud.google.com/iam/) permission: * `genomics.operations.create` [1]:
+        /// /genomics/gsa</summary>
         /// <param name="body">The body of the request.</param>
         public virtual RunRequest Run(Google.Apis.Genomics.v2alpha1.Data.RunPipelineRequest body)
         {
             return new RunRequest(service, body);
         }
 
-        /// <summary>Runs a pipeline.  The returned Operation's metadata field will contain a
-        /// google.genomics.v2alpha1.Metadata object describing the status of the pipeline execution.  The [response]
+        /// <summary>Runs a pipeline. The returned Operation's metadata field will contain a
+        /// google.genomics.v2alpha1.Metadata object describing the status of the pipeline execution. The [response]
         /// field will contain a google.genomics.v2alpha1.RunPipelineResponse object if the pipeline completes
-        /// successfully.
-        ///
-        /// **Note:** Before you can use this method, the Genomics Service Agent must have access to your project. This
-        /// is done automatically when the Cloud Genomics API is first enabled, but if you delete this permission, or if
-        /// you enabled the Cloud Genomics API before the v2alpha1 API launch, you must disable and re-enable the API to
-        /// grant the Genomics Service Agent the required permissions. Authorization requires the following [Google
-        /// IAM](https://cloud.google.com/iam/) permission:
-        ///
-        /// * `genomics.operations.create`
-        ///
-        /// [1]: /genomics/gsa</summary>
+        /// successfully. **Note:** Before you can use this method, the Genomics Service Agent must have access to your
+        /// project. This is done automatically when the Cloud Genomics API is first enabled, but if you delete this
+        /// permission, or if you enabled the Cloud Genomics API before the v2alpha1 API launch, you must disable and
+        /// re-enable the API to grant the Genomics Service Agent the required permissions. Authorization requires the
+        /// following [Google IAM](https://cloud.google.com/iam/) permission: * `genomics.operations.create` [1]:
+        /// /genomics/gsa</summary>
         public class RunRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v2alpha1.Data.Operation>
         {
             /// <summary>Constructs a new Run request.</summary>
@@ -489,9 +479,8 @@ namespace Google.Apis.Genomics.v2alpha1
             /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
             /// cancel the operation, but success is not guaranteed. Clients may use Operations.GetOperation or
             /// Operations.ListOperations to check whether the cancellation succeeded or the operation completed despite
-            /// cancellation. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission
-            ///
-            /// * `genomics.operations.cancel`</summary>
+            /// cancellation. Authorization requires the following [Google IAM](https://cloud.google.com/iam)
+            /// permission: * `genomics.operations.cancel`</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the operation resource to be cancelled.</param>
             public virtual CancelRequest Cancel(Google.Apis.Genomics.v2alpha1.Data.CancelOperationRequest body, string name)
@@ -502,9 +491,8 @@ namespace Google.Apis.Genomics.v2alpha1
             /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
             /// cancel the operation, but success is not guaranteed. Clients may use Operations.GetOperation or
             /// Operations.ListOperations to check whether the cancellation succeeded or the operation completed despite
-            /// cancellation. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission
-            ///
-            /// * `genomics.operations.cancel`</summary>
+            /// cancellation. Authorization requires the following [Google IAM](https://cloud.google.com/iam)
+            /// permission: * `genomics.operations.cancel`</summary>
             public class CancelRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v2alpha1.Data.Empty>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
@@ -566,9 +554,7 @@ namespace Google.Apis.Genomics.v2alpha1
 
             /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
             /// operation result at intervals as recommended by the API service. Authorization requires the following
-            /// [Google IAM](https://cloud.google.com/iam) permission
-            ///
-            /// * `genomics.operations.get`</summary>
+            /// [Google IAM](https://cloud.google.com/iam) permission: * `genomics.operations.get`</summary>
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
@@ -577,9 +563,7 @@ namespace Google.Apis.Genomics.v2alpha1
 
             /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
             /// operation result at intervals as recommended by the API service. Authorization requires the following
-            /// [Google IAM](https://cloud.google.com/iam) permission
-            ///
-            /// * `genomics.operations.get`</summary>
+            /// [Google IAM](https://cloud.google.com/iam) permission: * `genomics.operations.get`</summary>
             public class GetRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v2alpha1.Data.Operation>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -633,9 +617,7 @@ namespace Google.Apis.Genomics.v2alpha1
             }
 
             /// <summary>Lists operations that match the specified filter in the request. Authorization requires the
-            /// following [Google IAM](https://cloud.google.com/iam) permission
-            ///
-            /// * `genomics.operations.list`</summary>
+            /// following [Google IAM](https://cloud.google.com/iam) permission: * `genomics.operations.list`</summary>
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
@@ -643,9 +625,7 @@ namespace Google.Apis.Genomics.v2alpha1
             }
 
             /// <summary>Lists operations that match the specified filter in the request. Authorization requires the
-            /// following [Google IAM](https://cloud.google.com/iam) permission
-            ///
-            /// * `genomics.operations.list`</summary>
+            /// following [Google IAM](https://cloud.google.com/iam) permission: * `genomics.operations.list`</summary>
             public class ListRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v2alpha1.Data.ListOperationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -661,27 +641,20 @@ namespace Google.Apis.Genomics.v2alpha1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>A string for filtering Operations. In v2alpha1, the following filter fields are supported
-                ///
-                /// * createTime The time this job was created * events The set of event (names) that have occurred
-                /// while running the pipeline.  The  operator can be used to determine if a particular event has
-                /// occurred. * error If the pipeline is running, this value is NULL.  Once the pipeline finishes, the
+                /// <summary>A string for filtering Operations. In v2alpha1, the following filter fields are supported:
+                /// * createTime: The time this job was created * events: The set of event (names) that have occurred
+                /// while running the pipeline. The : operator can be used to determine if a particular event has
+                /// occurred. * error: If the pipeline is running, this value is NULL. Once the pipeline finishes, the
                 /// value is the standard Google error code. * labels.key or labels."key with space" where key is a
-                /// label key. * done If the pipeline is running, this value is false. Once the pipeline finishes, the
-                /// value is true.
-                ///
-                /// In v1 and v1alpha2, the following filter fields are supported
-                ///
-                /// * projectId Required. Corresponds to OperationMetadata.projectId. * createTime The time this job was
-                /// created, in seconds from the [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `>=` and/or
-                /// `<=` operators. * status Can be `RUNNING`, `SUCCESS`, `FAILURE`, or `CANCELED`. Only one status may
-                /// be specified. * labels.key where key is a label key.
-                ///
-                /// Examples
-                ///
-                /// * `projectId = my-project AND createTime >= 1432140000` * `projectId = my-project AND createTime >=
-                /// 1432140000 AND createTime <= 1432150000 AND status = RUNNING` * `projectId = my-project AND
-                /// labels.color = *` * `projectId = my-project AND labels.color = red`</summary>
+                /// label key. * done: If the pipeline is running, this value is false. Once the pipeline finishes, the
+                /// value is true. In v1 and v1alpha2, the following filter fields are supported: * projectId: Required.
+                /// Corresponds to OperationMetadata.projectId. * createTime: The time this job was created, in seconds
+                /// from the [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `>=` and/or `<=` operators. *
+                /// status: Can be `RUNNING`, `SUCCESS`, `FAILURE`, or `CANCELED`. Only one status may be specified. *
+                /// labels.key where key is a label key. Examples: * `projectId = my-project AND createTime >=
+                /// 1432140000` * `projectId = my-project AND createTime >= 1432140000 AND createTime <= 1432150000 AND
+                /// status = RUNNING` * `projectId = my-project AND labels.color = *` * `projectId = my-project AND
+                /// labels.color = red`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -955,12 +928,11 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; } 
 
-        /// <summary>The accelerator type string (for example, "nvidia-tesla-k80").
-        ///
-        /// Only NVIDIA GPU accelerators are currently supported. If an NVIDIA GPU is attached, the required runtime
-        /// libraries will be made available to all containers under `/usr/local/nvidia`. The driver version to install
-        /// must be specified using the NVIDIA driver version parameter on the virtual machine specification. Note that
-        /// attaching a GPU increases the worker VM startup time by a few minutes.</summary>
+        /// <summary>The accelerator type string (for example, "nvidia-tesla-k80"). Only NVIDIA GPU accelerators are
+        /// currently supported. If an NVIDIA GPU is attached, the required runtime libraries will be made available to
+        /// all containers under `/usr/local/nvidia`. The driver version to install must be specified using the NVIDIA
+        /// driver version parameter on the virtual machine specification. Note that attaching a GPU increases the
+        /// worker VM startup time by a few minutes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -978,10 +950,8 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         public virtual System.Collections.Generic.IList<string> Commands { get; set; } 
 
         /// <summary>If the specified image is hosted on a private registry other than Google Container Registry, the
-        /// credentials required to pull the image must be specified here as an encrypted secret.
-        ///
-        /// The secret must decrypt to a JSON-encoded dictionary containing both `username` and `password`
-        /// keys.</summary>
+        /// credentials required to pull the image must be specified here as an encrypted secret. The secret must
+        /// decrypt to a JSON-encoded dictionary containing both `username` and `password` keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("credentials")]
         public virtual Secret Credentials { get; set; } 
 
@@ -990,18 +960,13 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         public virtual string Entrypoint { get; set; } 
 
         /// <summary>The environment to pass into the container. This environment is merged with values specified in the
-        /// google.genomics.v2alpha1.Pipeline message, overwriting any duplicate values.
-        ///
-        /// In addition to the values passed here, a few other values are automatically injected into the environment.
-        /// These cannot be hidden or overwritten.
-        ///
-        /// `GOOGLE_PIPELINE_FAILED` will be set to "1" if the pipeline failed because an action has exited with a non-
-        /// zero status (and did not have the `IGNORE_EXIT_STATUS` flag set). This can be used to determine if
-        /// additional debug or logging actions should execute.
-        ///
-        /// `GOOGLE_LAST_EXIT_STATUS` will be set to the exit status of the last non-background action that executed.
-        /// This can be used by workflow engine authors to determine whether an individual action has succeeded or
-        /// failed.</summary>
+        /// google.genomics.v2alpha1.Pipeline message, overwriting any duplicate values. In addition to the values
+        /// passed here, a few other values are automatically injected into the environment. These cannot be hidden or
+        /// overwritten. `GOOGLE_PIPELINE_FAILED` will be set to "1" if the pipeline failed because an action has exited
+        /// with a non-zero status (and did not have the `IGNORE_EXIT_STATUS` flag set). This can be used to determine
+        /// if additional debug or logging actions should execute. `GOOGLE_LAST_EXIT_STATUS` will be set to the exit
+        /// status of the last non-background action that executed. This can be used by workflow engine authors to
+        /// determine whether an individual action has succeeded or failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual System.Collections.Generic.IDictionary<string,string> Environment { get; set; } 
 
@@ -1011,15 +976,12 @@ namespace Google.Apis.Genomics.v2alpha1.Data
 
         /// <summary>Required. The URI to pull the container image from. Note that all images referenced by actions in
         /// the pipeline are pulled before the first action runs. If multiple actions reference the same image, it is
-        /// only pulled once, ensuring that the same image is used for all actions in a single pipeline.
-        ///
-        /// The image URI can be either a complete host and image specification (e.g., quay.io/biocontainers/samtools),
-        /// a library and image name (e.g., google/cloud-sdk) or a bare image name ('bash') to pull from the default
-        /// library.  No schema is required in any of these cases.
-        ///
-        /// If the specified image is not public, the service account specified for the Virtual Machine must have access
-        /// to pull the images from GCR, or appropriate credentials must be specified in the
-        /// google.genomics.v2alpha1.Action.credentials field.</summary>
+        /// only pulled once, ensuring that the same image is used for all actions in a single pipeline. The image URI
+        /// can be either a complete host and image specification (e.g., quay.io/biocontainers/samtools), a library and
+        /// image name (e.g., google/cloud-sdk) or a bare image name ('bash') to pull from the default library. No
+        /// schema is required in any of these cases. If the specified image is not public, the service account
+        /// specified for the Virtual Machine must have access to pull the images from GCR, or appropriate credentials
+        /// must be specified in the google.genomics.v2alpha1.Action.credentials field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
         public virtual string ImageUri { get; set; } 
 
@@ -1029,15 +991,13 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>A list of mounts to make available to the action.
-        ///
-        /// In addition to the values specified here, every action has a special virtual disk mounted under `/google`
-        /// that contains log files and other operational components.
-        ///
-        /// /google/logs All logs written during the pipeline execution. /google/logs/output The combined standard
-        /// output and standard error of all actions run as part of the pipeline execution. /google/logs/action/stdout
-        /// The complete contents of each individual action's standard output. /google/logs/action/stderr The complete
-        /// contents of each individual action's standard error output. </summary>
+        /// <summary>A list of mounts to make available to the action. In addition to the values specified here, every
+        /// action has a special virtual disk mounted under `/google` that contains log files and other operational
+        /// components. - /google/logs All logs written during the pipeline execution. - /google/logs/output The
+        /// combined standard output and standard error of all actions run as part of the pipeline execution. -
+        /// /google/logs/action/stdout The complete contents of each individual action's standard output. -
+        /// /google/logs/action/stderr The complete contents of each individual action's standard error output.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mounts")]
         public virtual System.Collections.Generic.IList<Mount> Mounts { get; set; } 
 
@@ -1048,15 +1008,14 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         public virtual string Name { get; set; } 
 
         /// <summary>An optional identifier for a PID namespace to run the action inside. Multiple actions should use
-        /// the same string to share a namespace.  If unspecified, a separate isolated namespace is used.</summary>
+        /// the same string to share a namespace. If unspecified, a separate isolated namespace is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pidNamespace")]
         public virtual string PidNamespace { get; set; } 
 
         /// <summary>A map of containers to host port mappings for this container. If the container already specifies
-        /// exposed ports, use the `PUBLISH_EXPOSED_PORTS` flag instead.
-        ///
-        /// The host port number must be less than 65536. If it is zero, an unused random port is assigned. To determine
-        /// the resulting port number, consult the `ContainerStartedEvent` in the operation metadata.</summary>
+        /// exposed ports, use the `PUBLISH_EXPOSED_PORTS` flag instead. The host port number must be less than 65536.
+        /// If it is zero, an unused random port is assigned. To determine the resulting port number, consult the
+        /// `ContainerStartedEvent` in the operation metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portMappings")]
         public virtual System.Collections.Generic.IDictionary<string,System.Nullable<int>> PortMappings { get; set; } 
 
@@ -1096,6 +1055,10 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual Status Result { get; set; } 
 
+        /// <summary>An SOS report for an unexpected VM failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sosReport")]
+        public virtual string SosReport { get; set; } 
+
         /// <summary>Data about the status of the worker VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerStatus")]
         public virtual WorkerStatus WorkerStatus { get; set; } 
@@ -1107,7 +1070,7 @@ namespace Google.Apis.Genomics.v2alpha1.Data
     /// <summary>The response to the CheckIn method.</summary>
     public class CheckInResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The deadline by which the worker must request an extension.  The backend will allow for network
+        /// <summary>The deadline by which the worker must request an extension. The backend will allow for network
         /// transmission time and other delays, but the worker must attempt to transmit the extension request no later
         /// than the deadline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deadline")]
@@ -1192,11 +1155,9 @@ namespace Google.Apis.Genomics.v2alpha1.Data
 
         /// <summary>The tail end of any content written to standard error by the container. If the content emits large
         /// amounts of debugging noise or contains sensitive information, you can prevent the content from being printed
-        /// by setting the `DISABLE_STANDARD_ERROR_CAPTURE` flag.
-        ///
-        /// Note that only a small amount of the end of the stream is captured here. The entire stream is stored in the
-        /// `/google/logs` directory mounted into each action, and can be copied off the machine as described
-        /// elsewhere.</summary>
+        /// by setting the `DISABLE_STANDARD_ERROR_CAPTURE` flag. Note that only a small amount of the end of the stream
+        /// is captured here. The entire stream is stored in the `/google/logs` directory mounted into each action, and
+        /// can be copied off the machine as described elsewhere.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stderr")]
         public virtual string Stderr { get; set; } 
 
@@ -1223,9 +1184,8 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Carries information about a disk that can be attached to a VM.
-    ///
-    /// See https://cloud.google.com/compute/docs/disks/performance for more information about disk type, size, and
+    /// <summary>Carries information about a disk that can be attached to a VM. See
+    /// https://cloud.google.com/compute/docs/disks/performance for more information about disk type, size, and
     /// performance considerations.</summary>
     public class Disk : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1235,11 +1195,9 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         public virtual string Name { get; set; } 
 
         /// <summary>The size, in GB, of the disk to attach. If the size is not specified, a default is chosen to ensure
-        /// reasonable I/O performance.
-        ///
-        /// If the disk type is specified as `local-ssd`, multiple local drives are automatically combined to provide
-        /// the requested size. Note, however, that each physical SSD is 375GB in size, and no more than 8 drives can be
-        /// attached to a single instance.</summary>
+        /// reasonable I/O performance. If the disk type is specified as `local-ssd`, multiple local drives are
+        /// automatically combined to provide the requested size. Note, however, that each physical SSD is 375GB in
+        /// size, and no more than 8 drives can be attached to a single instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<int> SizeGb { get; set; } 
 
@@ -1271,11 +1229,9 @@ namespace Google.Apis.Genomics.v2alpha1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1389,27 +1345,21 @@ namespace Google.Apis.Genomics.v2alpha1.Data
     {
         /// <summary>The network name to attach the VM's network interface to. The value will be prefixed with
         /// `global/networks/` unless it contains a `/`, in which case it is assumed to be a fully specified network
-        /// resource URL.
-        ///
-        /// If unspecified, the global default network is used.</summary>
+        /// resource URL. If unspecified, the global default network is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>If the specified network is configured for custom subnet creation, the name of the subnetwork to
-        /// attach the instance to must be specified here.
-        ///
-        /// The value is prefixed with `regions/subnetworks/` unless it contains a `/`, in which case it is assumed to
-        /// be a fully specified subnetwork resource URL.
-        ///
-        /// If the `*` character appears in the value, it is replaced with the region that the virtual machine has been
-        /// allocated in.</summary>
+        /// attach the instance to must be specified here. The value is prefixed with `regions/subnetworks/` unless it
+        /// contains a `/`, in which case it is assumed to be a fully specified subnetwork resource URL. If the `*`
+        /// character appears in the value, it is replaced with the region that the virtual machine has been allocated
+        /// in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; } 
 
         /// <summary>If set to true, do not attach a public IP address to the VM. Note that without a public IP address,
-        /// additional configuration is required to allow the VM to access Google services.
-        ///
-        /// See https://cloud.google.com/vpc/docs/configure-private-google-access for more information.</summary>
+        /// additional configuration is required to allow the VM to access Google services. See
+        /// https://cloud.google.com/vpc/docs/configure-private-google-access for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usePrivateAddress")]
         public virtual System.Nullable<bool> UsePrivateAddress { get; set; } 
 
@@ -1434,7 +1384,7 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// For example `operations/CJHU7Oi_ChDrveSpBRjfuL-qzoWAgEw`</summary>
+        /// For example: `operations/CJHU7Oi_ChDrveSpBRjfuL-qzoWAgEw`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1530,11 +1480,9 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual Resources Resources { get; set; } 
 
-        /// <summary>The maximum amount of time to give the pipeline to complete.  This includes the time spent waiting
-        /// for a worker to be allocated.  If the pipeline fails to complete before the timeout, it will be cancelled
-        /// and the error code will be set to DEADLINE_EXCEEDED.
-        ///
-        /// If unspecified, it will default to 7 days.</summary>
+        /// <summary>The maximum amount of time to give the pipeline to complete. This includes the time spent waiting
+        /// for a worker to be allocated. If the pipeline fails to complete before the timeout, it will be cancelled and
+        /// the error code will be set to DEADLINE_EXCEEDED. If unspecified, it will default to 7 days.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
         public virtual object Timeout { get; set; } 
 
@@ -1564,9 +1512,8 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The system resources for the pipeline run.
-    ///
-    /// At least one zone or region must be specified or the pipeline run will fail.</summary>
+    /// <summary>The system resources for the pipeline run. At least one zone or region must be specified or the
+    /// pipeline run will fail.</summary>
     public class Resources : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The project ID to allocate resources in.</summary>
@@ -1595,10 +1542,9 @@ namespace Google.Apis.Genomics.v2alpha1.Data
     public class RunPipelineRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>User-defined labels to associate with the returned operation. These labels are not propagated to
-        /// any Google Cloud Platform resources used by the operation, and can be modified at any time.
-        ///
-        /// To associate labels with resources created while executing the operation, see the appropriate resource
-        /// message (for example, `VirtualMachine`).</summary>
+        /// any Google Cloud Platform resources used by the operation, and can be modified at any time. To associate
+        /// labels with resources created while executing the operation, see the appropriate resource message (for
+        /// example, `VirtualMachine`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -1667,9 +1613,8 @@ namespace Google.Apis.Genomics.v2alpha1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1677,8 +1622,8 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -1736,17 +1681,11 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskSizeGb")]
         public virtual System.Nullable<int> BootDiskSizeGb { get; set; } 
 
-        /// <summary>The host operating system image to use.
-        ///
-        /// Currently, only Container-Optimized OS images can be used.
-        ///
+        /// <summary>The host operating system image to use. Currently, only Container-Optimized OS images can be used.
         /// The default value is `projects/cos-cloud/global/images/family/cos-stable`, which selects the latest stable
-        /// release of Container-Optimized OS.
-        ///
-        /// This option is provided to allow testing against the beta release of the operating system to ensure that the
-        /// new version does not interact negatively with production pipelines.
-        ///
-        /// To test a pipeline against the beta release of Container-Optimized OS, use the value `projects/cos-
+        /// release of Container-Optimized OS. This option is provided to allow testing against the beta release of the
+        /// operating system to ensure that the new version does not interact negatively with production pipelines. To
+        /// test a pipeline against the beta release of Container-Optimized OS, use the value `projects/cos-
         /// cloud/global/images/family/cos-beta`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootImage")]
         public virtual string BootImage { get; set; } 
@@ -1754,10 +1693,8 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         /// <summary>The CPU platform to request. An instance based on a newer platform can be allocated, but never one
         /// with fewer capabilities. The value of this parameter must be a valid Compute Engine CPU platform name (such
         /// as "Intel Skylake"). This parameter is only useful for carefully optimized work loads where the CPU platform
-        /// has a significant impact.
-        ///
-        /// For more information about the effect of this parameter, see https://cloud.google.com/compute/docs/instances
-        /// /specify-min-cpu-platform.</summary>
+        /// has a significant impact. For more information about the effect of this parameter, see
+        /// https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuPlatform")]
         public virtual string CpuPlatform { get; set; } 
 
@@ -1779,12 +1716,9 @@ namespace Google.Apis.Genomics.v2alpha1.Data
 
         /// <summary>Optional set of labels to apply to the VM and any attached disk resources. These labels must adhere
         /// to the [name and value restrictions](https://cloud.google.com/compute/docs/labeling-resources) on VM labels
-        /// imposed by Compute Engine.
-        ///
-        /// Labels keys with the prefix 'google-' are reserved for use by Google.
-        ///
-        /// Labels applied at creation time to the VM. Applied on a best-effort basis to attached disk resources shortly
-        /// after VM creation.</summary>
+        /// imposed by Compute Engine. Labels keys with the prefix 'google-' are reserved for use by Google. Labels
+        /// applied at creation time to the VM. Applied on a best-effort basis to attached disk resources shortly after
+        /// VM creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 

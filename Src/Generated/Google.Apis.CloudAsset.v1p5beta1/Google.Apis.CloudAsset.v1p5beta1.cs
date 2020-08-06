@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1p5beta1
- *      <tr><th>API Rev<td>20200724 (2031)
+ *      <tr><th>API Rev<td>20200731 (2038)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>
  *              https://cloud.google.com/asset-inventory/docs/quickstart</a>
@@ -1226,7 +1226,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     public class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is
-        /// True.</summary>
+        /// True. You can specify a list of individual services, as well as include the 'RESTRICTED-SERVICES' value,
+        /// which automatically includes all of the services protected by the perimeter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedServices")]
         public virtual System.Collections.Generic.IList<string> AllowedServices { get; set; } 
 

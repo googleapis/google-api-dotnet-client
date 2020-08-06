@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/civic-information/'>Google Civic Information API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200706 (2013)
+ *      <tr><th>API Rev<td>20200804 (2042)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/civic-information/'>
  *              https://developers.google.com/civic-information/</a>

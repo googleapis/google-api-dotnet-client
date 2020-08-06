@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/bid-manager/'>DoubleClick Bid Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200723 (2030)
+ *      <tr><th>API Rev<td>20200731 (2038)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/bid-manager/'>
  *              https://developers.google.com/bid-manager/</a>
@@ -86,29 +86,29 @@ namespace Google.Apis.DoubleClickBidManager.v1
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://www.googleapis.com/doubleclickbidmanager/v1/"; }
+            get { return BaseUriOverride ?? "https://www.googleapis.com/"; }
         #else
-            get { return "https://www.googleapis.com/doubleclickbidmanager/v1/"; }
+            get { return "https://www.googleapis.com/"; }
         #endif
         }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath
         {
-            get { return "doubleclickbidmanager/v1/"; }
+            get { return ""; }
         }
 
         #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch/doubleclickbidmanager/v1"; }
+            get { return "https://www.googleapis.com/batch/doubleclickbidmanager"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch/doubleclickbidmanager/v1"; }
+            get { return "batch/doubleclickbidmanager"; }
         }
         #endif
 
@@ -172,18 +172,47 @@ namespace Google.Apis.DoubleClickBidManager.v1
         {
         }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>V1 error format.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
+
+        /// <summary>OAuth access token.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>Data format for response.</summary>
         public enum AltEnum
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
         }
+
+        /// <summary>JSONP</summary>
+        [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string Callback { get; set; }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -203,14 +232,18 @@ namespace Google.Apis.DoubleClickBidManager.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-        /// characters.</summary>
+        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
+        /// assigned to a user, but should not exceed 40 characters.</summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
-        /// <summary>Deprecated. Please use quotaUser instead.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string UserIp { get; set; }
+        /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadType { get; set; }
+
+        /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadProtocol { get; set; }
 
         /// <summary>Initializes DoubleClickBidManager parameter list.</summary>
         protected override void InitParameters()
@@ -218,12 +251,39 @@ namespace Google.Apis.DoubleClickBidManager.v1
             base.InitParameters();
 
             RequestParameters.Add(
+                "$.xgafv", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "$.xgafv",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "access_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "access_token",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
                 "alt", new Google.Apis.Discovery.Parameter
                 {
                     Name = "alt",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "json",
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "callback", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "callback",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
             RequestParameters.Add(
@@ -272,9 +332,18 @@ namespace Google.Apis.DoubleClickBidManager.v1
                     Pattern = null,
                 });
             RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
+                "uploadType", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "userIp",
+                    Name = "uploadType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "upload_protocol", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "upload_protocol",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -340,7 +409,7 @@ namespace Google.Apis.DoubleClickBidManager.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "lineitems/downloadlineitems"; }
+                get { return "doubleclickbidmanager/v1/lineitems/downloadlineitems"; }
             }
 
             /// <summary>Initializes Downloadlineitems parameter list.</summary>
@@ -393,7 +462,7 @@ namespace Google.Apis.DoubleClickBidManager.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "lineitems/uploadlineitems"; }
+                get { return "doubleclickbidmanager/v1/lineitems/uploadlineitems"; }
             }
 
             /// <summary>Initializes Uploadlineitems parameter list.</summary>
@@ -463,7 +532,7 @@ namespace Google.Apis.DoubleClickBidManager.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "query"; }
+                get { return "doubleclickbidmanager/v1/query"; }
             }
 
             /// <summary>Initializes Createquery parameter list.</summary>
@@ -514,7 +583,7 @@ namespace Google.Apis.DoubleClickBidManager.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "query/{queryId}"; }
+                get { return "doubleclickbidmanager/v1/query/{queryId}"; }
             }
 
             /// <summary>Initializes Deletequery parameter list.</summary>
@@ -574,7 +643,7 @@ namespace Google.Apis.DoubleClickBidManager.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "query/{queryId}"; }
+                get { return "doubleclickbidmanager/v1/query/{queryId}"; }
             }
 
             /// <summary>Initializes Getquery parameter list.</summary>
@@ -628,7 +697,7 @@ namespace Google.Apis.DoubleClickBidManager.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "queries"; }
+                get { return "doubleclickbidmanager/v1/queries"; }
             }
 
             /// <summary>Initializes Listqueries parameter list.</summary>
@@ -687,7 +756,7 @@ namespace Google.Apis.DoubleClickBidManager.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "query/{queryId}"; }
+                get { return "doubleclickbidmanager/v1/query/{queryId}"; }
             }
 
             /// <summary>Initializes Runquery parameter list.</summary>
@@ -764,7 +833,7 @@ namespace Google.Apis.DoubleClickBidManager.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "queries/{queryId}/reports"; }
+                get { return "doubleclickbidmanager/v1/queries/{queryId}/reports"; }
             }
 
             /// <summary>Initializes Listreports parameter list.</summary>
@@ -843,7 +912,7 @@ namespace Google.Apis.DoubleClickBidManager.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "sdf/download"; }
+                get { return "doubleclickbidmanager/v1/sdf/download"; }
             }
 
             /// <summary>Initializes Download parameter list.</summary>
@@ -888,7 +957,7 @@ namespace Google.Apis.DoubleClickBidManager.v1.Data
     /// <summary>Download line items response.</summary>
     public class DownloadLineItemsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Retrieved line items in CSV format. For more information about file formats, see  Entity Write File
+        /// <summary>Retrieved line items in CSV format. For more information about file formats, see Entity Write File
         /// Format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
         public virtual string LineItems { get; set; } 
@@ -902,10 +971,8 @@ namespace Google.Apis.DoubleClickBidManager.v1.Data
     public class DownloadRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>File types that will be returned. If INVENTORY_SOURCE is requested, no other file types may be
-        /// requested.
-        ///
-        /// Acceptable values are: - "AD" - "AD_GROUP" - "CAMPAIGN" - "INSERTION_ORDER" - "INVENTORY_SOURCE" -
-        /// "LINE_ITEM"</summary>
+        /// requested. Acceptable values are: "AD" "AD_GROUP" "CAMPAIGN" "INSERTION_ORDER" "INVENTORY_SOURCE"
+        /// "LINE_ITEM" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileTypes")]
         public virtual System.Collections.Generic.IList<string> FileTypes { get; set; } 
 
@@ -1097,10 +1164,9 @@ namespace Google.Apis.DoubleClickBidManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("latestReportRunTimeMs")]
         public virtual System.Nullable<long> LatestReportRunTimeMs { get; set; } 
 
-        /// <summary>Locale of the generated reports. Valid values are cs CZECH de GERMAN en ENGLISH es SPANISH fr
-        /// FRENCH it ITALIAN ja JAPANESE ko KOREAN pl POLISH pt-BR BRAZILIAN_PORTUGUESE ru RUSSIAN tr TURKISH uk
-        /// UKRAINIAN zh-CN CHINA_CHINESE zh-TW TAIWAN_CHINESE
-        ///
+        /// <summary>Locale of the generated reports. Valid values are cs      CZECH de GERMAN en      ENGLISH es
+        /// SPANISH fr      FRENCH it      ITALIAN ja JAPANESE ko      KOREAN pl      POLISH pt-BR
+        /// BRAZILIAN_PORTUGUESE ru RUSSIAN tr      TURKISH uk      UKRAINIAN zh-CN   CHINA_CHINESE zh-TW TAIWAN_CHINESE
         /// An locale string not in the list above will generate reports in English.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
         public virtual string Locale { get; set; } 
@@ -1312,7 +1378,7 @@ namespace Google.Apis.DoubleClickBidManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; } 
 
-        /// <summary>Line items in CSV to upload. Refer to  Entity Write File Format for more information on file
+        /// <summary>Line items in CSV to upload. Refer to Entity Write File Format for more information on file
         /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
         public virtual string LineItems { get; set; } 

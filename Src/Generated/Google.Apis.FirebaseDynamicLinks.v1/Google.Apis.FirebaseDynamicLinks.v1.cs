@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200801 (2039)
+ *      <tr><th>API Rev<td>20200803 (2041)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -360,13 +360,10 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
 
 
         /// <summary>Creates a managed short Dynamic Link given either a valid long Dynamic Link or details such as
-        /// Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire.
-        ///
-        /// This differs from CreateShortDynamicLink in the following ways: - The request will also contain a name for
-        /// the link (non unique name for the front end). - The response must be authenticated with an auth token
-        /// (generated with the admin service account). - The link will appear in the FDL list of links in the console
-        /// front end.
-        ///
+        /// Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire. This
+        /// differs from CreateShortDynamicLink in the following ways: - The request will also contain a name for the
+        /// link (non unique name for the front end). - The response must be authenticated with an auth token (generated
+        /// with the admin service account). - The link will appear in the FDL list of links in the console front end.
         /// The Dynamic Link domain in the request must be owned by requester's Firebase project.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.FirebaseDynamicLinks.v1.Data.CreateManagedShortLinkRequest body)
@@ -375,13 +372,10 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         }
 
         /// <summary>Creates a managed short Dynamic Link given either a valid long Dynamic Link or details such as
-        /// Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire.
-        ///
-        /// This differs from CreateShortDynamicLink in the following ways: - The request will also contain a name for
-        /// the link (non unique name for the front end). - The response must be authenticated with an auth token
-        /// (generated with the admin service account). - The link will appear in the FDL list of links in the console
-        /// front end.
-        ///
+        /// Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire. This
+        /// differs from CreateShortDynamicLink in the following ways: - The request will also contain a name for the
+        /// link (non unique name for the front end). - The response must be authenticated with an auth token (generated
+        /// with the admin service account). - The link will appear in the FDL list of links in the console front end.
         /// The Dynamic Link domain in the request must be owned by requester's Firebase project.</summary>
         public class CreateRequest : FirebaseDynamicLinksBaseServiceRequest<Google.Apis.FirebaseDynamicLinks.v1.Data.CreateManagedShortLinkResponse>
         {
@@ -446,12 +440,9 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
 
 
         /// <summary>Creates a short Dynamic Link given either a valid long Dynamic Link or details such as Dynamic Link
-        /// domain, Android and iOS app information. The created short Dynamic Link will not expire.
-        ///
-        /// Repeated calls with the same long Dynamic Link or Dynamic Link information will produce the same short
-        /// Dynamic Link.
-        ///
-        /// The Dynamic Link domain in the request must be owned by requester's Firebase project.</summary>
+        /// domain, Android and iOS app information. The created short Dynamic Link will not expire. Repeated calls with
+        /// the same long Dynamic Link or Dynamic Link information will produce the same short Dynamic Link. The Dynamic
+        /// Link domain in the request must be owned by requester's Firebase project.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.FirebaseDynamicLinks.v1.Data.CreateShortDynamicLinkRequest body)
         {
@@ -459,12 +450,9 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         }
 
         /// <summary>Creates a short Dynamic Link given either a valid long Dynamic Link or details such as Dynamic Link
-        /// domain, Android and iOS app information. The created short Dynamic Link will not expire.
-        ///
-        /// Repeated calls with the same long Dynamic Link or Dynamic Link information will produce the same short
-        /// Dynamic Link.
-        ///
-        /// The Dynamic Link domain in the request must be owned by requester's Firebase project.</summary>
+        /// domain, Android and iOS app information. The created short Dynamic Link will not expire. Repeated calls with
+        /// the same long Dynamic Link or Dynamic Link information will produce the same short Dynamic Link. The Dynamic
+        /// Link domain in the request must be owned by requester's Firebase project.</summary>
         public class CreateRequest : FirebaseDynamicLinksBaseServiceRequest<Google.Apis.FirebaseDynamicLinks.v1.Data.CreateShortDynamicLinkResponse>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -946,17 +934,14 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         public virtual DesktopInfo DesktopInfo { get; set; } 
 
         /// <summary>E.g. https://maps.app.goo.gl, https://maps.page.link, https://g.co/maps More examples can be found
-        /// in description of getNormalizedUriPrefix in j/c/g/firebase/dynamiclinks/uri/DdlDomain.java
-        ///
-        /// Will fallback to dynamic_link_domain is this field is missing</summary>
+        /// in description of getNormalizedUriPrefix in j/c/g/firebase/dynamiclinks/uri/DdlDomain.java Will fallback to
+        /// dynamic_link_domain is this field is missing</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainUriPrefix")]
         public virtual string DomainUriPrefix { get; set; } 
 
         /// <summary>Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl [Learn
         /// more](https://firebase.google.com/docs/dynamic-links/android/receive) on how to set up Dynamic Link domain
-        /// associated with your Firebase project.
-        ///
-        /// Required if missing domain_uri_prefix.</summary>
+        /// associated with your Firebase project. Required if missing domain_uri_prefix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicLinkDomain")]
         public virtual string DynamicLinkDomain { get; set; } 
 
@@ -967,9 +952,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
 
         /// <summary>The link your app will open, You can specify any URL your app can handle. This link must be a well-
         /// formatted URL, be properly URL-encoded, and use the HTTP or HTTPS scheme. See 'link' parameters in the
-        /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).
-        ///
-        /// Required.</summary>
+        /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually). Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual string Link { get; set; } 
 
@@ -1326,15 +1309,11 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("info")]
         public virtual DynamicLinkInfo Info { get; set; } 
 
-        /// <summary>Short durable link url, for example, "https://sample.app.goo.gl/xyz123".
-        ///
-        /// Required.</summary>
+        /// <summary>Short durable link url, for example, "https://sample.app.goo.gl/xyz123". Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual string Link { get; set; } 
 
-        /// <summary>Link name defined by the creator.
-        ///
-        /// Required.</summary>
+        /// <summary>Link name defined by the creator. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkName")]
         public virtual string LinkName { get; set; } 
 

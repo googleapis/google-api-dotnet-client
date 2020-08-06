@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/solutions/gaming/'>Game Services API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200721 (2028)
+ *      <tr><th>API Rev<td>20200730 (2037)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/solutions/gaming/'>
  *              https://cloud.google.com/solutions/gaming/</a>

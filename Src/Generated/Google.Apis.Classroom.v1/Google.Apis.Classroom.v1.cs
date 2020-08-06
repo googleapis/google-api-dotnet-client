@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/classroom/'>Google Classroom API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200727 (2034)
+ *      <tr><th>API Rev<td>20200801 (2039)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/classroom/'>
  *              https://developers.google.com/classroom/</a>
@@ -517,12 +517,9 @@ namespace Google.Apis.Classroom.v1
             }
 
 
-            /// <summary>Creates an alias for a course.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to create the alias or for access errors.
-            /// * `NOT_FOUND` if the course does not exist. * `ALREADY_EXISTS` if the alias already exists. *
+            /// <summary>Creates an alias for a course. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to create the alias or for access errors. *
+            /// `NOT_FOUND` if the course does not exist. * `ALREADY_EXISTS` if the alias already exists. *
             /// `FAILED_PRECONDITION` if the alias requested does not make sense for the requesting user or course (for
             /// example, if a user not in a domain attempts to access a domain-scoped alias).</summary>
             /// <param name="body">The body of the request.</param>
@@ -533,12 +530,9 @@ namespace Google.Apis.Classroom.v1
                 return new CreateRequest(service, body, courseId);
             }
 
-            /// <summary>Creates an alias for a course.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to create the alias or for access errors.
-            /// * `NOT_FOUND` if the course does not exist. * `ALREADY_EXISTS` if the alias already exists. *
+            /// <summary>Creates an alias for a course. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to create the alias or for access errors. *
+            /// `NOT_FOUND` if the course does not exist. * `ALREADY_EXISTS` if the alias already exists. *
             /// `FAILED_PRECONDITION` if the alias requested does not make sense for the requesting user or course (for
             /// example, if a user not in a domain attempts to access a domain-scoped alias).</summary>
             public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.CourseAlias>
@@ -601,12 +595,9 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Deletes an alias of a course.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to remove the alias or for access errors.
-            /// * `NOT_FOUND` if the alias does not exist. * `FAILED_PRECONDITION` if the alias requested does not make
+            /// <summary>Deletes an alias of a course. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to remove the alias or for access errors. *
+            /// `NOT_FOUND` if the alias does not exist. * `FAILED_PRECONDITION` if the alias requested does not make
             /// sense for the requesting user or course (for example, if a user not in a domain attempts to delete a
             /// domain-scoped alias).</summary>
             /// <param name="courseId">Identifier of the course whose alias should be deleted. This identifier can be either the
@@ -618,12 +609,9 @@ namespace Google.Apis.Classroom.v1
                 return new DeleteRequest(service, courseId, alias);
             }
 
-            /// <summary>Deletes an alias of a course.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to remove the alias or for access errors.
-            /// * `NOT_FOUND` if the alias does not exist. * `FAILED_PRECONDITION` if the alias requested does not make
+            /// <summary>Deletes an alias of a course. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to remove the alias or for access errors. *
+            /// `NOT_FOUND` if the alias does not exist. * `FAILED_PRECONDITION` if the alias requested does not make
             /// sense for the requesting user or course (for example, if a user not in a domain attempts to delete a
             /// domain-scoped alias).</summary>
             public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
@@ -693,12 +681,9 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Returns a list of aliases for a course.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the course or for access errors.
-            /// * `NOT_FOUND` if the course does not exist.</summary>
+            /// <summary>Returns a list of aliases for a course. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to access the course or for access errors. *
+            /// `NOT_FOUND` if the course does not exist.</summary>
             /// <param name="courseId">The identifier of the course. This identifier can be either the Classroom-assigned identifier
             /// or an alias.</param>
             public virtual ListRequest List(string courseId)
@@ -706,12 +691,9 @@ namespace Google.Apis.Classroom.v1
                 return new ListRequest(service, courseId);
             }
 
-            /// <summary>Returns a list of aliases for a course.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the course or for access errors.
-            /// * `NOT_FOUND` if the course does not exist.</summary>
+            /// <summary>Returns a list of aliases for a course. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to access the course or for access errors. *
+            /// `NOT_FOUND` if the course does not exist.</summary>
             public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListCourseAliasesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -729,16 +711,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string CourseId { get; private set; }
 
                 /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign
-                /// a maximum.
-                ///
-                /// The server may return fewer than the specified number of results.</summary>
+                /// a maximum. The server may return fewer than the specified number of results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
-                /// of results should be returned.
-                ///
-                /// The list request must be otherwise identical to the one that resulted in this token.</summary>
+                /// of results should be returned. The list request must be otherwise identical to the one that resulted
+                /// in this token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -821,14 +800,11 @@ namespace Google.Apis.Classroom.v1
             }
 
 
-            /// <summary>Creates an announcement.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create
-            /// announcements in the requested course, share a Drive attachment, or for access errors. *
-            /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. *
-            /// `FAILED_PRECONDITION` for the following request error: * AttachmentNotVisible</summary>
+            /// <summary>Creates an announcement. This method returns the following error codes: * `PERMISSION_DENIED`
+            /// if the requesting user is not permitted to access the requested course, create announcements in the
+            /// requested course, share a Drive attachment, or for access errors. * `INVALID_ARGUMENT` if the request is
+            /// malformed. * `NOT_FOUND` if the requested course does not exist. * `FAILED_PRECONDITION` for the
+            /// following request error: * AttachmentNotVisible</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
             /// an alias.</param>
@@ -837,14 +813,11 @@ namespace Google.Apis.Classroom.v1
                 return new CreateRequest(service, body, courseId);
             }
 
-            /// <summary>Creates an announcement.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create
-            /// announcements in the requested course, share a Drive attachment, or for access errors. *
-            /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. *
-            /// `FAILED_PRECONDITION` for the following request error: * AttachmentNotVisible</summary>
+            /// <summary>Creates an announcement. This method returns the following error codes: * `PERMISSION_DENIED`
+            /// if the requesting user is not permitted to access the requested course, create announcements in the
+            /// requested course, share a Drive attachment, or for access errors. * `INVALID_ARGUMENT` if the request is
+            /// malformed. * `NOT_FOUND` if the requested course does not exist. * `FAILED_PRECONDITION` for the
+            /// following request error: * AttachmentNotVisible</summary>
             public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Announcement>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -905,17 +878,13 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Deletes an announcement.
-            ///
-            /// This request must be made by the Developer Console project of the [OAuth client
-            /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding announcement item.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding announcement,
-            /// if the requesting user is not permitted to delete the requested course or for access errors. *
-            /// `FAILED_PRECONDITION` if the requested announcement has already been deleted. * `NOT_FOUND` if no course
-            /// exists with the requested ID.</summary>
+            /// <summary>Deletes an announcement. This request must be made by the Developer Console project of the
+            /// [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding
+            /// announcement item. This method returns the following error codes: * `PERMISSION_DENIED` if the
+            /// requesting developer project did not create the corresponding announcement, if the requesting user is
+            /// not permitted to delete the requested course or for access errors. * `FAILED_PRECONDITION` if the
+            /// requested announcement has already been deleted. * `NOT_FOUND` if no course exists with the requested
+            /// ID.</summary>
             /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
             /// an alias.</param>
             /// <param name="id">Identifier of the announcement to delete. This identifier is a Classroom-
@@ -925,17 +894,13 @@ namespace Google.Apis.Classroom.v1
                 return new DeleteRequest(service, courseId, id);
             }
 
-            /// <summary>Deletes an announcement.
-            ///
-            /// This request must be made by the Developer Console project of the [OAuth client
-            /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding announcement item.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding announcement,
-            /// if the requesting user is not permitted to delete the requested course or for access errors. *
-            /// `FAILED_PRECONDITION` if the requested announcement has already been deleted. * `NOT_FOUND` if no course
-            /// exists with the requested ID.</summary>
+            /// <summary>Deletes an announcement. This request must be made by the Developer Console project of the
+            /// [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding
+            /// announcement item. This method returns the following error codes: * `PERMISSION_DENIED` if the
+            /// requesting developer project did not create the corresponding announcement, if the requesting user is
+            /// not permitted to delete the requested course or for access errors. * `FAILED_PRECONDITION` if the
+            /// requested announcement has already been deleted. * `NOT_FOUND` if no course exists with the requested
+            /// ID.</summary>
             public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -1004,13 +969,10 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Returns an announcement.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or
-            /// announcement, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if
-            /// the requested course or announcement does not exist.</summary>
+            /// <summary>Returns an announcement. This method returns the following error codes: * `PERMISSION_DENIED`
+            /// if the requesting user is not permitted to access the requested course or announcement, or for access
+            /// errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or
+            /// announcement does not exist.</summary>
             /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
             /// an alias.</param>
             /// <param name="id">Identifier of the announcement.</param>
@@ -1019,13 +981,10 @@ namespace Google.Apis.Classroom.v1
                 return new GetRequest(service, courseId, id);
             }
 
-            /// <summary>Returns an announcement.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or
-            /// announcement, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if
-            /// the requested course or announcement does not exist.</summary>
+            /// <summary>Returns an announcement. This method returns the following error codes: * `PERMISSION_DENIED`
+            /// if the requesting user is not permitted to access the requested course or announcement, or for access
+            /// errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or
+            /// announcement does not exist.</summary>
             public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Announcement>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1093,16 +1052,11 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Returns a list of announcements that the requester is permitted to view.
-            ///
-            /// Course students may only view `PUBLISHED` announcements. Course teachers and domain administrators may
-            /// view all announcements.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for
-            /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course
-            /// does not exist.</summary>
+            /// <summary>Returns a list of announcements that the requester is permitted to view. Course students may
+            /// only view `PUBLISHED` announcements. Course teachers and domain administrators may view all
+            /// announcements. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting
+            /// user is not permitted to access the requested course or for access errors. * `INVALID_ARGUMENT` if the
+            /// request is malformed. * `NOT_FOUND` if the requested course does not exist.</summary>
             /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
             /// an alias.</param>
             public virtual ListRequest List(string courseId)
@@ -1110,16 +1064,11 @@ namespace Google.Apis.Classroom.v1
                 return new ListRequest(service, courseId);
             }
 
-            /// <summary>Returns a list of announcements that the requester is permitted to view.
-            ///
-            /// Course students may only view `PUBLISHED` announcements. Course teachers and domain administrators may
-            /// view all announcements.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for
-            /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course
-            /// does not exist.</summary>
+            /// <summary>Returns a list of announcements that the requester is permitted to view. Course students may
+            /// only view `PUBLISHED` announcements. Course teachers and domain administrators may view all
+            /// announcements. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting
+            /// user is not permitted to access the requested course or for access errors. * `INVALID_ARGUMENT` if the
+            /// request is malformed. * `NOT_FOUND` if the requested course does not exist.</summary>
             public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListAnnouncementsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1145,12 +1094,19 @@ namespace Google.Apis.Classroom.v1
                 /// the default value is `PUBLISHED`.</summary>
                 public enum AnnouncementStatesEnum
                 {
+                    /// <summary>No state specified. This is never returned.</summary>
                     [Google.Apis.Util.StringValueAttribute("ANNOUNCEMENT_STATE_UNSPECIFIED")]
                     ANNOUNCEMENTSTATEUNSPECIFIED,
+                    /// <summary>Status for announcement that has been published. This is the default state.</summary>
                     [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
                     PUBLISHED,
+                    /// <summary>Status for an announcement that is not yet published. Announcement in this state is
+                    /// visible only to course teachers and domain administrators.</summary>
                     [Google.Apis.Util.StringValueAttribute("DRAFT")]
                     DRAFT,
+                    /// <summary>Status for announcement that was published but is now deleted. Announcement in this
+                    /// state is visible only to course teachers and domain administrators. Announcement in this state
+                    /// is deleted after some time.</summary>
                     [Google.Apis.Util.StringValueAttribute("DELETED")]
                     DELETED,
                 }
@@ -1163,16 +1119,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign
-                /// a maximum.
-                ///
-                /// The server may return fewer than the specified number of results.</summary>
+                /// a maximum. The server may return fewer than the specified number of results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
-                /// of results should be returned.
-                ///
-                /// The list request must be otherwise identical to the one that resulted in this token.</summary>
+                /// of results should be returned. The list request must be otherwise identical to the one that resulted
+                /// in this token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -1249,13 +1202,9 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Modifies assignee mode and options of an announcement.
-            ///
-            /// Only a teacher of the course that contains the announcement may call this method.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course
+            /// <summary>Modifies assignee mode and options of an announcement. Only a teacher of the course that
+            /// contains the announcement may call this method. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course
             /// work or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the
             /// requested course or course work does not exist.</summary>
             /// <param name="body">The body of the request.</param>
@@ -1267,13 +1216,9 @@ namespace Google.Apis.Classroom.v1
                 return new ModifyAssigneesRequest(service, body, courseId, id);
             }
 
-            /// <summary>Modifies assignee mode and options of an announcement.
-            ///
-            /// Only a teacher of the course that contains the announcement may call this method.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course
+            /// <summary>Modifies assignee mode and options of an announcement. Only a teacher of the course that
+            /// contains the announcement may call this method. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course
             /// work or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the
             /// requested course or course work does not exist.</summary>
             public class ModifyAssigneesRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Announcement>
@@ -1350,12 +1295,9 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Updates one or more fields of an announcement.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding announcement
-            /// or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the
+            /// <summary>Updates one or more fields of an announcement. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting developer project did not create the corresponding announcement or
+            /// for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the
             /// requested announcement has already been deleted. * `NOT_FOUND` if the requested course or announcement
             /// does not exist</summary>
             /// <param name="body">The body of the request.</param>
@@ -1367,12 +1309,9 @@ namespace Google.Apis.Classroom.v1
                 return new PatchRequest(service, body, courseId, id);
             }
 
-            /// <summary>Updates one or more fields of an announcement.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding announcement
-            /// or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the
+            /// <summary>Updates one or more fields of an announcement. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting developer project did not create the corresponding announcement or
+            /// for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the
             /// requested announcement has already been deleted. * `NOT_FOUND` if the requested course or announcement
             /// does not exist</summary>
             public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Announcement>
@@ -1401,10 +1340,7 @@ namespace Google.Apis.Classroom.v1
                 /// do an update. The update fails if invalid fields are specified. If a field supports empty values, it
                 /// can be cleared by specifying it in the update mask and not in the Announcement object. If a field
                 /// that does not support empty values is included in the update mask and not set in the Announcement
-                /// object, an `INVALID_ARGUMENT` error is returned.
-                ///
-                /// The following fields may be specified by teachers:
-                ///
+                /// object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers:
                 /// * `text` * `state` * `scheduled_time`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -1518,11 +1454,10 @@ namespace Google.Apis.Classroom.v1
                 }
 
 
-                /// <summary>Returns a student submission.
-                ///
-                /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, course
-                /// work, or student submission or for access errors. * `INVALID_ARGUMENT` if the request is malformed.
-                /// * `NOT_FOUND` if the requested course, course work, or student submission does not exist.</summary>
+                /// <summary>Returns a student submission. * `PERMISSION_DENIED` if the requesting user is not permitted
+                /// to access the requested course, course work, or student submission or for access errors. *
+                /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work,
+                /// or student submission does not exist.</summary>
                 /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
                 /// an alias.</param>
                 /// <param name="courseWorkId">Identifier of the course work.</param>
@@ -1533,11 +1468,10 @@ namespace Google.Apis.Classroom.v1
                     return new GetRequest(service, courseId, courseWorkId, id);
                 }
 
-                /// <summary>Returns a student submission.
-                ///
-                /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, course
-                /// work, or student submission or for access errors. * `INVALID_ARGUMENT` if the request is malformed.
-                /// * `NOT_FOUND` if the requested course, course work, or student submission does not exist.</summary>
+                /// <summary>Returns a student submission. * `PERMISSION_DENIED` if the requesting user is not permitted
+                /// to access the requested course, course work, or student submission or for access errors. *
+                /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work,
+                /// or student submission does not exist.</summary>
                 public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.StudentSubmission>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -1621,16 +1555,11 @@ namespace Google.Apis.Classroom.v1
 
                 /// <summary>Returns a list of student submissions that the requester is permitted to view, factoring in
                 /// the OAuth scopes of the request. `-` may be specified as the `course_work_id` to include student
-                /// submissions for multiple course work items.
-                ///
-                /// Course students may only view their own work. Course teachers and domain administrators may view all
-                /// student submissions.
-                ///
-                /// This method returns the following error codes:
-                ///
-                /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or
-                /// course work, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND`
-                /// if the requested course does not exist.</summary>
+                /// submissions for multiple course work items. Course students may only view their own work. Course
+                /// teachers and domain administrators may view all student submissions. This method returns the
+                /// following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the
+                /// requested course or course work, or for access errors. * `INVALID_ARGUMENT` if the request is
+                /// malformed. * `NOT_FOUND` if the requested course does not exist.</summary>
                 /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
                 /// an alias.</param>
                 /// <param name="courseWorkId">Identifier of the student work to request. This may be set to
@@ -1642,16 +1571,11 @@ namespace Google.Apis.Classroom.v1
 
                 /// <summary>Returns a list of student submissions that the requester is permitted to view, factoring in
                 /// the OAuth scopes of the request. `-` may be specified as the `course_work_id` to include student
-                /// submissions for multiple course work items.
-                ///
-                /// Course students may only view their own work. Course teachers and domain administrators may view all
-                /// student submissions.
-                ///
-                /// This method returns the following error codes:
-                ///
-                /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or
-                /// course work, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND`
-                /// if the requested course does not exist.</summary>
+                /// submissions for multiple course work items. Course students may only view their own work. Course
+                /// teachers and domain administrators may view all student submissions. This method returns the
+                /// following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the
+                /// requested course or course work, or for access errors. * `INVALID_ARGUMENT` if the request is
+                /// malformed. * `NOT_FOUND` if the requested course does not exist.</summary>
                 public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListStudentSubmissionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1685,25 +1609,25 @@ namespace Google.Apis.Classroom.v1
                     /// value.</summary>
                     public enum LateEnum
                     {
+                        /// <summary>No restriction on submission late values specified.</summary>
                         [Google.Apis.Util.StringValueAttribute("LATE_VALUES_UNSPECIFIED")]
                         LATEVALUESUNSPECIFIED,
+                        /// <summary>Return StudentSubmissions where late is true.</summary>
                         [Google.Apis.Util.StringValueAttribute("LATE_ONLY")]
                         LATEONLY,
+                        /// <summary>Return StudentSubmissions where late is false.</summary>
                         [Google.Apis.Util.StringValueAttribute("NOT_LATE_ONLY")]
                         NOTLATEONLY,
                     }
 
                     /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may
-                    /// assign a maximum.
-                    ///
-                    /// The server may return fewer than the specified number of results.</summary>
+                    /// assign a maximum. The server may return fewer than the specified number of results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent
-                    /// page of results should be returned.
-                    ///
-                    /// The list request must be otherwise identical to the one that resulted in this token.</summary>
+                    /// page of results should be returned. The list request must be otherwise identical to the one that
+                    /// resulted in this token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -1716,25 +1640,31 @@ namespace Google.Apis.Classroom.v1
                     /// the specified submission states.</summary>
                     public enum StatesEnum
                     {
+                        /// <summary>No state specified. This should never be returned.</summary>
                         [Google.Apis.Util.StringValueAttribute("SUBMISSION_STATE_UNSPECIFIED")]
                         SUBMISSIONSTATEUNSPECIFIED,
+                        /// <summary>The student has never accessed this submission. Attachments are not returned and
+                        /// timestamps is not set.</summary>
                         [Google.Apis.Util.StringValueAttribute("NEW")]
                         NEW__,
+                        /// <summary>Has been created.</summary>
                         [Google.Apis.Util.StringValueAttribute("CREATED")]
                         CREATED,
+                        /// <summary>Has been turned in to the teacher.</summary>
                         [Google.Apis.Util.StringValueAttribute("TURNED_IN")]
                         TURNEDIN,
+                        /// <summary>Has been returned to the student.</summary>
                         [Google.Apis.Util.StringValueAttribute("RETURNED")]
                         RETURNED,
+                        /// <summary>Student chose to "unsubmit" the assignment.</summary>
                         [Google.Apis.Util.StringValueAttribute("RECLAIMED_BY_STUDENT")]
                         RECLAIMEDBYSTUDENT,
                     }
 
                     /// <summary>Optional argument to restrict returned student work to those owned by the student with
-                    /// the specified identifier. The identifier can be one of the following:
-                    ///
-                    /// * the numeric identifier for the user * the email address of the user * the string literal
-                    /// `"me"`, indicating the requesting user</summary>
+                    /// the specified identifier. The identifier can be one of the following: * the numeric identifier
+                    /// for the user * the email address of the user * the string literal `"me"`, indicating the
+                    /// requesting user</summary>
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string UserId { get; set; }
 
@@ -1829,21 +1759,15 @@ namespace Google.Apis.Classroom.v1
 
                 }
 
-                /// <summary>Modifies attachments of student submission.
-                ///
-                /// Attachments may only be added to student submissions belonging to course work objects with a
-                /// `workType` of `ASSIGNMENT`.
-                ///
-                /// This request must be made by the Developer Console project of the [OAuth client
+                /// <summary>Modifies attachments of student submission. Attachments may only be added to student
+                /// submissions belonging to course work objects with a `workType` of `ASSIGNMENT`. This request must be
+                /// made by the Developer Console project of the [OAuth client
                 /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work
-                /// item.
-                ///
-                /// This method returns the following error codes:
-                ///
-                /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or
-                /// course work, if the user is not permitted to modify attachments on the requested student submission,
-                /// or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the
-                /// requested course, course work, or student submission does not exist.</summary>
+                /// item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is
+                /// not permitted to access the requested course or course work, if the user is not permitted to modify
+                /// attachments on the requested student submission, or for access errors. * `INVALID_ARGUMENT` if the
+                /// request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does
+                /// not exist.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
                 /// an alias.</param>
@@ -1855,21 +1779,15 @@ namespace Google.Apis.Classroom.v1
                     return new ModifyAttachmentsRequest(service, body, courseId, courseWorkId, id);
                 }
 
-                /// <summary>Modifies attachments of student submission.
-                ///
-                /// Attachments may only be added to student submissions belonging to course work objects with a
-                /// `workType` of `ASSIGNMENT`.
-                ///
-                /// This request must be made by the Developer Console project of the [OAuth client
+                /// <summary>Modifies attachments of student submission. Attachments may only be added to student
+                /// submissions belonging to course work objects with a `workType` of `ASSIGNMENT`. This request must be
+                /// made by the Developer Console project of the [OAuth client
                 /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work
-                /// item.
-                ///
-                /// This method returns the following error codes:
-                ///
-                /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or
-                /// course work, if the user is not permitted to modify attachments on the requested student submission,
-                /// or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the
-                /// requested course, course work, or student submission does not exist.</summary>
+                /// item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is
+                /// not permitted to access the requested course or course work, if the user is not permitted to modify
+                /// attachments on the requested student submission, or for access errors. * `INVALID_ARGUMENT` if the
+                /// request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does
+                /// not exist.</summary>
                 public class ModifyAttachmentsRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.StudentSubmission>
                 {
                     /// <summary>Constructs a new ModifyAttachments request.</summary>
@@ -1958,21 +1876,15 @@ namespace Google.Apis.Classroom.v1
 
                 }
 
-                /// <summary>Updates one or more fields of a student submission.
-                ///
-                /// See google.classroom.v1.StudentSubmission for details of which fields may be updated and who may
-                /// change them.
-                ///
-                /// This request must be made by the Developer Console project of the [OAuth client
+                /// <summary>Updates one or more fields of a student submission. See
+                /// google.classroom.v1.StudentSubmission for details of which fields may be updated and who may change
+                /// them. This request must be made by the Developer Console project of the [OAuth client
                 /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work
-                /// item.
-                ///
-                /// This method returns the following error codes:
-                ///
-                /// * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course
-                /// work, if the user is not permitted to make the requested modification to the student submission, or
-                /// for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested
-                /// course, course work, or student submission does not exist.</summary>
+                /// item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting
+                /// developer project did not create the corresponding course work, if the user is not permitted to make
+                /// the requested modification to the student submission, or for access errors. * `INVALID_ARGUMENT` if
+                /// the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission
+                /// does not exist.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
                 /// an alias.</param>
@@ -1984,21 +1896,15 @@ namespace Google.Apis.Classroom.v1
                     return new PatchRequest(service, body, courseId, courseWorkId, id);
                 }
 
-                /// <summary>Updates one or more fields of a student submission.
-                ///
-                /// See google.classroom.v1.StudentSubmission for details of which fields may be updated and who may
-                /// change them.
-                ///
-                /// This request must be made by the Developer Console project of the [OAuth client
+                /// <summary>Updates one or more fields of a student submission. See
+                /// google.classroom.v1.StudentSubmission for details of which fields may be updated and who may change
+                /// them. This request must be made by the Developer Console project of the [OAuth client
                 /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work
-                /// item.
-                ///
-                /// This method returns the following error codes:
-                ///
-                /// * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course
-                /// work, if the user is not permitted to make the requested modification to the student submission, or
-                /// for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested
-                /// course, course work, or student submission does not exist.</summary>
+                /// item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting
+                /// developer project did not create the corresponding course work, if the user is not permitted to make
+                /// the requested modification to the student submission, or for access errors. * `INVALID_ARGUMENT` if
+                /// the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission
+                /// does not exist.</summary>
                 public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.StudentSubmission>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -2027,11 +1933,8 @@ namespace Google.Apis.Classroom.v1
                     public virtual string Id { get; private set; }
 
                     /// <summary>Mask that identifies which fields on the student submission to update. This field is
-                    /// required to do an update. The update fails if invalid fields are specified.
-                    ///
-                    /// The following fields may be specified by teachers:
-                    ///
-                    /// * `draft_grade` * `assigned_grade`</summary>
+                    /// required to do an update. The update fails if invalid fields are specified. The following fields
+                    /// may be specified by teachers: * `draft_grade` * `assigned_grade`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -2105,25 +2008,16 @@ namespace Google.Apis.Classroom.v1
 
                 }
 
-                /// <summary>Reclaims a student submission on behalf of the student that owns it.
-                ///
-                /// Reclaiming a student submission transfers ownership of attached Drive files to the student and
-                /// updates the submission state.
-                ///
-                /// Only the student that owns the requested student submission may call this method, and only for a
-                /// student submission that has been turned in.
-                ///
-                /// This request must be made by the Developer Console project of the [OAuth client
-                /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work
-                /// item.
-                ///
-                /// This method returns the following error codes:
-                ///
-                /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or
-                /// course work, unsubmit the requested student submission, or for access errors. *
-                /// `FAILED_PRECONDITION` if the student submission has not been turned in. * `INVALID_ARGUMENT` if the
-                /// request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does
-                /// not exist.</summary>
+                /// <summary>Reclaims a student submission on behalf of the student that owns it. Reclaiming a student
+                /// submission transfers ownership of attached Drive files to the student and updates the submission
+                /// state. Only the student that owns the requested student submission may call this method, and only
+                /// for a student submission that has been turned in. This request must be made by the Developer Console
+                /// project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the
+                /// corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED`
+                /// if the requesting user is not permitted to access the requested course or course work, unsubmit the
+                /// requested student submission, or for access errors. * `FAILED_PRECONDITION` if the student
+                /// submission has not been turned in. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND`
+                /// if the requested course, course work, or student submission does not exist.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
                 /// an alias.</param>
@@ -2135,25 +2029,16 @@ namespace Google.Apis.Classroom.v1
                     return new ReclaimRequest(service, body, courseId, courseWorkId, id);
                 }
 
-                /// <summary>Reclaims a student submission on behalf of the student that owns it.
-                ///
-                /// Reclaiming a student submission transfers ownership of attached Drive files to the student and
-                /// updates the submission state.
-                ///
-                /// Only the student that owns the requested student submission may call this method, and only for a
-                /// student submission that has been turned in.
-                ///
-                /// This request must be made by the Developer Console project of the [OAuth client
-                /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work
-                /// item.
-                ///
-                /// This method returns the following error codes:
-                ///
-                /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or
-                /// course work, unsubmit the requested student submission, or for access errors. *
-                /// `FAILED_PRECONDITION` if the student submission has not been turned in. * `INVALID_ARGUMENT` if the
-                /// request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does
-                /// not exist.</summary>
+                /// <summary>Reclaims a student submission on behalf of the student that owns it. Reclaiming a student
+                /// submission transfers ownership of attached Drive files to the student and updates the submission
+                /// state. Only the student that owns the requested student submission may call this method, and only
+                /// for a student submission that has been turned in. This request must be made by the Developer Console
+                /// project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the
+                /// corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED`
+                /// if the requesting user is not permitted to access the requested course or course work, unsubmit the
+                /// requested student submission, or for access errors. * `FAILED_PRECONDITION` if the student
+                /// submission has not been turned in. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND`
+                /// if the requested course, course work, or student submission does not exist.</summary>
                 public class ReclaimRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Reclaim request.</summary>
@@ -2242,24 +2127,16 @@ namespace Google.Apis.Classroom.v1
 
                 }
 
-                /// <summary>Returns a student submission.
-                ///
-                /// Returning a student submission transfers ownership of attached Drive files to the student and may
-                /// also update the submission state. Unlike the Classroom application, returning a student submission
-                /// does not set assignedGrade to the draftGrade value.
-                ///
-                /// Only a teacher of the course that contains the requested student submission may call this method.
-                ///
-                /// This request must be made by the Developer Console project of the [OAuth client
+                /// <summary>Returns a student submission. Returning a student submission transfers ownership of
+                /// attached Drive files to the student and may also update the submission state. Unlike the Classroom
+                /// application, returning a student submission does not set assignedGrade to the draftGrade value. Only
+                /// a teacher of the course that contains the requested student submission may call this method. This
+                /// request must be made by the Developer Console project of the [OAuth client
                 /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work
-                /// item.
-                ///
-                /// This method returns the following error codes:
-                ///
-                /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or
-                /// course work, return the requested student submission, or for access errors. * `INVALID_ARGUMENT` if
-                /// the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission
-                /// does not exist.</summary>
+                /// item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is
+                /// not permitted to access the requested course or course work, return the requested student
+                /// submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if
+                /// the requested course, course work, or student submission does not exist.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
                 /// an alias.</param>
@@ -2271,24 +2148,16 @@ namespace Google.Apis.Classroom.v1
                     return new ClassroomReturnRequest(service, body, courseId, courseWorkId, id);
                 }
 
-                /// <summary>Returns a student submission.
-                ///
-                /// Returning a student submission transfers ownership of attached Drive files to the student and may
-                /// also update the submission state. Unlike the Classroom application, returning a student submission
-                /// does not set assignedGrade to the draftGrade value.
-                ///
-                /// Only a teacher of the course that contains the requested student submission may call this method.
-                ///
-                /// This request must be made by the Developer Console project of the [OAuth client
+                /// <summary>Returns a student submission. Returning a student submission transfers ownership of
+                /// attached Drive files to the student and may also update the submission state. Unlike the Classroom
+                /// application, returning a student submission does not set assignedGrade to the draftGrade value. Only
+                /// a teacher of the course that contains the requested student submission may call this method. This
+                /// request must be made by the Developer Console project of the [OAuth client
                 /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work
-                /// item.
-                ///
-                /// This method returns the following error codes:
-                ///
-                /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or
-                /// course work, return the requested student submission, or for access errors. * `INVALID_ARGUMENT` if
-                /// the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission
-                /// does not exist.</summary>
+                /// item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is
+                /// not permitted to access the requested course or course work, return the requested student
+                /// submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if
+                /// the requested course, course work, or student submission does not exist.</summary>
                 public class ClassroomReturnRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new ClassroomReturn request.</summary>
@@ -2377,23 +2246,15 @@ namespace Google.Apis.Classroom.v1
 
                 }
 
-                /// <summary>Turns in a student submission.
-                ///
-                /// Turning in a student submission transfers ownership of attached Drive files to the teacher and may
-                /// also update the submission state.
-                ///
-                /// This may only be called by the student that owns the specified student submission.
-                ///
-                /// This request must be made by the Developer Console project of the [OAuth client
-                /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work
-                /// item.
-                ///
-                /// This method returns the following error codes:
-                ///
-                /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or
-                /// course work, turn in the requested student submission, or for access errors. * `INVALID_ARGUMENT` if
-                /// the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission
-                /// does not exist.</summary>
+                /// <summary>Turns in a student submission. Turning in a student submission transfers ownership of
+                /// attached Drive files to the teacher and may also update the submission state. This may only be
+                /// called by the student that owns the specified student submission. This request must be made by the
+                /// Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849)
+                /// used to create the corresponding course work item. This method returns the following error codes: *
+                /// `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course
+                /// work, turn in the requested student submission, or for access errors. * `INVALID_ARGUMENT` if the
+                /// request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does
+                /// not exist.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
                 /// an alias.</param>
@@ -2405,23 +2266,15 @@ namespace Google.Apis.Classroom.v1
                     return new TurnInRequest(service, body, courseId, courseWorkId, id);
                 }
 
-                /// <summary>Turns in a student submission.
-                ///
-                /// Turning in a student submission transfers ownership of attached Drive files to the teacher and may
-                /// also update the submission state.
-                ///
-                /// This may only be called by the student that owns the specified student submission.
-                ///
-                /// This request must be made by the Developer Console project of the [OAuth client
-                /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work
-                /// item.
-                ///
-                /// This method returns the following error codes:
-                ///
-                /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or
-                /// course work, turn in the requested student submission, or for access errors. * `INVALID_ARGUMENT` if
-                /// the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission
-                /// does not exist.</summary>
+                /// <summary>Turns in a student submission. Turning in a student submission transfers ownership of
+                /// attached Drive files to the teacher and may also update the submission state. This may only be
+                /// called by the student that owns the specified student submission. This request must be made by the
+                /// Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849)
+                /// used to create the corresponding course work item. This method returns the following error codes: *
+                /// `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course
+                /// work, turn in the requested student submission, or for access errors. * `INVALID_ARGUMENT` if the
+                /// request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does
+                /// not exist.</summary>
                 public class TurnInRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new TurnIn request.</summary>
@@ -2511,19 +2364,15 @@ namespace Google.Apis.Classroom.v1
                 }
             }
 
-            /// <summary>Creates course work.
-            ///
-            /// The resulting course work (and corresponding student submissions) are associated with the Developer
-            /// Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to make
-            /// the request. Classroom API requests to modify course work and student submissions must be made with an
-            /// OAuth client ID from the associated Developer Console project.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create
-            /// course work in the requested course, share a Drive attachment, or for access errors. *
-            /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. *
-            /// `FAILED_PRECONDITION` for the following request error: * AttachmentNotVisible</summary>
+            /// <summary>Creates course work. The resulting course work (and corresponding student submissions) are
+            /// associated with the Developer Console project of the [OAuth client
+            /// ID](https://support.google.com/cloud/answer/6158849) used to make the request. Classroom API requests to
+            /// modify course work and student submissions must be made with an OAuth client ID from the associated
+            /// Developer Console project. This method returns the following error codes: * `PERMISSION_DENIED` if the
+            /// requesting user is not permitted to access the requested course, create course work in the requested
+            /// course, share a Drive attachment, or for access errors. * `INVALID_ARGUMENT` if the request is
+            /// malformed. * `NOT_FOUND` if the requested course does not exist. * `FAILED_PRECONDITION` for the
+            /// following request error: * AttachmentNotVisible</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
             /// an alias.</param>
@@ -2532,19 +2381,15 @@ namespace Google.Apis.Classroom.v1
                 return new CreateRequest(service, body, courseId);
             }
 
-            /// <summary>Creates course work.
-            ///
-            /// The resulting course work (and corresponding student submissions) are associated with the Developer
-            /// Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to make
-            /// the request. Classroom API requests to modify course work and student submissions must be made with an
-            /// OAuth client ID from the associated Developer Console project.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create
-            /// course work in the requested course, share a Drive attachment, or for access errors. *
-            /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. *
-            /// `FAILED_PRECONDITION` for the following request error: * AttachmentNotVisible</summary>
+            /// <summary>Creates course work. The resulting course work (and corresponding student submissions) are
+            /// associated with the Developer Console project of the [OAuth client
+            /// ID](https://support.google.com/cloud/answer/6158849) used to make the request. Classroom API requests to
+            /// modify course work and student submissions must be made with an OAuth client ID from the associated
+            /// Developer Console project. This method returns the following error codes: * `PERMISSION_DENIED` if the
+            /// requesting user is not permitted to access the requested course, create course work in the requested
+            /// course, share a Drive attachment, or for access errors. * `INVALID_ARGUMENT` if the request is
+            /// malformed. * `NOT_FOUND` if the requested course does not exist. * `FAILED_PRECONDITION` for the
+            /// following request error: * AttachmentNotVisible</summary>
             public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.CourseWork>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -2605,17 +2450,12 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Deletes a course work.
-            ///
-            /// This request must be made by the Developer Console project of the [OAuth client
-            /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work,
-            /// if the requesting user is not permitted to delete the requested course or for access errors. *
-            /// `FAILED_PRECONDITION` if the requested course work has already been deleted. * `NOT_FOUND` if no course
-            /// exists with the requested ID.</summary>
+            /// <summary>Deletes a course work. This request must be made by the Developer Console project of the [OAuth
+            /// client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work
+            /// item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer
+            /// project did not create the corresponding course work, if the requesting user is not permitted to delete
+            /// the requested course or for access errors. * `FAILED_PRECONDITION` if the requested course work has
+            /// already been deleted. * `NOT_FOUND` if no course exists with the requested ID.</summary>
             /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
             /// an alias.</param>
             /// <param name="id">Identifier of the course work to delete. This identifier is a Classroom-
@@ -2625,17 +2465,12 @@ namespace Google.Apis.Classroom.v1
                 return new DeleteRequest(service, courseId, id);
             }
 
-            /// <summary>Deletes a course work.
-            ///
-            /// This request must be made by the Developer Console project of the [OAuth client
-            /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work,
-            /// if the requesting user is not permitted to delete the requested course or for access errors. *
-            /// `FAILED_PRECONDITION` if the requested course work has already been deleted. * `NOT_FOUND` if no course
-            /// exists with the requested ID.</summary>
+            /// <summary>Deletes a course work. This request must be made by the Developer Console project of the [OAuth
+            /// client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work
+            /// item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer
+            /// project did not create the corresponding course work, if the requesting user is not permitted to delete
+            /// the requested course or for access errors. * `FAILED_PRECONDITION` if the requested course work has
+            /// already been deleted. * `NOT_FOUND` if no course exists with the requested ID.</summary>
             public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -2704,13 +2539,10 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Returns course work.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course
-            /// work, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the
-            /// requested course or course work does not exist.</summary>
+            /// <summary>Returns course work. This method returns the following error codes: * `PERMISSION_DENIED` if
+            /// the requesting user is not permitted to access the requested course or course work, or for access
+            /// errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or
+            /// course work does not exist.</summary>
             /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
             /// an alias.</param>
             /// <param name="id">Identifier of the course work.</param>
@@ -2719,13 +2551,10 @@ namespace Google.Apis.Classroom.v1
                 return new GetRequest(service, courseId, id);
             }
 
-            /// <summary>Returns course work.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course
-            /// work, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the
-            /// requested course or course work does not exist.</summary>
+            /// <summary>Returns course work. This method returns the following error codes: * `PERMISSION_DENIED` if
+            /// the requesting user is not permitted to access the requested course or course work, or for access
+            /// errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or
+            /// course work does not exist.</summary>
             public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.CourseWork>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -2793,16 +2622,11 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Returns a list of course work that the requester is permitted to view.
-            ///
-            /// Course students may only view `PUBLISHED` course work. Course teachers and domain administrators may
-            /// view all course work.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for
-            /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course
-            /// does not exist.</summary>
+            /// <summary>Returns a list of course work that the requester is permitted to view. Course students may only
+            /// view `PUBLISHED` course work. Course teachers and domain administrators may view all course work. This
+            /// method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
+            /// to access the requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+            /// `NOT_FOUND` if the requested course does not exist.</summary>
             /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
             /// an alias.</param>
             public virtual ListRequest List(string courseId)
@@ -2810,16 +2634,11 @@ namespace Google.Apis.Classroom.v1
                 return new ListRequest(service, courseId);
             }
 
-            /// <summary>Returns a list of course work that the requester is permitted to view.
-            ///
-            /// Course students may only view `PUBLISHED` course work. Course teachers and domain administrators may
-            /// view all course work.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for
-            /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course
-            /// does not exist.</summary>
+            /// <summary>Returns a list of course work that the requester is permitted to view. Course students may only
+            /// view `PUBLISHED` course work. Course teachers and domain administrators may view all course work. This
+            /// method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
+            /// to access the requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+            /// `NOT_FOUND` if the requested course does not exist.</summary>
             public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListCourseWorkResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -2845,12 +2664,19 @@ namespace Google.Apis.Classroom.v1
                 /// unspecified, items with a work status of `PUBLISHED` is returned.</summary>
                 public enum CourseWorkStatesEnum
                 {
+                    /// <summary>No state specified. This is never returned.</summary>
                     [Google.Apis.Util.StringValueAttribute("COURSE_WORK_STATE_UNSPECIFIED")]
                     COURSEWORKSTATEUNSPECIFIED,
+                    /// <summary>Status for work that has been published. This is the default state.</summary>
                     [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
                     PUBLISHED,
+                    /// <summary>Status for work that is not yet published. Work in this state is visible only to course
+                    /// teachers and domain administrators.</summary>
                     [Google.Apis.Util.StringValueAttribute("DRAFT")]
                     DRAFT,
+                    /// <summary>Status for work that was published but is now deleted. Work in this state is visible
+                    /// only to course teachers and domain administrators. Work in this state is deleted after some
+                    /// time.</summary>
                     [Google.Apis.Util.StringValueAttribute("DELETED")]
                     DELETED,
                 }
@@ -2863,16 +2689,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign
-                /// a maximum.
-                ///
-                /// The server may return fewer than the specified number of results.</summary>
+                /// a maximum. The server may return fewer than the specified number of results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
-                /// of results should be returned.
-                ///
-                /// The list request must be otherwise identical to the one that resulted in this token.</summary>
+                /// of results should be returned. The list request must be otherwise identical to the one that resulted
+                /// in this token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -2949,13 +2772,9 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Modifies assignee mode and options of a coursework.
-            ///
-            /// Only a teacher of the course that contains the coursework may call this method.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course
+            /// <summary>Modifies assignee mode and options of a coursework. Only a teacher of the course that contains
+            /// the coursework may call this method. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course
             /// work or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the
             /// requested course or course work does not exist.</summary>
             /// <param name="body">The body of the request.</param>
@@ -2967,13 +2786,9 @@ namespace Google.Apis.Classroom.v1
                 return new ModifyAssigneesRequest(service, body, courseId, id);
             }
 
-            /// <summary>Modifies assignee mode and options of a coursework.
-            ///
-            /// Only a teacher of the course that contains the coursework may call this method.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course
+            /// <summary>Modifies assignee mode and options of a coursework. Only a teacher of the course that contains
+            /// the coursework may call this method. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course
             /// work or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the
             /// requested course or course work does not exist.</summary>
             public class ModifyAssigneesRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.CourseWork>
@@ -3050,20 +2865,15 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Updates one or more fields of a course work.
-            ///
-            /// See google.classroom.v1.CourseWork for details of which fields may be updated and who may change them.
-            ///
-            /// This request must be made by the Developer Console project of the [OAuth client
-            /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work,
-            /// if the user is not permitted to make the requested modification to the student submission, or for access
-            /// errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the requested
-            /// course work has already been deleted. * `NOT_FOUND` if the requested course, course work, or student
-            /// submission does not exist.</summary>
+            /// <summary>Updates one or more fields of a course work. See google.classroom.v1.CourseWork for details of
+            /// which fields may be updated and who may change them. This request must be made by the Developer Console
+            /// project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the
+            /// corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if
+            /// the requesting developer project did not create the corresponding course work, if the user is not
+            /// permitted to make the requested modification to the student submission, or for access errors. *
+            /// `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the requested course work has
+            /// already been deleted. * `NOT_FOUND` if the requested course, course work, or student submission does not
+            /// exist.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
             /// an alias.</param>
@@ -3073,20 +2883,15 @@ namespace Google.Apis.Classroom.v1
                 return new PatchRequest(service, body, courseId, id);
             }
 
-            /// <summary>Updates one or more fields of a course work.
-            ///
-            /// See google.classroom.v1.CourseWork for details of which fields may be updated and who may change them.
-            ///
-            /// This request must be made by the Developer Console project of the [OAuth client
-            /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work,
-            /// if the user is not permitted to make the requested modification to the student submission, or for access
-            /// errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the requested
-            /// course work has already been deleted. * `NOT_FOUND` if the requested course, course work, or student
-            /// submission does not exist.</summary>
+            /// <summary>Updates one or more fields of a course work. See google.classroom.v1.CourseWork for details of
+            /// which fields may be updated and who may change them. This request must be made by the Developer Console
+            /// project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the
+            /// corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if
+            /// the requesting developer project did not create the corresponding course work, if the user is not
+            /// permitted to make the requested modification to the student submission, or for access errors. *
+            /// `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the requested course work has
+            /// already been deleted. * `NOT_FOUND` if the requested course, course work, or student submission does not
+            /// exist.</summary>
             public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.CourseWork>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -3113,11 +2918,8 @@ namespace Google.Apis.Classroom.v1
                 /// do an update. The update fails if invalid fields are specified. If a field supports empty values, it
                 /// can be cleared by specifying it in the update mask and not in the CourseWork object. If a field that
                 /// does not support empty values is included in the update mask and not set in the CourseWork object,
-                /// an `INVALID_ARGUMENT` error is returned.
-                ///
-                /// The following fields may be specified by teachers:
-                ///
-                /// * `title` * `description` * `state` * `due_date` * `due_time` * `max_points` * `scheduled_time` *
+                /// an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: *
+                /// `title` * `description` * `state` * `due_date` * `due_time` * `max_points` * `scheduled_time` *
                 /// `submission_modification_mode` * `topic_id`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -3207,11 +3009,8 @@ namespace Google.Apis.Classroom.v1
             }
 
 
-            /// <summary>Adds a user as a student of a course.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to create students in this course or for
+            /// <summary>Adds a user as a student of a course. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to create students in this course or for
             /// access errors. * `NOT_FOUND` if the requested course ID does not exist. * `FAILED_PRECONDITION` if the
             /// requested user's account is disabled, for the following request errors: * CourseMemberLimitReached *
             /// CourseNotModifiable * UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if the user is already a
@@ -3224,11 +3023,8 @@ namespace Google.Apis.Classroom.v1
                 return new CreateRequest(service, body, courseId);
             }
 
-            /// <summary>Adds a user as a student of a course.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to create students in this course or for
+            /// <summary>Adds a user as a student of a course. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to create students in this course or for
             /// access errors. * `NOT_FOUND` if the requested course ID does not exist. * `FAILED_PRECONDITION` if the
             /// requested user's account is disabled, for the following request errors: * CourseMemberLimitReached *
             /// CourseNotModifiable * UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if the user is already a
@@ -3308,30 +3104,22 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Deletes a student of a course.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to delete students of this course or for
+            /// <summary>Deletes a student of a course. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to delete students of this course or for
             /// access errors. * `NOT_FOUND` if no student of this course has the requested ID or if the course does not
             /// exist.</summary>
             /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
             /// an alias.</param>
             /// <param name="userId">Identifier of the student to delete. The identifier can be one of the
-            /// following:
-            ///
-            /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the
-            /// requesting user</param>
+            /// following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
+            /// indicating the requesting user</param>
             public virtual DeleteRequest Delete(string courseId, string userId)
             {
                 return new DeleteRequest(service, courseId, userId);
             }
 
-            /// <summary>Deletes a student of a course.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to delete students of this course or for
+            /// <summary>Deletes a student of a course. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to delete students of this course or for
             /// access errors. * `NOT_FOUND` if no student of this course has the requested ID or if the course does not
             /// exist.</summary>
             public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
@@ -3351,9 +3139,8 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string CourseId { get; private set; }
 
-                /// <summary>Identifier of the student to delete. The identifier can be one of the following:
-                ///
-                /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
+                /// <summary>Identifier of the student to delete. The identifier can be one of the following: * the
+                /// numeric identifier for the user * the email address of the user * the string literal `"me"`,
                 /// indicating the requesting user</summary>
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
@@ -3404,30 +3191,22 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Returns a student of a course.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to view students of this course or for
+            /// <summary>Returns a student of a course. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to view students of this course or for
             /// access errors. * `NOT_FOUND` if no student of this course has the requested ID or if the course does not
             /// exist.</summary>
             /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
             /// an alias.</param>
             /// <param name="userId">Identifier of the student to return. The identifier can be one of the
-            /// following:
-            ///
-            /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the
-            /// requesting user</param>
+            /// following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
+            /// indicating the requesting user</param>
             public virtual GetRequest Get(string courseId, string userId)
             {
                 return new GetRequest(service, courseId, userId);
             }
 
-            /// <summary>Returns a student of a course.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to view students of this course or for
+            /// <summary>Returns a student of a course. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to view students of this course or for
             /// access errors. * `NOT_FOUND` if no student of this course has the requested ID or if the course does not
             /// exist.</summary>
             public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Student>
@@ -3447,9 +3226,8 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string CourseId { get; private set; }
 
-                /// <summary>Identifier of the student to return. The identifier can be one of the following:
-                ///
-                /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
+                /// <summary>Identifier of the student to return. The identifier can be one of the following: * the
+                /// numeric identifier for the user * the email address of the user * the string literal `"me"`,
                 /// indicating the requesting user</summary>
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
@@ -3500,11 +3278,9 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Returns a list of students of this course that the requester is permitted to view.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `NOT_FOUND` if the course does not exist. * `PERMISSION_DENIED` for access errors.</summary>
+            /// <summary>Returns a list of students of this course that the requester is permitted to view. This method
+            /// returns the following error codes: * `NOT_FOUND` if the course does not exist. * `PERMISSION_DENIED` for
+            /// access errors.</summary>
             /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
             /// an alias.</param>
             public virtual ListRequest List(string courseId)
@@ -3512,11 +3288,9 @@ namespace Google.Apis.Classroom.v1
                 return new ListRequest(service, courseId);
             }
 
-            /// <summary>Returns a list of students of this course that the requester is permitted to view.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `NOT_FOUND` if the course does not exist. * `PERMISSION_DENIED` for access errors.</summary>
+            /// <summary>Returns a list of students of this course that the requester is permitted to view. This method
+            /// returns the following error codes: * `NOT_FOUND` if the course does not exist. * `PERMISSION_DENIED` for
+            /// access errors.</summary>
             public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListStudentsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -3533,16 +3307,14 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string CourseId { get; private set; }
 
-                /// <summary>Maximum number of items to return. The default is 30 if unspecified or `0`.
-                ///
-                /// The server may return fewer than the specified number of results.</summary>
+                /// <summary>Maximum number of items to return. The default is 30 if unspecified or `0`. The server may
+                /// return fewer than the specified number of results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
-                /// of results should be returned.
-                ///
-                /// The list request must be otherwise identical to the one that resulted in this token.</summary>
+                /// of results should be returned. The list request must be otherwise identical to the one that resulted
+                /// in this token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -3625,11 +3397,8 @@ namespace Google.Apis.Classroom.v1
             }
 
 
-            /// <summary>Creates a teacher of a course.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not  permitted to create teachers in this course or for
+            /// <summary>Creates a teacher of a course. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to create teachers in this course or for
             /// access errors. * `NOT_FOUND` if the requested course ID does not exist. * `FAILED_PRECONDITION` if the
             /// requested user's account is disabled, for the following request errors: * CourseMemberLimitReached *
             /// CourseNotModifiable * CourseTeacherLimitReached * UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if
@@ -3642,11 +3411,8 @@ namespace Google.Apis.Classroom.v1
                 return new CreateRequest(service, body, courseId);
             }
 
-            /// <summary>Creates a teacher of a course.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not  permitted to create teachers in this course or for
+            /// <summary>Creates a teacher of a course. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to create teachers in this course or for
             /// access errors. * `NOT_FOUND` if the requested course ID does not exist. * `FAILED_PRECONDITION` if the
             /// requested user's account is disabled, for the following request errors: * CourseMemberLimitReached *
             /// CourseNotModifiable * CourseTeacherLimitReached * UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if
@@ -3711,31 +3477,23 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Deletes a teacher of a course.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to delete teachers of this course or for
+            /// <summary>Deletes a teacher of a course. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to delete teachers of this course or for
             /// access errors. * `NOT_FOUND` if no teacher of this course has the requested ID or if the course does not
             /// exist. * `FAILED_PRECONDITION` if the requested ID belongs to the primary teacher of this
             /// course.</summary>
             /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
             /// an alias.</param>
             /// <param name="userId">Identifier of the teacher to delete. The identifier can be one of the
-            /// following:
-            ///
-            /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the
-            /// requesting user</param>
+            /// following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
+            /// indicating the requesting user</param>
             public virtual DeleteRequest Delete(string courseId, string userId)
             {
                 return new DeleteRequest(service, courseId, userId);
             }
 
-            /// <summary>Deletes a teacher of a course.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to delete teachers of this course or for
+            /// <summary>Deletes a teacher of a course. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to delete teachers of this course or for
             /// access errors. * `NOT_FOUND` if no teacher of this course has the requested ID or if the course does not
             /// exist. * `FAILED_PRECONDITION` if the requested ID belongs to the primary teacher of this
             /// course.</summary>
@@ -3756,9 +3514,8 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string CourseId { get; private set; }
 
-                /// <summary>Identifier of the teacher to delete. The identifier can be one of the following:
-                ///
-                /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
+                /// <summary>Identifier of the teacher to delete. The identifier can be one of the following: * the
+                /// numeric identifier for the user * the email address of the user * the string literal `"me"`,
                 /// indicating the requesting user</summary>
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
@@ -3809,30 +3566,22 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Returns a teacher of a course.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to view teachers of this course or for
+            /// <summary>Returns a teacher of a course. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to view teachers of this course or for
             /// access errors. * `NOT_FOUND` if no teacher of this course has the requested ID or if the course does not
             /// exist.</summary>
             /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
             /// an alias.</param>
             /// <param name="userId">Identifier of the teacher to return. The identifier can be one of the
-            /// following:
-            ///
-            /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the
-            /// requesting user</param>
+            /// following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
+            /// indicating the requesting user</param>
             public virtual GetRequest Get(string courseId, string userId)
             {
                 return new GetRequest(service, courseId, userId);
             }
 
-            /// <summary>Returns a teacher of a course.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to view teachers of this course or for
+            /// <summary>Returns a teacher of a course. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to view teachers of this course or for
             /// access errors. * `NOT_FOUND` if no teacher of this course has the requested ID or if the course does not
             /// exist.</summary>
             public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Teacher>
@@ -3852,9 +3601,8 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string CourseId { get; private set; }
 
-                /// <summary>Identifier of the teacher to return. The identifier can be one of the following:
-                ///
-                /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
+                /// <summary>Identifier of the teacher to return. The identifier can be one of the following: * the
+                /// numeric identifier for the user * the email address of the user * the string literal `"me"`,
                 /// indicating the requesting user</summary>
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
@@ -3905,11 +3653,9 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Returns a list of teachers of this course that the requester is permitted to view.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `NOT_FOUND` if the course does not exist. * `PERMISSION_DENIED` for access errors.</summary>
+            /// <summary>Returns a list of teachers of this course that the requester is permitted to view. This method
+            /// returns the following error codes: * `NOT_FOUND` if the course does not exist. * `PERMISSION_DENIED` for
+            /// access errors.</summary>
             /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
             /// an alias.</param>
             public virtual ListRequest List(string courseId)
@@ -3917,11 +3663,9 @@ namespace Google.Apis.Classroom.v1
                 return new ListRequest(service, courseId);
             }
 
-            /// <summary>Returns a list of teachers of this course that the requester is permitted to view.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `NOT_FOUND` if the course does not exist. * `PERMISSION_DENIED` for access errors.</summary>
+            /// <summary>Returns a list of teachers of this course that the requester is permitted to view. This method
+            /// returns the following error codes: * `NOT_FOUND` if the course does not exist. * `PERMISSION_DENIED` for
+            /// access errors.</summary>
             public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListTeachersResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -3938,16 +3682,14 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string CourseId { get; private set; }
 
-                /// <summary>Maximum number of items to return. The default is 30 if unspecified or `0`.
-                ///
-                /// The server may return fewer than the specified number of results.</summary>
+                /// <summary>Maximum number of items to return. The default is 30 if unspecified or `0`. The server may
+                /// return fewer than the specified number of results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
-                /// of results should be returned.
-                ///
-                /// The list request must be otherwise identical to the one that resulted in this token.</summary>
+                /// of results should be returned. The list request must be otherwise identical to the one that resulted
+                /// in this token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -4030,13 +3772,10 @@ namespace Google.Apis.Classroom.v1
             }
 
 
-            /// <summary>Creates a topic.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create a
-            /// topic in the requested course, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. *
-            /// `NOT_FOUND` if the requested course does not exist.</summary>
+            /// <summary>Creates a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the
+            /// requesting user is not permitted to access the requested course, create a topic in the requested course,
+            /// or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested
+            /// course does not exist.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
             /// an alias.</param>
@@ -4045,13 +3784,10 @@ namespace Google.Apis.Classroom.v1
                 return new CreateRequest(service, body, courseId);
             }
 
-            /// <summary>Creates a topic.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create a
-            /// topic in the requested course, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. *
-            /// `NOT_FOUND` if the requested course does not exist.</summary>
+            /// <summary>Creates a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the
+            /// requesting user is not permitted to access the requested course, create a topic in the requested course,
+            /// or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested
+            /// course does not exist.</summary>
             public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Topic>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -4112,13 +3848,10 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Deletes a topic.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not allowed to delete the requested topic or for access
-            /// errors. * `FAILED_PRECONDITION` if the requested topic has already been deleted. * `NOT_FOUND` if no
-            /// course or topic exists with the requested ID.</summary>
+            /// <summary>Deletes a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the
+            /// requesting user is not allowed to delete the requested topic or for access errors. *
+            /// `FAILED_PRECONDITION` if the requested topic has already been deleted. * `NOT_FOUND` if no course or
+            /// topic exists with the requested ID.</summary>
             /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
             /// an alias.</param>
             /// <param name="id">Identifier of the topic to delete.</param>
@@ -4127,13 +3860,10 @@ namespace Google.Apis.Classroom.v1
                 return new DeleteRequest(service, courseId, id);
             }
 
-            /// <summary>Deletes a topic.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not allowed to delete the requested topic or for access
-            /// errors. * `FAILED_PRECONDITION` if the requested topic has already been deleted. * `NOT_FOUND` if no
-            /// course or topic exists with the requested ID.</summary>
+            /// <summary>Deletes a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the
+            /// requesting user is not allowed to delete the requested topic or for access errors. *
+            /// `FAILED_PRECONDITION` if the requested topic has already been deleted. * `NOT_FOUND` if no course or
+            /// topic exists with the requested ID.</summary>
             public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -4201,13 +3931,10 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Returns a topic.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or topic,
-            /// or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested
-            /// course or topic does not exist.</summary>
+            /// <summary>Returns a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the
+            /// requesting user is not permitted to access the requested course or topic, or for access errors. *
+            /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or topic does not
+            /// exist.</summary>
             /// <param name="courseId">Identifier of the course.</param>
             /// <param name="id">Identifier of the
             /// topic.</param>
@@ -4216,13 +3943,10 @@ namespace Google.Apis.Classroom.v1
                 return new GetRequest(service, courseId, id);
             }
 
-            /// <summary>Returns a topic.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or topic,
-            /// or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested
-            /// course or topic does not exist.</summary>
+            /// <summary>Returns a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the
+            /// requesting user is not permitted to access the requested course or topic, or for access errors. *
+            /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or topic does not
+            /// exist.</summary>
             public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Topic>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -4289,13 +4013,10 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Returns the list of topics that the requester is permitted to view.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for
-            /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course
-            /// does not exist.</summary>
+            /// <summary>Returns the list of topics that the requester is permitted to view. This method returns the
+            /// following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the
+            /// requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND`
+            /// if the requested course does not exist.</summary>
             /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
             /// an alias.</param>
             public virtual ListRequest List(string courseId)
@@ -4303,13 +4024,10 @@ namespace Google.Apis.Classroom.v1
                 return new ListRequest(service, courseId);
             }
 
-            /// <summary>Returns the list of topics that the requester is permitted to view.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for
-            /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course
-            /// does not exist.</summary>
+            /// <summary>Returns the list of topics that the requester is permitted to view. This method returns the
+            /// following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the
+            /// requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND`
+            /// if the requested course does not exist.</summary>
             public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListTopicResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -4327,16 +4045,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string CourseId { get; private set; }
 
                 /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign
-                /// a maximum.
-                ///
-                /// The server may return fewer than the specified number of results.</summary>
+                /// a maximum. The server may return fewer than the specified number of results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
-                /// of results should be returned.
-                ///
-                /// The list request must be otherwise identical to the one that resulted in this token.</summary>
+                /// of results should be returned. The list request must be otherwise identical to the one that resulted
+                /// in this token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -4395,11 +4110,8 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Updates one or more fields of a topic.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding topic or for
+            /// <summary>Updates one or more fields of a topic. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting developer project did not create the corresponding topic or for
             /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course
             /// or topic does not exist</summary>
             /// <param name="body">The body of the request.</param>
@@ -4411,11 +4123,8 @@ namespace Google.Apis.Classroom.v1
                 return new PatchRequest(service, body, courseId, id);
             }
 
-            /// <summary>Updates one or more fields of a topic.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding topic or for
+            /// <summary>Updates one or more fields of a topic. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting developer project did not create the corresponding topic or for
             /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course
             /// or topic does not exist</summary>
             public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Topic>
@@ -4444,11 +4153,7 @@ namespace Google.Apis.Classroom.v1
                 /// update. The update fails if invalid fields are specified. If a field supports empty values, it can
                 /// be cleared by specifying it in the update mask and not in the Topic object. If a field that does not
                 /// support empty values is included in the update mask and not set in the Topic object, an
-                /// `INVALID_ARGUMENT` error is returned.
-                ///
-                /// The following fields may be specified:
-                ///
-                /// * `name`</summary>
+                /// `INVALID_ARGUMENT` error is returned. The following fields may be specified: * `name`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -4514,32 +4219,24 @@ namespace Google.Apis.Classroom.v1
             }
         }
 
-        /// <summary>Creates a course.
-        ///
-        /// The user specified in `ownerId` is the owner of the created course and added as a teacher.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if the requesting user is not permitted to create courses or for access errors. *
-        /// `NOT_FOUND` if the primary teacher is not a valid user. * `FAILED_PRECONDITION` if the course owner's
-        /// account is disabled or for the following request errors: * UserGroupsMembershipLimitReached *
-        /// `ALREADY_EXISTS` if an alias was specified in the `id` and already exists.</summary>
+        /// <summary>Creates a course. The user specified in `ownerId` is the owner of the created course and added as a
+        /// teacher. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not
+        /// permitted to create courses or for access errors. * `NOT_FOUND` if the primary teacher is not a valid user.
+        /// * `FAILED_PRECONDITION` if the course owner's account is disabled or for the following request errors: *
+        /// UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if an alias was specified in the `id` and already
+        /// exists.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.Course body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Creates a course.
-        ///
-        /// The user specified in `ownerId` is the owner of the created course and added as a teacher.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if the requesting user is not permitted to create courses or for access errors. *
-        /// `NOT_FOUND` if the primary teacher is not a valid user. * `FAILED_PRECONDITION` if the course owner's
-        /// account is disabled or for the following request errors: * UserGroupsMembershipLimitReached *
-        /// `ALREADY_EXISTS` if an alias was specified in the `id` and already exists.</summary>
+        /// <summary>Creates a course. The user specified in `ownerId` is the owner of the created course and added as a
+        /// teacher. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not
+        /// permitted to create courses or for access errors. * `NOT_FOUND` if the primary teacher is not a valid user.
+        /// * `FAILED_PRECONDITION` if the course owner's account is disabled or for the following request errors: *
+        /// UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if an alias was specified in the `id` and already
+        /// exists.</summary>
         public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Course>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -4585,12 +4282,9 @@ namespace Google.Apis.Classroom.v1
 
         }
 
-        /// <summary>Deletes a course.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested course or for access
-        /// errors. * `NOT_FOUND` if no course exists with the requested ID.</summary>
+        /// <summary>Deletes a course. This method returns the following error codes: * `PERMISSION_DENIED` if the
+        /// requesting user is not permitted to delete the requested course or for access errors. * `NOT_FOUND` if no
+        /// course exists with the requested ID.</summary>
         /// <param name="id">Identifier of the course to delete. This identifier can be either the Classroom-assigned identifier
         /// or an alias.</param>
         public virtual DeleteRequest Delete(string id)
@@ -4598,12 +4292,9 @@ namespace Google.Apis.Classroom.v1
             return new DeleteRequest(service, id);
         }
 
-        /// <summary>Deletes a course.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested course or for access
-        /// errors. * `NOT_FOUND` if no course exists with the requested ID.</summary>
+        /// <summary>Deletes a course. This method returns the following error codes: * `PERMISSION_DENIED` if the
+        /// requesting user is not permitted to delete the requested course or for access errors. * `NOT_FOUND` if no
+        /// course exists with the requested ID.</summary>
         public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -4657,12 +4348,9 @@ namespace Google.Apis.Classroom.v1
 
         }
 
-        /// <summary>Returns a course.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access
-        /// errors. * `NOT_FOUND` if no course exists with the requested ID.</summary>
+        /// <summary>Returns a course. This method returns the following error codes: * `PERMISSION_DENIED` if the
+        /// requesting user is not permitted to access the requested course or for access errors. * `NOT_FOUND` if no
+        /// course exists with the requested ID.</summary>
         /// <param name="id">Identifier of the course to return. This identifier can be either the Classroom-assigned identifier
         /// or an alias.</param>
         public virtual GetRequest Get(string id)
@@ -4670,12 +4358,9 @@ namespace Google.Apis.Classroom.v1
             return new GetRequest(service, id);
         }
 
-        /// <summary>Returns a course.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access
-        /// errors. * `NOT_FOUND` if no course exists with the requested ID.</summary>
+        /// <summary>Returns a course. This method returns the following error codes: * `PERMISSION_DENIED` if the
+        /// requesting user is not permitted to access the requested course or for access errors. * `NOT_FOUND` if no
+        /// course exists with the requested ID.</summary>
         public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Course>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -4731,12 +4416,9 @@ namespace Google.Apis.Classroom.v1
 
         /// <summary>Returns a list of courses that the requesting user is permitted to view, restricted to those that
         /// match the request. Returned courses are ordered by creation time, with the most recently created coming
-        /// first.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the query argument is malformed. *
-        /// `NOT_FOUND` if any users specified in the query arguments do not exist.</summary>
+        /// first. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. *
+        /// `INVALID_ARGUMENT` if the query argument is malformed. * `NOT_FOUND` if any users specified in the query
+        /// arguments do not exist.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
@@ -4744,12 +4426,9 @@ namespace Google.Apis.Classroom.v1
 
         /// <summary>Returns a list of courses that the requesting user is permitted to view, restricted to those that
         /// match the request. Returned courses are ordered by creation time, with the most recently created coming
-        /// first.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the query argument is malformed. *
-        /// `NOT_FOUND` if any users specified in the query arguments do not exist.</summary>
+        /// first. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. *
+        /// `INVALID_ARGUMENT` if the query argument is malformed. * `NOT_FOUND` if any users specified in the query
+        /// arguments do not exist.</summary>
         public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListCoursesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -4769,47 +4448,54 @@ namespace Google.Apis.Classroom.v1
             /// ARCHIVED, PROVISIONED, DECLINED.</summary>
             public enum CourseStatesEnum
             {
+                /// <summary>No course state. No returned Course message will use this value.</summary>
                 [Google.Apis.Util.StringValueAttribute("COURSE_STATE_UNSPECIFIED")]
                 COURSESTATEUNSPECIFIED,
+                /// <summary>The course is active.</summary>
                 [Google.Apis.Util.StringValueAttribute("ACTIVE")]
                 ACTIVE,
+                /// <summary>The course has been archived. You cannot modify it except to change it to a different
+                /// state.</summary>
                 [Google.Apis.Util.StringValueAttribute("ARCHIVED")]
                 ARCHIVED,
+                /// <summary>The course has been created, but not yet activated. It is accessible by the primary teacher
+                /// and domain administrators, who may modify it or change it to the `ACTIVE` or `DECLINED` states. A
+                /// course may only be changed to `PROVISIONED` if it is in the `DECLINED` state.</summary>
                 [Google.Apis.Util.StringValueAttribute("PROVISIONED")]
                 PROVISIONED,
+                /// <summary>The course has been created, but declined. It is accessible by the course owner and domain
+                /// administrators, though it will not be displayed in the web UI. You cannot modify the course except
+                /// to change it to the `PROVISIONED` state. A course may only be changed to `DECLINED` if it is in the
+                /// `PROVISIONED` state.</summary>
                 [Google.Apis.Util.StringValueAttribute("DECLINED")]
                 DECLINED,
+                /// <summary>The course has been suspended. You cannot modify the course, and only the user identified
+                /// by the `owner_id` can view the course. A course may be placed in this state if it potentially
+                /// violates the Terms of Service.</summary>
                 [Google.Apis.Util.StringValueAttribute("SUSPENDED")]
                 SUSPENDED,
             }
 
             /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign a
-            /// maximum.
-            ///
-            /// The server may return fewer than the specified number of results.</summary>
+            /// maximum. The server may return fewer than the specified number of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page of
-            /// results should be returned.
-            ///
-            /// The list request must be otherwise identical to the one that resulted in this token.</summary>
+            /// results should be returned. The list request must be otherwise identical to the one that resulted in
+            /// this token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
             /// <summary>Restricts returned courses to those having a student with the specified identifier. The
-            /// identifier can be one of the following:
-            ///
-            /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
-            /// indicating the requesting user</summary>
+            /// identifier can be one of the following: * the numeric identifier for the user * the email address of the
+            /// user * the string literal `"me"`, indicating the requesting user</summary>
             [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string StudentId { get; set; }
 
             /// <summary>Restricts returned courses to those having a teacher with the specified identifier. The
-            /// identifier can be one of the following:
-            ///
-            /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
-            /// indicating the requesting user</summary>
+            /// identifier can be one of the following: * the numeric identifier for the user * the email address of the
+            /// user * the string literal `"me"`, indicating the requesting user</summary>
             [Google.Apis.Util.RequestParameterAttribute("teacherId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string TeacherId { get; set; }
 
@@ -4886,11 +4572,8 @@ namespace Google.Apis.Classroom.v1
 
         }
 
-        /// <summary>Updates one or more fields in a course.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested course or for access
+        /// <summary>Updates one or more fields in a course. This method returns the following error codes: *
+        /// `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested course or for access
         /// errors. * `NOT_FOUND` if no course exists with the requested ID. * `INVALID_ARGUMENT` if invalid fields are
         /// specified in the update mask or if no update mask is supplied. * `FAILED_PRECONDITION` for the following
         /// request errors: * CourseNotModifiable</summary>
@@ -4902,11 +4585,8 @@ namespace Google.Apis.Classroom.v1
             return new PatchRequest(service, body, id);
         }
 
-        /// <summary>Updates one or more fields in a course.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested course or for access
+        /// <summary>Updates one or more fields in a course. This method returns the following error codes: *
+        /// `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested course or for access
         /// errors. * `NOT_FOUND` if no course exists with the requested ID. * `INVALID_ARGUMENT` if invalid fields are
         /// specified in the update mask or if no update mask is supplied. * `FAILED_PRECONDITION` for the following
         /// request errors: * CourseNotModifiable</summary>
@@ -4928,16 +4608,11 @@ namespace Google.Apis.Classroom.v1
             public virtual string Id { get; private set; }
 
             /// <summary>Mask that identifies which fields on the course to update. This field is required to do an
-            /// update. The update will fail if invalid fields are specified. The following fields are valid:
-            ///
-            /// * `name` * `section` * `descriptionHeading` * `description` * `room` * `courseState` * `ownerId`
-            ///
-            /// Note: patches to ownerId are treated as being effective immediately, but in practice it may take some
-            /// time for the ownership transfer of all affected resources to complete.
-            ///
-            /// When set in a query parameter, this field should be specified as
-            ///
-            /// `updateMask=,,...`</summary>
+            /// update. The update will fail if invalid fields are specified. The following fields are valid: * `name` *
+            /// `section` * `descriptionHeading` * `description` * `room` * `courseState` * `ownerId` Note: patches to
+            /// ownerId are treated as being effective immediately, but in practice it may take some time for the
+            /// ownership transfer of all affected resources to complete. When set in a query parameter, this field
+            /// should be specified as `updateMask=,,...`</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -4993,13 +4668,10 @@ namespace Google.Apis.Classroom.v1
 
         }
 
-        /// <summary>Updates a course.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested course or for access
-        /// errors. * `NOT_FOUND` if no course exists with the requested ID. * `FAILED_PRECONDITION` for the following
-        /// request errors: * CourseNotModifiable</summary>
+        /// <summary>Updates a course. This method returns the following error codes: * `PERMISSION_DENIED` if the
+        /// requesting user is not permitted to modify the requested course or for access errors. * `NOT_FOUND` if no
+        /// course exists with the requested ID. * `FAILED_PRECONDITION` for the following request errors: *
+        /// CourseNotModifiable</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="id">Identifier of the course to update. This identifier can be either the Classroom-assigned identifier
         /// or an alias.</param>
@@ -5008,13 +4680,10 @@ namespace Google.Apis.Classroom.v1
             return new UpdateRequest(service, body, id);
         }
 
-        /// <summary>Updates a course.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested course or for access
-        /// errors. * `NOT_FOUND` if no course exists with the requested ID. * `FAILED_PRECONDITION` for the following
-        /// request errors: * CourseNotModifiable</summary>
+        /// <summary>Updates a course. This method returns the following error codes: * `PERMISSION_DENIED` if the
+        /// requesting user is not permitted to modify the requested course or for access errors. * `NOT_FOUND` if no
+        /// course exists with the requested ID. * `FAILED_PRECONDITION` for the following request errors: *
+        /// CourseNotModifiable</summary>
         public class UpdateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Course>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -5093,14 +4762,11 @@ namespace Google.Apis.Classroom.v1
 
 
         /// <summary>Accepts an invitation, removing it and adding the invited user to the teachers or students (as
-        /// appropriate) of the specified course. Only the invited user may accept an invitation.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if the requesting user is not permitted to accept the requested invitation or for
-        /// access errors. * `FAILED_PRECONDITION` for the following request errors: * CourseMemberLimitReached *
-        /// CourseNotModifiable * CourseTeacherLimitReached * UserGroupsMembershipLimitReached * `NOT_FOUND` if no
-        /// invitation exists with the requested ID.</summary>
+        /// appropriate) of the specified course. Only the invited user may accept an invitation. This method returns
+        /// the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to accept the
+        /// requested invitation or for access errors. * `FAILED_PRECONDITION` for the following request errors: *
+        /// CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached *
+        /// UserGroupsMembershipLimitReached * `NOT_FOUND` if no invitation exists with the requested ID.</summary>
         /// <param name="id">Identifier of the invitation to accept.</param>
         public virtual AcceptRequest Accept(string id)
         {
@@ -5108,14 +4774,11 @@ namespace Google.Apis.Classroom.v1
         }
 
         /// <summary>Accepts an invitation, removing it and adding the invited user to the teachers or students (as
-        /// appropriate) of the specified course. Only the invited user may accept an invitation.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if the requesting user is not permitted to accept the requested invitation or for
-        /// access errors. * `FAILED_PRECONDITION` for the following request errors: * CourseMemberLimitReached *
-        /// CourseNotModifiable * CourseTeacherLimitReached * UserGroupsMembershipLimitReached * `NOT_FOUND` if no
-        /// invitation exists with the requested ID.</summary>
+        /// appropriate) of the specified course. Only the invited user may accept an invitation. This method returns
+        /// the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to accept the
+        /// requested invitation or for access errors. * `FAILED_PRECONDITION` for the following request errors: *
+        /// CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached *
+        /// UserGroupsMembershipLimitReached * `NOT_FOUND` if no invitation exists with the requested ID.</summary>
         public class AcceptRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
         {
             /// <summary>Constructs a new Accept request.</summary>
@@ -5169,11 +4832,8 @@ namespace Google.Apis.Classroom.v1
         }
 
         /// <summary>Creates an invitation. Only one invitation for a user and course may exist at a time. Delete and
-        /// re-create an invitation to make changes.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if the requesting user is not permitted to create invitations for this course or for
+        /// re-create an invitation to make changes. This method returns the following error codes: *
+        /// `PERMISSION_DENIED` if the requesting user is not permitted to create invitations for this course or for
         /// access errors. * `NOT_FOUND` if the course or the user does not exist. * `FAILED_PRECONDITION` if the
         /// requested user's account is disabled or if the user already has this role or a role with greater
         /// permissions. * `ALREADY_EXISTS` if an invitation for the specified user and course already exists.</summary>
@@ -5184,11 +4844,8 @@ namespace Google.Apis.Classroom.v1
         }
 
         /// <summary>Creates an invitation. Only one invitation for a user and course may exist at a time. Delete and
-        /// re-create an invitation to make changes.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if the requesting user is not permitted to create invitations for this course or for
+        /// re-create an invitation to make changes. This method returns the following error codes: *
+        /// `PERMISSION_DENIED` if the requesting user is not permitted to create invitations for this course or for
         /// access errors. * `NOT_FOUND` if the course or the user does not exist. * `FAILED_PRECONDITION` if the
         /// requested user's account is disabled or if the user already has this role or a role with greater
         /// permissions. * `ALREADY_EXISTS` if an invitation for the specified user and course already exists.</summary>
@@ -5237,24 +4894,18 @@ namespace Google.Apis.Classroom.v1
 
         }
 
-        /// <summary>Deletes an invitation.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested invitation or for
-        /// access errors. * `NOT_FOUND` if no invitation exists with the requested ID.</summary>
+        /// <summary>Deletes an invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the
+        /// requesting user is not permitted to delete the requested invitation or for access errors. * `NOT_FOUND` if
+        /// no invitation exists with the requested ID.</summary>
         /// <param name="id">Identifier of the invitation to delete.</param>
         public virtual DeleteRequest Delete(string id)
         {
             return new DeleteRequest(service, id);
         }
 
-        /// <summary>Deletes an invitation.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested invitation or for
-        /// access errors. * `NOT_FOUND` if no invitation exists with the requested ID.</summary>
+        /// <summary>Deletes an invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the
+        /// requesting user is not permitted to delete the requested invitation or for access errors. * `NOT_FOUND` if
+        /// no invitation exists with the requested ID.</summary>
         public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -5307,24 +4958,18 @@ namespace Google.Apis.Classroom.v1
 
         }
 
-        /// <summary>Returns an invitation.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if the requesting user is not permitted to view the requested invitation or for access
-        /// errors. * `NOT_FOUND` if no invitation exists with the requested ID.</summary>
+        /// <summary>Returns an invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the
+        /// requesting user is not permitted to view the requested invitation or for access errors. * `NOT_FOUND` if no
+        /// invitation exists with the requested ID.</summary>
         /// <param name="id">Identifier of the invitation to return.</param>
         public virtual GetRequest Get(string id)
         {
             return new GetRequest(service, id);
         }
 
-        /// <summary>Returns an invitation.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if the requesting user is not permitted to view the requested invitation or for access
-        /// errors. * `NOT_FOUND` if no invitation exists with the requested ID.</summary>
+        /// <summary>Returns an invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the
+        /// requesting user is not permitted to view the requested invitation or for access errors. * `NOT_FOUND` if no
+        /// invitation exists with the requested ID.</summary>
         public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Invitation>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -5378,26 +5023,18 @@ namespace Google.Apis.Classroom.v1
         }
 
         /// <summary>Returns a list of invitations that the requesting user is permitted to view, restricted to those
-        /// that match the list request.
-        ///
-        /// *Note:* At least one of `user_id` or `course_id` must be supplied. Both fields can be supplied.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` for access errors.</summary>
+        /// that match the list request. *Note:* At least one of `user_id` or `course_id` must be supplied. Both fields
+        /// can be supplied. This method returns the following error codes: * `PERMISSION_DENIED` for access
+        /// errors.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
         /// <summary>Returns a list of invitations that the requesting user is permitted to view, restricted to those
-        /// that match the list request.
-        ///
-        /// *Note:* At least one of `user_id` or `course_id` must be supplied. Both fields can be supplied.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` for access errors.</summary>
+        /// that match the list request. *Note:* At least one of `user_id` or `course_id` must be supplied. Both fields
+        /// can be supplied. This method returns the following error codes: * `PERMISSION_DENIED` for access
+        /// errors.</summary>
         public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListInvitationsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -5412,24 +5049,20 @@ namespace Google.Apis.Classroom.v1
             [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CourseId { get; set; }
 
-            /// <summary>Maximum number of items to return. The default is 500 if unspecified or `0`.
-            ///
-            /// The server may return fewer than the specified number of results.</summary>
+            /// <summary>Maximum number of items to return. The default is 500 if unspecified or `0`. The server may
+            /// return fewer than the specified number of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page of
-            /// results should be returned.
-            ///
-            /// The list request must be otherwise identical to the one that resulted in this token.</summary>
+            /// results should be returned. The list request must be otherwise identical to the one that resulted in
+            /// this token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
             /// <summary>Restricts returned invitations to those for a specific user. The identifier can be one of the
-            /// following:
-            ///
-            /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
-            /// indicating the requesting user</summary>
+            /// following: * the numeric identifier for the user * the email address of the user * the string literal
+            /// `"me"`, indicating the requesting user</summary>
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserId { get; set; }
 
@@ -5515,27 +5148,21 @@ namespace Google.Apis.Classroom.v1
 
 
         /// <summary>Creates a `Registration`, causing Classroom to start sending notifications from the provided `feed`
-        /// to the destination provided in `cloudPubSubTopic`.
-        ///
-        /// Returns the created `Registration`. Currently, this will be the same as the argument, but with server-
-        /// assigned fields such as `expiry_time` and `id` filled in.
-        ///
-        /// Note that any value specified for the `expiry_time` or `id` fields will be ignored.
-        ///
-        /// While Classroom may validate the `cloudPubSubTopic` and return errors on a best effort basis, it is the
-        /// caller's responsibility to ensure that it exists and that Classroom has permission to publish to it.
-        ///
-        /// This method may return the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if: * the authenticated user does not have permission to receive notifications from
-        /// the requested field; or * the current user has not granted access to the current Cloud project with the
-        /// appropriate scope for the requested feed. Note that domain-wide delegation of authority is not currently
-        /// supported for this purpose. If the request has the appropriate scope, but no grant exists, a Request Errors
-        /// is returned. * another access error is encountered. * `INVALID_ARGUMENT` if: * no `cloudPubsubTopic` is
-        /// specified, or the specified `cloudPubsubTopic` is not valid; or * no `feed` is specified, or the specified
-        /// `feed` is not valid. * `NOT_FOUND` if: * the specified `feed` cannot be located, or the requesting user does
-        /// not have permission to determine whether or not it exists; or * the specified `cloudPubsubTopic` cannot be
-        /// located, or Classroom has not been granted permission to publish to it.</summary>
+        /// to the destination provided in `cloudPubSubTopic`. Returns the created `Registration`. Currently, this will
+        /// be the same as the argument, but with server-assigned fields such as `expiry_time` and `id` filled in. Note
+        /// that any value specified for the `expiry_time` or `id` fields will be ignored. While Classroom may validate
+        /// the `cloudPubSubTopic` and return errors on a best effort basis, it is the caller's responsibility to ensure
+        /// that it exists and that Classroom has permission to publish to it. This method may return the following
+        /// error codes: * `PERMISSION_DENIED` if: * the authenticated user does not have permission to receive
+        /// notifications from the requested field; or * the current user has not granted access to the current Cloud
+        /// project with the appropriate scope for the requested feed. Note that domain-wide delegation of authority is
+        /// not currently supported for this purpose. If the request has the appropriate scope, but no grant exists, a
+        /// Request Errors is returned. * another access error is encountered. * `INVALID_ARGUMENT` if: * no
+        /// `cloudPubsubTopic` is specified, or the specified `cloudPubsubTopic` is not valid; or * no `feed` is
+        /// specified, or the specified `feed` is not valid. * `NOT_FOUND` if: * the specified `feed` cannot be located,
+        /// or the requesting user does not have permission to determine whether or not it exists; or * the specified
+        /// `cloudPubsubTopic` cannot be located, or Classroom has not been granted permission to publish to
+        /// it.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.Registration body)
         {
@@ -5543,27 +5170,21 @@ namespace Google.Apis.Classroom.v1
         }
 
         /// <summary>Creates a `Registration`, causing Classroom to start sending notifications from the provided `feed`
-        /// to the destination provided in `cloudPubSubTopic`.
-        ///
-        /// Returns the created `Registration`. Currently, this will be the same as the argument, but with server-
-        /// assigned fields such as `expiry_time` and `id` filled in.
-        ///
-        /// Note that any value specified for the `expiry_time` or `id` fields will be ignored.
-        ///
-        /// While Classroom may validate the `cloudPubSubTopic` and return errors on a best effort basis, it is the
-        /// caller's responsibility to ensure that it exists and that Classroom has permission to publish to it.
-        ///
-        /// This method may return the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if: * the authenticated user does not have permission to receive notifications from
-        /// the requested field; or * the current user has not granted access to the current Cloud project with the
-        /// appropriate scope for the requested feed. Note that domain-wide delegation of authority is not currently
-        /// supported for this purpose. If the request has the appropriate scope, but no grant exists, a Request Errors
-        /// is returned. * another access error is encountered. * `INVALID_ARGUMENT` if: * no `cloudPubsubTopic` is
-        /// specified, or the specified `cloudPubsubTopic` is not valid; or * no `feed` is specified, or the specified
-        /// `feed` is not valid. * `NOT_FOUND` if: * the specified `feed` cannot be located, or the requesting user does
-        /// not have permission to determine whether or not it exists; or * the specified `cloudPubsubTopic` cannot be
-        /// located, or Classroom has not been granted permission to publish to it.</summary>
+        /// to the destination provided in `cloudPubSubTopic`. Returns the created `Registration`. Currently, this will
+        /// be the same as the argument, but with server-assigned fields such as `expiry_time` and `id` filled in. Note
+        /// that any value specified for the `expiry_time` or `id` fields will be ignored. While Classroom may validate
+        /// the `cloudPubSubTopic` and return errors on a best effort basis, it is the caller's responsibility to ensure
+        /// that it exists and that Classroom has permission to publish to it. This method may return the following
+        /// error codes: * `PERMISSION_DENIED` if: * the authenticated user does not have permission to receive
+        /// notifications from the requested field; or * the current user has not granted access to the current Cloud
+        /// project with the appropriate scope for the requested feed. Note that domain-wide delegation of authority is
+        /// not currently supported for this purpose. If the request has the appropriate scope, but no grant exists, a
+        /// Request Errors is returned. * another access error is encountered. * `INVALID_ARGUMENT` if: * no
+        /// `cloudPubsubTopic` is specified, or the specified `cloudPubsubTopic` is not valid; or * no `feed` is
+        /// specified, or the specified `feed` is not valid. * `NOT_FOUND` if: * the specified `feed` cannot be located,
+        /// or the requesting user does not have permission to determine whether or not it exists; or * the specified
+        /// `cloudPubsubTopic` cannot be located, or Classroom has not been granted permission to publish to
+        /// it.</summary>
         public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Registration>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -5714,28 +5335,22 @@ namespace Google.Apis.Classroom.v1
 
 
             /// <summary>Creates a guardian invitation, and sends an email to the guardian asking them to confirm that
-            /// they are the student's guardian.
-            ///
-            /// Once the guardian accepts the invitation, their `state` will change to `COMPLETED` and they will start
-            /// receiving guardian notifications. A `Guardian` resource will also be created to represent the active
-            /// guardian.
-            ///
-            /// The request object must have the `student_id` and `invited_email_address` fields set. Failing to set
-            /// these fields, or setting any other fields in the request, will result in an error.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the current user does not have permission to manage guardians, if the guardian
-            /// in question has already rejected too many requests for that student, if guardians are not enabled for
-            /// the domain in question, or for other access errors. * `RESOURCE_EXHAUSTED` if the student or guardian
-            /// has exceeded the guardian link limit. * `INVALID_ARGUMENT` if the guardian email address is not valid
-            /// (for example, if it is too long), or if the format of the student ID provided cannot be recognized (it
-            /// is not an email address, nor a `user_id` from this API). This error will also be returned if read-only
-            /// fields are set, or if the `state` field is set to to a value other than `PENDING`. * `NOT_FOUND` if the
-            /// student ID provided is a valid student ID, but Classroom has no record of that student. *
-            /// `ALREADY_EXISTS` if there is already a pending guardian invitation for the student and
-            /// `invited_email_address` provided, or if the provided `invited_email_address` matches the Google account
-            /// of an existing `Guardian` for this user.</summary>
+            /// they are the student's guardian. Once the guardian accepts the invitation, their `state` will change to
+            /// `COMPLETED` and they will start receiving guardian notifications. A `Guardian` resource will also be
+            /// created to represent the active guardian. The request object must have the `student_id` and
+            /// `invited_email_address` fields set. Failing to set these fields, or setting any other fields in the
+            /// request, will result in an error. This method returns the following error codes: * `PERMISSION_DENIED`
+            /// if the current user does not have permission to manage guardians, if the guardian in question has
+            /// already rejected too many requests for that student, if guardians are not enabled for the domain in
+            /// question, or for other access errors. * `RESOURCE_EXHAUSTED` if the student or guardian has exceeded the
+            /// guardian link limit. * `INVALID_ARGUMENT` if the guardian email address is not valid (for example, if it
+            /// is too long), or if the format of the student ID provided cannot be recognized (it is not an email
+            /// address, nor a `user_id` from this API). This error will also be returned if read-only fields are set,
+            /// or if the `state` field is set to to a value other than `PENDING`. * `NOT_FOUND` if the student ID
+            /// provided is a valid student ID, but Classroom has no record of that student. * `ALREADY_EXISTS` if there
+            /// is already a pending guardian invitation for the student and `invited_email_address` provided, or if the
+            /// provided `invited_email_address` matches the Google account of an existing `Guardian` for this
+            /// user.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="studentId">ID of the student (in standard format)</param>
             public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.GuardianInvitation body, string studentId)
@@ -5744,28 +5359,22 @@ namespace Google.Apis.Classroom.v1
             }
 
             /// <summary>Creates a guardian invitation, and sends an email to the guardian asking them to confirm that
-            /// they are the student's guardian.
-            ///
-            /// Once the guardian accepts the invitation, their `state` will change to `COMPLETED` and they will start
-            /// receiving guardian notifications. A `Guardian` resource will also be created to represent the active
-            /// guardian.
-            ///
-            /// The request object must have the `student_id` and `invited_email_address` fields set. Failing to set
-            /// these fields, or setting any other fields in the request, will result in an error.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the current user does not have permission to manage guardians, if the guardian
-            /// in question has already rejected too many requests for that student, if guardians are not enabled for
-            /// the domain in question, or for other access errors. * `RESOURCE_EXHAUSTED` if the student or guardian
-            /// has exceeded the guardian link limit. * `INVALID_ARGUMENT` if the guardian email address is not valid
-            /// (for example, if it is too long), or if the format of the student ID provided cannot be recognized (it
-            /// is not an email address, nor a `user_id` from this API). This error will also be returned if read-only
-            /// fields are set, or if the `state` field is set to to a value other than `PENDING`. * `NOT_FOUND` if the
-            /// student ID provided is a valid student ID, but Classroom has no record of that student. *
-            /// `ALREADY_EXISTS` if there is already a pending guardian invitation for the student and
-            /// `invited_email_address` provided, or if the provided `invited_email_address` matches the Google account
-            /// of an existing `Guardian` for this user.</summary>
+            /// they are the student's guardian. Once the guardian accepts the invitation, their `state` will change to
+            /// `COMPLETED` and they will start receiving guardian notifications. A `Guardian` resource will also be
+            /// created to represent the active guardian. The request object must have the `student_id` and
+            /// `invited_email_address` fields set. Failing to set these fields, or setting any other fields in the
+            /// request, will result in an error. This method returns the following error codes: * `PERMISSION_DENIED`
+            /// if the current user does not have permission to manage guardians, if the guardian in question has
+            /// already rejected too many requests for that student, if guardians are not enabled for the domain in
+            /// question, or for other access errors. * `RESOURCE_EXHAUSTED` if the student or guardian has exceeded the
+            /// guardian link limit. * `INVALID_ARGUMENT` if the guardian email address is not valid (for example, if it
+            /// is too long), or if the format of the student ID provided cannot be recognized (it is not an email
+            /// address, nor a `user_id` from this API). This error will also be returned if read-only fields are set,
+            /// or if the `state` field is set to to a value other than `PENDING`. * `NOT_FOUND` if the student ID
+            /// provided is a valid student ID, but Classroom has no record of that student. * `ALREADY_EXISTS` if there
+            /// is already a pending guardian invitation for the student and `invited_email_address` provided, or if the
+            /// provided `invited_email_address` matches the Google account of an existing `Guardian` for this
+            /// user.</summary>
             public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.GuardianInvitation>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -5825,14 +5434,11 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Returns a specific guardian invitation.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to view guardian invitations for the
-            /// student identified by the `student_id`, if guardians are not enabled for the domain in question, or for
-            /// other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be
-            /// recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). *
+            /// <summary>Returns a specific guardian invitation. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to view guardian invitations for the student
+            /// identified by the `student_id`, if guardians are not enabled for the domain in question, or for other
+            /// access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized
+            /// (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). *
             /// `NOT_FOUND` if Classroom cannot find any record of the given student or `invitation_id`. May also be
             /// returned if the student exists, but the requesting user does not have access to see that
             /// student.</summary>
@@ -5844,14 +5450,11 @@ namespace Google.Apis.Classroom.v1
                 return new GetRequest(service, studentId, invitationId);
             }
 
-            /// <summary>Returns a specific guardian invitation.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the requesting user is not permitted to view guardian invitations for the
-            /// student identified by the `student_id`, if guardians are not enabled for the domain in question, or for
-            /// other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be
-            /// recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). *
+            /// <summary>Returns a specific guardian invitation. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to view guardian invitations for the student
+            /// identified by the `student_id`, if guardians are not enabled for the domain in question, or for other
+            /// access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized
+            /// (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). *
             /// `NOT_FOUND` if Classroom cannot find any record of the given student or `invitation_id`. May also be
             /// returned if the student exists, but the requesting user does not have access to see that
             /// student.</summary>
@@ -5922,40 +5525,32 @@ namespace Google.Apis.Classroom.v1
             }
 
             /// <summary>Returns a list of guardian invitations that the requesting user is permitted to view, filtered
-            /// by the parameters provided.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is not permitted to view
-            /// guardian invitations for that student, if `"-"` is specified as the `student_id` and the user is not a
-            /// domain administrator, if guardians are not enabled for the domain in question, or for other access
-            /// errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is
-            /// not an email address, nor a `student_id` from the API, nor the literal string `me`). May also be
-            /// returned if an invalid `page_token` or `state` is provided. * `NOT_FOUND` if a `student_id` is
-            /// specified, and its format can be recognized, but Classroom has no record of that student.</summary>
+            /// by the parameters provided. This method returns the following error codes: * `PERMISSION_DENIED` if a
+            /// `student_id` is specified, and the requesting user is not permitted to view guardian invitations for
+            /// that student, if `"-"` is specified as the `student_id` and the user is not a domain administrator, if
+            /// guardians are not enabled for the domain in question, or for other access errors. * `INVALID_ARGUMENT`
+            /// if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a
+            /// `student_id` from the API, nor the literal string `me`). May also be returned if an invalid `page_token`
+            /// or `state` is provided. * `NOT_FOUND` if a `student_id` is specified, and its format can be recognized,
+            /// but Classroom has no record of that student.</summary>
             /// <param name="studentId">The ID of the student whose guardian invitations are to be returned. The identifier can be
-            /// one of the following:
-            ///
-            /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the
-            /// requesting user * the string literal `"-"`, indicating that results should be returned for   all students that the
-            /// requesting user is permitted to view guardian   invitations.</param>
+            /// one of the following: * the numeric identifier for the user * the email address of the user * the string literal
+            /// `"me"`, indicating the requesting user * the string literal `"-"`, indicating that results should be returned for
+            /// all students that the requesting user is permitted to view guardian invitations.</param>
             public virtual ListRequest List(string studentId)
             {
                 return new ListRequest(service, studentId);
             }
 
             /// <summary>Returns a list of guardian invitations that the requesting user is permitted to view, filtered
-            /// by the parameters provided.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is not permitted to view
-            /// guardian invitations for that student, if `"-"` is specified as the `student_id` and the user is not a
-            /// domain administrator, if guardians are not enabled for the domain in question, or for other access
-            /// errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is
-            /// not an email address, nor a `student_id` from the API, nor the literal string `me`). May also be
-            /// returned if an invalid `page_token` or `state` is provided. * `NOT_FOUND` if a `student_id` is
-            /// specified, and its format can be recognized, but Classroom has no record of that student.</summary>
+            /// by the parameters provided. This method returns the following error codes: * `PERMISSION_DENIED` if a
+            /// `student_id` is specified, and the requesting user is not permitted to view guardian invitations for
+            /// that student, if `"-"` is specified as the `student_id` and the user is not a domain administrator, if
+            /// guardians are not enabled for the domain in question, or for other access errors. * `INVALID_ARGUMENT`
+            /// if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a
+            /// `student_id` from the API, nor the literal string `me`). May also be returned if an invalid `page_token`
+            /// or `state` is provided. * `NOT_FOUND` if a `student_id` is specified, and its format can be recognized,
+            /// but Classroom has no record of that student.</summary>
             public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListGuardianInvitationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -5968,11 +5563,9 @@ namespace Google.Apis.Classroom.v1
 
 
                 /// <summary>The ID of the student whose guardian invitations are to be returned. The identifier can be
-                /// one of the following:
-                ///
-                /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
-                /// indicating the requesting user * the string literal `"-"`, indicating that results should be
-                /// returned for all students that the requesting user is permitted to view guardian
+                /// one of the following: * the numeric identifier for the user * the email address of the user * the
+                /// string literal `"me"`, indicating the requesting user * the string literal `"-"`, indicating that
+                /// results should be returned for all students that the requesting user is permitted to view guardian
                 /// invitations.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string StudentId { get; private set; }
@@ -5983,16 +5576,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string InvitedEmailAddress { get; set; }
 
                 /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign
-                /// a maximum.
-                ///
-                /// The server may return fewer than the specified number of results.</summary>
+                /// a maximum. The server may return fewer than the specified number of results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
-                /// of results should be returned.
-                ///
-                /// The list request must be otherwise identical to the one that resulted in this token.</summary>
+                /// of results should be returned. The list request must be otherwise identical to the one that resulted
+                /// in this token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -6005,10 +5595,14 @@ namespace Google.Apis.Classroom.v1
                 /// results with a `state` of `PENDING` are returned.</summary>
                 public enum StatesEnum
                 {
+                    /// <summary>Should never be returned.</summary>
                     [Google.Apis.Util.StringValueAttribute("GUARDIAN_INVITATION_STATE_UNSPECIFIED")]
                     GUARDIANINVITATIONSTATEUNSPECIFIED,
+                    /// <summary>The invitation is active and awaiting a response.</summary>
                     [Google.Apis.Util.StringValueAttribute("PENDING")]
                     PENDING,
+                    /// <summary>The invitation is no longer active. It may have been accepted, declined, withdrawn or
+                    /// it may have expired.</summary>
                     [Google.Apis.Util.StringValueAttribute("COMPLETE")]
                     COMPLETE,
                 }
@@ -6086,20 +5680,16 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Modifies a guardian invitation.
-            ///
-            /// Currently, the only valid modification is to change the `state` from `PENDING` to `COMPLETE`. This has
-            /// the effect of withdrawing the invitation.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the current user does not have permission to manage guardians, if guardians are
-            /// not enabled for the domain in question or for other access errors. * `FAILED_PRECONDITION` if the
-            /// guardian link is not in the `PENDING` state. * `INVALID_ARGUMENT` if the format of the student ID
-            /// provided cannot be recognized (it is not an email address, nor a `user_id` from this API), or if the
-            /// passed `GuardianInvitation` has a `state` other than `COMPLETE`, or if it modifies fields other than
-            /// `state`. * `NOT_FOUND` if the student ID provided is a valid student ID, but Classroom has no record of
-            /// that student, or if the `id` field does not refer to a guardian invitation known to Classroom.</summary>
+            /// <summary>Modifies a guardian invitation. Currently, the only valid modification is to change the `state`
+            /// from `PENDING` to `COMPLETE`. This has the effect of withdrawing the invitation. This method returns the
+            /// following error codes: * `PERMISSION_DENIED` if the current user does not have permission to manage
+            /// guardians, if guardians are not enabled for the domain in question or for other access errors. *
+            /// `FAILED_PRECONDITION` if the guardian link is not in the `PENDING` state. * `INVALID_ARGUMENT` if the
+            /// format of the student ID provided cannot be recognized (it is not an email address, nor a `user_id` from
+            /// this API), or if the passed `GuardianInvitation` has a `state` other than `COMPLETE`, or if it modifies
+            /// fields other than `state`. * `NOT_FOUND` if the student ID provided is a valid student ID, but Classroom
+            /// has no record of that student, or if the `id` field does not refer to a guardian invitation known to
+            /// Classroom.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="studentId">The ID of the student whose guardian invitation is to be modified.</param>
             /// <param
@@ -6109,20 +5699,16 @@ namespace Google.Apis.Classroom.v1
                 return new PatchRequest(service, body, studentId, invitationId);
             }
 
-            /// <summary>Modifies a guardian invitation.
-            ///
-            /// Currently, the only valid modification is to change the `state` from `PENDING` to `COMPLETE`. This has
-            /// the effect of withdrawing the invitation.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if the current user does not have permission to manage guardians, if guardians are
-            /// not enabled for the domain in question or for other access errors. * `FAILED_PRECONDITION` if the
-            /// guardian link is not in the `PENDING` state. * `INVALID_ARGUMENT` if the format of the student ID
-            /// provided cannot be recognized (it is not an email address, nor a `user_id` from this API), or if the
-            /// passed `GuardianInvitation` has a `state` other than `COMPLETE`, or if it modifies fields other than
-            /// `state`. * `NOT_FOUND` if the student ID provided is a valid student ID, but Classroom has no record of
-            /// that student, or if the `id` field does not refer to a guardian invitation known to Classroom.</summary>
+            /// <summary>Modifies a guardian invitation. Currently, the only valid modification is to change the `state`
+            /// from `PENDING` to `COMPLETE`. This has the effect of withdrawing the invitation. This method returns the
+            /// following error codes: * `PERMISSION_DENIED` if the current user does not have permission to manage
+            /// guardians, if guardians are not enabled for the domain in question or for other access errors. *
+            /// `FAILED_PRECONDITION` if the guardian link is not in the `PENDING` state. * `INVALID_ARGUMENT` if the
+            /// format of the student ID provided cannot be recognized (it is not an email address, nor a `user_id` from
+            /// this API), or if the passed `GuardianInvitation` has a `state` other than `COMPLETE`, or if it modifies
+            /// fields other than `state`. * `NOT_FOUND` if the student ID provided is a valid student ID, but Classroom
+            /// has no record of that student, or if the `id` field does not refer to a guardian invitation known to
+            /// Classroom.</summary>
             public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.GuardianInvitation>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -6145,13 +5731,8 @@ namespace Google.Apis.Classroom.v1
                 public virtual string InvitationId { get; private set; }
 
                 /// <summary>Mask that identifies which fields on the course to update. This field is required to do an
-                /// update. The update fails if invalid fields are specified. The following fields are valid:
-                ///
-                /// * `state`
-                ///
-                /// When set in a query parameter, this field should be specified as
-                ///
-                /// `updateMask=,,...`</summary>
+                /// update. The update fails if invalid fields are specified. The following fields are valid: * `state`
+                /// When set in a query parameter, this field should be specified as `updateMask=,,...`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -6240,39 +5821,28 @@ namespace Google.Apis.Classroom.v1
             }
 
 
-            /// <summary>Deletes a guardian.
-            ///
-            /// The guardian will no longer receive guardian notifications and the guardian will no longer be accessible
-            /// via the API.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if no user that matches the provided `student_id` is visible to the requesting
-            /// user, if the requesting user is not permitted to manage guardians for the student identified by the
+            /// <summary>Deletes a guardian. The guardian will no longer receive guardian notifications and the guardian
+            /// will no longer be accessible via the API. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if no user that matches the provided `student_id` is visible to the requesting user,
+            /// if the requesting user is not permitted to manage guardians for the student identified by the
             /// `student_id`, if guardians are not enabled for the domain in question, or for other access errors. *
             /// `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an
             /// email address, nor a `student_id` from the API). * `NOT_FOUND` if the requesting user is permitted to
             /// modify guardians for the requested `student_id`, but no `Guardian` record exists for that student with
             /// the provided `guardian_id`.</summary>
-            /// <param name="studentId">The student whose guardian is to be deleted. One of the following:
-            ///
-            /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the
-            /// requesting user</param>
+            /// <param name="studentId">The student whose guardian is to be deleted. One of the following: * the numeric identifier
+            /// for the user * the email address of the user * the string literal `"me"`, indicating the requesting
+            /// user</param>
             /// <param name="guardianId">The `id` field from a `Guardian`.</param>
             public virtual DeleteRequest Delete(string studentId, string guardianId)
             {
                 return new DeleteRequest(service, studentId, guardianId);
             }
 
-            /// <summary>Deletes a guardian.
-            ///
-            /// The guardian will no longer receive guardian notifications and the guardian will no longer be accessible
-            /// via the API.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if no user that matches the provided `student_id` is visible to the requesting
-            /// user, if the requesting user is not permitted to manage guardians for the student identified by the
+            /// <summary>Deletes a guardian. The guardian will no longer receive guardian notifications and the guardian
+            /// will no longer be accessible via the API. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if no user that matches the provided `student_id` is visible to the requesting user,
+            /// if the requesting user is not permitted to manage guardians for the student identified by the
             /// `student_id`, if guardians are not enabled for the domain in question, or for other access errors. *
             /// `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an
             /// email address, nor a `student_id` from the API). * `NOT_FOUND` if the requesting user is permitted to
@@ -6290,10 +5860,9 @@ namespace Google.Apis.Classroom.v1
                 }
 
 
-                /// <summary>The student whose guardian is to be deleted. One of the following:
-                ///
-                /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
-                /// indicating the requesting user</summary>
+                /// <summary>The student whose guardian is to be deleted. One of the following: * the numeric identifier
+                /// for the user * the email address of the user * the string literal `"me"`, indicating the requesting
+                /// user</summary>
                 [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string StudentId { get; private set; }
 
@@ -6347,34 +5916,27 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Returns a specific guardian.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if no user that matches the provided `student_id` is visible to the requesting
-            /// user, if the requesting user is not permitted to view guardian information for the student identified by
-            /// the `student_id`, if guardians are not enabled for the domain in question, or for other access errors. *
+            /// <summary>Returns a specific guardian. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if no user that matches the provided `student_id` is visible to the requesting user,
+            /// if the requesting user is not permitted to view guardian information for the student identified by the
+            /// `student_id`, if guardians are not enabled for the domain in question, or for other access errors. *
             /// `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an
             /// email address, nor a `student_id` from the API, nor the literal string `me`). * `NOT_FOUND` if the
             /// requesting user is permitted to view guardians for the requested `student_id`, but no `Guardian` record
             /// exists for that student that matches the provided `guardian_id`.</summary>
-            /// <param name="studentId">The student whose guardian is being requested. One of the following:
-            ///
-            /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the
-            /// requesting user</param>
+            /// <param name="studentId">The student whose guardian is being requested. One of the following: * the numeric
+            /// identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting
+            /// user</param>
             /// <param name="guardianId">The `id` field from a `Guardian`.</param>
             public virtual GetRequest Get(string studentId, string guardianId)
             {
                 return new GetRequest(service, studentId, guardianId);
             }
 
-            /// <summary>Returns a specific guardian.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if no user that matches the provided `student_id` is visible to the requesting
-            /// user, if the requesting user is not permitted to view guardian information for the student identified by
-            /// the `student_id`, if guardians are not enabled for the domain in question, or for other access errors. *
+            /// <summary>Returns a specific guardian. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if no user that matches the provided `student_id` is visible to the requesting user,
+            /// if the requesting user is not permitted to view guardian information for the student identified by the
+            /// `student_id`, if guardians are not enabled for the domain in question, or for other access errors. *
             /// `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an
             /// email address, nor a `student_id` from the API, nor the literal string `me`). * `NOT_FOUND` if the
             /// requesting user is permitted to view guardians for the requested `student_id`, but no `Guardian` record
@@ -6391,10 +5953,9 @@ namespace Google.Apis.Classroom.v1
                 }
 
 
-                /// <summary>The student whose guardian is being requested. One of the following:
-                ///
-                /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
-                /// indicating the requesting user</summary>
+                /// <summary>The student whose guardian is being requested. One of the following: * the numeric
+                /// identifier for the user * the email address of the user * the string literal `"me"`, indicating the
+                /// requesting user</summary>
                 [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string StudentId { get; private set; }
 
@@ -6449,14 +6010,9 @@ namespace Google.Apis.Classroom.v1
             }
 
             /// <summary>Returns a list of guardians that the requesting user is permitted to view, restricted to those
-            /// that match the request.
-            ///
-            /// To list guardians for any student that the requesting user may view guardians for, use the literal
-            /// character `-` for the student ID.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is not permitted to view
+            /// that match the request. To list guardians for any student that the requesting user may view guardians
+            /// for, use the literal character `-` for the student ID. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is not permitted to view
             /// guardian information for that student, if `"-"` is specified as the `student_id` and the user is not a
             /// domain administrator, if guardians are not enabled for the domain in question, if the
             /// `invited_email_address` filter is set by a user who is not a domain administrator, or for other access
@@ -6465,25 +6021,18 @@ namespace Google.Apis.Classroom.v1
             /// returned if an invalid `page_token` is provided. * `NOT_FOUND` if a `student_id` is specified, and its
             /// format can be recognized, but Classroom has no record of that student.</summary>
             /// <param name="studentId">Filter results by the student who the guardian is linked to. The identifier can be one of
-            /// the following:
-            ///
-            /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the
-            /// requesting user * the string literal `"-"`, indicating that results should be returned for   all students that the
-            /// requesting user has access to view.</param>
+            /// the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
+            /// indicating the requesting user * the string literal `"-"`, indicating that results should be returned for all
+            /// students that the requesting user has access to view.</param>
             public virtual ListRequest List(string studentId)
             {
                 return new ListRequest(service, studentId);
             }
 
             /// <summary>Returns a list of guardians that the requesting user is permitted to view, restricted to those
-            /// that match the request.
-            ///
-            /// To list guardians for any student that the requesting user may view guardians for, use the literal
-            /// character `-` for the student ID.
-            ///
-            /// This method returns the following error codes:
-            ///
-            /// * `PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is not permitted to view
+            /// that match the request. To list guardians for any student that the requesting user may view guardians
+            /// for, use the literal character `-` for the student ID. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is not permitted to view
             /// guardian information for that student, if `"-"` is specified as the `student_id` and the user is not a
             /// domain administrator, if guardians are not enabled for the domain in question, if the
             /// `invited_email_address` filter is set by a user who is not a domain administrator, or for other access
@@ -6503,11 +6052,9 @@ namespace Google.Apis.Classroom.v1
 
 
                 /// <summary>Filter results by the student who the guardian is linked to. The identifier can be one of
-                /// the following:
-                ///
-                /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
-                /// indicating the requesting user * the string literal `"-"`, indicating that results should be
-                /// returned for all students that the requesting user has access to view.</summary>
+                /// the following: * the numeric identifier for the user * the email address of the user * the string
+                /// literal `"me"`, indicating the requesting user * the string literal `"-"`, indicating that results
+                /// should be returned for all students that the requesting user has access to view.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string StudentId { get; private set; }
 
@@ -6517,16 +6064,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string InvitedEmailAddress { get; set; }
 
                 /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign
-                /// a maximum.
-                ///
-                /// The server may return fewer than the specified number of results.</summary>
+                /// a maximum. The server may return fewer than the specified number of results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
-                /// of results should be returned.
-                ///
-                /// The list request must be otherwise identical to the one that resulted in this token.</summary>
+                /// of results should be returned. The list request must be otherwise identical to the one that resulted
+                /// in this token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -6595,27 +6139,20 @@ namespace Google.Apis.Classroom.v1
             }
         }
 
-        /// <summary>Returns a user profile.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if the requesting user is not permitted to access this user profile, if no profile
-        /// exists with the requested ID, or for access errors.</summary>
-        /// <param name="userId">Identifier of the profile to return. The identifier can be one of the following:
-        ///
-        /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the
-        /// requesting user</param>
+        /// <summary>Returns a user profile. This method returns the following error codes: * `PERMISSION_DENIED` if the
+        /// requesting user is not permitted to access this user profile, if no profile exists with the requested ID, or
+        /// for access errors.</summary>
+        /// <param name="userId">Identifier of the profile to return. The identifier can be one of the following: * the numeric
+        /// identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting
+        /// user</param>
         public virtual GetRequest Get(string userId)
         {
             return new GetRequest(service, userId);
         }
 
-        /// <summary>Returns a user profile.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * `PERMISSION_DENIED` if the requesting user is not permitted to access this user profile, if no profile
-        /// exists with the requested ID, or for access errors.</summary>
+        /// <summary>Returns a user profile. This method returns the following error codes: * `PERMISSION_DENIED` if the
+        /// requesting user is not permitted to access this user profile, if no profile exists with the requested ID, or
+        /// for access errors.</summary>
         public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.UserProfile>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -6627,10 +6164,9 @@ namespace Google.Apis.Classroom.v1
             }
 
 
-            /// <summary>Identifier of the profile to return. The identifier can be one of the following:
-            ///
-            /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
-            /// indicating the requesting user</summary>
+            /// <summary>Identifier of the profile to return. The identifier can be one of the following: * the numeric
+            /// identifier for the user * the email address of the user * the string literal `"me"`, indicating the
+            /// requesting user</summary>
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
 
@@ -6680,9 +6216,7 @@ namespace Google.Apis.Classroom.v1.Data
     public class Announcement : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Absolute link to this announcement in the Classroom web UI. This is only populated if `state` is
-        /// `PUBLISHED`.
-        ///
-        /// Read-only.</summary>
+        /// `PUBLISHED`. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternateLink")]
         public virtual string AlternateLink { get; set; } 
 
@@ -6690,27 +6224,19 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assigneeMode")]
         public virtual string AssigneeMode { get; set; } 
 
-        /// <summary>Identifier of the course.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Identifier of the course. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("courseId")]
         public virtual string CourseId { get; set; } 
 
-        /// <summary>Timestamp when this announcement was created.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Timestamp when this announcement was created. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual object CreationTime { get; set; } 
 
-        /// <summary>Identifier for the user that created the announcement.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Identifier for the user that created the announcement. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatorUserId")]
         public virtual string CreatorUserId { get; set; } 
 
-        /// <summary>Classroom-assigned identifier of this announcement, unique per course.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Classroom-assigned identifier of this announcement, unique per course. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -6720,9 +6246,7 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("individualStudentsOptions")]
         public virtual IndividualStudentsOptions IndividualStudentsOptions { get; set; } 
 
-        /// <summary>Additional materials.
-        ///
-        /// Announcements must have no more than 20 material items.</summary>
+        /// <summary>Additional materials. Announcements must have no more than 20 material items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("materials")]
         public virtual System.Collections.Generic.IList<Material> Materials { get; set; } 
 
@@ -6739,9 +6263,7 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; } 
 
-        /// <summary>Timestamp of the most recent change to this announcement.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Timestamp of the most recent change to this announcement. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -6765,10 +6287,9 @@ namespace Google.Apis.Classroom.v1.Data
     public class AssignmentSubmission : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Attachments added by the student. Drive files that correspond to materials with a share mode of
-        /// STUDENT_COPY may not exist yet if the student has not accessed the assignment in Classroom.
-        ///
-        /// Some attachment metadata is only populated if the requesting user has permission to access it. Identifier
-        /// and alternate_link fields are always available, but others (for example, title) may not be.</summary>
+        /// STUDENT_COPY may not exist yet if the student has not accessed the assignment in Classroom. Some attachment
+        /// metadata is only populated if the requesting user has permission to access it. Identifier and alternate_link
+        /// fields are always available, but others (for example, title) may not be.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachments")]
         public virtual System.Collections.Generic.IList<Attachment> Attachments { get; set; } 
 
@@ -6776,9 +6297,8 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Attachment added to student assignment work.
-    ///
-    /// When creating attachments, setting the `form` field is not supported.</summary>
+    /// <summary>Attachment added to student assignment work. When creating attachments, setting the `form` field is not
+    /// supported.</summary>
     public class Attachment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Google Drive file attachment.</summary>
@@ -6801,10 +6321,8 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A reference to a Cloud Pub/Sub topic.
-    ///
-    /// To register for notifications, the owner of the topic must grant `classroom-
-    /// notifications@system.gserviceaccount.com` the `projects.topics.publish` permission.</summary>
+    /// <summary>A reference to a Cloud Pub/Sub topic. To register for notifications, the owner of the topic must grant
+    /// `classroom-notifications@system.gserviceaccount.com` the `projects.topics.publish` permission.</summary>
     public class CloudPubsubTopic : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The `name` field of a Cloud Pub/Sub
@@ -6819,29 +6337,21 @@ namespace Google.Apis.Classroom.v1.Data
     /// <summary>A Course in Classroom.</summary>
     public class Course : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Absolute link to this course in the Classroom web UI.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Absolute link to this course in the Classroom web UI. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternateLink")]
         public virtual string AlternateLink { get; set; } 
 
         /// <summary>The Calendar ID for a calendar that all course members can see, to which Classroom adds events for
-        /// course work and announcements in the course.
-        ///
-        /// Read-only.</summary>
+        /// course work and announcements in the course. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("calendarId")]
         public virtual string CalendarId { get; set; } 
 
         /// <summary>The email address of a Google group containing all members of the course. This group does not
-        /// accept email and can only be used for permissions.
-        ///
-        /// Read-only.</summary>
+        /// accept email and can only be used for permissions. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("courseGroupEmail")]
         public virtual string CourseGroupEmail { get; set; } 
 
-        /// <summary>Sets of materials that appear on the "about" page of this course.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Sets of materials that appear on the "about" page of this course. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("courseMaterialSets")]
         public virtual System.Collections.Generic.IList<CourseMaterialSet> CourseMaterialSets { get; set; } 
 
@@ -6850,7 +6360,6 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string CourseState { get; set; } 
 
         /// <summary>Creation time of the course. Specifying this field in a course update mask results in an error.
-        ///
         /// Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual object CreationTime { get; set; } 
@@ -6867,25 +6376,18 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string DescriptionHeading { get; set; } 
 
         /// <summary>Enrollment code to use when joining this course. Specifying this field in a course update mask
-        /// results in an error.
-        ///
-        /// Read-only.</summary>
+        /// results in an error. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enrollmentCode")]
         public virtual string EnrollmentCode { get; set; } 
 
-        /// <summary>Whether or not guardian notifications are enabled for this course.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Whether or not guardian notifications are enabled for this course. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guardiansEnabled")]
         public virtual System.Nullable<bool> GuardiansEnabled { get; set; } 
 
-        /// <summary>Identifier for this course assigned by Classroom.
-        ///
-        /// When creating a course, you may optionally set this identifier to an alias string in the request to create a
-        /// corresponding alias. The `id` is still assigned by Classroom and cannot be updated after the course is
-        /// created.
-        ///
-        /// Specifying this field in a course update mask results in an error.</summary>
+        /// <summary>Identifier for this course assigned by Classroom. When creating a course, you may optionally set
+        /// this identifier to an alias string in the request to create a corresponding alias. The `id` is still
+        /// assigned by Classroom and cannot be updated after the course is created. Specifying this field in a course
+        /// update mask results in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -6894,16 +6396,11 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The identifier of the owner of a course.
-        ///
-        /// When specified as a parameter of a create course request, this field is required. The identifier can be one
-        /// of the following:
-        ///
-        /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
-        /// indicating the requesting user
-        ///
-        /// This must be set in a create request. Admins can also specify this field in a patch course request to
-        /// transfer ownership. In other contexts, it is read-only.</summary>
+        /// <summary>The identifier of the owner of a course. When specified as a parameter of a create course request,
+        /// this field is required. The identifier can be one of the following: * the numeric identifier for the user *
+        /// the email address of the user * the string literal `"me"`, indicating the requesting user This must be set
+        /// in a create request. Admins can also specify this field in a patch course request to transfer ownership. In
+        /// other contexts, it is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerId")]
         public virtual string OwnerId { get; set; } 
 
@@ -6917,25 +6414,18 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("section")]
         public virtual string Section { get; set; } 
 
-        /// <summary>Information about a Drive Folder that is shared with all teachers of the course.
-        ///
-        /// This field will only be set for teachers of the course and domain administrators.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Information about a Drive Folder that is shared with all teachers of the course. This field will
+        /// only be set for teachers of the course and domain administrators. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teacherFolder")]
         public virtual DriveFolder TeacherFolder { get; set; } 
 
         /// <summary>The email address of a Google group containing all teachers of the course. This group does not
-        /// accept email and can only be used for permissions.
-        ///
-        /// Read-only.</summary>
+        /// accept email and can only be used for permissions. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teacherGroupEmail")]
         public virtual string TeacherGroupEmail { get; set; } 
 
         /// <summary>Time of the most recent update to this course. Specifying this field in a course update mask
-        /// results in an error.
-        ///
-        /// Read-only.</summary>
+        /// results in an error. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -6943,27 +6433,19 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Alternative identifier for a course.
-    ///
-    /// An alias uniquely identifies a course. It must be unique within one of the following scopes:
-    ///
-    /// * domain: A domain-scoped alias is visible to all users within the alias creator's domain and can be created
-    /// only by a domain admin. A domain-scoped alias is often used when a course has an identifier external to
-    /// Classroom.
-    ///
-    /// * project: A project-scoped alias is visible to any request from an application using the Developer Console
-    /// project ID that created the alias and can be created by any project. A project-scoped alias is often used when
-    /// an application has alternative identifiers. A random value can also be used to avoid duplicate courses in the
-    /// event of transmission failures, as retrying a request will return `ALREADY_EXISTS` if a previous one has
-    /// succeeded.</summary>
+    /// <summary>Alternative identifier for a course. An alias uniquely identifies a course. It must be unique within
+    /// one of the following scopes: * domain: A domain-scoped alias is visible to all users within the alias creator's
+    /// domain and can be created only by a domain admin. A domain-scoped alias is often used when a course has an
+    /// identifier external to Classroom. * project: A project-scoped alias is visible to any request from an
+    /// application using the Developer Console project ID that created the alias and can be created by any project. A
+    /// project-scoped alias is often used when an application has alternative identifiers. A random value can also be
+    /// used to avoid duplicate courses in the event of transmission failures, as retrying a request will return
+    /// `ALREADY_EXISTS` if a previous one has succeeded.</summary>
     public class CourseAlias : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Alias string. The format of the string indicates the desired alias scoping.
-        ///
-        /// * `d:` indicates a domain-scoped alias. Example: `d:math_101` * `p:` indicates a project-scoped alias.
-        /// Example: `p:abc123`
-        ///
-        /// This field has a maximum length of 256 characters.</summary>
+        /// <summary>Alias string. The format of the string indicates the desired alias scoping. * `d:` indicates a
+        /// domain-scoped alias. Example: `d:math_101` * `p:` indicates a project-scoped alias. Example: `p:abc123` This
+        /// field has a maximum length of 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alias")]
         public virtual string Alias { get; set; } 
 
@@ -7025,9 +6507,7 @@ namespace Google.Apis.Classroom.v1.Data
     public class CourseWork : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Absolute link to this course work in the Classroom web UI. This is only populated if `state` is
-        /// `PUBLISHED`.
-        ///
-        /// Read-only.</summary>
+        /// `PUBLISHED`. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternateLink")]
         public virtual string AlternateLink { get; set; } 
 
@@ -7035,35 +6515,24 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assigneeMode")]
         public virtual string AssigneeMode { get; set; } 
 
-        /// <summary>Assignment details. This is populated only when `work_type` is `ASSIGNMENT`.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Assignment details. This is populated only when `work_type` is `ASSIGNMENT`. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignment")]
         public virtual Assignment Assignment { get; set; } 
 
         /// <summary>Whether this course work item is associated with the Developer Console project making the request.
-        ///
-        /// See CreateCourseWork for more details.
-        ///
-        /// Read-only.</summary>
+        /// See CreateCourseWork for more details. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associatedWithDeveloper")]
         public virtual System.Nullable<bool> AssociatedWithDeveloper { get; set; } 
 
-        /// <summary>Identifier of the course.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Identifier of the course. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("courseId")]
         public virtual string CourseId { get; set; } 
 
-        /// <summary>Timestamp when this course work was created.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Timestamp when this course work was created. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual object CreationTime { get; set; } 
 
-        /// <summary>Identifier for the user that created the coursework.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Identifier for the user that created the coursework. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatorUserId")]
         public virtual string CreatorUserId { get; set; } 
 
@@ -7082,9 +6551,7 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dueTime")]
         public virtual TimeOfDay DueTime { get; set; } 
 
-        /// <summary>Classroom-assigned identifier of this course work, unique per course.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Classroom-assigned identifier of this course work, unique per course. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -7094,9 +6561,7 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("individualStudentsOptions")]
         public virtual IndividualStudentsOptions IndividualStudentsOptions { get; set; } 
 
-        /// <summary>Additional materials.
-        ///
-        /// CourseWork must have no more than 20 material items.</summary>
+        /// <summary>Additional materials. CourseWork must have no more than 20 material items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("materials")]
         public virtual System.Collections.Generic.IList<Material> Materials { get; set; } 
 
@@ -7134,15 +6599,12 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("topicId")]
         public virtual string TopicId { get; set; } 
 
-        /// <summary>Timestamp of the most recent change to this course work.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Timestamp of the most recent change to this course work. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
-        /// <summary>Type of this course work.
-        ///
-        /// The type is set when the course work is created and cannot be changed.</summary>
+        /// <summary>Type of this course work. The type is set when the course work is created and cannot be
+        /// changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workType")]
         public virtual string WorkType { get; set; } 
 
@@ -7163,13 +6625,10 @@ namespace Google.Apis.Classroom.v1.Data
 
     /// <summary>Represents a whole or partial calendar date, e.g. a birthday. The time of day and time zone are either
     /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. This can
-    /// represent:
-    ///
-    /// * A full date, with non-zero year, month and day values * A month and day value, with a zero year, e.g. an
-    /// anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, e.g.
-    /// a credit card expiration date
-    ///
-    /// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
+    /// represent: * A full date, with non-zero year, month and day values * A month and day value, with a zero year,
+    /// e.g. an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero
+    /// day, e.g. a credit card expiration date Related types are google.type.TimeOfDay and
+    /// `google.protobuf.Timestamp`.</summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by
@@ -7192,9 +6651,7 @@ namespace Google.Apis.Classroom.v1.Data
     /// <summary>Representation of a Google Drive file.</summary>
     public class DriveFile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>URL that can be used to access the Drive item.
-        ///
-        /// Read-only.</summary>
+        /// <summary>URL that can be used to access the Drive item. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternateLink")]
         public virtual string AlternateLink { get; set; } 
 
@@ -7202,15 +6659,11 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>URL of a thumbnail image of the Drive item.
-        ///
-        /// Read-only.</summary>
+        /// <summary>URL of a thumbnail image of the Drive item. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
         public virtual string ThumbnailUrl { get; set; } 
 
-        /// <summary>Title of the Drive item.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Title of the Drive item. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
@@ -7221,9 +6674,7 @@ namespace Google.Apis.Classroom.v1.Data
     /// <summary>Representation of a Google Drive folder.</summary>
     public class DriveFolder : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>URL that can be used to access the Drive folder.
-        ///
-        /// Read-only.</summary>
+        /// <summary>URL that can be used to access the Drive folder. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternateLink")]
         public virtual string AlternateLink { get; set; } 
 
@@ -7231,9 +6682,7 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Title of the Drive folder.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Title of the Drive folder. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
@@ -7242,11 +6691,9 @@ namespace Google.Apis.Classroom.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -7283,21 +6730,15 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string FormUrl { get; set; } 
 
         /// <summary>URL of the form responses document. Only set if respsonses have been recorded and only when the
-        /// requesting user is an editor of the form.
-        ///
-        /// Read-only.</summary>
+        /// requesting user is an editor of the form. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseUrl")]
         public virtual string ResponseUrl { get; set; } 
 
-        /// <summary>URL of a thumbnail image of the Form.
-        ///
-        /// Read-only.</summary>
+        /// <summary>URL of a thumbnail image of the Form. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
         public virtual string ThumbnailUrl { get; set; } 
 
-        /// <summary>Title of the Form.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Title of the Form. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
@@ -7371,15 +6812,11 @@ namespace Google.Apis.Classroom.v1.Data
     /// <summary>An invitation to become the guardian of a specified user, sent to a specified email address.</summary>
     public class GuardianInvitation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The time that this invitation was created.
-        ///
-        /// Read-only.</summary>
+        /// <summary>The time that this invitation was created. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual object CreationTime { get; set; } 
 
-        /// <summary>Unique identifier for this invitation.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Unique identifier for this invitation. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invitationId")]
         public virtual string InvitationId { get; set; } 
 
@@ -7419,9 +6856,7 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("courseId")]
         public virtual string CourseId { get; set; } 
 
-        /// <summary>Identifier assigned by Classroom.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Identifier assigned by Classroom. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -7429,12 +6864,9 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; } 
 
-        /// <summary>Identifier of the invited user.
-        ///
-        /// When specified as a parameter of a request, this identifier can be set to one of the following:
-        ///
-        /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
-        /// indicating the requesting user</summary>
+        /// <summary>Identifier of the invited user. When specified as a parameter of a request, this identifier can be
+        /// set to one of the following: * the numeric identifier for the user * the email address of the user * the
+        /// string literal `"me"`, indicating the requesting user</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; } 
 
@@ -7445,15 +6877,11 @@ namespace Google.Apis.Classroom.v1.Data
     /// <summary>URL item.</summary>
     public class Link : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>URL of a thumbnail image of the target URL.
-        ///
-        /// Read-only.</summary>
+        /// <summary>URL of a thumbnail image of the target URL. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
         public virtual string ThumbnailUrl { get; set; } 
 
-        /// <summary>Title of the target of the URL.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Title of the target of the URL. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
@@ -7642,9 +7070,8 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Material attached to course work.
-    ///
-    /// When creating attachments, setting the `form` field is not supported.</summary>
+    /// <summary>Material attached to course work. When creating attachments, setting the `form` field is not
+    /// supported.</summary>
     public class Material : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Google Drive file material.</summary>
@@ -7688,9 +7115,8 @@ namespace Google.Apis.Classroom.v1.Data
     /// <summary>Request to modify the attachments of a student submission.</summary>
     public class ModifyAttachmentsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Attachments to add. A student submission may not have more than 20 attachments.
-        ///
-        /// Form attachments are not supported.</summary>
+        /// <summary>Attachments to add. A student submission may not have more than 20 attachments. Form attachments
+        /// are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addAttachments")]
         public virtual System.Collections.Generic.IList<Attachment> AddAttachments { get; set; } 
 
@@ -7756,21 +7182,15 @@ namespace Google.Apis.Classroom.v1.Data
     /// <summary>Details of the user's name.</summary>
     public class Name : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The user's last name.
-        ///
-        /// Read-only.</summary>
+        /// <summary>The user's last name. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("familyName")]
         public virtual string FamilyName { get; set; } 
 
-        /// <summary>The user's full name formed by concatenating the first and last name values.
-        ///
-        /// Read-only.</summary>
+        /// <summary>The user's full name formed by concatenating the first and last name values. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullName")]
         public virtual string FullName { get; set; } 
 
-        /// <summary>The user's first name.
-        ///
-        /// Read-only.</summary>
+        /// <summary>The user's first name. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("givenName")]
         public virtual string GivenName { get; set; } 
 
@@ -7793,9 +7213,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudPubsubTopic")]
         public virtual CloudPubsubTopic CloudPubsubTopic { get; set; } 
 
-        /// <summary>The time until which the `Registration` is effective.
-        ///
-        /// This is a read-only field assigned by the server.</summary>
+        /// <summary>The time until which the `Registration` is effective. This is a read-only field assigned by the
+        /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiryTime")]
         public virtual object ExpiryTime { get; set; } 
 
@@ -7804,9 +7223,7 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("feed")]
         public virtual Feed Feed { get; set; } 
 
-        /// <summary>A server-generated unique identifier for this `Registration`.
-        ///
-        /// Read-only.</summary>
+        /// <summary>A server-generated unique identifier for this `Registration`. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("registrationId")]
         public virtual string RegistrationId { get; set; } 
 
@@ -7869,31 +7286,22 @@ namespace Google.Apis.Classroom.v1.Data
     /// <summary>Student in a course.</summary>
     public class Student : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifier of the course.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Identifier of the course. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("courseId")]
         public virtual string CourseId { get; set; } 
 
-        /// <summary>Global user information for the student.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Global user information for the student. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profile")]
         public virtual UserProfile Profile { get; set; } 
 
         /// <summary>Information about a Drive Folder for this student's work in this course. Only visible to the
-        /// student and domain administrators.
-        ///
-        /// Read-only.</summary>
+        /// student and domain administrators. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("studentWorkFolder")]
         public virtual DriveFolder StudentWorkFolder { get; set; } 
 
-        /// <summary>Identifier of the user.
-        ///
-        /// When specified as a parameter of a request, this identifier can be one of the following:
-        ///
-        /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
-        /// indicating the requesting user</summary>
+        /// <summary>Identifier of the user. When specified as a parameter of a request, this identifier can be one of
+        /// the following: * the numeric identifier for the user * the email address of the user * the string literal
+        /// `"me"`, indicating the requesting user</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; } 
 
@@ -7901,83 +7309,60 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Student submission for course work.
-    ///
-    /// StudentSubmission items are generated when a CourseWork item is created.
-    ///
-    /// StudentSubmissions that have never been accessed (i.e. with `state` = NEW) may not have a creation time or
-    /// update time.</summary>
+    /// <summary>Student submission for course work. StudentSubmission items are generated when a CourseWork item is
+    /// created. StudentSubmissions that have never been accessed (i.e. with `state` = NEW) may not have a creation time
+    /// or update time.</summary>
     public class StudentSubmission : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Absolute link to the submission in the Classroom web UI.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Absolute link to the submission in the Classroom web UI. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternateLink")]
         public virtual string AlternateLink { get; set; } 
 
         /// <summary>Optional grade. If unset, no grade was set. This value must be non-negative. Decimal (that is, non-
-        /// integer) values are allowed, but are rounded to two decimal places.
-        ///
-        /// This may be modified only by course teachers.</summary>
+        /// integer) values are allowed, but are rounded to two decimal places. This may be modified only by course
+        /// teachers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedGrade")]
         public virtual System.Nullable<double> AssignedGrade { get; set; } 
 
-        /// <summary>Submission content when course_work_type is ASSIGNMENT.
-        ///
-        /// Students can modify this content using ModifyAttachments.</summary>
+        /// <summary>Submission content when course_work_type is ASSIGNMENT. Students can modify this content using
+        /// ModifyAttachments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignmentSubmission")]
         public virtual AssignmentSubmission AssignmentSubmission { get; set; } 
 
         /// <summary>Whether this student submission is associated with the Developer Console project making the
-        /// request.
-        ///
-        /// See CreateCourseWork for more details.
-        ///
-        /// Read-only.</summary>
+        /// request. See CreateCourseWork for more details. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associatedWithDeveloper")]
         public virtual System.Nullable<bool> AssociatedWithDeveloper { get; set; } 
 
-        /// <summary>Identifier of the course.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Identifier of the course. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("courseId")]
         public virtual string CourseId { get; set; } 
 
-        /// <summary>Identifier for the course work this corresponds to.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Identifier for the course work this corresponds to. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("courseWorkId")]
         public virtual string CourseWorkId { get; set; } 
 
-        /// <summary>Type of course work this submission is for.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Type of course work this submission is for. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("courseWorkType")]
         public virtual string CourseWorkType { get; set; } 
 
         /// <summary>Creation time of this submission. This may be unset if the student has not accessed this item.
-        ///
         /// Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual object CreationTime { get; set; } 
 
         /// <summary>Optional pending grade. If unset, no grade was set. This value must be non-negative. Decimal (that
-        /// is, non-integer) values are allowed, but are rounded to two decimal places.
-        ///
-        /// This is only visible to and modifiable by course teachers.</summary>
+        /// is, non-integer) values are allowed, but are rounded to two decimal places. This is only visible to and
+        /// modifiable by course teachers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("draftGrade")]
         public virtual System.Nullable<double> DraftGrade { get; set; } 
 
         /// <summary>Classroom-assigned Identifier for the student submission. This is unique among submissions for the
-        /// relevant course work.
-        ///
-        /// Read-only.</summary>
+        /// relevant course work. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Whether this submission is late.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Whether this submission is late. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("late")]
         public virtual System.Nullable<bool> Late { get; set; } 
 
@@ -7989,27 +7374,20 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shortAnswerSubmission")]
         public virtual ShortAnswerSubmission ShortAnswerSubmission { get; set; } 
 
-        /// <summary>State of this submission.
-        ///
-        /// Read-only.</summary>
+        /// <summary>State of this submission. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>The history of the submission (includes state and grade histories).
-        ///
-        /// Read-only.</summary>
+        /// <summary>The history of the submission (includes state and grade histories). Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("submissionHistory")]
         public virtual System.Collections.Generic.IList<SubmissionHistory> SubmissionHistory { get; set; } 
 
         /// <summary>Last update time of this submission. This may be unset if the student has not accessed this item.
-        ///
         /// Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
-        /// <summary>Identifier for the student that owns this submission.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Identifier for the student that owns this submission. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; } 
 
@@ -8035,24 +7413,17 @@ namespace Google.Apis.Classroom.v1.Data
     /// <summary>Teacher of a course.</summary>
     public class Teacher : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifier of the course.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Identifier of the course. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("courseId")]
         public virtual string CourseId { get; set; } 
 
-        /// <summary>Global user information for the teacher.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Global user information for the teacher. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profile")]
         public virtual UserProfile Profile { get; set; } 
 
-        /// <summary>Identifier of the user.
-        ///
-        /// When specified as a parameter of a request, this identifier can be one of the following:
-        ///
-        /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
-        /// indicating the requesting user</summary>
+        /// <summary>Identifier of the user. When specified as a parameter of a request, this identifier can be one of
+        /// the following: * the numeric identifier for the user * the email address of the user * the string literal
+        /// `"me"`, indicating the requesting user</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; } 
 
@@ -8090,9 +7461,7 @@ namespace Google.Apis.Classroom.v1.Data
     /// <summary>Topic created by a teacher for the course</summary>
     public class Topic : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifier of the course.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Identifier of the course. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("courseId")]
         public virtual string CourseId { get; set; } 
 
@@ -8102,15 +7471,11 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Unique identifier for the topic.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Unique identifier for the topic. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topicId")]
         public virtual string TopicId { get; set; } 
 
-        /// <summary>The time the topic was last updated by the system.
-        ///
-        /// Read-only.</summary>
+        /// <summary>The time the topic was last updated by the system. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -8128,41 +7493,29 @@ namespace Google.Apis.Classroom.v1.Data
     /// <summary>Global information for a user.</summary>
     public class UserProfile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Email address of the user.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Email address of the user. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddress { get; set; } 
 
-        /// <summary>Identifier of the user.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Identifier of the user. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Name of the user.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Name of the user. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual Name Name { get; set; } 
 
-        /// <summary>Global permissions of the user.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Global permissions of the user. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<GlobalPermission> Permissions { get; set; } 
 
-        /// <summary>URL of user's profile photo.
-        ///
-        /// Read-only.</summary>
+        /// <summary>URL of user's profile photo. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoUrl")]
         public virtual string PhotoUrl { get; set; } 
 
         /// <summary>Represents whether a G Suite for Education user's domain administrator has explicitly verified them
         /// as being a teacher. If the user is not a member of a G Suite for Education domain, than this field is always
-        /// false.
-        ///
-        /// Read-only</summary>
+        /// false. Read-only</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifiedTeacher")]
         public virtual System.Nullable<bool> VerifiedTeacher { get; set; } 
 
@@ -8173,9 +7526,7 @@ namespace Google.Apis.Classroom.v1.Data
     /// <summary>YouTube video item.</summary>
     public class YouTubeVideo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>URL that can be used to view the YouTube video.
-        ///
-        /// Read-only.</summary>
+        /// <summary>URL that can be used to view the YouTube video. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternateLink")]
         public virtual string AlternateLink { get; set; } 
 
@@ -8183,15 +7534,11 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>URL of a thumbnail image of the YouTube video.
-        ///
-        /// Read-only.</summary>
+        /// <summary>URL of a thumbnail image of the YouTube video. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
         public virtual string ThumbnailUrl { get; set; } 
 
-        /// <summary>Title of the YouTube video.
-        ///
-        /// Read-only.</summary>
+        /// <summary>Title of the YouTube video. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 

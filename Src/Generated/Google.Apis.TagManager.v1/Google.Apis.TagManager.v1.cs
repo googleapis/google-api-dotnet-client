@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/tag-manager'>Tag Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200729 (2036)
+ *      <tr><th>API Rev<td>20200803 (2041)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/tag-manager'>
  *              https://developers.google.com/tag-manager</a>
@@ -5006,15 +5006,13 @@ namespace Google.Apis.TagManager.v1.Data
     /// <summary>Represents a predicate.</summary>
     public class Condition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of named parameters (key/value), depending on the condition's type. Notes: For binary
+        /// <summary>A list of named parameters (key/value), depending on the condition's type. Notes: - For binary
         /// operators, include parameters named arg0 and arg1 for specifying the left and right operands, respectively.
-        /// At this time, the left operand (arg0) must be a reference to a variable. For case-insensitive Regex
+        /// - At this time, the left operand (arg0) must be a reference to a variable. - For case-insensitive Regex
         /// matching, include a boolean parameter named ignore_case that is set to true. If not specified or set to any
-        /// other value, the matching will be case sensitive. To negate an operator, include a boolean parameter named
-        /// negate boolean parameter that is set to true.
-        ///
-        /// @mutable tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// other value, the matching will be case sensitive. - To negate an operator, include a boolean parameter named
+        /// negate boolean parameter that is set to true. @mutable tagmanager.accounts.containers.triggers.create
+        /// @mutable tagmanager.accounts.containers.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; } 
 
@@ -5052,8 +5050,8 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabledBuiltInVariable")]
         public virtual System.Collections.Generic.IList<string> EnabledBuiltInVariable { get; set; } 
 
-        /// <summary>The fingerprint of the GTM Container as computed at storage time.  This value is recomputed
-        /// whenever the account is modified.</summary>
+        /// <summary>The fingerprint of the GTM Container as computed at storage time. This value is recomputed whenever
+        /// the account is modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
@@ -5544,8 +5542,8 @@ namespace Google.Apis.TagManager.v1.Data
     /// <summary>Represents a Google Tag Manager Parameter.</summary>
     public class Parameter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The named key that uniquely identifies a parameter.  Required for top-level parameters, as well as
-        /// map values.  Ignored for list values. @mutable tagmanager.accounts.containers.variables.create @mutable
+        /// <summary>The named key that uniquely identifies a parameter. Required for top-level parameters, as well as
+        /// map values. Ignored for list values. @mutable tagmanager.accounts.containers.variables.create @mutable
         /// tagmanager.accounts.containers.variables.update @mutable tagmanager.accounts.containers.triggers.create
         /// @mutable tagmanager.accounts.containers.triggers.update @mutable tagmanager.accounts.containers.tags.create
         /// @mutable tagmanager.accounts.containers.tags.update</summary>
@@ -5568,17 +5566,16 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("map")]
         public virtual System.Collections.Generic.IList<Parameter> Map { get; set; } 
 
-        /// <summary>The parameter type.  Valid values are: boolean: The value represents a boolean, represented as
-        /// 'true' or 'false' integer: The value represents a 64-bit signed integer value, in base 10 list: A list of
-        /// parameters should be specified map: A map of parameters should be specified template: The value represents
-        /// any text; this can include variable references (even variable references that might return non-string types)
-        /// trigger_reference: The value represents a trigger, represented as the trigger id tag_reference: The value
-        /// represents a tag, represented as the tag name
-        ///
-        /// @mutable tagmanager.accounts.containers.variables.create @mutable
-        /// tagmanager.accounts.containers.variables.update @mutable tagmanager.accounts.containers.triggers.create
-        /// @mutable tagmanager.accounts.containers.triggers.update @mutable tagmanager.accounts.containers.tags.create
-        /// @mutable tagmanager.accounts.containers.tags.update</summary>
+        /// <summary>The parameter type. Valid values are: - boolean: The value represents a boolean, represented as
+        /// 'true' or 'false' - integer: The value represents a 64-bit signed integer value, in base 10 - list: A list
+        /// of parameters should be specified - map: A map of parameters should be specified - template: The value
+        /// represents any text; this can include variable references (even variable references that might return non-
+        /// string types) - trigger_reference: The value represents a trigger, represented as the trigger id -
+        /// tag_reference: The value represents a tag, represented as the tag name @mutable
+        /// tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update
+        /// @mutable tagmanager.accounts.containers.triggers.create @mutable
+        /// tagmanager.accounts.containers.triggers.update @mutable tagmanager.accounts.containers.tags.create @mutable
+        /// tagmanager.accounts.containers.tags.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

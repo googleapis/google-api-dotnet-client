@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20200730 (2037)
+ *      <tr><th>API Rev<td>20200805 (2043)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -416,18 +416,12 @@ namespace Google.Apis.ToolResults.v1beta3
 
 
                     /// <summary>Retrieves a single screenshot cluster by its ID</summary>
-                    /// <param name="projectId">A Project id.
-                    ///
-                    /// Required.</param>
+                    /// <param name="projectId">A Project id. Required.</param>
                     /// <param name="historyId">A History id.
-                    ///
                     /// Required.</param>
-                    /// <param name="executionId">An Execution id.
-                    ///
-                    /// Required.</param>
-                    /// <param name="clusterId">A Cluster id
-                    ///
-                    /// Required.</param>
+                    /// <param name="executionId">An Execution id. Required.</param>
+                    /// <param
+                    /// name="clusterId">A Cluster id Required.</param>
                     public virtual GetRequest Get(string projectId, string historyId, string executionId, string clusterId)
                     {
                         return new GetRequest(service, projectId, historyId, executionId, clusterId);
@@ -448,27 +442,19 @@ namespace Google.Apis.ToolResults.v1beta3
                         }
 
 
-                        /// <summary>A Project id.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>A Project id. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>A History id.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>A History id. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string HistoryId { get; private set; }
 
-                        /// <summary>An Execution id.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>An Execution id. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ExecutionId { get; private set; }
 
-                        /// <summary>A Cluster id
-                        ///
-                        /// Required.</summary>
+                        /// <summary>A Cluster id Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ClusterId { get; private set; }
 
@@ -536,34 +522,25 @@ namespace Google.Apis.ToolResults.v1beta3
 
                     }
 
-                    /// <summary>Lists Screenshot Clusters
-                    ///
-                    /// Returns the list of screenshot clusters corresponding to an execution. Screenshot clusters are
-                    /// created after the execution is finished. Clusters are created from a set of screenshots. Between
-                    /// any two screenshots, a matching score is calculated based off their metadata that determines how
-                    /// similar they are. Screenshots are placed in the cluster that has screens which have the highest
-                    /// matching scores.</summary>
-                    /// <param name="projectId">A Project id.
-                    ///
-                    /// Required.</param>
+                    /// <summary>Lists Screenshot Clusters Returns the list of screenshot clusters corresponding to an
+                    /// execution. Screenshot clusters are created after the execution is finished. Clusters are created
+                    /// from a set of screenshots. Between any two screenshots, a matching score is calculated based off
+                    /// their metadata that determines how similar they are. Screenshots are placed in the cluster that
+                    /// has screens which have the highest matching scores.</summary>
+                    /// <param name="projectId">A Project id. Required.</param>
                     /// <param name="historyId">A History id.
-                    ///
                     /// Required.</param>
-                    /// <param name="executionId">An Execution id.
-                    ///
-                    /// Required.</param>
+                    /// <param name="executionId">An Execution id. Required.</param>
                     public virtual ListRequest List(string projectId, string historyId, string executionId)
                     {
                         return new ListRequest(service, projectId, historyId, executionId);
                     }
 
-                    /// <summary>Lists Screenshot Clusters
-                    ///
-                    /// Returns the list of screenshot clusters corresponding to an execution. Screenshot clusters are
-                    /// created after the execution is finished. Clusters are created from a set of screenshots. Between
-                    /// any two screenshots, a matching score is calculated based off their metadata that determines how
-                    /// similar they are. Screenshots are placed in the cluster that has screens which have the highest
-                    /// matching scores.</summary>
+                    /// <summary>Lists Screenshot Clusters Returns the list of screenshot clusters corresponding to an
+                    /// execution. Screenshot clusters are created after the execution is finished. Clusters are created
+                    /// from a set of screenshots. Between any two screenshots, a matching score is calculated based off
+                    /// their metadata that determines how similar they are. Screenshots are placed in the cluster that
+                    /// has screens which have the highest matching scores.</summary>
                     public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListScreenshotClustersResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -577,21 +554,15 @@ namespace Google.Apis.ToolResults.v1beta3
                         }
 
 
-                        /// <summary>A Project id.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>A Project id. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>A History id.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>A History id. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string HistoryId { get; private set; }
 
-                        /// <summary>An Execution id.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>An Execution id. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ExecutionId { get; private set; }
 
@@ -674,11 +645,8 @@ namespace Google.Apis.ToolResults.v1beta3
                     }
 
 
-                    /// <summary>Gets an Environment.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
+                    /// <summary>Gets an Environment. May return any of the following canonical error codes: -
+                    /// PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
                     /// request is malformed - NOT_FOUND - if the Environment does not exist</summary>
                     /// <param name="projectId">Required. A Project id.</param>
                     /// <param name="historyId">Required. A History
@@ -691,11 +659,8 @@ namespace Google.Apis.ToolResults.v1beta3
                         return new GetRequest(service, projectId, historyId, executionId, environmentId);
                     }
 
-                    /// <summary>Gets an Environment.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
+                    /// <summary>Gets an Environment. May return any of the following canonical error codes: -
+                    /// PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
                     /// request is malformed - NOT_FOUND - if the Environment does not exist</summary>
                     public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Environment>
                     {
@@ -791,14 +756,10 @@ namespace Google.Apis.ToolResults.v1beta3
 
                     }
 
-                    /// <summary>Lists Environments for a given Execution.
-                    ///
-                    /// The Environments are sorted by display name.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                    /// request is malformed - NOT_FOUND - if the containing Execution does not exist</summary>
+                    /// <summary>Lists Environments for a given Execution. The Environments are sorted by display name.
+                    /// May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not
+                    /// authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
+                    /// containing Execution does not exist</summary>
                     /// <param name="projectId">Required. A Project id.</param>
                     /// <param name="historyId">Required. A History
                     /// id.</param>
@@ -808,14 +769,10 @@ namespace Google.Apis.ToolResults.v1beta3
                         return new ListRequest(service, projectId, historyId, executionId);
                     }
 
-                    /// <summary>Lists Environments for a given Execution.
-                    ///
-                    /// The Environments are sorted by display name.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                    /// request is malformed - NOT_FOUND - if the containing Execution does not exist</summary>
+                    /// <summary>Lists Environments for a given Execution. The Environments are sorted by display name.
+                    /// May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not
+                    /// authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
+                    /// containing Execution does not exist</summary>
                     public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListEnvironmentsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -841,10 +798,8 @@ namespace Google.Apis.ToolResults.v1beta3
                         [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ExecutionId { get; private set; }
 
-                        /// <summary>The maximum number of Environments to fetch.
-                        ///
-                        /// Default value: 25. The server will use this default if the field is not set or has a value
-                        /// of 0.</summary>
+                        /// <summary>The maximum number of Environments to fetch. Default value: 25. The server will use
+                        /// this default if the field is not set or has a value of 0.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -977,10 +932,8 @@ namespace Google.Apis.ToolResults.v1beta3
 
 
                         /// <summary>Creates a PerfMetricsSummary resource. Returns the existing one if it has already
-                        /// been created.
-                        ///
-                        /// May return any of the following error code(s): - NOT_FOUND - The containing Step does not
-                        /// exist</summary>
+                        /// been created. May return any of the following error code(s): - NOT_FOUND - The containing
+                        /// Step does not exist</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="projectId">The cloud project</param>
                         /// <param name="historyId">A tool results history
@@ -994,10 +947,8 @@ namespace Google.Apis.ToolResults.v1beta3
                         }
 
                         /// <summary>Creates a PerfMetricsSummary resource. Returns the existing one if it has already
-                        /// been created.
-                        ///
-                        /// May return any of the following error code(s): - NOT_FOUND - The containing Step does not
-                        /// exist</summary>
+                        /// been created. May return any of the following error code(s): - NOT_FOUND - The containing
+                        /// Step does not exist</summary>
                         public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.PerfMetricsSummary>
                         {
                             /// <summary>Constructs a new Create request.</summary>
@@ -1151,10 +1102,9 @@ namespace Google.Apis.ToolResults.v1beta3
                             /// Samples through repeated calls to this method in order to split up a large request
                             /// payload - duplicates and existing timestamp entries will be ignored. - the batch
                             /// operation may partially succeed - the set of elements successfully inserted is returned
-                            /// in the response (omits items which already existed in the database).
-                            ///
-                            /// May return any of the following canonical error codes: - NOT_FOUND - The containing
-                            /// PerfSampleSeries does not exist</summary>
+                            /// in the response (omits items which already existed in the database). May return any of
+                            /// the following canonical error codes: - NOT_FOUND - The containing PerfSampleSeries does
+                            /// not exist</summary>
                             /// <param name="body">The body of the request.</param>
                             /// <param name="projectId">The cloud project</param>
                             /// <param name="historyId">A tool results history
@@ -1172,10 +1122,9 @@ namespace Google.Apis.ToolResults.v1beta3
                             /// Samples through repeated calls to this method in order to split up a large request
                             /// payload - duplicates and existing timestamp entries will be ignored. - the batch
                             /// operation may partially succeed - the set of elements successfully inserted is returned
-                            /// in the response (omits items which already existed in the database).
-                            ///
-                            /// May return any of the following canonical error codes: - NOT_FOUND - The containing
-                            /// PerfSampleSeries does not exist</summary>
+                            /// in the response (omits items which already existed in the database). May return any of
+                            /// the following canonical error codes: - NOT_FOUND - The containing PerfSampleSeries does
+                            /// not exist</summary>
                             public class BatchCreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.BatchCreatePerfSamplesResponse>
                             {
                                 /// <summary>Constructs a new BatchCreate request.</summary>
@@ -1295,11 +1244,10 @@ namespace Google.Apis.ToolResults.v1beta3
                             /// sorted by timestamps ascending - The default page size is 500 samples; and maximum size
                             /// allowed 5000 - The response token indicates the last returned PerfSample timestamp -
                             /// When the results size exceeds the page size, submit a subsequent request including the
-                            /// page token to return the rest of the samples up to the page limit
-                            ///
-                            /// May return any of the following canonical error codes: - OUT_OF_RANGE - The specified
-                            /// request page_token is out of valid range - NOT_FOUND - The containing PerfSampleSeries
-                            /// does not exist</summary>
+                            /// page token to return the rest of the samples up to the page limit May return any of the
+                            /// following canonical error codes: - OUT_OF_RANGE - The specified request page_token is
+                            /// out of valid range - NOT_FOUND - The containing PerfSampleSeries does not
+                            /// exist</summary>
                             /// <param name="projectId">The cloud project</param>
                             /// <param name="historyId">A tool results history
                             /// ID.</param>
@@ -1316,11 +1264,10 @@ namespace Google.Apis.ToolResults.v1beta3
                             /// sorted by timestamps ascending - The default page size is 500 samples; and maximum size
                             /// allowed 5000 - The response token indicates the last returned PerfSample timestamp -
                             /// When the results size exceeds the page size, submit a subsequent request including the
-                            /// page token to return the rest of the samples up to the page limit
-                            ///
-                            /// May return any of the following canonical error codes: - OUT_OF_RANGE - The specified
-                            /// request page_token is out of valid range - NOT_FOUND - The containing PerfSampleSeries
-                            /// does not exist</summary>
+                            /// page token to return the rest of the samples up to the page limit May return any of the
+                            /// following canonical error codes: - OUT_OF_RANGE - The specified request page_token is
+                            /// out of valid range - NOT_FOUND - The containing PerfSampleSeries does not
+                            /// exist</summary>
                             public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListPerfSamplesResponse>
                             {
                                 /// <summary>Constructs a new List request.</summary>
@@ -1457,10 +1404,9 @@ namespace Google.Apis.ToolResults.v1beta3
                             }
                         }
 
-                        /// <summary>Creates a PerfSampleSeries.
-                        ///
-                        /// May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already
-                        /// exists for the given Step - NOT_FOUND - The containing Step does not exist</summary>
+                        /// <summary>Creates a PerfSampleSeries. May return any of the following error code(s): -
+                        /// ALREADY_EXISTS - PerfMetricSummary already exists for the given Step - NOT_FOUND - The
+                        /// containing Step does not exist</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="projectId">The cloud project</param>
                         /// <param name="historyId">A tool results history
@@ -1473,10 +1419,9 @@ namespace Google.Apis.ToolResults.v1beta3
                             return new CreateRequest(service, body, projectId, historyId, executionId, stepId);
                         }
 
-                        /// <summary>Creates a PerfSampleSeries.
-                        ///
-                        /// May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already
-                        /// exists for the given Step - NOT_FOUND - The containing Step does not exist</summary>
+                        /// <summary>Creates a PerfSampleSeries. May return any of the following error code(s): -
+                        /// ALREADY_EXISTS - PerfMetricSummary already exists for the given Step - NOT_FOUND - The
+                        /// containing Step does not exist</summary>
                         public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.PerfSampleSeries>
                         {
                             /// <summary>Constructs a new Create request.</summary>
@@ -1578,10 +1523,8 @@ namespace Google.Apis.ToolResults.v1beta3
 
                         }
 
-                        /// <summary>Gets a PerfSampleSeries.
-                        ///
-                        /// May return any of the following error code(s): - NOT_FOUND - The specified PerfSampleSeries
-                        /// does not exist</summary>
+                        /// <summary>Gets a PerfSampleSeries. May return any of the following error code(s): - NOT_FOUND
+                        /// - The specified PerfSampleSeries does not exist</summary>
                         /// <param name="projectId">The cloud project</param>
                         /// <param name="historyId">A tool results history
                         /// ID.</param>
@@ -1594,10 +1537,8 @@ namespace Google.Apis.ToolResults.v1beta3
                             return new GetRequest(service, projectId, historyId, executionId, stepId, sampleSeriesId);
                         }
 
-                        /// <summary>Gets a PerfSampleSeries.
-                        ///
-                        /// May return any of the following error code(s): - NOT_FOUND - The specified PerfSampleSeries
-                        /// does not exist</summary>
+                        /// <summary>Gets a PerfSampleSeries. May return any of the following error code(s): - NOT_FOUND
+                        /// - The specified PerfSampleSeries does not exist</summary>
                         public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.PerfSampleSeries>
                         {
                             /// <summary>Constructs a new Get request.</summary>
@@ -1706,14 +1647,10 @@ namespace Google.Apis.ToolResults.v1beta3
 
                         }
 
-                        /// <summary>Lists PerfSampleSeries for a given Step.
-                        ///
-                        /// The request provides an optional filter which specifies one or more PerfMetricsType to
-                        /// include in the result; if none returns all. The resulting PerfSampleSeries are sorted by
-                        /// ids.
-                        ///
-                        /// May return any of the following canonical error codes: - NOT_FOUND - The containing Step
-                        /// does not exist</summary>
+                        /// <summary>Lists PerfSampleSeries for a given Step. The request provides an optional filter
+                        /// which specifies one or more PerfMetricsType to include in the result; if none returns all.
+                        /// The resulting PerfSampleSeries are sorted by ids. May return any of the following canonical
+                        /// error codes: - NOT_FOUND - The containing Step does not exist</summary>
                         /// <param name="projectId">The cloud project</param>
                         /// <param name="historyId">A tool results history
                         /// ID.</param>
@@ -1725,14 +1662,10 @@ namespace Google.Apis.ToolResults.v1beta3
                             return new ListRequest(service, projectId, historyId, executionId, stepId);
                         }
 
-                        /// <summary>Lists PerfSampleSeries for a given Step.
-                        ///
-                        /// The request provides an optional filter which specifies one or more PerfMetricsType to
-                        /// include in the result; if none returns all. The resulting PerfSampleSeries are sorted by
-                        /// ids.
-                        ///
-                        /// May return any of the following canonical error codes: - NOT_FOUND - The containing Step
-                        /// does not exist</summary>
+                        /// <summary>Lists PerfSampleSeries for a given Step. The request provides an optional filter
+                        /// which specifies one or more PerfMetricsType to include in the result; if none returns all.
+                        /// The resulting PerfSampleSeries are sorted by ids. May return any of the following canonical
+                        /// error codes: - NOT_FOUND - The containing Step does not exist</summary>
                         public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListPerfSampleSeriesResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
@@ -1882,39 +1815,26 @@ namespace Google.Apis.ToolResults.v1beta3
 
 
                         /// <summary>Gets details of a Test Case for a Step. Experimental test cases API. Still in
-                        /// active development.
-                        ///
-                        /// May return any of the following canonical error codes:
-                        ///
-                        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT -
+                        /// active development. May return any of the following canonical error codes: -
+                        /// PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT -
                         /// if the request is malformed - NOT_FOUND - if the containing Test Case does not
                         /// exist</summary>
-                        /// <param name="projectId">A Project id.
-                        ///
-                        /// Required.</param>
+                        /// <param name="projectId">A Project id. Required.</param>
                         /// <param name="historyId">A History id.
-                        ///
                         /// Required.</param>
-                        /// <param name="executionId">A Execution id
-                        ///
-                        /// Required.</param>
-                        /// <param name="stepId">A Step id. Note: This step must include a TestExecutionStep.
-                        ///
-                        /// Required.</param>
-                        /// <param name="testCaseId">A Test Case id.
-                        ///
-                        /// Required.</param>
+                        /// <param name="executionId">A Execution id Required.</param>
+                        /// <param name="stepId">A
+                        /// Step id. Note: This step must include a TestExecutionStep. Required.</param>
+                        /// <param name="testCaseId">A Test
+                        /// Case id. Required.</param>
                         public virtual GetRequest Get(string projectId, string historyId, string executionId, string stepId, string testCaseId)
                         {
                             return new GetRequest(service, projectId, historyId, executionId, stepId, testCaseId);
                         }
 
                         /// <summary>Gets details of a Test Case for a Step. Experimental test cases API. Still in
-                        /// active development.
-                        ///
-                        /// May return any of the following canonical error codes:
-                        ///
-                        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT -
+                        /// active development. May return any of the following canonical error codes: -
+                        /// PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT -
                         /// if the request is malformed - NOT_FOUND - if the containing Test Case does not
                         /// exist</summary>
                         public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.TestCase>
@@ -1932,33 +1852,24 @@ namespace Google.Apis.ToolResults.v1beta3
                             }
 
 
-                            /// <summary>A Project id.
-                            ///
-                            /// Required.</summary>
+                            /// <summary>A Project id. Required.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string ProjectId { get; private set; }
 
-                            /// <summary>A History id.
-                            ///
-                            /// Required.</summary>
+                            /// <summary>A History id. Required.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string HistoryId { get; private set; }
 
-                            /// <summary>A Execution id
-                            ///
-                            /// Required.</summary>
+                            /// <summary>A Execution id Required.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string ExecutionId { get; private set; }
 
                             /// <summary>A Step id. Note: This step must include a TestExecutionStep.
-                            ///
                             /// Required.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string StepId { get; private set; }
 
-                            /// <summary>A Test Case id.
-                            ///
-                            /// Required.</summary>
+                            /// <summary>A Test Case id. Required.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("testCaseId", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string TestCaseId { get; private set; }
 
@@ -2036,36 +1947,24 @@ namespace Google.Apis.ToolResults.v1beta3
                         }
 
                         /// <summary>Lists Test Cases attached to a Step. Experimental test cases API. Still in active
-                        /// development.
-                        ///
-                        /// May return any of the following canonical error codes:
-                        ///
-                        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT -
-                        /// if the request is malformed - NOT_FOUND - if the containing Step does not exist</summary>
-                        /// <param name="projectId">A Project id.
-                        ///
-                        /// Required.</param>
+                        /// development. May return any of the following canonical error codes: - PERMISSION_DENIED - if
+                        /// the user is not authorized to write to project - INVALID_ARGUMENT - if the request is
+                        /// malformed - NOT_FOUND - if the containing Step does not exist</summary>
+                        /// <param name="projectId">A Project id. Required.</param>
                         /// <param name="historyId">A History id.
-                        ///
                         /// Required.</param>
-                        /// <param name="executionId">A Execution id
-                        ///
-                        /// Required.</param>
-                        /// <param name="stepId">A Step id. Note: This step must include a TestExecutionStep.
-                        ///
-                        /// Required.</param>
+                        /// <param name="executionId">A Execution id Required.</param>
+                        /// <param name="stepId">A
+                        /// Step id. Note: This step must include a TestExecutionStep. Required.</param>
                         public virtual ListRequest List(string projectId, string historyId, string executionId, string stepId)
                         {
                             return new ListRequest(service, projectId, historyId, executionId, stepId);
                         }
 
                         /// <summary>Lists Test Cases attached to a Step. Experimental test cases API. Still in active
-                        /// development.
-                        ///
-                        /// May return any of the following canonical error codes:
-                        ///
-                        /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT -
-                        /// if the request is malformed - NOT_FOUND - if the containing Step does not exist</summary>
+                        /// development. May return any of the following canonical error codes: - PERMISSION_DENIED - if
+                        /// the user is not authorized to write to project - INVALID_ARGUMENT - if the request is
+                        /// malformed - NOT_FOUND - if the containing Step does not exist</summary>
                         public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListTestCasesResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
@@ -2080,42 +1979,29 @@ namespace Google.Apis.ToolResults.v1beta3
                             }
 
 
-                            /// <summary>A Project id.
-                            ///
-                            /// Required.</summary>
+                            /// <summary>A Project id. Required.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string ProjectId { get; private set; }
 
-                            /// <summary>A History id.
-                            ///
-                            /// Required.</summary>
+                            /// <summary>A History id. Required.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string HistoryId { get; private set; }
 
-                            /// <summary>A Execution id
-                            ///
-                            /// Required.</summary>
+                            /// <summary>A Execution id Required.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string ExecutionId { get; private set; }
 
                             /// <summary>A Step id. Note: This step must include a TestExecutionStep.
-                            ///
                             /// Required.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string StepId { get; private set; }
 
-                            /// <summary>The maximum number of TestCases to fetch.
-                            ///
-                            /// Default value: 100. The server will use this default if the field is not set or has a
-                            /// value of 0.
-                            ///
-                            /// Optional.</summary>
+                            /// <summary>The maximum number of TestCases to fetch. Default value: 100. The server will
+                            /// use this default if the field is not set or has a value of 0. Optional.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
-                            /// <summary>A continuation token to resume the query at the next item.
-                            ///
-                            /// Optional.</summary>
+                            /// <summary>A continuation token to resume the query at the next item. Optional.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
 
@@ -2225,35 +2111,25 @@ namespace Google.Apis.ToolResults.v1beta3
                         }
 
 
-                        /// <summary>Lists thumbnails of images attached to a step.
-                        ///
-                        /// May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is
-                        /// not authorized to read from the project, or from any of the images - INVALID_ARGUMENT - if
-                        /// the request is malformed - NOT_FOUND - if the step does not exist, or if any of the images
-                        /// do not exist</summary>
-                        /// <param name="projectId">A Project id.
-                        ///
-                        /// Required.</param>
+                        /// <summary>Lists thumbnails of images attached to a step. May return any of the following
+                        /// canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read from the
+                        /// project, or from any of the images - INVALID_ARGUMENT - if the request is malformed -
+                        /// NOT_FOUND - if the step does not exist, or if any of the images do not exist</summary>
+                        /// <param name="projectId">A Project id. Required.</param>
                         /// <param name="historyId">A History id.
-                        ///
                         /// Required.</param>
-                        /// <param name="executionId">An Execution id.
-                        ///
-                        /// Required.</param>
-                        /// <param name="stepId">A Step id.
-                        ///
-                        /// Required.</param>
+                        /// <param name="executionId">An Execution id. Required.</param>
+                        /// <param
+                        /// name="stepId">A Step id. Required.</param>
                         public virtual ListRequest List(string projectId, string historyId, string executionId, string stepId)
                         {
                             return new ListRequest(service, projectId, historyId, executionId, stepId);
                         }
 
-                        /// <summary>Lists thumbnails of images attached to a step.
-                        ///
-                        /// May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is
-                        /// not authorized to read from the project, or from any of the images - INVALID_ARGUMENT - if
-                        /// the request is malformed - NOT_FOUND - if the step does not exist, or if any of the images
-                        /// do not exist</summary>
+                        /// <summary>Lists thumbnails of images attached to a step. May return any of the following
+                        /// canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read from the
+                        /// project, or from any of the images - INVALID_ARGUMENT - if the request is malformed -
+                        /// NOT_FOUND - if the step does not exist, or if any of the images do not exist</summary>
                         public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListStepThumbnailsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
@@ -2268,42 +2144,28 @@ namespace Google.Apis.ToolResults.v1beta3
                             }
 
 
-                            /// <summary>A Project id.
-                            ///
-                            /// Required.</summary>
+                            /// <summary>A Project id. Required.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string ProjectId { get; private set; }
 
-                            /// <summary>A History id.
-                            ///
-                            /// Required.</summary>
+                            /// <summary>A History id. Required.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string HistoryId { get; private set; }
 
-                            /// <summary>An Execution id.
-                            ///
-                            /// Required.</summary>
+                            /// <summary>An Execution id. Required.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string ExecutionId { get; private set; }
 
-                            /// <summary>A Step id.
-                            ///
-                            /// Required.</summary>
+                            /// <summary>A Step id. Required.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string StepId { get; private set; }
 
-                            /// <summary>The maximum number of thumbnails to fetch.
-                            ///
-                            /// Default value: 50. The server will use this default if the field is not set or has a
-                            /// value of 0.
-                            ///
-                            /// Optional.</summary>
+                            /// <summary>The maximum number of thumbnails to fetch. Default value: 50. The server will
+                            /// use this default if the field is not set or has a value of 0. Optional.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
-                            /// <summary>A continuation token to resume the query at the next item.
-                            ///
-                            /// Optional.</summary>
+                            /// <summary>A continuation token to resume the query at the next item. Optional.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
 
@@ -2390,31 +2252,24 @@ namespace Google.Apis.ToolResults.v1beta3
                         }
                     }
 
-                    /// <summary>Lists accessibility clusters for a given Step
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                    /// request is malformed - FAILED_PRECONDITION - if an argument in the request happens to be
-                    /// invalid; e.g. if the locale format is incorrect - NOT_FOUND - if the containing Step does not
-                    /// exist</summary>
+                    /// <summary>Lists accessibility clusters for a given Step May return any of the following canonical
+                    /// error codes: - PERMISSION_DENIED - if the user is not authorized to read project -
+                    /// INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if an argument in the
+                    /// request happens to be invalid; e.g. if the locale format is incorrect - NOT_FOUND - if the
+                    /// containing Step does not exist</summary>
                     /// <param name="name">A full resource name of the step. For example, projects/my-
                     /// project/histories/bh.1234567890abcdef/executions/ 1234567890123456789/steps/bs.1234567890abcdef
-                    ///
                     /// Required.</param>
                     public virtual AccessibilityClustersRequest AccessibilityClusters(string name)
                     {
                         return new AccessibilityClustersRequest(service, name);
                     }
 
-                    /// <summary>Lists accessibility clusters for a given Step
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                    /// request is malformed - FAILED_PRECONDITION - if an argument in the request happens to be
-                    /// invalid; e.g. if the locale format is incorrect - NOT_FOUND - if the containing Step does not
-                    /// exist</summary>
+                    /// <summary>Lists accessibility clusters for a given Step May return any of the following canonical
+                    /// error codes: - PERMISSION_DENIED - if the user is not authorized to read project -
+                    /// INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if an argument in the
+                    /// request happens to be invalid; e.g. if the locale format is incorrect - NOT_FOUND - if the
+                    /// containing Step does not exist</summary>
                     public class AccessibilityClustersRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListStepAccessibilityClustersResponse>
                     {
                         /// <summary>Constructs a new AccessibilityClusters request.</summary>
@@ -2428,16 +2283,13 @@ namespace Google.Apis.ToolResults.v1beta3
 
                         /// <summary>A full resource name of the step. For example, projects/my-
                         /// project/histories/bh.1234567890abcdef/executions/
-                        /// 1234567890123456789/steps/bs.1234567890abcdef
-                        ///
-                        /// Required.</summary>
+                        /// 1234567890123456789/steps/bs.1234567890abcdef Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
                         /// <summary>The accepted format is the canonical Unicode format with hyphen as a delimiter.
                         /// Language must be lowercase, Language Script - Capitalized, Region - UPPERCASE. See
                         /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier for details.
-                        ///
                         /// Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("locale", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Locale { get; set; }
@@ -2488,15 +2340,10 @@ namespace Google.Apis.ToolResults.v1beta3
 
                     }
 
-                    /// <summary>Creates a Step.
-                    ///
-                    /// The returned Step will have the id set.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if
-                    /// the request is malformed - FAILED_PRECONDITION - if the step is too large (more than 10Mib) -
-                    /// NOT_FOUND - if the containing Execution does not exist</summary>
+                    /// <summary>Creates a Step. The returned Step will have the id set. May return any of the following
+                    /// canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project -
+                    /// INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the step is too large
+                    /// (more than 10Mib) - NOT_FOUND - if the containing Execution does not exist</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="projectId">Required. A Project id.</param>
                     /// <param name="historyId">Required. A History
@@ -2507,15 +2354,10 @@ namespace Google.Apis.ToolResults.v1beta3
                         return new CreateRequest(service, body, projectId, historyId, executionId);
                     }
 
-                    /// <summary>Creates a Step.
-                    ///
-                    /// The returned Step will have the id set.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if
-                    /// the request is malformed - FAILED_PRECONDITION - if the step is too large (more than 10Mib) -
-                    /// NOT_FOUND - if the containing Execution does not exist</summary>
+                    /// <summary>Creates a Step. The returned Step will have the id set. May return any of the following
+                    /// canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project -
+                    /// INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the step is too large
+                    /// (more than 10Mib) - NOT_FOUND - if the containing Execution does not exist</summary>
                     public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Step>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -2543,7 +2385,6 @@ namespace Google.Apis.ToolResults.v1beta3
                         public virtual string ExecutionId { get; private set; }
 
                         /// <summary>A unique request ID for server to detect duplicated requests. For example, a UUID.
-                        ///
                         /// Optional, but strongly recommended.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RequestId { get; set; }
@@ -2618,35 +2459,23 @@ namespace Google.Apis.ToolResults.v1beta3
 
                     }
 
-                    /// <summary>Gets a Step.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                    /// request is malformed - NOT_FOUND - if the Step does not exist</summary>
-                    /// <param name="projectId">A Project id.
-                    ///
-                    /// Required.</param>
+                    /// <summary>Gets a Step. May return any of the following canonical error codes: - PERMISSION_DENIED
+                    /// - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed
+                    /// - NOT_FOUND - if the Step does not exist</summary>
+                    /// <param name="projectId">A Project id. Required.</param>
                     /// <param name="historyId">A History id.
-                    ///
                     /// Required.</param>
-                    /// <param name="executionId">A Execution id.
-                    ///
-                    /// Required.</param>
-                    /// <param name="stepId">A Step id.
-                    ///
-                    /// Required.</param>
+                    /// <param name="executionId">A Execution id. Required.</param>
+                    /// <param name="stepId">A
+                    /// Step id. Required.</param>
                     public virtual GetRequest Get(string projectId, string historyId, string executionId, string stepId)
                     {
                         return new GetRequest(service, projectId, historyId, executionId, stepId);
                     }
 
-                    /// <summary>Gets a Step.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                    /// request is malformed - NOT_FOUND - if the Step does not exist</summary>
+                    /// <summary>Gets a Step. May return any of the following canonical error codes: - PERMISSION_DENIED
+                    /// - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed
+                    /// - NOT_FOUND - if the Step does not exist</summary>
                     public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Step>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -2661,27 +2490,19 @@ namespace Google.Apis.ToolResults.v1beta3
                         }
 
 
-                        /// <summary>A Project id.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>A Project id. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>A History id.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>A History id. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string HistoryId { get; private set; }
 
-                        /// <summary>A Execution id.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>A Execution id. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ExecutionId { get; private set; }
 
-                        /// <summary>A Step id.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>A Step id. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string StepId { get; private set; }
 
@@ -2749,10 +2570,8 @@ namespace Google.Apis.ToolResults.v1beta3
 
                     }
 
-                    /// <summary>Retrieves a PerfMetricsSummary.
-                    ///
-                    /// May return any of the following error code(s): - NOT_FOUND - The specified PerfMetricsSummary
-                    /// does not exist</summary>
+                    /// <summary>Retrieves a PerfMetricsSummary. May return any of the following error code(s): -
+                    /// NOT_FOUND - The specified PerfMetricsSummary does not exist</summary>
                     /// <param name="projectId">The cloud project</param>
                     /// <param name="historyId">A tool results history
                     /// ID.</param>
@@ -2764,10 +2583,8 @@ namespace Google.Apis.ToolResults.v1beta3
                         return new GetPerfMetricsSummaryRequest(service, projectId, historyId, executionId, stepId);
                     }
 
-                    /// <summary>Retrieves a PerfMetricsSummary.
-                    ///
-                    /// May return any of the following error code(s): - NOT_FOUND - The specified PerfMetricsSummary
-                    /// does not exist</summary>
+                    /// <summary>Retrieves a PerfMetricsSummary. May return any of the following error code(s): -
+                    /// NOT_FOUND - The specified PerfMetricsSummary does not exist</summary>
                     public class GetPerfMetricsSummaryRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.PerfMetricsSummary>
                     {
                         /// <summary>Constructs a new GetPerfMetricsSummary request.</summary>
@@ -2862,42 +2679,27 @@ namespace Google.Apis.ToolResults.v1beta3
 
                     }
 
-                    /// <summary>Lists Steps for a given Execution.
-                    ///
-                    /// The steps are sorted by creation_time in descending order. The step_id key will be used to order
-                    /// the steps with the same creation_time.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                    /// request is malformed - FAILED_PRECONDITION - if an argument in the request happens to be
-                    /// invalid; e.g. if an attempt is made to list the children of a nonexistent Step - NOT_FOUND - if
-                    /// the containing Execution does not exist</summary>
-                    /// <param name="projectId">A Project id.
-                    ///
-                    /// Required.</param>
+                    /// <summary>Lists Steps for a given Execution. The steps are sorted by creation_time in descending
+                    /// order. The step_id key will be used to order the steps with the same creation_time. May return
+                    /// any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized
+                    /// to read project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if an
+                    /// argument in the request happens to be invalid; e.g. if an attempt is made to list the children
+                    /// of a nonexistent Step - NOT_FOUND - if the containing Execution does not exist</summary>
+                    /// <param name="projectId">A Project id. Required.</param>
                     /// <param name="historyId">A History id.
-                    ///
                     /// Required.</param>
-                    /// <param name="executionId">A Execution id.
-                    ///
-                    /// Required.</param>
+                    /// <param name="executionId">A Execution id. Required.</param>
                     public virtual ListRequest List(string projectId, string historyId, string executionId)
                     {
                         return new ListRequest(service, projectId, historyId, executionId);
                     }
 
-                    /// <summary>Lists Steps for a given Execution.
-                    ///
-                    /// The steps are sorted by creation_time in descending order. The step_id key will be used to order
-                    /// the steps with the same creation_time.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                    /// request is malformed - FAILED_PRECONDITION - if an argument in the request happens to be
-                    /// invalid; e.g. if an attempt is made to list the children of a nonexistent Step - NOT_FOUND - if
-                    /// the containing Execution does not exist</summary>
+                    /// <summary>Lists Steps for a given Execution. The steps are sorted by creation_time in descending
+                    /// order. The step_id key will be used to order the steps with the same creation_time. May return
+                    /// any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized
+                    /// to read project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if an
+                    /// argument in the request happens to be invalid; e.g. if an attempt is made to list the children
+                    /// of a nonexistent Step - NOT_FOUND - if the containing Execution does not exist</summary>
                     public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListStepsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -2911,36 +2713,24 @@ namespace Google.Apis.ToolResults.v1beta3
                         }
 
 
-                        /// <summary>A Project id.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>A Project id. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>A History id.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>A History id. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string HistoryId { get; private set; }
 
-                        /// <summary>A Execution id.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>A Execution id. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ExecutionId { get; private set; }
 
-                        /// <summary>The maximum number of Steps to fetch.
-                        ///
-                        /// Default value: 25. The server will use this default if the field is not set or has a value
-                        /// of 0.
-                        ///
-                        /// Optional.</summary>
+                        /// <summary>The maximum number of Steps to fetch. Default value: 25. The server will use this
+                        /// default if the field is not set or has a value of 0. Optional.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>A continuation token to resume the query at the next item.
-                        ///
-                        /// Optional.</summary>
+                        /// <summary>A continuation token to resume the query at the next item. Optional.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
@@ -3017,40 +2807,30 @@ namespace Google.Apis.ToolResults.v1beta3
 
                     }
 
-                    /// <summary>Updates an existing Step with the supplied partial entity.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT - if the
-                    /// request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal (e.g
-                    /// try to upload a duplicate xml file), if the updated step is too large (more than 10Mib) -
-                    /// NOT_FOUND - if the containing Execution does not exist</summary>
+                    /// <summary>Updates an existing Step with the supplied partial entity. May return any of the
+                    /// following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write
+                    /// project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the
+                    /// requested state transition is illegal (e.g try to upload a duplicate xml file), if the updated
+                    /// step is too large (more than 10Mib) - NOT_FOUND - if the containing Execution does not
+                    /// exist</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="projectId">A Project id.
-                    ///
-                    /// Required.</param>
+                    /// <param name="projectId">A Project id. Required.</param>
                     /// <param name="historyId">A History id.
-                    ///
                     /// Required.</param>
-                    /// <param name="executionId">A Execution id.
-                    ///
-                    /// Required.</param>
-                    /// <param name="stepId">A Step id.
-                    ///
-                    /// Required.</param>
+                    /// <param name="executionId">A Execution id. Required.</param>
+                    /// <param name="stepId">A
+                    /// Step id. Required.</param>
                     public virtual PatchRequest Patch(Google.Apis.ToolResults.v1beta3.Data.Step body, string projectId, string historyId, string executionId, string stepId)
                     {
                         return new PatchRequest(service, body, projectId, historyId, executionId, stepId);
                     }
 
-                    /// <summary>Updates an existing Step with the supplied partial entity.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT - if the
-                    /// request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal (e.g
-                    /// try to upload a duplicate xml file), if the updated step is too large (more than 10Mib) -
-                    /// NOT_FOUND - if the containing Execution does not exist</summary>
+                    /// <summary>Updates an existing Step with the supplied partial entity. May return any of the
+                    /// following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write
+                    /// project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the
+                    /// requested state transition is illegal (e.g try to upload a duplicate xml file), if the updated
+                    /// step is too large (more than 10Mib) - NOT_FOUND - if the containing Execution does not
+                    /// exist</summary>
                     public class PatchRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Step>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
@@ -3066,32 +2846,23 @@ namespace Google.Apis.ToolResults.v1beta3
                         }
 
 
-                        /// <summary>A Project id.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>A Project id. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>A History id.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>A History id. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string HistoryId { get; private set; }
 
-                        /// <summary>A Execution id.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>A Execution id. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ExecutionId { get; private set; }
 
-                        /// <summary>A Step id.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>A Step id. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string StepId { get; private set; }
 
                         /// <summary>A unique request ID for server to detect duplicated requests. For example, a UUID.
-                        ///
                         /// Optional, but strongly recommended.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RequestId { get; set; }
@@ -3175,40 +2946,28 @@ namespace Google.Apis.ToolResults.v1beta3
 
                     }
 
-                    /// <summary>Publish xml files to an existing Step.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT - if the
-                    /// request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal, e.g
-                    /// try to upload a duplicate xml file or a file too large. - NOT_FOUND - if the containing
-                    /// Execution does not exist</summary>
+                    /// <summary>Publish xml files to an existing Step. May return any of the following canonical error
+                    /// codes: - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT -
+                    /// if the request is malformed - FAILED_PRECONDITION - if the requested state transition is
+                    /// illegal, e.g try to upload a duplicate xml file or a file too large. - NOT_FOUND - if the
+                    /// containing Execution does not exist</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="projectId">A Project id.
-                    ///
-                    /// Required.</param>
+                    /// <param name="projectId">A Project id. Required.</param>
                     /// <param name="historyId">A History id.
-                    ///
                     /// Required.</param>
-                    /// <param name="executionId">A Execution id.
-                    ///
-                    /// Required.</param>
-                    /// <param name="stepId">A Step id. Note: This step must include a TestExecutionStep.
-                    ///
-                    /// Required.</param>
+                    /// <param name="executionId">A Execution id. Required.</param>
+                    /// <param name="stepId">A
+                    /// Step id. Note: This step must include a TestExecutionStep. Required.</param>
                     public virtual PublishXunitXmlFilesRequest PublishXunitXmlFiles(Google.Apis.ToolResults.v1beta3.Data.PublishXunitXmlFilesRequest body, string projectId, string historyId, string executionId, string stepId)
                     {
                         return new PublishXunitXmlFilesRequest(service, body, projectId, historyId, executionId, stepId);
                     }
 
-                    /// <summary>Publish xml files to an existing Step.
-                    ///
-                    /// May return any of the following canonical error codes:
-                    ///
-                    /// - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT - if the
-                    /// request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal, e.g
-                    /// try to upload a duplicate xml file or a file too large. - NOT_FOUND - if the containing
-                    /// Execution does not exist</summary>
+                    /// <summary>Publish xml files to an existing Step. May return any of the following canonical error
+                    /// codes: - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT -
+                    /// if the request is malformed - FAILED_PRECONDITION - if the requested state transition is
+                    /// illegal, e.g try to upload a duplicate xml file or a file too large. - NOT_FOUND - if the
+                    /// containing Execution does not exist</summary>
                     public class PublishXunitXmlFilesRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Step>
                     {
                         /// <summary>Constructs a new PublishXunitXmlFiles request.</summary>
@@ -3224,27 +2983,19 @@ namespace Google.Apis.ToolResults.v1beta3
                         }
 
 
-                        /// <summary>A Project id.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>A Project id. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>A History id.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>A History id. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string HistoryId { get; private set; }
 
-                        /// <summary>A Execution id.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>A Execution id. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ExecutionId { get; private set; }
 
-                        /// <summary>A Step id. Note: This step must include a TestExecutionStep.
-                        ///
-                        /// Required.</summary>
+                        /// <summary>A Step id. Note: This step must include a TestExecutionStep. Required.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("stepId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string StepId { get; private set; }
 
@@ -3319,34 +3070,23 @@ namespace Google.Apis.ToolResults.v1beta3
                     }
                 }
 
-                /// <summary>Creates an Execution.
-                ///
-                /// The returned Execution will have the id set.
-                ///
-                /// May return any of the following canonical error codes:
-                ///
-                /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the
-                /// request is malformed - NOT_FOUND - if the containing History does not exist</summary>
+                /// <summary>Creates an Execution. The returned Execution will have the id set. May return any of the
+                /// following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to
+                /// project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing History
+                /// does not exist</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">A Project id.
-                ///
-                /// Required.</param>
+                /// <param name="projectId">A Project id. Required.</param>
                 /// <param name="historyId">A History id.
-                ///
                 /// Required.</param>
                 public virtual CreateRequest Create(Google.Apis.ToolResults.v1beta3.Data.Execution body, string projectId, string historyId)
                 {
                     return new CreateRequest(service, body, projectId, historyId);
                 }
 
-                /// <summary>Creates an Execution.
-                ///
-                /// The returned Execution will have the id set.
-                ///
-                /// May return any of the following canonical error codes:
-                ///
-                /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the
-                /// request is malformed - NOT_FOUND - if the containing History does not exist</summary>
+                /// <summary>Creates an Execution. The returned Execution will have the id set. May return any of the
+                /// following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to
+                /// project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing History
+                /// does not exist</summary>
                 public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Execution>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -3360,20 +3100,15 @@ namespace Google.Apis.ToolResults.v1beta3
                     }
 
 
-                    /// <summary>A Project id.
-                    ///
-                    /// Required.</summary>
+                    /// <summary>A Project id. Required.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>A History id.
-                    ///
-                    /// Required.</summary>
+                    /// <summary>A History id. Required.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string HistoryId { get; private set; }
 
                     /// <summary>A unique request ID for server to detect duplicated requests. For example, a UUID.
-                    ///
                     /// Optional, but strongly recommended.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -3439,31 +3174,20 @@ namespace Google.Apis.ToolResults.v1beta3
 
                 }
 
-                /// <summary>Gets an Execution.
-                ///
-                /// May return any of the following canonical error codes:
-                ///
-                /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the
+                /// <summary>Gets an Execution. May return any of the following canonical error codes: -
+                /// PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the
                 /// request is malformed - NOT_FOUND - if the Execution does not exist</summary>
-                /// <param name="projectId">A Project id.
-                ///
-                /// Required.</param>
+                /// <param name="projectId">A Project id. Required.</param>
                 /// <param name="historyId">A History id.
-                ///
                 /// Required.</param>
-                /// <param name="executionId">An Execution id.
-                ///
-                /// Required.</param>
+                /// <param name="executionId">An Execution id. Required.</param>
                 public virtual GetRequest Get(string projectId, string historyId, string executionId)
                 {
                     return new GetRequest(service, projectId, historyId, executionId);
                 }
 
-                /// <summary>Gets an Execution.
-                ///
-                /// May return any of the following canonical error codes:
-                ///
-                /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the
+                /// <summary>Gets an Execution. May return any of the following canonical error codes: -
+                /// PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the
                 /// request is malformed - NOT_FOUND - if the Execution does not exist</summary>
                 public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Execution>
                 {
@@ -3478,21 +3202,15 @@ namespace Google.Apis.ToolResults.v1beta3
                     }
 
 
-                    /// <summary>A Project id.
-                    ///
-                    /// Required.</summary>
+                    /// <summary>A Project id. Required.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>A History id.
-                    ///
-                    /// Required.</summary>
+                    /// <summary>A History id. Required.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string HistoryId { get; private set; }
 
-                    /// <summary>An Execution id.
-                    ///
-                    /// Required.</summary>
+                    /// <summary>An Execution id. Required.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ExecutionId { get; private set; }
 
@@ -3551,35 +3269,24 @@ namespace Google.Apis.ToolResults.v1beta3
 
                 }
 
-                /// <summary>Lists Executions for a given History.
-                ///
-                /// The executions are sorted by creation_time in descending order. The execution_id key will be used to
-                /// order the executions with the same creation_time.
-                ///
-                /// May return any of the following canonical error codes:
-                ///
-                /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                /// request is malformed - NOT_FOUND - if the containing History does not exist</summary>
-                /// <param name="projectId">A Project id.
-                ///
-                /// Required.</param>
+                /// <summary>Lists Executions for a given History. The executions are sorted by creation_time in
+                /// descending order. The execution_id key will be used to order the executions with the same
+                /// creation_time. May return any of the following canonical error codes: - PERMISSION_DENIED - if the
+                /// user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND
+                /// - if the containing History does not exist</summary>
+                /// <param name="projectId">A Project id. Required.</param>
                 /// <param name="historyId">A History id.
-                ///
                 /// Required.</param>
                 public virtual ListRequest List(string projectId, string historyId)
                 {
                     return new ListRequest(service, projectId, historyId);
                 }
 
-                /// <summary>Lists Executions for a given History.
-                ///
-                /// The executions are sorted by creation_time in descending order. The execution_id key will be used to
-                /// order the executions with the same creation_time.
-                ///
-                /// May return any of the following canonical error codes:
-                ///
-                /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
-                /// request is malformed - NOT_FOUND - if the containing History does not exist</summary>
+                /// <summary>Lists Executions for a given History. The executions are sorted by creation_time in
+                /// descending order. The execution_id key will be used to order the executions with the same
+                /// creation_time. May return any of the following canonical error codes: - PERMISSION_DENIED - if the
+                /// user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND
+                /// - if the containing History does not exist</summary>
                 public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListExecutionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -3592,29 +3299,20 @@ namespace Google.Apis.ToolResults.v1beta3
                     }
 
 
-                    /// <summary>A Project id.
-                    ///
-                    /// Required.</summary>
+                    /// <summary>A Project id. Required.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>A History id.
-                    ///
-                    /// Required.</summary>
+                    /// <summary>A History id. Required.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string HistoryId { get; private set; }
 
-                    /// <summary>The maximum number of Executions to fetch.
-                    ///
-                    /// Default value: 25. The server will use this default if the field is not set or has a value of 0.
-                    ///
-                    /// Optional.</summary>
+                    /// <summary>The maximum number of Executions to fetch. Default value: 25. The server will use this
+                    /// default if the field is not set or has a value of 0. Optional.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>A continuation token to resume the query at the next item.
-                    ///
-                    /// Optional.</summary>
+                    /// <summary>A continuation token to resume the query at the next item. Optional.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -3682,13 +3380,10 @@ namespace Google.Apis.ToolResults.v1beta3
 
                 }
 
-                /// <summary>Updates an existing Execution with the supplied partial entity.
-                ///
-                /// May return any of the following canonical error codes:
-                ///
-                /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the
-                /// request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal -
-                /// NOT_FOUND - if the containing History does not exist</summary>
+                /// <summary>Updates an existing Execution with the supplied partial entity. May return any of the
+                /// following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to
+                /// project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the requested
+                /// state transition is illegal - NOT_FOUND - if the containing History does not exist</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">A Project id. Required.</param>
                 /// <param name="historyId">Required.</param>
@@ -3699,13 +3394,10 @@ namespace Google.Apis.ToolResults.v1beta3
                     return new PatchRequest(service, body, projectId, historyId, executionId);
                 }
 
-                /// <summary>Updates an existing Execution with the supplied partial entity.
-                ///
-                /// May return any of the following canonical error codes:
-                ///
-                /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the
-                /// request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal -
-                /// NOT_FOUND - if the containing History does not exist</summary>
+                /// <summary>Updates an existing Execution with the supplied partial entity. May return any of the
+                /// following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to
+                /// project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the requested
+                /// state transition is illegal - NOT_FOUND - if the containing History does not exist</summary>
                 public class PatchRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Execution>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -3733,7 +3425,6 @@ namespace Google.Apis.ToolResults.v1beta3
                     public virtual string ExecutionId { get; private set; }
 
                     /// <summary>A unique request ID for server to detect duplicated requests. For example, a UUID.
-                    ///
                     /// Optional, but strongly recommended.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -3809,31 +3500,21 @@ namespace Google.Apis.ToolResults.v1beta3
                 }
             }
 
-            /// <summary>Creates a History.
-            ///
-            /// The returned History will have the id set.
-            ///
-            /// May return any of the following canonical error codes:
-            ///
-            /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the
-            /// request is malformed - NOT_FOUND - if the containing project does not exist</summary>
+            /// <summary>Creates a History. The returned History will have the id set. May return any of the following
+            /// canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project -
+            /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing project does not
+            /// exist</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="projectId">A Project id.
-            ///
-            /// Required.</param>
+            /// <param name="projectId">A Project id. Required.</param>
             public virtual CreateRequest Create(Google.Apis.ToolResults.v1beta3.Data.History body, string projectId)
             {
                 return new CreateRequest(service, body, projectId);
             }
 
-            /// <summary>Creates a History.
-            ///
-            /// The returned History will have the id set.
-            ///
-            /// May return any of the following canonical error codes:
-            ///
-            /// - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the
-            /// request is malformed - NOT_FOUND - if the containing project does not exist</summary>
+            /// <summary>Creates a History. The returned History will have the id set. May return any of the following
+            /// canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project -
+            /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing project does not
+            /// exist</summary>
             public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.History>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -3846,14 +3527,11 @@ namespace Google.Apis.ToolResults.v1beta3
                 }
 
 
-                /// <summary>A Project id.
-                ///
-                /// Required.</summary>
+                /// <summary>A Project id. Required.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
                 /// <summary>A unique request ID for server to detect duplicated requests. For example, a UUID.
-                ///
                 /// Optional, but strongly recommended.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RequestId { get; set; }
@@ -3910,29 +3588,20 @@ namespace Google.Apis.ToolResults.v1beta3
 
             }
 
-            /// <summary>Gets a History.
-            ///
-            /// May return any of the following canonical error codes:
-            ///
-            /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request
-            /// is malformed - NOT_FOUND - if the History does not exist</summary>
-            /// <param name="projectId">A Project id.
-            ///
-            /// Required.</param>
+            /// <summary>Gets a History. May return any of the following canonical error codes: - PERMISSION_DENIED - if
+            /// the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND
+            /// - if the History does not exist</summary>
+            /// <param name="projectId">A Project id. Required.</param>
             /// <param name="historyId">A History id.
-            ///
             /// Required.</param>
             public virtual GetRequest Get(string projectId, string historyId)
             {
                 return new GetRequest(service, projectId, historyId);
             }
 
-            /// <summary>Gets a History.
-            ///
-            /// May return any of the following canonical error codes:
-            ///
-            /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request
-            /// is malformed - NOT_FOUND - if the History does not exist</summary>
+            /// <summary>Gets a History. May return any of the following canonical error codes: - PERMISSION_DENIED - if
+            /// the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND
+            /// - if the History does not exist</summary>
             public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.History>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -3945,15 +3614,11 @@ namespace Google.Apis.ToolResults.v1beta3
                 }
 
 
-                /// <summary>A Project id.
-                ///
-                /// Required.</summary>
+                /// <summary>A Project id. Required.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>A History id.
-                ///
-                /// Required.</summary>
+                /// <summary>A History id. Required.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string HistoryId { get; private set; }
 
@@ -4003,32 +3668,22 @@ namespace Google.Apis.ToolResults.v1beta3
 
             }
 
-            /// <summary>Lists Histories for a given Project.
-            ///
-            /// The histories are sorted by modification time in descending order. The history_id key will be used to
-            /// order the history with the same modification time.
-            ///
-            /// May return any of the following canonical error codes:
-            ///
-            /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request
-            /// is malformed - NOT_FOUND - if the History does not exist</summary>
-            /// <param name="projectId">A Project id.
-            ///
-            /// Required.</param>
+            /// <summary>Lists Histories for a given Project. The histories are sorted by modification time in
+            /// descending order. The history_id key will be used to order the history with the same modification time.
+            /// May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not
+            /// authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the History
+            /// does not exist</summary>
+            /// <param name="projectId">A Project id. Required.</param>
             public virtual ListRequest List(string projectId)
             {
                 return new ListRequest(service, projectId);
             }
 
-            /// <summary>Lists Histories for a given Project.
-            ///
-            /// The histories are sorted by modification time in descending order. The history_id key will be used to
-            /// order the history with the same modification time.
-            ///
-            /// May return any of the following canonical error codes:
-            ///
-            /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request
-            /// is malformed - NOT_FOUND - if the History does not exist</summary>
+            /// <summary>Lists Histories for a given Project. The histories are sorted by modification time in
+            /// descending order. The history_id key will be used to order the history with the same modification time.
+            /// May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not
+            /// authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the History
+            /// does not exist</summary>
             public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListHistoriesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -4040,30 +3695,21 @@ namespace Google.Apis.ToolResults.v1beta3
                 }
 
 
-                /// <summary>A Project id.
-                ///
-                /// Required.</summary>
+                /// <summary>A Project id. Required.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>If set, only return histories with the given name.
-                ///
-                /// Optional.</summary>
+                /// <summary>If set, only return histories with the given name. Optional.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filterByName", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string FilterByName { get; set; }
 
-                /// <summary>The maximum number of Histories to fetch.
-                ///
-                /// Default value: 20. The server will use this default if the field is not set or has a value of 0. Any
-                /// value greater than 100 will be treated as 100.
-                ///
-                /// Optional.</summary>
+                /// <summary>The maximum number of Histories to fetch. Default value: 20. The server will use this
+                /// default if the field is not set or has a value of 0. Any value greater than 100 will be treated as
+                /// 100. Optional.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>A continuation token to resume the query at the next item.
-                ///
-                /// Optional.</summary>
+                /// <summary>A continuation token to resume the query at the next item. Optional.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -4132,24 +3778,16 @@ namespace Google.Apis.ToolResults.v1beta3
             }
         }
 
-        /// <summary>Gets the Tool Results settings for a project.
-        ///
-        /// May return any of the following canonical error codes:
-        ///
-        /// - PERMISSION_DENIED - if the user is not authorized to read from project</summary>
-        /// <param name="projectId">A Project id.
-        ///
-        /// Required.</param>
+        /// <summary>Gets the Tool Results settings for a project. May return any of the following canonical error
+        /// codes: - PERMISSION_DENIED - if the user is not authorized to read from project</summary>
+        /// <param name="projectId">A Project id. Required.</param>
         public virtual GetSettingsRequest GetSettings(string projectId)
         {
             return new GetSettingsRequest(service, projectId);
         }
 
-        /// <summary>Gets the Tool Results settings for a project.
-        ///
-        /// May return any of the following canonical error codes:
-        ///
-        /// - PERMISSION_DENIED - if the user is not authorized to read from project</summary>
+        /// <summary>Gets the Tool Results settings for a project. May return any of the following canonical error
+        /// codes: - PERMISSION_DENIED - if the user is not authorized to read from project</summary>
         public class GetSettingsRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ProjectSettings>
         {
             /// <summary>Constructs a new GetSettings request.</summary>
@@ -4161,9 +3799,7 @@ namespace Google.Apis.ToolResults.v1beta3
             }
 
 
-            /// <summary>A Project id.
-            ///
-            /// Required.</summary>
+            /// <summary>A Project id. Required.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -4204,56 +3840,38 @@ namespace Google.Apis.ToolResults.v1beta3
 
         }
 
-        /// <summary>Creates resources for settings which have not yet been set.
-        ///
-        /// Currently, this creates a single resource: a Google Cloud Storage bucket, to be used as the default bucket
-        /// for this project. The bucket is created in an FTL-own storage project. Except for in rare cases, calling
-        /// this method in parallel from multiple clients will only create a single bucket. In order to avoid
-        /// unnecessary storage charges, the bucket is configured to automatically delete objects older than 90 days.
-        ///
-        /// The bucket is created with the following permissions: - Owner access for owners of central storage project
-        /// (FTL-owned) - Writer access for owners/editors of customer project - Reader access for viewers of customer
-        /// project The default ACL on objects created in the bucket is: - Owner access for owners of central storage
-        /// project - Reader access for owners/editors/viewers of customer project See Google Cloud Storage
-        /// documentation for more details.
-        ///
-        /// If there is already a default bucket set and the project can access the bucket, this call does nothing.
-        /// However, if the project doesn't have the permission to access the bucket or the bucket is deleted, a new
-        /// bucket will be created.
-        ///
-        /// May return any canonical error codes, including the following:
-        ///
-        /// - PERMISSION_DENIED - if the user is not authorized to write to project - Any error code raised by Google
-        /// Cloud Storage</summary>
-        /// <param name="projectId">A Project id.
-        ///
-        /// Required.</param>
+        /// <summary>Creates resources for settings which have not yet been set. Currently, this creates a single
+        /// resource: a Google Cloud Storage bucket, to be used as the default bucket for this project. The bucket is
+        /// created in an FTL-own storage project. Except for in rare cases, calling this method in parallel from
+        /// multiple clients will only create a single bucket. In order to avoid unnecessary storage charges, the bucket
+        /// is configured to automatically delete objects older than 90 days. The bucket is created with the following
+        /// permissions: - Owner access for owners of central storage project (FTL-owned) - Writer access for
+        /// owners/editors of customer project - Reader access for viewers of customer project The default ACL on
+        /// objects created in the bucket is: - Owner access for owners of central storage project - Reader access for
+        /// owners/editors/viewers of customer project See Google Cloud Storage documentation for more details. If there
+        /// is already a default bucket set and the project can access the bucket, this call does nothing. However, if
+        /// the project doesn't have the permission to access the bucket or the bucket is deleted, a new bucket will be
+        /// created. May return any canonical error codes, including the following: - PERMISSION_DENIED - if the user is
+        /// not authorized to write to project - Any error code raised by Google Cloud Storage</summary>
+        /// <param name="projectId">A Project id. Required.</param>
         public virtual InitializeSettingsRequest InitializeSettings(string projectId)
         {
             return new InitializeSettingsRequest(service, projectId);
         }
 
-        /// <summary>Creates resources for settings which have not yet been set.
-        ///
-        /// Currently, this creates a single resource: a Google Cloud Storage bucket, to be used as the default bucket
-        /// for this project. The bucket is created in an FTL-own storage project. Except for in rare cases, calling
-        /// this method in parallel from multiple clients will only create a single bucket. In order to avoid
-        /// unnecessary storage charges, the bucket is configured to automatically delete objects older than 90 days.
-        ///
-        /// The bucket is created with the following permissions: - Owner access for owners of central storage project
-        /// (FTL-owned) - Writer access for owners/editors of customer project - Reader access for viewers of customer
-        /// project The default ACL on objects created in the bucket is: - Owner access for owners of central storage
-        /// project - Reader access for owners/editors/viewers of customer project See Google Cloud Storage
-        /// documentation for more details.
-        ///
-        /// If there is already a default bucket set and the project can access the bucket, this call does nothing.
-        /// However, if the project doesn't have the permission to access the bucket or the bucket is deleted, a new
-        /// bucket will be created.
-        ///
-        /// May return any canonical error codes, including the following:
-        ///
-        /// - PERMISSION_DENIED - if the user is not authorized to write to project - Any error code raised by Google
-        /// Cloud Storage</summary>
+        /// <summary>Creates resources for settings which have not yet been set. Currently, this creates a single
+        /// resource: a Google Cloud Storage bucket, to be used as the default bucket for this project. The bucket is
+        /// created in an FTL-own storage project. Except for in rare cases, calling this method in parallel from
+        /// multiple clients will only create a single bucket. In order to avoid unnecessary storage charges, the bucket
+        /// is configured to automatically delete objects older than 90 days. The bucket is created with the following
+        /// permissions: - Owner access for owners of central storage project (FTL-owned) - Writer access for
+        /// owners/editors of customer project - Reader access for viewers of customer project The default ACL on
+        /// objects created in the bucket is: - Owner access for owners of central storage project - Reader access for
+        /// owners/editors/viewers of customer project See Google Cloud Storage documentation for more details. If there
+        /// is already a default bucket set and the project can access the bucket, this call does nothing. However, if
+        /// the project doesn't have the permission to access the bucket or the bucket is deleted, a new bucket will be
+        /// created. May return any canonical error codes, including the following: - PERMISSION_DENIED - if the user is
+        /// not authorized to write to project - Any error code raised by Google Cloud Storage</summary>
         public class InitializeSettingsRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ProjectSettings>
         {
             /// <summary>Constructs a new InitializeSettings request.</summary>
@@ -4265,9 +3883,7 @@ namespace Google.Apis.ToolResults.v1beta3
             }
 
 
-            /// <summary>A Project id.
-            ///
-            /// Required.</summary>
+            /// <summary>A Project id. Required.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -4348,9 +3964,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     }    
 
     /// <summary>A test of an Android application that can control an Android component independently of its normal
-    /// lifecycle.
-    ///
-    /// See  for more information on types of Android tests.</summary>
+    /// lifecycle. See for more information on types of Android tests.</summary>
     public class AndroidInstrumentationTest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The java package for the test to be executed. Required</summary>
@@ -4362,9 +3976,8 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string TestRunnerClass { get; set; } 
 
         /// <summary>Each target must be fully qualified with the package name or class name, in one of these formats: -
-        /// "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name"
-        ///
-        /// If empty, all targets in the module will be run.</summary>
+        /// "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If
+        /// empty, all targets in the module will be run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTargets")]
         public virtual System.Collections.Generic.IList<string> TestTargets { get; set; } 
 
@@ -4440,67 +4053,37 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     }    
 
     /// <summary> `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the
-    /// type of the serialized message.
-    ///
-    /// Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional
-    /// generated methods of the Any type.
-    ///
-    /// Example 1: Pack and unpack a message in C++.
-    ///
-    /// Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo()) { ... }
-    ///
-    /// Example 2: Pack and unpack a message in Java.
-    ///
-    /// Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); }
-    ///
-    /// Example 3: Pack and unpack a message in Python.
-    ///
-    /// foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ...
-    ///
-    /// Example 4: Pack and unpack a message in Go
-    ///
-    /// foo := {...} any, err := ptypes.MarshalAny(foo) ... foo := {} if err := ptypes.UnmarshalAny(any, foo); err !=
-    /// nil { ... }
-    ///
-    /// The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the
-    /// type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for
-    /// example "foo.bar.com/x/y.z" will yield type name "y.z".
-    ///
-    /// # JSON
-    ///
-    /// The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message,
-    /// with an additional field `@type` which contains the type URL. Example:
-    ///
-    /// package google.profile; message Person { string first_name = 1; string last_name = 2; }
-    ///
-    /// { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": }
-    ///
-    /// If the embedded message type is well-known and has a custom JSON representation, that representation will be
-    /// embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for
-    /// message google.protobuf.Duration):
-    ///
-    /// { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" }</summary>
+    /// type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of
+    /// utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++.
+    /// Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo()) { ... } Example 2: Pack and unpack a message
+    /// in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); }
+    /// Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if
+    /// any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := {...} any, err :=
+    /// ptypes.MarshalAny(foo) ... foo := {} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack
+    /// methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL
+    /// and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example
+    /// "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON representation of an `Any` value uses the
+    /// regular representation of the deserialized, embedded message, with an additional field `@type` which contains
+    /// the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } {
+    /// "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": } If the embedded message type
+    /// is well-known and has a custom JSON representation, that representation will be embedded adding a field `value`
+    /// which holds the custom JSON in addition to the `@type` field. Example (for message google.protobuf.Duration): {
+    /// "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" }</summary>
     public class Any : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A URL/resource name that uniquely identifies the type of the serialized protocol buffer message.
         /// This string must contain at least one "/" character. The last segment of the URL's path must represent the
         /// fully qualified name of the type (as in `path/google.protobuf.Duration`). The name should be in a canonical
-        /// form (e.g., leading "." is not accepted).
-        ///
-        /// In practice, teams usually precompile into the binary all types that they expect it to use in the context of
-        /// Any. However, for URLs which use the scheme `http`, `https`, or no scheme, one can optionally set up a type
-        /// server that maps type URLs to message definitions as follows:
-        ///
-        /// * If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must yield a google.protobuf.Type
+        /// form (e.g., leading "." is not accepted). In practice, teams usually precompile into the binary all types
+        /// that they expect it to use in the context of Any. However, for URLs which use the scheme `http`, `https`, or
+        /// no scheme, one can optionally set up a type server that maps type URLs to message definitions as follows: *
+        /// If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must yield a google.protobuf.Type
         /// value in binary format, or produce an error. * Applications are allowed to cache lookup results based on the
         /// URL, or have them precompiled into a binary to avoid any lookup. Therefore, binary compatibility needs to be
-        /// preserved on changes to types. (Use versioned type names to manage breaking changes.)
-        ///
-        /// Note: this functionality is not currently available in the official protobuf release, and it is not used for
-        /// type URLs beginning with type.googleapis.com.
-        ///
-        /// Schemes other than `http`, `https` (or the empty scheme) might be used with implementation specific
-        /// semantics.</summary>
+        /// preserved on changes to types. (Use versioned type names to manage breaking changes.) Note: this
+        /// functionality is not currently available in the official protobuf release, and it is not used for type URLs
+        /// beginning with type.googleapis.com. Schemes other than `http`, `https` (or the empty scheme) might be used
+        /// with implementation specific semantics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeUrl")]
         public virtual string TypeUrl { get; set; } 
 
@@ -4673,9 +4256,8 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// (running a test multiple times to check for different outcomes).</summary>
     public class Environment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The time when the Environment status was set to complete.
-        ///
-        /// This value will be set automatically when state transitions to COMPLETE.</summary>
+        /// <summary>Output only. The time when the Environment status was set to complete. This value will be set
+        /// automatically when state transitions to COMPLETE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completionTime")]
         public virtual Timestamp CompletionTime { get; set; } 
 
@@ -4684,9 +4266,8 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual Timestamp CreationTime { get; set; } 
 
         /// <summary>Dimension values describing the environment. Dimension values always consist of "Model", "Version",
-        /// "Locale", and "Orientation".
-        ///
-        /// - In response: always set - In create request: always set - In update request: never set</summary>
+        /// "Locale", and "Orientation". - In response: always set - In create request: always set - In update request:
+        /// never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionValue")]
         public virtual System.Collections.Generic.IList<EnvironmentDimensionValueEntry> DimensionValue { get; set; } 
 
@@ -4719,9 +4300,8 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resultsStorage")]
         public virtual ResultsStorage ResultsStorage { get; set; } 
 
-        /// <summary>Output only. Summaries of shards.
-        ///
-        /// Only one shard will present unless sharding feature is enabled in TestExecutionService.</summary>
+        /// <summary>Output only. Summaries of shards. Only one shard will present unless sharding feature is enabled in
+        /// TestExecutionService.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shardSummaries")]
         public virtual System.Collections.Generic.IList<ShardSummary> ShardSummaries { get; set; } 
 
@@ -4742,82 +4322,56 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     }    
 
     /// <summary>An Execution represents a collection of Steps. For instance, it could represent: - a mobile test
-    /// executed across a range of device configurations - a jenkins job with a build step followed by a test step
-    ///
-    /// The maximum size of an execution message is 1 MiB.
-    ///
-    /// An Execution can be updated until its state is set to COMPLETE at which point it becomes immutable.</summary>
+    /// executed across a range of device configurations - a jenkins job with a build step followed by a test step The
+    /// maximum size of an execution message is 1 MiB. An Execution can be updated until its state is set to COMPLETE at
+    /// which point it becomes immutable.</summary>
     public class Execution : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The time when the Execution status transitioned to COMPLETE.
-        ///
-        /// This value will be set automatically when state transitions to COMPLETE.
-        ///
-        /// - In response: set if the execution state is COMPLETE. - In create/update request: never set</summary>
+        /// <summary>The time when the Execution status transitioned to COMPLETE. This value will be set automatically
+        /// when state transitions to COMPLETE. - In response: set if the execution state is COMPLETE. - In
+        /// create/update request: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completionTime")]
         public virtual Timestamp CompletionTime { get; set; } 
 
-        /// <summary>The time when the Execution was created.
-        ///
-        /// This value will be set automatically when CreateExecution is called.
-        ///
-        /// - In response: always set - In create/update request: never set</summary>
+        /// <summary>The time when the Execution was created. This value will be set automatically when CreateExecution
+        /// is called. - In response: always set - In create/update request: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual Timestamp CreationTime { get; set; } 
 
         /// <summary>The dimensions along which different steps in this execution may vary. This must remain fixed over
-        /// the life of the execution.
-        ///
-        /// Returns INVALID_ARGUMENT if this field is set in an update request.
-        ///
-        /// Returns INVALID_ARGUMENT if the same name occurs in more than one dimension_definition.
-        ///
-        /// Returns INVALID_ARGUMENT if the size of the list is over 100.
-        ///
-        /// - In response: present if set by create - In create request: optional - In update request: never
-        /// set</summary>
+        /// the life of the execution. Returns INVALID_ARGUMENT if this field is set in an update request. Returns
+        /// INVALID_ARGUMENT if the same name occurs in more than one dimension_definition. Returns INVALID_ARGUMENT if
+        /// the size of the list is over 100. - In response: present if set by create - In create request: optional - In
+        /// update request: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionDefinitions")]
         public virtual System.Collections.Generic.IList<MatrixDimensionDefinition> DimensionDefinitions { get; set; } 
 
-        /// <summary>A unique identifier within a History for this Execution.
-        ///
-        /// Returns INVALID_ARGUMENT if this field is set or overwritten by the caller.
-        ///
-        /// - In response always set - In create/update request: never set</summary>
+        /// <summary>A unique identifier within a History for this Execution. Returns INVALID_ARGUMENT if this field is
+        /// set or overwritten by the caller. - In response always set - In create/update request: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
         public virtual string ExecutionId { get; set; } 
 
-        /// <summary>Classify the result, for example into SUCCESS or FAILURE
-        ///
-        /// - In response: present if set by create/update request - In create/update request: optional</summary>
+        /// <summary>Classify the result, for example into SUCCESS or FAILURE - In response: present if set by
+        /// create/update request - In create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outcome")]
         public virtual Outcome Outcome { get; set; } 
 
-        /// <summary>Lightweight information about execution request.
-        ///
-        /// - In response: present if set by create - In create: optional - In update: optional</summary>
+        /// <summary>Lightweight information about execution request. - In response: present if set by create - In
+        /// create: optional - In update: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("specification")]
         public virtual Specification Specification { get; set; } 
 
-        /// <summary>The initial state is IN_PROGRESS.
-        ///
-        /// The only legal state transitions is from IN_PROGRESS to COMPLETE.
-        ///
-        /// A PRECONDITION_FAILED will be returned if an invalid transition is requested.
-        ///
-        /// The state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to
-        /// COMPLETE multiple times.
-        ///
-        /// If the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If
-        /// the outcome of the step is not set, the outcome will be set to INCONCLUSIVE.
-        ///
-        /// - In response always set - In create/update request: optional</summary>
+        /// <summary>The initial state is IN_PROGRESS. The only legal state transitions is from IN_PROGRESS to COMPLETE.
+        /// A PRECONDITION_FAILED will be returned if an invalid transition is requested. The state can only be set to
+        /// COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times. If the
+        /// state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the
+        /// outcome of the step is not set, the outcome will be set to INCONCLUSIVE. - In response always set - In
+        /// create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>TestExecution Matrix ID that the TestExecutionService uses.
-        ///
-        /// - In response: present if set by create - In create: optional - In update: never set</summary>
+        /// <summary>TestExecution Matrix ID that the TestExecutionService uses. - In response: present if set by create
+        /// - In create: optional - In update: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testExecutionMatrixId")]
         public virtual string TestExecutionMatrixId { get; set; } 
 
@@ -4879,14 +4433,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// <summary>A reference to a file.</summary>
     public class FileReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The URI of a file stored in Google Cloud Storage.
-        ///
-        /// For example: http://storage.googleapis.com/mybucket/path/to/test.xml or in gsutil format:
-        /// gs://mybucket/path/to/test.xml with version-specific info, gs://mybucket/path/to/test.xml#1360383693690000
-        ///
-        /// An INVALID_ARGUMENT error will be returned if the URI format is not supported.
-        ///
-        /// - In response: always set - In create/update request: always set</summary>
+        /// <summary>The URI of a file stored in Google Cloud Storage. For example:
+        /// http://storage.googleapis.com/mybucket/path/to/test.xml or in gsutil format: gs://mybucket/path/to/test.xml
+        /// with version-specific info, gs://mybucket/path/to/test.xml#1360383693690000 An INVALID_ARGUMENT error will
+        /// be returned if the URI format is not supported. - In response: always set - In create/update request: always
+        /// set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileUri")]
         public virtual string FileUri { get; set; } 
 
@@ -4967,35 +4518,28 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     }    
 
     /// <summary>A History represents a sorted list of Executions ordered by the start_timestamp_millis field
-    /// (descending). It can be used to group all the Executions of a continuous build.
-    ///
-    /// Note that the ordering only operates on one-dimension. If a repository has multiple branches, it means that
-    /// multiple histories will need to be used in order to order Executions per branch.</summary>
+    /// (descending). It can be used to group all the Executions of a continuous build. Note that the ordering only
+    /// operates on one-dimension. If a repository has multiple branches, it means that multiple histories will need to
+    /// be used in order to order Executions per branch.</summary>
     public class History : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A short human-readable (plain text) name to display in the UI. Maximum of 100 characters.
-        ///
-        /// - In response: present if set during create. - In create request: optional</summary>
+        /// <summary>A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In
+        /// response: present if set during create. - In create request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>A unique identifier within a project for this History.
-        ///
-        /// Returns INVALID_ARGUMENT if this field is set or overwritten by the caller.
-        ///
-        /// - In response always set - In create request: never set</summary>
+        /// <summary>A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is
+        /// set or overwritten by the caller. - In response always set - In create request: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
         public virtual string HistoryId { get; set; } 
 
-        /// <summary>A name to uniquely identify a history within a project. Maximum of 200 characters.
-        ///
-        /// - In response always set - In create request: always set</summary>
+        /// <summary>A name to uniquely identify a history within a project. Maximum of 200 characters. - In response
+        /// always set - In create request: always set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The platform of the test history.
-        ///
-        /// - In response: always set. Returns the platform of the last execution if unknown.</summary>
+        /// <summary>The platform of the test history. - In response: always set. Returns the platform of the last
+        /// execution if unknown.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testPlatform")]
         public virtual string TestPlatform { get; set; } 
 
@@ -5010,17 +4554,12 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>A reference to the full-size, original image.
-        ///
-        /// This is the same as the tool_outputs entry for the image under its Step.
-        ///
-        /// Always set.</summary>
+        /// <summary>A reference to the full-size, original image. This is the same as the tool_outputs entry for the
+        /// image under its Step. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
         public virtual ToolOutputReference SourceImage { get; set; } 
 
-        /// <summary>The step to which the image is attached.
-        ///
-        /// Always set.</summary>
+        /// <summary>The step to which the image is attached. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
         public virtual string StepId { get; set; } 
 
@@ -5061,10 +4600,8 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual System.Nullable<bool> HasErrorLogs { get; set; } 
 
         /// <summary>If the test runner could not determine success or failure because the test depends on a component
-        /// other than the system under test which failed.
-        ///
-        /// For example, a mobile test requires provisioning a device where the test executes, and that provisioning can
-        /// fail.</summary>
+        /// other than the system under test which failed. For example, a mobile test requires provisioning a device
+        /// where the test executes, and that provisioning can fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infrastructureFailure")]
         public virtual System.Nullable<bool> InfrastructureFailure { get; set; } 
 
@@ -5194,33 +4731,24 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// <summary>Response message for EnvironmentService.ListEnvironments.</summary>
     public class ListEnvironmentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Environments.
-        ///
-        /// Always set.</summary>
+        /// <summary>Environments. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environments")]
         public virtual System.Collections.Generic.IList<Environment> Environments { get; set; } 
 
-        /// <summary>A Execution id
-        ///
-        /// Always set.</summary>
+        /// <summary>A Execution id Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
         public virtual string ExecutionId { get; set; } 
 
-        /// <summary>A History id.
-        ///
-        /// Always set.</summary>
+        /// <summary>A History id. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
         public virtual string HistoryId { get; set; } 
 
-        /// <summary>A continuation token to resume the query at the next item.
-        ///
-        /// Will only be set if there are more Environments to fetch.</summary>
+        /// <summary>A continuation token to resume the query at the next item. Will only be set if there are more
+        /// Environments to fetch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>A Project id.
-        ///
-        /// Always set.</summary>
+        /// <summary>A Project id. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
@@ -5230,15 +4758,12 @@ namespace Google.Apis.ToolResults.v1beta3.Data
 
     public class ListExecutionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Executions.
-        ///
-        /// Always set.</summary>
+        /// <summary>Executions. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executions")]
         public virtual System.Collections.Generic.IList<Execution> Executions { get; set; } 
 
-        /// <summary>A continuation token to resume the query at the next item.
-        ///
-        /// Will only be set if there are more Executions to fetch.</summary>
+        /// <summary>A continuation token to resume the query at the next item. Will only be set if there are more
+        /// Executions to fetch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -5253,13 +4778,10 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("histories")]
         public virtual System.Collections.Generic.IList<History> Histories { get; set; } 
 
-        /// <summary>A continuation token to resume the query at the next item.
-        ///
-        /// Will only be set if there are more histories to fetch.
-        ///
-        /// Tokens are valid for up to one hour from the time of the first list request. For instance, if you make a
-        /// list request at 1PM and use the token from this first request 10 minutes later, the token from this second
-        /// response will only be valid for 50 minutes.</summary>
+        /// <summary>A continuation token to resume the query at the next item. Will only be set if there are more
+        /// histories to fetch. Tokens are valid for up to one hour from the time of the first list request. For
+        /// instance, if you make a list request at 1PM and use the token from this first request 10 minutes later, the
+        /// token from this second response will only be valid for 50 minutes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -5313,9 +4835,8 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual System.Collections.Generic.IList<SuggestionClusterProto> Clusters { get; set; } 
 
         /// <summary>A full resource name of the step. For example, projects/my-
-        /// project/histories/bh.1234567890abcdef/executions/ 1234567890123456789/steps/bs.1234567890abcdef
-        ///
-        /// Always presents.</summary>
+        /// project/histories/bh.1234567890abcdef/executions/ 1234567890123456789/steps/bs.1234567890abcdef Always
+        /// presents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -5326,19 +4847,16 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// <summary>A response containing the thumbnails in a step.</summary>
     public class ListStepThumbnailsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A continuation token to resume the query at the next item.
-        ///
-        /// If set, indicates that there are more thumbnails to read, by calling list again with this value in the
-        /// page_token field.</summary>
+        /// <summary>A continuation token to resume the query at the next item. If set, indicates that there are more
+        /// thumbnails to read, by calling list again with this value in the page_token field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>A list of image data.
-        ///
-        /// Images are returned in a deterministic order; they are ordered by these factors, in order of importance: *
-        /// First, by their associated test case. Images without a test case are considered greater than images with
-        /// one. * Second, by their creation time. Images without a creation time are greater than images with one. *
-        /// Third, by the order in which they were added to the step (by calls to CreateStep or UpdateStep).</summary>
+        /// <summary>A list of image data. Images are returned in a deterministic order; they are ordered by these
+        /// factors, in order of importance: * First, by their associated test case. Images without a test case are
+        /// considered greater than images with one. * Second, by their creation time. Images without a creation time
+        /// are greater than images with one. * Third, by the order in which they were added to the step (by calls to
+        /// CreateStep or UpdateStep).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnails")]
         public virtual System.Collections.Generic.IList<Image> Thumbnails { get; set; } 
 
@@ -5349,10 +4867,8 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// <summary>Response message for StepService.List.</summary>
     public class ListStepsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A continuation token to resume the query at the next item.
-        ///
-        /// If set, indicates that there are more steps to read, by calling list again with this value in the page_token
-        /// field.</summary>
+        /// <summary>A continuation token to resume the query at the next item. If set, indicates that there are more
+        /// steps to read, by calling list again with this value in the page_token field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -5399,11 +4915,10 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Merged test result for environment.
-    ///
-    /// If the environment has only one step (no reruns or shards), then the merged result is the same as the step
-    /// result. If the environment has multiple shards and/or reruns, then the results of shards and reruns that belong
-    /// to the same environment are merged into one environment result.</summary>
+    /// <summary>Merged test result for environment. If the environment has only one step (no reruns or shards), then
+    /// the merged result is the same as the step result. If the environment has multiple shards and/or reruns, then the
+    /// results of shards and reruns that belong to the same environment are merged into one environment
+    /// result.</summary>
     public class MergedResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Outcome of the resource</summary>
@@ -5415,14 +4930,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string State { get; set; } 
 
         /// <summary>The combined and rolled-up result of each test suite that was run as part of this environment.
-        ///
         /// Combining: When the test cases from a suite are run in different steps (sharding), the results are added
         /// back together in one overview. (e.g., if shard1 has 2 failures and shard2 has 1 failure than the overview
-        /// failure_count = 3).
-        ///
-        /// Rollup: When test cases from the same suite are run multiple times (flaky), the results are combined (e.g.,
-        /// if testcase1.run1 fails, testcase1.run2 passes, and both testcase2.run1 and testcase2.run2 fail then the
-        /// overview flaky_count = 1 and failure_count = 1).</summary>
+        /// failure_count = 3). Rollup: When test cases from the same suite are run multiple times (flaky), the results
+        /// are combined (e.g., if testcase1.run1 fails, testcase1.run2 passes, and both testcase2.run1 and
+        /// testcase2.run2 fail then the overview flaky_count = 1 and failure_count = 1).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testSuiteOverviews")]
         public virtual System.Collections.Generic.IList<TestSuiteOverview> TestSuiteOverviews { get; set; } 
 
@@ -5557,41 +5069,27 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// <summary>Interprets a result so that humans and machines can act on it.</summary>
     public class Outcome : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>More information about a FAILURE outcome.
-        ///
-        /// Returns INVALID_ARGUMENT if this field is set but the summary is not FAILURE.
-        ///
-        /// Optional</summary>
+        /// <summary>More information about a FAILURE outcome. Returns INVALID_ARGUMENT if this field is set but the
+        /// summary is not FAILURE. Optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureDetail")]
         public virtual FailureDetail FailureDetail { get; set; } 
 
-        /// <summary>More information about an INCONCLUSIVE outcome.
-        ///
-        /// Returns INVALID_ARGUMENT if this field is set but the summary is not INCONCLUSIVE.
-        ///
-        /// Optional</summary>
+        /// <summary>More information about an INCONCLUSIVE outcome. Returns INVALID_ARGUMENT if this field is set but
+        /// the summary is not INCONCLUSIVE. Optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inconclusiveDetail")]
         public virtual InconclusiveDetail InconclusiveDetail { get; set; } 
 
-        /// <summary>More information about a SKIPPED outcome.
-        ///
-        /// Returns INVALID_ARGUMENT if this field is set but the summary is not SKIPPED.
-        ///
-        /// Optional</summary>
+        /// <summary>More information about a SKIPPED outcome. Returns INVALID_ARGUMENT if this field is set but the
+        /// summary is not SKIPPED. Optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippedDetail")]
         public virtual SkippedDetail SkippedDetail { get; set; } 
 
-        /// <summary>More information about a SUCCESS outcome.
-        ///
-        /// Returns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS.
-        ///
-        /// Optional</summary>
+        /// <summary>More information about a SUCCESS outcome. Returns INVALID_ARGUMENT if this field is set but the
+        /// summary is not SUCCESS. Optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successDetail")]
         public virtual SuccessDetail SuccessDetail { get; set; } 
 
-        /// <summary>The simplest way to interpret a result.
-        ///
-        /// Required</summary>
+        /// <summary>The simplest way to interpret a result. Required</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summary")]
         public virtual string Summary { get; set; } 
 
@@ -5765,19 +5263,13 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// <summary>Per-project settings for the Tool Results service.</summary>
     public class ProjectSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the Google Cloud Storage bucket to which results are written.
-        ///
-        /// By default, this is unset.
-        ///
-        /// In update request: optional In response: optional</summary>
+        /// <summary>The name of the Google Cloud Storage bucket to which results are written. By default, this is
+        /// unset. In update request: optional In response: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultBucket")]
         public virtual string DefaultBucket { get; set; } 
 
-        /// <summary>The name of the project's settings.
-        ///
-        /// Always of the form: projects/{project-id}/settings
-        ///
-        /// In update request: never set In response: always set</summary>
+        /// <summary>The name of the project's settings. Always of the form: projects/{project-id}/settings In update
+        /// request: never set In response: always set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -5788,11 +5280,8 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// <summary>Request message for StepService.PublishXunitXmlFiles.</summary>
     public class PublishXunitXmlFilesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>URI of the Xunit XML files to publish.
-        ///
-        /// The maximum size of the file this reference is pointing to is 50MB.
-        ///
-        /// Required.</summary>
+        /// <summary>URI of the Xunit XML files to publish. The maximum size of the file this reference is pointing to
+        /// is 50MB. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xunitXmlFiles")]
         public virtual System.Collections.Generic.IList<FileReference> XunitXmlFiles { get; set; } 
 
@@ -5918,10 +5407,9 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// <summary>Result summary for a shard in an environment.</summary>
     public class ShardSummary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Summaries of the steps belonging to the shard.
-        ///
-        /// With flaky_test_attempts enabled from TestExecutionService, more than one run (Step) can present. And the
-        /// runs will be sorted by multistep_number.</summary>
+        /// <summary>Summaries of the steps belonging to the shard. With flaky_test_attempts enabled from
+        /// TestExecutionService, more than one run (Step) can present. And the runs will be sorted by
+        /// multistep_number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runs")]
         public virtual System.Collections.Generic.IList<StepSummary> Runs { get; set; } 
 
@@ -5970,9 +5458,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// <summary>A stacktrace.</summary>
     public class StackTrace : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The stack trace message.
-        ///
-        /// Required</summary>
+        /// <summary>The stack trace message. Required</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exception")]
         public virtual string Exception { get; set; } 
 
@@ -5995,9 +5481,8 @@ namespace Google.Apis.ToolResults.v1beta3.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6005,8 +5490,8 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -6020,160 +5505,111 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     }    
 
     /// <summary>A Step represents a single operation performed as part of Execution. A step can be used to represent
-    /// the execution of a tool ( for example a test runner execution or an execution of a compiler).
-    ///
-    /// Steps can overlap (for instance two steps might have the same start time if some operations are done in
-    /// parallel).
-    ///
-    /// Here is an example, let's consider that we have a continuous build is executing a test runner for each
-    /// iteration. The workflow would look like: - user creates a Execution with id 1 - user creates an
-    /// TestExecutionStep with id 100 for Execution 1 - user update TestExecutionStep with id 100 to add a raw xml log +
-    /// the service parses the xml logs and returns a TestExecutionStep with updated TestResult(s). - user update the
-    /// status of TestExecutionStep with id 100 to COMPLETE
-    ///
-    /// A Step can be updated until its state is set to COMPLETE at which points it becomes immutable.
-    ///
-    /// Next tag: 27</summary>
+    /// the execution of a tool ( for example a test runner execution or an execution of a compiler). Steps can overlap
+    /// (for instance two steps might have the same start time if some operations are done in parallel). Here is an
+    /// example, let's consider that we have a continuous build is executing a test runner for each iteration. The
+    /// workflow would look like: - user creates a Execution with id 1 - user creates an TestExecutionStep with id 100
+    /// for Execution 1 - user update TestExecutionStep with id 100 to add a raw xml log + the service parses the xml
+    /// logs and returns a TestExecutionStep with updated TestResult(s). - user update the status of TestExecutionStep
+    /// with id 100 to COMPLETE A Step can be updated until its state is set to COMPLETE at which points it becomes
+    /// immutable. Next tag: 27</summary>
     public class Step : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The time when the step status was set to complete.
-        ///
-        /// This value will be set automatically when state transitions to COMPLETE.
-        ///
-        /// - In response: set if the execution state is COMPLETE. - In create/update request: never set</summary>
+        /// <summary>The time when the step status was set to complete. This value will be set automatically when state
+        /// transitions to COMPLETE. - In response: set if the execution state is COMPLETE. - In create/update request:
+        /// never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completionTime")]
         public virtual Timestamp CompletionTime { get; set; } 
 
-        /// <summary>The time when the step was created.
-        ///
-        /// - In response: always set - In create/update request: never set</summary>
+        /// <summary>The time when the step was created. - In response: always set - In create/update request: never
+        /// set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual Timestamp CreationTime { get; set; } 
 
-        /// <summary>A description of this tool For example: mvn clean package -D skipTests=true
-        ///
-        /// - In response: present if set by create/update request - In create/update request: optional</summary>
+        /// <summary>A description of this tool For example: mvn clean package -D skipTests=true - In response: present
+        /// if set by create/update request - In create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>How much the device resource is used to perform the test.
-        ///
-        /// This is the device usage used for billing purpose, which is different from the run_duration, for example,
-        /// infrastructure failure won't be charged for device usage.
-        ///
-        /// PRECONDITION_FAILED will be returned if one attempts to set a device_usage on a step which already has this
-        /// field set.
-        ///
-        /// - In response: present if previously set. - In create request: optional - In update request:
-        /// optional</summary>
+        /// <summary>How much the device resource is used to perform the test. This is the device usage used for billing
+        /// purpose, which is different from the run_duration, for example, infrastructure failure won't be charged for
+        /// device usage. PRECONDITION_FAILED will be returned if one attempts to set a device_usage on a step which
+        /// already has this field set. - In response: present if previously set. - In create request: optional - In
+        /// update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceUsageDuration")]
         public virtual Duration DeviceUsageDuration { get; set; } 
 
         /// <summary>If the execution containing this step has any dimension_definition set, then this field allows the
-        /// child to specify the values of the dimensions.
-        ///
-        /// The keys must exactly match the dimension_definition of the execution.
-        ///
-        /// For example, if the execution has `dimension_definition = ['attempt', 'device']` then a step must define
-        /// values for those dimensions, eg. `dimension_value = ['attempt': '1', 'device': 'Nexus 6']`
-        ///
-        /// If a step does not participate in one dimension of the matrix, the value for that dimension should be empty
-        /// string. For example, if one of the tests is executed by a runner which does not support retries, the step
-        /// could have `dimension_value = ['attempt': '', 'device': 'Nexus 6']`
-        ///
-        /// If the step does not participate in any dimensions of the matrix, it may leave dimension_value unset.
-        ///
-        /// A PRECONDITION_FAILED will be returned if any of the keys do not exist in the dimension_definition of the
-        /// execution.
-        ///
-        /// A PRECONDITION_FAILED will be returned if another step in this execution already has the same name and
-        /// dimension_value, but differs on other data fields, for example, step field is different.
-        ///
-        /// A PRECONDITION_FAILED will be returned if dimension_value is set, and there is a dimension_definition in the
-        /// execution which is not specified as one of the keys.
-        ///
-        /// - In response: present if set by create - In create request: optional - In update request: never
-        /// set</summary>
+        /// child to specify the values of the dimensions. The keys must exactly match the dimension_definition of the
+        /// execution. For example, if the execution has `dimension_definition = ['attempt', 'device']` then a step must
+        /// define values for those dimensions, eg. `dimension_value = ['attempt': '1', 'device': 'Nexus 6']` If a step
+        /// does not participate in one dimension of the matrix, the value for that dimension should be empty string.
+        /// For example, if one of the tests is executed by a runner which does not support retries, the step could have
+        /// `dimension_value = ['attempt': '', 'device': 'Nexus 6']` If the step does not participate in any dimensions
+        /// of the matrix, it may leave dimension_value unset. A PRECONDITION_FAILED will be returned if any of the keys
+        /// do not exist in the dimension_definition of the execution. A PRECONDITION_FAILED will be returned if another
+        /// step in this execution already has the same name and dimension_value, but differs on other data fields, for
+        /// example, step field is different. A PRECONDITION_FAILED will be returned if dimension_value is set, and
+        /// there is a dimension_definition in the execution which is not specified as one of the keys. - In response:
+        /// present if set by create - In create request: optional - In update request: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionValue")]
         public virtual System.Collections.Generic.IList<StepDimensionValueEntry> DimensionValue { get; set; } 
 
         /// <summary>Whether any of the outputs of this step are images whose thumbnails can be fetched with
-        /// ListThumbnails.
-        ///
-        /// - In response: always set - In create/update request: never set</summary>
+        /// ListThumbnails. - In response: always set - In create/update request: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasImages")]
         public virtual System.Nullable<bool> HasImages { get; set; } 
 
-        /// <summary>Arbitrary user-supplied key/value pairs that are associated with the step.
-        ///
-        /// Users are responsible for managing the key namespace such that keys don't accidentally collide.
-        ///
-        /// An INVALID_ARGUMENT will be returned if the number of labels exceeds 100 or if the length of any of the keys
-        /// or values exceeds 100 characters.
-        ///
-        /// - In response: always set - In create request: optional - In update request: optional; any new key/value
-        /// pair will be added to the map, and any new value for an existing key will update that key's value</summary>
+        /// <summary>Arbitrary user-supplied key/value pairs that are associated with the step. Users are responsible
+        /// for managing the key namespace such that keys don't accidentally collide. An INVALID_ARGUMENT will be
+        /// returned if the number of labels exceeds 100 or if the length of any of the keys or values exceeds 100
+        /// characters. - In response: always set - In create request: optional - In update request: optional; any new
+        /// key/value pair will be added to the map, and any new value for an existing key will update that key's
+        /// value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<StepLabelsEntry> Labels { get; set; } 
 
         /// <summary>Details when multiple steps are run with the same configuration as a group. These details can be
         /// used identify which group this step is part of. It also identifies the groups 'primary step' which indexes
-        /// all the group members.
-        ///
-        /// - In response: present if previously set. - In create request: optional, set iff this step was performed
-        /// more than once. - In update request: optional</summary>
+        /// all the group members. - In response: present if previously set. - In create request: optional, set iff this
+        /// step was performed more than once. - In update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiStep")]
         public virtual MultiStep MultiStep { get; set; } 
 
         /// <summary>A short human-readable name to display in the UI. Maximum of 100 characters. For example: Clean
-        /// build
-        ///
-        /// A PRECONDITION_FAILED will be returned upon creating a new step if it shares its name and dimension_value
-        /// with an existing step. If two steps represent a similar action, but have different dimension values, they
-        /// should share the same name. For instance, if the same set of tests is run on two different platforms, the
-        /// two steps should have the same name.
-        ///
-        /// - In response: always set - In create request: always set - In update request: never set</summary>
+        /// build A PRECONDITION_FAILED will be returned upon creating a new step if it shares its name and
+        /// dimension_value with an existing step. If two steps represent a similar action, but have different dimension
+        /// values, they should share the same name. For instance, if the same set of tests is run on two different
+        /// platforms, the two steps should have the same name. - In response: always set - In create request: always
+        /// set - In update request: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Classification of the result, for example into SUCCESS or FAILURE
-        ///
-        /// - In response: present if set by create/update request - In create/update request: optional</summary>
+        /// <summary>Classification of the result, for example into SUCCESS or FAILURE - In response: present if set by
+        /// create/update request - In create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outcome")]
         public virtual Outcome Outcome { get; set; } 
 
-        /// <summary>How long it took for this step to run.
-        ///
-        /// If unset, this is set to the difference between creation_time and completion_time when the step is set to
-        /// the COMPLETE state. In some cases, it is appropriate to set this value separately: For instance, if a step
-        /// is created, but the operation it represents is queued for a few minutes before it executes, it would be
-        /// appropriate not to include the time spent queued in its run_duration.
-        ///
-        /// PRECONDITION_FAILED will be returned if one attempts to set a run_duration on a step which already has this
-        /// field set.
-        ///
-        /// - In response: present if previously set; always present on COMPLETE step - In create request: optional - In
-        /// update request: optional</summary>
+        /// <summary>How long it took for this step to run. If unset, this is set to the difference between
+        /// creation_time and completion_time when the step is set to the COMPLETE state. In some cases, it is
+        /// appropriate to set this value separately: For instance, if a step is created, but the operation it
+        /// represents is queued for a few minutes before it executes, it would be appropriate not to include the time
+        /// spent queued in its run_duration. PRECONDITION_FAILED will be returned if one attempts to set a run_duration
+        /// on a step which already has this field set. - In response: present if previously set; always present on
+        /// COMPLETE step - In create request: optional - In update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runDuration")]
         public virtual Duration RunDuration { get; set; } 
 
-        /// <summary>The initial state is IN_PROGRESS. The only legal state transitions are * IN_PROGRESS -> COMPLETE
-        ///
-        /// A PRECONDITION_FAILED will be returned if an invalid transition is requested.
-        ///
-        /// It is valid to create Step with a state set to COMPLETE. The state can only be set to COMPLETE once. A
-        /// PRECONDITION_FAILED will be returned if the state is set to COMPLETE multiple times.
-        ///
-        /// - In response: always set - In create/update request: optional</summary>
+        /// <summary>The initial state is IN_PROGRESS. The only legal state transitions are * IN_PROGRESS -> COMPLETE A
+        /// PRECONDITION_FAILED will be returned if an invalid transition is requested. It is valid to create Step with
+        /// a state set to COMPLETE. The state can only be set to COMPLETE once. A PRECONDITION_FAILED will be returned
+        /// if the state is set to COMPLETE multiple times. - In response: always set - In create/update request:
+        /// optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>A unique identifier within a Execution for this Step.
-        ///
-        /// Returns INVALID_ARGUMENT if this field is set or overwritten by the caller.
-        ///
-        /// - In response: always set - In create/update request: never set</summary>
+        /// <summary>A unique identifier within a Execution for this Step. Returns INVALID_ARGUMENT if this field is set
+        /// or overwritten by the caller. - In response: always set - In create/update request: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
         public virtual string StepId { get; set; } 
 
@@ -6231,10 +5667,9 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A set of similar suggestions that we suspect are closely related.
-    ///
-    /// This proto and most of the nested protos are branched from
-    /// foxandcrown.prelaunchreport.service.SuggestionClusterProto, replacing PLR's dependencies with FTL's.</summary>
+    /// <summary>A set of similar suggestions that we suspect are closely related. This proto and most of the nested
+    /// protos are branched from foxandcrown.prelaunchreport.service.SuggestionClusterProto, replacing PLR's
+    /// dependencies with FTL's.</summary>
     public class SuggestionClusterProto : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Category in which these types of suggestions should appear. Always set.</summary>
@@ -6306,9 +5741,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
 
     public class TestCase : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The elapsed run time of the test case.
-        ///
-        /// Required.</summary>
+        /// <summary>The elapsed run time of the test case. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elapsedTime")]
         public virtual Duration ElapsedTime { get; set; } 
 
@@ -6316,17 +5749,13 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual Timestamp EndTime { get; set; } 
 
-        /// <summary>Why the test case was skipped.
-        ///
-        /// Present only for skipped test case</summary>
+        /// <summary>Why the test case was skipped. Present only for skipped test case</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippedMessage")]
         public virtual string SkippedMessage { get; set; } 
 
-        /// <summary>The stack trace details if the test case failed or encountered an error.
-        ///
-        /// The maximum size of the stack traces is 100KiB, beyond which the stack track will be truncated.
-        ///
-        /// Zero if the test case passed.</summary>
+        /// <summary>The stack trace details if the test case failed or encountered an error. The maximum size of the
+        /// stack traces is 100KiB, beyond which the stack track will be truncated. Zero if the test case
+        /// passed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackTraces")]
         public virtual System.Collections.Generic.IList<StackTrace> StackTraces { get; set; } 
 
@@ -6334,9 +5763,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual Timestamp StartTime { get; set; } 
 
-        /// <summary>The status of the test case.
-        ///
-        /// Required.</summary>
+        /// <summary>The status of the test case. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -6344,15 +5771,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("testCaseId")]
         public virtual string TestCaseId { get; set; } 
 
-        /// <summary>Test case reference, e.g. name, class name and test suite name.
-        ///
-        /// Required.</summary>
+        /// <summary>Test case reference, e.g. name, class name and test suite name. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testCaseReference")]
         public virtual TestCaseReference TestCaseReference { get; set; } 
 
-        /// <summary>References to opaque files of any format output by the tool execution.
-        ///
-        /// @OutputOnly</summary>
+        /// <summary>References to opaque files of any format output by the tool execution. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolOutputs")]
         public virtual System.Collections.Generic.IList<ToolOutputReference> ToolOutputs { get; set; } 
 
@@ -6360,19 +5783,15 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A reference to a test case.
-    ///
-    /// Test case references are canonically ordered lexicographically by these three factors: * First, by
-    /// test_suite_name. * Second, by class_name. * Third, by name.</summary>
+    /// <summary>A reference to a test case. Test case references are canonically ordered lexicographically by these
+    /// three factors: * First, by test_suite_name. * Second, by class_name. * Third, by name.</summary>
     public class TestCaseReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The name of the class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("className")]
         public virtual string ClassName { get; set; } 
 
-        /// <summary>The name of the test case.
-        ///
-        /// Required.</summary>
+        /// <summary>The name of the test case. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -6384,45 +5803,32 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A step that represents running tests.
-    ///
-    /// It accepts ant-junit xml files which will be parsed into structured test results by the service. Xml file paths
-    /// are updated in order to append more files, however they can't be deleted.
-    ///
-    /// Users can also add test results manually by using the test_result field.</summary>
+    /// <summary>A step that represents running tests. It accepts ant-junit xml files which will be parsed into
+    /// structured test results by the service. Xml file paths are updated in order to append more files, however they
+    /// can't be deleted. Users can also add test results manually by using the test_result field.</summary>
     public class TestExecutionStep : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Issues observed during the test execution.
-        ///
-        /// For example, if the mobile app under test crashed during the test, the error message and the stack trace
-        /// content can be recorded here to assist debugging.
-        ///
-        /// - In response: present if set by create or update - In create/update request: optional</summary>
+        /// <summary>Issues observed during the test execution. For example, if the mobile app under test crashed during
+        /// the test, the error message and the stack trace content can be recorded here to assist debugging. - In
+        /// response: present if set by create or update - In create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testIssues")]
         public virtual System.Collections.Generic.IList<TestIssue> TestIssues { get; set; } 
 
         /// <summary>List of test suite overview contents. This could be parsed from xUnit XML log by server, or
         /// uploaded directly by user. This references should only be called when test suites are fully parsed or
-        /// uploaded.
-        ///
-        /// The maximum allowed number of test suite overviews per step is 1000.
-        ///
-        /// - In response: always set - In create request: optional - In update request: never (use publishXunitXmlFiles
-        /// custom method instead)</summary>
+        /// uploaded. The maximum allowed number of test suite overviews per step is 1000. - In response: always set -
+        /// In create request: optional - In update request: never (use publishXunitXmlFiles custom method
+        /// instead)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testSuiteOverviews")]
         public virtual System.Collections.Generic.IList<TestSuiteOverview> TestSuiteOverviews { get; set; } 
 
-        /// <summary>The timing break down of the test execution.
-        ///
-        /// - In response: present if set by create or update - In create/update request: optional</summary>
+        /// <summary>The timing break down of the test execution. - In response: present if set by create or update - In
+        /// create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTiming")]
         public virtual TestTiming TestTiming { get; set; } 
 
-        /// <summary>Represents the execution of the test runner.
-        ///
-        /// The exit code of this tool will be used to determine if the test passed.
-        ///
-        /// - In response: always set - In create/update request: optional</summary>
+        /// <summary>Represents the execution of the test runner. The exit code of this tool will be used to determine
+        /// if the test passed. - In response: always set - In create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolExecution")]
         public virtual ToolExecution ToolExecution { get; set; } 
 
@@ -6462,61 +5868,47 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A summary of a test suite result either parsed from XML or uploaded directly by a user.
-    ///
-    /// Note: the API related comments are for StepService only. This message is also being used in ExecutionService in
-    /// a read only mode for the corresponding step.</summary>
+    /// <summary>A summary of a test suite result either parsed from XML or uploaded directly by a user. Note: the API
+    /// related comments are for StepService only. This message is also being used in ExecutionService in a read only
+    /// mode for the corresponding step.</summary>
     public class TestSuiteOverview : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Elapsed time of test suite.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elapsedTime")]
         public virtual Duration ElapsedTime { get; set; } 
 
-        /// <summary>Number of test cases in error, typically set by the service by parsing the xml_source.
-        ///
-        /// - In create/response: always set - In update request: never</summary>
+        /// <summary>Number of test cases in error, typically set by the service by parsing the xml_source. - In
+        /// create/response: always set - In update request: never</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorCount")]
         public virtual System.Nullable<int> ErrorCount { get; set; } 
 
         /// <summary>Number of failed test cases, typically set by the service by parsing the xml_source. May also be
-        /// set by the user.
-        ///
-        /// - In create/response: always set - In update request: never</summary>
+        /// set by the user. - In create/response: always set - In update request: never</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
         public virtual System.Nullable<int> FailureCount { get; set; } 
 
-        /// <summary>Number of flaky test cases, set by the service by rolling up flaky test attempts.
-        ///
-        /// Present only for rollup test suite overview at environment level. A step cannot have flaky test
-        /// cases.</summary>
+        /// <summary>Number of flaky test cases, set by the service by rolling up flaky test attempts. Present only for
+        /// rollup test suite overview at environment level. A step cannot have flaky test cases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flakyCount")]
         public virtual System.Nullable<int> FlakyCount { get; set; } 
 
-        /// <summary>The name of the test suite.
-        ///
-        /// - In create/response: always set - In update request: never</summary>
+        /// <summary>The name of the test suite. - In create/response: always set - In update request: never</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Number of test cases not run, typically set by the service by parsing the xml_source.
-        ///
-        /// - In create/response: always set - In update request: never</summary>
+        /// <summary>Number of test cases not run, typically set by the service by parsing the xml_source. - In
+        /// create/response: always set - In update request: never</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippedCount")]
         public virtual System.Nullable<int> SkippedCount { get; set; } 
 
-        /// <summary>Number of test cases, typically set by the service by parsing the xml_source.
-        ///
-        /// - In create/response: always set - In update request: never</summary>
+        /// <summary>Number of test cases, typically set by the service by parsing the xml_source. - In create/response:
+        /// always set - In update request: never</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalCount")]
         public virtual System.Nullable<int> TotalCount { get; set; } 
 
         /// <summary>If this test suite was parsed from XML, this is the URI where the original XML file is stored.
-        ///
-        /// Note: Multiple test suites can share the same xml_source
-        ///
-        /// Returns INVALID_ARGUMENT if the uri format is not supported.
-        ///
-        /// - In create/response: optional - In update request: never</summary>
+        /// Note: Multiple test suites can share the same xml_source Returns INVALID_ARGUMENT if the uri format is not
+        /// supported. - In create/response: optional - In update request: never</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xmlSource")]
         public virtual FileReference XmlSource { get; set; } 
 
@@ -6527,9 +5919,8 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// <summary>Testing timing break down to know phases.</summary>
     public class TestTiming : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>How long it took to run the test process.
-        ///
-        /// - In response: present if previously set. - In create/update request: optional</summary>
+        /// <summary>How long it took to run the test process. - In response: present if previously set. - In
+        /// create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testProcessDuration")]
         public virtual Duration TestProcessDuration { get; set; } 
 
@@ -6540,30 +5931,21 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// <summary>A single thumbnail, with its size and format.</summary>
     public class Thumbnail : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The thumbnail's content type, i.e. "image/png".
-        ///
-        /// Always set.</summary>
+        /// <summary>The thumbnail's content type, i.e. "image/png". Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
         public virtual string ContentType { get; set; } 
 
-        /// <summary>The thumbnail file itself.
-        ///
-        /// That is, the bytes here are precisely the bytes that make up the thumbnail file; they can be served as an
-        /// image as-is (with the appropriate content type.)
-        ///
-        /// Always set.</summary>
+        /// <summary>The thumbnail file itself. That is, the bytes here are precisely the bytes that make up the
+        /// thumbnail file; they can be served as an image as-is (with the appropriate content type.) Always
+        /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; } 
 
-        /// <summary>The height of the thumbnail, in pixels.
-        ///
-        /// Always set.</summary>
+        /// <summary>The height of the thumbnail, in pixels. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("heightPx")]
         public virtual System.Nullable<int> HeightPx { get; set; } 
 
-        /// <summary>The width of the thumbnail, in pixels.
-        ///
-        /// Always set.</summary>
+        /// <summary>The width of the thumbnail, in pixels. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widthPx")]
         public virtual System.Nullable<int> WidthPx { get; set; } 
 
@@ -6574,13 +5956,10 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// <summary>A Timestamp represents a point in time independent of any time zone or local calendar, encoded as a
     /// count of seconds and fractions of seconds at nanosecond resolution. The count is relative to an epoch at UTC
     /// midnight on January 1, 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar backwards
-    /// to year one.
-    ///
-    /// All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap second table is needed for
-    /// interpretation, using a [24-hour linear smear](https://developers.google.com/time/smear).
-    ///
-    /// The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to that range, we
-    /// ensure that we can convert to and from [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.</summary>
+    /// to year one. All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap second table is needed
+    /// for interpretation, using a [24-hour linear smear](https://developers.google.com/time/smear). The range is from
+    /// 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to that range, we ensure that we can
+    /// convert to and from [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.</summary>
     public class Timestamp : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions
@@ -6602,38 +5981,30 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// code.</summary>
     public class ToolExecution : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The full tokenized command line including the program name (equivalent to argv in a C program).
-        ///
-        /// - In response: present if set by create request - In create request: optional - In update request: never
+        /// <summary>The full tokenized command line including the program name (equivalent to argv in a C program). -
+        /// In response: present if set by create request - In create request: optional - In update request: never
         /// set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commandLineArguments")]
         public virtual System.Collections.Generic.IList<string> CommandLineArguments { get; set; } 
 
-        /// <summary>Tool execution exit code. This field will be set once the tool has exited.
-        ///
-        /// - In response: present if set by create/update request - In create request: optional - In update request:
-        /// optional, a FAILED_PRECONDITION error will be returned if an exit_code is already set.</summary>
+        /// <summary>Tool execution exit code. This field will be set once the tool has exited. - In response: present
+        /// if set by create/update request - In create request: optional - In update request: optional, a
+        /// FAILED_PRECONDITION error will be returned if an exit_code is already set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exitCode")]
         public virtual ToolExitCode ExitCode { get; set; } 
 
-        /// <summary>References to any plain text logs output the tool execution.
-        ///
-        /// This field can be set before the tool has exited in order to be able to have access to a live view of the
-        /// logs while the tool is running.
-        ///
-        /// The maximum allowed number of tool logs per step is 1000.
-        ///
-        /// - In response: present if set by create/update request - In create request: optional - In update request:
-        /// optional, any value provided will be appended to the existing list</summary>
+        /// <summary>References to any plain text logs output the tool execution. This field can be set before the tool
+        /// has exited in order to be able to have access to a live view of the logs while the tool is running. The
+        /// maximum allowed number of tool logs per step is 1000. - In response: present if set by create/update request
+        /// - In create request: optional - In update request: optional, any value provided will be appended to the
+        /// existing list</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolLogs")]
         public virtual System.Collections.Generic.IList<FileReference> ToolLogs { get; set; } 
 
-        /// <summary>References to opaque files of any format output by the tool execution.
-        ///
-        /// The maximum allowed number of tool outputs per step is 1000.
-        ///
-        /// - In response: present if set by create/update request - In create request: optional - In update request:
-        /// optional, any value provided will be appended to the existing list</summary>
+        /// <summary>References to opaque files of any format output by the tool execution. The maximum allowed number
+        /// of tool outputs per step is 1000. - In response: present if set by create/update request - In create
+        /// request: optional - In update request: optional, any value provided will be appended to the existing
+        /// list</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolOutputs")]
         public virtual System.Collections.Generic.IList<ToolOutputReference> ToolOutputs { get; set; } 
 
@@ -6645,9 +6016,8 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// artifacts from one location to another.</summary>
     public class ToolExecutionStep : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A Tool execution.
-        ///
-        /// - In response: present if set by create/update request - In create/update request: optional</summary>
+        /// <summary>A Tool execution. - In response: present if set by create/update request - In create/update
+        /// request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolExecution")]
         public virtual ToolExecution ToolExecution { get; set; } 
 
@@ -6658,9 +6028,8 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// <summary>Exit code from a tool execution.</summary>
     public class ToolExitCode : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Tool execution exit code. A value of 0 means that the execution was successful.
-        ///
-        /// - In response: always set - In create/update request: always set</summary>
+        /// <summary>Tool execution exit code. A value of 0 means that the execution was successful. - In response:
+        /// always set - In create/update request: always set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("number")]
         public virtual System.Nullable<int> Number { get; set; } 
 
@@ -6671,21 +6040,18 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// <summary>A reference to a ToolExecution output file.</summary>
     public class ToolOutputReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The creation time of the file.
-        ///
-        /// - In response: present if set by create/update request - In create/update request: optional</summary>
+        /// <summary>The creation time of the file. - In response: present if set by create/update request - In
+        /// create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual Timestamp CreationTime { get; set; } 
 
-        /// <summary>A FileReference to an output file.
-        ///
-        /// - In response: always set - In create/update request: always set</summary>
+        /// <summary>A FileReference to an output file. - In response: always set - In create/update request: always
+        /// set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("output")]
         public virtual FileReference Output { get; set; } 
 
-        /// <summary>The test case to which this output file belongs.
-        ///
-        /// - In response: present if set by create/update request - In create/update request: optional</summary>
+        /// <summary>The test case to which this output file belongs. - In response: present if set by create/update
+        /// request - In create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testCase")]
         public virtual TestCaseReference TestCase { get; set; } 
 

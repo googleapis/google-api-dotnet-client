@@ -2,8 +2,8 @@
 
   <!-- nupkg information -->
   <PropertyGroup>
-    <Title>Google.Apis.Storage.v1beta2 Client Library</Title>
-    <Version>1.48.0.2024</Version>
+    <Title>Google.Apis.DataFusion.v1 Client Library</Title>
+    <Version>1.48.0.1986</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>
@@ -13,7 +13,7 @@
     <RepositoryUrl>https://github.com/google/google-api-dotnet-client</RepositoryUrl>
     <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
     <Description>
-      Google APIs Client Library for working with Storage v1beta2.
+      Google APIs Client Library for working with Datafusion v1.
 
       Supported Platforms:
       - .NET Framework 4.5+
@@ -32,7 +32,7 @@
       - Xamarin
 
       More documentation on the API is available at:
-      https://developers.google.com/api-client-library/dotnet/apis/storage/v1beta2
+      https://developers.google.com/api-client-library/dotnet/apis/datafusion/v1
 
       The package source code is available at:
       https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated

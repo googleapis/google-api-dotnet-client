@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200724 (2031)
+ *      <tr><th>API Rev<td>20200731 (2038)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>
  *              https://cloud.google.com/asset-inventory/docs/quickstart</a>
@@ -1737,7 +1737,10 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must
         /// be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name
         /// `temporal_asset`. Example: a Feed with expression ("temporal_asset.deleted == true") will only publish Asset
-        /// deletions. Other fields of `Expr` are optional.</summary>
+        /// deletions. Other fields of `Expr` are optional.
+        ///
+        /// See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-
+        /// changes#feed_with_condition) for detailed instructions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
@@ -2277,7 +2280,8 @@ namespace Google.Apis.CloudAsset.v1.Data
     public class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is
-        /// True.</summary>
+        /// True. You can specify a list of individual services, as well as include the 'RESTRICTED-SERVICES' value,
+        /// which automatically includes all of the services protected by the perimeter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedServices")]
         public virtual System.Collections.Generic.IList<string> AllowedServices { get; set; } 
 

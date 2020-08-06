@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200728 (2035)
+ *      <tr><th>API Rev<td>20200803 (2041)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -979,9 +979,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string DeviceId { get; private set; }
 
             /// <summary>Mask that identifies which fields to update. If not set, all modifiable fields will be
-            /// modified.
-            ///
-            /// When set in a query parameter, this field should be specified as updateMask=field1,field2,...</summary>
+            /// modified. When set in a query parameter, this field should be specified as updateMask=,,...</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UpdateMask { get; set; }
 
@@ -1471,15 +1469,11 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Returns a service account and credentials. The service account can be bound to the enterprise by
         /// calling setAccount. The service account is unique to this enterprise and EMM, and will be deleted if the
-        /// enterprise is unbound. The credentials contain private key data and are not stored server-side.
-        ///
-        /// This method can only be called after calling Enterprises.Enroll or Enterprises.CompleteSignup, and before
-        /// Enterprises.SetAccount; at other times it will return an error.
-        ///
-        /// Subsequent calls after the first will generate a new, unique set of credentials, and invalidate the
-        /// previously generated credentials.
-        ///
-        /// Once the service account is bound to the enterprise, it can be managed using the serviceAccountKeys
+        /// enterprise is unbound. The credentials contain private key data and are not stored server-side. This method
+        /// can only be called after calling Enterprises.Enroll or Enterprises.CompleteSignup, and before
+        /// Enterprises.SetAccount; at other times it will return an error. Subsequent calls after the first will
+        /// generate a new, unique set of credentials, and invalidate the previously generated credentials. Once the
+        /// service account is bound to the enterprise, it can be managed using the serviceAccountKeys
         /// resource.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual GetServiceAccountRequest GetServiceAccount(string enterpriseId)
@@ -1489,15 +1483,11 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Returns a service account and credentials. The service account can be bound to the enterprise by
         /// calling setAccount. The service account is unique to this enterprise and EMM, and will be deleted if the
-        /// enterprise is unbound. The credentials contain private key data and are not stored server-side.
-        ///
-        /// This method can only be called after calling Enterprises.Enroll or Enterprises.CompleteSignup, and before
-        /// Enterprises.SetAccount; at other times it will return an error.
-        ///
-        /// Subsequent calls after the first will generate a new, unique set of credentials, and invalidate the
-        /// previously generated credentials.
-        ///
-        /// Once the service account is bound to the enterprise, it can be managed using the serviceAccountKeys
+        /// enterprise is unbound. The credentials contain private key data and are not stored server-side. This method
+        /// can only be called after calling Enterprises.Enroll or Enterprises.CompleteSignup, and before
+        /// Enterprises.SetAccount; at other times it will return an error. Subsequent calls after the first will
+        /// generate a new, unique set of credentials, and invalidate the previously generated credentials. Once the
+        /// service account is bound to the enterprise, it can be managed using the serviceAccountKeys
         /// resource.</summary>
         public class GetServiceAccountRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ServiceAccount>
         {
@@ -1521,8 +1511,12 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>The type of credential to return with the service account. Required.</summary>
             public enum KeyTypeEnum
             {
+                /// <summary>Google Credentials File format.</summary>
                 [Google.Apis.Util.StringValueAttribute("googleCredentials")]
                 GoogleCredentials,
+                /// <summary>PKCS12 format. The password for the PKCS12 file is 'notasecret'. For more information, see
+                /// https://tools.ietf.org/html/rfc7292. The data for keys of this type are base64 encoded according to
+                /// RFC 4648 Section 4. See http://tools.ietf.org/html/rfc4648#section-4.</summary>
                 [Google.Apis.Util.StringValueAttribute("pkcs12")]
                 Pkcs12,
             }
@@ -1636,9 +1630,9 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
         /// <summary>Looks up an enterprise by domain name. This is only supported for enterprises created via the
-        /// Google-initiated creation flow.  Lookup of the id is not needed for enterprises created via the EMM-
-        /// initiated flow since the EMM learns the enterprise ID in the callback specified in the
-        /// Enterprises.generateSignupUrl call.</summary>
+        /// Google-initiated creation flow. Lookup of the id is not needed for enterprises created via the EMM-initiated
+        /// flow since the EMM learns the enterprise ID in the callback specified in the Enterprises.generateSignupUrl
+        /// call.</summary>
         /// <param name="domain">Required. The exact primary domain name of the enterprise to look up.</param>
         public virtual ListRequest List(string domain)
         {
@@ -1646,9 +1640,9 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
         /// <summary>Looks up an enterprise by domain name. This is only supported for enterprises created via the
-        /// Google-initiated creation flow.  Lookup of the id is not needed for enterprises created via the EMM-
-        /// initiated flow since the EMM learns the enterprise ID in the callback specified in the
-        /// Enterprises.generateSignupUrl call.</summary>
+        /// Google-initiated creation flow. Lookup of the id is not needed for enterprises created via the EMM-initiated
+        /// flow since the EMM learns the enterprise ID in the callback specified in the Enterprises.generateSignupUrl
+        /// call.</summary>
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.EnterprisesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1702,40 +1696,30 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
         /// <summary>Pulls and returns a notification set for the enterprises associated with the service account
-        /// authenticated for the request. The notification set may be empty if no notification are pending.
-        ///
-        /// A notification set returned needs to be acknowledged within 20 seconds by calling
-        /// Enterprises.AcknowledgeNotificationSet, unless the notification set is empty.
-        ///
-        /// Notifications that are not acknowledged within the 20 seconds will eventually be included again in the
-        /// response to another PullNotificationSet request, and those that are never acknowledged will ultimately be
-        /// deleted according to the Google Cloud Platform Pub/Sub system policy.
-        ///
-        /// Multiple requests might be performed concurrently to retrieve notifications, in which case the pending
-        /// notifications (if any) will be split among each caller, if any are pending.
-        ///
-        /// If no notifications are present, an empty notification list is returned. Subsequent requests may return more
-        /// notifications once they become available.</summary>
+        /// authenticated for the request. The notification set may be empty if no notification are pending. A
+        /// notification set returned needs to be acknowledged within 20 seconds by calling
+        /// Enterprises.AcknowledgeNotificationSet, unless the notification set is empty. Notifications that are not
+        /// acknowledged within the 20 seconds will eventually be included again in the response to another
+        /// PullNotificationSet request, and those that are never acknowledged will ultimately be deleted according to
+        /// the Google Cloud Platform Pub/Sub system policy. Multiple requests might be performed concurrently to
+        /// retrieve notifications, in which case the pending notifications (if any) will be split among each caller, if
+        /// any are pending. If no notifications are present, an empty notification list is returned. Subsequent
+        /// requests may return more notifications once they become available.</summary>
         public virtual PullNotificationSetRequest PullNotificationSet()
         {
             return new PullNotificationSetRequest(service);
         }
 
         /// <summary>Pulls and returns a notification set for the enterprises associated with the service account
-        /// authenticated for the request. The notification set may be empty if no notification are pending.
-        ///
-        /// A notification set returned needs to be acknowledged within 20 seconds by calling
-        /// Enterprises.AcknowledgeNotificationSet, unless the notification set is empty.
-        ///
-        /// Notifications that are not acknowledged within the 20 seconds will eventually be included again in the
-        /// response to another PullNotificationSet request, and those that are never acknowledged will ultimately be
-        /// deleted according to the Google Cloud Platform Pub/Sub system policy.
-        ///
-        /// Multiple requests might be performed concurrently to retrieve notifications, in which case the pending
-        /// notifications (if any) will be split among each caller, if any are pending.
-        ///
-        /// If no notifications are present, an empty notification list is returned. Subsequent requests may return more
-        /// notifications once they become available.</summary>
+        /// authenticated for the request. The notification set may be empty if no notification are pending. A
+        /// notification set returned needs to be acknowledged within 20 seconds by calling
+        /// Enterprises.AcknowledgeNotificationSet, unless the notification set is empty. Notifications that are not
+        /// acknowledged within the 20 seconds will eventually be included again in the response to another
+        /// PullNotificationSet request, and those that are never acknowledged will ultimately be deleted according to
+        /// the Google Cloud Platform Pub/Sub system policy. Multiple requests might be performed concurrently to
+        /// retrieve notifications, in which case the pending notifications (if any) will be split among each caller, if
+        /// any are pending. If no notifications are present, an empty notification list is returned. Subsequent
+        /// requests may return more notifications once they become available.</summary>
         public class PullNotificationSetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.NotificationSet>
         {
             /// <summary>Constructs a new PullNotificationSet request.</summary>
@@ -1746,31 +1730,25 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
 
 
-            /// <summary>The request mode for pulling notifications.
-            ///
-            /// Specifying waitForNotifications will cause the request to block and wait until one or more notifications
-            /// are present, or return an empty notification list if no notifications are present after some time.
-            ///
-            /// Speciying returnImmediately will cause the request to immediately return the pending notifications, or
-            /// an empty list if no notifications are present.
-            ///
-            /// If omitted, defaults to waitForNotifications.</summary>
+            /// <summary>The request mode for pulling notifications. Specifying waitForNotifications will cause the
+            /// request to block and wait until one or more notifications are present, or return an empty notification
+            /// list if no notifications are present after some time. Speciying returnImmediately will cause the request
+            /// to immediately return the pending notifications, or an empty list if no notifications are present. If
+            /// omitted, defaults to waitForNotifications.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<RequestModeEnum> RequestMode { get; set; }
 
-            /// <summary>The request mode for pulling notifications.
-            ///
-            /// Specifying waitForNotifications will cause the request to block and wait until one or more notifications
-            /// are present, or return an empty notification list if no notifications are present after some time.
-            ///
-            /// Speciying returnImmediately will cause the request to immediately return the pending notifications, or
-            /// an empty list if no notifications are present.
-            ///
-            /// If omitted, defaults to waitForNotifications.</summary>
+            /// <summary>The request mode for pulling notifications. Specifying waitForNotifications will cause the
+            /// request to block and wait until one or more notifications are present, or return an empty notification
+            /// list if no notifications are present after some time. Speciying returnImmediately will cause the request
+            /// to immediately return the pending notifications, or an empty list if no notifications are present. If
+            /// omitted, defaults to waitForNotifications.</summary>
             public enum RequestModeEnum
             {
+                /// <summary>Wait until one or more notifications are present.</summary>
                 [Google.Apis.Util.StringValueAttribute("waitForNotifications")]
                 WaitForNotifications,
+                /// <summary>Returns immediately whether notifications are present or not.</summary>
                 [Google.Apis.Util.StringValueAttribute("returnImmediately")]
                 ReturnImmediately,
             }
@@ -1944,11 +1922,9 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Sets the store layout for the enterprise. By default, storeLayoutType is set to "basic" and the
         /// basic store layout is enabled. The basic layout only contains apps approved by the admin, and that have been
-        /// added to the available product set for a user (using the
-        ///
-        /// setAvailableProductSet call). Apps on the page are sorted in order of their product ID value. If you create
-        /// a custom store layout (by setting storeLayoutType = "custom" and setting a homepage), the basic store layout
-        /// is disabled.</summary>
+        /// added to the available product set for a user (using the setAvailableProductSet call). Apps on the page are
+        /// sorted in order of their product ID value. If you create a custom store layout (by setting storeLayoutType =
+        /// "custom" and setting a homepage), the basic store layout is disabled.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual SetStoreLayoutRequest SetStoreLayout(Google.Apis.AndroidEnterprise.v1.Data.StoreLayout body, string enterpriseId)
@@ -1958,11 +1934,9 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Sets the store layout for the enterprise. By default, storeLayoutType is set to "basic" and the
         /// basic store layout is enabled. The basic layout only contains apps approved by the admin, and that have been
-        /// added to the available product set for a user (using the
-        ///
-        /// setAvailableProductSet call). Apps on the page are sorted in order of their product ID value. If you create
-        /// a custom store layout (by setting storeLayoutType = "custom" and setting a homepage), the basic store layout
-        /// is disabled.</summary>
+        /// added to the available product set for a user (using the setAvailableProductSet call). Apps on the page are
+        /// sorted in order of their product ID value. If you create a custom store layout (by setting storeLayoutType =
+        /// "custom" and setting a homepage), the basic store layout is disabled.</summary>
         public class SetStoreLayoutRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.StoreLayout>
         {
             /// <summary>Constructs a new SetStoreLayout request.</summary>
@@ -4186,10 +4160,10 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
 
-        /// <summary>Approves the specified product and the relevant app permissions, if any. The maximum number of
+        /// <summary> Approves the specified product and the relevant app permissions, if any. The maximum number of
         /// products that you can approve per enterprise customer is 1,000. To learn how to use managed Google Play to
-        /// design and create a store layout to display approved products to your users, see Store Layout
-        /// Design.</summary>
+        /// design and create a store layout to display approved products to your users, see Store Layout Design.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="productId">The ID of the
@@ -4199,10 +4173,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new ApproveRequest(service, body, enterpriseId, productId);
         }
 
-        /// <summary>Approves the specified product and the relevant app permissions, if any. The maximum number of
+        /// <summary> Approves the specified product and the relevant app permissions, if any. The maximum number of
         /// products that you can approve per enterprise customer is 1,000. To learn how to use managed Google Play to
-        /// design and create a store layout to display approved products to your users, see Store Layout
-        /// Design.</summary>
+        /// design and create a store layout to display approved products to your users, see Store Layout Design.
+        /// </summary>
         public class ApproveRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Approve request.</summary>
@@ -6015,11 +5989,8 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
         /// <summary>Generates an authentication token which the device policy client can use to provision the given
-        /// EMM-managed user account on a device. The generated token is single-use and expires after a few minutes.
-        ///
-        /// You can provision a maximum of 10 devices per user.
-        ///
-        /// This call only works with EMM-managed accounts.</summary>
+        /// EMM-managed user account on a device. The generated token is single-use and expires after a few minutes. You
+        /// can provision a maximum of 10 devices per user. This call only works with EMM-managed accounts.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="userId">The ID of the
         /// user.</param>
@@ -6029,11 +6000,8 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
         /// <summary>Generates an authentication token which the device policy client can use to provision the given
-        /// EMM-managed user account on a device. The generated token is single-use and expires after a few minutes.
-        ///
-        /// You can provision a maximum of 10 devices per user.
-        ///
-        /// This call only works with EMM-managed accounts.</summary>
+        /// EMM-managed user account on a device. The generated token is single-use and expires after a few minutes. You
+        /// can provision a maximum of 10 devices per user. This call only works with EMM-managed accounts.</summary>
         public class GenerateAuthenticationTokenRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.AuthenticationToken>
         {
             /// <summary>Constructs a new GenerateAuthenticationToken request.</summary>
@@ -6252,11 +6220,10 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Creates a new EMM-managed user.
-        ///
-        /// The Users resource passed in the body of the request should include an accountIdentifier and an accountType.
-        /// If a corresponding user already exists with the same account identifier, the user will be updated with the
-        /// resource. In this case only the displayName field can be changed.</summary>
+        /// <summary>Creates a new EMM-managed user. The Users resource passed in the body of the request should include
+        /// an accountIdentifier and an accountType. If a corresponding user already exists with the same account
+        /// identifier, the user will be updated with the resource. In this case only the displayName field can be
+        /// changed.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual InsertRequest Insert(Google.Apis.AndroidEnterprise.v1.Data.User body, string enterpriseId)
@@ -6264,11 +6231,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new InsertRequest(service, body, enterpriseId);
         }
 
-        /// <summary>Creates a new EMM-managed user.
-        ///
-        /// The Users resource passed in the body of the request should include an accountIdentifier and an accountType.
-        /// If a corresponding user already exists with the same account identifier, the user will be updated with the
-        /// resource. In this case only the displayName field can be changed.</summary>
+        /// <summary>Creates a new EMM-managed user. The Users resource passed in the body of the request should include
+        /// an accountIdentifier and an accountType. If a corresponding user already exists with the same account
+        /// identifier, the user will be updated with the resource. In this case only the displayName field can be
+        /// changed.</summary>
         public class InsertRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.User>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -6328,7 +6294,7 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Looks up a user by primary email address. This is only supported for Google-managed users.  Lookup
+        /// <summary>Looks up a user by primary email address. This is only supported for Google-managed users. Lookup
         /// of the id is not needed for EMM-managed users because the id is already returned in the result of the
         /// Users.insert call.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
@@ -6339,7 +6305,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new ListRequest(service, enterpriseId, email);
         }
 
-        /// <summary>Looks up a user by primary email address. This is only supported for Google-managed users.  Lookup
+        /// <summary>Looks up a user by primary email address. This is only supported for Google-managed users. Lookup
         /// of the id is not needed for EMM-managed users because the id is already returned in the result of the
         /// Users.insert call.</summary>
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.UsersListResponse>
@@ -6409,9 +6375,8 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
         /// <summary>Revokes access to all devices currently provisioned to the user. The user will no longer be able to
-        /// use the managed Play store on any of their managed devices.
-        ///
-        /// This call only works with EMM-managed accounts.</summary>
+        /// use the managed Play store on any of their managed devices. This call only works with EMM-managed
+        /// accounts.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="userId">The ID of the
         /// user.</param>
@@ -6421,9 +6386,8 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
         /// <summary>Revokes access to all devices currently provisioned to the user. The user will no longer be able to
-        /// use the managed Play store on any of their managed devices.
-        ///
-        /// This call only works with EMM-managed accounts.</summary>
+        /// use the managed Play store on any of their managed devices. This call only works with EMM-managed
+        /// accounts.</summary>
         public class RevokeDeviceAccessRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new RevokeDeviceAccess request.</summary>
@@ -6490,7 +6454,7 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Modifies the set of products that a user is entitled to access (referred to as whitelisted
+        /// <summary>Modifies the set of products that a user is entitled to access (referred to as *whitelisted*
         /// products). Only products that are approved or products that were previously approved (products with revoked
         /// approval) can be whitelisted.</summary>
         /// <param name="body">The body of the request.</param>
@@ -6502,7 +6466,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new SetAvailableProductSetRequest(service, body, enterpriseId, userId);
         }
 
-        /// <summary>Modifies the set of products that a user is entitled to access (referred to as whitelisted
+        /// <summary>Modifies the set of products that a user is entitled to access (referred to as *whitelisted*
         /// products). Only products that are approved or products that were previously approved (products with revoked
         /// approval) can be whitelisted.</summary>
         public class SetAvailableProductSetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ProductSet>
@@ -6578,11 +6542,9 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Updates the details of an EMM-managed user.
-        ///
-        /// Can be used with EMM-managed users only (not Google managed users). Pass the new details in the Users
-        /// resource in the request body. Only the displayName field can be changed. Other fields must either be unset
-        /// or have the currently active value.</summary>
+        /// <summary>Updates the details of an EMM-managed user. Can be used with EMM-managed users only (not Google
+        /// managed users). Pass the new details in the Users resource in the request body. Only the displayName field
+        /// can be changed. Other fields must either be unset or have the currently active value.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="userId">The ID of the
@@ -6592,11 +6554,9 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new UpdateRequest(service, body, enterpriseId, userId);
         }
 
-        /// <summary>Updates the details of an EMM-managed user.
-        ///
-        /// Can be used with EMM-managed users only (not Google managed users). Pass the new details in the Users
-        /// resource in the request body. Only the displayName field can be changed. Other fields must either be unset
-        /// or have the currently active value.</summary>
+        /// <summary>Updates the details of an EMM-managed user. Can be used with EMM-managed users only (not Google
+        /// managed users). Pass the new details in the Users resource in the request body. Only the displayName field
+        /// can be changed. Other fields must either be unset or have the currently active value.</summary>
         public class UpdateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.User>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -7423,17 +7383,17 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     public class Device : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The Google Play Services Android ID for the device encoded as a lowercase hex string. For example,
-        /// 123456789abcdef0.</summary>
+        /// "123456789abcdef0".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidId")]
         public virtual string AndroidId { get; set; } 
 
         /// <summary>Identifies the extent to which the device is controlled by a managed Google Play EMM in various
-        /// deployment configurations. Possible values include: "managedDevice", a device that has the EMM's device
-        /// policy controller (DPC) as the device owner. "managedProfile", a device that has a profile managed by the
-        /// DPC (DPC is profile owner) in addition to a separate, personal profile that is unavailable to the DPC.
-        /// "containerApp", no longer used (deprecated). "unmanagedProfile", a device that has been allowed (by the
+        /// deployment configurations. Possible values include: - "managedDevice", a device that has the EMM's device
+        /// policy controller (DPC) as the device owner. - "managedProfile", a device that has a profile managed by the
+        /// DPC (DPC is profile owner) in addition to a separate, personal profile that is unavailable to the DPC. -
+        /// "containerApp", no longer used (deprecated). - "unmanagedProfile", a device that has been allowed (by the
         /// domain's admin, using the Admin Console to enable the privilege) to use managed Google Play, but the profile
-        /// is itself not owned by a DPC.</summary>
+        /// is itself not owned by a DPC. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 
 
@@ -7510,13 +7470,13 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     }    
 
     /// <summary>An Enterprises resource represents the binding between an EMM and a specific organization. That binding
-    /// can be instantiated in one of two different ways using this API as follows: For Google managed domain customers,
-    /// the process involves using Enterprises.enroll and Enterprises.setAccount (in conjunction with artifacts obtained
-    /// from the Admin console and the Google API Console) and submitted to the EMM through a more-or-less manual
-    /// process. For managed Google Play Accounts customers, the process involves using Enterprises.generateSignupUrl
-    /// and Enterprises.completeSignup in conjunction with the managed Google Play sign-up UI (Google-provided
-    /// mechanism) to create the binding without manual steps. As an EMM, you can support either or both approaches in
-    /// your EMM console. See Create an Enterprise for details.</summary>
+    /// can be instantiated in one of two different ways using this API as follows: - For Google managed domain
+    /// customers, the process involves using Enterprises.enroll and Enterprises.setAccount (in conjunction with
+    /// artifacts obtained from the Admin console and the Google API Console) and submitted to the EMM through a more-
+    /// or-less manual process. - For managed Google Play Accounts customers, the process involves using
+    /// Enterprises.generateSignupUrl and Enterprises.completeSignup in conjunction with the managed Google Play sign-up
+    /// UI (Google-provided mechanism) to create the binding without manual steps. As an EMM, you can support either or
+    /// both approaches in your EMM console. See Create an Enterprise for details.</summary>
     public class Enterprise : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Admins of the enterprise. This is only supported for enterprises created via the EMM-initiated
@@ -7580,27 +7540,20 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// <summary>The presence of an Entitlements resource indicates that a user has the right to use a particular app.
     /// Entitlements are user specific, not device specific. This allows a user with an entitlement to an app to install
     /// the app on all their devices. It's also possible for a user to hold an entitlement to an app without installing
-    /// the app on any device.
-    ///
-    /// The API can be used to create an entitlement. As an option, you can also use the API to trigger the installation
-    /// of an app on all a user's managed devices at the same time the entitlement is created.
-    ///
+    /// the app on any device. The API can be used to create an entitlement. As an option, you can also use the API to
+    /// trigger the installation of an app on all a user's managed devices at the same time the entitlement is created.
     /// If the app is free, creating the entitlement also creates a group license for that app. For paid apps, creating
     /// the entitlement consumes one license, and that license remains consumed until the entitlement is removed. If the
     /// enterprise hasn't purchased enough licenses, then no entitlement is created and the installation fails. An
     /// entitlement is also not created for an app if the app requires permissions that the enterprise hasn't accepted.
-    ///
     /// If an entitlement is deleted, the app may be uninstalled from a user's device. As a best practice, uninstall the
-    /// app by calling
-    ///
-    /// Installs.delete() before deleting the entitlement.
-    ///
-    /// Entitlements for apps that a user pays for on an unmanaged profile have "userPurchase" as the entitlement
-    /// reason. These entitlements cannot be removed via the API.</summary>
+    /// app by calling Installs.delete() before deleting the entitlement. Entitlements for apps that a user pays for on
+    /// an unmanaged profile have "userPurchase" as the entitlement reason. These entitlements cannot be removed via the
+    /// API.</summary>
     public class Entitlement : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the product that the entitlement is for. For example,
-        /// app:com.google.android.gm.</summary>
+        /// "app:com.google.android.gm".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
@@ -7628,18 +7581,15 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// apps. For a free app, a group license is created when an enterprise admin first approves the product in Google
     /// Play or when the first entitlement for the product is created for a user via the API. For a paid app, a group
     /// license object is only created when an enterprise admin purchases the product in Google Play for the first time.
-    ///
     /// Use the API to query group licenses. A Grouplicenses resource includes the total number of licenses purchased
     /// (paid apps only) and the total number of licenses currently in use. In other words, the total number of
-    /// Entitlements that exist for the product.
-    ///
-    /// Only one group license object is created per product and group license objects are never deleted. If a product
-    /// is unapproved, its group license remains. This allows enterprise admins to keep track of any remaining
-    /// entitlements for the product.</summary>
+    /// Entitlements that exist for the product. Only one group license object is created per product and group license
+    /// objects are never deleted. If a product is unapproved, its group license remains. This allows enterprise admins
+    /// to keep track of any remaining entitlements for the product.</summary>
     public class GroupLicense : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>How this group license was acquired. bulkPurchase means that this Grouplicenses resource was
-        /// created because the enterprise purchased licenses for this product; otherwise, the value is free (for free
+        /// <summary>How this group license was acquired. "bulkPurchase" means that this Grouplicenses resource was
+        /// created because the enterprise purchased licenses for this product; otherwise, the value is "free" (for free
         /// products).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acquisitionKind")]
         public virtual string AcquisitionKind { get; set; } 
@@ -7658,21 +7608,21 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
 
         /// <summary>The number of purchased licenses (possibly in multiple purchases). If this field is omitted, then
         /// there is no limit on the number of licenses that can be provisioned (for example, if the acquisition kind is
-        /// free).</summary>
+        /// "free").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numPurchased")]
         public virtual System.Nullable<int> NumPurchased { get; set; } 
 
         /// <summary>The permission approval status of the product. This field is only set if the product is approved.
-        /// Possible states are: "currentApproved", the current set of permissions is approved, but additional
+        /// Possible states are: - "currentApproved", the current set of permissions is approved, but additional
         /// permissions will require the administrator to reapprove the product (If the product was approved without
-        /// specifying the approved permissions setting, then this is the default behavior.), "needsReapproval", the
+        /// specifying the approved permissions setting, then this is the default behavior.), - "needsReapproval", the
         /// product has unapproved permissions. No additional product licenses can be assigned until the product is
-        /// reapproved, "allCurrentAndFutureApproved", the current permissions are approved and any future permission
-        /// updates will be automatically approved without administrator review.</summary>
+        /// reapproved, - "allCurrentAndFutureApproved", the current permissions are approved and any future permission
+        /// updates will be automatically approved without administrator review. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual string Permissions { get; set; } 
 
-        /// <summary>The ID of the product that the license is for. For example, app:com.google.android.gm.</summary>
+        /// <summary>The ID of the product that the license is for. For example, "app:com.google.android.gm".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
@@ -7701,40 +7651,31 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     }    
 
     /// <summary>The existence of an Installs resource indicates that an app is installed on a particular device (or
-    /// that an install is pending).
-    ///
-    /// The API can be used to create an install resource using the update method. This triggers the actual install of
-    /// the app on the device. If the user does not already have an entitlement for the app, then an attempt is made to
-    /// create one. If this fails (for example, because the app is not free and there is no available license), then the
-    /// creation of the install fails.
-    ///
-    /// The API can also be used to update an installed app. If theupdatemethod is used on an existing install, then the
-    /// app will be updated to the latest available version.
-    ///
-    /// Note that it is not possible to force the installation of a specific version of an app: the version code is
-    /// read-only.
-    ///
-    /// If a user installs an app themselves (as permitted by the enterprise), then again an install resource and
-    /// possibly an entitlement resource are automatically created.
-    ///
-    /// The API can also be used to delete an install resource, which triggers the removal of the app from the device.
-    /// Note that deleting an install does not automatically remove the corresponding entitlement, even if there are no
-    /// remaining installs. The install resource will also be deleted if the user uninstalls the app
-    /// themselves.</summary>
+    /// that an install is pending). The API can be used to create an install resource using the update method. This
+    /// triggers the actual install of the app on the device. If the user does not already have an entitlement for the
+    /// app, then an attempt is made to create one. If this fails (for example, because the app is not free and there is
+    /// no available license), then the creation of the install fails. The API can also be used to update an installed
+    /// app. If the update method is used on an existing install, then the app will be updated to the latest available
+    /// version. Note that it is not possible to force the installation of a specific version of an app: the version
+    /// code is read-only. If a user installs an app themselves (as permitted by the enterprise), then again an install
+    /// resource and possibly an entitlement resource are automatically created. The API can also be used to delete an
+    /// install resource, which triggers the removal of the app from the device. Note that deleting an install does not
+    /// automatically remove the corresponding entitlement, even if there are no remaining installs. The install
+    /// resource will also be deleted if the user uninstalls the app themselves.</summary>
     public class Install : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Install state. The state installPending means that an install request has recently been made and
-        /// download to the device is in progress. The state installed means that the app has been installed. This field
-        /// is read-only.</summary>
+        /// <summary>Install state. The state "installPending" means that an install request has recently been made and
+        /// download to the device is in progress. The state "installed" means that the app has been installed. This
+        /// field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installState")]
         public virtual string InstallState { get; set; } 
 
-        /// <summary>The ID of the product that the install is for. For example, app:com.google.android.gm.</summary>
+        /// <summary>The ID of the product that the install is for. For example, "app:com.google.android.gm".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
         /// <summary>The version of the installed product. Guaranteed to be set only if the install state is
-        /// installed.</summary>
+        /// "installed".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
         public virtual System.Nullable<int> VersionCode { get; set; } 
 
@@ -7990,8 +7931,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string DpcPackageName { get; set; } 
 
         /// <summary>Identifies the extent to which the device is controlled by an Android EMM in various deployment
-        /// configurations. Possible values include: "managedDevice", a device where the DPC is set as device owner,
-        /// "managedProfile", a device where the DPC is set as profile owner.</summary>
+        /// configurations. Possible values include: - "managedDevice", a device where the DPC is set as device owner, -
+        /// "managedProfile", a device where the DPC is set as profile owner. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 
 
@@ -8094,10 +8035,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Information about the current page.
-    ///
-    /// List operations that supports paging return only one "page" of results. This protocol buffer message describes
-    /// the page that has been returned.</summary>
+    /// <summary>Information about the current page. List operations that supports paging return only one "page" of
+    /// results. This protocol buffer message describes the page that has been returned.</summary>
     public class PageInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Maximum number of results returned in one page. ! The number of results included in the API
@@ -8120,11 +8059,9 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
 
     /// <summary>A Permissions resource represents some extra capability, to be granted to an Android app, which
     /// requires explicit consent. An enterprise admin must consent to these permissions on behalf of their users before
-    /// an entitlement for the app can be created.
-    ///
-    /// The permissions collection is read-only. The information provided for each permission (localized name and
-    /// description) is intended to be used in the MDM user interface when obtaining consent from the
-    /// enterprise.</summary>
+    /// an entitlement for the app can be created. The permissions collection is read-only. The information provided for
+    /// each permission (localized name and description) is intended to be used in the MDM user interface when obtaining
+    /// consent from the enterprise.</summary>
     public class Permission : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A longer description of the Permissions resource, giving more details of what it affects.</summary>
@@ -8181,10 +8118,9 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
 
     /// <summary>A Products resource represents an app in the Google Play store that is available to at least some users
     /// in the enterprise. (Some apps are restricted to a single enterprise, and no information about them is made
-    /// available outside that enterprise.)
-    ///
-    /// The information provided for each product (localized name, icon, link to the full Google Play details page) is
-    /// intended to allow a basic representation of the product within an EMM user interface.</summary>
+    /// available outside that enterprise.) The information provided for each product (localized name, icon, link to the
+    /// full Google Play details page) is intended to allow a basic representation of the product within an EMM user
+    /// interface.</summary>
     public class Product : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The tracks visible to the enterprise.</summary>
@@ -8253,7 +8189,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<ProductPermission> Permissions { get; set; } 
 
-        /// <summary>A string of the form app:package name. For example, app:com.google.android.gm represents the Gmail
+        /// <summary>A string of the form *app:*. For example, app:com.google.android.gm represents the Gmail
         /// app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
@@ -8331,10 +8267,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     }    
 
     /// <summary>A product permissions resource represents the set of permissions required by a specific app and whether
-    /// or not they have been accepted by an enterprise admin.
-    ///
-    /// The API can be used to read the set of permissions, and also to update the set to indicate that permissions have
-    /// been accepted.</summary>
+    /// or not they have been accepted by an enterprise admin. The API can be used to read the set of permissions, and
+    /// also to update the set to indicate that permissions have been accepted.</summary>
     public class ProductPermission : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An opaque string uniquely identifying the permission.</summary>
@@ -8376,7 +8310,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfiguration")]
         public virtual ManagedConfiguration ManagedConfiguration { get; set; } 
 
-        /// <summary>The ID of the product. For example, app:com.google.android.gm.</summary>
+        /// <summary>The ID of the product. For example, "app:com.google.android.gm".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
@@ -8602,10 +8536,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
 
         /// <summary>String (US-ASCII only) used to determine order of this cluster within the parent page's elements.
         /// Page elements are sorted in lexicographic order of this field. Duplicated values are allowed, but ordering
-        /// between elements with duplicate order is undefined.
-        ///
-        /// The value of this field is never visible to a user, it is used solely for the purpose of defining an
-        /// ordering. Maximum length is 256 characters.</summary>
+        /// between elements with duplicate order is undefined. The value of this field is never visible to a user, it
+        /// is used solely for the purpose of defining an ordering. Maximum length is 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderInPage")]
         public virtual string OrderInPage { get; set; } 
 
@@ -8623,9 +8555,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     public class StoreLayout : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the store page to be used as the homepage. The homepage is the first page shown in the
-        /// managed Google Play Store.
-        ///
-        /// Not specifying a homepage is equivalent to setting the store layout type to "basic".</summary>
+        /// managed Google Play Store. Not specifying a homepage is equivalent to setting the store layout type to
+        /// "basic".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("homepageId")]
         public virtual string HomepageId { get; set; } 
 
@@ -8668,9 +8599,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string Id { get; set; } 
 
         /// <summary>Ordered list of pages a user should be able to reach from this page. The list can't include this
-        /// page. It is recommended that the basic pages are created first, before adding the links between pages.
-        ///
-        /// The API doesn't verify that the pages exist or the pages are reachable.</summary>
+        /// page. It is recommended that the basic pages are created first, before adding the links between pages. The
+        /// API doesn't verify that the pages exist or the pages are reachable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual System.Collections.Generic.IList<string> Link { get; set; } 
 
@@ -8684,14 +8614,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Pagination information returned by a List operation when token pagination is enabled.
-    ///
-    /// List operations that supports paging return only one "page" of results. This protocol buffer message describes
-    /// the page that has been returned.
-    ///
-    /// When using token pagination, clients should use the next/previous token to get another page of the result. The
-    /// presence or absence of next/previous token indicates whether a next/previous page is available and provides a
-    /// mean of accessing this page. ListRequest.page_token should be set to either next_page_token or
+    /// <summary>Pagination information returned by a List operation when token pagination is enabled. List operations
+    /// that supports paging return only one "page" of results. This protocol buffer message describes the page that has
+    /// been returned. When using token pagination, clients should use the next/previous token to get another page of
+    /// the result. The presence or absence of next/previous token indicates whether a next/previous page is available
+    /// and provides a mean of accessing this page. ListRequest.page_token should be set to either next_page_token or
     /// previous_page_token to access another page.</summary>
     public class TokenPagination : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8725,10 +8652,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
 
     /// <summary>A Users resource represents an account associated with an enterprise. The account may be specific to a
     /// device or to an individual user (who can then use the account across multiple devices). The account may provide
-    /// access to managed Google Play only, or to other Google services, depending on the identity model: The Google
-    /// managed domain identity model requires synchronization to Google account sources (via primaryEmail). The managed
-    /// Google Play Accounts identity model provides a dynamic means for enterprises to create user or device accounts
-    /// as needed. These accounts provide access to managed Google Play. </summary>
+    /// access to managed Google Play only, or to other Google services, depending on the identity model: - The Google
+    /// managed domain identity model requires synchronization to Google account sources (via primaryEmail). - The
+    /// managed Google Play Accounts identity model provides a dynamic means for enterprises to create user or device
+    /// accounts as needed. These accounts provide access to managed Google Play. </summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A unique identifier you create for this user, such as "user342" or "asset#44418". Do not use
@@ -8754,8 +8681,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>The entity that manages the user.  With googleManaged users, the source of truth is Google so EMMs
-        /// have to make sure a Google Account exists for the user.  With emmManaged users, the EMM is in
+        /// <summary>The entity that manages the user. With googleManaged users, the source of truth is Google so EMMs
+        /// have to make sure a Google Account exists for the user. With emmManaged users, the EMM is in
         /// charge.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 
@@ -8801,10 +8728,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// URL.</summary>
     public class WebApp : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The display mode of the web app. Possible values include: "minimalUi", the device's status bar,
+        /// <summary>The display mode of the web app. Possible values include: - "minimalUi", the device's status bar,
         /// navigation bar, the app's URL, and a refresh button are visible when the app is open. For HTTP URLs, you can
-        /// only select this option. "standalone", the device's status bar and navigation bar are visible when the app
-        /// is open. "fullScreen", the app opens in full screen mode, hiding the device's status and navigation bars.
+        /// only select this option. - "standalone", the device's status bar and navigation bar are visible when the app
+        /// is open. - "fullScreen", the app opens in full screen mode, hiding the device's status and navigation bars.
         /// All browser UI elements, page URL, system status bar and back button are not visible, and the web app takes
         /// up the entirety of the available display area. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayMode")]
@@ -8828,15 +8755,13 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
-        /// <summary>The current version of the app.
-        ///
-        /// Note that the version can automatically increase during the lifetime of the web app, while Google does
-        /// internal housekeeping to keep the web app up-to-date.</summary>
+        /// <summary>The current version of the app. Note that the version can automatically increase during the
+        /// lifetime of the web app, while Google does internal housekeeping to keep the web app up-to-date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
         public virtual System.Nullable<long> VersionCode { get; set; } 
 
-        /// <summary>The ID of the application.  A string of the form app:package name where the package name always
-        /// starts with the prefix com.google.enterprise.webapp. followed by a random id.</summary>
+        /// <summary>The ID of the application. A string of the form "app:" where the package name always starts with
+        /// the prefix "com.google.enterprise.webapp." followed by a random id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webAppId")]
         public virtual string WebAppId { get; set; } 
 
@@ -8848,10 +8773,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     public class WebAppIcon : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The actual bytes of the image in a base64url encoded string (c.f. RFC4648, section 5 "Base 64
-        /// Encoding with URL and Filename Safe Alphabet").
-        ///
-        /// The image type can be png or jpg. The image should ideally be square. The image should ideally have a size
-        /// of 512x512. </summary>
+        /// Encoding with URL and Filename Safe Alphabet"). - The image type can be png or jpg. - The image should
+        /// ideally be square. - The image should ideally have a size of 512x512. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageData")]
         public virtual string ImageData { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fact-check/tools/api/'>Fact Check Tools API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20200801 (2039)
+ *      <tr><th>API Rev<td>20200804 (2042)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fact-check/tools/api/'>
  *              https://developers.google.com/fact-check/tools/api/</a>
@@ -802,11 +802,9 @@ namespace Google.Apis.FactCheckTools.v1alpha1
 
         }
 
-        /// <summary>Update for all `ClaimReview` markup on a page
-        ///
-        /// Note that this is a full update. To retain the existing `ClaimReview` markup on a page, first perform a Get
-        /// operation, then modify the returned markup, and finally call Update with the entire `ClaimReview` markup as
-        /// the body.</summary>
+        /// <summary>Update for all `ClaimReview` markup on a page Note that this is a full update. To retain the
+        /// existing `ClaimReview` markup on a page, first perform a Get operation, then modify the returned markup, and
+        /// finally call Update with the entire `ClaimReview` markup as the body.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The name of this `ClaimReview` markup page resource, in the form of `pages/{page_id}`. Except for
         /// update requests, this field is output-only and should not be set by the user.</param>
@@ -815,11 +813,9 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             return new UpdateRequest(service, body, name);
         }
 
-        /// <summary>Update for all `ClaimReview` markup on a page
-        ///
-        /// Note that this is a full update. To retain the existing `ClaimReview` markup on a page, first perform a Get
-        /// operation, then modify the returned markup, and finally call Update with the entire `ClaimReview` markup as
-        /// the body.</summary>
+        /// <summary>Update for all `ClaimReview` markup on a page Note that this is a full update. To retain the
+        /// existing `ClaimReview` markup on a page, first perform a Get operation, then modify the returned markup, and
+        /// finally call Update with the entire `ClaimReview` markup as the body.</summary>
         public class UpdateRequest : FactCheckToolsBaseServiceRequest<Google.Apis.FactCheckTools.v1alpha1.Data.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -1148,11 +1144,9 @@ namespace Google.Apis.FactCheckTools.v1alpha1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>

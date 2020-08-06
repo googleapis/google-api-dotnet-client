@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Android Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200730 (2037)
+ *      <tr><th>API Rev<td>20200805 (2043)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -1228,10 +1228,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The type of the deobfuscation file.</summary>
                 public enum DeobfuscationFileTypeEnum
                 {
+                    /// <summary>Unspecified deobfuscation file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("deobfuscationFileTypeUnspecified")]
                     DeobfuscationFileTypeUnspecified,
+                    /// <summary>Proguard deobfuscation file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("proguard")]
                     Proguard,
+                    /// <summary>Native debugging symbols file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("nativeCode")]
                     NativeCode,
                 }
@@ -1430,10 +1433,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The type of the deobfuscation file.</summary>
                 public enum DeobfuscationFileTypeEnum
                 {
+                    /// <summary>Unspecified deobfuscation file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("deobfuscationFileTypeUnspecified")]
                     DeobfuscationFileTypeUnspecified,
+                    /// <summary>Proguard deobfuscation file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("proguard")]
                     Proguard,
+                    /// <summary>Native debugging symbols file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("nativeCode")]
                     NativeCode,
                 }
@@ -1810,10 +1816,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The file type of the file configuration which is being read or modified.</summary>
                 public enum ExpansionFileTypeEnum
                 {
+                    /// <summary>Unspecified expansion file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("expansionFileTypeUnspecified")]
                     ExpansionFileTypeUnspecified,
+                    /// <summary>Main expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("main")]
                     Main,
+                    /// <summary>Patch expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("patch")]
                     Patch,
                 }
@@ -1934,10 +1943,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The file type of the expansion file configuration which is being updated.</summary>
                 public enum ExpansionFileTypeEnum
                 {
+                    /// <summary>Unspecified expansion file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("expansionFileTypeUnspecified")]
                     ExpansionFileTypeUnspecified,
+                    /// <summary>Main expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("main")]
                     Main,
+                    /// <summary>Patch expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("patch")]
                     Patch,
                 }
@@ -2064,10 +2076,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The file type of the file configuration which is being read or modified.</summary>
                 public enum ExpansionFileTypeEnum
                 {
+                    /// <summary>Unspecified expansion file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("expansionFileTypeUnspecified")]
                     ExpansionFileTypeUnspecified,
+                    /// <summary>Main expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("main")]
                     Main,
+                    /// <summary>Patch expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("patch")]
                     Patch,
                 }
@@ -2190,10 +2205,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The file type of the expansion file configuration which is being updated.</summary>
                 public enum ExpansionFileTypeEnum
                 {
+                    /// <summary>Unspecified expansion file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("expansionFileTypeUnspecified")]
                     ExpansionFileTypeUnspecified,
+                    /// <summary>Main expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("main")]
                     Main,
+                    /// <summary>Patch expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("patch")]
                     Patch,
                 }
@@ -2393,10 +2411,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The file type of the expansion file configuration which is being updated.</summary>
                 public enum ExpansionFileTypeEnum
                 {
+                    /// <summary>Unspecified expansion file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("expansionFileTypeUnspecified")]
                     ExpansionFileTypeUnspecified,
+                    /// <summary>Main expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("main")]
                     Main,
+                    /// <summary>Patch expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("patch")]
                     Patch,
                 }
@@ -2507,24 +2528,34 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Type of the Image.</summary>
                 public enum ImageTypeEnum
                 {
+                    /// <summary>Unspecified type. Do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("appImageTypeUnspecified")]
                     AppImageTypeUnspecified,
+                    /// <summary>Phone screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("phoneScreenshots")]
                     PhoneScreenshots,
+                    /// <summary>Seven inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("sevenInchScreenshots")]
                     SevenInchScreenshots,
+                    /// <summary>Ten inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tenInchScreenshots")]
                     TenInchScreenshots,
+                    /// <summary>TV screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvScreenshots")]
                     TvScreenshots,
+                    /// <summary>Wear screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("wearScreenshots")]
                     WearScreenshots,
+                    /// <summary>Icon.</summary>
                     [Google.Apis.Util.StringValueAttribute("icon")]
                     Icon,
+                    /// <summary>Feature graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
                     FeatureGraphic,
+                    /// <summary>Promo graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("promoGraphic")]
                     PromoGraphic,
+                    /// <summary>TV banner.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvBanner")]
                     TvBanner,
                 }
@@ -2656,24 +2687,34 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Type of the Image. Providing an image type that refers to no images is a no-op.</summary>
                 public enum ImageTypeEnum
                 {
+                    /// <summary>Unspecified type. Do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("appImageTypeUnspecified")]
                     AppImageTypeUnspecified,
+                    /// <summary>Phone screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("phoneScreenshots")]
                     PhoneScreenshots,
+                    /// <summary>Seven inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("sevenInchScreenshots")]
                     SevenInchScreenshots,
+                    /// <summary>Ten inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tenInchScreenshots")]
                     TenInchScreenshots,
+                    /// <summary>TV screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvScreenshots")]
                     TvScreenshots,
+                    /// <summary>Wear screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("wearScreenshots")]
                     WearScreenshots,
+                    /// <summary>Icon.</summary>
                     [Google.Apis.Util.StringValueAttribute("icon")]
                     Icon,
+                    /// <summary>Feature graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
                     FeatureGraphic,
+                    /// <summary>Promo graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("promoGraphic")]
                     PromoGraphic,
+                    /// <summary>TV banner.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvBanner")]
                     TvBanner,
                 }
@@ -2793,24 +2834,34 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// response.</summary>
                 public enum ImageTypeEnum
                 {
+                    /// <summary>Unspecified type. Do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("appImageTypeUnspecified")]
                     AppImageTypeUnspecified,
+                    /// <summary>Phone screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("phoneScreenshots")]
                     PhoneScreenshots,
+                    /// <summary>Seven inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("sevenInchScreenshots")]
                     SevenInchScreenshots,
+                    /// <summary>Ten inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tenInchScreenshots")]
                     TenInchScreenshots,
+                    /// <summary>TV screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvScreenshots")]
                     TvScreenshots,
+                    /// <summary>Wear screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("wearScreenshots")]
                     WearScreenshots,
+                    /// <summary>Icon.</summary>
                     [Google.Apis.Util.StringValueAttribute("icon")]
                     Icon,
+                    /// <summary>Feature graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
                     FeatureGraphic,
+                    /// <summary>Promo graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("promoGraphic")]
                     PromoGraphic,
+                    /// <summary>TV banner.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvBanner")]
                     TvBanner,
                 }
@@ -2927,24 +2978,34 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Type of the Image.</summary>
                 public enum ImageTypeEnum
                 {
+                    /// <summary>Unspecified type. Do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("appImageTypeUnspecified")]
                     AppImageTypeUnspecified,
+                    /// <summary>Phone screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("phoneScreenshots")]
                     PhoneScreenshots,
+                    /// <summary>Seven inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("sevenInchScreenshots")]
                     SevenInchScreenshots,
+                    /// <summary>Ten inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tenInchScreenshots")]
                     TenInchScreenshots,
+                    /// <summary>TV screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvScreenshots")]
                     TvScreenshots,
+                    /// <summary>Wear screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("wearScreenshots")]
                     WearScreenshots,
+                    /// <summary>Icon.</summary>
                     [Google.Apis.Util.StringValueAttribute("icon")]
                     Icon,
+                    /// <summary>Feature graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
                     FeatureGraphic,
+                    /// <summary>Promo graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("promoGraphic")]
                     PromoGraphic,
+                    /// <summary>TV banner.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvBanner")]
                     TvBanner,
                 }
@@ -3144,24 +3205,34 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Type of the Image.</summary>
                 public enum ImageTypeEnum
                 {
+                    /// <summary>Unspecified type. Do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("appImageTypeUnspecified")]
                     AppImageTypeUnspecified,
+                    /// <summary>Phone screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("phoneScreenshots")]
                     PhoneScreenshots,
+                    /// <summary>Seven inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("sevenInchScreenshots")]
                     SevenInchScreenshots,
+                    /// <summary>Ten inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tenInchScreenshots")]
                     TenInchScreenshots,
+                    /// <summary>TV screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvScreenshots")]
                     TvScreenshots,
+                    /// <summary>Wear screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("wearScreenshots")]
                     WearScreenshots,
+                    /// <summary>Icon.</summary>
                     [Google.Apis.Util.StringValueAttribute("icon")]
                     Icon,
+                    /// <summary>Feature graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
                     FeatureGraphic,
+                    /// <summary>Promo graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("promoGraphic")]
                     PromoGraphic,
+                    /// <summary>TV banner.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvBanner")]
                     TvBanner,
                 }
@@ -5405,10 +5476,8 @@ namespace Google.Apis.AndroidPublisher.v3
 
         /// <summary>Uploads an APK to internal app sharing. If you are using the Google API client libraries, please
         /// increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
-        /// recommended).
-        ///
-        /// See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-
-        /// client/errors) for an example in java.</summary>
+        /// recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-
+        /// java-client/errors) for an example in java.</summary>
         /// <param name="packageName">Package name of the app.</param>
         public virtual UploadapkRequest Uploadapk(string packageName)
         {
@@ -5417,10 +5486,8 @@ namespace Google.Apis.AndroidPublisher.v3
 
         /// <summary>Uploads an APK to internal app sharing. If you are using the Google API client libraries, please
         /// increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
-        /// recommended).
-        ///
-        /// See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-
-        /// client/errors) for an example in java.</summary>
+        /// recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-
+        /// java-client/errors) for an example in java.</summary>
         public class UploadapkRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InternalAppSharingArtifact>
         {
             /// <summary>Constructs a new Uploadapk request.</summary>
@@ -5475,10 +5542,8 @@ namespace Google.Apis.AndroidPublisher.v3
 
         /// <summary>Uploads an APK to internal app sharing. If you are using the Google API client libraries, please
         /// increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
-        /// recommended).
-        ///
-        /// See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-
-        /// client/errors) for an example in java.</summary>
+        /// recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-
+        /// java-client/errors) for an example in java.</summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
         /// <list type="bullet">
@@ -5615,10 +5680,8 @@ namespace Google.Apis.AndroidPublisher.v3
 
         /// <summary>Uploads an app bundle to internal app sharing. If you are using the Google API client libraries,
         /// please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
-        /// recommended).
-        ///
-        /// See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-
-        /// client/errors) for an example in java.</summary>
+        /// recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-
+        /// java-client/errors) for an example in java.</summary>
         /// <param name="packageName">Package name of the app.</param>
         public virtual UploadbundleRequest Uploadbundle(string packageName)
         {
@@ -5627,10 +5690,8 @@ namespace Google.Apis.AndroidPublisher.v3
 
         /// <summary>Uploads an app bundle to internal app sharing. If you are using the Google API client libraries,
         /// please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
-        /// recommended).
-        ///
-        /// See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-
-        /// client/errors) for an example in java.</summary>
+        /// recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-
+        /// java-client/errors) for an example in java.</summary>
         public class UploadbundleRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InternalAppSharingArtifact>
         {
             /// <summary>Constructs a new Uploadbundle request.</summary>
@@ -5685,10 +5746,8 @@ namespace Google.Apis.AndroidPublisher.v3
 
         /// <summary>Uploads an app bundle to internal app sharing. If you are using the Google API client libraries,
         /// please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
-        /// recommended).
-        ///
-        /// See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-
-        /// client/errors) for an example in java.</summary>
+        /// recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-
+        /// java-client/errors) for an example in java.</summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
         /// <list type="bullet">
@@ -6866,7 +6925,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The type of voided purchases that you want to see in the response. Possible values are: 0.
                 /// Only voided in-app product purchases will be returned in the response. This is the default value. 1.
                 /// Both voided in-app purchases and voided subscription purchases will be returned in the response.
-                ///
                 /// Note: Before requesting to receive voided subscription purchases, you must switch to use orderId in
                 /// the response which uniquely identifies one-time purchases and subscriptions. Otherwise, you will
                 /// receive multiple subscription orders with the same PurchaseToken, because subscription renewal
@@ -8364,10 +8422,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Information about the current page.
-    ///
-    /// List operations that supports paging return only one "page" of results. This protocol buffer message describes
-    /// the page that has been returned.</summary>
+    /// <summary>Information about the current page. List operations that supports paging return only one "page" of
+    /// results. This protocol buffer message describes the page that has been returned.</summary>
     public class PageInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Maximum number of results returned in one page. ! The number of results included in the API
@@ -8585,7 +8641,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredExpiryTimeMillis")]
         public virtual System.Nullable<long> DesiredExpiryTimeMillis { get; set; } 
 
-        /// <summary>The expected expiry time for the subscription.  If the current expiry time for the subscription is
+        /// <summary>The expected expiry time for the subscription. If the current expiry time for the subscription is
         /// not the value specified here, the deferral will not occur.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedExpiryTimeMillis")]
         public virtual System.Nullable<long> ExpectedExpiryTimeMillis { get; set; } 
@@ -8680,9 +8736,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string GivenName { get; set; } 
 
         /// <summary>Introductory price information of the subscription. This is only present when the subscription was
-        /// purchased with an introductory price.
-        ///
-        /// This field does not indicate the subscription is currently in introductory price period.</summary>
+        /// purchased with an introductory price. This field does not indicate the subscription is currently in
+        /// introductory price period.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("introductoryPriceInfo")]
         public virtual IntroductoryPriceInfo IntroductoryPriceInfo { get; set; } 
 
@@ -8691,13 +8746,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string Kind { get; set; } 
 
         /// <summary>The purchase token of the originating purchase if this subscription is one of the following: 0. Re-
-        /// signup of a canceled but non-lapsed subscription 1. Upgrade/downgrade from a previous subscription
-        ///
-        /// For example, suppose a user originally signs up and you receive purchase token X, then the user cancels and
-        /// goes through the resignup flow (before their subscription lapses) and you receive purchase token Y, and
-        /// finally the user upgrades their subscription and you receive purchase token Z. If you call this API with
-        /// purchase token Z, this field will be set to Y. If you call this API with purchase token Y, this field will
-        /// be set to X. If you call this API with purchase token X, this field will not be set.</summary>
+        /// signup of a canceled but non-lapsed subscription 1. Upgrade/downgrade from a previous subscription For
+        /// example, suppose a user originally signs up and you receive purchase token X, then the user cancels and goes
+        /// through the resignup flow (before their subscription lapses) and you receive purchase token Y, and finally
+        /// the user upgrades their subscription and you receive purchase token Z. If you call this API with purchase
+        /// token Z, this field will be set to Y. If you call this API with purchase token Y, this field will be set to
+        /// X. If you call this API with purchase token X, this field will not be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedPurchaseToken")]
         public virtual string LinkedPurchaseToken { get; set; } 
 
@@ -8725,16 +8779,14 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual System.Nullable<int> PaymentState { get; set; } 
 
         /// <summary>Price of the subscription, not including tax. Price is expressed in micro-units, where 1,000,000
-        /// micro-units represents one unit of the currency. For example, if the subscription price is 1.99,
+        /// micro-units represents one unit of the currency. For example, if the subscription price is €1.99,
         /// price_amount_micros is 1990000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceAmountMicros")]
         public virtual System.Nullable<long> PriceAmountMicros { get; set; } 
 
         /// <summary>The latest price change information available. This is present only when there is an upcoming price
-        /// change for the subscription yet to be applied.
-        ///
-        /// Once the subscription renews with the new price or the subscription is canceled, no price change information
-        /// will be returned.</summary>
+        /// change for the subscription yet to be applied. Once the subscription renews with the new price or the
+        /// subscription is canceled, no price change information will be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceChange")]
         public virtual SubscriptionPriceChange PriceChange { get; set; } 
 
@@ -8855,14 +8907,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Pagination information returned by a List operation when token pagination is enabled.
-    ///
-    /// List operations that supports paging return only one "page" of results. This protocol buffer message describes
-    /// the page that has been returned.
-    ///
-    /// When using token pagination, clients should use the next/previous token to get another page of the result. The
-    /// presence or absence of next/previous token indicates whether a next/previous page is available and provides a
-    /// mean of accessing this page. ListRequest.page_token should be set to either next_page_token or
+    /// <summary>Pagination information returned by a List operation when token pagination is enabled. List operations
+    /// that supports paging return only one "page" of results. This protocol buffer message describes the page that has
+    /// been returned. When using token pagination, clients should use the next/previous token to get another page of
+    /// the result. The presence or absence of next/previous token indicates whether a next/previous page is available
+    /// and provides a mean of accessing this page. ListRequest.page_token should be set to either next_page_token or
     /// previous_page_token to access another page.</summary>
     public class TokenPagination : Google.Apis.Requests.IDirectResponseSchema
     {

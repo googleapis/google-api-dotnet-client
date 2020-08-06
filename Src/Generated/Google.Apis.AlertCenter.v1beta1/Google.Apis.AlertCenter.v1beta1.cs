@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>G Suite Alert Center API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200725 (2032)
+ *      <tr><th>API Rev<td>20200803 (2041)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>
  *              https://developers.google.com/admin-sdk/alertcenter/</a>
@@ -1241,10 +1241,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string Email { get; set; } 
 
         /// <summary>Optional. Details of the login action associated with the warning event. This is only available
-        /// for:
-        ///
-        /// * Suspicious login * Suspicious login (less secure app) * Suspicious programmatic login * User suspended
-        /// (suspicious activity)</summary>
+        /// for: * Suspicious login * Suspicious login (less secure app) * Suspicious programmatic login * User
+        /// suspended (suspicious activity)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loginDetails")]
         public virtual LoginDetails LoginDetails { get; set; } 
 
@@ -1293,9 +1291,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
         public virtual string Threshold { get; set; } 
 
-        /// <summary>The trigger sources for this rule.
-        ///
-        /// * GMAIL_EVENTS * DEVICE_EVENTS * USER_EVENTS</summary>
+        /// <summary>The trigger sources for this rule. * GMAIL_EVENTS * DEVICE_EVENTS * USER_EVENTS</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerSource")]
         public virtual string TriggerSource { get; set; } 
 
@@ -1344,10 +1340,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// updates of an alert from overwriting each other. It is strongly suggested that systems make use of the
         /// `etag` in the read-modify-write cycle to perform alert updates in order to avoid race conditions: An `etag`
         /// is returned in the response which contains alerts, and systems are expected to put that etag in the request
-        /// to update alert to ensure that their change will be applied to the same version of the alert.
-        ///
-        /// If no `etag` is provided in the call to update alert, then the existing alert is overwritten
-        /// blindly.</summary>
+        /// to update alert to ensure that their change will be applied to the same version of the alert. If no `etag`
+        /// is provided in the call to update alert, then the existing alert is overwritten blindly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -1361,12 +1355,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string SecurityInvestigationToolLink { get; set; } 
 
         /// <summary>Required. A unique identifier for the system that reported the alert. This is output only after
-        /// alert is created.
-        ///
-        /// Supported sources are any of the following:
-        ///
-        /// * Google Operations * Mobile device management * Gmail phishing * Domain wide takeout * State sponsored
-        /// attack * Google identity</summary>
+        /// alert is created. Supported sources are any of the following: * Google Operations * Mobile device management
+        /// * Gmail phishing * Domain wide takeout * State sponsored attack * Google identity</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; } 
 
@@ -1436,24 +1426,19 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// the `etag` in the read-modify-write cycle to perform metatdata updates in order to avoid race conditions: An
         /// `etag` is returned in the response which contains alert metadata, and systems are expected to put that etag
         /// in the request to update alert metadata to ensure that their change will be applied to the same version of
-        /// the alert metadata.
-        ///
-        /// If no `etag` is provided in the call to update alert metadata, then the existing alert metadata is
-        /// overwritten blindly.</summary>
+        /// the alert metadata. If no `etag` is provided in the call to update alert metadata, then the existing alert
+        /// metadata is overwritten blindly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
         /// <summary>The severity value of the alert. Alert Center will set this field at alert creation time, default's
         /// to an empty string when it could not be determined. The supported values for update actions on this field
-        /// are the following:
-        ///
-        /// * HIGH * MEDIUM * LOW</summary>
+        /// are the following: * HIGH * MEDIUM * LOW</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; } 
 
-        /// <summary>The current status of the alert. The supported values are the following:
-        ///
-        /// * NOT_STARTED * IN_PROGRESS * CLOSED</summary>
+        /// <summary>The current status of the alert. The supported values are the following: * NOT_STARTED *
+        /// IN_PROGRESS * CLOSED</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -1571,10 +1556,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A reference to a Cloud Pubsub topic.
-    ///
-    /// To register for notifications, the owner of the topic must grant `alerts-api-push-
-    /// notifications@system.gserviceaccount.com` the `projects.topics.publish` permission.</summary>
+    /// <summary>A reference to a Cloud Pubsub topic. To register for notifications, the owner of the topic must grant
+    /// `alerts-api-push-notifications@system.gserviceaccount.com` the `projects.topics.publish` permission.</summary>
     public class CloudPubsubTopic : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The format of the payload that would be sent. If not specified the format will be
@@ -1673,11 +1656,9 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// <summary>Alerts that get triggered on violations of Data Loss Prevention (DLP) rules.</summary>
     public class DlpRuleViolation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Details about the violated DLP rule.
-        ///
-        /// Admins can use the predefined detectors provided by Google Cloud DLP https://cloud.google.com/dlp/ when
-        /// setting up a DLP rule. Matched Cloud DLP detectors in this violation if any will be captured in the
-        /// MatchInfo.predefined_detector.</summary>
+        /// <summary>Details about the violated DLP rule. Admins can use the predefined detectors provided by Google
+        /// Cloud DLP https://cloud.google.com/dlp/ when setting up a DLP rule. Matched Cloud DLP detectors in this
+        /// violation if any will be captured in the MatchInfo.predefined_detector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ruleViolationInfo")]
         public virtual RuleViolationInfo RuleViolationInfo { get; set; } 
 
@@ -1712,11 +1693,9 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1832,10 +1811,9 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Proto for all phishing alerts with common payload. Supported types are any of the following:
-    ///
-    /// * User reported phishing * User reported spam spike * Suspicious message reported * Phishing reclassification *
-    /// Malware reclassification * Gmail potential employee spoofing</summary>
+    /// <summary>Proto for all phishing alerts with common payload. Supported types are any of the following: * User
+    /// reported phishing * User reported spam spike * Suspicious message reported * Phishing reclassification * Malware
+    /// reclassification * Gmail potential employee spoofing</summary>
     public class MailPhishing : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The domain ID.</summary>
@@ -1908,8 +1886,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Alert for a spike in user reported phishing. Warning: This type has been deprecated. Use [MailPhishing
-    /// ](/admin-sdk/alertcenter/reference/rest/v1beta1/MailPhishing) instead.</summary>
+    /// <summary>Alert for a spike in user reported phishing. *Warning*: This type has been deprecated. Use
+    /// [MailPhishing](/admin-sdk/alertcenter/reference/rest/v1beta1/MailPhishing) instead.</summary>
     public class PhishingSpike : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The domain ID.</summary>
@@ -2003,13 +1981,10 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("matchInfo")]
         public virtual System.Collections.Generic.IList<MatchInfo> MatchInfo { get; set; } 
 
-        /// <summary>Resource recipients.
-        ///
-        /// For Drive, they are grantees that the Drive file was shared with at the time of rule triggering. Valid
-        /// values include user emails, group emails, domains, or 'anyone' if the file was publicly accessible. If the
-        /// file was private the recipients list will be empty.
-        ///
-        /// For Gmail, they are emails of the users or groups that the Gmail message was sent to.</summary>
+        /// <summary>Resource recipients. For Drive, they are grantees that the Drive file was shared with at the time
+        /// of rule triggering. Valid values include user emails, group emails, domains, or 'anyone' if the file was
+        /// publicly accessible. If the file was private the recipients list will be empty. For Gmail, they are emails
+        /// of the users or groups that the Gmail message was sent to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recipients")]
         public virtual System.Collections.Generic.IList<string> Recipients { get; set; } 
 
@@ -2066,9 +2041,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2076,8 +2050,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200719 (2026)
+ *      <tr><th>API Rev<td>20200723 (2030)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -965,6 +965,11 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("includeItemsFromAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeItemsFromAllDrives { get; set; }
 
+            /// <summary>Specifies which additional view's permissions to include in the response. Only 'published' is
+            /// supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludePermissionsForView { get; set; }
+
             /// <summary>Whether to include changes outside the My Drive hierarchy in the result. When set to false,
             /// changes to files such as those in the Application Data folder or shared files which have not been added
             /// to My Drive are omitted from the result.</summary>
@@ -1070,6 +1075,15 @@ namespace Google.Apis.Drive.v2
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includePermissionsForView",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -1199,6 +1213,11 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("includeItemsFromAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeItemsFromAllDrives { get; set; }
 
+            /// <summary>Specifies which additional view's permissions to include in the response. Only 'published' is
+            /// supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludePermissionsForView { get; set; }
+
             /// <summary>Whether to include changes outside the My Drive hierarchy in the result. When set to false,
             /// changes to files such as those in the Application Data folder or shared files which have not been added
             /// to My Drive are omitted from the result.</summary>
@@ -1310,6 +1329,15 @@ namespace Google.Apis.Drive.v2
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includePermissionsForView",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -3005,6 +3033,11 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
+            /// <summary>Specifies which additional view's permissions to include in the response. Only 'published' is
+            /// supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludePermissionsForView { get; set; }
+
             /// <summary>Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("ocr", Google.Apis.Util.RequestParameterType.Query)]
@@ -3112,6 +3145,15 @@ namespace Google.Apis.Drive.v2
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includePermissionsForView",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -3562,6 +3604,11 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("acknowledgeAbuse", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AcknowledgeAbuse { get; set; }
 
+            /// <summary>Specifies which additional view's permissions to include in the response. Only 'published' is
+            /// supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludePermissionsForView { get; set; }
+
             /// <summary>This parameter is deprecated and has no function.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projection", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ProjectionEnum> Projection { get; set; }
@@ -3638,6 +3685,15 @@ namespace Google.Apis.Drive.v2
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includePermissionsForView",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -3772,6 +3828,11 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
+            /// <summary>Specifies which additional view's permissions to include in the response. Only 'published' is
+            /// supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludePermissionsForView { get; set; }
+
             /// <summary>Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("ocr", Google.Apis.Util.RequestParameterType.Query)]
@@ -3873,6 +3934,15 @@ namespace Google.Apis.Drive.v2
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includePermissionsForView",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -4043,6 +4113,11 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
+            /// <summary>Specifies which additional view's permissions to include in the response. Only 'published' is
+            /// supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludePermissionsForView { get; set; }
+
             /// <summary>Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("ocr", Google.Apis.Util.RequestParameterType.Query)]
@@ -4174,6 +4249,11 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("includeItemsFromAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeItemsFromAllDrives { get; set; }
 
+            /// <summary>Specifies which additional view's permissions to include in the response. Only 'published' is
+            /// supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludePermissionsForView { get; set; }
+
             /// <summary>Deprecated use includeItemsFromAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("includeTeamDriveItems", Google.Apis.Util.RequestParameterType.Query)]
@@ -4295,6 +4375,15 @@ namespace Google.Apis.Drive.v2
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includePermissionsForView",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -4433,6 +4522,11 @@ namespace Google.Apis.Drive.v2
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
+
+            /// <summary>Specifies which additional view's permissions to include in the response. Only 'published' is
+            /// supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludePermissionsForView { get; set; }
 
             /// <summary>Determines the behavior in which modifiedDate is updated. This overrides
             /// setModifiedDate.</summary>
@@ -4598,6 +4692,15 @@ namespace Google.Apis.Drive.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includePermissionsForView",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "modifiedDateBehavior", new Google.Apis.Discovery.Parameter
                     {
                         Name = "modifiedDateBehavior",
@@ -4741,6 +4844,11 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
+            /// <summary>Specifies which additional view's permissions to include in the response. Only 'published' is
+            /// supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludePermissionsForView { get; set; }
+
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
@@ -4781,6 +4889,15 @@ namespace Google.Apis.Drive.v2
                         Name = "fileId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includePermissionsForView",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -4837,6 +4954,11 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
+            /// <summary>Specifies which additional view's permissions to include in the response. Only 'published' is
+            /// supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludePermissionsForView { get; set; }
+
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
@@ -4877,6 +4999,15 @@ namespace Google.Apis.Drive.v2
                         Name = "fileId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includePermissionsForView",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -4927,6 +5058,11 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
+            /// <summary>Specifies which additional view's permissions to include in the response. Only 'published' is
+            /// supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludePermissionsForView { get; set; }
+
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
@@ -4967,6 +5103,15 @@ namespace Google.Apis.Drive.v2
                         Name = "fileId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includePermissionsForView",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -5034,6 +5179,11 @@ namespace Google.Apis.Drive.v2
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
+
+            /// <summary>Specifies which additional view's permissions to include in the response. Only 'published' is
+            /// supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludePermissionsForView { get; set; }
 
             /// <summary>Determines the behavior in which modifiedDate is updated. This overrides
             /// setModifiedDate.</summary>
@@ -5196,6 +5346,15 @@ namespace Google.Apis.Drive.v2
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includePermissionsForView",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -5413,6 +5572,11 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
+            /// <summary>Specifies which additional view's permissions to include in the response. Only 'published' is
+            /// supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludePermissionsForView { get; set; }
+
             /// <summary>Determines the behavior in which modifiedDate is updated. This overrides
             /// setModifiedDate.</summary>
             [Google.Apis.Util.RequestParameterAttribute("modifiedDateBehavior", Google.Apis.Util.RequestParameterType.Query)]
@@ -5569,6 +5733,11 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("acknowledgeAbuse", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AcknowledgeAbuse { get; set; }
 
+            /// <summary>Specifies which additional view's permissions to include in the response. Only 'published' is
+            /// supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludePermissionsForView { get; set; }
+
             /// <summary>This parameter is deprecated and has no function.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projection", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ProjectionEnum> Projection { get; set; }
@@ -5651,6 +5820,15 @@ namespace Google.Apis.Drive.v2
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includePermissionsForView",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -6626,6 +6804,11 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
+            /// <summary>Specifies which additional view's permissions to include in the response. Only 'published' is
+            /// supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludePermissionsForView { get; set; }
+
             /// <summary>The maximum number of permissions to return per page. When not set for files in a shared drive,
             /// at most 100 results will be returned. When not set for files that are not in a shared drive, the entire
             /// list will be returned.</summary>
@@ -6686,6 +6869,15 @@ namespace Google.Apis.Drive.v2
                         Name = "fileId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includePermissionsForView",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -11175,6 +11367,11 @@ namespace Google.Apis.Drive.v2.Data
         /// specified unless the permission type is anyone, in which case both id and value are ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
+
+        /// <summary>Indicates the view for this permission. Only populated for permissions that belong to a view.
+        /// published is the only supported value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("view")]
+        public virtual string View { get; set; } 
 
         /// <summary>Whether the link is required for this permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("withLink")]

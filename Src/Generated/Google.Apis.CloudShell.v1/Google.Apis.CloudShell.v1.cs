@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/shell/docs/'>Cloud Shell API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200721 (2028)
+ *      <tr><th>API Rev<td>20200803 (2041)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/shell/docs/'>
  *              https://cloud.google.com/shell/docs/</a>
@@ -341,9 +341,9 @@ namespace Google.Apis.CloudShell.v1
         }
 
 
-        /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort to
-        /// cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it returns
-        /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to check whether
+        /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+        /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
         /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
         /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
@@ -354,9 +354,9 @@ namespace Google.Apis.CloudShell.v1
             return new CancelRequest(service, body, name);
         }
 
-        /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort to
-        /// cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it returns
-        /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to check whether
+        /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+        /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
         /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
         /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
@@ -483,7 +483,7 @@ namespace Google.Apis.CloudShell.v1
 
         }
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
@@ -491,7 +491,7 @@ namespace Google.Apis.CloudShell.v1
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         public class GetRequest : CloudShellBaseServiceRequest<Google.Apis.CloudShell.v1.Data.Operation>
         {
@@ -546,13 +546,11 @@ namespace Google.Apis.CloudShell.v1
         }
 
         /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
-        /// method, it returns `UNIMPLEMENTED`.
-        ///
-        /// NOTE: the `name` binding allows API services to override the binding to use different resource name schemes,
-        /// such as `users/operations`. To override the binding, API services can add a binding such as
-        /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
-        /// name includes the operations collection id, however overriding users must ensure the name binding is the
-        /// parent resource, without the operations collection id.</summary>
+        /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to
+        /// use different resource name schemes, such as `users/operations`. To override the binding, API services can
+        /// add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For backwards
+        /// compatibility, the default name includes the operations collection id, however overriding users must ensure
+        /// the name binding is the parent resource, without the operations collection id.</summary>
         /// <param name="name">The name of the operation's parent resource.</param>
         public virtual ListRequest List(string name)
         {
@@ -560,13 +558,11 @@ namespace Google.Apis.CloudShell.v1
         }
 
         /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
-        /// method, it returns `UNIMPLEMENTED`.
-        ///
-        /// NOTE: the `name` binding allows API services to override the binding to use different resource name schemes,
-        /// such as `users/operations`. To override the binding, API services can add a binding such as
-        /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
-        /// name includes the operations collection id, however overriding users must ensure the name binding is the
-        /// parent resource, without the operations collection id.</summary>
+        /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to
+        /// use different resource name schemes, such as `users/operations`. To override the binding, API services can
+        /// add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For backwards
+        /// compatibility, the default name includes the operations collection id, however overriding users must ensure
+        /// the name binding is the parent resource, without the operations collection id.</summary>
         public class ListRequest : CloudShellBaseServiceRequest<Google.Apis.CloudShell.v1.Data.ListOperationsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -671,82 +667,11 @@ namespace Google.Apis.CloudShell.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A Cloud Shell environment, which is defined as the combination of a Docker image specifying what is
-    /// installed on the environment and a home directory containing the user's data that will remain across sessions.
-    /// Each user has a single environment with the ID "default".</summary>
-    public class Environment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Full path to the Docker image used to run this environment, e.g. "gcr.io/dev-con/cloud-
-        /// devshell:latest".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dockerImage")]
-        public virtual string DockerImage { get; set; } 
-
-        /// <summary>Output only. The environment's identifier, unique among the user's environments.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
-
-        /// <summary>Output only. Full name of this resource, in the format
-        /// `users/{owner_email}/environments/{environment_id}`. `{owner_email}` is the email address of the user to
-        /// whom this environment belongs, and `{environment_id}` is the identifier of this environment. For example,
-        /// `users/someone@example.com/environments/default`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>Output only. Public keys associated with the environment. Clients can connect to this environment
-        /// via SSH only if they possess a private key corresponding to at least one of these public keys. Keys can be
-        /// added to or removed from the environment using the CreatePublicKey and DeletePublicKey methods.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("publicKeys")]
-        public virtual System.Collections.Generic.IList<PublicKey> PublicKeys { get; set; } 
-
-        /// <summary>Indicates the size of the backing VM running the environment.  If set to something other than
-        /// DEFAULT, it will be reverted to the default VM size after vm_size_expire_time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("size")]
-        public virtual string Size { get; set; } 
-
-        /// <summary>Output only. Host to which clients can connect to initiate SSH sessions with the
-        /// environment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sshHost")]
-        public virtual string SshHost { get; set; } 
-
-        /// <summary>Output only. Port to which clients can connect to initiate SSH sessions with the
-        /// environment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sshPort")]
-        public virtual System.Nullable<int> SshPort { get; set; } 
-
-        /// <summary>Output only. Username that clients should use when initiating SSH sessions with the
-        /// environment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sshUsername")]
-        public virtual string SshUsername { get; set; } 
-
-        /// <summary>Output only. Current execution state of this environment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
-
-        /// <summary>Output only. The time when the Environment will expire back to the default VM size.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("vmSizeExpireTime")]
-        public virtual object VmSizeExpireTime { get; set; } 
-
-        /// <summary>Output only. Host to which clients can connect to initiate HTTPS or WSS connections with the
-        /// environment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("webHost")]
-        public virtual string WebHost { get; set; } 
-
-        /// <summary>Output only. Ports to which clients can connect to initiate HTTPS or WSS connections with the
-        /// environment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("webPorts")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> WebPorts { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -778,9 +703,9 @@ namespace Google.Apis.CloudShell.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -790,11 +715,11 @@ namespace Google.Apis.CloudShell.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -802,57 +727,10 @@ namespace Google.Apis.CloudShell.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A public SSH key, corresponding to a private SSH key held by the client.</summary>
-    public class PublicKey : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Format of this key's content.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
-
-        /// <summary>Required. Content of this key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
-
-        /// <summary>Output only. Full name of this resource, in the format
-        /// `users/{owner_email}/environments/{environment_id}/publicKeys/{key_id}`. `{owner_email}` is the email
-        /// address of the user to whom the key belongs. `{environment_id}` is the identifier of the environment to
-        /// which the key grants access. `{key_id}` is the unique identifier of the key. For example,
-        /// `users/someone@example.com/environments/default/publicKeys/myKey`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Message included in the metadata field of operations returned from StartEnvironment.</summary>
-    public class StartEnvironmentMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Current state of the environment being started.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Message included in the response field of operations returned from StartEnvironment once the operation
-    /// is complete.</summary>
-    public class StartEnvironmentResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Environment that was started.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
-        public virtual Environment Environment { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -860,8 +738,8 @@ namespace Google.Apis.CloudShell.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

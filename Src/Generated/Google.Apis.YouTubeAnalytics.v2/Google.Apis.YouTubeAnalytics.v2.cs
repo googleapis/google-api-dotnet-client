@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/analytics'>YouTube Analytics API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200729 (2036)
+ *      <tr><th>API Rev<td>20200804 (2042)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/analytics'>
  *              https://developers.google.com/youtube/analytics</a>
@@ -407,7 +407,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
 
             /// <summary>This parameter can only be used in a properly authorized request. **Note:** This parameter is
             /// intended exclusively for YouTube content partners that own and manage many different YouTube channels.
-            ///
             /// The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a
             /// YouTube user who is acting on behalf of the content owner specified in the parameter value. It allows
             /// content owners to authenticate once and get access to all their video and channel data, without having
@@ -483,7 +482,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
 
             /// <summary>This parameter can only be used in a properly authorized request. **Note:** This parameter is
             /// intended exclusively for YouTube content partners that own and manage many different YouTube channels.
-            ///
             /// The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a
             /// YouTube user who is acting on behalf of the content owner specified in the parameter value. It allows
             /// content owners to authenticate once and get access to all their video and channel data, without having
@@ -559,7 +557,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
 
             /// <summary>This parameter can only be used in a properly authorized request. **Note:** This parameter is
             /// intended exclusively for YouTube content partners that own and manage many different YouTube channels.
-            ///
             /// The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a
             /// YouTube user who is acting on behalf of the content owner specified in the parameter value. It allows
             /// content owners to authenticate once and get access to all their video and channel data, without having
@@ -654,7 +651,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
 
             /// <summary>This parameter can only be used in a properly authorized request. **Note:** This parameter is
             /// intended exclusively for YouTube content partners that own and manage many different YouTube channels.
-            ///
             /// The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a
             /// YouTube user who is acting on behalf of the content owner specified in the parameter value. It allows
             /// content owners to authenticate once and get access to all their video and channel data, without having
@@ -730,7 +726,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
 
             /// <summary>This parameter can only be used in a properly authorized request. **Note:** This parameter is
             /// intended exclusively for YouTube content partners that own and manage many different YouTube channels.
-            ///
             /// The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a
             /// YouTube user who is acting on behalf of the content owner specified in the parameter value. It allows
             /// content owners to authenticate once and get access to all their video and channel data, without having
@@ -805,10 +800,8 @@ namespace Google.Apis.YouTubeAnalytics.v2
 
             /// <summary>The `id` parameter specifies a comma-separated list of the YouTube group ID(s) for the
             /// resource(s) that are being retrieved. Each group must be owned by the authenticated user. In a `group`
-            /// resource, the `id` property specifies the group's YouTube group ID.
-            ///
-            /// Note that if you do not specify a value for the `id` parameter, then you must set the `mine` parameter
-            /// to `true`.</summary>
+            /// resource, the `id` property specifies the group's YouTube group ID. Note that if you do not specify a
+            /// value for the `id` parameter, then you must set the `mine` parameter to `true`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Id { get; set; }
 
@@ -819,7 +812,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
 
             /// <summary>This parameter can only be used in a properly authorized request. **Note:** This parameter is
             /// intended exclusively for YouTube content partners that own and manage many different YouTube channels.
-            ///
             /// The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a
             /// YouTube user who is acting on behalf of the content owner specified in the parameter value. It allows
             /// content owners to authenticate once and get access to all their video and channel data, without having
@@ -919,7 +911,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
 
             /// <summary>This parameter can only be used in a properly authorized request. **Note:** This parameter is
             /// intended exclusively for YouTube content partners that own and manage many different YouTube channels.
-            ///
             /// The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a
             /// YouTube user who is acting on behalf of the content owner specified in the parameter value. It allows
             /// content owners to authenticate once and get access to all their video and channel data, without having
@@ -1026,7 +1017,7 @@ namespace Google.Apis.YouTubeAnalytics.v2
 
             /// <summary>A list of filters that should be applied when retrieving YouTube Analytics data. The [Available
             /// Reports](/youtube/analytics/v2/available_reports) document identifies the dimensions that can be used to
-            /// filter each report, and the [Dimensions](/youtube/analytics/v2/dimsmets/dims)  document defines those
+            /// filter each report, and the [Dimensions](/youtube/analytics/v2/dimsmets/dims) document defines those
             /// dimensions. If a request uses multiple filters, join them together with a semicolon (`;`), and the
             /// returned result table will satisfy both filters. For example, a filters parameter value of
             /// `video==dMH0bHeiRNg;country==IT` restricts the result set to include data for the given video in
@@ -1035,12 +1026,10 @@ namespace Google.Apis.YouTubeAnalytics.v2
             public virtual string Filters { get; set; }
 
             /// <summary>Identifies the YouTube channel or content owner for which you are retrieving YouTube Analytics
-            /// data.
-            ///
-            /// - To request data for a YouTube user, set the `ids` parameter value to `channel==CHANNEL_ID`, where
-            /// `CHANNEL_ID` specifies the unique YouTube channel ID. - To request data for a YouTube CMS content owner,
-            /// set the `ids` parameter value to `contentOwner==OWNER_NAME`, where `OWNER_NAME` is the CMS name of the
-            /// content owner. required: true, pattern: [a-zA-Z]+==[a-zA-Z0-9_+-]+</summary>
+            /// data. - To request data for a YouTube user, set the `ids` parameter value to `channel==CHANNEL_ID`,
+            /// where `CHANNEL_ID` specifies the unique YouTube channel ID. - To request data for a YouTube CMS content
+            /// owner, set the `ids` parameter value to `contentOwner==OWNER_NAME`, where `OWNER_NAME` is the CMS name
+            /// of the content owner. required: true, pattern: [a-zA-Z]+==[a-zA-Z0-9_+-]+</summary>
             [Google.Apis.Util.RequestParameterAttribute("ids", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Ids { get; set; }
 
@@ -1054,8 +1043,8 @@ namespace Google.Apis.YouTubeAnalytics.v2
             public virtual System.Nullable<int> MaxResults { get; set; }
 
             /// <summary>A comma-separated list of YouTube Analytics metrics, such as `views` or `likes,dislikes`. See
-            /// the [Available Reports](/youtube/analytics/v2/available_reports)  document for a list of the reports
-            /// that you can retrieve and the metrics available in each report, and see the
+            /// the [Available Reports](/youtube/analytics/v2/available_reports) document for a list of the reports that
+            /// you can retrieve and the metrics available in each report, and see the
             /// [Metrics](/youtube/analytics/v2/dimsmets/mets) document for definitions of those metrics. required:
             /// true, pattern: [0-9a-zA-Z,]+</summary>
             [Google.Apis.Util.RequestParameterAttribute("metrics", Google.Apis.Util.RequestParameterType.Query)]
@@ -1224,7 +1213,7 @@ namespace Google.Apis.YouTubeAnalytics.v2.Data
     public class ErrorProto : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Error arguments, to be used when building user-friendly error messages given the error domain and
-        /// code.  Different error codes require different arguments.</summary>
+        /// code. Different error codes require different arguments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("argument")]
         public virtual System.Collections.Generic.IList<string> Argument { get; set; } 
 
@@ -1242,23 +1231,18 @@ namespace Google.Apis.YouTubeAnalytics.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; } 
 
-        /// <summary>A short explanation for the error, which can be shared outside Google.
-        ///
-        /// Please set domain, code and arguments whenever possible instead of this error message so that external APIs
-        /// can build safe error messages themselves.
-        ///
-        /// External messages built in a RoSy interface will most likely refer to information and concepts that are not
-        /// available externally and should not be exposed. It is safer if external APIs can understand the errors and
-        /// decide what the error message should look like.</summary>
+        /// <summary>A short explanation for the error, which can be shared outside Google. Please set domain, code and
+        /// arguments whenever possible instead of this error message so that external APIs can build safe error
+        /// messages themselves. External messages built in a RoSy interface will most likely refer to information and
+        /// concepts that are not available externally and should not be exposed. It is safer if external APIs can
+        /// understand the errors and decide what the error message should look like.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalErrorMessage")]
         public virtual string ExternalErrorMessage { get; set; } 
 
-        /// <summary>Location of the error, as specified by the location type.
-        ///
-        /// If location_type is PATH, this should be a path to a field that's relative to the request, using FieldPath
-        /// notation (net/proto2/util/public/field_path.h).
-        ///
-        /// Examples: authenticated_user.gaia_id resource.address[2].country</summary>
+        /// <summary>Location of the error, as specified by the location type. If location_type is PATH, this should be
+        /// a path to a field that's relative to the request, using FieldPath notation
+        /// (net/proto2/util/public/field_path.h). Examples: authenticated_user.gaia_id
+        /// resource.address[2].country</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
@@ -1269,9 +1253,8 @@ namespace Google.Apis.YouTubeAnalytics.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request Error information.
-    ///
-    /// The presence of an error field signals that the operation has failed.</summary>
+    /// <summary>Request Error information. The presence of an error field signals that the operation has
+    /// failed.</summary>
     public class Errors : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Global error code. Deprecated and ignored. Set custom error codes in ErrorProto.domain and
@@ -1330,10 +1313,8 @@ namespace Google.Apis.YouTubeAnalytics.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("itemCount")]
         public virtual System.Nullable<ulong> ItemCount { get; set; } 
 
-        /// <summary>The type of resources that the group contains.
-        ///
-        /// Valid values for this property are: * `youtube#channel` * `youtube#playlist` * `youtube#video` *
-        /// `youtubePartner#asset`</summary>
+        /// <summary>The type of resources that the group contains. Valid values for this property are: *
+        /// `youtube#channel` * `youtube#playlist` * `youtube#video` * `youtubePartner#asset`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemType")]
         public virtual string ItemType { get; set; } 
 
@@ -1382,10 +1363,8 @@ namespace Google.Apis.YouTubeAnalytics.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Identifies the type of resource being added to the group.
-        ///
-        /// Valid values for this property are: * `youtube#channel` * `youtube#playlist` * `youtube#video` *
-        /// `youtubePartner#asset`</summary>
+        /// <summary>Identifies the type of resource being added to the group. Valid values for this property are: *
+        /// `youtube#channel` * `youtube#playlist` * `youtube#video` * `youtubePartner#asset`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -1482,11 +1461,9 @@ namespace Google.Apis.YouTubeAnalytics.v2.Data
 
         /// <summary>The list contains all rows of the result table. Each item in the list is an array that contains
         /// comma-delimited data corresponding to a single row of data. The order of the comma-delimited data fields
-        /// will match the order of the columns listed in the `columnHeaders` field.
-        ///
-        /// If no data is available for the given query, the `rows` element will be omitted from the response.
-        ///
-        /// The response for a query with the `day` dimension will not contain rows for the most recent days.</summary>
+        /// will match the order of the columns listed in the `columnHeaders` field. If no data is available for the
+        /// given query, the `rows` element will be omitted from the response. The response for a query with the `day`
+        /// dimension will not contain rows for the most recent days.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<object>> Rows { get; set; } 
 

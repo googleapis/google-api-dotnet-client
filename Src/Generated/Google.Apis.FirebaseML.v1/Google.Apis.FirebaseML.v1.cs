@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com'>Firebase ML API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200730 (2037)
+ *      <tr><th>API Rev<td>20200804 (2042)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com'>
  *              https://firebase.google.com</a>
@@ -341,9 +341,9 @@ namespace Google.Apis.FirebaseML.v1
         }
 
 
-        /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort to
-        /// cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it returns
-        /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to check whether
+        /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+        /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
         /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
         /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
@@ -354,9 +354,9 @@ namespace Google.Apis.FirebaseML.v1
             return new CancelRequest(service, body, name);
         }
 
-        /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort to
-        /// cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it returns
-        /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to check whether
+        /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+        /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
         /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
         /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
@@ -484,13 +484,11 @@ namespace Google.Apis.FirebaseML.v1
         }
 
         /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
-        /// method, it returns `UNIMPLEMENTED`.
-        ///
-        /// NOTE: the `name` binding allows API services to override the binding to use different resource name schemes,
-        /// such as `users/operations`. To override the binding, API services can add a binding such as
-        /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
-        /// name includes the operations collection id, however overriding users must ensure the name binding is the
-        /// parent resource, without the operations collection id.</summary>
+        /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to
+        /// use different resource name schemes, such as `users/operations`. To override the binding, API services can
+        /// add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For backwards
+        /// compatibility, the default name includes the operations collection id, however overriding users must ensure
+        /// the name binding is the parent resource, without the operations collection id.</summary>
         /// <param name="name">The name of the operation's parent resource.</param>
         public virtual ListRequest List(string name)
         {
@@ -498,13 +496,11 @@ namespace Google.Apis.FirebaseML.v1
         }
 
         /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
-        /// method, it returns `UNIMPLEMENTED`.
-        ///
-        /// NOTE: the `name` binding allows API services to override the binding to use different resource name schemes,
-        /// such as `users/operations`. To override the binding, API services can add a binding such as
-        /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
-        /// name includes the operations collection id, however overriding users must ensure the name binding is the
-        /// parent resource, without the operations collection id.</summary>
+        /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to
+        /// use different resource name schemes, such as `users/operations`. To override the binding, API services can
+        /// add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For backwards
+        /// compatibility, the default name includes the operations collection id, however overriding users must ensure
+        /// the name binding is the parent resource, without the operations collection id.</summary>
         public class ListRequest : FirebaseMLBaseServiceRequest<Google.Apis.FirebaseML.v1.Data.ListOperationsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -609,11 +605,9 @@ namespace Google.Apis.FirebaseML.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -662,9 +656,9 @@ namespace Google.Apis.FirebaseML.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -674,11 +668,11 @@ namespace Google.Apis.FirebaseML.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -688,9 +682,8 @@ namespace Google.Apis.FirebaseML.v1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -698,8 +691,8 @@ namespace Google.Apis.FirebaseML.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>Storage Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200724 (2031)
+ *      <tr><th>API Rev<td>20200730 (2037)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>
  *              https://cloud.google.com/storage-transfer/docs</a>
@@ -1437,12 +1437,12 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Conditions that determine which objects will be transferred. Applies only to S3 and Cloud Storage
-    /// objects.
+    /// <summary>Conditions that determine which objects will be transferred. Applies only to Cloud Data Sources such as
+    /// S3, Azure, and Cloud Storage.
     ///
     /// The "last modification time" refers to the time of the last change to the object's content or metadata —
-    /// specifically, this is the `updated` property of Cloud Storage objects and the `LastModified` field of S3
-    /// objects.</summary>
+    /// specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects,
+    /// and the `Last-Modified` header of Azure blobs.</summary>
     public class ObjectConditions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>`exclude_prefixes` must follow the requirements described for include_prefixes.
@@ -1851,8 +1851,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>TransferOptions uses three boolean parameters to define the actions to be performed on objects in a
-    /// transfer.</summary>
+    /// <summary>TransferOptions define the actions to be performed on objects in a transfer.</summary>
     public class TransferOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether objects should be deleted from the source after they are transferred to the sink.

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/abusive-experience-report/'>Abusive Experience Report API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200720 (2027)
+ *      <tr><th>API Rev<td>20200803 (2041)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/abusive-experience-report/'>
  *              https://developers.google.com/abusive-experience-report/</a>
@@ -338,7 +338,6 @@ namespace Google.Apis.AbusiveExperienceReport.v1
 
         /// <summary>Gets a site's Abusive Experience Report summary.</summary>
         /// <param name="name">Required. The name of the site whose summary to get, e.g. `sites/http%3A%2F%2Fwww.google.com%2F`.
-        ///
         /// Format: `sites/{site}`</param>
         public virtual GetRequest Get(string name)
         {
@@ -358,9 +357,7 @@ namespace Google.Apis.AbusiveExperienceReport.v1
 
 
             /// <summary>Required. The name of the site whose summary to get, e.g.
-            /// `sites/http%3A%2F%2Fwww.google.com%2F`.
-            ///
-            /// Format: `sites/{site}`</summary>
+            /// `sites/http%3A%2F%2Fwww.google.com%2F`. Format: `sites/{site}`</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -476,9 +473,7 @@ namespace Google.Apis.AbusiveExperienceReport.v1.Data
         public virtual string AbusiveStatus { get; set; } 
 
         /// <summary>The time at which [enforcement](https://support.google.com/webtools/answer/7538608) against the
-        /// site began or will begin.
-        ///
-        /// Not set when the filter_status is OFF.</summary>
+        /// site began or will begin. Not set when the filter_status is OFF.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforcementTime")]
         public virtual object EnforcementTime { get; set; } 
 
@@ -490,11 +485,8 @@ namespace Google.Apis.AbusiveExperienceReport.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastChangeTime")]
         public virtual object LastChangeTime { get; set; } 
 
-        /// <summary>A link to the full Abusive Experience Report for the site.
-        ///
-        /// Not set in ViolatingSitesResponse.
-        ///
-        /// Note that you must complete the [Search Console verification
+        /// <summary>A link to the full Abusive Experience Report for the site. Not set in ViolatingSitesResponse. Note
+        /// that you must complete the [Search Console verification
         /// process](https://support.google.com/webmasters/answer/9008080) for the site before you can access the full
         /// report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportUrl")]

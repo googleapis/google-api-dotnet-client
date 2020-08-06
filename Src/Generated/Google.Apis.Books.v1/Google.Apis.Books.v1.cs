@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://code.google.com/apis/books/docs/v1/getting_started.html'>Books API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200728 (2035)
+ *      <tr><th>API Rev<td>20200805 (2043)
  *      <tr><th>API Docs
  *          <td><a href='https://code.google.com/apis/books/docs/v1/getting_started.html'>
  *              https://code.google.com/apis/books/docs/v1/getting_started.html</a>

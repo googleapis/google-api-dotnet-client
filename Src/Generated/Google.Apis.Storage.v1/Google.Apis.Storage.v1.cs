@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200717 (2024)
+ *      <tr><th>API Rev<td>20200727 (2034)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -8586,24 +8586,10 @@ namespace Google.Apis.Storage.v1.Data
                     [Newtonsoft.Json.JsonPropertyAttribute("createdBefore")]
                     public virtual string CreatedBefore { get; set; } 
 
-                    /// <summary>A timestamp in RFC 3339 format. This condition is satisfied when the custom time on an
-                    /// object is before this timestamp.</summary>
+                    /// <summary>A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This
+                    /// condition is satisfied when the custom time on an object is before this date in UTC.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("customTimeBefore")]
-                    public virtual string CustomTimeBeforeRaw { get; set; }
-
-                    /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CustomTimeBeforeRaw"/>.</summary>
-                    [Newtonsoft.Json.JsonIgnore]
-                    public virtual System.Nullable<System.DateTime> CustomTimeBefore
-                    {
-                        get
-                        {
-                            return Google.Apis.Util.Utilities.GetDateTimeFromString(CustomTimeBeforeRaw);
-                        }
-                        set
-                        {
-                            CustomTimeBeforeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-                        }
-                    }
+                    public virtual string CustomTimeBefore { get; set; } 
 
                     /// <summary>Number of days elapsed since the user-specified timestamp set on an object. The
                     /// condition is satisfied if the days elapsed is at least this number. If no custom timestamp is
@@ -8638,25 +8624,11 @@ namespace Google.Apis.Storage.v1.Data
                     [Newtonsoft.Json.JsonPropertyAttribute("matchesStorageClass")]
                     public virtual System.Collections.Generic.IList<string> MatchesStorageClass { get; set; } 
 
-                    /// <summary>A timestamp in RFC 3339 format. This condition is satisfied when the noncurrent time on
-                    /// an object is before this timestamp. This condition is relevant only for versioned
-                    /// objects.</summary>
+                    /// <summary>A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This
+                    /// condition is satisfied when the noncurrent time on an object is before this date in UTC. This
+                    /// condition is relevant only for versioned objects.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("noncurrentTimeBefore")]
-                    public virtual string NoncurrentTimeBeforeRaw { get; set; }
-
-                    /// <summary><seealso cref="System.DateTime"/> representation of <see cref="NoncurrentTimeBeforeRaw"/>.</summary>
-                    [Newtonsoft.Json.JsonIgnore]
-                    public virtual System.Nullable<System.DateTime> NoncurrentTimeBefore
-                    {
-                        get
-                        {
-                            return Google.Apis.Util.Utilities.GetDateTimeFromString(NoncurrentTimeBeforeRaw);
-                        }
-                        set
-                        {
-                            NoncurrentTimeBeforeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-                        }
-                    }
+                    public virtual string NoncurrentTimeBefore { get; set; } 
 
                     /// <summary>Relevant only for versioned objects. If the value is N, this condition is satisfied
                     /// when there are at least N versions (including the live version) newer than this version of the
