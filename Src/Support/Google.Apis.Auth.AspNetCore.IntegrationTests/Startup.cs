@@ -27,7 +27,16 @@ namespace Google.Apis.Auth.AspNetCore.IntegrationTests
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            services.AddAuthentication(o =>
+            {
+                // This is for challenges to go directly to the Google OpenID Handler, so there's no
+                // need to add an AccountController that emits challenges for Login.
+                o.DefaultChallengeScheme = GoogleOpenIdConnectDefaults.AuthenticationScheme;
+                // This is for forbids to go directly to the Google OpenID Handler, which checks if
+                // extra scopes are required and does automatic incremental auth.
+                o.DefaultForbidScheme = GoogleOpenIdConnectDefaults.AuthenticationScheme;
+                o.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            })
                 .AddCookie()
                 .AddGoogleOpenIdConnect(options =>
                 {
