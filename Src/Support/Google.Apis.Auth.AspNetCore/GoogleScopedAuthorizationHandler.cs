@@ -17,10 +17,7 @@ limitations under the License.
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -32,37 +29,35 @@ namespace Google.Apis.Auth.AspNetCore
 {
     internal class GoogleScopedAuthorizationHandler : AuthorizationHandler<GoogleScopedRequirement>
     {
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public GoogleScopedAuthorizationHandler(IHttpContextAccessor httpContextAccessor) =>
+            _httpContextAccessor = httpContextAccessor;
+
         protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context, GoogleScopedRequirement requirement)
         {
-            // Check this is an MVC application, and retrieve the MVC filter context.
-            var resource = context.Resource as AuthorizationFilterContext;
-            if (resource == null)
-            {
-                // Not an MVC application, nothing we can do.
-                return;
-            }
-            var httpContext = resource.HttpContext;
+            var httpContext = _httpContextAccessor.HttpContext;
+
             // Ask the auth storage provider, usually cookies, for the users signed-in data; if the user is signed in.
             AuthenticateResult auth = await httpContext.AuthenticateAsync(requirement.Scheme);
             var authed = auth.Succeeded && !auth.None;
-            // Mark this requirement as succeeded; this is true whether we need to auth or not.
-            context.Succeed(requirement);
+            
             // Determine if any scopes still require authorization.
             var existingScope = authed && auth.Properties.Items.TryGetValue(Consts.ScopeName, out var existingScope0) ? existingScope0 : "";
             var existingScopes = existingScope.Split(Consts.ScopeSplitter, StringSplitOptions.RemoveEmptyEntries);
             var additionalScopes = requirement.Scopes.Except(existingScopes).ToList();
-            if (additionalScopes.Any() || !authed)
+            if (!authed || additionalScopes.Any())
             {
-                resource.Result = CreateChallenge(resource.HttpContext, additionalScopes, requirement.Scheme);
+                // Add the missing scopes to the HttpContext.
+                // Since we don't succeed here, authorization will fail with Forbidden. On Forbid,
+                // we used these to determine whether we need to do incrementatl auth and Challenge
+                // or really Forbid.
+                httpContext.Items[Consts.HttpContextAdditionalScopeName] = string.Join(" ", additionalScopes);
             }
-        }
-
-        internal static IActionResult CreateChallenge(HttpContext httpContext, IEnumerable<string> additionalScopes, string scheme)
-        {
-            // Store the additional scopes required in the HttpContext.
-            httpContext.Items[Consts.HttpContextAdditionalScopeName] = string.Join(" ", additionalScopes);
-            // Return challenge, to [re]authenticate.
-            return new ChallengeResult(scheme);
+            else
+            {
+                context.Succeed(requirement);
+            }
         }
     }
 }
