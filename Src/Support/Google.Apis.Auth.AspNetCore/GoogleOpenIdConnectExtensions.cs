@@ -18,17 +18,14 @@ limitations under the License.
 using Google.Apis.Auth.AspNetCore3;
 #else
 using Google.Apis.Auth.AspNetCore;
+using Microsoft.AspNetCore.Http;
 #endif
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.OAuth.Claims;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Options;
 using System;
-using System.Linq;
-using System.Security.Claims;
 
 // Microsoft recommend that all service Add methods go in this namespace.
 // See https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection
@@ -85,10 +82,16 @@ namespace Microsoft.Extensions.DependencyInjection
             builder.Services.AddTransient<IAuthorizationPolicyProvider, GoogleScopedPolicyProvider>();
             builder.Services.AddScoped<IAuthorizationHandler, GoogleScopedAuthorizationHandler>();
             // Required to provide access to HttpContext in GoogleAuthProvider.
+#if ASPNETCORE3
+            builder.Services.AddHttpContextAccessor();
+#else
             builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+#endif
             // Service to provide user access to the Google auth information.
             builder.Services.AddSingleton<IGoogleAuthProvider, GoogleAuthProvider>();
-            return builder.AddOpenIdConnect(authenticationScheme, displayName, options =>
+
+            builder.Services.TryAddEnumerable(ServiceDescriptor.Singleton<IPostConfigureOptions<OpenIdConnectOptions>, OpenIdConnectPostConfigureOptions>());
+            return builder.AddRemoteScheme<OpenIdConnectOptions, GoogleOpenIdConnectHandler>(authenticationScheme, displayName, options =>
             {
                 // Google's OpenID authority URL.
                 options.Authority = "https://accounts.google.com";
@@ -113,59 +116,10 @@ namespace Microsoft.Extensions.DependencyInjection
                 var userEvents = options.Events;
                 options.Events = new OpenIdConnectEvents
                 {
-                    OnRedirectToIdentityProvider = async ctx =>
-                    {
-                        // Force asking for user consent. This is required to get a refresh-token.
-                        ctx.ProtocolMessage.Prompt = "consent";
-                        // Offline access required to get a refresh-token.
-                        ctx.ProtocolMessage.SetParameter("access_type", "offline");
-                        // Determine if user is already authenticated.
-                        var auth = await ctx.HttpContext.AuthenticateAsync(authenticationScheme);
-                        var authed = auth.Succeeded && !auth.None;
-                        // Handle scopes, with incremental auth if required.
-                        if (ctx.HttpContext.Items.TryGetValue(Consts.HttpContextAdditionalScopeName, out var scope0) &&
-                            scope0 is string incrementalScope)
-                        {
-                            if (authed)
-                            {
-                                // If user is already authenticated, use incremental auth.
-                                ctx.ProtocolMessage.SetParameter("include_granted_scopes", "true");
-                                ctx.ProtocolMessage.Scope = incrementalScope;
-                                Claim googleId = ctx.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
-                                if (googleId != null)
-                                {
-                                    // Use the Google ID; "sub" in the JWT; to aid login.
-                                    ctx.ProtocolMessage.LoginHint = googleId.Value;
-                                }
-                            }
-                            else
-                            {
-                                // If user is not authenticated, use standard (non-incremental) auth.
-                                ctx.ProtocolMessage.Scope += $" {incrementalScope}";
-                            }
-                        }
-                        if (authed && auth.Properties.Items.TryGetValue(Consts.ScopeName, out var existingScope))
-                        {
-                            // Pass-through the scopes that are already authorized.
-                            // This is required because all properties are wiped and re-created from this
-                            // auth process. To keep a property requires setting it here;
-                            // scopes are the only property we need to keep.
-                            ctx.Properties.Items[Consts.ScopeName] = existingScope;
-                        }
-                        // Call user event; called last to allow user to overwrite any values written above.
-                        await userEvents.OnRedirectToIdentityProvider(ctx);
-                    },
+                    OnRedirectToIdentityProvider = async ctx => 
+                        await GoogleOpenIdConnectHandler.OnRedirectToIdentityProviderHandler(ctx, authenticationScheme, userEvents.OnRedirectToIdentityProvider),
                     OnTokenResponseReceived = async ctx =>
-                    {
-                        // Call user event; called first to allow user to alter values before they are read below.
-                        await userEvents.OnTokenResponseReceived(ctx);
-                        // Merge existing scopes and newly acquired scopes.
-                        var scope = ctx.Properties.Items.TryGetValue(Consts.ScopeName, out var scope0) ? scope0 : "";
-                        var scopes = scope.Split(Consts.ScopeSplitter, StringSplitOptions.RemoveEmptyEntries);
-                        var newScopes = (ctx.ProtocolMessage.Scope ?? "").Split(Consts.ScopeSplitter, StringSplitOptions.RemoveEmptyEntries);
-                        var mergedScopes = scopes.Concat(newScopes).Distinct();
-                        ctx.Properties.Items[Consts.ScopeName] = string.Join(" ", mergedScopes);
-                    },
+                        await GoogleOpenIdConnectHandler.OnTokenResponseReceivedHandler(ctx, userEvents.OnTokenResponseReceived),
                     // Forward all other events.
                     OnAuthenticationFailed = userEvents.OnAuthenticationFailed,
                     OnAuthorizationCodeReceived = userEvents.OnAuthorizationCodeReceived,

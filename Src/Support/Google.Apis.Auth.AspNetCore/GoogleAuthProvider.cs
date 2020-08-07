@@ -142,9 +142,10 @@ namespace Google.Apis.Auth.AspNetCore
             var additionalScopes = scopes.Except(currentScopes).ToList();
             if (additionalScopes.Any())
             {
-                // Auth required to authorize extra scopes.
-                return GoogleScopedAuthorizationHandler.CreateChallenge(
-                    _httpContextAccessor.HttpContext, additionalScopes, _scheme);
+                // Store the additional scopes required in the HttpContext.
+                _httpContextAccessor.HttpContext.Items[Consts.HttpContextAdditionalScopeName] = string.Join(" ", additionalScopes);
+                // Return forbid, we check on forbid for the additional scopes and challenge if needed.
+                return new ForbidResult(_scheme);
             }
             else
             {
