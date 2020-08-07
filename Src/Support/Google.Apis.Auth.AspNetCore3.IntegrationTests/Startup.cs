@@ -17,19 +17,36 @@ limitations under the License.
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 
 namespace Google.Apis.Auth.AspNetCore3.IntegrationTests
 {
-    // TODO: Make this more ASP.NET Core 3 idiomatic; rather than the current conversion from ASP.NET Core 2.
-
     public class Startup
     {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            services.AddControllersWithViews();
+            services.AddRazorPages();
+            services.AddAuthentication(o =>
+            {
+                // This is for challenges to go directly to the Google OpenID Handler, so there's no
+                // need to add an AccountController that emits challenges for Login.
+                o.DefaultChallengeScheme = GoogleOpenIdConnectDefaults.AuthenticationScheme;
+                // This is for forbids to go directly to the Google OpenID Handler, which checks if
+                // extra scopes are required and does automatic incremental auth.
+                o.DefaultForbidScheme = GoogleOpenIdConnectDefaults.AuthenticationScheme;
+                o.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            })
                 .AddCookie()
                 .AddGoogleOpenIdConnect(options =>
                 {
@@ -37,20 +54,27 @@ namespace Google.Apis.Auth.AspNetCore3.IntegrationTests
                     options.ClientId = clientInfo.ClientId;
                     options.ClientSecret = clientInfo.ClientSecret;
                 });
-            services.AddMvc(o => o.EnableEndpointRouting = false);
         }
 
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseDeveloperExceptionPage();
+
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
             app.UseAuthentication();
-            app.UseMvc(routes => routes.MapRoute("home", "{controller=Home}/{action=Index}"));
+            app.UseAuthorization();
 
-            if (env.EnvironmentName.ToLowerInvariant() == "development")
+            app.UseEndpoints(endpoints =>
             {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.Run(async (context) => await context.Response.WriteAsync("Fallback, probably shouldn't get here."));
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
+            });
         }
     }
 }

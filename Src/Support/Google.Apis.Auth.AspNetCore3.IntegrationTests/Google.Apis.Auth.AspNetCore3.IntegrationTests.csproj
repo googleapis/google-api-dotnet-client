@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" />
     <ProjectReference Include="..\Google.Apis.Auth.AspNetCore3\Google.Apis.Auth.AspNetCore3.csproj" />
   </ItemGroup>
 

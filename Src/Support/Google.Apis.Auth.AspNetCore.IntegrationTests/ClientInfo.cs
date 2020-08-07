@@ -17,7 +17,6 @@ limitations under the License.
 using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
-using System.Text;
 
 namespace Google.Apis.Auth.AspNetCore.IntegrationTests
 {
@@ -29,7 +28,7 @@ namespace Google.Apis.Auth.AspNetCore.IntegrationTests
     {
         public static ClientInfo Load()
         {
-            const string ClientSecretFilenameVariable = "TEST_CLIENT_SECRET_FILENAME";
+            const string ClientSecretFilenameVariable = "TEST_WEB_CLIENT_SECRET_FILENAME";
             string clientSecretFilename = Environment.GetEnvironmentVariable(ClientSecretFilenameVariable);
             if (string.IsNullOrEmpty(clientSecretFilename))
             {
