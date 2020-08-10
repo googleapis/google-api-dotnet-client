@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/hangouts/chat'>Hangouts Chat API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200726 (2033)
+ *      <tr><th>API Rev<td>20200801 (2039)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/hangouts/chat'>
  *              https://developers.google.com/hangouts/chat</a>
@@ -337,7 +337,7 @@ namespace Google.Apis.HangoutsChat.v1
 
 
         /// <summary>Downloads media. Download is supported on the URI `/v1/media/{+name}?alt=media`.</summary>
-        /// <param name="resourceName">Name of the media that is being downloaded.  See ReadRequest.resource_name.</param>
+        /// <param name="resourceName">Name of the media that is being downloaded. See ReadRequest.resource_name.</param>
         public virtual DownloadRequest Download(string resourceName)
         {
             return new DownloadRequest(service, resourceName);
@@ -356,7 +356,7 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
 
-            /// <summary>Name of the media that is being downloaded.  See ReadRequest.resource_name.</summary>
+            /// <summary>Name of the media that is being downloaded. See ReadRequest.resource_name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
@@ -492,9 +492,8 @@ namespace Google.Apis.HangoutsChat.v1
 
 
             /// <summary>Returns a membership.</summary>
-            /// <param name="name">Required. Resource name of the membership to be retrieved, in the form "spaces/members".
-            ///
-            /// Example: spaces/AAAAMpdlehY/members/105115627578887013105</param>
+            /// <param name="name">Required. Resource name of the membership to be retrieved, in the form "spaces/members". Example:
+            /// spaces/AAAAMpdlehY/members/105115627578887013105</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -513,7 +512,6 @@ namespace Google.Apis.HangoutsChat.v1
 
 
                 /// <summary>Required. Resource name of the membership to be retrieved, in the form "spaces/members".
-                ///
                 /// Example: spaces/AAAAMpdlehY/members/105115627578887013105</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -557,9 +555,7 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>Lists human memberships in a space.</summary>
             /// <param name="parent">Required. The resource name of the space for which membership list is to be fetched, in the
-            /// form "spaces".
-            ///
-            /// Example: spaces/AAAAMpdlehY</param>
+            /// form "spaces". Example: spaces/AAAAMpdlehY</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -578,9 +574,7 @@ namespace Google.Apis.HangoutsChat.v1
 
 
                 /// <summary>Required. The resource name of the space for which membership list is to be fetched, in the
-                /// form "spaces".
-                ///
-                /// Example: spaces/AAAAMpdlehY</summary>
+                /// form "spaces". Example: spaces/AAAAMpdlehY</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -788,9 +782,8 @@ namespace Google.Apis.HangoutsChat.v1
                 /// thread. If this is the first message with a given thread identifier, a new thread is created.
                 /// Subsequent messages with the same thread identifier will be posted into the same thread. This
                 /// relieves bots and webhooks from having to store the Hangouts Chat thread ID of a thread (created
-                /// earlier by them) to post further updates to it.
-                ///
-                /// Has no effect if thread field, corresponding to an existing thread, is set in message.</summary>
+                /// earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an
+                /// existing thread, is set in message.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ThreadKey { get; set; }
 
@@ -847,9 +840,8 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>Deletes a message.</summary>
-            /// <param name="name">Required. Resource name of the message to be deleted, in the form "spaces/messages"
-            ///
-            /// Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4</param>
+            /// <param name="name">Required. Resource name of the message to be deleted, in the form "spaces/messages" Example:
+            /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -868,7 +860,6 @@ namespace Google.Apis.HangoutsChat.v1
 
 
                 /// <summary>Required. Resource name of the message to be deleted, in the form "spaces/messages"
-                ///
                 /// Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -911,9 +902,8 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>Returns a message.</summary>
-            /// <param name="name">Required. Resource name of the message to be retrieved, in the form "spaces/messages".
-            ///
-            /// Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4</param>
+            /// <param name="name">Required. Resource name of the message to be retrieved, in the form "spaces/messages". Example:
+            /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -932,7 +922,6 @@ namespace Google.Apis.HangoutsChat.v1
 
 
                 /// <summary>Required. Resource name of the message to be retrieved, in the form "spaces/messages".
-                ///
                 /// Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -976,9 +965,8 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>Updates a message.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Resource name, in the form "spaces/messages".
-            ///
-            /// Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4</param>
+            /// <param name="name">Resource name, in the form "spaces/messages". Example:
+            /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4</param>
             public virtual UpdateRequest Update(Google.Apis.HangoutsChat.v1.Data.Message body, string name)
             {
                 return new UpdateRequest(service, body, name);
@@ -997,15 +985,13 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
 
-                /// <summary>Resource name, in the form "spaces/messages".
-                ///
-                /// Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4</summary>
+                /// <summary>Resource name, in the form "spaces/messages". Example:
+                /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Required. The field paths to be updated, comma separated if there are multiple.
-                ///
-                /// Currently supported field paths: * text * cards</summary>
+                /// <summary>Required. The field paths to be updated, comma separated if there are multiple. Currently
+                /// supported field paths: * text * cards</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -1063,9 +1049,8 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>Returns a space.</summary>
-        /// <param name="name">Required. Resource name of the space, in the form "spaces".
-        ///
-        /// Example: spaces/AAAAMpdlehY</param>
+        /// <param name="name">Required. Resource name of the space, in the form "spaces". Example:
+        /// spaces/AAAAMpdlehY</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
@@ -1083,9 +1068,8 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
 
-            /// <summary>Required. Resource name of the space, in the form "spaces".
-            ///
-            /// Example: spaces/AAAAMpdlehY</summary>
+            /// <summary>Required. Resource name of the space, in the form "spaces". Example:
+            /// spaces/AAAAMpdlehY</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1235,13 +1219,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Annotations associated with the plain-text body of the message.
-    ///
-    /// Example plain-text message body: ``` Hello @FooBot how are you!" ```
-    ///
-    /// The corresponding annotations metadata: ``` "annotations":[{ "type":"USER_MENTION", "startIndex":6, "length":7,
-    /// "userMention": { "user": { "name":"users/107946847022116401880", "displayName":"FooBot",
-    /// "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" }, "type":"MENTION" } }] ```</summary>
+    /// <summary>Annotations associated with the plain-text body of the message. Example plain-text message body: ```
+    /// Hello @FooBot how are you!" ``` The corresponding annotations metadata: ``` "annotations":[{
+    /// "type":"USER_MENTION", "startIndex":6, "length":7, "userMention": { "user": {
+    /// "name":"users/107946847022116401880", "displayName":"FooBot", "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT"
+    /// }, "type":"MENTION" } }] ```</summary>
     public class Annotation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Length of the substring in the plain-text message body this annotation corresponds to.</summary>
@@ -1458,11 +1440,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1625,9 +1605,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("member")]
         public virtual User Member { get; set; } 
 
-        /// <summary>Resource name of the membership, in the form "spaces/members".
-        ///
-        /// Example: spaces/AAAAMpdlehY/members/105115627578887013105</summary>
+        /// <summary>Resource name of the membership, in the form "spaces/members". Example:
+        /// spaces/AAAAMpdlehY/members/105115627578887013105</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1673,9 +1652,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fallbackText")]
         public virtual string FallbackText { get; set; } 
 
-        /// <summary>Resource name, in the form "spaces/messages".
-        ///
-        /// Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4</summary>
+        /// <summary>Resource name, in the form "spaces/messages". Example:
+        /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1755,9 +1733,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Resource name of the space, in the form "spaces".
-        ///
-        /// Example: spaces/AAAAMpdlehYs</summary>
+        /// <summary>Resource name of the space, in the form "spaces". Example: spaces/AAAAMpdlehYs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1805,9 +1781,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>A thread in Hangouts Chat.</summary>
     public class Thread : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Resource name, in the form "spaces/threads".
-        ///
-        /// Example: spaces/AAAAMpdlehY/threads/UMxbHmzDlr4</summary>
+        /// <summary>Resource name, in the form "spaces/threads". Example:
+        /// spaces/AAAAMpdlehY/threads/UMxbHmzDlr4</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

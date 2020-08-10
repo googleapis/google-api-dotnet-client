@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/blogger/docs/3.0/getting_started'>Blogger API v3</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200803 (2041)
+ *      <tr><th>API Rev<td>20200806 (2044)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/blogger/docs/3.0/getting_started'>
  *              https://developers.google.com/blogger/docs/3.0/getting_started</a>

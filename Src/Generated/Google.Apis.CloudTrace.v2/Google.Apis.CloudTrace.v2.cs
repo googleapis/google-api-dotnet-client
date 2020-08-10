@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Cloud Trace API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200727 (2034)
+ *      <tr><th>API Rev<td>20200805 (2043)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -398,12 +398,9 @@ namespace Google.Apis.CloudTrace.v2
                 /// <summary>Creates a new span.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The resource name of the span in the following format:
-                ///
-                ///     projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project; it is
-                /// a 32-character hexadecimal encoding of a 16-byte array.
-                ///
-                /// [SPAN_ID] is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte
-                /// array. It should not be zero.</param>
+                /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project; it is a
+                /// 32-character hexadecimal encoding of a 16-byte array. [SPAN_ID] is a unique identifier for a span within a trace; it
+                /// is a 16-character hexadecimal encoding of an 8-byte array. It should not be zero.</param>
                 public virtual CreateSpanRequest CreateSpan(Google.Apis.CloudTrace.v2.Data.Span body, string name)
                 {
                     return new CreateSpanRequest(service, body, name);
@@ -423,12 +420,10 @@ namespace Google.Apis.CloudTrace.v2
 
 
                     /// <summary>Required. The resource name of the span in the following format:
-                    ///
                     /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within
-                    /// a project; it is a 32-character hexadecimal encoding of a 16-byte array.
-                    ///
-                    /// [SPAN_ID] is a unique identifier for a span within a trace; it is a 16-character hexadecimal
-                    /// encoding of an 8-byte array. It should not be zero.</summary>
+                    /// a project; it is a 32-character hexadecimal encoding of a 16-byte array. [SPAN_ID] is a unique
+                    /// identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte
+                    /// array. It should not be zero.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -592,7 +587,6 @@ namespace Google.Apis.CloudTrace.v2.Data
     {
         /// <summary>The set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string
         /// up to 256 bytes, a signed 64-bit integer, or the Boolean values `true` and `false`. For example:
-        ///
         /// "/instance_id": { "string_value": { "value": "my-instance" } } "/http/request_bytes": { "int_value": 300 }
         /// "abc.com/myattribute": { "bool_value": false }</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeMap")]
@@ -621,11 +615,9 @@ namespace Google.Apis.CloudTrace.v2.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -637,7 +629,7 @@ namespace Google.Apis.CloudTrace.v2.Data
     /// traces or when the handler receives a request from a different project.</summary>
     public class Link : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A set of attributes on the link. You have have up to  32 attributes per link.</summary>
+        /// <summary>A set of attributes on the link. You have have up to 32 attributes per link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual Attributes Attributes { get; set; } 
 
@@ -718,7 +710,7 @@ namespace Google.Apis.CloudTrace.v2.Data
     /// <summary>A span represents a single operation within a trace. Spans can be nested to form a trace tree. Often, a
     /// trace contains a root span that describes the end-to-end latency, and one or more subspans for its sub-
     /// operations. A trace can also contain multiple root spans, or none at all. Spans do not need to be
-    /// contiguousthere may be gaps or overlaps between spans in a trace.</summary>
+    /// contiguous—there may be gaps or overlaps between spans in a trace.</summary>
     public class Span : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A set of attributes on the span. You can have up to 32 attributes per span.</summary>
@@ -749,12 +741,10 @@ namespace Google.Apis.CloudTrace.v2.Data
         public virtual Links Links { get; set; } 
 
         /// <summary>Required. The resource name of the span in the following format:
-        ///
         /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project;
-        /// it is a 32-character hexadecimal encoding of a 16-byte array.
-        ///
-        /// [SPAN_ID] is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an
-        /// 8-byte array. It should not be zero.</summary>
+        /// it is a 32-character hexadecimal encoding of a 16-byte array. [SPAN_ID] is a unique identifier for a span
+        /// within a trace; it is a 16-character hexadecimal encoding of an 8-byte array. It should not be
+        /// zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -863,12 +853,9 @@ namespace Google.Apis.CloudTrace.v2.Data
         public virtual StackFrames StackFrames { get; set; } 
 
         /// <summary>The hash ID is used to conserve network bandwidth for duplicate stack traces within a single trace.
-        ///
         /// Often multiple spans will have identical stack traces. The first occurrence of a stack trace should contain
-        /// both the `stackFrame` content and a value in `stackTraceHashId`.
-        ///
-        /// Subsequent spans within the same request can refer to that stack trace by only setting
-        /// `stackTraceHashId`.</summary>
+        /// both the `stackFrame` content and a value in `stackTraceHashId`. Subsequent spans within the same request
+        /// can refer to that stack trace by only setting `stackTraceHashId`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackTraceHashId")]
         public virtual System.Nullable<long> StackTraceHashId { get; set; } 
 
@@ -878,9 +865,8 @@ namespace Google.Apis.CloudTrace.v2.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -888,8 +874,8 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -952,10 +938,9 @@ namespace Google.Apis.CloudTrace.v2.Data
         public virtual System.Nullable<int> TruncatedByteCount { get; set; } 
 
         /// <summary>The shortened string. For example, if the original string is 500 bytes long and the limit of the
-        /// string is 128 bytes, then `value` contains the first 128 bytes of the 500-byte string.
-        ///
-        /// Truncation always happens on a UTF8 character boundary. If there are multi-byte characters in the string,
-        /// then the length of the shortened string might be less than the size limit.</summary>
+        /// string is 128 bytes, then `value` contains the first 128 bytes of the 500-byte string. Truncation always
+        /// happens on a UTF8 character boundary. If there are multi-byte characters in the string, then the length of
+        /// the shortened string might be less than the size limit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 

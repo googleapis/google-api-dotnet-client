@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/display-video/'>Display & Video 360 API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200804 (2042)
+ *      <tr><th>API Rev<td>20200806 (2044)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/display-video/'>
  *              https://developers.google.com/display-video/</a>
@@ -7526,8 +7526,8 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Audits an advertiser. Returns the counts of used entities per resource type under the advertiser
-        /// provided. Used entities count towards their [respective resource limit]:
-        /// (https://support.google.com/displayvideo/answer/6071450?hl=en)</summary>
+        /// provided. Used entities count towards their respective resource limit. See
+        /// https://support.google.com/displayvideo/answer/6071450.</summary>
         /// <param name="advertiserId">Required. The ID of the advertiser to audit.</param>
         public virtual AuditRequest Audit(long advertiserId)
         {
@@ -7535,8 +7535,8 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Audits an advertiser. Returns the counts of used entities per resource type under the advertiser
-        /// provided. Used entities count towards their [respective resource limit]:
-        /// (https://support.google.com/displayvideo/answer/6071450?hl=en)</summary>
+        /// provided. Used entities count towards their respective resource limit. See
+        /// https://support.google.com/displayvideo/answer/6071450.</summary>
         public class AuditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AuditAdvertiserResponse>
         {
             /// <summary>Constructs a new Audit request.</summary>
@@ -8456,11 +8456,11 @@ namespace Google.Apis.DisplayVideo.v1
             [Google.Apis.Util.RequestParameterAttribute("customBiddingAlgorithmId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long CustomBiddingAlgorithmId { get; private set; }
 
-            /// <summary>The ID of the DV3 partner that has access to the custom bidding algorithm.</summary>
+            /// <summary>The ID of the DV360 partner that has access to the custom bidding algorithm.</summary>
             [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-            /// <summary>The ID of the DV3 partner that has access to the custom bidding algorithm.</summary>
+            /// <summary>The ID of the DV360 partner that has access to the custom bidding algorithm.</summary>
             [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> PartnerId { get; set; }
 
@@ -8538,7 +8538,7 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
 
-            /// <summary>The ID of the DV3 advertiser that has access to the custom bidding algorithm.</summary>
+            /// <summary>The ID of the DV360 advertiser that has access to the custom bidding algorithm.</summary>
             [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> AdvertiserId { get; set; }
 
@@ -8574,7 +8574,7 @@ namespace Google.Apis.DisplayVideo.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>The ID of the DV3 partner that has access to the custom bidding algorithm.</summary>
+            /// <summary>The ID of the DV360 partner that has access to the custom bidding algorithm.</summary>
             [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> PartnerId { get; set; }
 
@@ -12791,8 +12791,8 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Bulk edits targeting options under a single partner. The operation will delete the assigned
-        /// targeting options provided in BulkEditPartnerAssignedTargetingOptionsRequest.delete_requests and then create
-        /// the assigned targeting options provided in BulkEditPartnerAssignedTargetingOptionsRequest.create_requests
+        /// targeting options provided in BulkEditPartnerAssignedTargetingOptionsRequest.deleteRequests and then create
+        /// the assigned targeting options provided in BulkEditPartnerAssignedTargetingOptionsRequest.createRequests
         /// .</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="partnerId">Required. The ID of the partner.</param>
@@ -12802,8 +12802,8 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Bulk edits targeting options under a single partner. The operation will delete the assigned
-        /// targeting options provided in BulkEditPartnerAssignedTargetingOptionsRequest.delete_requests and then create
-        /// the assigned targeting options provided in BulkEditPartnerAssignedTargetingOptionsRequest.create_requests
+        /// targeting options provided in BulkEditPartnerAssignedTargetingOptionsRequest.deleteRequests and then create
+        /// the assigned targeting options provided in BulkEditPartnerAssignedTargetingOptionsRequest.createRequests
         /// .</summary>
         public class BulkEditPartnerAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditPartnerAssignedTargetingOptionsResponse>
         {
@@ -13735,8 +13735,8 @@ namespace Google.Apis.DisplayVideo.v1
 
 
         /// <summary>Bulk edits user roles for a user. The operation will delete the assigned user roles provided in
-        /// BulkEditAssignedUserRolesRequest.deleted_assigned_user_roles and then assign the user roles provided in
-        /// BulkEditAssignedUserRolesRequest.created_assigned_user_roles.</summary>
+        /// BulkEditAssignedUserRolesRequest.deletedAssignedUserRoles and then assign the user roles provided in
+        /// BulkEditAssignedUserRolesRequest.createdAssignedUserRoles.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="userId">Required. The ID of the user to which the assigned user roles belong.</param>
         public virtual BulkEditAssignedUserRolesRequest BulkEditAssignedUserRoles(Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedUserRolesRequest body, long userId)
@@ -13745,8 +13745,8 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Bulk edits user roles for a user. The operation will delete the assigned user roles provided in
-        /// BulkEditAssignedUserRolesRequest.deleted_assigned_user_roles and then assign the user roles provided in
-        /// BulkEditAssignedUserRolesRequest.created_assigned_user_roles.</summary>
+        /// BulkEditAssignedUserRolesRequest.deletedAssignedUserRoles and then assign the user roles provided in
+        /// BulkEditAssignedUserRolesRequest.createdAssignedUserRoles.</summary>
         public class BulkEditAssignedUserRolesRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedUserRolesResponse>
         {
             /// <summary>Constructs a new BulkEditAssignedUserRoles request.</summary>
@@ -14874,17 +14874,17 @@ namespace Google.Apis.DisplayVideo.v1.Data
     public class AuditAdvertiserResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of ACTIVE and PAUSED campaigns under this advertiser. These campaigns count towards the
-        /// limit of 9,999 campaigns per advertiser.</summary>
+        /// limit of 9999 campaigns per advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usedCampaignsCount")]
         public virtual System.Nullable<long> UsedCampaignsCount { get; set; } 
 
         /// <summary>The number of ACTIVE, PAUSED and DRAFT insertion orders under this advertiser. These insertion
-        /// orders count towards the limit of 9,999 insertion orders per advertiser.</summary>
+        /// orders count towards the limit of 9999 insertion orders per advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usedInsertionOrdersCount")]
         public virtual System.Nullable<long> UsedInsertionOrdersCount { get; set; } 
 
         /// <summary>The number of ACTIVE, PAUSED, and DRAFT line items under this advertiser. These line items count
-        /// towards the limit of 9,999 line items per advertiser.</summary>
+        /// towards the limit of 9999 line items per advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usedLineItemsCount")]
         public virtual System.Nullable<long> UsedLineItemsCount { get; set; } 
 
@@ -15094,7 +15094,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message for BulkEditAssignedUserRoles.</summary>
     public class BulkEditAssignedUserRolesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of assigned user roles that have been successfully created. This list will be absent if
@@ -17657,7 +17656,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message for CustomBiddingAlgorithmService.ListCustomBiddingAlgorithms.</summary>
     public class ListCustomBiddingAlgorithmsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of custom bidding algorithms. This list will be absent if empty.</summary>
@@ -17845,7 +17843,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message for ListPartnerAssignedTargetingOptions.</summary>
     public class ListPartnerAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of assigned targeting options. This list will be absent if empty.</summary>
@@ -17862,7 +17859,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message for ListPartners.</summary>
     public class ListPartnersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
@@ -17910,7 +17906,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message for ListUsers.</summary>
     public class ListUsersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20200725 (2032)
+ *      <tr><th>API Rev<td>20200731 (2038)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -6513,6 +6513,10 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("masterConfig")]
         public virtual InstanceGroupConfig MasterConfig { get; set; } 
 
+        /// <summary>Optional. Metastore configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metastoreConfig")]
+        public virtual MetastoreConfig MetastoreConfig { get; set; } 
+
         /// <summary>Optional. The Compute Engine config settings for additional worker instances in a
         /// cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryWorkerConfig")]
@@ -7551,6 +7555,17 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Output only. The name of the Instance Template used for the Managed Instance Group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceTemplateName")]
         public virtual string InstanceTemplateName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies the metastore configuration.</summary>
+    public class MetastoreConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Relative resource name of an existing Dataproc Metastore service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataprocMetastoreService")]
+        public virtual string DataprocMetastoreService { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

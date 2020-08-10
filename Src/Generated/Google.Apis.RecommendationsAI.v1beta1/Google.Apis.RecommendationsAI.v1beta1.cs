@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/recommendations-ai/docs'>Recommendations AI</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200728 (2035)
+ *      <tr><th>API Rev<td>20200803 (2041)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/recommendations-ai/docs'>
  *              https://cloud.google.com/recommendations-ai/docs</a>
@@ -609,101 +609,23 @@ namespace Google.Apis.RecommendationsAI.v1beta1
 
                     }
 
-                    /// <summary>Method for getting the catalog items associated with item group id.</summary>
-                    /// <param name="parent">Required. Parent resource name of group id item, such as
-                    /// "projects/locations/global/catalogs/default_catalog".</param>
-                    public virtual GetGroupIdItemsRequest GetGroupIdItems(string parent)
-                    {
-                        return new GetGroupIdItemsRequest(service, parent);
-                    }
-
-                    /// <summary>Method for getting the catalog items associated with item group id.</summary>
-                    public class GetGroupIdItemsRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1GetCatalogItemsWithItemGroupIdResponse>
-                    {
-                        /// <summary>Constructs a new GetGroupIdItems request.</summary>
-                        public GetGroupIdItemsRequest(Google.Apis.Services.IClientService service, string parent)
-                            : base(service)
-                        {
-                            Parent = parent;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>Required. Parent resource name of group id item, such as
-                        /// "projects/locations/global/catalogs/default_catalog".</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>Required. Catalog item identifier for prediction results.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("itemGroupId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string ItemGroupId { get; set; }
-
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "getGroupIdItems"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "GET"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "v1beta1/{+parent}/catalogItems:groupIdItems"; }
-                        }
-
-                        /// <summary>Initializes GetGroupIdItems parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "itemGroupId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "itemGroupId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                        }
-
-                    }
-
                     /// <summary>Bulk import of multiple catalog items. Request processing may be synchronous. No
-                    /// partial updating supported. Non-existing items will be created.
-                    ///
-                    /// Operation.response is of type ImportResponse. Note that it is possible for a subset of the items
-                    /// to be successfully updated.</summary>
+                    /// partial updating supported. Non-existing items will be created. Operation.response is of type
+                    /// ImportResponse. Note that it is possible for a subset of the items to be successfully
+                    /// updated.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">Required. "projects/1234/locations/global/catalogs/default_catalog"
-                    ///
-                    /// If no updateMask is specified, requires catalogItems.create permission. If updateMask is specified, requires
-                    /// catalogItems.update permission.</param>
+                    /// <param name="parent">Required. "projects/1234/locations/global/catalogs/default_catalog" If no updateMask is
+                    /// specified, requires catalogItems.create permission. If updateMask is specified, requires catalogItems.update
+                    /// permission.</param>
                     public virtual ImportRequest Import(Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest body, string parent)
                     {
                         return new ImportRequest(service, body, parent);
                     }
 
                     /// <summary>Bulk import of multiple catalog items. Request processing may be synchronous. No
-                    /// partial updating supported. Non-existing items will be created.
-                    ///
-                    /// Operation.response is of type ImportResponse. Note that it is possible for a subset of the items
-                    /// to be successfully updated.</summary>
+                    /// partial updating supported. Non-existing items will be created. Operation.response is of type
+                    /// ImportResponse. Note that it is possible for a subset of the items to be successfully
+                    /// updated.</summary>
                     public class ImportRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Import request.</summary>
@@ -716,9 +638,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         }
 
 
-                        /// <summary>Required. "projects/1234/locations/global/catalogs/default_catalog"
-                        ///
-                        /// If no updateMask is specified, requires catalogItems.create permission. If updateMask is
+                        /// <summary>Required. "projects/1234/locations/global/catalogs/default_catalog" If no
+                        /// updateMask is specified, requires catalogItems.create permission. If updateMask is
                         /// specified, requires catalogItems.update permission.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1005,7 +926,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         }
 
 
-                        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to
+                        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to
                         /// poll the operation result at intervals as recommended by the API service.</summary>
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
@@ -1013,7 +934,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             return new GetRequest(service, name);
                         }
 
-                        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to
+                        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to
                         /// poll the operation result at intervals as recommended by the API service.</summary>
                         public class GetRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleLongrunningOperation>
                         {
@@ -1068,14 +989,12 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         }
 
                         /// <summary>Lists operations that match the specified filter in the request. If the server
-                        /// doesn't support this method, it returns `UNIMPLEMENTED`.
-                        ///
-                        /// NOTE: the `name` binding allows API services to override the binding to use different
-                        /// resource name schemes, such as `users/operations`. To override the binding, API services can
-                        /// add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For
-                        /// backwards compatibility, the default name includes the operations collection id, however
-                        /// overriding users must ensure the name binding is the parent resource, without the operations
-                        /// collection id.</summary>
+                        /// doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API
+                        /// services to override the binding to use different resource name schemes, such as
+                        /// `users/operations`. To override the binding, API services can add a binding such as
+                        /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility,
+                        /// the default name includes the operations collection id, however overriding users must ensure
+                        /// the name binding is the parent resource, without the operations collection id.</summary>
                         /// <param name="name">The name of the operation's parent resource.</param>
                         public virtual ListRequest List(string name)
                         {
@@ -1083,14 +1002,12 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         }
 
                         /// <summary>Lists operations that match the specified filter in the request. If the server
-                        /// doesn't support this method, it returns `UNIMPLEMENTED`.
-                        ///
-                        /// NOTE: the `name` binding allows API services to override the binding to use different
-                        /// resource name schemes, such as `users/operations`. To override the binding, API services can
-                        /// add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For
-                        /// backwards compatibility, the default name includes the operations collection id, however
-                        /// overriding users must ensure the name binding is the parent resource, without the operations
-                        /// collection id.</summary>
+                        /// doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API
+                        /// services to override the binding to use different resource name schemes, such as
+                        /// `users/operations`. To override the binding, API services can add a binding such as
+                        /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility,
+                        /// the default name includes the operations collection id, however overriding users must ensure
+                        /// the name binding is the parent resource, without the operations collection id.</summary>
                         public class ListRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleLongrunningListOperationsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
@@ -1213,24 +1130,16 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// <param name="name">Required. Full resource name of the format:
                         /// {name=projects/locations/global/catalogs/default_catalog/eventStores/default_event_store/placements} The id of the
                         /// recommendation engine placement. This id is used to identify the set of models that will be used to make the
-                        /// prediction.
-                        ///
-                        /// We currently support three placements with the following IDs by default:
-                        ///
-                        /// * `shopping_cart`: Predicts items frequently bought together with one or   more catalog items in the same shopping
-                        /// session. Commonly displayed after   `add-to-cart` events, on product detail pages, or on the shopping cart   page.
-                        ///
-                        /// * `home_page`: Predicts the next product that a user will most likely   engage with or purchase based on the
-                        /// shopping or viewing history of the   specified `userId` or `visitorId`. For example - Recommendations for you.
-                        ///
-                        /// * `product_detail`: Predicts the next product that a user will most likely   engage with or purchase. The prediction
-                        /// is based on the shopping or   viewing history of the specified `userId` or `visitorId` and its   relevance to a
-                        /// specified `CatalogItem`. Typically used on product detail   pages. For example - More items like this.
-                        ///
-                        /// * `recently_viewed_default`: Returns up to 75 items recently viewed by the   specified `userId` or `visitorId`, most
-                        /// recent ones first. Returns   nothing if neither of them has viewed any items yet. For example -   Recently viewed.
-                        ///
-                        /// The full list of available placements can be seen at
+                        /// prediction. We currently support three placements with the following IDs by default: * `shopping_cart`: Predicts
+                        /// items frequently bought together with one or more catalog items in the same shopping session. Commonly displayed
+                        /// after `add-to-cart` events, on product detail pages, or on the shopping cart page. * `home_page`: Predicts the next
+                        /// product that a user will most likely engage with or purchase based on the shopping or viewing history of the
+                        /// specified `userId` or `visitorId`. For example - Recommendations for you. * `product_detail`: Predicts the next
+                        /// product that a user will most likely engage with or purchase. The prediction is based on the shopping or viewing
+                        /// history of the specified `userId` or `visitorId` and its relevance to a specified `CatalogItem`. Typically used on
+                        /// product detail pages. For example - More items like this. * `recently_viewed_default`: Returns up to 75 items
+                        /// recently viewed by the specified `userId` or `visitorId`, most recent ones first. Returns nothing if neither of them
+                        /// has viewed any items yet. For example - Recently viewed. The full list of available placements can be seen at
                         /// https://console.cloud.google.com/recommendation/datafeeds/default_catalog/dashboard</param>
                         public virtual PredictRequest Predict(Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1PredictRequest body, string name)
                         {
@@ -1255,29 +1164,21 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             /// <summary>Required. Full resource name of the format: {name=projects/locations/global/cat
                             /// alogs/default_catalog/eventStores/default_event_store/placements} The id of the
                             /// recommendation engine placement. This id is used to identify the set of models that will
-                            /// be used to make the prediction.
-                            ///
-                            /// We currently support three placements with the following IDs by default:
-                            ///
-                            /// * `shopping_cart`: Predicts items frequently bought together with one or more catalog
-                            /// items in the same shopping session. Commonly displayed after `add-to-cart` events, on
-                            /// product detail pages, or on the shopping cart page.
-                            ///
-                            /// * `home_page`: Predicts the next product that a user will most likely engage with or
-                            /// purchase based on the shopping or viewing history of the specified `userId` or
-                            /// `visitorId`. For example - Recommendations for you.
-                            ///
-                            /// * `product_detail`: Predicts the next product that a user will most likely engage with
-                            /// or purchase. The prediction is based on the shopping or viewing history of the specified
-                            /// `userId` or `visitorId` and its relevance to a specified `CatalogItem`. Typically used
-                            /// on product detail pages. For example - More items like this.
-                            ///
-                            /// * `recently_viewed_default`: Returns up to 75 items recently viewed by the specified
-                            /// `userId` or `visitorId`, most recent ones first. Returns nothing if neither of them has
-                            /// viewed any items yet. For example - Recently viewed.
-                            ///
-                            /// The full list of available placements can be seen at https://console.cloud.google.com/re
-                            /// commendation/datafeeds/default_catalog/dashboard</summary>
+                            /// be used to make the prediction. We currently support three placements with the following
+                            /// IDs by default: * `shopping_cart`: Predicts items frequently bought together with one or
+                            /// more catalog items in the same shopping session. Commonly displayed after `add-to-cart`
+                            /// events, on product detail pages, or on the shopping cart page. * `home_page`: Predicts
+                            /// the next product that a user will most likely engage with or purchase based on the
+                            /// shopping or viewing history of the specified `userId` or `visitorId`. For example -
+                            /// Recommendations for you. * `product_detail`: Predicts the next product that a user will
+                            /// most likely engage with or purchase. The prediction is based on the shopping or viewing
+                            /// history of the specified `userId` or `visitorId` and its relevance to a specified
+                            /// `CatalogItem`. Typically used on product detail pages. For example - More items like
+                            /// this. * `recently_viewed_default`: Returns up to 75 items recently viewed by the
+                            /// specified `userId` or `visitorId`, most recent ones first. Returns nothing if neither of
+                            /// them has viewed any items yet. For example - Recently viewed. The full list of available
+                            /// placements can be seen at https://console.cloud.google.com/recommendation/datafeeds/defa
+                            /// ult_catalog/dashboard</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -1596,10 +1497,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1
 
 
                         /// <summary>Writes a single user event from the browser. This uses a GET request to due to
-                        /// browser restriction of POST-ing to a 3rd party domain.
-                        ///
-                        /// This method is used only by the Recommendations AI JavaScript pixel. Users should not call
-                        /// this method directly.</summary>
+                        /// browser restriction of POST-ing to a 3rd party domain. This method is used only by the
+                        /// Recommendations AI JavaScript pixel. Users should not call this method directly.</summary>
                         /// <param name="parent">Required. The parent eventStore name, such as
                         /// "projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store".</param>
                         public virtual CollectRequest Collect(string parent)
@@ -1608,10 +1507,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         }
 
                         /// <summary>Writes a single user event from the browser. This uses a GET request to due to
-                        /// browser restriction of POST-ing to a 3rd party domain.
-                        ///
-                        /// This method is used only by the Recommendations AI JavaScript pixel. Users should not call
-                        /// this method directly.</summary>
+                        /// browser restriction of POST-ing to a 3rd party domain. This method is used only by the
+                        /// Recommendations AI JavaScript pixel. Users should not call this method directly.</summary>
                         public class CollectRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleApiHttpBody>
                         {
                             /// <summary>Constructs a new Collect request.</summary>
@@ -1711,7 +1608,6 @@ namespace Google.Apis.RecommendationsAI.v1beta1
 
                         /// <summary>Bulk import of User events. Request processing might be synchronous. Events that
                         /// already exist are skipped. Use this method for backfilling historical user events.
-                        ///
                         /// Operation.response is of type ImportResponse. Note that it is possible for a subset of the
                         /// items to be successfully inserted. Operation.metadata is of type ImportMetadata.</summary>
                         /// <param name="body">The body of the request.</param>
@@ -1724,7 +1620,6 @@ namespace Google.Apis.RecommendationsAI.v1beta1
 
                         /// <summary>Bulk import of User events. Request processing might be synchronous. Events that
                         /// already exist are skipped. Use this method for backfilling historical user events.
-                        ///
                         /// Operation.response is of type ImportResponse. Note that it is possible for a subset of the
                         /// items to be successfully inserted. Operation.metadata is of type ImportMetadata.</summary>
                         public class ImportRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleLongrunningOperation>
@@ -1788,12 +1683,11 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         }
 
                         /// <summary>Gets a list of user events within a time range, with potential filtering. The
-                        /// method does not list unjoined user events.
-                        ///
-                        /// Unjoined user event definition: when a user event is ingested from Recommendations AI User
-                        /// Event APIs, the catalog item included in the user event is connected with the current
-                        /// catalog. If a catalog item of the ingested event is not in the current catalog, it could
-                        /// lead to degraded model quality. This is called an unjoined event.</summary>
+                        /// method does not list unjoined user events. Unjoined user event definition: when a user event
+                        /// is ingested from Recommendations AI User Event APIs, the catalog item included in the user
+                        /// event is connected with the current catalog. If a catalog item of the ingested event is not
+                        /// in the current catalog, it could lead to degraded model quality. This is called an unjoined
+                        /// event.</summary>
                         /// <param name="parent">Required. The parent eventStore resource name, such as
                         /// "projects/locations/catalogs/default_catalog/eventStores/default_event_store".</param>
                         public virtual ListRequest List(string parent)
@@ -1802,12 +1696,11 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         }
 
                         /// <summary>Gets a list of user events within a time range, with potential filtering. The
-                        /// method does not list unjoined user events.
-                        ///
-                        /// Unjoined user event definition: when a user event is ingested from Recommendations AI User
-                        /// Event APIs, the catalog item included in the user event is connected with the current
-                        /// catalog. If a catalog item of the ingested event is not in the current catalog, it could
-                        /// lead to degraded model quality. This is called an unjoined event.</summary>
+                        /// method does not list unjoined user events. Unjoined user event definition: when a user event
+                        /// is ingested from Recommendations AI User Event APIs, the catalog item included in the user
+                        /// event is connected with the current catalog. If a catalog item of the ingested event is not
+                        /// in the current catalog, it could lead to degraded model quality. This is called an unjoined
+                        /// event.</summary>
                         public class ListRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1ListUserEventsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
@@ -1828,27 +1721,19 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             /// This is a sequence of terms, where each term applies some kind of a restriction to the
                             /// returned user events. Use this expression to restrict results to a specific time range,
                             /// or filter events by eventType. eg: eventTime > "2012-04-23T18:25:43.511Z"
-                            /// eventsMissingCatalogItems eventTime<"2012-04-23T18:25:43.511Z" eventType=search
-                            ///
-                            /// We expect only 3 types of fields:
-                            ///
-                            /// * eventTime: this can be specified a maximum of 2 times, once with a less than operator
-                            /// and once with a greater than operator. The eventTime restrict should result in one
-                            /// contiguous valid eventTime range.
-                            ///
-                            /// * eventType: only 1 eventType restriction can be specified.
-                            ///
-                            /// * eventsMissingCatalogItems: specififying this will restrict results to events for which
-                            /// catalog items were not found in the catalog. The default behavior is to return only
-                            /// those events for which catalog items were found.
-                            ///
-                            /// Some examples of valid filters expressions:
-                            ///
-                            /// * Example 1: eventTime > "2012-04-23T18:25:43.511Z" eventTime <
-                            /// "2012-04-23T18:30:43.511Z" * Example 2: eventTime > "2012-04-23T18:25:43.511Z" eventType
-                            /// = detail-page-view * Example 3: eventsMissingCatalogItems eventType = search eventTime <
-                            /// "2018-04-23T18:30:43.511Z" * Example 4: eventTime > "2012-04-23T18:25:43.511Z" * Example
-                            /// 5: eventType = search * Example 6: eventsMissingCatalogItems</summary>
+                            /// eventsMissingCatalogItems eventTime<"2012-04-23T18:25:43.511Z" eventType=search We
+                            /// expect only 3 types of fields: * eventTime: this can be specified a maximum of 2 times,
+                            /// once with a less than operator and once with a greater than operator. The eventTime
+                            /// restrict should result in one contiguous valid eventTime range. * eventType: only 1
+                            /// eventType restriction can be specified. * eventsMissingCatalogItems: specififying this
+                            /// will restrict results to events for which catalog items were not found in the catalog.
+                            /// The default behavior is to return only those events for which catalog items were found.
+                            /// Some examples of valid filters expressions: * Example 1: eventTime >
+                            /// "2012-04-23T18:25:43.511Z" eventTime < "2012-04-23T18:30:43.511Z" * Example 2: eventTime
+                            /// > "2012-04-23T18:25:43.511Z" eventType = detail-page-view * Example 3:
+                            /// eventsMissingCatalogItems eventType = search eventTime < "2018-04-23T18:30:43.511Z" *
+                            /// Example 4: eventTime > "2012-04-23T18:25:43.511Z" * Example 5: eventType = search *
+                            /// Example 6: eventsMissingCatalogItems</summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
@@ -2175,7 +2060,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     }
 
 
-                    /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll
+                    /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll
                     /// the operation result at intervals as recommended by the API service.</summary>
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
@@ -2183,7 +2068,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll
+                    /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll
                     /// the operation result at intervals as recommended by the API service.</summary>
                     public class GetRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleLongrunningOperation>
                     {
@@ -2238,14 +2123,12 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     }
 
                     /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                    /// support this method, it returns `UNIMPLEMENTED`.
-                    ///
-                    /// NOTE: the `name` binding allows API services to override the binding to use different resource
-                    /// name schemes, such as `users/operations`. To override the binding, API services can add a
-                    /// binding such as `"/v1/{name=users}/operations"` to their service configuration. For backwards
-                    /// compatibility, the default name includes the operations collection id, however overriding users
-                    /// must ensure the name binding is the parent resource, without the operations collection
-                    /// id.</summary>
+                    /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
+                    /// override the binding to use different resource name schemes, such as `users/operations`. To
+                    /// override the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to
+                    /// their service configuration. For backwards compatibility, the default name includes the
+                    /// operations collection id, however overriding users must ensure the name binding is the parent
+                    /// resource, without the operations collection id.</summary>
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
@@ -2253,14 +2136,12 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     }
 
                     /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                    /// support this method, it returns `UNIMPLEMENTED`.
-                    ///
-                    /// NOTE: the `name` binding allows API services to override the binding to use different resource
-                    /// name schemes, such as `users/operations`. To override the binding, API services can add a
-                    /// binding such as `"/v1/{name=users}/operations"` to their service configuration. For backwards
-                    /// compatibility, the default name includes the operations collection id, however overriding users
-                    /// must ensure the name binding is the parent resource, without the operations collection
-                    /// id.</summary>
+                    /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
+                    /// override the binding to use different resource name schemes, such as `users/operations`. To
+                    /// override the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to
+                    /// their service configuration. For backwards compatibility, the default name includes the
+                    /// operations collection id, however overriding users must ensure the name binding is the parent
+                    /// resource, without the operations collection id.</summary>
                     public class ListRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleLongrunningListOperationsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -2531,29 +2412,16 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
 {    
 
     /// <summary>Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't
-    /// be represented as JSON, such as raw binary or an HTML page.
-    ///
-    /// This message can be used both in streaming and non-streaming API methods in the request as well as the response.
-    ///
-    /// It can be used as a top-level request field, which is convenient if one wants to extract parameters from either
-    /// the URL or HTTP template into the request fields and also want access to the raw HTTP body.
-    ///
-    /// Example:
-    ///
-    /// message GetResourceRequest { // A unique request id. string request_id = 1;
-    ///
-    /// // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; }
-    ///
-    /// service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
-    /// UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); }
-    ///
-    /// Example with streaming methods:
-    ///
-    /// service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc
-    /// UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); }
-    ///
-    /// Use of this type only changes how the request and response bodies are handled, all other features will continue
-    /// to work unchanged.</summary>
+    /// be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-
+    /// streaming API methods in the request as well as the response. It can be used as a top-level request field, which
+    /// is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields
+    /// and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string
+    /// request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service
+    /// ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+    /// UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service
+    /// CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc
+    /// UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes
+    /// how the request and response bodies are handled, all other features will continue to work unchanged.</summary>
     public class GoogleApiHttpBody : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The HTTP Content-Type header value specifying the content type of the body.</summary>
@@ -2614,18 +2482,11 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     /// <summary>BigQuery source import data from.</summary>
     public class GoogleCloudRecommendationengineV1beta1BigQuerySource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The schema to use when parsing the data from the source.
-        ///
-        /// Supported values for catalog imports:
-        ///
-        /// 1: "catalog_recommendations_ai" using https://cloud.google.com/recommendations-ai/docs/upload-catalog#json
-        /// (Default for catalogItems.import)
-        ///
-        /// 2: "catalog_merchant_center" using https://cloud.google.com/recommendations-ai/docs/upload-catalog#mc
-        ///
-        /// Supported values for user event imports:
-        ///
-        /// 1: "user_events_recommendations_ai" using https://cloud.google.com/recommendations-ai/docs/manage-user-
+        /// <summary>Optional. The schema to use when parsing the data from the source. Supported values for catalog
+        /// imports: 1: "catalog_recommendations_ai" using https://cloud.google.com/recommendations-ai/docs/upload-
+        /// catalog#json (Default for catalogItems.import) 2: "catalog_merchant_center" using https://cloud.google.com
+        /// /recommendations-ai/docs/upload-catalog#mc Supported values for user event imports: 1:
+        /// "user_events_recommendations_ai" using https://cloud.google.com/recommendations-ai/docs/manage-user-
         /// events#import (Default for userEvents.import)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSchema")]
         public virtual string DataSchema { get; set; } 
@@ -2659,7 +2520,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("catalogItemLevelConfig")]
         public virtual GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig CatalogItemLevelConfig { get; set; } 
 
-        /// <summary>Required. The id of the default event store.</summary>
+        /// <summary>Required. The ID of the default event store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultEventStoreId")]
         public virtual string DefaultEventStoreId { get; set; } 
 
@@ -2690,12 +2551,9 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     public class GoogleCloudRecommendationengineV1beta1CatalogItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Catalog item categories. This field is repeated for supporting one catalog item belonging
-        /// to several parallel category hierarchies.
-        ///
-        /// For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness"
-        /// -> "Athletic Clothing" -> "Shoes"], it could be represented as:
-        ///
-        /// "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports &
+        /// to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes &
+        /// Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented
+        /// as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports &
         /// Fitness", "Athletic Clothing", "Shoes"] } ]</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryHierarchies")]
         public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy> CategoryHierarchies { get; set; } 
@@ -2704,10 +2562,9 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Required. Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes.
-        ///
-        /// This id must be unique among all catalog items within the same catalog. It should also be used when logging
-        /// user events in order for the user events to be joined with the Catalog.</summary>
+        /// <summary>Required. Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id
+        /// must be unique among all catalog items within the same catalog. It should also be used when logging user
+        /// events in order for the user events to be joined with the Catalog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -2719,10 +2576,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         public virtual GoogleCloudRecommendationengineV1beta1FeatureMap ItemAttributes { get; set; } 
 
         /// <summary>Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit
-        /// of 128 bytes.
-        ///
-        /// This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-
-        /// id).</summary>
+        /// of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-
+        /// ai/docs/catalog#item-group-id).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemGroupId")]
         public virtual string ItemGroupId { get; set; } 
 
@@ -2737,10 +2592,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         public virtual GoogleCloudRecommendationengineV1beta1ProductCatalogItem ProductMetadata { get; set; } 
 
         /// <summary>Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded
-        /// string with a length limit of 1 KiB.
-        ///
-        /// This tag can be used for filtering recommendation results by passing the tag as part of the predict request
-        /// filter.</summary>
+        /// string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing
+        /// the tag as part of the predict request filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
 
@@ -2756,9 +2609,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     public class GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Catalog item categories. Each category should be a UTF-8 encoded string with a length
-        /// limit of 2 KiB.
-        ///
-        /// Note that the order in the list denotes the specificity (from least to most specific).</summary>
+        /// limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most
+        /// specific).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
         public virtual System.Collections.Generic.IList<string> Categories { get; set; } 
 
@@ -2766,16 +2618,16 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Configures what level the catalog should be uploaded with regards to how users will be send events and
-    /// how predictions will be made.</summary>
+    /// <summary>Configures the catalog level that users send events to, and the level at which predictions are
+    /// made.</summary>
     public class GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. What level of the catalog are events uploaded at. See https://cloud.google.com
+        /// <summary>Optional. Level of the catalog at which events are uploaded. See https://cloud.google.com
         /// /recommendations-ai/docs/catalog#catalog-levels for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventItemLevel")]
         public virtual string EventItemLevel { get; set; } 
 
-        /// <summary>Optional. What level of the catalog are predictions made at. See https://cloud.google.com
+        /// <summary>Optional. Level of the catalog at which predictions are made. See https://cloud.google.com
         /// /recommendations-ai/docs/catalog#catalog-levels for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predictItemLevel")]
         public virtual string PredictItemLevel { get; set; } 
@@ -2798,11 +2650,10 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     /// <summary>User event details shared by all recommendation types.</summary>
     public class GoogleCloudRecommendationengineV1beta1EventDetail : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Extra user event features to include in the recommendation model.
-        ///
-        /// For product recommendation, an example of extra user information is traffic_channel, i.e. how user arrives
-        /// at the site. Users can arrive at the site by coming to the site directly, or coming through Google search,
-        /// and etc.</summary>
+        /// <summary>Optional. Extra user event features to include in the recommendation model. For product
+        /// recommendation, an example of extra user information is traffic_channel, i.e. how user arrives at the site.
+        /// Users can arrive at the site by coming to the site directly, or coming through Google search, and
+        /// etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventAttributes")]
         public virtual GoogleCloudRecommendationengineV1beta1FeatureMap EventAttributes { get; set; } 
 
@@ -2820,17 +2671,13 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageViewId")]
         public virtual string PageViewId { get; set; } 
 
-        /// <summary>Optional. Recommendation token included in the recommendation prediction response.
-        ///
-        /// This field enables accurate attribution of recommendation model performance.
-        ///
-        /// This token enables us to accurately attribute page view or purchase back to the event and the particular
-        /// predict response containing this clicked/purchased item. If user clicks on product K in the recommendation
-        /// results, pass the `PredictResponse.recommendationToken` property as a url parameter to product K's page.
-        /// When recording events on product K's page, log the PredictResponse.recommendation_token to this field.
-        ///
-        /// Optional, but highly encouraged for user events that are the result of a recommendation prediction
-        /// query.</summary>
+        /// <summary>Optional. Recommendation token included in the recommendation prediction response. This field
+        /// enables accurate attribution of recommendation model performance. This token enables us to accurately
+        /// attribute page view or purchase back to the event and the particular predict response containing this
+        /// clicked/purchased item. If user clicks on product K in the recommendation results, pass the
+        /// `PredictResponse.recommendationToken` property as a url parameter to product K's page. When recording events
+        /// on product K's page, log the PredictResponse.recommendation_token to this field. Optional, but highly
+        /// encouraged for user events that are the result of a recommendation prediction query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendationToken")]
         public virtual string RecommendationToken { get; set; } 
 
@@ -2853,19 +2700,15 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     public class GoogleCloudRecommendationengineV1beta1FeatureMap : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Categorical features that can take on one of a limited number of possible values. Some examples
-        /// would be the brand/maker of a product, or country of a customer.
-        ///
-        /// Feature names and values must be UTF-8 encoded strings.
-        ///
-        /// For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`</summary>
+        /// would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8
+        /// encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S",
+        /// "M"]}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoricalFeatures")]
         public virtual System.Collections.Generic.IDictionary<string,GoogleCloudRecommendationengineV1beta1FeatureMapStringList> CategoricalFeatures { get; set; } 
 
         /// <summary>Numerical features. Some examples would be the height/weight of a product, or age of a customer.
-        ///
-        /// Feature names must be UTF-8 encoded strings.
-        ///
-        /// For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`</summary>
+        /// Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]},
+        /// "heights_cm": {"value":[8.1, 6.4]} }`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numericalFeatures")]
         public virtual System.Collections.Generic.IDictionary<string,GoogleCloudRecommendationengineV1beta1FeatureMapFloatList> NumericalFeatures { get; set; } 
 
@@ -2906,36 +2749,14 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputUris")]
         public virtual System.Collections.Generic.IList<string> InputUris { get; set; } 
 
-        /// <summary>Optional. The schema to use when parsing the data from the source.
-        ///
-        /// Supported values for catalog imports:
-        ///
-        /// 1: "catalog_recommendations_ai" using https://cloud.google.com/recommendations-ai/docs/upload-catalog#json
-        /// (Default for catalogItems.import)
-        ///
-        /// 2: "catalog_merchant_center" using https://cloud.google.com/recommendations-ai/docs/upload-catalog#mc
-        ///
-        /// Supported values for user events imports:
-        ///
-        /// 1: "user_events_recommendations_ai" using https://cloud.google.com/recommendations-ai/docs/manage-user-
+        /// <summary>Optional. The schema to use when parsing the data from the source. Supported values for catalog
+        /// imports: 1: "catalog_recommendations_ai" using https://cloud.google.com/recommendations-ai/docs/upload-
+        /// catalog#json (Default for catalogItems.import) 2: "catalog_merchant_center" using https://cloud.google.com
+        /// /recommendations-ai/docs/upload-catalog#mc Supported values for user events imports: 1:
+        /// "user_events_recommendations_ai" using https://cloud.google.com/recommendations-ai/docs/manage-user-
         /// events#import (Default for userEvents.import)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
         public virtual string JsonSchema { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Response message for GetCatalogItemsWithItemGroupId method.</summary>
-    public class GoogleCloudRecommendationengineV1beta1GetCatalogItemsWithItemGroupIdResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The canonical catalog item representing all items associated with the item group id.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("canonicalCatalogItem")]
-        public virtual GoogleCloudRecommendationengineV1beta1CatalogItem CanonicalCatalogItem { get; set; } 
-
-        /// <summary>The list of catalog items associated with the item group id.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("catalogItems")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1CatalogItem> CatalogItems { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3187,33 +3008,23 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         public virtual System.Nullable<bool> DryRun { get; set; } 
 
         /// <summary>Optional. Filter for restricting prediction results. Accepts values for tags and the
-        /// `filterOutOfStockItems` flag.
-        ///
-        /// * Tag expressions. Restricts predictions to items that match all of the specified tags. Boolean operators
-        /// `OR` and `NOT` are supported if the expression is enclosed in parentheses, and must be separated from the
-        /// tag values by a space. `-"tagA"` is also supported and is equivalent to `NOT "tagA"`. Tag values must be
-        /// double quoted UTF-8 encoded strings with a size limit of 1 KiB.
-        ///
-        /// * filterOutOfStockItems. Restricts predictions to items that do not have a stockState value of OUT_OF_STOCK.
-        ///
-        /// Examples:
-        ///
-        /// * tag=("Red" OR "Blue") tag="New-Arrival" tag=(NOT "promotional") * filterOutOfStockItems
-        /// tag=(-"promotional") * filterOutOfStockItems
-        ///
-        /// If your filter blocks all prediction results, nothing will be returned. If you want generic (unfiltered)
-        /// popular items to be returned instead, set `strictFiltering` to false in `PredictRequest.params`.</summary>
+        /// `filterOutOfStockItems` flag. * Tag expressions. Restricts predictions to items that match all of the
+        /// specified tags. Boolean operators `OR` and `NOT` are supported if the expression is enclosed in parentheses,
+        /// and must be separated from the tag values by a space. `-"tagA"` is also supported and is equivalent to `NOT
+        /// "tagA"`. Tag values must be double quoted UTF-8 encoded strings with a size limit of 1 KiB. *
+        /// filterOutOfStockItems. Restricts predictions to items that do not have a stockState value of OUT_OF_STOCK.
+        /// Examples: * tag=("Red" OR "Blue") tag="New-Arrival" tag=(NOT "promotional") * filterOutOfStockItems
+        /// tag=(-"promotional") * filterOutOfStockItems If your filter blocks all prediction results, nothing will be
+        /// returned. If you want generic (unfiltered) popular items to be returned instead, set `strictFiltering` to
+        /// false in `PredictRequest.params`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
-        /// <summary>Optional. The labels for the predict request.
-        ///
-        /// * Label keys can contain lowercase letters, digits and hyphens, must start with a letter, and must end with
-        /// a letter or digit. * Non-zero label values can contain lowercase letters, digits and hyphens, must start
-        /// with a letter, and must end with a letter or digit. * No more than 64 labels can be associated with a given
-        /// request.
-        ///
-        /// See https://goo.gl/xmQnxf for more information on and examples of labels.</summary>
+        /// <summary>Optional. The labels for the predict request. * Label keys can contain lowercase letters, digits
+        /// and hyphens, must start with a letter, and must end with a letter or digit. * Non-zero label values can
+        /// contain lowercase letters, digits and hyphens, must start with a letter, and must end with a letter or
+        /// digit. * No more than 64 labels can be associated with a given request. See https://goo.gl/xmQnxf for more
+        /// information on and examples of labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -3226,11 +3037,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; } 
 
-        /// <summary>Optional. Additional domain specific parameters for the predictions.
-        ///
-        /// Allowed values:
-        ///
-        /// * `returnCatalogItem`: Boolean. If set to true, the associated catalogItem object will be returned in the
+        /// <summary>Optional. Additional domain specific parameters for the predictions. Allowed values: *
+        /// `returnCatalogItem`: Boolean. If set to true, the associated catalogItem object will be returned in the
         /// `PredictResponse.PredictionResult.itemMetadata` object in the method response. * `returnItemScore`: Boolean.
         /// If set to true, the prediction 'score' corresponding to each returned item will be set in the `metadata`
         /// field in the prediction response. The given 'score' indicates the probability of an item being
@@ -3291,13 +3099,10 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Additional item metadata / annotations.
-        ///
-        /// Possible values:
-        ///
-        /// * `catalogItem`: JSON representation of the catalogItem. Will be set if `returnCatalogItem` is set to true
-        /// in `PredictRequest.params`. * `score`: Prediction score in double value. Will be set if `returnItemScore` is
-        /// set to true in `PredictRequest.params`.</summary>
+        /// <summary>Additional item metadata / annotations. Possible values: * `catalogItem`: JSON representation of
+        /// the catalogItem. Will be set if `returnCatalogItem` is set to true in `PredictRequest.params`. * `score`:
+        /// Prediction score in double value. Will be set if `returnItemScore` is set to true in
+        /// `PredictRequest.params`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemMetadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> ItemMetadata { get; set; } 
 
@@ -3328,12 +3133,9 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalProductUri")]
         public virtual string CanonicalProductUri { get; set; } 
 
-        /// <summary>Optional. A map to pass the costs associated with the product.
-        ///
-        /// For example: {"manufacturing": 45.5} The profit of selling this item is computed like so:
-        ///
-        /// * If 'exactPrice' is provided, profit = displayPrice - sum(costs) * If 'priceRange' is provided, profit =
-        /// minPrice - sum(costs)</summary>
+        /// <summary>Optional. A map to pass the costs associated with the product. For example: {"manufacturing": 45.5}
+        /// The profit of selling this item is computed like so: * If 'exactPrice' is provided, profit = displayPrice -
+        /// sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costs")]
         public virtual System.Collections.Generic.IDictionary<string,System.Nullable<float>> Costs { get; set; } 
 
@@ -3399,10 +3201,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>Optional. Quantity of the products in stock when a user event happens. Optional. If provided, this
         /// overrides the available quantity in Catalog for this event. and can only be set if `stock_status` is set to
-        /// `IN_STOCK`.
-        ///
-        /// Note that if an item is out of stock, you must set the `stock_state` field to be `OUT_OF_STOCK`. Leaving
-        /// this field unspecified / as zero is not sufficient to mark the item out of stock.</summary>
+        /// `IN_STOCK`. Note that if an item is out of stock, you must set the `stock_state` field to be `OUT_OF_STOCK`.
+        /// Leaving this field unspecified / as zero is not sufficient to mark the item out of stock.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableQuantity")]
         public virtual System.Nullable<int> AvailableQuantity { get; set; } 
 
@@ -3448,10 +3248,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     public class GoogleCloudRecommendationengineV1beta1ProductEventDetail : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The id or name of the associated shopping cart. This id is used to associate multiple
-        /// items added or present in the cart before purchase.
-        ///
-        /// This can only be set for `add-to-cart`, `remove-from-cart`, `checkout-start`, `purchase-complete`, or
-        /// `shopping-cart-page-view` events.</summary>
+        /// items added or present in the cart before purchase. This can only be set for `add-to-cart`, `remove-from-
+        /// cart`, `checkout-start`, `purchase-complete`, or `shopping-cart-page-view` events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cartId")]
         public virtual string CartId { get; set; } 
 
@@ -3467,26 +3265,16 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageCategories")]
         public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy> PageCategories { get; set; } 
 
-        /// <summary>The main product details related to the event.
-        ///
-        /// This field is required for the following event types:
-        ///
-        /// * `add-to-cart` * `add-to-list` * `checkout-start` * `detail-page-view` * `purchase-complete` * `refund` *
-        /// `remove-from-cart` * `remove-from-list`
-        ///
-        /// This field is optional for the following event types:
-        ///
-        /// * `page-visit` * `shopping-cart-page-view` - note that 'product_details' should be set for this unless the
-        /// shopping cart is empty. * `search` (highly encouraged)
-        ///
-        /// In a `search` event, this field represents the products returned to the end user on the current page (the
-        /// end user may have not finished broswing the whole page yet). When a new page is returned to the end user,
-        /// after pagination/filtering/ordering even for the same query, a new SEARCH event with different
-        /// product_details is desired. The end user may have not finished broswing the whole page yet.
-        ///
-        /// This field is not allowed for the following event types:
-        ///
-        /// * `category-page-view` * `home-page-view`</summary>
+        /// <summary>The main product details related to the event. This field is required for the following event
+        /// types: * `add-to-cart` * `add-to-list` * `checkout-start` * `detail-page-view` * `purchase-complete` *
+        /// `refund` * `remove-from-cart` * `remove-from-list` This field is optional for the following event types: *
+        /// `page-visit` * `shopping-cart-page-view` - note that 'product_details' should be set for this unless the
+        /// shopping cart is empty. * `search` (highly encouraged) In a `search` event, this field represents the
+        /// products returned to the end user on the current page (the end user may have not finished broswing the whole
+        /// page yet). When a new page is returned to the end user, after pagination/filtering/ordering even for the
+        /// same query, a new SEARCH event with different product_details is desired. The end user may have not finished
+        /// broswing the whole page yet. This field is not allowed for the following event types: * `category-page-view`
+        /// * `home-page-view`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productDetails")]
         public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1ProductDetail> ProductDetails { get; set; } 
 
@@ -3509,13 +3297,10 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     public class GoogleCloudRecommendationengineV1beta1PurchaseTransaction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. All the costs associated with the product. These can be manufacturing costs, shipping
-        /// expenses not borne by the end user, or any other costs.
-        ///
-        /// Total product cost such that profit = revenue - (sum(taxes) + sum(costs)) If product_cost is not set, then
-        /// profit = revenue - tax - shipping - sum(CatalogItem.costs).
-        ///
-        /// If CatalogItem.cost is not specified for one of the items, CatalogItem.cost based profit *cannot* be
-        /// calculated for this Transaction.</summary>
+        /// expenses not borne by the end user, or any other costs. Total product cost such that profit = revenue -
+        /// (sum(taxes) + sum(costs)) If product_cost is not set, then profit = revenue - tax - shipping -
+        /// sum(CatalogItem.costs). If CatalogItem.cost is not specified for one of the items, CatalogItem.cost based
+        /// profit *cannot* be calculated for this Transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costs")]
         public virtual System.Collections.Generic.IDictionary<string,System.Nullable<float>> Costs { get; set; } 
 
@@ -3562,20 +3347,14 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     public class GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The filter string to specify the events to be deleted. Empty string filter is not
-        /// allowed. The eligible fields for filtering are:
-        ///
-        /// * `eventType`: UserEvent.eventType field of type string. * `eventTime`: in ISO 8601 "zulu" format. *
-        /// `visitorId`: field of type string. Specifying this will delete all events associated with a visitor. *
-        /// `userId`: field of type string. Specifying this will delete all events associated with a user.
-        ///
-        /// Examples:
-        ///
-        /// * Deleting all events in a time range: `eventTime > "2012-04-23T18:25:43.511Z" eventTime <
-        /// "2012-04-23T18:30:43.511Z"` * Deleting specific eventType in time range: `eventTime >
-        /// "2012-04-23T18:25:43.511Z" eventType = "detail-page-view"` * Deleting all events for a specific visitor:
-        /// `visitorId = "visitor1024"`
-        ///
-        /// The filtering fields are assumed to have an implicit AND.</summary>
+        /// allowed. The eligible fields for filtering are: * `eventType`: UserEvent.eventType field of type string. *
+        /// `eventTime`: in ISO 8601 "zulu" format. * `visitorId`: field of type string. Specifying this will delete all
+        /// events associated with a visitor. * `userId`: field of type string. Specifying this will delete all events
+        /// associated with a user. Examples: * Deleting all events in a time range: `eventTime >
+        /// "2012-04-23T18:25:43.511Z" eventTime < "2012-04-23T18:30:43.511Z"` * Deleting specific eventType in time
+        /// range: `eventTime > "2012-04-23T18:25:43.511Z" eventType = "detail-page-view"` * Deleting all events for a
+        /// specific visitor: `visitorId = "visitor1024"` The filtering fields are assumed to have an implicit
+        /// AND.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
@@ -3634,34 +3413,23 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual object EventTime { get; set; } 
 
-        /// <summary>Required. User event type. Allowed values are:
-        ///
-        /// * `add-to-cart` Products being added to cart. * `add-to-list` Items being added to a list (shopping list,
-        /// favorites etc). * `category-page-view` Special pages such as sale or promotion pages viewed. * `checkout-
-        /// start` User starting a checkout process. * `detail-page-view` Products detail page viewed. * `home-page-
-        /// view` Homepage viewed. * `page-visit` Generic page visits not included in the event types above. *
-        /// `purchase-complete` User finishing a purchase. * `refund` Purchased items being refunded or returned. *
-        /// `remove-from-cart` Products being removed from cart. * `remove-from-list` Items being removed from a list. *
-        /// `search` Product search. * `shopping-cart-page-view` User viewing a shopping cart. * `impression` List of
-        /// items displayed. Used by Google Tag Manager.</summary>
+        /// <summary>Required. User event type. Allowed values are: * `add-to-cart` Products being added to cart. *
+        /// `add-to-list` Items being added to a list (shopping list, favorites etc). * `category-page-view` Special
+        /// pages such as sale or promotion pages viewed. * `checkout-start` User starting a checkout process. *
+        /// `detail-page-view` Products detail page viewed. * `home-page-view` Homepage viewed. * `page-visit` Generic
+        /// page visits not included in the event types above. * `purchase-complete` User finishing a purchase. *
+        /// `refund` Purchased items being refunded or returned. * `remove-from-cart` Products being removed from cart.
+        /// * `remove-from-list` Items being removed from a list. * `search` Product search. * `shopping-cart-page-view`
+        /// User viewing a shopping cart. * `impression` List of items displayed. Used by Google Tag Manager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; } 
 
-        /// <summary>Optional. Retail product specific user event metadata.
-        ///
-        /// This field is required for the following event types:
-        ///
-        /// * `add-to-cart` * `add-to-list` * `category-page-view` * `checkout-start` * `detail-page-view` * `purchase-
-        /// complete` * `refund` * `remove-from-cart` * `remove-from-list` * `search`
-        ///
-        /// This field is optional for the following event types:
-        ///
-        /// * `page-visit` * `shopping-cart-page-view` - note that 'product_event_detail' should be set for this unless
-        /// the shopping cart is empty.
-        ///
-        /// This field is not allowed for the following event types:
-        ///
-        /// * `home-page-view`</summary>
+        /// <summary>Optional. Retail product specific user event metadata. This field is required for the following
+        /// event types: * `add-to-cart` * `add-to-list` * `category-page-view` * `checkout-start` * `detail-page-view`
+        /// * `purchase-complete` * `refund` * `remove-from-cart` * `remove-from-list` * `search` This field is optional
+        /// for the following event types: * `page-visit` * `shopping-cart-page-view` - note that 'product_event_detail'
+        /// should be set for this unless the shopping cart is empty. This field is not allowed for the following event
+        /// types: * `home-page-view`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productEventDetail")]
         public virtual GoogleCloudRecommendationengineV1beta1ProductEventDetail ProductEventDetail { get; set; } 
 
@@ -3718,9 +3486,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         public virtual string IpAddress { get; set; } 
 
         /// <summary>Optional. User agent as included in the HTTP header. UTF-8 encoded string with a length limit of 1
-        /// KiB.
-        ///
-        /// This should *not* be set when using the JavaScript pixel or if `directUserRequest` is set.</summary>
+        /// KiB. This should *not* be set when using the JavaScript pixel or if `directUserRequest` is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
         public virtual string UserAgent { get; set; } 
 
@@ -3729,11 +3495,10 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; } 
 
-        /// <summary>Required. A unique identifier for tracking visitors with a length limit of 128 bytes.
-        ///
-        /// For example, this could be implemented with a http cookie, which should be able to uniquely identify a
-        /// visitor on a single device. This unique identifier should not change if the visitor log in/out of the
-        /// website. Maximum length 128 bytes. Cannot be empty.</summary>
+        /// <summary>Required. A unique identifier for tracking visitors with a length limit of 128 bytes. For example,
+        /// this could be implemented with a http cookie, which should be able to uniquely identify a visitor on a
+        /// single device. This unique identifier should not change if the visitor log in/out of the website. Maximum
+        /// length 128 bytes. Cannot be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
         public virtual string VisitorId { get; set; } 
 
@@ -3768,9 +3533,9 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -3780,11 +3545,11 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -3793,11 +3558,9 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -3806,9 +3569,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class GoogleRpcStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3816,8 +3578,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Data Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200726 (2033)
+ *      <tr><th>API Rev<td>20200801 (2039)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -1012,12 +1012,16 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             /// are returned.</summary>
                             public enum MessageTypesEnum
                             {
+                                /// <summary>No severity specified.</summary>
                                 [Google.Apis.Util.StringValueAttribute("MESSAGE_SEVERITY_UNSPECIFIED")]
                                 MESSAGESEVERITYUNSPECIFIED,
+                                /// <summary>Informational message.</summary>
                                 [Google.Apis.Util.StringValueAttribute("INFO")]
                                 INFO,
+                                /// <summary>Warning message.</summary>
                                 [Google.Apis.Util.StringValueAttribute("WARNING")]
                                 WARNING,
+                                /// <summary>Error message.</summary>
                                 [Google.Apis.Util.StringValueAttribute("ERROR")]
                                 ERROR,
                             }
@@ -1273,8 +1277,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         /// <summary>Indicates how run attempts are to be pulled.</summary>
                         public enum RunAttemptEnum
                         {
+                            /// <summary>All runs should be returned.</summary>
                             [Google.Apis.Util.StringValueAttribute("RUN_ATTEMPT_UNSPECIFIED")]
                             RUNATTEMPTUNSPECIFIED,
+                            /// <summary>Only latest run per day should be returned.</summary>
                             [Google.Apis.Util.StringValueAttribute("LATEST")]
                             LATEST,
                         }
@@ -1286,16 +1292,23 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         /// <summary>When specified, only transfer runs with requested states are returned.</summary>
                         public enum StatesEnum
                         {
+                            /// <summary>State placeholder.</summary>
                             [Google.Apis.Util.StringValueAttribute("TRANSFER_STATE_UNSPECIFIED")]
                             TRANSFERSTATEUNSPECIFIED,
+                            /// <summary>Data transfer is scheduled and is waiting to be picked up by data transfer
+                            /// backend.</summary>
                             [Google.Apis.Util.StringValueAttribute("PENDING")]
                             PENDING,
+                            /// <summary>Data transfer is in progress.</summary>
                             [Google.Apis.Util.StringValueAttribute("RUNNING")]
                             RUNNING,
+                            /// <summary>Data transfer completed successfully.</summary>
                             [Google.Apis.Util.StringValueAttribute("SUCCEEDED")]
                             SUCCEEDED,
+                            /// <summary>Data transfer failed.</summary>
                             [Google.Apis.Util.StringValueAttribute("FAILED")]
                             FAILED,
+                            /// <summary>Data transfer is cancelled.</summary>
                             [Google.Apis.Util.StringValueAttribute("CANCELLED")]
                             CANCELLED,
                         }
@@ -1407,15 +1420,14 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     /// <summary>Optional OAuth2 authorization code to use with this transfer configuration. This is
                     /// required if new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain
                     /// authorization_code, please make a request to
-                    /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id==_uri=
-                    ///
-                    /// * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by
-                    /// ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method.
-                    /// * redirect_uri is an optional parameter. If not specified, then authorization code is posted to
-                    /// the opener of authorization flow window. Otherwise it will be sent to the redirect uri. A
-                    /// special value of urn:ietf:wg:oauth:2.0:oob means that authorization code should be returned in
-                    /// the title bar of the browser, with the page text prompting the user to copy the code and paste
-                    /// it in the application.</summary>
+                    /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id==_uri= * client_id should be
+                    /// OAuth client_id of BigQuery DTS API for the given data source returned by ListDataSources
+                    /// method. * data_source_scopes are the scopes returned by ListDataSources method. * redirect_uri
+                    /// is an optional parameter. If not specified, then authorization code is posted to the opener of
+                    /// authorization flow window. Otherwise it will be sent to the redirect uri. A special value of
+                    /// urn:ietf:wg:oauth:2.0:oob means that authorization code should be returned in the title bar of
+                    /// the browser, with the page text prompting the user to copy the code and paste it in the
+                    /// application.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("authorizationCode", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string AuthorizationCode { get; set; }
 
@@ -1775,15 +1787,14 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     /// <summary>Optional OAuth2 authorization code to use with this transfer configuration. If it is
                     /// provided, the transfer configuration will be associated with the authorizing user. In order to
                     /// obtain authorization_code, please make a request to
-                    /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id==_uri=
-                    ///
-                    /// * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by
-                    /// ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method.
-                    /// * redirect_uri is an optional parameter. If not specified, then authorization code is posted to
-                    /// the opener of authorization flow window. Otherwise it will be sent to the redirect uri. A
-                    /// special value of urn:ietf:wg:oauth:2.0:oob means that authorization code should be returned in
-                    /// the title bar of the browser, with the page text prompting the user to copy the code and paste
-                    /// it in the application.</summary>
+                    /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id==_uri= * client_id should be
+                    /// OAuth client_id of BigQuery DTS API for the given data source returned by ListDataSources
+                    /// method. * data_source_scopes are the scopes returned by ListDataSources method. * redirect_uri
+                    /// is an optional parameter. If not specified, then authorization code is posted to the opener of
+                    /// authorization flow window. Otherwise it will be sent to the redirect uri. A special value of
+                    /// urn:ietf:wg:oauth:2.0:oob means that authorization code should be returned in the title bar of
+                    /// the browser, with the page text prompting the user to copy the code and paste it in the
+                    /// application.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("authorizationCode", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string AuthorizationCode { get; set; }
 
@@ -2304,12 +2315,16 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         /// returned.</summary>
                         public enum MessageTypesEnum
                         {
+                            /// <summary>No severity specified.</summary>
                             [Google.Apis.Util.StringValueAttribute("MESSAGE_SEVERITY_UNSPECIFIED")]
                             MESSAGESEVERITYUNSPECIFIED,
+                            /// <summary>Informational message.</summary>
                             [Google.Apis.Util.StringValueAttribute("INFO")]
                             INFO,
+                            /// <summary>Warning message.</summary>
                             [Google.Apis.Util.StringValueAttribute("WARNING")]
                             WARNING,
+                            /// <summary>Error message.</summary>
                             [Google.Apis.Util.StringValueAttribute("ERROR")]
                             ERROR,
                         }
@@ -2564,8 +2579,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     /// <summary>Indicates how run attempts are to be pulled.</summary>
                     public enum RunAttemptEnum
                     {
+                        /// <summary>All runs should be returned.</summary>
                         [Google.Apis.Util.StringValueAttribute("RUN_ATTEMPT_UNSPECIFIED")]
                         RUNATTEMPTUNSPECIFIED,
+                        /// <summary>Only latest run per day should be returned.</summary>
                         [Google.Apis.Util.StringValueAttribute("LATEST")]
                         LATEST,
                     }
@@ -2577,16 +2594,23 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     /// <summary>When specified, only transfer runs with requested states are returned.</summary>
                     public enum StatesEnum
                     {
+                        /// <summary>State placeholder.</summary>
                         [Google.Apis.Util.StringValueAttribute("TRANSFER_STATE_UNSPECIFIED")]
                         TRANSFERSTATEUNSPECIFIED,
+                        /// <summary>Data transfer is scheduled and is waiting to be picked up by data transfer
+                        /// backend.</summary>
                         [Google.Apis.Util.StringValueAttribute("PENDING")]
                         PENDING,
+                        /// <summary>Data transfer is in progress.</summary>
                         [Google.Apis.Util.StringValueAttribute("RUNNING")]
                         RUNNING,
+                        /// <summary>Data transfer completed successfully.</summary>
                         [Google.Apis.Util.StringValueAttribute("SUCCEEDED")]
                         SUCCEEDED,
+                        /// <summary>Data transfer failed.</summary>
                         [Google.Apis.Util.StringValueAttribute("FAILED")]
                         FAILED,
+                        /// <summary>Data transfer is cancelled.</summary>
                         [Google.Apis.Util.StringValueAttribute("CANCELLED")]
                         CANCELLED,
                     }
@@ -2698,15 +2722,13 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// <summary>Optional OAuth2 authorization code to use with this transfer configuration. This is
                 /// required if new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain
                 /// authorization_code, please make a request to
-                /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id==_uri=
-                ///
-                /// * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by
-                /// ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. *
-                /// redirect_uri is an optional parameter. If not specified, then authorization code is posted to the
-                /// opener of authorization flow window. Otherwise it will be sent to the redirect uri. A special value
-                /// of urn:ietf:wg:oauth:2.0:oob means that authorization code should be returned in the title bar of
-                /// the browser, with the page text prompting the user to copy the code and paste it in the
-                /// application.</summary>
+                /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id==_uri= * client_id should be
+                /// OAuth client_id of BigQuery DTS API for the given data source returned by ListDataSources method. *
+                /// data_source_scopes are the scopes returned by ListDataSources method. * redirect_uri is an optional
+                /// parameter. If not specified, then authorization code is posted to the opener of authorization flow
+                /// window. Otherwise it will be sent to the redirect uri. A special value of urn:ietf:wg:oauth:2.0:oob
+                /// means that authorization code should be returned in the title bar of the browser, with the page text
+                /// prompting the user to copy the code and paste it in the application.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("authorizationCode", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AuthorizationCode { get; set; }
 
@@ -3065,15 +3087,13 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// <summary>Optional OAuth2 authorization code to use with this transfer configuration. If it is
                 /// provided, the transfer configuration will be associated with the authorizing user. In order to
                 /// obtain authorization_code, please make a request to
-                /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id==_uri=
-                ///
-                /// * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by
-                /// ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. *
-                /// redirect_uri is an optional parameter. If not specified, then authorization code is posted to the
-                /// opener of authorization flow window. Otherwise it will be sent to the redirect uri. A special value
-                /// of urn:ietf:wg:oauth:2.0:oob means that authorization code should be returned in the title bar of
-                /// the browser, with the page text prompting the user to copy the code and paste it in the
-                /// application.</summary>
+                /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id==_uri= * client_id should be
+                /// OAuth client_id of BigQuery DTS API for the given data source returned by ListDataSources method. *
+                /// data_source_scopes are the scopes returned by ListDataSources method. * redirect_uri is an optional
+                /// parameter. If not specified, then authorization code is posted to the opener of authorization flow
+                /// window. Otherwise it will be sent to the redirect uri. A special value of urn:ietf:wg:oauth:2.0:oob
+                /// means that authorization code should be returned in the title bar of the browser, with the page text
+                /// prompting the user to copy the code and paste it in the application.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("authorizationCode", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AuthorizationCode { get; set; }
 
@@ -3527,11 +3547,9 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -3624,9 +3642,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Cross-service attributes for the location. For example
-        ///
-        /// {"cloud.googleapis.com/region": "us-east1"}</summary>
+        /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
+        /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -3730,9 +3747,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3740,8 +3756,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -3782,8 +3798,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     {
         /// <summary>The number of days to look back to automatically refresh the data. For example, if
         /// `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than
-        /// ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to  0
-        /// to use the default value.</summary>
+        /// ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to
+        /// use the default value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataRefreshWindowDays")]
         public virtual System.Nullable<int> DataRefreshWindowDays { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>App Engine Admin API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20200729 (2036)
+ *      <tr><th>API Rev<td>20200802 (2040)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -566,8 +566,12 @@ namespace Google.Apis.Appengine.v1alpha
                 /// <summary>Controls the set of fields returned in the GET response.</summary>
                 public enum ViewEnum
                 {
+                    /// <summary>Basic certificate information, including applicable domains and expiration
+                    /// date.</summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC_CERTIFICATE")]
                     BASICCERTIFICATE,
+                    /// <summary>The information from BASIC_CERTIFICATE, plus detailed information on the domain
+                    /// mappings that have this certificate mapped.</summary>
                     [Google.Apis.Util.StringValueAttribute("FULL_CERTIFICATE")]
                     FULLCERTIFICATE,
                 }
@@ -665,8 +669,12 @@ namespace Google.Apis.Appengine.v1alpha
                 /// <summary>Controls the set of fields returned in the LIST response.</summary>
                 public enum ViewEnum
                 {
+                    /// <summary>Basic certificate information, including applicable domains and expiration
+                    /// date.</summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC_CERTIFICATE")]
                     BASICCERTIFICATE,
+                    /// <summary>The information from BASIC_CERTIFICATE, plus detailed information on the domain
+                    /// mappings that have this certificate mapped.</summary>
                     [Google.Apis.Util.StringValueAttribute("FULL_CERTIFICATE")]
                     FULLCERTIFICATE,
                 }
@@ -1018,10 +1026,17 @@ namespace Google.Apis.Appengine.v1alpha
                 /// default, overrides are rejected.</summary>
                 public enum OverrideStrategyEnum
                 {
+                    /// <summary>Strategy unspecified. Defaults to STRICT.</summary>
                     [Google.Apis.Util.StringValueAttribute("UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY")]
                     UNSPECIFIEDDOMAINOVERRIDESTRATEGY,
+                    /// <summary>Overrides not allowed. If a mapping already exists for the specified domain, the
+                    /// request will return an ALREADY_EXISTS (409).</summary>
                     [Google.Apis.Util.StringValueAttribute("STRICT")]
                     STRICT,
+                    /// <summary>Overrides allowed. If a mapping already exists for the specified domain, the request
+                    /// will overwrite it. Note that this might stop another Google product from serving. For example,
+                    /// if the domain is mapped to another App Engine application, that app will no longer serve from
+                    /// that domain.</summary>
                     [Google.Apis.Util.StringValueAttribute("OVERRIDE")]
                     OVERRIDE__,
                 }
@@ -1946,13 +1961,13 @@ namespace Google.Apis.Appengine.v1alpha.Data
     public class CertificateRawData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then
-        /// encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example:  -----BEGIN
-        /// RSA PRIVATE KEY-----  -----END RSA PRIVATE KEY-----  @InputOnly</summary>
+        /// encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN
+        /// RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateKey")]
         public virtual string PrivateKey { get; set; } 
 
         /// <summary>PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must
-        /// include the header and footer. Example:  -----BEGIN CERTIFICATE-----  -----END CERTIFICATE----- </summary>
+        /// include the header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE----- </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicCertificate")]
         public virtual string PublicCertificate { get; set; } 
 

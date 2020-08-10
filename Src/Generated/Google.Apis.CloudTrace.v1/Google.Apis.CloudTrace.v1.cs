@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Cloud Trace API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200727 (2034)
+ *      <tr><th>API Rev<td>20200805 (2043)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -481,42 +481,35 @@ namespace Google.Apis.CloudTrace.v1
                 [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object EndTime { get; set; }
 
-                /// <summary>Optional. A filter against labels for the request.
-                ///
-                /// By default, searches use prefix matching. To specify exact match, prepend a plus symbol (`+`) to the
-                /// search term. Multiple terms are ANDed. Syntax:
-                ///
-                /// *   `root:NAME_PREFIX` or `NAME_PREFIX`: Return traces where any root span starts with
-                /// `NAME_PREFIX`. *   `+root:NAME` or `+NAME`: Return traces where any root span's name is exactly
-                /// `NAME`. *   `span:NAME_PREFIX`: Return traces where any span starts with `NAME_PREFIX`. *
-                /// `+span:NAME`: Return traces where any span's name is exactly `NAME`. *   `latency:DURATION`: Return
+                /// <summary>Optional. A filter against labels for the request. By default, searches use prefix
+                /// matching. To specify exact match, prepend a plus symbol (`+`) to the search term. Multiple terms are
+                /// ANDed. Syntax: * `root:NAME_PREFIX` or `NAME_PREFIX`: Return traces where any root span starts with
+                /// `NAME_PREFIX`. * `+root:NAME` or `+NAME`: Return traces where any root span's name is exactly
+                /// `NAME`. * `span:NAME_PREFIX`: Return traces where any span starts with `NAME_PREFIX`. *
+                /// `+span:NAME`: Return traces where any span's name is exactly `NAME`. * `latency:DURATION`: Return
                 /// traces whose overall latency is greater or equal to than `DURATION`. Accepted units are nanoseconds
                 /// (`ns`), milliseconds (`ms`), and seconds (`s`). Default is `ms`. For example, `latency:24ms` returns
-                /// traces whose overall latency is greater than or equal to 24 milliseconds. *   `label:LABEL_KEY`:
+                /// traces whose overall latency is greater than or equal to 24 milliseconds. * `label:LABEL_KEY`:
                 /// Return all traces containing the specified label key (exact match, case-sensitive) regardless of the
-                /// key:value pair's value (including empty values). *   `LABEL_KEY:VALUE_PREFIX`: Return all traces
+                /// key:value pair's value (including empty values). * `LABEL_KEY:VALUE_PREFIX`: Return all traces
                 /// containing the specified label key (exact match, case-sensitive) whose value starts with
-                /// `VALUE_PREFIX`. Both a key and a value must be specified. *   `+LABEL_KEY:VALUE`: Return all traces
+                /// `VALUE_PREFIX`. Both a key and a value must be specified. * `+LABEL_KEY:VALUE`: Return all traces
                 /// containing a key:value pair exactly matching the specified text. Both a key and a value must be
-                /// specified. *   `method:VALUE`: Equivalent to `/http/method:VALUE`. *   `url:VALUE`: Equivalent to
+                /// specified. * `method:VALUE`: Equivalent to `/http/method:VALUE`. * `url:VALUE`: Equivalent to
                 /// `/http/url:VALUE`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Optional. Field used to sort the returned traces. Can be one of the following:
-                ///
-                /// *   `trace_id` *   `name` (`name` field of root span in the trace) *   `duration` (difference
-                /// between `end_time` and `start_time` fields of the root span) *   `start` (`start_time` field of the
-                /// root span)
-                ///
-                /// Descending order can be specified by appending `desc` to the sort field (for example, `name desc`).
-                ///
-                /// Only one sort field is permitted.</summary>
+                /// <summary>Optional. Field used to sort the returned traces. Can be one of the following: * `trace_id`
+                /// * `name` (`name` field of root span in the trace) * `duration` (difference between `end_time` and
+                /// `start_time` fields of the root span) * `start` (`start_time` field of the root span) Descending
+                /// order can be specified by appending `desc` to the sort field (for example, `name desc`). Only one
+                /// sort field is permitted.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>Optional. Maximum number of traces to return. If not specified or <= 0, the implementation
-                /// selects a reasonable value.  The implementation may return fewer traces than the requested page
+                /// selects a reasonable value. The implementation may return fewer traces than the requested page
                 /// size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -538,12 +531,20 @@ namespace Google.Apis.CloudTrace.v1
                 /// <summary>Optional. Type of data returned for traces in the list. Default is `MINIMAL`.</summary>
                 public enum ViewEnum
                 {
+                    /// <summary>Default is `MINIMAL` if unspecified.</summary>
                     [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
                     VIEWTYPEUNSPECIFIED,
+                    /// <summary>Minimal view of the trace record that contains only the project and trace
+                    /// IDs.</summary>
                     [Google.Apis.Util.StringValueAttribute("MINIMAL")]
                     MINIMAL,
+                    /// <summary>Root span view of the trace record that returns the root spans along with the minimal
+                    /// trace data.</summary>
                     [Google.Apis.Util.StringValueAttribute("ROOTSPAN")]
                     ROOTSPAN,
+                    /// <summary>Complete view of the trace record that contains the actual trace data. This is
+                    /// equivalent to calling the REST `get` or RPC `GetTrace` method using the ID of each listed
+                    /// trace.</summary>
                     [Google.Apis.Util.StringValueAttribute("COMPLETE")]
                     COMPLETE,
                 }
@@ -729,11 +730,9 @@ namespace Google.Apis.CloudTrace.v1.Data
 {    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -795,21 +794,14 @@ namespace Google.Apis.CloudTrace.v1.Data
         public virtual string Kind { get; set; } 
 
         /// <summary>Collection of labels associated with the span. Label keys must be less than 128 bytes. Label values
-        /// must be less than 16 kilobytes (10MB for `/stacktrace` values).
-        ///
-        /// Some predefined label keys exist, or you may create your own. When creating your own, we recommend the
-        /// following formats:
-        ///
-        /// * `/category/product/key` for agents of well-known products (e.g. `/db/mongodb/read_size`). *
-        /// `short_host/path/key` for domain-specific keys (e.g. `foo.com/myproduct/bar`)
-        ///
-        /// Predefined labels include:
-        ///
-        /// *   `/agent` *   `/component` *   `/error/message` *   `/error/name` *   `/http/client_city` *
-        /// `/http/client_country` *   `/http/client_protocol` *   `/http/client_region` *   `/http/host` *
-        /// `/http/method` *   `/http/path` *   `/http/redirected_url` *   `/http/request/size` *
-        /// `/http/response/size` *   `/http/route` *   `/http/status_code` *   `/http/url` *   `/http/user_agent` *
-        /// `/pid` *   `/stacktrace` *   `/tid`</summary>
+        /// must be less than 16 kilobytes (10MB for `/stacktrace` values). Some predefined label keys exist, or you may
+        /// create your own. When creating your own, we recommend the following formats: * `/category/product/key` for
+        /// agents of well-known products (e.g. `/db/mongodb/read_size`). * `short_host/path/key` for domain-specific
+        /// keys (e.g. `foo.com/myproduct/bar`) Predefined labels include: * `/agent` * `/component` * `/error/message`
+        /// * `/error/name` * `/http/client_city` * `/http/client_country` * `/http/client_protocol` *
+        /// `/http/client_region` * `/http/host` * `/http/method` * `/http/path` * `/http/redirected_url` *
+        /// `/http/request/size` * `/http/response/size` * `/http/route` * `/http/status_code` * `/http/url` *
+        /// `/http/user_agent` * `/pid` * `/stacktrace` * `/tid`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 

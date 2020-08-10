@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Cloud Logging API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200724 (2031)
+ *      <tr><th>API Rev<td>20200801 (2039)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -1021,6 +1021,166 @@ namespace Google.Apis.Logging.v2
                 }
 
 
+                /// <summary>Creates a bucket that can be used to store log entries. Once a bucket has been created, the
+                /// region cannot be changed.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The resource in which to create the bucket:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example: "projects/my-logging-project/locations/global"</param>
+                public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a bucket that can be used to store log entries. Once a bucket has been created, the
+                /// region cannot be changed.</summary>
+                public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The resource in which to create the bucket:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example: "projects/my-logging-
+                    /// project/locations/global"</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to
+                    /// 100 characters and can include only letters, digits, underscores, hyphens, and
+                    /// periods.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("bucketId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string BucketId { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+parent}/buckets"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "bucketId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "bucketId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket
+                /// will be purged and all logs in the bucket will be permanently deleted.</summary>
+                /// <param name="name">Required. The full resource name of the bucket to delete.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-id/locations/my-
+                /// location/buckets/my-bucket-id".</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket
+                /// will be purged and all logs in the bucket will be permanently deleted.</summary>
+                public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The full resource name of the bucket to delete.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-
+                    /// id/locations/my-location/buckets/my-bucket-id".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                            });
+                    }
+
+                }
+
                 /// <summary>Lists buckets (Beta).</summary>
                 /// <param name="parent">Required. The parent resource whose buckets are to be listed:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
@@ -1221,6 +1381,86 @@ namespace Google.Apis.Logging.v2
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period
+                /// of 7 days.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The full resource name of the bucket to undelete.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-id/locations/my-
+                /// location/buckets/my-bucket-id".</param>
+                public virtual UndeleteRequest Undelete(Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
+                {
+                    return new UndeleteRequest(service, body, name);
+                }
+
+                /// <summary>Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period
+                /// of 7 days.</summary>
+                public class UndeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+                {
+                    /// <summary>Constructs a new Undelete request.</summary>
+                    public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The full resource name of the bucket to undelete.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-
+                    /// id/locations/my-location/buckets/my-bucket-id".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.UndeleteBucketRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "undelete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+name}:undelete"; }
+                    }
+
+                    /// <summary>Initializes Undelete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+$",
                             });
                     }
 
@@ -1812,7 +2052,7 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Optional. Field mask that specifies the fields in sink that need an update. A sink field
                 /// will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
-                /// compatibility purposes:  destination,filter,includeChildren At some point in the future, behavior
+                /// compatibility purposes: destination,filter,includeChildren At some point in the future, behavior
                 /// will be removed and specifying an empty updateMask will be an error.For a detailed FieldMask
                 /// definition, see https://developers.google.com/protocol-
                 /// buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
@@ -1929,7 +2169,7 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Optional. Field mask that specifies the fields in sink that need an update. A sink field
                 /// will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
-                /// compatibility purposes:  destination,filter,includeChildren At some point in the future, behavior
+                /// compatibility purposes: destination,filter,includeChildren At some point in the future, behavior
                 /// will be removed and specifying an empty updateMask will be an error.For a detailed FieldMask
                 /// definition, see https://developers.google.com/protocol-
                 /// buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
@@ -3032,6 +3272,166 @@ namespace Google.Apis.Logging.v2
                 }
 
 
+                /// <summary>Creates a bucket that can be used to store log entries. Once a bucket has been created, the
+                /// region cannot be changed.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The resource in which to create the bucket:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example: "projects/my-logging-project/locations/global"</param>
+                public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a bucket that can be used to store log entries. Once a bucket has been created, the
+                /// region cannot be changed.</summary>
+                public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The resource in which to create the bucket:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example: "projects/my-logging-
+                    /// project/locations/global"</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to
+                    /// 100 characters and can include only letters, digits, underscores, hyphens, and
+                    /// periods.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("bucketId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string BucketId { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+parent}/buckets"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^folders/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "bucketId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "bucketId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket
+                /// will be purged and all logs in the bucket will be permanently deleted.</summary>
+                /// <param name="name">Required. The full resource name of the bucket to delete.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-id/locations/my-
+                /// location/buckets/my-bucket-id".</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket
+                /// will be purged and all logs in the bucket will be permanently deleted.</summary>
+                public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The full resource name of the bucket to delete.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-
+                    /// id/locations/my-location/buckets/my-bucket-id".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^folders/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                            });
+                    }
+
+                }
+
                 /// <summary>Gets a bucket (Beta).</summary>
                 /// <param name="name">Required. The resource name of the bucket:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -3302,6 +3702,86 @@ namespace Google.Apis.Logging.v2
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period
+                /// of 7 days.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The full resource name of the bucket to undelete.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-id/locations/my-
+                /// location/buckets/my-bucket-id".</param>
+                public virtual UndeleteRequest Undelete(Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
+                {
+                    return new UndeleteRequest(service, body, name);
+                }
+
+                /// <summary>Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period
+                /// of 7 days.</summary>
+                public class UndeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+                {
+                    /// <summary>Constructs a new Undelete request.</summary>
+                    public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The full resource name of the bucket to undelete.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-
+                    /// id/locations/my-location/buckets/my-bucket-id".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.UndeleteBucketRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "undelete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+name}:undelete"; }
+                    }
+
+                    /// <summary>Initializes Undelete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^folders/[^/]+/locations/[^/]+/buckets/[^/]+$",
                             });
                     }
 
@@ -3893,7 +4373,7 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Optional. Field mask that specifies the fields in sink that need an update. A sink field
                 /// will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
-                /// compatibility purposes:  destination,filter,includeChildren At some point in the future, behavior
+                /// compatibility purposes: destination,filter,includeChildren At some point in the future, behavior
                 /// will be removed and specifying an empty updateMask will be an error.For a detailed FieldMask
                 /// definition, see https://developers.google.com/protocol-
                 /// buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
@@ -4010,7 +4490,7 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Optional. Field mask that specifies the fields in sink that need an update. A sink field
                 /// will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
-                /// compatibility purposes:  destination,filter,includeChildren At some point in the future, behavior
+                /// compatibility purposes: destination,filter,includeChildren At some point in the future, behavior
                 /// will be removed and specifying an empty updateMask will be an error.For a detailed FieldMask
                 /// definition, see https://developers.google.com/protocol-
                 /// buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
@@ -4120,6 +4600,165 @@ namespace Google.Apis.Logging.v2
 
             }
 
+
+            /// <summary>Creates a bucket that can be used to store log entries. Once a bucket has been created, the
+            /// region cannot be changed.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The resource in which to create the bucket:
+            /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example: "projects/my-logging-project/locations/global"</param>
+            public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a bucket that can be used to store log entries. Once a bucket has been created, the
+            /// region cannot be changed.</summary>
+            public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource in which to create the bucket:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example: "projects/my-logging-
+                /// project/locations/global"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100
+                /// characters and can include only letters, digits, underscores, hyphens, and periods.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("bucketId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string BucketId { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+parent}/buckets"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+/[^/]+/locations/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "bucketId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "bucketId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will
+            /// be purged and all logs in the bucket will be permanently deleted.</summary>
+            /// <param name="name">Required. The full resource name of the bucket to delete.
+            /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+            /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+            /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-id/locations/my-
+            /// location/buckets/my-bucket-id".</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will
+            /// be purged and all logs in the bucket will be permanently deleted.</summary>
+            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The full resource name of the bucket to delete.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-
+                /// id/locations/my-location/buckets/my-bucket-id".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
+                }
+
+            }
 
             /// <summary>Gets a bucket (Beta).</summary>
             /// <param name="name">Required. The resource name of the bucket:
@@ -4390,6 +5029,86 @@ namespace Google.Apis.Logging.v2
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of
+            /// 7 days.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The full resource name of the bucket to undelete.
+            /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+            /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+            /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-id/locations/my-
+            /// location/buckets/my-bucket-id".</param>
+            public virtual UndeleteRequest Undelete(Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
+            {
+                return new UndeleteRequest(service, body, name);
+            }
+
+            /// <summary>Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of
+            /// 7 days.</summary>
+            public class UndeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+            {
+                /// <summary>Constructs a new Undelete request.</summary>
+                public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The full resource name of the bucket to undelete.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-
+                /// id/locations/my-location/buckets/my-bucket-id".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Logging.v2.Data.UndeleteBucketRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "undelete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}:undelete"; }
+                }
+
+                /// <summary>Initializes Undelete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$",
                         });
                 }
 
@@ -5160,6 +5879,166 @@ namespace Google.Apis.Logging.v2
                 }
 
 
+                /// <summary>Creates a bucket that can be used to store log entries. Once a bucket has been created, the
+                /// region cannot be changed.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The resource in which to create the bucket:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example: "projects/my-logging-project/locations/global"</param>
+                public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a bucket that can be used to store log entries. Once a bucket has been created, the
+                /// region cannot be changed.</summary>
+                public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The resource in which to create the bucket:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example: "projects/my-logging-
+                    /// project/locations/global"</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to
+                    /// 100 characters and can include only letters, digits, underscores, hyphens, and
+                    /// periods.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("bucketId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string BucketId { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+parent}/buckets"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "bucketId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "bucketId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket
+                /// will be purged and all logs in the bucket will be permanently deleted.</summary>
+                /// <param name="name">Required. The full resource name of the bucket to delete.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-id/locations/my-
+                /// location/buckets/my-bucket-id".</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket
+                /// will be purged and all logs in the bucket will be permanently deleted.</summary>
+                public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The full resource name of the bucket to delete.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-
+                    /// id/locations/my-location/buckets/my-bucket-id".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                            });
+                    }
+
+                }
+
                 /// <summary>Gets a bucket (Beta).</summary>
                 /// <param name="name">Required. The resource name of the bucket:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -5430,6 +6309,86 @@ namespace Google.Apis.Logging.v2
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period
+                /// of 7 days.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The full resource name of the bucket to undelete.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-id/locations/my-
+                /// location/buckets/my-bucket-id".</param>
+                public virtual UndeleteRequest Undelete(Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
+                {
+                    return new UndeleteRequest(service, body, name);
+                }
+
+                /// <summary>Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period
+                /// of 7 days.</summary>
+                public class UndeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+                {
+                    /// <summary>Constructs a new Undelete request.</summary>
+                    public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The full resource name of the bucket to undelete.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-
+                    /// id/locations/my-location/buckets/my-bucket-id".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.UndeleteBucketRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "undelete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+name}:undelete"; }
+                    }
+
+                    /// <summary>Initializes Undelete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$",
                             });
                     }
 
@@ -6021,7 +6980,7 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Optional. Field mask that specifies the fields in sink that need an update. A sink field
                 /// will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
-                /// compatibility purposes:  destination,filter,includeChildren At some point in the future, behavior
+                /// compatibility purposes: destination,filter,includeChildren At some point in the future, behavior
                 /// will be removed and specifying an empty updateMask will be an error.For a detailed FieldMask
                 /// definition, see https://developers.google.com/protocol-
                 /// buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
@@ -6138,7 +7097,7 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Optional. Field mask that specifies the fields in sink that need an update. A sink field
                 /// will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
-                /// compatibility purposes:  destination,filter,includeChildren At some point in the future, behavior
+                /// compatibility purposes: destination,filter,includeChildren At some point in the future, behavior
                 /// will be removed and specifying an empty updateMask will be an error.For a detailed FieldMask
                 /// definition, see https://developers.google.com/protocol-
                 /// buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
@@ -6874,6 +7833,166 @@ namespace Google.Apis.Logging.v2
                 }
 
 
+                /// <summary>Creates a bucket that can be used to store log entries. Once a bucket has been created, the
+                /// region cannot be changed.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The resource in which to create the bucket:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example: "projects/my-logging-project/locations/global"</param>
+                public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a bucket that can be used to store log entries. Once a bucket has been created, the
+                /// region cannot be changed.</summary>
+                public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The resource in which to create the bucket:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example: "projects/my-logging-
+                    /// project/locations/global"</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to
+                    /// 100 characters and can include only letters, digits, underscores, hyphens, and
+                    /// periods.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("bucketId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string BucketId { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+parent}/buckets"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "bucketId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "bucketId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket
+                /// will be purged and all logs in the bucket will be permanently deleted.</summary>
+                /// <param name="name">Required. The full resource name of the bucket to delete.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-id/locations/my-
+                /// location/buckets/my-bucket-id".</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket
+                /// will be purged and all logs in the bucket will be permanently deleted.</summary>
+                public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The full resource name of the bucket to delete.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-
+                    /// id/locations/my-location/buckets/my-bucket-id".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                            });
+                    }
+
+                }
+
                 /// <summary>Gets a bucket (Beta).</summary>
                 /// <param name="name">Required. The resource name of the bucket:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -7144,6 +8263,86 @@ namespace Google.Apis.Logging.v2
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period
+                /// of 7 days.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The full resource name of the bucket to undelete.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-id/locations/my-
+                /// location/buckets/my-bucket-id".</param>
+                public virtual UndeleteRequest Undelete(Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
+                {
+                    return new UndeleteRequest(service, body, name);
+                }
+
+                /// <summary>Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period
+                /// of 7 days.</summary>
+                public class UndeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+                {
+                    /// <summary>Constructs a new Undelete request.</summary>
+                    public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The full resource name of the bucket to undelete.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-
+                    /// id/locations/my-location/buckets/my-bucket-id".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.UndeleteBucketRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "undelete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+name}:undelete"; }
+                    }
+
+                    /// <summary>Initializes Undelete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/buckets/[^/]+$",
                             });
                     }
 
@@ -8118,7 +9317,7 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Optional. Field mask that specifies the fields in sink that need an update. A sink field
                 /// will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
-                /// compatibility purposes:  destination,filter,includeChildren At some point in the future, behavior
+                /// compatibility purposes: destination,filter,includeChildren At some point in the future, behavior
                 /// will be removed and specifying an empty updateMask will be an error.For a detailed FieldMask
                 /// definition, see https://developers.google.com/protocol-
                 /// buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
@@ -8235,7 +9434,7 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Optional. Field mask that specifies the fields in sink that need an update. A sink field
                 /// will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
-                /// compatibility purposes:  destination,filter,includeChildren At some point in the future, behavior
+                /// compatibility purposes: destination,filter,includeChildren At some point in the future, behavior
                 /// will be removed and specifying an empty updateMask will be an error.For a detailed FieldMask
                 /// definition, see https://developers.google.com/protocol-
                 /// buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
@@ -8689,8 +9888,8 @@ namespace Google.Apis.Logging.v2
             /// <summary>Optional. Field mask that specifies the fields in sink that need an update. A sink field will
             /// be overwritten if, and only if, it is in the update mask. name and output only fields cannot be
             /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
-            /// compatibility purposes:  destination,filter,includeChildren At some point in the future, behavior will
-            /// be removed and specifying an empty updateMask will be an error.For a detailed FieldMask definition, see
+            /// compatibility purposes: destination,filter,includeChildren At some point in the future, behavior will be
+            /// removed and specifying an empty updateMask will be an error.For a detailed FieldMask definition, see
             /// https://developers.google.com/protocol-
             /// buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample: updateMask=filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -9014,7 +10213,7 @@ namespace Google.Apis.Logging.v2.Data
     public class CmekSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The resource name for the configured Cloud KMS key.KMS key name format:
-        /// "projects/PROJECT_ID/locations/LOCATION/keyRings/KEYRING/cryptoKeys/KEY"For example:  "projects/my-project-
+        /// "projects/PROJECT_ID/locations/LOCATION/keyRings/KEYRING/cryptoKeys/KEY"For example: "projects/my-project-
         /// id/locations/my-region/keyRings/key-ring-name/cryptoKeys/key-name"To enable CMEK for the Logs Router, set
         /// this field to a valid kms_key_name for which the associated service account has the required
         /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key.The Cloud KMS key used by the Log
@@ -9053,7 +10252,7 @@ namespace Google.Apis.Logging.v2.Data
     }    
 
     /// <summary>Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (= N) buckets. Bucket i has
-    /// the following boundaries:Upper bound (0 <= i < N-1): boundsi  Lower bound (1 <= i < N); boundsi - 1The bounds
+    /// the following boundaries:Upper bound (0 <= i < N-1): boundsi Lower bound (1 <= i < N); boundsi - 1The bounds
     /// field must contain at least one element. If bounds has only one element, then there are no finite buckets, and
     /// that single element is the common boundary of the overflow and underflow buckets.</summary>
     public class Explicit : Google.Apis.Requests.IDirectResponseSchema
@@ -9069,7 +10268,7 @@ namespace Google.Apis.Logging.v2.Data
     /// <summary>Specifies an exponential sequence of buckets that have a width that is proportional to the value of the
     /// lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.There are
     /// num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): scale *
-    /// (growth_factor ^ i).  Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).</summary>
+    /// (growth_factor ^ i). Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).</summary>
     public class Exponential : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Must be greater than 1.</summary>
@@ -9187,7 +10386,7 @@ namespace Google.Apis.Logging.v2.Data
     /// <summary>Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
     /// Each bucket represents a constant absolute uncertainty on the specific value in the bucket.There are
     /// num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): offset +
-    /// (width * i).  Lower bound (1 <= i < N): offset + (width * (i - 1)).</summary>
+    /// (width * i). Lower bound (1 <= i < N): offset + (width * (i - 1)).</summary>
     public class Linear : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Must be greater than 0.</summary>
@@ -9388,10 +10587,14 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
         public virtual string LifecycleState { get; set; } 
 
+        /// <summary>Whether the bucket has been locked. The retention period on a locked bucket may not be changed.
+        /// Locked buckets may only be deleted if they are empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locked")]
+        public virtual System.Nullable<bool> Locked { get; set; } 
+
         /// <summary>The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets
-        /// /my-bucket-id The supported locations are:  "global"  "us-central1"For the location of global it is
-        /// unspecified where logs are actually stored. Once a bucket has been created, the location can not be
-        /// changed.</summary>
+        /// /my-bucket-id The supported locations are: "global"For the location of global it is unspecified where logs
+        /// are actually stored. Once a bucket has been created, the location can not be changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -9420,7 +10623,7 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>Optional. A unique identifier for the log entry. If you provide a value, then Logging considers
         /// other log entries in the same project, with the same timestamp, and with the same insert_id to be duplicates
         /// which are removed in a single query result. However, there are no guarantees of de-duplication in the export
-        /// of logs.If the insert_id is omitted when writing a log entry, the Logging API  assigns its own unique
+        /// of logs.If the insert_id is omitted when writing a log entry, the Logging API assigns its own unique
         /// identifier in this field.In queries, the insert_id is also used to order log entries that have the same
         /// log_name and timestamp values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertId")]
@@ -9710,11 +10913,11 @@ namespace Google.Apis.Logging.v2.Data
 
         /// <summary>Optional. A value_extractor is required when using a distribution logs-based metric to extract the
         /// values to record from a log entry. Two functions are supported for value extraction: EXTRACT(field) or
-        /// REGEXP_EXTRACT(field, regex). The argument are:  1. field: The name of the log entry field from which the
-        /// value is to be  extracted.  2. regex: A regular expression using the Google RE2 syntax
-        /// (https://github.com/google/re2/wiki/Syntax) with a single capture  group to extract data from the specified
-        /// log entry field. The value  of the field is converted to a string before applying the regex.  It is an error
-        /// to specify a regex that does not include exactly one  capture group.The result of the extraction must be
+        /// REGEXP_EXTRACT(field, regex). The argument are: 1. field: The name of the log entry field from which the
+        /// value is to be extracted. 2. regex: A regular expression using the Google RE2 syntax
+        /// (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+        /// log entry field. The value of the field is converted to a string before applying the regex. It is an error
+        /// to specify a regex that does not include exactly one capture group.The result of the extraction must be
         /// convertible to a double type, as the distribution always records double values. If either the extraction or
         /// the conversion to double fails, then those values are not recorded in the distribution.Example:
         /// REGEXP_EXTRACT(jsonPayload.request, ".*quantity=(\d+).*")</summary>
@@ -9763,6 +10966,11 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; } 
 
+        /// <summary>Optional. Log entries that match any of the exclusion filters will not be exported. If a log entry
+        /// is matched by both filter and one of exclusion_filters it will not be exported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
+        public virtual System.Collections.Generic.IList<LogExclusion> Exclusions { get; set; } 
+
         /// <summary>Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries).
         /// The only exported log entries are those that are in the resource owning the sink and that match the filter.
         /// For example: logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR </summary>
@@ -9797,7 +11005,7 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
-        /// <summary>Output only. An IAM identitya service account or groupunder which Logging writes the exported log
+        /// <summary>Output only. An IAM identity—a service account or group—under which Logging writes the exported log
         /// entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of
         /// unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log
         /// entry exports from this sink will fail. For more information, see Granting Access for a Resource
@@ -9813,8 +11021,8 @@ namespace Google.Apis.Logging.v2.Data
 
     /// <summary>Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it
     /// stops data collection and makes the metric type's existing data unusable.The following are specific rules for
-    /// service defined Monitoring metric descriptors: type, metric_kind, value_type and description  fields are all
-    /// required. The unit field must be specified  if the value_type is any of DOUBLE, INT64, DISTRIBUTION. Maximum of
+    /// service defined Monitoring metric descriptors: type, metric_kind, value_type and description fields are all
+    /// required. The unit field must be specified if the value_type is any of DOUBLE, INT64, DISTRIBUTION. Maximum of
     /// default 500 metric descriptors per service is allowed. Maximum of default 10 labels per metric descriptor is
     /// allowed.The default maximum limit can be overridden. Please follow
     /// https://cloud.google.com/monitoring/quotas</summary>
@@ -9831,7 +11039,7 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string DisplayName { get; set; } 
 
         /// <summary>The set of labels that can be used to describe a specific instance of this metric type.The label
-        /// key name must follow: Only upper and lower-case letters, digits and underscores (_) are  allowed. Label name
+        /// key name must follow: Only upper and lower-case letters, digits and underscores (_) are allowed. Label name
         /// must start with a letter or digit. The maximum length of a label name is 100 characters.For example, the
         /// appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code,
         /// response_code, so you can look at latencies for successful responses or just for responses that
@@ -9865,8 +11073,8 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>The metric type, including its DNS name prefix. The type is not URL-encoded.All service defined
         /// metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such
         /// as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must follow: Only upper and
-        /// lower-case letters, digits, '/' and underscores '_' are  allowed. The maximum number of characters allowed
-        /// for the relative_metric_name is  100.All user-defined metric types have the DNS name custom.googleapis.com,
+        /// lower-case letters, digits, '/' and underscores '_' are allowed. The maximum number of characters allowed
+        /// for the relative_metric_name is 100.All user-defined metric types have the DNS name custom.googleapis.com,
         /// external.googleapis.com, or logging.googleapis.com/user/.Metric types should use a natural hierarchical
         /// grouping. For example: "custom.googleapis.com/invoice/paid/amount" "external.googleapis.com/prometheus/up"
         /// "appengine.googleapis.com/http/server/response_latencies" </summary>
@@ -9888,24 +11096,22 @@ namespace Google.Apis.Logging.v2.Data
         /// (10^12) P peta (10^15) E exa (10^18) Z zetta (10^21) Y yotta (10^24) m milli (10^-3) u micro (10^-6) n nano
         /// (10^-9) p pico (10^-12) f femto (10^-15) a atto (10^-18) z zepto (10^-21) y yocto (10^-24) Ki kibi (2^10) Mi
         /// mebi (2^20) Gi gibi (2^30) Ti tebi (2^40) Pi pebi (2^50)GrammarThe grammar also includes these connectors: /
-        /// division or ratio (as an infix operator). For examples,  kBy/{email} or MiBy/10ms (although you should
-        /// almost never  have /s in a metric unit; rates should always be computed at  query time from the underlying
-        /// cumulative or delta value). . multiplication or composition (as an infix operator). For  examples, GBy.d or
+        /// division or ratio (as an infix operator). For examples, kBy/{email} or MiBy/10ms (although you should almost
+        /// never have /s in a metric unit; rates should always be computed at query time from the underlying cumulative
+        /// or delta value). . multiplication or composition (as an infix operator). For examples, GBy.d or
         /// k{watt}.h.The grammar for a unit is as follows: Expression = Component { "." Component } { "/" Component } ;
-        ///
-        /// Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] | Annotation | "1" ;
-        ///
-        /// Annotation = "{" NAME "}" ; Notes: Annotation is just a comment if it follows a UNIT. If the annotation  is
-        /// used alone, then the unit is equivalent to 1. For examples,  {request}/s == 1/s, By{transmitted}/s == By/s.
-        /// NAME is a sequence of non-blank printable ASCII characters not  containing { or }. 1 represents a unitary
-        /// dimensionless  unit (https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such  as in 1/s. It is
-        /// typically used when none of the basic units are  appropriate. For example, "new users per day" can be
-        /// represented as  1/d or {new-users}/d (and a metric value 5 would mean "5 new  users). Alternatively,
-        /// "thousands of page views per day" would be  represented as 1000/d or k1/d or k{page_views}/d (and a metric
-        /// value of 5.3 would mean "5300 page views per day"). % represents dimensionless value of 1/100, and annotates
-        /// values giving  a percentage (so the metric values are typically in the range of 0..100,  and a metric value
-        /// 3 means "3 percent"). 10^2.% indicates a metric contains a ratio, typically in the range  0..1, that will be
-        /// multiplied by 100 and displayed as a percentage  (so a metric value 0.03 means "3 percent").</summary>
+        /// Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] | Annotation | "1" ; Annotation = "{" NAME "}" ; Notes:
+        /// Annotation is just a comment if it follows a UNIT. If the annotation is used alone, then the unit is
+        /// equivalent to 1. For examples, {request}/s == 1/s, By{transmitted}/s == By/s. NAME is a sequence of non-
+        /// blank printable ASCII characters not containing { or }. 1 represents a unitary dimensionless unit
+        /// (https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in 1/s. It is typically used when none
+        /// of the basic units are appropriate. For example, "new users per day" can be represented as 1/d or {new-
+        /// users}/d (and a metric value 5 would mean "5 new users). Alternatively, "thousands of page views per day"
+        /// would be represented as 1000/d or k1/d or k{page_views}/d (and a metric value of 5.3 would mean "5300 page
+        /// views per day"). % represents dimensionless value of 1/100, and annotates values giving a percentage (so the
+        /// metric values are typically in the range of 0..100, and a metric value 3 means "3 percent"). 10^2.%
+        /// indicates a metric contains a ratio, typically in the range 0..1, that will be multiplied by 100 and
+        /// displayed as a percentage (so a metric value 0.03 means "3 percent").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; } 
 
@@ -9969,9 +11175,9 @@ namespace Google.Apis.Logging.v2.Data
     /// "gce_instance" and specifies the use of the labels "instance_id" and "zone" to identify particular VM
     /// instances.Different services can support different monitored resource types.The following are specific rules to
     /// service defined monitored resources for Monitoring and Logging: The type, display_name, description, labels and
-    /// launch_stage  fields are all required. The first label of the monitored resource descriptor must be
-    /// resource_container. There are legacy monitored resource descritptors  start with project_id. It must include a
-    /// location label. Maximum of default 5 service defined monitored resource descriptors  is allowed per service.
+    /// launch_stage fields are all required. The first label of the monitored resource descriptor must be
+    /// resource_container. There are legacy monitored resource descritptors start with project_id. It must include a
+    /// location label. Maximum of default 5 service defined monitored resource descriptors is allowed per service.
     /// Maximum of default 10 labels per monitored resource is allowed.The default maximum limit can be overridden.
     /// Please follow https://cloud.google.com/monitoring/quotas</summary>
     public class MonitoredResourceDescriptor : Google.Apis.Requests.IDirectResponseSchema
@@ -9988,8 +11194,8 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string DisplayName { get; set; } 
 
         /// <summary>Required. A set of labels used to describe instances of this monitored resource type. The label key
-        /// name must follow: Only upper and lower-case letters, digits and underscores (_) are  allowed. Label name
-        /// must start with a letter or digit. The maximum length of a label name is 100 characters.For example, an
+        /// name must follow: Only upper and lower-case letters, digits and underscores (_) are allowed. Label name must
+        /// start with a letter or digit. The maximum length of a label name is 100 characters.For example, an
         /// individual Google Cloud SQL database is identified by values for the labels database_id and
         /// location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -10011,7 +11217,7 @@ namespace Google.Apis.Logging.v2.Data
         /// in Google Cloud SQL.All service defined monitored resource types must be prefixed with the service name, in
         /// the format of {service name}/{relative resource name}. The relative resource name must follow: Only upper
         /// and lower-case letters and digits are allowed. It must start with upper case character and is recommended to
-        /// use Upper  Camel Case style. The maximum number of characters allowed for the relative_resource_name  is
+        /// use Upper Camel Case style. The maximum number of characters allowed for the relative_resource_name is
         /// 100.Note there are legacy service monitored resources not following this rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
@@ -10227,6 +11433,13 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The parameters to UndeleteBucket.</summary>
+    public class UndeleteBucketRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

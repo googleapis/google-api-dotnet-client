@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/'>Cloud OS Login API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20200719 (2026)
+ *      <tr><th>API Rev<td>20200801 (2039)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/'>
  *              https://cloud.google.com/compute/docs/oslogin/</a>
@@ -417,10 +417,14 @@ namespace Google.Apis.CloudOSLogin.v1alpha
                 /// <summary>The type of operating system associated with the account.</summary>
                 public enum OperatingSystemTypeEnum
                 {
+                    /// <summary>The operating system type associated with the user account information is
+                    /// unspecified.</summary>
                     [Google.Apis.Util.StringValueAttribute("OPERATING_SYSTEM_TYPE_UNSPECIFIED")]
                     OPERATINGSYSTEMTYPEUNSPECIFIED,
+                    /// <summary>Linux user account information.</summary>
                     [Google.Apis.Util.StringValueAttribute("LINUX")]
                     LINUX,
+                    /// <summary>Windows user account information.</summary>
                     [Google.Apis.Util.StringValueAttribute("WINDOWS")]
                     WINDOWS,
                 }
@@ -740,10 +744,14 @@ namespace Google.Apis.CloudOSLogin.v1alpha
             /// <summary>The type of operating system associated with the account.</summary>
             public enum OperatingSystemTypeEnum
             {
+                /// <summary>The operating system type associated with the user account information is
+                /// unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("OPERATING_SYSTEM_TYPE_UNSPECIFIED")]
                 OPERATINGSYSTEMTYPEUNSPECIFIED,
+                /// <summary>Linux user account information.</summary>
                 [Google.Apis.Util.StringValueAttribute("LINUX")]
                 LINUX,
+                /// <summary>Windows user account information.</summary>
                 [Google.Apis.Util.StringValueAttribute("WINDOWS")]
                 WINDOWS,
             }
@@ -909,11 +917,9 @@ namespace Google.Apis.CloudOSLogin.v1alpha.Data
 {    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>

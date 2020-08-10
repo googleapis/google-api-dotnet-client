@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200713 (2020)
+ *      <tr><th>API Rev<td>20200724 (2031)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -6869,9 +6869,9 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual NodeManagement Management { get; set; } 
 
         /// <summary>Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or
-        /// newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel
-        /// Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU
-        /// platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu
+        /// newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform:
+        /// "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min
+        /// CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu
         /// platform field pass "automatic" as field value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; } 
@@ -8157,7 +8157,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>A hash identifying the version of this policy, so that updates to fields of the policy won't
         /// accidentally undo intermediate changes (and so that users of the API unaware of some fields won't
-        /// accidentally remove other fields). Make a get() request to the cluster to get the current resource version
+        /// accidentally remove other fields). Make a `get()` request to the cluster to get the current resource version
         /// and include it with requests to set the policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceVersion")]
         public virtual string ResourceVersion { get; set; } 
@@ -8411,24 +8411,25 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>The metadata key/value pairs assigned to instances in the cluster.
         ///
-        /// Keys must conform to the regexp [a-zA-Z0-9-_]+ and be less than 128 bytes in length. These are reflected as
-        /// part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any
-        /// other metadata keys for the project or be one of the reserved keys: "cluster-location" "cluster-name"
-        /// "cluster-uid" "configure-sh" "containerd-configure-sh" "enable-oslogin" "gci-ensure-gke-docker" "gci-
-        /// metrics-enabled" "gci-update-strategy" "instance-template" "kube-env" "startup-script" "user-data" "disable-
-        /// address-manager" "windows-startup-script-ps1" "common-psm1" "k8s-node-setup-psm1" "install-ssh-psm1" "user-
-        /// profile-psm1" "serial-port-logging-enable" Values are free-form strings, and only have meaning as
-        /// interpreted by the image running in the instance. The only restriction placed on them is that each value's
-        /// size must be less than or equal to 32 KB.
+        /// Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected
+        /// as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any
+        /// other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" -
+        /// "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" -
+        /// "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-
+        /// data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" -
+        /// "install-ssh-psm1" - "user-profile-psm1" - "serial-port-logging-enable"
+        ///
+        /// Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The
+        /// only restriction placed on them is that each value's size must be less than or equal to 32 KB.
         ///
         /// The total size of all keys and values must be less than 512 KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,string> Metadata { get; set; } 
 
         /// <summary>Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or
-        /// newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel
-        /// Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU
-        /// platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)</summary>
+        /// newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform:
+        /// "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min
+        /// CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; } 
 
@@ -8842,18 +8843,19 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how this window reccurs. They go
         /// on for the span of time between the start and end time.
         ///
-        /// For example, to have something repeat every weekday, you'd use: FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR To repeat
-        /// some window daily (equivalent to the DailyMaintenanceWindow): FREQ=DAILY For the first weekend of every
-        /// month: FREQ=MONTHLY;BYSETPOS=1;BYDAY=SA,SU This specifies how frequently the window starts. Eg, if you
-        /// wanted to have a 9-5 UTC-4 window every weekday, you'd use something like:
+        /// For example, to have something repeat every weekday, you'd use: `FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR`
         ///
-        /// start time = 2019-01-01T09:00:00-0400 end time = 2019-01-01T17:00:00-0400 recurrence =
-        /// FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR
+        /// To repeat some window daily (equivalent to the DailyMaintenanceWindow): `FREQ=DAILY`
+        ///
+        /// For the first weekend of every month: `FREQ=MONTHLY;BYSETPOS=1;BYDAY=SA,SU`
+        ///
+        /// This specifies how frequently the window starts. Eg, if you wanted to have a 9-5 UTC-4 window every weekday,
+        /// you'd use something like: ``` start time = 2019-01-01T09:00:00-0400 end time = 2019-01-01T17:00:00-0400
+        /// recurrence = FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR ```
         ///
         /// Windows can span multiple days. Eg, to make the window encompass every weekend from midnight Saturday till
-        /// the last minute of Sunday UTC:
-        ///
-        /// start time = 2019-01-05T00:00:00Z end time = 2019-01-07T23:59:00Z recurrence = FREQ=WEEKLY;BYDAY=SA
+        /// the last minute of Sunday UTC: ``` start time = 2019-01-05T00:00:00Z end time = 2019-01-07T23:59:00Z
+        /// recurrence = FREQ=WEEKLY;BYDAY=SA ```
         ///
         /// Note the start and end time's specific dates are largely arbitrary except to specify duration of the window
         /// and when it first starts. The FREQ values of HOURLY, MINUTELY, and SECONDLY are not supported.</summary>
@@ -9095,7 +9097,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Required. The fingerprint of the previous set of labels for this resource, used to detect
         /// conflicts. The fingerprint is initially generated by Kubernetes Engine and changes after every request to
         /// modify or update labels. You must always provide an up-to-date fingerprint hash when updating or changing
-        /// labels. Make a get() request to the resource to get the latest fingerprint.</summary>
+        /// labels. Make a `get()` request to the resource to get the latest fingerprint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
         public virtual string LabelFingerprint { get; set; } 
 

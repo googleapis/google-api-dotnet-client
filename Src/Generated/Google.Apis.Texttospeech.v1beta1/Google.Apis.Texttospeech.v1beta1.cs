@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/text-to-speech/'>Cloud Text-to-Speech API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200717 (2024)
+ *      <tr><th>API Rev<td>20200731 (2038)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/text-to-speech/'>
  *              https://cloud.google.com/text-to-speech/</a>
@@ -571,6 +571,10 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audioConfig")]
         public virtual AudioConfig AudioConfig { get; set; } 
 
+        /// <summary>Whether and what timepoints are returned in the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableTimePointing")]
+        public virtual System.Collections.Generic.IList<string> EnableTimePointing { get; set; } 
+
         /// <summary>Required. The Synthesizer requires either plain text or SSML as input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("input")]
         public virtual SynthesisInput Input { get; set; } 
@@ -586,12 +590,37 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
     /// <summary>The message returned to the client by the `SynthesizeSpeech` method.</summary>
     public class SynthesizeSpeechResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The audio metadata of `audio_content`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioConfig")]
+        public virtual AudioConfig AudioConfig { get; set; } 
+
         /// <summary>The audio data bytes encoded as specified in the request, including the header for encodings that
         /// are wrapped in containers (e.g. MP3, OGG_OPUS). For LINEAR16 audio, we include the WAV header. Note: as with
         /// all bytes fields, protobuffers use a pure binary representation, whereas JSON representations use
         /// base64.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioContent")]
         public virtual string AudioContent { get; set; } 
+
+        /// <summary>A link between a position in the original request input and a corresponding time in the output
+        /// audio. It's only supported via  of SSML input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timepoints")]
+        public virtual System.Collections.Generic.IList<Timepoint> Timepoints { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This contains a mapping between a certain point in the input text and a corresponding time in the
+    /// output audio.</summary>
+    public class Timepoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Timepoint name as received from the client within  tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("markName")]
+        public virtual string MarkName { get; set; } 
+
+        /// <summary>Time offset in seconds from the start of the synthesized audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeconds")]
+        public virtual System.Nullable<double> TimeSeconds { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

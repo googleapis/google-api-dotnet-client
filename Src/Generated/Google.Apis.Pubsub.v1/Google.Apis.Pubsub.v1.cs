@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200726 (2033)
+ *      <tr><th>API Rev<td>20200731 (2038)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -3791,6 +3791,13 @@ namespace Google.Apis.Pubsub.v1.Data
         /// messages on this subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deadLetterPolicy")]
         public virtual DeadLetterPolicy DeadLetterPolicy { get; set; } 
+
+        /// <summary>Indicates whether the subscription is detached from its topic. Detached subscriptions don't receive
+        /// messages from their topic and don't retain any backlog. `Pull` and `StreamingPull` requests will return
+        /// FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the endpoint will not be
+        /// made.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detached")]
+        public virtual System.Nullable<bool> Detached { get; set; } 
 
         /// <summary>If true, messages published with the same `ordering_key` in `PubsubMessage` will be delivered to
         /// the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they may be

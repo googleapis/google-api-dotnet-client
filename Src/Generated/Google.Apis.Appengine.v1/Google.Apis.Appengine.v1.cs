@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>App Engine Admin API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200729 (2036)
+ *      <tr><th>API Rev<td>20200802 (2040)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -568,8 +568,12 @@ namespace Google.Apis.Appengine.v1
                 /// <summary>Controls the set of fields returned in the GET response.</summary>
                 public enum ViewEnum
                 {
+                    /// <summary>Basic certificate information, including applicable domains and expiration
+                    /// date.</summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC_CERTIFICATE")]
                     BASICCERTIFICATE,
+                    /// <summary>The information from BASIC_CERTIFICATE, plus detailed information on the domain
+                    /// mappings that have this certificate mapped.</summary>
                     [Google.Apis.Util.StringValueAttribute("FULL_CERTIFICATE")]
                     FULLCERTIFICATE,
                 }
@@ -667,8 +671,12 @@ namespace Google.Apis.Appengine.v1
                 /// <summary>Controls the set of fields returned in the LIST response.</summary>
                 public enum ViewEnum
                 {
+                    /// <summary>Basic certificate information, including applicable domains and expiration
+                    /// date.</summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC_CERTIFICATE")]
                     BASICCERTIFICATE,
+                    /// <summary>The information from BASIC_CERTIFICATE, plus detailed information on the domain
+                    /// mappings that have this certificate mapped.</summary>
                     [Google.Apis.Util.StringValueAttribute("FULL_CERTIFICATE")]
                     FULLCERTIFICATE,
                 }
@@ -1013,10 +1021,17 @@ namespace Google.Apis.Appengine.v1
                 /// default, overrides are rejected.</summary>
                 public enum OverrideStrategyEnum
                 {
+                    /// <summary>Strategy unspecified. Defaults to STRICT.</summary>
                     [Google.Apis.Util.StringValueAttribute("UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY")]
                     UNSPECIFIEDDOMAINOVERRIDESTRATEGY,
+                    /// <summary>Overrides not allowed. If a mapping already exists for the specified domain, the
+                    /// request will return an ALREADY_EXISTS (409).</summary>
                     [Google.Apis.Util.StringValueAttribute("STRICT")]
                     STRICT,
+                    /// <summary>Overrides allowed. If a mapping already exists for the specified domain, the request
+                    /// will overwrite it. Note that this might stop another Google product from serving. For example,
+                    /// if the domain is mapped to another App Engine application, that app will no longer serve from
+                    /// that domain.</summary>
                     [Google.Apis.Util.StringValueAttribute("OVERRIDE")]
                     OVERRIDE__,
                 }
@@ -3162,8 +3177,13 @@ namespace Google.Apis.Appengine.v1
                     /// <summary>Controls the set of fields returned in the Get response.</summary>
                     public enum ViewEnum
                     {
+                        /// <summary>Basic version information including scaling and inbound services, but not detailed
+                        /// deployment information.</summary>
                         [Google.Apis.Util.StringValueAttribute("BASIC")]
                         BASIC,
+                        /// <summary>The information from BASIC, plus detailed information about the deployment. This
+                        /// format is required when creating resources, but is not returned in Get or List by
+                        /// default.</summary>
                         [Google.Apis.Util.StringValueAttribute("FULL")]
                         FULL,
                     }
@@ -3279,8 +3299,13 @@ namespace Google.Apis.Appengine.v1
                     /// <summary>Controls the set of fields returned in the List response.</summary>
                     public enum ViewEnum
                     {
+                        /// <summary>Basic version information including scaling and inbound services, but not detailed
+                        /// deployment information.</summary>
                         [Google.Apis.Util.StringValueAttribute("BASIC")]
                         BASIC,
+                        /// <summary>The information from BASIC, plus detailed information about the deployment. This
+                        /// format is required when creating resources, but is not returned in Get or List by
+                        /// default.</summary>
                         [Google.Apis.Util.StringValueAttribute("FULL")]
                         FULL,
                     }
@@ -4494,13 +4519,13 @@ namespace Google.Apis.Appengine.v1.Data
     public class CertificateRawData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then
-        /// encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example:  -----BEGIN
-        /// RSA PRIVATE KEY-----  -----END RSA PRIVATE KEY-----  @InputOnly</summary>
+        /// encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN
+        /// RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateKey")]
         public virtual string PrivateKey { get; set; } 
 
         /// <summary>PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must
-        /// include the header and footer. Example:  -----BEGIN CERTIFICATE-----  -----END CERTIFICATE----- </summary>
+        /// include the header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE----- </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicCertificate")]
         public virtual string PublicCertificate { get; set; } 
 
@@ -4818,7 +4843,7 @@ namespace Google.Apis.Appengine.v1.Data
 
         /// <summary>IP address or range, defined using CIDR notation, of requests that this rule applies to. You can
         /// use the wildcard character "*" to match all IPs equivalent to "0/0" and "::/0" together. Examples:
-        /// 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32  or 2001:0db8:0000:0042:0000:8a2e:0370:7334.Truncation will
+        /// 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. Truncation will
         /// be silently performed on addresses which are not properly truncated. For example, 1.2.3.4/24 is accepted as
         /// the same address as 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 is accepted as the same address as
         /// 2001:db8::/32.</summary>
@@ -5540,6 +5565,11 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>Disk size (GB) needed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskGb")]
         public virtual System.Nullable<double> DiskGb { get; set; } 
+
+        /// <summary>The name of the encryption key that is stored in Google Cloud KMS. Only should be used by Cloud
+        /// Composer to encrypt the vm disk</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyReference")]
+        public virtual string KmsKeyReference { get; set; } 
 
         /// <summary>Memory (GB) needed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryGb")]

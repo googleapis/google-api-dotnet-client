@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Reservation API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200722 (2029)
+ *      <tr><th>API Rev<td>20200801 (2039)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -694,13 +694,10 @@ namespace Google.Apis.BigQueryReservation.v1beta1
 
                 }
 
-                /// <summary>Merges capacity commitments of the same plan into a single commitment.
-                ///
-                /// The resulting capacity commitment has the greater commitment_end_time out of the to-be-merged
-                /// capacity commitments.
-                ///
-                /// Attempting to merge capacity commitments of different plan will fail with the error code
-                /// `google.rpc.Code.FAILED_PRECONDITION`.</summary>
+                /// <summary>Merges capacity commitments of the same plan into a single commitment. The resulting
+                /// capacity commitment has the greater commitment_end_time out of the to-be-merged capacity
+                /// commitments. Attempting to merge capacity commitments of different plan will fail with the error
+                /// code `google.rpc.Code.FAILED_PRECONDITION`.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Parent resource that identifies admin project and location e.g.,
                 /// `projects/myproject/locations/us`</param>
@@ -709,13 +706,10 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                     return new MergeRequest(service, body, parent);
                 }
 
-                /// <summary>Merges capacity commitments of the same plan into a single commitment.
-                ///
-                /// The resulting capacity commitment has the greater commitment_end_time out of the to-be-merged
-                /// capacity commitments.
-                ///
-                /// Attempting to merge capacity commitments of different plan will fail with the error code
-                /// `google.rpc.Code.FAILED_PRECONDITION`.</summary>
+                /// <summary>Merges capacity commitments of the same plan into a single commitment. The resulting
+                /// capacity commitment has the greater commitment_end_time out of the to-be-merged capacity
+                /// commitments. Attempting to merge capacity commitments of different plan will fail with the error
+                /// code `google.rpc.Code.FAILED_PRECONDITION`.</summary>
                 public class MergeRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.CapacityCommitment>
                 {
                     /// <summary>Constructs a new Merge request.</summary>
@@ -776,12 +770,9 @@ namespace Google.Apis.BigQueryReservation.v1beta1
 
                 }
 
-                /// <summary>Updates an existing capacity commitment.
-                ///
-                /// Only `plan` and `renewal_plan` fields can be updated.
-                ///
-                /// Plan can only be changed to a plan of a longer commitment period. Attempting to change to a plan
-                /// with shorter commitment period will fail with the error code
+                /// <summary>Updates an existing capacity commitment. Only `plan` and `renewal_plan` fields can be
+                /// updated. Plan can only be changed to a plan of a longer commitment period. Attempting to change to a
+                /// plan with shorter commitment period will fail with the error code
                 /// `google.rpc.Code.FAILED_PRECONDITION`.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Output only. The resource name of the capacity commitment, e.g.,
@@ -791,12 +782,9 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>Updates an existing capacity commitment.
-                ///
-                /// Only `plan` and `renewal_plan` fields can be updated.
-                ///
-                /// Plan can only be changed to a plan of a longer commitment period. Attempting to change to a plan
-                /// with shorter commitment period will fail with the error code
+                /// <summary>Updates an existing capacity commitment. Only `plan` and `renewal_plan` fields can be
+                /// updated. Plan can only be changed to a plan of a longer commitment period. Attempting to change to a
+                /// plan with shorter commitment period will fail with the error code
                 /// `google.rpc.Code.FAILED_PRECONDITION`.</summary>
                 public class PatchRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.CapacityCommitment>
                 {
@@ -871,13 +859,10 @@ namespace Google.Apis.BigQueryReservation.v1beta1
 
                 }
 
-                /// <summary>Splits capacity commitment to two commitments of the same plan and `commitment_end_time`.
-                ///
-                /// A common use case is to enable downgrading commitments.
-                ///
-                /// For example, in order to downgrade from 10000 slots to 8000, you might split a 10000 capacity
-                /// commitment into commitments of 2000 and 8000. Then, you would change the plan of the first one to
-                /// `FLEX` and then delete it.</summary>
+                /// <summary>Splits capacity commitment to two commitments of the same plan and `commitment_end_time`. A
+                /// common use case is to enable downgrading commitments. For example, in order to downgrade from 10000
+                /// slots to 8000, you might split a 10000 capacity commitment into commitments of 2000 and 8000. Then,
+                /// you would change the plan of the first one to `FLEX` and then delete it.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The resource name e.g.,:
                 /// `projects/myproject/locations/US/capacityCommitments/123`</param>
@@ -886,13 +871,10 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                     return new SplitRequest(service, body, name);
                 }
 
-                /// <summary>Splits capacity commitment to two commitments of the same plan and `commitment_end_time`.
-                ///
-                /// A common use case is to enable downgrading commitments.
-                ///
-                /// For example, in order to downgrade from 10000 slots to 8000, you might split a 10000 capacity
-                /// commitment into commitments of 2000 and 8000. Then, you would change the plan of the first one to
-                /// `FLEX` and then delete it.</summary>
+                /// <summary>Splits capacity commitment to two commitments of the same plan and `commitment_end_time`. A
+                /// common use case is to enable downgrading commitments. For example, in order to downgrade from 10000
+                /// slots to 8000, you might split a 10000 capacity commitment into commitments of 2000 and 8000. Then,
+                /// you would change the plan of the first one to `FLEX` and then delete it.</summary>
                 public class SplitRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.SplitCapacityCommitmentResponse>
                 {
                     /// <summary>Constructs a new Split request.</summary>
@@ -1002,28 +984,17 @@ namespace Google.Apis.BigQueryReservation.v1beta1
 
 
                     /// <summary>Creates an assignment object which allows the given project to submit jobs of a certain
-                    /// type using slots from the specified reservation.
-                    ///
-                    /// Currently a resource (project, folder, organization) can only have one assignment per each
-                    /// (job_type, location) combination, and that reservation will be used for all jobs of the matching
-                    /// type.
-                    ///
-                    /// Different assignments can be created on different levels of the projects, folders or
-                    /// organization hierarchy.  During query execution, the assignment is looked up at the project,
-                    /// folder and organization levels in that order. The first assignment found is applied to the
-                    /// query.
-                    ///
-                    /// When creating assignments, it does not matter if other assignments exist at higher levels.
-                    ///
-                    /// Example:
-                    ///
-                    /// * The organization `organizationA` contains two projects, `project1` and `project2`. *
-                    /// Assignments for all three entities (`organizationA`, `project1`, and `project2`) could all be
-                    /// created and mapped to the same or different reservations.
-                    ///
-                    /// Returns `google.rpc.Code.PERMISSION_DENIED` if user does not have 'bigquery.admin' permissions
-                    /// on the project using the reservation and the project that owns this reservation.
-                    ///
+                    /// type using slots from the specified reservation. Currently a resource (project, folder,
+                    /// organization) can only have one assignment per each (job_type, location) combination, and that
+                    /// reservation will be used for all jobs of the matching type. Different assignments can be created
+                    /// on different levels of the projects, folders or organization hierarchy. During query execution,
+                    /// the assignment is looked up at the project, folder and organization levels in that order. The
+                    /// first assignment found is applied to the query. When creating assignments, it does not matter if
+                    /// other assignments exist at higher levels. Example: * The organization `organizationA` contains
+                    /// two projects, `project1` and `project2`. * Assignments for all three entities (`organizationA`,
+                    /// `project1`, and `project2`) could all be created and mapped to the same or different
+                    /// reservations. Returns `google.rpc.Code.PERMISSION_DENIED` if user does not have 'bigquery.admin'
+                    /// permissions on the project using the reservation and the project that owns this reservation.
                     /// Returns `google.rpc.Code.INVALID_ARGUMENT` when location of the assignment does not match
                     /// location of the reservation.</summary>
                     /// <param name="body">The body of the request.</param>
@@ -1035,28 +1006,17 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                     }
 
                     /// <summary>Creates an assignment object which allows the given project to submit jobs of a certain
-                    /// type using slots from the specified reservation.
-                    ///
-                    /// Currently a resource (project, folder, organization) can only have one assignment per each
-                    /// (job_type, location) combination, and that reservation will be used for all jobs of the matching
-                    /// type.
-                    ///
-                    /// Different assignments can be created on different levels of the projects, folders or
-                    /// organization hierarchy.  During query execution, the assignment is looked up at the project,
-                    /// folder and organization levels in that order. The first assignment found is applied to the
-                    /// query.
-                    ///
-                    /// When creating assignments, it does not matter if other assignments exist at higher levels.
-                    ///
-                    /// Example:
-                    ///
-                    /// * The organization `organizationA` contains two projects, `project1` and `project2`. *
-                    /// Assignments for all three entities (`organizationA`, `project1`, and `project2`) could all be
-                    /// created and mapped to the same or different reservations.
-                    ///
-                    /// Returns `google.rpc.Code.PERMISSION_DENIED` if user does not have 'bigquery.admin' permissions
-                    /// on the project using the reservation and the project that owns this reservation.
-                    ///
+                    /// type using slots from the specified reservation. Currently a resource (project, folder,
+                    /// organization) can only have one assignment per each (job_type, location) combination, and that
+                    /// reservation will be used for all jobs of the matching type. Different assignments can be created
+                    /// on different levels of the projects, folders or organization hierarchy. During query execution,
+                    /// the assignment is looked up at the project, folder and organization levels in that order. The
+                    /// first assignment found is applied to the query. When creating assignments, it does not matter if
+                    /// other assignments exist at higher levels. Example: * The organization `organizationA` contains
+                    /// two projects, `project1` and `project2`. * Assignments for all three entities (`organizationA`,
+                    /// `project1`, and `project2`) could all be created and mapped to the same or different
+                    /// reservations. Returns `google.rpc.Code.PERMISSION_DENIED` if user does not have 'bigquery.admin'
+                    /// permissions on the project using the reservation and the project that owns this reservation.
                     /// Returns `google.rpc.Code.INVALID_ARGUMENT` when location of the assignment does not match
                     /// location of the reservation.</summary>
                     public class CreateRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.Assignment>
@@ -1119,17 +1079,12 @@ namespace Google.Apis.BigQueryReservation.v1beta1
 
                     }
 
-                    /// <summary>Deletes a assignment. No expansion will happen.
-                    ///
-                    /// Example:
-                    ///
-                    /// * Organization `organizationA` contains two projects, `project1` and `project2`. * Reservation
-                    /// `res1` exists and was created previously. * CreateAssignment was used previously to define the
-                    /// following associations between entities and reservations: `` and ``
-                    ///
-                    /// In this example, deletion of the `` assignment won't affect the other assignment ``. After said
-                    /// deletion, queries from `project1` will still use `res1` while queries from `project2` will
-                    /// switch to use on-demand mode.</summary>
+                    /// <summary>Deletes a assignment. No expansion will happen. Example: * Organization `organizationA`
+                    /// contains two projects, `project1` and `project2`. * Reservation `res1` exists and was created
+                    /// previously. * CreateAssignment was used previously to define the following associations between
+                    /// entities and reservations: `` and `` In this example, deletion of the `` assignment won't affect
+                    /// the other assignment ``. After said deletion, queries from `project1` will still use `res1`
+                    /// while queries from `project2` will switch to use on-demand mode.</summary>
                     /// <param name="name">Required. Name of the resource, e.g.
                     /// `projects/myproject/locations/US/reservations/team1-prod/assignments/123`</param>
                     public virtual DeleteRequest Delete(string name)
@@ -1137,17 +1092,12 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes a assignment. No expansion will happen.
-                    ///
-                    /// Example:
-                    ///
-                    /// * Organization `organizationA` contains two projects, `project1` and `project2`. * Reservation
-                    /// `res1` exists and was created previously. * CreateAssignment was used previously to define the
-                    /// following associations between entities and reservations: `` and ``
-                    ///
-                    /// In this example, deletion of the `` assignment won't affect the other assignment ``. After said
-                    /// deletion, queries from `project1` will still use `res1` while queries from `project2` will
-                    /// switch to use on-demand mode.</summary>
+                    /// <summary>Deletes a assignment. No expansion will happen. Example: * Organization `organizationA`
+                    /// contains two projects, `project1` and `project2`. * Reservation `res1` exists and was created
+                    /// previously. * CreateAssignment was used previously to define the following associations between
+                    /// entities and reservations: `` and `` In this example, deletion of the `` assignment won't affect
+                    /// the other assignment ``. After said deletion, queries from `project1` will still use `res1`
+                    /// while queries from `project2` will switch to use on-demand mode.</summary>
                     public class DeleteRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -1201,52 +1151,30 @@ namespace Google.Apis.BigQueryReservation.v1beta1
 
                     }
 
-                    /// <summary>Lists assignments.
-                    ///
-                    /// Only explicitly created assignments will be returned.
-                    ///
-                    /// Example:
-                    ///
-                    /// * Organization `organizationA` contains two projects, `project1` and `project2`. * Reservation
+                    /// <summary>Lists assignments. Only explicitly created assignments will be returned. Example: *
+                    /// Organization `organizationA` contains two projects, `project1` and `project2`. * Reservation
                     /// `res1` exists and was created previously. * CreateAssignment was used previously to define the
-                    /// following associations between entities and reservations: `` and ``
-                    ///
-                    /// In this example, ListAssignments will just return the above two assignments for reservation
-                    /// `res1`, and no expansion/merge will happen.
-                    ///
-                    /// The wildcard "-" can be used for reservations in the request. In that case all assignments
-                    /// belongs to the specified project and location will be listed.
-                    ///
-                    /// **Note** "-" cannot be used for projects nor locations.</summary>
+                    /// following associations between entities and reservations: `` and `` In this example,
+                    /// ListAssignments will just return the above two assignments for reservation `res1`, and no
+                    /// expansion/merge will happen. The wildcard "-" can be used for reservations in the request. In
+                    /// that case all assignments belongs to the specified project and location will be listed. **Note**
+                    /// "-" cannot be used for projects nor locations.</summary>
                     /// <param name="parent">Required. The parent resource name e.g.:
-                    ///
-                    /// `projects/myproject/locations/US/reservations/team1-prod`
-                    ///
-                    /// Or:
-                    ///
+                    /// `projects/myproject/locations/US/reservations/team1-prod` Or:
                     /// `projects/myproject/locations/US/reservations/-`</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Lists assignments.
-                    ///
-                    /// Only explicitly created assignments will be returned.
-                    ///
-                    /// Example:
-                    ///
-                    /// * Organization `organizationA` contains two projects, `project1` and `project2`. * Reservation
+                    /// <summary>Lists assignments. Only explicitly created assignments will be returned. Example: *
+                    /// Organization `organizationA` contains two projects, `project1` and `project2`. * Reservation
                     /// `res1` exists and was created previously. * CreateAssignment was used previously to define the
-                    /// following associations between entities and reservations: `` and ``
-                    ///
-                    /// In this example, ListAssignments will just return the above two assignments for reservation
-                    /// `res1`, and no expansion/merge will happen.
-                    ///
-                    /// The wildcard "-" can be used for reservations in the request. In that case all assignments
-                    /// belongs to the specified project and location will be listed.
-                    ///
-                    /// **Note** "-" cannot be used for projects nor locations.</summary>
+                    /// following associations between entities and reservations: `` and `` In this example,
+                    /// ListAssignments will just return the above two assignments for reservation `res1`, and no
+                    /// expansion/merge will happen. The wildcard "-" can be used for reservations in the request. In
+                    /// that case all assignments belongs to the specified project and location will be listed. **Note**
+                    /// "-" cannot be used for projects nor locations.</summary>
                     public class ListRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.ListAssignmentsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -1259,11 +1187,7 @@ namespace Google.Apis.BigQueryReservation.v1beta1
 
 
                         /// <summary>Required. The parent resource name e.g.:
-                        ///
-                        /// `projects/myproject/locations/US/reservations/team1-prod`
-                        ///
-                        /// Or:
-                        ///
+                        /// `projects/myproject/locations/US/reservations/team1-prod` Or:
                         /// `projects/myproject/locations/US/reservations/-`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1331,10 +1255,9 @@ namespace Google.Apis.BigQueryReservation.v1beta1
 
                     }
 
-                    /// <summary>Moves an assignment under a new reservation.
-                    ///
-                    /// This differs from removing an existing assignment and recreating a new one by providing a
-                    /// transactional change that ensures an assignee always has an associated reservation.</summary>
+                    /// <summary>Moves an assignment under a new reservation. This differs from removing an existing
+                    /// assignment and recreating a new one by providing a transactional change that ensures an assignee
+                    /// always has an associated reservation.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. The resource name of the assignment, e.g.
                     /// `projects/myproject/locations/US/reservations/team1-prod/assignments/123`</param>
@@ -1343,10 +1266,9 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                         return new MoveRequest(service, body, name);
                     }
 
-                    /// <summary>Moves an assignment under a new reservation.
-                    ///
-                    /// This differs from removing an existing assignment and recreating a new one by providing a
-                    /// transactional change that ensures an assignee always has an associated reservation.</summary>
+                    /// <summary>Moves an assignment under a new reservation. This differs from removing an existing
+                    /// assignment and recreating a new one by providing a transactional change that ensures an assignee
+                    /// always has an associated reservation.</summary>
                     public class MoveRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.Assignment>
                     {
                         /// <summary>Constructs a new Move request.</summary>
@@ -1866,23 +1788,14 @@ namespace Google.Apis.BigQueryReservation.v1beta1
             }
 
             /// <summary>Looks up assignments for a specified resource for a particular region. If the request is about
-            /// a project:
-            ///
-            /// 1. Assignments created on the project will be returned if they exist. 2. Otherwise assignments created
-            /// on the closest ancestor will be returned. 3. Assignments for different JobTypes will all be returned.
-            ///
-            /// The same logic applies if the request is about a folder.
-            ///
-            /// If the request is about an organization, then assignments created on the organization will be returned
-            /// (organization doesn't have ancestors).
-            ///
-            /// Comparing to ListAssignments, there are some behavior differences:
-            ///
-            /// 1. permission on the assignee will be verified in this API. 2. Hierarchy lookup
-            /// (project->folder->organization) happens in this API. 3. Parent here is `projects/locations`, instead of
-            /// `projects/locationsreservations`.
-            ///
-            /// **Note** "-" cannot be used for projects nor locations.</summary>
+            /// a project: 1. Assignments created on the project will be returned if they exist. 2. Otherwise
+            /// assignments created on the closest ancestor will be returned. 3. Assignments for different JobTypes will
+            /// all be returned. The same logic applies if the request is about a folder. If the request is about an
+            /// organization, then assignments created on the organization will be returned (organization doesn't have
+            /// ancestors). Comparing to ListAssignments, there are some behavior differences: 1. permission on the
+            /// assignee will be verified in this API. 2. Hierarchy lookup (project->folder->organization) happens in
+            /// this API. 3. Parent here is `projects/locations`, instead of `projects/locationsreservations`. **Note**
+            /// "-" cannot be used for projects nor locations.</summary>
             /// <param name="parent">Required. The resource name of the admin project(containing project and location), e.g.:
             /// `projects/myproject/locations/US`.</param>
             public virtual SearchAssignmentsRequest SearchAssignments(string parent)
@@ -1891,23 +1804,14 @@ namespace Google.Apis.BigQueryReservation.v1beta1
             }
 
             /// <summary>Looks up assignments for a specified resource for a particular region. If the request is about
-            /// a project:
-            ///
-            /// 1. Assignments created on the project will be returned if they exist. 2. Otherwise assignments created
-            /// on the closest ancestor will be returned. 3. Assignments for different JobTypes will all be returned.
-            ///
-            /// The same logic applies if the request is about a folder.
-            ///
-            /// If the request is about an organization, then assignments created on the organization will be returned
-            /// (organization doesn't have ancestors).
-            ///
-            /// Comparing to ListAssignments, there are some behavior differences:
-            ///
-            /// 1. permission on the assignee will be verified in this API. 2. Hierarchy lookup
-            /// (project->folder->organization) happens in this API. 3. Parent here is `projects/locations`, instead of
-            /// `projects/locationsreservations`.
-            ///
-            /// **Note** "-" cannot be used for projects nor locations.</summary>
+            /// a project: 1. Assignments created on the project will be returned if they exist. 2. Otherwise
+            /// assignments created on the closest ancestor will be returned. 3. Assignments for different JobTypes will
+            /// all be returned. The same logic applies if the request is about a folder. If the request is about an
+            /// organization, then assignments created on the organization will be returned (organization doesn't have
+            /// ancestors). Comparing to ListAssignments, there are some behavior differences: 1. permission on the
+            /// assignee will be verified in this API. 2. Hierarchy lookup (project->folder->organization) happens in
+            /// this API. 3. Parent here is `projects/locations`, instead of `projects/locationsreservations`. **Note**
+            /// "-" cannot be used for projects nor locations.</summary>
             public class SearchAssignmentsRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.SearchAssignmentsResponse>
             {
                 /// <summary>Constructs a new SearchAssignments request.</summary>
@@ -1932,11 +1836,8 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Please specify resource name as assignee in the query.
-                ///
-                /// Examples:
-                ///
-                /// * `assignee=projects/myproject` * `assignee=folders/123` * `assignee=organizations/456`</summary>
+                /// <summary>Please specify resource name as assignee in the query. Examples: *
+                /// `assignee=projects/myproject` * `assignee=folders/123` * `assignee=organizations/456`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Query { get; set; }
 
@@ -2004,13 +1905,9 @@ namespace Google.Apis.BigQueryReservation.v1beta1
 
             }
 
-            /// <summary>Updates a BI reservation.
-            ///
-            /// Only fields specified in the `field_mask` are updated.
-            ///
-            /// A singleton BI reservation always exists with default size 0. In order to reserve BI capacity it needs
-            /// to be updated to an amount greater than 0. In order to release BI capacity reservation size must be set
-            /// to 0.</summary>
+            /// <summary>Updates a BI reservation. Only fields specified in the `field_mask` are updated. A singleton BI
+            /// reservation always exists with default size 0. In order to reserve BI capacity it needs to be updated to
+            /// an amount greater than 0. In order to release BI capacity reservation size must be set to 0.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The resource name of the singleton BI reservation. Reservation names have the form
             /// `projects/{project_id}/locations/{location_id}/bireservation`.</param>
@@ -2019,13 +1916,9 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                 return new UpdateBiReservationRequest(service, body, name);
             }
 
-            /// <summary>Updates a BI reservation.
-            ///
-            /// Only fields specified in the `field_mask` are updated.
-            ///
-            /// A singleton BI reservation always exists with default size 0. In order to reserve BI capacity it needs
-            /// to be updated to an amount greater than 0. In order to release BI capacity reservation size must be set
-            /// to 0.</summary>
+            /// <summary>Updates a BI reservation. Only fields specified in the `field_mask` are updated. A singleton BI
+            /// reservation always exists with default size 0. In order to reserve BI capacity it needs to be updated to
+            /// an amount greater than 0. In order to release BI capacity reservation size must be set to 0.</summary>
             public class UpdateBiReservationRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.BiReservation>
             {
                 /// <summary>Constructs a new UpdateBiReservation request.</summary>
@@ -2153,11 +2046,8 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
 
     /// <summary>Capacity commitment is a way to purchase compute capacity for BigQuery jobs (in the form of slots) with
     /// some committed period of usage. Annual commitments renew by default. Commitments can be removed after their
-    /// commitment end time passes.
-    ///
-    /// In order to remove annual commitment, its plan needs to be changed to monthly or flex first.
-    ///
-    /// A capacity commitment resource exists as a child resource of the admin project.</summary>
+    /// commitment end time passes. In order to remove annual commitment, its plan needs to be changed to monthly or
+    /// flex first. A capacity commitment resource exists as a child resource of the admin project.</summary>
     public class CapacityCommitment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The end of the current commitment period. It is applicable only for ACTIVE capacity
@@ -2214,11 +2104,9 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -2286,12 +2174,9 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The request for ReservationService.MoveAssignment.
-    ///
-    /// **Note**: "bigquery.reservationAssignments.create" permission is required on the destination_id.
-    ///
-    /// **Note**: "bigquery.reservationAssignments.create" and "bigquery.reservationAssignments.delete" permission are
-    /// required on the related assignee.</summary>
+    /// <summary>The request for ReservationService.MoveAssignment. **Note**: "bigquery.reservationAssignments.create"
+    /// permission is required on the destination_id. **Note**: "bigquery.reservationAssignments.create" and
+    /// "bigquery.reservationAssignments.delete" permission are required on the related assignee.</summary>
     public class MoveAssignmentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The new reservation ID, e.g.:
@@ -2317,13 +2202,10 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
         public virtual string Name { get; set; } 
 
         /// <summary>Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery,
-        /// and serves as the unit of parallelism.
-        ///
-        /// Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false.
-        ///
-        /// If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the
-        /// new reservation and its siblings exceeds the parent's slot capacity, the request will fail with
-        /// `google.rpc.Code.RESOURCE_EXHAUSTED`.</summary>
+        /// and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if
+        /// ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity
+        /// or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the
+        /// request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slotCapacity")]
         public virtual System.Nullable<long> SlotCapacity { get; set; } 
 
@@ -2375,9 +2257,8 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2385,8 +2266,8 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

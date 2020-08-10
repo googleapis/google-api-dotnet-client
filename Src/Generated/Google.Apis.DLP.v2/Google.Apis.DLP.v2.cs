@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200726 (2033)
+ *      <tr><th>API Rev<td>20200805 (2043)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -901,13 +901,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list
                 /// is case-insensitive, default sorting order is ascending, redundant space characters are
-                /// insignificant.
-                ///
-                /// Example: `name asc,update_time, create_time desc`
-                ///
-                /// Supported fields are:
-                ///
-                /// - `create_time`: corresponds to time the template was created. - `update_time`: corresponds to time
+                /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
+                /// `create_time`: corresponds to time the template was created. - `update_time`: corresponds to time
                 /// the template was last updated. - `name`: corresponds to template's name. - `display_name`:
                 /// corresponds to template's display name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
@@ -1333,13 +1328,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list
                 /// is case-insensitive, default sorting order is ascending, redundant space characters are
-                /// insignificant.
-                ///
-                /// Example: `name asc,update_time, create_time desc`
-                ///
-                /// Supported fields are:
-                ///
-                /// - `create_time`: corresponds to time the template was created. - `update_time`: corresponds to time
+                /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
+                /// `create_time`: corresponds to time the template was created. - `update_time`: corresponds to time
                 /// the template was last updated. - `name`: corresponds to template's name. - `display_name`:
                 /// corresponds to template's display name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
@@ -1794,13 +1784,8 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
                     /// list is case-insensitive, default sorting order is ascending, redundant space characters are
-                    /// insignificant.
-                    ///
-                    /// Example: `name asc,update_time, create_time desc`
-                    ///
-                    /// Supported fields are:
-                    ///
-                    /// - `create_time`: corresponds to time the template was created. - `update_time`: corresponds to
+                    /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
+                    /// `create_time`: corresponds to time the template was created. - `update_time`: corresponds to
                     /// time the template was last updated. - `name`: corresponds to template's name. - `display_name`:
                     /// corresponds to template's display name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
@@ -2228,13 +2213,8 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
                     /// list is case-insensitive, default sorting order is ascending, redundant space characters are
-                    /// insignificant.
-                    ///
-                    /// Example: `name asc,update_time, create_time desc`
-                    ///
-                    /// Supported fields are:
-                    ///
-                    /// - `create_time`: corresponds to time the template was created. - `update_time`: corresponds to
+                    /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
+                    /// `create_time`: corresponds to time the template was created. - `update_time`: corresponds to
                     /// time the template was last updated. - `name`: corresponds to template's name. - `display_name`:
                     /// corresponds to template's display name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
@@ -2659,13 +2639,8 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
                     /// list is case-insensitive, default sorting order is ascending, redundant space characters are
-                    /// insignificant.
-                    ///
-                    /// Example: `name asc, display_name, create_time desc`
-                    ///
-                    /// Supported fields are:
-                    ///
-                    /// - `create_time`: corresponds to time the most recent version of the resource was created. -
+                    /// insignificant. Example: `name asc, display_name, create_time desc` Supported fields are: -
+                    /// `create_time`: corresponds to time the most recent version of the resource was created. -
                     /// `state`: corresponds to the state of the resource. - `name`: corresponds to resource name. -
                     /// `display_name`: corresponds to info type's display name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
@@ -3093,13 +3068,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list
                 /// is case-insensitive, default sorting order is ascending, redundant space characters are
-                /// insignificant.
-                ///
-                /// Example: `name asc, display_name, create_time desc`
-                ///
-                /// Supported fields are:
-                ///
-                /// - `create_time`: corresponds to time the most recent version of the resource was created. - `state`:
+                /// insignificant. Example: `name asc, display_name, create_time desc` Supported fields are: -
+                /// `create_time`: corresponds to time the most recent version of the resource was created. - `state`:
                 /// corresponds to the state of the resource. - `name`: corresponds to resource name. - `display_name`:
                 /// corresponds to info type's display name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
@@ -3314,7 +3284,6 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>De-identifies potentially sensitive info from a ContentItem. This method has limits on input
             /// size and output size. See https://cloud.google.com/dlp/docs/deidentify-sensitive-data to learn more.
-            ///
             /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose
             /// what detectors to run. By default this may be all types, but may change over time as detectors are
             /// updated.</summary>
@@ -3328,7 +3297,6 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>De-identifies potentially sensitive info from a ContentItem. This method has limits on input
             /// size and output size. See https://cloud.google.com/dlp/docs/deidentify-sensitive-data to learn more.
-            ///
             /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose
             /// what detectors to run. By default this may be all types, but may change over time as detectors are
             /// updated.</summary>
@@ -3393,14 +3361,10 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>Finds potentially sensitive info in content. This method has limits on input size, processing
-            /// time, and output size.
-            ///
-            /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose
-            /// what detectors to run. By default this may be all types, but may change over time as detectors are
-            /// updated.
-            ///
-            /// For how to guides, see https://cloud.google.com/dlp/docs/inspecting-images and
-            /// https://cloud.google.com/dlp/docs/inspecting-text,</summary>
+            /// time, and output size. When no InfoTypes or CustomInfoTypes are specified in this request, the system
+            /// will automatically choose what detectors to run. By default this may be all types, but may change over
+            /// time as detectors are updated. For how to guides, see https://cloud.google.com/dlp/docs/inspecting-
+            /// images and https://cloud.google.com/dlp/docs/inspecting-text,</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-ID]/locations
             /// /[LOCATION-ID]</param>
@@ -3410,14 +3374,10 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>Finds potentially sensitive info in content. This method has limits on input size, processing
-            /// time, and output size.
-            ///
-            /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose
-            /// what detectors to run. By default this may be all types, but may change over time as detectors are
-            /// updated.
-            ///
-            /// For how to guides, see https://cloud.google.com/dlp/docs/inspecting-images and
-            /// https://cloud.google.com/dlp/docs/inspecting-text,</summary>
+            /// time, and output size. When no InfoTypes or CustomInfoTypes are specified in this request, the system
+            /// will automatically choose what detectors to run. By default this may be all types, but may change over
+            /// time as detectors are updated. For how to guides, see https://cloud.google.com/dlp/docs/inspecting-
+            /// images and https://cloud.google.com/dlp/docs/inspecting-text,</summary>
             public class InspectRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectContentResponse>
             {
                 /// <summary>Constructs a new Inspect request.</summary>
@@ -3819,13 +3779,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list
                 /// is case-insensitive, default sorting order is ascending, redundant space characters are
-                /// insignificant.
-                ///
-                /// Example: `name asc,update_time, create_time desc`
-                ///
-                /// Supported fields are:
-                ///
-                /// - `create_time`: corresponds to time the template was created. - `update_time`: corresponds to time
+                /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
+                /// `create_time`: corresponds to time the template was created. - `update_time`: corresponds to time
                 /// the template was last updated. - `name`: corresponds to template's name. - `display_name`:
                 /// corresponds to template's display name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
@@ -4086,11 +4041,9 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>Creates a new job to inspect storage or calculate risk metrics. See
             /// https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-
-            /// analysis to learn more.
-            ///
-            /// When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the system will automatically choose
-            /// what detectors to run. By default this may be all types, but may change over time as detectors are
-            /// updated.</summary>
+            /// analysis to learn more. When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the system
+            /// will automatically choose what detectors to run. By default this may be all types, but may change over
+            /// time as detectors are updated.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
             /// ID]/locations/[LOCATION-ID]</param>
@@ -4101,11 +4054,9 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>Creates a new job to inspect storage or calculate risk metrics. See
             /// https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-
-            /// analysis to learn more.
-            ///
-            /// When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the system will automatically choose
-            /// what detectors to run. By default this may be all types, but may change over time as detectors are
-            /// updated.</summary>
+            /// analysis to learn more. When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the system
+            /// will automatically choose what detectors to run. By default this may be all types, but may change over
+            /// time as detectors are updated.</summary>
             public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DlpJob>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -4321,27 +4272,19 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Allows filtering.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
-                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-                /// has the form of `{field} {operator} {value}`. * Supported fields/values for inspect jobs: - `state`
-                /// - PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY
-                /// - `trigger_name` - The resource name of the trigger that created job. - 'end_time` - Corresponds to
-                /// time the job finished. - 'start_time` - Corresponds to time the job finished. * Supported fields for
-                /// risk analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to time
-                /// the job finished. - 'start_time` - Corresponds to time the job finished. * The operator must be `=`
-                /// or `!=`.
-                ///
-                /// Examples:
-                ///
-                /// * inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage OR
+                /// <summary>Allows filtering. Supported syntax: * Filter expressions are made up of one or more
+                /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
+                /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. *
+                /// Supported fields/values for inspect jobs: - `state` - PENDING|RUNNING|CANCELED|FINISHED|FAILED -
+                /// `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The resource name of the
+                /// trigger that created job. - 'end_time` - Corresponds to time the job finished. - 'start_time` -
+                /// Corresponds to time the job finished. * Supported fields for risk analysis jobs: - `state` -
+                /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to time the job finished. - 'start_time`
+                /// - Corresponds to time the job finished. * The operator must be `=` or `!=`. Examples: *
+                /// inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage OR
                 /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state =
-                /// canceled) * end_time > \"2017-12-12T00:00:00+00:00\"
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
+                /// canceled) * end_time > \"2017-12-12T00:00:00+00:00\" The length of this field should be no more than
+                /// 500 characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -4351,13 +4294,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list
                 /// is case-insensitive, default sorting order is ascending, redundant space characters are
-                /// insignificant.
-                ///
-                /// Example: `name asc, end_time asc, create_time desc`
-                ///
-                /// Supported fields are:
-                ///
-                /// - `create_time`: corresponds to time the job was created. - `end_time`: corresponds to time the job
+                /// insignificant. Example: `name asc, end_time asc, create_time desc` Supported fields are: -
+                /// `create_time`: corresponds to time the job was created. - `end_time`: corresponds to time the job
                 /// ended. - `name`: corresponds to job's name. - `state`: corresponds to `state`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
@@ -4377,10 +4315,13 @@ namespace Google.Apis.DLP.v2
                 /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
                 public enum TypeEnum
                 {
+                    /// <summary>Unused</summary>
                     [Google.Apis.Util.StringValueAttribute("DLP_JOB_TYPE_UNSPECIFIED")]
                     DLPJOBTYPEUNSPECIFIED,
+                    /// <summary>The job inspected Google Cloud for sensitive data.</summary>
                     [Google.Apis.Util.StringValueAttribute("INSPECT_JOB")]
                     INSPECTJOB,
+                    /// <summary>The job executed a Risk Analysis computation.</summary>
                     [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
                     RISKANALYSISJOB,
                 }
@@ -4502,11 +4443,9 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>Redacts potentially sensitive info from an image. This method has limits on input size,
             /// processing time, and output size. See https://cloud.google.com/dlp/docs/redacting-sensitive-data-images
-            /// to learn more.
-            ///
-            /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose
-            /// what detectors to run. By default this may be all types, but may change over time as detectors are
-            /// updated.</summary>
+            /// to learn more. When no InfoTypes or CustomInfoTypes are specified in this request, the system will
+            /// automatically choose what detectors to run. By default this may be all types, but may change over time
+            /// as detectors are updated.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">The parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
             /// ID]/locations/[LOCATION-ID]</param>
@@ -4517,11 +4456,9 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>Redacts potentially sensitive info from an image. This method has limits on input size,
             /// processing time, and output size. See https://cloud.google.com/dlp/docs/redacting-sensitive-data-images
-            /// to learn more.
-            ///
-            /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose
-            /// what detectors to run. By default this may be all types, but may change over time as detectors are
-            /// updated.</summary>
+            /// to learn more. When no InfoTypes or CustomInfoTypes are specified in this request, the system will
+            /// automatically choose what detectors to run. By default this may be all types, but may change over time
+            /// as detectors are updated.</summary>
             public class RedactRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2RedactImageResponse>
             {
                 /// <summary>Constructs a new Redact request.</summary>
@@ -4845,13 +4782,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list
                 /// is case-insensitive, default sorting order is ascending, redundant space characters are
-                /// insignificant.
-                ///
-                /// Example: `name asc,update_time, create_time desc`
-                ///
-                /// Supported fields are:
-                ///
-                /// - `create_time`: corresponds to time the template was created. - `update_time`: corresponds to time
+                /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
+                /// `create_time`: corresponds to time the template was created. - `update_time`: corresponds to time
                 /// the template was last updated. - `name`: corresponds to template's name. - `display_name`:
                 /// corresponds to template's display name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
@@ -5336,25 +5268,18 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Allows filtering.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
-                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-                /// has the form of `{field} {operator} {value}`. * Supported fields/values for inspect jobs: - `status`
-                /// - HEALTHY|PAUSED|CANCELLED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY -
-                /// 'last_run_time` - RFC 3339 formatted timestamp, surrounded by quotation marks. Nanoseconds are
-                /// ignored. - 'error_count' - Number of errors that have occurred while running. * The operator must be
-                /// `=` or `!=` for status and inspected_storage.
-                ///
-                /// Examples:
-                ///
-                /// * inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage = cloud_storage OR
-                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = PAUSED OR state =
-                /// HEALTHY) * last_run_time > \"2017-12-12T00:00:00+00:00\"
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
+                /// <summary>Allows filtering. Supported syntax: * Filter expressions are made up of one or more
+                /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
+                /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. *
+                /// Supported fields/values for inspect jobs: - `status` - HEALTHY|PAUSED|CANCELLED -
+                /// `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted
+                /// timestamp, surrounded by quotation marks. Nanoseconds are ignored. - 'error_count' - Number of
+                /// errors that have occurred while running. * The operator must be `=` or `!=` for status and
+                /// inspected_storage. Examples: * inspected_storage = cloud_storage AND status = HEALTHY *
+                /// inspected_storage = cloud_storage OR inspected_storage = bigquery * inspected_storage =
+                /// cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time >
+                /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more than 500
+                /// characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -5364,16 +5289,11 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Comma separated list of triggeredJob fields to order by, followed by `asc` or `desc`
                 /// postfix. This list is case-insensitive, default sorting order is ascending, redundant space
-                /// characters are insignificant.
-                ///
-                /// Example: `name asc,update_time, create_time desc`
-                ///
-                /// Supported fields are:
-                ///
-                /// - `create_time`: corresponds to time the JobTrigger was created. - `update_time`: corresponds to
-                /// time the JobTrigger was last updated. - `last_run_time`: corresponds to the last time the JobTrigger
-                /// ran. - `name`: corresponds to JobTrigger's name. - `display_name`: corresponds to JobTrigger's
-                /// display name. - `status`: corresponds to JobTrigger's status.</summary>
+                /// characters are insignificant. Example: `name asc,update_time, create_time desc` Supported fields
+                /// are: - `create_time`: corresponds to time the JobTrigger was created. - `update_time`: corresponds
+                /// to time the JobTrigger was last updated. - `last_run_time`: corresponds to the last time the
+                /// JobTrigger ran. - `name`: corresponds to JobTrigger's name. - `display_name`: corresponds to
+                /// JobTrigger's display name. - `status`: corresponds to JobTrigger's status.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
@@ -5596,11 +5516,9 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>De-identifies potentially sensitive info from a ContentItem. This method has limits on
                 /// input size and output size. See https://cloud.google.com/dlp/docs/deidentify-sensitive-data to learn
-                /// more.
-                ///
-                /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically
-                /// choose what detectors to run. By default this may be all types, but may change over time as
-                /// detectors are updated.</summary>
+                /// more. When no InfoTypes or CustomInfoTypes are specified in this request, the system will
+                /// automatically choose what detectors to run. By default this may be all types, but may change over
+                /// time as detectors are updated.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-ID]/locations
                 /// /[LOCATION-ID]</param>
@@ -5611,11 +5529,9 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>De-identifies potentially sensitive info from a ContentItem. This method has limits on
                 /// input size and output size. See https://cloud.google.com/dlp/docs/deidentify-sensitive-data to learn
-                /// more.
-                ///
-                /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically
-                /// choose what detectors to run. By default this may be all types, but may change over time as
-                /// detectors are updated.</summary>
+                /// more. When no InfoTypes or CustomInfoTypes are specified in this request, the system will
+                /// automatically choose what detectors to run. By default this may be all types, but may change over
+                /// time as detectors are updated.</summary>
                 public class DeidentifyRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyContentResponse>
                 {
                     /// <summary>Constructs a new Deidentify request.</summary>
@@ -5677,14 +5593,11 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>Finds potentially sensitive info in content. This method has limits on input size,
-                /// processing time, and output size.
-                ///
-                /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically
-                /// choose what detectors to run. By default this may be all types, but may change over time as
-                /// detectors are updated.
-                ///
-                /// For how to guides, see https://cloud.google.com/dlp/docs/inspecting-images and
-                /// https://cloud.google.com/dlp/docs/inspecting-text,</summary>
+                /// processing time, and output size. When no InfoTypes or CustomInfoTypes are specified in this
+                /// request, the system will automatically choose what detectors to run. By default this may be all
+                /// types, but may change over time as detectors are updated. For how to guides, see
+                /// https://cloud.google.com/dlp/docs/inspecting-images and https://cloud.google.com/dlp/docs
+                /// /inspecting-text,</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-ID]/locations
                 /// /[LOCATION-ID]</param>
@@ -5694,14 +5607,11 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>Finds potentially sensitive info in content. This method has limits on input size,
-                /// processing time, and output size.
-                ///
-                /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically
-                /// choose what detectors to run. By default this may be all types, but may change over time as
-                /// detectors are updated.
-                ///
-                /// For how to guides, see https://cloud.google.com/dlp/docs/inspecting-images and
-                /// https://cloud.google.com/dlp/docs/inspecting-text,</summary>
+                /// processing time, and output size. When no InfoTypes or CustomInfoTypes are specified in this
+                /// request, the system will automatically choose what detectors to run. By default this may be all
+                /// types, but may change over time as detectors are updated. For how to guides, see
+                /// https://cloud.google.com/dlp/docs/inspecting-images and https://cloud.google.com/dlp/docs
+                /// /inspecting-text,</summary>
                 public class InspectRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectContentResponse>
                 {
                     /// <summary>Constructs a new Inspect request.</summary>
@@ -6103,13 +6013,8 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
                     /// list is case-insensitive, default sorting order is ascending, redundant space characters are
-                    /// insignificant.
-                    ///
-                    /// Example: `name asc,update_time, create_time desc`
-                    ///
-                    /// Supported fields are:
-                    ///
-                    /// - `create_time`: corresponds to time the template was created. - `update_time`: corresponds to
+                    /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
+                    /// `create_time`: corresponds to time the template was created. - `update_time`: corresponds to
                     /// time the template was last updated. - `name`: corresponds to template's name. - `display_name`:
                     /// corresponds to template's display name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
@@ -6372,11 +6277,9 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Creates a new job to inspect storage or calculate risk metrics. See
                 /// https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-
-                /// risk-analysis to learn more.
-                ///
-                /// When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the system will automatically
-                /// choose what detectors to run. By default this may be all types, but may change over time as
-                /// detectors are updated.</summary>
+                /// risk-analysis to learn more. When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the
+                /// system will automatically choose what detectors to run. By default this may be all types, but may
+                /// change over time as detectors are updated.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
                 /// ID]/locations/[LOCATION-ID]</param>
@@ -6387,11 +6290,9 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Creates a new job to inspect storage or calculate risk metrics. See
                 /// https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-
-                /// risk-analysis to learn more.
-                ///
-                /// When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the system will automatically
-                /// choose what detectors to run. By default this may be all types, but may change over time as
-                /// detectors are updated.</summary>
+                /// risk-analysis to learn more. When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the
+                /// system will automatically choose what detectors to run. By default this may be all types, but may
+                /// change over time as detectors are updated.</summary>
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DlpJob>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -6761,27 +6662,20 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Allows filtering.
-                    ///
-                    /// Supported syntax:
-                    ///
-                    /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
-                    /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A
-                    /// restriction has the form of `{field} {operator} {value}`. * Supported fields/values for inspect
-                    /// jobs: - `state` - PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` -
+                    /// <summary>Allows filtering. Supported syntax: * Filter expressions are made up of one or more
+                    /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
+                    /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+                    /// {value}`. * Supported fields/values for inspect jobs: - `state` -
+                    /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` -
                     /// DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The resource name of the trigger that
                     /// created job. - 'end_time` - Corresponds to time the job finished. - 'start_time` - Corresponds
                     /// to time the job finished. * Supported fields for risk analysis jobs: - `state` -
                     /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to time the job finished. -
                     /// 'start_time` - Corresponds to time the job finished. * The operator must be `=` or `!=`.
-                    ///
-                    /// Examples:
-                    ///
-                    /// * inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage OR
-                    /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state =
-                    /// canceled) * end_time > \"2017-12-12T00:00:00+00:00\"
-                    ///
-                    /// The length of this field should be no more than 500 characters.</summary>
+                    /// Examples: * inspected_storage = cloud_storage AND state = done * inspected_storage =
+                    /// cloud_storage OR inspected_storage = bigquery * inspected_storage = cloud_storage AND (state =
+                    /// done OR state = canceled) * end_time > \"2017-12-12T00:00:00+00:00\" The length of this field
+                    /// should be no more than 500 characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -6791,13 +6685,8 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
                     /// list is case-insensitive, default sorting order is ascending, redundant space characters are
-                    /// insignificant.
-                    ///
-                    /// Example: `name asc, end_time asc, create_time desc`
-                    ///
-                    /// Supported fields are:
-                    ///
-                    /// - `create_time`: corresponds to time the job was created. - `end_time`: corresponds to time the
+                    /// insignificant. Example: `name asc, end_time asc, create_time desc` Supported fields are: -
+                    /// `create_time`: corresponds to time the job was created. - `end_time`: corresponds to time the
                     /// job ended. - `name`: corresponds to job's name. - `state`: corresponds to `state`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
@@ -6817,10 +6706,13 @@ namespace Google.Apis.DLP.v2
                     /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
                     public enum TypeEnum
                     {
+                        /// <summary>Unused</summary>
                         [Google.Apis.Util.StringValueAttribute("DLP_JOB_TYPE_UNSPECIFIED")]
                         DLPJOBTYPEUNSPECIFIED,
+                        /// <summary>The job inspected Google Cloud for sensitive data.</summary>
                         [Google.Apis.Util.StringValueAttribute("INSPECT_JOB")]
                         INSPECTJOB,
+                        /// <summary>The job executed a Risk Analysis computation.</summary>
                         [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
                         RISKANALYSISJOB,
                     }
@@ -6942,11 +6834,9 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Redacts potentially sensitive info from an image. This method has limits on input size,
                 /// processing time, and output size. See https://cloud.google.com/dlp/docs/redacting-sensitive-data-
-                /// images to learn more.
-                ///
-                /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically
-                /// choose what detectors to run. By default this may be all types, but may change over time as
-                /// detectors are updated.</summary>
+                /// images to learn more. When no InfoTypes or CustomInfoTypes are specified in this request, the system
+                /// will automatically choose what detectors to run. By default this may be all types, but may change
+                /// over time as detectors are updated.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">The parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[PROJECT-
                 /// ID]/locations/[LOCATION-ID]</param>
@@ -6957,11 +6847,9 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Redacts potentially sensitive info from an image. This method has limits on input size,
                 /// processing time, and output size. See https://cloud.google.com/dlp/docs/redacting-sensitive-data-
-                /// images to learn more.
-                ///
-                /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically
-                /// choose what detectors to run. By default this may be all types, but may change over time as
-                /// detectors are updated.</summary>
+                /// images to learn more. When no InfoTypes or CustomInfoTypes are specified in this request, the system
+                /// will automatically choose what detectors to run. By default this may be all types, but may change
+                /// over time as detectors are updated.</summary>
                 public class RedactRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2RedactImageResponse>
                 {
                     /// <summary>Constructs a new Redact request.</summary>
@@ -7287,13 +7175,8 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
                     /// list is case-insensitive, default sorting order is ascending, redundant space characters are
-                    /// insignificant.
-                    ///
-                    /// Example: `name asc,update_time, create_time desc`
-                    ///
-                    /// Supported fields are:
-                    ///
-                    /// - `create_time`: corresponds to time the template was created. - `update_time`: corresponds to
+                    /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
+                    /// `create_time`: corresponds to time the template was created. - `update_time`: corresponds to
                     /// time the template was last updated. - `name`: corresponds to template's name. - `display_name`:
                     /// corresponds to template's display name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
@@ -7856,25 +7739,18 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Allows filtering.
-                    ///
-                    /// Supported syntax:
-                    ///
-                    /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
-                    /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A
-                    /// restriction has the form of `{field} {operator} {value}`. * Supported fields/values for inspect
-                    /// jobs: - `status` - HEALTHY|PAUSED|CANCELLED - `inspected_storage` -
-                    /// DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted timestamp, surrounded by
-                    /// quotation marks. Nanoseconds are ignored. - 'error_count' - Number of errors that have occurred
-                    /// while running. * The operator must be `=` or `!=` for status and inspected_storage.
-                    ///
-                    /// Examples:
-                    ///
-                    /// * inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage = cloud_storage OR
-                    /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = PAUSED OR state =
-                    /// HEALTHY) * last_run_time > \"2017-12-12T00:00:00+00:00\"
-                    ///
-                    /// The length of this field should be no more than 500 characters.</summary>
+                    /// <summary>Allows filtering. Supported syntax: * Filter expressions are made up of one or more
+                    /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
+                    /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+                    /// {value}`. * Supported fields/values for inspect jobs: - `status` - HEALTHY|PAUSED|CANCELLED -
+                    /// `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted
+                    /// timestamp, surrounded by quotation marks. Nanoseconds are ignored. - 'error_count' - Number of
+                    /// errors that have occurred while running. * The operator must be `=` or `!=` for status and
+                    /// inspected_storage. Examples: * inspected_storage = cloud_storage AND status = HEALTHY *
+                    /// inspected_storage = cloud_storage OR inspected_storage = bigquery * inspected_storage =
+                    /// cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time >
+                    /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more than 500
+                    /// characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -7884,16 +7760,12 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>Comma separated list of triggeredJob fields to order by, followed by `asc` or `desc`
                     /// postfix. This list is case-insensitive, default sorting order is ascending, redundant space
-                    /// characters are insignificant.
-                    ///
-                    /// Example: `name asc,update_time, create_time desc`
-                    ///
-                    /// Supported fields are:
-                    ///
-                    /// - `create_time`: corresponds to time the JobTrigger was created. - `update_time`: corresponds to
-                    /// time the JobTrigger was last updated. - `last_run_time`: corresponds to the last time the
-                    /// JobTrigger ran. - `name`: corresponds to JobTrigger's name. - `display_name`: corresponds to
-                    /// JobTrigger's display name. - `status`: corresponds to JobTrigger's status.</summary>
+                    /// characters are insignificant. Example: `name asc,update_time, create_time desc` Supported fields
+                    /// are: - `create_time`: corresponds to time the JobTrigger was created. - `update_time`:
+                    /// corresponds to time the JobTrigger was last updated. - `last_run_time`: corresponds to the last
+                    /// time the JobTrigger ran. - `name`: corresponds to JobTrigger's name. - `display_name`:
+                    /// corresponds to JobTrigger's display name. - `status`: corresponds to JobTrigger's
+                    /// status.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -8323,13 +8195,8 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
                     /// list is case-insensitive, default sorting order is ascending, redundant space characters are
-                    /// insignificant.
-                    ///
-                    /// Example: `name asc, display_name, create_time desc`
-                    ///
-                    /// Supported fields are:
-                    ///
-                    /// - `create_time`: corresponds to time the most recent version of the resource was created. -
+                    /// insignificant. Example: `name asc, display_name, create_time desc` Supported fields are: -
+                    /// `create_time`: corresponds to time the most recent version of the resource was created. -
                     /// `state`: corresponds to the state of the resource. - `name`: corresponds to resource name. -
                     /// `display_name`: corresponds to info type's display name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
@@ -8757,13 +8624,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list
                 /// is case-insensitive, default sorting order is ascending, redundant space characters are
-                /// insignificant.
-                ///
-                /// Example: `name asc, display_name, create_time desc`
-                ///
-                /// Supported fields are:
-                ///
-                /// - `create_time`: corresponds to time the most recent version of the resource was created. - `state`:
+                /// insignificant. Example: `name asc, display_name, create_time desc` Supported fields are: -
+                /// `create_time`: corresponds to time the most recent version of the resource was created. - `state`:
                 /// corresponds to the state of the resource. - `name`: corresponds to resource name. - `display_name`:
                 /// corresponds to info type's display name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
@@ -9104,7 +8966,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Message defining the location of a BigQuery table. A table is uniquely identified  by its project_id,
+    /// <summary>Message defining the location of a BigQuery table. A table is uniquely identified by its project_id,
     /// dataset_id, and table_name. Within a query a table is often referenced with a string in the format of: `:.` or
     /// `..`.</summary>
     public class GooglePrivacyDlpV2BigQueryTable : Google.Apis.Requests.IDirectResponseSchema
@@ -9271,7 +9133,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("charactersToIgnore")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2CharsToIgnore> CharactersToIgnore { get; set; } 
 
-        /// <summary>Character to use to mask the sensitive valuesfor example, `*` for an alphabetic string such as a
+        /// <summary>Character to use to mask the sensitive values—for example, `*` for an alphabetic string such as a
         /// name, or `0` for a numeric string such as ZIP code or credit card number. This string must have a length of
         /// 1. If not supplied, this value defaults to `*` for strings, and `0` for digits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maskingCharacter")]
@@ -9372,27 +9234,17 @@ namespace Google.Apis.DLP.v2.Data
     }    
 
     /// <summary>Message representing a set of files in a Cloud Storage bucket. Regular expressions are used to allow
-    /// fine-grained control over which files in the bucket to include.
-    ///
-    /// Included files are those that match at least one item in `include_regex` and do not match any items in
-    /// `exclude_regex`. Note that a file that matches items from both lists will _not_ be included. For a match to
-    /// occur, the entire file path (i.e., everything in the url after the bucket name) must match the regular
-    /// expression.
-    ///
-    /// For example, given the input `{bucket_name: "mybucket", include_regex: ["directory1/.*"], exclude_regex:
-    /// ["directory1/excluded.*"]}`:
-    ///
-    /// * `gs://mybucket/directory1/myfile` will be included * `gs://mybucket/directory1/directory2/myfile` will be
+    /// fine-grained control over which files in the bucket to include. Included files are those that match at least one
+    /// item in `include_regex` and do not match any items in `exclude_regex`. Note that a file that matches items from
+    /// both lists will _not_ be included. For a match to occur, the entire file path (i.e., everything in the url after
+    /// the bucket name) must match the regular expression. For example, given the input `{bucket_name: "mybucket",
+    /// include_regex: ["directory1/.*"], exclude_regex: ["directory1/excluded.*"]}`: *
+    /// `gs://mybucket/directory1/myfile` will be included * `gs://mybucket/directory1/directory2/myfile` will be
     /// included (`.*` matches across `/`) * `gs://mybucket/directory0/directory1/myfile` will _not_ be included (the
     /// full path doesn't match any items in `include_regex`) * `gs://mybucket/directory1/excludedfile` will _not_ be
-    /// included (the path matches an item in `exclude_regex`)
-    ///
-    /// If `include_regex` is left empty, it will match all files by default (this is equivalent to setting
-    /// `include_regex: [".*"]`).
-    ///
-    /// Some other common use cases:
-    ///
-    /// * `{bucket_name: "mybucket", exclude_regex: [".*\.pdf"]}` will include all files in `mybucket` except for .pdf
+    /// included (the path matches an item in `exclude_regex`) If `include_regex` is left empty, it will match all files
+    /// by default (this is equivalent to setting `include_regex: [".*"]`). Some other common use cases: *
+    /// `{bucket_name: "mybucket", exclude_regex: [".*\.pdf"]}` will include all files in `mybucket` except for .pdf
     /// files * `{bucket_name: "mybucket", include_regex: ["directory/[^/]+"]}` will include all files directly under
     /// `gs://mybucket/directory/`, without matching across `/`</summary>
     public class GooglePrivacyDlpV2CloudStorageRegexFileSet : Google.Apis.Requests.IDirectResponseSchema
@@ -9402,20 +9254,18 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string BucketName { get; set; } 
 
         /// <summary>A list of regular expressions matching file paths to exclude. All files in the bucket that match at
-        /// least one of these regular expressions will be excluded from the scan.
-        ///
-        /// Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under
-        /// the google/re2 repository on GitHub.</summary>
+        /// least one of these regular expressions will be excluded from the scan. Regular expressions use RE2
+        /// [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on
+        /// GitHub.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeRegex")]
         public virtual System.Collections.Generic.IList<string> ExcludeRegex { get; set; } 
 
         /// <summary>A list of regular expressions matching file paths to include. All files in the bucket that match at
         /// least one of these regular expressions will be included in the set of files, except for those that also
         /// match an item in `exclude_regex`. Leaving this field empty will match all files by default (this is
-        /// equivalent to including `.*` in the list).
-        ///
-        /// Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under
-        /// the google/re2 repository on GitHub.</summary>
+        /// equivalent to including `.*` in the list). Regular expressions use RE2
+        /// [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on
+        /// GitHub.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeRegex")]
         public virtual System.Collections.Generic.IList<string> IncludeRegex { get; set; } 
 
@@ -9444,16 +9294,12 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>The field type of `value` and `field` do not need to match to be considered equal, but not all
     /// comparisons are possible. EQUAL_TO and NOT_EQUAL_TO attempt to compare even with incompatible types, but all
-    /// other comparisons are invalid with incompatible types. A `value` of type:
-    ///
-    /// - `string` can be compared against all other types - `boolean` can only be compared against other booleans -
-    /// `integer` can be compared against doubles or a string if the string value can be parsed as an integer. -
-    /// `double` can be compared against integers or a string if the string can be parsed as a double. - `Timestamp` can
-    /// be compared against strings in RFC 3339 date string format. - `TimeOfDay` can be compared against timestamps and
-    /// strings in the format of 'HH:mm:ss'.
-    ///
-    /// If we fail to compare do to type mismatch, a warning will be given and the condition will evaluate to
-    /// false.</summary>
+    /// other comparisons are invalid with incompatible types. A `value` of type: - `string` can be compared against all
+    /// other types - `boolean` can only be compared against other booleans - `integer` can be compared against doubles
+    /// or a string if the string value can be parsed as an integer. - `double` can be compared against integers or a
+    /// string if the string can be parsed as a double. - `Timestamp` can be compared against strings in RFC 3339 date
+    /// string format. - `TimeOfDay` can be compared against timestamps and strings in the format of 'HH:mm:ss'. If we
+    /// fail to compare do to type mismatch, a warning will be given and the condition will evaluate to false.</summary>
     public class GooglePrivacyDlpV2Condition : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Field within the record this condition is evaluated against.</summary>
@@ -9551,13 +9397,10 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2ContentLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Name of the container where the finding is located. The top level name is the source file name or
-        /// table name. Names of some common storage containers are formatted as follows:
-        ///
-        /// * BigQuery tables:  `{project_id}:{dataset_id}.{table_id}` * Cloud Storage files: `gs://{bucket}/{path}` *
-        /// Datastore namespace: {namespace}
-        ///
-        /// Nested names could be absent if the embedded object has no string identifier (for an example an image
-        /// contained within a document).</summary>
+        /// table name. Names of some common storage containers are formatted as follows: * BigQuery tables:
+        /// `{project_id}:{dataset_id}.{table_id}` * Cloud Storage files: `gs://{bucket}/{path}` * Datastore namespace:
+        /// {namespace} Nested names could be absent if the embedded object has no string identifier (for an example an
+        /// image contained within a document).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerName")]
         public virtual string ContainerName { get; set; } 
 
@@ -9710,17 +9553,11 @@ namespace Google.Apis.DLP.v2.Data
         /// identifier in two different contexts will be given a distinct surrogate. The context is appended to
         /// plaintext value being encrypted. On decryption the provided context is validated against the value used
         /// during encryption. If a context was provided during encryption, same context must be provided during
-        /// decryption as well.
-        ///
-        /// If the context is not set, plaintext would be used as is for encryption. If the context is set but:
-        ///
-        /// 1. there is no record present when transforming a given value or 2. the field is not present when
-        /// transforming a given value,
-        ///
-        /// plaintext would be used as is for encryption.
-        ///
-        /// Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-
-        /// structured `ContentItem`s.</summary>
+        /// decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context
+        /// is set but: 1. there is no record present when transforming a given value or 2. the field is not present
+        /// when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is
+        /// expected when an `InfoTypeTransformation` is applied to both structured and non-structured
+        /// `ContentItem`s.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual GooglePrivacyDlpV2FieldId Context { get; set; } 
 
@@ -9731,28 +9568,18 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>The custom info type to annotate the surrogate with. This annotation will be applied to the
         /// surrogate by prefixing it with the name of the custom info type followed by the number of characters
         /// comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character
-        /// count}):{surrogate}
-        ///
-        /// For example, if the name of custom info type is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full
-        /// replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc'
-        ///
-        /// This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'.
-        /// This facilitates reversal of the surrogate when it occurs in free text.
-        ///
-        /// Note: For record transformations where the entire cell in a table is being transformed, surrogates are not
-        /// mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification
-        /// in free form text.
-        ///
-        /// In order for inspection to work properly, the name of this info type must not occur naturally anywhere in
-        /// your data; otherwise, inspection may either
-        ///
-        /// - reverse a surrogate that does not correspond to an actual identifier - be unable to parse the surrogate
-        /// and result in an error
-        ///
-        /// Therefore, choose your custom info type name carefully after considering what your data looks like. One way
-        /// to select a name that has a high chance of yielding reliable detection is to include one or more unicode
-        /// characters that are highly improbable to exist in your data. For example, assuming your data is entered from
-        /// a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so:
+        /// count}):{surrogate} For example, if the name of custom info type is 'MY_TOKEN_INFO_TYPE' and the surrogate
+        /// is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the
+        /// surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the
+        /// surrogate when it occurs in free text. Note: For record transformations where the entire cell in a table is
+        /// being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and
+        /// are necessary for re-identification in free form text. In order for inspection to work properly, the name of
+        /// this info type must not occur naturally anywhere in your data; otherwise, inspection may either - reverse a
+        /// surrogate that does not correspond to an actual identifier - be unable to parse the surrogate and result in
+        /// an error Therefore, choose your custom info type name carefully after considering what your data looks like.
+        /// One way to select a name that has a high chance of yielding reliable detection is to include one or more
+        /// unicode characters that are highly improbable to exist in your data. For example, assuming your data is
+        /// entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so:
         /// ⧝MY_TOKEN_TYPE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("surrogateInfoType")]
         public virtual GooglePrivacyDlpV2InfoType SurrogateInfoType { get; set; } 
@@ -9801,10 +9628,9 @@ namespace Google.Apis.DLP.v2.Data
     /// the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key
     /// and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two
     /// characters long. In the case that the identifier is the empty string, it will be skipped. See
-    /// https://cloud.google.com/dlp/docs/pseudonymization to learn more.
-    ///
-    /// Note: We recommend using  CryptoDeterministicConfig for all use cases which do not require preserving the input
-    /// alphabet space and size, plus warrant referential integrity.</summary>
+    /// https://cloud.google.com/dlp/docs/pseudonymization to learn more. Note: We recommend using
+    /// CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size,
+    /// plus warrant referential integrity.</summary>
     public class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Common alphabets.</summary>
@@ -9812,22 +9638,13 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string CommonAlphabet { get; set; } 
 
         /// <summary>The 'tweak', a context may be used for higher security since the same identifier in two different
-        /// contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
-        ///
-        /// If the context is set but:
-        ///
-        /// 1. there is no record present when transforming a given value or 1. the field is not present when
-        /// transforming a given value,
-        ///
-        /// a default tweak will be used.
-        ///
-        /// Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-
-        /// structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-        ///
-        /// The tweak is constructed as a sequence of bytes in big endian byte order such that:
-        ///
-        /// - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format
-        /// followed by a single byte of value 2</summary>
+        /// contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the
+        /// context is set but: 1. there is no record present when transforming a given value or 1. the field is not
+        /// present when transforming a given value, a default tweak will be used. Note that case (1) is expected when
+        /// an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the
+        /// referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in
+        /// big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a
+        /// string is encoded in UTF-8 format followed by a single byte of value 2</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual GooglePrivacyDlpV2FieldId Context { get; set; } 
 
@@ -9850,22 +9667,18 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>The custom infoType to annotate the surrogate with. This annotation will be applied to the
         /// surrogate by prefixing it with the name of the custom infoType followed by the number of characters
         /// comprising the surrogate. The following scheme defines the format:
-        /// info_type_name(surrogate_character_count):surrogate
-        ///
-        /// For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full
-        /// replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc'
-        ///
-        /// This annotation identifies the surrogate when inspecting content using the custom infoType
+        /// info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is
+        /// 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be:
+        /// 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the
+        /// custom infoType
         /// [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This
-        /// facilitates reversal of the surrogate when it occurs in free text.
-        ///
-        /// In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in
-        /// your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier.
-        /// Therefore, choose your custom infoType name carefully after considering what your data looks like. One way
-        /// to select a name that has a high chance of yielding reliable detection is to include one or more unicode
-        /// characters that are highly improbable to exist in your data. For example, assuming your data is entered from
-        /// a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so:
-        /// ⧝MY_TOKEN_TYPE</summary>
+        /// facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly,
+        /// the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a
+        /// surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name
+        /// carefully after considering what your data looks like. One way to select a name that has a high chance of
+        /// yielding reliable detection is to include one or more unicode characters that are highly improbable to exist
+        /// in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the
+        /// hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("surrogateInfoType")]
         public virtual GooglePrivacyDlpV2InfoType SurrogateInfoType { get; set; } 
 
@@ -9969,9 +9782,7 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>Required. Range of shift in days. Actual shift will be selected at random within this range
         /// (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years)
-        /// each direction.
-        ///
-        /// For example, 3 means shift date to at most 3 days into the future.</summary>
+        /// each direction. For example, 3 means shift date to at most 3 days into the future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upperBoundDays")]
         public virtual System.Nullable<int> UpperBoundDays { get; set; } 
 
@@ -10084,7 +9895,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>/ // The core content of the template  // </summary>
+        /// <summary>/ // The core content of the template // </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deidentifyConfig")]
         public virtual GooglePrivacyDlpV2DeidentifyConfig DeidentifyConfig { get; set; } 
 
@@ -10096,10 +9907,9 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Output only. The template name.
-        ///
-        /// The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID`
-        /// OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`</summary>
+        /// <summary>Output only. The template name. The template will have one of the following formats:
+        /// `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR
+        /// `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -10215,20 +10025,18 @@ namespace Google.Apis.DLP.v2.Data
     }    
 
     /// <summary>Custom information type based on a dictionary of words or phrases. This can be used to match sensitive
-    /// information specific to the data, such as a list of employee IDs or job titles.
-    ///
-    /// Dictionary words are case-insensitive and all characters other than letters and digits in the unicode [Basic
-    /// Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced
-    /// with whitespace when scanning for matches, so the dictionary phrase "Sam Johnson" will match all three phrases
-    /// "sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters surrounding any match must be
-    /// of a different type than the adjacent characters within the word, so letters must be next to non-letters and
-    /// digits next to non-digits. For example, the dictionary word "jen" will match the first three letters of the text
-    /// "jen123" but will return no matches for "jennifer".
-    ///
-    /// Dictionary words containing a large number of characters that are not letters or digits may result in unexpected
-    /// findings because such characters are treated as whitespace. The [limits](https://cloud.google.com/dlp/limits)
-    /// page contains details about the size limits of dictionaries. For dictionaries that do not fit within these
-    /// constraints, consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.</summary>
+    /// information specific to the data, such as a list of employee IDs or job titles. Dictionary words are case-
+    /// insensitive and all characters other than letters and digits in the unicode [Basic Multilingual
+    /// Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced with
+    /// whitespace when scanning for matches, so the dictionary phrase "Sam Johnson" will match all three phrases "sam
+    /// johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters surrounding any match must be of a
+    /// different type than the adjacent characters within the word, so letters must be next to non-letters and digits
+    /// next to non-digits. For example, the dictionary word "jen" will match the first three letters of the text
+    /// "jen123" but will return no matches for "jennifer". Dictionary words containing a large number of characters
+    /// that are not letters or digits may result in unexpected findings because such characters are treated as
+    /// whitespace. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of
+    /// dictionaries. For dictionaries that do not fit within these constraints, consider using
+    /// `LargeCustomDictionaryConfig` in the `StoredInfoType` API.</summary>
     public class GooglePrivacyDlpV2Dictionary : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Newline-delimited file of words in Cloud Storage. Only a single file is accepted.</summary>
@@ -10401,12 +10209,9 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2FieldTransformation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Only apply the transformation if the condition evaluates to true for the given `RecordCondition`.
-        /// The conditions are allowed to reference fields that are not used in the actual transformation.
-        ///
-        /// Example Use Cases:
-        ///
-        /// - Apply a different bucket transformation to an age column if the zip code column for the same record is
-        /// within a specific range. - Redact a field if the date of birth field is greater than 85.</summary>
+        /// The conditions are allowed to reference fields that are not used in the actual transformation. Example Use
+        /// Cases: - Apply a different bucket transformation to an age column if the zip code column for the same record
+        /// is within a specific range. - Redact a field if the date of birth field is greater than 85.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual GooglePrivacyDlpV2RecordCondition Condition { get; set; } 
 
@@ -10436,12 +10241,9 @@ namespace Google.Apis.DLP.v2.Data
         public virtual GooglePrivacyDlpV2CloudStorageRegexFileSet RegexFileSet { get; set; } 
 
         /// <summary>The Cloud Storage url of the file(s) to scan, in the format `gs:`. Trailing wildcard in the path is
-        /// allowed.
-        ///
-        /// If the url ends in a trailing slash, the bucket or directory represented by the url will be scanned non-
-        /// recursively (content in sub-directories will not be scanned). This means that `gs://mybucket/` is equivalent
-        /// to `gs://mybucket`, and `gs://mybucket/directory/` is equivalent to `gs://mybucket/directory`.
-        ///
+        /// allowed. If the url ends in a trailing slash, the bucket or directory represented by the url will be scanned
+        /// non-recursively (content in sub-directories will not be scanned). This means that `gs://mybucket/` is
+        /// equivalent to `gs://mybucket`, and `gs://mybucket/directory/` is equivalent to `gs://mybucket/directory`.
         /// Exactly one of `url` or `regex_file_set` must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
@@ -10469,17 +10271,11 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobName")]
         public virtual string JobName { get; set; } 
 
-        /// <summary>The labels associated with this `Finding`.
-        ///
-        /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression:
-        /// `[a-z]([-a-z0-9]*[a-z0-9])?`.
-        ///
-        /// Label values must be between 0 and 63 characters long and must conform to the regular expression
-        /// `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-        ///
-        /// No more than 10 labels can be associated with a given finding.
-        ///
-        /// Examples: * `"environment" : "production"` * `"pipeline" : "etl"`</summary>
+        /// <summary>The labels associated with this `Finding`. Label keys must be between 1 and 63 characters long and
+        /// must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. Label values must be between
+        /// 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. No more
+        /// than 10 labels can be associated with a given finding. Examples: * `"environment" : "production"` *
+        /// `"pipeline" : "etl"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -10550,17 +10346,11 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this
     /// functionality, but requires more configuration. This message is provided as a convenience to the user for simple
-    /// bucketing strategies.
-    ///
-    /// The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}, i.e if lower_bound = 10 and
-    /// upper_bound = 20 all values that are within this bucket will be replaced with "10-20".
-    ///
-    /// This can be used on data of type: double, long.
-    ///
-    /// If the bound Value type differs from the type of data being transformed, we will first attempt converting the
-    /// type of the data to be transformed to match the type of the bound before comparing.
-    ///
-    /// See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.</summary>
+    /// bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}, i.e if
+    /// lower_bound = 10 and upper_bound = 20 all values that are within this bucket will be replaced with "10-20". This
+    /// can be used on data of type: double, long. If the bound Value type differs from the type of data being
+    /// transformed, we will first attempt converting the type of the data to be transformed to match the type of the
+    /// bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.</summary>
     public class GooglePrivacyDlpV2FixedSizeBucketingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10,
@@ -10630,24 +10420,18 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerDetails")]
         public virtual GooglePrivacyDlpV2Container ContainerDetails { get; set; } 
 
-        /// <summary>Offset in bytes of the line, from the beginning of the file, where the finding  is located.
-        /// Populate if the item being scanned is only part of a bigger item, such as a shard of a file and you want to
-        /// track the absolute position of the finding.</summary>
+        /// <summary>Offset in bytes of the line, from the beginning of the file, where the finding is located. Populate
+        /// if the item being scanned is only part of a bigger item, such as a shard of a file and you want to track the
+        /// absolute position of the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileOffset")]
         public virtual System.Nullable<long> FileOffset { get; set; } 
 
         /// <summary>Labels to represent user provided metadata about the data being inspected. If configured by the
         /// job, some key values may be required. The labels associated with `Finding`'s produced by hybrid inspection.
-        ///
         /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression:
-        /// `[a-z]([-a-z0-9]*[a-z0-9])?`.
-        ///
-        /// Label values must be between 0 and 63 characters long and must conform to the regular expression
-        /// `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-        ///
-        /// No more than 10 labels can be associated with a given finding.
-        ///
-        /// Examples: * `"environment" : "production"` * `"pipeline" : "etl"`</summary>
+        /// `[a-z]([-a-z0-9]*[a-z0-9])?`. Label values must be between 0 and 63 characters long and must conform to the
+        /// regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. No more than 10 labels can be associated with a given
+        /// finding. Examples: * `"environment" : "production"` * `"pipeline" : "etl"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -10727,27 +10511,18 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>To organize findings, these labels will be added to each finding.
-        ///
-        /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression:
-        /// `[a-z]([-a-z0-9]*[a-z0-9])?`.
-        ///
-        /// Label values must be between 0 and 63 characters long and must conform to the regular expression
-        /// `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-        ///
-        /// No more than 10 labels can be associated with a given finding.
-        ///
-        /// Examples: * `"environment" : "production"` * `"pipeline" : "etl"`</summary>
+        /// <summary>To organize findings, these labels will be added to each finding. Label keys must be between 1 and
+        /// 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. Label
+        /// values must be between 0 and 63 characters long and must conform to the regular expression
+        /// `([a-z]([-a-z0-9]*[a-z0-9])?)?`. No more than 10 labels can be associated with a given finding. Examples: *
+        /// `"environment" : "production"` * `"pipeline" : "etl"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>These are labels that each inspection request must include within their 'finding_labels' map.
-        /// Request may contain others, but any missing one of these will be rejected.
-        ///
-        /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression:
-        /// `[a-z]([-a-z0-9]*[a-z0-9])?`.
-        ///
-        /// No more than 10 keys can be required.</summary>
+        /// Request may contain others, but any missing one of these will be rejected. Label keys must be between 1 and
+        /// 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. No
+        /// more than 10 keys can be required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredFindingLabelKeys")]
         public virtual System.Collections.Generic.IList<string> RequiredFindingLabelKeys { get; set; } 
 
@@ -10799,7 +10574,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one
         /// of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in
-        /// type.  When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern
+        /// type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern
         /// `[A-Za-z0-9$-_]{1,64}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -10917,14 +10692,11 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Nullable<bool> IncludeQuote { get; set; } 
 
         /// <summary>Restricts what info_types to look for. The values must correspond to InfoType values returned by
-        /// ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
-        ///
-        /// When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what
-        /// detectors to run. By default this may be all types, but may change over time as detectors are updated.
-        ///
-        /// If you need precise control and predictability as to what detectors are run you should specify specific
-        /// InfoTypes listed in the reference, otherwise a default list will be used, which may change over
-        /// time.</summary>
+        /// ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or
+        /// CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By
+        /// default this may be all types, but may change over time as detectors are updated. If you need precise
+        /// control and predictability as to what detectors are run you should specify specific InfoTypes listed in the
+        /// reference, otherwise a default list will be used, which may change over time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; } 
 
@@ -11062,9 +10834,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inspectConfig")]
         public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; } 
 
-        /// <summary>Output only. The template name.
-        ///
-        /// The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR
+        /// <summary>Output only. The template name. The template will have one of the following formats:
+        /// `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR
         /// `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -11173,10 +10944,9 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Message indicating that multiple rows might be associated to a single individual. If the same
         /// entity_id is associated to multiple quasi-identifier tuples over distinct rows, we consider the entire
         /// collection of tuples as the composite quasi-identifier. This collection is a multiset: the order in which
-        /// the different tuples appear in the dataset is ignored, but their frequency is taken into account.
-        ///
-        /// Important note: a maximum of 1000 rows can be associated to a single entity ID. If more rows are associated
-        /// with the same entity ID, some might be ignored.</summary>
+        /// the different tuples appear in the dataset is ignored, but their frequency is taken into account. Important
+        /// note: a maximum of 1000 rows can be associated to a single entity ID. If more rows are associated with the
+        /// same entity ID, some might be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
         public virtual GooglePrivacyDlpV2EntityId EntityId { get; set; } 
 
@@ -11346,9 +11116,8 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>The entity path. An entity path consists of one or more elements composed of a kind and a string or
         /// numerical identifier, which identify entities. The first element identifies a _root entity_, the second
         /// element identifies a _child_ of the root entity, the third element identifies a child of the second entity,
-        /// and so forth. The entities identified by all prefixes of the path are called the element's _ancestors_.
-        ///
-        /// A path can never be empty, and a path can have at most 100 elements.</summary>
+        /// and so forth. The entities identified by all prefixes of the path are called the element's _ancestors_. A
+        /// path can never be empty, and a path can have at most 100 elements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2PathElement> Path { get; set; } 
 
@@ -11703,25 +11472,19 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Schema used for writing the findings for Inspect jobs. This field is only used for Inspect and must
         /// be unspecified for Risk jobs. Columns are derived from the `Finding` object. If appending to an existing
         /// table, any columns from the predefined schema that are missing will be added. No columns in the existing
-        /// table will be deleted.
-        ///
-        /// If unspecified, then all available columns will be used for a new table or an (existing) table with no
-        /// schema, and no changes will be made to an existing table that has a schema. Only for use with external
-        /// storage.</summary>
+        /// table will be deleted. If unspecified, then all available columns will be used for a new table or an
+        /// (existing) table with no schema, and no changes will be made to an existing table that has a schema. Only
+        /// for use with external storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputSchema")]
         public virtual string OutputSchema { get; set; } 
 
         /// <summary>Store findings in an existing table or a new table in an existing dataset. If table_id is not set a
         /// new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific
-        /// timezone will be used for generating the date details.
-        ///
-        /// For Inspect, each column in an existing output table must have the same name, type, and mode of a field in
-        /// the `Finding` object.
-        ///
-        /// For Risk, an existing output table should be the output of a previous Risk analysis job run on the same
-        /// source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but
-        /// compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results
-        /// in the same table.</summary>
+        /// timezone will be used for generating the date details. For Inspect, each column in an existing output table
+        /// must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output
+        /// table should be the output of a previous Risk analysis job run on the same source table, with the same
+        /// privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy
+        /// metric, or use different sets of quasi-identifiers, cannot store their results in the same table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual GooglePrivacyDlpV2BigQueryTable Table { get; set; } 
 
@@ -11730,9 +11493,8 @@ namespace Google.Apis.DLP.v2.Data
     }    
 
     /// <summary>Datastore partition ID. A partition ID identifies a grouping of entities. The grouping is always by
-    /// project and namespace, however the namespace ID may be empty.
-    ///
-    /// A partition ID contains several dimensions: project ID and namespace ID.</summary>
+    /// project and namespace, however the namespace ID may be empty. A partition ID contains several dimensions:
+    /// project ID and namespace ID.</summary>
     public class GooglePrivacyDlpV2PartitionId : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If not empty, the ID of the namespace to which the entities belong.</summary>
@@ -11747,9 +11509,8 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A (kind, ID/name) pair used to construct a key path.
-    ///
-    /// If either name or ID is set, the element is complete. If neither is set, the element is incomplete.</summary>
+    /// <summary>A (kind, ID/name) pair used to construct a key path. If either name or ID is set, the element is
+    /// complete. If neither is set, the element is incomplete.</summary>
     public class GooglePrivacyDlpV2PathElement : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The auto-allocated ID of the entity. Never equal to zero. Values less than zero are discouraged and
@@ -12177,9 +11938,7 @@ namespace Google.Apis.DLP.v2.Data
         /// message type that is used for de-identification, however its usage here is for the reversal of the previous
         /// de-identification. Re-identification is performed by examining the transformations used to de-identify the
         /// items and executing the reverse. This requires that only reversible transformations be provided here. The
-        /// reversible transformations are:
-        ///
-        /// - `CryptoDeterministicConfig` - `CryptoReplaceFfxFpeConfig`</summary>
+        /// reversible transformations are: - `CryptoDeterministicConfig` - `CryptoReplaceFfxFpeConfig`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reidentifyConfig")]
         public virtual GooglePrivacyDlpV2DeidentifyConfig ReidentifyConfig { get; set; } 
 
@@ -12315,12 +12074,9 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2Schedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>With this option a job is started a regular periodic basis. For example: every day (86400 seconds).
-        ///
         /// A scheduled start time will be skipped if the previous execution has not ended when its scheduled time
-        /// occurs.
-        ///
-        /// This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60
-        /// days.</summary>
+        /// occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than
+        /// 60 days.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurrencePeriodDuration")]
         public virtual object RecurrencePeriodDuration { get; set; } 
 
@@ -12463,15 +12219,11 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>Errors that occurred when creating this storedInfoType version, or anomalies detected in the
         /// storedInfoType data that render it unusable. Only the five most recent errors will be displayed, with the
-        /// most recent error appearing first.
-        ///
-        /// For example, some of the data for stored custom dictionaries is put in the user's Google Cloud Storage
-        /// bucket, and if this data is modified or deleted by the user or another system, the dictionary becomes
-        /// invalid.
-        ///
-        /// If any errors occur, fix the problem indicated by the error message and use the UpdateStoredInfoType API
-        /// method to create another version of the storedInfoType to continue using it, reusing the same `config` if it
-        /// was not the source of the error.</summary>
+        /// most recent error appearing first. For example, some of the data for stored custom dictionaries is put in
+        /// the user's Google Cloud Storage bucket, and if this data is modified or deleted by the user or another
+        /// system, the dictionary becomes invalid. If any errors occur, fix the problem indicated by the error message
+        /// and use the UpdateStoredInfoType API method to create another version of the storedInfoType to continue
+        /// using it, reusing the same `config` if it was not the source of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Error> Errors { get; set; } 
 
@@ -12659,14 +12411,11 @@ namespace Google.Apis.DLP.v2.Data
         public virtual object StartTime { get; set; } 
 
         /// <summary>Specification of the field containing the timestamp of scanned items. Used for data sources like
-        /// Datastore and BigQuery.
-        ///
-        /// For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the
-        /// table was modified between the given start and end times, the entire table will be scanned. The valid data
-        /// types of the timestamp field are: `INTEGER`, `DATE`, `TIMESTAMP`, or `DATETIME` BigQuery column.
-        ///
-        /// For Datastore. Valid data types of the timestamp field are: `TIMESTAMP`. Datastore entity will be scanned if
-        /// the timestamp property does not exist or its value is empty or invalid.</summary>
+        /// Datastore and BigQuery. For BigQuery: Required to filter out rows based on the given start and end times. If
+        /// not specified and the table was modified between the given start and end times, the entire table will be
+        /// scanned. The valid data types of the timestamp field are: `INTEGER`, `DATE`, `TIMESTAMP`, or `DATETIME`
+        /// BigQuery column. For Datastore. Valid data types of the timestamp field are: `TIMESTAMP`. Datastore entity
+        /// will be scanned if the timestamp property does not exist or its value is empty or invalid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampField")]
         public virtual GooglePrivacyDlpV2FieldId TimestampField { get; set; } 
 
@@ -12920,11 +12669,9 @@ namespace Google.Apis.DLP.v2.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -12933,9 +12680,8 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class GoogleRpcStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12943,8 +12689,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -12959,13 +12705,10 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>Represents a whole or partial calendar date, e.g. a birthday. The time of day and time zone are either
     /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. This can
-    /// represent:
-    ///
-    /// * A full date, with non-zero year, month and day values * A month and day value, with a zero year, e.g. an
-    /// anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, e.g.
-    /// a credit card expiration date
-    ///
-    /// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
+    /// represent: * A full date, with non-zero year, month and day values * A month and day value, with a zero year,
+    /// e.g. an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero
+    /// day, e.g. a credit card expiration date Related types are google.type.TimeOfDay and
+    /// `google.protobuf.Timestamp`.</summary>
     public class GoogleTypeDate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by

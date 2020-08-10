@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Reservation API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20200722 (2029)
+ *      <tr><th>API Rev<td>20200801 (2039)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -397,10 +397,10 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                 }
 
 
-                /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
-                /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support this
-                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or
-                /// other methods to check whether the cancellation succeeded or whether the operation completed despite
+                /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best
+                /// effort to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
+                /// methods to check whether the cancellation succeeded or whether the operation completed despite
                 /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
                 /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
                 /// `Code.CANCELLED`.</summary>
@@ -410,10 +410,10 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                     return new CancelRequest(service, name);
                 }
 
-                /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
-                /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support this
-                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or
-                /// other methods to check whether the cancellation succeeded or whether the operation completed despite
+                /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best
+                /// effort to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
+                /// methods to check whether the cancellation succeeded or whether the operation completed despite
                 /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
                 /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
                 /// `Code.CANCELLED`.</summary>
@@ -469,7 +469,7 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
 
                 }
 
-                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
                 /// operation result at intervals as recommended by the API service.</summary>
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
@@ -477,7 +477,7 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
                 /// operation result at intervals as recommended by the API service.</summary>
                 public class GetRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1alpha2.Data.Operation>
                 {
@@ -633,11 +633,9 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
 
                 /// <summary>Deletes a reservation grant. No expansion will happen. E.g: organizationA contains project1
                 /// and project2. Reservation res1 exists. CreateReservationGrant was invoked previously and following
-                /// grants were created explicitly:
-                ///
-                /// Then deletion of  won't affect . After deletion of , queries from project1 will still use res1,
-                /// while queries from project2 will use on-demand mode.</summary>
-                /// <param name="name">Name of the resource, e.g.:   projects/myproject/locations/eu/reservationGrants/123</param>
+                /// grants were created explicitly: Then deletion of won't affect . After deletion of , queries from
+                /// project1 will still use res1, while queries from project2 will use on-demand mode.</summary>
+                /// <param name="name">Name of the resource, e.g.: projects/myproject/locations/eu/reservationGrants/123</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -645,10 +643,8 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
 
                 /// <summary>Deletes a reservation grant. No expansion will happen. E.g: organizationA contains project1
                 /// and project2. Reservation res1 exists. CreateReservationGrant was invoked previously and following
-                /// grants were created explicitly:
-                ///
-                /// Then deletion of  won't affect . After deletion of , queries from project1 will still use res1,
-                /// while queries from project2 will use on-demand mode.</summary>
+                /// grants were created explicitly: Then deletion of won't affect . After deletion of , queries from
+                /// project1 will still use res1, while queries from project2 will use on-demand mode.</summary>
                 public class DeleteRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1alpha2.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -704,10 +700,8 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
 
                 /// <summary>Lists reservation grants. Only explicitly created grants will be returned. E.g:
                 /// organizationA contains project1 and project2. Reservation res1 exists. CreateReservationGrant was
-                /// invoked previously and following grants were created explicitly:
-                ///
-                /// Then this API will just return the above two grants for reservation res1, and no expansion/merge
-                /// will happen.</summary>
+                /// invoked previously and following grants were created explicitly: Then this API will just return the
+                /// above two grants for reservation res1, and no expansion/merge will happen.</summary>
                 /// <param name="parent">The parent resource name e.g.: projects/myproject/location/eu.</param>
                 public virtual ListRequest List(string parent)
                 {
@@ -716,10 +710,8 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
 
                 /// <summary>Lists reservation grants. Only explicitly created grants will be returned. E.g:
                 /// organizationA contains project1 and project2. Reservation res1 exists. CreateReservationGrant was
-                /// invoked previously and following grants were created explicitly:
-                ///
-                /// Then this API will just return the above two grants for reservation res1, and no expansion/merge
-                /// will happen.</summary>
+                /// invoked previously and following grants were created explicitly: Then this API will just return the
+                /// above two grants for reservation res1, and no expansion/merge will happen.</summary>
                 public class ListRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1alpha2.Data.ListReservationGrantsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -848,7 +840,7 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
 
                     /// <summary>Deletes a slot pool. Attempting to delete slot pool before its commitment_end_time will
                     /// fail with the error code `google.rpc.Code.FAILED_PRECONDITION`.</summary>
-                    /// <param name="name">Resource name of the slot pool to delete. E.g.,    projects/myproject/locations/us-
+                    /// <param name="name">Resource name of the slot pool to delete. E.g., projects/myproject/locations/us-
                     /// central1/reservations/my_reservation/slotPools/123</param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -911,7 +903,7 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                     }
 
                     /// <summary>Returns information about the slot pool.</summary>
-                    /// <param name="name">Resource name of the slot pool to retrieve. E.g.,    projects/myproject/locations/us-
+                    /// <param name="name">Resource name of the slot pool to retrieve. E.g., projects/myproject/locations/us-
                     /// central1/reservations/my_reservation/slotPools/123</param>
                     public virtual GetRequest Get(string name)
                     {
@@ -1064,7 +1056,7 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                 /// <summary>Creates a new reservation resource. Multiple reservations are created if the ancestor
                 /// reservations do not exist.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Project, location, and (optionally) reservation name. E.g.,    projects/myproject/locations/us-
+                /// <param name="parent">Project, location, and (optionally) reservation name. E.g., projects/myproject/locations/us-
                 /// central1/reservations/parent</param>
                 public virtual CreateRequest Create(Google.Apis.BigQueryReservation.v1alpha2.Data.Reservation body, string parent)
                 {
@@ -1150,7 +1142,7 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                 /// <summary>Creates a new reservation resource. Multiple reservations are created if the ancestor
                 /// reservations do not exist.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Project, location, and (optionally) reservation name. E.g.,    projects/myproject/locations/us-
+                /// <param name="parent">Project, location, and (optionally) reservation name. E.g., projects/myproject/locations/us-
                 /// central1/reservations/parent</param>
                 public virtual CreateReservationRequest CreateReservation(Google.Apis.BigQueryReservation.v1alpha2.Data.Reservation body, string parent)
                 {
@@ -1237,7 +1229,7 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                 /// cases: 1. When reservation has child reservations. This check can be bypassed by setting
                 /// DeleteReservationRequest.force flag to true. 2. When top-level reservation with slot pools is being
                 /// deleted.</summary>
-                /// <param name="name">Resource name of the reservation to retrieve. E.g.,    projects/myproject/locations/us-
+                /// <param name="name">Resource name of the reservation to retrieve. E.g., projects/myproject/locations/us-
                 /// central1/reservations/my_reservation</param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -1317,7 +1309,7 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                 }
 
                 /// <summary>Returns information about the reservation.</summary>
-                /// <param name="name">Resource name of the reservation to retrieve. E.g.,    projects/myproject/locations/us-
+                /// <param name="name">Resource name of the reservation to retrieve. E.g., projects/myproject/locations/us-
                 /// central1/reservations/path/to/reserv</param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1379,7 +1371,7 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                 }
 
                 /// <summary>Lists all the reservations for the project in the specified location.</summary>
-                /// <param name="parent">The parent resource name containing project and location, e.g.:   "projects/myproject/locations
+                /// <param name="parent">The parent resource name containing project and location, e.g.: "projects/myproject/locations
                 /// /us-central1"</param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1700,11 +1692,9 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1771,9 +1761,9 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -1783,11 +1773,11 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -1806,11 +1796,9 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
 
         /// <summary>Maximum slots available to this reservation and its children. A slot is a unit of computational
         /// power in BigQuery, and serves as the unit of parallelism. In a scan of a multi-partitioned table, a single
-        /// slot operates on a single partition of the table.
-        ///
-        /// If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the
-        /// new reservation and its siblings exceeds the parent's slot capacity, the request will fail with
-        /// `google.rpc.Code.RESOURCE_EXHAUSTED`.</summary>
+        /// slot operates on a single partition of the table. If the new reservation's slot capacity exceed the parent's
+        /// slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot
+        /// capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slotCapacity")]
         public virtual System.Nullable<long> SlotCapacity { get; set; } 
 
@@ -1878,10 +1866,8 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
     /// <summary>Slot pool is a way to purchase slots with some minimum committed period of usage. Slot pool is
     /// immutable and cannot be deleted until the end of the commitment period. After the end of the commitment period,
     /// slots are still available but can be freely removed any time. Annual commitments will automatically be
-    /// downgraded to monthly after the commitment ends.
-    ///
-    /// A slot pool resource exists as a child resource of a top-level reservation. Sum of all the ACTIVE pools
-    /// slot_count is always equal to the reservation slot_capacity.</summary>
+    /// downgraded to monthly after the commitment ends. A slot pool resource exists as a child resource of a top-level
+    /// reservation. Sum of all the ACTIVE pools slot_count is always equal to the reservation slot_capacity.</summary>
     public class SlotPool : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The end of the commitment period. Slot pool cannot be removed before
@@ -1917,9 +1903,8 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1927,8 +1912,8 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/maps/contact-sales/'>Semantic Tile API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200801 (2039)
+ *      <tr><th>API Rev<td>20200808 (2046)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/maps/contact-sales/'>
  *              https://developers.google.com/maps/contact-sales/</a>
@@ -394,35 +394,42 @@ namespace Google.Apis.SemanticTile.v1
             /// <summary>Platform where the application is running.</summary>
             public enum ClientInfoPlatformEnum
             {
+                /// <summary>Unspecified or unknown OS.</summary>
                 [Google.Apis.Util.StringValueAttribute("PLATFORM_UNSPECIFIED")]
                 PLATFORMUNSPECIFIED,
+                /// <summary>Development environment.</summary>
                 [Google.Apis.Util.StringValueAttribute("EDITOR")]
                 EDITOR,
+                /// <summary>macOS.</summary>
                 [Google.Apis.Util.StringValueAttribute("MAC_OS")]
                 MACOS,
+                /// <summary>Windows.</summary>
                 [Google.Apis.Util.StringValueAttribute("WINDOWS")]
                 WINDOWS,
+                /// <summary>Linux</summary>
                 [Google.Apis.Util.StringValueAttribute("LINUX")]
                 LINUX,
+                /// <summary>Android</summary>
                 [Google.Apis.Util.StringValueAttribute("ANDROID")]
                 ANDROID,
+                /// <summary>iOS</summary>
                 [Google.Apis.Util.StringValueAttribute("IOS")]
                 IOS,
+                /// <summary>WebGL.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEB_GL")]
                 WEBGL,
             }
 
-            /// <summary>A client-generated user ID. The ID should be generated and persisted during the first user
-            /// session or whenever a pre-existing ID is not found. The exact format is up to the client. This must be
-            /// non-empty in a GetFeatureTileRequest (whether via the header or
+            /// <summary>Required. A client-generated user ID. The ID should be generated and persisted during the first
+            /// user session or whenever a pre-existing ID is not found. The exact format is up to the client. This must
+            /// be non-empty in a GetFeatureTileRequest (whether via the header or
             /// GetFeatureTileRequest.client_info).</summary>
             [Google.Apis.Util.RequestParameterAttribute("clientInfo.userId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientInfoUserId { get; set; }
 
             /// <summary>Optional version id identifying the tile that is already in the client's cache. This field
-            /// should be populated with the most recent version_id value returned by the API for the requested tile.
-            ///
-            /// If the version id is empty the server always returns a newly rendered tile. If it is provided the server
+            /// should be populated with the most recent version_id value returned by the API for the requested tile. If
+            /// the version id is empty the server always returns a newly rendered tile. If it is provided the server
             /// checks if the tile contents would be identical to one that's already on the client, and if so, returns a
             /// stripped-down response tile with STATUS_OK_DATA_UNCHANGED instead.</summary>
             [Google.Apis.Util.RequestParameterAttribute("clientTileVersionId", Google.Apis.Util.RequestParameterType.Query)]
@@ -430,9 +437,7 @@ namespace Google.Apis.SemanticTile.v1
 
             /// <summary>Flag indicating whether detailed highway types should be returned. If this is set, the
             /// CONTROLLED_ACCESS_HIGHWAY type may be returned. If not, then these highways will have the generic
-            /// HIGHWAY type.
-            ///
-            /// This exists for backwards compatibility reasons.</summary>
+            /// HIGHWAY type. This exists for backwards compatibility reasons.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enableDetailedHighwayTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnableDetailedHighwayTypes { get; set; }
 
@@ -462,16 +467,14 @@ namespace Google.Apis.SemanticTile.v1
             public virtual System.Nullable<bool> EnableUnclippedBuildings { get; set; }
 
             /// <summary>Required. The BCP-47 language code corresponding to the language in which the name was
-            /// requested, such as "en-US" or "sr-Latn".
-            ///
-            /// For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.</summary>
+            /// requested, such as "en-US" or "sr-Latn". For more information, see
+            /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.</summary>
             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string LanguageCode { get; set; }
 
             /// <summary>Required. The Unicode country/region code (CLDR) of the location from which the request is
-            /// coming from, such as "US" and "419".
-            ///
-            /// For more information, see http://www.unicode.org/reports/tr35/#unicode_region_subtag.</summary>
+            /// coming from, such as "US" and "419". For more information, see
+            /// http://www.unicode.org/reports/tr35/#unicode_region_subtag.</summary>
             [Google.Apis.Util.RequestParameterAttribute("regionCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RegionCode { get; set; }
 
@@ -736,27 +739,35 @@ namespace Google.Apis.SemanticTile.v1
             /// <summary>Platform where the application is running.</summary>
             public enum ClientInfoPlatformEnum
             {
+                /// <summary>Unspecified or unknown OS.</summary>
                 [Google.Apis.Util.StringValueAttribute("PLATFORM_UNSPECIFIED")]
                 PLATFORMUNSPECIFIED,
+                /// <summary>Development environment.</summary>
                 [Google.Apis.Util.StringValueAttribute("EDITOR")]
                 EDITOR,
+                /// <summary>macOS.</summary>
                 [Google.Apis.Util.StringValueAttribute("MAC_OS")]
                 MACOS,
+                /// <summary>Windows.</summary>
                 [Google.Apis.Util.StringValueAttribute("WINDOWS")]
                 WINDOWS,
+                /// <summary>Linux</summary>
                 [Google.Apis.Util.StringValueAttribute("LINUX")]
                 LINUX,
+                /// <summary>Android</summary>
                 [Google.Apis.Util.StringValueAttribute("ANDROID")]
                 ANDROID,
+                /// <summary>iOS</summary>
                 [Google.Apis.Util.StringValueAttribute("IOS")]
                 IOS,
+                /// <summary>WebGL.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEB_GL")]
                 WEBGL,
             }
 
-            /// <summary>A client-generated user ID. The ID should be generated and persisted during the first user
-            /// session or whenever a pre-existing ID is not found. The exact format is up to the client. This must be
-            /// non-empty in a GetFeatureTileRequest (whether via the header or
+            /// <summary>Required. A client-generated user ID. The ID should be generated and persisted during the first
+            /// user session or whenever a pre-existing ID is not found. The exact format is up to the client. This must
+            /// be non-empty in a GetFeatureTileRequest (whether via the header or
             /// GetFeatureTileRequest.client_info).</summary>
             [Google.Apis.Util.RequestParameterAttribute("clientInfo.userId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientInfoUserId { get; set; }
@@ -764,20 +775,17 @@ namespace Google.Apis.SemanticTile.v1
             /// <summary>The maximum allowed resolution for the returned elevation heightmap. Possible values: between 1
             /// and 1024 (and not less than min_elevation_resolution_cells). Over-sized heightmaps will be non-uniformly
             /// down-sampled such that each edge is no longer than this value. Non-uniformity is chosen to maximise the
-            /// amount of preserved data.
-            ///
-            /// For example: Original resolution: 100px (width) * 30px (height) max_elevation_resolution: 30 New
-            /// resolution: 30px (width) * 30px (height)</summary>
+            /// amount of preserved data. For example: Original resolution: 100px (width) * 30px (height)
+            /// max_elevation_resolution: 30 New resolution: 30px (width) * 30px (height)</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxElevationResolutionCells", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxElevationResolutionCells { get; set; }
 
             /// <summary>The minimum allowed resolution for the returned elevation heightmap. Possible values: between 0
             /// and 1024 (and not more than max_elevation_resolution_cells). Zero is supported for backward
             /// compatibility. Under-sized heightmaps will be non-uniformly up-sampled such that each edge is no shorter
-            /// than this value. Non-uniformity is chosen to maximise the amount of preserved data.
-            ///
-            /// For example: Original resolution: 30px (width) * 10px (height) min_elevation_resolution: 30 New
-            /// resolution: 30px (width) * 30px (height)</summary>
+            /// than this value. Non-uniformity is chosen to maximise the amount of preserved data. For example:
+            /// Original resolution: 30px (width) * 10px (height) min_elevation_resolution: 30 New resolution: 30px
+            /// (width) * 30px (height)</summary>
             [Google.Apis.Util.RequestParameterAttribute("minElevationResolutionCells", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MinElevationResolutionCells { get; set; }
 
@@ -788,10 +796,13 @@ namespace Google.Apis.SemanticTile.v1
             /// <summary>Terrain formats that the client understands.</summary>
             public enum TerrainFormatsEnum
             {
+                /// <summary>An unknown or unspecified terrain format.</summary>
                 [Google.Apis.Util.StringValueAttribute("TERRAIN_FORMAT_UNKNOWN")]
                 TERRAINFORMATUNKNOWN,
+                /// <summary>Terrain elevation data encoded as a FirstDerivativeElevationGrid. .</summary>
                 [Google.Apis.Util.StringValueAttribute("FIRST_DERIVATIVE")]
                 FIRSTDERIVATIVE,
+                /// <summary>Terrain elevation data encoded as a SecondDerivativeElevationGrid.</summary>
                 [Google.Apis.Util.StringValueAttribute("SECOND_DERIVATIVE")]
                 SECONDDERIVATIVE,
             }
@@ -949,22 +960,19 @@ namespace Google.Apis.SemanticTile.v1.Data
         /// indicates the internal edges that do not border another feature. Each value is an index into the vertices
         /// array, and denotes the start vertex of the internal edge (the next vertex in the boundary loop is the end of
         /// the edge). If the selected vertex is the last vertex in the boundary loop, then the edge between that vertex
-        /// and the starting vertex of the loop is internal.
-        ///
-        /// This field may be used for styling. For example, building parapets could be placed only on the external
-        /// edges of a building polygon, or water could be lighter colored near the external edges of a body of water.
-        ///
-        /// If has_external_edges is false, all edges are internal and this field will be empty.</summary>
+        /// and the starting vertex of the loop is internal. This field may be used for styling. For example, building
+        /// parapets could be placed only on the external edges of a building polygon, or water could be lighter colored
+        /// near the external edges of a body of water. If has_external_edges is false, all edges are internal and this
+        /// field will be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalEdges")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> InternalEdges { get; set; } 
 
         /// <summary>Identifies the boundary loops of the polygon. Only set for INDEXED_TRIANGLE polygons. Each value is
         /// an index into the vertices array indicating the beginning of a loop. For instance, values of [2, 5] would
-        /// indicate loop_data contained 3 loops with indices 0-1, 2-4, and 5-end.
-        ///
-        /// This may be used in conjunction with the internal_edges field for styling polygon boundaries. Note that an
-        /// edge may be on a polygon boundary but still internal to the feature. For example, a feature split across
-        /// multiple tiles will have an internal polygon boundary edge along the edge of the tile.</summary>
+        /// indicate loop_data contained 3 loops with indices 0-1, 2-4, and 5-end. This may be used in conjunction with
+        /// the internal_edges field for styling polygon boundaries. Note that an edge may be on a polygon boundary but
+        /// still internal to the feature. For example, a feature split across multiple tiles will have an internal
+        /// polygon boundary edge along the edge of the tile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loopBreaks")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> LoopBreaks { get; set; } 
 
@@ -984,9 +992,8 @@ namespace Google.Apis.SemanticTile.v1.Data
         /// <summary>The z-ordering of this area. Areas with a lower z-order should be rendered beneath areas with a
         /// higher z-order. This z-ordering does not imply anything about the altitude of the line relative to the
         /// ground, but it can be used to prevent z-fighting during rendering on the client. This z-ordering can only be
-        /// used to compare areas, and cannot be compared with the z_order field in the Line message.
-        ///
-        /// The z-order may be negative or zero.</summary>
+        /// used to compare areas, and cannot be compared with the z_order field in the Line message. The z-order may be
+        /// negative or zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zOrder")]
         public virtual System.Nullable<int> ZOrder { get; set; } 
 
@@ -995,10 +1002,9 @@ namespace Google.Apis.SemanticTile.v1.Data
     }    
 
     /// <summary>Represents a height-extruded area: a 3D prism with a constant X-Y plane cross section. Used to
-    /// represent extruded buildings. A single building may consist of several extruded areas.
-    ///
-    /// The min_z and max_z fields are scaled to the size of the tile. An extruded area with a max_z value of 4096 has
-    /// the same height as the width of the tile that it is on.</summary>
+    /// represent extruded buildings. A single building may consist of several extruded areas. The min_z and max_z
+    /// fields are scaled to the size of the tile. An extruded area with a max_z value of 4096 has the same height as
+    /// the width of the tile that it is on.</summary>
     public class ExtrudedArea : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The area representing the footprint of the extruded area.</summary>
@@ -1076,13 +1082,10 @@ namespace Google.Apis.SemanticTile.v1.Data
         public virtual string Status { get; set; } 
 
         /// <summary>An opaque value, usually less than 30 characters, that contains version info about this tile and
-        /// the data that was used to generate it.
-        ///
-        /// The client should store this value in its tile cache and pass it back to the API in the
-        /// client_tile_version_id field of subsequent tile requests in order to enable the API to detect when the new
-        /// tile would be the same as the one the client already has in its cache.
-        ///
-        /// Also see STATUS_OK_DATA_UNCHANGED.</summary>
+        /// the data that was used to generate it. The client should store this value in its tile cache and pass it back
+        /// to the API in the client_tile_version_id field of subsequent tile requests in order to enable the API to
+        /// detect when the new tile would be the same as the one the client already has in its cache. Also see
+        /// STATUS_OK_DATA_UNCHANGED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
         public virtual string VersionId { get; set; } 
 
@@ -1092,19 +1095,13 @@ namespace Google.Apis.SemanticTile.v1.Data
 
     /// <summary>A packed representation of a 2D grid of uniformly spaced points containing elevation data. Each point
     /// within the grid represents the altitude in meters above average sea level at that location within the tile.
-    ///
     /// Elevations provided are (generally) relative to the EGM96 geoid, however some areas will be relative to NAVD88.
-    /// EGM96 and NAVD88 are off by no more than 2 meters.
-    ///
-    /// The grid is oriented north-west to south-east, as illustrated:
-    ///
-    /// rows[0].a[0]      rows[0].a[m] +-----------------+ |                 | |        N        | |        ^        | |
-    /// |        | |   W <-----> E   | |        |        | |        v        | |        S        | |                 |
-    /// +-----------------+ rows[n].a[0]      rows[n].a[m]
-    ///
-    /// Rather than storing the altitudes directly, we store the diffs between them as integers at some requested level
-    /// of precision to take advantage of integer packing. The actual altitude values a[] can be reconstructed using the
-    /// scale and each row's first_altitude and altitude_diff fields.</summary>
+    /// EGM96 and NAVD88 are off by no more than 2 meters. The grid is oriented north-west to south-east, as
+    /// illustrated: rows[0].a[0] rows[0].a[m] +-----------------+ | | | N | | ^ | | | | | W <-----> E | | | | | v | | S
+    /// | | | +-----------------+ rows[n].a[0] rows[n].a[m] Rather than storing the altitudes directly, we store the
+    /// diffs between them as integers at some requested level of precision to take advantage of integer packing. The
+    /// actual altitude values a[] can be reconstructed using the scale and each row's first_altitude and altitude_diff
+    /// fields.</summary>
     public class FirstDerivativeElevationGrid : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A multiplier applied to the altitude fields below to extract the actual altitudes in meters from
@@ -1125,10 +1122,8 @@ namespace Google.Apis.SemanticTile.v1.Data
     /// <summary>Represents the geometry of a feature, that is, the shape that it has on the map. The local tile
     /// coordinate system has the origin at the north-west (upper-left) corner of the tile, and is scaled to 4096 units
     /// across each edge. The height (Z) axis has the same scale factor: an extruded area with a max_z value of 4096 has
-    /// the same height as the width of the tile that it is on.
-    ///
-    /// There is no clipping boundary, so it is possible that some coordinates will lie outside the tile
-    /// boundaries.</summary>
+    /// the same height as the width of the tile that it is on. There is no clipping boundary, so it is possible that
+    /// some coordinates will lie outside the tile boundaries.</summary>
     public class Geometry : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The areas present in this geometry.</summary>
@@ -1162,9 +1157,8 @@ namespace Google.Apis.SemanticTile.v1.Data
         /// z-order. This z-ordering does not imply anything about the altitude of the area relative to the ground, but
         /// it can be used to prevent z-fighting during rendering on the client. In general, larger and more important
         /// road features will have a higher z-order line associated with them. This z-ordering can only be used to
-        /// compare lines, and cannot be compared with the z_order field in the Area message.
-        ///
-        /// The z-order may be negative or zero.</summary>
+        /// compare lines, and cannot be compared with the z_order field in the Area message. The z-order may be
+        /// negative or zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zOrder")]
         public virtual System.Nullable<int> ZOrder { get; set; } 
 
@@ -1244,21 +1238,13 @@ namespace Google.Apis.SemanticTile.v1.Data
 
     /// <summary>A packed representation of a 2D grid of uniformly spaced points containing elevation data. Each point
     /// within the grid represents the altitude in meters above average sea level at that location within the tile.
-    ///
     /// Elevations provided are (generally) relative to the EGM96 geoid, however some areas will be relative to NAVD88.
-    /// EGM96 and NAVD88 are off by no more than 2 meters.
-    ///
-    /// The grid is oriented north-west to south-east, as illustrated:
-    ///
-    /// rows[0].a[0]      rows[0].a[m] +-----------------+ |                 | |        N        | |        ^        | |
-    /// |        | |   W <-----> E   | |        |        | |        v        | |        S        | |                 |
-    /// +-----------------+ rows[n].a[0]      rows[n].a[m]
-    ///
-    /// Rather than storing the altitudes directly, we store the diffs of the diffs between them as integers at some
-    /// requested level of precision to take advantage of integer packing.
-    ///
-    /// Note that the data is packed in such a way that is fast to decode in Unity and that further optimizes wire
-    /// size.</summary>
+    /// EGM96 and NAVD88 are off by no more than 2 meters. The grid is oriented north-west to south-east, as
+    /// illustrated: rows[0].a[0] rows[0].a[m] +-----------------+ | | | N | | ^ | | | | | W <-----> E | | | | | v | | S
+    /// | | | +-----------------+ rows[n].a[0] rows[n].a[m] Rather than storing the altitudes directly, we store the
+    /// diffs of the diffs between them as integers at some requested level of precision to take advantage of integer
+    /// packing. Note that the data is packed in such a way that is fast to decode in Unity and that further optimizes
+    /// wire size.</summary>
     public class SecondDerivativeElevationGrid : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A multiplier applied to the elements in the encoded data to extract the actual altitudes in
@@ -1272,23 +1258,18 @@ namespace Google.Apis.SemanticTile.v1.Data
         public virtual System.Nullable<int> ColumnCount { get; set; } 
 
         /// <summary>A stream of elements each representing a point on the tile running across each row from left to
-        /// right, top to bottom.
-        ///
-        /// There will be precisely horizontal_resolution * vertical_resolution elements in the stream.
-        ///
-        /// The elements are not the heights, rather the second order derivative of the values one would expect in a
-        /// stream of height data.
-        ///
-        /// Each element is a varint with the following encoding:
-        /// ------------------------------------------------------------------------| | Head Nibble
-        /// | ------------------------------------------------------------------------| | Bit 0     | Bit 1        |
-        /// Bits 2-3                                   | | Terminator| Sign (1=neg) | Least significant 2 bits of
-        /// absolute error | ------------------------------------------------------------------------| | Tail Nibble #1
-        /// | ------------------------------------------------------------------------| | Bit 0     | Bit 1-3
-        /// | | Terminator| Least significant 3 bits of absolute error                |
-        /// ------------------------------------------------------------------------| | ... | Tail Nibble #n
-        /// | ------------------------------------------------------------------------| | Bit 0     | Bit 1-3
-        /// | | Terminator| Least significant 3 bits of absolute error                |
+        /// right, top to bottom. There will be precisely horizontal_resolution * vertical_resolution elements in the
+        /// stream. The elements are not the heights, rather the second order derivative of the values one would expect
+        /// in a stream of height data. Each element is a varint with the following encoding:
+        /// ------------------------------------------------------------------------| | Head Nibble |
+        /// ------------------------------------------------------------------------| | Bit 0 | Bit 1 | Bits 2-3 | |
+        /// Terminator| Sign (1=neg) | Least significant 2 bits of absolute error |
+        /// ------------------------------------------------------------------------| | Tail Nibble #1 |
+        /// ------------------------------------------------------------------------| | Bit 0 | Bit 1-3 | | Terminator|
+        /// Least significant 3 bits of absolute error |
+        /// ------------------------------------------------------------------------| | ... | Tail Nibble #n |
+        /// ------------------------------------------------------------------------| | Bit 0 | Bit 1-3 | | Terminator|
+        /// Least significant 3 bits of absolute error |
         /// ------------------------------------------------------------------------|</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encodedData")]
         public virtual string EncodedData { get; set; } 
@@ -1339,18 +1320,15 @@ namespace Google.Apis.SemanticTile.v1.Data
     }    
 
     /// <summary>Global tile coordinates. Global tile coordinates reference a specific tile on the map at a specific
-    /// zoom level.
-    ///
-    /// The origin of this coordinate system is always at the northwest corner of the map, with x values increasing from
-    /// west to east and y values increasing from north to south. Tiles are indexed using x, y coordinates from that
-    /// origin. The zoom level containing the entire world in a tile is 0, and it increases as you zoom in. Zoom level n
-    /// + 1 will contain 4 times as many tiles as zoom level n.
-    ///
-    /// The zoom level controls the level of detail of the data that is returned. In particular, this affects the set of
-    /// feature types returned, their density, and geometry simplification. The exact tile contents may change over
-    /// time, but care will be taken to keep supporting the most important use cases. For example, zoom level 15 shows
-    /// roads for orientation and planning in the local neighborhood and zoom level 17 shows buildings to give users on
-    /// foot a sense of situational awareness.</summary>
+    /// zoom level. The origin of this coordinate system is always at the northwest corner of the map, with x values
+    /// increasing from west to east and y values increasing from north to south. Tiles are indexed using x, y
+    /// coordinates from that origin. The zoom level containing the entire world in a tile is 0, and it increases as you
+    /// zoom in. Zoom level n + 1 will contain 4 times as many tiles as zoom level n. The zoom level controls the level
+    /// of detail of the data that is returned. In particular, this affects the set of feature types returned, their
+    /// density, and geometry simplification. The exact tile contents may change over time, but care will be taken to
+    /// keep supporting the most important use cases. For example, zoom level 15 shows roads for orientation and
+    /// planning in the local neighborhood and zoom level 17 shows buildings to give users on foot a sense of
+    /// situational awareness.</summary>
     public class TileCoordinates : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The x coordinate.</summary>
@@ -1371,10 +1349,8 @@ namespace Google.Apis.SemanticTile.v1.Data
 
     /// <summary>Represents a strip of triangles. Each triangle uses the last edge of the previous one. The following
     /// diagram shows an example of a triangle strip, with each vertex labeled with its index in the vertex_index array.
-    ///
-    /// (1)-----(3) / \     / \ /   \   /   \ /     \ /     \ (0)-----(2)-----(4)
-    ///
-    /// Vertices may be in either clockwise or counter-clockwise order.</summary>
+    /// (1)-----(3) / \ / \ / \ / \ / \ / \ (0)-----(2)-----(4) Vertices may be in either clockwise or counter-clockwise
+    /// order.</summary>
     public class TriangleStrip : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Index into the vertex_offset array representing the next vertex in the triangle strip.</summary>
@@ -1386,10 +1362,8 @@ namespace Google.Apis.SemanticTile.v1.Data
     }    
 
     /// <summary>2D vertex list used for lines and areas. Each entry represents an offset from the previous one in local
-    /// tile coordinates. The first entry is offset from (0, 0).
-    ///
-    /// For example, the list of vertices [(1,1), (2, 2), (1, 2)] would be encoded in vertex offsets as [(1, 1), (1, 1),
-    /// (-1, 0)].</summary>
+    /// tile coordinates. The first entry is offset from (0, 0). For example, the list of vertices [(1,1), (2, 2), (1,
+    /// 2)] would be encoded in vertex offsets as [(1, 1), (1, 1), (-1, 0)].</summary>
     public class Vertex2DList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of x-offsets in local tile coordinates.</summary>

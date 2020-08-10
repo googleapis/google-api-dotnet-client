@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/kms/'>Cloud Key Management Service (KMS) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200720 (2027)
+ *      <tr><th>API Rev<td>20200803 (2041)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/kms/'>
  *              https://cloud.google.com/kms/</a>
@@ -588,10 +588,8 @@ namespace Google.Apis.CloudKMS.v1
 
                         }
 
-                        /// <summary>Create a new CryptoKeyVersion in a CryptoKey.
-                        ///
-                        /// The server will assign the next sequential id. If unset, state will be set to
-                        /// ENABLED.</summary>
+                        /// <summary>Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next
+                        /// sequential id. If unset, state will be set to ENABLED.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">Required. The name of the CryptoKey associated with the CryptoKeyVersions.</param>
                         public virtual CreateRequest Create(Google.Apis.CloudKMS.v1.Data.CryptoKeyVersion body, string parent)
@@ -599,10 +597,8 @@ namespace Google.Apis.CloudKMS.v1
                             return new CreateRequest(service, body, parent);
                         }
 
-                        /// <summary>Create a new CryptoKeyVersion in a CryptoKey.
-                        ///
-                        /// The server will assign the next sequential id. If unset, state will be set to
-                        /// ENABLED.</summary>
+                        /// <summary>Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next
+                        /// sequential id. If unset, state will be set to ENABLED.</summary>
                         public class CreateRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.CryptoKeyVersion>
                         {
                             /// <summary>Constructs a new Create request.</summary>
@@ -663,14 +659,11 @@ namespace Google.Apis.CloudKMS.v1
 
                         }
 
-                        /// <summary>Schedule a CryptoKeyVersion for destruction.
-                        ///
-                        /// Upon calling this method, CryptoKeyVersion.state will be set to DESTROY_SCHEDULED and
-                        /// destroy_time will be set to a time 24 hours in the future, at which point the state will be
-                        /// changed to DESTROYED, and the key material will be irrevocably destroyed.
-                        ///
-                        /// Before the destroy_time is reached, RestoreCryptoKeyVersion may be called to reverse the
-                        /// process.</summary>
+                        /// <summary>Schedule a CryptoKeyVersion for destruction. Upon calling this method,
+                        /// CryptoKeyVersion.state will be set to DESTROY_SCHEDULED and destroy_time will be set to a
+                        /// time 24 hours in the future, at which point the state will be changed to DESTROYED, and the
+                        /// key material will be irrevocably destroyed. Before the destroy_time is reached,
+                        /// RestoreCryptoKeyVersion may be called to reverse the process.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">Required. The resource name of the CryptoKeyVersion to destroy.</param>
                         public virtual DestroyRequest Destroy(Google.Apis.CloudKMS.v1.Data.DestroyCryptoKeyVersionRequest body, string name)
@@ -678,14 +671,11 @@ namespace Google.Apis.CloudKMS.v1
                             return new DestroyRequest(service, body, name);
                         }
 
-                        /// <summary>Schedule a CryptoKeyVersion for destruction.
-                        ///
-                        /// Upon calling this method, CryptoKeyVersion.state will be set to DESTROY_SCHEDULED and
-                        /// destroy_time will be set to a time 24 hours in the future, at which point the state will be
-                        /// changed to DESTROYED, and the key material will be irrevocably destroyed.
-                        ///
-                        /// Before the destroy_time is reached, RestoreCryptoKeyVersion may be called to reverse the
-                        /// process.</summary>
+                        /// <summary>Schedule a CryptoKeyVersion for destruction. Upon calling this method,
+                        /// CryptoKeyVersion.state will be set to DESTROY_SCHEDULED and destroy_time will be set to a
+                        /// time 24 hours in the future, at which point the state will be changed to DESTROYED, and the
+                        /// key material will be irrevocably destroyed. Before the destroy_time is reached,
+                        /// RestoreCryptoKeyVersion may be called to reverse the process.</summary>
                         public class DestroyRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.CryptoKeyVersion>
                         {
                             /// <summary>Constructs a new Destroy request.</summary>
@@ -868,9 +858,8 @@ namespace Google.Apis.CloudKMS.v1
                         }
 
                         /// <summary>Imports a new CryptoKeyVersion into an existing CryptoKey using the wrapped key
-                        /// material provided in the request.
-                        ///
-                        /// The version ID will be assigned the next sequential id within the CryptoKey.</summary>
+                        /// material provided in the request. The version ID will be assigned the next sequential id
+                        /// within the CryptoKey.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">Required. The name of the CryptoKey to be imported into.</param>
                         public virtual ImportRequest Import(Google.Apis.CloudKMS.v1.Data.ImportCryptoKeyVersionRequest body, string parent)
@@ -879,9 +868,8 @@ namespace Google.Apis.CloudKMS.v1
                         }
 
                         /// <summary>Imports a new CryptoKeyVersion into an existing CryptoKey using the wrapped key
-                        /// material provided in the request.
-                        ///
-                        /// The version ID will be assigned the next sequential id within the CryptoKey.</summary>
+                        /// material provided in the request. The version ID will be assigned the next sequential id
+                        /// within the CryptoKey.</summary>
                         public class ImportRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.CryptoKeyVersion>
                         {
                             /// <summary>Constructs a new Import request.</summary>
@@ -998,8 +986,12 @@ namespace Google.Apis.CloudKMS.v1
                             /// <summary>The fields to include in the response.</summary>
                             public enum ViewEnum
                             {
+                                /// <summary>Default view for each CryptoKeyVersion. Does not include the attestation
+                                /// field.</summary>
                                 [Google.Apis.Util.StringValueAttribute("CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED")]
                                 CRYPTOKEYVERSIONVIEWUNSPECIFIED,
+                                /// <summary>Provides all fields in each CryptoKeyVersion, including the
+                                /// attestation.</summary>
                                 [Google.Apis.Util.StringValueAttribute("FULL")]
                                 FULL,
                             }
@@ -1086,10 +1078,9 @@ namespace Google.Apis.CloudKMS.v1
 
                         }
 
-                        /// <summary>Update a CryptoKeyVersion's metadata.
-                        ///
-                        /// state may be changed between ENABLED and DISABLED using this method. See
-                        /// DestroyCryptoKeyVersion and RestoreCryptoKeyVersion to move between other states.</summary>
+                        /// <summary>Update a CryptoKeyVersion's metadata. state may be changed between ENABLED and
+                        /// DISABLED using this method. See DestroyCryptoKeyVersion and RestoreCryptoKeyVersion to move
+                        /// between other states.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">Output only. The resource name for this CryptoKeyVersion in the format
                         /// `projects/locations/keyRings/cryptoKeys/cryptoKeyVersions`.</param>
@@ -1098,10 +1089,9 @@ namespace Google.Apis.CloudKMS.v1
                             return new PatchRequest(service, body, name);
                         }
 
-                        /// <summary>Update a CryptoKeyVersion's metadata.
-                        ///
-                        /// state may be changed between ENABLED and DISABLED using this method. See
-                        /// DestroyCryptoKeyVersion and RestoreCryptoKeyVersion to move between other states.</summary>
+                        /// <summary>Update a CryptoKeyVersion's metadata. state may be changed between ENABLED and
+                        /// DISABLED using this method. See DestroyCryptoKeyVersion and RestoreCryptoKeyVersion to move
+                        /// between other states.</summary>
                         public class PatchRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.CryptoKeyVersion>
                         {
                             /// <summary>Constructs a new Patch request.</summary>
@@ -1175,10 +1165,8 @@ namespace Google.Apis.CloudKMS.v1
 
                         }
 
-                        /// <summary>Restore a CryptoKeyVersion in the DESTROY_SCHEDULED state.
-                        ///
-                        /// Upon restoration of the CryptoKeyVersion, state will be set to DISABLED, and destroy_time
-                        /// will be cleared.</summary>
+                        /// <summary>Restore a CryptoKeyVersion in the DESTROY_SCHEDULED state. Upon restoration of the
+                        /// CryptoKeyVersion, state will be set to DISABLED, and destroy_time will be cleared.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">Required. The resource name of the CryptoKeyVersion to restore.</param>
                         public virtual RestoreRequest Restore(Google.Apis.CloudKMS.v1.Data.RestoreCryptoKeyVersionRequest body, string name)
@@ -1186,10 +1174,8 @@ namespace Google.Apis.CloudKMS.v1
                             return new RestoreRequest(service, body, name);
                         }
 
-                        /// <summary>Restore a CryptoKeyVersion in the DESTROY_SCHEDULED state.
-                        ///
-                        /// Upon restoration of the CryptoKeyVersion, state will be set to DISABLED, and destroy_time
-                        /// will be cleared.</summary>
+                        /// <summary>Restore a CryptoKeyVersion in the DESTROY_SCHEDULED state. Upon restoration of the
+                        /// CryptoKeyVersion, state will be set to DISABLED, and destroy_time will be cleared.</summary>
                         public class RestoreRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.CryptoKeyVersion>
                         {
                             /// <summary>Constructs a new Restore request.</summary>
@@ -1250,9 +1236,8 @@ namespace Google.Apis.CloudKMS.v1
                         }
                     }
 
-                    /// <summary>Create a new CryptoKey within a KeyRing.
-                    ///
-                    /// CryptoKey.purpose and CryptoKey.version_template.algorithm are required.</summary>
+                    /// <summary>Create a new CryptoKey within a KeyRing. CryptoKey.purpose and
+                    /// CryptoKey.version_template.algorithm are required.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The name of the KeyRing associated with the CryptoKeys.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudKMS.v1.Data.CryptoKey body, string parent)
@@ -1260,9 +1245,8 @@ namespace Google.Apis.CloudKMS.v1
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Create a new CryptoKey within a KeyRing.
-                    ///
-                    /// CryptoKey.purpose and CryptoKey.version_template.algorithm are required.</summary>
+                    /// <summary>Create a new CryptoKey within a KeyRing. CryptoKey.purpose and
+                    /// CryptoKey.version_template.algorithm are required.</summary>
                     public class CreateRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.CryptoKey>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -1426,9 +1410,8 @@ namespace Google.Apis.CloudKMS.v1
                     /// <summary>Encrypts data, so that it can only be recovered by a call to Decrypt. The
                     /// CryptoKey.purpose must be ENCRYPT_DECRYPT.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Required. The resource name of the CryptoKey or CryptoKeyVersion to use for encryption.
-                    ///
-                    /// If a CryptoKey is specified, the server will use its primary version.</param>
+                    /// <param name="name">Required. The resource name of the CryptoKey or CryptoKeyVersion to use for encryption. If a
+                    /// CryptoKey is specified, the server will use its primary version.</param>
                     public virtual EncryptRequest Encrypt(Google.Apis.CloudKMS.v1.Data.EncryptRequest body, string name)
                     {
                         return new EncryptRequest(service, body, name);
@@ -1449,9 +1432,7 @@ namespace Google.Apis.CloudKMS.v1
 
 
                         /// <summary>Required. The resource name of the CryptoKey or CryptoKeyVersion to use for
-                        /// encryption.
-                        ///
-                        /// If a CryptoKey is specified, the server will use its primary version.</summary>
+                        /// encryption. If a CryptoKey is specified, the server will use its primary version.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -1587,14 +1568,11 @@ namespace Google.Apis.CloudKMS.v1
                         [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Resource { get; private set; }
 
-                        /// <summary>Optional. The policy format version to be returned.
-                        ///
-                        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
-                        ///
-                        /// Requests for policies with any conditional bindings must specify version 3. Policies without
-                        /// any conditional bindings may specify any valid value or leave the field unset.
-                        ///
-                        /// To learn which resources support conditions in their IAM policies, see the [IAM
+                        /// <summary>Optional. The policy format version to be returned. Valid values are 0, 1, and 3.
+                        /// Requests specifying an invalid value will be rejected. Requests for policies with any
+                        /// conditional bindings must specify version 3. Policies without any conditional bindings may
+                        /// specify any valid value or leave the field unset. To learn which resources support
+                        /// conditions in their IAM policies, see the [IAM
                         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
                         [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
@@ -1684,7 +1662,7 @@ namespace Google.Apis.CloudKMS.v1
 
                         /// <summary>Optional. Optional limit on the number of CryptoKeys to include in the response.
                         /// Further CryptoKeys can subsequently be obtained by including the
-                        /// ListCryptoKeysResponse.next_page_token in a subsequent request.  If unspecified, the server
+                        /// ListCryptoKeysResponse.next_page_token in a subsequent request. If unspecified, the server
                         /// will pick an appropriate default.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -1701,8 +1679,12 @@ namespace Google.Apis.CloudKMS.v1
                         /// <summary>The fields of the primary version to include in the response.</summary>
                         public enum VersionViewEnum
                         {
+                            /// <summary>Default view for each CryptoKeyVersion. Does not include the attestation
+                            /// field.</summary>
                             [Google.Apis.Util.StringValueAttribute("CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED")]
                             CRYPTOKEYVERSIONVIEWUNSPECIFIED,
+                            /// <summary>Provides all fields in each CryptoKeyVersion, including the
+                            /// attestation.</summary>
                             [Google.Apis.Util.StringValueAttribute("FULL")]
                             FULL,
                         }
@@ -1873,7 +1855,6 @@ namespace Google.Apis.CloudKMS.v1
                     }
 
                     /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-                    ///
                     /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
@@ -1884,7 +1865,6 @@ namespace Google.Apis.CloudKMS.v1
                     }
 
                     /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-                    ///
                     /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
                     public class SetIamPolicyRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.Policy>
                     {
@@ -1947,10 +1927,9 @@ namespace Google.Apis.CloudKMS.v1
                     }
 
                     /// <summary>Returns permissions that a caller has on the specified resource. If the resource does
-                    /// not exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
-                    ///
-                    /// Note: This operation is designed to be used for building permission-aware UIs and command-line
-                    /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
+                    /// not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This
+                    /// operation is designed to be used for building permission-aware UIs and command-line tools, not
+                    /// for authorization checking. This operation may "fail open" without warning.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
                     /// documentation for the appropriate value for this field.</param>
@@ -1960,10 +1939,9 @@ namespace Google.Apis.CloudKMS.v1
                     }
 
                     /// <summary>Returns permissions that a caller has on the specified resource. If the resource does
-                    /// not exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
-                    ///
-                    /// Note: This operation is designed to be used for building permission-aware UIs and command-line
-                    /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
+                    /// not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This
+                    /// operation is designed to be used for building permission-aware UIs and command-line tools, not
+                    /// for authorization checking. This operation may "fail open" without warning.</summary>
                     public class TestIamPermissionsRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.TestIamPermissionsResponse>
                     {
                         /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -2024,9 +2002,8 @@ namespace Google.Apis.CloudKMS.v1
 
                     }
 
-                    /// <summary>Update the version of a CryptoKey that will be used in Encrypt.
-                    ///
-                    /// Returns an error if called on an asymmetric key.</summary>
+                    /// <summary>Update the version of a CryptoKey that will be used in Encrypt. Returns an error if
+                    /// called on an asymmetric key.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. The resource name of the CryptoKey to update.</param>
                     public virtual UpdatePrimaryVersionRequest UpdatePrimaryVersion(Google.Apis.CloudKMS.v1.Data.UpdateCryptoKeyPrimaryVersionRequest body, string name)
@@ -2034,9 +2011,8 @@ namespace Google.Apis.CloudKMS.v1
                         return new UpdatePrimaryVersionRequest(service, body, name);
                     }
 
-                    /// <summary>Update the version of a CryptoKey that will be used in Encrypt.
-                    ///
-                    /// Returns an error if called on an asymmetric key.</summary>
+                    /// <summary>Update the version of a CryptoKey that will be used in Encrypt. Returns an error if
+                    /// called on an asymmetric key.</summary>
                     public class UpdatePrimaryVersionRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.CryptoKey>
                     {
                         /// <summary>Constructs a new UpdatePrimaryVersion request.</summary>
@@ -2120,9 +2096,7 @@ namespace Google.Apis.CloudKMS.v1
                     }
 
 
-                    /// <summary>Create a new ImportJob within a KeyRing.
-                    ///
-                    /// ImportJob.import_method is required.</summary>
+                    /// <summary>Create a new ImportJob within a KeyRing. ImportJob.import_method is required.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The name of the KeyRing associated with the ImportJobs.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudKMS.v1.Data.ImportJob body, string parent)
@@ -2130,9 +2104,7 @@ namespace Google.Apis.CloudKMS.v1
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Create a new ImportJob within a KeyRing.
-                    ///
-                    /// ImportJob.import_method is required.</summary>
+                    /// <summary>Create a new ImportJob within a KeyRing. ImportJob.import_method is required.</summary>
                     public class CreateRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.ImportJob>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -2293,14 +2265,11 @@ namespace Google.Apis.CloudKMS.v1
                         [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Resource { get; private set; }
 
-                        /// <summary>Optional. The policy format version to be returned.
-                        ///
-                        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
-                        ///
-                        /// Requests for policies with any conditional bindings must specify version 3. Policies without
-                        /// any conditional bindings may specify any valid value or leave the field unset.
-                        ///
-                        /// To learn which resources support conditions in their IAM policies, see the [IAM
+                        /// <summary>Optional. The policy format version to be returned. Valid values are 0, 1, and 3.
+                        /// Requests specifying an invalid value will be rejected. Requests for policies with any
+                        /// conditional bindings must specify version 3. Policies without any conditional bindings may
+                        /// specify any valid value or leave the field unset. To learn which resources support
+                        /// conditions in their IAM policies, see the [IAM
                         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
                         [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
@@ -2474,7 +2443,6 @@ namespace Google.Apis.CloudKMS.v1
                     }
 
                     /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-                    ///
                     /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
@@ -2485,7 +2453,6 @@ namespace Google.Apis.CloudKMS.v1
                     }
 
                     /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-                    ///
                     /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
                     public class SetIamPolicyRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.Policy>
                     {
@@ -2548,10 +2515,9 @@ namespace Google.Apis.CloudKMS.v1
                     }
 
                     /// <summary>Returns permissions that a caller has on the specified resource. If the resource does
-                    /// not exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
-                    ///
-                    /// Note: This operation is designed to be used for building permission-aware UIs and command-line
-                    /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
+                    /// not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This
+                    /// operation is designed to be used for building permission-aware UIs and command-line tools, not
+                    /// for authorization checking. This operation may "fail open" without warning.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
                     /// documentation for the appropriate value for this field.</param>
@@ -2561,10 +2527,9 @@ namespace Google.Apis.CloudKMS.v1
                     }
 
                     /// <summary>Returns permissions that a caller has on the specified resource. If the resource does
-                    /// not exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
-                    ///
-                    /// Note: This operation is designed to be used for building permission-aware UIs and command-line
-                    /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
+                    /// not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This
+                    /// operation is designed to be used for building permission-aware UIs and command-line tools, not
+                    /// for authorization checking. This operation may "fail open" without warning.</summary>
                     public class TestIamPermissionsRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.TestIamPermissionsResponse>
                     {
                         /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -2797,15 +2762,12 @@ namespace Google.Apis.CloudKMS.v1
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
 
-                    /// <summary>Optional. The policy format version to be returned.
-                    ///
-                    /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
-                    ///
-                    /// Requests for policies with any conditional bindings must specify version 3. Policies without any
-                    /// conditional bindings may specify any valid value or leave the field unset.
-                    ///
-                    /// To learn which resources support conditions in their IAM policies, see the [IAM
-                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+                    /// <summary>Optional. The policy format version to be returned. Valid values are 0, 1, and 3.
+                    /// Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional bindings must specify version 3. Policies without any conditional bindings may
+                    /// specify any valid value or leave the field unset. To learn which resources support conditions in
+                    /// their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
+                    /// /resource-policies).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -2887,14 +2849,14 @@ namespace Google.Apis.CloudKMS.v1
                     public virtual string Filter { get; set; }
 
                     /// <summary>Optional. Specify how the results should be sorted. If not specified, the results will
-                    /// be sorted in the default order.  For more information, see [Sorting and filtering list
+                    /// be sorted in the default order. For more information, see [Sorting and filtering list
                     /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Optional. Optional limit on the number of KeyRings to include in the response.  Further
+                    /// <summary>Optional. Optional limit on the number of KeyRings to include in the response. Further
                     /// KeyRings can subsequently be obtained by including the ListKeyRingsResponse.next_page_token in a
-                    /// subsequent request.  If unspecified, the server will pick an appropriate default.</summary>
+                    /// subsequent request. If unspecified, the server will pick an appropriate default.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2976,9 +2938,8 @@ namespace Google.Apis.CloudKMS.v1
 
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-                ///
-                /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -2987,9 +2948,8 @@ namespace Google.Apis.CloudKMS.v1
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-                ///
-                /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
                 public class SetIamPolicyRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -3051,10 +3011,9 @@ namespace Google.Apis.CloudKMS.v1
                 }
 
                 /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-                /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
-                ///
-                /// Note: This operation is designed to be used for building permission-aware UIs and command-line
-                /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
+                /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation
+                /// is designed to be used for building permission-aware UIs and command-line tools, not for
+                /// authorization checking. This operation may "fail open" without warning.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -3064,10 +3023,9 @@ namespace Google.Apis.CloudKMS.v1
                 }
 
                 /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-                /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
-                ///
-                /// Note: This operation is designed to be used for building permission-aware UIs and command-line
-                /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
+                /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation
+                /// is designed to be used for building permission-aware UIs and command-line tools, not for
+                /// authorization checking. This operation may "fail open" without warning.</summary>
                 public class TestIamPermissionsRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -3309,7 +3267,6 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as
         /// int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which
         /// will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
-        ///
         /// NOTE: This field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ciphertextCrc32c")]
         public virtual System.Nullable<long> CiphertextCrc32c { get; set; } 
@@ -3332,9 +3289,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This
         /// field is defined as int64 for reasons of compatibility across different languages. However, it is a non-
         /// negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-        /// that support this type.
-        ///
-        /// NOTE: This field is in Beta.</summary>
+        /// that support this type. NOTE: This field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plaintextCrc32c")]
         public virtual System.Nullable<long> PlaintextCrc32c { get; set; } 
 
@@ -3342,9 +3297,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// was received by KeyManagementService and used for the integrity verification of the ciphertext. A false
         /// value of this field indicates either that AsymmetricDecryptRequest.ciphertext_crc32c was left unset or that
         /// it was not delivered to KeyManagementService. If you've set AsymmetricDecryptRequest.ciphertext_crc32c but
-        /// this field is still false, discard the response and perform a limited number of retries.
-        ///
-        /// NOTE: This field is in Beta.</summary>
+        /// this field is still false, discard the response and perform a limited number of retries. NOTE: This field is
+        /// in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifiedCiphertextCrc32c")]
         public virtual System.Nullable<bool> VerifiedCiphertextCrc32c { get; set; } 
 
@@ -3367,9 +3321,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// AsymmetricSignRequest.digest_crc32c, and if so, perform a limited number of retries. A persistent mismatch
         /// may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for
         /// reasons of compatibility across different languages. However, it is a non-negative integer, which will never
-        /// exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
-        ///
-        /// NOTE: This field is in Beta.</summary>
+        /// exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This
+        /// field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digestCrc32c")]
         public virtual System.Nullable<long> DigestCrc32c { get; set; } 
 
@@ -3381,9 +3334,7 @@ namespace Google.Apis.CloudKMS.v1.Data
     public class AsymmetricSignResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The resource name of the CryptoKeyVersion used for signing. Check this field to verify that the
-        /// intended resource was used for signing.
-        ///
-        /// NOTE: This field is in Beta.</summary>
+        /// intended resource was used for signing. NOTE: This field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -3397,9 +3348,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an
         /// issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of
         /// compatibility across different languages. However, it is a non-negative integer, which will never exceed
-        /// 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
-        ///
-        /// NOTE: This field is in Beta.</summary>
+        /// 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This field is
+        /// in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureCrc32c")]
         public virtual System.Nullable<long> SignatureCrc32c { get; set; } 
 
@@ -3407,9 +3357,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// received by KeyManagementService and used for the integrity verification of the digest. A false value of
         /// this field indicates either that AsymmetricSignRequest.digest_crc32c was left unset or that it was not
         /// delivered to KeyManagementService. If you've set AsymmetricSignRequest.digest_crc32c but this field is still
-        /// false, discard the response and perform a limited number of retries.
-        ///
-        /// NOTE: This field is in Beta.</summary>
+        /// false, discard the response and perform a limited number of retries. NOTE: This field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifiedDigestCrc32c")]
         public virtual System.Nullable<bool> VerifiedDigestCrc32c { get; set; } 
 
@@ -3419,21 +3367,15 @@ namespace Google.Apis.CloudKMS.v1.Data
 
     /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
     /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
-    /// AuditLogConfigs.
-    ///
-    /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
-    /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
-    /// AuditLogConfig are exempted.
-    ///
-    /// Example Policy with multiple AuditConfigs:
-    ///
-    /// { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two
+    /// AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the
+    /// exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: {
+    /// "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
     /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ]
     /// }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, {
-    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
-    ///
-    /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
-    /// jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.</summary>
+    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this
+    /// policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ
+    /// logging, and aliya@example.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
@@ -3449,11 +3391,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Provides the configuration for logging a type of permissions. Example:
-    ///
-    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
-    /// "log_type": "DATA_WRITE" } ] }
-    ///
+    /// <summary>Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ {
+    /// "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] }
     /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -3474,53 +3413,33 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding.
-        ///
-        /// If the condition evaluates to `true`, then this binding applies to the current request.
-        ///
-        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
-        /// different role binding might grant the same role to one or more of the members in this binding.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
+        /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
+        /// apply to the current request. However, a different role binding might grant the same role to one or more of
+        /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values:
-        ///
-        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
-        /// account.
-        ///
-        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
-        /// account or a service account.
-        ///
-        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@example.com` .
-        ///
-        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
-        /// app@appspot.gserviceaccount.com`.
-        ///
-        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
-        ///
-        /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
-        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
-        ///
-        /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
-        /// a service account that has been recently deleted. For example, `my-other-
+        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
+        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
+        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
+        /// represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An
+        /// email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example, `my-other-
         /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
-        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
-        ///
-        /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
+        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. *
+        /// `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
         /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
         /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
-        /// binding.
-        ///
-        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
-        /// `google.com` or `example.com`.
-        ///
-        /// </summary>
+        /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
+        /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
 
@@ -3533,10 +3452,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A CryptoKey represents a logical key that can be used for cryptographic operations.
-    ///
-    /// A CryptoKey is made up of zero or more versions, which represent the actual key material used in cryptographic
-    /// operations.</summary>
+    /// <summary>A CryptoKey represents a logical key that can be used for cryptographic operations. A CryptoKey is made
+    /// up of zero or more versions, which represent the actual key material used in cryptographic operations.</summary>
     public class CryptoKey : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The time at which this CryptoKey was created.</summary>
@@ -3553,24 +3470,17 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>At next_rotation_time, the Key Management Service will automatically:
-        ///
-        /// 1. Create a new version of this CryptoKey. 2. Mark the new version as primary.
-        ///
-        /// Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect
-        /// next_rotation_time.
-        ///
-        /// Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be
-        /// omitted.</summary>
+        /// <summary>At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of
+        /// this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via
+        /// CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose
+        /// ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextRotationTime")]
         public virtual object NextRotationTime { get; set; } 
 
         /// <summary>Output only. A copy of the "primary" CryptoKeyVersion that will be used by Encrypt when this
-        /// CryptoKey is given in EncryptRequest.name.
-        ///
-        /// The CryptoKey's primary version can be updated via UpdateCryptoKeyPrimaryVersion.
-        ///
-        /// Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be omitted.</summary>
+        /// CryptoKey is given in EncryptRequest.name. The CryptoKey's primary version can be updated via
+        /// UpdateCryptoKeyPrimaryVersion. Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this
+        /// field will be omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primary")]
         public virtual CryptoKeyVersion Primary { get; set; } 
 
@@ -3579,11 +3489,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string Purpose { get; set; } 
 
         /// <summary>next_rotation_time will be advanced by this period when the service automatically rotates a key.
-        /// Must be at least 24 hours and at most 876,000 hours.
-        ///
-        /// If rotation_period is set, next_rotation_time must also be set.
-        ///
-        /// Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be
+        /// Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also
+        /// be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be
         /// omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotationPeriod")]
         public virtual object RotationPeriod { get; set; } 
@@ -3598,13 +3505,10 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A CryptoKeyVersion represents an individual cryptographic key, and the associated key material.
-    ///
-    /// An ENABLED version can be used for cryptographic operations.
-    ///
-    /// For security reasons, the raw cryptographic key material represented by a CryptoKeyVersion can never be viewed
-    /// or exported. It can only be used to encrypt, decrypt, or sign data when an authorized user or application
-    /// invokes Cloud KMS.</summary>
+    /// <summary>A CryptoKeyVersion represents an individual cryptographic key, and the associated key material. An
+    /// ENABLED version can be used for cryptographic operations. For security reasons, the raw cryptographic key
+    /// material represented by a CryptoKeyVersion can never be viewed or exported. It can only be used to encrypt,
+    /// decrypt, or sign data when an authorized user or application invokes Cloud KMS.</summary>
     public class CryptoKeyVersion : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.</summary>
@@ -3675,10 +3579,9 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation.</summary>
     public class CryptoKeyVersionTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Algorithm to use when creating a CryptoKeyVersion based on this template.
-        ///
-        /// For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and
-        /// CryptoKey.purpose is ENCRYPT_DECRYPT.</summary>
+        /// <summary>Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards
+        /// compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is
+        /// ENCRYPT_DECRYPT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
         public virtual string Algorithm { get; set; } 
 
@@ -3708,9 +3611,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is
         /// defined as int64 for reasons of compatibility across different languages. However, it is a non-negative
         /// integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support
-        /// this type.
-        ///
-        /// NOTE: This field is in Beta.</summary>
+        /// this type. NOTE: This field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalAuthenticatedDataCrc32c")]
         public virtual System.Nullable<long> AdditionalAuthenticatedDataCrc32c { get; set; } 
 
@@ -3725,9 +3626,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// DecryptRequest.ciphertext_crc32c, and if so, perform a limited number of retries. A persistent mismatch may
         /// indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for
         /// reasons of compatibility across different languages. However, it is a non-negative integer, which will never
-        /// exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
-        ///
-        /// NOTE: This field is in Beta.</summary>
+        /// exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This
+        /// field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ciphertextCrc32c")]
         public virtual System.Nullable<long> CiphertextCrc32c { get; set; } 
 
@@ -3749,9 +3649,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// issue in your computation of the CRC32C checksum. Note: receiving this response message indicates that
         /// KeyManagementService is able to successfully decrypt the ciphertext. Note: This field is defined as int64
         /// for reasons of compatibility across different languages. However, it is a non-negative integer, which will
-        /// never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
-        ///
-        /// NOTE: This field is in Beta.</summary>
+        /// never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE:
+        /// This field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plaintextCrc32c")]
         public virtual System.Nullable<long> PlaintextCrc32c { get; set; } 
 
@@ -3789,11 +3688,9 @@ namespace Google.Apis.CloudKMS.v1.Data
     public class EncryptRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Optional data that, if specified, must also be provided during decryption through
-        /// DecryptRequest.additional_authenticated_data.
-        ///
-        /// The maximum size depends on the key version's protection_level. For SOFTWARE keys, the AAD must be no larger
-        /// than 64KiB. For HSM keys, the combined length of the plaintext and additional_authenticated_data fields must
-        /// be no larger than 8KiB.</summary>
+        /// DecryptRequest.additional_authenticated_data. The maximum size depends on the key version's
+        /// protection_level. For SOFTWARE keys, the AAD must be no larger than 64KiB. For HSM keys, the combined length
+        /// of the plaintext and additional_authenticated_data fields must be no larger than 8KiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalAuthenticatedData")]
         public virtual string AdditionalAuthenticatedData { get; set; } 
 
@@ -3806,17 +3703,14 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is
         /// defined as int64 for reasons of compatibility across different languages. However, it is a non-negative
         /// integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support
-        /// this type.
-        ///
-        /// NOTE: This field is in Beta.</summary>
+        /// this type. NOTE: This field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalAuthenticatedDataCrc32c")]
         public virtual System.Nullable<long> AdditionalAuthenticatedDataCrc32c { get; set; } 
 
-        /// <summary>Required. The data to encrypt. Must be no larger than 64KiB.
-        ///
-        /// The maximum size depends on the key version's protection_level. For SOFTWARE keys, the plaintext must be no
-        /// larger than 64KiB. For HSM keys, the combined length of the plaintext and additional_authenticated_data
-        /// fields must be no larger than 8KiB.</summary>
+        /// <summary>Required. The data to encrypt. Must be no larger than 64KiB. The maximum size depends on the key
+        /// version's protection_level. For SOFTWARE keys, the plaintext must be no larger than 64KiB. For HSM keys, the
+        /// combined length of the plaintext and additional_authenticated_data fields must be no larger than
+        /// 8KiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plaintext")]
         public virtual string Plaintext { get; set; } 
 
@@ -3827,9 +3721,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// EncryptRequest.plaintext_crc32c, and if so, perform a limited number of retries. A persistent mismatch may
         /// indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for
         /// reasons of compatibility across different languages. However, it is a non-negative integer, which will never
-        /// exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
-        ///
-        /// NOTE: This field is in Beta.</summary>
+        /// exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This
+        /// field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plaintextCrc32c")]
         public virtual System.Nullable<long> PlaintextCrc32c { get; set; } 
 
@@ -3850,9 +3743,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an
         /// issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of
         /// compatibility across different languages. However, it is a non-negative integer, which will never exceed
-        /// 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
-        ///
-        /// NOTE: This field is in Beta.</summary>
+        /// 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This field is
+        /// in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ciphertextCrc32c")]
         public virtual System.Nullable<long> CiphertextCrc32c { get; set; } 
 
@@ -3866,9 +3758,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// integrity verification of the AAD. A false value of this field indicates either that
         /// EncryptRequest.additional_authenticated_data_crc32c was left unset or that it was not delivered to
         /// KeyManagementService. If you've set EncryptRequest.additional_authenticated_data_crc32c but this field is
-        /// still false, discard the response and perform a limited number of retries.
-        ///
-        /// NOTE: This field is in Beta.</summary>
+        /// still false, discard the response and perform a limited number of retries. NOTE: This field is in
+        /// Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifiedAdditionalAuthenticatedDataCrc32c")]
         public virtual System.Nullable<bool> VerifiedAdditionalAuthenticatedDataCrc32c { get; set; } 
 
@@ -3876,9 +3767,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// received by KeyManagementService and used for the integrity verification of the plaintext. A false value of
         /// this field indicates either that EncryptRequest.plaintext_crc32c was left unset or that it was not delivered
         /// to KeyManagementService. If you've set EncryptRequest.plaintext_crc32c but this field is still false,
-        /// discard the response and perform a limited number of retries.
-        ///
-        /// NOTE: This field is in Beta.</summary>
+        /// discard the response and perform a limited number of retries. NOTE: This field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifiedPlaintextCrc32c")]
         public virtual System.Nullable<bool> VerifiedPlaintextCrc32c { get; set; } 
 
@@ -3888,29 +3777,15 @@ namespace Google.Apis.CloudKMS.v1.Data
 
     /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
     /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    ///
-    /// Example (Comparison):
-    ///
-    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
-    /// "document.summary.size() < 100"
-    ///
-    /// Example (Equality):
-    ///
-    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
-    /// "document.owner == request.auth.claims.email"
-    ///
-    /// Example (Logic):
-    ///
-    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
-    /// "document.type != 'private' && document.type != 'internal'"
-    ///
-    /// Example (Data Manipulation):
-    ///
+    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
     /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)"
-    ///
-    /// The exact variables and functions that may be referenced within an expression are determined by the service that
-    /// evaluates it. See the service documentation for additional information.</summary>
+    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
+    /// within an expression are determined by the service that evaluates it. See the service documentation for
+    /// additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
@@ -3960,20 +3835,13 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("importJob")]
         public virtual string ImportJob { get; set; } 
 
-        /// <summary>Wrapped key material produced with RSA_OAEP_3072_SHA1_AES_256 or RSA_OAEP_4096_SHA1_AES_256.
-        ///
-        /// This field contains the concatenation of two wrapped keys:
-        ///
-        /// An ephemeral AES-256 wrapping key wrapped with the public_key using RSAES-OAEP with SHA-1, MGF1 with SHA-1,
-        /// and an empty label.
-        ///
-        /// The key to be imported, wrapped with the ephemeral AES-256 key using AES-KWP (RFC 5649).
-        ///
-        /// If importing symmetric key material, it is expected that the unwrapped key contains plain bytes. If
-        /// importing asymmetric key material, it is expected that the unwrapped key is in PKCS#8-encoded DER format
-        /// (the PrivateKeyInfo structure from RFC 5208).
-        ///
-        /// This format is the same as the format produced by PKCS#11 mechanism CKM_RSA_AES_KEY_WRAP.</summary>
+        /// <summary>Wrapped key material produced with RSA_OAEP_3072_SHA1_AES_256 or RSA_OAEP_4096_SHA1_AES_256. This
+        /// field contains the concatenation of two wrapped keys: 1. An ephemeral AES-256 wrapping key wrapped with the
+        /// public_key using RSAES-OAEP with SHA-1, MGF1 with SHA-1, and an empty label. 2. The key to be imported,
+        /// wrapped with the ephemeral AES-256 key using AES-KWP (RFC 5649). If importing symmetric key material, it is
+        /// expected that the unwrapped key contains plain bytes. If importing asymmetric key material, it is expected
+        /// that the unwrapped key is in PKCS#8-encoded DER format (the PrivateKeyInfo structure from RFC 5208). This
+        /// format is the same as the format produced by PKCS#11 mechanism CKM_RSA_AES_KEY_WRAP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rsaAesWrappedKey")]
         public virtual string RsaAesWrappedKey { get; set; } 
 
@@ -3982,23 +3850,17 @@ namespace Google.Apis.CloudKMS.v1.Data
     }    
 
     /// <summary>An ImportJob can be used to create CryptoKeys and CryptoKeyVersions using pre-existing key material,
-    /// generated outside of Cloud KMS.
-    ///
-    /// When an ImportJob is created, Cloud KMS will generate a "wrapping key", which is a public/private key pair. You
-    /// use the wrapping key to encrypt (also known as wrap) the pre-existing key material to protect it during the
-    /// import process. The nature of the wrapping key depends on the choice of import_method. When the wrapping key
-    /// generation is complete, the state will be set to ACTIVE and the public_key can be fetched. The fetched public
-    /// key can then be used to wrap your pre-existing key material.
-    ///
-    /// Once the key material is wrapped, it can be imported into a new CryptoKeyVersion in an existing CryptoKey by
-    /// calling ImportCryptoKeyVersion. Multiple CryptoKeyVersions can be imported with a single ImportJob. Cloud KMS
-    /// uses the private key portion of the wrapping key to unwrap the key material. Only Cloud KMS has access to the
-    /// private key.
-    ///
-    /// An ImportJob expires 3 days after it is created. Once expired, Cloud KMS will no longer be able to import or
-    /// unwrap any key material that was wrapped with the ImportJob's public key.
-    ///
-    /// For more information, see [Importing a key](https://cloud.google.com/kms/docs/importing-a-key).</summary>
+    /// generated outside of Cloud KMS. When an ImportJob is created, Cloud KMS will generate a "wrapping key", which is
+    /// a public/private key pair. You use the wrapping key to encrypt (also known as wrap) the pre-existing key
+    /// material to protect it during the import process. The nature of the wrapping key depends on the choice of
+    /// import_method. When the wrapping key generation is complete, the state will be set to ACTIVE and the public_key
+    /// can be fetched. The fetched public key can then be used to wrap your pre-existing key material. Once the key
+    /// material is wrapped, it can be imported into a new CryptoKeyVersion in an existing CryptoKey by calling
+    /// ImportCryptoKeyVersion. Multiple CryptoKeyVersions can be imported with a single ImportJob. Cloud KMS uses the
+    /// private key portion of the wrapping key to unwrap the key material. Only Cloud KMS has access to the private
+    /// key. An ImportJob expires 3 days after it is created. Once expired, Cloud KMS will no longer be able to import
+    /// or unwrap any key material that was wrapped with the ImportJob's public key. For more information, see
+    /// [Importing a key](https://cloud.google.com/kms/docs/importing-a-key).</summary>
     public class ImportJob : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Statement that was generated and signed by the key creator (for example, an HSM) at
@@ -4186,9 +4048,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Cross-service attributes for the location. For example
-        ///
-        /// {"cloud.googleapis.com/region": "us-east1"}</summary>
+        /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
+        /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -4226,35 +4087,24 @@ namespace Google.Apis.CloudKMS.v1.Data
     }    
 
     /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
-    /// resources.
-    ///
-    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
-    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
-    /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
-    ///
-    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
-    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
-    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
-    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
-    /// /resource-policies).
-    ///
-    /// **JSON example:**
-    ///
-    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
-    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
-    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
-    ///
-    /// **YAML example:**
-    ///
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
-    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
-    /// description: Does not grant access after Sep 2020 expression: request.time <
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
-    ///
-    /// For a description of IAM and its features, see the [IAM
+    /// resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`.
+    /// Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a
+    /// named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some
+    /// types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that
+    /// allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on
+    /// attributes of the request, the resource, or both. To learn which resources support conditions in their IAM
+    /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON
+    /// example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [
+    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
+    /// id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [
+    /// "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access
+    /// after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+    /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com -
+    /// group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+    /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+    /// roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access
+    /// after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version:
+    /// 3 For a description of IAM and its features, see the [IAM
     /// documentation](https://cloud.google.com/iam/docs/).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4271,33 +4121,23 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
-        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
-        ///
-        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
-        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
+        /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
+        /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Specifies the format of the policy.
-        ///
-        /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected.
-        ///
-        /// Any operation that affects conditional role bindings must specify version `3`. This requirement applies to
-        /// the following operations:
-        ///
-        /// * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy
-        /// * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition,
-        /// from a policy that includes conditions
-        ///
+        /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
+        /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
+        /// This requirement applies to the following operations: * Getting a policy that includes a conditional role
+        /// binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy *
+        /// Removing any role binding, with or without a condition, from a policy that includes conditions
         /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
         /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.
-        ///
-        /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any
+        /// conditions, operations on that policy may specify any valid version or leave the field unset. To learn which
+        /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
@@ -4311,9 +4151,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
         public virtual string Algorithm { get; set; } 
 
-        /// <summary>The name of the CryptoKeyVersion public key. Provided here for verification.
-        ///
-        /// NOTE: This field is in Beta.</summary>
+        /// <summary>The name of the CryptoKeyVersion public key. Provided here for verification. NOTE: This field is in
+        /// Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -4330,9 +4169,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum.
         /// Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is
         /// a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in
-        /// languages that support this type.
-        ///
-        /// NOTE: This field is in Beta.</summary>
+        /// languages that support this type. NOTE: This field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pemCrc32c")]
         public virtual System.Nullable<long> PemCrc32c { get; set; } 
 
@@ -4357,9 +4194,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual Policy Policy { get; set; } 
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, the following default mask is used:
-        ///
-        /// `paths: "bindings, etag"`</summary>
+        /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
+        /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 

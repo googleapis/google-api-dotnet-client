@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-sql/'>Cloud SQL Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20200713 (2020)
+ *      <tr><th>API Rev<td>20200728 (2035)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-sql/'>
  *              https://developers.google.com/cloud-sql/</a>
@@ -91,9 +91,9 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://www.googleapis.com/"; }
+            get { return BaseUriOverride ?? "https://sqladmin.googleapis.com/"; }
         #else
-            get { return "https://www.googleapis.com/"; }
+            get { return "https://sqladmin.googleapis.com/"; }
         #endif
         }
 
@@ -107,13 +107,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch/sql"; }
+            get { return "https://sqladmin.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch/sql"; }
+            get { return "batch"; }
         }
         #endif
 
@@ -3503,9 +3503,9 @@ namespace Google.Apis.SQLAdmin.v1beta4
             }
 
             /// <summary>Start External master migration.</summary>
-            /// <param name="project">ID of the project that contains the first generation instance.</param>
-            /// <param
-            /// name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
+            /// <param name="project">ID of the project that contains the instance.</param>
+            /// <param name="instance">Cloud SQL
+            /// instance ID. This does not include the project ID.</param>
             public virtual StartExternalSyncRequest StartExternalSync(string project, string instance)
             {
                 return new StartExternalSyncRequest(service, project, instance);
@@ -3524,7 +3524,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 }
 
 
-                /// <summary>ID of the project that contains the first generation instance.</summary>
+                /// <summary>ID of the project that contains the instance.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Project { get; private set; }
 
@@ -4660,7 +4660,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The whitelisted value for the access control list.</summary>
+        /// <summary>The allowlisted value for the access control list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
@@ -4839,8 +4839,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>Database instance clone context.</summary>
     public class CloneContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Binary log coordinates, if specified, identify the position up to which the source instance should
-        /// be cloned. If not specified, the source instance is cloned up to the most recent binary log
+        /// <summary>Binary log coordinates, if specified, identify the position up to which the source instance is
+        /// cloned. If not specified, the source instance is cloned up to the most recent binary log
         /// coordinates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binLogCoordinates")]
         public virtual BinLogCoordinates BinLogCoordinates { get; set; } 
@@ -4911,12 +4911,12 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     public class DatabaseFlags : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The name of the flag. These flags are passed at instance startup, so include both server options
-        /// and system variables for MySQL. Flags should be specified with underscores, not hyphens. For more
-        /// information, see Configuring Database Flags in the Cloud SQL documentation.</summary>
+        /// and system variables for MySQL. Flags are specified with underscores, not hyphens. For more information, see
+        /// Configuring Database Flags in the Cloud SQL documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The value of the flag. Booleans should be set to on for true and off for false. This field must be
+        /// <summary>The value of the flag. Booleans are set to on for true and off for false. This field must be
         /// omitted if the flag doesn't take a value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
@@ -4938,9 +4938,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("connectionName")]
         public virtual string ConnectionName { get; set; } 
 
-        /// <summary>The current disk usage of the instance in bytes. This property has been deprecated. Users should
-        /// use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please
-        /// see this announcement for details.</summary>
+        /// <summary>The current disk usage of the instance in bytes. This property has been deprecated. Use the
+        /// "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see this
+        /// announcement for details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentDiskSize")]
         public virtual System.Nullable<long> CurrentDiskSize { get; set; } 
 
@@ -5156,12 +5156,12 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("caCertificate")]
         public virtual string CaCertificate { get; set; } 
 
-        /// <summary>PEM representation of the slave's x509 certificate.</summary>
+        /// <summary>PEM representation of the replica's x509 certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientCertificate")]
         public virtual string ClientCertificate { get; set; } 
 
-        /// <summary>PEM representation of the slave's private key. The corresponsing public key is encoded in the
-        /// client's certificate. The format of the slave's private key can be either PKCS #1 or PKCS #8.</summary>
+        /// <summary>PEM representation of the replica's private key. The corresponsing public key is encoded in the
+        /// client's certificate. The format of the replica's private key can be either PKCS #1 or PKCS #8.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
         public virtual string ClientKey { get; set; } 
 
@@ -5340,7 +5340,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
         public virtual System.Nullable<long> MinValue { get; set; } 
 
-        /// <summary>This is the name of the flag. Flag names always use underscores, not hyphens, e.g.
+        /// <summary>This is the name of the flag. Flag names always use underscores, not hyphens, for example:
         /// max_allowed_packet</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -5591,11 +5591,11 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     public class IpConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR'
-        /// notation, also known as 'slash' notation (e.g. 192.168.100.0/24).</summary>
+        /// notation, also known as 'slash' notation (for example: 192.168.100.0/24).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedNetworks")]
         public virtual System.Collections.Generic.IList<AclEntry> AuthorizedNetworks { get; set; } 
 
-        /// <summary>Whether the instance should be assigned an IP address or not.</summary>
+        /// <summary>Whether the instance is assigned a public IP address or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipv4Enabled")]
         public virtual System.Nullable<bool> Ipv4Enabled { get; set; } 
 
@@ -5605,7 +5605,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateNetwork")]
         public virtual string PrivateNetwork { get; set; } 
 
-        /// <summary>Whether SSL connections over IP should be enforced or not.</summary>
+        /// <summary>Whether SSL connections over IP are enforced or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireSsl")]
         public virtual System.Nullable<bool> RequireSsl { get; set; } 
 
@@ -5635,9 +5635,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Preferred location. This specifies where a Cloud SQL instance should preferably be located, either in a
-    /// specific Compute Engine zone, or co-located with an App Engine application. Note that if the preferred location
-    /// is not available, the instance will be located as close as possible within the region. Only one location may be
+    /// <summary>Preferred location. This specifies where a Cloud SQL instance is located, either in a specific Compute
+    /// Engine zone, or co-located with an App Engine application. Note that if the preferred location is not available,
+    /// the instance will be located as close as possible within the region. Only one location may be
     /// specified.</summary>
     public class LocationPreference : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5650,7 +5650,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The preferred Compute Engine zone (e.g. us-central1-a, us-central1-b, etc.).</summary>
+        /// <summary>The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -5658,8 +5658,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Maintenance window. This specifies when a v2 Cloud SQL instance should preferably be restarted for
-    /// system maintenance purposes.</summary>
+    /// <summary>Maintenance window. This specifies when a Cloud SQL instance is restarted for system maintenance
+    /// purposes.</summary>
     public class MaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>day of week (1-7), starting on Monday.</summary>
@@ -5689,11 +5689,11 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("caCertificate")]
         public virtual string CaCertificate { get; set; } 
 
-        /// <summary>PEM representation of the slave's x509 certificate.</summary>
+        /// <summary>PEM representation of the replica's x509 certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientCertificate")]
         public virtual string ClientCertificate { get; set; } 
 
-        /// <summary>PEM representation of the slave's private key. The corresponsing public key is encoded in the
+        /// <summary>PEM representation of the replica's private key. The corresponsing public key is encoded in the
         /// client's certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
         public virtual string ClientKey { get; set; } 
@@ -5702,10 +5702,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("connectRetryInterval")]
         public virtual System.Nullable<int> ConnectRetryInterval { get; set; } 
 
-        /// <summary>Path to a SQL dump file in Google Cloud Storage from which the slave instance is to be created. The
-        /// URI is in the form gs://bucketName/fileName. Compressed gzip files (.gz) are also supported. Dumps should
-        /// have the binlog co-ordinates from which replication should begin. This can be accomplished by setting
-        /// --master-data to 1 when using mysqldump.</summary>
+        /// <summary>Path to a SQL dump file in Google Cloud Storage from which the replica instance is to be created.
+        /// The URI is in the form gs://bucketName/fileName. Compressed gzip files (.gz) are also supported. Dumps have
+        /// the binlog co-ordinates from which replication begins. This can be accomplished by setting --master-data to
+        /// 1 when using mysqldump.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dumpFilePath")]
         public virtual string DumpFilePath { get; set; } 
 
@@ -5745,11 +5745,11 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("caCertificate")]
         public virtual string CaCertificate { get; set; } 
 
-        /// <summary>PEM representation of the slave's x509 certificate.</summary>
+        /// <summary>PEM representation of the replica's x509 certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientCertificate")]
         public virtual string ClientCertificate { get; set; } 
 
-        /// <summary>PEM representation of the slave's private key. The corresponsing public key is encoded in the
+        /// <summary>PEM representation of the replica's private key. The corresponsing public key is encoded in the
         /// client's certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
         public virtual string ClientKey { get; set; } 

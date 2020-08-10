@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/profiler/'>Stackdriver Profiler API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200727 (2034)
+ *      <tr><th>API Rev<td>20200803 (2041)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/profiler/'>
  *              https://cloud.google.com/profiler/</a>
@@ -379,16 +379,13 @@ namespace Google.Apis.CloudProfiler.v2
             }
 
 
-            /// <summary>CreateProfile creates a new profile resource in the online mode.
-            ///
-            /// The server ensures that the new profiles are created at a constant rate per deployment, so the creation
-            /// request may hang for some time until the next profile session is available.
-            ///
-            /// The request may fail with ABORTED error if the creation is not available within ~1m, the response will
-            /// indicate the duration of the backoff the client should take before attempting creating a profile again.
-            /// The backoff duration is returned in google.rpc.RetryInfo extension on the response status. To a gRPC
-            /// client, the extension will be return as a binary-serialized proto in the trailing metadata item named
-            /// "google.rpc.retryinfo-bin".</summary>
+            /// <summary>CreateProfile creates a new profile resource in the online mode. The server ensures that the
+            /// new profiles are created at a constant rate per deployment, so the creation request may hang for some
+            /// time until the next profile session is available. The request may fail with ABORTED error if the
+            /// creation is not available within ~1m, the response will indicate the duration of the backoff the client
+            /// should take before attempting creating a profile again. The backoff duration is returned in
+            /// google.rpc.RetryInfo extension on the response status. To a gRPC client, the extension will be return as
+            /// a binary-serialized proto in the trailing metadata item named "google.rpc.retryinfo-bin".</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Parent project to create the profile in.</param>
             public virtual CreateRequest Create(Google.Apis.CloudProfiler.v2.Data.CreateProfileRequest body, string parent)
@@ -396,16 +393,13 @@ namespace Google.Apis.CloudProfiler.v2
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>CreateProfile creates a new profile resource in the online mode.
-            ///
-            /// The server ensures that the new profiles are created at a constant rate per deployment, so the creation
-            /// request may hang for some time until the next profile session is available.
-            ///
-            /// The request may fail with ABORTED error if the creation is not available within ~1m, the response will
-            /// indicate the duration of the backoff the client should take before attempting creating a profile again.
-            /// The backoff duration is returned in google.rpc.RetryInfo extension on the response status. To a gRPC
-            /// client, the extension will be return as a binary-serialized proto in the trailing metadata item named
-            /// "google.rpc.retryinfo-bin".</summary>
+            /// <summary>CreateProfile creates a new profile resource in the online mode. The server ensures that the
+            /// new profiles are created at a constant rate per deployment, so the creation request may hang for some
+            /// time until the next profile session is available. The request may fail with ABORTED error if the
+            /// creation is not available within ~1m, the response will indicate the duration of the backoff the client
+            /// should take before attempting creating a profile again. The backoff duration is returned in
+            /// google.rpc.RetryInfo extension on the response status. To a gRPC client, the extension will be return as
+            /// a binary-serialized proto in the trailing metadata item named "google.rpc.retryinfo-bin".</summary>
             public class CreateRequest : CloudProfilerBaseServiceRequest<Google.Apis.CloudProfiler.v2.Data.Profile>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -650,14 +644,11 @@ namespace Google.Apis.CloudProfiler.v2.Data
     {
         /// <summary>Labels identify the deployment within the user universe and same target. Validation regex for label
         /// names: `^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$`. Value for an individual label must be <= 512 bytes, the total
-        /// size of all label names and values must be <= 1024 bytes.
-        ///
-        /// Label named "language" can be used to record the programming language of the profiled deployment. The
-        /// standard choices for the value include "java", "go", "python", "ruby", "nodejs", "php", "dotnet".
-        ///
-        /// For deployments running on Google Cloud Platform, "zone" or "region" label should be present describing the
-        /// deployment location. An example of a zone is "us-central1-a", an example of a region is "us-central1" or
-        /// "us-central".</summary>
+        /// size of all label names and values must be <= 1024 bytes. Label named "language" can be used to record the
+        /// programming language of the profiled deployment. The standard choices for the value include "java", "go",
+        /// "python", "ruby", "nodejs", "php", "dotnet". For deployments running on Google Cloud Platform, "zone" or
+        /// "region" label should be present describing the deployment location. An example of a zone is "us-
+        /// central1-a", an example of a region is "us-central1" or "us-central".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -690,7 +681,7 @@ namespace Google.Apis.CloudProfiler.v2.Data
         public virtual object Duration { get; set; } 
 
         /// <summary>Input only. Labels associated to this specific profile. These labels will get merged with the
-        /// deployment labels for the final data set.  See documentation on deployment labels for validation rules and
+        /// deployment labels for the final data set. See documentation on deployment labels for validation rules and
         /// limits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 

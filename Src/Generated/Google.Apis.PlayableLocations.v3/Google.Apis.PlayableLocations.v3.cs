@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/maps/contact-sales/'>Playable Locations API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200801 (2039)
+ *      <tr><th>API Rev<td>20200808 (2046)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/maps/contact-sales/'>
  *              https://developers.google.com/maps/contact-sales/</a>
@@ -328,7 +328,6 @@ namespace Google.Apis.PlayableLocations.v3
 
 
         /// <summary>Logs new events when playable locations are displayed, and when they are interacted with.
-        ///
         /// Impressions are not partially saved; either all impressions are saved and this request succeeds, or no
         /// impressions are saved, and this request fails.</summary>
         /// <param name="body">The body of the request.</param>
@@ -338,7 +337,6 @@ namespace Google.Apis.PlayableLocations.v3
         }
 
         /// <summary>Logs new events when playable locations are displayed, and when they are interacted with.
-        ///
         /// Impressions are not partially saved; either all impressions are saved and this request succeeds, or no
         /// impressions are saved, and this request fails.</summary>
         public class LogImpressionsRequest : PlayableLocationsBaseServiceRequest<Google.Apis.PlayableLocations.v3.Data.GoogleMapsPlayablelocationsV3LogImpressionsResponse>
@@ -386,20 +384,16 @@ namespace Google.Apis.PlayableLocations.v3
 
         }
 
-        /// <summary>Logs bad playable location reports submitted by players.
-        ///
-        /// Reports are not partially saved; either all reports are saved and this request succeeds, or no reports are
-        /// saved, and this request fails.</summary>
+        /// <summary>Logs bad playable location reports submitted by players. Reports are not partially saved; either
+        /// all reports are saved and this request succeeds, or no reports are saved, and this request fails.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual LogPlayerReportsRequest LogPlayerReports(Google.Apis.PlayableLocations.v3.Data.GoogleMapsPlayablelocationsV3LogPlayerReportsRequest body)
         {
             return new LogPlayerReportsRequest(service, body);
         }
 
-        /// <summary>Logs bad playable location reports submitted by players.
-        ///
-        /// Reports are not partially saved; either all reports are saved and this request succeeds, or no reports are
-        /// saved, and this request fails.</summary>
+        /// <summary>Logs bad playable location reports submitted by players. Reports are not partially saved; either
+        /// all reports are saved and this request succeeds, or no reports are saved, and this request fails.</summary>
         public class LogPlayerReportsRequest : PlayableLocationsBaseServiceRequest<Google.Apis.PlayableLocations.v3.Data.GoogleMapsPlayablelocationsV3LogPlayerReportsResponse>
         {
             /// <summary>Constructs a new LogPlayerReports request.</summary>
@@ -446,10 +440,8 @@ namespace Google.Apis.PlayableLocations.v3
         }
 
         /// <summary>Returns a set of playable locations that lie within a specified area, that satisfy optional filter
-        /// criteria.
-        ///
-        /// Note: Identical `SamplePlayableLocations` requests can return different results as the state of the world
-        /// changes over time.</summary>
+        /// criteria. Note: Identical `SamplePlayableLocations` requests can return different results as the state of
+        /// the world changes over time.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual SamplePlayableLocationsRequest SamplePlayableLocations(Google.Apis.PlayableLocations.v3.Data.GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest body)
         {
@@ -457,10 +449,8 @@ namespace Google.Apis.PlayableLocations.v3
         }
 
         /// <summary>Returns a set of playable locations that lie within a specified area, that satisfy optional filter
-        /// criteria.
-        ///
-        /// Note: Identical `SamplePlayableLocations` requests can return different results as the state of the world
-        /// changes over time.</summary>
+        /// criteria. Note: Identical `SamplePlayableLocations` requests can return different results as the state of
+        /// the world changes over time.</summary>
         public class SamplePlayableLocationsRequest : PlayableLocationsBaseServiceRequest<Google.Apis.PlayableLocations.v3.Data.GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse>
         {
             /// <summary>Constructs a new SamplePlayableLocations request.</summary>
@@ -515,13 +505,10 @@ namespace Google.Apis.PlayableLocations.v3.Data
     public class GoogleMapsPlayablelocationsV3Impression : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An arbitrary, developer-defined type identifier for each type of game object used in your game.
-        ///
         /// Since players interact with differ types of game objects in different ways, this field allows you to
-        /// segregate impression data by type for analysis.
-        ///
-        /// You should assign a unique `game_object_type` ID to represent a distinct type of game object in your game.
-        ///
-        /// For example, 1=monster location, 2=powerup location.</summary>
+        /// segregate impression data by type for analysis. You should assign a unique `game_object_type` ID to
+        /// represent a distinct type of game object in your game. For example, 1=monster location, 2=powerup
+        /// location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gameObjectType")]
         public virtual System.Nullable<int> GameObjectType { get; set; } 
 
@@ -552,7 +539,6 @@ namespace Google.Apis.PlayableLocations.v3.Data
 
         /// <summary>Required. A string that uniquely identifies the log impressions request. This allows you to detect
         /// duplicate requests. We recommend that you use UUIDs for this value. The value must not exceed 50 characters.
-        ///
         /// You should reuse the `request_id` only when retrying a request in case of failure. In this case, the request
         /// must be identical to the one that failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
@@ -584,10 +570,8 @@ namespace Google.Apis.PlayableLocations.v3.Data
 
         /// <summary>Required. A string that uniquely identifies the log player reports request. This allows you to
         /// detect duplicate requests. We recommend that you use UUIDs for this value. The value must not exceed 50
-        /// characters.
-        ///
-        /// You should reuse the `request_id` only when retrying a request in the case of a failure. In that case, the
-        /// request must be identical to the one that failed.</summary>
+        /// characters. You should reuse the `request_id` only when retrying a request in the case of a failure. In that
+        /// case, the request must be identical to the one that failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; } 
 
@@ -595,9 +579,7 @@ namespace Google.Apis.PlayableLocations.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A response for the LogPlayerReports method.
-    ///
-    /// This method returns no data upon success.</summary>
+    /// <summary>A response for the LogPlayerReports method. This method returns no data upon success.</summary>
     public class GoogleMapsPlayablelocationsV3LogPlayerReportsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -634,14 +616,9 @@ namespace Google.Apis.PlayableLocations.v3.Data
     public class GoogleMapsPlayablelocationsV3SampleAreaFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The S2 cell ID of the area you want. This must be between cell level 11 and 14
-        /// (inclusive).
-        ///
-        /// S2 cells are 64-bit integers that identify areas on the Earth. They are hierarchical, and can therefore be
-        /// used for spatial indexing.
-        ///
-        /// The S2 geometry library is available in a number of languages:
-        ///
-        /// * [C++](https://github.com/google/s2geometry) * [Java](https://github.com/google/s2-geometry-library-java) *
+        /// (inclusive). S2 cells are 64-bit integers that identify areas on the Earth. They are hierarchical, and can
+        /// therefore be used for spatial indexing. The S2 geometry library is available in a number of languages: *
+        /// [C++](https://github.com/google/s2geometry) * [Java](https://github.com/google/s2-geometry-library-java) *
         /// [Go](https://github.com/golang/geo) *
         /// [Python](https://github.com/google/s2geometry/tree/master/src/python)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("s2CellId")]
@@ -654,17 +631,10 @@ namespace Google.Apis.PlayableLocations.v3.Data
     /// <summary>Encapsulates a filter criterion for searching for a set of playable locations.</summary>
     public class GoogleMapsPlayablelocationsV3SampleCriterion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies which `PlayableLocation` fields are returned.
-        ///
-        /// `name` (which is used for logging impressions), `center_point` and `place_id` (or `plus_code`) are always
-        /// returned.
-        ///
-        /// The following fields are omitted unless you specify them here:
-        ///
-        /// * snapped_point * types
-        ///
-        /// Note: The more fields you include, the more expensive in terms of data and associated latency your query
-        /// will be.</summary>
+        /// <summary>Specifies which `PlayableLocation` fields are returned. `name` (which is used for logging
+        /// impressions), `center_point` and `place_id` (or `plus_code`) are always returned. The following fields are
+        /// omitted unless you specify them here: * snapped_point * types Note: The more fields you include, the more
+        /// expensive in terms of data and associated latency your query will be.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldsToReturn")]
         public virtual object FieldsToReturn { get; set; } 
 
@@ -674,12 +644,9 @@ namespace Google.Apis.PlayableLocations.v3.Data
 
         /// <summary>Required. An arbitrary, developer-defined identifier of the type of game object that the playable
         /// location is used for. This field allows you to specify criteria per game object type when searching for
-        /// playable locations.
-        ///
-        /// You should assign a unique `game_object_type` ID across all `request_criteria` to represent a distinct type
-        /// of game object. For example, 1=monster location, 2=powerup location.
-        ///
-        /// The response contains a map.</summary>
+        /// playable locations. You should assign a unique `game_object_type` ID across all `request_criteria` to
+        /// represent a distinct type of game object. For example, 1=monster location, 2=powerup location. The response
+        /// contains a map.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gameObjectType")]
         public virtual System.Nullable<int> GameObjectType { get; set; } 
 
@@ -696,9 +663,7 @@ namespace Google.Apis.PlayableLocations.v3.Data
         public virtual System.Collections.Generic.IList<string> IncludedTypes { get; set; } 
 
         /// <summary>Specifies the maximum number of playable locations to return. This value must not be greater than
-        /// 1000. The default value is 100.
-        ///
-        /// Only the top-ranking playable locations are returned.</summary>
+        /// 1000. The default value is 100. Only the top-ranking playable locations are returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxLocationCount")]
         public virtual System.Nullable<int> MaxLocationCount { get; set; } 
 
@@ -714,9 +679,8 @@ namespace Google.Apis.PlayableLocations.v3.Data
     /// <summary>A geographical point suitable for placing game objects in location-based games.</summary>
     public class GoogleMapsPlayablelocationsV3SamplePlayableLocation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The latitude and longitude associated with the center of the playable location.
-        ///
-        /// By default, the set of playable locations returned from SamplePlayableLocations use center-point
+        /// <summary>Required. The latitude and longitude associated with the center of the playable location. By
+        /// default, the set of playable locations returned from SamplePlayableLocations use center-point
         /// coordinates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("centerPoint")]
         public virtual GoogleTypeLatLng CenterPoint { get; set; } 
@@ -739,9 +703,8 @@ namespace Google.Apis.PlayableLocations.v3.Data
         public virtual GoogleTypeLatLng SnappedPoint { get; set; } 
 
         /// <summary>A collection of [Playable Location Types](/maps/documentation/gaming/tt/types) for this playable
-        /// location. The first type in the collection is the primary type.
-        ///
-        /// Type information might not be available for all playable locations.</summary>
+        /// location. The first type in the collection is the primary type. Type information might not be available for
+        /// all playable locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("types")]
         public virtual System.Collections.Generic.IList<string> Types { get; set; } 
 
@@ -760,23 +723,16 @@ namespace Google.Apis.PlayableLocations.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary> Life of a query:
-    ///
-    /// - When a game starts in a new location, your game server issues a SamplePlayableLocations request. The request
-    /// specifies the S2 cell, and contains one or more "criteria" for filtering:
-    ///
-    /// - Criterion 0: i locations for long-lived bases, or level 0 monsters, or... - Criterion 1: j locations for
-    /// short-lived bases, or level 1 monsters, ... - Criterion 2: k locations for random objects. - etc (up to 5
-    /// criterion may be specified).
-    ///
-    /// `PlayableLocationList` will then contain mutually exclusive lists of `PlayableLocation` objects that satisfy
-    /// each of the criteria. Think of it as a collection of real-world locations that you can then associate with your
-    /// game state.
-    ///
-    /// Note: These points are impermanent in nature. E.g, parks can close, and places can be removed.
-    ///
-    /// The response specifies how long you can expect the playable locations to last. Once they expire, you should
-    /// query the `samplePlayableLocations` API again to get a fresh view of the real world.</summary>
+    /// <summary> Life of a query: - When a game starts in a new location, your game server issues a
+    /// SamplePlayableLocations request. The request specifies the S2 cell, and contains one or more "criteria" for
+    /// filtering: - Criterion 0: i locations for long-lived bases, or level 0 monsters, or... - Criterion 1: j
+    /// locations for short-lived bases, or level 1 monsters, ... - Criterion 2: k locations for random objects. - etc
+    /// (up to 5 criterion may be specified). `PlayableLocationList` will then contain mutually exclusive lists of
+    /// `PlayableLocation` objects that satisfy each of the criteria. Think of it as a collection of real-world
+    /// locations that you can then associate with your game state. Note: These points are impermanent in nature. E.g,
+    /// parks can close, and places can be removed. The response specifies how long you can expect the playable
+    /// locations to last. Once they expire, you should query the `samplePlayableLocations` API again to get a fresh
+    /// view of the real world.</summary>
     public class GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Specifies the area to search within for playable locations.</summary>
@@ -815,45 +771,22 @@ namespace Google.Apis.PlayableLocations.v3.Data
     public class GoogleMapsPlayablelocationsV3SampleSpacingOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The minimum spacing between any two playable locations, measured in meters. The minimum
-        /// value is 30. The maximum value is 1000.
-        ///
-        /// Inputs will be rounded up to the next 10 meter interval.
-        ///
-        /// The default value is 200m.
-        ///
-        /// Set this field to remove tight clusters of playable locations.
-        ///
-        /// Note:
-        ///
-        /// The spacing is a greedy algorithm. It optimizes for selecting the highest ranking locations first, not to
-        /// maximize the number of locations selected. Consider the following scenario:
-        ///
-        /// * Rank: A: 2, B: 1, C: 3. * Distance: A--200m--B--200m--C
-        ///
-        /// If spacing=250, it will pick the highest ranked location [B], not [A, C].
-        ///
-        /// Note:
-        ///
-        /// Spacing works within the game object type itself, as well as the previous ones. Suppose three game object
-        /// types, each with the following spacing:
-        ///
-        /// * X: 400m, Y: undefined, Z: 200m.
-        ///
-        /// 1. Add locations for X, within 400m of each other. 2. Add locations for Y, without any spacing. 3. Finally,
-        /// add locations for Z within 200m of each other as well X and Y.
-        ///
-        /// The distance diagram between those locations end up as:
-        ///
-        /// * From->To. * X->X: 400m * Y->X, Y->Y: unspecified. * Z->X, Z->Y, Z->Z: 200m.</summary>
+        /// value is 30. The maximum value is 1000. Inputs will be rounded up to the next 10 meter interval. The default
+        /// value is 200m. Set this field to remove tight clusters of playable locations. Note: The spacing is a greedy
+        /// algorithm. It optimizes for selecting the highest ranking locations first, not to maximize the number of
+        /// locations selected. Consider the following scenario: * Rank: A: 2, B: 1, C: 3. * Distance: A--200m--B--200m
+        /// --C If spacing=250, it will pick the highest ranked location [B], not [A, C]. Note: Spacing works within the
+        /// game object type itself, as well as the previous ones. Suppose three game object types, each with the
+        /// following spacing: * X: 400m, Y: undefined, Z: 200m. 1. Add locations for X, within 400m of each other. 2.
+        /// Add locations for Y, without any spacing. 3. Finally, add locations for Z within 200m of each other as well
+        /// X and Y. The distance diagram between those locations end up as: * From->To. * X->X: 400m * Y->X, Y->Y:
+        /// unspecified. * Z->X, Z->Y, Z->Z: 200m.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minSpacingMeters")]
         public virtual System.Nullable<double> MinSpacingMeters { get; set; } 
 
         /// <summary>Specifies whether the minimum spacing constraint applies to the center-point or to the snapped
-        /// point of playable locations. The default value is `CENTER_POINT`.
-        ///
-        /// If a snapped point is not available for a playable location, its center-point is used instead.
-        ///
-        /// Set this to the point type used in your game.</summary>
+        /// point of playable locations. The default value is `CENTER_POINT`. If a snapped point is not available for a
+        /// playable location, its center-point is used instead. Set this to the point type used in your game.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pointType")]
         public virtual string PointType { get; set; } 
 
